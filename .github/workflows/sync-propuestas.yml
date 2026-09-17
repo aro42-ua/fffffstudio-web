@@ -1,0 +1,35 @@
+name: Sincronizar propuestas desde Drive
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"   # cada 30 min (GitHub puede retrasarlo unos minutos)
+  workflow_dispatch:         # y a mano, desde la pestana Actions
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-propuestas
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Descargar maquetas nuevas de Drive
+        id: sync
+        env:
+          DRIVE_API_KEY: ${{ secrets.DRIVE_API_KEY }}
+          DRIVE_FOLDER_ID: 1AAlPjoyUp-F69TZWBcyEQ1JmYE3d_kH1
+        run: python3 scripts/sync_drive.py
+
+      - name: Publicar
+        if: steps.sync.outputs.changed == 'true'
+        run: |
+          git config user.name "FFFFFFstudio bot"
+          git config user.email "angelrubioortiz2005@gmail.com"
+          git add propuestas/
+          git commit -m "Propuestas: ${{ steps.sync.outputs.slugs }}"
+          git push
