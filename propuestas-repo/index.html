@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FFFFFFstudio — Diseño y desarrollo web en Alicante | Ángel Rubio</title>
+<meta name="description" content="FFFFFFstudio es el estudio de Ángel Rubio, estudiante de Informática en Alicante. Diseño y desarrollo de páginas web para negocios pequeños de toda España: web de presentación, carta o catálogo, contacto directo desde el móvil y puesta a punto de webs antiguas.">
+<meta name="author" content="Ángel Rubio">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#F6F4EF">
+<meta property="og:type" content="website">
+<meta property="og:title" content="FFFFFFstudio — Diseño y desarrollo web en Alicante">
+<meta property="og:description" content="Estudio de Ángel Rubio. Webs para negocios pequeños: presentación, carta o catálogo, contacto directo y puesta a punto de webs antiguas.">
+<meta property="og:locale" content="es_ES">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23141210'/%3E%3Crect x='6' y='6' width='20' height='20' fill='%23FFFFFF'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --paper:#F6F4EF;
+    --paper-2:#EFEBE3;
+    --white:#FFFFFF;
+    --ink:#141210;
+    --ink-60:rgba(20,18,16,.62);
+    --ink-40:rgba(20,18,16,.40);
+    --rule:rgba(20,18,16,.16);
+    --rule-soft:rgba(20,18,16,.08);
+    --accent:#1B34D8;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua","Bitstream Charter",Charter,"Times New Roman",serif;
+    --mono:"SFMono-Regular",Menlo,Consolas,"Liberation Mono","DejaVu Sans Mono",monospace;
+    --sans:"Avenir Next","Segoe UI","Helvetica Neue",Helvetica,"DejaVu Sans",sans-serif;
+    --gut:clamp(20px,5vw,72px);
+  }
+  *{box-sizing:border-box}
+  html,body{max-width:100%;overflow-x:hidden}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--serif);
+    font-size:clamp(17px,1.05vw + 14px,20px);
+    line-height:1.55;
+    letter-spacing:.005em;
+    -webkit-font-smoothing:antialiased;
+  }
+  /* textura de papel + retícula de fondo */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    background-image:
+      linear-gradient(to right,var(--rule-soft) 1px,transparent 1px);
+    background-size:calc(100% / 6) 100%;
+    opacity:.75;
+  }
+  body::after{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.35;
+    background-image:radial-gradient(rgba(20,18,16,.16) .5px,transparent .5px);
+    background-size:3px 3px;
+    mix-blend-mode:multiply;
+  }
+  .wrap{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:0 var(--gut)}
+  a{color:inherit}
+  ::selection{background:var(--accent);color:#fff}
+
+  .mono{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--ink-40);
+  }
+
+  /* ---------- topbar ---------- */
+  .top{border-bottom:1px solid var(--rule)}
+  .top .wrap{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-top:18px;padding-bottom:16px;flex-wrap:wrap}
+  .brandmark{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink)}
+  .chip{width:13px;height:13px;background:var(--white);border:1px solid var(--ink);display:inline-block}
+
+  /* ---------- hero ---------- */
+  .hero{padding:clamp(46px,9vw,104px) 0 clamp(40px,6vw,72px);border-bottom:1px solid var(--rule)}
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:clamp(28px,5vw,64px);align-items:end}
+  h1{
+    margin:0;
+    font-family:var(--sans);
+    font-weight:600;
+    font-size:clamp(34px,7.4vw,64px);
+    line-height:.98;
+    letter-spacing:-.04em;
+    overflow-wrap:break-word;
+  }
+  h1 .f{color:var(--ink);position:relative}
+  h1 .f::after{
+    content:"";position:absolute;left:0;right:0;bottom:.08em;height:.06em;background:var(--accent);
+    transform:scaleX(0);transform-origin:left;animation:rule .9s .5s cubic-bezier(.16,1,.3,1) forwards;
+  }
+  @keyframes rule{to{transform:scaleX(1)}}
+  .lede{margin:clamp(20px,2.6vw,28px) 0 0;max-width:34ch;font-size:clamp(19px,1.2vw + 15px,25px);line-height:1.42}
+  .lede em{font-style:italic}
+  .hero-meta{margin-top:26px;display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center}
+
+  .cta{
+    display:inline-flex;align-items:center;gap:12px;
+    font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+    background:var(--ink);color:var(--paper);text-decoration:none;
+    padding:15px 22px;border:1px solid var(--ink);
+    transition:background .25s ease,color .25s ease,transform .25s ease;
+  }
+  .cta:hover{background:var(--accent);border-color:var(--accent);color:#fff;transform:translate3d(0,-2px,0)}
+  .cta svg{display:block}
+
+  /* specimen card */
+  .specimen{
+    background:var(--white);
+    border:1px solid var(--rule);
+    padding:clamp(18px,2.4vw,26px);
+    box-shadow:
+      0 1px 0 rgba(20,18,16,.06),
+      clamp(10px,2vw,22px) clamp(10px,2vw,22px) 0 var(--paper-2),
+      calc(clamp(10px,2vw,22px) + 1px) calc(clamp(10px,2vw,22px) + 1px) 0 var(--rule);
+  }
+  .specimen .swatch{aspect-ratio:4/3;width:100%;background:#fff;border:1px solid var(--rule);position:relative;overflow:hidden}
+  .specimen .swatch svg{position:absolute;inset:0;width:100%;height:100%}
+  .spec-rows{margin-top:16px;border-top:1px solid var(--rule)}
+  .spec-rows div{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid var(--rule-soft);font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-60)}
+  .spec-rows div b{color:var(--ink);font-weight:500}
+  .spec-note{margin:14px 0 0;font-size:14.5px;line-height:1.45;color:var(--ink-60);font-style:italic}
+
+  /* ---------- secciones ---------- */
+  section{border-bottom:1px solid var(--rule);padding:clamp(46px,7vw,92px) 0}
+  .sec-grid{display:grid;grid-template-columns:minmax(0,200px) minmax(0,1fr);gap:clamp(20px,4vw,56px)}
+  .sec-head{position:sticky;top:26px;align-self:start}
+  .sec-head h2{margin:8px 0 0;font-family:var(--sans);font-weight:600;font-size:clamp(23px,1.6vw + 16px,32px);letter-spacing:-.02em;line-height:1.1}
+  .num{font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--accent)}
+
+  .items{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule)}
+  .item{background:var(--paper);padding:clamp(20px,2.6vw,30px);transition:background .3s ease}
+  .item:hover{background:var(--white)}
+  .item h3{margin:0;font-family:var(--sans);font-size:17px;font-weight:600;letter-spacing:-.01em;display:flex;align-items:center;gap:12px}
+  .item h3 .ico{flex:0 0 auto;color:var(--accent)}
+  .item p{margin:10px 0 0;font-size:16.5px;line-height:1.5;color:var(--ink-60);max-width:52ch}
+  @media(min-width:760px){.items{grid-template-columns:1fr 1fr}}
+
+  .steps{counter-reset:s;display:grid;gap:0}
+  .step{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(16px,2.4vw,30px);padding:clamp(20px,2.6vw,28px) 0;border-top:1px solid var(--rule)}
+  .step:first-child{border-top:0;padding-top:0}
+  .step .big{font-family:var(--sans);font-weight:600;font-size:clamp(30px,3.4vw,46px);line-height:.9;letter-spacing:-.03em;color:var(--ink);opacity:.18}
+  .step h3{margin:0;font-family:var(--sans);font-size:17.5px;font-weight:600;letter-spacing:-.01em}
+  .step p{margin:9px 0 0;font-size:17px;line-height:1.5;color:var(--ink-60);max-width:56ch}
+
+  .about p{margin:0 0 18px;font-size:clamp(18px,.9vw + 15px,22px);line-height:1.5;max-width:56ch}
+  .about p:last-child{margin-bottom:0}
+  .about strong{font-weight:400;background:linear-gradient(transparent 62%,rgba(27,52,216,.18) 62%)}
+
+  /* ---------- contacto ---------- */
+  .contact{border-bottom:0;padding-bottom:clamp(54px,8vw,110px)}
+  .mailto{
+    display:inline-block;text-decoration:none;
+    font-family:var(--sans);font-weight:600;letter-spacing:-.025em;
+    font-size:clamp(23px,4.3vw,54px);line-height:1.08;
+    overflow-wrap:break-word;word-break:break-word;max-width:100%;
+    background-image:linear-gradient(var(--accent),var(--accent));
+    background-size:0% 2px;background-repeat:no-repeat;background-position:0 100%;
+    transition:background-size .4s cubic-bezier(.16,1,.3,1),color .3s ease;
+  }
+  .mailto:hover{color:var(--accent);background-size:100% 2px}
+  .contact .note{margin:22px 0 0;color:var(--ink-60);max-width:44ch;font-size:17px}
+
+  footer{border-top:1px solid var(--rule);background:var(--white)}
+  footer .wrap{display:flex;justify-content:space-between;gap:14px 24px;flex-wrap:wrap;padding-top:20px;padding-bottom:20px}
+
+  /* ---------- motion ---------- */
+  .rise{opacity:0;transform:translate3d(0,14px,0);animation:rise .8s cubic-bezier(.16,1,.3,1) forwards}
+  @keyframes rise{to{opacity:1;transform:none}}
+  .d1{animation-delay:.05s}.d2{animation-delay:.14s}.d3{animation-delay:.23s}.d4{animation-delay:.32s}.d5{animation-delay:.41s}
+  .reveal{opacity:0;transform:translate3d(0,18px,0);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){
+    .rise,.reveal{animation:none!important;transition:none!important;opacity:1!important;transform:none!important}
+    h1 .f::after{animation:none;transform:scaleX(1)}
+  }
+
+  @media(max-width:860px){
+    .hero-grid{grid-template-columns:1fr;gap:34px;align-items:start}
+    .sec-grid{grid-template-columns:1fr;gap:20px}
+    .sec-head{position:static}
+    body::before{background-size:calc(100% / 3) 100%}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <span class="brandmark"><span class="chip" aria-hidden="true"></span>FFFFFFstudio</span>
+    <span class="mono">Alicante · España</span>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" style="border-bottom:1px solid var(--rule)">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="mono rise d1" style="margin:0 0 clamp(20px,3vw,30px)">Estudio de diseño y desarrollo web</p>
+        <h1 class="rise d2"><span class="f">FFFFFF</span>studio</h1>
+        <p class="lede rise d3">Diseño y programo páginas web para negocios pequeños de toda España. Un sitio claro, rápido y que funcione bien en el móvil, <em>que es donde te va a buscar tu cliente</em>.</p>
+        <div class="hero-meta rise d4">
+          <a class="cta" href="mailto:angelrubioortiz2005@gmail.com?subject=Hola%20FFFFFFstudio">
+            Escríbeme
+            <svg width="16" height="10" viewBox="0 0 16 10" fill="none" aria-hidden="true"><path d="M0 5h14M10 1l4 4-4 4" stroke="currentColor" stroke-width="1.4"/></svg>
+          </a>
+          <span class="mono">Ángel Rubio · respuesta en 24 h</span>
+        </div>
+      </div>
+
+      <figure class="specimen rise d5" style="margin:0">
+        <div class="swatch">
+          <svg viewBox="0 0 320 240" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#ffffff"/>
+                <stop offset="1" stop-color="#EDEAE3"/>
+              </linearGradient>
+            </defs>
+            <rect width="320" height="240" fill="url(#g)"/>
+            <g stroke="rgba(20,18,16,.10)" stroke-width="1">
+              <path d="M40 0V240M120 0V240M200 0V240M280 0V240"/>
+              <path d="M0 40H320M0 120H320M0 200H320"/>
+            </g>
+            <rect x="120" y="40" width="80" height="80" fill="#1B34D8" opacity=".9"/>
+            <circle cx="280" cy="200" r="22" fill="none" stroke="#141210" stroke-width="1.2"/>
+          </svg>
+        </div>
+        <div class="spec-rows">
+          <div><span>Hex</span><b>#FFFFFF</b></div>
+          <div><span>RGB</span><b>255 · 255 · 255</b></div>
+          <div><span>Uso</span><b>Página en blanco</b></div>
+        </div>
+        <figcaption class="spec-note">El blanco es donde empieza todo: una página vacía y un negocio que contar.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- QUÉ HAGO -->
+  <section>
+    <div class="wrap sec-grid">
+      <div class="sec-head reveal">
+        <span class="num">01</span>
+        <h2>Qué hago</h2>
+      </div>
+      <div class="items reveal">
+        <article class="item">
+          <h3><span class="ico" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x=".7" y="2.7" width="16.6" height="12.6" stroke="currentColor" stroke-width="1.3"/><path d="M.7 6.6h16.6" stroke="currentColor" stroke-width="1.3"/></svg></span>Web de presentación</h3>
+          <p>El sitio que explica quién eres, qué ofreces y dónde estás. Pocas páginas, bien escritas y bien ordenadas.</p>
+        </article>
+        <article class="item">
+          <h3><span class="ico" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2.7" y=".8" width="12.6" height="16.4" stroke="currentColor" stroke-width="1.3"/><path d="M5.6 5.2h6.8M5.6 9h6.8M5.6 12.8h4" stroke="currentColor" stroke-width="1.3"/></svg></span>Carta o catálogo</h3>
+          <p>Tu carta, tus servicios o tus productos en una página que se lee cómoda en el móvil y que puedes actualizar cuando cambie algo.</p>
+        </article>
+        <article class="item">
+          <h3><span class="ico" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="4.6" y=".8" width="8.8" height="16.4" rx="1.6" stroke="currentColor" stroke-width="1.3"/><path d="M7.6 14.4h2.8" stroke="currentColor" stroke-width="1.3"/></svg></span>Contacto y llamada directa</h3>
+          <p>Botón de llamar, de escribir y de llegar hasta la puerta, sin que nadie tenga que copiar un número a mano.</p>
+        </article>
+        <article class="item">
+          <h3><span class="ico" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 1.2v3.4M9 13.4v3.4M1.2 9h3.4M13.4 9h3.4M3.5 3.5l2.4 2.4M12.1 12.1l2.4 2.4M14.5 3.5l-2.4 2.4M5.9 12.1l-2.4 2.4" stroke="currentColor" stroke-width="1.3"/></svg></span>Puesta a punto</h3>
+          <p>Webs antiguas, lentas o directamente caídas: las reviso, las arreglo y las dejo funcionando otra vez.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CÓMO TRABAJO -->
+  <section>
+    <div class="wrap sec-grid">
+      <div class="sec-head reveal">
+        <span class="num">02</span>
+        <h2>Cómo trabajo</h2>
+      </div>
+      <div class="steps reveal">
+        <div class="step">
+          <span class="big" aria-hidden="true">01</span>
+          <div>
+            <h3>Miro cómo apareces hoy en internet</h3>
+            <p>Busco tu negocio como lo haría un cliente y te cuento qué encuentro: qué sale, qué no sale y qué está dando una impresión que no te corresponde.</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="big" aria-hidden="true">02</span>
+          <div>
+            <h3>Preparo una maqueta real</h3>
+            <p>Antes de que haya ningún compromiso te enseño una página hecha con tus textos y tus cosas, no una plantilla de ejemplo. Si no te convence, ahí se queda.</p>
+          </div>
+        </div>
+        <div class="step">
+          <span class="big" aria-hidden="true">03</span>
+          <div>
+            <h3>Si encaja, la terminamos juntos</h3>
+            <p>Ajustamos lo que haga falta, la publicamos y te explico cómo cambiar tú lo que vaya cambiando.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUIÉN SOY -->
+  <section>
+    <div class="wrap sec-grid">
+      <div class="sec-head reveal">
+        <span class="num">03</span>
+        <h2>Quién soy</h2>
+      </div>
+      <div class="about reveal">
+        <p>Me llamo Ángel Rubio y estudio Informática en Alicante. <strong>FFFFFFstudio es el nombre con el que trabajo</strong>, y esto lo hago en serio: no es un experimento de fin de semana.</p>
+        <p>No voy a contarte los años de experiencia que no tengo. Prefiero enseñarte trabajo hecho y que lo juzgues mirándolo, que al final es como se juzga una página web.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="contact">
+    <div class="wrap sec-grid">
+      <div class="sec-head reveal">
+        <span class="num">04</span>
+        <h2>Contacto</h2>
+      </div>
+      <div class="reveal">
+        <a class="mailto" href="mailto:angelrubioortiz2005@gmail.com?subject=Hola%20FFFFFFstudio">angelrubioortiz2005@gmail.com</a>
+        <p class="note">Escríbeme contándome qué negocio tienes y qué necesitas. Respondo rápido, normalmente el mismo día.</p>
+        <p style="margin:26px 0 0">
+          <a class="cta" href="mailto:angelrubioortiz2005@gmail.com?subject=Hola%20FFFFFFstudio">
+            Escríbeme
+            <svg width="16" height="10" viewBox="0 0 16 10" fill="none" aria-hidden="true"><path d="M0 5h14M10 1l4 4-4 4" stroke="currentColor" stroke-width="1.4"/></svg>
+          </a>
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="mono">FFFFFFstudio — Ángel Rubio · Alicante</span>
+    <span class="mono">Diseño y desarrollo web</span>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var els = document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window)){
+      els.forEach(function(e){e.classList.add('in')});
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    },{rootMargin:'0px 0px -8% 0px',threshold:.08});
+    els.forEach(function(e){io.observe(e)});
+  })();
+</script>
+</body>
+</html>
