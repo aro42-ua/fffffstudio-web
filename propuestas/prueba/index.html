@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Negocio de Prueba — Maqueta de ejemplo</title>
+<style>
+  :root {
+    --primary: #1b5e4f;
+    --accent: #e8a33d;
+    --bg: #faf8f4;
+    --text: #23261f;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+  header { background: var(--primary); color: #fff; padding: 2.5rem 1.5rem; text-align: center; }
+  header h1 { font-size: 2rem; margin-bottom: .5rem; }
+  header p { opacity: .85; }
+  nav { background: #143d33; display: flex; justify-content: center; gap: 2rem; padding: .8rem; flex-wrap: wrap; }
+  nav a { color: #fff; text-decoration: none; font-size: .9rem; opacity: .9; }
+  nav a:hover { opacity: 1; text-decoration: underline; }
+  section { max-width: 900px; margin: 0 auto; padding: 3rem 1.5rem; }
+  h2 { color: var(--primary); margin-bottom: 1rem; font-size: 1.5rem; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; margin-top: 1.5rem; }
+  .card { background: #fff; border-radius: 10px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-top: 3px solid var(--accent); }
+  .card h3 { color: var(--primary); margin-bottom: .5rem; font-size: 1.1rem; }
+  .cta { background: var(--accent); color: #23261f; text-align: center; padding: 2.5rem 1.5rem; }
+  .cta a { display: inline-block; margin-top: 1rem; background: var(--primary); color: #fff; padding: .8rem 1.8rem; border-radius: 6px; text-decoration: none; font-weight: 600; }
+  footer { text-align: center; padding: 1.5rem; font-size: .8rem; color: #666; background: #f0ede6; }
+  .banner { background: #fff3cd; border: 1px solid #ffe08a; color: #6b5300; padding: .9rem 1.2rem; margin: 1rem auto 0; max-width: 900px; border-radius: 8px; font-size: .9rem; }
+</style>
+</head>
+<body>
+
+<div class="banner">
+  🧪 Esta página es una <strong>prueba técnica</strong> del sistema de publicación automática (Drive → GitHub Action → GitHub Pages) de FFFFFFstudio. No corresponde a ningún negocio real ni a ninguna propuesta enviada.
+</div>
+
+<header>
+  <h1>Negocio de Prueba</h1>
+  <p>Ejemplo de maqueta generada para verificar el pipeline de publicación</p>
+</header>
+
+<nav>
+  <a href="#servicios">Servicios</a>
+  <a href="#nosotros">Nosotros</a>
+  <a href="#contacto">Contacto</a>
+</nav>
+
+<section id="servicios">
+  <h2>Servicios</h2>
+  <div class="cards">
+    <div class="card"><h3>Servicio A</h3><p>Texto de ejemplo describiendo el primer servicio del negocio ficticio.</p></div>
+    <div class="card"><h3>Servicio B</h3><p>Texto de ejemplo describiendo el segundo servicio del negocio ficticio.</p></div>
+    <div class="card"><h3>Servicio C</h3><p>Texto de ejemplo describiendo el tercer servicio del negocio ficticio.</p></div>
+  </div>
+</section>
+
+<section id="nosotros">
+  <h2>Sobre nosotros</h2>
+  <p>Este bloque de texto es de relleno, pensado únicamente para comprobar que el contenido se sincroniza correctamente desde Google Drive hasta GitHub Pages sin errores de formato ni de codificación (á, é, í, ó, ú, ñ, ü).</p>
+</section>
+
+<div class="cta">
+  <p>¿Quieres una web así para tu negocio?</p>
+  <a href="mailto:angelrubioortiz2005@gmail.com">Escríbeme</a>
+</div>
+
+<footer>
+  Maqueta no oficial creada por FFFFFFstudio como ejemplo de diseño — sin ningún vínculo con un negocio real. · Página de prueba del sistema de publicación automática.
+</footer>
+
+</body>
+</html>
