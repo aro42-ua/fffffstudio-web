@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>One Concept · Centro de estética avanzada · Vigo</title>
+<meta name="description" content="Maqueta de propuesta de web para One Concept, centro de estética avanzada en Vigo. Propuesta no oficial de FFFFFFstudio.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --ink:#1d1b1a;
+  --ink-soft:#4a4644;
+  --muted:#6f6864;
+  --porcelain:#faf7f4;
+  --shell:#f2ece6;
+  --line:rgba(29,27,26,.12);
+  --line-soft:rgba(29,27,26,.07);
+  --amber:#b98a5e;
+  --amber-deep:#8d6540;
+  --aqua:#8fb3ae;
+  --rose:#d9b9ac;
+  --display:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,"Times New Roman",serif;
+  --sans:Optima,Candara,"Gill Sans","Gill Sans MT","Trebuchet MS","Segoe UI",system-ui,sans-serif;
+  --gut:clamp(18px,5vw,64px);
+  --r:18px;
+}
+html{-webkit-text-size-adjust:100%}
+html,body{max-width:100%;overflow-x:hidden}
+body{
+  margin:0;
+  padding-top:38px;
+  background:var(--porcelain);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:17px;
+  line-height:1.62;
+  letter-spacing:.005em;
+  -webkit-font-smoothing:antialiased;
+}
+img,svg{max-width:100%}
+h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:-.015em;line-height:1.08;margin:0}
+p{margin:0}
+a{color:inherit}
+
+/* ---------- barra fija ---------- */
+.studiobar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  width:100%;height:38px;
+  display:flex;align-items:center;
+  background:rgba(23,21,20,.94);
+  color:#efe7df;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  overflow:hidden;
+}
+.studiobar .inner{
+  width:100%;padding:0 var(--gut);
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  opacity:.9;
+}
+
+/* ---------- layout ---------- */
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding-left:var(--gut);padding-right:var(--gut)}
+section{position:relative}
+.eyebrow{
+  font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--amber-deep);display:flex;align-items:center;gap:10px;
+}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--amber);flex:none}
+
+/* ---------- nav ---------- */
+.nav{
+  position:relative;z-index:5;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:16px;padding-top:26px;padding-bottom:6px;flex-wrap:wrap;
+}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
+.brand .mark{flex:none}
+.brand b{font-family:var(--display);font-weight:400;font-size:21px;letter-spacing:.01em;display:block;line-height:1}
+.brand .brandtext>span{display:block;font-size:10.5px;letter-spacing:.17em;text-transform:uppercase;color:var(--muted);margin-top:5px}
+.navlinks{display:flex;gap:26px;font-size:13px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-soft)}
+.navlinks a{text-decoration:none;padding-bottom:2px;border-bottom:1px solid transparent;transition:border-color .25s,color .25s}
+.navlinks a:hover{color:var(--ink);border-bottom-color:var(--amber)}
+@media(max-width:720px){.navlinks{display:none}}
+
+/* ---------- hero ---------- */
+.hero{padding-bottom:clamp(56px,9vw,104px);overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);gap:clamp(28px,4vw,64px);align-items:center;padding-top:clamp(34px,6vw,62px)}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:34px}}
+.hero h1{font-size:clamp(40px,7.4vw,74px);margin:20px 0 0}
+.hero h1 em{font-style:italic;color:var(--amber-deep)}
+.hero .lead{margin-top:22px;font-size:clamp(16.5px,1.6vw,19px);color:var(--ink-soft);max-width:34em}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:34px}
+.btn{
+  display:inline-flex;align-items:center;gap:11px;
+  padding:15px 26px;border-radius:999px;text-decoration:none;
+  font-size:14.5px;letter-spacing:.06em;text-transform:uppercase;
+  border:1px solid transparent;transition:transform .25s,box-shadow .25s,background .25s;
+}
+.btn-primary{background:var(--ink);color:#f7f2ec;box-shadow:0 12px 30px -16px rgba(29,27,26,.7)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 38px -16px rgba(29,27,26,.75)}
+.btn-ghost{border-color:var(--line);color:var(--ink-soft);background:rgba(255,255,255,.5)}
+.btn-ghost:hover{border-color:var(--amber);color:var(--ink)}
+.hero-note{margin-top:20px;font-size:13.5px;color:var(--muted);display:flex;gap:9px;align-items:flex-start;max-width:36em}
+.hero-note svg{flex:none;margin-top:3px}
+.hero-art{position:relative;width:100%}
+.hero-art svg{display:block;width:100%;height:auto}
+
+/* fondo orgánico */
+.glow{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.glow i{position:absolute;display:block;border-radius:50%;filter:blur(60px);opacity:.55}
+.g1{width:46vw;height:46vw;max-width:520px;max-height:520px;top:-14%;right:-10%;background:radial-gradient(circle at 35% 35%,rgba(217,185,172,.85),rgba(217,185,172,0) 68%)}
+.g2{width:40vw;height:40vw;max-width:460px;max-height:460px;bottom:-18%;left:-14%;background:radial-gradient(circle at 50% 50%,rgba(143,179,174,.6),rgba(143,179,174,0) 70%)}
+.hero>.wrap{position:relative;z-index:1}
+
+/* ---------- cinta ---------- */
+.ribbon{width:100%;overflow:hidden;border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);background:linear-gradient(90deg,#f6f1ec,#fbf8f5 50%,#f4eee9)}
+.ribbon-track{display:flex;width:max-content;animation:slide 34s linear infinite}
+.ribbon-track span{
+  display:inline-flex;align-items:center;gap:16px;
+  padding:14px 26px;white-space:nowrap;
+  font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);
+}
+.ribbon-track span::after{content:"";width:5px;height:5px;border-radius:50%;background:var(--amber);opacity:.7}
+@keyframes slide{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
+@media(prefers-reduced-motion:reduce){.ribbon-track{animation:none}}
+
+/* ---------- servicios ---------- */
+.sec{padding:clamp(62px,9vw,118px) 0}
+.sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:end}
+@media(max-width:860px){.sec-head{grid-template-columns:1fr;gap:18px}}
+.sec-head h2{font-size:clamp(30px,4.6vw,50px);margin-top:16px}
+.sec-head p{color:var(--ink-soft);font-size:16.5px}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,24px);margin-top:clamp(34px,5vw,58px)}
+@media(max-width:860px){.cards{grid-template-columns:1fr}}
+.card{
+  position:relative;overflow:hidden;
+  border:1px solid var(--line-soft);border-radius:var(--r);
+  background:linear-gradient(170deg,#fffdfb,#f6f1ec);
+  padding:26px 24px 28px;
+  transition:transform .3s,box-shadow .3s,border-color .3s;
+}
+.card:hover{transform:translateY(-4px);box-shadow:0 26px 48px -32px rgba(29,27,26,.55);border-color:var(--line)}
+.card .ic{width:52px;height:52px;display:block;margin-bottom:20px}
+.card h3{font-size:24px;margin-bottom:10px}
+.card p{color:var(--ink-soft);font-size:15.5px}
+.card .tagline{margin-top:16px;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--amber-deep)}
+.card::after{content:"";position:absolute;right:-38px;top:-38px;width:120px;height:120px;border-radius:50%;border:1px solid var(--line-soft)}
+
+/* ---------- pasos ---------- */
+.steps-sec{background:linear-gradient(180deg,#f4efe9,#faf7f4);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,3vw,34px);margin-top:clamp(34px,5vw,56px)}
+@media(max-width:860px){.steps{grid-template-columns:1fr}}
+.step{position:relative;padding-top:26px;border-top:1px solid var(--line)}
+.step .n{font-family:var(--display);font-size:13px;letter-spacing:.2em;color:var(--amber-deep);display:block;margin-bottom:14px}
+.step h3{font-size:22px;margin-bottom:10px}
+.step p{color:var(--ink-soft);font-size:15.5px}
+.step .line{position:absolute;top:-1px;left:0;width:34%;height:1px;background:var(--amber)}
+
+/* ---------- contacto ---------- */
+.contact-grid{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:clamp(26px,4vw,56px);align-items:start;margin-top:clamp(30px,4vw,50px)}
+@media(max-width:900px){.contact-grid{grid-template-columns:1fr}}
+.info{list-style:none;margin:0;padding:0}
+.info li{display:flex;gap:16px;padding:20px 0;border-bottom:1px solid var(--line-soft);min-width:0}
+.info li>div{min-width:0;overflow-wrap:anywhere}
+.info li:first-child{padding-top:0}
+.info svg{flex:none;margin-top:2px}
+.info b{display:block;font-size:11.5px;letter-spacing:.17em;text-transform:uppercase;color:var(--muted);font-weight:400;margin-bottom:5px}
+.info a{text-decoration:none;overflow-wrap:anywhere;border-bottom:1px solid var(--line);transition:border-color .25s}
+.info a:hover{border-bottom-color:var(--amber)}
+.info .big{font-family:var(--display);font-size:clamp(22px,3vw,28px);letter-spacing:.01em}
+.map{
+  border:1px solid var(--line-soft);border-radius:var(--r);overflow:hidden;
+  background:linear-gradient(160deg,#f7f3ee,#eee7e0);width:100%;
+}
+.map svg{display:block;width:100%;height:auto}
+.map .cap{padding:14px 18px;border-top:1px solid var(--line-soft);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);background:rgba(255,255,255,.55)}
+
+/* ---------- footer ---------- */
+footer{background:#171514;color:#e9e0d8;padding:clamp(46px,6vw,72px) 0 34px;overflow:hidden}
+.foot-grid{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:28px;align-items:start}
+@media(max-width:760px){.foot-grid{grid-template-columns:1fr}}
+footer h3{font-size:clamp(24px,3.4vw,34px);color:#f6efe8}
+footer .mail{display:inline-block;margin-top:16px;font-size:clamp(15px,2vw,19px);text-decoration:none;border-bottom:1px solid rgba(233,224,216,.35);word-break:break-word}
+footer .mail:hover{border-bottom-color:var(--amber)}
+.social{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.social a{
+  display:inline-flex;align-items:center;gap:9px;text-decoration:none;
+  border:1px solid rgba(233,224,216,.22);border-radius:999px;padding:9px 16px;
+  font-size:13px;color:#e9e0d8;transition:border-color .25s,background .25s;
+}
+.social a:hover{border-color:var(--amber);background:rgba(185,138,94,.14)}
+.foot-note{
+  margin-top:clamp(36px,5vw,56px);padding-top:22px;
+  border-top:1px solid rgba(233,224,216,.16);
+  font-size:12.5px;line-height:1.7;color:rgba(233,224,216,.72);
+}
+@media(max-width:620px){
+  body{padding-top:50px}
+  .studiobar{height:auto;min-height:38px;padding:7px 0}
+  .studiobar .inner{white-space:normal;text-overflow:clip;text-align:center;font-size:9.5px;line-height:1.55;letter-spacing:.09em;padding:0 14px}
+}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<div class="studiobar"><div class="inner">Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</div></div>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="glow"><i class="g1"></i><i class="g2"></i></div>
+  <div class="wrap">
+    <nav class="nav">
+      <div class="brand">
+        <svg class="mark" width="42" height="42" viewBox="0 0 42 42" aria-hidden="true">
+          <defs><linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#b98a5e"/><stop offset="1" stop-color="#8fb3ae"/></linearGradient></defs>
+          <circle cx="21" cy="21" r="20" fill="none" stroke="url(#bg1)" stroke-width="1"/>
+          <path d="M21 7c7.2 3.6 10.6 8.4 10.6 14C31.6 27 27 35 21 35S10.4 27 10.4 21c0-5.6 3.4-10.4 10.6-14z" fill="none" stroke="#1d1b1a" stroke-width="1" opacity=".55"/>
+          <circle cx="21" cy="21" r="4.4" fill="none" stroke="#b98a5e" stroke-width="1"/>
+        </svg>
+        <span class="brandtext" style="min-width:0"><b>One Concept</b><span>Estética avanzada · Vigo</span></span>
+      </div>
+      <div class="navlinks">
+        <a href="#tratamientos">Tratamientos</a>
+        <a href="#visita">Primera visita</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+    </nav>
+
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">Centro de estética avanzada</div>
+        <h1>Cuidado de la piel con <em>criterio</em>, en pleno Vigo.</h1>
+        <p class="lead">Láser, microblading y tratamientos faciales en un espacio donde cada protocolo empieza por escuchar tu piel. Te explicamos qué se puede hacer, cómo se hace y qué esperar en cada paso.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="tel:+34986124419">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M7 3.5h3l1.4 4-2 1.3a12.5 12.5 0 0 0 5.8 5.8l1.3-2 4 1.4v3a2 2 0 0 1-2.2 2A17 17 0 0 1 5.5 5.7 2 2 0 0 1 7 3.5z"/></svg>
+            986 124 419
+          </a>
+          <a class="btn btn-ghost" href="#tratamientos">Ver tratamientos</a>
+        </div>
+        <p class="hero-note">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#b98a5e" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8.2v.2M12 11v5" stroke-linecap="round"/></svg>
+          Rúa Pintor Laxeiro 1, bajo · 36211 Vigo. Llámanos y te indicamos disponibilidad.
+        </p>
+      </div>
+
+      <div class="hero-art">
+        <svg viewBox="0 0 560 520" role="img" aria-label="Ilustración abstracta de luz y formas orgánicas">
+          <defs>
+            <linearGradient id="skin" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#f7e6dc"/><stop offset=".55" stop-color="#eed6c9"/><stop offset="1" stop-color="#dfe9e6"/>
+            </linearGradient>
+            <linearGradient id="beam" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#b98a5e" stop-opacity=".55"/><stop offset="1" stop-color="#b98a5e" stop-opacity="0"/>
+            </linearGradient>
+            <radialGradient id="halo" cx="50%" cy="50%" r="50%">
+              <stop offset="0" stop-color="#ffffff" stop-opacity=".95"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="arcg" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#8fb3ae"/><stop offset="1" stop-color="#d9b9ac"/>
+            </linearGradient>
+          </defs>
+          <path d="M292 32c108 0 196 84 196 196 0 132-96 262-206 262S74 362 74 234C74 126 172 32 292 32z" fill="url(#skin)"/>
+          <ellipse cx="292" cy="250" rx="210" ry="210" fill="url(#halo)" opacity=".7"/>
+          <g fill="none" stroke="#1d1b1a" stroke-opacity=".16" stroke-width="1">
+            <path d="M60 300c90-56 180-56 268-4 88 52 160 52 220-10"/>
+            <path d="M52 348c96-56 190-52 280 2 86 52 158 50 216-14"/>
+            <path d="M74 252c86-58 176-62 266-14 90 48 162 42 216-22"/>
+          </g>
+          <g stroke="url(#arcg)" stroke-width="1.4" fill="none">
+            <path d="M136 200a160 160 0 0 1 300-34"/>
+            <path d="M118 244a190 190 0 0 1 350-40" opacity=".5"/>
+          </g>
+          <g opacity=".85">
+            <path d="M300 96 L318 300 L282 300 Z" fill="url(#beam)"/>
+            <circle cx="300" cy="96" r="8" fill="#b98a5e" opacity=".75"/>
+            <circle cx="300" cy="96" r="20" fill="none" stroke="#b98a5e" stroke-opacity=".4" stroke-width="1"/>
+            <circle cx="300" cy="96" r="34" fill="none" stroke="#b98a5e" stroke-opacity=".2" stroke-width="1"/>
+          </g>
+          <g fill="#8fb3ae" opacity=".5">
+            <circle cx="180" cy="392" r="3.5"/><circle cx="214" cy="416" r="2.4"/><circle cx="392" cy="384" r="3"/><circle cx="424" cy="410" r="2"/>
+          </g>
+          <g fill="none" stroke="#1d1b1a" stroke-opacity=".22" stroke-width="1">
+            <circle cx="292" cy="250" r="146"/><circle cx="292" cy="250" r="96" stroke-opacity=".12"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ribbon">
+  <div class="ribbon-track">
+    <span>Láser</span><span>Microblading</span><span>Tratamientos faciales</span><span>Asesoramiento personalizado</span><span>Vigo · Rúa Pintor Laxeiro 1</span>
+    <span>Láser</span><span>Microblading</span><span>Tratamientos faciales</span><span>Asesoramiento personalizado</span><span>Vigo · Rúa Pintor Laxeiro 1</span>
+  </div>
+</div>
+
+<!-- ================= TRATAMIENTOS ================= -->
+<section class="sec" id="tratamientos">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="eyebrow">Tratamientos</div>
+        <h2>Tres líneas de trabajo, un mismo criterio.</h2>
+      </div>
+      <p>Cada tratamiento se valora antes en consulta: tipo de piel, expectativas y qué tiene sentido en tu caso. Lo concreto se habla contigo, no en una tabla.</p>
+    </div>
+
+    <div class="cards">
+      <article class="card reveal">
+        <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="#b98a5e" stroke-width="1.2" aria-hidden="true">
+          <circle cx="24" cy="24" r="6"/><circle cx="24" cy="24" r="13" stroke-opacity=".45"/>
+          <path d="M24 2v7M24 39v7M2 24h7M39 24h7M8.5 8.5l5 5M34.5 34.5l5 5M39.5 8.5l-5 5M13.5 34.5l-5 5" stroke-linecap="round"/>
+        </svg>
+        <h3>Láser</h3>
+        <p>Trabajo con equipos de luz aplicados a objetivos estéticos habituales del sector. Antes de empezar, valoramos tu piel y te explicamos el procedimiento, las indicaciones y los cuidados posteriores.</p>
+        <div class="tagline">Valoración previa</div>
+      </article>
+
+      <article class="card reveal">
+        <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="#b98a5e" stroke-width="1.2" stroke-linecap="round" aria-hidden="true">
+          <path d="M9 39l4-10 20-20 6 6-20 20-10 4z"/><path d="M29 13l6 6" stroke-opacity=".5"/>
+          <path d="M6 30c7-5 15-6 22-3" stroke-opacity=".35"/>
+        </svg>
+        <h3>Microblading</h3>
+        <p>Diseño de cejas pensado desde tu propia forma, simetría y color natural. Primero se dibuja y se acuerda contigo el trazo; después se trabaja con técnica de precisión.</p>
+        <div class="tagline">Diseño consensuado</div>
+      </article>
+
+      <article class="card reveal">
+        <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="#b98a5e" stroke-width="1.2" aria-hidden="true">
+          <path d="M24 6c9 5 14 11 14 18 0 8-6 18-14 18S10 32 10 24c0-7 5-13 14-18z"/>
+          <path d="M18 26c3 3 9 3 12 0" stroke-opacity=".5" stroke-linecap="round"/>
+          <circle cx="24" cy="19" r="2.4" stroke-opacity=".6"/>
+        </svg>
+        <h3>Tratamientos faciales</h3>
+        <p>Protocolos de limpieza, hidratación y cuidado del rostro adaptados a lo que tu piel necesita en ese momento, con pautas claras para mantener el resultado en casa.</p>
+        <div class="tagline">Protocolo a medida</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRIMERA VISITA ================= -->
+<section class="sec steps-sec" id="visita">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="eyebrow">Tu primera visita</div>
+        <h2>Sencillo, y sin sorpresas.</h2>
+      </div>
+      <p>Así funciona desde que llamas hasta que sales por la puerta con un plan claro.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step reveal"><span class="line"></span>
+        <span class="n">01</span>
+        <h3>Llamas y nos cuentas</h3>
+        <p>Nos explicas qué te preocupa o qué te gustaría mejorar. Te orientamos por teléfono y acordamos un momento para vernos.</p>
+      </div>
+      <div class="step reveal"><span class="line"></span>
+        <span class="n">02</span>
+        <h3>Valoramos tu piel</h3>
+        <p>En el centro observamos tu piel, resolvemos dudas y vemos qué opciones tienen sentido para ti y cuáles no.</p>
+      </div>
+      <div class="step reveal"><span class="line"></span>
+        <span class="n">03</span>
+        <h3>Definimos el plan</h3>
+        <p>Salimos con un plan de trabajo entendible: qué haremos, en qué orden y qué cuidados acompañan cada paso.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACTO ================= -->
+<section class="sec" id="contacto">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="eyebrow">Contacto</div>
+        <h2>Estamos en Coia, Vigo.</h2>
+      </div>
+      <p>La forma más rápida de reservar o resolver una duda es una llamada.</p>
+    </div>
+
+    <div class="contact-grid">
+      <ul class="info reveal">
+        <li>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b98a5e" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><path d="M7 3.5h3l1.4 4-2 1.3a12.5 12.5 0 0 0 5.8 5.8l1.3-2 4 1.4v3a2 2 0 0 1-2.2 2A17 17 0 0 1 5.5 5.7 2 2 0 0 1 7 3.5z"/></svg>
+          <div><b>Teléfono</b><a class="big" href="tel:+34986124419">986 124 419</a></div>
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b98a5e" stroke-width="1.4" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+          <div><b>Dirección</b>Rúa Pintor Laxeiro 1, bajo<br>36211 Vigo (Pontevedra)</div>
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b98a5e" stroke-width="1.4" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 6.8V12l3.4 2.2" stroke-linecap="round"/></svg>
+          <div><b>Horario</b>Consultar horario</div>
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b98a5e" stroke-width="1.4" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.8 6.6 12 13l8.2-6.4"/></svg>
+          <div><b>Email</b><a href="mailto:oneconceptestetica@gmail.com">oneconceptestetica@gmail.com</a></div>
+        </li>
+      </ul>
+
+      <div class="map reveal">
+        <svg viewBox="0 0 640 400" role="img" aria-label="Mapa esquemático de la ubicación en Rúa Pintor Laxeiro 1, bajo, Vigo">
+          <defs>
+            <linearGradient id="mapbg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#f8f4ef"/><stop offset="1" stop-color="#ece4dc"/>
+            </linearGradient>
+            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M40 0H0v40" fill="none" stroke="#1d1b1a" stroke-opacity=".05" stroke-width="1"/>
+            </pattern>
+          </defs>
+          <rect width="640" height="400" fill="url(#mapbg)"/>
+          <rect width="640" height="400" fill="url(#grid)"/>
+          <g fill="#8fb3ae" opacity=".22">
+            <path d="M0 316c70 10 130 26 180 48 40 18 70 28 110 36H0z"/>
+          </g>
+          <g stroke="#1d1b1a" stroke-opacity=".2" fill="none" stroke-width="12" stroke-linecap="round">
+            <path d="M-10 150h660"/><path d="M250 -10v420"/><path d="M40 300 L640 230"/>
+          </g>
+          <g stroke="#ffffff" stroke-opacity=".8" fill="none" stroke-width="7" stroke-linecap="round">
+            <path d="M-10 150h660"/><path d="M250 -10v420"/><path d="M40 300 L640 230"/>
+          </g>
+          <g fill="#1d1b1a" fill-opacity=".055">
+            <rect x="60" y="40" width="150" height="80" rx="5"/>
+            <rect x="300" y="30" width="120" height="90" rx="5"/>
+            <rect x="460" y="50" width="140" height="70" rx="5"/>
+            <rect x="70" y="190" width="140" height="80" rx="5"/>
+            <rect x="300" y="185" width="110" height="60" rx="5"/>
+            <rect x="450" y="270" width="150" height="80" rx="5"/>
+          </g>
+          <g stroke="#b98a5e" stroke-width="1.6" fill="none" stroke-dasharray="6 7">
+            <path d="M250 150 L336 206"/>
+          </g>
+          <g transform="translate(336,206)">
+            <circle r="30" fill="#b98a5e" fill-opacity=".1"/>
+            <circle r="18" fill="#b98a5e" fill-opacity=".16"/>
+            <path d="M0-26c7.7 0 14 6.3 14 14 0 10.4-14 26-14 26S-14-1.6-14-12c0-7.7 6.3-14 14-14z" fill="#1d1b1a"/>
+            <circle cy="-12" r="5" fill="#faf7f4"/>
+          </g>
+          <rect x="146" y="258" width="380" height="62" rx="10" fill="#faf7f4" fill-opacity=".9" stroke="#1d1b1a" stroke-opacity=".07"/>
+          <g font-family="Optima, Candara, 'Gill Sans', 'Trebuchet MS', sans-serif" fill="#4a4644">
+            <text x="336" y="284" font-size="17" text-anchor="middle">Rúa Pintor Laxeiro 1, bajo</text>
+            <text x="336" y="307" font-size="13" text-anchor="middle" fill="#6f6864" letter-spacing="2">36211 VIGO · PONTEVEDRA</text>
+          </g>
+          <g fill="none" stroke="#1d1b1a" stroke-opacity=".35" stroke-width="1" transform="translate(586,344)">
+            <circle r="17"/><path d="M0-11 4 1 0-2-4 1z" fill="#1d1b1a" fill-opacity=".45" stroke="none"/>
+            <text x="0" y="-21" font-size="10" text-anchor="middle" fill="#6f6864" stroke="none" letter-spacing="1.5">N</text>
+          </g>
+        </svg>
+        <div class="cap">Mapa esquemático · no a escala</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h3>One Concept</h3>
+        <a class="mail" href="mailto:oneconceptestetica@gmail.com">oneconceptestetica@gmail.com</a>
+        <div class="social">
+          <a href="https://instagram.com/one_concept_" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1.2" fill="currentColor" stroke="none"/></svg>
+            @one_concept_
+          </a>
+          <a href="https://facebook.com/one-concept" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M14.5 21v-8h2.8l.5-3.2h-3.3V7.7c0-.9.3-1.6 1.7-1.6h1.7V3.2A22 22 0 0 0 15.4 3c-2.6 0-4.3 1.5-4.3 4.4v2.4H8.3V13h2.8v8z"/></svg>
+            /one-concept
+          </a>
+        </div>
+      </div>
+      <div>
+        <a class="btn btn-primary" href="tel:+34986124419" style="background:#f2ebe4;color:#171514">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M7 3.5h3l1.4 4-2 1.3a12.5 12.5 0 0 0 5.8 5.8l1.3-2 4 1.4v3a2 2 0 0 1-2.2 2A17 17 0 0 1 5.5 5.7 2 2 0 0 1 7 3.5z"/></svg>
+          986 124 419
+        </a>
+      </div>
+    </div>
+    <p class="foot-note">Rúa Pintor Laxeiro 1, bajo · 36211 Vigo (Pontevedra) · Consultar horario<br>
+    Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){ els.forEach(function(e){e.classList.add('in');}); return; }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+    });
+  },{threshold:.12, rootMargin:'0px 0px -8% 0px'});
+  els.forEach(function(e,i){ e.style.transitionDelay = (i%3)*90 + 'ms'; io.observe(e); });
+  // Red de seguridad: si algo impide el observer (capturas, impresion, navegadores antiguos),
+  // el contenido se revela igualmente pasado un momento.
+  setTimeout(function(){ els.forEach(function(e){ e.classList.add('in'); }); }, 1400);
+  window.addEventListener('beforeprint', function(){ els.forEach(function(e){ e.classList.add('in'); }); });
+
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(ev){
+      var t = document.querySelector(a.getAttribute('href'));
+      if(t){ ev.preventDefault(); t.scrollIntoView({behavior:'smooth',block:'start'}); }
+    });
+  });
+})();
+</script>
+</body>
+</html>

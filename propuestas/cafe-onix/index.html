@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Café Onix · Caravaca de la Cruz</title>
+<meta name="description" content="Maqueta de propuesta de landing page para Café Onix, cafetería, heladería y bocatería en la Plaza Hermanos Pinzón de Caravaca de la Cruz.">
+<style>
+  :root{
+    --hueso:#FBF6EA;
+    --crema:#F3E9D5;
+    --papel:#FFFDF7;
+    --tinta:#26302B;
+    --tinta-suave:#55635A;
+    --oliva:#3F5D48;
+    --oliva-claro:#6E8C71;
+    --azulon:#2C5A6B;
+    --tostado:#C46B2F;
+    --tostado-claro:#E0A265;
+    --linea:rgba(38,48,43,.14);
+    --radio:20px;
+    --sombra:0 18px 40px -26px rgba(38,48,43,.55);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,"Times New Roman",serif;
+    --sans:"Avenir Next","Segoe UI",Candara,Optima,"Gill Sans","Helvetica Neue",Arial,sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  html,body{max-width:100%;overflow-x:hidden}
+  body{
+    margin:0;
+    padding-top:40px;
+    font-family:var(--sans);
+    color:var(--tinta);
+    background:var(--hueso);
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%}
+  h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.08;letter-spacing:-.015em;margin:0}
+  p{margin:0}
+  a{color:inherit}
+  .env{width:100%;max-width:1160px;margin:0 auto;padding:0 22px}
+
+  /* ---------- barra fija ---------- */
+  .aviso{
+    position:fixed;top:0;left:0;right:0;z-index:99;
+    width:100%;height:40px;display:flex;align-items:center;justify-content:center;
+    background:var(--tinta);color:#F6EFE1;
+    font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;
+    padding:0 14px;overflow:hidden;
+  }
+  .aviso span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(120% 90% at 78% 6%, rgba(224,162,101,.34) 0%, rgba(224,162,101,0) 58%),
+      radial-gradient(90% 70% at 4% 96%, rgba(63,93,72,.22) 0%, rgba(63,93,72,0) 60%),
+      linear-gradient(170deg,#FFFDF6 0%, var(--crema) 100%);
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;pointer-events:none;opacity:.45;
+    background-image:radial-gradient(rgba(38,48,43,.10) 1px, transparent 1px);
+    background-size:16px 16px;
+    -webkit-mask-image:linear-gradient(to bottom, rgba(0,0,0,.6), transparent 70%);
+    mask-image:linear-gradient(to bottom, rgba(0,0,0,.6), transparent 70%);
+  }
+  .hero-in{position:relative;z-index:2;display:grid;grid-template-columns:1.08fr .92fr;gap:48px;align-items:center;padding:74px 0 86px}
+  .marca{display:flex;align-items:center;gap:12px;margin-bottom:28px}
+  .marca-txt{font-family:var(--serif);font-size:21px;letter-spacing:.02em}
+  .marca-txt em{font-style:normal;color:var(--tostado)}
+  .pastilla{
+    display:inline-flex;align-items:center;gap:9px;
+    background:rgba(255,253,247,.86);border:1px solid var(--linea);
+    border-radius:999px;padding:7px 15px 7px 11px;
+    font-size:12.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--oliva);
+    margin-bottom:22px;max-width:100%;
+  }
+  .pastilla b{font-weight:600}
+  h1{font-size:clamp(40px,6.1vw,70px)}
+  h1 .ac{color:var(--tostado);font-style:italic}
+  .hero p.lead{margin-top:22px;font-size:clamp(17px,1.5vw,19.5px);color:var(--tinta-suave);max-width:33em}
+  .ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+  .btn{
+    display:inline-flex;align-items:center;gap:11px;
+    border-radius:999px;padding:15px 26px;text-decoration:none;
+    font-weight:600;font-size:16.5px;letter-spacing:.01em;border:1px solid transparent;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+  }
+  .btn-tel{background:var(--oliva);color:#FFFDF7;box-shadow:var(--sombra)}
+  .btn-tel:hover{transform:translateY(-2px);background:#35503E}
+  .btn-tel .num{font-family:var(--serif);font-size:19px;letter-spacing:.01em}
+  .btn-sec{background:transparent;color:var(--tinta);border-color:rgba(38,48,43,.28)}
+  .btn-sec:hover{background:rgba(255,253,247,.8);transform:translateY(-2px)}
+  .apunte{margin-top:18px;font-size:14px;color:var(--tinta-suave)}
+
+  .hero-art{position:relative}
+  .hero-art svg{display:block;width:100%;height:auto;filter:drop-shadow(0 22px 34px rgba(38,48,43,.16))}
+
+  /* ---------- cinta ---------- */
+  .cinta{width:100%;overflow:hidden;background:var(--oliva);color:#F4EEDF;border-top:1px solid rgba(0,0,0,.08)}
+  .cinta-pista{display:flex;width:max-content;animation:desliza 34s linear infinite}
+  .cinta-grupo{display:flex;align-items:center;gap:34px;padding:13px 17px;white-space:nowrap}
+  .cinta-grupo span{font-size:12.5px;letter-spacing:.17em;text-transform:uppercase}
+  .cinta-grupo i{display:block;width:6px;height:6px;border-radius:50%;background:var(--tostado-claro)}
+  @keyframes desliza{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @media (prefers-reduced-motion:reduce){.cinta-pista{animation:none}}
+
+  /* ---------- secciones ---------- */
+  section{position:relative}
+  .bloque{padding:88px 0}
+  .cab{max-width:640px;margin-bottom:46px}
+  .kicker{
+    display:inline-block;font-size:12px;letter-spacing:.19em;text-transform:uppercase;
+    color:var(--tostado);margin-bottom:16px;font-weight:600;
+  }
+  .cab h2{font-size:clamp(30px,3.9vw,44px)}
+  .cab p{margin-top:16px;color:var(--tinta-suave)}
+
+  .rejilla{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .carta{
+    background:var(--papel);border:1px solid var(--linea);border-radius:var(--radio);
+    padding:30px 28px 32px;display:flex;flex-direction:column;gap:14px;
+    box-shadow:0 2px 0 rgba(38,48,43,.04);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .carta:hover{transform:translateY(-4px);box-shadow:var(--sombra)}
+  .carta .ico{width:64px;height:64px}
+  .carta h3{font-size:24px}
+  .carta p{color:var(--tinta-suave);font-size:16px}
+  .carta ul{margin:6px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+  .carta li{
+    font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--oliva);
+    border:1px solid rgba(63,93,72,.28);border-radius:999px;padding:5px 11px;background:rgba(63,93,72,.06);
+  }
+
+  /* pasos */
+  .pasos-sec{background:linear-gradient(180deg,var(--crema) 0%, #F7EFE0 100%);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+  .pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;counter-reset:p}
+  .paso{position:relative;background:rgba(255,253,247,.72);border:1px solid var(--linea);border-radius:var(--radio);padding:30px 26px}
+  .paso .n{
+    font-family:var(--serif);font-size:44px;line-height:1;color:var(--tostado);
+    display:block;margin-bottom:12px;
+  }
+  .paso h3{font-size:21px;margin-bottom:8px}
+  .paso p{color:var(--tinta-suave);font-size:15.5px}
+
+  /* contacto */
+  .contacto{display:grid;grid-template-columns:.95fr 1.05fr;gap:40px;align-items:start}
+  .ficha{background:var(--papel);border:1px solid var(--linea);border-radius:var(--radio);padding:34px 30px;box-shadow:var(--sombra)}
+  .dato{display:flex;gap:15px;padding:18px 0;border-bottom:1px dashed var(--linea)}
+  .dato:last-of-type{border-bottom:0}
+  .dato svg{flex:0 0 26px;width:26px;height:26px;margin-top:2px}
+  .dato .et{font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--tinta-suave)}
+  .dato .vl{font-family:var(--serif);font-size:20px;line-height:1.35;word-break:break-word}
+  .dato .vl a{text-decoration:none;border-bottom:1.5px solid var(--tostado-claro)}
+  .dato .vl a:hover{color:var(--tostado)}
+  .nota{margin-top:20px;font-size:14px;color:var(--tinta-suave)}
+  .mapa{background:var(--papel);border:1px solid var(--linea);border-radius:var(--radio);padding:18px;overflow:hidden}
+  .mapa svg{display:block;width:100%;height:auto;border-radius:12px}
+  .mapa .pie{font-size:13px;color:var(--tinta-suave);padding:12px 6px 2px;text-align:center}
+
+  /* pie */
+  footer{background:var(--tinta);color:#EDE4D4;padding:58px 0 40px}
+  .pie-top{display:flex;flex-wrap:wrap;gap:28px;justify-content:space-between;align-items:flex-start}
+  .pie-top h3{font-size:26px;color:#FBF6EA}
+  .pie-top p{color:rgba(237,228,212,.72);margin-top:10px;font-size:15.5px;max-width:34em}
+  .pie-links{display:flex;flex-wrap:wrap;gap:12px}
+  .pie-links a{
+    display:inline-flex;align-items:center;gap:9px;text-decoration:none;
+    border:1px solid rgba(237,228,212,.28);border-radius:999px;padding:11px 19px;font-size:15px;
+    word-break:break-word;
+  }
+  .pie-links a:hover{background:rgba(237,228,212,.1)}
+  .pie-bar{margin-top:40px;padding-top:22px;border-top:1px solid rgba(237,228,212,.18);
+    display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:13px;color:rgba(237,228,212,.66)}
+
+  @media (max-width:980px){
+    .hero-in{grid-template-columns:1fr;gap:38px;padding:56px 0 66px}
+    .hero-art{max-width:460px;margin:0 auto}
+    .rejilla,.pasos{grid-template-columns:1fr 1fr}
+    .contacto{grid-template-columns:1fr}
+  }
+  @media (max-width:640px){
+    body{font-size:16.5px;padding-top:44px}
+    .aviso{height:44px;font-size:10.5px;letter-spacing:.05em}
+    .aviso span{white-space:normal;text-align:center;line-height:1.25}
+    .env{padding:0 18px}
+    .bloque{padding:62px 0}
+    .rejilla,.pasos{grid-template-columns:1fr}
+    .ctas{flex-direction:column;align-items:stretch}
+    .btn{justify-content:center}
+    .ficha,.mapa{padding:24px 20px}
+    .dato .vl{font-size:18px}
+  }
+</style>
+</head>
+<body>
+
+<div class="aviso"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="env hero-in">
+    <div>
+      <div class="marca">
+        <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
+          <circle cx="20" cy="20" r="19" fill="none" stroke="#3F5D48" stroke-width="1.6"/>
+          <path d="M11 17h14v6.5c0 3.6-3.1 6.5-7 6.5s-7-2.9-7-6.5V17z" fill="none" stroke="#26302B" stroke-width="1.8" stroke-linejoin="round"/>
+          <path d="M25 18.5h2.6c1.7 0 3 1.2 3 2.8s-1.3 2.8-3 2.8H25" fill="none" stroke="#C46B2F" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M15.5 13.2c1.4-1.3-.6-2.4.5-3.9M20 13.2c1.4-1.3-.6-2.4.5-3.9" fill="none" stroke="#C46B2F" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <span class="marca-txt">Café <em>Onix</em></span>
+      </div>
+
+      <div class="pastilla">
+        <svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z" fill="none" stroke="#3F5D48" stroke-width="1.9"/><circle cx="12" cy="10" r="2.4" fill="#C46B2F"/></svg>
+        <b>Plaza Hermanos Pinzón · Caravaca de la Cruz</b>
+      </div>
+
+      <h1>Desayunos, <span class="ac">helados</span> y bocadillos en plena plaza.</h1>
+
+      <p class="lead">Café Onix es la cafetería, heladería y bocatería de la Plaza Hermanos Pinzón: un sitio para empezar la mañana con calma, parar a media tarde o sentarse a ver pasar el pueblo con algo fresco en la mano.</p>
+
+      <div class="ctas">
+        <a class="btn btn-tel" href="tel:+34968702614">
+          <svg width="21" height="21" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 3h3l1.6 4-2 1.5a12 12 0 0 0 6.4 6.4l1.5-2 4 1.6v3c0 1.1-.9 2-2 2C11.6 19.5 4.5 12.4 4.5 5c0-1.1.9-2 2-2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          <span>Llamar al <span class="num">968 702 614</span></span>
+        </a>
+        <a class="btn btn-sec" href="#donde">
+          <svg width="19" height="19" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.2" fill="currentColor"/></svg>
+          Cómo llegar
+        </a>
+      </div>
+      <p class="apunte">Atención en barra y en terraza de plaza · Consultar horario</p>
+    </div>
+
+    <!-- ilustración hero: taza, cucurucho y bocadillo dibujados a mano -->
+    <div class="hero-art">
+      <svg viewBox="0 0 520 440" role="img" aria-label="Ilustración de una taza de café, un cucurucho de helado y un bocadillo sobre la mesa de una terraza">
+        <defs>
+          <linearGradient id="sol" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#FFF4DD"/><stop offset="1" stop-color="#F6E3C4"/>
+          </linearGradient>
+          <linearGradient id="mesa" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#3F5D48"/><stop offset="1" stop-color="#2C5A6B"/>
+          </linearGradient>
+          <linearGradient id="cafe" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#8A552B"/><stop offset="1" stop-color="#5A331A"/>
+          </linearGradient>
+        </defs>
+
+        <!-- disco de luz -->
+        <circle cx="262" cy="196" r="168" fill="url(#sol)"/>
+        <circle cx="262" cy="196" r="168" fill="none" stroke="#E0A265" stroke-width="2" stroke-dasharray="3 9" opacity=".8"/>
+
+        <!-- toldo estilizado -->
+        <path d="M60 78h404" stroke="#26302B" stroke-width="3" stroke-linecap="round"/>
+        <path d="M60 78c22 30 44 30 66 0 22 30 44 30 66 0 22 30 44 30 66 0 22 30 44 30 66 0 22 30 44 30 66 0 22 30 44 30 74 0" fill="none" stroke="#C46B2F" stroke-width="3" stroke-linejoin="round"/>
+
+        <!-- mesa -->
+        <ellipse cx="262" cy="352" rx="196" ry="30" fill="url(#mesa)" opacity=".92"/>
+        <ellipse cx="262" cy="344" rx="196" ry="30" fill="#FFFDF7" stroke="#26302B" stroke-width="3"/>
+
+        <!-- taza -->
+        <g transform="translate(96,196)">
+          <path d="M6 34h96v46c0 24-21.5 42-48 42S6 104 6 80V34z" fill="#FFFDF7" stroke="#26302B" stroke-width="3.4" stroke-linejoin="round"/>
+          <path d="M12 40h84v12c0 6-19 11-42 11s-42-5-42-11V40z" fill="url(#cafe)"/>
+          <path d="M102 46h16c11 0 20 8 20 18s-9 18-20 18h-16" fill="none" stroke="#26302B" stroke-width="3.4" stroke-linecap="round"/>
+          <path d="M-8 128h124" stroke="#26302B" stroke-width="3.4" stroke-linecap="round"/>
+          <path d="M34 16c9-8-4-15 3-25M60 16c9-8-4-15 3-25M86 16c9-8-4-15 3-25" fill="none" stroke="#C46B2F" stroke-width="3" stroke-linecap="round" opacity=".85"/>
+        </g>
+
+        <!-- cucurucho -->
+        <g transform="translate(252,132)">
+          <path d="M14 82h72l-30 116c-2.4 9-11.6 9-14 0L14 82z" fill="#E8C089" stroke="#26302B" stroke-width="3.2" stroke-linejoin="round"/>
+          <path d="M22 100l52 0M30 124l38 0M38 150l24 0" stroke="#26302B" stroke-width="2" opacity=".55"/>
+          <circle cx="35" cy="62" r="25" fill="#FFFDF7" stroke="#26302B" stroke-width="3.2"/>
+          <circle cx="66" cy="62" r="25" fill="#F6D7C2" stroke="#26302B" stroke-width="3.2"/>
+          <circle cx="50" cy="34" r="24" fill="#CFE0CD" stroke="#26302B" stroke-width="3.2"/>
+          <path d="M50 10c6-7-3-12 2-19" fill="none" stroke="#C46B2F" stroke-width="3" stroke-linecap="round"/>
+        </g>
+
+        <!-- bocadillo -->
+        <g transform="translate(340,242)">
+          <path d="M6 66C6 34 30 12 62 12s56 22 56 54" fill="#E2B071" stroke="#26302B" stroke-width="3.2" stroke-linejoin="round"/>
+          <path d="M2 66h120c4 0 6 3 6 7s-2 7-6 7H2c-4 0-6-3-6-7s2-7 6-7z" fill="#CFE0CD" stroke="#26302B" stroke-width="3.2"/>
+          <path d="M6 88h112c0 18-24 26-56 26S6 106 6 88z" fill="#E2B071" stroke="#26302B" stroke-width="3.2" stroke-linejoin="round"/>
+          <path d="M26 36c10-6 22-6 32 0M70 30c10-6 20-5 28 2" fill="none" stroke="#26302B" stroke-width="2" opacity=".5"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<!-- ===== CINTA ===== -->
+<div class="cinta">
+  <div class="cinta-pista">
+    <div class="cinta-grupo">
+      <span>Cafés y desayunos</span><i></i><span>Heladería</span><i></i><span>Bocadillos</span><i></i><span>Meriendas</span><i></i><span>Terraza en la plaza</span><i></i><span>Para llevar</span><i></i>
+    </div>
+    <div class="cinta-grupo" aria-hidden="true">
+      <span>Cafés y desayunos</span><i></i><span>Heladería</span><i></i><span>Bocadillos</span><i></i><span>Meriendas</span><i></i><span>Terraza en la plaza</span><i></i><span>Para llevar</span><i></i>
+    </div>
+  </div>
+</div>
+
+<!-- ===== OFERTA ===== -->
+<section class="bloque" id="carta">
+  <div class="env">
+    <div class="cab">
+      <span class="kicker">Lo que encontrarás</span>
+      <h2>Una casa, tres momentos del día.</h2>
+      <p>Cafetería por la mañana, heladería cuando aprieta el sol y bocatería a cualquier hora. Consulta la carta y las opciones del día directamente en el local o por teléfono.</p>
+    </div>
+
+    <div class="rejilla">
+      <article class="carta">
+        <svg class="ico" viewBox="0 0 64 64" aria-hidden="true">
+          <path d="M12 26h34v18c0 9-7.6 16-17 16s-17-7-17-16V26z" fill="#FFFDF7" stroke="#26302B" stroke-width="2.6" stroke-linejoin="round"/>
+          <path d="M16 30h26v6c0 3-6 5-13 5s-13-2-13-5v-6z" fill="#7A4A26"/>
+          <path d="M46 32h6c5 0 9 3.6 9 8s-4 8-9 8h-6" fill="none" stroke="#26302B" stroke-width="2.6" stroke-linecap="round"/>
+          <path d="M22 16c5-4-2-8 2-13M32 16c5-4-2-8 2-13" fill="none" stroke="#C46B2F" stroke-width="2.4" stroke-linecap="round"/>
+        </svg>
+        <h3>Cafés y desayunos</h3>
+        <p>La primera parada del día: café recién hecho, infusiones y desayunos sencillos para tomar en barra con prisa o sentado en la terraza sin ninguna.</p>
+        <ul><li>En barra</li><li>En terraza</li><li>Para llevar</li></ul>
+      </article>
+
+      <article class="carta">
+        <svg class="ico" viewBox="0 0 64 64" aria-hidden="true">
+          <path d="M18 30h28L36 58c-1.4 5-6.6 5-8 0L18 30z" fill="#E8C089" stroke="#26302B" stroke-width="2.6" stroke-linejoin="round"/>
+          <path d="M23 38h18M26 46h12" stroke="#26302B" stroke-width="1.8" opacity=".55"/>
+          <circle cx="25" cy="23" r="10" fill="#FFFDF7" stroke="#26302B" stroke-width="2.6"/>
+          <circle cx="39" cy="23" r="10" fill="#F6D7C2" stroke="#26302B" stroke-width="2.6"/>
+          <circle cx="32" cy="12" r="9.5" fill="#CFE0CD" stroke="#26302B" stroke-width="2.6"/>
+        </svg>
+        <h3>Heladería</h3>
+        <p>Helados y refrescos para las tardes largas de Caravaca. Cucurucho para seguir paseando por la plaza o tarrina para quedarse a la sombra.</p>
+        <ul><li>Cucurucho</li><li>Tarrina</li><li>Para llevar</li></ul>
+      </article>
+
+      <article class="carta">
+        <svg class="ico" viewBox="0 0 64 64" aria-hidden="true">
+          <path d="M8 34C8 22 18.7 12 32 12s24 10 24 22" fill="#E2B071" stroke="#26302B" stroke-width="2.6" stroke-linejoin="round"/>
+          <path d="M5 34h54c2.8 0 4.6 2.2 4.6 5s-1.8 5-4.6 5H5c-2.8 0-4.6-2.2-4.6-5S2.2 34 5 34z" fill="#CFE0CD" stroke="#26302B" stroke-width="2.6"/>
+          <path d="M8 46h48c0 8-10.7 12-24 12S8 54 8 46z" fill="#E2B071" stroke="#26302B" stroke-width="2.6" stroke-linejoin="round"/>
+          <path d="M19 25c5-3 11-3 16 0M38 22c5-3 10-2.5 14 1" fill="none" stroke="#26302B" stroke-width="1.8" opacity=".5"/>
+        </svg>
+        <h3>Bocadillos y meriendas</h3>
+        <p>Bocadillos y platos ligeros de bocatería para el almuerzo de media mañana o la merienda, hechos al momento y también preparados para llevar.</p>
+        <ul><li>Al momento</li><li>Media mañana</li><li>Merienda</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PASOS ===== -->
+<section class="bloque pasos-sec">
+  <div class="env">
+    <div class="cab">
+      <span class="kicker">Cómo funciona tu visita</span>
+      <h2>Sin reservas ni complicaciones.</h2>
+      <p>Tres pasos, los de siempre: llegas, pides y te quedas el rato que quieras.</p>
+    </div>
+    <div class="pasos">
+      <div class="paso">
+        <span class="n">01</span>
+        <h3>Llega a la plaza</h3>
+        <p>Estamos en la Plaza Hermanos Pinzón, en pleno centro de Caravaca de la Cruz. Puedes acercarte sin más o llamarnos antes si quieres consultar algo.</p>
+      </div>
+      <div class="paso">
+        <span class="n">02</span>
+        <h3>Pide en barra o en mesa</h3>
+        <p>Café y desayuno, algo fresco de heladería o un bocadillo hecho al momento. Te contamos lo que hay ese día y resolvemos cualquier duda.</p>
+      </div>
+      <div class="paso">
+        <span class="n">03</span>
+        <h3>Aquí o para llevar</h3>
+        <p>Quédate en la terraza a ver la plaza o pídelo para llevar si vas con prisa. Para pedidos y consultas, una llamada basta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACTO ===== -->
+<section class="bloque" id="donde">
+  <div class="env">
+    <div class="cab">
+      <span class="kicker">Dónde estamos</span>
+      <h2>En la plaza, a pie de calle.</h2>
+      <p>Datos de contacto y una referencia visual de la plaza para situarte antes de venir.</p>
+    </div>
+
+    <div class="contacto">
+      <div class="ficha">
+        <div class="dato">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 3h3l1.6 4-2 1.5a12 12 0 0 0 6.4 6.4l1.5-2 4 1.6v3c0 1.1-.9 2-2 2C11.6 19.5 4.5 12.4 4.5 5c0-1.1.9-2 2-2z" fill="none" stroke="#3F5D48" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          <div>
+            <div class="et">Teléfono</div>
+            <div class="vl"><a href="tel:+34968702614">968 702 614</a></div>
+          </div>
+        </div>
+        <div class="dato">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z" fill="none" stroke="#3F5D48" stroke-width="1.8"/><circle cx="12" cy="10" r="2.4" fill="#C46B2F"/></svg>
+          <div>
+            <div class="et">Dirección</div>
+            <div class="vl">Plaza Hermanos Pinzón<br>30400 Caravaca de la Cruz (Murcia)</div>
+          </div>
+        </div>
+        <div class="dato">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.6" fill="none" stroke="#3F5D48" stroke-width="1.8"/><path d="M12 7.2V12l3.2 2" fill="none" stroke="#C46B2F" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <div>
+            <div class="et">Horario</div>
+            <div class="vl">Consultar horario</div>
+          </div>
+        </div>
+        <div class="dato">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.2" y="5.4" width="17.6" height="13.2" rx="2.4" fill="none" stroke="#3F5D48" stroke-width="1.8"/><path d="M4 7l8 5.6L20 7" fill="none" stroke="#C46B2F" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          <div>
+            <div class="et">Email</div>
+            <div class="vl"><a href="mailto:fina.0@hotmail.com">fina.0@hotmail.com</a></div>
+          </div>
+        </div>
+        <div class="dato">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.4" y="3.4" width="17.2" height="17.2" rx="4" fill="none" stroke="#3F5D48" stroke-width="1.8"/><path d="M14.6 21v-6.6h2.3l.4-2.7h-2.7v-1.6c0-.8.24-1.3 1.35-1.3H17.4V6.4a18 18 0 0 0-2-.1c-2 0-3.35 1.2-3.35 3.4v1.9H9.7v2.7h2.35V21" fill="#C46B2F"/></svg>
+          <div>
+            <div class="et">Redes</div>
+            <div class="vl">Facebook</div>
+          </div>
+        </div>
+        <p class="nota">Para cualquier consulta sobre disponibilidad, pedidos o el horario del día, lo más rápido es una llamada.</p>
+      </div>
+
+      <div class="mapa">
+        <svg viewBox="0 0 560 400" role="img" aria-label="Mapa esquemático de la Plaza Hermanos Pinzón con la ubicación de Café Onix señalada con un marcador">
+          <rect x="0" y="0" width="560" height="400" rx="14" fill="#F4EEDF"/>
+          <g stroke="#DCCFB4" stroke-width="1.4">
+            <path d="M0 40h560M0 90h560M0 140h560M0 190h560M0 240h560M0 290h560M0 340h560"/>
+            <path d="M40 0v400M100 0v400M160 0v400M220 0v400M280 0v400M340 0v400M400 0v400M460 0v400M520 0v400"/>
+          </g>
+          <!-- calles -->
+          <path d="M-10 316h580" stroke="#FFFDF7" stroke-width="30" stroke-linecap="round"/>
+          <path d="M-10 316h580" stroke="#D8CAAE" stroke-width="30" fill="none" opacity=".35"/>
+          <path d="M96 -10v420" stroke="#FFFDF7" stroke-width="26"/>
+          <path d="M470 -10v420" stroke="#FFFDF7" stroke-width="26"/>
+          <path d="M-10 74h580" stroke="#FFFDF7" stroke-width="22"/>
+
+          <!-- plaza -->
+          <path d="M150 112h250c10 0 18 8 18 18v128c0 10-8 18-18 18H150c-10 0-18-8-18-18V130c0-10 8-18 18-18z" fill="#E7EFE2" stroke="#6E8C71" stroke-width="2.4"/>
+          <circle cx="276" cy="196" r="34" fill="#FFFDF7" stroke="#6E8C71" stroke-width="2.2"/>
+          <circle cx="276" cy="196" r="14" fill="#CFE0CD" stroke="#6E8C71" stroke-width="2"/>
+          <!-- arbolado -->
+          <g fill="#6E8C71" opacity=".85">
+            <circle cx="172" cy="140" r="11"/><circle cx="172" cy="252" r="11"/>
+            <circle cx="380" cy="140" r="11"/><circle cx="380" cy="252" r="11"/>
+            <circle cx="276" cy="130" r="9"/><circle cx="276" cy="262" r="9"/>
+          </g>
+          <!-- manzanas -->
+          <g fill="#EDE2CB" stroke="#D6C6A5" stroke-width="2">
+            <rect x="132" y="24" width="120" height="34" rx="6"/>
+            <rect x="300" y="24" width="150" height="34" rx="6"/>
+            <rect x="132" y="336" width="150" height="40" rx="6"/>
+            <rect x="330" y="336" width="120" height="40" rx="6"/>
+          </g>
+          <text x="20" y="306" font-family="Georgia, serif" font-size="14" fill="#55635A">Casco histórico</text>
+          <text x="404" y="306" font-family="Georgia, serif" font-size="14" fill="#55635A">Centro urbano</text>
+          <text x="196" y="106" font-family="Georgia, serif" font-size="15" fill="#3F5D48">Plaza Hermanos Pinzón</text>
+
+          <!-- marcador -->
+          <g transform="translate(398,176)">
+            <ellipse cx="0" cy="66" rx="17" ry="6" fill="#26302B" opacity=".2"/>
+            <path d="M0 64c0 0-24-24-24-40A24 24 0 1 1 24 24C24 40 0 64 0 64z" fill="#C46B2F" stroke="#26302B" stroke-width="2.6" stroke-linejoin="round"/>
+            <circle cx="0" cy="23" r="9.5" fill="#FBF6EA"/>
+            <text x="34" y="20" font-family="Georgia, serif" font-size="19" fill="#26302B">Café Onix</text>
+            <text x="34" y="40" font-family="Georgia, serif" font-size="13" fill="#55635A">a pie de plaza</text>
+          </g>
+          <text x="20" y="384" font-family="Georgia, serif" font-size="12.5" fill="#8A8172">Esquema orientativo, no a escala</text>
+        </svg>
+        <p class="pie">Representación esquemática de la plaza para ayudarte a situarnos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PIE ===== -->
+<footer>
+  <div class="env">
+    <div class="pie-top">
+      <div>
+        <h3>Café Onix</h3>
+        <p>Cafetería, heladería y bocatería en la Plaza Hermanos Pinzón, 30400 Caravaca de la Cruz (Murcia). Consultar horario.</p>
+      </div>
+      <div class="pie-links">
+        <a href="tel:+34968702614">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 3h3l1.6 4-2 1.5a12 12 0 0 0 6.4 6.4l1.5-2 4 1.6v3c0 1.1-.9 2-2 2C11.6 19.5 4.5 12.4 4.5 5c0-1.1.9-2 2-2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          968 702 614
+        </a>
+        <a href="mailto:fina.0@hotmail.com">
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.2" y="5.4" width="17.6" height="13.2" rx="2.4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 7l8 5.6L20 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          fina.0@hotmail.com
+        </a>
+      </div>
+    </div>
+    <div class="pie-bar">
+      <span>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</span>
+      <span>Maqueta no oficial · Datos de contacto públicos del negocio</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){
+      a.addEventListener('click', function(e){
+        var t = document.querySelector(a.getAttribute('href'));
+        if(!t) return;
+        e.preventDefault();
+        var y = t.getBoundingClientRect().top + window.pageYOffset - 56;
+        window.scrollTo({top:y, behavior:'smooth'});
+      });
+    });
+
+    var obs = new IntersectionObserver(function(en){
+      en.forEach(function(x){ if(x.isIntersecting){ x.target.style.opacity=1; x.target.style.transform='none'; obs.unobserve(x.target);} });
+    },{threshold:.12});
+    document.querySelectorAll('.carta,.paso,.ficha,.mapa').forEach(function(el){
+      el.style.opacity=0; el.style.transform='translateY(14px)';
+      el.style.transition='opacity .6s ease, transform .6s ease';
+      obs.observe(el);
+    });
+  })();
+</script>
+
+<script>
+/* Red de seguridad FFFFFFstudio: si el reveal por scroll no llega a dispararse
+   (JS parcial, captura automatica, navegador antiguo), el contenido se muestra igual. */
+(function(){
+  function mostrarTodo(){
+    var e=document.querySelectorAll('*');
+    for(var i=0;i<e.length;i++){
+      var s=e[i].style;
+      if(s && s.opacity!=='' && parseFloat(s.opacity)===0){ s.opacity=1; s.transform='none'; }
+    }
+  }
+  setTimeout(mostrarTodo,2500);
+  window.addEventListener('load',function(){setTimeout(mostrarTodo,2500);});
+})();
+</script>
+</body>
+</html>

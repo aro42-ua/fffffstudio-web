@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Audio Lens · Centro auditivo en Aranda de Duero — Propuesta FFFFFFstudio</title>
+<meta name="description" content="Propuesta de diseño (maqueta no oficial) para Audio Lens, centro auditivo en Aranda de Duero: audífonos, audiometrías, adaptación y revisión.">
+<style>
+  /* ============================================================
+     Audio Lens — propuesta de diseño / FFFFFFstudio
+     Sistema: serif editorial (Georgia) para voz + sans de sistema
+     para interfaz. Paleta: verde-azulado clínico profundo + arena.
+     Ritmo vertical basado en múltiplos de 8px.
+     ============================================================ */
+
+  *,*::before,*::after{box-sizing:border-box}
+
+  :root{
+    /* --- color --- */
+    --tinta:#0e2b2b;          /* verde-azulado casi negro: texto */
+    --tinta-suave:#3d5c5a;
+    --pino:#12494a;           /* primario */
+    --pino-claro:#1c6c68;
+    --salvia:#8fb3ab;
+    --arena:#f3ede1;          /* fondo cálido */
+    --arena-2:#e8dfcd;
+    --crema:#fbf8f1;
+    --blanco:#ffffff;
+    --ambar:#b26a1f;          /* acento cálido, contraste AA sobre crema */
+    --linea:rgba(14,43,43,.16);
+    --linea-fuerte:rgba(14,43,43,.32);
+
+    /* --- tipografía --- */
+    --serif:Georgia,"Iowan Old Style","Times New Roman",Times,serif;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --mono:ui-monospace,Menlo,Consolas,"DejaVu Sans Mono",monospace;
+
+    /* --- ritmo --- */
+    --r:8px;
+    --gutter:clamp(18px,5vw,64px);
+    --max:1180px;
+    --barra:38px;
+  }
+
+  html{-webkit-text-size-adjust:100%}
+
+  body{
+    margin:0;
+    font-family:var(--sans);
+    font-size:18px;
+    line-height:1.65;
+    color:var(--tinta);
+    background:var(--arena);
+    overflow-x:hidden;
+    overflow-wrap:break-word;
+    word-break:break-word;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  img,svg{max-width:100%}
+  svg{display:block}
+  a{color:inherit}
+
+  h1,h2,h3,h4,p,ul,ol,figure,blockquote{margin:0}
+  ul{padding:0;list-style:none}
+
+  .wrap{
+    width:100%;
+    max-width:var(--max);
+    margin:0 auto;
+    padding-inline:var(--gutter);
+  }
+
+  /* ---------- 1. barra de propuesta ---------- */
+  .aviso{
+    position:fixed;
+    inset:0 0 auto 0;
+    z-index:50;
+    background:var(--tinta);
+    color:#e7f0ec;
+    font-family:var(--mono);
+    font-size:11.5px;
+    letter-spacing:.02em;
+    line-height:1.35;
+    text-align:center;
+    padding:9px 12px calc(9px + env(safe-area-inset-top,0px));
+    padding-top:calc(9px + env(safe-area-inset-top,0px));
+    padding-bottom:9px;
+    border-bottom:1px solid rgba(255,255,255,.18);
+  }
+  .aviso span{display:inline-block;max-width:100%}
+
+  .desplaza{padding-top:calc(var(--barra) + env(safe-area-inset-top,0px))}
+
+  /* ---------- cabecera de marca ---------- */
+  .marca{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:16px;flex-wrap:wrap;
+    padding-block:calc(var(--r)*3);
+  }
+  .logotipo{display:flex;align-items:center;gap:12px;min-width:0}
+  .logotipo .nombre{
+    font-family:var(--serif);
+    font-size:clamp(21px,3.4vw,26px);
+    letter-spacing:.005em;
+    line-height:1.1;
+    white-space:nowrap;
+  }
+  .logotipo .nombre em{font-style:normal;color:var(--pino-claro)}
+  .rotulo{
+    font-family:var(--mono);
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.14em;
+    color:var(--tinta-suave);
+    min-width:0;
+  }
+
+  /* ---------- 2. hero ---------- */
+  .hero{
+    position:relative;
+    background:
+      radial-gradient(120% 90% at 8% 0%,rgba(28,108,104,.14),transparent 60%),
+      radial-gradient(90% 70% at 100% 12%,rgba(178,106,31,.10),transparent 58%),
+      linear-gradient(176deg,var(--crema),var(--arena) 78%);
+    border-bottom:1px solid var(--linea);
+    overflow:hidden;
+  }
+  /* textura sutil de "papel de consulta" */
+  .hero::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:repeating-linear-gradient(0deg,rgba(14,43,43,.045) 0 1px,transparent 1px 8px);
+    opacity:.5;
+  }
+  .hero-inner{
+    position:relative;z-index:1;
+    display:grid;
+    grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);
+    gap:clamp(28px,5vw,64px);
+    align-items:center;
+    padding-block:clamp(40px,7vw,92px) clamp(48px,8vw,104px);
+  }
+  .kicker{
+    font-family:var(--mono);
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:.18em;
+    color:var(--pino);
+    display:flex;align-items:center;gap:10px;
+    margin-bottom:calc(var(--r)*2.5);
+    flex-wrap:wrap;
+  }
+  .kicker::before{
+    content:"";width:34px;height:1px;background:var(--pino);flex:0 0 auto;
+  }
+  h1{
+    font-family:var(--serif);
+    font-weight:400;
+    font-size:clamp(33px,6.4vw,60px);
+    line-height:1.08;
+    letter-spacing:-.012em;
+    margin-bottom:calc(var(--r)*3);
+  }
+  h1 .subrayado{
+    color:var(--pino);
+    font-style:italic;
+    position:relative;
+    white-space:nowrap;
+  }
+  .entradilla{
+    font-size:clamp(18px,2.1vw,20.5px);
+    color:var(--tinta-suave);
+    max-width:46ch;
+    margin-bottom:calc(var(--r)*4);
+  }
+  .acciones{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+
+  .btn{
+    display:inline-flex;align-items:center;gap:11px;
+    font-family:var(--sans);
+    font-size:18px;
+    font-weight:600;
+    text-decoration:none;
+    padding:15px 26px;
+    border-radius:999px;
+    border:1.5px solid transparent;
+    min-width:0;
+    transition:background-color .18s ease,color .18s ease,transform .18s ease;
+  }
+  .btn-1{
+    background:var(--pino);color:#fdfcf8;
+    box-shadow:0 1px 0 rgba(255,255,255,.4) inset,0 10px 24px -14px rgba(14,43,43,.8);
+  }
+  .btn-1:hover,.btn-1:focus-visible{background:var(--tinta)}
+  .btn-2{
+    background:transparent;color:var(--pino);
+    border-color:var(--linea-fuerte);
+  }
+  .btn-2:hover,.btn-2:focus-visible{border-color:var(--pino);background:rgba(18,73,74,.06)}
+  .btn svg{flex:0 0 auto}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--ambar);outline-offset:3px}
+
+  .nota-hero{
+    font-size:15px;color:var(--tinta-suave);
+    margin-top:calc(var(--r)*2.5);
+    display:flex;gap:9px;align-items:flex-start;
+  }
+  .nota-hero svg{margin-top:3px;flex:0 0 auto}
+
+  /* --- pieza gráfica: audiograma + ondas --- */
+  .pieza{
+    position:relative;
+    border:1px solid var(--linea);
+    border-radius:calc(var(--r)*2.5);
+    background:
+      linear-gradient(180deg,var(--blanco),var(--crema));
+    padding:clamp(16px,2.4vw,24px);
+    box-shadow:0 30px 60px -44px rgba(14,43,43,.55);
+    min-width:0;
+  }
+  .pieza figcaption{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--tinta-suave);
+    margin-top:12px;
+    display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
+  }
+
+  /* ---------- cinta de onda (marquesina) ---------- */
+  .cinta{
+    width:100%;
+    overflow:hidden;
+    background:var(--tinta);
+    color:#cfe0d9;
+    border-block:1px solid rgba(255,255,255,.12);
+  }
+  .cinta-pista{
+    display:flex;
+    width:max-content;
+    animation:desliza 34s linear infinite;
+  }
+  .cinta-pista>div{
+    display:flex;align-items:center;gap:26px;
+    padding:12px 26px 12px 0;
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    white-space:nowrap;
+  }
+  .cinta-pista>div span{display:flex;align-items:center;gap:26px}
+  .punto{width:5px;height:5px;border-radius:50%;background:var(--salvia);flex:0 0 auto}
+  @keyframes desliza{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @media (prefers-reduced-motion:reduce){
+    .cinta-pista{animation:none}
+  }
+
+  /* ---------- secciones ---------- */
+  section{position:relative}
+  .bloque{padding-block:clamp(52px,8vw,104px)}
+  .bloque-crema{background:var(--crema)}
+
+  .cabecera-sec{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);
+    gap:clamp(18px,4vw,56px);
+    align-items:end;
+    margin-bottom:clamp(30px,5vw,56px);
+    padding-bottom:calc(var(--r)*3);
+    border-bottom:1px solid var(--linea);
+  }
+  h2{
+    font-family:var(--serif);
+    font-weight:400;
+    font-size:clamp(27px,4.4vw,42px);
+    line-height:1.14;
+    letter-spacing:-.01em;
+  }
+  .cabecera-sec p{color:var(--tinta-suave);max-width:52ch;font-size:17.5px}
+
+  /* ---------- 3. servicios ---------- */
+  .rejilla-serv{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(min(100%,268px),1fr));
+    gap:1px;
+    background:var(--linea);
+    border:1px solid var(--linea);
+    border-radius:calc(var(--r)*2);
+    overflow:hidden;
+  }
+  .tarjeta{
+    background:var(--arena);
+    padding:clamp(22px,3vw,32px);
+    min-width:0;
+    display:flex;flex-direction:column;gap:14px;
+    transition:background-color .2s ease;
+  }
+  .bloque-crema .tarjeta{background:var(--crema)}
+  .tarjeta:hover{background:var(--blanco)}
+  .icono{
+    width:52px;height:52px;flex:0 0 auto;
+    border-radius:14px;
+    border:1px solid var(--linea);
+    background:linear-gradient(160deg,rgba(28,108,104,.12),rgba(255,255,255,.7));
+    display:grid;place-items:center;
+  }
+  .tarjeta h3{
+    font-family:var(--serif);
+    font-weight:400;
+    font-size:21.5px;
+    line-height:1.25;
+  }
+  .tarjeta p{font-size:16.5px;color:var(--tinta-suave)}
+  .indice{
+    font-family:var(--mono);font-size:11px;letter-spacing:.14em;
+    color:var(--salvia);
+  }
+
+  /* ---------- 4. primera visita ---------- */
+  .pasos{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));
+    gap:clamp(20px,3vw,32px);
+    counter-reset:paso;
+  }
+  .paso{
+    min-width:0;
+    padding-top:calc(var(--r)*3);
+    border-top:2px solid var(--pino);
+    position:relative;
+  }
+  .paso .num{
+    font-family:var(--mono);
+    font-size:12px;letter-spacing:.16em;
+    color:var(--pino);
+    display:block;margin-bottom:calc(var(--r)*2);
+  }
+  .paso h3{
+    font-family:var(--serif);font-weight:400;
+    font-size:clamp(22px,2.7vw,26px);line-height:1.2;
+    margin-bottom:calc(var(--r)*1.5);
+  }
+  .paso p{color:var(--tinta-suave);font-size:17px}
+  .onda-pasos{margin-top:clamp(28px,4vw,44px);width:100%;overflow:hidden}
+
+  /* ---------- 5. contacto ---------- */
+  .contacto{
+    background:
+      radial-gradient(100% 120% at 100% 0%,rgba(143,179,171,.18),transparent 60%),
+      var(--tinta);
+    color:#eaf2ee;
+  }
+  .contacto h2{color:#fdfcf8}
+  .contacto .cabecera-sec{border-bottom-color:rgba(255,255,255,.2)}
+  .contacto .cabecera-sec p{color:#bcd2c9}
+  .cols-contacto{
+    display:grid;
+    grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);
+    gap:clamp(28px,4.5vw,56px);
+    align-items:start;
+  }
+  .datos{display:flex;flex-direction:column;gap:calc(var(--r)*4);min-width:0}
+  .dato{min-width:0}
+  .dato .etiqueta{
+    font-family:var(--mono);font-size:11px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--salvia);
+    display:block;margin-bottom:calc(var(--r)*1.25);
+  }
+  .dato .valor{
+    font-family:var(--serif);
+    font-size:clamp(20px,2.6vw,25px);
+    line-height:1.3;
+    color:#fdfcf8;
+    text-decoration:none;
+    border-bottom:1px solid rgba(255,255,255,.35);
+    padding-bottom:2px;
+    display:inline-block;
+    max-width:100%;
+  }
+  .dato a.valor:hover{border-bottom-color:#fdfcf8}
+  .dato .plano{font-family:var(--serif);font-size:19.5px;line-height:1.45;color:#eaf2ee}
+  .dato small{display:block;font-size:15px;color:#bcd2c9;margin-top:6px}
+
+  .mapa{
+    border:1px solid rgba(255,255,255,.22);
+    border-radius:calc(var(--r)*2.5);
+    overflow:hidden;
+    background:#0a2222;
+    min-width:0;
+  }
+  .mapa .leyenda{
+    display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    padding:12px 16px;
+    border-top:1px solid rgba(255,255,255,.16);
+    font-family:var(--mono);font-size:11px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--salvia);
+  }
+
+  /* ---------- 6. pie ---------- */
+  footer{
+    background:var(--arena-2);
+    border-top:1px solid var(--linea);
+    padding-block:clamp(36px,5vw,56px);
+  }
+  .pie-grid{
+    display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,48px);
+    justify-content:space-between;align-items:flex-start;
+  }
+  .pie-col{min-width:0}
+  .pie-col .etiqueta{
+    font-family:var(--mono);font-size:11px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--tinta-suave);
+    display:block;margin-bottom:8px;
+  }
+  .pie-col a{
+    font-family:var(--serif);font-size:20px;color:var(--pino);
+    text-decoration:none;border-bottom:1px solid var(--linea-fuerte);
+    padding-bottom:2px;display:inline-block;max-width:100%;
+  }
+  .pie-col a:hover{border-bottom-color:var(--pino)}
+  .firma{
+    margin-top:clamp(28px,4vw,44px);
+    padding-top:calc(var(--r)*3);
+    border-top:1px solid var(--linea);
+    font-family:var(--mono);
+    font-size:12.5px;
+    line-height:1.6;
+    letter-spacing:.03em;
+    color:var(--tinta-suave);
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:900px){
+    .hero-inner,.cabecera-sec,.cols-contacto{grid-template-columns:minmax(0,1fr)}
+    .cabecera-sec{align-items:start}
+    .hero-inner{padding-block:clamp(32px,7vw,56px) clamp(40px,8vw,64px)}
+    .pieza{order:2}
+  }
+  @media (max-width:560px){
+    body{font-size:17px}
+    :root{--barra:44px}
+    .aviso{font-size:10.5px;letter-spacing:0}
+    h1 .subrayado{white-space:normal}
+    .btn{width:100%;justify-content:center;font-size:17px;padding:14px 20px}
+    .acciones{gap:10px}
+    .logotipo .nombre{font-size:20px}
+    .rotulo{font-size:10px;letter-spacing:.1em}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ 1. BARRA DE PROPUESTA ============ -->
+<div class="aviso" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<div class="desplaza"></div>
+
+<!-- ============ MARCA ============ -->
+<header class="hero">
+  <div class="wrap">
+    <div class="marca">
+      <div class="logotipo">
+        <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true">
+          <circle cx="17" cy="17" r="15.2" fill="none" stroke="#12494a" stroke-width="1.2" opacity=".35"/>
+          <circle cx="17" cy="17" r="10.4" fill="none" stroke="#12494a" stroke-width="1.2" opacity=".6"/>
+          <circle cx="17" cy="17" r="5.6" fill="none" stroke="#12494a" stroke-width="1.4"/>
+          <circle cx="17" cy="17" r="1.9" fill="#b26a1f"/>
+        </svg>
+        <div class="nombre">Audio<em>&nbsp;Lens</em></div>
+      </div>
+      <p class="rotulo">Centro auditivo · Aranda de Duero</p>
+    </div>
+  </div>
+
+  <!-- ============ 2. HERO ============ -->
+  <div class="wrap">
+    <div class="hero-inner">
+      <div>
+        <p class="kicker">Audición, con calma y criterio</p>
+        <h1>Oír bien es <span class="subrayado">seguir en la conversación</span></h1>
+        <p class="entradilla">
+          Centro auditivo en Aranda de Duero. Valoramos cómo oyes, explicamos los
+          resultados sin tecnicismos y acompañamos la adaptación de los audífonos
+          con las revisiones que hagan falta.
+        </p>
+
+        <div class="acciones">
+          <a class="btn btn-1" href="tel:947502798">
+            <svg width="19" height="19" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M6.2 2.8H3.6c-.8 0-1.4.7-1.3 1.5.4 3.4 1.9 6.5 4.3 8.9 2.4 2.4 5.5 3.9 8.9 4.3.8.1 1.5-.5 1.5-1.3v-2.6c0-.7-.5-1.3-1.2-1.4l-2-.3c-.5-.1-1 .1-1.3.5l-.7.9a12.6 12.6 0 0 1-4.6-4.6l.9-.7c.4-.3.6-.8.5-1.3l-.3-2c-.1-.7-.7-1.2-1.4-1.2Z"/>
+            </svg>
+            Llamar al 947 502 798
+          </a>
+          <a class="btn btn-2" href="#contacto">Cómo llegar</a>
+        </div>
+
+        <p class="nota-hero">
+          <svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="#3d5c5a" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+            <circle cx="9" cy="9" r="7"/><path d="M9 8.2v4.1"/><path d="M9 5.6v.1"/>
+          </svg>
+          Atención presencial en C/ Antonio y Manuel Cebas 2. Consultar horario por teléfono.
+        </p>
+      </div>
+
+      <!-- Pieza gráfica: audiograma abstracto dibujado a mano -->
+      <figure class="pieza">
+        <svg viewBox="0 0 400 300" role="img" aria-label="Ilustración: audiograma esquemático con una curva de respuesta y círculos concéntricos de onda sonora.">
+          <defs>
+            <linearGradient id="gCurva" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#1c6c68"/>
+              <stop offset="1" stop-color="#b26a1f"/>
+            </linearGradient>
+            <linearGradient id="gFondo" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#1c6c68" stop-opacity=".10"/>
+              <stop offset="1" stop-color="#1c6c68" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+
+          <rect x="46" y="26" width="330" height="200" fill="url(#gFondo)"/>
+
+          <!-- retícula -->
+          <g stroke="#0e2b2b" stroke-width=".6" opacity=".22">
+            <line x1="46" y1="26"  x2="376" y2="26"/>
+            <line x1="46" y1="76"  x2="376" y2="76"/>
+            <line x1="46" y1="126" x2="376" y2="126"/>
+            <line x1="46" y1="176" x2="376" y2="176"/>
+            <line x1="46" y1="226" x2="376" y2="226"/>
+            <line x1="46"  y1="26" x2="46"  y2="226"/>
+            <line x1="112" y1="26" x2="112" y2="226"/>
+            <line x1="178" y1="26" x2="178" y2="226"/>
+            <line x1="244" y1="26" x2="244" y2="226"/>
+            <line x1="310" y1="26" x2="310" y2="226"/>
+            <line x1="376" y1="26" x2="376" y2="226"/>
+          </g>
+
+          <!-- etiquetas de ejes, sin cifras clínicas -->
+          <g fill="#3d5c5a" font-family="Menlo,Consolas,monospace" font-size="9" letter-spacing="1.4">
+            <text x="46" y="246">GRAVES</text>
+            <text x="312" y="246">AGUDOS</text>
+            <text x="46" y="18">INTENSIDAD</text>
+          </g>
+
+          <!-- curva de respuesta -->
+          <path d="M60 78 C 100 70, 140 92, 178 96 S 250 122, 292 158 S 348 186, 366 190"
+                fill="none" stroke="url(#gCurva)" stroke-width="3.2" stroke-linecap="round"/>
+          <g fill="#fbf8f1" stroke="#12494a" stroke-width="2">
+            <circle cx="60" cy="78" r="4.4"/>
+            <circle cx="178" cy="96" r="4.4"/>
+            <circle cx="244" cy="118" r="4.4"/>
+            <circle cx="310" cy="168" r="4.4"/>
+            <circle cx="366" cy="190" r="4.4"/>
+          </g>
+
+          <!-- ondas concéntricas -->
+          <g fill="none" stroke="#12494a" stroke-linecap="round">
+            <circle cx="60" cy="262" r="8"  stroke-width="1.6" opacity=".9"/>
+            <path d="M74 250 a 20 20 0 0 1 0 24" stroke-width="1.5" opacity=".6"/>
+            <path d="M84 243 a 32 32 0 0 1 0 38" stroke-width="1.5" opacity=".38"/>
+            <path d="M94 236 a 44 44 0 0 1 0 52" stroke-width="1.5" opacity=".22"/>
+          </g>
+        </svg>
+        <figcaption>
+          <span>Audiograma · esquema</span>
+          <span>Ilustración</span>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</header>
+
+<!-- ============ CINTA ============ -->
+<div class="cinta" aria-hidden="true">
+  <div class="cinta-pista">
+    <div>
+      <span>Audífonos</span><i class="punto"></i>
+      <span>Audiometrías</span><i class="punto"></i>
+      <span>Adaptación</span><i class="punto"></i>
+      <span>Revisión de audífonos</span><i class="punto"></i>
+      <span>Protección auditiva</span><i class="punto"></i>
+    </div>
+    <div>
+      <span>Audífonos</span><i class="punto"></i>
+      <span>Audiometrías</span><i class="punto"></i>
+      <span>Adaptación</span><i class="punto"></i>
+      <span>Revisión de audífonos</span><i class="punto"></i>
+      <span>Protección auditiva</span><i class="punto"></i>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 3. SERVICIOS ============ -->
+<section class="bloque bloque-crema" id="servicios">
+  <div class="wrap">
+    <div class="cabecera-sec">
+      <h2>Lo que hacemos<br>en el centro</h2>
+      <p>
+        Trabajo de gabinete auditivo, paso a paso: primero entender cómo oyes,
+        después decidir contigo y, si hace falta audífono, acompañar el proceso
+        hasta que resulte cómodo en el día a día.
+      </p>
+    </div>
+
+    <div class="rejilla-serv">
+
+      <article class="tarjeta">
+        <div class="icono">
+          <svg width="27" height="27" viewBox="0 0 28 28" fill="none" stroke="#12494a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 18h3.4l2.6-8 3 12 3.2-9.4 2.4 5.4H25"/>
+          </svg>
+        </div>
+        <span class="indice">01</span>
+        <h3>Audiometría y revisión auditiva</h3>
+        <p>Pruebas de audición en cabina para conocer tu umbral y comentar después los resultados contigo, en lenguaje claro.</p>
+      </article>
+
+      <article class="tarjeta">
+        <div class="icono">
+          <svg width="27" height="27" viewBox="0 0 28 28" fill="none" stroke="#12494a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M10.5 22.5c-2 0-3.4-1.5-3.4-3.6 0-2.6-2.6-3.5-2.6-7.3A7.2 7.2 0 0 1 11.8 4.4c4 0 7 2.8 7 6.6 0 3-1.9 4.3-3.6 5.4-1.3.8-1.6 1.6-1.8 3-.2 1.9-1.3 3.1-2.9 3.1Z"/>
+            <path d="M11.6 11.1a2 2 0 0 1 3.1 1.7"/>
+            <path d="M21.6 8.4c1 1.6 1 4 0 5.6"/>
+            <path d="M24.4 6c1.6 2.7 1.6 7.1 0 10"/>
+          </svg>
+        </div>
+        <span class="indice">02</span>
+        <h3>Adaptación de audífonos</h3>
+        <p>Selección y programación del audífono según tu pérdida auditiva, tu anatomía y las situaciones donde más te cuesta oír.</p>
+      </article>
+
+      <article class="tarjeta">
+        <div class="icono">
+          <svg width="27" height="27" viewBox="0 0 28 28" fill="none" stroke="#12494a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="14" cy="14" r="3.2"/>
+            <path d="M14 3.4v3.2M14 21.4v3.2M4.8 14H8M20 14h3.2M7.5 7.5l2.3 2.3M18.2 18.2l2.3 2.3M20.5 7.5l-2.3 2.3M9.8 18.2 7.5 20.5"/>
+          </svg>
+        </div>
+        <span class="indice">03</span>
+        <h3>Ajuste y mantenimiento</h3>
+        <p>Reajustes de programación, limpieza y cambio de piezas de consumo para que el audífono siga funcionando como el primer día.</p>
+      </article>
+
+      <article class="tarjeta">
+        <div class="icono">
+          <svg width="27" height="27" viewBox="0 0 28 28" fill="none" stroke="#12494a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5.5 20.5V13a8.5 8.5 0 0 1 17 0v7.5"/>
+            <path d="M5.5 20.5a2.6 2.6 0 0 1-2.6-2.6v-2.6A2.6 2.6 0 0 1 5.5 12.7v7.8Z"/>
+            <path d="M22.5 20.5a2.6 2.6 0 0 0 2.6-2.6v-2.6a2.6 2.6 0 0 0-2.6-2.6v7.8Z"/>
+          </svg>
+        </div>
+        <span class="indice">04</span>
+        <h3>Tapones y protección auditiva</h3>
+        <p>Protectores para ruido, descanso o agua, con opción de molde a medida para que ajusten sin molestar.</p>
+      </article>
+
+      <article class="tarjeta">
+        <div class="icono">
+          <svg width="27" height="27" viewBox="0 0 28 28" fill="none" stroke="#12494a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M14 4.5c-2.6 2-5.1 2.4-7.5 2.4v6.7c0 4.3 3 7.4 7.5 8.9 4.5-1.5 7.5-4.6 7.5-8.9V6.9c-2.4 0-4.9-.4-7.5-2.4Z"/>
+            <path d="M10.8 13.6l2.3 2.4 4.1-4.6"/>
+          </svg>
+        </div>
+        <span class="indice">05</span>
+        <h3>Seguimiento del audífono</h3>
+        <p>Revisiones periódicas para comprobar rendimiento, comodidad y estado del equipo, y corregir lo que no acabe de encajar.</p>
+      </article>
+
+      <article class="tarjeta">
+        <div class="icono">
+          <svg width="27" height="27" viewBox="0 0 28 28" fill="none" stroke="#12494a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 20.5c0-3.6 3.6-5.6 7-5.6s7 2 7 5.6"/>
+            <circle cx="11" cy="9.3" r="3.9"/>
+            <path d="M20.5 9.5c1.2 1.6 1.2 4.4 0 6"/>
+            <path d="M23.8 7c2 2.7 2 8.1 0 10.9"/>
+          </svg>
+        </div>
+        <span class="indice">06</span>
+        <h3>Asesoramiento y consejo</h3>
+        <p>Orientación sobre uso, cuidado y hábitos de escucha, también para quienes acompañan a la persona usuaria.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. PRIMERA VISITA ============ -->
+<section class="bloque" id="visita">
+  <div class="wrap">
+    <div class="cabecera-sec">
+      <h2>Tu primera visita,<br>en tres pasos</h2>
+      <p>
+        Sin prisa y sin compromiso de compra. La idea es que salgas entendiendo
+        cómo oyes y qué opciones tienes.
+      </p>
+    </div>
+
+    <div class="pasos">
+      <article class="paso">
+        <span class="num">PASO 01</span>
+        <h3>Hablamos</h3>
+        <p>Nos cuentas qué has notado y en qué situaciones te cuesta seguir una conversación: en casa, en la calle, con la televisión o en reuniones.</p>
+      </article>
+      <article class="paso">
+        <span class="num">PASO 02</span>
+        <h3>Valoramos tu audición</h3>
+        <p>Revisión del oído y audiometría en cabina. Al terminar repasamos juntos el resultado sobre el audiograma, con calma.</p>
+      </article>
+      <article class="paso">
+        <span class="num">PASO 03</span>
+        <h3>Decidimos qué hacer</h3>
+        <p>Si procede audífono, explicamos cómo funciona la adaptación y el seguimiento posterior. Si no procede, te lo decimos igual de claro.</p>
+      </article>
+    </div>
+
+    <!-- onda decorativa de cierre -->
+    <div class="onda-pasos" aria-hidden="true">
+      <svg viewBox="0 0 1200 90" preserveAspectRatio="none" style="width:100%;height:72px">
+        <path d="M0 45 Q 40 45 60 45 T 120 45 q 20 0 30-26 t 30 52 30-42 30 30 30-22 30 14 30-8 30 4 30-2 h 60
+                 q 20 0 30-20 t 30 40 30-32 30 24 30-16 30 10 30-6 30 3 30-1 h 420"
+              fill="none" stroke="#12494a" stroke-width="2" opacity=".45" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. CONTACTO ============ -->
+<section class="bloque contacto" id="contacto">
+  <div class="wrap">
+    <div class="cabecera-sec">
+      <h2>Dónde estamos</h2>
+      <p>En el centro de Aranda de Duero. Para cita o para cualquier duda, lo más rápido es una llamada.</p>
+    </div>
+
+    <div class="cols-contacto">
+      <div class="datos">
+        <div class="dato">
+          <span class="etiqueta">Teléfono</span>
+          <a class="valor" href="tel:947502798">947 502 798</a>
+        </div>
+        <div class="dato">
+          <span class="etiqueta">Dirección</span>
+          <p class="plano">C/ Antonio y Manuel Cebas 2<br>09400 Aranda de Duero (Burgos)</p>
+        </div>
+        <div class="dato">
+          <span class="etiqueta">Horario</span>
+          <p class="plano">Consultar horario</p>
+          <small>Te lo confirmamos por teléfono o por correo.</small>
+        </div>
+        <div class="dato">
+          <span class="etiqueta">Correo</span>
+          <a class="valor" href="mailto:susana@audiolens.es">susana@audiolens.es</a>
+        </div>
+      </div>
+
+      <!-- Mapa esquemático dibujado a mano (SVG inline) -->
+      <figure class="mapa">
+        <svg viewBox="0 0 520 380" role="img" aria-label="Mapa esquemático: calles abstractas con un marcador situado en la calle Antonio y Manuel Cebas.">
+          <rect width="520" height="380" fill="#0a2222"/>
+
+          <!-- manzanas -->
+          <g fill="#113030">
+            <rect x="24" y="24" width="150" height="104" rx="6"/>
+            <rect x="206" y="24" width="120" height="104" rx="6"/>
+            <rect x="358" y="24" width="138" height="66" rx="6"/>
+            <rect x="24" y="188" width="118" height="92" rx="6"/>
+            <rect x="206" y="188" width="140" height="92" rx="6"/>
+            <rect x="378" y="160" width="118" height="120" rx="6"/>
+            <rect x="24" y="312" width="200" height="44" rx="6"/>
+            <rect x="256" y="312" width="240" height="44" rx="6"/>
+          </g>
+
+          <!-- calles secundarias -->
+          <g stroke="#1e4a48" stroke-width="16" stroke-linecap="square">
+            <line x1="190" y1="10" x2="190" y2="370"/>
+            <line x1="342" y1="10" x2="342" y2="150"/>
+            <line x1="362" y1="150" x2="362" y2="370"/>
+            <line x1="10" y1="152" x2="510" y2="152"/>
+            <line x1="10" y1="296" x2="510" y2="296"/>
+          </g>
+
+          <!-- calle principal destacada -->
+          <line x1="10" y1="152" x2="510" y2="152" stroke="#8fb3ab" stroke-width="5" stroke-dasharray="14 10" opacity=".85"/>
+
+          <!-- rótulos de orientación, sin nombres inventados -->
+          <g fill="#6d9791" font-family="Menlo,Consolas,monospace" font-size="10" letter-spacing="1.6">
+            <text x="30" y="145">CALLE</text>
+            <text x="30" y="289">CALLE</text>
+            <text x="200" y="368" >CALLE</text>
+          </g>
+
+          <!-- marcador -->
+          <g>
+            <circle cx="248" cy="152" r="30" fill="#b26a1f" opacity=".14"/>
+            <circle cx="248" cy="152" r="19" fill="#b26a1f" opacity=".22"/>
+            <path d="M248 128a13 13 0 0 0-13 13c0 9.4 13 21 13 21s13-11.6 13-21a13 13 0 0 0-13-13Z"
+                  fill="#f3ede1" stroke="#0a2222" stroke-width="2"/>
+            <circle cx="248" cy="141" r="4.4" fill="#12494a"/>
+          </g>
+
+          <!-- etiqueta de la calle real -->
+          <g>
+            <rect x="232" y="196" width="256" height="52" rx="10" fill="#f3ede1"/>
+            <text x="248" y="217" font-family="Georgia,serif" font-size="15" fill="#0e2b2b">C/ Antonio y Manuel Cebas 2</text>
+            <text x="248" y="236" font-family="Menlo,Consolas,monospace" font-size="10.5" letter-spacing="1.2" fill="#3d5c5a">09400 ARANDA DE DUERO</text>
+          </g>
+        </svg>
+        <figcaption class="leyenda">
+          <span>Plano esquemático · no a escala</span>
+          <span>Ilustración propia</span>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6. PIE ============ -->
+<footer>
+  <div class="wrap">
+    <div class="pie-grid">
+      <div class="pie-col">
+        <span class="etiqueta">Audio Lens · Centro auditivo</span>
+        <p style="font-family:Georgia,serif;font-size:19px;line-height:1.45;color:#0e2b2b">
+          C/ Antonio y Manuel Cebas 2<br>09400 Aranda de Duero (Burgos)
+        </p>
+      </div>
+      <div class="pie-col">
+        <span class="etiqueta">Teléfono</span>
+        <a href="tel:947502798">947 502 798</a>
+      </div>
+      <div class="pie-col">
+        <span class="etiqueta">Correo</span>
+        <a href="mailto:susana@audiolens.es">susana@audiolens.es</a>
+      </div>
+      <div class="pie-col">
+        <span class="etiqueta">Horario</span>
+        <p style="font-family:Georgia,serif;font-size:19px;color:#0e2b2b">Consultar horario</p>
+      </div>
+    </div>
+
+    <p class="firma">
+      Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante
+    </p>
+  </div>
+</footer>
+
+<script>
+  /* Desplazamiento suave a la sección de contacto, respetando la barra fija. */
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var destino = document.querySelector(a.getAttribute('href'));
+      if (!destino) return;
+      e.preventDefault();
+      var barra = document.querySelector('.aviso');
+      var offset = barra ? barra.offsetHeight : 0;
+      var y = destino.getBoundingClientRect().top + window.pageYOffset - offset - 8;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    });
+  });
+
+  /* La altura real de la barra fija alimenta el espaciador, para que en móvil
+     (donde el texto puede ocupar dos líneas) nunca tape contenido. */
+  (function () {
+    var barra = document.querySelector('.aviso');
+    var hueco = document.querySelector('.desplaza');
+    function medir() {
+      if (barra && hueco) hueco.style.paddingTop = barra.offsetHeight + 'px';
+    }
+    medir();
+    window.addEventListener('resize', medir);
+  })();
+</script>
+</body>
+</html>

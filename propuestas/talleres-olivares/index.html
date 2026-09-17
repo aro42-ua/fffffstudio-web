@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Talleres Olivares · Taller mecánico y asistencia 24 h en Valdepeñas</title>
+<meta name="description" content="Talleres Olivares, taller mecánico con asistencia 24 horas en Valdepeñas (Ciudad Real). Llama al 652 268 335.">
+<meta name="theme-color" content="#15181c">
+<style>
+/* ============================================================
+   TALLERES OLIVARES — maqueta FFFFFFstudio
+   Dirección de arte: grafito / acero + ámbar de señalización
+   ============================================================ */
+
+*,*::before,*::after{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+html,body{max-width:100%;overflow-x:hidden;}
+
+:root{
+  --graphite:#15181c;
+  --graphite-2:#0f1215;
+  --steel:#1c2128;
+  --steel-2:#252c35;
+  --line:#343d48;
+  --line-soft:rgba(255,255,255,.08);
+  --amber:#ff9d0a;
+  --amber-hi:#ffc247;
+  --amber-deep:#c86f00;
+  --text:#e9edf1;
+  --muted:#98a3af;
+  --white:#fff;
+
+  --cond:"Helvetica Neue","Arial Narrow","Liberation Sans Narrow",ui-sans-serif,system-ui,Arial,sans-serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+
+  --bar-h:30px;
+  --pad:clamp(18px,5vw,64px);
+  --maxw:1180px;
+}
+
+body{
+  margin:0;
+  padding-top:var(--bar-h);
+  background:var(--graphite);
+  color:var(--text);
+  font-family:var(--sans);
+  font-size:17px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+
+h1,h2,h3,h4{
+  font-family:var(--cond);
+  font-stretch:condensed;
+  font-weight:800;
+  line-height:.98;
+  letter-spacing:-.015em;
+  text-transform:uppercase;
+  margin:0;
+}
+
+a{color:inherit;}
+img,svg{max-width:100%;}
+
+.wrap{
+  width:100%;
+  max-width:var(--maxw);
+  margin:0 auto;
+  padding-left:var(--pad);
+  padding-right:var(--pad);
+}
+
+/* ---------- Barra fija de maqueta ---------- */
+.studiobar{
+  position:fixed;top:0;left:0;right:0;
+  width:100%;
+  height:var(--bar-h);
+  z-index:200;
+  background:#0a0c0e;
+  border-bottom:1px solid #2a323b;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+.studiobar span{
+  font-family:var(--mono);
+  font-size:10.5px;
+  letter-spacing:.06em;
+  color:#8d98a4;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  max-width:100%;
+  padding:0 10px;
+}
+.studiobar b{color:var(--amber);font-weight:600;}
+
+/* ---------- Cabecera ---------- */
+.nav{
+  position:sticky;top:var(--bar-h);z-index:150;
+  width:100%;
+  background:rgba(15,18,21,.9);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line-soft);
+}
+.nav-in{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:14px;
+  min-height:64px;
+  padding-top:10px;padding-bottom:10px;
+}
+.brand{display:flex;align-items:center;gap:11px;min-width:0;}
+.brand-mark{flex:0 0 auto;}
+.brand-txt{min-width:0;}
+.brand-txt strong{
+  display:block;
+  font-family:var(--cond);font-stretch:condensed;
+  font-weight:800;text-transform:uppercase;
+  font-size:19px;letter-spacing:.01em;line-height:1;
+  white-space:nowrap;
+}
+.brand-txt em{
+  display:block;font-style:normal;
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;
+  color:var(--muted);text-transform:uppercase;margin-top:4px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.nav-links{display:none;gap:26px;}
+.nav-links a{
+  font-family:var(--cond);font-stretch:condensed;text-transform:uppercase;
+  font-weight:700;font-size:14px;letter-spacing:.06em;
+  text-decoration:none;color:var(--muted);
+  padding:6px 0;border-bottom:2px solid transparent;
+}
+.nav-links a:hover{color:var(--white);border-bottom-color:var(--amber);}
+.nav-call{
+  flex:0 0 auto;
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--amber);color:#16181a;
+  text-decoration:none;
+  font-family:var(--cond);font-stretch:condensed;font-weight:800;
+  text-transform:uppercase;letter-spacing:.03em;
+  font-size:15px;
+  padding:10px 14px;
+  border-radius:3px;
+  box-shadow:0 0 0 1px rgba(255,255,255,.12) inset;
+}
+.nav-call:hover{background:var(--amber-hi);}
+.nav-call .num{white-space:nowrap;}
+.nav-call .lbl{display:none;}
+
+/* ---------- Banda de peligro ---------- */
+.hazard{
+  width:100%;height:9px;
+  background:repeating-linear-gradient(135deg,var(--amber) 0 14px,#16181a 14px 28px);
+  opacity:.9;
+}
+
+/* ---------- Hero ---------- */
+.hero{
+  position:relative;
+  width:100%;
+  overflow:hidden;
+  background:
+    radial-gradient(120% 90% at 78% 0%,rgba(255,157,10,.16) 0%,rgba(255,157,10,0) 58%),
+    radial-gradient(90% 70% at 0% 100%,rgba(90,120,150,.16) 0%,rgba(90,120,150,0) 60%),
+    linear-gradient(175deg,#1b2027 0%,#13161a 55%,#0f1215 100%);
+}
+.hero::before{
+  content:"";position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:56px 56px;
+  mask-image:radial-gradient(75% 75% at 50% 35%,#000 0%,transparent 100%);
+  -webkit-mask-image:radial-gradient(75% 75% at 50% 35%,#000 0%,transparent 100%);
+  pointer-events:none;
+}
+.hero-in{
+  position:relative;z-index:2;
+  display:grid;
+  grid-template-columns:1fr;
+  gap:40px;
+  padding-top:clamp(44px,7vw,84px);
+  padding-bottom:clamp(44px,7vw,84px);
+}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--amber);
+  border:1px solid rgba(255,157,10,.35);
+  background:rgba(255,157,10,.07);
+  border-radius:100px;
+  padding:7px 14px;
+  margin-bottom:22px;
+}
+.pulse{
+  width:8px;height:8px;border-radius:50%;background:var(--amber);
+  flex:0 0 auto;
+  animation:pulse 1.8s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,157,10,.6);}50%{box-shadow:0 0 0 7px rgba(255,157,10,0);}}
+
+h1{
+  font-size:clamp(40px,10vw,84px);
+  letter-spacing:-.02em;
+}
+h1 .hl{
+  color:var(--amber);
+  display:inline-block;
+}
+h1 .thin{
+  display:block;
+  font-weight:400;
+  color:#b9c3cd;
+  font-size:.46em;
+  letter-spacing:.01em;
+  margin-top:16px;
+  text-transform:none;
+  line-height:1.25;
+  font-family:var(--sans);
+  max-width:34ch;
+}
+.hero p.lead{
+  color:var(--muted);
+  font-size:clamp(16px,2.1vw,18.5px);
+  max-width:52ch;
+  margin:24px 0 0;
+}
+
+.cta-row{
+  display:flex;flex-wrap:wrap;gap:12px;
+  margin-top:32px;
+}
+.btn{
+  display:inline-flex;align-items:center;gap:12px;
+  text-decoration:none;
+  font-family:var(--cond);font-stretch:condensed;
+  text-transform:uppercase;font-weight:800;letter-spacing:.03em;
+  border-radius:4px;
+  padding:16px 22px;
+  font-size:clamp(17px,4.4vw,21px);
+  transition:transform .12s ease,background .15s ease;
+  max-width:100%;
+}
+.btn:active{transform:translateY(1px);}
+.btn-primary{
+  background:linear-gradient(180deg,var(--amber-hi),var(--amber));
+  color:#161719;
+  box-shadow:0 10px 30px -10px rgba(255,157,10,.7),0 0 0 1px rgba(255,255,255,.18) inset;
+}
+.btn-primary:hover{background:var(--amber-hi);}
+.btn-primary small{
+  display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;
+  font-weight:600;opacity:.7;text-transform:uppercase;margin-bottom:2px;
+}
+.btn-primary .num{font-size:1em;line-height:1;white-space:nowrap;}
+.btn-ghost{
+  border:1px solid var(--line);
+  color:var(--text);
+  background:rgba(255,255,255,.03);
+}
+.btn-ghost:hover{border-color:var(--amber);color:var(--amber);}
+
+/* dato de cota / ficha técnica */
+.specs{
+  margin-top:40px;
+  border-top:1px solid var(--line-soft);
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+}
+.spec{
+  padding:18px 0 4px;
+  border-right:1px solid var(--line-soft);
+  padding-right:16px;
+}
+.spec:last-child{border-right:0;}
+.spec dt{
+  font-family:var(--mono);font-size:10px;letter-spacing:.16em;
+  color:var(--muted);text-transform:uppercase;margin-bottom:7px;
+}
+.spec dd{
+  margin:0;
+  font-family:var(--cond);font-stretch:condensed;font-weight:800;
+  text-transform:uppercase;font-size:20px;line-height:1.05;
+}
+.spec dd .sm{font-size:14px;color:var(--muted);font-weight:600;display:block;margin-top:3px;}
+
+/* pieza gráfica hero */
+.hero-art{
+  position:relative;
+  width:100%;
+  min-width:0;
+}
+.hero-art svg{display:block;width:100%;height:auto;}
+
+/* ---------- Cinta marquesina ---------- */
+.ticker{
+  width:100%;
+  overflow:hidden;
+  background:var(--amber);
+  color:#14161a;
+  border-top:2px solid #0f1215;border-bottom:2px solid #0f1215;
+}
+.ticker-track{
+  display:flex;width:max-content;
+  animation:slide 26s linear infinite;
+}
+.ticker-track span{
+  font-family:var(--cond);font-stretch:condensed;font-weight:800;
+  text-transform:uppercase;font-size:15px;letter-spacing:.06em;
+  padding:11px 0;
+  white-space:nowrap;
+  display:flex;align-items:center;
+}
+.ticker-track span i{
+  font-style:normal;padding:0 22px;opacity:.55;
+}
+@keyframes slide{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+@media (prefers-reduced-motion:reduce){
+  .ticker-track{animation:none;}
+  .pulse{animation:none;}
+}
+
+/* ---------- Secciones ---------- */
+section{width:100%;}
+.sec{padding-top:clamp(54px,8vw,104px);padding-bottom:clamp(54px,8vw,104px);}
+.sec-head{max-width:64ch;margin-bottom:clamp(30px,4vw,52px);}
+.kicker{
+  display:flex;align-items:center;gap:12px;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--amber);
+  margin-bottom:16px;
+}
+.kicker::after{
+  content:"";height:1px;flex:1;
+  background:linear-gradient(90deg,rgba(255,157,10,.5),transparent);
+}
+.sec h2{font-size:clamp(30px,5.6vw,52px);}
+.sec-head p{color:var(--muted);margin:16px 0 0;font-size:17px;}
+
+.bg-steel{background:var(--steel);}
+.bg-dark{background:var(--graphite-2);}
+
+/* ---------- Servicios ---------- */
+.grid-serv{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:1px;
+  background:var(--line-soft);
+  border:1px solid var(--line-soft);
+  border-radius:5px;
+  overflow:hidden;
+}
+.serv{
+  background:var(--graphite);
+  padding:26px 22px 28px;
+  position:relative;
+  min-width:0;
+  transition:background .2s ease;
+}
+.serv:hover{background:#1e242b;}
+.serv .ico{
+  color:var(--amber);
+  margin-bottom:18px;
+  display:block;
+}
+.serv h3{font-size:21px;margin-bottom:9px;letter-spacing:0;}
+.serv p{margin:0;color:var(--muted);font-size:15px;line-height:1.55;}
+.serv .idx{
+  position:absolute;top:18px;right:20px;
+  font-family:var(--mono);font-size:10px;color:#4c5764;letter-spacing:.1em;
+}
+.serv.is-urgent{
+  background:linear-gradient(160deg,#2a1d07,#1a1a1a);
+  box-shadow:inset 0 0 0 1px rgba(255,157,10,.35);
+}
+.serv.is-urgent:hover{background:linear-gradient(160deg,#33240a,#1d1d1d);}
+.serv.is-urgent h3{color:var(--amber-hi);}
+
+.serv-note{
+  margin-top:26px;
+  font-family:var(--mono);font-size:11.5px;color:#7d8894;letter-spacing:.04em;
+}
+
+/* ---------- Pasos ---------- */
+.steps{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:clamp(20px,3vw,34px);
+}
+.step{
+  position:relative;
+  padding:30px 26px 32px;
+  background:linear-gradient(180deg,#1f252c,#171b21);
+  border:1px solid var(--line);
+  border-radius:5px;
+  min-width:0;
+}
+.step .n{
+  font-family:var(--cond);font-stretch:condensed;font-weight:800;
+  font-size:58px;line-height:.8;
+  color:transparent;
+  -webkit-text-stroke:1.5px var(--amber);
+  display:block;margin-bottom:18px;
+}
+.step h3{font-size:22px;margin-bottom:10px;}
+.step p{margin:0;color:var(--muted);font-size:15.5px;}
+.step .rule{
+  position:absolute;left:26px;right:26px;top:0;height:2px;
+  background:linear-gradient(90deg,var(--amber),transparent);
+}
+
+/* ---------- Contacto ---------- */
+.contact-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:clamp(24px,4vw,44px);
+  align-items:start;
+}
+.card{
+  background:var(--graphite);
+  border:1px solid var(--line);
+  border-radius:5px;
+  padding:clamp(22px,3.5vw,34px);
+  min-width:0;
+}
+.cta-block{
+  background:linear-gradient(165deg,#2e2007,#191b1f 60%);
+  box-shadow:inset 0 0 0 1px rgba(255,157,10,.3);
+}
+.cta-block h3{font-size:clamp(24px,4vw,34px);margin-bottom:8px;}
+.cta-block p{color:#c4ccd4;margin:0 0 22px;font-size:16px;}
+
+.dl{margin:0;display:grid;gap:0;}
+.dl-row{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:4px;
+  padding:16px 0;
+  border-bottom:1px dashed var(--line);
+}
+.dl-row:last-child{border-bottom:0;}
+.dl-row dt{
+  font-family:var(--mono);font-size:10px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--amber);
+}
+.dl-row dd{margin:0;font-size:16.5px;color:var(--text);line-height:1.45;}
+.dl-row dd a{text-decoration:none;border-bottom:1px solid rgba(255,157,10,.5);}
+.dl-row dd a:hover{color:var(--amber);}
+.dl-row dd .big{
+  font-family:var(--cond);font-stretch:condensed;font-weight:800;
+  font-size:clamp(26px,6vw,34px);letter-spacing:.01em;
+  display:inline-block;border-bottom:0;
+}
+.badge-24{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;
+  background:rgba(255,157,10,.12);
+  border:1px solid rgba(255,157,10,.3);
+  color:var(--amber-hi);
+  border-radius:3px;padding:5px 10px;margin-top:8px;
+}
+
+/* mapa */
+.map-frame{
+  width:100%;
+  border:1px solid var(--line);
+  border-radius:5px;
+  overflow:hidden;
+  background:#10141a;
+  min-width:0;
+}
+.map-frame svg{display:block;width:100%;height:auto;}
+.map-cap{
+  display:flex;flex-wrap:wrap;gap:8px 16px;justify-content:space-between;
+  padding:12px 16px;
+  border-top:1px solid var(--line);
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:#7d8894;
+  background:#0d1013;
+}
+.map-cap b{color:var(--amber);font-weight:600;}
+
+/* ---------- Pie ---------- */
+footer{
+  background:var(--graphite-2);
+  border-top:1px solid var(--line);
+  padding-top:clamp(40px,6vw,66px);
+  padding-bottom:calc(clamp(34px,5vw,56px) + env(safe-area-inset-bottom));
+}
+.foot-grid{
+  display:grid;grid-template-columns:1fr;gap:30px;
+  padding-bottom:30px;border-bottom:1px solid var(--line);
+}
+.foot-grid h4{font-size:15px;letter-spacing:.08em;margin-bottom:14px;color:#8d98a4;}
+.foot-grid p,.foot-grid a{color:var(--muted);font-size:15px;margin:0 0 6px;text-decoration:none;display:block;word-break:break-word;}
+.foot-grid a:hover{color:var(--amber);}
+.foot-logo strong{
+  font-family:var(--cond);font-stretch:condensed;font-weight:800;
+  text-transform:uppercase;font-size:26px;color:var(--text);display:block;line-height:1;
+}
+.foot-bottom{
+  padding-top:26px;
+  display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;
+  font-family:var(--mono);font-size:11px;color:#6d7783;letter-spacing:.05em;
+}
+.foot-bottom .studio{color:#96a0ac;}
+.foot-bottom .studio b{color:var(--amber);font-weight:600;}
+
+/* ---------- Barra de llamada móvil ---------- */
+.callbar{
+  position:fixed;left:0;right:0;bottom:0;width:100%;
+  z-index:180;
+  display:flex;
+  padding:10px;
+  padding-bottom:calc(10px + env(safe-area-inset-bottom));
+  background:linear-gradient(180deg,rgba(15,18,21,.5),rgba(15,18,21,.96));
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  border-top:1px solid rgba(255,255,255,.08);
+}
+.callbar a{
+  flex:1;min-width:0;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  background:linear-gradient(180deg,var(--amber-hi),var(--amber));
+  color:#161719;text-decoration:none;
+  font-family:var(--cond);font-stretch:condensed;font-weight:800;
+  text-transform:uppercase;letter-spacing:.03em;font-size:19px;
+  padding:14px 12px;border-radius:4px;
+  box-shadow:0 8px 24px -8px rgba(255,157,10,.8);
+}
+.callbar .t{display:flex;flex-direction:column;align-items:flex-start;line-height:1;}
+.callbar .t small{font-family:var(--mono);font-size:9px;letter-spacing:.14em;opacity:.7;margin-bottom:3px;}
+
+/* ---------- Animación de entrada ---------- */
+.rv{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease;}
+.rv.in{opacity:1;transform:none;}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none;}}
+
+/* ---------- Media queries ---------- */
+@media (min-width:600px){
+  .dl-row{grid-template-columns:140px 1fr;gap:16px;align-items:baseline;}
+  .foot-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media (min-width:860px){
+  .nav-call .lbl{display:inline;}
+  .callbar{display:none;}
+  body{padding-bottom:0 !important;}
+  .hero-in{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);align-items:center;gap:clamp(30px,4vw,60px);}
+  .contact-grid{grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);}
+  .foot-grid{grid-template-columns:1.4fr 1fr 1fr;}
+}
+@media (min-width:1000px){
+  .nav-links{display:flex;}
+}
+@media (max-width:859px){
+  body{padding-bottom:88px;}
+}
+@media (max-width:420px){
+  .nav-call .num{font-size:14px;}
+  .brand-txt strong{font-size:17px;}
+}
+
+/* Ajustes finales de revision FFFFFFstudio */
+@media (max-width:560px){
+  .nav-in{gap:10px}
+  .brand{min-width:0;flex:1 1 auto}
+  .brand-mark{width:30px;height:30px;flex:none}
+  .brand-txt{min-width:0}
+  .brand-txt strong{font-size:13px;white-space:normal;overflow-wrap:anywhere;line-height:1.15}
+  .brand-txt em{display:none}
+  .nav-call{flex:none}
+}
+
+/* La barra de maqueta debe leerse entera tambien en movil */
+@media (max-width:560px){
+  .studiobar, .studiobar span{white-space:normal!important;overflow:visible!important;text-overflow:clip!important}
+  .studiobar{line-height:1.35;padding-top:5px;padding-bottom:5px;text-align:center}
+  .studiobar span{font-size:9px;letter-spacing:.02em;display:block}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ BARRA FIJA DE MAQUETA ============ -->
+<div class="studiobar" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · <b>FFFFFFstudio</b> · Ángel Rubio</span>
+</div>
+
+<!-- ============ CABECERA ============ -->
+<header class="nav">
+  <div class="wrap nav-in">
+    <div class="brand">
+      <svg class="brand-mark" width="38" height="38" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <rect x="1.5" y="1.5" width="45" height="45" rx="5" stroke="#343d48" stroke-width="2"/>
+        <path d="M24 9.5 27.2 15h6.4l-3.2 5.5 3.2 5.5h-6.4L24 31.5 20.8 26h-6.4l3.2-5.5-3.2-5.5h6.4L24 9.5Z" stroke="#ff9d0a" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="24" cy="20.5" r="3.4" stroke="#ff9d0a" stroke-width="2"/>
+        <path d="M13 38.5h22" stroke="#ff9d0a" stroke-width="2" stroke-linecap="round"/>
+        <path d="M13 36v5M35 36v5" stroke="#5a6672" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      <div class="brand-txt">
+        <strong>Talleres Olivares</strong>
+        <em>Valdepeñas · Asistencia 24 h</em>
+      </div>
+    </div>
+
+    <nav class="nav-links" aria-label="Navegación principal">
+      <a href="#servicios">Servicios</a>
+      <a href="#proceso">Cómo trabajamos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+
+    <a class="nav-call" href="tel:+34652268335">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M6.2 3.5h3.1l1.6 4-2 1.4a12.5 12.5 0 0 0 6.2 6.2l1.4-2 4 1.6v3.1a1.7 1.7 0 0 1-1.9 1.7C10.6 18.8 5.2 13.4 4.5 5.4A1.7 1.7 0 0 1 6.2 3.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+      </svg>
+      <span class="lbl">Llamar&nbsp;</span><span class="num">652 268 335</span>
+    </a>
+  </div>
+</header>
+<div class="hazard" aria-hidden="true"></div>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap hero-in">
+
+    <div>
+      <div class="eyebrow"><span class="pulse" aria-hidden="true"></span> Asistencia 24 horas · Valdepeñas</div>
+
+      <h1>
+        ¿Se te ha<br><span class="hl">parado el coche?</span>
+        <span class="thin">Taller mecánico en Valdepeñas con asistencia 24 horas. Una llamada y nos ponemos en marcha.</span>
+      </h1>
+
+      <p class="lead">
+        Una avería no avisa. Por eso atendemos urgencias a cualquier hora del día o de la noche
+        y trabajamos la mecánica del día a día con el mismo criterio: diagnosticar bien, explicar
+        claro y devolverte el coche en condiciones.
+      </p>
+
+      <div class="cta-row">
+        <a class="btn btn-primary" href="tel:+34652268335">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6.2 3.5h3.1l1.6 4-2 1.4a12.5 12.5 0 0 0 6.2 6.2l1.4-2 4 1.6v3.1a1.7 1.7 0 0 1-1.9 1.7C10.6 18.8 5.2 13.4 4.5 5.4A1.7 1.7 0 0 1 6.2 3.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          </svg>
+          <span>
+            <small>Urgencias 24 h · llamar ahora</small>
+            <span class="num">652 268 335</span>
+          </span>
+        </a>
+        <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
+      </div>
+
+      <dl class="specs">
+        <div class="spec">
+          <dt>Asistencia</dt>
+          <dd>24 h<span class="sm">Urgencias y averías</span></dd>
+        </div>
+        <div class="spec">
+          <dt>Taller</dt>
+          <dd>Valdepeñas<span class="sm">Ciudad Real</span></dd>
+        </div>
+        <div class="spec">
+          <dt>Horario de taller</dt>
+          <dd>Consultar horario<span class="sm">Llámanos y te informamos</span></dd>
+        </div>
+      </dl>
+    </div>
+
+    <!-- Ilustración técnica dibujada a mano (SVG inline) -->
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 520 440" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="gSteel" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#39424d"/>
+            <stop offset="1" stop-color="#1b2027"/>
+          </linearGradient>
+          <linearGradient id="gAmber" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#ffc247"/>
+            <stop offset="1" stop-color="#ff9d0a"/>
+          </linearGradient>
+          <radialGradient id="gGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0" stop-color="#ff9d0a" stop-opacity=".35"/>
+            <stop offset="1" stop-color="#ff9d0a" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+
+        <circle cx="262" cy="216" r="185" fill="url(#gGlow)"/>
+
+        <!-- anillo técnico -->
+        <circle cx="262" cy="216" r="168" stroke="#2d3640" stroke-width="1.5" stroke-dasharray="4 9"/>
+        <circle cx="262" cy="216" r="150" stroke="#242c35" stroke-width="1.5"/>
+
+        <!-- disco de freno -->
+        <circle cx="262" cy="216" r="126" fill="url(#gSteel)" stroke="#48525e" stroke-width="2"/>
+        <circle cx="262" cy="216" r="112" stroke="#5b6672" stroke-width="1.2" stroke-dasharray="2 6"/>
+        <circle cx="262" cy="216" r="98" stroke="#5b6672" stroke-width="1.2" stroke-dasharray="2 6"/>
+        <circle cx="262" cy="216" r="84" stroke="#5b6672" stroke-width="1.2" stroke-dasharray="2 6"/>
+        <circle cx="262" cy="216" r="64" fill="#20262d" stroke="#525d69" stroke-width="2"/>
+        <circle cx="262" cy="216" r="20" fill="#161a1f" stroke="#6a7682" stroke-width="2"/>
+
+        <!-- tornillos -->
+        <g fill="#0f1215" stroke="#78838f" stroke-width="2">
+          <circle cx="262" cy="172" r="7"/>
+          <circle cx="304" cy="203" r="7"/>
+          <circle cx="288" cy="252" r="7"/>
+          <circle cx="236" cy="252" r="7"/>
+          <circle cx="220" cy="203" r="7"/>
+        </g>
+
+        <!-- pinza de freno -->
+        <path d="M368 152c26 14 40 40 40 64s-14 50-40 64c-10 6-22-2-22-14v-100c0-12 12-20 22-14Z" fill="#1d232a" stroke="url(#gAmber)" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M356 184h34M356 216h34M356 248h34" stroke="#ff9d0a" stroke-width="2" stroke-linecap="round" opacity=".55"/>
+
+        <!-- llave inglesa a mano -->
+        <g stroke="#8b96a2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="#141920">
+          <path d="M96 356l86-86"/>
+          <path d="M186 266c-13-13-13-34 0-47a33 33 0 0 1 33-8l-19 19 15 15 19-19a33 33 0 0 1-8 33c-13 13-34 13-47 0l7-7" />
+          <path d="M96 356l-14 14 12 12 14-14" fill="#141920"/>
+        </g>
+
+        <!-- líneas de cota -->
+        <g stroke="#4d5865" stroke-width="1.2">
+          <path d="M394 384h94M394 378v12M488 378v12"/>
+        </g>
+        <text x="441" y="372" text-anchor="middle" fill="#7d8894" font-family="ui-monospace,Menlo,monospace" font-size="12" letter-spacing="1.5">24 H</text>
+
+        <g stroke="#4d5865" stroke-width="1.2">
+          <path d="M40 60v78M34 60h12M34 138h12"/>
+        </g>
+        <text x="58" y="104" fill="#7d8894" font-family="ui-monospace,Menlo,monospace" font-size="11" letter-spacing="1.5">DIAGNOSIS</text>
+
+        <!-- triángulo de emergencia -->
+        <path d="M430 60l44 76h-88l44-76Z" fill="#1a1e24" stroke="url(#gAmber)" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M430 84l26 44h-52l26-44Z" stroke="#ff9d0a" stroke-width="2" stroke-linejoin="round" opacity=".5"/>
+      </svg>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ CINTA ============ -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>Asistencia 24 h<i>◆</i>Mecánica general<i>◆</i>Diagnosis electrónica<i>◆</i>Mantenimiento<i>◆</i>Frenos<i>◆</i>Neumáticos<i>◆</i>Pre-ITV<i>◆</i>Asistencia en carretera<i>◆</i></span>
+    <span>Asistencia 24 h<i>◆</i>Mecánica general<i>◆</i>Diagnosis electrónica<i>◆</i>Mantenimiento<i>◆</i>Frenos<i>◆</i>Neumáticos<i>◆</i>Pre-ITV<i>◆</i>Asistencia en carretera<i>◆</i></span>
+  </div>
+</div>
+
+<!-- ============ SERVICIOS ============ -->
+<section class="sec bg-steel" id="servicios">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="kicker">02 — Servicios</div>
+      <h2>Lo que resolvemos<br>en el taller</h2>
+      <p>Trabajo de taller para el mantenimiento de siempre y respuesta inmediata cuando el coche te deja tirado. Si tu caso no aparece aquí, pregúntanos por teléfono.</p>
+    </div>
+
+    <div class="grid-serv rv">
+
+      <article class="serv is-urgent">
+        <span class="idx">S/01</span>
+        <svg class="ico" width="40" height="40" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <path d="M4 32V20h17l7-8h6v20" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>
+          <path d="M34 32h10V22l-7-2" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>
+          <circle cx="14" cy="34" r="4.5" stroke="currentColor" stroke-width="2.4"/>
+          <circle cx="36" cy="34" r="4.5" stroke="currentColor" stroke-width="2.4"/>
+          <path d="M4 20l-1-6M8 14l2 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+        </svg>
+        <h3>Asistencia 24 horas</h3>
+        <p>Averías y urgencias a cualquier hora. Nos cuentas qué ha pasado y organizamos la asistencia.</p>
+      </article>
+
+      <article class="serv">
+        <span class="idx">S/02</span>
+        <svg class="ico" width="40" height="40" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <rect x="6" y="16" width="30" height="20" rx="3" stroke="currentColor" stroke-width="2.4"/>
+          <path d="M36 22h4l4 4v6h-8" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>
+          <path d="M12 16v-4h12v4" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>
+          <path d="M12 26h8M16 22v8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+          <circle cx="29" cy="26" r="3" stroke="currentColor" stroke-width="2.2"/>
+        </svg>
+        <h3>Mecánica general</h3>
+        <p>Reparación de las averías habituales del vehículo, con revisión previa para saber qué falla de verdad.</p>
+      </article>
+
+      <article class="serv">
+        <span class="idx">S/03</span>
+        <svg class="ico" width="40" height="40" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <rect x="8" y="8" width="26" height="32" rx="4" stroke="currentColor" stroke-width="2.4"/>
+          <path d="M34 18h6v10h-6" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>
+          <path d="M13 30l4-7 4 10 4-14 4 11" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M13 14h16" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+        </svg>
+        <h3>Diagnosis electrónica</h3>
+        <p>Lectura de la centralita y comprobación de sensores para localizar el origen del aviso del cuadro.</p>
+      </article>
+
+      <article class="serv">
+        <span class="idx">S/04</span>
+        <svg class="ico" width="40" height="40" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <path d="M24 6c7 9 11 14 11 19a11 11 0 1 1-22 0c0-5 4-10 11-19Z" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>
+          <path d="M19 26a5 5 0 0 0 5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+          <path d="M10 42h28" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+        </svg>
+        <h3>Mantenimiento periódico</h3>
+        <p>Cambio de aceite y filtros, niveles y revisiones de mantenimiento según lo que necesite el vehículo.</p>
+      </article>
+
+      <article class="serv">
+        <span class="idx">S/05</span>
+        <svg class="ico" width="40" height="40" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <circle cx="21" cy="24" r="15" stroke="currentColor" stroke-width="2.4"/>
+          <circle cx="21" cy="24" r="6" stroke="currentColor" stroke-width="2.4"/>
+          <circle cx="21" cy="24" r="10.5" stroke="currentColor" stroke-width="1.4" stroke-dasharray="2 4"/>
+          <path d="M36 16c5 2 8 5 8 8s-3 6-8 8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h3>Frenos</h3>
+        <p>Revisión y sustitución de pastillas, discos y líquido de frenos cuando el sistema lo pide.</p>
+      </article>
+
+      <article class="serv">
+        <span class="idx">S/06</span>
+        <svg class="ico" width="40" height="40" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <circle cx="24" cy="24" r="17" stroke="currentColor" stroke-width="2.4"/>
+          <circle cx="24" cy="24" r="8" stroke="currentColor" stroke-width="2.4"/>
+          <path d="M24 7v9M24 32v9M7 24h9M32 24h9M12 12l6.5 6.5M29.5 29.5 36 36M36 12l-6.5 6.5M18.5 29.5 12 36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <h3>Neumáticos</h3>
+        <p>Montaje, equilibrado y comprobación del estado y la presión de las ruedas.</p>
+      </article>
+
+      <article class="serv">
+        <span class="idx">S/07</span>
+        <svg class="ico" width="40" height="40" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <rect x="10" y="6" width="28" height="36" rx="4" stroke="currentColor" stroke-width="2.4"/>
+          <path d="M18 17l3 3 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M18 29l3 3 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M31 18h3M31 30h3" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+        </svg>
+        <h3>Pre-ITV</h3>
+        <p>Comprobación de los puntos que se revisan en la inspección para que el coche pase sin sorpresas.</p>
+      </article>
+
+      <article class="serv">
+        <span class="idx">S/08</span>
+        <svg class="ico" width="40" height="40" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <path d="M6 38h36" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M24 10l14 24H10l14-24Z" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>
+          <path d="M24 20v7" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+          <circle cx="24" cy="31" r="1.6" fill="currentColor"/>
+        </svg>
+        <h3>Asistencia en carretera</h3>
+        <p>Si no puedes mover el coche, llámanos y coordinamos contigo la forma de traerlo al taller.</p>
+      </article>
+
+    </div>
+
+    <p class="serv-note">· Listado de servicios orientativo. Consúltanos tu caso por teléfono antes de acudir al taller.</p>
+  </div>
+</section>
+
+<!-- ============ CÓMO TRABAJAMOS ============ -->
+<section class="sec" id="proceso">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="kicker">03 — Cómo trabajamos</div>
+      <h2>Tres pasos,<br>sin rodeos</h2>
+      <p>Lo mismo si es una revisión programada que si el coche se ha quedado parado de madrugada.</p>
+    </div>
+
+    <div class="steps rv">
+      <article class="step">
+        <span class="rule" aria-hidden="true"></span>
+        <span class="n">01</span>
+        <h3>Llamas y nos cuentas</h3>
+        <p>Nos dices qué le pasa al coche y dónde estás. Con eso valoramos si hay que atenderlo como urgencia o citarlo en el taller.</p>
+      </article>
+
+      <article class="step">
+        <span class="rule" aria-hidden="true"></span>
+        <span class="n">02</span>
+        <h3>Revisamos y diagnosticamos</h3>
+        <p>Comprobamos el vehículo y localizamos la avería antes de tocar nada. Te explicamos qué hemos encontrado y qué implica repararlo.</p>
+      </article>
+
+      <article class="step">
+        <span class="rule" aria-hidden="true"></span>
+        <span class="n">03</span>
+        <h3>Reparamos y te lo devolvemos</h3>
+        <p>Se hace el trabajo acordado y te contamos qué se ha sustituido y a qué conviene estar atento en las próximas revisiones.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section class="sec bg-dark" id="contacto">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="kicker">04 — Contacto</div>
+      <h2>Estamos en<br>Valdepeñas</h2>
+      <p>Para una urgencia, el teléfono es siempre la vía más rápida.</p>
+    </div>
+
+    <div class="contact-grid">
+
+      <div class="rv">
+        <div class="card cta-block">
+          <h3>Urgencia 24 h</h3>
+          <p>Si el coche no arranca, no frena o se ha parado en carretera, llámanos.</p>
+          <a class="btn btn-primary" href="tel:+34652268335" style="width:100%;justify-content:center;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6.2 3.5h3.1l1.6 4-2 1.4a12.5 12.5 0 0 0 6.2 6.2l1.4-2 4 1.6v3.1a1.7 1.7 0 0 1-1.9 1.7C10.6 18.8 5.2 13.4 4.5 5.4A1.7 1.7 0 0 1 6.2 3.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            </svg>
+            <span class="num">652 268 335</span>
+          </a>
+        </div>
+
+        <div class="card" style="margin-top:18px;">
+          <dl class="dl">
+            <div class="dl-row">
+              <dt>Teléfono</dt>
+              <dd><a class="big" href="tel:+34652268335">652 268 335</a></dd>
+            </div>
+            <div class="dl-row">
+              <dt>Dirección</dt>
+              <dd>C/ Salida del Peral 54, puerta A<br>13300 Valdepeñas (Ciudad Real)</dd>
+            </div>
+            <div class="dl-row">
+              <dt>Horario</dt>
+              <dd>
+                Consultar horario
+                <span class="badge-24">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
+                    <path d="M12 7v5.5l3.5 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  Asistencia 24 h
+                </span>
+              </dd>
+            </div>
+            <div class="dl-row">
+              <dt>Email</dt>
+              <dd><a href="mailto:tallerolivares22@gmail.com">tallerolivares22@gmail.com</a></dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+      <!-- Mapa esquemático dibujado a mano -->
+      <div class="rv">
+        <div class="map-frame">
+          <svg viewBox="0 0 640 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mapa esquemático de situación del taller en Valdepeñas">
+            <defs>
+              <pattern id="gridm" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M40 0H0V40" fill="none" stroke="#1a2028" stroke-width="1"/>
+              </pattern>
+              <linearGradient id="mapbg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#141a21"/>
+                <stop offset="1" stop-color="#0d1116"/>
+              </linearGradient>
+            </defs>
+
+            <rect width="640" height="460" fill="url(#mapbg)"/>
+            <rect width="640" height="460" fill="url(#gridm)"/>
+
+            <!-- manzanas -->
+            <g fill="#161d25" stroke="#222b35" stroke-width="1.5">
+              <rect x="46" y="54" width="180" height="118" rx="4"/>
+              <rect x="262" y="54" width="150" height="118" rx="4"/>
+              <rect x="452" y="54" width="142" height="86" rx="4"/>
+              <rect x="46" y="238" width="138" height="150" rx="4"/>
+              <rect x="222" y="272" width="196" height="116" rx="4"/>
+              <rect x="452" y="238" width="142" height="150" rx="4"/>
+            </g>
+
+            <!-- vía principal -->
+            <path d="M0 210h640" stroke="#2c353f" stroke-width="30" stroke-linecap="round"/>
+            <path d="M0 210h640" stroke="#3c4753" stroke-width="30" stroke-dasharray="0" opacity=".25"/>
+            <path d="M0 210h640" stroke="#7d8894" stroke-width="2" stroke-dasharray="16 16" opacity=".55"/>
+
+            <!-- calle vertical -->
+            <path d="M430 0v460" stroke="#252e38" stroke-width="22" stroke-linecap="round"/>
+            <path d="M430 0v460" stroke="#6b7682" stroke-width="1.6" stroke-dasharray="12 14" opacity=".45"/>
+
+            <!-- calle secundaria: Salida del Peral -->
+            <path d="M0 246h640" stroke="#20272f" stroke-width="0"/>
+            <path d="M200 460V246h250" stroke="#2a323c" stroke-width="18" stroke-linejoin="round" fill="none"/>
+            <path d="M200 460V246h250" stroke="#ff9d0a" stroke-width="2" stroke-dasharray="10 12" opacity=".65" fill="none"/>
+
+            <!-- calle diagonal -->
+            <path d="M46 40 L196 172" stroke="#242c35" stroke-width="14" stroke-linecap="round"/>
+
+            <!-- etiquetas -->
+            <g font-family="ui-monospace,Menlo,Consolas,monospace" fill="#8b96a2" font-size="12.5" letter-spacing="1.4">
+              <text x="18" y="200">AVDA. PRINCIPAL</text>
+              <text x="212" y="238">C/ SALIDA DEL PERAL</text>
+              <text x="444" y="36" >VALDEPEÑAS 13300</text>
+              <text x="60" y="428" fill="#5d6874">CIUDAD REAL</text>
+            </g>
+
+            <!-- cotas -->
+            <g stroke="#3b4550" stroke-width="1.2">
+              <path d="M452 408h142M452 402v12M594 402v12"/>
+            </g>
+            <text x="523" y="432" text-anchor="middle" fill="#5d6874" font-family="ui-monospace,Menlo,monospace" font-size="11" letter-spacing="1.4">ESQUEMA NO A ESCALA</text>
+
+            <!-- marcador -->
+            <g>
+              <circle cx="200" cy="246" r="42" fill="#ff9d0a" opacity=".10"/>
+              <circle cx="200" cy="246" r="26" fill="#ff9d0a" opacity=".16"/>
+              <path d="M200 196c-16 0-29 13-29 29 0 21 29 49 29 49s29-28 29-49c0-16-13-29-29-29Z" fill="#ff9d0a" stroke="#14181c" stroke-width="3"/>
+              <circle cx="200" cy="225" r="9.5" fill="#14181c"/>
+            </g>
+            <g font-family="ui-monospace,Menlo,Consolas,monospace" font-size="12.5" letter-spacing="1.4">
+              <rect x="244" y="188" width="196" height="30" rx="3" fill="#14181c" stroke="#3b4550"/>
+              <text x="256" y="208" fill="#ffc247">TALLERES OLIVARES · Nº 54</text>
+            </g>
+          </svg>
+          <div class="map-cap">
+            <span>C/ Salida del Peral 54, puerta A</span>
+            <span><b>Valdepeñas</b> · Ciudad Real</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ PIE ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-logo">
+        <strong>Talleres Olivares</strong>
+        <p style="margin-top:12px;">Taller mecánico con asistencia 24 horas en Valdepeñas (Ciudad Real).</p>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <a href="tel:+34652268335">652 268 335</a>
+        <a href="mailto:tallerolivares22@gmail.com">tallerolivares22@gmail.com</a>
+        <p>Consultar horario</p>
+      </div>
+      <div>
+        <h4>Dónde estamos</h4>
+        <p>C/ Salida del Peral 54, puerta A</p>
+        <p>13300 Valdepeñas (Ciudad Real)</p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© Talleres Olivares · Valdepeñas</span>
+      <span class="studio">Propuesta de rediseño presentada por <b>FFFFFFstudio</b> — Ángel Rubio, diseñador web · Alicante</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ BARRA DE LLAMADA MÓVIL ============ -->
+<div class="callbar">
+  <a href="tel:+34652268335">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M6.2 3.5h3.1l1.6 4-2 1.4a12.5 12.5 0 0 0 6.2 6.2l1.4-2 4 1.6v3.1a1.7 1.7 0 0 1-1.9 1.7C10.6 18.8 5.2 13.4 4.5 5.4A1.7 1.7 0 0 1 6.2 3.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    </svg>
+    <span class="t"><small>Urgencias 24 h</small>652 268 335</span>
+  </a>
+</div>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)){
+    for(var i=0;i<els.length;i++){els[i].classList.add('in');}
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  },{rootMargin:'0px 0px -8% 0px',threshold:0.08});
+  els.forEach(function(el){ io.observe(el); });
+
+  // Guardia anti-desbordamiento horizontal
+  window.addEventListener('load', function(){
+    document.documentElement.style.overflowX = 'hidden';
+  });
+})();
+</script>
+
+
+<script>
+/* Red de seguridad FFFFFFstudio: si el reveal por scroll no llega a dispararse
+   (JS parcial, captura automatica, navegador antiguo), el contenido se muestra igual. */
+(function(){
+  function mostrarTodo(){
+    var e=document.querySelectorAll('*');
+    for(var i=0;i<e.length;i++){
+      var s=e[i].style;
+      if(s && s.opacity!=='' && parseFloat(s.opacity)===0){ s.opacity=1; s.transform='none'; }
+    }
+  }
+  setTimeout(mostrarTodo,2500);
+  window.addEventListener('load',function(){setTimeout(mostrarTodo,2500);});
+})();
+</script>
+</body>
+</html>

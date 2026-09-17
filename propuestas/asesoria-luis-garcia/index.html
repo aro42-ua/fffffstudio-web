@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Asesoría Luis García · Valdepeñas — Propuesta de diseño</title>
+<meta name="description" content="Asesoría fiscal, laboral y contable en Valdepeñas (Ciudad Real). Propuesta de diseño no oficial de FFFFFFstudio.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* ========== RESET / BASE ========== */
+*,*::before,*::after{box-sizing:border-box;min-width:0}
+html{-webkit-text-size-adjust:100%}
+body,h1,h2,h3,h4,p,ul,ol,li,figure,dl,dd{margin:0;padding:0}
+ul,ol{list-style:none}
+img,svg{max-width:100%;height:auto;display:block}
+a{color:inherit}
+
+:root{
+  /* Paleta: hueso, azul tinta, grafito, verde botella, burdeos */
+  --hueso:#f4f1e9;
+  --hueso-2:#eae5d9;
+  --papel:#fbf9f4;
+  --tinta:#16233a;
+  --tinta-suave:#2c3b56;
+  --grafito:#4a5568;
+  --grafito-2:#6b7688;
+  --linea:#cfc8b8;
+  --linea-fina:rgba(22,35,58,.10);
+  --botella:#14503c;
+  --botella-claro:#1d6a4f;
+  --burdeos:#6d1f2c;
+  --max:1160px;
+
+  --serif:"Iowan Old Style","Palatino Linotype","Palatino","Book Antiqua","URW Palladio L","Georgia","Times New Roman",serif;
+  --sans:"Helvetica Neue","Helvetica","Segoe UI","Liberation Sans",Arial,sans-serif;
+  --mono:"SFMono-Regular","SF Mono",Menlo,Consolas,"DejaVu Sans Mono",monospace;
+
+  --barra:38px;
+}
+
+body{
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.6;
+  color:var(--tinta);
+  background:var(--hueso);
+  overflow-x:hidden;
+  overflow-wrap:break-word;
+  word-break:break-word;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:600;line-height:1.14;letter-spacing:-.012em;text-wrap:balance}
+p{text-wrap:pretty}
+
+.wrap{width:100%;max-width:var(--max);margin-inline:auto;padding-inline:22px}
+@media (max-width:520px){.wrap{padding-inline:18px}}
+
+/* etiqueta de sección */
+.kicker{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--grafito-2);
+  display:flex;align-items:center;gap:10px;
+  margin-bottom:14px;
+}
+.kicker::after{content:"";flex:1 1 auto;height:1px;background:var(--linea);min-width:0}
+.num{
+  font-family:var(--mono);font-size:11px;color:var(--botella);
+  border:1px solid var(--linea);padding:1px 6px;border-radius:2px;flex:0 0 auto;
+}
+
+/* ========== BARRA FIJA ========== */
+.aviso{
+  position:fixed;inset:0 0 auto 0;z-index:90;
+  background:var(--tinta);
+  color:#e9e4d6;
+  border-bottom:1px solid rgba(255,255,255,.14);
+  padding:7px 14px calc(7px + env(safe-area-inset-top,0px));
+  padding-top:calc(7px + env(safe-area-inset-top,0px));
+  padding-bottom:7px;
+}
+.aviso p{
+  font-family:var(--mono);
+  font-size:10.5px;
+  line-height:1.35;
+  letter-spacing:.055em;
+  text-transform:uppercase;
+  text-align:center;
+  max-width:var(--max);
+  margin-inline:auto;
+}
+@media (max-width:420px){
+  .aviso p{font-size:9px;letter-spacing:.03em}
+}
+
+/* ========== CABECERA IDENTIDAD ========== */
+.masthead{
+  padding-top:calc(var(--barra) + env(safe-area-inset-top,0px) + 22px);
+  padding-bottom:0;
+}
+.mast-in{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:16px;flex-wrap:wrap;
+  padding-bottom:16px;
+  border-bottom:1px solid var(--linea);
+}
+.logo{display:flex;align-items:center;gap:12px;min-width:0}
+.logo-mark{flex:0 0 auto}
+.logo-txt{min-width:0}
+.logo-txt strong{
+  display:block;font-family:var(--serif);font-size:19px;font-weight:600;
+  letter-spacing:-.01em;line-height:1.1;
+}
+.logo-txt span{
+  display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.17em;
+  text-transform:uppercase;color:var(--grafito-2);margin-top:3px;
+}
+.mast-meta{
+  font-family:var(--mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--grafito);display:flex;gap:8px;align-items:center;flex-wrap:wrap;
+}
+.mast-meta a{text-decoration:none;color:var(--botella);border-bottom:1px solid rgba(20,80,60,.35)}
+@media (max-width:640px){.mast-meta{display:none}}
+
+/* ========== HERO ========== */
+.hero{
+  position:relative;
+  padding:54px 0 62px;
+  background:
+    linear-gradient(180deg,rgba(244,241,233,0) 0%,rgba(234,229,217,.55) 100%),
+    var(--hueso);
+  overflow:hidden;
+}
+/* papel milimetrado sutil */
+.hero::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:
+    repeating-linear-gradient(0deg,var(--linea-fina) 0 1px,transparent 1px 28px),
+    repeating-linear-gradient(90deg,var(--linea-fina) 0 1px,transparent 1px 28px),
+    repeating-linear-gradient(0deg,rgba(22,35,58,.05) 0 1px,transparent 1px 140px),
+    repeating-linear-gradient(90deg,rgba(22,35,58,.05) 0 1px,transparent 1px 140px);
+  mask-image:radial-gradient(120% 90% at 78% 12%,#000 0%,rgba(0,0,0,.35) 58%,transparent 92%);
+  -webkit-mask-image:radial-gradient(120% 90% at 78% 12%,#000 0%,rgba(0,0,0,.35) 58%,transparent 92%);
+}
+.hero .wrap{position:relative;z-index:1}
+.hero-grid{
+  display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
+  gap:48px;align-items:start;
+}
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr;gap:34px}}
+
+.hero h1{
+  font-size:clamp(2.05rem,6.2vw,3.55rem);
+  margin:10px 0 0;
+}
+.hero h1 em{font-style:italic;color:var(--botella)}
+.hero .lede{
+  font-size:clamp(1rem,2.4vw,1.14rem);
+  color:var(--grafito);
+  max-width:46ch;
+  margin-top:20px;
+  padding-top:20px;
+  border-top:1px solid var(--linea);
+}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:28px}
+
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--sans);font-size:15px;font-weight:600;letter-spacing:.005em;
+  text-decoration:none;
+  padding:14px 20px;border-radius:2px;
+  max-width:100%;
+}
+.btn-1{
+  background:var(--tinta);color:var(--papel);
+  border:1px solid var(--tinta);
+  box-shadow:3px 3px 0 0 var(--botella);
+  transition:transform .15s ease,box-shadow .15s ease;
+}
+.btn-1:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 0 var(--botella)}
+.btn-1:active{transform:translate(1px,1px);box-shadow:1px 1px 0 0 var(--botella)}
+.btn-2{
+  background:transparent;color:var(--tinta);
+  border:1px solid var(--linea);
+}
+.btn-2:hover{border-color:var(--tinta)}
+.btn svg{flex:0 0 auto}
+
+/* ficha lateral del hero */
+.ficha{
+  border:1px solid var(--tinta);
+  background:var(--papel);
+  box-shadow:6px 6px 0 0 rgba(22,35,58,.07);
+}
+.ficha-h{
+  background:var(--tinta);color:#e9e4d6;
+  padding:10px 16px;
+  font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
+}
+.ficha-h span:last-child{color:#a8b6a5}
+.ficha dl{display:grid;grid-template-columns:auto minmax(0,1fr)}
+.ficha dt,.ficha dd{
+  padding:11px 16px;border-bottom:1px solid var(--linea-fina);
+  font-size:14px;min-width:0;
+}
+.ficha dt{
+  font-family:var(--mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--grafito-2);white-space:nowrap;border-right:1px solid var(--linea-fina);
+}
+.ficha dd{color:var(--tinta);font-weight:500}
+.ficha dl>:nth-last-child(-n+2){border-bottom:0}
+.ficha dd a{text-decoration:none;border-bottom:1px solid rgba(20,80,60,.4);color:var(--botella)}
+
+/* cinta / marquesina */
+.cinta{
+  width:100%;max-width:100%;overflow:hidden;
+  background:var(--tinta);color:#cfd8cd;
+  border-top:1px solid rgba(255,255,255,.1);
+  border-bottom:1px solid rgba(255,255,255,.1);
+}
+.cinta-track{
+  display:flex;width:max-content;
+  animation:desliza 34s linear infinite;
+}
+.cinta-track ul{display:flex;flex:0 0 auto}
+.cinta-track li{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
+  padding:11px 0;white-space:nowrap;
+}
+.cinta-track li::after{content:"·";margin:0 22px;color:var(--botella-claro)}
+@keyframes desliza{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
+@media (prefers-reduced-motion:reduce){.cinta-track{animation:none}}
+
+/* ========== SECCIONES ========== */
+section{scroll-margin-top:calc(var(--barra) + 12px)}
+.sec{padding:70px 0}
+.sec-papel{background:var(--papel);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+.sec-h{max-width:58ch}
+.sec-h h2{font-size:clamp(1.6rem,4.2vw,2.35rem)}
+.sec-h p{color:var(--grafito);margin-top:14px;font-size:16.5px}
+
+/* ========== SERVICIOS ========== */
+.rejilla{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:1px;margin-top:38px;
+  background:var(--linea);
+  border:1px solid var(--linea);
+}
+@media (max-width:860px){.rejilla{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.rejilla{grid-template-columns:1fr}}
+.card{
+  background:var(--papel);
+  padding:26px 22px 28px;
+  min-width:0;
+  display:flex;flex-direction:column;gap:14px;
+  position:relative;
+  transition:background .18s ease;
+}
+.card:hover{background:#fff}
+.card-i{
+  width:42px;height:42px;flex:0 0 auto;
+  border:1px solid var(--linea);border-radius:2px;
+  display:grid;place-items:center;
+  background:linear-gradient(160deg,#fff,var(--hueso-2));
+  color:var(--botella);
+}
+.card h3{font-size:1.16rem;letter-spacing:-.008em}
+.card p{font-size:14.5px;color:var(--grafito);line-height:1.62}
+.card-n{
+  position:absolute;top:18px;right:20px;
+  font-family:var(--mono);font-size:10px;color:var(--linea);letter-spacing:.1em;
+}
+
+/* ========== PASOS ========== */
+.pasos{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:28px;margin-top:40px;counter-reset:p;
+}
+@media (max-width:820px){.pasos{grid-template-columns:1fr;gap:0}}
+.paso{
+  min-width:0;padding-top:20px;border-top:2px solid var(--tinta);
+}
+@media (max-width:820px){
+  .paso{border-top:1px solid var(--linea);padding:22px 0}
+  .paso:first-child{border-top:2px solid var(--tinta)}
+}
+.paso-n{
+  font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--burdeos);
+  text-transform:uppercase;display:block;margin-bottom:10px;
+}
+.paso h3{font-size:1.24rem;margin-bottom:10px}
+.paso p{font-size:14.5px;color:var(--grafito)}
+
+/* ========== CONTACTO ========== */
+.contacto-grid{
+  display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);
+  gap:44px;margin-top:38px;align-items:start;
+}
+@media (max-width:880px){.contacto-grid{grid-template-columns:1fr;gap:34px}}
+
+.datos{border-top:1px solid var(--linea)}
+.dato{
+  display:flex;gap:16px;align-items:flex-start;
+  padding:20px 0;border-bottom:1px solid var(--linea);min-width:0;
+}
+.dato-i{flex:0 0 auto;color:var(--botella);margin-top:2px}
+.dato-c{min-width:0}
+.dato-c h4{
+  font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--grafito-2);font-weight:400;margin-bottom:5px;
+}
+.dato-c p,.dato-c a{font-size:16px;line-height:1.5;display:block;min-width:0}
+.dato-c a{text-decoration:none;color:var(--tinta);border-bottom:1px solid var(--linea)}
+.dato-c a:hover{border-bottom-color:var(--tinta)}
+.tel-grande{
+  font-family:var(--serif);font-size:clamp(1.4rem,4.6vw,1.75rem);font-weight:600;
+  letter-spacing:.01em;
+}
+.nota{font-family:var(--mono);font-size:11px;color:var(--grafito-2);letter-spacing:.04em;margin-top:6px}
+
+/* mapa esquemático */
+.mapa{
+  border:1px solid var(--tinta);background:#eef0e9;
+  box-shadow:6px 6px 0 0 rgba(22,35,58,.07);
+  width:100%;max-width:100%;overflow:hidden;
+}
+.mapa-h{
+  background:var(--tinta);color:#e9e4d6;padding:9px 14px;
+  font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;
+  display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
+}
+.mapa svg{width:100%;height:auto;display:block}
+.mapa-pie{
+  padding:11px 14px;border-top:1px solid var(--linea);background:var(--papel);
+  font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--grafito-2);
+  text-transform:uppercase;
+}
+
+/* ========== PIE ========== */
+footer{
+  background:var(--tinta);color:#ddd8c9;
+  padding:54px 0 calc(34px + env(safe-area-inset-bottom,0px));
+  position:relative;overflow:hidden;
+}
+footer::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:
+    repeating-linear-gradient(0deg,rgba(255,255,255,.045) 0 1px,transparent 1px 30px),
+    repeating-linear-gradient(90deg,rgba(255,255,255,.045) 0 1px,transparent 1px 30px);
+  mask-image:linear-gradient(200deg,#000,transparent 70%);
+  -webkit-mask-image:linear-gradient(200deg,#000,transparent 70%);
+}
+footer .wrap{position:relative;z-index:1}
+.pie-top{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,auto);
+  gap:30px;align-items:end;
+  padding-bottom:26px;border-bottom:1px solid rgba(255,255,255,.16);
+}
+@media (max-width:760px){.pie-top{grid-template-columns:1fr;align-items:start}}
+.pie-top h2{font-size:clamp(1.4rem,4.4vw,2rem);color:var(--papel)}
+.pie-mail{
+  font-family:var(--mono);font-size:clamp(11px,2.6vw,13.5px);
+  letter-spacing:.02em;color:#fff;text-decoration:none;
+  border-bottom:1px solid rgba(255,255,255,.4);
+  display:inline-block;max-width:100%;
+  padding-bottom:3px;
+}
+.pie-mail:hover{border-bottom-color:#fff}
+.pie-bot{
+  margin-top:24px;display:flex;flex-wrap:wrap;gap:14px 30px;justify-content:space-between;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;
+  color:rgba(233,228,214,.62);line-height:1.7;
+}
+.pie-bot p{max-width:62ch}
+.firma{color:rgba(233,228,214,.85)}
+
+a:focus-visible,button:focus-visible{outline:2px solid var(--botella-claro);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<!-- 1 · BARRA FIJA -->
+<div class="aviso" role="note">
+  <p>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</p>
+</div>
+
+<!-- CABECERA IDENTIDAD -->
+<header class="masthead">
+  <div class="wrap">
+    <div class="mast-in">
+      <div class="logo">
+        <svg class="logo-mark" width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
+          <rect x="1.5" y="1.5" width="37" height="37" fill="none" stroke="#16233a" stroke-width="1.4"/>
+          <path d="M8 31 L20 9 L32 31" fill="none" stroke="#16233a" stroke-width="1.6" stroke-linejoin="miter"/>
+          <path d="M13 24 H27" stroke="#14503c" stroke-width="1.6"/>
+          <path d="M6 35.5 H34" stroke="#6d1f2c" stroke-width="1.2"/>
+        </svg>
+        <div class="logo-txt">
+          <strong>Asesoría Luis García</strong>
+          <span>Fiscal · Laboral · Contable</span>
+        </div>
+      </div>
+      <div class="mast-meta">
+        <span>Valdepeñas, Ciudad Real</span>
+        <span aria-hidden="true">/</span>
+        <a href="tel:926312608">926&nbsp;312&nbsp;608</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- 2 · HERO -->
+<section class="hero" aria-labelledby="t-hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <p class="kicker"><span class="num">01</span> Asesoría en Valdepeñas</p>
+        <h1 id="t-hero">Sus cuentas, sus nóminas y sus impuestos,<br><em>en orden y al día</em>.</h1>
+        <p class="lede">
+          Asesoramiento fiscal, laboral y contable para autónomos, pymes y particulares.
+          Llevamos la gestión del día a día y las obligaciones periódicas con criterio
+          profesional, para que usted se ocupe de su actividad y no del papeleo.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-1" href="tel:926312608">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M6.5 3h3l1.6 4-2.2 1.6a12 12 0 0 0 6.5 6.5L17 12.9l4 1.6v3a2.5 2.5 0 0 1-2.7 2.5C10.4 19.4 4.6 13.6 4 5.7A2.5 2.5 0 0 1 6.5 3Z"/>
+            </svg>
+            Llamar al 926 312 608
+          </a>
+          <a class="btn btn-2" href="#contacto">
+            Ver dónde estamos
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h13"/><path d="M12.5 6l6 6-6 6"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <aside class="ficha" aria-label="Datos del despacho">
+        <div class="ficha-h"><span>El despacho</span><span>Valdepeñas</span></div>
+        <dl>
+          <dt>Ámbitos</dt><dd>Fiscal, laboral y contable</dd>
+          <dt>Dirigido a</dt><dd>Autónomos, pymes y particulares</dd>
+          <dt>Dirección</dt><dd>Paseo Luis Palacios 21, 13300 Valdepeñas (Ciudad Real)</dd>
+          <dt>Teléfono</dt><dd><a href="tel:926312608">926 312 608</a></dd>
+          <dt>Horario</dt><dd>Consultar horario</dd>
+        </dl>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- CINTA -->
+<div class="cinta" aria-hidden="true">
+  <div class="cinta-track">
+    <ul>
+      <li>Declaraciones periódicas</li><li>Nóminas</li><li>Seguros sociales</li>
+      <li>Contabilidad</li><li>Altas de autónomos</li><li>Sociedades</li>
+      <li>Herencias y trámites</li><li>Renta</li>
+    </ul>
+    <ul>
+      <li>Declaraciones periódicas</li><li>Nóminas</li><li>Seguros sociales</li>
+      <li>Contabilidad</li><li>Altas de autónomos</li><li>Sociedades</li>
+      <li>Herencias y trámites</li><li>Renta</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 3 · SERVICIOS -->
+<section class="sec" id="servicios" aria-labelledby="t-serv">
+  <div class="wrap">
+    <div class="sec-h">
+      <p class="kicker"><span class="num">02</span> Servicios</p>
+      <h2 id="t-serv">Lo que un despacho resuelve, resuelto en un solo sitio</h2>
+      <p>Áreas de trabajo habituales de una asesoría fiscal, laboral y contable. Si su caso no encaja exactamente en ninguna, pregúntenos por teléfono.</p>
+    </div>
+
+    <div class="rejilla">
+
+      <article class="card">
+        <span class="card-n">01</span>
+        <span class="card-i" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2.5h9l3.5 3.5v15H6z"/><path d="M14.5 2.5V6H18"/>
+            <path d="M9 11h6"/><path d="M9 14.5h6"/><path d="M9 18h3.5"/>
+          </svg>
+        </span>
+        <h3>Asesoría fiscal y declaraciones</h3>
+        <p>Seguimiento de las obligaciones tributarias de su actividad y preparación y presentación de las declaraciones que le correspondan.</p>
+      </article>
+
+      <article class="card">
+        <span class="card-n">02</span>
+        <span class="card-i" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="8" r="3.2"/>
+            <path d="M3.2 20c0-3.4 2.6-5.8 5.8-5.8s5.8 2.4 5.8 5.8"/>
+            <path d="M16.5 7.5h4.3"/><path d="M16.5 11h4.3"/><path d="M18 14.5h2.8"/>
+          </svg>
+        </span>
+        <h3>Nóminas y seguros sociales</h3>
+        <p>Confección de nóminas, contratos y comunicaciones laborales, además de la gestión de altas, bajas y cotizaciones de sus trabajadores.</p>
+      </article>
+
+      <article class="card">
+        <span class="card-n">03</span>
+        <span class="card-i" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3.5" width="18" height="17" rx="1"/>
+            <path d="M3 8.5h18"/><path d="M9 8.5v12"/><path d="M15 8.5v12"/><path d="M3 14.5h18"/>
+          </svg>
+        </span>
+        <h3>Contabilidad</h3>
+        <p>Llevanza de la contabilidad de su negocio, registro y clasificación de operaciones y elaboración de los libros y cuentas que exija su forma jurídica.</p>
+      </article>
+
+      <article class="card">
+        <span class="card-n">04</span>
+        <span class="card-i" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 20.5V10l8-6 8 6v10.5"/>
+            <path d="M9.5 20.5v-6h5v6"/>
+            <path d="M2.5 20.5h19"/>
+          </svg>
+        </span>
+        <h3>Altas de autónomos y sociedades</h3>
+        <p>Acompañamiento al iniciar la actividad: alta como autónomo o constitución de la sociedad, con los trámites administrativos que conlleva.</p>
+      </article>
+
+      <article class="card">
+        <span class="card-n">05</span>
+        <span class="card-i" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3.2v17.6"/><path d="M5 7.5h14"/>
+            <path d="M5 7.5 2.6 13h4.8z"/><path d="M19 7.5 16.6 13h4.8z"/>
+            <path d="M8.5 20.8h7"/>
+          </svg>
+        </span>
+        <h3>Herencias y trámites</h3>
+        <p>Gestión documental de herencias y de otros trámites ante la Administración, con la tramitación fiscal que cada caso requiera.</p>
+      </article>
+
+      <article class="card">
+        <span class="card-n">06</span>
+        <span class="card-i" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4.5" y="2.8" width="15" height="18.4" rx="1"/>
+            <path d="M8 7h8"/><path d="M8 11h3"/><path d="M13 11h3"/>
+            <path d="M8 14.5h3"/><path d="M13 14.5h3"/><path d="M8 18h8"/>
+          </svg>
+        </span>
+        <h3>Declaración de la renta</h3>
+        <p>Revisión de su situación personal y familiar y preparación de la declaración de la renta, tanto para particulares como para trabajadores por cuenta propia.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- 4 · CÓMO TRABAJAMOS -->
+<section class="sec sec-papel" id="metodo" aria-labelledby="t-met">
+  <div class="wrap">
+    <div class="sec-h">
+      <p class="kicker"><span class="num">03</span> Cómo trabajamos</p>
+      <h2 id="t-met">Tres pasos, sin sorpresas</h2>
+      <p>Una forma de trabajar sencilla y ordenada, para que sepa en todo momento qué hay que hacer y quién lo hace.</p>
+    </div>
+
+    <ol class="pasos">
+      <li class="paso">
+        <span class="paso-n">Paso uno</span>
+        <h3>Hablamos de su caso</h3>
+        <p>Nos cuenta su situación por teléfono o en el despacho: actividad, forma jurídica y qué necesita resolver. Revisamos qué documentación hace falta.</p>
+      </li>
+      <li class="paso">
+        <span class="paso-n">Paso dos</span>
+        <h3>Organizamos la documentación</h3>
+        <p>Recogemos y ordenamos la información necesaria, aclaramos lo que falte y dejamos definido el alcance del trabajo antes de empezar.</p>
+      </li>
+      <li class="paso">
+        <span class="paso-n">Paso tres</span>
+        <h3>Gestionamos y le informamos</h3>
+        <p>Nos encargamos de la presentación y del seguimiento de sus obligaciones, y le avisamos de lo que le afecta cuando le afecta.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- 5 · CONTACTO -->
+<section class="sec" id="contacto" aria-labelledby="t-con">
+  <div class="wrap">
+    <div class="sec-h">
+      <p class="kicker"><span class="num">04</span> Contacto</p>
+      <h2 id="t-con">Estamos en el Paseo Luis Palacios</h2>
+      <p>La forma más rápida de resolver una duda es una llamada. Le atendemos y, si hace falta, concertamos una cita en el despacho.</p>
+    </div>
+
+    <div class="contacto-grid">
+      <div class="datos">
+
+        <div class="dato">
+          <span class="dato-i" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6.5 3h3l1.6 4-2.2 1.6a12 12 0 0 0 6.5 6.5L17 12.9l4 1.6v3a2.5 2.5 0 0 1-2.7 2.5C10.4 19.4 4.6 13.6 4 5.7A2.5 2.5 0 0 1 6.5 3Z"/>
+            </svg>
+          </span>
+          <div class="dato-c">
+            <h4>Teléfono</h4>
+            <a class="tel-grande" href="tel:926312608">926 312 608</a>
+          </div>
+        </div>
+
+        <div class="dato">
+          <span class="dato-i" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11Z"/>
+              <circle cx="12" cy="10" r="2.6"/>
+            </svg>
+          </span>
+          <div class="dato-c">
+            <h4>Dirección</h4>
+            <p>Paseo Luis Palacios 21<br>13300 Valdepeñas (Ciudad Real)</p>
+          </div>
+        </div>
+
+        <div class="dato">
+          <span class="dato-i" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="8.7"/><path d="M12 7v5.3l3.4 2"/>
+            </svg>
+          </span>
+          <div class="dato-c">
+            <h4>Horario de atención</h4>
+            <p>Consultar horario</p>
+            <p class="nota">Llame al 926 312 608 para confirmarlo</p>
+          </div>
+        </div>
+
+        <div class="dato">
+          <span class="dato-i" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2.8" y="5" width="18.4" height="14" rx="1.2"/>
+              <path d="M3.4 6.2 12 13l8.6-6.8"/>
+            </svg>
+          </span>
+          <div class="dato-c">
+            <h4>Correo electrónico</h4>
+            <a href="mailto:luis.asesorialuisgarcia@gmail.com">luis.asesorialuisgarcia@gmail.com</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- MAPA ESQUEMÁTICO SVG -->
+      <figure class="mapa">
+        <div class="mapa-h"><span>Plano esquemático</span><span>Valdepeñas</span></div>
+        <svg viewBox="0 0 600 420" role="img" aria-label="Plano esquemático dibujado a mano que sitúa el despacho en el Paseo Luis Palacios 21, en Valdepeñas.">
+          <defs>
+            <pattern id="trama" width="20" height="20" patternUnits="userSpaceOnUse">
+              <path d="M0 0H20M0 0V20" stroke="#16233a" stroke-opacity=".07" stroke-width="1"/>
+            </pattern>
+            <linearGradient id="fondoMapa" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#f1f2ea"/>
+              <stop offset="1" stop-color="#e3e6dc"/>
+            </linearGradient>
+            <linearGradient id="verdeZona" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#1d6a4f" stop-opacity=".18"/>
+              <stop offset="1" stop-color="#14503c" stop-opacity=".10"/>
+            </linearGradient>
+          </defs>
+
+          <rect width="600" height="420" fill="url(#fondoMapa)"/>
+          <rect width="600" height="420" fill="url(#trama)"/>
+
+          <!-- manzanas -->
+          <g fill="#16233a" fill-opacity=".055" stroke="#16233a" stroke-opacity=".16" stroke-width="1">
+            <rect x="34" y="40" width="140" height="96" rx="2"/>
+            <rect x="34" y="168" width="140" height="120" rx="2"/>
+            <rect x="34" y="320" width="140" height="66" rx="2"/>
+            <rect x="380" y="40" width="112" height="112" rx="2"/>
+            <rect x="514" y="40" width="54" height="112" rx="2"/>
+            <rect x="380" y="186" width="188" height="86" rx="2"/>
+            <rect x="380" y="306" width="90" height="80" rx="2"/>
+            <rect x="498" y="306" width="70" height="80" rx="2"/>
+          </g>
+
+          <!-- zona verde del paseo -->
+          <rect x="208" y="30" width="136" height="360" rx="3" fill="url(#verdeZona)" stroke="#14503c" stroke-opacity=".3" stroke-width="1"/>
+          <g stroke="#14503c" stroke-opacity=".34" stroke-width="1.1" stroke-linecap="round">
+            <path d="M232 70v18M232 130v18M232 190v18M232 250v18M232 310v18"/>
+            <path d="M320 70v18M320 130v18M320 190v18M320 250v18M320 310v18"/>
+          </g>
+          <!-- arbolado abstracto -->
+          <g fill="none" stroke="#14503c" stroke-opacity=".45" stroke-width="1.2">
+            <circle cx="232" cy="100" r="7"/><circle cx="232" cy="220" r="7"/><circle cx="232" cy="340" r="7"/>
+            <circle cx="320" cy="100" r="7"/><circle cx="320" cy="220" r="7"/><circle cx="320" cy="340" r="7"/>
+          </g>
+
+          <!-- calzadas -->
+          <g stroke="#16233a" stroke-opacity=".5" stroke-width="2" fill="none">
+            <path d="M191 20V400"/>
+            <path d="M362 20V400"/>
+            <path d="M20 152H580"/>
+            <path d="M20 296H580"/>
+          </g>
+          <g stroke="#f7f7f2" stroke-width="1.4" stroke-dasharray="9 11" fill="none">
+            <path d="M191 20V400"/><path d="M362 20V400"/>
+            <path d="M20 152H580"/><path d="M20 296H580"/>
+          </g>
+
+          <!-- rótulo del paseo -->
+          <text x="276" y="392" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="12.5" letter-spacing="2.4" fill="#14503c">PASEO LUIS PALACIOS</text>
+
+          <!-- rótulos genéricos de ejes -->
+          <text x="46" y="145" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10" letter-spacing="1.6" fill="#16233a" fill-opacity=".45">CALLE</text>
+          <text x="46" y="289" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10" letter-spacing="1.6" fill="#16233a" fill-opacity=".45">CALLE</text>
+
+          <!-- marcador -->
+          <g>
+            <path d="M362 206 L318 206" stroke="#6d1f2c" stroke-width="1.4" stroke-dasharray="4 4"/>
+            <circle cx="276" cy="206" r="15" fill="none" stroke="#6d1f2c" stroke-width="1.2" stroke-opacity=".5"/>
+            <path d="M276 190.5c-6 0-10.8 4.8-10.8 10.8 0 7.6 10.8 17.7 10.8 17.7s10.8-10.1 10.8-17.7c0-6-4.8-10.8-10.8-10.8Z" fill="#6d1f2c"/>
+            <circle cx="276" cy="201" r="3.6" fill="#f4f1e9"/>
+            <g>
+              <rect x="368" y="188" width="196" height="38" fill="#16233a"/>
+              <text x="380" y="203" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="11" letter-spacing="1.2" fill="#e9e4d6">ASESORÍA LUIS GARCÍA</text>
+              <text x="380" y="218" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10" letter-spacing="1.1" fill="#9db7a8">PASEO LUIS PALACIOS 21</text>
+            </g>
+          </g>
+
+          <!-- rosa de los vientos -->
+          <g transform="translate(548,378)" stroke="#16233a" stroke-opacity=".55" fill="none" stroke-width="1.2">
+            <path d="M0 -20V14"/><path d="M-6 -8 0 -20 6 -8"/>
+            <text x="0" y="26" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10" fill="#16233a" fill-opacity=".55" stroke="none">N</text>
+          </g>
+        </svg>
+        <figcaption class="mapa-pie">Plano orientativo dibujado para esta propuesta · no es un mapa a escala</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · PIE -->
+<footer>
+  <div class="wrap">
+    <div class="pie-top">
+      <div>
+        <p class="kicker" style="color:rgba(233,228,214,.5)"><span class="num" style="border-color:rgba(255,255,255,.22);color:#9db7a8">05</span> Escríbanos</p>
+        <h2>¿Prefiere contarlo por correo?</h2>
+      </div>
+      <div>
+        <a class="pie-mail" href="mailto:luis.asesorialuisgarcia@gmail.com">luis.asesorialuisgarcia@gmail.com</a>
+      </div>
+    </div>
+
+    <div class="pie-bot">
+      <p>
+        Asesoría Luis García · Paseo Luis Palacios 21, 13300 Valdepeñas (Ciudad Real) ·
+        <a href="tel:926312608" style="color:#c7d6c9;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.3)">926 312 608</a>
+        · Consultar horario
+      </p>
+      <p class="firma">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Compensa la altura real de la barra fija (evita que tape contenido en móvil). */
+(function () {
+  var aviso = document.querySelector('.aviso');
+  if (!aviso) return;
+  function ajusta() {
+    document.documentElement.style.setProperty('--barra', aviso.offsetHeight + 'px');
+  }
+  ajusta();
+  window.addEventListener('resize', ajusta, { passive: true });
+  if (document.fonts && document.fonts.ready) { document.fonts.ready.then(ajusta); }
+})();
+</script>
+</body>
+</html>

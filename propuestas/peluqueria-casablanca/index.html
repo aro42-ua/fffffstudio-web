@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Peluquería Casablanca · Valdepeñas</title>
+<meta name="description" content="Maqueta de propuesta comercial no oficial para Peluquería Casablanca, Valdepeñas (Ciudad Real).">
+<style>
+:root{
+  --crema:#F7F1E8;
+  --crema-2:#FDF9F3;
+  --arena:#E4D3BD;
+  --arena-2:#D6BFA3;
+  --terracota:#B25A38;
+  --terracota-claro:#C97B57;
+  --espresso:#2E2018;
+  --espresso-2:#4A362A;
+  --verde:#3F4A3C;
+  --linea:rgba(46,32,24,.16);
+  --serif:Georgia,"Palatino Linotype",Palatino,"Book Antiqua","Times New Roman",serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+  --barra:38px;
+}
+*{box-sizing:border-box}
+html,body{max-width:100%;overflow-x:hidden}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;padding-top:var(--barra);
+  background:var(--crema);color:var(--espresso);
+  font-family:var(--sans);font-size:17px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+img,svg{max-width:100%}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.12;margin:0;letter-spacing:-.01em}
+p{margin:0 0 1em}
+a{color:inherit}
+.wrap{width:100%;max-width:1160px;margin:0 auto;padding:0 24px}
+
+/* ---- Barra fija ---- */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  height:var(--barra);width:100%;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--espresso);color:#EFE3D6;
+  font-family:var(--sans);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  overflow:hidden;white-space:nowrap;padding:0 12px;
+}
+.topbar span{overflow:hidden;text-overflow:ellipsis;max-width:100%}
+
+/* ---- Nav ---- */
+.nav{position:relative;z-index:5}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 0 8px;flex-wrap:wrap}
+.marca{display:flex;align-items:center;gap:12px;text-decoration:none}
+.marca .mk{width:38px;height:38px;flex:0 0 38px}
+.marca b{display:block;font-family:var(--serif);font-size:19px;font-weight:400;letter-spacing:.02em;line-height:1.1}
+.marca small{display:block;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--espresso-2);opacity:.75}
+.nav-links{display:flex;gap:26px;align-items:center;flex-wrap:wrap}
+.nav-links a{font-size:13px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:var(--espresso-2);padding:4px 0;border-bottom:1px solid transparent}
+.nav-links a:hover{border-bottom-color:var(--terracota)}
+@media(max-width:700px){.nav-links{display:none}}
+
+/* ---- Botones ---- */
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:15px 26px;border-radius:999px;text-decoration:none;
+  font-size:14px;letter-spacing:.09em;text-transform:uppercase;
+  border:1px solid transparent;transition:.25s;white-space:nowrap;
+}
+.btn-p{background:var(--terracota);color:#FFF6EE;box-shadow:0 10px 26px -14px rgba(178,90,56,.9)}
+.btn-p:hover{background:var(--espresso)}
+.btn-s{border-color:var(--linea);color:var(--espresso)}
+.btn-s:hover{border-color:var(--terracota);color:var(--terracota)}
+.btn svg{flex:0 0 16px}
+
+/* ---- Hero ---- */
+.hero{position:relative;overflow:hidden;padding:36px 0 86px}
+.hero-bg{position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:
+   radial-gradient(900px 620px at 88% 8%, rgba(214,191,163,.75), transparent 62%),
+   radial-gradient(700px 520px at 6% 92%, rgba(178,90,56,.14), transparent 60%),
+   linear-gradient(180deg,var(--crema-2),var(--crema));
+}
+.hero-bg::after{content:"";position:absolute;inset:0;opacity:.35;
+  background-image:repeating-linear-gradient(135deg,rgba(46,32,24,.05) 0 1px,transparent 1px 7px);}
+.hero-in{position:relative;z-index:1;display:grid;grid-template-columns:1.06fr .94fr;gap:56px;align-items:center;padding-top:40px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--terracota);margin-bottom:22px}
+.eyebrow::before{content:"";width:34px;height:1px;background:var(--terracota);display:block}
+.hero h1{font-size:clamp(40px,6.2vw,70px)}
+.hero h1 em{font-style:italic;color:var(--terracota)}
+.hero .lead{font-size:clamp(17px,1.5vw,20px);max-width:32em;margin-top:22px;color:var(--espresso-2)}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px;align-items:center}
+.tel-note{font-size:13px;color:var(--espresso-2);opacity:.8;letter-spacing:.04em}
+.hero-art{position:relative}
+.hero-art svg{display:block;width:100%;height:auto}
+
+/* ---- Cinta ---- */
+.cinta{width:100%;overflow:hidden;background:var(--espresso);color:#E9DACB;border-top:1px solid rgba(255,255,255,.06)}
+.cinta-track{display:flex;width:max-content;gap:0;animation:desliza 34s linear infinite}
+.cinta-track span{display:inline-flex;align-items:center;gap:22px;padding:14px 22px;font-size:11px;letter-spacing:.3em;text-transform:uppercase;white-space:nowrap}
+.cinta-track span::after{content:"◆";color:var(--terracota-claro);font-size:8px;letter-spacing:0}
+@keyframes desliza{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.cinta-track{animation:none}}
+
+/* ---- Secciones ---- */
+section{position:relative}
+.sec{padding:96px 0}
+.sec-head{max-width:620px;margin-bottom:54px}
+.sec-head h2{font-size:clamp(30px,3.6vw,46px);margin-bottom:16px}
+.sec-head p{color:var(--espresso-2);margin:0}
+.kicker{display:block;font-family:var(--sans);font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--terracota);margin-bottom:16px}
+
+/* servicios */
+.servicios{background:linear-gradient(180deg,var(--crema),#F2E9DC)}
+.grid-s{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--linea);border:1px solid var(--linea)}
+.card{background:var(--crema-2);padding:38px 32px;transition:.3s}
+.card:hover{background:#fff}
+.card .ico{width:44px;height:44px;margin-bottom:22px;display:block}
+.card h3{font-size:22px;margin-bottom:10px}
+.card p{font-size:15px;color:var(--espresso-2);margin:0}
+.card .n{font-size:11px;letter-spacing:.2em;color:var(--arena-2);display:block;margin-bottom:18px}
+
+/* pasos */
+.pasos{background:var(--espresso);color:#F0E4D6}
+.pasos .sec-head h2{color:#FBF4EA}
+.pasos .sec-head p{color:rgba(240,228,214,.72)}
+.pasos .kicker{color:var(--terracota-claro)}
+.grid-p{display:grid;grid-template-columns:repeat(3,1fr);gap:34px}
+.paso{border-top:1px solid rgba(240,228,214,.22);padding-top:26px}
+.paso .num{font-family:var(--serif);font-size:54px;line-height:1;color:var(--terracota-claro);display:block;margin-bottom:16px}
+.paso h3{font-size:21px;color:#FBF4EA;margin-bottom:10px}
+.paso p{font-size:15px;color:rgba(240,228,214,.78);margin:0}
+
+/* contacto */
+.contacto{background:linear-gradient(180deg,#F2E9DC,var(--crema-2))}
+.grid-c{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+.datos dl{margin:0;border-top:1px solid var(--linea)}
+.datos .fila{display:flex;gap:18px;padding:22px 0;border-bottom:1px solid var(--linea);align-items:flex-start}
+.datos .fila svg{flex:0 0 22px;margin-top:3px}
+.datos dt{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--espresso-2);opacity:.7;margin-bottom:4px}
+.datos dd{margin:0;font-family:var(--serif);font-size:20px;line-height:1.35}
+.datos dd a{text-decoration:none;border-bottom:1px solid var(--terracota)}
+.mapa{border:1px solid var(--linea);background:#F6EFE4;padding:14px;border-radius:2px}
+.mapa svg{display:block;width:100%;height:auto;border-radius:2px}
+.mapa figcaption{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--espresso-2);opacity:.7;padding:12px 4px 2px}
+.aviso{margin-top:28px;font-size:14px;color:var(--espresso-2);background:rgba(178,90,56,.07);border-left:2px solid var(--terracota);padding:14px 18px}
+
+/* footer */
+footer{background:var(--espresso);color:#E6D8C8;padding:66px 0 34px}
+.f-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:start}
+footer h3{font-size:26px;color:#FBF4EA;margin-bottom:12px}
+footer a{color:#F3E7D8}
+.f-mail{font-family:var(--serif);font-size:19px;word-break:break-word}
+.f-bottom{margin-top:48px;padding-top:22px;border-top:1px solid rgba(240,228,214,.2);font-size:12.5px;color:rgba(230,216,200,.72);display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
+
+@media(max-width:980px){
+  .hero-in{grid-template-columns:1fr;gap:38px;padding-top:18px}
+  .hero-art{order:-1;max-width:420px}
+  .grid-s{grid-template-columns:repeat(2,1fr)}
+  .grid-p{grid-template-columns:1fr 1fr;gap:28px}
+  .grid-c{grid-template-columns:1fr;gap:38px}
+  .f-grid{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  body{font-size:16px}
+  .wrap{padding:0 16px}
+  .sec{padding:66px 0}
+  .grid-s{grid-template-columns:1fr}
+  .grid-p{grid-template-columns:1fr}
+  .card{padding:30px 22px}
+  .hero{padding:24px 0 62px}
+  .hero-cta .btn{width:100%;justify-content:center}
+  .sec-head{margin-bottom:38px}
+  .topbar{font-size:9.5px;letter-spacing:.06em}
+}
+
+/* La barra de maqueta debe leerse entera tambien en movil */
+@media (max-width:560px){
+  .topbar, .topbar span{white-space:normal!important;overflow:visible!important;text-overflow:clip!important}
+  .topbar{line-height:1.35;padding-top:5px;padding-bottom:5px;text-align:center}
+  .topbar span{font-size:9px;letter-spacing:.02em;display:block}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="marca" href="#top">
+      <svg class="mk" viewBox="0 0 48 48" aria-hidden="true">
+        <circle cx="24" cy="24" r="23" fill="none" stroke="#B25A38" stroke-width="1.2"/>
+        <path d="M14 33c5-4 9-9 10-16 1 7 5 12 10 16" fill="none" stroke="#2E2018" stroke-width="1.6" stroke-linecap="round"/>
+        <circle cx="24" cy="14" r="2.6" fill="#B25A38"/>
+      </svg>
+      <span><b>Casablanca</b><small>Peluquería · Valdepeñas</small></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#servicios">Servicios</a>
+      <a href="#visita">Tu primera visita</a>
+      <a href="#contacto">Contacto</a>
+      <a href="tel:+34698808383">698 808 383</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="wrap hero-in">
+    <div>
+      <span class="eyebrow">Peluquería y estética en Valdepeñas</span>
+      <h1>El cuidado de siempre,<br><em>con otra mirada</em>.</h1>
+      <p class="lead">Un salón de barrio en el centro de Valdepeñas donde se escucha antes de cortar. Corte, color, recogidos y tratamientos capilares pensados para tu pelo y tu ritmo de vida, sin prisas y sin fórmulas prestadas.</p>
+      <div class="hero-cta">
+        <a class="btn btn-p" href="tel:+34698808383">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3h3l1.5 5-2.2 1.6a12 12 0 0 0 5.6 5.6L16 13l5 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 3.5 5.2 2 2 0 0 1 5.5 3z"/></svg>
+          Llamar al 698 808 383
+        </a>
+        <a class="btn btn-s" href="#servicios">Ver servicios</a>
+      </div>
+      <p class="tel-note" style="margin-top:18px">C/ Seis de Junio 142, Valdepeñas · Consultar horario</p>
+    </div>
+
+    <div class="hero-art">
+      <svg viewBox="0 0 440 480" role="img" aria-label="Ilustración: retrato estilizado de perfil con tijeras y peine">
+        <defs>
+          <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#E9D7BE"/><stop offset="1" stop-color="#D2AE8A"/>
+          </linearGradient>
+          <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#B25A38"/><stop offset="1" stop-color="#8E4328"/>
+          </linearGradient>
+          <pattern id="tram" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
+            <line x1="0" y1="0" x2="0" y2="7" stroke="#2E2018" stroke-width="1" opacity=".18"/>
+          </pattern>
+        </defs>
+        <rect x="26" y="20" width="388" height="440" rx="194" fill="url(#g1)"/>
+        <rect x="26" y="20" width="388" height="440" rx="194" fill="url(#tram)"/>
+        <rect x="26" y="20" width="388" height="440" rx="194" fill="none" stroke="#2E2018" stroke-width="1.1" opacity=".3"/>
+        <!-- melena -->
+        <path d="M296 176c0-62-38-104-86-104-52 0-88 42-88 106 0 44-14 64-22 92-8 28 4 52 30 58 18 4 26-8 24-24 22 14 46 18 70 10" fill="#3A2A20"/>
+        <!-- rostro -->
+        <path d="M146 182c0-44 30-74 70-74s66 30 66 76c0 46-24 92-64 96-38 4-72-40-72-98z" fill="#F6E7D5"/>
+        <path d="M146 182c0-44 30-74 70-74s66 30 66 76c0 46-24 92-64 96-38 4-72-40-72-98z" fill="none" stroke="#2E2018" stroke-width="1.2" opacity=".5"/>
+        <!-- mechones frontales -->
+        <path d="M150 168c18-30 46-46 80-44 26 2 44 14 52 32-14-12-34-18-58-18-30 0-56 12-74 30z" fill="#2E2018" opacity=".9"/>
+        <path d="M262 214c10 24 6 52-8 72" fill="none" stroke="#2E2018" stroke-width="1.2" opacity=".35"/>
+        <!-- rasgos -->
+        <path d="M176 206c8-6 18-6 26 0" fill="none" stroke="#2E2018" stroke-width="2" stroke-linecap="round"/>
+        <path d="M232 206c8-6 18-6 26 0" fill="none" stroke="#2E2018" stroke-width="2" stroke-linecap="round"/>
+        <path d="M214 218c2 16 2 26-6 32 4 4 10 5 16 3" fill="none" stroke="#2E2018" stroke-width="1.6" stroke-linecap="round" opacity=".7"/>
+        <path d="M198 276c12 8 26 8 38 0" fill="none" stroke="#B25A38" stroke-width="2.4" stroke-linecap="round"/>
+        <!-- cuello y hombros -->
+        <path d="M188 300v22c0 16-22 22-42 32-24 12-34 30-38 58h228c-4-30-16-46-40-58-20-10-42-16-42-32v-24" fill="#EFDCC6" stroke="#2E2018" stroke-width="1.1" opacity=".95"/>
+        <!-- tijeras -->
+        <g transform="translate(300 318) rotate(-18)" stroke="url(#g2)" stroke-width="4.4" fill="none" stroke-linecap="round">
+          <path d="M0 0 66 56"/><path d="M0 56 66 0"/>
+          <circle cx="-8" cy="-6" r="9"/><circle cx="-8" cy="62" r="9"/>
+        </g>
+        <!-- peine -->
+        <g transform="translate(58 316) rotate(14)" stroke="#2E2018" stroke-width="3.4" stroke-linecap="round">
+          <path d="M0 0h84" />
+          <path d="M6 0v22M20 0v22M34 0v22M48 0v22M62 0v22M76 0v22" stroke-width="2.6"/>
+        </g>
+        <circle cx="366" cy="96" r="26" fill="none" stroke="#B25A38" stroke-width="1.2" opacity=".8"/>
+        <circle cx="76" cy="122" r="7" fill="#B25A38" opacity=".7"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="cinta" aria-hidden="true">
+  <div class="cinta-track">
+    <span>Corte</span><span>Color</span><span>Recogidos</span><span>Tratamientos capilares</span><span>Estética básica</span><span>Asesoramiento</span>
+    <span>Corte</span><span>Color</span><span>Recogidos</span><span>Tratamientos capilares</span><span>Estética básica</span><span>Asesoramiento</span>
+  </div>
+</div>
+
+<!-- SERVICIOS -->
+<section class="sec servicios" id="servicios">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Lo que hacemos</span>
+      <h2>Servicios de peluquería y estética</h2>
+      <p>Trabajo de salón, explicado sin tecnicismos. Cada servicio se adapta al tipo de cabello, a la forma del rostro y a lo que cada persona quiere mantener en casa.</p>
+    </div>
+    <div class="grid-s">
+
+      <article class="card">
+        <span class="n">01</span>
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="#B25A38" stroke-width="1.7" stroke-linecap="round" aria-hidden="true">
+          <circle cx="12" cy="11" r="5"/><circle cx="12" cy="37" r="5"/>
+          <path d="M16.5 14 40 36M16.5 34 40 12"/>
+        </svg>
+        <h3>Corte y peinado</h3>
+        <p>Corte estudiado en seco y en mojado, con acabado y peinado. Se busca una forma que aguante el día a día y que puedas repetir tú en casa.</p>
+      </article>
+
+      <article class="card">
+        <span class="n">02</span>
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="#B25A38" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M24 5c7 9 13 15 13 23a13 13 0 1 1-26 0C11 20 17 14 24 5z"/>
+          <path d="M18 29c0 4 3 7 7 7"/>
+        </svg>
+        <h3>Color y mechas</h3>
+        <p>Coloración, cobertura de canas, mechas y matices. Siempre con una consulta previa para ver el punto de partida del cabello y elegir el tono adecuado.</p>
+      </article>
+
+      <article class="card">
+        <span class="n">03</span>
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="#B25A38" stroke-width="1.7" stroke-linecap="round" aria-hidden="true">
+          <circle cx="24" cy="18" r="9"/>
+          <path d="M15 25c-3 6-4 11-4 18M33 25c3 6 4 11 4 18"/>
+          <path d="M18 40h12"/>
+        </svg>
+        <h3>Recogidos y eventos</h3>
+        <p>Recogidos, semirrecogidos y peinados para bodas, comuniones y celebraciones. Se puede preparar con prueba previa para llegar tranquila al día señalado.</p>
+      </article>
+
+      <article class="card">
+        <span class="n">04</span>
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="#B25A38" stroke-width="1.7" stroke-linecap="round" aria-hidden="true">
+          <path d="M8 34c6-16 18-24 32-24-2 15-12 27-26 28"/>
+          <path d="M8 40c4-8 10-13 18-16"/>
+        </svg>
+        <h3>Tratamientos capilares</h3>
+        <p>Hidratación, nutrición y cuidado del cuero cabelludo. Se valora el estado del cabello antes de recomendar nada y se explica qué esperar de cada tratamiento.</p>
+      </article>
+
+      <article class="card">
+        <span class="n">05</span>
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="#B25A38" stroke-width="1.7" stroke-linecap="round" aria-hidden="true">
+          <path d="M10 30c0-9 6-16 14-16s14 7 14 16"/>
+          <path d="M6 34h36"/><path d="M24 14V6"/><path d="M17 40h14"/>
+        </svg>
+        <h3>Estética básica</h3>
+        <p>Servicios habituales de estética de salón: cejas, depilación facial y cuidados sencillos que se resuelven en la misma visita. Consúltanos disponibilidad.</p>
+      </article>
+
+      <article class="card">
+        <span class="n">06</span>
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="#B25A38" stroke-width="1.7" stroke-linecap="round" aria-hidden="true">
+          <path d="M24 6l4.6 10.4L40 18l-8 8 2 12-10-5.6L14 38l2-12-8-8 11.4-1.6z"/>
+        </svg>
+        <h3>Asesoramiento de imagen</h3>
+        <p>Antes de cualquier cambio, una conversación: qué te favorece, cuánto mantenimiento quieres asumir y cómo cuidar el resultado entre visita y visita.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- PRIMERA VISITA -->
+<section class="sec pasos" id="visita">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Cómo empezamos</span>
+      <h2>Tu primera visita, en tres pasos</h2>
+      <p>Sin registros ni formularios. Una llamada, una conversación y un resultado que puedas mantener.</p>
+    </div>
+    <div class="grid-p">
+      <div class="paso">
+        <span class="num">1</span>
+        <h3>Llama y reserva</h3>
+        <p>Marca el <a href="tel:+34698808383" style="color:#F0E4D6">698 808 383</a>, cuéntanos qué necesitas y buscamos el hueco que mejor te venga. Consultar horario de atención.</p>
+      </div>
+      <div class="paso">
+        <span class="num">2</span>
+        <h3>Hablamos antes de tocar</h3>
+        <p>Al llegar, unos minutos de diagnóstico: estado del cabello, lo que te gusta, lo que no, y qué es realista conseguir en esta visita y en las siguientes.</p>
+      </div>
+      <div class="paso">
+        <span class="num">3</span>
+        <h3>Te vas sabiendo cuidarlo</h3>
+        <p>Terminamos con el acabado y con pautas claras de mantenimiento en casa, para que el resultado dure y sepas cuándo conviene volver.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="sec contacto" id="contacto">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Dónde estamos</span>
+      <h2>Contacto y localización</h2>
+      <p>En pleno Valdepeñas, en la calle Seis de Junio. La forma más rápida de reservar es una llamada.</p>
+    </div>
+
+    <div class="grid-c">
+      <div class="datos">
+        <dl>
+          <div class="fila">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#B25A38" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3h3l1.5 5-2.2 1.6a12 12 0 0 0 5.6 5.6L16 13l5 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 3.5 5.2 2 2 0 0 1 5.5 3z"/></svg>
+            <div><dt>Teléfono</dt><dd><a href="tel:+34698808383">698 808 383</a></dd></div>
+          </div>
+          <div class="fila">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#B25A38" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+            <div><dt>Dirección</dt><dd>C/ Seis de Junio 142<br>13300 Valdepeñas (Ciudad Real)</dd></div>
+          </div>
+          <div class="fila">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#B25A38" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.4 2"/></svg>
+            <div><dt>Horario</dt><dd>Consultar horario</dd></div>
+          </div>
+          <div class="fila">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#B25A38" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5 12 13l8.5-6.5"/></svg>
+            <div><dt>Email</dt><dd style="font-size:17px"><a href="mailto:tarek_113_brc@hotmail.com">tarek_113_brc@hotmail.com</a></dd></div>
+          </div>
+        </dl>
+        <a class="btn btn-p" style="margin-top:28px" href="tel:+34698808383">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3h3l1.5 5-2.2 1.6a12 12 0 0 0 5.6 5.6L16 13l5 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 3.5 5.2 2 2 0 0 1 5.5 3z"/></svg>
+          Llamar al 698 808 383
+        </a>
+        <p class="aviso">Maqueta de demostración. Los datos de contacto son reales; el resto de contenidos son texto de propuesta y no información oficial del negocio.</p>
+      </div>
+
+      <figure class="mapa" style="margin:0">
+        <svg viewBox="0 0 640 420" role="img" aria-label="Mapa esquemático de la zona: calle Seis de Junio 142, Valdepeñas">
+          <rect width="640" height="420" fill="#F1E6D5"/>
+          <g opacity=".5">
+            <rect x="34" y="28" width="118" height="86" fill="#E3D2BA"/>
+            <rect x="196" y="28" width="150" height="86" fill="#E3D2BA"/>
+            <rect x="392" y="28" width="212" height="86" fill="#E3D2BA"/>
+            <rect x="34" y="158" width="118" height="100" fill="#E3D2BA"/>
+            <rect x="196" y="158" width="150" height="100" fill="#DCC8AC"/>
+            <rect x="392" y="158" width="212" height="100" fill="#E3D2BA"/>
+            <rect x="34" y="302" width="118" height="92" fill="#E3D2BA"/>
+            <rect x="196" y="302" width="150" height="92" fill="#E3D2BA"/>
+            <rect x="392" y="302" width="212" height="92" fill="#E3D2BA"/>
+          </g>
+          <!-- calles -->
+          <g stroke="#FBF5EC" stroke-width="26" stroke-linecap="square">
+            <path d="M0 136h640"/><path d="M0 280h640"/>
+            <path d="M174 0v420"/><path d="M369 0v420"/>
+          </g>
+          <g stroke="#C9B294" stroke-width="1.2" stroke-dasharray="7 9">
+            <path d="M0 136h640"/><path d="M0 280h640"/><path d="M174 0v420"/><path d="M369 0v420"/>
+          </g>
+          <!-- calle principal -->
+          <path d="M0 208h640" stroke="#E8CFAE" stroke-width="40"/>
+          <path d="M0 208h640" stroke="#B25A38" stroke-width="2" stroke-dasharray="16 12" opacity=".65"/>
+          <text x="26" y="200" font-family="Georgia,serif" font-size="17" fill="#6B5241" letter-spacing="1.5">C/ Seis de Junio</text>
+          <text x="184" y="70" font-family="Georgia,serif" font-size="13" fill="#8A7360" letter-spacing="1.2" transform="rotate(-90 184 70)">Calle</text>
+          <text x="379" y="392" font-family="Georgia,serif" font-size="13" fill="#8A7360" letter-spacing="1.2" transform="rotate(-90 379 392)">Calle</text>
+          <text x="470" y="128" font-family="Georgia,serif" font-size="13" fill="#8A7360" letter-spacing="1.2">Valdepeñas · centro</text>
+          <!-- marcador -->
+          <g transform="translate(300 208)">
+            <ellipse cx="0" cy="6" rx="22" ry="7" fill="#2E2018" opacity=".16"/>
+            <path d="M0 4c0 0-19-19-19-31A19 19 0 1 1 19-27C19-15 0 4 0 4z" fill="#B25A38"/>
+            <circle cx="0" cy="-28" r="7" fill="#FBF5EC"/>
+            <circle cx="0" cy="-28" r="7" fill="none" stroke="#8E4328" stroke-width="1"/>
+          </g>
+          <g transform="translate(300 208)">
+            <rect x="26" y="-60" width="196" height="48" rx="4" fill="#FBF5EC" stroke="#D8C3A6"/>
+            <text x="40" y="-40" font-family="Georgia,serif" font-size="16" fill="#2E2018">Peluquería Casablanca</text>
+            <text x="40" y="-22" font-family="system-ui,sans-serif" font-size="11.5" fill="#7A6250" letter-spacing="1.4">SEIS DE JUNIO 142</text>
+          </g>
+        </svg>
+        <figcaption>Mapa esquemático ilustrativo · no a escala</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <h3>Peluquería Casablanca</h3>
+        <p style="color:rgba(230,216,200,.78);max-width:34em">C/ Seis de Junio 142, 13300 Valdepeñas (Ciudad Real). Reservas por teléfono en el <a href="tel:+34698808383">698 808 383</a>. Consultar horario.</p>
+      </div>
+      <div>
+        <p style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(230,216,200,.6);margin-bottom:8px">Escríbenos</p>
+        <p class="f-mail"><a href="mailto:tarek_113_brc@hotmail.com">tarek_113_brc@hotmail.com</a></p>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <span>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</span>
+      <span>Maqueta no oficial · sin vinculación con el negocio</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var links = document.querySelectorAll('a[href^="#"]');
+  for (var i=0;i<links.length;i++){
+    links[i].addEventListener('click', function(e){
+      var id = this.getAttribute('href');
+      if(id.length < 2) return;
+      var t = document.querySelector(id);
+      if(!t) return;
+      e.preventDefault();
+      var y = t.getBoundingClientRect().top + window.pageYOffset - 46;
+      window.scrollTo({top:y, behavior:'smooth'});
+    });
+  }
+  var obs = ('IntersectionObserver' in window) ? new IntersectionObserver(function(es){
+    es.forEach(function(en){ if(en.isIntersecting){ en.target.style.opacity=1; en.target.style.transform='none'; obs.unobserve(en.target);} });
+  },{threshold:.12}) : null;
+  if(obs && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var els = document.querySelectorAll('.card,.paso,.sec-head,.mapa,.datos');
+    for(var j=0;j<els.length;j++){
+      els[j].style.opacity=0; els[j].style.transform='translateY(16px)';
+      els[j].style.transition='opacity .7s ease '+(j%3*.07)+'s, transform .7s ease '+(j%3*.07)+'s';
+      obs.observe(els[j]);
+    }
+  }
+})();
+</script>
+
+<script>
+/* Red de seguridad FFFFFFstudio: si el reveal por scroll no llega a dispararse
+   (JS parcial, captura automatica, navegador antiguo), el contenido se muestra igual. */
+(function(){
+  function mostrarTodo(){
+    var e=document.querySelectorAll('*');
+    for(var i=0;i<e.length;i++){
+      var s=e[i].style;
+      if(s && s.opacity!=='' && parseFloat(s.opacity)===0){ s.opacity=1; s.transform='none'; }
+    }
+  }
+  setTimeout(mostrarTodo,2500);
+  window.addEventListener('load',function(){setTimeout(mostrarTodo,2500);});
+})();
+</script>
+</body>
+</html>

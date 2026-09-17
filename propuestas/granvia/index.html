@@ -1,0 +1,594 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Restaurante Gran Vía · Propuesta FFFFFFstudio</title>
+<meta name="description" content="Propuesta de diseño no oficial para Restaurante Gran Vía, Soria. Arroces, menú diario y comida para llevar.">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0;max-width:100%;overflow-x:hidden}
+img,svg,video{max-width:100%;height:auto;display:block}
+
+:root{
+  --paper:#F3EDE1;
+  --paper-2:#EAE1CE;
+  --ink:#1C1A16;
+  --ink-soft:#56504326;
+  --muted:#5E564A;
+  --saffron:#C9611B;
+  --saffron-deep:#9B4410;
+  --olive:#3E4A2E;
+  --line:#1C1A16;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua","URW Palladio L","Times New Roman",Georgia,serif;
+  --sans:"Avenir Next","Segoe UI","Helvetica Neue",Inter,Roboto,"DejaVu Sans",Arial,sans-serif;
+  --gut:clamp(16px,4vw,56px);
+}
+
+body{
+  font-family:var(--sans);
+  background:var(--paper);
+  color:var(--ink);
+  padding-top:46px;
+  line-height:1.55;
+  -webkit-text-size-adjust:100%;
+  background-image:
+    radial-gradient(circle at 18% 12%, rgba(201,97,27,.07), transparent 52%),
+    radial-gradient(circle at 88% 78%, rgba(62,74,46,.08), transparent 48%);
+}
+
+/* ---------- barra fija ---------- */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  width:100%;max-width:100%;
+  background:var(--ink);color:var(--paper);
+  border-bottom:1px solid var(--ink);
+  overflow:hidden;
+}
+.topbar p{
+  margin:0;padding:13px var(--gut);
+  font-size:clamp(9.5px,2.4vw,12px);
+  letter-spacing:.14em;text-transform:uppercase;
+  font-weight:600;line-height:1.5;
+  text-align:center;
+}
+.topbar p b{color:var(--saffron);font-weight:600}
+
+/* ---------- utilidades ---------- */
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding-left:var(--gut);padding-right:var(--gut)}
+.kicker{
+  font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+  font-weight:700;color:var(--saffron-deep);margin:0 0 14px;
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+}
+.kicker::before{content:"";width:26px;height:2px;background:var(--saffron);flex:none}
+h2{
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(28px,5.2vw,52px);line-height:1.02;
+  margin:0 0 18px;letter-spacing:-.015em;
+}
+h2 em{font-style:italic;color:var(--saffron-deep)}
+p{margin:0 0 16px}
+.lede{font-size:clamp(15px,2.1vw,18px);color:var(--muted);max-width:62ch}
+
+/* ---------- HERO: retícula editorial ---------- */
+.hero{position:relative;padding:clamp(34px,6vw,76px) 0 0;overflow:hidden}
+.hero-grid{
+  display:grid;gap:clamp(24px,4vw,48px);
+  grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
+  align-items:end;
+}
+.masthead{
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(44px,10.5vw,124px);
+  line-height:.86;letter-spacing:-.035em;
+  margin:0 0 20px;
+}
+.masthead span{display:block}
+.masthead .via{
+  font-style:italic;color:var(--saffron);
+  margin-left:.06em;
+}
+.hero-rule{
+  border:0;border-top:2px solid var(--line);
+  margin:0 0 18px;width:100%;
+}
+.hero-meta{
+  display:flex;flex-wrap:wrap;gap:6px 22px;
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  font-weight:700;color:var(--muted);margin:0 0 26px;
+}
+.hero-claim{
+  font-family:var(--serif);font-size:clamp(19px,2.9vw,30px);
+  line-height:1.24;color:var(--ink);margin:0 0 12px;max-width:26ch;
+}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:26px 0 0}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:15px 26px;border-radius:999px;
+  background:var(--saffron);color:#fff;text-decoration:none;
+  font-weight:700;font-size:clamp(14px,2vw,16px);
+  letter-spacing:.01em;border:2px solid var(--saffron);
+  transition:background .18s ease,transform .18s ease;
+  max-width:100%;
+}
+.btn:hover{background:var(--saffron-deep);border-color:var(--saffron-deep);transform:translateY(-2px)}
+.btn svg{flex:none}
+.btn-ghost{
+  background:transparent;color:var(--ink);border:2px solid var(--ink);
+}
+.btn-ghost:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.hero-note{font-size:12.5px;color:var(--muted);margin:14px 0 0;letter-spacing:.02em}
+
+/* plato SVG */
+.hero-art{width:100%;max-width:420px;margin:0 auto;justify-self:end}
+
+/* cinta / marquesina */
+.ribbon{
+  margin-top:clamp(30px,5vw,58px);
+  width:100%;max-width:100%;overflow:hidden;
+  background:var(--ink);color:var(--paper);
+  border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);
+  padding:11px 0;
+}
+.ribbon-track{
+  display:flex;width:max-content;
+  animation:slide 26s linear infinite;
+  will-change:transform;
+}
+.ribbon-track span{
+  font-family:var(--serif);font-size:clamp(15px,2.6vw,22px);
+  padding:0 20px;white-space:nowrap;letter-spacing:.02em;
+}
+.ribbon-track span i{color:var(--saffron);font-style:normal}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.ribbon-track{animation:none}}
+
+/* ---------- OFERTA: columnas de periódico ---------- */
+.offer{padding:clamp(48px,7vw,92px) 0 clamp(20px,4vw,40px)}
+.offer-head{display:grid;gap:clamp(16px,3vw,40px);grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start}
+.cols{
+  display:grid;gap:0;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  margin-top:clamp(30px,4vw,52px);
+  border-top:2px solid var(--line);
+}
+.col{
+  padding:28px clamp(14px,2vw,28px) 30px;
+  border-right:1px solid var(--ink-soft);
+  min-width:0;
+}
+.col:last-child{border-right:0}
+.col-num{
+  font-family:var(--serif);font-size:13px;font-style:italic;
+  color:var(--saffron-deep);margin:0 0 14px;letter-spacing:.06em;
+}
+.col h3{
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(21px,3vw,28px);line-height:1.1;margin:0 0 12px;
+}
+.col p{font-size:14.5px;color:var(--muted);margin:0}
+.col-ico{margin:0 0 18px}
+.note-card{
+  margin-top:clamp(26px,4vw,40px);
+  border:2px solid var(--line);border-radius:3px;
+  padding:clamp(18px,3vw,26px);
+  background:var(--paper-2);
+  display:flex;gap:14px;align-items:flex-start;flex-wrap:nowrap;
+}
+.note-card p{margin:0;font-size:14.5px;color:var(--ink);max-width:70ch}
+.note-card strong{font-weight:700}
+
+/* ---------- VISITA: 3 pasos ---------- */
+.visit{
+  padding:clamp(48px,7vw,92px) 0;
+  background:var(--olive);color:#EDEAE0;
+  margin-top:clamp(40px,6vw,80px);
+  position:relative;overflow:hidden;
+}
+.visit::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.05) 0 1px,transparent 1px 44px);
+}
+.visit .wrap{position:relative;z-index:1}
+.visit h2{color:#F6F2E7}
+.visit h2 em{color:#E6A468}
+.visit .kicker{color:#E6A468}
+.visit .kicker::before{background:#E6A468}
+.visit .lede{color:#CFCCBE}
+.steps{
+  display:grid;gap:clamp(18px,3vw,26px);
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  margin-top:clamp(30px,4vw,48px);
+}
+.step{
+  border-top:2px solid #E6A468;padding:20px 0 0;min-width:0;
+}
+.step-n{
+  font-family:var(--serif);font-size:clamp(34px,5vw,52px);
+  line-height:1;color:#E6A468;margin:0 0 10px;
+}
+.step h3{font-size:16px;margin:0 0 8px;letter-spacing:.02em;font-weight:700;color:#F6F2E7}
+.step p{font-size:14.5px;color:#CFCCBE;margin:0}
+.step a{color:#F6F2E7;text-decoration:underline;text-underline-offset:3px;word-break:break-word}
+
+/* ---------- CONTACTO ---------- */
+.contact{padding:clamp(48px,7vw,92px) 0}
+.contact-grid{
+  display:grid;gap:clamp(26px,4vw,56px);
+  grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
+  align-items:start;
+}
+.dl{margin:26px 0 0;border-top:2px solid var(--line)}
+.dl-row{
+  display:grid;grid-template-columns:minmax(0,92px) minmax(0,1fr);
+  gap:8px 16px;padding:15px 0;border-bottom:1px solid var(--ink-soft);
+  align-items:baseline;
+}
+.dl-row dt{
+  font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+  font-weight:700;color:var(--saffron-deep);margin:0;
+}
+.dl-row dd{margin:0;font-size:clamp(15px,2vw,17px);min-width:0;word-break:break-word}
+.dl-row dd a{color:var(--ink);text-decoration:none;border-bottom:2px solid var(--saffron)}
+.dl-row dd a:hover{color:var(--saffron-deep)}
+.dl-row dd small{display:block;font-size:13px;color:var(--muted);margin-top:3px;letter-spacing:.01em}
+.map-frame{
+  border:2px solid var(--line);border-radius:3px;
+  background:var(--paper-2);padding:10px;width:100%;
+}
+.map-cap{
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);margin:10px 2px 0;font-weight:700;
+}
+
+/* ---------- PIE ---------- */
+.foot{
+  background:var(--ink);color:var(--paper);
+  padding:clamp(38px,5vw,64px) 0 clamp(30px,4vw,44px);
+  overflow:hidden;
+}
+.foot-grid{
+  display:grid;gap:24px;grid-template-columns:minmax(0,1fr) minmax(0,auto);
+  align-items:end;
+}
+.foot .foot-name{
+  font-family:var(--serif);font-size:clamp(26px,5vw,44px);
+  line-height:1;margin:0 0 16px;letter-spacing:-.02em;color:var(--paper);
+}
+.foot-name i{color:var(--saffron);font-style:italic}
+.foot a{color:var(--paper);text-decoration:none;border-bottom:1px solid var(--saffron);word-break:break-word}
+.foot p{color:#B9B2A4;font-size:14.5px;margin:0 0 8px}
+.foot-sig{
+  margin-top:clamp(28px,4vw,44px);padding-top:18px;
+  border-top:1px solid #ffffff2e;
+  font-size:12px;letter-spacing:.06em;color:#9E978A;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:900px){
+  .hero-grid,.offer-head,.contact-grid,.foot-grid{grid-template-columns:minmax(0,1fr)}
+  .hero-art{justify-self:start;margin:0;max-width:340px}
+  .cols{grid-template-columns:minmax(0,1fr)}
+  .col{border-right:0;border-bottom:1px solid var(--ink-soft);padding-left:0;padding-right:0}
+  .col:last-child{border-bottom:0}
+  .steps{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:480px){
+  body{padding-top:58px}
+  .dl-row{grid-template-columns:minmax(0,1fr)}
+  .btn{width:100%;justify-content:center}
+  .cta-row{gap:10px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar" role="note">
+  <p>Propuesta de diseño · maqueta no oficial · <b>FFFFFFstudio</b> · Ángel Rubio</p>
+</div>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <p class="kicker">Gran Vía 22 · Soria</p>
+        <h1 class="masthead">
+          <span>Restaurante</span>
+          <span>Gran</span>
+          <span class="via">Vía</span>
+        </h1>
+        <hr class="hero-rule">
+        <p class="hero-meta">
+          <span>Arroces</span><span>Menú diario</span><span>Para llevar</span>
+        </p>
+        <p class="hero-claim">Cocina de arroz en la avenida principal de Soria.</p>
+        <p class="lede">Una casa de comidas en el número 22 de la Gran Vía. Arroces, menú del día y la opción de llevárselo. Para pedir mesa o encargar, basta una llamada.</p>
+        <div class="cta-row">
+          <a class="btn" href="tel:+34633260080">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M6.5 3h3l1.5 4.5-2.2 1.4a13 13 0 0 0 6.3 6.3l1.4-2.2L21 14.5v3a2.5 2.5 0 0 1-2.7 2.5A16.6 16.6 0 0 1 4 5.7 2.5 2.5 0 0 1 6.5 3Z"/>
+            </svg>
+            Llamar 633 260 080
+          </a>
+          <a class="btn btn-ghost" href="#visita">Cómo reservar</a>
+        </div>
+        <p class="hero-note">Consultar horario por teléfono. También en el 975 352 867.</p>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 400 400" width="100%" role="presentation">
+          <defs>
+            <radialGradient id="pan" cx="45%" cy="38%" r="72%">
+              <stop offset="0%" stop-color="#2E2A24"/>
+              <stop offset="100%" stop-color="#14120F"/>
+            </radialGradient>
+            <radialGradient id="rice" cx="46%" cy="40%" r="62%">
+              <stop offset="0%" stop-color="#F0BC5C"/>
+              <stop offset="62%" stop-color="#D9912C"/>
+              <stop offset="100%" stop-color="#B0651A"/>
+            </radialGradient>
+          </defs>
+          <circle cx="200" cy="205" r="150" fill="#1C1A16" opacity=".08"/>
+          <circle cx="200" cy="198" r="146" fill="url(#pan)"/>
+          <circle cx="200" cy="198" r="146" fill="none" stroke="#0C0B09" stroke-width="6"/>
+          <circle cx="200" cy="198" r="126" fill="url(#rice)"/>
+          <circle cx="200" cy="198" r="126" fill="none" stroke="#8E5214" stroke-width="3" opacity=".7"/>
+          <g stroke="#7E4A12" stroke-width="1.2" opacity=".42" fill="none">
+            <circle cx="200" cy="198" r="104"/><circle cx="200" cy="198" r="78"/>
+            <circle cx="200" cy="198" r="52"/><circle cx="200" cy="198" r="26"/>
+          </g>
+          <g fill="#F6EEDC" opacity=".85">
+            <ellipse cx="160" cy="160" rx="7" ry="3.4" transform="rotate(-24 160 160)"/>
+            <ellipse cx="238" cy="176" rx="7" ry="3.4" transform="rotate(16 238 176)"/>
+            <ellipse cx="184" cy="242" rx="7" ry="3.4" transform="rotate(-8 184 242)"/>
+            <ellipse cx="252" cy="240" rx="7" ry="3.4" transform="rotate(40 252 240)"/>
+            <ellipse cx="136" cy="222" rx="7" ry="3.4" transform="rotate(62 136 222)"/>
+            <ellipse cx="210" cy="132" rx="7" ry="3.4" transform="rotate(-48 210 132)"/>
+            <ellipse cx="118" cy="188" rx="7" ry="3.4" transform="rotate(8 118 188)"/>
+            <ellipse cx="272" cy="204" rx="7" ry="3.4" transform="rotate(-30 272 204)"/>
+          </g>
+          <g fill="#3E4A2E" opacity=".9">
+            <path d="M148 196c10-14 26-14 34 0-10 12-24 12-34 0Z"/>
+            <path d="M228 214c10-14 26-14 34 0-10 12-24 12-34 0Z"/>
+          </g>
+          <g fill="#A8351C">
+            <path d="M196 170c8-6 18-2 18 7s-10 13-18 7c-4-3-4-11 0-14Z"/>
+            <path d="M158 250c8-6 18-2 18 7s-10 13-18 7c-4-3-4-11 0-14Z"/>
+            <path d="M244 162c8-6 18-2 18 7s-10 13-18 7c-4-3-4-11 0-14Z"/>
+          </g>
+          <g stroke="#C9611B" stroke-width="7" stroke-linecap="round" opacity=".95">
+            <path d="M42 198h-1"/><path d="M359 198h-1"/>
+          </g>
+          <circle cx="30" cy="198" r="22" fill="none" stroke="#14120F" stroke-width="7"/>
+          <circle cx="370" cy="198" r="22" fill="none" stroke="#14120F" stroke-width="7"/>
+          <path d="M200 48c-14 12-14 24 0 36" fill="none" stroke="#C9611B" stroke-width="3" stroke-linecap="round" opacity=".55"/>
+          <path d="M226 42c-12 11-12 22 0 32" fill="none" stroke="#C9611B" stroke-width="3" stroke-linecap="round" opacity=".35"/>
+          <path d="M174 42c-12 11-12 22 0 32" fill="none" stroke="#C9611B" stroke-width="3" stroke-linecap="round" opacity=".35"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="ribbon">
+    <div class="ribbon-track">
+      <span>Arroces <i>·</i> Menú diario <i>·</i> Comida para llevar <i>·</i> Gran Vía 22, Soria <i>·</i></span>
+      <span>Arroces <i>·</i> Menú diario <i>·</i> Comida para llevar <i>·</i> Gran Vía 22, Soria <i>·</i></span>
+    </div>
+  </div>
+</header>
+
+<!-- ============ OFERTA ============ -->
+<section class="offer" id="oferta">
+  <div class="wrap">
+    <div class="offer-head">
+      <div>
+        <p class="kicker">Qué se ofrece</p>
+        <h2>Tres formas de <em>comer aquí</em></h2>
+      </div>
+      <p class="lede">Las categorías con las que trabaja la casa. El contenido concreto de cada una se define junto al restaurante antes de publicar la web.</p>
+    </div>
+
+    <div class="cols">
+      <article class="col">
+        <div class="col-ico" aria-hidden="true">
+          <svg width="46" height="46" viewBox="0 0 48 48" fill="none" stroke="#C9611B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="24" cy="26" r="14"/>
+            <circle cx="24" cy="26" r="8"/>
+            <path d="M10 26H4M44 26h-6M24 12V6"/>
+          </svg>
+        </div>
+        <p class="col-num">01</p>
+        <h3>Arroces</h3>
+        <p>La especialidad de la casa. Elaboraciones de arroz servidas en mesa. Las variedades disponibles se concretan con el negocio.</p>
+      </article>
+
+      <article class="col">
+        <div class="col-ico" aria-hidden="true">
+          <svg width="46" height="46" viewBox="0 0 48 48" fill="none" stroke="#C9611B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="8" y="7" width="32" height="34" rx="2"/>
+            <path d="M15 17h18M15 24h18M15 31h11"/>
+          </svg>
+        </div>
+        <p class="col-num">02</p>
+        <h3>Menú diario</h3>
+        <p>Propuesta que cambia cada jornada. La composición y el precio del menú se publican solo cuando el restaurante los facilite.</p>
+      </article>
+
+      <article class="col">
+        <div class="col-ico" aria-hidden="true">
+          <svg width="46" height="46" viewBox="0 0 48 48" fill="none" stroke="#C9611B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 17h30l-3 24H12L9 17Z"/>
+            <path d="M18 17V12a6 6 0 0 1 12 0v5"/>
+          </svg>
+        </div>
+        <p class="col-num">03</p>
+        <h3>Comida para llevar</h3>
+        <p>Encargo por teléfono y recogida en Gran Vía 22. Las condiciones de pedido se acuerdan directamente con la casa.</p>
+      </article>
+    </div>
+
+    <div class="note-card">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#9B4410" stroke-width="2" stroke-linecap="round" aria-hidden="true" style="flex:none">
+        <circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/>
+      </svg>
+      <p><strong>Sobre la carta:</strong> esta maqueta no incluye platos, precios ni horarios. Toda esa información se recoge del restaurante y se incorpora en la versión definitiva de la web.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VISITA ============ -->
+<section class="visit" id="visita">
+  <div class="wrap">
+    <p class="kicker">Tu visita</p>
+    <h2>Reservar es una <em>llamada</em></h2>
+    <p class="lede">No hace falta ninguna plataforma intermedia. Tres pasos y listo.</p>
+
+    <div class="steps">
+      <article class="step">
+        <p class="step-n">1</p>
+        <h3>Llama al restaurante</h3>
+        <p>Marca el <a href="tel:+34633260080">633 260 080</a> o el <a href="tel:+34975352867">975 352 867</a>.</p>
+      </article>
+      <article class="step">
+        <p class="step-n">2</p>
+        <h3>Di día, hora y personas</h3>
+        <p>Indica si es para comer en el local o para recoger, y consulta el horario disponible.</p>
+      </article>
+      <article class="step">
+        <p class="step-n">3</p>
+        <h3>Ven a Gran Vía 22</h3>
+        <p>En pleno centro de Soria, sobre la avenida principal.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section class="contact" id="contacto">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div>
+        <p class="kicker">Contacto</p>
+        <h2>Dónde <em>estamos</em></h2>
+        <dl class="dl">
+          <div class="dl-row">
+            <dt>Teléfono</dt>
+            <dd>
+              <a href="tel:+34633260080">633 260 080</a>
+              <small>También <a href="tel:+34975352867" style="border-bottom:1px solid var(--saffron)">975 352 867</a></small>
+            </dd>
+          </div>
+          <div class="dl-row">
+            <dt>Dirección</dt>
+            <dd>Gran Vía 22<small>42003 Soria</small></dd>
+          </div>
+          <div class="dl-row">
+            <dt>Horario</dt>
+            <dd>Consultar horario<small>Por teléfono, antes de venir.</small></dd>
+          </div>
+          <div class="dl-row">
+            <dt>Email</dt>
+            <dd><a href="mailto:agrohosteleradelduero19@gmail.com">agrohosteleradelduero19@gmail.com</a></dd>
+          </div>
+        </dl>
+        <div class="cta-row">
+          <a class="btn" href="tel:+34633260080">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M6.5 3h3l1.5 4.5-2.2 1.4a13 13 0 0 0 6.3 6.3l1.4-2.2L21 14.5v3a2.5 2.5 0 0 1-2.7 2.5A16.6 16.6 0 0 1 4 5.7 2.5 2.5 0 0 1 6.5 3Z"/>
+            </svg>
+            Llamar ahora
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <div class="map-frame">
+          <svg viewBox="0 0 520 380" width="100%" role="img" aria-label="Plano esquemático: Restaurante Gran Vía, Gran Vía 22, Soria">
+            <rect width="520" height="380" fill="#F3EDE1"/>
+            <g stroke="#1C1A16" stroke-width="1" opacity=".08">
+              <path d="M0 40h520M0 80h520M0 120h520M0 160h520M0 200h520M0 240h520M0 280h520M0 320h520M0 360h520"/>
+              <path d="M40 0v380M80 0v380M120 0v380M160 0v380M200 0v380M240 0v380M280 0v380M320 0v380M360 0v380M400 0v380M440 0v380M480 0v380"/>
+            </g>
+            <!-- manzanas -->
+            <g fill="#E1D7C2">
+              <rect x="26" y="26" width="150" height="112" rx="3"/>
+              <rect x="212" y="26" width="128" height="112" rx="3"/>
+              <rect x="376" y="26" width="118" height="112" rx="3"/>
+              <rect x="26" y="242" width="150" height="112" rx="3"/>
+              <rect x="212" y="242" width="128" height="112" rx="3"/>
+              <rect x="376" y="242" width="118" height="112" rx="3"/>
+            </g>
+            <!-- calles secundarias -->
+            <g stroke="#D6CAB2" stroke-width="22" stroke-linecap="square">
+              <path d="M194 0v380"/><path d="M358 0v380"/>
+            </g>
+            <!-- Gran Vía -->
+            <rect x="0" y="152" width="520" height="76" fill="#DCCFB4"/>
+            <line x1="0" y1="190" x2="520" y2="190" stroke="#F3EDE1" stroke-width="3" stroke-dasharray="22 16"/>
+            <line x1="0" y1="152" x2="520" y2="152" stroke="#1C1A16" stroke-width="2" opacity=".35"/>
+            <line x1="0" y1="228" x2="520" y2="228" stroke="#1C1A16" stroke-width="2" opacity=".35"/>
+            <text x="20" y="144" font-family="Georgia, serif" font-style="italic" font-size="19" fill="#5E564A">Gran Vía</text>
+            <!-- marcador -->
+            <g transform="translate(272 152)">
+              <line x1="0" y1="0" x2="0" y2="-22" stroke="#C9611B" stroke-width="3"/>
+              <path d="M0-22c-17 0-30 13-30 29 0 21 30 45 30 45s30-24 30-45c0-16-13-29-30-29Z" transform="translate(0 -44)" fill="#C9611B"/>
+              <circle cx="0" cy="-55" r="11" fill="#F3EDE1"/>
+              <circle cx="0" cy="-55" r="5" fill="#C9611B"/>
+            </g>
+            <g transform="translate(272 118)">
+              <rect x="-96" y="-38" width="192" height="32" rx="16" fill="#1C1A16"/>
+              <text x="0" y="-17" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13.5" font-weight="bold" fill="#F3EDE1" letter-spacing="1">GRAN VÍA 22</text>
+            </g>
+            <!-- rosa de los vientos -->
+            <g transform="translate(466 330)" opacity=".7">
+              <circle r="22" fill="none" stroke="#5E564A" stroke-width="1.5"/>
+              <path d="M0-18 5 0 0 18-5 0Z" fill="#C9611B"/>
+              <text x="0" y="-28" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#5E564A">N</text>
+            </g>
+          </svg>
+        </div>
+        <p class="map-cap">Plano esquemático · no a escala</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PIE ============ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <p class="foot-name">Restaurante Gran <i>Vía</i></p>
+        <p>Gran Vía 22 · 42003 Soria</p>
+        <p><a href="tel:+34633260080">633 260 080</a> · <a href="tel:+34975352867">975 352 867</a></p>
+        <p><a href="mailto:agrohosteleradelduero19@gmail.com">agrohosteleradelduero19@gmail.com</a></p>
+      </div>
+      <div>
+        <a class="btn" href="tel:+34633260080">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6.5 3h3l1.5 4.5-2.2 1.4a13 13 0 0 0 6.3 6.3l1.4-2.2L21 14.5v3a2.5 2.5 0 0 1-2.7 2.5A16.6 16.6 0 0 1 4 5.7 2.5 2.5 0 0 1 6.5 3Z"/>
+          </svg>
+          Llamar al restaurante
+        </a>
+      </div>
+    </div>
+    <p class="foot-sig">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.querySelector(a.getAttribute('href'));
+      if(!t)return;
+      e.preventDefault();
+      window.scrollTo({top:t.getBoundingClientRect().top+window.pageYOffset-50,behavior:'smooth'});
+    });
+  });
+})();
+</script>
+</body>
+</html>

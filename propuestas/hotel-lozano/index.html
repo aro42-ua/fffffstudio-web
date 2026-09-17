@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hotel Lozano · Antequera — Propuesta de diseño</title>
+<meta name="description" content="Propuesta de diseño (maqueta no oficial) para Hotel Lozano, hotel con restaurante en Antequera (Málaga). Reserva directa por teléfono.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* ===========================================================
+   FFFFFFstudio — Maqueta no oficial · Hotel Lozano
+   Paleta: piedra caliza, ocre, terracota, olivo
+   Tipografía: Georgia (editorial) + system-ui (UI) + mono (filetes/datos)
+   =========================================================== */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+:root {
+  /* Paleta interior de Málaga */
+  --caliza:      #f6f1e7;
+  --caliza-alt:  #efe7d8;
+  --papel:       #fcfaf5;
+  --tinta:       #241d16;
+  --tinta-suave: #5c5043;
+  --ocre:        #b98332;
+  --ocre-claro:  #dcb169;
+  --terracota:   #9e4a2f;
+  --olivo:       #5b6b45;
+  --olivo-claro: #8b9a74;
+  --linea:       #d8cdb9;
+  --linea-fina:  #c8bba3;
+
+  --serif: Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", Times, serif;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, "DejaVu Sans Mono", monospace;
+
+  --barra: 34px;
+  --gutter: clamp(18px, 5vw, 64px);
+  --maxw: 1180px;
+}
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.65;
+  overflow-x: hidden;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+img, svg { max-width: 100%; }
+[hidden] { display: none !important; }
+a { color: inherit; }
+
+h1, h2, h3, h4 {
+  font-family: var(--serif);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  line-height: 1.08;
+  margin: 0;
+  overflow-wrap: break-word;
+}
+
+p { margin: 0; }
+
+.wrap {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* --- Filete / ojal tipográfico reutilizable --- */
+.kicker {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--terracota);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+.kicker::after {
+  content: "";
+  flex: 1 1 0;
+  min-width: 0;
+  height: 1px;
+  background: var(--linea-fina);
+}
+
+/* ============== 1. BARRA FIJA ============== */
+.aviso {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 100;
+  background: var(--tinta);
+  color: var(--caliza);
+  padding: 6px 12px;
+  padding-top: calc(6px + env(safe-area-inset-top, 0px));
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.04em;
+  text-align: center;
+  line-height: 1.35;
+}
+.aviso span { display: inline-block; max-width: 100%; }
+
+.espaciador { height: var(--barra); }
+
+/* ============== 2. HERO ============== */
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 80% at 78% 6%, rgba(220,177,105,.55) 0%, rgba(220,177,105,0) 58%),
+    radial-gradient(90% 70% at 8% 94%, rgba(91,107,69,.28) 0%, rgba(91,107,69,0) 60%),
+    linear-gradient(176deg, #fbf6ec 0%, var(--caliza) 44%, var(--caliza-alt) 100%);
+}
+/* textura de cal: trama finísima */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    repeating-linear-gradient(90deg, rgba(36,29,22,.035) 0 1px, transparent 1px 7px),
+    repeating-linear-gradient(0deg, rgba(36,29,22,.022) 0 1px, transparent 1px 7px);
+  mask-image: linear-gradient(180deg, rgba(0,0,0,.8), rgba(0,0,0,.15));
+  -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,.8), rgba(0,0,0,.15));
+  pointer-events: none;
+}
+
+.hero-inner {
+  padding-block: clamp(48px, 9vw, 104px) 0;
+}
+
+.marca {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: clamp(36px, 7vw, 76px);
+  min-width: 0;
+}
+.marca-nombre {
+  font-family: var(--serif);
+  font-size: clamp(19px, 3.4vw, 23px);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.marca-sello {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+  border: 1px solid var(--linea-fina);
+  border-radius: 999px;
+  padding: 3px 11px;
+  white-space: nowrap;
+}
+
+h1 {
+  font-size: clamp(38px, 9.2vw, 92px);
+  max-width: 17em;
+}
+h1 em {
+  font-style: italic;
+  color: var(--terracota);
+}
+.hero-lead {
+  margin-top: clamp(20px, 3vw, 30px);
+  max-width: 40ch;
+  font-size: clamp(16.5px, 2.1vw, 19.5px);
+  color: var(--tinta-suave);
+}
+
+.acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 18px;
+  align-items: center;
+  margin-top: clamp(28px, 4.5vw, 44px);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  min-width: 0;
+  max-width: 100%;
+  padding: 15px 26px;
+  border-radius: 2px;
+  background: var(--terracota);
+  color: var(--caliza);
+  text-decoration: none;
+  font-family: var(--sans);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  box-shadow: 0 1px 0 rgba(36,29,22,.25), 0 14px 28px -18px rgba(158,74,47,.85);
+  transition: transform .18s ease, background .18s ease;
+}
+.btn:hover { background: #8a3f27; transform: translateY(-1px); }
+.btn svg { flex: none; }
+
+.btn-fantasma {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 14px 4px;
+  text-decoration: none;
+  font-size: 15px;
+  color: var(--tinta-suave);
+  border-bottom: 1px solid var(--linea-fina);
+  max-width: 100%;
+}
+.btn-fantasma:hover { color: var(--tinta); border-color: var(--tinta); }
+
+/* Silueta de paisaje/arquitectura — SVG a mano */
+.silueta {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: clamp(30px, 6vw, 58px);
+}
+
+/* ============== SECCIONES ============== */
+section { position: relative; }
+.bloque { padding-block: clamp(56px, 9vw, 112px); }
+
+.cab {
+  display: grid;
+  gap: 18px;
+  margin-bottom: clamp(32px, 5vw, 56px);
+}
+.cab h2 {
+  font-size: clamp(28px, 5.4vw, 46px);
+  max-width: 22ch;
+}
+.cab p {
+  color: var(--tinta-suave);
+  max-width: 52ch;
+  font-size: 16.5px;
+}
+
+/* --- 3. Tarjetas de servicio --- */
+.rejilla {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+  gap: 1px;
+  background: var(--linea);
+  border: 1px solid var(--linea);
+}
+.tarjeta {
+  min-width: 0;
+  background: var(--papel);
+  padding: clamp(24px, 3.4vw, 36px);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: background .2s ease;
+}
+.tarjeta:hover { background: #fffdf8; }
+.tarjeta .ico {
+  width: 40px;
+  height: 40px;
+  flex: none;
+  color: var(--olivo);
+}
+.tarjeta h3 {
+  font-size: clamp(20px, 2.6vw, 24px);
+}
+.tarjeta p {
+  color: var(--tinta-suave);
+  font-size: 15.5px;
+  line-height: 1.6;
+}
+.tarjeta .num {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  color: var(--ocre);
+}
+
+/* --- Cinta de palabras (dentro de contenedor con overflow oculto) --- */
+.cinta {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  border-block: 1px solid var(--linea);
+  background: var(--caliza);
+  padding-block: 13px;
+}
+.cinta-pista {
+  display: flex;
+  width: max-content;
+  gap: 0;
+  animation: desliza 34s linear infinite;
+}
+.cinta-pista > span {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(15px, 2.4vw, 20px);
+  color: var(--tinta-suave);
+  padding-inline: 20px;
+  white-space: nowrap;
+}
+.cinta-pista > span::after {
+  content: "·";
+  margin-left: 20px;
+  color: var(--ocre);
+  font-style: normal;
+}
+@keyframes desliza { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+  .cinta-pista { animation: none; }
+}
+
+/* --- 4. Pasos --- */
+.fondo-caliza {
+  background:
+    radial-gradient(70% 100% at 100% 0%, rgba(185,131,50,.13), rgba(185,131,50,0) 60%),
+    var(--caliza);
+  border-block: 1px solid var(--linea);
+}
+.pasos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+  gap: clamp(26px, 3.6vw, 44px);
+  counter-reset: p;
+}
+.paso {
+  min-width: 0;
+  padding-top: 22px;
+  border-top: 2px solid var(--tinta);
+}
+.paso .cif {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--terracota);
+  display: block;
+  margin-bottom: 14px;
+}
+.paso h3 { font-size: clamp(21px, 2.7vw, 26px); margin-bottom: 10px; }
+.paso p { color: var(--tinta-suave); font-size: 15.5px; }
+
+/* --- 5. Contacto --- */
+.contacto {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: clamp(30px, 5vw, 60px);
+  align-items: start;
+}
+.datos { min-width: 0; display: grid; gap: 26px; }
+.dato { min-width: 0; }
+.dato dt {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+  margin-bottom: 7px;
+}
+.dato dd {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(19px, 2.7vw, 24px);
+  line-height: 1.32;
+}
+.dato dd a { text-decoration: none; border-bottom: 1px solid var(--ocre-claro); }
+.dato dd a:hover { border-color: var(--terracota); color: var(--terracota); }
+.dato dd small {
+  display: block;
+  font-family: var(--sans);
+  font-size: 14.5px;
+  color: var(--tinta-suave);
+  margin-top: 6px;
+}
+
+.mapa-caja {
+  min-width: 0;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid var(--linea);
+  background: #f8f4ea;
+}
+.mapa-caja svg { display: block; width: 100%; height: auto; }
+.mapa-pie {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+  padding: 11px 14px;
+  border-top: 1px solid var(--linea);
+  background: var(--caliza);
+}
+
+/* --- 6. Pie --- */
+footer {
+  background: var(--tinta);
+  color: var(--caliza);
+  padding-block: clamp(46px, 7vw, 80px) clamp(28px, 4vw, 40px);
+  padding-bottom: calc(clamp(28px, 4vw, 40px) + env(safe-area-inset-bottom, 0px));
+}
+footer .pie-top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px 48px;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+footer .pie-nombre {
+  font-family: var(--serif);
+  font-size: clamp(26px, 5.2vw, 40px);
+  min-width: 0;
+}
+footer a { color: var(--ocre-claro); text-decoration: none; border-bottom: 1px solid rgba(220,177,105,.4); }
+footer a:hover { color: #fff; border-color: #fff; }
+.pie-mail { font-family: var(--serif); font-size: clamp(17px, 2.6vw, 21px); min-width: 0; }
+.pie-linea {
+  height: 1px;
+  background: rgba(246,241,231,.16);
+  margin-block: clamp(30px, 4.5vw, 46px) 20px;
+}
+.pie-nota {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  line-height: 1.7;
+  color: rgba(246,241,231,.62);
+}
+
+::selection { background: var(--ocre-claro); color: var(--tinta); }
+:focus-visible { outline: 2px solid var(--terracota); outline-offset: 3px; }
+</style>
+</head>
+<body>
+
+<!-- 1 · Barra fija -->
+<div class="aviso" role="note"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+<div class="espaciador" aria-hidden="true"></div>
+
+<!-- 2 · Hero -->
+<header class="hero">
+  <div class="wrap hero-inner">
+    <div class="marca">
+      <span class="marca-nombre">Hotel Lozano</span>
+      <span class="marca-sello">Antequera · Málaga</span>
+    </div>
+
+    <h1>Dormir y comer bien en el <em>centro de Andalucía</em>.</h1>
+
+    <p class="hero-lead">Hotel con restaurante en Antequera. Alojamiento tranquilo y cocina de casa en el mismo sitio, a pie de avenida y con la comarca entera a un paso. Reserva directa, hablando con nosotros.</p>
+
+    <div class="acciones">
+      <a class="btn" href="tel:952842712">
+        <svg class="ico" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M6.2 3.5h3l1.4 3.6-2 1.4a11.5 11.5 0 0 0 5.4 5.4l1.4-2 3.6 1.4v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.2 5.7 2 2 0 0 1 6.2 3.5Z"/>
+        </svg>
+        Llamar al 952 842 712
+      </a>
+      <a class="btn-fantasma" href="#contacto">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.4"/>
+        </svg>
+        Ver dónde estamos
+      </a>
+    </div>
+  </div>
+
+  <!-- Silueta abstracta: peña, olivar y arquitectura encalada (no fotográfica) -->
+  <svg class="silueta" viewBox="0 0 1200 250" preserveAspectRatio="none" role="img" aria-label="Ilustración abstracta de paisaje y arquitectura andaluza">
+    <defs>
+      <linearGradient id="g-lejos" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#8b9a74" stop-opacity=".40"/>
+        <stop offset="1" stop-color="#8b9a74" stop-opacity=".16"/>
+      </linearGradient>
+      <linearGradient id="g-medio" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#5b6b45" stop-opacity=".58"/>
+        <stop offset="1" stop-color="#5b6b45" stop-opacity=".30"/>
+      </linearGradient>
+      <linearGradient id="g-cerca" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#241d16" stop-opacity=".90"/>
+        <stop offset="1" stop-color="#241d16" stop-opacity=".78"/>
+      </linearGradient>
+      <linearGradient id="g-sol" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#dcb169" stop-opacity=".55"/>
+        <stop offset="1" stop-color="#dcb169" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+
+    <!-- resplandor -->
+    <rect x="0" y="0" width="1200" height="250" fill="url(#g-sol)"/>
+
+    <!-- sierra lejana -->
+    <path fill="url(#g-lejos)" d="M0 148 L92 112 L168 136 L262 88 L340 124 L432 96 L520 130 L614 104 L700 132 L790 100 L884 128 L980 98 L1080 126 L1200 104 L1200 250 L0 250 Z"/>
+
+    <!-- meseta / peña abstracta -->
+    <path fill="url(#g-medio)" d="M0 196 L140 178 L214 186 L300 150 L372 146 L420 158 L470 152 L540 176 L640 162 L742 184 L840 166 L944 188 L1050 172 L1140 190 L1200 182 L1200 250 L0 250 Z"/>
+
+    <!-- línea de olivar: puntos sueltos -->
+    <g fill="#5b6b45" opacity=".34">
+      <circle cx="60" cy="204" r="5"/><circle cx="128" cy="199" r="4.2"/><circle cx="196" cy="206" r="5.4"/>
+      <circle cx="268" cy="198" r="4"/><circle cx="342" cy="203" r="5"/><circle cx="416" cy="197" r="4.4"/>
+      <circle cx="492" cy="205" r="5.2"/><circle cx="566" cy="198" r="4"/><circle cx="642" cy="204" r="5"/>
+      <circle cx="716" cy="199" r="4.4"/><circle cx="792" cy="206" r="5.2"/><circle cx="868" cy="198" r="4"/>
+      <circle cx="944" cy="204" r="5"/><circle cx="1018" cy="200" r="4.4"/><circle cx="1096" cy="205" r="5"/>
+      <circle cx="1166" cy="199" r="4.2"/>
+    </g>
+
+    <!-- arquitectura encalada abstracta: cubos, teja a dos aguas, arcos, torre -->
+    <g fill="url(#g-cerca)">
+      <path d="M0 250 L0 232 L86 232 L86 216 L150 216 L150 250 Z"/>
+      <!-- casa con teja -->
+      <path d="M196 250 L196 214 L248 190 L300 214 L300 250 Z"/>
+      <!-- torre esbelta con remate -->
+      <path d="M356 250 L356 176 L360 176 L360 160 L372 148 L384 160 L384 176 L388 176 L388 250 Z"/>
+      <!-- bloque con arcada -->
+      <path d="M430 250 L430 206 L560 206 L560 250 Z"/>
+      <!-- cuerpo bajo -->
+      <path d="M600 250 L600 222 L676 222 L676 202 L730 202 L730 250 Z"/>
+      <!-- casa con teja 2 -->
+      <path d="M778 250 L778 210 L832 186 L886 210 L886 250 Z"/>
+      <path d="M930 250 L930 220 L1010 220 L1010 236 L1072 236 L1072 250 Z"/>
+      <path d="M1112 250 L1112 200 L1200 200 L1200 250 Z"/>
+    </g>
+
+    <!-- arcos y vanos recortados en color fondo -->
+    <g fill="#f1e9da">
+      <path d="M452 250 L452 232 a12 12 0 0 1 24 0 L476 250 Z"/>
+      <path d="M492 250 L492 232 a12 12 0 0 1 24 0 L516 250 Z"/>
+      <path d="M532 250 L532 232 a10 10 0 0 1 20 0 L552 250 Z"/>
+      <rect x="236" y="220" width="16" height="30"/>
+      <rect x="364" y="192" width="8" height="12"/>
+      <rect x="364" y="214" width="8" height="12"/>
+      <rect x="818" y="216" width="16" height="34"/>
+      <rect x="1136" y="218" width="14" height="32"/>
+      <rect x="1166" y="218" width="14" height="32"/>
+      <rect x="626" y="234" width="12" height="16"/>
+      <rect x="30" y="240" width="12" height="10"/>
+      <rect x="104" y="228" width="12" height="10"/>
+    </g>
+  </svg>
+</header>
+
+<!-- Cinta -->
+<div class="cinta" aria-hidden="true">
+  <div class="cinta-pista">
+    <span>Alojamiento</span><span>Restaurante</span><span>Desayuno</span><span>Salón para grupos</span><span>Aparcamiento en la zona</span><span>Base para la comarca</span>
+    <span>Alojamiento</span><span>Restaurante</span><span>Desayuno</span><span>Salón para grupos</span><span>Aparcamiento en la zona</span><span>Base para la comarca</span>
+  </div>
+</div>
+
+<!-- 3 · Servicios -->
+<section class="bloque" id="hotel">
+  <div class="wrap">
+    <div class="cab">
+      <p class="kicker">Lo que encontrarás</p>
+      <h2>Un hotel con cocina propia, en una sola parada.</h2>
+      <p>Apartados generales del establecimiento. Para cualquier detalle concreto —disponibilidad, condiciones o servicios— lo mejor es una llamada.</p>
+    </div>
+
+    <div class="rejilla">
+      <article class="tarjeta">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 36V19a3 3 0 0 1 3-3h32a3 3 0 0 1 3 3v17"/>
+          <path d="M5 30h38"/><path d="M5 36h38"/>
+          <path d="M12 16v-4a3 3 0 0 1 3-3h7a3 3 0 0 1 3 3v4"/>
+          <path d="M11 25.5h9"/><path d="M28 25.5h9"/>
+        </svg>
+        <span class="num">01</span>
+        <h3>Habitaciones</h3>
+        <p>Alojamiento para estancias de paso o de varias noches, con el descanso como prioridad. Tipos y disponibilidad, por teléfono.</p>
+      </article>
+
+      <article class="tarjeta">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M14 6v16a4 4 0 0 0 8 0V6"/><path d="M18 22v20"/>
+          <path d="M32 6c-3 3-4 6-4 10 0 3 1.6 5 4 5.6V42"/>
+          <path d="M36 6c3 3 4 6 4 10 0 3-1.6 5-4 5.6"/>
+          <path d="M14 6v8M18 6v8M22 6v8"/>
+        </svg>
+        <span class="num">02</span>
+        <h3>Restaurante</h3>
+        <p>Cocina en la propia casa, para comer o cenar sin moverse del hotel. Carta y sugerencias del día, en el establecimiento.</p>
+      </article>
+
+      <article class="tarjeta">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M8 21h24v9a9 9 0 0 1-9 9h-6a9 9 0 0 1-9-9v-9Z"/>
+          <path d="M32 24h4a4 4 0 0 1 0 8h-4"/>
+          <path d="M6 42h30"/>
+          <path d="M16 15c0-2 2-2.6 2-4.6S16 6 16 6"/>
+          <path d="M24 15c0-2 2-2.6 2-4.6S24 6 24 6"/>
+        </svg>
+        <span class="num">03</span>
+        <h3>Desayuno</h3>
+        <p>Empezar el día antes de salir a la carretera o a caminar por el centro. Consulta la fórmula y el horario al reservar.</p>
+      </article>
+
+      <article class="tarjeta">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="24" cy="24" r="9"/>
+          <circle cx="10" cy="14" r="4"/><circle cx="38" cy="14" r="4"/>
+          <circle cx="10" cy="36" r="4"/><circle cx="38" cy="36" r="4"/>
+          <path d="M14.5 17.5 19 21M33.5 17.5 29 21M14.5 32.5 19 29M33.5 32.5 29 29"/>
+        </svg>
+        <span class="num">04</span>
+        <h3>Grupos y celebraciones</h3>
+        <p>Salón para comidas y cenas de grupo, encuentros familiares o reuniones de trabajo. Se organiza hablando con el hotel.</p>
+      </article>
+
+      <article class="tarjeta">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M8 30l3-10a4 4 0 0 1 3.8-2.8h18.4A4 4 0 0 1 37 20l3 10"/>
+          <path d="M6 30h36v8H6z"/>
+          <circle cx="14" cy="38" r="3"/><circle cx="34" cy="38" r="3"/>
+          <path d="M11 24h26"/><path d="M24 6v8m0 0-3.5-3.5M24 14l3.5-3.5"/>
+        </svg>
+        <span class="num">05</span>
+        <h3>Llegar en coche</h3>
+        <p>Situado en avenida, con acceso cómodo en vehículo. Pregunta por las opciones de aparcamiento en la zona antes de venir.</p>
+      </article>
+
+      <article class="tarjeta">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M6 12l12-4 12 4 12-4v28l-12 4-12-4-12 4V12Z"/>
+          <path d="M18 8v28M30 12v28"/>
+          <circle cx="24" cy="20" r="3"/>
+        </svg>
+        <span class="num">06</span>
+        <h3>Base para la comarca</h3>
+        <p>Antequera como punto de partida para recorrer el interior de Málaga: casco histórico, naturaleza y pueblos del entorno.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · Cómo reservar -->
+<section class="bloque fondo-caliza" id="reservar">
+  <div class="wrap">
+    <div class="cab">
+      <p class="kicker">Cómo reservar</p>
+      <h2>Tres pasos y una llamada.</h2>
+      <p>Sin formularios ni intermediarios: el trato directo con el hotel resuelve antes cualquier duda.</p>
+    </div>
+
+    <div class="pasos">
+      <div class="paso">
+        <span class="cif">Paso 01</span>
+        <h3>Llama al hotel</h3>
+        <p>Marca el <a href="tel:952842712" style="color:inherit">952 842 712</a> y cuenta qué necesitas: fechas, número de personas y si quieres también mesa en el restaurante.</p>
+      </div>
+      <div class="paso">
+        <span class="cif">Paso 02</span>
+        <h3>Confirma los detalles</h3>
+        <p>Desde recepción te indican la disponibilidad y las condiciones aplicables, además de cualquier detalle de horario que convenga consultar.</p>
+      </div>
+      <div class="paso">
+        <span class="cif">Paso 03</span>
+        <h3>Ven a Antequera</h3>
+        <p>Te esperamos en Avda. Principal 2. Si viajas en coche o llegas fuera de lo previsto, avisa por teléfono y se organiza.</p>
+      </div>
+    </div>
+
+    <div class="acciones">
+      <a class="btn" href="tel:952842712">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M6.2 3.5h3l1.4 3.6-2 1.4a11.5 11.5 0 0 0 5.4 5.4l1.4-2 3.6 1.4v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.2 5.7 2 2 0 0 1 6.2 3.5Z"/>
+        </svg>
+        Llamar al 952 842 712
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 5 · Contacto -->
+<section class="bloque" id="contacto">
+  <div class="wrap">
+    <div class="cab">
+      <p class="kicker">Contacto y localización</p>
+      <h2>Avda. Principal 2, Antequera.</h2>
+    </div>
+
+    <div class="contacto">
+      <dl class="datos">
+        <div class="dato">
+          <dt>Teléfono</dt>
+          <dd><a href="tel:952842712">952 842 712</a>
+            <small>Reservas de alojamiento y de restaurante.</small>
+          </dd>
+        </div>
+        <div class="dato">
+          <dt>Dirección</dt>
+          <dd>Avda. Principal 2<br>29200 Antequera (Málaga)</dd>
+        </div>
+        <div class="dato">
+          <dt>Horario</dt>
+          <dd>Consultar horario
+            <small>Consultar horario del hotel y del restaurante por teléfono.</small>
+          </dd>
+        </div>
+        <div class="dato">
+          <dt>Correo</dt>
+          <dd><a href="mailto:hotellozano@hotellozano.com">hotellozano@hotellozano.com</a></dd>
+        </div>
+      </dl>
+
+      <div>
+        <div class="mapa-caja">
+          <!-- Mapa esquemático dibujado a mano. No es un plano a escala. -->
+          <svg viewBox="0 0 520 380" role="img" aria-label="Mapa esquemático: la avenida principal y el emplazamiento del hotel en Antequera">
+            <defs>
+              <pattern id="trama" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                <line x1="0" y1="0" x2="0" y2="10" stroke="#c8bba3" stroke-width="1" opacity=".5"/>
+              </pattern>
+            </defs>
+
+            <rect width="520" height="380" fill="#f8f4ea"/>
+            <!-- manzanas -->
+            <g fill="url(#trama)" stroke="#d8cdb9">
+              <rect x="26" y="26" width="150" height="112"/>
+              <rect x="212" y="26" width="120" height="112"/>
+              <rect x="368" y="26" width="126" height="150"/>
+              <rect x="26" y="248" width="132" height="106"/>
+              <rect x="196" y="248" width="150" height="106"/>
+              <rect x="382" y="248" width="112" height="106"/>
+            </g>
+            <!-- zona verde -->
+            <g>
+              <rect x="368" y="200" width="126" height="26" fill="#8b9a74" opacity=".22" stroke="#8b9a74" stroke-opacity=".45"/>
+              <circle cx="392" cy="213" r="5" fill="#5b6b45" opacity=".35"/>
+              <circle cx="416" cy="213" r="5" fill="#5b6b45" opacity=".35"/>
+              <circle cx="440" cy="213" r="5" fill="#5b6b45" opacity=".35"/>
+            </g>
+            <!-- calles secundarias -->
+            <g stroke="#e6ddcb" stroke-width="14" stroke-linecap="square">
+              <path d="M194 20 V360"/>
+              <path d="M350 20 V360"/>
+              <path d="M20 232 H500"/>
+            </g>
+            <!-- avenida principal -->
+            <path d="M0 176 H520" stroke="#e0d4bd" stroke-width="30"/>
+            <path d="M0 176 H520" stroke="#b98332" stroke-width="2" opacity=".45" stroke-dasharray="14 12"/>
+            <!-- rótulo de la avenida -->
+            <text x="26" y="168" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11" letter-spacing="2" fill="#5c5043">AVDA. PRINCIPAL</text>
+
+            <!-- marcador del hotel -->
+            <g>
+              <line x1="240" y1="176" x2="240" y2="120" stroke="#9e4a2f" stroke-width="1.5"/>
+              <circle cx="240" cy="176" r="6" fill="#9e4a2f"/>
+              <circle cx="240" cy="176" r="12" fill="none" stroke="#9e4a2f" stroke-width="1" opacity=".45"/>
+              <rect x="152" y="86" width="176" height="34" rx="2" fill="#241d16"/>
+              <text x="240" y="108" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="15" fill="#f6f1e7">Hotel Lozano · nº 2</text>
+            </g>
+
+            <!-- norte -->
+            <g stroke="#5c5043" fill="#5c5043">
+              <line x1="486" y1="356" x2="486" y2="332" stroke-width="1.2"/>
+              <path d="M486 330 l4 8 h-8 Z" stroke="none"/>
+              <text x="486" y="372" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10" stroke="none">N</text>
+            </g>
+          </svg>
+          <p class="mapa-pie">Esquema orientativo dibujado a mano · no es un plano a escala</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · Pie -->
+<footer>
+  <div class="wrap">
+    <div class="pie-top">
+      <div class="pie-nombre">Hotel Lozano<br><span style="font-size:.5em; font-family:var(--mono); letter-spacing:.2em; text-transform:uppercase; color:rgba(246,241,231,.6)">Antequera · Málaga</span></div>
+      <div class="pie-mail">
+        <a href="mailto:hotellozano@hotellozano.com">hotellozano@hotellozano.com</a><br>
+        <a href="tel:952842712">952 842 712</a>
+      </div>
+    </div>
+    <div class="pie-linea"></div>
+    <p class="pie-nota">Avda. Principal 2, 29200 Antequera (Málaga) · Consultar horario<br>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+<script>
+// Compensación exacta de la barra fija y desplazamiento suave con offset.
+(function () {
+  var barra = document.querySelector('.aviso');
+  var hueco = document.querySelector('.espaciador');
+  function ajusta() {
+    if (!barra || !hueco) return;
+    hueco.style.height = barra.offsetHeight + 'px';
+  }
+  ajusta();
+  window.addEventListener('resize', ajusta);
+
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var d = document.querySelector(a.getAttribute('href'));
+      if (!d) return;
+      e.preventDefault();
+      var y = d.getBoundingClientRect().top + window.pageYOffset - (barra ? barra.offsetHeight + 8 : 0);
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    });
+  });
+})();
+</script>
+</body>
+</html>

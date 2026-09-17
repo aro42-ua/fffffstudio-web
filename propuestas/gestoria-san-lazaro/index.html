@@ -1,0 +1,900 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Gestoría San Lázaro · Gestión fiscal, laboral, contable y de tráfico en Ourense</title>
+<meta name="description" content="Gestoría administrativa en Ourense. Áreas fiscal, laboral, contable y tráfico. Rúa Ramón Cabanillas 1, 32003 Ourense. Teléfono 988 612 149.">
+<meta name="theme-color" content="#14201c">
+<style>
+/* ============================================================
+   Gestoría San Lázaro — maqueta FFFFFFstudio
+   Concepto: "Archivo en orden". Papel verjurado, pauta de
+   expediente, tipografía documental y sellos de registro.
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+:root{
+  /* Tinta y papel */
+  --paper:        #f4efe6;
+  --paper-2:      #eee7da;
+  --paper-3:      #e6ddcc;
+  --ink:          #16211d;
+  --ink-soft:     #3b4a44;
+  --ink-mute:     #6d7a73;
+  --rule:         #cdc3b1;
+  --rule-soft:    #ded5c5;
+
+  /* Color de casa: verde expediente + sello ocre + registro burdeos */
+  --green:        #1f3a31;
+  --green-deep:   #152a23;
+  --green-soft:   #37584c;
+  --ochre:        #b07d2b;
+  --ochre-soft:   #d9b872;
+  --seal:         #8e2f28;
+
+  --radius:       2px;
+  --maxw:         1180px;
+  --gutter:       clamp(18px, 5vw, 56px);
+
+  /* Tipografía: serif documental + grotesca de sistema + mono de registro */
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, "Times New Roman", serif;
+  --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, "SFMono-Regular", "Cascadia Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+  --bar-h: 30px;
+}
+
+html{ -webkit-text-size-adjust:100%; }
+html, body{ max-width:100%; overflow-x:clip; }
+body{
+  margin:0;
+  background-color:var(--paper);
+  background-image:
+    radial-gradient(120% 90% at 12% -10%, rgba(255,255,255,.85) 0%, rgba(255,255,255,0) 55%),
+    repeating-linear-gradient(90deg, rgba(22,33,29,.028) 0 1px, rgba(22,33,29,0) 1px 4px),
+    linear-gradient(180deg, #f6f2ea 0%, #f1ebe0 100%);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:17px;
+  line-height:1.65;
+  letter-spacing:.005em;
+  font-feature-settings:"kern" 1, "liga" 1;
+  -webkit-font-smoothing:antialiased;
+}
+
+img, svg{ max-width:100%; }
+svg{ display:block; }
+
+h1,h2,h3,h4{ font-family:var(--serif); font-weight:600; line-height:1.1; letter-spacing:-.012em; margin:0; }
+p{ margin:0; }
+a{ color:inherit; }
+
+.wrap{ width:100%; max-width:var(--maxw); margin-inline:auto; padding-inline:var(--gutter); }
+
+/* Etiqueta de registro (mono, versalitas) */
+.tag{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--ink-mute);
+  display:inline-flex; align-items:center; gap:.6em;
+}
+.tag::before{
+  content:""; width:22px; height:1px; background:var(--rule); flex:none;
+}
+.tag--plain::before{ display:none; }
+
+/* Foco accesible global */
+a:focus-visible, button:focus-visible, summary:focus-visible{
+  outline:2px solid var(--green);
+  outline-offset:3px;
+  border-radius:2px;
+}
+.on-dark a:focus-visible, .on-dark button:focus-visible{
+  outline-color:var(--ochre-soft);
+}
+
+/* ---------- Barra fija de propuesta ---------- */
+.propbar{
+  position:fixed; inset:0 0 auto 0; z-index:80;
+  height:var(--bar-h);
+  display:flex; align-items:center;
+  background:var(--green-deep);
+  color:#dfe7e1;
+  border-bottom:1px solid rgba(217,184,114,.28);
+}
+.propbar__inner{
+  width:100%; max-width:var(--maxw); margin-inline:auto;
+  padding-inline:var(--gutter);
+  font-family:var(--mono);
+  font-size:10.5px; letter-spacing:.11em; text-transform:uppercase;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.propbar__inner b{ color:var(--ochre-soft); font-weight:600; }
+
+/* ---------- Cabecera ---------- */
+.site-head{
+  position:sticky; top:var(--bar-h); z-index:70;
+  background:rgba(244,239,230,.92);
+  backdrop-filter:saturate(140%) blur(8px);
+  border-bottom:1px solid var(--rule-soft);
+}
+.site-head__in{
+  display:flex; align-items:center; gap:18px;
+  min-height:70px;
+  padding-block:12px;
+}
+.brand{ display:flex; align-items:center; gap:12px; text-decoration:none; flex:1 1 auto; min-width:0; }
+.brand__mark{ flex:none; }
+.brand__txt{ min-width:0; }
+.brand__name{
+  font-family:var(--serif); font-size:19px; line-height:1.05; letter-spacing:-.02em;
+  display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.brand__sub{
+  font-family:var(--mono); font-size:9.5px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--ink-mute); display:block; margin-top:3px;
+}
+.nav{ display:none; gap:26px; align-items:center; }
+.nav a{
+  text-decoration:none; font-size:14px; color:var(--ink-soft);
+  padding-block:6px; position:relative;
+}
+.nav a::after{
+  content:""; position:absolute; left:0; right:100%; bottom:0; height:1px;
+  background:var(--green); transition:right .28s ease;
+}
+.nav a:hover{ color:var(--ink); }
+.nav a:hover::after{ right:0; }
+
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:.6em;
+  font-family:var(--sans); font-size:14.5px; font-weight:600; letter-spacing:.01em;
+  text-decoration:none; border:1px solid transparent; border-radius:var(--radius);
+  padding:.72em 1.15em; white-space:nowrap;
+  transition:background-color .2s ease, color .2s ease, border-color .2s ease, transform .2s ease;
+}
+.btn--solid{ background:var(--green); color:#f3efe6; }
+.btn--solid:hover{ background:var(--green-deep); transform:translateY(-1px); }
+.btn--ghost{ border-color:var(--rule); color:var(--ink); background:transparent; }
+.btn--ghost:hover{ border-color:var(--green); background:rgba(31,58,49,.05); }
+.btn--light{ background:var(--ochre-soft); color:var(--green-deep); }
+.btn--light:hover{ background:#e6ca8d; transform:translateY(-1px); }
+.btn--outline-light{ border-color:rgba(240,236,226,.35); color:#eee8dc; }
+.btn--outline-light:hover{ border-color:var(--ochre-soft); color:#fff; }
+.btn--lg{ font-size:16px; padding:.92em 1.5em; }
+.btn svg{ flex:none; }
+
+.head-cta{ display:none; }
+
+/* ---------- Hero ---------- */
+.hero{ position:relative; padding-block:clamp(48px, 8vw, 96px) clamp(40px, 6vw, 76px); overflow:hidden; }
+.hero__grid{ display:grid; gap:clamp(34px, 5vw, 56px); align-items:center; }
+.hero h1{
+  font-size:clamp(36px, 8.2vw, 68px);
+  margin:20px 0 0;
+  text-wrap:balance;
+}
+.hero h1 em{
+  font-style:normal;
+  position:relative; white-space:nowrap;
+  background:linear-gradient(180deg, rgba(217,184,114,0) 62%, rgba(217,184,114,.5) 62%, rgba(217,184,114,.5) 92%, rgba(217,184,114,0) 92%);
+}
+.hero__lead{
+  margin-top:22px; font-size:clamp(16.5px, 2.3vw, 19.5px); color:var(--ink-soft);
+  max-width:46ch; line-height:1.6;
+}
+.hero__actions{ display:flex; flex-wrap:wrap; gap:12px; margin-top:32px; }
+.hero__note{
+  margin-top:20px; font-family:var(--mono); font-size:11px; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ink-mute);
+}
+.hero__art{ position:relative; }
+.hero__art figure{ margin:0; }
+
+/* ---------- Cinta de áreas ---------- */
+.ribbon{
+  width:100%; max-width:100%; overflow:hidden;
+  background:var(--green);
+  border-block:1px solid var(--green-deep);
+  color:#e9e3d6;
+  position:relative;
+}
+.ribbon::before, .ribbon::after{
+  content:""; position:absolute; top:0; bottom:0; width:56px; z-index:2; pointer-events:none;
+}
+.ribbon::before{ left:0; background:linear-gradient(90deg, var(--green), rgba(31,58,49,0)); }
+.ribbon::after{ right:0; background:linear-gradient(270deg, var(--green), rgba(31,58,49,0)); }
+.ribbon__track{
+  display:flex; width:max-content; align-items:center;
+  animation:slide 34s linear infinite;
+}
+.ribbon__track span{
+  font-family:var(--mono); font-size:11.5px; letter-spacing:.24em; text-transform:uppercase;
+  padding:13px 26px; display:inline-flex; align-items:center; gap:26px; white-space:nowrap;
+}
+.ribbon__track span::after{
+  content:""; width:5px; height:5px; background:var(--ochre-soft); transform:rotate(45deg); flex:none;
+}
+@keyframes slide{ from{ transform:translate3d(0,0,0); } to{ transform:translate3d(-50%,0,0); } }
+
+/* ---------- Secciones ---------- */
+section{ scroll-margin-top:110px; }
+.sec{ padding-block:clamp(58px, 8.5vw, 110px); }
+.sec--rule{ border-top:1px solid var(--rule-soft); }
+.sec__head{ max-width:62ch; }
+.sec__head h2{
+  font-size:clamp(28px, 5vw, 44px); margin:18px 0 0; text-wrap:balance;
+}
+.sec__head p{ margin-top:18px; color:var(--ink-soft); font-size:clamp(16px,2vw,18px); max-width:52ch; }
+
+/* ---------- Servicios ---------- */
+.areas{
+  display:grid; gap:1px; margin-top:clamp(34px, 5vw, 58px);
+  background:var(--rule-soft);
+  border:1px solid var(--rule-soft);
+}
+.area{
+  background:var(--paper-2);
+  padding:clamp(26px, 3.4vw, 38px);
+  display:flex; flex-direction:column; gap:16px;
+  position:relative;
+  transition:background-color .25s ease;
+}
+.area:hover{ background:#f7f3ea; }
+.area__top{ display:flex; align-items:flex-start; justify-content:space-between; gap:16px; }
+.area__num{ font-family:var(--mono); font-size:11px; letter-spacing:.16em; color:var(--ochre); }
+.area h3{ font-size:clamp(21px, 2.6vw, 26px); }
+.area p{ color:var(--ink-soft); font-size:15.8px; }
+.area ul{ margin:4px 0 0; padding:0; list-style:none; display:grid; gap:9px; }
+.area li{
+  font-size:15px; color:var(--ink-soft); padding-left:20px; position:relative; line-height:1.5;
+}
+.area li::before{
+  content:""; position:absolute; left:0; top:.62em; width:8px; height:1px; background:var(--ochre);
+}
+.area__icon{ color:var(--green-soft); flex:none; }
+
+/* ---------- Pasos ---------- */
+.steps{
+  display:grid; gap:clamp(26px, 3.4vw, 40px); margin-top:clamp(36px, 5vw, 60px);
+  counter-reset:paso;
+}
+.step{ position:relative; padding-top:26px; border-top:2px solid var(--green); }
+.step__n{
+  font-family:var(--mono); font-size:11px; letter-spacing:.18em; color:var(--ochre);
+  display:block; margin-bottom:14px;
+}
+.step h3{ font-size:clamp(20px, 2.4vw, 24px); }
+.step p{ margin-top:12px; color:var(--ink-soft); font-size:15.8px; }
+
+/* ---------- Franja de nota ---------- */
+.note-band{
+  background:var(--green-deep); color:#e8e2d5;
+  border-block:1px solid #0d1a15;
+  background-image:repeating-linear-gradient(90deg, rgba(255,255,255,.025) 0 1px, rgba(255,255,255,0) 1px 5px);
+}
+.note-band .wrap{ padding-block:clamp(46px, 6vw, 74px); }
+.note-band__grid{ display:grid; gap:28px; align-items:start; }
+.note-band h2{ font-size:clamp(24px, 3.6vw, 34px); color:#f2ede2; text-wrap:balance; }
+.note-band p{ color:#bdc7c0; margin-top:16px; max-width:56ch; font-size:16.5px; }
+.note-band .tag{ color:var(--ochre-soft); }
+.note-band .tag::before{ background:rgba(217,184,114,.45); }
+.note-band__actions{ display:flex; flex-wrap:wrap; gap:12px; margin-top:26px; }
+
+/* ---------- Contacto ---------- */
+.contact{ display:grid; gap:clamp(34px, 4.5vw, 56px); margin-top:clamp(34px, 5vw, 54px); align-items:start; }
+.card{
+  border:1px solid var(--rule); background:var(--paper-2);
+  padding:clamp(24px, 3.2vw, 34px);
+}
+.dl{ margin:0; display:grid; gap:22px; }
+.dl dt{
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-mute);
+  margin-bottom:6px;
+}
+.dl dd{ margin:0; font-size:17px; line-height:1.5; }
+.dl dd a{ text-decoration:none; border-bottom:1px solid var(--rule); transition:border-color .2s ease, color .2s ease; }
+.dl dd a:hover{ border-color:var(--green); color:var(--green); }
+.dl .big{ font-family:var(--serif); font-size:clamp(26px, 4.2vw, 34px); letter-spacing:-.02em; border:0; }
+.dl .big:hover{ color:var(--green); }
+.dl .muted{ color:var(--ink-mute); font-size:15px; }
+
+.map{ border:1px solid var(--rule); background:#efe8db; }
+.map figcaption{
+  display:flex; flex-wrap:wrap; gap:8px 18px; align-items:center; justify-content:space-between;
+  padding:12px 16px; border-top:1px solid var(--rule);
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.13em; text-transform:uppercase; color:var(--ink-mute);
+}
+.map__legend{ display:inline-flex; align-items:center; gap:8px; }
+.map__dot{ width:9px; height:9px; border-radius:50%; background:var(--seal); flex:none; display:inline-block; }
+
+/* ---------- Pie ---------- */
+.site-foot{
+  background:var(--green-deep); color:#cfd8d1;
+  padding-block:clamp(44px, 6vw, 68px) 28px;
+}
+.foot__grid{ display:grid; gap:30px; }
+.foot h3{ font-family:var(--serif); font-size:20px; color:#f1ecE1; }
+.site-foot a{ color:#e6e0d4; text-decoration:none; border-bottom:1px solid rgba(230,224,212,.28); }
+.site-foot a:hover{ color:var(--ochre-soft); border-color:var(--ochre-soft); }
+.foot__list{ list-style:none; margin:14px 0 0; padding:0; display:grid; gap:9px; font-size:15px; }
+.foot__list a{ border:0; }
+.foot__list a:hover{ border:0; }
+.foot__mono{ font-family:var(--mono); font-size:10.5px; letter-spacing:.15em; text-transform:uppercase; color:#9aa8a0; }
+.foot__bottom{
+  margin-top:clamp(34px, 5vw, 52px); padding-top:22px; border-top:1px solid rgba(255,255,255,.12);
+  display:grid; gap:10px;
+  font-size:13px; color:#9aa8a0;
+}
+.foot__bottom strong{ color:#e6e0d4; font-weight:600; }
+
+/* ---------- Utilidades ---------- */
+.sr-only{
+  position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0;
+}
+.skip{
+  position:absolute; left:-9999px; top:0; z-index:200;
+  background:var(--green); color:#fff; padding:10px 16px; font-size:14px;
+}
+.skip:focus{ left:var(--gutter); top:calc(var(--bar-h) + 8px); }
+
+/* ---------- Media queries ---------- */
+@media (min-width:720px){
+  .areas{ grid-template-columns:repeat(2, minmax(0,1fr)); }
+  .steps{ grid-template-columns:repeat(3, minmax(0,1fr)); }
+  .foot__grid{ grid-template-columns:1.3fr 1fr 1fr; }
+  .foot__bottom{ grid-template-columns:1fr auto; align-items:center; }
+  .note-band__grid{ grid-template-columns:1.15fr .85fr; gap:44px; align-items:center; }
+}
+@media (min-width:900px){
+  .nav{ display:flex; }
+  .head-cta{ display:inline-flex; }
+  .hero__grid{ grid-template-columns:1.05fr .95fr; }
+  .contact{ grid-template-columns:.95fr 1.05fr; }
+}
+@media (min-width:1100px){
+  .areas{ grid-template-columns:repeat(4, minmax(0,1fr)); }
+}
+
+@media (prefers-reduced-motion:reduce){
+  *, *::before, *::after{
+    animation-duration:.001ms !important; animation-iteration-count:1 !important;
+    transition-duration:.001ms !important; scroll-behavior:auto !important;
+  }
+  .ribbon__track{ animation:none; transform:none; }
+}
+html{ scroll-behavior:smooth; }
+</style>
+</head>
+<body>
+
+<a class="skip" href="#contenido">Ir al contenido principal</a>
+
+<div class="propbar" role="note">
+  <div class="propbar__inner">Propuesta de diseño · maqueta no oficial · <b>FFFFFFstudio</b> · Ángel Rubio</div>
+</div>
+
+<header class="site-head">
+  <div class="wrap site-head__in">
+    <a class="brand" href="#inicio" aria-label="Gestoría San Lázaro, inicio">
+      <span class="brand__mark" aria-hidden="true">
+        <svg width="38" height="38" viewBox="0 0 38 38" role="img">
+          <rect x="1" y="1" width="36" height="36" fill="#1f3a31"/>
+          <path d="M8 27.5 L19 8 L30 27.5" fill="none" stroke="#d9b872" stroke-width="1.6"/>
+          <path d="M13 27.5 L19 16.5 L25 27.5" fill="none" stroke="#f0ebe0" stroke-width="1.6"/>
+          <rect x="7" y="30.2" width="24" height="1.5" fill="#d9b872"/>
+        </svg>
+      </span>
+      <span class="brand__txt">
+        <span class="brand__name">Gestoría San Lázaro</span>
+        <span class="brand__sub">Ourense · Gestión administrativa</span>
+      </span>
+    </a>
+
+    <nav class="nav" aria-label="Navegación principal">
+      <a href="#areas">Áreas</a>
+      <a href="#visita">Tu primera visita</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+
+    <a class="btn btn--solid head-cta" href="tel:+34988612149">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 3.5h3l1.5 4-2 1.5a13 13 0 0 0 5.9 5.9l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z"/></svg>
+      988 612 149
+    </a>
+  </div>
+</header>
+
+<main id="contenido">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="inicio">
+    <div class="wrap hero__grid">
+      <div>
+        <p class="tag">Gestoría administrativa en Ourense</p>
+        <h1>Sus papeles, <em>al día</em> y en su sitio.</h1>
+        <p class="hero__lead">
+          Gestoría San Lázaro acompaña a autónomos, empresas y particulares de Ourense
+          en la gestión fiscal, laboral, contable y de tráfico. Un interlocutor
+          estable, documentación ordenada y explicaciones en lenguaje claro.
+        </p>
+        <div class="hero__actions">
+          <a class="btn btn--solid btn--lg" href="tel:+34988612149">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 3.5h3l1.5 4-2 1.5a13 13 0 0 0 5.9 5.9l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z"/></svg>
+            Llamar al 988 612 149
+          </a>
+          <a class="btn btn--ghost btn--lg" href="#areas">Ver áreas de trabajo</a>
+        </div>
+        <p class="hero__note">Rúa Ramón Cabanillas 1 · 32003 Ourense · Consultar horario</p>
+      </div>
+
+      <div class="hero__art">
+        <figure>
+          <svg viewBox="0 0 520 440" role="img" aria-label="Ilustración: carpeta de expediente con documentos, sello de registro y archivador." style="width:100%;height:auto">
+            <defs>
+              <linearGradient id="gPaper" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#fdfaf3"/><stop offset="1" stop-color="#f0e9db"/>
+              </linearGradient>
+              <linearGradient id="gFolder" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#2b4c40"/><stop offset="1" stop-color="#17302a"/>
+              </linearGradient>
+              <linearGradient id="gTab" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#d9b872"/><stop offset="1" stop-color="#b07d2b"/>
+              </linearGradient>
+              <pattern id="pRule" width="10" height="10" patternUnits="userSpaceOnUse">
+                <path d="M0 9.5H10" stroke="#cfc5b2" stroke-width="0.7"/>
+              </pattern>
+            </defs>
+
+            <!-- fondo de pauta -->
+            <rect x="18" y="18" width="484" height="404" fill="url(#gPaper)" stroke="#d9cfbc"/>
+            <rect x="18" y="18" width="484" height="404" fill="url(#pRule)" opacity=".55"/>
+            <line x1="74" y1="18" x2="74" y2="422" stroke="#d6b7a9" stroke-width="1"/>
+
+            <!-- hoja trasera -->
+            <g transform="rotate(-4 300 200)">
+              <rect x="196" y="66" width="228" height="286" fill="#fffdf7" stroke="#d5cbb8"/>
+              <g stroke="#cec4b1" stroke-width="1">
+                <path d="M220 108h180M220 130h180M220 152h140M220 174h180M220 196h96"/>
+              </g>
+              <rect x="220" y="228" width="104" height="8" fill="#e2d9c6"/>
+              <rect x="220" y="248" width="180" height="1" fill="#cec4b1"/>
+              <rect x="220" y="268" width="180" height="1" fill="#cec4b1"/>
+              <rect x="220" y="288" width="130" height="1" fill="#cec4b1"/>
+            </g>
+
+            <!-- hoja delantera -->
+            <g transform="rotate(3 260 240)">
+              <rect x="132" y="96" width="222" height="280" fill="#fffdf8" stroke="#d5cbb8"/>
+              <rect x="156" y="126" width="92" height="10" fill="#1f3a31"/>
+              <g stroke="#c9bfac" stroke-width="1">
+                <path d="M156 158h174M156 178h174M156 198h120M156 228h174M156 248h174M156 268h150"/>
+              </g>
+              <!-- tabla de datos -->
+              <rect x="156" y="292" width="174" height="56" fill="none" stroke="#c9bfac"/>
+              <path d="M156 310h174M156 330h174M214 292v56" stroke="#c9bfac"/>
+              <rect x="163" y="298" width="34" height="6" fill="#ded4c1"/>
+              <rect x="221" y="298" width="52" height="6" fill="#ded4c1"/>
+              <rect x="163" y="316" width="40" height="6" fill="#ded4c1"/>
+              <rect x="221" y="316" width="70" height="6" fill="#ded4c1"/>
+              <rect x="163" y="336" width="28" height="6" fill="#ded4c1"/>
+              <rect x="221" y="336" width="60" height="6" fill="#ded4c1"/>
+              <!-- sello de registro -->
+              <g transform="rotate(-11 300 212)" opacity=".9">
+                <circle cx="300" cy="212" r="42" fill="none" stroke="#8e2f28" stroke-width="2.4"/>
+                <circle cx="300" cy="212" r="34" fill="none" stroke="#8e2f28" stroke-width="1"/>
+                <path d="M272 205h56M272 220h56" stroke="#8e2f28" stroke-width="1"/>
+                <text x="300" y="210" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="9.5" letter-spacing="1.6" fill="#8e2f28">EN ORDEN</text>
+                <text x="300" y="231" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="8" letter-spacing="1.4" fill="#8e2f28">REGISTRO</text>
+              </g>
+            </g>
+
+            <!-- carpeta -->
+            <path d="M56 244h150l18 24h206v150a8 8 0 0 1-8 8H64a8 8 0 0 1-8-8V244Z" fill="url(#gFolder)"/>
+            <path d="M56 288h374v10H56z" fill="#0f221c" opacity=".45"/>
+            <rect x="246" y="222" width="96" height="24" rx="2" fill="url(#gTab)"/>
+            <text x="294" y="238" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="10" letter-spacing="2" fill="#17302a">EXPEDIENTE</text>
+            <g stroke="#d9b872" stroke-width="1.2" opacity=".65">
+              <path d="M84 330h120M84 352h96M84 374h140"/>
+            </g>
+            <circle cx="392" cy="352" r="20" fill="none" stroke="#d9b872" stroke-width="1.2" opacity=".7"/>
+            <path d="M383 352l6 6 12-13" fill="none" stroke="#d9b872" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CINTA ============ -->
+  <div class="ribbon" aria-hidden="true">
+    <div class="ribbon__track" id="ribbonTrack">
+      <span>Fiscal</span><span>Laboral</span><span>Contable</span><span>Tráfico</span>
+      <span>Autónomos</span><span>Empresas</span><span>Particulares</span><span>Ourense</span>
+    </div>
+  </div>
+
+  <!-- ============ ÁREAS ============ -->
+  <section class="sec" id="areas">
+    <div class="wrap">
+      <div class="sec__head">
+        <p class="tag">Áreas de trabajo</p>
+        <h2>Cuatro áreas, un mismo expediente</h2>
+        <p>
+          Trabajamos las gestiones habituales de una gestoría administrativa.
+          Cada encargo se estudia según su caso concreto y se confirma con usted antes de tramitarlo.
+        </p>
+      </div>
+
+      <div class="areas">
+
+        <article class="area">
+          <div class="area__top">
+            <span class="area__num">Área 01</span>
+            <span class="area__icon" aria-hidden="true">
+              <svg width="30" height="30" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4">
+                <rect x="6.5" y="3.5" width="19" height="25" rx="1.5"/>
+                <path d="M10.5 10h11M10.5 15h11M10.5 20h7"/>
+                <path d="M19 24.5l2.4 2.4 4.6-5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </div>
+          <h3>Fiscal</h3>
+          <p>Cumplimiento de las obligaciones tributarias periódicas y anuales.</p>
+          <ul>
+            <li>Declaraciones trimestrales y resúmenes anuales</li>
+            <li>Declaración de la renta y patrimonio</li>
+            <li>Impuesto de sociedades</li>
+            <li>Altas, bajas y modificaciones censales</li>
+            <li>Atención a requerimientos y notificaciones</li>
+          </ul>
+        </article>
+
+        <article class="area">
+          <div class="area__top">
+            <span class="area__num">Área 02</span>
+            <span class="area__icon" aria-hidden="true">
+              <svg width="30" height="30" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4">
+                <circle cx="12" cy="11" r="4.5"/>
+                <path d="M4.5 26c0-4.2 3.4-7 7.5-7s7.5 2.8 7.5 7" stroke-linecap="round"/>
+                <path d="M22 13h6M22 17.5h6M22 22h4" stroke-linecap="round"/>
+              </svg>
+            </span>
+          </div>
+          <h3>Laboral</h3>
+          <p>Gestión ordinaria de personal y relación con la Seguridad Social.</p>
+          <ul>
+            <li>Nóminas y seguros sociales</li>
+            <li>Altas, bajas y variaciones de trabajadores</li>
+            <li>Contratos de trabajo y prórrogas</li>
+            <li>Partes de incapacidad temporal</li>
+            <li>Trámites de autónomos</li>
+          </ul>
+        </article>
+
+        <article class="area">
+          <div class="area__top">
+            <span class="area__num">Área 03</span>
+            <span class="area__icon" aria-hidden="true">
+              <svg width="30" height="30" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4">
+                <rect x="4.5" y="5.5" width="23" height="21" rx="1.5"/>
+                <path d="M4.5 11.5h23"/>
+                <path d="M9.5 16.5v6M15 14v8.5M20.5 18v4.5" stroke-linecap="round"/>
+              </svg>
+            </span>
+          </div>
+          <h3>Contable</h3>
+          <p>Registro contable ordenado y seguimiento de la marcha del negocio.</p>
+          <ul>
+            <li>Contabilidad de empresas y autónomos</li>
+            <li>Libros registro y libros oficiales</li>
+            <li>Cuentas anuales y su depósito</li>
+            <li>Facturación y conciliación de movimientos</li>
+            <li>Apoyo en la organización documental</li>
+          </ul>
+        </article>
+
+        <article class="area">
+          <div class="area__top">
+            <span class="area__num">Área 04</span>
+            <span class="area__icon" aria-hidden="true">
+              <svg width="30" height="30" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4">
+                <path d="M5 19.5l2-6.2A3 3 0 0 1 9.8 11h12.4a3 3 0 0 1 2.8 2.3l2 6.2" stroke-linejoin="round"/>
+                <rect x="4.5" y="19.5" width="23" height="6" rx="1.5"/>
+                <circle cx="9.5" cy="22.5" r="1.2" fill="currentColor" stroke="none"/>
+                <circle cx="22.5" cy="22.5" r="1.2" fill="currentColor" stroke="none"/>
+                <path d="M12 7h8" stroke-linecap="round"/>
+              </svg>
+            </span>
+          </div>
+          <h3>Tráfico</h3>
+          <p>Trámites de vehículos y permisos ante la administración competente.</p>
+          <ul>
+            <li>Transferencias de vehículos</li>
+            <li>Matriculaciones y cambios de titularidad</li>
+            <li>Duplicados de permisos y documentación</li>
+            <li>Bajas de vehículos</li>
+            <li>Informes y notificaciones de tráfico</li>
+          </ul>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PRIMERA VISITA ============ -->
+  <section class="sec sec--rule" id="visita">
+    <div class="wrap">
+      <div class="sec__head">
+        <p class="tag">Cómo trabajamos</p>
+        <h2>Tu primera visita, en tres pasos</h2>
+        <p>Sin vueltas innecesarias: primero escuchamos, después revisamos los papeles y solo entonces proponemos cómo seguir.</p>
+      </div>
+
+      <ol class="steps">
+        <li class="step">
+          <span class="step__n">Paso 01</span>
+          <h3>Nos cuenta su caso</h3>
+          <p>
+            Puede llamarnos o acercarse a la oficina. Escuchamos su situación
+            —alta de actividad, personal, impuestos, un vehículo— y aclaramos qué documentación hará falta.
+          </p>
+        </li>
+        <li class="step">
+          <span class="step__n">Paso 02</span>
+          <h3>Revisamos la documentación</h3>
+          <p>
+            Comprobamos lo que ya tiene, identificamos lo que falta y le explicamos,
+            sin tecnicismos, qué trámites corresponden a su caso y en qué orden.
+          </p>
+        </li>
+        <li class="step">
+          <span class="step__n">Paso 03</span>
+          <h3>Nos ocupamos del trámite</h3>
+          <p>
+            Preparamos y presentamos lo acordado, guardamos copia en su expediente
+            y le mantenemos informado de cualquier novedad o requerimiento.
+          </p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ FRANJA ============ -->
+  <section class="note-band on-dark" aria-labelledby="band-t">
+    <div class="wrap">
+      <div class="note-band__grid">
+        <div>
+          <p class="tag">Para autónomos, empresas y particulares</p>
+          <h2 id="band-t">¿No sabe por dónde empezar? Empiece por preguntar.</h2>
+          <p>
+            Una consulta breve suele bastar para saber qué le corresponde hacer y
+            qué documentación necesita reunir. Llámenos y lo vemos.
+          </p>
+          <div class="note-band__actions">
+            <a class="btn btn--light btn--lg" href="tel:+34988612149">Llamar al 988 612 149</a>
+            <a class="btn btn--outline-light btn--lg" href="#contacto">Ver dónde estamos</a>
+          </div>
+        </div>
+        <div aria-hidden="true">
+          <svg viewBox="0 0 320 200" role="presentation" style="width:100%;height:auto">
+            <g fill="none" stroke="#4a6a5d" stroke-width="1">
+              <path d="M0 40h320M0 80h320M0 120h320M0 160h320"/>
+            </g>
+            <rect x="24" y="28" width="150" height="144" fill="#1b352c" stroke="#3d5b50"/>
+            <rect x="44" y="52" width="90" height="7" fill="#d9b872"/>
+            <g stroke="#4f6f62" stroke-width="1.2">
+              <path d="M44 76h110M44 94h110M44 112h74M44 130h110"/>
+            </g>
+            <rect x="150" y="60" width="146" height="112" fill="#22423707" stroke="#3d5b50"/>
+            <rect x="150" y="60" width="146" height="112" fill="#16302880"/>
+            <g stroke="#7a9a8c" stroke-width="1.2">
+              <path d="M170 88h106M170 106h106M170 124h70"/>
+            </g>
+            <circle cx="258" cy="146" r="15" fill="none" stroke="#d9b872" stroke-width="1.4"/>
+            <path d="M251 146l5 5 9-10" fill="none" stroke="#d9b872" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACTO ============ -->
+  <section class="sec" id="contacto">
+    <div class="wrap">
+      <div class="sec__head">
+        <p class="tag">Contacto y ubicación</p>
+        <h2>Estamos en el centro de Ourense</h2>
+        <p>Puede llamarnos, escribirnos o pasar por la oficina. Le atenderemos personalmente.</p>
+      </div>
+
+      <div class="contact">
+        <div class="card">
+          <dl class="dl">
+            <div>
+              <dt>Teléfono</dt>
+              <dd><a class="big" href="tel:+34988612149">988 612 149</a></dd>
+              <dd class="muted">También en el <a href="tel:+34698135903">698 135 903</a></dd>
+            </div>
+            <div>
+              <dt>Correo electrónico</dt>
+              <dd><a href="mailto:info@gestoriasanlazaro.com">info@gestoriasanlazaro.com</a></dd>
+            </div>
+            <div>
+              <dt>Dirección</dt>
+              <dd>
+                <address style="font-style:normal">
+                  Rúa Ramón Cabanillas 1, Entlo. 1, Local 4<br>
+                  32003 Ourense
+                </address>
+              </dd>
+            </div>
+            <div>
+              <dt>Horario</dt>
+              <dd>Consultar horario</dd>
+            </div>
+          </dl>
+        </div>
+
+        <figure class="map" style="margin:0">
+          <svg viewBox="0 0 640 440" role="img" aria-label="Mapa esquemático dibujado a mano: manzanas y calles estilizadas del entorno, con un marcador sobre Rúa Ramón Cabanillas 1." style="width:100%;height:auto">
+            <defs>
+              <pattern id="hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
+                <path d="M0 0v7" stroke="#cfc4b0" stroke-width="1"/>
+              </pattern>
+            </defs>
+
+            <rect width="640" height="440" fill="#efe8db"/>
+
+            <!-- manzanas -->
+            <g fill="#e4dbc9" stroke="#cfc4b0" stroke-width="1">
+              <rect x="34" y="34" width="180" height="126"/>
+              <rect x="250" y="34" width="150" height="126"/>
+              <rect x="436" y="34" width="170" height="88"/>
+              <rect x="34" y="204" width="180" height="90"/>
+              <rect x="250" y="204" width="150" height="90"/>
+              <rect x="436" y="166" width="170" height="128"/>
+              <rect x="34" y="338" width="180" height="68"/>
+              <rect x="250" y="338" width="356" height="68"/>
+            </g>
+
+            <!-- parcela destacada -->
+            <rect x="250" y="204" width="150" height="90" fill="url(#hatch)" opacity=".8"/>
+            <rect x="250" y="204" width="150" height="90" fill="none" stroke="#8e2f28" stroke-width="1.6" stroke-dasharray="6 4"/>
+
+            <!-- calles (líneas de eje) -->
+            <g stroke="#f7f3ea" stroke-width="22" stroke-linecap="square">
+              <path d="M0 182h640"/>
+              <path d="M0 316h640"/>
+              <path d="M232 0v440"/>
+              <path d="M418 0v440"/>
+            </g>
+            <g stroke="#d6cbb7" stroke-width="1" stroke-dasharray="9 9">
+              <path d="M0 182h640"/><path d="M0 316h640"/><path d="M232 0v440"/><path d="M418 0v440"/>
+            </g>
+
+            <!-- río / paseo estilizado -->
+            <path d="M-10 424c90-30 170 10 260-14s180-52 400-30" fill="none" stroke="#c8d4cb" stroke-width="16" opacity=".9"/>
+
+            <!-- rótulos de calle -->
+            <g font-family="ui-monospace, Menlo, monospace" font-size="10.5" letter-spacing="1.6" fill="#7c8a80">
+              <text x="40" y="178">RÚA RAMÓN CABANILLAS</text>
+              <text x="40" y="312">CALLE</text>
+              <text x="300" y="312">CALLE</text>
+              <text transform="translate(227 120) rotate(-90)">TRAVESÍA</text>
+              <text transform="translate(413 400) rotate(-90)">AVENIDA</text>
+            </g>
+
+            <!-- marcador -->
+            <g transform="translate(325 196)">
+              <ellipse cx="0" cy="6" rx="15" ry="5" fill="#8e2f28" opacity=".18"/>
+              <path d="M0 4c0 0-13-14.5-13-23a13 13 0 1 1 26 0C13-10.5 0 4 0 4Z" fill="#8e2f28"/>
+              <circle cx="0" cy="-19.5" r="4.6" fill="#f4efe6"/>
+              <g stroke="#8e2f28" stroke-width="1.2" fill="none" opacity=".55">
+                <circle cx="0" cy="4" r="27"/>
+                <circle cx="0" cy="4" r="40"/>
+              </g>
+            </g>
+
+            <!-- etiqueta del punto -->
+            <g transform="translate(348 236)">
+              <rect x="0" y="0" width="214" height="44" fill="#f7f3ea" stroke="#cfc4b0"/>
+              <rect x="0" y="0" width="4" height="44" fill="#8e2f28"/>
+              <text x="16" y="19" font-family="ui-monospace, Menlo, monospace" font-size="10" letter-spacing="1.5" fill="#6d7a73">GESTORÍA SAN LÁZARO</text>
+              <text x="16" y="34" font-family="Georgia, serif" font-size="13" fill="#16211d">Ramón Cabanillas 1 · Entlo. 1</text>
+            </g>
+
+            <!-- rosa de los vientos -->
+            <g transform="translate(586 402)" opacity=".8">
+              <circle r="20" fill="#f7f3ea" stroke="#cfc4b0"/>
+              <path d="M0-13 4 0 0 13-4 0Z" fill="#1f3a31"/>
+              <text x="0" y="-23" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="9" fill="#6d7a73">N</text>
+            </g>
+
+            <rect x="0.5" y="0.5" width="639" height="439" fill="none" stroke="#d9cfbc"/>
+          </svg>
+          <figcaption>
+            <span class="map__legend"><span class="map__dot" aria-hidden="true"></span> Ubicación de la oficina</span>
+            <span>Plano esquemático · no a escala</span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div class="foot">
+        <h3>Gestoría San Lázaro</h3>
+        <p class="foot__mono" style="margin-top:12px">Gestión fiscal · laboral · contable · tráfico</p>
+        <ul class="foot__list">
+          <li><a href="tel:+34988612149">988 612 149</a></li>
+          <li><a href="tel:+34698135903">698 135 903</a></li>
+          <li><a href="mailto:info@gestoriasanlazaro.com">info@gestoriasanlazaro.com</a></li>
+        </ul>
+      </div>
+      <div class="foot">
+        <p class="foot__mono">Oficina</p>
+        <address class="foot__list" style="font-style:normal">
+          Rúa Ramón Cabanillas 1, Entlo. 1, Local 4<br>
+          32003 Ourense
+        </address>
+        <p class="foot__list" style="margin-top:14px">Consultar horario</p>
+      </div>
+      <div class="foot">
+        <p class="foot__mono">Secciones</p>
+        <ul class="foot__list">
+          <li><a href="#areas">Áreas de trabajo</a></li>
+          <li><a href="#visita">Tu primera visita</a></li>
+          <li><a href="#contacto">Contacto y ubicación</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot__bottom">
+      <p><strong>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</strong></p>
+      <p>Maqueta no oficial con fines de demostración.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  // Duplica el contenido de la cinta para un bucle continuo sin saltos.
+  var track = document.getElementById('ribbonTrack');
+  if (track) {
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (reduce.matches) {
+      track.style.animation = 'none';
+    } else {
+      track.innerHTML = track.innerHTML + track.innerHTML;
+    }
+  }
+
+  // Navegación suave respetando prefers-reduced-motion.
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+    if (!a) return;
+    var id = a.getAttribute('href');
+    if (!id || id === '#') return;
+    var target = document.querySelector(id);
+    if (!target) return;
+    e.preventDefault();
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+    target.setAttribute('tabindex', '-1');
+    target.focus({ preventScroll: true });
+  });
+})();
+</script>
+
+</body>
+</html>

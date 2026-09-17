@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Restaurante Ciudad de Soria · Pide directamente</title>
+<meta name="description" content="Maqueta de propuesta de web para Restaurante Ciudad de Soria. Pedido directo por teléfono, sin intermediarios.">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0;max-width:100%;overflow-x:hidden}
+img,svg{max-width:100%;height:auto;display:block}
+
+:root{
+  --tinta:#1d1a16;
+  --tinta-suave:#4a4239;
+  --crema:#f6efe2;
+  --crema-2:#efe4d0;
+  --papel:#fbf7ef;
+  --brasa:#b4341f;
+  --brasa-osc:#8a2413;
+  --ocre:#d99427;
+  --oliva:#4c5a3a;
+  --linea:rgba(29,26,22,.14);
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,"Times New Roman",serif;
+  --sans:Optima,Candara,"Gill Sans","Gill Sans MT","Segoe UI",Avenir,"Trebuchet MS",sans-serif;
+  --r:14px;
+}
+
+body{
+  font-family:var(--sans);
+  color:var(--tinta);
+  background:var(--papel);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  padding-top:38px;
+  font-size:17px;
+}
+
+/* ---------- barra fija ---------- */
+.aviso{
+  position:fixed;top:0;left:0;right:0;width:100%;z-index:90;
+  background:var(--tinta);color:#f2e9d8;
+  font-family:var(--sans);
+  font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;
+  padding:10px 16px;text-align:center;
+  border-bottom:1px solid rgba(217,148,39,.5);
+  overflow:hidden;
+}
+.aviso span{display:inline-block;max-width:100%}
+
+.wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 24px}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(900px 480px at 78% -10%, rgba(217,148,39,.32), transparent 62%),
+    radial-gradient(700px 420px at 8% 110%, rgba(76,90,58,.22), transparent 60%),
+    linear-gradient(168deg,#fbf7ef 0%,#f3e9d7 52%,#eadcc3 100%);
+  border-bottom:1px solid var(--linea);
+}
+.hero::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:
+    repeating-linear-gradient(90deg, rgba(29,26,22,.035) 0 1px, transparent 1px 34px),
+    repeating-linear-gradient(0deg, rgba(29,26,22,.035) 0 1px, transparent 1px 34px);
+  mask-image:linear-gradient(to bottom, rgba(0,0,0,.8), transparent 78%);
+  -webkit-mask-image:linear-gradient(to bottom, rgba(0,0,0,.8), transparent 78%);
+}
+.hero .wrap{position:relative;z-index:2;padding-top:72px;padding-bottom:72px}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+
+.kicker{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--brasa-osc);font-weight:700;
+  background:rgba(180,52,31,.09);
+  border:1px solid rgba(180,52,31,.28);
+  padding:7px 14px;border-radius:999px;margin-bottom:22px;
+}
+.kicker i{width:7px;height:7px;border-radius:50%;background:var(--brasa);display:block;flex:0 0 auto}
+
+h1{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(2.4rem,6.2vw,4.3rem);
+  line-height:1.03;
+  letter-spacing:-.018em;
+  margin:0 0 20px;
+}
+h1 em{font-style:normal;color:var(--brasa);position:relative;white-space:nowrap}
+h1 em::after{
+  content:"";position:absolute;left:0;right:0;bottom:.04em;height:.14em;
+  background:linear-gradient(90deg,rgba(217,148,39,.75),rgba(180,52,31,.35));
+  border-radius:3px;z-index:-1;
+}
+.lead{font-size:clamp(1.02rem,2.1vw,1.2rem);color:var(--tinta-suave);max-width:36em;margin:0 0 30px}
+.nombre{
+  font-family:var(--serif);font-size:13px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--tinta-suave);margin:0 0 14px;
+}
+
+.acciones{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.btn{
+  display:inline-flex;align-items:center;gap:11px;
+  font-family:var(--sans);font-weight:700;font-size:1.02rem;
+  text-decoration:none;border-radius:999px;padding:16px 26px;
+  border:1px solid transparent;transition:transform .16s ease, box-shadow .16s ease, background .16s ease;
+  max-width:100%;
+}
+.btn svg{flex:0 0 auto}
+.btn-tel{
+  background:linear-gradient(160deg,var(--brasa) 0%,var(--brasa-osc) 100%);
+  color:#fff9ef;box-shadow:0 10px 26px -12px rgba(138,36,19,.85), inset 0 1px 0 rgba(255,255,255,.22);
+}
+.btn-tel:hover{transform:translateY(-2px);box-shadow:0 16px 32px -12px rgba(138,36,19,.9), inset 0 1px 0 rgba(255,255,255,.25)}
+.btn-tel small{display:block;font-weight:400;font-size:.72rem;letter-spacing:.11em;text-transform:uppercase;opacity:.82;line-height:1.3}
+.btn-tel b{display:block;font-size:1.06rem;letter-spacing:.01em;line-height:1.2}
+.btn-2{background:transparent;color:var(--tinta);border-color:rgba(29,26,22,.3)}
+.btn-2:hover{background:rgba(29,26,22,.05);transform:translateY(-1px)}
+
+.telalt{margin:18px 0 0;font-size:.92rem;color:var(--tinta-suave)}
+.telalt a{color:var(--tinta);text-decoration:none;border-bottom:1px solid rgba(180,52,31,.45)}
+
+/* sello dibujado */
+.sello{position:relative;width:100%;max-width:400px;margin:0 auto}
+.sello svg{width:100%;height:auto}
+
+/* ---------- cinta ---------- */
+.cinta{
+  width:100%;overflow:hidden;background:var(--tinta);color:#f0e6d4;
+  border-top:1px solid rgba(217,148,39,.35);border-bottom:1px solid rgba(217,148,39,.35);
+}
+.cinta-pista{
+  display:flex;width:max-content;
+  animation:desliza 26s linear infinite;
+  will-change:transform;
+}
+.cinta-grupo{display:flex;flex:0 0 auto;align-items:center}
+.cinta-grupo span{
+  font-family:var(--serif);font-size:13.5px;letter-spacing:.2em;text-transform:uppercase;
+  padding:13px 26px;white-space:nowrap;display:inline-flex;align-items:center;gap:14px;
+}
+.cinta-grupo span::after{content:"";width:5px;height:5px;border-radius:50%;background:var(--ocre);display:block}
+@keyframes desliza{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.cinta-pista{animation:none}}
+
+/* ---------- secciones ---------- */
+section{padding:84px 0}
+.sec-head{max-width:46em;margin-bottom:46px}
+.sec-num{
+  font-family:var(--serif);font-size:12px;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--brasa);display:block;margin-bottom:12px;
+}
+h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.85rem,4vw,2.9rem);line-height:1.1;letter-spacing:-.012em;margin:0 0 16px}
+h3{font-family:var(--serif);font-weight:400;font-size:1.32rem;margin:0 0 9px;letter-spacing:-.005em}
+p{margin:0 0 14px}
+.sec-head p{color:var(--tinta-suave);font-size:1.06rem}
+
+#oferta{background:linear-gradient(180deg,var(--papel) 0%,var(--crema) 100%);border-bottom:1px solid var(--linea)}
+
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{
+  background:#fffdf8;border:1px solid var(--linea);border-radius:var(--r);
+  padding:30px 26px 32px;position:relative;overflow:hidden;
+  box-shadow:0 1px 0 rgba(255,255,255,.9) inset, 0 14px 30px -26px rgba(29,26,22,.6);
+}
+.card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,var(--ocre),var(--brasa))}
+.card p{color:var(--tinta-suave);font-size:.98rem;margin:0}
+.ic{width:46px;height:46px;margin-bottom:18px}
+
+.nota{
+  margin-top:28px;border:1px dashed rgba(180,52,31,.4);border-radius:var(--r);
+  background:rgba(217,148,39,.09);padding:20px 24px;
+  display:flex;gap:16px;align-items:flex-start;
+}
+.nota svg{flex:0 0 auto;margin-top:2px}
+.nota p{margin:0;font-size:.97rem;color:var(--tinta-suave)}
+.nota strong{color:var(--tinta)}
+
+/* pasos */
+#pasos{background:var(--tinta);color:#f1e7d6;position:relative;overflow:hidden}
+#pasos::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(800px 400px at 88% 0%, rgba(217,148,39,.2), transparent 60%),
+             radial-gradient(600px 400px at 0% 100%, rgba(180,52,31,.25), transparent 62%);
+}
+#pasos .wrap{position:relative;z-index:2}
+#pasos h2{color:#fbf3e4}
+#pasos .sec-num{color:var(--ocre)}
+#pasos .sec-head p{color:rgba(241,231,214,.72)}
+.pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.paso{
+  border:1px solid rgba(241,231,214,.2);border-radius:var(--r);
+  padding:28px 24px 30px;background:rgba(255,255,255,.035);position:relative;
+}
+.paso b{
+  font-family:var(--serif);font-size:2.5rem;line-height:1;color:var(--ocre);
+  display:block;margin-bottom:14px;font-weight:400;
+}
+.paso h3{color:#fbf3e4}
+.paso p{color:rgba(241,231,214,.74);font-size:.97rem;margin:0}
+.paso-cta{margin-top:38px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.paso-cta .btn-2{color:#f1e7d6;border-color:rgba(241,231,214,.35)}
+.paso-cta .btn-2:hover{background:rgba(241,231,214,.09)}
+
+/* contacto */
+#contacto{background:linear-gradient(180deg,var(--crema) 0%,var(--crema-2) 100%)}
+.cont-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:start}
+.datos{display:grid;gap:16px}
+.dato{
+  background:#fffdf8;border:1px solid var(--linea);border-radius:var(--r);
+  padding:22px 24px;display:flex;gap:16px;align-items:flex-start;
+}
+.dato svg{flex:0 0 auto;margin-top:3px}
+.dato .et{font-size:11.5px;letter-spacing:.17em;text-transform:uppercase;color:var(--brasa);font-weight:700;margin:0 0 5px}
+.dato .vl{font-family:var(--serif);font-size:1.22rem;margin:0;line-height:1.35;word-break:break-word}
+.dato .vl a{color:var(--tinta);text-decoration:none;border-bottom:1px solid rgba(180,52,31,.4)}
+.dato .sub{font-size:.9rem;color:var(--tinta-suave);margin:6px 0 0}
+
+.mapa{
+  background:#fffdf8;border:1px solid var(--linea);border-radius:var(--r);
+  padding:18px;overflow:hidden;
+}
+.mapa svg{width:100%;height:auto;border-radius:8px;display:block}
+.mapa figcaption{font-size:.84rem;color:var(--tinta-suave);margin-top:12px;text-align:center}
+
+/* footer */
+footer{background:var(--tinta);color:#e9dfcd;padding:56px 0 40px}
+.fgrid{display:flex;flex-wrap:wrap;gap:28px;justify-content:space-between;align-items:flex-start}
+footer .marca{font-family:var(--serif);font-size:1.45rem;margin:0 0 8px;color:#fbf3e4}
+footer a{color:#e9dfcd}
+footer .mail{font-size:1rem;word-break:break-word}
+.redes{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.redes a{
+  display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:.9rem;
+  border:1px solid rgba(233,223,205,.28);border-radius:999px;padding:8px 15px;
+}
+.redes a:hover{background:rgba(233,223,205,.09)}
+.firma{
+  margin-top:40px;padding-top:22px;border-top:1px solid rgba(233,223,205,.18);
+  font-size:.86rem;color:rgba(233,223,205,.68);line-height:1.6;
+}
+
+/* barra móvil de llamada */
+.tel-fija{display:none}
+
+@media (max-width:900px){
+  .hero-grid,.cont-grid{grid-template-columns:1fr;gap:38px}
+  .cards,.pasos{grid-template-columns:1fr}
+  section{padding:62px 0}
+  .hero .wrap{padding-top:52px;padding-bottom:56px}
+  .sello{max-width:320px}
+}
+@media (max-width:560px){
+  body{font-size:16px;padding-top:44px;padding-bottom:78px}
+  .wrap{padding:0 16px}
+  .aviso{font-size:10px;letter-spacing:.05em;padding:8px 10px;line-height:1.35}
+  .btn{width:100%;justify-content:center}
+  .acciones,.paso-cta{gap:12px}
+  .dato{padding:18px 16px;gap:12px}
+  .mapa{padding:12px}
+  .card{padding:24px 20px 26px}
+  .fgrid{gap:22px}
+  .tel-fija{
+    display:flex;position:fixed;left:0;right:0;bottom:0;width:100%;z-index:95;
+    padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+    background:rgba(29,26,22,.94);border-top:1px solid rgba(217,148,39,.45);
+  }
+  .tel-fija a{
+    flex:1 1 auto;justify-content:center;background:linear-gradient(160deg,var(--brasa),var(--brasa-osc));
+    color:#fff9ef;text-decoration:none;font-weight:700;border-radius:999px;padding:13px 18px;
+    display:inline-flex;align-items:center;gap:10px;font-size:1rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="aviso"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <p class="nombre">Restaurante Ciudad de Soria</p>
+        <span class="kicker"><i></i>Pedido directo al restaurante</span>
+        <h1>Llama y pide <em>directamente</em>. Sin apps por medio.</h1>
+        <p class="lead">Nuestra cocina, para llevar o a domicilio, hablando con nosotros. Hoy los pedidos llegan a través de aplicaciones de terceros; con una llamada el pedido entra directo en la cocina y el margen se queda en el restaurante.</p>
+        <div class="acciones">
+          <a class="btn btn-tel" href="tel:+34975050523" aria-label="Llamar al 975 050 523 para hacer un pedido">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 3.5h3l1.5 3.8-2 1.4a12.5 12.5 0 0 0 6.2 6.2l1.4-2 3.8 1.5v3a2 2 0 0 1-2.2 2A17.5 17.5 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z"/></svg>
+            <span><small>Hacer pedido ahora</small><b>975 050 523</b></span>
+          </a>
+          <a class="btn btn-2" href="#pasos">Cómo pedir</a>
+        </div>
+        <p class="telalt">También en el <a href="tel:+34635199616">635 199 616</a> · C/ Zaragoza s/n, Soria</p>
+      </div>
+
+      <div class="sello" aria-hidden="true">
+        <svg viewBox="0 0 400 400" role="img">
+          <defs>
+            <linearGradient id="gPlato" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#fffdf7"/><stop offset="1" stop-color="#e8dcc4"/>
+            </linearGradient>
+            <linearGradient id="gAro" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#d99427"/><stop offset="1" stop-color="#b4341f"/>
+            </linearGradient>
+            <radialGradient id="gVapor" cx="50%" cy="50%" r="50%">
+              <stop offset="0" stop-color="#b4341f" stop-opacity=".22"/><stop offset="1" stop-color="#b4341f" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <circle cx="200" cy="200" r="178" fill="url(#gVapor)"/>
+          <circle cx="200" cy="200" r="150" fill="none" stroke="url(#gAro)" stroke-width="2" stroke-dasharray="3 9" opacity=".8"/>
+          <!-- vapor -->
+          <g stroke="#b4341f" stroke-width="3.4" stroke-linecap="round" fill="none" opacity=".55">
+            <path d="M168 118c-11-13 11-22 0-35"/>
+            <path d="M200 108c-12-15 12-25 0-39"/>
+            <path d="M232 118c-11-13 11-22 0-35"/>
+          </g>
+          <!-- plato -->
+          <ellipse cx="200" cy="232" rx="126" ry="46" fill="#1d1a16" opacity=".1"/>
+          <ellipse cx="200" cy="224" rx="124" ry="44" fill="url(#gPlato)" stroke="#1d1a16" stroke-opacity=".28" stroke-width="2.4"/>
+          <ellipse cx="200" cy="220" rx="88" ry="30" fill="none" stroke="#b4341f" stroke-opacity=".38" stroke-width="2"/>
+          <!-- campana / cloche -->
+          <path d="M104 214a96 76 0 0 1 192 0Z" fill="#f3e6cd" stroke="#1d1a16" stroke-opacity=".35" stroke-width="2.6"/>
+          <path d="M126 210a74 58 0 0 1 148 0Z" fill="none" stroke="#d99427" stroke-opacity=".7" stroke-width="2"/>
+          <circle cx="200" cy="132" r="9" fill="#b4341f"/>
+          <path d="M200 123v-14" stroke="#b4341f" stroke-width="4" stroke-linecap="round"/>
+          <!-- cubiertos -->
+          <g stroke="#4c5a3a" stroke-width="3.2" stroke-linecap="round" fill="none" opacity=".85">
+            <path d="M62 178v96"/><path d="M56 178v30a6 6 0 0 0 12 0v-30"/>
+            <path d="M338 178c-12 8-12 34 0 40v56"/>
+          </g>
+          <!-- auricular marcando -->
+          <g transform="translate(200 312)">
+            <rect x="-86" y="-26" width="172" height="52" rx="26" fill="#1d1a16"/>
+            <g transform="translate(-60 0)" stroke="#f3e6cd" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M-8-9h5l3 6-3.4 2.4a21 21 0 0 0 10.6 10.6L9.6 6.6 15.6 9.6V15a3.4 3.4 0 0 1-3.8 3.4A30 30 0 0 1-11.4-7.2 3.4 3.4 0 0 1-8-9Z"/>
+            </g>
+            <text x="12" y="6" text-anchor="middle" font-family="Georgia, serif" font-size="19" fill="#f3e6cd" letter-spacing="1.5">975 050 523</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== CINTA ===== -->
+<div class="cinta" role="presentation" aria-hidden="true">
+  <div class="cinta-pista">
+    <div class="cinta-grupo">
+      <span>Pedido directo</span><span>Comida para llevar</span><span>A domicilio</span><span>Sin intermediarios</span><span>C/ Zaragoza s/n · Soria</span><span>975 050 523</span>
+    </div>
+    <div class="cinta-grupo">
+      <span>Pedido directo</span><span>Comida para llevar</span><span>A domicilio</span><span>Sin intermediarios</span><span>C/ Zaragoza s/n · Soria</span><span>975 050 523</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== OFERTA ===== -->
+<section id="oferta">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">01 — Qué ofrecemos</span>
+      <h2>La cocina del restaurante, también fuera del restaurante</h2>
+      <p>Un mismo servicio en tres formas de disfrutarlo. El detalle de la carta se concreta con el negocio antes de publicar la web.</p>
+    </div>
+
+    <div class="cards">
+      <article class="card">
+        <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="#b4341f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M8 30h32a14 14 0 0 0-32 0Z"/><path d="M5 35h38"/><path d="M24 16v-5"/><circle cx="24" cy="8" r="2.5"/>
+        </svg>
+        <h3>Cocina de restaurante</h3>
+        <p>El mismo servicio de sala que se ofrece en el local, con la carta que el propio restaurante decide. Los platos y precios se definen junto al negocio.</p>
+      </article>
+
+      <article class="card">
+        <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="#b4341f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M11 17h26l-2.5 23a3 3 0 0 1-3 2.7H16.5a3 3 0 0 1-3-2.7Z"/><path d="M18 17V12a6 6 0 0 1 12 0v5"/><path d="M11 17l3-6h20l3 6"/>
+        </svg>
+        <h3>Comida para llevar</h3>
+        <p>Se encarga por teléfono y se recoge en el propio local, en C/ Zaragoza s/n. Sin esperas de reparto y sin plataformas por medio.</p>
+      </article>
+
+      <article class="card">
+        <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="#b4341f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 31V17h20v14"/><path d="M24 22h8l6 6v3H24"/><circle cx="14" cy="34" r="3.5"/><circle cx="33" cy="34" r="3.5"/><path d="M17.5 34h12"/><path d="M4 31h6.5"/>
+        </svg>
+        <h3>Servicio a domicilio</h3>
+        <p>Entrega a domicilio gestionada directamente por el restaurante. La zona de reparto y las condiciones se acuerdan y se publican con el negocio.</p>
+      </article>
+    </div>
+
+    <div class="nota">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#b4341f" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><path d="M12 7.6v.1"/></svg>
+      <p><strong>Nota de la maqueta:</strong> esta página es una propuesta de diseño. No incluye platos, precios ni horarios porque esa información se toma del restaurante. La carta completa y las condiciones del servicio se concretan con el negocio antes de publicar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PASOS ===== -->
+<section id="pasos">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">02 — Cómo pedir</span>
+      <h2>Tres pasos y el pedido entra en cocina</h2>
+      <p>Sin registrarse, sin descargar nada y sin intermediarios entre el cliente y el restaurante.</p>
+    </div>
+
+    <div class="pasos">
+      <article class="paso">
+        <b>1</b>
+        <h3>Llama al restaurante</h3>
+        <p>Marca el 975 050 523 o el 635 199 616. Contesta el propio restaurante: nadie traduce el pedido por el camino.</p>
+      </article>
+      <article class="paso">
+        <b>2</b>
+        <h3>Dinos qué quieres</h3>
+        <p>Se confirma el pedido por teléfono y se resuelve cualquier duda o cambio en el momento, hablando con quien lo va a preparar.</p>
+      </article>
+      <article class="paso">
+        <b>3</b>
+        <h3>Recoger o a domicilio</h3>
+        <p>Elige recogerlo en C/ Zaragoza s/n o recibirlo en casa. Al pedir así, el pedido y su margen se quedan en el restaurante.</p>
+      </article>
+    </div>
+
+    <div class="paso-cta">
+      <a class="btn btn-tel" href="tel:+34975050523">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 3.5h3l1.5 3.8-2 1.4a12.5 12.5 0 0 0 6.2 6.2l1.4-2 3.8 1.5v3a2 2 0 0 1-2.2 2A17.5 17.5 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z"/></svg>
+        <span><small>Pedir por teléfono</small><b>975 050 523</b></span>
+      </a>
+      <a class="btn btn-2" href="tel:+34635199616">O llama al 635 199 616</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACTO ===== -->
+<section id="contacto">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">03 — Contacto</span>
+      <h2>Dónde estamos y cómo localizarnos</h2>
+    </div>
+
+    <div class="cont-grid">
+      <div class="datos">
+        <div class="dato">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#b4341f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 3.5h3l1.5 3.8-2 1.4a12.5 12.5 0 0 0 6.2 6.2l1.4-2 3.8 1.5v3a2 2 0 0 1-2.2 2A17.5 17.5 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z"/></svg>
+          <div>
+            <p class="et">Teléfono de pedidos</p>
+            <p class="vl"><a href="tel:+34975050523">975 050 523</a></p>
+            <p class="sub">También <a href="tel:+34635199616" style="color:inherit">635 199 616</a></p>
+          </div>
+        </div>
+
+        <div class="dato">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#b4341f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+          <div>
+            <p class="et">Dirección</p>
+            <p class="vl">C/ Zaragoza s/n<br>42004 Soria</p>
+          </div>
+        </div>
+
+        <div class="dato">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#b4341f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.3l3.4 2"/></svg>
+          <div>
+            <p class="et">Horario</p>
+            <p class="vl">Consultar horario</p>
+            <p class="sub">Se confirma llamando al restaurante.</p>
+          </div>
+        </div>
+
+        <div class="dato">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#b4341f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.6 6.6 12 13l8.4-6.4"/></svg>
+          <div>
+            <p class="et">Email</p>
+            <p class="vl" style="font-size:1.02rem"><a href="mailto:ciudad.de.soria.restaurante@gmail.com">ciudad.de.soria.restaurante@gmail.com</a></p>
+          </div>
+        </div>
+      </div>
+
+      <figure class="mapa" style="margin:0">
+        <svg viewBox="0 0 640 430" role="img" aria-label="Mapa esquemático de la ubicación del restaurante en la calle Zaragoza, Soria">
+          <defs>
+            <linearGradient id="gMapa" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#f7efdf"/><stop offset="1" stop-color="#eadfc6"/>
+            </linearGradient>
+            <pattern id="pTrama" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+              <rect width="14" height="14" fill="none"/>
+              <path d="M0 0v14" stroke="#4c5a3a" stroke-opacity=".16" stroke-width="2"/>
+            </pattern>
+          </defs>
+
+          <rect width="640" height="430" fill="url(#gMapa)"/>
+          <rect width="640" height="430" fill="url(#pTrama)" opacity=".5"/>
+
+          <!-- manzanas -->
+          <g fill="#fffdf7" stroke="#1d1a16" stroke-opacity=".16" stroke-width="2">
+            <rect x="38" y="36" width="180" height="108" rx="7"/>
+            <rect x="38" y="196" width="180" height="90" rx="7"/>
+            <rect x="38" y="330" width="180" height="66" rx="7"/>
+            <rect x="420" y="36" width="182" height="96" rx="7"/>
+            <rect x="420" y="300" width="182" height="96" rx="7"/>
+            <rect x="272" y="36" width="96" height="96" rx="7"/>
+          </g>
+
+          <!-- viales secundarios -->
+          <g stroke="#ffffff" stroke-width="16" stroke-linecap="round" opacity=".95">
+            <path d="M28 168h584"/>
+            <path d="M28 306h584"/>
+            <path d="M246 20v396"/>
+          </g>
+          <g stroke="#1d1a16" stroke-opacity=".1" stroke-width="16" fill="none" stroke-linecap="round" opacity=".18">
+            <path d="M28 168h584"/><path d="M28 306h584"/><path d="M246 20v396"/>
+          </g>
+
+          <!-- calle Zaragoza (eje) -->
+          <path d="M394 18v394" stroke="#d99427" stroke-width="28" stroke-linecap="round" opacity=".9"/>
+          <path d="M394 18v394" stroke="#fffaf0" stroke-width="3" stroke-dasharray="16 16" opacity=".85"/>
+          <text x="394" y="404" transform="rotate(-90 394 404)" font-family="Georgia, serif" font-size="17" fill="#8a2413" letter-spacing="2.4">C/ ZARAGOZA</text>
+
+          <!-- zona verde -->
+          <g>
+            <rect x="272" y="196" width="96" height="90" rx="10" fill="#4c5a3a" fill-opacity=".16" stroke="#4c5a3a" stroke-opacity=".38" stroke-width="2"/>
+            <circle cx="300" cy="228" r="13" fill="#4c5a3a" fill-opacity=".34"/>
+            <circle cx="336" cy="256" r="16" fill="#4c5a3a" fill-opacity=".28"/>
+            <circle cx="310" cy="266" r="10" fill="#4c5a3a" fill-opacity=".24"/>
+          </g>
+
+          <!-- marcador restaurante -->
+          <g transform="translate(452 214)">
+            <ellipse cx="0" cy="34" rx="26" ry="8" fill="#1d1a16" opacity=".16"/>
+            <path d="M0 32c0 0-26-22-26-40a26 26 0 1 1 52 0c0 18-26 40-26 40Z" fill="#b4341f" stroke="#8a2413" stroke-width="2.5"/>
+            <circle cx="0" cy="-9" r="11.5" fill="#fbf3e4"/>
+            <g stroke="#b4341f" stroke-width="2.2" stroke-linecap="round" fill="none">
+              <path d="M-4.5-15v12"/><path d="M-7-15v5.5a2.5 2.5 0 0 0 5 0V-15"/>
+              <path d="M5-15c-3.4 2.6-3.4 9 0 11v7"/>
+            </g>
+            <g transform="translate(36 -18)">
+              <rect x="0" y="-16" width="128" height="34" rx="9" fill="#1d1a16"/>
+              <text x="14" y="6" font-family="Georgia, serif" font-size="15" fill="#f3e6cd" letter-spacing=".6">Ciudad de Soria</text>
+            </g>
+          </g>
+
+          <!-- brújula -->
+          <g transform="translate(64 380)">
+            <circle r="20" fill="#fffdf7" stroke="#1d1a16" stroke-opacity=".2" stroke-width="2"/>
+            <path d="M0-13 5 3 0-1-5 3Z" fill="#b4341f"/>
+            <text x="0" y="-22" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#4a4239">N</text>
+          </g>
+
+          <!-- escala -->
+          <g transform="translate(496 410)" opacity=".7">
+            <path d="M0 0h96" stroke="#1d1a16" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M0-5v10M96-5v10" stroke="#1d1a16" stroke-width="2.4" stroke-linecap="round"/>
+          </g>
+          <text x="544" y="398" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#4a4239">esquema</text>
+        </svg>
+        <figcaption>Mapa esquemático ilustrativo. Dirección real: C/ Zaragoza s/n, 42004 Soria.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PIE ===== -->
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <p class="marca">Restaurante Ciudad de Soria</p>
+        <p style="margin:0;color:rgba(233,223,205,.75)">C/ Zaragoza s/n, 42004 Soria</p>
+        <p class="mail" style="margin:10px 0 0"><a href="mailto:ciudad.de.soria.restaurante@gmail.com">ciudad.de.soria.restaurante@gmail.com</a></p>
+        <div class="redes">
+          <a href="https://www.instagram.com/ciudad.soria/" target="_blank" rel="noopener">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg>
+            Instagram @ciudad.soria
+          </a>
+        </div>
+      </div>
+      <div>
+        <p style="margin:0 0 10px;font-size:11.5px;letter-spacing:.17em;text-transform:uppercase;color:#d99427;font-weight:700">Pedidos</p>
+        <p style="margin:0"><a href="tel:+34975050523" style="font-family:var(--serif);font-size:1.5rem;text-decoration:none">975 050 523</a></p>
+        <p style="margin:6px 0 0"><a href="tel:+34635199616" style="text-decoration:none;color:rgba(233,223,205,.8)">635 199 616</a></p>
+        <p style="margin:10px 0 0;color:rgba(233,223,205,.7);font-size:.92rem">Consultar horario</p>
+      </div>
+    </div>
+    <p class="firma">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+<div class="tel-fija">
+  <a href="tel:+34975050523">
+    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 3.5h3l1.5 3.8-2 1.4a12.5 12.5 0 0 0 6.2 6.2l1.4-2 3.8 1.5v3a2 2 0 0 1-2.2 2A17.5 17.5 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z"/></svg>
+    Llamar y pedir · 975 050 523
+  </a>
+</div>
+
+<script>
+(function(){
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.querySelector(a.getAttribute('href'));
+      if(t){e.preventDefault();window.scrollTo({top:t.getBoundingClientRect().top+window.pageYOffset-46,behavior:'smooth'});}
+    });
+  });
+  var els=document.querySelectorAll('.card,.paso,.dato,.mapa');
+  els.forEach(function(el,i){
+    el.style.opacity=0;el.style.transform='translateY(14px)';
+    el.style.transition='opacity .6s ease '+(i%3*90)+'ms, transform .6s ease '+(i%3*90)+'ms';
+  });
+  function revela(el){el.style.opacity=1;el.style.transform='none';}
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(en){ if(en.isIntersecting){revela(en.target);io.unobserve(en.target);} });
+    },{threshold:0,rootMargin:'0px 0px -6% 0px'});
+    els.forEach(function(el){io.observe(el);});
+  }
+  // red de seguridad: si algo impide el observador (o se captura la pagina completa), se muestra todo
+  setTimeout(function(){els.forEach(revela);},1600);
+  window.addEventListener('beforeprint',function(){els.forEach(revela);});
+})();
+</script>
+</body>
+</html>

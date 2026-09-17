@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>El Gramil · Carpintería de madera en Vigo</title>
+<meta name="description" content="El Gramil — casas de madera, estructuras, escaleras y carpintería a medida en Bembrive, Vigo.">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --tinta:#1c1712;
+  --tinta-2:#40352a;
+  --crema:#f6f0e4;
+  --crema-2:#ede3d1;
+  --papel:#fbf7ef;
+  --madera:#a9662f;
+  --madera-osc:#7a4519;
+  --miel:#d29a52;
+  --bosque:#26402f;
+  --bosque-2:#33523c;
+  --musgo:#5d7a56;
+  --linea:rgba(28,23,18,.14);
+  --serif:Georgia,'Iowan Old Style','Times New Roman',Times,serif;
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,'Helvetica Neue',Arial,sans-serif;
+  --barra:44px;
+}
+html,body{max-width:100%;overflow-x:hidden}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;padding-top:var(--barra);
+  font-family:var(--sans);color:var(--tinta);background:var(--papel);
+  font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;
+}
+img,svg{max-width:100%;height:auto;display:block}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.015em;line-height:1.1;margin:0}
+p{margin:0}
+a{color:inherit}
+
+/* ---------- barra fija ---------- */
+.barra{
+  position:fixed;inset:0 0 auto 0;z-index:999;height:var(--barra);
+  display:flex;align-items:center;justify-content:center;
+  background:var(--tinta);color:#e8ddc8;width:100%;overflow:hidden;
+  border-bottom:1px solid rgba(210,154,82,.35);
+}
+.barra span{
+  font-family:var(--sans);font-size:11px;letter-spacing:.09em;text-transform:uppercase;
+  padding:0 14px;text-align:center;line-height:1.25;
+  max-width:100%;
+}
+@media (max-width:480px){ :root{--barra:52px} .barra span{font-size:9.5px;letter-spacing:.05em} }
+
+/* ---------- layout ---------- */
+.env{width:100%;max-width:1180px;margin:0 auto;padding:0 24px}
+@media (max-width:480px){ .env{padding:0 16px} }
+section{position:relative}
+.rotulo{
+  font-family:var(--sans);font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+  opacity:.65;margin:0 0 18px;display:flex;align-items:center;gap:10px;
+}
+.rotulo::before{content:"";width:26px;height:1px;background:currentColor;flex:none;opacity:.7}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;overflow:hidden;color:var(--crema);
+  background:
+    radial-gradient(120% 90% at 85% 10%,rgba(210,154,82,.22),transparent 60%),
+    linear-gradient(168deg,#22382a 0%,#1d2f24 45%,#14211a 100%);
+}
+.vetas{
+  position:absolute;inset:0;opacity:.30;pointer-events:none;
+  background:
+    repeating-linear-gradient(101deg,rgba(210,154,82,.16) 0 1px,transparent 1px 7px),
+    repeating-linear-gradient(97deg,rgba(0,0,0,.30) 0 2px,transparent 2px 19px);
+  mask-image:radial-gradient(90% 100% at 70% 30%,#000 10%,transparent 85%);
+  -webkit-mask-image:radial-gradient(90% 100% at 70% 30%,#000 10%,transparent 85%);
+}
+.hero-in{position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;padding:72px 0 78px}
+.hero h1{font-size:clamp(2.5rem,6.2vw,4.5rem);letter-spacing:-.03em}
+.hero h1 em{font-style:italic;color:var(--miel)}
+.marca{display:flex;align-items:center;gap:12px;margin-bottom:26px}
+.marca-txt{font-family:var(--serif);font-size:1.35rem;letter-spacing:.02em}
+.marca-sub{font-size:10px;letter-spacing:.24em;text-transform:uppercase;opacity:.6;display:block;font-family:var(--sans)}
+.hero p.lead{margin-top:22px;font-size:clamp(1rem,1.9vw,1.2rem);max-width:46ch;color:#dcd2bd}
+.ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;text-decoration:none;
+  padding:15px 26px;border-radius:2px;font-size:.95rem;letter-spacing:.02em;
+  font-family:var(--sans);font-weight:600;transition:transform .18s ease,box-shadow .18s ease;
+  max-width:100%;
+}
+.btn-1{background:var(--miel);color:#20180d;box-shadow:0 10px 0 -4px rgba(0,0,0,.25)}
+.btn-1:hover{transform:translateY(-2px)}
+.btn-2{border:1px solid rgba(246,240,228,.4);color:var(--crema)}
+.btn-2:hover{background:rgba(246,240,228,.08)}
+.hero-dibujo{width:100%}
+@media (max-width:900px){
+  .hero-in{grid-template-columns:1fr;gap:34px;padding:52px 0 58px}
+  .hero-dibujo{max-width:420px;margin:0 auto}
+}
+
+/* ---------- cinta ---------- */
+.cinta{width:100%;overflow:hidden;background:var(--tinta);color:var(--miel);border-top:1px solid rgba(210,154,82,.25)}
+.cinta-pista{display:flex;width:max-content;animation:desliza 34s linear infinite}
+.cinta-pista span{
+  font-family:var(--serif);font-style:italic;font-size:1rem;padding:12px 26px;white-space:nowrap;
+  display:inline-flex;align-items:center;gap:26px;
+}
+.cinta-pista span::after{content:"◆";font-size:.55rem;opacity:.55;font-style:normal}
+@keyframes desliza{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.cinta-pista{animation:none}}
+
+/* ---------- servicios ---------- */
+.servicios{background:var(--crema);padding:84px 0;border-bottom:1px solid var(--linea)}
+.cab{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:46px}
+.cab h2{font-size:clamp(1.9rem,3.6vw,2.9rem)}
+.cab p{color:var(--tinta-2);opacity:.85}
+@media (max-width:760px){ .cab{grid-template-columns:1fr;gap:16px} }
+.rejilla{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+@media (max-width:760px){ .rejilla{grid-template-columns:1fr} }
+.tarjeta{
+  background:var(--papel);border:1px solid var(--linea);border-radius:3px;overflow:hidden;
+  display:flex;flex-direction:column;min-width:0;
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+.tarjeta:hover{transform:translateY(-4px);box-shadow:0 18px 40px -26px rgba(28,23,18,.5)}
+.tarjeta .lienzo{
+  background:linear-gradient(160deg,#e7dcc6,#d9c8a9);
+  border-bottom:1px solid var(--linea);padding:18px;
+}
+.tarjeta .cuerpo{padding:24px 26px 28px}
+.tarjeta h3{font-size:1.45rem;margin-bottom:10px}
+.tarjeta p{font-size:.96rem;color:var(--tinta-2)}
+.num{font-family:var(--sans);font-size:11px;letter-spacing:.2em;opacity:.5;display:block;margin-bottom:8px}
+
+/* ---------- proceso ---------- */
+.proceso{background:var(--bosque);color:var(--crema);padding:84px 0;position:relative;overflow:hidden}
+.proceso::before{
+  content:"";position:absolute;inset:0;opacity:.2;
+  background:repeating-linear-gradient(90deg,rgba(246,240,228,.12) 0 1px,transparent 1px 46px);
+}
+.proceso .env{position:relative}
+.proceso h2{font-size:clamp(1.9rem,3.6vw,2.9rem);margin-bottom:46px;max-width:20ch}
+.pasos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}
+@media (max-width:820px){ .pasos{grid-template-columns:1fr} }
+.paso{border-top:2px solid rgba(210,154,82,.5);padding-top:22px;min-width:0}
+.paso .idx{font-family:var(--serif);font-size:2.6rem;color:var(--miel);line-height:1;display:block;margin-bottom:12px}
+.paso h3{font-size:1.3rem;margin-bottom:10px}
+.paso p{font-size:.95rem;color:#cfc6b2}
+
+/* ---------- contacto ---------- */
+.contacto{background:var(--papel);padding:84px 0}
+.contacto-in{display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:start}
+@media (max-width:900px){ .contacto-in{grid-template-columns:1fr;gap:34px} }
+.contacto h2{font-size:clamp(1.9rem,3.6vw,2.9rem);margin-bottom:26px}
+.datos{list-style:none;margin:0;padding:0;border-top:1px solid var(--linea)}
+.datos li{padding:18px 0;border-bottom:1px solid var(--linea);display:flex;gap:16px;align-items:flex-start;min-width:0}
+.datos .et{font-size:11px;letter-spacing:.18em;text-transform:uppercase;opacity:.55;flex:0 0 96px;padding-top:5px}
+.datos .vl{font-family:var(--serif);font-size:1.15rem;min-width:0;overflow-wrap:anywhere}
+.datos .vl a{text-decoration:none;border-bottom:1px solid var(--miel)}
+.datos .vl small{display:block;font-family:var(--sans);font-size:.82rem;opacity:.6;margin-top:4px}
+@media (max-width:560px){
+  .datos li{flex-direction:column;gap:6px}
+  .datos .et{flex:none;padding-top:0}
+  .datos .vl{font-size:1.05rem;overflow-wrap:break-word;word-break:normal}
+  .datos li .vl a[href^="mailto"]{font-size:.95rem}
+}
+.mapa{border:1px solid var(--linea);border-radius:3px;overflow:hidden;background:#eee6d5;width:100%}
+.mapa figcaption{font-size:.8rem;padding:12px 16px;opacity:.7;border-top:1px solid var(--linea);background:var(--crema)}
+
+/* ---------- pie ---------- */
+.pie{background:var(--tinta);color:#d9cdb6;padding:52px 0 40px}
+.pie-in{display:flex;flex-wrap:wrap;gap:26px;justify-content:space-between;align-items:flex-end}
+.pie a{color:var(--miel);text-decoration:none;overflow-wrap:anywhere}
+.pie .firma{font-family:var(--serif);font-style:italic;font-size:.95rem;opacity:.75;max-width:44ch}
+.pie .mail{font-family:var(--serif);font-size:1.2rem}
+.pie .redes{font-size:.9rem;opacity:.8;margin-top:8px}
+.linea-oro{height:3px;width:100%;background:linear-gradient(90deg,var(--madera-osc),var(--miel),var(--bosque-2),var(--madera-osc))}
+</style>
+</head>
+<body>
+
+<div class="barra"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="vetas"></div>
+  <div class="env hero-in">
+    <div>
+      <div class="marca">
+        <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
+          <rect x="1" y="1" width="38" height="38" fill="none" stroke="#d29a52" stroke-width="1"/>
+          <path d="M8 28 L20 10 L32 28" fill="none" stroke="#d29a52" stroke-width="1.6"/>
+          <path d="M8 28 H32" stroke="#f6f0e4" stroke-width="1.6"/>
+          <circle cx="20" cy="22" r="2" fill="#f6f0e4"/>
+        </svg>
+        <span class="marca-txt">El Gramil<small class="marca-sub">Carpintería de madera · Vigo</small></span>
+      </div>
+      <h1>Casas de madera<br>y carpintería <em>a medida</em></h1>
+      <p class="lead">Casas de madera, estructuras, escaleras y carpintería a medida en Bembrive, Vigo. Cada proyecto se dibuja, se calcula y se trabaja pieza a pieza.</p>
+      <div class="ctas">
+        <a class="btn btn-1" href="tel:+34666485063">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 3h4l2 5-3 2a13 13 0 006 6l2-3 5 2v4a2 2 0 01-2 2A17 17 0 013 5a2 2 0 012-2z"/></svg>
+          Llamar 666 485 063
+        </a>
+        <a class="btn btn-2" href="#contacto">Ver cómo trabajamos</a>
+      </div>
+    </div>
+
+    <!-- Dibujo: sección de casa de madera -->
+    <svg class="hero-dibujo" viewBox="0 0 400 340" role="img" aria-label="Dibujo esquemático de una sección de casa de madera">
+      <defs>
+        <linearGradient id="gMad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#d29a52"/><stop offset="1" stop-color="#8a5526"/>
+        </linearGradient>
+        <pattern id="pVeta" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(12)">
+          <rect width="10" height="10" fill="#b8763a"/>
+          <path d="M0 3 H10 M0 7 H10" stroke="#8a5526" stroke-width="1" opacity=".6"/>
+        </pattern>
+      </defs>
+      <g stroke="#e3d8c0" stroke-width=".5" opacity=".28">
+        <path d="M0 40 H400 M0 100 H400 M0 160 H400 M0 220 H400 M0 280 H400"/>
+        <path d="M60 0 V340 M140 0 V340 M220 0 V340 M300 0 V340"/>
+      </g>
+      <!-- tejado -->
+      <path d="M200 40 L350 150 H330 L200 56 L70 150 H50 Z" fill="url(#gMad)"/>
+      <path d="M200 56 L330 150 H70 Z" fill="none" stroke="#e3d8c0" stroke-width="1.2"/>
+      <!-- cerchas -->
+      <g stroke="#e3d8c0" stroke-width="1" opacity=".75">
+        <path d="M120 150 L200 92 L280 150"/>
+        <path d="M120 150 H280"/><path d="M200 92 V150"/>
+        <path d="M160 121 L200 150 M240 121 L200 150"/>
+      </g>
+      <!-- cuerpo -->
+      <rect x="86" y="150" width="228" height="140" fill="url(#pVeta)"/>
+      <g stroke="#6d4520" stroke-width="1.4" opacity=".8">
+        <path d="M86 174 H314 M86 198 H314 M86 222 H314 M86 246 H314 M86 270 H314"/>
+      </g>
+      <!-- ventana -->
+      <rect x="112" y="186" width="66" height="60" fill="#22382a" stroke="#e3d8c0" stroke-width="1.4"/>
+      <path d="M145 186 V246 M112 216 H178" stroke="#e3d8c0" stroke-width="1"/>
+      <!-- puerta -->
+      <rect x="226" y="196" width="56" height="94" fill="#22382a" stroke="#e3d8c0" stroke-width="1.4"/>
+      <circle cx="270" cy="244" r="3" fill="#d29a52"/>
+      <!-- base -->
+      <path d="M62 290 H338" stroke="#e3d8c0" stroke-width="2.5"/>
+      <g stroke="#e3d8c0" stroke-width="1" opacity=".5">
+        <path d="M70 296 l-8 10 M100 296 l-8 10 M130 296 l-8 10 M160 296 l-8 10 M190 296 l-8 10 M220 296 l-8 10 M250 296 l-8 10 M280 296 l-8 10 M310 296 l-8 10"/>
+      </g>
+      <!-- cota -->
+      <g stroke="#d29a52" stroke-width="1" fill="none">
+        <path d="M360 150 V290 M356 150 H364 M356 290 H364"/>
+      </g>
+    </svg>
+  </div>
+</header>
+
+<div class="cinta">
+  <div class="cinta-pista" id="pista">
+    <span>Casas de madera</span><span>Estructuras</span><span>Escaleras</span><span>Carpintería a medida</span><span>Bembrive · Vigo</span>
+    <span>Casas de madera</span><span>Estructuras</span><span>Escaleras</span><span>Carpintería a medida</span><span>Bembrive · Vigo</span>
+  </div>
+</div>
+
+<!-- ================= SERVICIOS ================= -->
+<section class="servicios" id="servicios">
+  <div class="env">
+    <div class="cab">
+      <div>
+        <p class="rotulo">Qué hacemos</p>
+        <h2>Madera trabajada<br>para durar</h2>
+      </div>
+      <p>Cuatro líneas de trabajo con un mismo oficio detrás: medir bien, elegir la madera adecuada y ejecutar con precisión. Cada encargo se estudia antes de cortar la primera pieza.</p>
+    </div>
+
+    <div class="rejilla">
+
+      <article class="tarjeta">
+        <div class="lienzo">
+          <svg viewBox="0 0 320 150" role="img" aria-label="Alzado de casa de madera">
+            <path d="M160 18 L300 96 H280 L160 30 L40 96 H20 Z" fill="#a9662f"/>
+            <rect x="52" y="96" width="216" height="46" fill="#c98b4b"/>
+            <g stroke="#7a4519" stroke-width="1.2" opacity=".65"><path d="M52 108 H268 M52 120 H268 M52 132 H268"/></g>
+            <rect x="76" y="106" width="40" height="28" fill="#26402f"/>
+            <rect x="204" y="106" width="40" height="36" fill="#26402f"/>
+            <path d="M30 142 H290" stroke="#40352a" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="cuerpo">
+          <span class="num">01</span>
+          <h3>Casas de madera</h3>
+          <p>Proyectos de vivienda en madera, desde el planteamiento inicial hasta el montaje. Se define con el cliente la distribución, el sistema constructivo y los acabados antes de empezar.</p>
+        </div>
+      </article>
+
+      <article class="tarjeta">
+        <div class="lienzo">
+          <svg viewBox="0 0 320 150" role="img" aria-label="Estructura de vigas y cerchas">
+            <g stroke="#7a4519" stroke-width="7" stroke-linecap="square" fill="none">
+              <path d="M30 128 L160 34 L290 128"/><path d="M40 128 H280"/>
+            </g>
+            <g stroke="#a9662f" stroke-width="4" fill="none">
+              <path d="M160 34 V128"/><path d="M95 81 L160 128 M225 81 L160 128"/>
+            </g>
+            <g fill="#26402f"><circle cx="160" cy="34" r="5"/><circle cx="160" cy="128" r="5"/><circle cx="95" cy="81" r="4"/><circle cx="225" cy="81" r="4"/></g>
+          </svg>
+        </div>
+        <div class="cuerpo">
+          <span class="num">02</span>
+          <h3>Estructuras</h3>
+          <p>Estructuras de madera para cubiertas, ampliaciones y elementos portantes. Trabajo de escuadrías, ensambles y montaje adaptado a lo que pide cada obra.</p>
+        </div>
+      </article>
+
+      <article class="tarjeta">
+        <div class="lienzo">
+          <svg viewBox="0 0 320 150" role="img" aria-label="Sección de escalera de madera">
+            <g fill="#c98b4b" stroke="#7a4519" stroke-width="1.5">
+              <rect x="40" y="118" width="46" height="14"/><rect x="80" y="100" width="46" height="14"/>
+              <rect x="120" y="82" width="46" height="14"/><rect x="160" y="64" width="46" height="14"/>
+              <rect x="200" y="46" width="46" height="14"/><rect x="240" y="28" width="46" height="14"/>
+            </g>
+            <path d="M46 132 L286 22" stroke="#26402f" stroke-width="3" fill="none"/>
+            <path d="M46 112 L286 12" stroke="#a9662f" stroke-width="4" fill="none" stroke-linecap="round"/>
+            <g stroke="#26402f" stroke-width="2">
+              <path d="M86 115 V95 M146 90 V70 M206 65 V45 M266 40 V20"/>
+            </g>
+          </svg>
+        </div>
+        <div class="cuerpo">
+          <span class="num">03</span>
+          <h3>Escaleras</h3>
+          <p>Escaleras de madera resueltas según el hueco disponible: peldañeado, zancas y barandilla definidos a partir de las medidas reales del espacio.</p>
+        </div>
+      </article>
+
+      <article class="tarjeta">
+        <div class="lienzo">
+          <svg viewBox="0 0 320 150" role="img" aria-label="Detalle de ensamble y carpintería a medida">
+            <rect x="34" y="52" width="130" height="46" fill="#c98b4b" stroke="#7a4519" stroke-width="1.5"/>
+            <rect x="156" y="52" width="130" height="46" fill="#a9662f" stroke="#7a4519" stroke-width="1.5"/>
+            <g fill="#26402f"><rect x="150" y="58" width="16" height="14"/><rect x="150" y="78" width="16" height="14"/></g>
+            <g stroke="#7a4519" stroke-width="1" opacity=".6"><path d="M34 64 H164 M34 76 H164 M34 88 H164 M166 64 H286 M166 76 H286 M166 88 H286"/></g>
+            <g stroke="#26402f" stroke-width="1.4" fill="none">
+              <path d="M34 118 H286 M34 114 V122 M286 114 V122"/>
+            </g>
+            <g stroke="#26402f" stroke-width="1.6" fill="none" opacity=".75">
+              <path d="M34 34 H96 M34 30 V38 M96 30 V38"/>
+              <path d="M226 34 H286 M226 30 V38 M286 30 V38"/>
+            </g>
+          </svg>
+        </div>
+        <div class="cuerpo">
+          <span class="num">04</span>
+          <h3>Carpintería a medida</h3>
+          <p>Piezas fabricadas para un sitio concreto cuando lo estándar no encaja: elementos de interior y exterior ajustados al milímetro del encargo.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROCESO ================= -->
+<section class="proceso" id="proceso">
+  <div class="env">
+    <p class="rotulo">Cómo trabajamos</p>
+    <h2>Tres pasos, sin sorpresas</h2>
+    <div class="pasos">
+      <div class="paso">
+        <span class="idx">01</span>
+        <h3>Hablamos del proyecto</h3>
+        <p>Una llamada o una visita para entender qué necesita, dónde va y con qué condiciones cuenta el emplazamiento.</p>
+      </div>
+      <div class="paso">
+        <span class="idx">02</span>
+        <h3>Medimos y definimos</h3>
+        <p>Se toman medidas, se plantea la solución constructiva y se concretan maderas, acabados y plazos antes de fabricar.</p>
+      </div>
+      <div class="paso">
+        <span class="idx">03</span>
+        <h3>Fabricamos y montamos</h3>
+        <p>Se ejecuta el trabajo en taller y se monta en destino, con la revisión final del resultado junto al cliente.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACTO ================= -->
+<section class="contacto" id="contacto">
+  <div class="env contacto-in">
+    <div>
+      <p class="rotulo">Contacto</p>
+      <h2>Cuéntenos<br>qué tiene en mente</h2>
+      <ul class="datos">
+        <li><span class="et">Teléfono</span><span class="vl"><a href="tel:+34666485063">666 485 063</a></span></li>
+        <li><span class="et">Email</span><span class="vl"><a href="mailto:elgramilcasasdemadera@gmail.com">elgramilcasasdemadera@gmail.com</a></span></li>
+        <li><span class="et">Taller</span><span class="vl">Lugar As Ferreiras 10, Bembrive<small>36313 Vigo (Pontevedra)</small></span></li>
+        <li><span class="et">Horario</span><span class="vl">Consultar horario</span></li>
+        <li><span class="et">Redes</span><span class="vl">Facebook /el-gramil</span></li>
+      </ul>
+      <div class="ctas">
+        <a class="btn btn-1" href="tel:+34666485063" style="background:var(--bosque);color:var(--crema)">Llamar 666 485 063</a>
+      </div>
+    </div>
+
+    <figure class="mapa" style="margin:0">
+      <svg viewBox="0 0 520 380" role="img" aria-label="Mapa esquemático de la ubicación del taller en Bembrive, Vigo">
+        <rect width="520" height="380" fill="#ece3d0"/>
+        <g opacity=".5">
+          <rect x="0" y="0" width="520" height="380" fill="none"/>
+          <g stroke="#d8cbb0" stroke-width="1">
+            <path d="M0 40 H520 M0 80 H520 M0 120 H520 M0 160 H520 M0 200 H520 M0 240 H520 M0 280 H520 M0 320 H520 M0 360 H520"/>
+            <path d="M40 0 V380 M80 0 V380 M120 0 V380 M160 0 V380 M200 0 V380 M240 0 V380 M280 0 V380 M320 0 V380 M360 0 V380 M400 0 V380 M440 0 V380 M480 0 V380"/>
+          </g>
+        </g>
+        <!-- manchas de bosque -->
+        <g fill="#5d7a56" opacity=".28">
+          <path d="M20 250 q40 -40 90 -18 q50 22 30 70 q-20 48 -80 30 q-58 -18 -40 -82z"/>
+          <path d="M370 30 q50 -22 80 14 q30 36 -8 66 q-40 32 -78 4 q-36 -28 6 -84z"/>
+        </g>
+        <!-- carreteras -->
+        <path d="M-10 300 C120 280 180 210 260 200 C350 190 430 150 530 120" fill="none" stroke="#f6f0e4" stroke-width="18" stroke-linecap="round"/>
+        <path d="M-10 300 C120 280 180 210 260 200 C350 190 430 150 530 120" fill="none" stroke="#c9b894" stroke-width="1.5" stroke-dasharray="10 10"/>
+        <path d="M120 -10 C150 90 220 140 260 200 C300 258 300 330 280 392" fill="none" stroke="#f6f0e4" stroke-width="12" stroke-linecap="round"/>
+        <path d="M430 380 C400 300 360 270 300 250 C240 230 190 236 130 210" fill="none" stroke="#f6f0e4" stroke-width="8" stroke-linecap="round"/>
+        <!-- edificaciones -->
+        <g fill="#d3c4a4">
+          <rect x="70" y="120" width="34" height="26"/><rect x="118" y="96" width="26" height="24"/>
+          <rect x="330" y="240" width="40" height="28"/><rect x="386" y="272" width="28" height="22"/>
+          <rect x="170" y="316" width="36" height="24"/>
+        </g>
+        <!-- marcador -->
+        <g transform="translate(260,200)">
+          <circle r="42" fill="#26402f" opacity=".10"/>
+          <circle r="26" fill="#26402f" opacity=".16"/>
+          <path d="M0 6 C-16 -10 -18 -22 -10 -30 C-2 -38 10 -36 15 -26 C20 -16 12 -6 0 6z" fill="#26402f" transform="translate(0,-2) scale(1.1)"/>
+          <circle cx="0" cy="-28" r="6" fill="#d29a52"/>
+        </g>
+        <text x="284" y="196" font-family="Georgia,serif" font-size="19" fill="#1c1712">El Gramil</text>
+        <text x="284" y="216" font-family="-apple-system,Segoe UI,sans-serif" font-size="12.5" fill="#40352a" opacity=".8">Lugar As Ferreiras 10</text>
+        <text x="284" y="233" font-family="-apple-system,Segoe UI,sans-serif" font-size="12.5" fill="#40352a" opacity=".8">Bembrive · 36313 Vigo</text>
+        <!-- rosa de los vientos -->
+        <g transform="translate(466,336)" stroke="#40352a" fill="none" stroke-width="1.3">
+          <circle r="17"/><path d="M0 -13 V13 M-13 0 H13"/>
+          <path d="M0 -17 l4 7 h-8z" fill="#40352a" stroke="none"/>
+        </g>
+        <text x="461" y="308" font-family="-apple-system,Segoe UI,sans-serif" font-size="11" fill="#40352a" opacity=".75">N</text>
+      </svg>
+      <figcaption>Mapa esquemático, no a escala. Zona de Bembrive, Vigo.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<div class="linea-oro"></div>
+
+<!-- ================= PIE ================= -->
+<footer class="pie">
+  <div class="env pie-in">
+    <div>
+      <p class="mail"><a href="mailto:elgramilcasasdemadera@gmail.com">elgramilcasasdemadera@gmail.com</a></p>
+      <p class="redes">El Gramil · Lugar As Ferreiras 10, Bembrive, 36313 Vigo (Pontevedra) · Facebook /el-gramil</p>
+    </div>
+    <p class="firma">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Desplazamiento suave para anclas internas
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.querySelector(a.getAttribute('href'));
+      if(!t) return;
+      e.preventDefault();
+      var y=t.getBoundingClientRect().top+window.pageYOffset-60;
+      window.scrollTo({top:y,behavior:'smooth'});
+    });
+  });
+  // Aparición progresiva de bloques (con red de seguridad: si algo falla, todo queda visible)
+  try{
+    if('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      var els=[].slice.call(document.querySelectorAll('.tarjeta,.paso,.mapa,.datos'));
+      var mostrar=function(el){el.style.opacity='1';el.style.transform='none';};
+      els.forEach(function(el){el.style.opacity='0';el.style.transform='translateY(16px)';el.style.transition='opacity .6s ease,transform .6s ease';});
+      var io=new IntersectionObserver(function(en){
+        en.forEach(function(x){ if(x.isIntersecting){mostrar(x.target);io.unobserve(x.target);} });
+      },{threshold:0,rootMargin:'0px 0px -5% 0px'});
+      els.forEach(function(el){io.observe(el);});
+      setTimeout(function(){ els.forEach(mostrar); io.disconnect(); },2500);
+    }
+  }catch(e){
+    [].slice.call(document.querySelectorAll('.tarjeta,.paso,.mapa,.datos'))
+      .forEach(function(el){el.style.opacity='1';el.style.transform='none';});
+  }
+})();
+</script>
+</body>
+</html>

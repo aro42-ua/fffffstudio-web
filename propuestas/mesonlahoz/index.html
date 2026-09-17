@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mesón Bar La Hoz · Soria — Propuesta de diseño</title>
+<meta name="description" content="Maqueta no oficial de web para Mesón Bar La Hoz, Soria. Propuesta de FFFFFFstudio.">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0;max-width:100%;overflow-x:hidden}
+img,svg{max-width:100%;height:auto;display:block}
+
+:root{
+  --tinto:#5a1a1f;
+  --tinto-osc:#3d1115;
+  --ocre:#c08a3e;
+  --ocre-cl:#e0b877;
+  --pergamino:#f4ece0;
+  --pergamino-osc:#e6d9c6;
+  --pizarra:#22201d;
+  --pizarra-cl:#34312c;
+  --tiza:#efe7d8;
+  --verde:#4a5a42;
+  --texto:#2b2723;
+  --display:"Iowan Old Style","Palatino Linotype","Book Antiqua",Palatino,Georgia,"Times New Roman",serif;
+  --sans:Optima,Candara,"Gill Sans","Gill Sans MT","Trebuchet MS",Verdana,sans-serif;
+  --barra:44px;
+}
+
+body{
+  font-family:var(--sans);
+  color:var(--texto);
+  background:var(--pergamino);
+  line-height:1.62;
+  font-size:17px;
+  padding-top:var(--barra);
+  -webkit-text-size-adjust:100%;
+}
+
+/* ---------- barra fija ---------- */
+.barra{
+  position:fixed;top:0;left:0;right:0;z-index:99;
+  width:100%;height:var(--barra);
+  display:flex;align-items:center;
+  background:var(--pizarra);
+  color:var(--tiza);
+  border-bottom:1px solid #000;
+  box-shadow:0 1px 0 rgba(224,184,119,.35);
+  overflow:hidden;
+}
+.barra p{
+  margin:0;width:100%;padding:0 16px;
+  font-family:var(--sans);
+  font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;
+  text-align:center;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  opacity:.92;
+}
+
+/* ---------- utilidades ---------- */
+.env{width:100%;max-width:1120px;margin:0 auto;padding:0 20px}
+.seccion{padding:72px 0}
+h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.14;margin:0 0 .5em;letter-spacing:-.005em}
+h2{font-size:clamp(28px,4.2vw,42px)}
+h3{font-size:clamp(19px,2.2vw,22px)}
+.rotulo{
+  font-family:var(--sans);font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--ocre);margin:0 0 14px;display:flex;align-items:center;gap:10px;
+}
+.rotulo::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(192,138,62,.55),rgba(192,138,62,0))}
+.suave{color:#5c544b}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(120% 90% at 82% 8%, rgba(192,138,62,.20) 0%, rgba(192,138,62,0) 55%),
+    linear-gradient(168deg,#4c1519 0%, #5a1a1f 42%, #3d1115 100%);
+  color:var(--tiza);
+  border-bottom:6px solid var(--ocre);
+}
+.hero::before{ /* textura de enfoscado */
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:.30;
+  background-image:
+    repeating-linear-gradient(115deg, rgba(255,255,255,.045) 0 1px, rgba(0,0,0,0) 1px 4px),
+    repeating-linear-gradient(-42deg, rgba(0,0,0,.07) 0 1px, rgba(0,0,0,0) 1px 6px);
+}
+.hero-grid{
+  position:relative;display:grid;grid-template-columns:1.12fr .88fr;gap:48px;align-items:center;
+  padding:76px 0 84px;
+}
+.hero h1{
+  font-size:clamp(38px,6.2vw,68px);color:#fff;margin-bottom:18px;
+}
+.hero h1 em{font-style:normal;color:var(--ocre-cl);display:block}
+.hero .entradilla{font-size:clamp(16.5px,1.6vw,19px);color:rgba(239,231,216,.86);max-width:44ch;margin:0 0 30px}
+.marca-alta{
+  display:inline-flex;align-items:center;gap:12px;margin-bottom:26px;
+  font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--ocre-cl);
+}
+.marca-alta span.lin{width:34px;height:1px;background:var(--ocre);display:block}
+
+.acciones{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--sans);font-size:15px;letter-spacing:.06em;text-transform:uppercase;
+  text-decoration:none;padding:15px 26px;border-radius:2px;
+  max-width:100%;
+}
+.btn-prim{
+  background:linear-gradient(180deg,var(--ocre-cl),var(--ocre));
+  color:#3d1115;font-weight:700;
+  box-shadow:0 2px 0 #8d5f22, 0 10px 22px rgba(0,0,0,.28);
+  border:1px solid #8d5f22;
+}
+.btn-prim:hover{filter:brightness(1.06)}
+.btn-sec{
+  background:transparent;color:var(--tiza);border:1px solid rgba(239,231,216,.42);
+}
+.btn-sec:hover{border-color:var(--ocre-cl);color:var(--ocre-cl)}
+
+/* pizarra del hero */
+.pizarra{
+  background:linear-gradient(160deg,var(--pizarra-cl),var(--pizarra));
+  border:10px solid #6b4a24;
+  border-radius:4px;
+  box-shadow:inset 0 0 60px rgba(0,0,0,.55), 0 18px 40px rgba(0,0,0,.35);
+  padding:26px 24px;color:var(--tiza);position:relative;overflow:hidden;
+}
+.pizarra::after{
+  content:"";position:absolute;inset:0;opacity:.14;pointer-events:none;
+  background-image:repeating-linear-gradient(72deg, rgba(255,255,255,.25) 0 1px, rgba(0,0,0,0) 1px 9px);
+}
+.pizarra h3{font-family:var(--display);font-size:22px;color:var(--tiza);margin:0 0 4px;text-align:center}
+.pizarra .sub{text-align:center;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:rgba(239,231,216,.55);margin:0 0 18px}
+.pizarra ul{list-style:none;margin:0;padding:0}
+.pizarra li{
+  display:flex;justify-content:space-between;gap:14px;align-items:baseline;
+  font-family:var(--display);font-size:16.5px;padding:9px 0;
+  border-bottom:1px dashed rgba(239,231,216,.22);
+}
+.pizarra li:last-child{border-bottom:0}
+.pizarra li span:last-child{font-family:var(--sans);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ocre-cl);white-space:nowrap}
+.pizarra .pie{margin:16px 0 0;font-size:12px;color:rgba(239,231,216,.5);text-align:center;font-style:italic}
+
+/* ---------- cinta ---------- */
+.cinta{
+  width:100%;overflow:hidden;background:var(--pizarra);color:var(--ocre-cl);
+  border-top:1px solid rgba(192,138,62,.3);border-bottom:1px solid rgba(192,138,62,.3);
+}
+.cinta-pista{
+  display:flex;width:max-content;animation:desliza 34s linear infinite;
+}
+.cinta-pista span{
+  padding:11px 0;font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;white-space:nowrap;
+}
+.cinta-pista span i{font-style:normal;color:rgba(239,231,216,.35);padding:0 22px}
+@keyframes desliza{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.cinta-pista{animation:none}}
+
+/* ---------- azulejos ---------- */
+.azulejo-linea{width:100%;overflow:hidden;line-height:0;background:var(--pergamino)}
+.azulejo-linea svg{width:100%;height:26px;display:block}
+
+/* ---------- oferta ---------- */
+.oferta{background:var(--pergamino);position:relative}
+.oferta::before{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background-image:radial-gradient(rgba(122,104,80,.10) 1px, rgba(0,0,0,0) 1px);
+  background-size:7px 7px;
+}
+.oferta .env{position:relative}
+.enc{max-width:60ch;margin-bottom:40px}
+.tarjetas{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.tarjeta{
+  background:linear-gradient(180deg,#fffaf2,#f6efe3);
+  border:1px solid var(--pergamino-osc);
+  border-top:3px solid var(--tinto);
+  padding:28px 24px 26px;border-radius:2px;
+  box-shadow:0 1px 0 #fff inset, 0 8px 20px rgba(90,26,31,.06);
+}
+.tarjeta .ico{width:46px;height:46px;margin-bottom:16px}
+.tarjeta h3{margin-bottom:8px;color:var(--tinto)}
+.tarjeta p{margin:0;font-size:15.5px;color:#584f46}
+
+.nota{
+  margin-top:34px;display:flex;gap:16px;align-items:flex-start;
+  background:rgba(192,138,62,.10);border-left:3px solid var(--ocre);
+  padding:18px 20px;border-radius:2px;font-size:15px;color:#5a4f40;
+}
+.nota svg{flex:0 0 auto;width:22px;height:22px;margin-top:2px}
+.nota p{margin:0}
+
+/* ---------- visita ---------- */
+.visita{background:linear-gradient(180deg,#efe4d3,#e8dbc7);border-top:1px solid var(--pergamino-osc)}
+.pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:38px}
+.paso{position:relative;padding-top:8px}
+.paso .num{
+  font-family:var(--display);font-size:56px;line-height:1;color:rgba(90,26,31,.20);
+  display:block;margin-bottom:-14px;
+}
+.paso h3{color:var(--tinto-osc);margin-bottom:6px}
+.paso p{margin:0;font-size:15.5px;color:#5c5245}
+.paso::before{
+  content:"";position:absolute;left:0;top:0;width:44px;height:2px;background:var(--ocre);
+}
+
+/* ---------- contacto ---------- */
+.contacto{background:var(--tinto-osc);color:var(--tiza);position:relative;overflow:hidden}
+.contacto::before{
+  content:"";position:absolute;inset:0;opacity:.35;pointer-events:none;
+  background-image:repeating-linear-gradient(90deg, rgba(255,255,255,.03) 0 1px, rgba(0,0,0,0) 1px 5px);
+}
+.contacto .env{position:relative}
+.contacto h2{color:#fff}
+.cont-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:44px;align-items:start;margin-top:34px}
+.datos{list-style:none;margin:0;padding:0}
+.datos li{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid rgba(239,231,216,.16)}
+.datos li:first-child{border-top:1px solid rgba(239,231,216,.16)}
+.datos svg{flex:0 0 auto;width:26px;height:26px;margin-top:3px}
+.datos .et{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--ocre-cl);display:block;margin-bottom:3px}
+.datos .va{font-family:var(--display);font-size:20px;color:#fff;line-height:1.3;word-break:break-word}
+.datos a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(224,184,119,.5)}
+.datos a:hover{color:var(--ocre-cl)}
+.datos .mini{font-size:13.5px;color:rgba(239,231,216,.62);margin:4px 0 0}
+
+.mapa{
+  background:#f4ece0;border:1px solid rgba(239,231,216,.2);border-radius:3px;
+  padding:14px;box-shadow:0 16px 36px rgba(0,0,0,.3);width:100%;overflow:hidden;
+}
+.mapa svg{width:100%;height:auto}
+.mapa .leyenda{
+  display:flex;flex-wrap:wrap;gap:8px 18px;margin:12px 2px 2px;
+  font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#6b6055;
+}
+.mapa .leyenda i{font-style:normal;display:inline-flex;align-items:center;gap:7px}
+.mapa .leyenda b{width:9px;height:9px;border-radius:50%;display:inline-block}
+
+.cta-tel{margin-top:30px}
+
+/* ---------- pie ---------- */
+.pie{background:var(--pizarra);color:rgba(239,231,216,.72);padding:40px 0 46px;border-top:4px solid var(--ocre)}
+.pie-grid{display:flex;flex-wrap:wrap;gap:22px;justify-content:space-between;align-items:center}
+.pie .nom{font-family:var(--display);font-size:20px;color:var(--tiza);margin:0}
+.pie a{color:var(--ocre-cl);text-decoration:none;border-bottom:1px solid rgba(192,138,62,.4);word-break:break-word}
+.pie .firma{
+  margin:26px 0 0;padding-top:20px;border-top:1px solid rgba(239,231,216,.14);
+  font-size:12.5px;letter-spacing:.03em;color:rgba(239,231,216,.55);
+}
+
+/* ---------- responsive ---------- */
+@media (max-width:920px){
+  .hero-grid{grid-template-columns:1fr;gap:38px;padding:58px 0 64px}
+  .tarjetas{grid-template-columns:1fr}
+  .pasos{grid-template-columns:1fr;gap:30px}
+  .cont-grid{grid-template-columns:1fr;gap:34px}
+}
+@media (max-width:560px){
+  body{font-size:16px;--barra:52px}
+  .barra p{white-space:normal;font-size:10px;letter-spacing:.06em;line-height:1.35;text-overflow:clip}
+  .seccion{padding:54px 0}
+  .env{padding:0 16px}
+  .btn{width:100%;justify-content:center;padding:15px 18px;font-size:14px}
+  .acciones{gap:11px}
+  .pizarra{border-width:7px;padding:20px 16px}
+  .pizarra li{font-size:15.5px;flex-wrap:wrap;gap:2px 10px}
+  .paso .num{font-size:44px}
+  .datos .va{font-size:18px}
+  .pie-grid{flex-direction:column;align-items:flex-start;gap:14px}
+}
+</style>
+</head>
+<body>
+
+<div class="barra" role="note">
+  <p>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</p>
+</div>
+
+<!-- ===================== HERO ===================== -->
+<header class="hero">
+  <div class="env">
+    <div class="hero-grid">
+      <div>
+        <div class="marca-alta"><span class="lin"></span> Soria · C/ Navas de Tolosa 17</div>
+        <h1>Mesón Bar La&nbsp;Hoz <em>en su propia casa</em></h1>
+        <p class="entradilla">Un mesón de barrio no necesita artificio: necesita que quien lo busca lo encuentre. Esta es una propuesta de web propia para La Hoz, con el teléfono siempre a mano y la información donde se ve.</p>
+        <div class="acciones">
+          <a class="btn btn-prim" href="tel:+34699987963">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.2 3.5h3.1l1.5 3.9-2 1.4a13 13 0 0 0 6.4 6.4l1.4-2 3.9 1.5v3.1a1.8 1.8 0 0 1-2 1.8C10.9 19 5 13.1 4.4 5.5a1.8 1.8 0 0 1 1.8-2Z"/></svg>
+            Llamar 699 987 963
+          </a>
+          <a class="btn btn-sec" href="#contacto">Dónde estamos</a>
+        </div>
+      </div>
+
+      <div class="pizarra" aria-label="Pizarra del mesón">
+        <h3>La Hoz</h3>
+        <p class="sub">Bar · Mesón · Soria</p>
+        <ul>
+          <li><span>Barra</span><span>Diario</span></li>
+          <li><span>Raciones</span><span>Para compartir</span></li>
+          <li><span>Menú</span><span>Consultar</span></li>
+          <li><span>Comedor</span><span>Reserva por teléfono</span></li>
+        </ul>
+        <p class="pie">La carta se concreta con el negocio</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="cinta" aria-hidden="true">
+  <div class="cinta-pista">
+    <span>Cocina de bar <i>·</i> Raciones <i>·</i> Menú diario <i>·</i> Barra de siempre <i>·</i> Soria <i>·</i> Cocina de bar <i>·</i> Raciones <i>·</i> Menú diario <i>·</i> Barra de siempre <i>·</i> Soria <i>·</i>&nbsp;</span>
+    <span>Cocina de bar <i>·</i> Raciones <i>·</i> Menú diario <i>·</i> Barra de siempre <i>·</i> Soria <i>·</i> Cocina de bar <i>·</i> Raciones <i>·</i> Menú diario <i>·</i> Barra de siempre <i>·</i> Soria <i>·</i>&nbsp;</span>
+  </div>
+</div>
+
+<div class="azulejo-linea" aria-hidden="true">
+  <svg viewBox="0 0 120 10" preserveAspectRatio="none" role="presentation">
+    <defs>
+      <pattern id="azu" width="10" height="10" patternUnits="userSpaceOnUse">
+        <rect width="10" height="10" fill="#f4ece0"/>
+        <path d="M0 5 L5 0 L10 5 L5 10 Z" fill="none" stroke="#5a1a1f" stroke-width=".7" opacity=".55"/>
+        <circle cx="5" cy="5" r="1.1" fill="#c08a3e" opacity=".8"/>
+      </pattern>
+    </defs>
+    <rect width="120" height="10" fill="url(#azu)"/>
+  </svg>
+</div>
+
+<!-- ===================== OFERTA ===================== -->
+<section class="seccion oferta" id="casa">
+  <div class="env">
+    <div class="enc">
+      <p class="rotulo">Lo que se ofrece</p>
+      <h2>Bar por la mañana, mesón a mediodía</h2>
+      <p class="suave">Planteamos la web alrededor de lo que un mesón castellano hace cada día, sin adornos: barra, cocina de siempre y mesa para sentarse. El detalle concreto lo pone el negocio.</p>
+    </div>
+
+    <div class="tarjetas">
+      <article class="tarjeta">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="#5a1a1f" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M14 8h20l-2 9a8 8 0 0 1-16 0Z"/>
+          <path d="M24 26v11"/><path d="M17 40h14"/>
+          <path d="M34 11h4a4 4 0 0 1 0 8h-3" stroke="#c08a3e"/>
+        </svg>
+        <h3>La barra</h3>
+        <p>El sitio donde se toma algo de pie y se habla con quien hay detrás. La web lo trata como lo que es: la puerta de entrada del bar, no un reclamo.</p>
+      </article>
+
+      <article class="tarjeta">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="#5a1a1f" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="24" cy="26" r="13"/>
+          <circle cx="24" cy="26" r="7" stroke="#c08a3e"/>
+          <path d="M9 14c3 3 8 4 15 4s12-1 15-4"/>
+        </svg>
+        <h3>Raciones y cocina de mesón</h3>
+        <p>Cocina de bar para compartir en mesa. Se presenta en términos del oficio, sin listar platos ni precios: ese contenido se define con el negocio antes de publicar.</p>
+      </article>
+
+      <article class="tarjeta">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="#5a1a1f" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="10" y="7" width="28" height="34" rx="2"/>
+          <path d="M16 16h16M16 23h16M16 30h10" stroke="#c08a3e"/>
+          <path d="M10 7v34"/>
+        </svg>
+        <h3>Menú y comedor</h3>
+        <p>Un apartado preparado para el menú del día y para la mesa larga, con espacio reservado a horarios y condiciones cuando el mesón los facilite.</p>
+      </article>
+    </div>
+
+    <div class="nota">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#c08a3e" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="M12 11v6"/><path d="M12 7.4h.01"/></svg>
+      <p><strong>Maqueta de trabajo.</strong> Los apartados de carta, menú y horario quedan como estructura vacía a propósito. Se rellenan con datos facilitados por Mesón Bar La Hoz; aquí no se publica ninguna información que no conste.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== VISITA ===================== -->
+<section class="seccion visita" id="visita">
+  <div class="env">
+    <p class="rotulo">Tu visita</p>
+    <h2>Tres pasos y ya está</h2>
+
+    <div class="pasos">
+      <div class="paso">
+        <span class="num">I</span>
+        <h3>Llama y pregunta</h3>
+        <p>Un teléfono visible en toda la página. Para consultar horario, mesa o una comida de grupo, la llamada sigue siendo lo más rápido en un mesón de barrio.</p>
+      </div>
+      <div class="paso">
+        <span class="num">II</span>
+        <h3>Acércate a Navas de Tolosa</h3>
+        <p>La dirección y un plano esquemático del entorno, pensado para orientarse a pie por el centro de Soria sin depender de mapas de terceros.</p>
+      </div>
+      <div class="paso">
+        <span class="num">III</span>
+        <h3>Barra o mesa</h3>
+        <p>Se entra, se pide en la barra o se pasa al comedor. La web no promete nada que el mesón no vaya a dar: solo lo pone fácil de encontrar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACTO ===================== -->
+<section class="seccion contacto" id="contacto">
+  <div class="env">
+    <p class="rotulo">Contacto</p>
+    <h2>Dónde está el mesón</h2>
+
+    <div class="cont-grid">
+      <div>
+        <ul class="datos">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#e0b877" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.2 3.5h3.1l1.5 3.9-2 1.4a13 13 0 0 0 6.4 6.4l1.4-2 3.9 1.5v3.1a1.8 1.8 0 0 1-2 1.8C10.9 19 5 13.1 4.4 5.5a1.8 1.8 0 0 1 1.8-2Z"/></svg>
+            <div>
+              <span class="et">Teléfono</span>
+              <span class="va"><a href="tel:+34699987963">699 987 963</a></span>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#e0b877" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+            <div>
+              <span class="et">Dirección</span>
+              <span class="va">C/ Navas de Tolosa 17<br>42001 Soria</span>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#e0b877" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.6"/><path d="M12 7.2V12l3.2 2"/></svg>
+            <div>
+              <span class="et">Horario</span>
+              <span class="va">Consultar horario</span>
+              <p class="mini">No se publica ningún horario en esta maqueta. Se añadirá cuando el mesón lo facilite.</p>
+            </div>
+          </li>
+        </ul>
+
+        <div class="acciones cta-tel">
+          <a class="btn btn-prim" href="tel:+34699987963">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.2 3.5h3.1l1.5 3.9-2 1.4a13 13 0 0 0 6.4 6.4l1.4-2 3.9 1.5v3.1a1.8 1.8 0 0 1-2 1.8C10.9 19 5 13.1 4.4 5.5a1.8 1.8 0 0 1 1.8-2Z"/></svg>
+            Llamar al mesón
+          </a>
+        </div>
+      </div>
+
+      <div class="mapa">
+        <svg viewBox="0 0 620 420" role="img" aria-label="Plano esquemático: Mesón Bar La Hoz en calle Navas de Tolosa 17, Soria">
+          <defs>
+            <pattern id="manzana" width="6" height="6" patternUnits="userSpaceOnUse">
+              <rect width="6" height="6" fill="#e7dcc9"/>
+              <path d="M0 6 L6 0" stroke="#d3c4ab" stroke-width="1"/>
+            </pattern>
+          </defs>
+          <rect width="620" height="420" fill="#f4ece0"/>
+          <rect width="620" height="420" fill="none"/>
+
+          <!-- manzanas -->
+          <g fill="url(#manzana)" stroke="#cbbba0" stroke-width="1.4">
+            <rect x="34" y="34" width="180" height="120" rx="3"/>
+            <rect x="252" y="34" width="150" height="120" rx="3"/>
+            <rect x="440" y="34" width="146" height="170" rx="3"/>
+            <rect x="34" y="196" width="180" height="120" rx="3"/>
+            <rect x="252" y="196" width="150" height="190" rx="3"/>
+            <rect x="440" y="246" width="146" height="140" rx="3"/>
+            <rect x="34" y="358" width="180" height="28" rx="3"/>
+          </g>
+
+          <!-- calles -->
+          <g stroke="#ffffff" stroke-width="22" stroke-linecap="square">
+            <path d="M228 20 L228 400"/>
+            <path d="M420 20 L420 400"/>
+            <path d="M20 175 L600 175"/>
+            <path d="M20 337 L600 337"/>
+          </g>
+          <g stroke="#ddd0b8" stroke-width="1.2" fill="none">
+            <path d="M217 20 L217 400 M239 20 L239 400"/>
+            <path d="M409 20 L409 400 M431 20 L431 400"/>
+            <path d="M20 164 L600 164 M20 186 L600 186"/>
+            <path d="M20 326 L600 326 M20 348 L600 348"/>
+          </g>
+          <g stroke="#c9b797" stroke-width="1.6" stroke-dasharray="7 9">
+            <path d="M228 20 L228 400"/>
+            <path d="M20 175 L600 175"/>
+          </g>
+
+          <!-- rotulos de calle -->
+          <g font-family="Optima, Candara, 'Trebuchet MS', sans-serif" font-size="12" letter-spacing="1.6" fill="#8a7a63">
+            <text x="248" y="171" transform="rotate(-90 248 171)" text-anchor="middle">NAVAS DE TOLOSA</text>
+            <text x="120" y="170" text-anchor="middle">CALLE</text>
+            <text x="520" y="332" text-anchor="middle">CALLE</text>
+          </g>
+
+          <!-- plaza -->
+          <circle cx="420" cy="175" r="26" fill="#e3e8dc" stroke="#b9c2ac" stroke-width="1.4"/>
+          <circle cx="420" cy="175" r="8" fill="#4a5a42" opacity=".45"/>
+          <text x="420" y="132" text-anchor="middle" font-family="Optima, Candara, 'Trebuchet MS', sans-serif" font-size="11" letter-spacing="1.4" fill="#7d8a72">PLAZA</text>
+
+          <!-- chincheta del meson -->
+          <g transform="translate(228 252)">
+            <ellipse cx="0" cy="8" rx="20" ry="6" fill="#5a1a1f" opacity=".18"/>
+            <path d="M0 6 C-16 -12 -22 -20 -22 -29 A22 22 0 0 1 22 -29 C22 -20 16 -12 0 6 Z" fill="#5a1a1f" stroke="#3d1115" stroke-width="2"/>
+            <circle cx="0" cy="-29" r="9" fill="#e0b877"/>
+            <path d="M-4 -33 v6 M0 -34 v7 M4 -33 v6" stroke="#5a1a1f" stroke-width="1.6" stroke-linecap="round"/>
+          </g>
+          <g font-family="Georgia, serif" text-anchor="middle">
+            <rect x="120" y="276" width="216" height="44" rx="3" fill="#5a1a1f"/>
+            <text x="228" y="296" font-size="17" fill="#f4ece0">Mesón Bar La Hoz</text>
+            <text x="228" y="312" font-size="12" fill="#e0b877" font-family="Optima, Candara, sans-serif" letter-spacing="1.2">NAVAS DE TOLOSA 17</text>
+          </g>
+
+          <!-- rosa de los vientos -->
+          <g transform="translate(556 386)" stroke="#a3947b" fill="none" stroke-width="1.4">
+            <circle r="16"/>
+            <path d="M0 -13 L0 13 M-13 0 L13 0"/>
+            <path d="M0 -16 L4 -8 L-4 -8 Z" fill="#5a1a1f" stroke="none"/>
+          </g>
+          <text x="556" y="356" text-anchor="middle" font-family="Optima, Candara, sans-serif" font-size="10" letter-spacing="1.4" fill="#8a7a63">N</text>
+
+          <rect x="1" y="1" width="618" height="418" fill="none" stroke="#cbbba0" stroke-width="2"/>
+        </svg>
+        <div class="leyenda">
+          <i><b style="background:#5a1a1f"></b> El mesón</i>
+          <i><b style="background:#e3e8dc;border:1px solid #b9c2ac"></b> Plaza</i>
+          <i><b style="background:#e7dcc9;border:1px solid #cbbba0"></b> Manzanas</i>
+          <i>Plano esquemático, no a escala</i>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PIE ===================== -->
+<footer class="pie">
+  <div class="env">
+    <div class="pie-grid">
+      <div>
+        <p class="nom">Mesón Bar La Hoz</p>
+        <p style="margin:4px 0 0;font-size:14px">C/ Navas de Tolosa 17, 42001 Soria</p>
+      </div>
+      <div>
+        <p style="margin:0;font-size:14px"><a href="tel:+34699987963">699 987 963</a></p>
+        <p style="margin:4px 0 0;font-size:14px"><a href="mailto:robertillo77@hotmail.com">robertillo77@hotmail.com</a></p>
+      </div>
+    </div>
+    <p class="firma">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.querySelector(a.getAttribute('href'));
+      if(!t)return;
+      e.preventDefault();
+      var y=t.getBoundingClientRect().top+window.pageYOffset-60;
+      window.scrollTo({top:y,behavior:'smooth'});
+    });
+  });
+  // guardia anti-desbordamiento en desarrollo
+  window.addEventListener('load',function(){
+    if(document.body.scrollWidth>window.innerWidth){
+      console.warn('overflow', document.body.scrollWidth, window.innerWidth);
+    }
+  });
+})();
+</script>
+</body>
+</html>

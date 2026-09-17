@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<script>document.documentElement.className+=" anim";</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Floristería Celtiflor · Arte floral funerario, nupcial y de eventos · Santiago de Compostela</title>
+<meta name="description" content="Floristería Celtiflor, Santiago de Compostela. Arte floral funerario, ramos de novia y decoración nupcial, flores para eventos, composiciones y plantas.">
+<meta name="theme-color" content="#f6f3ee">
+<style>
+/* ============================================================
+   FFFFFFstudio — Maqueta Celtiflor
+   Sistema: "Herbario de piedra" — granito gallego + botánica seca
+   ============================================================ */
+
+*,*::before,*::after{box-sizing:border-box}
+
+:root{
+  /* Paleta: piedra húmeda de Compostela + verde laurel + lino */
+  --stone-900:#23262a;
+  --stone-800:#31363b;
+  --stone-600:#585f66;
+  --stone-400:#8b9299;
+  --stone-200:#c9c6bf;
+
+  --linen:#f6f3ee;
+  --linen-2:#efeae2;
+  --paper:#fcfaf7;
+
+  --laurel-900:#1f3229;
+  --laurel-700:#2f4c3e;
+  --laurel-500:#456a58;
+  --laurel-300:#8aa697;
+
+  --clay:#a8705c;       /* acento cálido, discreto */
+  --clay-soft:#c99a86;
+
+  --rule:rgba(35,38,42,.14);
+  --rule-soft:rgba(35,38,42,.08);
+
+  --serif:'Iowan Old Style','Palatino Linotype','Book Antiqua',Palatino,Georgia,'Times New Roman',serif;
+  --sans:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+
+  --maxw:1180px;
+  --gutter:clamp(20px,5vw,64px);
+  --bar-h:34px;
+
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+
+html{
+  -webkit-text-size-adjust:100%;
+  scroll-behavior:smooth;
+  overflow-x:hidden;
+}
+body{
+  margin:0;
+  width:100%;
+  max-width:100%;
+  overflow-x:hidden;
+  background:var(--linen);
+  color:var(--stone-900);
+  font-family:var(--sans);
+  font-size:17px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+img,svg{max-width:100%}
+svg{display:block}
+
+/* Textura de papel/lino muy sutil, hecha con gradientes */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  opacity:.5;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(35,38,42,.022) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, rgba(35,38,42,.018) 0 1px, transparent 1px 4px);
+}
+
+/* ---------- Tipografía base ---------- */
+h1,h2,h3,h4{
+  font-family:var(--serif);
+  font-weight:400;
+  letter-spacing:-.012em;
+  line-height:1.12;
+  margin:0;
+  text-wrap:balance;
+}
+p{margin:0}
+a{color:inherit}
+
+.eyebrow{
+  font-family:var(--sans);
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--laurel-500);
+  margin:0;
+}
+.lede{
+  font-size:clamp(17px,2.1vw,20px);
+  line-height:1.7;
+  color:var(--stone-600);
+  max-width:56ch;
+}
+
+/* ---------- Layout ---------- */
+.wrap{
+  width:100%;
+  max-width:var(--maxw);
+  margin-inline:auto;
+  padding-inline:var(--gutter);
+}
+section{position:relative;z-index:1}
+.sec{padding-block:clamp(72px,10vw,132px)}
+
+/* ---------- Barra fija de propuesta ---------- */
+.propbar{
+  position:fixed;
+  inset-block-start:0;
+  inset-inline:0;
+  z-index:60;
+  height:var(--bar-h);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--laurel-900);
+  color:#e6ded2;
+  overflow:hidden;
+  width:100%;
+}
+.propbar p{
+  font-size:10.5px;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  font-weight:500;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  max-width:100%;
+  padding-inline:12px;
+}
+
+/* ---------- Navegación ---------- */
+.nav{
+  position:sticky;
+  top:var(--bar-h);
+  z-index:50;
+  width:100%;
+  background:rgba(246,243,238,.86);
+  backdrop-filter:saturate(140%) blur(10px);
+  -webkit-backdrop-filter:saturate(140%) blur(10px);
+  border-bottom:1px solid transparent;
+  transition:border-color .35s var(--ease), background .35s var(--ease);
+}
+.nav.is-stuck{border-bottom-color:var(--rule);background:rgba(246,243,238,.95)}
+.nav-in{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  min-height:68px;
+  padding-block:10px;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  text-decoration:none;
+  min-width:0;
+}
+.brand .mark{flex:0 0 auto}
+.brand-txt{display:flex;flex-direction:column;line-height:1;min-width:0}
+.brand-name{
+  font-family:var(--serif);
+  font-size:19px;
+  letter-spacing:.005em;
+  color:var(--laurel-900);
+  white-space:nowrap;
+}
+.brand-sub{
+  font-size:9.5px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--stone-400);
+  margin-top:5px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:clamp(14px,2.2vw,30px);
+}
+.nav-links a{
+  font-size:13.5px;
+  letter-spacing:.02em;
+  color:var(--stone-600);
+  text-decoration:none;
+  padding:6px 2px;
+  position:relative;
+  transition:color .25s var(--ease);
+}
+.nav-links a::after{
+  content:"";
+  position:absolute;
+  left:0;right:0;bottom:0;
+  height:1px;
+  background:var(--laurel-700);
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform .3s var(--ease);
+}
+.nav-links a:hover{color:var(--laurel-900)}
+.nav-links a:hover::after{transform:scaleX(1)}
+@media (max-width:860px){.nav-links{display:none}}
+
+/* ---------- Botones ---------- */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  font-family:var(--sans);
+  font-size:14px;
+  font-weight:600;
+  letter-spacing:.04em;
+  text-decoration:none;
+  padding:14px 24px;
+  border-radius:999px;
+  border:1px solid transparent;
+  transition:background .3s var(--ease),color .3s var(--ease),border-color .3s var(--ease),transform .2s var(--ease);
+  max-width:100%;
+}
+.btn-solid{
+  background:var(--laurel-900);
+  color:#f3efe8;
+  border-color:var(--laurel-900);
+}
+.btn-solid:hover{background:var(--laurel-700);border-color:var(--laurel-700);transform:translateY(-1px)}
+.btn-ghost{
+  background:transparent;
+  color:var(--laurel-900);
+  border-color:rgba(31,50,41,.28);
+}
+.btn-ghost:hover{border-color:var(--laurel-900);background:rgba(31,50,41,.05)}
+.btn-sm{padding:10px 18px;font-size:13px}
+
+a:focus-visible,button:focus-visible{
+  outline:2px solid var(--clay);
+  outline-offset:3px;
+  border-radius:4px;
+}
+
+/* ---------- Hero ---------- */
+.hero{
+  position:relative;
+  padding-block:clamp(56px,8vw,104px) clamp(64px,9vw,112px);
+  overflow:hidden;
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  inset-inline:0;
+  bottom:0;
+  height:1px;
+  background:var(--rule-soft);
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);
+  gap:clamp(32px,5vw,64px);
+  align-items:center;
+}
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:minmax(0,1fr);gap:44px}
+}
+.hero h1{
+  font-size:clamp(38px,6.4vw,72px);
+  line-height:1.03;
+  margin-top:22px;
+  color:var(--laurel-900);
+}
+.hero h1 em{
+  font-style:italic;
+  color:var(--clay);
+}
+.hero .lede{margin-top:24px}
+.hero-cta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+  margin-top:34px;
+}
+.hero-meta{
+  margin-top:30px;
+  padding-top:22px;
+  border-top:1px solid var(--rule-soft);
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px 26px;
+  font-size:13px;
+  color:var(--stone-400);
+  letter-spacing:.03em;
+}
+.hero-meta span{display:inline-flex;align-items:center;gap:8px}
+.dot{width:4px;height:4px;border-radius:50%;background:var(--clay-soft);flex:0 0 auto}
+
+/* Ilustración hero */
+.hero-art{
+  position:relative;
+  width:100%;
+  max-width:100%;
+  aspect-ratio:4/5;
+  border-radius:220px 220px 16px 16px;
+  overflow:hidden;
+  background:
+    radial-gradient(120% 90% at 50% 8%, rgba(255,255,255,.85) 0%, rgba(255,255,255,0) 58%),
+    linear-gradient(168deg,#f2ece2 0%,#e6ded1 46%,#d9d3c6 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(35,38,42,.07),
+    0 32px 60px -40px rgba(31,50,41,.42);
+}
+@media (max-width:900px){.hero-art{max-width:420px;margin-inline:auto;aspect-ratio:1/1.12}}
+.hero-art svg{position:absolute;inset:0;width:100%;height:100%}
+
+/* ---------- Cinta / marquesina ---------- */
+.ribbon{
+  width:100%;
+  max-width:100%;
+  overflow:hidden;
+  background:var(--laurel-900);
+  color:#d9d2c5;
+  border-block:1px solid rgba(0,0,0,.2);
+  position:relative;
+  z-index:1;
+}
+.ribbon-track{
+  display:flex;
+  width:max-content;
+  animation:slide 42s linear infinite;
+  will-change:transform;
+}
+.ribbon-group{
+  display:flex;
+  align-items:center;
+  flex:0 0 auto;
+  padding-block:15px;
+}
+.ribbon-group span{
+  display:inline-flex;
+  align-items:center;
+  gap:20px;
+  padding-inline:20px;
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:15px;
+  letter-spacing:.04em;
+  white-space:nowrap;
+  opacity:.9;
+}
+.ribbon-group span::after{
+  content:"";
+  width:5px;height:5px;
+  border-radius:50%;
+  background:var(--clay-soft);
+  opacity:.7;
+}
+@keyframes slide{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
+
+/* ---------- Sección cabecera ---------- */
+.sec-head{max-width:64ch}
+.sec-head h2{
+  font-size:clamp(29px,4.2vw,48px);
+  margin-top:16px;
+  color:var(--laurel-900);
+}
+.sec-head p{margin-top:18px}
+
+/* ---------- Servicios ---------- */
+.services{background:var(--paper);border-block:1px solid var(--rule-soft)}
+.svc-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(255px,1fr));
+  gap:1px;
+  margin-top:clamp(40px,5vw,60px);
+  background:var(--rule-soft);
+  border:1px solid var(--rule-soft);
+  border-radius:3px;
+  overflow:hidden;
+}
+.svc{
+  background:var(--paper);
+  padding:clamp(26px,3.2vw,38px);
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  min-width:0;
+  transition:background .35s var(--ease);
+  position:relative;
+}
+.svc:hover{background:#fff}
+.svc-ico{
+  width:46px;height:46px;
+  flex:0 0 auto;
+  color:var(--laurel-700);
+}
+.svc h3{
+  font-size:21px;
+  color:var(--laurel-900);
+  line-height:1.25;
+}
+.svc p{font-size:15px;line-height:1.65;color:var(--stone-600)}
+.svc .num{
+  position:absolute;
+  top:clamp(22px,3vw,30px);
+  right:clamp(22px,3vw,30px);
+  font-family:var(--serif);
+  font-size:13px;
+  font-style:italic;
+  color:var(--stone-200);
+}
+
+/* ---------- Pasos ---------- */
+.steps-wrap{
+  background:
+    linear-gradient(180deg,var(--linen) 0%,var(--linen-2) 100%);
+}
+.steps{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:clamp(28px,4vw,48px);
+  margin-top:clamp(44px,5vw,64px);
+  counter-reset:s;
+}
+.step{
+  position:relative;
+  padding-top:30px;
+  border-top:1px solid var(--stone-200);
+  min-width:0;
+}
+.step::before{
+  counter-increment:s;
+  content:"0" counter(s);
+  position:absolute;
+  top:-1px;left:0;
+  transform:translateY(-50%);
+  background:var(--linen-2);
+  padding-right:12px;
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:14px;
+  color:var(--clay);
+  letter-spacing:.08em;
+}
+.step h3{font-size:22px;color:var(--laurel-900);margin-bottom:12px}
+.step p{font-size:15.5px;color:var(--stone-600)}
+
+/* ---------- Nota editorial ---------- */
+.note{
+  background:var(--laurel-900);
+  color:#e7e0d4;
+  overflow:hidden;
+  position:relative;
+}
+.note::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(90% 130% at 88% 10%, rgba(168,112,92,.28) 0%, rgba(168,112,92,0) 60%);
+  pointer-events:none;
+}
+.note-in{
+  position:relative;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:clamp(28px,5vw,60px);
+  align-items:center;
+}
+@media (max-width:820px){.note-in{grid-template-columns:minmax(0,1fr)}}
+.note blockquote{
+  margin:0;
+  font-family:var(--serif);
+  font-size:clamp(23px,3.4vw,38px);
+  line-height:1.3;
+  letter-spacing:-.01em;
+  color:#f1ebe0;
+}
+.note blockquote em{font-style:italic;color:var(--clay-soft)}
+.note .cite{
+  margin-top:22px;
+  font-size:12px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:rgba(231,224,212,.6);
+}
+.note-art{width:clamp(110px,16vw,170px);justify-self:end;color:rgba(201,154,134,.6)}
+@media (max-width:820px){.note-art{justify-self:start;width:120px}}
+
+/* ---------- Contacto ---------- */
+.contact{background:var(--paper);border-top:1px solid var(--rule-soft)}
+.contact-grid{
+  display:grid;
+  grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);
+  gap:clamp(36px,5vw,68px);
+  margin-top:clamp(40px,5vw,58px);
+  align-items:start;
+}
+@media (max-width:860px){.contact-grid{grid-template-columns:minmax(0,1fr)}}
+
+.info-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.info-list li{
+  display:flex;
+  gap:18px;
+  padding-block:22px;
+  border-bottom:1px solid var(--rule-soft);
+  min-width:0;
+}
+.info-list li:first-child{border-top:1px solid var(--rule-soft)}
+.info-ico{width:20px;height:20px;flex:0 0 auto;margin-top:4px;color:var(--laurel-500)}
+.info-k{
+  font-size:10.5px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--stone-400);
+  margin-bottom:6px;
+}
+.info-v{font-size:16.5px;color:var(--stone-900);line-height:1.5;min-width:0;overflow-wrap:anywhere}
+.info-v a{
+  text-decoration:none;
+  border-bottom:1px solid rgba(69,106,88,.38);
+  padding-bottom:1px;
+  transition:border-color .25s var(--ease),color .25s var(--ease);
+}
+.info-v a:hover{color:var(--laurel-700);border-bottom-color:var(--laurel-700)}
+.info-v small{display:block;font-size:13px;color:var(--stone-400);margin-top:5px;letter-spacing:.01em}
+
+.map-card{
+  border:1px solid var(--rule);
+  border-radius:4px;
+  background:#f1ede5;
+  overflow:hidden;
+  width:100%;
+  max-width:100%;
+}
+.map-head{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:14px;
+  flex-wrap:wrap;
+  padding:15px 18px;
+  border-bottom:1px solid var(--rule-soft);
+  background:var(--paper);
+}
+.map-head strong{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:16px;
+  color:var(--laurel-900);
+}
+.map-head span{
+  font-size:10.5px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--stone-400);
+}
+.map-fig{margin:0;position:relative;width:100%}
+.map-fig svg{width:100%;height:auto;display:block}
+.map-cap{
+  padding:13px 18px;
+  font-size:12.5px;
+  color:var(--stone-400);
+  border-top:1px solid var(--rule-soft);
+  background:var(--paper);
+  letter-spacing:.02em;
+}
+@keyframes pulse{
+  0%{transform:scale(.6);opacity:.75}
+  70%{transform:scale(2.3);opacity:0}
+  100%{transform:scale(2.3);opacity:0}
+}
+.pin-halo{transform-box:fill-box;transform-origin:center;animation:pulse 2.8s ease-out infinite}
+
+.cta-strip{
+  margin-top:clamp(40px,5vw,56px);
+  padding:clamp(26px,3.4vw,38px);
+  border:1px solid var(--rule);
+  border-radius:4px;
+  background:linear-gradient(135deg,#f4efe6 0%,#eae3d7 100%);
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+  gap:22px;
+}
+.cta-strip p{font-family:var(--serif);font-size:clamp(19px,2.6vw,25px);color:var(--laurel-900);max-width:34ch}
+
+/* ---------- Footer ---------- */
+footer{
+  background:var(--laurel-900);
+  color:#cfc7ba;
+  position:relative;
+  z-index:1;
+  overflow:hidden;
+}
+.foot-in{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:clamp(28px,4vw,48px);
+  padding-block:clamp(52px,6vw,76px) 34px;
+}
+.foot-col h4{
+  font-family:var(--sans);
+  font-size:10.5px;
+  font-weight:600;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:rgba(207,199,186,.55);
+  margin-bottom:16px;
+}
+.foot-col p,.foot-col a{
+  font-size:14.5px;
+  line-height:1.75;
+  color:#ddd6c9;
+  text-decoration:none;
+  overflow-wrap:anywhere;
+}
+.foot-col a{
+  display:inline-block;
+  border-bottom:1px solid rgba(221,214,201,.22);
+  transition:border-color .25s var(--ease),color .25s var(--ease);
+}
+.foot-col a:hover{color:#fff;border-bottom-color:var(--clay-soft)}
+.foot-brand .brand-name{color:#f0e9dd;font-size:21px}
+.foot-brand p{margin-top:14px;color:rgba(207,199,186,.72);font-size:14px;max-width:32ch}
+.foot-rule{height:1px;background:rgba(255,255,255,.1);width:100%}
+.foot-bottom{
+  padding-block:22px 34px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px 26px;
+  align-items:center;
+  justify-content:space-between;
+}
+.foot-bottom p{font-size:12px;color:rgba(207,199,186,.62);letter-spacing:.03em}
+.studio{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:12.5px;
+  color:rgba(201,154,134,.85);
+  letter-spacing:.02em;
+}
+
+/* ---------- Reveal ---------- */
+:where(html.anim) .rv{opacity:0;transform:translateY(16px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv.in{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{
+    animation-duration:.001ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.001ms!important;
+  }
+  .rv{opacity:1;transform:none}
+  .ribbon-track{animation:none}
+  .pin-halo{animation:none;opacity:.25}
+}
+
+@media (max-width:420px){
+  body{font-size:16px}
+  .propbar p{font-size:9px;letter-spacing:.07em}
+}
+</style>
+</head>
+<body>
+
+<div class="propbar" role="note">
+  <p>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</p>
+</div>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top" aria-label="Floristería Celtiflor — inicio">
+      <svg class="mark" width="34" height="34" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+        <circle cx="20" cy="20" r="19" fill="none" stroke="#2f4c3e" stroke-width="1"/>
+        <g stroke="#2f4c3e" stroke-width="1.2" fill="none" stroke-linecap="round">
+          <path d="M20 31V16"/>
+          <path d="M20 21c-4 0-6.5-2.2-6.5-5.2 0 0 2.6-.6 4.6.9 1.7 1.3 1.9 4.3 1.9 4.3z"/>
+          <path d="M20 24.5c4 0 6.5-2.2 6.5-5.2 0 0-2.6-.6-4.6.9-1.7 1.3-1.9 4.3-1.9 4.3z"/>
+        </g>
+        <g fill="#a8705c">
+          <circle cx="20" cy="13" r="2.1"/>
+        </g>
+        <g stroke="#a8705c" stroke-width="1" fill="none" stroke-linecap="round">
+          <path d="M20 13c0-3 1.6-4.6 3.2-5.2"/>
+          <path d="M20 13c0-3-1.6-4.6-3.2-5.2"/>
+        </g>
+      </svg>
+      <span class="brand-txt">
+        <span class="brand-name">Celtiflor</span>
+        <span class="brand-sub">Floristería · Santiago</span>
+      </span>
+    </a>
+    <nav class="nav-links" aria-label="Navegación principal">
+      <a href="#servicios">Servicios</a>
+      <a href="#proceso">Tu primer encargo</a>
+      <a href="#contacto">Contacto</a>
+      <a class="btn btn-solid btn-sm" href="tel:+34630343119">630 343 119</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow rv">Santiago de Compostela · A Coruña</p>
+        <h1 class="rv">Flores que <em>acompañan</em><br>lo que se dice sin palabras.</h1>
+        <p class="lede rv">Arte floral funerario, ramos de novia y decoración nupcial, y composiciones para eventos. Trabajamos cada encargo con criterio propio, atención al detalle y el respeto que pide cada ocasión.</p>
+        <div class="hero-cta rv">
+          <a class="btn btn-solid" href="tel:+34630343119">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.5 14.2v2.3a1.4 1.4 0 0 1-1.5 1.4A13.8 13.8 0 0 1 2.1 4a1.4 1.4 0 0 1 1.4-1.5h2.3A1.4 1.4 0 0 1 7.2 3.7c.1.9.3 1.7.6 2.5a1.4 1.4 0 0 1-.3 1.5L6.6 8.6a11.3 11.3 0 0 0 4.8 4.8l.9-.9a1.4 1.4 0 0 1 1.5-.3c.8.3 1.6.5 2.5.6a1.4 1.4 0 0 1 1.2 1.4z"/></svg>
+            Llamar al 630 343 119
+          </a>
+          <a class="btn btn-ghost" href="#servicios">Ver qué hacemos</a>
+        </div>
+        <p class="hero-meta rv">
+          <span><i class="dot" aria-hidden="true"></i> Arte floral funerario</span>
+          <span><i class="dot" aria-hidden="true"></i> Novias y nupcial</span>
+          <span><i class="dot" aria-hidden="true"></i> Eventos</span>
+        </p>
+      </div>
+
+      <div class="hero-art rv" role="img" aria-label="Ilustración de una composición floral abstracta dibujada a mano">
+        <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+          <defs>
+            <linearGradient id="stem" x1="0" y1="1" x2="0" y2="0">
+              <stop offset="0%" stop-color="#2f4c3e" stop-opacity=".75"/>
+              <stop offset="100%" stop-color="#456a58" stop-opacity=".45"/>
+            </linearGradient>
+            <radialGradient id="glow" cx="50%" cy="34%" r="46%">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity=".8"/>
+              <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="petal" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#f7f2ea"/>
+              <stop offset="100%" stop-color="#e4d9c9"/>
+            </linearGradient>
+            <linearGradient id="petalW" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#fdfbf7"/>
+              <stop offset="100%" stop-color="#ece2d4"/>
+            </linearGradient>
+          </defs>
+
+          <rect width="400" height="500" fill="url(#glow)"/>
+
+          <!-- retícula tenue tipo lámina de herbario -->
+          <g stroke="#23262a" stroke-opacity=".05" stroke-width=".6">
+            <path d="M40 0v500M120 0v500M200 0v500M280 0v500M360 0v500"/>
+            <path d="M0 60h400M0 140h400M0 220h400M0 300h400M0 380h400M0 460h400"/>
+          </g>
+
+          <!-- tallos -->
+          <g fill="none" stroke="url(#stem)" stroke-width="2.2" stroke-linecap="round">
+            <path d="M200 470C200 400 198 340 196 286"/>
+            <path d="M200 462c-14-46-38-78-62-104"/>
+            <path d="M200 462c16-44 42-74 68-98"/>
+            <path d="M200 450c-6-40-22-70-42-96"/>
+            <path d="M200 450c8-38 26-66 48-88"/>
+          </g>
+
+          <!-- hojas lanceoladas -->
+          <g fill="#456a58" fill-opacity=".22" stroke="#2f4c3e" stroke-opacity=".3" stroke-width="1">
+            <path d="M196 370c-26-6-42-24-44-46 24-2 42 12 44 46z"/>
+            <path d="M200 330c24-8 39-27 39-49-24 0-40 15-39 49z"/>
+            <path d="M196 418c-28-4-46-20-50-42 26-4 46 8 50 42z"/>
+            <path d="M202 396c26-6 42-22 45-44-25-2-43 10-45 44z"/>
+          </g>
+
+          <!-- flor principal -->
+          <g transform="translate(196 250)">
+            <g stroke="#2f4c3e" stroke-opacity=".34" stroke-width="1">
+              <ellipse fill="url(#petalW)" cx="0" cy="-34" rx="17" ry="36"/>
+              <ellipse fill="url(#petal)" cx="0" cy="-34" rx="17" ry="36" transform="rotate(51)"/>
+              <ellipse fill="url(#petalW)" cx="0" cy="-34" rx="17" ry="36" transform="rotate(102)"/>
+              <ellipse fill="url(#petal)" cx="0" cy="-34" rx="17" ry="36" transform="rotate(153)"/>
+              <ellipse fill="url(#petalW)" cx="0" cy="-34" rx="17" ry="36" transform="rotate(204)"/>
+              <ellipse fill="url(#petal)" cx="0" cy="-34" rx="17" ry="36" transform="rotate(255)"/>
+              <ellipse fill="url(#petalW)" cx="0" cy="-34" rx="17" ry="36" transform="rotate(306)"/>
+            </g>
+            <circle r="13" fill="#c99a86" fill-opacity=".85"/>
+            <circle r="13" fill="none" stroke="#a8705c" stroke-width="1"/>
+            <g stroke="#a8705c" stroke-width=".9" stroke-linecap="round" opacity=".9">
+              <path d="M0 0 0-9M0 0 8-5M0 0 8 5M0 0 0 9M0 0-8 5M0 0-8-5"/>
+            </g>
+          </g>
+
+          <!-- flor secundaria izquierda -->
+          <g transform="translate(122 322) scale(.66)">
+            <g stroke="#2f4c3e" stroke-opacity=".3" stroke-width="1.2">
+              <ellipse fill="url(#petal)" cx="0" cy="-30" rx="15" ry="32"/>
+              <ellipse fill="url(#petalW)" cx="0" cy="-30" rx="15" ry="32" transform="rotate(60)"/>
+              <ellipse fill="url(#petal)" cx="0" cy="-30" rx="15" ry="32" transform="rotate(120)"/>
+              <ellipse fill="url(#petalW)" cx="0" cy="-30" rx="15" ry="32" transform="rotate(180)"/>
+              <ellipse fill="url(#petal)" cx="0" cy="-30" rx="15" ry="32" transform="rotate(240)"/>
+              <ellipse fill="url(#petalW)" cx="0" cy="-30" rx="15" ry="32" transform="rotate(300)"/>
+            </g>
+            <circle r="11" fill="#a8705c" fill-opacity=".7"/>
+          </g>
+
+          <!-- flor secundaria derecha -->
+          <g transform="translate(278 336) scale(.58)">
+            <g stroke="#2f4c3e" stroke-opacity=".3" stroke-width="1.3">
+              <ellipse fill="url(#petalW)" cx="0" cy="-30" rx="15" ry="32"/>
+              <ellipse fill="url(#petal)" cx="0" cy="-30" rx="15" ry="32" transform="rotate(72)"/>
+              <ellipse fill="url(#petalW)" cx="0" cy="-30" rx="15" ry="32" transform="rotate(144)"/>
+              <ellipse fill="url(#petal)" cx="0" cy="-30" rx="15" ry="32" transform="rotate(216)"/>
+              <ellipse fill="url(#petalW)" cx="0" cy="-30" rx="15" ry="32" transform="rotate(288)"/>
+            </g>
+            <circle r="10" fill="#c99a86" fill-opacity=".9"/>
+          </g>
+
+          <!-- ramitas y capullos -->
+          <g fill="none" stroke="#2f4c3e" stroke-opacity=".38" stroke-width="1.3" stroke-linecap="round">
+            <path d="M154 392c-18-26-24-56-20-84"/>
+            <path d="M246 404c20-24 28-54 26-82"/>
+          </g>
+          <g fill="#8aa697" fill-opacity=".5">
+            <circle cx="134" cy="308" r="5"/><circle cx="142" cy="286" r="4"/><circle cx="129" cy="288" r="3.2"/>
+            <circle cx="272" cy="322" r="5"/><circle cx="264" cy="300" r="4"/><circle cx="278" cy="300" r="3.2"/>
+          </g>
+
+          <!-- base / atado de rafia -->
+          <g>
+            <rect x="176" y="452" width="48" height="10" rx="5" fill="#a8705c" fill-opacity=".35"/>
+            <path d="M176 457h48" stroke="#a8705c" stroke-opacity=".6" stroke-width="1"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CINTA ============ -->
+  <div class="ribbon" aria-hidden="true">
+    <div class="ribbon-track">
+      <div class="ribbon-group">
+        <span>Arte floral funerario</span><span>Ramos de novia</span><span>Decoración nupcial</span><span>Flores para eventos</span><span>Composiciones y centros</span><span>Plantas</span>
+      </div>
+      <div class="ribbon-group">
+        <span>Arte floral funerario</span><span>Ramos de novia</span><span>Decoración nupcial</span><span>Flores para eventos</span><span>Composiciones y centros</span><span>Plantas</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SERVICIOS ============ -->
+  <section class="sec services" id="servicios">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <p class="eyebrow">Qué hacemos</p>
+        <h2>Un oficio que cambia de registro según la ocasión.</h2>
+        <p class="lede">Cada encargo pide un lenguaje distinto: la contención de una despedida, la luz de una boda, el ritmo de un evento. Trabajamos los tres con el mismo cuidado en la selección, la proporción y el acabado.</p>
+      </div>
+
+      <div class="svc-grid">
+        <article class="svc rv">
+          <span class="num">01</span>
+          <svg class="svc-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M24 42V20"/>
+            <path d="M24 26c-7 0-11-4-11-9 4-1 8 0 10 3 1.7 2.4 1 6 1 6z"/>
+            <path d="M24 31c7 0 11-4 11-9-4-1-8 0-10 3-1.7 2.4-1 6-1 6z"/>
+            <circle cx="24" cy="14" r="5"/>
+            <path d="M14 42h20"/>
+          </svg>
+          <h3>Arte floral funerario</h3>
+          <p>Coronas, centros, ramos y piezas de acompañamiento para despedidas. Composiciones sobrias, cuidadas en la forma y en el gesto, adaptadas al tipo de ceremonia y al espacio.</p>
+        </article>
+
+        <article class="svc rv">
+          <span class="num">02</span>
+          <svg class="svc-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M24 40V24"/>
+            <circle cx="24" cy="17" r="4"/>
+            <path d="M24 17c0-5 3-8 7-9 1 5-2 9-7 9z"/>
+            <path d="M24 17c0-5-3-8-7-9-1 5 2 9 7 9z"/>
+            <path d="M24 24c-4 0-7-2-8-5M24 24c4 0 7-2 8-5"/>
+            <path d="M19 40c1-4 3-6 5-6s4 2 5 6"/>
+          </svg>
+          <h3>Ramos de novia y decoración nupcial</h3>
+          <p>Ramo, complementos y ambientación floral del enlace y del banquete. Partimos del estilo de la novia y del carácter del lugar para definir paleta, volumen y textura.</p>
+        </article>
+
+        <article class="svc rv">
+          <span class="num">03</span>
+          <svg class="svc-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M8 34h32"/>
+            <path d="M12 34c0-7 5-12 12-12s12 5 12 12"/>
+            <circle cx="24" cy="14" r="3.5"/>
+            <path d="M16 20c-2-3-2-6 0-8 2 2 2 5 0 8z"/>
+            <path d="M32 20c2-3 2-6 0-8-2 2-2 5 0 8z"/>
+            <path d="M14 40h20"/>
+          </svg>
+          <h3>Flores para eventos</h3>
+          <p>Ambientación floral para celebraciones, actos y espacios. Proyectamos el conjunto —mesas, accesos, puntos focales— para que la flor funcione a la escala del evento.</p>
+        </article>
+
+        <article class="svc rv">
+          <span class="num">04</span>
+          <svg class="svc-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M14 22h20l-2.5 18h-15z"/>
+            <path d="M24 22v-6"/>
+            <path d="M24 16c-4 0-7-2-7-6 4-1 7 2 7 6z"/>
+            <path d="M24 16c4 0 7-2 7-6-4-1-7 2-7 6z"/>
+            <path d="M12 22h24"/>
+          </svg>
+          <h3>Composiciones y centros</h3>
+          <p>Piezas para casa, mesa, comercio u oficina, en flor fresca o materiales de mayor duración. Trabajamos el recipiente y la forma como parte de la composición.</p>
+        </article>
+
+        <article class="svc rv">
+          <span class="num">05</span>
+          <svg class="svc-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M16 40h16l-1.5-14h-13z"/>
+            <path d="M24 26V12"/>
+            <path d="M24 20c-6 0-9-4-9-9 5-1 9 3 9 9z"/>
+            <path d="M24 24c6 0 9-4 9-9-5-1-9 3-9 9z"/>
+          </svg>
+          <h3>Plantas</h3>
+          <p>Plantas de interior y de temporada, solas o compuestas, con indicaciones sencillas de cuidado. Una opción cuando se busca algo que permanezca más tiempo.</p>
+        </article>
+
+        <article class="svc rv">
+          <span class="num">06</span>
+          <svg class="svc-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M10 18h28v22H10z"/>
+            <path d="M10 18l14-10 14 10"/>
+            <path d="M24 40V28"/>
+            <circle cx="24" cy="25" r="3"/>
+          </svg>
+          <h3>Encargos a medida</h3>
+          <p>Si lo que necesita no encaja en ninguna categoría, lo hablamos. Escuchamos el contexto, proponemos una dirección y ajustamos hasta que la pieza dice lo que tiene que decir.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROCESO ============ -->
+  <section class="sec steps-wrap" id="proceso">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <p class="eyebrow">Tu primer encargo</p>
+        <h2>Tres pasos, sin complicaciones.</h2>
+        <p class="lede">Un encargo floral suele llegar en un momento que ya trae bastante encima. Nuestro trabajo empieza por hacerlo fácil.</p>
+      </div>
+
+      <div class="steps">
+        <article class="step rv">
+          <h3>Nos cuenta la ocasión</h3>
+          <p>Por teléfono o por correo. Qué tipo de acto es, cuándo y dónde, y cualquier preferencia de estilo o color. Con eso ya podemos orientarle.</p>
+        </article>
+        <article class="step rv">
+          <h3>Le proponemos una dirección</h3>
+          <p>Le planteamos formato, paleta y proporción según la disponibilidad del momento, y le explicamos las opciones con claridad antes de confirmar nada.</p>
+        </article>
+        <article class="step rv">
+          <h3>Preparamos y entregamos</h3>
+          <p>Montamos la pieza y coordinamos la entrega o la colocación en el lugar acordado, respetando los tiempos del acto.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ NOTA ============ -->
+  <section class="sec note">
+    <div class="wrap note-in">
+      <div class="rv">
+        <blockquote>Una flor bien elegida no adorna: <em>dice algo</em>. Nuestro oficio consiste en encontrar, para cada encargo, exactamente lo que hay que decir.</blockquote>
+        <p class="cite">Floristería Celtiflor · Santiago de Compostela</p>
+      </div>
+      <svg class="note-art rv" viewBox="0 0 120 160" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" aria-hidden="true" focusable="false">
+        <path d="M60 152V46"/>
+        <path d="M60 120c-20-2-32-14-34-32 20-3 33 9 34 32z"/>
+        <path d="M60 100c20-2 32-14 34-32-20-3-33 9-34 32z"/>
+        <path d="M60 78c-16-2-26-12-28-27 16-2 27 8 28 27z"/>
+        <circle cx="60" cy="34" r="11"/>
+        <path d="M60 23c0-11 7-17 15-19 2 11-5 19-15 19z"/>
+        <path d="M60 23c0-11-7-17-15-19-2 11 5 19 15 19z"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ============ CONTACTO ============ -->
+  <section class="sec contact" id="contacto">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <p class="eyebrow">Contacto</p>
+        <h2>Estamos en el Polígono de Boisaca.</h2>
+        <p class="lede">Para cualquier encargo, lo más rápido es el teléfono. También puede escribirnos por correo o acercarse hasta la tienda.</p>
+      </div>
+
+      <div class="contact-grid">
+        <ul class="info-list rv">
+          <li>
+            <svg class="info-ico" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.5 14.2v2.3a1.4 1.4 0 0 1-1.5 1.4A13.8 13.8 0 0 1 2.1 4a1.4 1.4 0 0 1 1.4-1.5h2.3A1.4 1.4 0 0 1 7.2 3.7c.1.9.3 1.7.6 2.5a1.4 1.4 0 0 1-.3 1.5L6.6 8.6a11.3 11.3 0 0 0 4.8 4.8l.9-.9a1.4 1.4 0 0 1 1.5-.3c.8.3 1.6.5 2.5.6a1.4 1.4 0 0 1 1.2 1.4z"/></svg>
+            <div>
+              <p class="info-k">Teléfono</p>
+              <p class="info-v"><a href="tel:+34630343119">630 343 119</a><small>La vía más directa para consultas y encargos.</small></p>
+            </div>
+          </li>
+          <li>
+            <svg class="info-ico" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="16" height="12" rx="2"/><path d="M2.6 5.2 10 11l7.4-5.8"/></svg>
+            <div>
+              <p class="info-k">Correo</p>
+              <p class="info-v"><a href="mailto:celtiflor@celtiflor.com">celtiflor@celtiflor.com</a><small>Para enviarnos detalles o referencias por escrito.</small></p>
+            </div>
+          </li>
+          <li>
+            <svg class="info-ico" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16.5 8.3c0 4.6-6.5 10-6.5 10s-6.5-5.4-6.5-10a6.5 6.5 0 1 1 13 0z"/><circle cx="10" cy="8.2" r="2.4"/></svg>
+            <div>
+              <p class="info-k">Dirección</p>
+              <p class="info-v">Rúa Mulas s/n, Polígono Boisaca<br>15890 Santiago de Compostela (A Coruña)</p>
+            </div>
+          </li>
+          <li>
+            <svg class="info-ico" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.6"/><path d="M10 5.6V10l3 1.8"/></svg>
+            <div>
+              <p class="info-k">Horario</p>
+              <p class="info-v">Consultar horario<small>Puede confirmarlo por teléfono antes de venir.</small></p>
+            </div>
+          </li>
+          <li>
+            <svg class="info-ico" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="14" height="14" rx="4"/><circle cx="10" cy="10" r="3.4"/><circle cx="14.2" cy="5.8" r=".9" fill="currentColor" stroke="none"/></svg>
+            <div>
+              <p class="info-k">Redes</p>
+              <p class="info-v">Instagram <a href="https://www.instagram.com/floristeriaceltiflor/" rel="noopener">@floristeriaceltiflor</a><br>Facebook <a href="https://www.facebook.com/celtiflorfloristas" rel="noopener">/celtiflorfloristas</a></p>
+            </div>
+          </li>
+        </ul>
+
+        <div class="map-card rv">
+          <div class="map-head">
+            <strong>Cómo llegar</strong>
+            <span>Plano esquemático</span>
+          </div>
+          <figure class="map-fig">
+            <svg viewBox="0 0 600 420" role="img" aria-label="Plano esquemático del Polígono de Boisaca con la ubicación de Floristería Celtiflor en Rúa Mulas">
+              <defs>
+                <linearGradient id="mapbg" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#f3efe6"/>
+                  <stop offset="100%" stop-color="#e8e2d6"/>
+                </linearGradient>
+                <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                  <rect width="8" height="8" fill="none"/>
+                  <path d="M0 0v8" stroke="#8aa697" stroke-opacity=".35" stroke-width="1.2"/>
+                </pattern>
+              </defs>
+
+              <rect width="600" height="420" fill="url(#mapbg)"/>
+
+              <!-- zonas verdes -->
+              <g fill="url(#hatch)" stroke="#8aa697" stroke-opacity=".45" stroke-width="1">
+                <path d="M0 0h140v86H0z"/>
+                <path d="M486 318h114v102H486z"/>
+              </g>
+
+              <!-- manzanas / naves industriales -->
+              <g fill="#dcd5c7" stroke="#b8b1a2" stroke-width="1.2">
+                <rect x="72" y="128" width="126" height="74" rx="2"/>
+                <rect x="72" y="228" width="126" height="60" rx="2"/>
+                <rect x="256" y="118" width="96" height="88" rx="2"/>
+                <rect x="256" y="232" width="96" height="56" rx="2"/>
+                <rect x="412" y="122" width="118" height="70" rx="2"/>
+                <rect x="72" y="326" width="150" height="62" rx="2"/>
+                <rect x="262" y="326" width="146" height="62" rx="2"/>
+                <rect x="412" y="222" width="118" height="62" rx="2"/>
+              </g>
+
+              <!-- viario secundario -->
+              <g stroke="#ffffff" stroke-width="14" stroke-linecap="square" opacity=".95">
+                <path d="M228 60V420"/>
+                <path d="M382 60V420"/>
+                <path d="M0 218h600"/>
+                <path d="M0 108h600"/>
+              </g>
+              <g stroke="#cfc7b6" stroke-width="1" opacity=".9" fill="none">
+                <path d="M221 60V420M235 60V420M375 60V420M389 60V420"/>
+                <path d="M0 211h600M0 225h600M0 101h600M0 115h600"/>
+              </g>
+
+              <!-- via principal: Rúa Mulas -->
+              <path d="M0 308h600" stroke="#ffffff" stroke-width="26"/>
+              <path d="M0 308h600" stroke="#e2dbcb" stroke-width="26" stroke-opacity=".5"/>
+              <path d="M0 295h600M0 321h600" stroke="#c2bbaa" stroke-width="1.2"/>
+              <path d="M0 308h600" stroke="#a8705c" stroke-width="1.6" stroke-dasharray="14 12" stroke-opacity=".5"/>
+
+              <!-- rotonda -->
+              <g>
+                <circle cx="382" cy="308" r="26" fill="#ffffff"/>
+                <circle cx="382" cy="308" r="26" fill="none" stroke="#c2bbaa" stroke-width="1.2"/>
+                <circle cx="382" cy="308" r="11" fill="#e3ddce" stroke="#b8b1a2" stroke-width="1"/>
+              </g>
+
+              <!-- etiquetas de calle -->
+              <g font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="12" letter-spacing=".16em" fill="#7e7669">
+                <text x="18" y="302" text-transform="uppercase">RÚA MULAS</text>
+                <text x="240" y="96" transform="rotate(-90 240 96)">VIARIO INTERIOR</text>
+                <text x="394" y="96" transform="rotate(-90 394 96)">VIARIO INTERIOR</text>
+                <text x="18" y="212">ACCESO POLÍGONO</text>
+              </g>
+              <g font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="11" letter-spacing=".2em" fill="#9aa89c">
+                <text x="16" y="46">ZONA VERDE</text>
+                <text x="500" y="356">ZONA VERDE</text>
+              </g>
+
+              <!-- parcela destacada -->
+              <rect x="176" y="330" width="0" height="0" fill="none"/>
+              <rect x="150" y="332" width="104" height="52" rx="2" fill="#f6f1e8" stroke="#2f4c3e" stroke-width="1.6"/>
+
+              <!-- marcador -->
+              <g transform="translate(202 300)">
+                <circle class="pin-halo" r="13" fill="#a8705c" fill-opacity=".45"/>
+                <path d="M0 16c0 0-11-11.6-11-18.3A11 11 0 1 1 11-2.3C11 4.4 0 16 0 16z" fill="#1f3229"/>
+                <circle cy="-2.6" r="4.2" fill="#f3efe6"/>
+              </g>
+              <g font-family="Georgia,'Iowan Old Style',serif" font-size="15" fill="#1f3229">
+                <text x="202" y="404" text-anchor="middle">Floristería Celtiflor</text>
+              </g>
+
+              <!-- norte -->
+              <g transform="translate(556 46)" stroke="#7e7669" fill="none" stroke-width="1.2">
+                <circle r="17"/>
+                <path d="M0-11 5 4 0 0-5 4z" fill="#a8705c" stroke="none"/>
+                <text x="0" y="-22" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#7e7669" stroke="none" letter-spacing=".12em">N</text>
+              </g>
+            </svg>
+          </figure>
+          <p class="map-cap">Plano orientativo, no a escala. Polígono Boisaca, Santiago de Compostela.</p>
+        </div>
+      </div>
+
+      <div class="cta-strip rv">
+        <p>¿Tiene un encargo entre manos? Una llamada suele bastar para empezar.</p>
+        <a class="btn btn-solid" href="tel:+34630343119">
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.5 14.2v2.3a1.4 1.4 0 0 1-1.5 1.4A13.8 13.8 0 0 1 2.1 4a1.4 1.4 0 0 1 1.4-1.5h2.3A1.4 1.4 0 0 1 7.2 3.7c.1.9.3 1.7.6 2.5a1.4 1.4 0 0 1-.3 1.5L6.6 8.6a11.3 11.3 0 0 0 4.8 4.8l.9-.9a1.4 1.4 0 0 1 1.5-.3c.8.3 1.6.5 2.5.6a1.4 1.4 0 0 1 1.2 1.4z"/></svg>
+          630 343 119
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-in">
+      <div class="foot-col foot-brand">
+        <span class="brand-name">Floristería Celtiflor</span>
+        <p>Arte floral funerario, novias y eventos. Santiago de Compostela.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Contacto</h4>
+        <p>
+          <a href="tel:+34630343119">630 343 119</a><br>
+          <a href="mailto:celtiflor@celtiflor.com">celtiflor@celtiflor.com</a><br>
+          Consultar horario
+        </p>
+      </div>
+      <div class="foot-col">
+        <h4>Dónde estamos</h4>
+        <p>Rúa Mulas s/n<br>Polígono Boisaca<br>15890 Santiago de Compostela<br>(A Coruña)</p>
+      </div>
+      <div class="foot-col">
+        <h4>Redes</h4>
+        <p>
+          <a href="https://www.instagram.com/floristeriaceltiflor/" rel="noopener">Instagram @floristeriaceltiflor</a><br>
+          <a href="https://www.facebook.com/celtiflorfloristas" rel="noopener">Facebook /celtiflorfloristas</a>
+        </p>
+      </div>
+    </div>
+    <div class="foot-rule"></div>
+    <div class="foot-bottom">
+      <p>© <span id="yr">2026</span> Floristería Celtiflor · Santiago de Compostela</p>
+      <p class="studio">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* Año dinámico */
+  var yr = document.getElementById('yr');
+  if (yr) yr.textContent = new Date().getFullYear();
+
+  /* Sombra/borde de la nav al hacer scroll */
+  var nav = document.getElementById('nav');
+  var bar = 34;
+  function onScroll(){
+    if (!nav) return;
+    if (window.scrollY > 8) nav.classList.add('is-stuck');
+    else nav.classList.remove('is-stuck');
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  /* Reveal progresivo */
+  var items = Array.prototype.slice.call(document.querySelectorAll('.rv'));
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  if (reduce.matches || !('IntersectionObserver' in window)) {
+    items.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        var el = e.target;
+        var siblings = el.parentNode ? Array.prototype.slice.call(el.parentNode.children).filter(function(n){return n.classList && n.classList.contains('rv');}) : [el];
+        var i = Math.max(0, siblings.indexOf(el));
+        el.style.transitionDelay = Math.min(i * 70, 350) + 'ms';
+        el.classList.add('in');
+        io.unobserve(el);
+      });
+    }, {rootMargin:'0px 0px -8% 0px', threshold:0.08});
+    items.forEach(function(el){ io.observe(el); });
+  }
+
+  /* Salvaguarda: ningún elemento debe generar scroll horizontal */
+  function guard(){
+    if (document.documentElement.scrollWidth > document.documentElement.clientWidth + 1) {
+      document.body.style.overflowX = 'hidden';
+    }
+  }
+  window.addEventListener('resize', guard, {passive:true});
+  guard();
+})();
+</script>
+
+
+<script>setTimeout(function(){var n=document.querySelectorAll(".rv");for(var i=0;i<n.length;i++){n[i].classList.add("in");}},2500);</script>
+</body>
+</html>
