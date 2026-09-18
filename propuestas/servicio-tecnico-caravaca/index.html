@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Servicio Técnico Caravaca — Propuesta de diseño</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --acero-900:#0e1418;
+  --acero-800:#141d23;
+  --acero-700:#1d2930;
+  --acero-500:#3d4f59;
+  --acero-300:#8fa3ad;
+  --niebla:#eef1f0;
+  --papel:#f7f8f7;
+  --blanco:#ffffff;
+  --ambar:#e2861f;
+  --ambar-claro:#f4a742;
+  --cobre:#b4541c;
+  --verde:#1f6f5c;
+  --linea:rgba(20,29,35,.12);
+  --sombra:0 1px 2px rgba(14,20,24,.05),0 10px 30px -12px rgba(14,20,24,.18);
+  --barra:46px;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --serif:Georgia,"Times New Roman",Times,serif;
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;padding-top:var(--barra);
+  font-family:var(--sans);
+  color:var(--acero-800);
+  background:var(--papel);
+  line-height:1.6;
+  overflow-x:hidden;
+}
+img,svg{max-width:100%}
+h1,h2,h3{margin:0;line-height:1.1;letter-spacing:-.02em;font-weight:650}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ambar);outline-offset:3px;border-radius:4px}
+
+/* ---------- Barra fija ---------- */
+.barra{
+  position:fixed;top:0;left:0;right:0;z-index:9999;
+  height:var(--barra);display:flex;align-items:center;justify-content:center;
+  background:var(--acero-900);
+  color:#e9edef;
+  font-size:12px;letter-spacing:.06em;text-transform:uppercase;
+  padding:0 14px;text-align:center;
+  border-bottom:1px solid rgba(255,255,255,.1);
+}
+.barra span{display:block;max-width:100%}
+@media (max-width:640px){
+  :root{--barra:56px}
+  .barra{font-size:10.5px;letter-spacing:.04em;line-height:1.45;padding:0 16px}
+}
+
+.wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 24px}
+@media (max-width:480px){.wrap{padding:0 18px}}
+
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--acero-500);font-weight:600;margin-bottom:18px;
+}
+.eyebrow::before{content:"";width:26px;height:2px;background:var(--ambar);flex:none}
+
+/* ---------- Hero ---------- */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(1000px 520px at 82% -10%,rgba(226,134,31,.22),transparent 62%),
+    radial-gradient(700px 480px at 0% 100%,rgba(31,111,92,.20),transparent 60%),
+    linear-gradient(168deg,var(--acero-900) 0%,var(--acero-800) 55%,#182329 100%);
+  color:#f2f5f4;
+  padding:80px 0 92px;
+}
+.hero::after{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:.35;
+  background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+  background-size:52px 52px;
+  -webkit-mask-image:radial-gradient(70% 70% at 50% 40%,#000,transparent);
+          mask-image:radial-gradient(70% 70% at 50% 40%,#000,transparent);
+}
+.hero .wrap{position:relative;z-index:1}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:56px;align-items:center}
+.hero .eyebrow{color:#b9c8cf}
+.hero h1{
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(2.1rem,6.2vw,3.7rem);
+  letter-spacing:-.015em;line-height:1.06;
+}
+.hero h1 em{font-style:normal;color:var(--ambar-claro)}
+.hero-lead{margin-top:22px;font-size:clamp(1rem,2.4vw,1.16rem);color:#c4d0d6;max-width:52ch}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;align-items:center}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:15px 26px;border-radius:999px;text-decoration:none;
+  font-weight:650;font-size:1rem;letter-spacing:.01em;
+  transition:transform .18s ease,box-shadow .18s ease,background .18s ease,border-color .18s ease;
+  max-width:100%;
+}
+.btn-primario{background:var(--ambar);color:#171008;box-shadow:0 10px 24px -10px rgba(226,134,31,.9)}
+.btn-primario:hover{transform:translateY(-2px);background:var(--ambar-claro);box-shadow:0 16px 30px -12px rgba(226,134,31,.95)}
+.btn-fantasma{border:1px solid rgba(255,255,255,.28);color:#e8eef0;text-decoration:none}
+.btn-fantasma:hover{border-color:var(--ambar-claro);color:#fff;transform:translateY(-2px)}
+.hero-notas{margin-top:26px;display:flex;flex-wrap:wrap;gap:10px 22px;font-size:.88rem;color:#9fb1b9}
+.hero-notas span{display:inline-flex;align-items:center;gap:8px}
+.punto{width:6px;height:6px;border-radius:50%;background:var(--verde);flex:none;box-shadow:0 0 0 4px rgba(31,111,92,.22)}
+
+/* tarjeta técnica del hero */
+.ficha{
+  background:rgba(255,255,255,.055);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:18px;padding:26px;backdrop-filter:blur(2px);
+}
+.ficha h3{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:#9fb1b9;font-weight:600}
+.ficha-lista{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:14px}
+.ficha-lista li{display:flex;gap:12px;align-items:flex-start;font-size:.95rem;color:#dbe4e8;min-width:0}
+.ficha-lista svg{flex:none;margin-top:2px}
+.ficha-lista strong{display:block;color:#fff;font-weight:600}
+.ficha-lista a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.3);word-break:break-word}
+.ficha-lista a:hover{border-color:var(--ambar-claro);color:var(--ambar-claro)}
+
+/* ---------- Franja ---------- */
+.franja{background:var(--acero-700);color:#cfdade;padding:18px 0;border-top:1px solid rgba(255,255,255,.08)}
+.franja-in{display:flex;flex-wrap:wrap;gap:12px 34px;justify-content:center;font-size:.86rem;letter-spacing:.08em;text-transform:uppercase}
+.franja-in span{display:inline-flex;align-items:center;gap:9px}
+
+/* ---------- Secciones ---------- */
+section{padding:88px 0}
+.sec-cab{max-width:62ch;margin-bottom:46px}
+.sec-cab h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.8rem,4.6vw,2.6rem)}
+.sec-cab p{margin-top:16px;color:var(--acero-500);font-size:1.03rem}
+
+/* servicios */
+#servicios{background:var(--blanco);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+.grid-serv{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,255px),1fr));gap:18px}
+.card{
+  background:var(--papel);border:1px solid var(--linea);border-radius:16px;padding:26px 24px;
+  transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease,background .2s ease;
+  min-width:0;
+}
+.card:hover{transform:translateY(-4px);box-shadow:var(--sombra);border-color:rgba(226,134,31,.45);background:#fff}
+.card-ico{
+  width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(145deg,rgba(226,134,31,.16),rgba(180,84,28,.10));
+  border:1px solid rgba(226,134,31,.28);margin-bottom:18px;
+}
+.card h3{font-size:1.06rem;margin-bottom:9px}
+.card p{color:var(--acero-500);font-size:.94rem}
+
+/* pasos */
+#proceso{background:var(--niebla)}
+.pasos{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:22px;counter-reset:p}
+.paso{position:relative;background:#fff;border:1px solid var(--linea);border-radius:16px;padding:30px 26px 28px;min-width:0}
+.paso::before{
+  counter-increment:p;content:"0" counter(p);
+  font-family:var(--serif);font-size:2.6rem;line-height:1;color:var(--ambar);display:block;margin-bottom:14px;
+}
+.paso h3{font-size:1.12rem;margin-bottom:10px}
+.paso p{color:var(--acero-500);font-size:.95rem}
+.paso-linea{height:3px;width:44px;background:linear-gradient(90deg,var(--ambar),transparent);margin-top:20px;border-radius:2px}
+
+/* contacto */
+#contacto{background:var(--acero-900);color:#e9eef0}
+#contacto .sec-cab h2{color:#fff}
+#contacto .sec-cab p{color:#a9bac1}
+#contacto .eyebrow{color:#a9bac1}
+.cont-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:44px;align-items:start}
+.dato{padding:20px 0;border-top:1px solid rgba(255,255,255,.12);display:flex;gap:16px;align-items:flex-start;min-width:0}
+.dato:first-of-type{border-top:0;padding-top:0}
+.dato svg{flex:none;margin-top:3px}
+.dato-k{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:#8ea2aa;font-weight:600}
+.dato-v{font-size:1.14rem;margin-top:5px;color:#fff;word-break:break-word}
+.dato-v a{text-decoration:none;border-bottom:1px solid rgba(255,255,255,.25);transition:color .15s ease,border-color .15s ease}
+.dato-v a:hover{color:var(--ambar-claro);border-color:var(--ambar-claro)}
+.dato small{display:block;color:#8ea2aa;font-size:.86rem;margin-top:4px}
+.mapa{
+  background:linear-gradient(160deg,#16212a,#101a20);
+  border:1px solid rgba(255,255,255,.13);border-radius:18px;padding:14px;
+}
+.mapa svg{display:block;width:100%;height:auto}
+.mapa-pie{display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:space-between;padding:12px 6px 4px;font-size:.8rem;color:#8ea2aa;letter-spacing:.06em;text-transform:uppercase}
+.mrk{animation:lat 2.6s ease-in-out infinite;transform-origin:center}
+@keyframes lat{0%,100%{opacity:1}50%{opacity:.45}}
+@media (prefers-reduced-motion:reduce){.mrk{animation:none}.btn,.card,.paso{transition:none}}
+
+/* footer */
+footer{background:#080d10;color:#93a5ad;padding:50px 0 44px;font-size:.92rem}
+.foot{display:flex;flex-wrap:wrap;gap:22px;justify-content:space-between;align-items:flex-start}
+.foot a{color:#dbe4e8;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.22);word-break:break-word}
+.foot a:hover{color:var(--ambar-claro);border-color:var(--ambar-claro)}
+.foot-marca{font-family:var(--serif);font-size:1.15rem;color:#fff;margin-bottom:8px}
+.foot-social{display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:12px}
+.foot-social span{display:inline-flex;align-items:center;gap:8px}
+.foot-nota{margin-top:34px;padding-top:22px;border-top:1px solid rgba(255,255,255,.1);font-size:.85rem;color:#7d8f97}
+
+@media (max-width:900px){
+  .hero-grid,.cont-grid{grid-template-columns:minmax(0,1fr);gap:38px}
+  .hero{padding:58px 0 66px}
+  section{padding:66px 0}
+}
+</style>
+</head>
+<body>
+
+<div class="barra" role="note"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">Caravaca de la Cruz · Murcia</span>
+        <h1>Servicio Técnico<br>Caravaca<br><em>reparamos, no reemplazamos</em></h1>
+        <p class="hero-lead">Reparación y venta de electrodomésticos. Diagnóstico claro, trabajo de oficio y una llamada para poner en marcha lo que se ha parado en casa.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primario" href="tel:665317146">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+            Llamar al 665 317 146
+          </a>
+          <a class="btn btn-fantasma" href="#servicios">Ver qué reparamos</a>
+        </div>
+        <div class="hero-notas">
+          <span><i class="punto"></i>Reparación y venta</span>
+          <span><i class="punto"></i>Atención directa por teléfono</span>
+          <span><i class="punto"></i>Taller en Caravaca de la Cruz</span>
+        </div>
+      </div>
+
+      <aside class="ficha">
+        <h3>Contacto directo</h3>
+        <ul class="ficha-lista">
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f4a742" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+            <span><strong>Teléfonos</strong><a href="tel:665317146">665 317 146</a> · <a href="tel:968722225">968 722 225</a></span>
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f4a742" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span><strong>Dirección</strong>Avda. Maruja Garrido 1<br>30400 Caravaca de la Cruz (Murcia)</span>
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f4a742" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+            <span><strong>Email</strong><a href="mailto:hodogaribsl@msn.com">hodogaribsl@msn.com</a></span>
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f4a742" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            <span><strong>Horario</strong>Consultar horario</span>
+          </li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+</header>
+
+<div class="franja">
+  <div class="wrap franja-in">
+    <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#f4a742" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m20 6-11 11-5-5"/></svg>Diagnóstico antes de reparar</span>
+    <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#f4a742" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m20 6-11 11-5-5"/></svg>Reparación de gama blanca</span>
+    <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#f4a742" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m20 6-11 11-5-5"/></svg>Venta de electrodomésticos</span>
+  </div>
+</div>
+
+<section id="servicios">
+  <div class="wrap">
+    <div class="sec-cab">
+      <span class="eyebrow">Servicios</span>
+      <h2>Lo que entra en el taller y lo que sale funcionando</h2>
+      <p>Trabajamos sobre los electrodomésticos del día a día: los que se usan a diario y los que, cuando fallan, desordenan la casa entera. Consúltenos su caso por teléfono.</p>
+    </div>
+    <div class="grid-serv">
+
+      <article class="card">
+        <div class="card-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b4541c" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="14" r="5"/><circle cx="12" cy="14" r="1.8"/><path d="M7.5 5.5h.01M11 5.5h.01"/></svg></div>
+        <h3>Lavadoras</h3>
+        <p>Revisión de tambor, bomba de desagüe, rodamientos, electrónica y programas que no completan el ciclo.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b4541c" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M5 9h14"/><path d="M8 5.5v2M8 12v3"/></svg></div>
+        <h3>Frigoríficos y congeladores</h3>
+        <p>Pérdida de frío, escarcha, ruidos, goteos o puertas que no cierran: localizamos el origen antes de tocar nada.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b4541c" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><rect x="7" y="12" width="10" height="5" rx="1"/><path d="M6.5 6.5h.01M9.5 6.5h.01"/></svg></div>
+        <h3>Hornos y encimeras</h3>
+        <p>Resistencias, termostatos, encendidos que fallan y hornos que no mantienen la temperatura de trabajo.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b4541c" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M4 7h16"/><path d="M8 11h8M8 14.5h8M8 18h5"/></svg></div>
+        <h3>Lavavajillas</h3>
+        <p>Desagües obstruidos, brazos aspersores, resistencias y vajilla que sale sin lavar o sin secar.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b4541c" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="13.5" r="5"/><path d="M9.5 13.5a2.5 2.5 0 0 1 5 0 2.5 2.5 0 0 0 5 0" transform="scale(.62) translate(7.4 8.4)"/><path d="M7.5 5.5h.01M11 5.5h.01"/></svg></div>
+        <h3>Secadoras</h3>
+        <p>Secado incompleto, filtros y conductos, sondas de humedad y ciclos que se interrumpen a mitad.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b4541c" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9.5 12 3l9 6.5V20a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 20z"/><path d="M9 21.5V13h6v8.5"/></svg></div>
+        <h3>Pequeño electrodoméstico</h3>
+        <p>Aparatos de uso diario en la cocina y el hogar: los revisamos y le decimos si compensa repararlos.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b4541c" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.4 11.4a1.5 1.5 0 0 0 1.5 1.2h8.3a1.5 1.5 0 0 0 1.5-1.2L20.5 8H6"/><circle cx="9.5" cy="20" r="1.3"/><circle cx="17.5" cy="20" r="1.3"/></svg></div>
+        <h3>Venta de electrodomésticos</h3>
+        <p>Cuando reparar no sale a cuenta, le ayudamos a elegir el recambio adecuado para su espacio y su uso.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b4541c" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 1-5.3 5.3L4 17v3h3l5.4-5.4a4 4 0 0 0 5.3-5.3l-2.4 2.4-2.1-2.1z"/></svg></div>
+        <h3>Diagnóstico y recambios</h3>
+        <p>Localizamos la avería, explicamos qué pieza falla y montamos el recambio adecuado para el aparato.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="proceso">
+  <div class="wrap">
+    <div class="sec-cab">
+      <span class="eyebrow">Cómo trabajamos</span>
+      <h2>Tres pasos, sin sorpresas por el camino</h2>
+      <p>Un método sencillo: primero entender la avería, después explicarla y solo entonces reparar.</p>
+    </div>
+    <div class="pasos">
+      <article class="paso">
+        <h3>Nos cuenta la avería</h3>
+        <p>Una llamada a <a href="tel:665317146" style="color:var(--cobre)">665 317 146</a> o al <a href="tel:968722225" style="color:var(--cobre)">968 722 225</a>. Con el aparato y el síntoma podemos orientarle antes de mover nada.</p>
+        <div class="paso-linea"></div>
+      </article>
+      <article class="paso">
+        <h3>Diagnóstico y explicación</h3>
+        <p>Revisamos el electrodoméstico, identificamos la pieza o el ajuste que falla y le explicamos en qué consiste antes de intervenir.</p>
+        <div class="paso-linea"></div>
+      </article>
+      <article class="paso">
+        <h3>Reparación o alternativa</h3>
+        <p>Reparamos con el recambio adecuado. Si la reparación no compensa, se lo decimos y le acompañamos en la compra de uno nuevo.</p>
+        <div class="paso-linea"></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap">
+    <div class="sec-cab">
+      <span class="eyebrow">Contacto</span>
+      <h2>Estamos en Caravaca de la Cruz</h2>
+      <p>Llámenos y cuéntenos qué ha dejado de funcionar. También puede acercarse al local.</p>
+    </div>
+    <div class="cont-grid">
+      <div>
+        <div class="dato">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f4a742" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+          <div>
+            <div class="dato-k">Teléfono</div>
+            <div class="dato-v"><a href="tel:665317146">665 317 146</a></div>
+            <div class="dato-v"><a href="tel:968722225">968 722 225</a></div>
+          </div>
+        </div>
+        <div class="dato">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f4a742" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div>
+            <div class="dato-k">Dirección</div>
+            <div class="dato-v">Avda. Maruja Garrido 1<br>30400 Caravaca de la Cruz (Murcia)</div>
+          </div>
+        </div>
+        <div class="dato">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f4a742" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          <div>
+            <div class="dato-k">Horario</div>
+            <div class="dato-v">Consultar horario</div>
+            <small>Le confirmamos disponibilidad por teléfono.</small>
+          </div>
+        </div>
+        <div class="dato">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f4a742" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+          <div>
+            <div class="dato-k">Email</div>
+            <div class="dato-v"><a href="mailto:hodogaribsl@msn.com">hodogaribsl@msn.com</a></div>
+          </div>
+        </div>
+        <div style="margin-top:28px">
+          <a class="btn btn-primario" href="tel:665317146">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+            Llamar ahora
+          </a>
+        </div>
+      </div>
+
+      <div class="mapa">
+        <svg viewBox="0 0 520 380" role="img" aria-label="Mapa esquemático de situación: Avenida Maruja Garrido 1, Caravaca de la Cruz">
+          <defs>
+            <linearGradient id="gfondo" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#16222a"/><stop offset="1" stop-color="#0e171d"/>
+            </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="520" height="380" rx="12" fill="url(#gfondo)"/>
+          <!-- manzanas -->
+          <g fill="#ffffff" opacity="0.045">
+            <rect x="30" y="28" width="150" height="96" rx="6"/>
+            <rect x="215" y="28" width="120" height="96" rx="6"/>
+            <rect x="372" y="28" width="118" height="140" rx="6"/>
+            <rect x="30" y="165" width="150" height="80" rx="6"/>
+            <rect x="215" y="165" width="120" height="80" rx="6"/>
+            <rect x="30" y="288" width="150" height="66" rx="6"/>
+            <rect x="215" y="288" width="275" height="66" rx="6"/>
+            <rect x="372" y="208" width="118" height="38" rx="6"/>
+          </g>
+          <!-- calles secundarias -->
+          <g stroke="#4a5f6b" stroke-width="12" stroke-linecap="round" opacity="0.55">
+            <path d="M196 10 V370"/>
+            <path d="M352 10 V190"/>
+            <path d="M10 142 H510"/>
+            <path d="M10 266 H510"/>
+          </g>
+          <!-- avenida principal -->
+          <g>
+            <path d="M18 330 C 140 330, 210 250, 300 205 S 450 120, 505 96" fill="none" stroke="#e2861f" stroke-width="16" stroke-linecap="round" opacity="0.9"/>
+            <path d="M18 330 C 140 330, 210 250, 300 205 S 450 120, 505 96" fill="none" stroke="#f7c98a" stroke-width="2" stroke-linecap="round" stroke-dasharray="10 12" opacity="0.8"/>
+          </g>
+          <!-- marcador -->
+          <g class="mrk" transform="translate(300,205)">
+            <circle r="30" fill="#e2861f" opacity="0.16"/>
+            <circle r="18" fill="#e2861f" opacity="0.28"/>
+            <g transform="translate(-11,-34)">
+              <path d="M11 0a11 11 0 0 0-11 11c0 8.2 11 23 11 23s11-14.8 11-23A11 11 0 0 0 11 0z" fill="#f4a742" stroke="#0e1418" stroke-width="1.5"/>
+              <circle cx="11" cy="11" r="4.2" fill="#0e1418"/>
+            </g>
+          </g>
+          <!-- etiquetas -->
+          <g font-family="system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="13" fill="#b9c8cf">
+            <text x="330" y="232" font-size="14" font-weight="600" fill="#ffffff">Avda. Maruja Garrido 1</text>
+            <text x="330" y="252">Caravaca de la Cruz</text>
+            <text x="36" y="372" font-size="11" fill="#7c909a" letter-spacing="1.5">ESQUEMA ORIENTATIVO</text>
+          </g>
+          <rect x="0.5" y="0.5" width="519" height="379" rx="12" fill="none" stroke="rgba(255,255,255,.10)"/>
+        </svg>
+        <div class="mapa-pie"><span>Plano esquemático</span><span>Caravaca de la Cruz · Murcia</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div style="min-width:0">
+        <div class="foot-marca">Servicio Técnico Caravaca</div>
+        <div>Reparación y venta de electrodomésticos</div>
+        <div style="margin-top:10px">Avda. Maruja Garrido 1 · 30400 Caravaca de la Cruz (Murcia)</div>
+        <div class="foot-social">
+          <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#f4a742" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 9V7a2 2 0 0 1 2-2h2"/><path d="M10 22V12H7.5"/><path d="M10 12h4"/><path d="M10 12V9a3 3 0 0 1 3-3h1"/><rect x="3" y="3" width="18" height="18" rx="3"/></svg>Facebook /Servicio-Tecnico-Caravaca</span>
+          <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#f4a742" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>Instagram @satcaravaca</span>
+        </div>
+      </div>
+      <div style="min-width:0">
+        <div class="dato-k" style="color:#7d8f97">Escríbanos</div>
+        <div style="margin-top:6px;font-size:1.02rem"><a href="mailto:hodogaribsl@msn.com">hodogaribsl@msn.com</a></div>
+        <div style="margin-top:14px" class="dato-k">Teléfonos</div>
+        <div style="margin-top:6px"><a href="tel:665317146">665 317 146</a> · <a href="tel:968722225">968 722 225</a></div>
+        <div style="margin-top:14px" class="dato-k">Horario</div>
+        <div style="margin-top:6px;color:#dbe4e8">Consultar horario</div>
+      </div>
+    </div>
+    <div class="foot-nota">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var links = document.querySelectorAll('a[href^="#"]');
+  for (var i=0;i<links.length;i++){
+    links[i].addEventListener('click', function(e){
+      var t = document.querySelector(this.getAttribute('href'));
+      if(!t) return;
+      e.preventDefault();
+      var y = t.getBoundingClientRect().top + window.pageYOffset - 56;
+      window.scrollTo({top:y, behavior:'smooth'});
+    });
+  }
+  if (!window.IntersectionObserver) return;
+  var els = document.querySelectorAll('.card, .paso, .sec-cab, .mapa');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) return;
+  for (var j=0;j<els.length;j++){
+    els[j].style.transition='opacity .6s ease, transform .6s ease';
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        en.target.style.opacity='1';
+        en.target.style.transform='none';
+        io.unobserve(en.target);
+      }
+    });
+  },{threshold:.12});
+  for (var k=0;k<els.length;k++) io.observe(els[k]);
+})();
+</script>
+</body>
+</html>
