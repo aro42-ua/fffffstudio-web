@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reforma-T · Construcción y reformas en Elda</title>
+<meta name="description" content="Propuesta de diseño para Reforma-T, empresa de construcción y reformas en Elda (Alicante).">
+<style>
+  :root{
+    --negro:#12100E;
+    --grafito:#1E1B18;
+    --hormigon:#6E675F;
+    --arena:#EDE7DF;
+    --arena-2:#DCD3C7;
+    --papel:#F7F4EF;
+    --naranja:#E1550A;
+    --naranja-osc:#B33F04;
+    --amarillo:#F2B705;
+    --borde:rgba(18,16,14,.14);
+    --barra:56px;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,"Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+  html,body{max-width:100%;overflow-x:hidden;}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+  body{
+    margin:0;
+    padding-top:var(--barra);
+    background:var(--papel);
+    color:var(--negro);
+    font-family:var(--sans);
+    font-size:17px;
+    line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%;}
+  a{color:inherit;}
+  h1,h2,h3{margin:0;line-height:1.04;letter-spacing:-.025em;font-family:var(--serif);font-weight:600;}
+  p{margin:0;}
+  .wrap{width:100%;max-width:1200px;margin:0 auto;padding:0 clamp(18px,5vw,48px);}
+
+  /* ---------- Barra fija ---------- */
+  .aviso{
+    position:fixed;top:0;left:0;right:0;z-index:99;
+    min-height:var(--barra);
+    display:flex;align-items:center;justify-content:center;
+    background:var(--negro);
+    color:var(--arena);
+    border-bottom:2px solid var(--naranja);
+    padding:8px clamp(14px,4vw,28px);
+  }
+  .aviso span{
+    font-family:var(--mono);
+    font-size:clamp(10px,2.6vw,12.5px);
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    text-align:center;
+    line-height:1.4;
+    word-break:break-word;
+  }
+  .aviso span b{color:var(--amarillo);font-weight:600;}
+
+  /* ---------- Cabecera de marca ---------- */
+  .marca{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:16px;flex-wrap:wrap;
+    padding:22px 0 18px;
+    border-bottom:1px solid var(--borde);
+  }
+  .logo{display:flex;align-items:center;gap:12px;}
+  .logo .cuad{
+    width:38px;height:38px;flex:0 0 38px;
+    background:var(--naranja);
+    display:grid;place-items:center;
+  }
+  .logo .nom{
+    font-family:var(--serif);
+    font-size:22px;letter-spacing:-.03em;font-weight:600;
+  }
+  .logo .nom small{
+    display:block;
+    font-family:var(--mono);
+    font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--hormigon);font-weight:400;
+  }
+  .marca .tel-top{
+    font-family:var(--mono);font-size:13px;letter-spacing:.04em;
+    text-decoration:none;padding:9px 14px;border:1px solid var(--borde);
+    border-radius:999px;white-space:nowrap;
+  }
+  .marca .tel-top:hover{background:var(--negro);color:var(--papel);border-color:var(--negro);}
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative;overflow:hidden;background:var(--papel);}
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background:
+      linear-gradient(115deg,rgba(225,85,10,.10),transparent 42%),
+      repeating-linear-gradient(90deg,rgba(18,16,14,.05) 0 1px,transparent 1px 44px),
+      repeating-linear-gradient(0deg,rgba(18,16,14,.05) 0 1px,transparent 1px 44px);
+    pointer-events:none;
+  }
+  .hero-grid{
+    position:relative;
+    display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(26px,4vw,56px);
+    align-items:center;
+    padding:clamp(48px,7vw,96px) 0 clamp(52px,7vw,104px);
+  }
+  .etiqueta{
+    display:inline-flex;align-items:center;gap:9px;
+    font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--naranja-osc);margin-bottom:20px;
+  }
+  .etiqueta i{width:26px;height:2px;background:var(--naranja);display:block;}
+  h1{font-size:clamp(2.35rem,7.2vw,4.6rem);}
+  h1 em{font-style:normal;color:var(--naranja);}
+  .hero p.lead{
+    margin-top:22px;max-width:46ch;
+    font-size:clamp(1rem,2.6vw,1.2rem);color:var(--grafito);
+  }
+  .acciones{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:11px;
+    padding:15px 24px;border-radius:2px;
+    text-decoration:none;font-weight:600;font-size:16px;
+    border:1.5px solid var(--negro);
+    transition:transform .15s ease;
+  }
+  .btn:active{transform:translateY(1px);}
+  .btn-pri{background:var(--naranja);border-color:var(--naranja);color:#fff;}
+  .btn-pri:hover{background:var(--naranja-osc);border-color:var(--naranja-osc);}
+  .btn-pri .num{font-family:var(--mono);letter-spacing:.02em;}
+  .btn-sec{background:transparent;color:var(--negro);}
+  .btn-sec:hover{background:var(--negro);color:var(--papel);}
+  .hero-art{width:100%;}
+  .hero-art svg{display:block;width:100%;height:auto;}
+
+  .tira{
+    border-top:1px solid var(--borde);border-bottom:1px solid var(--borde);
+    background:var(--arena);
+  }
+  .tira .wrap{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+    background:var(--borde);
+  }
+  .tira .it{
+    background:var(--arena);padding:22px clamp(12px,2vw,22px);
+  }
+  .tira .it b{
+    display:block;font-family:var(--serif);font-size:clamp(1rem,2.4vw,1.2rem);
+    letter-spacing:-.02em;
+  }
+  .tira .it span{
+    display:block;margin-top:4px;
+    font-family:var(--mono);font-size:11px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--hormigon);
+  }
+
+  /* ---------- Secciones ---------- */
+  section{padding:clamp(56px,8vw,110px) 0;}
+  .cab{max-width:62ch;margin-bottom:clamp(30px,5vw,52px);}
+  .cab .etiqueta{margin-bottom:14px;}
+  h2{font-size:clamp(1.9rem,5.2vw,3.1rem);}
+  .cab p{margin-top:16px;color:var(--grafito);font-size:clamp(1rem,2.4vw,1.1rem);}
+
+  .servicios{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--borde);border:1px solid var(--borde);}
+  .card{
+    background:var(--papel);padding:clamp(24px,3.4vw,36px);
+    display:flex;flex-direction:column;gap:14px;
+    transition:background .2s ease;
+  }
+  .card:hover{background:var(--arena);}
+  .card .ico{width:44px;height:44px;flex:0 0 44px;}
+  .card .ico svg{display:block;width:100%;height:100%;}
+  .card h3{font-size:clamp(1.15rem,3vw,1.4rem);}
+  .card p{color:var(--hormigon);font-size:15.5px;}
+
+  /* ---------- Proceso ---------- */
+  .proceso{background:var(--negro);color:var(--arena);position:relative;overflow:hidden;}
+  .proceso::before{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(120% 90% at 100% 0%,rgba(225,85,10,.28),transparent 55%),
+      repeating-linear-gradient(135deg,rgba(255,255,255,.035) 0 2px,transparent 2px 12px);
+    pointer-events:none;
+  }
+  .proceso .wrap{position:relative;}
+  .proceso h2,.proceso .cab p{color:var(--arena);}
+  .proceso .cab p{color:var(--arena-2);opacity:.85;}
+  .pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(22px,3vw,40px);}
+  .paso{border-top:2px solid var(--naranja);padding-top:22px;}
+  .paso .n{
+    font-family:var(--mono);font-size:12px;letter-spacing:.2em;
+    color:var(--amarillo);display:block;margin-bottom:12px;
+  }
+  .paso h3{font-size:clamp(1.2rem,3vw,1.55rem);color:var(--papel);}
+  .paso p{margin-top:12px;color:var(--arena-2);opacity:.86;font-size:15.5px;}
+
+  /* ---------- Contacto ---------- */
+  .contacto-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4vw,56px);align-items:start;}
+  .datos{display:flex;flex-direction:column;gap:2px;border:1px solid var(--borde);background:var(--borde);}
+  .dato{background:var(--papel);padding:22px clamp(18px,2.6vw,28px);display:flex;gap:16px;align-items:flex-start;}
+  .dato .ico{width:26px;height:26px;flex:0 0 26px;margin-top:3px;}
+  .dato .ico svg{display:block;width:100%;height:100%;}
+  .dato .k{
+    font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--hormigon);display:block;margin-bottom:5px;
+  }
+  .dato .v{font-family:var(--serif);font-size:clamp(1.05rem,3vw,1.35rem);letter-spacing:-.02em;text-decoration:none;word-break:break-word;}
+  a.v:hover{color:var(--naranja);}
+  .dato .v.min{font-family:var(--sans);font-size:16px;letter-spacing:0;line-height:1.5;}
+  .mapa{border:1px solid var(--borde);background:var(--arena);padding:0;overflow:hidden;}
+  .mapa svg{display:block;width:100%;height:auto;}
+  .mapa figcaption{
+    padding:14px clamp(16px,2.4vw,22px);border-top:1px solid var(--borde);
+    font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--hormigon);
+  }
+
+  /* ---------- Pie ---------- */
+  footer{background:var(--grafito);color:var(--arena);padding:clamp(40px,6vw,64px) 0 clamp(28px,4vw,40px);}
+  .pie-top{display:flex;flex-wrap:wrap;gap:22px;justify-content:space-between;align-items:flex-end;}
+  .pie-top .nom{font-family:var(--serif);font-size:clamp(1.5rem,5vw,2.2rem);letter-spacing:-.03em;}
+  .pie-top a{font-family:var(--mono);font-size:14px;text-decoration:none;border-bottom:1px solid var(--naranja);padding-bottom:3px;word-break:break-all;}
+  .pie-top a:hover{color:var(--amarillo);}
+  .pie-bajo{
+    margin-top:clamp(28px,4vw,44px);padding-top:20px;
+    border-top:1px solid rgba(237,231,223,.18);
+    font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;
+    color:var(--arena-2);opacity:.8;line-height:1.7;
+  }
+
+  html.jsrev .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease;}
+  html.jsrev .reveal.on{opacity:1;transform:none;}
+  @media (prefers-reduced-motion:reduce){
+    html.jsrev .reveal{opacity:1;transform:none;transition:none;}
+    html{scroll-behavior:auto;}
+  }
+
+  @media (max-width:980px){
+    .hero-grid{grid-template-columns:1fr;}
+    .servicios{grid-template-columns:repeat(2,1fr);}
+    .pasos{grid-template-columns:1fr;}
+    .contacto-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width:640px){
+    :root{--barra:64px;}
+    body{font-size:16px;}
+    .servicios{grid-template-columns:1fr;}
+    .tira .wrap{grid-template-columns:1fr;}
+    .marca{padding:16px 0 14px;}
+    .marca .tel-top{display:none;}
+    .acciones .btn{width:100%;justify-content:center;}
+    .hero-art{margin-top:8px;}
+    .pie-top{align-items:flex-start;}
+  }
+</style>
+<script>document.documentElement.className+=' jsrev';window.addEventListener('load',function(){setTimeout(function(){var n=document.querySelectorAll('.reveal,.rev');for(var i=0;i<n.length;i++){n[i].classList.add('on');n[i].classList.add('visible');n[i].classList.add('is-visible');}},1200);});</script>
+</head>
+<body>
+
+<div class="aviso" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · <b>FFFFFFstudio</b> · Ángel Rubio</span>
+</div>
+
+<header class="wrap marca">
+  <div class="logo">
+    <div class="cuad" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="square">
+        <path d="M3 20h18"/><path d="M6 20V9l6-4 6 4v11"/><path d="M10 20v-5h4v5"/>
+      </svg>
+    </div>
+    <div class="nom">Reforma-T<small>Grupo Reforma-T</small></div>
+  </div>
+  <a class="tel-top" href="tel:+34966390606">96 639 06 06</a>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="etiqueta"><i></i>Construcción y reformas · Elda, Alicante</span>
+        <h1>Obra bien hecha,<br><em>de principio a fin</em>.</h1>
+        <p class="lead">Reformas integrales y trabajos de construcción con un solo interlocutor: planificación clara, oficio en la ejecución y un acabado que se sostiene con el tiempo.</p>
+        <div class="acciones">
+          <a class="btn btn-pri" href="tel:+34966390606">
+            <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.4 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.8 2.1z"/>
+            </svg>
+            Llamar al <span class="num">96 639 06 06</span>
+          </a>
+          <a class="btn btn-sec" href="#contacto">Ver cómo trabajamos</a>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 440 400" role="img">
+          <defs>
+            <linearGradient id="gCielo" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#EDE7DF"/><stop offset="1" stop-color="#DCD3C7"/>
+            </linearGradient>
+            <linearGradient id="gMuro" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#1E1B18"/><stop offset="1" stop-color="#3A332C"/>
+            </linearGradient>
+            <pattern id="pLadrillo" width="40" height="20" patternUnits="userSpaceOnUse">
+              <rect width="40" height="20" fill="#E1550A"/>
+              <rect width="40" height="20" fill="none" stroke="#F7F4EF" stroke-width="2"/>
+              <path d="M20 0v10M0 10h40M20 10v10" stroke="#F7F4EF" stroke-width="2"/>
+            </pattern>
+          </defs>
+          <rect x="0" y="0" width="440" height="400" fill="url(#gCielo)"/>
+          <g stroke="rgba(18,16,14,.10)" stroke-width="1">
+            <path d="M0 40h440M0 120h440M0 200h440M0 280h440M0 360h440"/>
+            <path d="M40 0v400M120 0v400M200 0v400M280 0v400M360 0v400"/>
+          </g>
+          <rect x="44" y="150" width="150" height="210" fill="url(#gMuro)"/>
+          <g fill="#F2B705" opacity=".9">
+            <rect x="70" y="180" width="30" height="40"/><rect x="118" y="180" width="30" height="40"/>
+            <rect x="70" y="248" width="30" height="40"/><rect x="118" y="248" width="30" height="40"/>
+          </g>
+          <rect x="94" y="310" width="46" height="50" fill="#E1550A"/>
+          <rect x="214" y="222" width="132" height="138" fill="url(#pLadrillo)"/>
+          <path d="M214 222h132" stroke="#12100E" stroke-width="6"/>
+          <path d="M360 360V96" stroke="#12100E" stroke-width="8" stroke-linecap="square"/>
+          <path d="M360 104h-120" stroke="#12100E" stroke-width="8" stroke-linecap="square"/>
+          <path d="M240 104v46" stroke="#12100E" stroke-width="4"/>
+          <rect x="222" y="150" width="36" height="30" fill="#12100E"/>
+          <path d="M360 104l52 34" stroke="#12100E" stroke-width="6"/>
+          <path d="M0 360h440" stroke="#12100E" stroke-width="10"/>
+          <g fill="none" stroke="#12100E" stroke-width="4" stroke-linecap="round">
+            <path d="M28 360v-42l22-14"/><path d="M28 336h24"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIRA -->
+  <div class="tira">
+    <div class="wrap">
+      <div class="it"><b>Un solo interlocutor</b><span>Coordinación de gremios</span></div>
+      <div class="it"><b>Presupuesto detallado</b><span>Partidas y plazos por escrito</span></div>
+      <div class="it"><b>Obra ordenada</b><span>Limpieza y seguridad</span></div>
+    </div>
+  </div>
+
+  <!-- SERVICIOS -->
+  <section id="servicios">
+    <div class="wrap">
+      <div class="cab reveal">
+        <span class="etiqueta"><i></i>Áreas de trabajo</span>
+        <h2>Lo que hacemos en obra</h2>
+        <p>Trabajos de construcción y reforma en vivienda y local, desde la intervención puntual hasta la reforma completa.</p>
+      </div>
+
+      <div class="servicios">
+        <article class="card reveal">
+          <div class="ico">
+            <svg viewBox="0 0 48 48" fill="none" stroke="#E1550A" stroke-width="2.4" stroke-linecap="square">
+              <path d="M6 42h36"/><path d="M10 42V18l14-9 14 9v24"/><path d="M20 42V28h8v14"/><path d="M17 20h4M27 20h4"/>
+            </svg>
+          </div>
+          <h3>Reformas integrales</h3>
+          <p>Vivienda o local reformado por completo, con la obra planificada por fases y todos los gremios coordinados desde un mismo punto.</p>
+        </article>
+
+        <article class="card reveal">
+          <div class="ico">
+            <svg viewBox="0 0 48 48" fill="none" stroke="#E1550A" stroke-width="2.4" stroke-linecap="square">
+              <path d="M8 22h32v16a4 4 0 0 1-4 4H12a4 4 0 0 1-4-4z"/><path d="M14 22V10a4 4 0 0 1 4-4h2"/><path d="M20 4v6"/><path d="M8 30h32"/>
+            </svg>
+          </div>
+          <h3>Baños y cocinas</h3>
+          <p>Renovación completa de la estancia: demolición, fontanería, electricidad, alicatado y montaje hasta dejarla lista para usar.</p>
+        </article>
+
+        <article class="card reveal">
+          <div class="ico">
+            <svg viewBox="0 0 48 48" fill="none" stroke="#E1550A" stroke-width="2.4" stroke-linecap="square">
+              <rect x="6" y="12" width="36" height="10"/><rect x="6" y="26" width="36" height="10"/>
+              <path d="M18 12v10M30 26v10"/>
+            </svg>
+          </div>
+          <h3>Albañilería</h3>
+          <p>Tabiquería, apertura y cierre de huecos, solados y alicatados, enfoscados y todos los trabajos de obra que sostienen la reforma.</p>
+        </article>
+
+        <article class="card reveal">
+          <div class="ico">
+            <svg viewBox="0 0 48 48" fill="none" stroke="#E1550A" stroke-width="2.4" stroke-linecap="square">
+              <path d="M6 40h36"/><path d="M12 40V22h10v18"/><path d="M26 40V12h10v28"/><path d="M15 27h4M29 18h4M29 27h4"/>
+            </svg>
+          </div>
+          <h3>Fachadas y exteriores</h3>
+          <p>Trabajos de rehabilitación exterior, revestimientos, impermeabilización y puesta a punto de terrazas y patios.</p>
+        </article>
+
+        <article class="card reveal">
+          <div class="ico">
+            <svg viewBox="0 0 48 48" fill="none" stroke="#E1550A" stroke-width="2.4" stroke-linecap="square">
+              <path d="M24 6v14"/><path d="M14 20h20l-4 22H18z"/><path d="M18 6h12"/><path d="M16 30h16"/>
+            </svg>
+          </div>
+          <h3>Fontanería y electricidad</h3>
+          <p>Renovación de instalaciones dentro de la reforma: redes de agua, desagües y cuadros eléctricos actualizados a la normativa vigente.</p>
+        </article>
+
+        <article class="card reveal">
+          <div class="ico">
+            <svg viewBox="0 0 48 48" fill="none" stroke="#E1550A" stroke-width="2.4" stroke-linecap="square">
+              <path d="M30 6l12 12-6 6-12-12z"/><path d="M24 12L8 28v12h12l16-16"/><path d="M14 34h4"/>
+            </svg>
+          </div>
+          <h3>Acabados y pintura</h3>
+          <p>Falsos techos, carpintería, alisado y pintura: la última fase, donde se nota si la obra se ha hecho con cuidado.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESO -->
+  <section class="proceso">
+    <div class="wrap">
+      <div class="cab reveal">
+        <span class="etiqueta"><i></i>Cómo trabajamos</span>
+        <h2>Tres pasos, sin sorpresas</h2>
+        <p>Un método sencillo para que sepa en todo momento qué se está haciendo en su obra y qué viene después.</p>
+      </div>
+      <div class="pasos">
+        <div class="paso reveal">
+          <span class="n">PASO 01</span>
+          <h3>Visita y toma de datos</h3>
+          <p>Vemos el espacio, tomamos medidas y escuchamos qué necesita. De ahí salen el alcance real de la obra y las soluciones posibles.</p>
+        </div>
+        <div class="paso reveal">
+          <span class="n">PASO 02</span>
+          <h3>Propuesta y presupuesto</h3>
+          <p>Le entregamos la propuesta con las partidas desglosadas y el plan de trabajo por fases. Nada empieza hasta que usted da el visto bueno.</p>
+        </div>
+        <div class="paso reveal">
+          <span class="n">PASO 03</span>
+          <h3>Ejecución y entrega</h3>
+          <p>Coordinamos los gremios, mantenemos la obra limpia y ordenada y le informamos del avance hasta la entrega final del trabajo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <div class="wrap">
+      <div class="cab reveal">
+        <span class="etiqueta"><i></i>Contacto</span>
+        <h2>Hablemos de su obra</h2>
+        <p>Cuéntenos qué tiene en mente y valoramos juntos cómo abordarlo.</p>
+      </div>
+
+      <div class="contacto-grid">
+        <div class="datos reveal">
+          <div class="dato">
+            <div class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#E1550A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.4 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.8 2.1z"/>
+              </svg>
+            </div>
+            <div>
+              <span class="k">Teléfono</span>
+              <a class="v" href="tel:+34966390606">96 639 06 06</a>
+            </div>
+          </div>
+
+          <div class="dato">
+            <div class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#E1550A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0z"/><circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div>
+              <span class="k">Dirección</span>
+              <span class="v min">Avda. Chapí 65<br>03600 Elda (Alicante)</span>
+            </div>
+          </div>
+
+          <div class="dato">
+            <div class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#E1550A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/>
+              </svg>
+            </div>
+            <div>
+              <span class="k">Horario</span>
+              <span class="v min">Consultar horario</span>
+            </div>
+          </div>
+
+          <div class="dato">
+            <div class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#E1550A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>
+              </svg>
+            </div>
+            <div>
+              <span class="k">Email</span>
+              <a class="v" href="mailto:info@gruporeforma-t.com">info@gruporeforma-t.com</a>
+            </div>
+          </div>
+        </div>
+
+        <figure class="mapa reveal" style="margin:0">
+          <svg viewBox="0 0 520 380" role="img" aria-label="Mapa esquemático de la zona de Avenida Chapí 65, Elda">
+            <defs>
+              <linearGradient id="gMapa" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#EDE7DF"/><stop offset="1" stop-color="#DCD3C7"/>
+              </linearGradient>
+            </defs>
+            <rect width="520" height="380" fill="url(#gMapa)"/>
+            <g fill="rgba(18,16,14,.06)">
+              <rect x="30" y="34" width="150" height="86"/>
+              <rect x="212" y="34" width="120" height="86"/>
+              <rect x="364" y="34" width="126" height="120"/>
+              <rect x="30" y="152" width="150" height="70"/>
+              <rect x="30" y="254" width="110" height="94"/>
+              <rect x="212" y="254" width="128" height="94"/>
+              <rect x="372" y="254" width="118" height="94"/>
+            </g>
+            <g stroke="#C9BFB1" stroke-width="18" stroke-linecap="square">
+              <path d="M196 0v380"/>
+              <path d="M348 0v254"/>
+              <path d="M0 136h520"/>
+              <path d="M0 238h520"/>
+            </g>
+            <g stroke="#F7F4EF" stroke-width="26" stroke-linecap="square">
+              <path d="M0 186h520"/>
+            </g>
+            <path d="M0 186h520" stroke="#12100E" stroke-width="2" stroke-dasharray="16 14" opacity=".45"/>
+            <g stroke="#12100E" stroke-width="2" opacity=".2" fill="none">
+              <path d="M196 0v380"/><path d="M348 0v254"/><path d="M0 136h520"/><path d="M0 238h520"/>
+            </g>
+            <text x="14" y="176" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#6E675F" letter-spacing="1.5">AVDA. CHAPÍ</text>
+            <g transform="translate(262,186)">
+              <circle r="30" fill="#E1550A" opacity=".16"/>
+              <path d="M0 -34c-9.4 0-17 7.6-17 17C-17 -4 0 18 0 18s17 -22 17 -35c0-9.4-7.6-17-17-17z" fill="#E1550A" stroke="#12100E" stroke-width="2.5"/>
+              <circle cy="-17" r="6" fill="#F7F4EF"/>
+            </g>
+            <text x="286" y="222" font-family="ui-monospace,Menlo,monospace" font-size="13" fill="#12100E" letter-spacing="1">Nº 65</text>
+            <rect x="1" y="1" width="518" height="378" fill="none" stroke="rgba(18,16,14,.14)" stroke-width="2"/>
+          </svg>
+          <figcaption>Plano esquemático · Elda (Alicante)</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="pie-top">
+      <div class="nom">Reforma-T<br><span style="font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.7">Grupo Reforma-T · Elda</span></div>
+      <div>
+        <a href="mailto:info@gruporeforma-t.com">info@gruporeforma-t.com</a><br>
+        <a href="tel:+34966390606" style="display:inline-block;margin-top:10px">96 639 06 06</a>
+      </div>
+    </div>
+    <p class="pie-bajo">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){
+    for(var i=0;i<els.length;i++){ els[i].classList.add('on'); }
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('on');
+        io.unobserve(e.target);
+      }
+    });
+  },{rootMargin:'0px 0px -8% 0px',threshold:0.08});
+  els.forEach(function(el,i){
+    el.style.transitionDelay = ((i % 3) * 70) + 'ms';
+    io.observe(el);
+  });
+})();
+</script>
+
+</body>
+</html>

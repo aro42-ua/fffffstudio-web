@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>El Botxo · Restaurante y bar de tapas · Elche</title>
+<meta name="description" content="Propuesta de diseño para El Botxo, restaurante y bar de tapas en la Plaza de la Fregassa, Elche.">
+<style>
+  :root{
+    --tinta:#1d1512;
+    --tinta-suave:#4a3a33;
+    --crema:#f7f0e6;
+    --crema-2:#efe4d4;
+    --papel:#fffaf3;
+    --teja:#b4441f;
+    --teja-clara:#d9642f;
+    --oliva:#5c6b3c;
+    --ocre:#d9a441;
+    --borde:rgba(29,21,18,.14);
+    --sombra:0 18px 40px -22px rgba(29,21,18,.45);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,"Times New Roman",serif;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    --barra:46px;
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+  html,body{margin:0;padding:0;max-width:100%;overflow-x:hidden;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    font-family:var(--sans);
+    background:var(--papel);
+    color:var(--tinta);
+    line-height:1.65;
+    font-size:clamp(16px,1.05vw,17.5px);
+    padding-top:var(--barra);
+  }
+  img,svg{max-width:100%;}
+  a{color:inherit;}
+  h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.05;letter-spacing:-.015em;margin:0;}
+
+  /* ---------- barra fija ---------- */
+  .aviso{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    min-height:var(--barra);
+    display:flex;align-items:center;justify-content:center;
+    padding:8px 14px;
+    background:var(--tinta);
+    color:#f3e7d8;
+    font-size:clamp(10.5px,2.5vw,12.5px);
+    letter-spacing:.09em;
+    text-transform:uppercase;
+    text-align:center;
+    border-bottom:1px solid rgba(217,164,65,.45);
+  }
+  .aviso span{display:block;max-width:100%;}
+
+  /* ---------- utilidades ---------- */
+  .wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 clamp(18px,5vw,48px);}
+  .eyebrow{
+    font-size:clamp(11px,2.6vw,12.5px);letter-spacing:.22em;text-transform:uppercase;
+    color:var(--teja);font-weight:700;margin:0 0 14px;
+  }
+  .lead{font-size:clamp(16px,2.6vw,19px);color:var(--tinta-suave);max-width:60ch;}
+  section{padding:clamp(58px,8vw,104px) 0;}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(120% 90% at 82% 8%, rgba(217,164,65,.34) 0%, rgba(217,164,65,0) 58%),
+      radial-gradient(100% 80% at 4% 92%, rgba(92,107,60,.26) 0%, rgba(92,107,60,0) 60%),
+      linear-gradient(168deg,#2a1c16 0%,#3b2419 52%,#4d2b18 100%);
+    color:var(--crema);
+    padding-top:clamp(64px,10vw,108px);
+    padding-bottom:clamp(64px,10vw,110px);
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;pointer-events:none;opacity:.16;
+    background-image:
+      repeating-linear-gradient(45deg,rgba(255,255,255,.14) 0 1px,transparent 1px 9px),
+      repeating-linear-gradient(-45deg,rgba(0,0,0,.18) 0 1px,transparent 1px 11px);
+  }
+  .hero .wrap{position:relative;z-index:2;}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(32px,5vw,64px);align-items:center;}
+  .hero h1{
+    font-size:clamp(40px,8.4vw,86px);
+    color:#fdf5e9;margin-bottom:22px;
+  }
+  .hero h1 em{font-style:normal;color:var(--ocre);display:block;}
+  .hero p.lead{color:rgba(247,240,230,.82);}
+  .kicker{
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:clamp(10.5px,2.5vw,12px);letter-spacing:.2em;text-transform:uppercase;
+    color:var(--ocre);font-weight:700;margin-bottom:20px;
+  }
+  .kicker::before{content:"";width:34px;height:1px;background:var(--ocre);display:block;}
+  .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;align-items:center;}
+  .btn{
+    display:inline-flex;align-items:center;gap:12px;
+    padding:15px 26px;border-radius:999px;text-decoration:none;font-weight:700;
+    font-size:clamp(15px,3.4vw,17px);letter-spacing:.01em;
+    background:var(--teja-clara);color:#fff;border:1px solid rgba(255,255,255,.18);
+    box-shadow:0 14px 28px -16px rgba(0,0,0,.8);
+    transition:transform .18s ease, background .18s ease;
+    max-width:100%;
+  }
+  .btn:hover{background:var(--teja);transform:translateY(-2px);}
+  .btn svg{flex:none;}
+  .btn-ghost{
+    background:transparent;color:var(--crema);border:1px solid rgba(247,240,230,.35);box-shadow:none;
+  }
+  .btn-ghost:hover{background:rgba(247,240,230,.1);}
+  .hero-note{margin-top:18px;font-size:13.5px;color:rgba(247,240,230,.6);}
+
+  /* placa decorativa del hero */
+  .placa{
+    border:1px solid rgba(217,164,65,.4);
+    border-radius:20px;
+    padding:clamp(22px,4vw,32px);
+    background:linear-gradient(160deg,rgba(255,250,243,.09),rgba(255,250,243,.02));
+    backdrop-filter:blur(2px);
+  }
+  .placa h3{font-size:clamp(19px,4vw,23px);color:#fdf5e9;margin-bottom:14px;}
+  .placa ul{list-style:none;margin:0;padding:0;display:grid;gap:12px;}
+  .placa li{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:rgba(247,240,230,.84);}
+  .dot{flex:none;width:9px;height:9px;border-radius:50%;background:var(--ocre);margin-top:8px;}
+
+  /* ---------- tira ---------- */
+  .tira{
+    background:var(--tinta);color:var(--crema-2);
+    padding:16px 0;overflow:hidden;
+  }
+  .tira .wrap{display:flex;flex-wrap:wrap;gap:10px 26px;justify-content:center;
+    font-family:var(--serif);font-size:clamp(14px,3.2vw,18px);letter-spacing:.04em;}
+  .tira span{white-space:nowrap;}
+  .tira b{color:var(--ocre);font-weight:400;}
+
+  /* ---------- propuesta ---------- */
+  .seccion-crema{background:var(--crema);}
+  .cabecera{max-width:66ch;margin-bottom:clamp(34px,5vw,54px);}
+  .cabecera h2{font-size:clamp(30px,6.2vw,50px);margin-bottom:18px;}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:clamp(16px,2.4vw,26px);}
+  .card{
+    background:var(--papel);border:1px solid var(--borde);border-radius:18px;
+    padding:clamp(22px,3.4vw,30px);box-shadow:var(--sombra);
+    display:flex;flex-direction:column;gap:12px;
+  }
+  .card .ico{
+    width:52px;height:52px;border-radius:14px;flex:none;
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(150deg,var(--teja-clara),var(--teja));
+    color:#fff;
+  }
+  .card h3{font-size:clamp(19px,4vw,22px);}
+  .card p{margin:0;color:var(--tinta-suave);font-size:15.5px;}
+  .nota{
+    margin-top:clamp(26px,4vw,38px);
+    border-left:3px solid var(--teja);
+    padding:16px 18px;background:rgba(180,68,31,.06);border-radius:0 12px 12px 0;
+    font-size:15.5px;color:var(--tinta-suave);max-width:70ch;
+  }
+
+  /* ---------- pasos ---------- */
+  .pasos{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:clamp(18px,3vw,32px);counter-reset:p;}
+  .paso{position:relative;padding-top:20px;border-top:2px solid var(--tinta);}
+  .paso .num{
+    font-family:var(--serif);font-size:clamp(40px,8vw,58px);line-height:1;
+    color:var(--teja);display:block;margin-bottom:12px;
+  }
+  .paso h3{font-size:clamp(19px,4vw,22px);margin-bottom:10px;}
+  .paso p{margin:0;color:var(--tinta-suave);font-size:15.5px;}
+
+  /* ---------- contacto ---------- */
+  .contacto{background:linear-gradient(170deg,#241811 0%,#38231a 100%);color:var(--crema);}
+  .contacto h2{color:#fdf5e9;}
+  .contacto .lead{color:rgba(247,240,230,.8);}
+  .cont-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(28px,4.5vw,54px);align-items:start;}
+  .datos{display:grid;gap:18px;}
+  .dato{
+    display:flex;gap:16px;align-items:flex-start;
+    border:1px solid rgba(217,164,65,.3);border-radius:16px;padding:18px 20px;
+    background:rgba(255,250,243,.05);
+  }
+  .dato .ico{
+    width:42px;height:42px;border-radius:11px;flex:none;
+    display:flex;align-items:center;justify-content:center;
+    background:rgba(217,164,65,.16);color:var(--ocre);
+  }
+  .dato .et{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ocre);display:block;margin-bottom:4px;}
+  .dato a,.dato p{margin:0;font-size:clamp(15px,3.4vw,17px);color:#fdf5e9;text-decoration:none;word-break:break-word;}
+  .dato a:hover{text-decoration:underline;}
+  .mapa{
+    border:1px solid rgba(217,164,65,.3);border-radius:18px;overflow:hidden;
+    background:rgba(255,250,243,.04);
+  }
+  .mapa svg{display:block;width:100%;height:auto;}
+  .mapa figcaption{
+    padding:12px 18px;font-size:13px;color:rgba(247,240,230,.65);
+    border-top:1px solid rgba(217,164,65,.22);
+  }
+  .mapa{margin:0;}
+
+  /* ---------- pie ---------- */
+  footer{background:var(--tinta);color:rgba(247,240,230,.75);padding:clamp(40px,6vw,60px) 0;}
+  .pie{display:flex;flex-wrap:wrap;gap:22px;justify-content:space-between;align-items:flex-end;}
+  .pie .marca{font-family:var(--serif);font-size:clamp(24px,5vw,32px);color:#fdf5e9;}
+  .pie a{color:var(--ocre);word-break:break-word;}
+  .pie .firma{font-size:13.5px;max-width:46ch;line-height:1.6;}
+
+  @media (max-width:860px){
+    .hero-grid,.cont-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width:430px){
+    .btn{width:100%;justify-content:center;}
+    .tira .wrap{gap:8px 16px;}
+  }
+</style>
+<script>document.documentElement.className+=' jsrev';window.addEventListener('load',function(){setTimeout(function(){var n=document.querySelectorAll('.reveal,.rev');for(var i=0;i<n.length;i++){n[i].classList.add('on');n[i].classList.add('visible');n[i].classList.add('is-visible');}var m=document.querySelectorAll('.card,.paso,.dato,.mapa');for(var j=0;j<m.length;j++){m[j].style.opacity=1;m[j].style.transform='none';}},1200);});</script>
+</head>
+<body>
+
+<div class="aviso" role="note"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <p class="kicker">Plaza de la Fregassa · Elche</p>
+        <h1>El Botxo<em>tapas de plaza</em></h1>
+        <p class="lead">Barra, mesa y terraza en el centro de Elche. Tapas y raciones para compartir, servidas con el ritmo tranquilo de una plaza. Ven a tomar algo o reserva mesa por teléfono.</p>
+        <div class="cta-row">
+          <a class="btn" href="tel:+34966201336">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M6.5 3h3l1.5 4-2 1.4a12 12 0 0 0 5.6 5.6l1.4-2 4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.5 5.2 2 2 0 0 1 6.5 3Z"/>
+            </svg>
+            Reservar mesa · 96 620 13 36
+          </a>
+          <a class="btn btn-ghost" href="#carta">Ver la propuesta</a>
+        </div>
+        <p class="hero-note">Las reservas se gestionan por teléfono. Consultar horario antes de venir.</p>
+      </div>
+      <aside class="placa">
+        <h3>Un bar de tapas, sin más vueltas</h3>
+        <ul>
+          <li><span class="dot"></span><span>Barra para tomar algo de pie, rápido y sin reserva.</span></li>
+          <li><span class="dot"></span><span>Mesas para comer con calma y compartir raciones.</span></li>
+          <li><span class="dot"></span><span>Terraza en plaza, en pleno centro de Elche.</span></li>
+          <li><span class="dot"></span><span>Carta y sugerencias del día, en el local o por teléfono.</span></li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+</header>
+
+<div class="tira">
+  <div class="wrap">
+    <span><b>·</b> Tapas</span>
+    <span><b>·</b> Raciones para compartir</span>
+    <span><b>·</b> Barra</span>
+    <span><b>·</b> Menú del día</span>
+    <span><b>·</b> Terraza</span>
+  </div>
+</div>
+
+<section id="carta" class="seccion-crema">
+  <div class="wrap">
+    <div class="cabecera">
+      <p class="eyebrow">La propuesta</p>
+      <h2>Lo que se come y se bebe aquí</h2>
+      <p class="lead">Cocina de bar de toda la vida: formatos pensados para compartir, para picar en la barra o para sentarse a comer entre semana. La carta cambia con el producto y con la temporada.</p>
+    </div>
+
+    <div class="cards">
+      <article class="card">
+        <div class="ico" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 13h18a9 9 0 0 1-18 0Z"/><path d="M2 20h20"/><path d="M12 10V7"/><circle cx="12" cy="5" r="1.4"/>
+          </svg>
+        </div>
+        <h3>Tapas</h3>
+        <p>Porciones individuales para acompañar la bebida. Es la forma de empezar cuando se pasa un rato por la plaza.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="8.2"/><circle cx="12" cy="12" r="3.6"/><path d="M12 3.8v2.6M12 17.6v2.6M3.8 12h2.6M17.6 12h2.6"/>
+          </svg>
+        </div>
+        <h3>Raciones para compartir</h3>
+        <p>Platos al centro de la mesa, para dos o para toda la mesa. El formato habitual de una comida larga entre amigos o en familia.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16l-6.4 7.4V19h-3.2v-7.6Z"/><path d="M6.2 8.4h11.6"/>
+          </svg>
+        </div>
+        <h3>Barra</h3>
+        <p>Servicio directo de pie, sin reserva y sin esperas largas: una caña, un vermut, un café y algo para picar.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3.5" y="4.5" width="17" height="15" rx="2.4"/><path d="M3.5 9h17"/><path d="M8 12.5h8M8 15.8h5"/>
+          </svg>
+        </div>
+        <h3>Menú del día</h3>
+        <p>La opción de diario para comer completo sin darle vueltas. Se anuncia en el local y varía según el mercado.</p>
+      </article>
+    </div>
+
+    <p class="nota"><strong>Sobre la carta:</strong> los platos, las sugerencias del día y los precios se consultan directamente en el local o llamando al <a href="tel:+34966201336">96 620 13 36</a>. Esta maqueta no reproduce carta ni tarifas.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cabecera">
+      <p class="eyebrow">Cómo reservar</p>
+      <h2>Tres pasos y mesa lista</h2>
+      <p class="lead">Sin formularios ni aplicaciones: se llama, se confirma y se viene. Igual que se ha hecho siempre en un bar de plaza.</p>
+    </div>
+
+    <div class="pasos">
+      <article class="paso">
+        <span class="num">01</span>
+        <h3>Llama al bar</h3>
+        <p>Marca el <a href="tel:+34966201336">96 620 13 36</a> e indica día, hora aproximada y número de personas. Conviene consultar horario en esa misma llamada.</p>
+      </article>
+      <article class="paso">
+        <span class="num">02</span>
+        <h3>Confirma los detalles</h3>
+        <p>Se acuerda la zona —barra, mesa o terraza— y se comentan alergias, intolerancias o cualquier necesidad del grupo.</p>
+      </article>
+      <article class="paso">
+        <span class="num">03</span>
+        <h3>Ven a la plaza</h3>
+        <p>Plaza de la Fregassa 2, en Elche. Al llegar se pregunta por la reserva y se elige entre carta, sugerencias o menú del día.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="contacto" id="contacto">
+  <div class="wrap">
+    <div class="cabecera">
+      <p class="eyebrow" style="color:var(--ocre)">Contacto</p>
+      <h2>Dónde estamos</h2>
+      <p class="lead">En plena plaza, en el centro de Elche. Para reservas, consultas de carta y horario, el teléfono es la vía directa.</p>
+    </div>
+
+    <div class="cont-grid">
+      <div class="datos">
+        <div class="dato">
+          <div class="ico" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6.5 3h3l1.5 4-2 1.4a12 12 0 0 0 5.6 5.6l1.4-2 4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.5 5.2 2 2 0 0 1 6.5 3Z"/>
+            </svg>
+          </div>
+          <div>
+            <span class="et">Teléfono</span>
+            <a href="tel:+34966201336">96 620 13 36</a>
+          </div>
+        </div>
+
+        <div class="dato">
+          <div class="ico" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/>
+            </svg>
+          </div>
+          <div>
+            <span class="et">Dirección</span>
+            <p>Plaza de la Fregassa 2<br>03202 Elche (Alicante)</p>
+          </div>
+        </div>
+
+        <div class="dato">
+          <div class="ico" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="8.4"/><path d="M12 7.2V12l3.2 1.9"/>
+            </svg>
+          </div>
+          <div>
+            <span class="et">Horario</span>
+            <p>Consultar horario</p>
+          </div>
+        </div>
+
+        <div class="dato">
+          <div class="ico" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="5.5" width="18" height="13" rx="2.3"/><path d="m3.8 7 8.2 6 8.2-6"/>
+            </svg>
+          </div>
+          <div>
+            <span class="et">Correo</span>
+            <a href="mailto:elbotxoelche@gmail.com">elbotxoelche@gmail.com</a>
+          </div>
+        </div>
+      </div>
+
+      <figure class="mapa">
+        <svg viewBox="0 0 520 380" role="img" aria-label="Mapa esquemático dibujado a mano de la plaza y las calles del entorno, con un marcador en la ubicación del local">
+          <defs>
+            <linearGradient id="fondoMapa" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#2b1d15"/>
+              <stop offset="1" stop-color="#3d2718"/>
+            </linearGradient>
+            <linearGradient id="plaza" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#5c6b3c" stop-opacity=".55"/>
+              <stop offset="1" stop-color="#5c6b3c" stop-opacity=".22"/>
+            </linearGradient>
+          </defs>
+
+          <rect width="520" height="380" fill="url(#fondoMapa)"/>
+
+          <!-- manzanas -->
+          <g fill="rgba(247,240,230,.045)" stroke="rgba(247,240,230,.13)" stroke-width="1">
+            <rect x="24" y="22" width="150" height="104" rx="6"/>
+            <rect x="346" y="22" width="150" height="104" rx="6"/>
+            <rect x="24" y="252" width="132" height="106" rx="6"/>
+            <rect x="366" y="252" width="130" height="106" rx="6"/>
+            <rect x="200" y="22" width="120" height="70" rx="6"/>
+          </g>
+
+          <!-- calles -->
+          <g stroke="rgba(247,240,230,.16)" stroke-width="26" stroke-linecap="round">
+            <path d="M0 160 H520"/>
+            <path d="M185 0 V380"/>
+            <path d="M335 0 V380"/>
+            <path d="M0 232 H520"/>
+          </g>
+          <g stroke="rgba(217,164,65,.35)" stroke-width="1.6" stroke-dasharray="9 11">
+            <path d="M0 160 H520"/>
+            <path d="M185 0 V380"/>
+            <path d="M335 0 V380"/>
+            <path d="M0 232 H520"/>
+          </g>
+
+          <!-- plaza -->
+          <rect x="196" y="140" width="128" height="112" rx="14" fill="url(#plaza)" stroke="rgba(217,164,65,.5)" stroke-width="1.6"/>
+          <g stroke="rgba(247,240,230,.22)" stroke-width="1.2">
+            <path d="M196 196 H324"/><path d="M260 140 V252"/>
+          </g>
+          <circle cx="260" cy="196" r="15" fill="none" stroke="rgba(217,164,65,.55)" stroke-width="1.4"/>
+          <circle cx="260" cy="196" r="5" fill="rgba(217,164,65,.5)"/>
+          <g fill="rgba(92,107,60,.6)">
+            <circle cx="214" cy="158" r="7"/><circle cx="306" cy="158" r="7"/>
+            <circle cx="214" cy="234" r="7"/><circle cx="306" cy="234" r="7"/>
+          </g>
+
+          <text x="260" y="128" text-anchor="middle" fill="rgba(247,240,230,.6)" font-family="Georgia,serif" font-size="13" letter-spacing="2">PLAZA</text>
+
+          <!-- marcador -->
+          <g transform="translate(336,140)">
+            <path d="M0 42c0 0 17-16.6 17-27A17 17 0 1 0-17 15C-17 25.4 0 42 0 42Z" fill="#d9642f" stroke="#fdf5e9" stroke-width="2.4"/>
+            <circle cx="0" cy="14.5" r="6" fill="#fdf5e9"/>
+            <text x="0" y="-12" text-anchor="middle" fill="#fdf5e9" font-family="Georgia,serif" font-size="15">El Botxo</text>
+          </g>
+
+          <!-- brújula -->
+          <g transform="translate(464,330)" fill="rgba(247,240,230,.5)">
+            <path d="M0 -20 L7 6 L0 0 L-7 6 Z"/>
+            <text x="0" y="22" text-anchor="middle" font-family="Georgia,serif" font-size="12">N</text>
+          </g>
+        </svg>
+        <figcaption>Mapa esquemático ilustrativo, dibujado para esta propuesta. No es un plano a escala.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="pie">
+      <div>
+        <div class="marca">El Botxo</div>
+        <p style="margin:6px 0 0;font-size:15px;">
+          <a href="mailto:elbotxoelche@gmail.com">elbotxoelche@gmail.com</a><br>
+          <a href="tel:+34966201336">96 620 13 36</a><br>
+          Plaza de la Fregassa 2, 03202 Elche (Alicante)<br>
+          Consultar horario
+        </p>
+      </div>
+      <p class="firma">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var t = document.querySelector(a.getAttribute('href'));
+      if(!t) return;
+      e.preventDefault();
+      var y = t.getBoundingClientRect().top + window.pageYOffset - 56;
+      window.scrollTo({top:y, behavior:'smooth'});
+    });
+  });
+
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){ en.target.style.opacity = 1; en.target.style.transform = 'none'; obs.unobserve(en.target); }
+    });
+  }, {threshold:.12});
+
+  document.querySelectorAll('.card, .paso, .dato, .mapa').forEach(function(el, i){
+    el.style.opacity = 0;
+    el.style.transform = 'translateY(14px)';
+    el.style.transition = 'opacity .6s ease ' + (i%4*70) + 'ms, transform .6s ease ' + (i%4*70) + 'ms';
+    obs.observe(el);
+  });
+</script>
+</body>
+</html>
