@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GEO · Coctelería en Balmaseda — Propuesta de diseño</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box;}
+  :root{
+    --noche:#0d0b12;
+    --noche-2:#141019;
+    --tinta:#1c1724;
+    --hueso:#f2ece2;
+    --hueso-tenue:#c9c0b4;
+    --ambar:#d99b4e;
+    --ambar-claro:#f0c27b;
+    --vermut:#8e2f3d;
+    --verde:#3f5b4c;
+    --linea:rgba(242,236,226,.14);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+    --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    --barra:44px;
+  }
+  html,body{max-width:100%;overflow-x:hidden;}
+  body{
+    margin:0;
+    padding-top:calc(var(--barra) + 8px);
+    background:var(--noche);
+    color:var(--hueso);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%;}
+  a{color:inherit;}
+  h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.08;margin:0;letter-spacing:-.015em;}
+  p{margin:0;}
+
+  /* ---------- Barra fija ---------- */
+  .aviso{
+    position:fixed;top:0;left:0;right:0;z-index:9999;
+    min-height:var(--barra);
+    display:flex;align-items:center;justify-content:center;
+    padding:8px 16px;
+    background:linear-gradient(90deg,#0a0810,#211a2b 50%,#0a0810);
+    border-bottom:1px solid rgba(217,155,78,.35);
+    box-shadow:0 2px 24px rgba(0,0,0,.6);
+  }
+  .aviso span{
+    font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--ambar-claro);text-align:center;line-height:1.35;
+    word-break:break-word;
+  }
+
+  .env{width:100%;max-width:1160px;margin:0 auto;padding:0 24px;}
+  section{position:relative;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    padding:clamp(56px,9vw,116px) 0 clamp(56px,8vw,104px);
+    background:
+      radial-gradient(1100px 620px at 18% -10%,rgba(217,155,78,.20),transparent 62%),
+      radial-gradient(760px 520px at 92% 8%,rgba(142,47,61,.26),transparent 64%),
+      linear-gradient(180deg,#100c16,var(--noche) 70%);
+  }
+  .grano{
+    position:absolute;inset:0;pointer-events:none;opacity:.5;
+    background-image:
+      repeating-linear-gradient(0deg,rgba(255,255,255,.022) 0 1px,transparent 1px 3px),
+      repeating-linear-gradient(90deg,rgba(255,255,255,.015) 0 1px,transparent 1px 4px);
+  }
+  .hero-grid{
+    position:relative;display:grid;gap:clamp(36px,5vw,64px);
+    grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);align-items:center;
+  }
+  .kicker{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:11px;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--ambar);margin-bottom:22px;
+  }
+  .kicker::before{content:"";width:34px;height:1px;background:var(--ambar);opacity:.7;}
+  h1{font-size:clamp(2.6rem,7.4vw,4.9rem);}
+  h1 em{font-style:italic;color:var(--ambar-claro);}
+  .lede{
+    margin-top:24px;max-width:46ch;
+    font-size:clamp(1rem,2.2vw,1.14rem);color:var(--hueso-tenue);
+  }
+  .acciones{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px;align-items:center;}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:15px 26px;border-radius:999px;text-decoration:none;
+    font-size:14px;letter-spacing:.06em;font-weight:600;
+    background:linear-gradient(135deg,var(--ambar-claro),var(--ambar));
+    color:#170f06;border:1px solid rgba(240,194,123,.6);
+    box-shadow:0 10px 30px rgba(217,155,78,.22);
+    transition:transform .2s ease,box-shadow .2s ease;
+  }
+  .btn:hover{transform:translateY(-2px);box-shadow:0 16px 38px rgba(217,155,78,.32);}
+  .btn-fantasma{
+    background:transparent;color:var(--hueso);
+    border:1px solid var(--linea);box-shadow:none;font-weight:500;
+  }
+  .btn-fantasma:hover{border-color:var(--ambar);color:var(--ambar-claro);}
+  .sello{
+    margin-top:30px;font-size:12px;letter-spacing:.14em;
+    text-transform:uppercase;color:rgba(242,236,226,.42);
+  }
+  .copa-wrap{display:flex;justify-content:center;}
+  .copa{width:100%;max-width:340px;height:auto;}
+
+  /* ---------- Cinta ---------- */
+  .cinta{
+    border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);
+    background:linear-gradient(90deg,rgba(142,47,61,.16),rgba(63,91,76,.14));
+  }
+  .cinta-in{
+    display:flex;flex-wrap:wrap;gap:14px 34px;justify-content:center;
+    padding:18px 24px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--hueso-tenue);text-align:center;
+  }
+
+  /* ---------- Cabeceras de sección ---------- */
+  .bloque{padding:clamp(64px,9vw,110px) 0;}
+  .cab{max-width:62ch;margin-bottom:clamp(36px,5vw,56px);}
+  .num{
+    font-family:var(--serif);font-size:12px;letter-spacing:.3em;
+    color:var(--ambar);display:block;margin-bottom:16px;
+  }
+  h2{font-size:clamp(1.9rem,4.6vw,3rem);}
+  .cab p{margin-top:18px;color:var(--hueso-tenue);}
+
+  /* ---------- Carta ---------- */
+  .cartas{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));}
+  .carta{
+    position:relative;padding:32px 28px;border-radius:14px;
+    border:1px solid var(--linea);
+    background:linear-gradient(160deg,rgba(242,236,226,.05),rgba(242,236,226,.015));
+    transition:border-color .25s ease,transform .25s ease;
+  }
+  .carta:hover{border-color:rgba(217,155,78,.45);transform:translateY(-4px);}
+  .carta svg{display:block;margin-bottom:20px;}
+  .carta h3{font-size:1.32rem;margin-bottom:10px;}
+  .carta p{font-size:.95rem;color:var(--hueso-tenue);}
+  .etiqueta{
+    display:inline-block;margin-top:18px;padding:5px 12px;border-radius:999px;
+    font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+    border:1px solid var(--linea);color:rgba(242,236,226,.55);
+  }
+
+  /* ---------- Pasos ---------- */
+  .pasos{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));counter-reset:p;}
+  .paso{position:relative;padding-top:30px;border-top:1px solid var(--linea);}
+  .paso::before{
+    counter-increment:p;content:"0" counter(p);
+    font-family:var(--serif);font-size:2.6rem;color:rgba(217,155,78,.35);
+    display:block;line-height:1;margin-bottom:16px;
+  }
+  .paso h3{font-size:1.2rem;margin-bottom:10px;}
+  .paso p{font-size:.95rem;color:var(--hueso-tenue);}
+
+  /* ---------- Contacto ---------- */
+  .contacto{
+    background:
+      radial-gradient(760px 480px at 82% 12%,rgba(63,91,76,.28),transparent 65%),
+      linear-gradient(180deg,var(--noche),#100c17);
+    border-top:1px solid var(--linea);
+  }
+  .cont-grid{display:grid;gap:clamp(32px,5vw,56px);grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));align-items:start;}
+  .datos{display:grid;gap:22px;margin-top:8px;}
+  .dato{display:flex;gap:16px;align-items:flex-start;}
+  .dato svg{flex:0 0 auto;margin-top:2px;}
+  .dato dt{
+    font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--ambar);margin-bottom:5px;
+  }
+  .dato dd{margin:0;font-size:1.02rem;overflow-wrap:anywhere;}
+  .dato dd a{text-decoration:none;border-bottom:1px solid rgba(217,155,78,.5);}
+  .dato dd a:hover{color:var(--ambar-claro);}
+  .nota{font-size:.88rem;color:rgba(242,236,226,.5);margin-top:4px;}
+  .mapa{
+    border:1px solid var(--linea);border-radius:14px;overflow:hidden;
+    background:#0a0810;
+  }
+  .mapa svg{display:block;width:100%;height:auto;}
+  .mapa-pie{
+    padding:12px 18px;border-top:1px solid var(--linea);
+    font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+    color:rgba(242,236,226,.45);
+  }
+
+  /* ---------- Pie ---------- */
+  footer{
+    border-top:1px solid var(--linea);
+    background:#08060c;padding:clamp(48px,7vw,72px) 0 40px;
+  }
+  .pie-grid{display:grid;gap:30px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));align-items:start;}
+  .marca{font-family:var(--serif);font-size:2rem;letter-spacing:.14em;}
+  .pie a{color:var(--ambar-claro);text-decoration:none;border-bottom:1px solid rgba(217,155,78,.4);overflow-wrap:anywhere;}
+  .pie p{color:var(--hueso-tenue);font-size:.95rem;}
+  .credito{
+    margin-top:38px;padding-top:22px;border-top:1px solid var(--linea);
+    font-size:12px;letter-spacing:.08em;color:rgba(242,236,226,.45);
+  }
+
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.visible{opacity:1;transform:none;}
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+  }
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr;}
+    .copa-wrap{order:-1;}
+    .copa{max-width:220px;}
+  }
+  @media (max-width:430px){
+    .env{padding:0 16px;}
+    .carta{padding:26px 22px;}
+    .acciones{flex-direction:column;align-items:stretch;}
+    .btn{justify-content:center;}
+  }
+</style>
+<noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
+<style>@media (prefers-reduced-motion: reduce){.reveal{opacity:1 !important;transform:none !important;}}</style>
+</head>
+<body>
+
+<div class="aviso"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="grano"></div>
+  <div class="env hero-grid">
+    <div>
+      <span class="kicker">Coctelería · Balmaseda</span>
+      <h1>GEO<br><em>La noche</em> se sirve<br>en copa.</h1>
+      <p class="lede">Una barra de cócteles en el corazón de la villa. Destilados escogidos, hielo cuidado y una carta que cambia con la temporada, servida sin prisa en C/ Pío Bermejillo.</p>
+      <div class="acciones">
+        <a class="btn" href="tel:680765488">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.5 16.9v2.6a2 2 0 0 1-2.2 2 19.5 19.5 0 0 1-8.5-3 19.2 19.2 0 0 1-5.9-5.9 19.5 19.5 0 0 1-3-8.6A2 2 0 0 1 3.9 2h2.6a2 2 0 0 1 2 1.7c.1 1 .3 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.6 9.7a16 16 0 0 0 6 6l1.1-1.1a2 2 0 0 1 2.1-.5c.9.4 1.8.6 2.8.7a2 2 0 0 1 1.9 2.1z"/></svg>
+          Reservar mesa · 680 765 488
+        </a>
+        <a class="btn btn-fantasma" href="#carta">Ver la carta</a>
+      </div>
+      <p class="sello">Cócteles de autor · Destilados · Sin alcohol</p>
+    </div>
+    <div class="copa-wrap">
+      <svg class="copa" viewBox="0 0 260 340" role="img" aria-label="Ilustración de una copa de cóctel" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <linearGradient id="liq" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#f0c27b"/><stop offset="1" stop-color="#8e2f3d"/>
+          </linearGradient>
+          <linearGradient id="cris" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#f2ece2" stop-opacity=".55"/>
+            <stop offset="1" stop-color="#f2ece2" stop-opacity=".12"/>
+          </linearGradient>
+          <radialGradient id="halo" cx="50%" cy="34%" r="52%">
+            <stop offset="0" stop-color="#d99b4e" stop-opacity=".34"/>
+            <stop offset="1" stop-color="#d99b4e" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <circle cx="130" cy="120" r="126" fill="url(#halo)"/>
+        <path d="M46 62h168L138 172v96h40a6 6 0 0 1 0 12H82a6 6 0 0 1 0-12h40v-96z" fill="url(#cris)" stroke="#f0c27b" stroke-width="2.2" stroke-linejoin="round"/>
+        <path d="M66 80h128l-64 84z" fill="url(#liq)" opacity=".92"/>
+        <path d="M66 80h128" stroke="#f2ece2" stroke-width="2" opacity=".5"/>
+        <circle cx="168" cy="52" r="11" fill="none" stroke="#3f5b4c" stroke-width="2.4"/>
+        <path d="M168 41v-22" stroke="#3f5b4c" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M168 24c10-4 17 2 15 10-9 3-15-2-15-10z" fill="#3f5b4c" opacity=".8"/>
+        <g stroke="#f0c27b" stroke-width="1.4" opacity=".55">
+          <path d="M30 246h48M182 246h48"/>
+          <circle cx="24" cy="246" r="3"/><circle cx="236" cy="246" r="3"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<div class="cinta">
+  <div class="env cinta-in">
+    <span>Barra de autor</span><span>Hielo trabajado</span><span>Temporada</span><span>Villa de Balmaseda</span>
+  </div>
+</div>
+
+<!-- ===== CARTA ===== -->
+<section class="bloque" id="carta">
+  <div class="env">
+    <div class="cab reveal">
+      <span class="num">01 — LA BARRA</span>
+      <h2>Una carta ordenada por categorías, no por modas.</h2>
+      <p>Trabajamos por familias de coctelería para que elegir sea fácil: dinos qué te apetece beber y la barra propone. La carta se consulta en sala y se ajusta según temporada y disponibilidad.</p>
+    </div>
+    <div class="cartas">
+      <article class="carta reveal">
+        <svg width="34" height="34" viewBox="0 0 32 32" fill="none" stroke="#d99b4e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 6h22L17 19v7h5M17 26h-5"/><path d="M8.5 10h15"/></svg>
+        <h3>Clásicos de autor</h3>
+        <p>Los grandes cócteles de siempre, revisados en proporción, dilución y temperatura. La base reconocible, el acabado propio de la casa.</p>
+        <span class="etiqueta">Coctelería clásica</span>
+      </article>
+      <article class="carta reveal">
+        <svg width="34" height="34" viewBox="0 0 32 32" fill="none" stroke="#d99b4e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3h8v5l4 6v13a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2V14l4-6z"/><path d="M8 19h16"/></svg>
+        <h3>Destilados y combinados</h3>
+        <p>Selección de ginebras, rones, whiskies y agaves servidos solos o combinados, con el tónico, el hielo y la copa que cada uno pide.</p>
+        <span class="etiqueta">Selección de barra</span>
+      </article>
+      <article class="carta reveal">
+        <svg width="34" height="34" viewBox="0 0 32 32" fill="none" stroke="#d99b4e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 28c6-3 9-8 9-14a9 9 0 0 0-18 0c0 6 3 11 9 14z"/><path d="M16 28V11"/><path d="M16 17l4-4M16 20l-4-4"/></svg>
+        <h3>Sin alcohol</h3>
+        <p>Combinaciones construidas con la misma técnica que el resto de la carta: infusiones, cítricos y amargos sin alcohol, con cuerpo y equilibrio.</p>
+        <span class="etiqueta">Cero alcohol</span>
+      </article>
+      <article class="carta reveal">
+        <svg width="34" height="34" viewBox="0 0 32 32" fill="none" stroke="#d99b4e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 12h20v14a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3z"/><path d="M6 12l3-8h14l3 8"/><path d="M13 19h6"/></svg>
+        <h3>Vermuts y aperitivos</h3>
+        <p>La hora del aperitivo con vermuts, amargos y bajos en graduación, acompañados de picoteo sencillo para abrir boca.</p>
+        <span class="etiqueta">Aperitivo</span>
+      </article>
+      <article class="carta reveal">
+        <svg width="34" height="34" viewBox="0 0 32 32" fill="none" stroke="#d99b4e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 4l3.2 6.6 7.3 1-5.3 5.1 1.3 7.2L16 20.5 9.5 23.9l1.3-7.2-5.3-5.1 7.3-1z"/></svg>
+        <h3>Temporada</h3>
+        <p>Una selección corta que cambia con el producto del momento: fruta, hierbas e infusiones que solo tienen sentido unas semanas al año.</p>
+        <span class="etiqueta">Rotación</span>
+      </article>
+      <article class="carta reveal">
+        <svg width="34" height="34" viewBox="0 0 32 32" fill="none" stroke="#d99b4e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 26h24"/><path d="M8 26V14a8 8 0 0 1 16 0v12"/><path d="M12 8l4-4 4 4"/></svg>
+        <h3>Grupos y celebraciones</h3>
+        <p>Barra y sala preparadas para encuentros y celebraciones. Consúltanos condiciones y disponibilidad para tu grupo.</p>
+        <span class="etiqueta">A consultar</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PASOS ===== -->
+<section class="bloque" style="border-top:1px solid var(--linea);background:linear-gradient(180deg,#100c17,var(--noche));">
+  <div class="env">
+    <div class="cab reveal">
+      <span class="num">02 — CÓMO TRABAJAMOS</span>
+      <h2>Tres pasos, de la barra a la copa.</h2>
+      <p>No hay carta que acierte sola. El método es sencillo y siempre el mismo.</p>
+    </div>
+    <div class="pasos">
+      <article class="paso reveal">
+        <h3>Escuchamos</h3>
+        <p>Nos cuentas qué te gusta beber, si prefieres algo cítrico, amargo, seco o suave, y si quieres con o sin alcohol. De ahí sale la recomendación.</p>
+      </article>
+      <article class="paso reveal">
+        <h3>Preparamos</h3>
+        <p>Cada cóctel se construye a la vista: medida, hielo adecuado, agitado o removido según la fórmula, y el cristal que corresponde.</p>
+      </article>
+      <article class="paso reveal">
+        <h3>Servimos</h3>
+        <p>Se sirve en el punto justo y se ajusta si hace falta. Si algo no encaja con lo que buscabas, lo replanteamos contigo en barra.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACTO ===== -->
+<section class="bloque contacto" id="contacto">
+  <div class="env">
+    <div class="cab reveal">
+      <span class="num">03 — DÓNDE ESTAMOS</span>
+      <h2>En el casco de Balmaseda.</h2>
+    </div>
+    <div class="cont-grid">
+      <div class="reveal">
+        <dl class="datos">
+          <div class="dato">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d99b4e" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.5 16.9v2.6a2 2 0 0 1-2.2 2 19.5 19.5 0 0 1-8.5-3 19.2 19.2 0 0 1-5.9-5.9 19.5 19.5 0 0 1-3-8.6A2 2 0 0 1 3.9 2h2.6a2 2 0 0 1 2 1.7c.1 1 .3 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.6 9.7a16 16 0 0 0 6 6l1.1-1.1a2 2 0 0 1 2.1-.5c.9.4 1.8.6 2.8.7a2 2 0 0 1 1.9 2.1z"/></svg>
+            <div><dt>Teléfono</dt><dd><a href="tel:680765488">680 765 488</a></dd></div>
+          </div>
+          <div class="dato">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d99b4e" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div><dt>Dirección</dt><dd>C/ Pío Bermejillo 13, 48800 Balmaseda (Bizkaia)</dd></div>
+          </div>
+          <div class="dato">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d99b4e" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+            <div><dt>Horario</dt><dd>Consultar horario</dd><p class="nota">Llámanos para confirmar apertura y disponibilidad de mesa.</p></div>
+          </div>
+          <div class="dato">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d99b4e" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5 12 13l8.5-6.5"/></svg>
+            <div><dt>Email</dt><dd><a href="mailto:gastroedari@gmail.com">gastroedari@gmail.com</a></dd></div>
+          </div>
+        </dl>
+        <div class="acciones">
+          <a class="btn" href="tel:680765488">Llamar ahora</a>
+        </div>
+      </div>
+
+      <div class="mapa reveal">
+        <svg viewBox="0 0 520 380" role="img" aria-label="Mapa esquemático de la zona con un marcador en la ubicación del local" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <linearGradient id="fondoMapa" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#0f0b15"/><stop offset="1" stop-color="#15101d"/>
+            </linearGradient>
+            <pattern id="tramaMapa" width="22" height="22" patternUnits="userSpaceOnUse">
+              <path d="M0 22V0h22" fill="none" stroke="#f2ece2" stroke-opacity=".05" stroke-width="1"/>
+            </pattern>
+          </defs>
+          <rect width="520" height="380" fill="url(#fondoMapa)"/>
+          <rect width="520" height="380" fill="url(#tramaMapa)"/>
+
+          <!-- río estilizado -->
+          <path d="M-10 318 C 90 296, 170 340, 250 316 S 420 268, 532 300" fill="none" stroke="#3f5b4c" stroke-opacity=".55" stroke-width="16" stroke-linecap="round"/>
+          <path d="M-10 318 C 90 296, 170 340, 250 316 S 420 268, 532 300" fill="none" stroke="#3f5b4c" stroke-opacity=".3" stroke-width="28" stroke-linecap="round"/>
+
+          <!-- viales -->
+          <g stroke="#f2ece2" stroke-opacity=".22" stroke-width="9" stroke-linecap="round">
+            <path d="M40 60 L470 44"/>
+            <path d="M28 168 L492 150"/>
+            <path d="M60 258 L470 240"/>
+            <path d="M120 20 L150 300"/>
+            <path d="M262 16 L288 296"/>
+            <path d="M392 24 L414 286"/>
+          </g>
+          <g stroke="#d99b4e" stroke-opacity=".5" stroke-width="3" stroke-linecap="round" stroke-dasharray="9 11">
+            <path d="M28 168 L492 150"/>
+          </g>
+
+          <!-- manzanas -->
+          <g fill="#f2ece2" fill-opacity=".045" stroke="#f2ece2" stroke-opacity=".1">
+            <rect x="150" y="60" width="98" height="92" rx="5"/>
+            <rect x="298" y="56" width="80" height="96" rx="5"/>
+            <rect x="152" y="180" width="104" height="60" rx="5"/>
+            <rect x="300" y="176" width="92" height="64" rx="5"/>
+            <rect x="54" y="72" width="52" height="80" rx="5"/>
+            <rect x="424" y="66" width="56" height="86" rx="5"/>
+          </g>
+
+          <!-- plaza -->
+          <circle cx="152" cy="168" r="17" fill="#f2ece2" fill-opacity=".06" stroke="#f2ece2" stroke-opacity=".14"/>
+
+          <!-- marcador -->
+          <g transform="translate(288,150)">
+            <circle r="34" fill="#d99b4e" fill-opacity=".12"/>
+            <circle r="20" fill="#d99b4e" fill-opacity=".2"/>
+            <path d="M0 6c-7-9-11-14-11-19A11 11 0 0 1 11 -13c0 5-4 10-11 19z" transform="translate(0,-6)" fill="#f0c27b"/>
+            <circle cx="0" cy="-19" r="4.2" fill="#15101d"/>
+          </g>
+          <text x="288" y="118" text-anchor="middle" font-family="Georgia,serif" font-size="17" fill="#f2ece2" letter-spacing="5">GEO</text>
+          <text x="288" y="196" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#c9c0b4" letter-spacing="1.5">C/ Pío Bermejillo 13</text>
+
+          <!-- norte -->
+          <g transform="translate(470,330)" opacity=".6">
+            <path d="M0 -16 L6 8 L0 3 L-6 8 Z" fill="#d99b4e"/>
+            <text x="0" y="24" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#c9c0b4">N</text>
+          </g>
+        </svg>
+        <div class="mapa-pie">Plano esquemático · no a escala</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PIE ===== -->
+<footer>
+  <div class="env pie">
+    <div class="pie-grid">
+      <div>
+        <p class="marca">GEO</p>
+        <p style="margin-top:10px;">Coctelería en Balmaseda</p>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;">C/ Pío Bermejillo 13<br>48800 Balmaseda (Bizkaia)</p>
+        <p>Consultar horario</p>
+      </div>
+      <div>
+        <p style="margin-bottom:8px;"><a href="tel:680765488">680 765 488</a></p>
+        <p><a href="mailto:gastroedari@gmail.com">gastroedari@gmail.com</a></p>
+      </div>
+    </div>
+    <p class="credito">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var items = document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){
+    for(var i=0;i<items.length;i++){ items[i].classList.add('visible'); }
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  },{threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+  items.forEach(function(el, i){ el.style.transitionDelay = (Math.min(i,5)*60) + 'ms'; io.observe(el); });
+
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(ev){
+      var t = document.querySelector(a.getAttribute('href'));
+      if(t){ ev.preventDefault(); t.scrollIntoView({behavior:'smooth', block:'start'}); }
+    });
+  });
+})();
+</script>
+
+<script>setTimeout(function(){var e=document.querySelectorAll('.reveal');for(var i=0;i<e.length;i++){e[i].classList.add('visible');e[i].style.opacity='1';e[i].style.transform='none';}},2500);</script>
+</body>
+</html>

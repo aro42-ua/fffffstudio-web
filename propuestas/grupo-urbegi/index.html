@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grupo Urbegi — Consultoría y asesoría de empresas</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box;}
+  :root{
+    --ink:#0d1b2a;
+    --ink-2:#16283d;
+    --slate:#4a5c70;
+    --muted:#6e7f92;
+    --line:#dfe5ec;
+    --paper:#ffffff;
+    --paper-2:#f4f6f9;
+    --paper-3:#eef2f7;
+    --accent:#0f6b6b;
+    --accent-2:#13897f;
+    --accent-soft:#e3f0ee;
+    --amber:#b4791f;
+    --bar-h:44px;
+    --radius:14px;
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+    --serif:ui-serif,Georgia,"Times New Roman",Times,serif;
+  }
+  html,body{max-width:100%;overflow-x:hidden;}
+  body{
+    margin:0;
+    padding-top:var(--bar-h);
+    font-family:var(--font);
+    color:var(--ink);
+    background:var(--paper);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.6;
+    font-size:16px;
+  }
+  img,svg{max-width:100%;}
+  a{color:inherit;}
+  h1,h2,h3{line-height:1.18;margin:0;letter-spacing:-0.02em;}
+  p{margin:0;}
+
+  /* ---------- Barra fija ---------- */
+  .studiobar{
+    position:fixed;top:0;left:0;right:0;z-index:9999;
+    height:var(--bar-h);
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(90deg,#0d1b2a 0%,#12324a 55%,#0f6b6b 100%);
+    color:#e9f1f4;
+    font-size:12px;letter-spacing:.06em;text-transform:uppercase;
+    padding:0 14px;text-align:center;
+    box-shadow:0 1px 0 rgba(255,255,255,.08), 0 6px 22px rgba(13,27,42,.22);
+  }
+  .studiobar span{
+    display:block;
+    max-width:100%;
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+    font-weight:600;
+  }
+
+  .wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 24px;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+    font-weight:700;color:var(--accent);
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:linear-gradient(90deg,var(--accent),rgba(15,107,107,0));}
+
+  /* ---------- Nav ---------- */
+  .nav{
+    position:sticky;top:var(--bar-h);z-index:800;
+    background:rgba(255,255,255,.92);
+    backdrop-filter:saturate(140%) blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-in{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:66px;}
+  .brand{display:flex;align-items:center;gap:11px;text-decoration:none;min-width:0;}
+  .brand .mark{flex:0 0 auto;}
+  .brand-txt{min-width:0;}
+  .brand-name{font-weight:750;font-size:17px;letter-spacing:-0.01em;white-space:nowrap;}
+  .brand-sub{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600;}
+  .nav-links{display:flex;align-items:center;gap:26px;}
+  .nav-links a{font-size:14px;text-decoration:none;color:var(--slate);font-weight:550;}
+  .nav-links a:hover{color:var(--accent);}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    padding:12px 20px;border-radius:999px;text-decoration:none;
+    font-weight:650;font-size:14.5px;border:1px solid transparent;
+    transition:transform .15s ease, box-shadow .2s ease, background .2s ease;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg,var(--accent) 0%,var(--accent-2) 100%);
+    color:#fff;box-shadow:0 8px 22px -10px rgba(15,107,107,.75);
+  }
+  .btn-primary:hover{transform:translateY(-1px);box-shadow:0 14px 28px -12px rgba(15,107,107,.8);}
+  .btn-ghost{border-color:var(--line);color:var(--ink);background:#fff;}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
+  .btn-light{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.35);color:#fff;}
+  .btn-light:hover{background:rgba(255,255,255,.18);}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(1100px 520px at 88% -10%, rgba(19,137,127,.20), rgba(19,137,127,0) 60%),
+      radial-gradient(760px 420px at 4% 110%, rgba(21,60,92,.30), rgba(21,60,92,0) 62%),
+      linear-gradient(160deg,#0b1826 0%,#10283c 48%,#0e3a41 100%);
+    color:#eef3f6;
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+                     linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+    background-size:64px 64px;
+    mask-image:radial-gradient(70% 70% at 50% 40%, #000 20%, transparent 100%);
+    -webkit-mask-image:radial-gradient(70% 70% at 50% 40%, #000 20%, transparent 100%);
+  }
+  .hero-in{position:relative;z-index:2;display:grid;grid-template-columns:1.08fr .92fr;gap:54px;align-items:center;padding:86px 0 92px;}
+  .hero .eyebrow{color:#7fd8cb;}
+  .hero .eyebrow::before{background:linear-gradient(90deg,#7fd8cb,rgba(127,216,203,0));}
+  .hero h1{font-size:clamp(34px,5.1vw,58px);font-weight:760;margin:18px 0 20px;letter-spacing:-0.035em;}
+  .hero h1 em{font-style:normal;font-family:var(--serif);font-weight:500;color:#8fe0d2;}
+  .hero p.lead{font-size:clamp(16px,1.35vw,18.5px);color:#c3d2dc;max-width:56ch;}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px;}
+  .tel-line{display:flex;align-items:center;gap:10px;margin-top:20px;font-size:14px;color:#9fb4c3;}
+  .tel-line a{color:#eaf4f3;font-weight:650;text-decoration:none;border-bottom:1px solid rgba(143,224,210,.5);}
+  .hero-note{margin-top:30px;padding-top:22px;border-top:1px solid rgba(255,255,255,.14);display:flex;flex-wrap:wrap;gap:12px 30px;}
+  .hero-note div{font-size:13px;color:#a9bdc9;display:flex;align-items:center;gap:8px;}
+
+  .panel{
+    position:relative;border-radius:20px;padding:26px;
+    background:linear-gradient(150deg, rgba(255,255,255,.10), rgba(255,255,255,.03));
+    border:1px solid rgba(255,255,255,.16);
+    box-shadow:0 30px 70px -40px rgba(0,0,0,.8);
+    backdrop-filter:blur(3px);
+  }
+  .panel h3{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#8fe0d2;font-weight:700;}
+  .panel-rows{margin-top:18px;display:grid;gap:12px;}
+  .prow{display:flex;align-items:center;gap:13px;padding:13px 14px;border-radius:11px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.09);}
+  .prow strong{display:block;font-size:14.5px;font-weight:650;color:#f0f6f8;}
+  .prow span{display:block;font-size:12.5px;color:#a3b7c4;}
+
+  /* ---------- Secciones ---------- */
+  section{scroll-margin-top:calc(var(--bar-h) + 70px);}
+  .sec{padding:86px 0;}
+  .sec-alt{background:linear-gradient(180deg,var(--paper-2) 0%, #fff 100%);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .sec-head{max-width:64ch;margin-bottom:46px;}
+  .sec-head h2{font-size:clamp(27px,3.3vw,40px);font-weight:740;margin:16px 0 14px;}
+  .sec-head p{color:var(--slate);font-size:17px;}
+
+  .grid{display:grid;gap:20px;}
+  .g3{grid-template-columns:repeat(3,minmax(0,1fr));}
+  .g2{grid-template-columns:repeat(2,minmax(0,1fr));}
+
+  .card{
+    position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px 24px 28px;min-width:0;
+    transition:border-color .2s ease, transform .2s ease, box-shadow .25s ease;
+  }
+  .card:hover{border-color:#bfd4d2;transform:translateY(-2px);box-shadow:0 18px 40px -28px rgba(13,27,42,.45);}
+  .card .ico{
+    width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,var(--accent-soft),#f2f8f7);border:1px solid #d3e6e2;margin-bottom:16px;
+  }
+  .card h3{font-size:18px;font-weight:700;margin-bottom:9px;}
+  .card p{color:var(--slate);font-size:14.7px;}
+  .card .tag{
+    display:inline-block;margin-top:16px;font-size:11px;letter-spacing:.11em;text-transform:uppercase;
+    font-weight:700;color:var(--accent);background:var(--accent-soft);padding:5px 10px;border-radius:999px;
+  }
+
+  /* ---------- Pasos ---------- */
+  .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;position:relative;}
+  .step{position:relative;padding:30px 24px 28px;border-radius:var(--radius);background:#fff;border:1px solid var(--line);min-width:0;overflow:hidden;}
+  .step::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent-2),rgba(19,137,127,0));}
+  .step-n{
+    font-family:var(--serif);font-size:44px;line-height:1;font-weight:600;
+    color:transparent;-webkit-text-stroke:1.2px #b9cdd4;letter-spacing:-.03em;
+  }
+  .step h3{font-size:19px;margin:14px 0 10px;font-weight:700;}
+  .step p{color:var(--slate);font-size:14.8px;}
+
+  /* ---------- Contacto ---------- */
+  .contact-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:34px;align-items:start;}
+  .cbox{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px 26px;}
+  .cline{display:flex;gap:14px;padding:16px 0;border-bottom:1px dashed var(--line);}
+  .cline:last-child{border-bottom:0;padding-bottom:0;}
+  .cline:first-of-type{padding-top:0;}
+  .cline .ci{flex:0 0 auto;width:36px;height:36px;border-radius:9px;background:var(--accent-soft);border:1px solid #d3e6e2;display:flex;align-items:center;justify-content:center;}
+  .cline .lbl{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:700;}
+  .cline .val{font-size:17px;font-weight:650;margin-top:3px;word-break:break-word;}
+  .cline .val a{text-decoration:none;color:var(--ink);border-bottom:2px solid var(--accent-soft);}
+  .cline .val a:hover{color:var(--accent);border-bottom-color:var(--accent);}
+  .cline .sub{font-size:13.5px;color:var(--slate);margin-top:4px;}
+  .map-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;}
+  .map-card .mapfig{display:block;width:100%;height:auto;}
+  .map-cap{padding:14px 18px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted);background:var(--paper-2);}
+
+  /* ---------- CTA franja ---------- */
+  .band{
+    background:
+      radial-gradient(700px 320px at 12% 0%, rgba(19,137,127,.28), rgba(19,137,127,0) 65%),
+      linear-gradient(120deg,#0b1826,#12303f);
+    color:#eef3f6;border-radius:0;
+  }
+  .band-in{display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;padding:52px 0;}
+  .band h2{font-size:clamp(23px,2.7vw,32px);font-weight:720;}
+  .band p{color:#b8cad5;margin-top:10px;font-size:16px;}
+
+  /* ---------- Footer ---------- */
+  footer{background:#0a1521;color:#9fb3c1;padding:56px 0 34px;}
+  .foot-top{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:30px;padding-bottom:30px;border-bottom:1px solid rgba(255,255,255,.1);}
+  footer h4{color:#eaf1f5;font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin:0 0 14px;font-weight:700;}
+  footer a{color:#cfe0e8;text-decoration:none;}
+  footer a:hover{color:#8fe0d2;}
+  .foot-list{display:grid;gap:9px;font-size:14.5px;}
+  .foot-bottom{padding-top:24px;display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;font-size:12.8px;color:#7e94a4;}
+  .foot-brand p{font-size:14.5px;max-width:42ch;margin-top:12px;color:#93a8b7;}
+
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1;transform:none;}
+
+  @media (max-width:980px){
+    .hero-in{grid-template-columns:1fr;gap:38px;padding:62px 0 66px;}
+    .g3,.steps{grid-template-columns:1fr;}
+    .contact-grid{grid-template-columns:1fr;}
+    .foot-top{grid-template-columns:1fr 1fr;}
+    .nav-links{display:none;}
+  }
+  @media (max-width:560px){
+    :root{--bar-h:52px;}
+    .studiobar{font-size:10px;letter-spacing:.03em;}
+    .studiobar span{white-space:normal;line-height:1.25;}
+    .wrap{padding:0 16px;}
+    .sec{padding:60px 0;}
+    .g2{grid-template-columns:1fr;}
+    .foot-top{grid-template-columns:1fr;}
+    .nav-in{min-height:60px;}
+    .nav .btn{padding:10px 15px;font-size:13.5px;}
+    .brand-name{font-size:15.5px;}
+    .hero-cta .btn{width:100%;}
+    .band-in{padding:44px 0;}
+    .band .btn{width:100%;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+  }
+</style>
+<noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
+<style>@media (prefers-reduced-motion: reduce){.reveal{opacity:1 !important;transform:none !important;}}</style>
+</head>
+<body>
+
+<div class="studiobar"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#inicio">
+      <svg class="mark" width="38" height="38" viewBox="0 0 38 38" aria-hidden="true">
+        <defs>
+          <linearGradient id="gm" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#0f6b6b"/><stop offset="1" stop-color="#16324a"/>
+          </linearGradient>
+        </defs>
+        <rect x="1" y="1" width="36" height="36" rx="10" fill="url(#gm)"/>
+        <path d="M12 11v9.5a7 7 0 0 0 14 0V11" fill="none" stroke="#bff0e5" stroke-width="2.6" stroke-linecap="round"/>
+        <circle cx="19" cy="27.5" r="2" fill="#bff0e5"/>
+      </svg>
+      <span class="brand-txt">
+        <span class="brand-name">Grupo Urbegi</span>
+        <span class="brand-sub">Consultoría · Asesoría</span>
+      </span>
+    </a>
+    <nav class="nav-links">
+      <a href="#servicios">Servicios</a>
+      <a href="#metodo">Cómo trabajamos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="btn btn-primary" href="tel:946801934">946 801 934</a>
+  </div>
+</header>
+
+<main id="inicio">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-in">
+      <div>
+        <span class="eyebrow">Consultoría y asesoría de empresas</span>
+        <h1>Decisiones de empresa con <em>criterio técnico</em> y acompañamiento continuo.</h1>
+        <p class="lead">Asesoramiento fiscal, contable, laboral y mercantil, junto a consultoría estratégica, para que la dirección de su empresa disponga de información fiable y de un interlocutor único. Trabajo B2B, planificado y documentado.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="tel:946801934">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M5 4h3.2l1.6 4-2 1.4a12 12 0 0 0 6.8 6.8l1.4-2 4 1.6V19a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4 6.2 2 2 0 0 1 5 4z" stroke="#fff" stroke-width="1.7" stroke-linejoin="round"/>
+            </svg>
+            Llamar al 946 801 934
+          </a>
+          <a class="btn btn-light" href="#servicios">Ver áreas de trabajo</a>
+        </div>
+        <p class="tel-line">Atención directa por teléfono: <a href="tel:946801934">946 801 934</a></p>
+        <div class="hero-note">
+          <div>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11z" stroke="#7fd8cb" stroke-width="1.6"/><circle cx="12" cy="10" r="2.4" stroke="#7fd8cb" stroke-width="1.6"/></svg>
+            Balmaseda, Bizkaia
+          </div>
+          <div>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="5" width="17" height="14" rx="2.5" stroke="#7fd8cb" stroke-width="1.6"/><path d="M4 8.5 12 13l8-4.5" stroke="#7fd8cb" stroke-width="1.6"/></svg>
+            <a href="mailto:info@urbegi.com" style="color:#cfe6e2;text-decoration:none;">info@urbegi.com</a>
+          </div>
+          <div>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 19V9l7-5 7 5v10" stroke="#7fd8cb" stroke-width="1.6" stroke-linejoin="round"/><path d="M9.5 19v-5h5v5" stroke="#7fd8cb" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            Servicios para empresas
+          </div>
+        </div>
+      </div>
+
+      <aside class="panel" aria-label="Resumen de áreas">
+        <h3>Áreas de acompañamiento</h3>
+        <div class="panel-rows">
+          <div class="prow">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2.5" stroke="#8fe0d2" stroke-width="1.5"/><path d="M8 8h8M8 12h8M8 16h5" stroke="#8fe0d2" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span><strong>Fiscal y contable</strong><span>Obligaciones periódicas y cierre</span></span>
+          </div>
+          <div class="prow">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="9" cy="8" r="3.2" stroke="#8fe0d2" stroke-width="1.5"/><path d="M3.5 20c.6-3.4 2.8-5.2 5.5-5.2S14 16.6 14.6 20" stroke="#8fe0d2" stroke-width="1.5" stroke-linecap="round"/><path d="M16 9.5h5M16 13h5M16 16.5h3.5" stroke="#8fe0d2" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span><strong>Laboral</strong><span>Contratación y nóminas</span></span>
+          </div>
+          <div class="prow">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v16" stroke="#8fe0d2" stroke-width="1.5"/><path d="M5 8h14" stroke="#8fe0d2" stroke-width="1.5"/><path d="M5 8 2.8 13h4.4L5 8zM19 8l-2.2 5h4.4L19 8z" stroke="#8fe0d2" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            <span><strong>Mercantil</strong><span>Sociedades y contratos</span></span>
+          </div>
+          <div class="prow">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 18V7M9 18v-6M14 18v-9M19 18V5" stroke="#8fe0d2" stroke-width="1.7" stroke-linecap="round"/><path d="M3 21h18" stroke="#8fe0d2" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span><strong>Estrategia y financiación</strong><span>Planificación y vías de apoyo</span></span>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section class="sec sec-alt" id="servicios">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">Servicios</span>
+        <h2>Áreas habituales de consultoría y asesoría empresarial</h2>
+        <p>Un mismo equipo para las materias que atraviesan la vida de una empresa, coordinadas entre sí para evitar decisiones aisladas.</p>
+      </div>
+      <div class="grid g3">
+        <article class="card reveal">
+          <div class="ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2.5" stroke="#0f6b6b" stroke-width="1.6"/><path d="M8 8h8M8 12h8M8 16h5" stroke="#0f6b6b" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Asesoría fiscal</h3>
+          <p>Planificación y cumplimiento de las obligaciones tributarias de la empresa y de sus socios, con seguimiento de plazos y de la documentación soporte.</p>
+          <span class="tag">Tributación</span>
+        </article>
+        <article class="card reveal">
+          <div class="ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 19V6a2 2 0 0 1 2-2h9l5 5v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z" stroke="#0f6b6b" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v5h5" stroke="#0f6b6b" stroke-width="1.6" stroke-linejoin="round"/><path d="M8 14h8M8 17h5" stroke="#0f6b6b" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Contabilidad</h3>
+          <p>Llevanza contable, cierres y elaboración de cuentas anuales, con informes de gestión comprensibles para quien toma las decisiones.</p>
+          <span class="tag">Cierre y reporting</span>
+        </article>
+        <article class="card reveal">
+          <div class="ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="9" cy="8" r="3.2" stroke="#0f6b6b" stroke-width="1.6"/><path d="M3.5 20c.6-3.4 2.8-5.2 5.5-5.2S14 16.6 14.6 20" stroke="#0f6b6b" stroke-width="1.6" stroke-linecap="round"/><circle cx="17.5" cy="9.5" r="2.4" stroke="#0f6b6b" stroke-width="1.6"/><path d="M15 20c.3-2.3 1.5-3.6 3.2-3.6 1.4 0 2.4.9 2.9 2.4" stroke="#0f6b6b" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Asesoría laboral</h3>
+          <p>Contratación, nóminas y seguros sociales, además de acompañamiento en las relaciones laborales del día a día de la plantilla.</p>
+          <span class="tag">Personas</span>
+        </article>
+        <article class="card reveal">
+          <div class="ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3.5v17" stroke="#0f6b6b" stroke-width="1.6"/><path d="M5 8h14" stroke="#0f6b6b" stroke-width="1.6"/><path d="M5 8 2.8 13.2h4.4L5 8zM19 8l-2.2 5.2h4.4L19 8z" stroke="#0f6b6b" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.5 20.5h7" stroke="#0f6b6b" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Mercantil y societario</h3>
+          <p>Constitución y vida societaria, órganos de administración, acuerdos y revisión de contratos habituales en la operativa mercantil.</p>
+          <span class="tag">Sociedades</span>
+        </article>
+        <article class="card reveal">
+          <div class="ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 18V7.5M9 18v-5M14 18v-8.5M19 18V5.5" stroke="#0f6b6b" stroke-width="1.8" stroke-linecap="round"/><path d="M3 21h18" stroke="#0f6b6b" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Consultoría estratégica</h3>
+          <p>Diagnóstico de la situación, definición de objetivos y planes de actuación, con indicadores de seguimiento acordados con la dirección.</p>
+          <span class="tag">Dirección</span>
+        </article>
+        <article class="card reveal">
+          <div class="ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke="#0f6b6b" stroke-width="1.6"/><path d="M14.5 9.3c-.6-.8-1.5-1.2-2.6-1.2-1.6 0-2.6.8-2.6 1.9 0 2.7 5.4 1.3 5.4 4 0 1.2-1.2 2-2.8 2-1.2 0-2.2-.4-2.8-1.3" stroke="#0f6b6b" stroke-width="1.6" stroke-linecap="round"/><path d="M12 6.2v11.6" stroke="#0f6b6b" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Subvenciones y financiación</h3>
+          <p>Identificación de líneas de apoyo aplicables al proyecto, preparación de la documentación y seguimiento de la justificación posterior.</p>
+          <span class="tag">Ayudas</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- MÉTODO -->
+  <section class="sec" id="metodo">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">Cómo trabajamos</span>
+        <h2>Tres pasos, sin zonas grises</h2>
+        <p>Un método sencillo para que en todo momento se sepa qué se está haciendo, quién lo hace y qué se espera de cada parte.</p>
+      </div>
+      <div class="steps">
+        <article class="step reveal">
+          <div class="step-n">01</div>
+          <h3>Reunión inicial</h3>
+          <p>Escuchamos la situación de la empresa, revisamos la documentación disponible y delimitamos el alcance del trabajo y los plazos.</p>
+        </article>
+        <article class="step reveal">
+          <div class="step-n">02</div>
+          <h3>Plan de trabajo</h3>
+          <p>Proponemos las actuaciones por área, el orden de prioridad y los responsables de cada punto, para que quede aprobado antes de empezar.</p>
+        </article>
+        <article class="step reveal">
+          <div class="step-n">03</div>
+          <h3>Seguimiento continuo</h3>
+          <p>Ejecutamos lo acordado con revisiones periódicas e interlocución directa, ajustando el plan cuando la empresa o la normativa lo requieren.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="sec sec-alt" id="contacto">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">Contacto</span>
+        <h2>Hablemos de su empresa</h2>
+        <p>La vía más rápida es el teléfono. También puede escribirnos o acercarse a nuestras oficinas en Balmaseda.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="cbox reveal">
+          <div class="cline">
+            <span class="ci">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h3.2l1.6 4-2 1.4a12 12 0 0 0 6.8 6.8l1.4-2 4 1.6V19a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4 6.2 2 2 0 0 1 5 4z" stroke="#0f6b6b" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            </span>
+            <span>
+              <span class="lbl">Teléfono</span>
+              <span class="val"><a href="tel:946801934">946 801 934</a></span>
+              <span class="sub">Atención directa para empresas.</span>
+            </span>
+          </div>
+
+          <div class="cline">
+            <span class="ci">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11z" stroke="#0f6b6b" stroke-width="1.6"/><circle cx="12" cy="10" r="2.4" stroke="#0f6b6b" stroke-width="1.6"/></svg>
+            </span>
+            <span>
+              <span class="lbl">Dirección</span>
+              <span class="val">Pol. Ind. El Páramo, pabellón B7, 48800 Balmaseda (Bizkaia)</span>
+            </span>
+          </div>
+
+          <div class="cline">
+            <span class="ci">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="5" width="17" height="14" rx="2.5" stroke="#0f6b6b" stroke-width="1.6"/><path d="M4 8.5 12 13l8-4.5" stroke="#0f6b6b" stroke-width="1.6"/></svg>
+            </span>
+            <span>
+              <span class="lbl">Email</span>
+              <span class="val"><a href="mailto:info@urbegi.com">info@urbegi.com</a></span>
+            </span>
+          </div>
+
+          <div class="cline">
+            <span class="ci">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke="#0f6b6b" stroke-width="1.6"/><path d="M12 7.5V12l3 1.8" stroke="#0f6b6b" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </span>
+            <span>
+              <span class="lbl">Horario</span>
+              <span class="val">Consultar horario</span>
+            </span>
+          </div>
+
+          <div style="margin-top:24px;">
+            <a class="btn btn-primary" href="tel:946801934">Llamar ahora</a>
+          </div>
+        </div>
+
+        <figure class="map-card reveal" style="margin:0;">
+          <svg class="mapfig" viewBox="0 0 640 420" role="img" aria-label="Plano esquemático del polígono industrial con el pabellón B7 señalado" preserveAspectRatio="xMidYMid meet">
+            <defs>
+              <linearGradient id="mapbg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#f6f9fb"/><stop offset="1" stop-color="#e9eff5"/>
+              </linearGradient>
+              <pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                <rect width="10" height="10" fill="none"/>
+                <line x1="0" y1="0" x2="0" y2="10" stroke="#d3dde6" stroke-width="2"/>
+              </pattern>
+              <linearGradient id="hl" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#13897f"/><stop offset="1" stop-color="#0f6b6b"/>
+              </linearGradient>
+            </defs>
+
+            <rect width="640" height="420" fill="url(#mapbg)"/>
+            <rect width="640" height="420" fill="url(#hatch)" opacity=".5"/>
+
+            <!-- relieve / cauce estilizado -->
+            <path d="M0 356 C 90 336, 160 386, 250 366 S 430 330, 520 352 S 620 372, 640 364 L640 420 L0 420 Z" fill="#dfe9ef"/>
+            <path d="M0 356 C 90 336, 160 386, 250 366 S 430 330, 520 352 S 620 372, 640 364" fill="none" stroke="#c3d3de" stroke-width="2"/>
+
+            <!-- viales -->
+            <g stroke="#ffffff" stroke-width="20" stroke-linecap="round">
+              <path d="M40 300 H600"/>
+              <path d="M160 60 V330"/>
+              <path d="M420 60 V330"/>
+              <path d="M40 150 H600"/>
+            </g>
+            <g stroke="#cbd7e1" stroke-width="1.4" stroke-dasharray="7 9">
+              <path d="M40 300 H600"/>
+              <path d="M160 60 V330"/>
+              <path d="M420 60 V330"/>
+              <path d="M40 150 H600"/>
+            </g>
+
+            <!-- pabellones -->
+            <g fill="#ffffff" stroke="#c6d2dd" stroke-width="1.6">
+              <rect x="52" y="76" width="88" height="54" rx="4"/>
+              <rect x="52" y="172" width="88" height="54" rx="4"/>
+              <rect x="52" y="240" width="88" height="44" rx="4"/>
+              <rect x="186" y="76" width="96" height="54" rx="4"/>
+              <rect x="300" y="76" width="96" height="54" rx="4"/>
+              <rect x="186" y="240" width="96" height="44" rx="4"/>
+              <rect x="300" y="240" width="96" height="44" rx="4"/>
+              <rect x="444" y="76" width="150" height="54" rx="4"/>
+              <rect x="444" y="172" width="70" height="54" rx="4"/>
+              <rect x="524" y="172" width="70" height="54" rx="4"/>
+              <rect x="444" y="240" width="150" height="44" rx="4"/>
+            </g>
+
+            <!-- pabellón destacado B7 -->
+            <rect x="186" y="168" width="200" height="62" rx="6" fill="url(#hl)"/>
+            <rect x="186" y="168" width="200" height="62" rx="6" fill="none" stroke="#0b4f4f" stroke-width="1.4"/>
+            <text x="206" y="196" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial,sans-serif" font-size="19" font-weight="700" fill="#ffffff">Pabellón B7</text>
+            <text x="206" y="216" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial,sans-serif" font-size="13" fill="#bdeee4">Grupo Urbegi</text>
+
+            <!-- marcador -->
+            <g transform="translate(372 150)">
+              <circle cx="0" cy="0" r="22" fill="#0f6b6b" opacity=".14"/>
+              <path d="M0 20 C 0 20 13 6.5 13 -2 A 13 13 0 1 0 -13 -2 C -13 6.5 0 20 0 20 Z" fill="#0f6b6b" stroke="#ffffff" stroke-width="2.4"/>
+              <circle cx="0" cy="-2.5" r="4.6" fill="#ffffff"/>
+            </g>
+
+            <!-- etiquetas de viales -->
+            <text x="60" y="292" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial,sans-serif" font-size="12" fill="#8b9caa" letter-spacing="1.5">VIAL PRINCIPAL</text>
+            <text x="452" y="143" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial,sans-serif" font-size="12" fill="#8b9caa" letter-spacing="1.5">ACCESO</text>
+
+            <!-- rosa de los vientos -->
+            <g transform="translate(596 52)">
+              <circle r="20" fill="#ffffff" stroke="#d6e0e8" stroke-width="1.4"/>
+              <path d="M0 -14 L5 3 L0 -1 L-5 3 Z" fill="#0f6b6b"/>
+              <text x="0" y="-22" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial,sans-serif" font-size="10" font-weight="700" fill="#6e7f92">N</text>
+            </g>
+
+            <!-- escala decorativa -->
+            <g transform="translate(40 392)">
+              <line x1="0" y1="0" x2="86" y2="0" stroke="#8b9caa" stroke-width="2"/>
+              <line x1="0" y1="-5" x2="0" y2="5" stroke="#8b9caa" stroke-width="2"/>
+              <line x1="86" y1="-5" x2="86" y2="5" stroke="#8b9caa" stroke-width="2"/>
+            </g>
+          </svg>
+          <figcaption class="map-cap">Plano esquemático ilustrativo del entorno del pabellón. No es un mapa a escala ni sustituye a la navegación.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- BANDA CTA -->
+  <section class="band">
+    <div class="wrap band-in">
+      <div>
+        <h2>¿Prefiere explicarlo por teléfono?</h2>
+        <p>Una llamada suele bastar para orientar el siguiente paso.</p>
+      </div>
+      <a class="btn btn-primary" href="tel:946801934">946 801 934</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <h4>Grupo Urbegi</h4>
+        <p>Consultoría y asesoría de empresas. Balmaseda, Bizkaia.</p>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <div class="foot-list">
+          <a href="tel:946801934">946 801 934</a>
+          <a href="mailto:info@urbegi.com">info@urbegi.com</a>
+          <span>Consultar horario</span>
+        </div>
+      </div>
+      <div>
+        <h4>Dirección</h4>
+        <div class="foot-list">
+          <span>Pol. Ind. El Páramo, pabellón B7<br>48800 Balmaseda (Bizkaia)</span>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</span>
+      <span>Maqueta no oficial · sin vinculación contractual</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){
+    for(var i=0;i<els.length;i++){ els[i].classList.add('in'); }
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  },{rootMargin:'0px 0px -8% 0px', threshold:0.08});
+  els.forEach(function(el, i){ el.style.transitionDelay = (i%3)*70 + 'ms'; io.observe(el); });
+
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(ev){
+      var t = document.querySelector(a.getAttribute('href'));
+      if(t){ ev.preventDefault(); t.scrollIntoView({behavior:'smooth', block:'start'}); }
+    });
+  });
+})();
+</script>
+
+<script>setTimeout(function(){var e=document.querySelectorAll('.reveal');for(var i=0;i<e.length;i++){e[i].classList.add('in');e[i].style.opacity='1';e[i].style.transform='none';}},2500);</script>
+</body>
+</html>

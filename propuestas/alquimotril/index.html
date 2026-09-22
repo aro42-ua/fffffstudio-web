@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alquimotril · Excavaciones y obra pública — Propuesta de diseño</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --tierra:#6B4A2F;
+  --tierra-osc:#3E2A1A;
+  --hormigon:#B9B6AE;
+  --hormigon-cl:#E7E4DE;
+  --grafito:#1A1A18;
+  --grafito-2:#23231F;
+  --senal:#F2A000;
+  --senal-cl:#FFC13B;
+  --blanco:#FAF8F4;
+  --barra:56px;
+  --max:1180px;
+}
+html,body{margin:0;padding:0;max-width:100%;overflow-x:hidden}
+body{
+  padding-top:var(--barra);
+  font-family:"Helvetica Neue",Helvetica,Arial,"Segoe UI",system-ui,-apple-system,sans-serif;
+  background:var(--blanco);
+  color:var(--grafito);
+  line-height:1.6;
+  -webkit-text-size-adjust:100%;
+}
+img,svg{max-width:100%}
+h1,h2,h3{margin:0 0 .5em;line-height:1.02;letter-spacing:-.02em;text-transform:uppercase;font-weight:900}
+h1{font-size:clamp(2.1rem,7vw,4.6rem)}
+h2{font-size:clamp(1.6rem,4.2vw,2.8rem)}
+h3{font-size:1.05rem;letter-spacing:.02em}
+p{margin:0 0 1em}
+a{color:inherit}
+.wrap{width:100%;max-width:var(--max);margin:0 auto;padding:0 20px}
+section{padding:clamp(56px,8vw,104px) 0}
+
+/* ---------- BARRA FIJA ---------- */
+.barra{
+  position:fixed;top:0;left:0;right:0;z-index:9999;
+  height:var(--barra);display:flex;align-items:center;
+  background:var(--grafito);
+  color:var(--hormigon-cl);
+  border-bottom:3px solid var(--senal);
+  box-shadow:0 2px 18px rgba(0,0,0,.35);
+}
+.barra .wrap{display:flex;align-items:center;gap:12px}
+.barra .txt{
+  font-size:clamp(.62rem,2.4vw,.82rem);
+  letter-spacing:.06em;text-transform:uppercase;font-weight:700;
+  overflow-wrap:anywhere;
+}
+.barra .dot{width:10px;height:10px;flex:0 0 10px;background:var(--senal);transform:rotate(45deg)}
+
+/* ---------- HERO ---------- */
+.hero{
+  position:relative;color:var(--blanco);
+  background:
+    linear-gradient(115deg,rgba(26,26,24,.94) 0%,rgba(62,42,26,.9) 58%,rgba(107,74,47,.85) 100%),
+    repeating-linear-gradient(135deg,rgba(242,160,0,.14) 0 14px,rgba(242,160,0,0) 14px 34px),
+    radial-gradient(120% 90% at 78% 10%,#5a4229 0%,#1a1a18 70%);
+  overflow:hidden;
+  padding-top:clamp(48px,7vw,84px);
+  padding-bottom:clamp(40px,5vw,64px);
+}
+.hero::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:14px;
+  background:repeating-linear-gradient(135deg,var(--senal) 0 22px,var(--grafito) 22px 44px);
+}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(24px,4vw,56px);align-items:center}
+.kicker{
+  display:inline-block;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
+  font-weight:800;color:var(--grafito);background:var(--senal);
+  padding:6px 12px;margin-bottom:22px;
+}
+.hero h1 span{color:var(--senal-cl);display:block}
+.lead{font-size:clamp(1rem,1.7vw,1.22rem);color:#E3DCD2;max-width:46ch}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:26px}
+.btn{
+  display:inline-flex;align-items:center;gap:12px;
+  background:var(--senal);color:var(--grafito);
+  padding:16px 26px;text-decoration:none;font-weight:900;
+  letter-spacing:.06em;text-transform:uppercase;font-size:clamp(.9rem,2.6vw,1.05rem);
+  border:0;border-bottom:5px solid #9c6a00;transition:transform .15s ease,background .15s ease;
+  overflow-wrap:anywhere;
+}
+.btn:hover{background:var(--senal-cl);transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--blanco);border:2px solid rgba(250,248,244,.45);border-bottom-width:2px}
+.btn.ghost:hover{background:rgba(250,248,244,.1)}
+.hero-art{min-width:0}
+.hero-art svg{display:block;width:100%;height:auto}
+
+.tiras{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
+.tira{
+  font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;
+  border:1px solid rgba(242,160,0,.5);color:#F0E7D9;padding:7px 12px;
+}
+
+/* ---------- SERVICIOS ---------- */
+.sec-head{max-width:60ch;margin-bottom:clamp(30px,4vw,54px)}
+.sec-head .num{
+  font-size:.72rem;letter-spacing:.24em;font-weight:800;color:var(--tierra);
+  display:block;margin-bottom:14px;text-transform:uppercase;
+}
+.sec-head p{color:#4B463E}
+.grid-serv{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px;background:var(--hormigon)}
+.card{
+  background:var(--hormigon-cl);padding:clamp(22px,2.6vw,32px);min-width:0;
+  position:relative;transition:background .18s ease;
+}
+.card:hover{background:#fff}
+.card .ico{width:56px;height:56px;margin-bottom:16px;display:block}
+.card h3{margin-bottom:8px}
+.card p{font-size:.94rem;color:#4B463E;margin:0}
+.card::before{content:"";position:absolute;left:0;top:0;width:0;height:4px;background:var(--senal);transition:width .25s ease}
+.card:hover::before{width:100%}
+
+/* ---------- PASOS ---------- */
+.pasos{background:var(--grafito);color:var(--blanco);position:relative}
+.pasos::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:10px;
+  background:repeating-linear-gradient(135deg,var(--senal) 0 18px,var(--grafito-2) 18px 36px);
+}
+.pasos .sec-head .num{color:var(--senal)}
+.pasos .sec-head p{color:#CFC8BC}
+.grid-pasos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,2.4vw,30px)}
+.paso{border-top:4px solid var(--senal);padding-top:20px;min-width:0}
+.paso .n{font-size:clamp(2.6rem,6vw,3.8rem);font-weight:900;line-height:1;color:rgba(242,160,0,.35);display:block;margin-bottom:8px}
+.paso p{color:#CFC8BC;font-size:.96rem;margin:0}
+
+/* ---------- CONTACTO ---------- */
+.contacto{background:
+  linear-gradient(180deg,#FAF8F4 0%,#EFEBE4 100%);}
+.grid-cont{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,48px);align-items:start}
+.datos{min-width:0}
+.dato{border-bottom:1px solid #CFC9BE;padding:18px 0}
+.dato .et{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;font-weight:800;color:var(--tierra);display:block;margin-bottom:6px}
+.dato .vl{font-size:1.06rem;font-weight:700;overflow-wrap:anywhere}
+.dato a{text-decoration:none;border-bottom:2px solid var(--senal)}
+.dato a:hover{color:var(--tierra)}
+.mapa{min-width:0;border:3px solid var(--grafito);background:#E7E4DE}
+.mapa svg{display:block;width:100%;height:auto}
+.mapa .pie{background:var(--grafito);color:#CFC8BC;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;padding:10px 14px;font-weight:700}
+
+/* ---------- PIE ---------- */
+footer{background:var(--tierra-osc);color:#E3DCD2;padding:clamp(40px,6vw,64px) 0 32px;border-top:6px solid var(--senal)}
+.foot-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:end}
+.marca{font-size:clamp(1.8rem,5vw,3rem);font-weight:900;letter-spacing:-.03em;text-transform:uppercase;line-height:1}
+.foot a{color:var(--senal-cl);overflow-wrap:anywhere}
+.credito{
+  margin-top:34px;padding-top:20px;border-top:1px solid rgba(250,248,244,.18);
+  font-size:.78rem;letter-spacing:.06em;color:#BDB2A3;overflow-wrap:anywhere;
+}
+
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr}
+  .grid-serv{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid-pasos{grid-template-columns:1fr}
+  .grid-cont{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr;align-items:start}
+}
+@media (max-width:560px){
+  .grid-serv{grid-template-columns:1fr}
+  .btn{width:100%;justify-content:center}
+  .cta-row{gap:10px}
+}
+</style>
+</head>
+<body>
+
+<!-- 1. BARRA FIJA -->
+<div class="barra" role="note">
+  <div class="wrap">
+    <span class="dot" aria-hidden="true"></span>
+    <span class="txt">Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+  </div>
+</div>
+
+<!-- 2. HERO -->
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="kicker">Excavaciones y obra pública</span>
+      <h1>Alquimotril<span>movemos tierra,<br>abrimos camino</span></h1>
+      <p class="lead">Excavación, movimiento de tierras y servicios auxiliares de construcción y obra pública en Motril y su comarca. Maquinaria y equipo para que la obra avance.</p>
+      <div class="cta-row">
+        <a class="btn" href="tel:958820053">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true">
+            <path d="M5 3h4l2 5-2.5 1.5a12 12 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2.2 2C10 20.2 3.8 14 3 5.2A2 2 0 0 1 5 3z"/>
+          </svg>
+          Llamar 958 820 053
+        </a>
+        <a class="btn ghost" href="#contacto">Ver contacto</a>
+      </div>
+      <div class="tiras">
+        <span class="tira">Movimiento de tierras</span>
+        <span class="tira">Demoliciones</span>
+        <span class="tira">Zanjas y canalizaciones</span>
+        <span class="tira">Urbanización y viales</span>
+      </div>
+    </div>
+
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 520 420" role="img">
+        <defs>
+          <linearGradient id="gTierra" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#8a5f3b"/><stop offset="1" stop-color="#3E2A1A"/>
+          </linearGradient>
+          <linearGradient id="gMet" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#FFC13B"/><stop offset="1" stop-color="#C98400"/>
+          </linearGradient>
+          <pattern id="hatch" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+            <rect width="12" height="12" fill="none"/>
+            <line x1="0" y1="0" x2="0" y2="12" stroke="rgba(242,160,0,.45)" stroke-width="3"/>
+          </pattern>
+        </defs>
+        <!-- terreno -->
+        <path d="M0 300 L120 296 L190 322 L300 310 L400 336 L520 326 L520 420 L0 420 Z" fill="url(#gTierra)"/>
+        <path d="M0 300 L120 296 L190 322 L300 310 L400 336 L520 326" fill="none" stroke="rgba(255,193,59,.5)" stroke-width="3"/>
+        <!-- talud rayado -->
+        <path d="M300 310 L400 336 L520 326 L520 372 L300 356 Z" fill="url(#hatch)" opacity=".55"/>
+        <!-- excavadora dibujada a mano -->
+        <g>
+          <!-- orugas -->
+          <rect x="120" y="262" width="150" height="34" rx="17" fill="#23231F" stroke="#FFC13B" stroke-width="3"/>
+          <circle cx="146" cy="279" r="11" fill="#3E2A1A" stroke="#FFC13B" stroke-width="3"/>
+          <circle cx="244" cy="279" r="11" fill="#3E2A1A" stroke="#FFC13B" stroke-width="3"/>
+          <circle cx="195" cy="279" r="7" fill="#3E2A1A" stroke="#FFC13B" stroke-width="2.5"/>
+          <!-- chasis -->
+          <rect x="140" y="226" width="112" height="36" rx="6" fill="url(#gMet)" stroke="#23231F" stroke-width="3"/>
+          <!-- cabina -->
+          <path d="M150 226 L150 176 L206 176 L212 226 Z" fill="url(#gMet)" stroke="#23231F" stroke-width="3"/>
+          <path d="M160 220 L160 186 L200 186 L205 220 Z" fill="#1A1A18" opacity=".8"/>
+          <!-- brazo -->
+          <path d="M248 232 L322 168" stroke="url(#gMet)" stroke-width="18" stroke-linecap="round"/>
+          <path d="M248 232 L322 168" stroke="#23231F" stroke-width="3" fill="none" opacity=".6"/>
+          <path d="M322 168 L372 238" stroke="url(#gMet)" stroke-width="15" stroke-linecap="round"/>
+          <path d="M322 168 L372 238" stroke="#23231F" stroke-width="3" fill="none" opacity=".6"/>
+          <circle cx="322" cy="168" r="9" fill="#23231F" stroke="#FFC13B" stroke-width="3"/>
+          <!-- cazo -->
+          <path d="M366 236 L400 224 L412 258 Q388 282 356 268 Z" fill="url(#gMet)" stroke="#23231F" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M360 270 L366 282 M378 276 L382 288 M396 270 L402 281" stroke="#23231F" stroke-width="5" stroke-linecap="round"/>
+        </g>
+        <!-- material cayendo -->
+        <g fill="#8a5f3b">
+          <circle cx="386" cy="296" r="6"/><circle cx="404" cy="308" r="4"/><circle cx="370" cy="312" r="5"/>
+        </g>
+        <!-- sol / marca de nivel -->
+        <g opacity=".5" stroke="#FFC13B" stroke-width="3" fill="none">
+          <circle cx="446" cy="96" r="34"/>
+          <path d="M446 40 L446 56 M446 136 L446 152 M390 96 L406 96 M486 96 L502 96"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<!-- 3. SERVICIOS -->
+<section id="servicios">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="num">01 — Servicios</span>
+      <h2>Lo que resolvemos en obra</h2>
+      <p>Trabajos de excavación y servicios auxiliares de construcción y obra pública, tanto para obra privada como para actuaciones de urbanización.</p>
+    </div>
+
+    <div class="grid-serv">
+      <article class="card">
+        <svg class="ico" viewBox="0 0 64 64" fill="none" stroke="#6B4A2F" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 52h56"/><path d="M10 46h30v6H10z" fill="#F2A000" stroke="#6B4A2F"/>
+          <path d="M30 46 L42 22 L52 30"/><path d="M44 34l10-6 6 12-12 4z" fill="#F2A000"/>
+        </svg>
+        <h3>Excavación y movimiento de tierras</h3>
+        <p>Desbroce, vaciados, explanaciones, rebajes y perfilado de terreno para la ejecución de la obra.</p>
+      </article>
+
+      <article class="card">
+        <svg class="ico" viewBox="0 0 64 64" fill="none" stroke="#6B4A2F" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 56h56"/>
+          <path d="M12 56V28h18v28z" fill="#F2A000" stroke="#6B4A2F"/>
+          <path d="M34 56V40h12v16z"/>
+          <path d="M40 18l8 6-6 8" /><path d="M52 10l-6 10"/>
+          <path d="M22 20l3 6-6 2z" fill="#6B4A2F"/>
+        </svg>
+        <h3>Demoliciones</h3>
+        <p>Derribos y demoliciones controladas, con gestión ordenada del material resultante.</p>
+      </article>
+
+      <article class="card">
+        <svg class="ico" viewBox="0 0 64 64" fill="none" stroke="#6B4A2F" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 22h56"/>
+          <path d="M18 22v20a6 6 0 0 0 6 6h16a6 6 0 0 0 6-6V22" fill="#F2A000" stroke="#6B4A2F"/>
+          <path d="M26 30h12M26 38h12"/>
+          <path d="M8 22 14 10M56 22 50 10"/>
+        </svg>
+        <h3>Zanjas y canalizaciones</h3>
+        <p>Apertura de zanjas para redes y conducciones, tapado, compactación y reposición.</p>
+      </article>
+
+      <article class="card">
+        <svg class="ico" viewBox="0 0 64 64" fill="none" stroke="#6B4A2F" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M6 56 24 10h16l18 46z" fill="#F2A000" stroke="#6B4A2F"/>
+          <path d="M32 16v8M32 30v8M32 44v8" stroke="#FAF8F4" stroke-width="5"/>
+        </svg>
+        <h3>Urbanización y viales</h3>
+        <p>Trabajos de caja de vial, bases, aceras y actuaciones de urbanización en obra pública.</p>
+      </article>
+
+      <article class="card">
+        <svg class="ico" viewBox="0 0 64 64" fill="none" stroke="#6B4A2F" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="18" cy="48" r="7"/><circle cx="46" cy="48" r="7"/>
+          <path d="M4 48h7M25 48h14M53 48h7"/>
+          <path d="M10 42V28h22l8 14" fill="#F2A000" stroke="#6B4A2F"/>
+          <path d="M32 28h8l6 10"/>
+          <circle cx="21" cy="20" r="5"/><path d="M21 25v3"/>
+        </svg>
+        <h3>Alquiler de maquinaria con operador</h3>
+        <p>Equipos de obra puestos a disposición con operador, según las necesidades de cada trabajo.</p>
+      </article>
+
+      <article class="card">
+        <svg class="ico" viewBox="0 0 64 64" fill="none" stroke="#6B4A2F" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M8 24h36l8 12v16H8z" fill="#F2A000" stroke="#6B4A2F"/>
+          <path d="M8 40h44"/>
+          <path d="M14 24 20 10h20l4 14"/>
+          <path d="M4 52h56"/>
+        </svg>
+        <h3>Retirada de escombros</h3>
+        <p>Carga, transporte y retirada del material sobrante para mantener el tajo despejado.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 4. CÓMO TRABAJAMOS -->
+<section class="pasos">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="num">02 — Método</span>
+      <h2>Cómo trabajamos</h2>
+      <p>Tres pasos claros, de la primera llamada al terreno entregado.</p>
+    </div>
+    <div class="grid-pasos">
+      <div class="paso">
+        <span class="n">01</span>
+        <h3>Hablamos de la obra</h3>
+        <p>Nos cuenta qué necesita, dónde y con qué plazos. Recogemos los condicionantes del terreno y del acceso.</p>
+      </div>
+      <div class="paso">
+        <span class="n">02</span>
+        <h3>Visita y propuesta</h3>
+        <p>Vemos el emplazamiento, definimos los trabajos y el equipo adecuado, y le trasladamos una propuesta ajustada al caso.</p>
+      </div>
+      <div class="paso">
+        <span class="n">03</span>
+        <h3>Ejecución y entrega</h3>
+        <p>Entramos a obra con el equipo previsto, coordinados con el resto de oficios, y dejamos el tajo listo para la siguiente fase.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. CONTACTO -->
+<section class="contacto" id="contacto">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="num">03 — Contacto</span>
+      <h2>Dónde estamos</h2>
+      <p>Cuéntenos su obra por teléfono y valoramos cómo abordarla.</p>
+    </div>
+
+    <div class="grid-cont">
+      <div class="datos">
+        <div class="dato">
+          <span class="et">Teléfono</span>
+          <div class="vl"><a href="tel:958820053">958 820 053</a></div>
+        </div>
+        <div class="dato">
+          <span class="et">También</span>
+          <div class="vl"><a href="tel:608959908">608 959 908</a></div>
+        </div>
+        <div class="dato">
+          <span class="et">Dirección</span>
+          <div class="vl">Ctra. de Motril al Puerto, camino del Empedrado s/n, 18600 Motril (Granada)</div>
+        </div>
+        <div class="dato">
+          <span class="et">Horario</span>
+          <div class="vl">Consultar horario</div>
+        </div>
+        <div class="dato">
+          <span class="et">Email</span>
+          <div class="vl"><a href="mailto:alquimotril@gmail.com">alquimotril@gmail.com</a></div>
+        </div>
+        <div class="cta-row">
+          <a class="btn" href="tel:958820053">Llamar ahora</a>
+        </div>
+      </div>
+
+      <div class="mapa">
+        <svg viewBox="0 0 560 420" role="img" aria-label="Mapa esquemático: carretera de Motril al puerto y camino del Empedrado">
+          <defs>
+            <linearGradient id="gFondo" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#EFEBE4"/><stop offset="1" stop-color="#DCD6CB"/>
+            </linearGradient>
+          </defs>
+          <rect width="560" height="420" fill="url(#gFondo)"/>
+          <!-- retícula -->
+          <g stroke="#CFC9BE" stroke-width="1">
+            <path d="M0 60H560M0 120H560M0 180H560M0 240H560M0 300H560M0 360H560"/>
+            <path d="M70 0V420M140 0V420M210 0V420M280 0V420M350 0V420M420 0V420M490 0V420"/>
+          </g>
+          <!-- mar / puerto -->
+          <path d="M0 330 Q140 310 280 336 T560 330 L560 420 L0 420Z" fill="#9FB2AE" opacity=".55"/>
+          <path d="M0 330 Q140 310 280 336 T560 330" fill="none" stroke="#6E8480" stroke-width="3"/>
+          <text x="40" y="392" font-family="Helvetica,Arial,sans-serif" font-size="17" font-weight="bold" fill="#3E4B49" letter-spacing="2">PUERTO</text>
+          <!-- carretera principal -->
+          <path d="M40 52 C170 120, 210 210, 300 348" fill="none" stroke="#23231F" stroke-width="26" stroke-linecap="round"/>
+          <path d="M40 52 C170 120, 210 210, 300 348" fill="none" stroke="#F2A000" stroke-width="3" stroke-dasharray="16 16"/>
+          <!-- camino del Empedrado -->
+          <path d="M196 214 L470 176" fill="none" stroke="#8a5f3b" stroke-width="14" stroke-linecap="round"/>
+          <path d="M196 214 L470 176" fill="none" stroke="#E7E4DE" stroke-width="3" stroke-dasharray="9 11"/>
+          <!-- parcelas -->
+          <g fill="none" stroke="#B9B6AE" stroke-width="3">
+            <rect x="330" y="230" width="90" height="56"/>
+            <rect x="440" y="238" width="70" height="48"/>
+            <rect x="70" y="250" width="86" height="52"/>
+          </g>
+          <!-- etiquetas -->
+          <text x="54" y="40" font-family="Helvetica,Arial,sans-serif" font-size="15" font-weight="bold" fill="#23231F" letter-spacing="1">MOTRIL</text>
+          <text x="300" y="150" font-family="Helvetica,Arial,sans-serif" font-size="13" font-weight="bold" fill="#6B4A2F" letter-spacing="1">CAMINO DEL EMPEDRADO</text>
+          <text x="196" y="300" font-family="Helvetica,Arial,sans-serif" font-size="13" font-weight="bold" fill="#23231F" letter-spacing="1" transform="rotate(-62 196 300)">CTRA. AL PUERTO</text>
+          <!-- marcador -->
+          <g transform="translate(398,150)">
+            <path d="M0 42 C-20 16, -26 4, -26 -6 A26 26 0 0 1 26 -6 C26 4, 20 16, 0 42Z" fill="#F2A000" stroke="#23231F" stroke-width="4" stroke-linejoin="round"/>
+            <circle cx="0" cy="-6" r="9" fill="#23231F"/>
+          </g>
+          <!-- rosa de los vientos -->
+          <g transform="translate(508,56)" stroke="#23231F" stroke-width="3" fill="none">
+            <path d="M0 -22 L0 22 M-14 8 L0 -22 L14 8"/>
+          </g>
+          <text x="492" y="98" font-family="Helvetica,Arial,sans-serif" font-size="12" font-weight="bold" fill="#23231F">N</text>
+        </svg>
+        <div class="pie">Esquema orientativo — no es un mapa a escala</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. PIE -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="marca">Alquimotril</div>
+        <p style="margin-top:12px;max-width:44ch;color:#CFC1AE">Excavaciones y servicios auxiliares de construcción y obra pública. Motril, Granada.</p>
+      </div>
+      <div>
+        <p style="margin:0 0 6px"><a href="tel:958820053">958 820 053</a> · <a href="tel:608959908">608 959 908</a></p>
+        <p style="margin:0 0 6px"><a href="mailto:alquimotril@gmail.com">alquimotril@gmail.com</a></p>
+        <p style="margin:0;color:#BDB2A3">Ctra. de Motril al Puerto, camino del Empedrado s/n, 18600 Motril (Granada)</p>
+      </div>
+    </div>
+    <div class="credito">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Scroll suave para anclas internas, respetando la barra fija.
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var id = a.getAttribute('href');
+      if(id.length < 2) return;
+      var t = document.querySelector(id);
+      if(!t) return;
+      e.preventDefault();
+      var top = t.getBoundingClientRect().top + window.pageYOffset - 70;
+      window.scrollTo({top: top, behavior: 'smooth'});
+    });
+  });
+
+  // Aparición progresiva de tarjetas y pasos.
+  var items = document.querySelectorAll('.card, .paso, .dato, .mapa');
+  if ('IntersectionObserver' in window) {
+    items.forEach(function(el){
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(16px)';
+      el.style.transition = 'opacity .5s ease, transform .5s ease';
+    });
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en, i){
+        if(en.isIntersecting){
+          var el = en.target;
+          setTimeout(function(){
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+          }, i * 60);
+          io.unobserve(el);
+        }
+      });
+    }, {threshold: 0.12});
+    items.forEach(function(el){ io.observe(el); });
+  }
+})();
+</script>
+</body>
+</html>

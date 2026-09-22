@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clínica Veterinaria Clinican · Sede de Martos — Propuesta de diseño</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;}
+:root{
+  --verde:#1f6f5c;
+  --verde-osc:#14503f;
+  --verde-claro:#e6f2ee;
+  --arena:#fbf7f0;
+  --arena-2:#f3ece0;
+  --coral:#e8836a;
+  --coral-claro:#fdeee9;
+  --azul:#3d6f96;
+  --azul-claro:#eaf2f8;
+  --tinta:#1d2b28;
+  --tinta-suave:#54635f;
+  --linea:#e3ddd2;
+  --blanco:#ffffff;
+  --barra:56px;
+  --r:18px;
+  --sombra:0 1px 2px rgba(29,43,40,.04),0 8px 28px rgba(29,43,40,.07);
+  --sombra-alta:0 2px 4px rgba(29,43,40,.05),0 18px 50px rgba(29,43,40,.11);
+  --sans:"Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+}
+html,body{max-width:100%;overflow-x:hidden;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{
+  margin:0;
+  padding-top:var(--barra);
+  font-family:var(--sans);
+  color:var(--tinta);
+  background:var(--arena);
+  line-height:1.65;
+  font-size:17px;
+  -webkit-font-smoothing:antialiased;
+}
+img,svg{max-width:100%;}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:600;line-height:1.15;letter-spacing:-.015em;margin:0;}
+p{margin:0;}
+a{color:inherit;}
+
+/* ---------- barra fija ---------- */
+.barra-propuesta{
+  position:fixed;top:0;left:0;right:0;z-index:9999;
+  height:var(--barra);
+  display:flex;align-items:center;justify-content:center;
+  padding:0 14px;
+  background:linear-gradient(90deg,#14503f 0%,#1f6f5c 48%,#2f8a72 100%);
+  color:#eaf6f1;
+  font-size:12.5px;letter-spacing:.055em;text-transform:uppercase;
+  font-weight:600;
+  text-align:center;
+  box-shadow:0 2px 14px rgba(20,80,63,.28);
+}
+.barra-propuesta span{
+  display:block;
+  max-width:100%;
+  line-height:1.3;
+}
+
+/* ---------- layout ---------- */
+.contenedor{width:100%;max-width:1160px;margin:0 auto;padding:0 24px;}
+section{position:relative;}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--verde);
+  background:var(--verde-claro);
+  border-radius:999px;
+  padding:7px 15px;
+  font-family:var(--sans);
+}
+.eyebrow.coral{color:#b8543a;background:var(--coral-claro);}
+.eyebrow.azul{color:#2f5a7c;background:var(--azul-claro);}
+.punto{width:7px;height:7px;border-radius:50%;background:currentColor;flex:none;}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(1100px 620px at 88% -10%,rgba(61,111,150,.16),transparent 62%),
+    radial-gradient(800px 520px at 6% 104%,rgba(232,131,106,.18),transparent 60%),
+    linear-gradient(170deg,#fdfbf7 0%,#f4efe5 100%);
+  padding:74px 0 88px;
+  border-bottom:1px solid var(--linea);
+}
+.hero-huella{
+  position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background-image:
+    radial-gradient(circle at 1px 1px,rgba(31,111,92,.16) 1px,transparent 1.6px);
+  background-size:26px 26px;
+  mask-image:linear-gradient(180deg,rgba(0,0,0,.55),transparent 72%);
+  -webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,.55),transparent 72%);
+}
+.hero-grid{
+  position:relative;
+  display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);
+  gap:52px;align-items:center;
+}
+.hero h1{
+  font-size:clamp(34px,5vw,58px);
+  margin:22px 0 0;
+}
+.hero h1 em{font-style:normal;color:var(--verde);position:relative;white-space:nowrap;}
+.hero h1 em::after{
+  content:"";position:absolute;left:0;right:0;bottom:.04em;height:.28em;
+  background:linear-gradient(90deg,rgba(232,131,106,.42),rgba(232,131,106,.14));
+  border-radius:4px;z-index:-1;
+}
+.hero .entradilla{
+  margin-top:20px;font-size:clamp(16px,1.6vw,19px);color:var(--tinta-suave);
+  max-width:34em;
+}
+.hero-acciones{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px;align-items:center;}
+.btn{
+  display:inline-flex;align-items:center;gap:11px;
+  padding:15px 26px;border-radius:999px;
+  font-weight:700;text-decoration:none;font-size:16px;
+  transition:transform .18s ease,box-shadow .18s ease,background .18s ease;
+  max-width:100%;
+}
+.btn-tel{
+  background:linear-gradient(135deg,#1f6f5c,#2f8a72);
+  color:#fff;box-shadow:0 10px 26px rgba(31,111,92,.28);
+}
+.btn-tel:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(31,111,92,.34);}
+.btn-tel .num{letter-spacing:.02em;}
+.btn-fantasma{
+  background:rgba(255,255,255,.7);
+  border:1px solid var(--linea);
+  color:var(--tinta);
+}
+.btn-fantasma:hover{background:#fff;transform:translateY(-2px);}
+.hero-nota{
+  margin-top:20px;font-size:14px;color:var(--tinta-suave);
+  display:flex;align-items:center;gap:9px;flex-wrap:wrap;
+}
+.hero-nota svg{flex:none;}
+
+/* tarjeta ilustración hero */
+.hero-arte{
+  position:relative;
+  background:linear-gradient(160deg,#ffffff 0%,#f6fbf9 100%);
+  border:1px solid var(--linea);
+  border-radius:28px;
+  padding:26px;
+  box-shadow:var(--sombra-alta);
+  min-width:0;
+}
+.hero-arte svg{display:block;width:100%;height:auto;}
+.hero-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;}
+.chip{
+  font-size:12.5px;font-weight:600;letter-spacing:.02em;
+  padding:7px 13px;border-radius:999px;
+  background:var(--arena-2);color:var(--tinta-suave);
+  border:1px solid var(--linea);
+}
+
+/* ---------- tira de valores ---------- */
+.tira{background:var(--verde-osc);color:#dff0ea;padding:26px 0;}
+.tira-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;}
+.tira-item{display:flex;gap:13px;align-items:flex-start;min-width:0;}
+.tira-item svg{flex:none;margin-top:2px;}
+.tira-item b{display:block;font-size:15px;color:#fff;font-weight:700;}
+.tira-item span{font-size:14px;color:rgba(223,240,234,.8);line-height:1.5;}
+
+/* ---------- secciones ---------- */
+.seccion{padding:86px 0;}
+.seccion-cab{max-width:46em;}
+.seccion-cab h2{font-size:clamp(28px,3.4vw,40px);margin-top:18px;}
+.seccion-cab p{margin-top:16px;color:var(--tinta-suave);font-size:17px;}
+
+/* servicios */
+.servicios{background:var(--blanco);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);}
+.grid-serv{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));
+  gap:20px;margin-top:44px;
+}
+.card-serv{
+  background:linear-gradient(180deg,#fff 0%,#fcfaf6 100%);
+  border:1px solid var(--linea);
+  border-radius:var(--r);
+  padding:26px 24px 28px;
+  box-shadow:var(--sombra);
+  transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;
+  min-width:0;
+}
+.card-serv:hover{transform:translateY(-4px);box-shadow:var(--sombra-alta);border-color:#cfe3dc;}
+.ico{
+  width:54px;height:54px;border-radius:15px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--verde-claro);
+  margin-bottom:18px;
+}
+.ico.c2{background:var(--coral-claro);}
+.ico.c3{background:var(--azul-claro);}
+.ico.c4{background:#f4eee2;}
+.card-serv h3{font-size:19px;}
+.card-serv p{margin-top:9px;font-size:15px;color:var(--tinta-suave);line-height:1.6;}
+
+/* pasos */
+.pasos-sec{
+  background:
+    radial-gradient(760px 420px at 12% 0%,rgba(61,111,150,.1),transparent 60%),
+    linear-gradient(180deg,var(--arena) 0%,#f6f1e8 100%);
+}
+.grid-pasos{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));
+  gap:24px;margin-top:46px;
+}
+.paso{
+  position:relative;
+  background:#fff;border:1px solid var(--linea);border-radius:var(--r);
+  padding:32px 26px 28px;box-shadow:var(--sombra);min-width:0;
+}
+.paso-num{
+  position:absolute;top:-19px;left:26px;
+  width:44px;height:44px;border-radius:14px;
+  background:linear-gradient(135deg,#1f6f5c,#2f8a72);
+  color:#fff;display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-size:20px;font-weight:700;
+  box-shadow:0 8px 18px rgba(31,111,92,.26);
+}
+.paso h3{font-size:20px;margin-top:12px;}
+.paso p{margin-top:10px;color:var(--tinta-suave);font-size:15.5px;}
+.paso-linea{display:block;margin-top:20px;}
+
+/* contacto */
+.contacto{background:var(--blanco);border-top:1px solid var(--linea);}
+.grid-contacto{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);
+  gap:40px;margin-top:44px;align-items:start;
+}
+.datos{display:grid;gap:14px;}
+.dato{
+  display:flex;gap:16px;align-items:flex-start;
+  background:linear-gradient(180deg,#fff,#fcfaf6);
+  border:1px solid var(--linea);border-radius:var(--r);
+  padding:20px 22px;box-shadow:var(--sombra);min-width:0;
+}
+.dato .ico{width:46px;height:46px;border-radius:13px;margin:0;flex:none;}
+.dato-txt{min-width:0;}
+.dato-txt b{display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--tinta-suave);font-weight:700;}
+.dato-txt .valor{
+  display:block;margin-top:4px;font-size:18px;font-weight:600;color:var(--tinta);
+  text-decoration:none;overflow-wrap:anywhere;word-break:break-word;
+}
+a.valor:hover{color:var(--verde);}
+.dato-txt small{display:block;margin-top:5px;font-size:14px;color:var(--tinta-suave);line-height:1.5;}
+
+.mapa-caja{
+  background:linear-gradient(160deg,#f7fbfa,#eef5f2);
+  border:1px solid var(--linea);border-radius:22px;
+  padding:16px;box-shadow:var(--sombra-alta);min-width:0;
+}
+.mapa-caja svg{display:block;width:100%;height:auto;border-radius:14px;}
+.mapa-pie{
+  display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;
+  margin-top:14px;padding:0 6px 4px;font-size:13.5px;color:var(--tinta-suave);
+}
+.leyenda{display:inline-flex;align-items:center;gap:7px;}
+.leyenda i{width:11px;height:11px;border-radius:3px;background:var(--coral);display:inline-block;}
+.leyenda i.v{background:var(--verde);border-radius:50%;}
+
+/* cta final */
+.cta-final{
+  background:linear-gradient(135deg,#14503f 0%,#1f6f5c 55%,#2b8570 100%);
+  color:#fff;padding:70px 0;position:relative;overflow:hidden;
+}
+.cta-final::after{
+  content:"";position:absolute;inset:0;
+  background-image:radial-gradient(circle at 1px 1px,rgba(255,255,255,.14) 1px,transparent 1.6px);
+  background-size:30px 30px;opacity:.6;pointer-events:none;
+}
+.cta-final .contenedor{position:relative;z-index:1;}
+.cta-final h2{font-size:clamp(26px,3.4vw,38px);max-width:18em;}
+.cta-final p{margin-top:14px;color:rgba(255,255,255,.82);max-width:40em;}
+.btn-blanco{background:#fff;color:var(--verde-osc);box-shadow:0 10px 26px rgba(0,0,0,.18);}
+.btn-blanco:hover{transform:translateY(-2px);}
+
+/* pie */
+footer{background:#132b25;color:#c9d9d3;padding:56px 0 40px;}
+.pie-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));
+  gap:32px;
+}
+footer h4{color:#fff;font-size:18px;}
+footer p,footer a{font-size:15px;color:#a9bfb8;text-decoration:none;overflow-wrap:anywhere;}
+footer a:hover{color:#fff;}
+.pie-lista{display:grid;gap:8px;margin-top:14px;}
+.pie-firma{
+  margin-top:40px;padding-top:22px;border-top:1px solid rgba(255,255,255,.12);
+  font-size:13.5px;color:#8ba69e;line-height:1.6;
+}
+.aviso{
+  margin-top:10px;font-size:13px;color:#7d968f;
+}
+
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:38px;}
+  .grid-contacto{grid-template-columns:1fr;gap:30px;}
+  .tira-grid{grid-template-columns:1fr;gap:18px;}
+}
+@media (max-width:640px){
+  :root{--barra:64px;}
+  body{font-size:16.5px;}
+  .contenedor{padding:0 18px;}
+  .barra-propuesta{font-size:11px;letter-spacing:.04em;}
+  .hero{padding:48px 0 60px;}
+  .seccion{padding:62px 0;}
+  .hero-arte{padding:18px;border-radius:22px;}
+  .btn{width:100%;justify-content:center;padding:15px 18px;font-size:15.5px;}
+  .hero-acciones{gap:11px;}
+  .dato{padding:18px;gap:13px;}
+  .dato-txt .valor{font-size:17px;}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none !important;transition:none !important;scroll-behavior:auto !important;}
+}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease;}
+.reveal.visible{opacity:1;transform:none;}
+</style>
+<noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
+<style>@media (prefers-reduced-motion: reduce){.reveal{opacity:1 !important;transform:none !important;}}</style>
+</head>
+<body>
+
+<div class="barra-propuesta" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="hero-huella" aria-hidden="true"></div>
+  <div class="contenedor hero-grid">
+    <div>
+      <span class="eyebrow"><span class="punto"></span>Clínica Veterinaria Clinican · Sede de Martos</span>
+      <h1>Cuidado veterinario <em>cercano</em> para los que no saben decir dónde les duele.</h1>
+      <p class="entradilla">Atención clínica para perros, gatos y otros animales de compañía en nuestra sede de Martos. Consulta, prevención y seguimiento con un trato tranquilo, explicaciones claras y el tiempo que cada familia necesita.</p>
+
+      <div class="hero-acciones">
+        <a class="btn btn-tel" href="tel:953700107">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6.2 3.5h3l1.5 4-2 1.4a12.5 12.5 0 0 0 6.4 6.4l1.4-2 4 1.5v3c0 1-.8 1.8-1.8 1.7C11.4 19.7 4.3 12.6 3.5 5.3A1.8 1.8 0 0 1 5.2 3.5h1z" fill="currentColor"/>
+          </svg>
+          <span>Llamar al <span class="num">953 700 107</span></span>
+        </a>
+        <a class="btn btn-fantasma" href="#contacto">Cómo llegar</a>
+      </div>
+
+      <p class="hero-nota">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z" stroke="#1f6f5c" stroke-width="1.7"/>
+          <circle cx="12" cy="10" r="2.6" fill="#e8836a"/>
+        </svg>
+        Plaza Almazara 6, local · 23600 Martos (Jaén)
+      </p>
+    </div>
+
+    <!-- ilustración SVG: perro y gato -->
+    <div class="hero-arte">
+      <svg viewBox="0 0 420 330" role="img" aria-label="Ilustración de un perro y un gato acompañados por un símbolo de cuidado veterinario">
+        <defs>
+          <linearGradient id="gFondo" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#e6f2ee"/><stop offset="1" stop-color="#eaf2f8"/>
+          </linearGradient>
+          <linearGradient id="gPerro" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#3b8a74"/><stop offset="1" stop-color="#1f6f5c"/>
+          </linearGradient>
+          <linearGradient id="gGato" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#f0a18c"/><stop offset="1" stop-color="#e8836a"/>
+          </linearGradient>
+        </defs>
+
+        <rect x="0" y="0" width="420" height="330" rx="20" fill="url(#gFondo)"/>
+        <circle cx="330" cy="72" r="52" fill="#ffffff" opacity=".55"/>
+        <circle cx="72" cy="268" r="64" fill="#ffffff" opacity=".4"/>
+
+        <!-- suelo -->
+        <path d="M20 268 Q210 240 400 268 L400 300 Q210 278 20 300 Z" fill="#ffffff" opacity=".65"/>
+
+        <!-- perro -->
+        <g>
+          <ellipse cx="150" cy="255" rx="72" ry="16" fill="#1f6f5c" opacity=".1"/>
+          <path d="M108 250 v-56 q0-46 44-46 t44 46 v56 q0 8-8 8h-72 q-8 0-8-8z" fill="url(#gPerro)"/>
+          <!-- orejas -->
+          <path d="M112 162 q-22 -6 -26 24 q-3 26 16 30 q10 2 14 -8 z" fill="#14503f"/>
+          <path d="M192 162 q22 -6 26 24 q3 26 -16 30 q-10 2 -14 -8 z" fill="#14503f"/>
+          <!-- hocico -->
+          <ellipse cx="152" cy="212" rx="30" ry="24" fill="#f7f2e8"/>
+          <ellipse cx="152" cy="198" rx="9" ry="7" fill="#1d2b28"/>
+          <path d="M152 205 v9 M152 214 q-9 8 -16 1 M152 214 q9 8 16 1" stroke="#1d2b28" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+          <!-- ojos -->
+          <circle cx="132" cy="176" r="6" fill="#0f2320"/><circle cx="134" cy="174" r="2" fill="#fff"/>
+          <circle cx="172" cy="176" r="6" fill="#0f2320"/><circle cx="174" cy="174" r="2" fill="#fff"/>
+          <!-- collar -->
+          <path d="M112 244 q40 14 80 0" stroke="#e8836a" stroke-width="9" fill="none" stroke-linecap="round"/>
+          <circle cx="152" cy="252" r="7" fill="#f7f2e8"/>
+        </g>
+
+        <!-- gato -->
+        <g>
+          <ellipse cx="290" cy="258" rx="58" ry="13" fill="#e8836a" opacity=".16"/>
+          <path d="M256 252 v-40 q0-38 34-38 t34 38 v40 q0 6-6 6 h-56 q-6 0-6-6z" fill="url(#gGato)"/>
+          <path d="M262 186 l-4 -30 l26 16 z" fill="#e8836a"/>
+          <path d="M318 186 l4 -30 l-26 16 z" fill="#e8836a"/>
+          <path d="M266 182 l-2 -17 l15 9 z" fill="#fdeee9"/>
+          <path d="M314 182 l2 -17 l-15 9 z" fill="#fdeee9"/>
+          <circle cx="277" cy="204" r="5" fill="#3a1d16"/><circle cx="278.6" cy="202.4" r="1.7" fill="#fff"/>
+          <circle cx="303" cy="204" r="5" fill="#3a1d16"/><circle cx="304.6" cy="202.4" r="1.7" fill="#fff"/>
+          <path d="M290 216 l-5 4 h10 z" fill="#3a1d16"/>
+          <path d="M290 220 v5 M290 225 q-7 6 -12 1 M290 225 q7 6 12 1" stroke="#3a1d16" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+          <path d="M268 216 h-22 M268 222 h-20 M312 216 h22 M312 222 h20" stroke="#fdeee9" stroke-width="2" stroke-linecap="round"/>
+          <!-- cola -->
+          <path d="M324 248 q34 -4 30 -40" stroke="#e8836a" stroke-width="13" fill="none" stroke-linecap="round"/>
+        </g>
+
+        <!-- corazón con cruz veterinaria -->
+        <g transform="translate(330,66)">
+          <path d="M0 26 C-24 8 -22 -14 -8 -18 C-2 -20 2 -16 0 -10 C-2 -16 2 -20 8 -18 C22 -14 24 8 0 26 Z" fill="#1f6f5c" opacity=".9"/>
+          <path d="M-1.8 -8 h3.6 v5.4 h5.4 v3.6 h-5.4 v5.4 h-3.6 v-5.4 h-5.4 v-3.6 h5.4 z" fill="#ffffff"/>
+        </g>
+
+        <!-- huellas decorativas -->
+        <g fill="#1f6f5c" opacity=".2">
+          <g transform="translate(46,120) scale(.9)">
+            <ellipse cx="0" cy="8" rx="9" ry="7"/><circle cx="-9" cy="-3" r="3.4"/><circle cx="-2.6" cy="-7" r="3.4"/><circle cx="4.4" cy="-6" r="3.4"/><circle cx="9.6" cy="-1" r="3.2"/>
+          </g>
+          <g transform="translate(76,86) scale(.7)">
+            <ellipse cx="0" cy="8" rx="9" ry="7"/><circle cx="-9" cy="-3" r="3.4"/><circle cx="-2.6" cy="-7" r="3.4"/><circle cx="4.4" cy="-6" r="3.4"/><circle cx="9.6" cy="-1" r="3.2"/>
+          </g>
+        </g>
+      </svg>
+
+      <div class="hero-chips">
+        <span class="chip">Animales de compañía</span>
+        <span class="chip">Medicina preventiva</span>
+        <span class="chip">Seguimiento cercano</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= TIRA ================= -->
+<div class="tira">
+  <div class="contenedor tira-grid">
+    <div class="tira-item">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 21s7.5-5 7.5-11.2A5.3 5.3 0 0 0 12 5.6 5.3 5.3 0 0 0 4.5 9.8C4.5 16 12 21 12 21z" stroke="#7fd8bd" stroke-width="1.6"/>
+        <path d="M11 9.6h2v2h2v2h-2v2h-2v-2H9v-2h2z" fill="#7fd8bd"/>
+      </svg>
+      <div><b>Trato tranquilo</b><span>Manejo cuidadoso y sin prisas dentro de la consulta.</span></div>
+    </div>
+    <div class="tira-item">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M4 6.5h16M4 12h16M4 17.5h10" stroke="#7fd8bd" stroke-width="1.7" stroke-linecap="round"/>
+      </svg>
+      <div><b>Explicaciones claras</b><span>Te contamos qué le pasa y qué opciones hay, sin tecnicismos.</span></div>
+    </div>
+    <div class="tira-item">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="12" cy="12" r="8.2" stroke="#7fd8bd" stroke-width="1.6"/>
+        <path d="M12 7.6V12l3 2" stroke="#7fd8bd" stroke-width="1.7" stroke-linecap="round"/>
+      </svg>
+      <div><b>Cita por teléfono</b><span>Llama y organizamos la visita en la sede de Martos.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= SERVICIOS ================= -->
+<section class="seccion servicios reveal" id="servicios">
+  <div class="contenedor">
+    <div class="seccion-cab">
+      <span class="eyebrow azul"><span class="punto"></span>Servicios</span>
+      <h2>Lo que tu animal puede necesitar, en un mismo sitio</h2>
+      <p>Servicios habituales de clínica veterinaria para animales de compañía. Si tienes dudas sobre alguno en concreto, lo mejor es consultarlo por teléfono.</p>
+    </div>
+
+    <div class="grid-serv">
+
+      <article class="card-serv">
+        <div class="ico">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <path d="M7 4.5v6a5 5 0 0 0 10 0v-6" stroke="#1f6f5c" stroke-width="1.8" stroke-linecap="round"/>
+            <circle cx="7" cy="4.5" r="1.7" fill="#1f6f5c"/><circle cx="17" cy="4.5" r="1.7" fill="#1f6f5c"/>
+            <path d="M12 15.4v3.1a4.4 4.4 0 0 0 8.8 0v-1.3" stroke="#1f6f5c" stroke-width="1.8" stroke-linecap="round"/>
+            <circle cx="20.8" cy="15.4" r="2.6" stroke="#e8836a" stroke-width="1.8"/>
+          </svg>
+        </div>
+        <h3>Consulta general</h3>
+        <p>Revisión, exploración y orientación sobre el estado de salud de tu animal, con seguimiento cuando hace falta.</p>
+      </article>
+
+      <article class="card-serv">
+        <div class="ico c2">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <path d="M16.5 5.5l6 6" stroke="#b8543a" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M18.8 8l-9.6 9.6-3.6 1.2 1.2-3.6L16.4 5.6z" stroke="#b8543a" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M12.6 9.4l3.6 3.6" stroke="#e8836a" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M4.5 23.5h8" stroke="#b8543a" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Vacunación y desparasitación</h3>
+        <p>Planes de medicina preventiva ajustados a la especie, la edad y el modo de vida de cada animal.</p>
+      </article>
+
+      <article class="card-serv">
+        <div class="ico c3">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <path d="M9 4.5v8.2a5 5 0 0 0 10 0V4.5" stroke="#2f5a7c" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M7 4.5h4M17 4.5h4" stroke="#2f5a7c" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M14 17.7v2.6a3.3 3.3 0 1 0 6.6 0" stroke="#3d6f96" stroke-width="1.8" stroke-linecap="round"/>
+            <circle cx="20.6" cy="20.3" r="2.4" fill="#3d6f96"/>
+          </svg>
+        </div>
+        <h3>Cirugía</h3>
+        <p>Intervenciones quirúrgicas habituales en la clínica, con preparación previa e indicaciones para la recuperación en casa.</p>
+      </article>
+
+      <article class="card-serv">
+        <div class="ico c4">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <rect x="4" y="5" width="20" height="15" rx="2.6" stroke="#8a6a35" stroke-width="1.8"/>
+            <path d="M8.6 15.5c1.4-4.4 2.6-6.4 4-6.4s2.2 3.6 3.2 3.6 1.6-1.8 2.6-1.8 1.4 1.4 2 4.6" stroke="#8a6a35" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M10 23.4h8" stroke="#8a6a35" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Diagnóstico por imagen</h3>
+        <p>Pruebas de imagen como apoyo al diagnóstico, para ver lo que la exploración por sí sola no muestra.</p>
+      </article>
+
+      <article class="card-serv">
+        <div class="ico">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <path d="M11 3.5v7.2L6.6 20a3 3 0 0 0 2.7 4.3h9.4a3 3 0 0 0 2.7-4.3L17 10.7V3.5" stroke="#1f6f5c" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M9.5 3.5h9" stroke="#1f6f5c" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M8.4 16.6h11.2" stroke="#e8836a" stroke-width="1.8" stroke-linecap="round"/>
+            <circle cx="12.4" cy="20.2" r="1.3" fill="#e8836a"/><circle cx="16" cy="21.4" r="1" fill="#e8836a"/>
+          </svg>
+        </div>
+        <h3>Análisis clínicos</h3>
+        <p>Analíticas para completar el diagnóstico, controlar tratamientos o preparar una intervención.</p>
+      </article>
+
+      <article class="card-serv">
+        <div class="ico c3">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <rect x="3.5" y="10.5" width="14" height="7" rx="3.5" stroke="#2f5a7c" stroke-width="1.8"/>
+            <path d="M7 12.6v2.8M10 12.6v2.8M13 12.6v2.8" stroke="#3d6f96" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M17.5 14h3.2" stroke="#2f5a7c" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M21 9.6c2.6 1.4 2.6 7.4 0 8.8" stroke="#3d6f96" stroke-width="1.7" stroke-linecap="round"/>
+            <path d="M24 7.4c3.4 2.4 3.4 10.8 0 13.2" stroke="#3d6f96" stroke-width="1.5" stroke-linecap="round" opacity=".6"/>
+          </svg>
+        </div>
+        <h3>Identificación por microchip</h3>
+        <p>Colocación del microchip y registro identificativo del animal, un trámite rápido dentro de la consulta.</p>
+      </article>
+
+      <article class="card-serv">
+        <div class="ico c2">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <circle cx="7" cy="7.5" r="3" stroke="#b8543a" stroke-width="1.8"/>
+            <circle cx="7" cy="20.5" r="3" stroke="#b8543a" stroke-width="1.8"/>
+            <path d="M9.6 9.3L23 20.5M9.6 18.7L23 7.5" stroke="#e8836a" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Peluquería canina</h3>
+        <p>Baño, corte y cuidado del pelo y las uñas, adaptado al carácter y al tipo de manto de cada perro.</p>
+      </article>
+
+      <article class="card-serv">
+        <div class="ico c4">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+            <path d="M14 24S4.5 17.8 4.5 11.4A4.9 4.9 0 0 1 14 9.2a4.9 4.9 0 0 1 9.5 2.2C23.5 17.8 14 24 14 24z" stroke="#8a6a35" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M7 14.6h3.4l1.8-3.4 2.4 6 1.8-2.6H21" stroke="#8a6a35" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3>Asesoramiento y seguimiento</h3>
+        <p>Pautas sobre alimentación, cuidados en casa y revisiones de control a lo largo de la vida del animal.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRIMERA VISITA ================= -->
+<section class="seccion pasos-sec reveal" id="primera-visita">
+  <div class="contenedor">
+    <div class="seccion-cab">
+      <span class="eyebrow coral"><span class="punto"></span>Tu primera visita</span>
+      <h2>Tres pasos y ya estáis dentro</h2>
+      <p>Sabemos que venir por primera vez impone un poco, tanto a ti como a él. Así es como funciona.</p>
+    </div>
+
+    <div class="grid-pasos">
+      <article class="paso">
+        <div class="paso-num">1</div>
+        <h3>Llama y pide cita</h3>
+        <p>Cuéntanos qué le pasa o qué necesitas revisar. Buscamos el hueco que mejor os encaje en la sede de Martos.</p>
+        <svg class="paso-linea" width="100%" height="34" viewBox="0 0 260 34" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M4 22 Q70 4 130 18 T256 12" stroke="#1f6f5c" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="6 7" opacity=".45"/>
+          <circle cx="256" cy="12" r="4" fill="#e8836a"/>
+        </svg>
+      </article>
+
+      <article class="paso">
+        <div class="paso-num">2</div>
+        <h3>Nos conocemos en consulta</h3>
+        <p>Exploramos al animal sin prisas, preguntamos por su historia y sus hábitos, y resolvemos las dudas que traigas.</p>
+        <svg class="paso-linea" width="100%" height="34" viewBox="0 0 260 34" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M4 14 Q80 30 140 16 T256 20" stroke="#3d6f96" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="6 7" opacity=".45"/>
+          <circle cx="256" cy="20" r="4" fill="#e8836a"/>
+        </svg>
+      </article>
+
+      <article class="paso">
+        <div class="paso-num">3</div>
+        <h3>Plan claro y seguimiento</h3>
+        <p>Te explicamos qué proponemos y por qué, con las pautas para casa y la revisión siguiente si procede.</p>
+        <svg class="paso-linea" width="100%" height="34" viewBox="0 0 260 34" preserveAspectRatio="none" aria-hidden="true">
+          <g transform="translate(8,6) scale(.8)" fill="#1f6f5c" opacity=".35">
+            <ellipse cx="0" cy="12" rx="8" ry="6"/><circle cx="-8" cy="2" r="3"/><circle cx="-2" cy="-1" r="3"/><circle cx="4" cy="-1" r="3"/><circle cx="9" cy="3" r="2.8"/>
+          </g>
+          <g transform="translate(52,14) scale(.8)" fill="#1f6f5c" opacity=".28">
+            <ellipse cx="0" cy="12" rx="8" ry="6"/><circle cx="-8" cy="2" r="3"/><circle cx="-2" cy="-1" r="3"/><circle cx="4" cy="-1" r="3"/><circle cx="9" cy="3" r="2.8"/>
+          </g>
+          <g transform="translate(96,4) scale(.8)" fill="#1f6f5c" opacity=".2">
+            <ellipse cx="0" cy="12" rx="8" ry="6"/><circle cx="-8" cy="2" r="3"/><circle cx="-2" cy="-1" r="3"/><circle cx="4" cy="-1" r="3"/><circle cx="9" cy="3" r="2.8"/>
+          </g>
+        </svg>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACTO ================= -->
+<section class="seccion contacto reveal" id="contacto">
+  <div class="contenedor">
+    <div class="seccion-cab">
+      <span class="eyebrow"><span class="punto"></span>Contacto y ubicación</span>
+      <h2>Estamos en la Plaza Almazara, en Martos</h2>
+      <p>Para cualquier consulta, cita o información sobre disponibilidad, el teléfono es la vía más directa.</p>
+    </div>
+
+    <div class="grid-contacto">
+      <div class="datos">
+
+        <div class="dato">
+          <div class="ico">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6.2 3.5h3l1.5 4-2 1.4a12.5 12.5 0 0 0 6.4 6.4l1.4-2 4 1.5v3c0 1-.8 1.8-1.8 1.7C11.4 19.7 4.3 12.6 3.5 5.3A1.8 1.8 0 0 1 5.2 3.5h1z" fill="#1f6f5c"/>
+            </svg>
+          </div>
+          <div class="dato-txt">
+            <b>Teléfono</b>
+            <a class="valor" href="tel:953700107">953 700 107</a>
+            <small>Llámanos para pedir cita o consultar cualquier duda.</small>
+          </div>
+        </div>
+
+        <div class="dato">
+          <div class="ico c2">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 21.5s7.2-5.8 7.2-11.3A7.2 7.2 0 1 0 4.8 10.2C4.8 15.7 12 21.5 12 21.5z" stroke="#b8543a" stroke-width="1.7"/>
+              <circle cx="12" cy="10" r="2.7" fill="#e8836a"/>
+            </svg>
+          </div>
+          <div class="dato-txt">
+            <b>Dirección</b>
+            <span class="valor">Plaza Almazara 6, local, 23600 Martos (Jaén)</span>
+            <small>Sede de Martos de Clínica Veterinaria Clinican.</small>
+          </div>
+        </div>
+
+        <div class="dato">
+          <div class="ico c3">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="8.4" stroke="#2f5a7c" stroke-width="1.7"/>
+              <path d="M12 7.4V12l3.2 2.1" stroke="#3d6f96" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="dato-txt">
+            <b>Horario</b>
+            <span class="valor">Consultar horario</span>
+            <small>Te confirmamos la disponibilidad por teléfono.</small>
+          </div>
+        </div>
+
+        <div class="dato">
+          <div class="ico c4">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="3.2" y="5.5" width="17.6" height="13" rx="2.4" stroke="#8a6a35" stroke-width="1.7"/>
+              <path d="M4 7l8 6 8-6" stroke="#8a6a35" stroke-width="1.7" stroke-linejoin="round" fill="none"/>
+            </svg>
+          </div>
+          <div class="dato-txt">
+            <b>Email</b>
+            <a class="valor" href="mailto:infojaen@clinicanjaen.com">infojaen@clinicanjaen.com</a>
+            <small>Para consultas que no sean urgentes.</small>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- mapa esquemático -->
+      <div class="mapa-caja">
+        <svg viewBox="0 0 520 400" role="img" aria-label="Mapa esquemático de la zona de la Plaza Almazara en Martos, con la clínica señalada">
+          <defs>
+            <linearGradient id="gMapa" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#f7fbf9"/><stop offset="1" stop-color="#eef4f1"/>
+            </linearGradient>
+          </defs>
+
+          <rect x="0" y="0" width="520" height="400" rx="14" fill="url(#gMapa)"/>
+
+          <!-- manzanas -->
+          <g fill="#e4ece8">
+            <rect x="24" y="24" width="150" height="96" rx="8"/>
+            <rect x="346" y="24" width="150" height="96" rx="8"/>
+            <rect x="24" y="286" width="126" height="92" rx="8"/>
+            <rect x="370" y="286" width="126" height="92" rx="8"/>
+            <rect x="24" y="168" width="100" height="78" rx="8"/>
+            <rect x="396" y="168" width="100" height="78" rx="8"/>
+          </g>
+
+          <!-- calles -->
+          <g stroke="#ffffff" stroke-width="26" stroke-linecap="round" fill="none">
+            <path d="M0 148 H520"/>
+            <path d="M0 266 H520"/>
+            <path d="M196 0 V400"/>
+            <path d="M324 0 V400"/>
+          </g>
+          <g stroke="#d8e4df" stroke-width="1.6" stroke-dasharray="9 11" fill="none">
+            <path d="M0 148 H520"/><path d="M0 266 H520"/>
+            <path d="M196 0 V400"/><path d="M324 0 V400"/>
+          </g>
+
+          <!-- plaza -->
+          <rect x="198" y="150" width="124" height="114" rx="16" fill="#dfeee6"/>
+          <circle cx="260" cy="207" r="34" fill="#cfe5d9"/>
+          <circle cx="260" cy="207" r="16" fill="#bcdac9"/>
+          <!-- arbolado de la plaza -->
+          <g fill="#9ac9b1">
+            <circle cx="214" cy="166" r="9"/><circle cx="306" cy="166" r="9"/>
+            <circle cx="214" cy="248" r="9"/><circle cx="306" cy="248" r="9"/>
+          </g>
+          <text x="260" y="292" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#5a7d6f">Plaza Almazara</text>
+
+          <!-- edificio clínica -->
+          <rect x="330" y="160" width="58" height="46" rx="8" fill="#1f6f5c" opacity=".14"/>
+
+          <!-- marcador -->
+          <g transform="translate(359,150)">
+            <ellipse cx="0" cy="6" rx="15" ry="5" fill="#1d2b28" opacity=".14"/>
+            <path d="M0 4 C-17 -14 -15 -36 0 -36 C15 -36 17 -14 0 4 Z" fill="#e8836a"/>
+            <circle cx="0" cy="-22" r="8.6" fill="#fff"/>
+            <path d="M-1.9 -26.4 h3.8 v2.6 h2.6 v3.8 h-2.6 v2.6 h-3.8 v-2.6 h-2.6 v-3.8 h2.6 z" fill="#1f6f5c"/>
+          </g>
+          <text x="359" y="228" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#1f6f5c" font-weight="bold">Clinican</text>
+          <text x="359" y="246" text-anchor="middle" font-family="Georgia, serif" font-size="12.5" fill="#54635f">n.º 6, local</text>
+
+          <!-- norte -->
+          <g transform="translate(474,352)">
+            <circle cx="0" cy="0" r="20" fill="#ffffff" opacity=".85"/>
+            <path d="M0 -12 L5 4 L0 0 L-5 4 Z" fill="#3d6f96"/>
+            <text x="0" y="16" text-anchor="middle" font-family="Georgia, serif" font-size="10.5" fill="#54635f">N</text>
+          </g>
+        </svg>
+
+        <div class="mapa-pie">
+          <span class="leyenda"><i></i> Clínica Veterinaria Clinican</span>
+          <span class="leyenda"><i class="v"></i> Plaza Almazara</span>
+          <span>Mapa esquemático, no a escala.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA FINAL ================= -->
+<section class="cta-final">
+  <div class="contenedor">
+    <span class="eyebrow" style="background:rgba(255,255,255,.14);color:#dff0ea;"><span class="punto"></span>¿Hablamos?</span>
+    <h2 style="margin-top:18px;">Si algo no le va bien, mejor preguntar antes que esperar</h2>
+    <p>Llámanos y vemos juntos qué necesita. Estamos en la sede de Martos, en la Plaza Almazara.</p>
+    <div class="hero-acciones">
+      <a class="btn btn-blanco" href="tel:953700107">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M6.2 3.5h3l1.5 4-2 1.4a12.5 12.5 0 0 0 6.4 6.4l1.4-2 4 1.5v3c0 1-.8 1.8-1.8 1.7C11.4 19.7 4.3 12.6 3.5 5.3A1.8 1.8 0 0 1 5.2 3.5h1z" fill="currentColor"/>
+        </svg>
+        <span>953 700 107</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PIE ================= -->
+<footer>
+  <div class="contenedor">
+    <div class="pie-grid">
+      <div>
+        <h4>Clínica Veterinaria Clinican</h4>
+        <div class="pie-lista">
+          <p>Sede de Martos</p>
+          <p>Plaza Almazara 6, local<br>23600 Martos (Jaén)</p>
+        </div>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <div class="pie-lista">
+          <a href="tel:953700107">953 700 107</a>
+          <a href="mailto:infojaen@clinicanjaen.com">infojaen@clinicanjaen.com</a>
+          <p>Consultar horario</p>
+        </div>
+      </div>
+      <div>
+        <h4>Secciones</h4>
+        <div class="pie-lista">
+          <a href="#servicios">Servicios</a>
+          <a href="#primera-visita">Tu primera visita</a>
+          <a href="#contacto">Contacto y ubicación</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pie-firma">
+      <p>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+      <p class="aviso">Maqueta no oficial y sin vinculación con el negocio. Los contenidos mostrados son orientativos y deben validarse con la clínica antes de cualquier publicación.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){
+    for(var i=0;i<els.length;i++){els[i].classList.add('visible');}
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  },{rootMargin:'0px 0px -8% 0px',threshold:.06});
+  els.forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+<script>setTimeout(function(){var e=document.querySelectorAll('.reveal');for(var i=0;i<e.length;i++){e[i].classList.add('visible');e[i].style.opacity='1';e[i].style.transform='none';}},2500);</script>
+</body>
+</html>
