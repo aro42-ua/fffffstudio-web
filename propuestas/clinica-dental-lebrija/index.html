@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clínica Dental Lebrija · Propuesta de rediseño</title>
+<style>
+:root{
+  --tinta:#16302c;
+  --tinta-2:#2f4f49;
+  --verde:#1f6f63;
+  --verde-claro:#3f9a8a;
+  --arena:#e8dcc9;
+  --arena-2:#f3ece0;
+  --crema:#fbf8f3;
+  --blanco:#ffffff;
+  --coral:#c9704f;
+  --linea:rgba(31,111,99,.18);
+  --sombra:0 18px 44px -28px rgba(22,48,44,.55);
+  --r:18px;
+  --barra:44px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  padding-top:var(--barra);
+  background:var(--crema);
+  color:var(--tinta);
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;
+  line-height:1.65;
+  overflow-wrap:break-word;
+  word-break:break-word;
+  overflow-x:hidden;
+}
+img,svg{max-width:100%;height:auto}
+h1,h2,h3,.ui{font-family:"Seravek","Gill Sans Nova",Ubuntu,Calibri,"DejaVu Sans",source-sans-pro,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+h1,h2,h3{margin:0;line-height:1.16;letter-spacing:-.015em;font-weight:600}
+p{margin:0}
+a{color:inherit}
+
+/* ---------- Barra fija ---------- */
+.barra{
+  position:fixed;top:0;left:0;right:0;z-index:9999;
+  min-height:var(--barra);
+  display:flex;align-items:center;justify-content:center;
+  padding:8px 16px;
+  background:#16302c;
+  color:#f0e9dd;
+  font-family:"Seravek",Ubuntu,Calibri,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:12.5px;letter-spacing:.055em;text-transform:uppercase;
+  text-align:center;line-height:1.35;
+  box-shadow:0 1px 0 rgba(255,255,255,.08), 0 8px 24px -16px rgba(0,0,0,.6);
+}
+.barra span{display:inline-block;max-width:100%}
+
+/* ---------- Layout ---------- */
+.env{width:100%;max-width:1140px;margin:0 auto;padding:0 24px}
+section{position:relative}
+.eyebrow{
+  font-family:"Seravek",Ubuntu,Calibri,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;
+  color:var(--verde);
+  display:flex;align-items:center;gap:10px;
+}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--verde);opacity:.6;flex:none}
+
+/* ---------- Cabecera de marca ---------- */
+.marca{
+  padding:26px 0 0;
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+}
+.marca-logo{flex:none;width:44px;height:44px}
+.marca-txt{display:flex;flex-direction:column;min-width:0}
+.marca-nom{
+  font-family:"Seravek",Ubuntu,Calibri,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-weight:600;font-size:17px;letter-spacing:.01em;line-height:1.2;
+}
+.marca-sub{font-size:13px;color:var(--tinta-2);opacity:.8;letter-spacing:.04em}
+
+/* ---------- Hero ---------- */
+.hero{
+  position:relative;overflow:hidden;
+  padding:44px 0 72px;
+  background:
+    radial-gradient(1100px 620px at 78% -12%, rgba(63,154,138,.16), transparent 62%),
+    radial-gradient(760px 520px at 6% 106%, rgba(232,220,201,.75), transparent 68%),
+    linear-gradient(180deg,#fdfbf7 0%, var(--crema) 100%);
+}
+.hero::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:repeating-linear-gradient(115deg, rgba(31,111,99,.05) 0 1px, transparent 1px 13px);
+  opacity:.65;
+}
+.hero-grid{
+  position:relative;z-index:1;
+  display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);
+  gap:52px;align-items:center;margin-top:46px;
+}
+h1{
+  font-size:clamp(2.1rem,5.2vw,3.5rem);
+  letter-spacing:-.025em;margin:18px 0 0;
+  font-weight:600;
+}
+h1 em{font-style:normal;color:var(--verde);}
+.hero p.lead{
+  margin-top:20px;font-size:clamp(1.02rem,1.6vw,1.18rem);
+  color:var(--tinta-2);max-width:34em;
+}
+.acciones{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px;align-items:center}
+.btn{
+  display:inline-flex;align-items:center;gap:11px;
+  padding:15px 24px;border-radius:999px;text-decoration:none;
+  font-family:"Seravek",Ubuntu,Calibri,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-weight:600;font-size:16px;letter-spacing:.01em;
+  transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+  max-width:100%;
+}
+.btn-tel{
+  background:linear-gradient(140deg,#24796b 0%, #1a5e54 100%);
+  color:#fff;box-shadow:0 14px 30px -16px rgba(26,94,84,.85);
+}
+.btn-tel:hover,.btn-tel:focus-visible{transform:translateY(-2px);box-shadow:0 18px 36px -16px rgba(26,94,84,.9)}
+.btn-tel svg{flex:none}
+.btn-2{
+  background:transparent;color:var(--tinta);
+  border:1px solid rgba(31,111,99,.35);
+}
+.btn-2:hover,.btn-2:focus-visible{background:rgba(31,111,99,.07)}
+.nota-horario{
+  margin-top:18px;font-size:14.5px;color:var(--tinta-2);
+  display:flex;align-items:center;gap:9px;opacity:.9;
+}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--verde-claro);flex:none;box-shadow:0 0 0 4px rgba(63,154,138,.18)}
+
+.hero-art{position:relative;min-width:0}
+.hero-card{
+  background:var(--blanco);border-radius:26px;padding:22px;
+  box-shadow:var(--sombra);border:1px solid rgba(31,111,99,.1);
+}
+.hero-card svg{display:block;width:100%;height:auto}
+
+.valores{
+  position:relative;z-index:1;
+  margin-top:54px;display:grid;gap:14px;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+}
+.valor{
+  background:rgba(255,255,255,.72);
+  border:1px solid rgba(31,111,99,.13);
+  border-radius:var(--r);padding:18px 20px;
+  display:flex;gap:13px;align-items:flex-start;min-width:0;
+}
+.valor svg{flex:none;margin-top:2px}
+.valor b{
+  display:block;font-family:"Seravek",Ubuntu,Calibri,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:15px;font-weight:600;margin-bottom:3px;
+}
+.valor span{font-size:14.5px;color:var(--tinta-2);line-height:1.5}
+
+/* ---------- Tratamientos ---------- */
+.trat{padding:86px 0 90px;background:var(--blanco);border-top:1px solid var(--linea)}
+.sec-head{max-width:46em}
+.sec-head h2{font-size:clamp(1.7rem,3.4vw,2.5rem);margin-top:16px}
+.sec-head p{margin-top:16px;color:var(--tinta-2);font-size:1.03rem}
+.rejilla{
+  margin-top:44px;display:grid;gap:18px;
+  grid-template-columns:repeat(auto-fit,minmax(248px,1fr));
+}
+.card{
+  position:relative;min-width:0;
+  border:1px solid rgba(31,111,99,.15);border-radius:var(--r);
+  padding:26px 24px 24px;
+  background:linear-gradient(175deg,#ffffff 0%, #fbf8f3 100%);
+  transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.card:hover{transform:translateY(-3px);box-shadow:0 22px 40px -30px rgba(22,48,44,.55);border-color:rgba(31,111,99,.32)}
+.ico{
+  width:46px;height:46px;border-radius:13px;flex:none;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(145deg,rgba(63,154,138,.16),rgba(232,220,201,.6));
+  margin-bottom:16px;
+}
+.card h3{font-size:1.14rem;letter-spacing:-.01em}
+.card p{margin-top:9px;font-size:15px;color:var(--tinta-2);line-height:1.58}
+.aviso{
+  margin-top:34px;font-size:14px;color:var(--tinta-2);
+  border-left:2px solid rgba(31,111,99,.3);padding-left:16px;max-width:52em;opacity:.95;
+}
+
+/* ---------- Primera visita ---------- */
+.visita{
+  padding:88px 0 92px;
+  background:
+    linear-gradient(180deg,#f7f2e9 0%, #f3ece0 100%);
+  position:relative;overflow:hidden;
+}
+.visita::before{
+  content:"";position:absolute;inset:0;
+  background-image:repeating-radial-gradient(circle at 0 0, rgba(31,111,99,.07) 0 1px, transparent 1px 16px);
+  opacity:.55;pointer-events:none;
+}
+.visita .env{position:relative;z-index:1}
+.pasos{margin-top:46px;display:grid;gap:20px;grid-template-columns:repeat(3,minmax(0,1fr))}
+.paso{
+  position:relative;min-width:0;
+  background:var(--blanco);border-radius:var(--r);
+  padding:30px 26px 28px;border:1px solid rgba(31,111,99,.12);
+  box-shadow:0 14px 34px -30px rgba(22,48,44,.6);
+}
+.paso-num{
+  font-family:"Seravek",Ubuntu,Calibri,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  display:inline-flex;align-items:center;justify-content:center;
+  width:38px;height:38px;border-radius:50%;
+  background:var(--verde);color:#fff;font-size:15px;font-weight:600;
+  margin-bottom:16px;
+}
+.paso h3{font-size:1.1rem}
+.paso p{margin-top:9px;font-size:15px;color:var(--tinta-2);line-height:1.58}
+
+/* ---------- Contacto ---------- */
+.contacto{padding:88px 0 90px;background:var(--blanco);border-top:1px solid var(--linea)}
+.cont-grid{margin-top:44px;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:40px;align-items:start}
+.datos{display:grid;gap:18px}
+.dato{
+  display:flex;gap:15px;align-items:flex-start;min-width:0;
+  padding:18px 20px;border-radius:14px;
+  background:linear-gradient(170deg,#fbf8f3,#f6f1e8);
+  border:1px solid rgba(31,111,99,.13);
+}
+.dato .ico-s{
+  width:34px;height:34px;flex:none;border-radius:10px;
+  background:rgba(31,111,99,.1);display:flex;align-items:center;justify-content:center;
+}
+.dato-t{
+  font-family:"Seravek",Ubuntu,Calibri,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--verde);font-weight:600;
+}
+.dato-v{font-size:16.5px;margin-top:4px;line-height:1.45;display:block;min-width:0}
+a.dato-v{text-decoration:none;border-bottom:1px solid rgba(31,111,99,.35);padding-bottom:1px}
+a.dato-v:hover{color:var(--verde)}
+.mapa-caja{
+  border:1px solid rgba(31,111,99,.16);border-radius:22px;overflow:hidden;
+  background:#f6f1e8;box-shadow:var(--sombra);
+}
+.mapa-caja svg{display:block;width:100%;height:auto}
+.mapa-pie{
+  padding:14px 20px 16px;font-size:13.5px;color:var(--tinta-2);
+  background:var(--blanco);border-top:1px solid rgba(31,111,99,.12);
+}
+
+/* ---------- Pie ---------- */
+footer{
+  background:#16302c;color:#e6ded1;padding:56px 0 40px;
+}
+.pie-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,auto);gap:30px;align-items:start}
+footer h3{font-size:1.25rem;color:#fff}
+footer p{margin-top:10px;font-size:15px;color:#bfd0c9;line-height:1.6}
+footer a{color:#e9e0d2}
+.pie-mail{
+  display:inline-block;margin-top:14px;font-size:16px;
+  text-decoration:none;border-bottom:1px solid rgba(233,224,210,.4);padding-bottom:2px;
+}
+.pie-mail:hover{color:#8fd3c4;border-color:#8fd3c4}
+.pie-linea{
+  margin-top:40px;padding-top:22px;border-top:1px solid rgba(255,255,255,.13);
+  font-family:"Seravek",Ubuntu,Calibri,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:13.5px;color:#a9bdb6;letter-spacing:.02em;
+}
+.pie-datos{font-size:14.5px;color:#bfd0c9;margin-top:10px;line-height:1.7}
+
+/* ---------- Responsive ---------- */
+@media (max-width:980px){
+  .hero-grid{grid-template-columns:minmax(0,1fr);gap:38px}
+  .cont-grid{grid-template-columns:minmax(0,1fr);gap:30px}
+  .pasos{grid-template-columns:minmax(0,1fr)}
+  .valores{grid-template-columns:minmax(0,1fr)}
+  .pie-grid{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:560px){
+  :root{--barra:58px}
+  body{font-size:16.5px}
+  .env{padding:0 18px}
+  .hero{padding:32px 0 56px}
+  .hero-grid{margin-top:30px}
+  .trat,.visita,.contacto{padding:62px 0 64px}
+  .btn{width:100%;justify-content:center;padding:15px 18px}
+  .barra{font-size:11.5px;letter-spacing:.04em;padding:8px 14px}
+  .card,.paso{padding:24px 20px}
+  .hero-card{padding:14px;border-radius:20px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="barra"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="env">
+
+    <div class="marca">
+      <svg class="marca-logo" viewBox="0 0 48 48" role="img" aria-label="Símbolo de la clínica">
+        <defs>
+          <linearGradient id="lg1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#3f9a8a"/><stop offset="1" stop-color="#1a5e54"/>
+          </linearGradient>
+        </defs>
+        <rect x="0" y="0" width="48" height="48" rx="14" fill="url(#lg1)"/>
+        <path d="M24 13c-3 0-4-1.6-7-1.6-3.6 0-6 2.9-6 7.2 0 5.6 2.6 12 5.2 15.6 1 1.4 2 2.1 3 2.1 1.6 0 2.4-1.6 4.8-1.6s3.2 1.6 4.8 1.6c1 0 2-.7 3-2.1C34.4 30.6 37 24.2 37 18.6c0-4.3-2.4-7.2-6-7.2-3 0-4 1.6-7 1.6z" fill="#fff" opacity=".95"/>
+        <path d="M24 19v9M20.5 22.5h7" stroke="#1a5e54" stroke-width="2.1" stroke-linecap="round"/>
+      </svg>
+      <div class="marca-txt">
+        <span class="marca-nom">Clínica Dental Lebrija</span>
+        <span class="marca-sub">Lebrija · Sevilla</span>
+      </div>
+    </div>
+
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">Odontología general y especializada</div>
+        <h1>Tu salud bucodental,<br><em>tratada con calma</em> y sin prisas.</h1>
+        <p class="lead">Una clínica dental en Lebrija donde cada visita empieza por escucharte: explicamos lo que vemos, resolvemos tus dudas y acordamos contigo los pasos antes de empezar. Sin tecnicismos innecesarios.</p>
+
+        <div class="acciones">
+          <a class="btn btn-tel" href="tel:+34955299515">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6.2 3.5h3.1l1.6 4-2 1.5a12.5 12.5 0 006.1 6.1l1.5-2 4 1.6v3.1a1.7 1.7 0 01-1.9 1.7C10.6 18.8 5.2 13.4 4.5 5.4A1.7 1.7 0 016.2 3.5z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+            </svg>
+            Pedir cita: 955 299 515
+          </a>
+          <a class="btn btn-2" href="#contacto">Cómo llegar</a>
+        </div>
+
+        <p class="nota-horario"><span class="dot" aria-hidden="true"></span> Consultar horario · Avda. Doctor Fleming 21, bajo, Lebrija</p>
+      </div>
+
+      <div class="hero-art">
+        <div class="hero-card">
+          <svg viewBox="0 0 420 330" role="img" aria-label="Ilustración de una consulta dental serena">
+            <defs>
+              <linearGradient id="bgc" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#f4efe4"/><stop offset="1" stop-color="#e6f0ec"/>
+              </linearGradient>
+              <linearGradient id="gtooth" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#e9f2ef"/>
+              </linearGradient>
+              <linearGradient id="garc" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#3f9a8a"/><stop offset="1" stop-color="#1a5e54"/>
+              </linearGradient>
+              <pattern id="dots" width="14" height="14" patternUnits="userSpaceOnUse">
+                <circle cx="2" cy="2" r="1.3" fill="#1f6f63" opacity=".18"/>
+              </pattern>
+            </defs>
+
+            <rect x="0" y="0" width="420" height="330" rx="18" fill="url(#bgc)"/>
+            <rect x="0" y="0" width="420" height="330" rx="18" fill="url(#dots)"/>
+
+            <circle cx="322" cy="78" r="66" fill="#ffffff" opacity=".55"/>
+            <path d="M30 268c60-26 110-10 160-34s90-14 200-56" stroke="#1f6f63" stroke-opacity=".16" stroke-width="2" fill="none"/>
+
+            <!-- arco dental estilizado -->
+            <g transform="translate(210,158)">
+              <path d="M-118 26a118 96 0 01236 0" fill="none" stroke="url(#garc)" stroke-width="3" stroke-opacity=".35"/>
+              <g fill="url(#gtooth)" stroke="#1f6f63" stroke-opacity=".38" stroke-width="1.6">
+                <path d="M-96 8c6-12 20-12 25 0 4 10 0 22-6 30-4 5-10 4-12-2-4-10-12-18-7-28z"/>
+                <path d="M-62 -10c6-12 21-12 26 0 4 10 0 24-7 32-4 5-10 4-12-2-4-11-12-20-7-30z"/>
+                <path d="M-27 -21c6-12 21-12 27 0 4 10 0 26-7 34-4 5-11 4-13-2-4-11-12-22-7-32z"/>
+                <path d="M9 -21c6-12 21-12 27 0 5 10 0 26-7 34-4 5-11 4-13-2-4-11-12-22-7-32z"/>
+                <path d="M45 -10c6-12 21-12 26 0 4 10 0 24-7 32-4 5-10 4-12-2-4-11-12-20-7-30z"/>
+                <path d="M78 8c6-12 20-12 25 0 5 10 0 22-6 30-4 5-10 4-12-2-4-10-12-18-7-28z"/>
+              </g>
+            </g>
+
+            <!-- destello de cuidado -->
+            <g transform="translate(112,88)" stroke="#c9704f" stroke-width="2.6" stroke-linecap="round">
+              <path d="M0 -13v9M0 6v9M-13 1h9M6 1h9"/>
+            </g>
+
+            <!-- tarjeta calma -->
+            <g transform="translate(36,232)">
+              <rect x="0" y="0" width="182" height="62" rx="14" fill="#ffffff" opacity=".92"/>
+              <circle cx="32" cy="31" r="16" fill="#1f6f63" opacity=".12"/>
+              <path d="M25 31l5 5 10-11" stroke="#1f6f63" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="58" y="19" width="96" height="7" rx="3.5" fill="#16302c" opacity=".55"/>
+              <rect x="58" y="34" width="66" height="7" rx="3.5" fill="#16302c" opacity=".26"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="valores">
+      <div class="valor">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3l7 3v5.5c0 4.3-2.9 7.9-7 9.5-4.1-1.6-7-5.2-7-9.5V6l7-3z" stroke="#1f6f63" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 12l2.2 2.2L15.5 10" stroke="#1f6f63" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div><b>Explicaciones claras</b><span>Te contamos qué hemos visto y qué opciones hay, en un lenguaje que se entiende.</span></div>
+      </div>
+      <div class="valor">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.2A4.1 4.1 0 0112 8.4a4.1 4.1 0 017 2.4c0 4.8-7 9.2-7 9.2z" stroke="#1f6f63" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        <div><b>Trato cercano</b><span>Atención tranquila, pensada también para quien acude con miedo al dentista.</span></div>
+      </div>
+      <div class="valor">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.4" stroke="#1f6f63" stroke-width="1.6"/><path d="M12 7.4V12l3 1.9" stroke="#1f6f63" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div><b>Cita por teléfono</b><span>Una llamada basta para consultar disponibilidad y reservar tu visita.</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ TRATAMIENTOS ============ -->
+<section class="trat" id="tratamientos">
+  <div class="env">
+    <div class="sec-head">
+      <div class="eyebrow">Tratamientos</div>
+      <h2>Lo que podemos hacer por tu boca</h2>
+      <p>Atendemos las necesidades habituales de toda la familia, desde el mantenimiento diario hasta los tratamientos que requieren más seguimiento. Si no sabes qué necesitas, empezamos por una revisión.</p>
+    </div>
+
+    <div class="rejilla">
+
+      <article class="card">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5.4c-1.7 0-2.3-.9-4-.9-2 0-3.4 1.6-3.4 4 0 3.1 1.5 6.7 2.9 8.7.6.8 1.1 1.2 1.7 1.2.9 0 1.3-.9 2.8-.9s1.9.9 2.8.9c.6 0 1.1-.4 1.7-1.2 1.4-2 2.9-5.6 2.9-8.7 0-2.4-1.4-4-3.4-4-1.7 0-2.3.9-4 .9z" stroke="#1a5e54" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+        <h3>Revisión y limpieza</h3>
+        <p>Exploración de dientes y encías y limpieza profesional para mantener la boca al día y detectar a tiempo lo que conviene vigilar.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5.5 14.5l8-8a2.6 2.6 0 013.7 3.7l-8 8-4.5.8.8-4.5z" stroke="#1a5e54" stroke-width="1.5" stroke-linejoin="round"/><path d="M12.4 7.6l3.9 3.9" stroke="#1a5e54" stroke-width="1.5"/></svg></div>
+        <h3>Empastes</h3>
+        <p>Reconstrucción de la pieza afectada por caries con materiales del color del diente, recuperando forma y función para masticar con normalidad.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4.6c-1.6 0-2.2-.8-3.7-.8-1.9 0-3.1 1.5-3.1 3.7 0 2.9 1.3 6.2 2.6 8 .6.8 1 1.1 1.6 1.1.8 0 1.2-.8 2.6-.8" stroke="#1a5e54" stroke-width="1.5" stroke-linejoin="round"/><path d="M14.6 6.2c1.4 0 2.5 1.2 2.5 3 0 2.4-1 5.3-2.2 7.2-.7 1.2-1.1 3.3-1.1 3.3" stroke="#1a5e54" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <h3>Endodoncia</h3>
+        <p>Tratamiento del interior del diente cuando el nervio está afectado, con el objetivo de conservar la pieza natural siempre que sea posible.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3.5 9.5h17" stroke="#1a5e54" stroke-width="1.5" stroke-linecap="round"/><rect x="5" y="6.6" width="4.2" height="5.8" rx="1.3" stroke="#1a5e54" stroke-width="1.5"/><rect x="14.8" y="6.6" width="4.2" height="5.8" rx="1.3" stroke="#1a5e54" stroke-width="1.5"/><path d="M4.5 15.5c3.5 3 11.5 3 15 0" stroke="#1a5e54" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <h3>Ortodoncia</h3>
+        <p>Corrección de la posición de los dientes y de la mordida, con distintas opciones de aparatología y revisiones periódicas de seguimiento.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 3.8h6l-.6 3.4H9.6L9 3.8z" stroke="#1a5e54" stroke-width="1.5" stroke-linejoin="round"/><path d="M9.6 7.2h4.8l-.5 3.2H10l-.4-3.2z" stroke="#1a5e54" stroke-width="1.5" stroke-linejoin="round"/><path d="M12 10.4V20" stroke="#1a5e54" stroke-width="1.5" stroke-linecap="round"/><path d="M10.2 13h3.6M10.4 16h3.2" stroke="#1a5e54" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <h3>Implantes</h3>
+        <p>Sustitución de piezas ausentes mediante implantes, con un estudio previo del caso para valorar si es la solución indicada para ti.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.4" stroke="#1a5e54" stroke-width="1.5"/><circle cx="9.4" cy="10.2" r="1.1" fill="#1a5e54"/><circle cx="14.6" cy="10.2" r="1.1" fill="#1a5e54"/><path d="M8.6 14.2c1.9 1.9 4.9 1.9 6.8 0" stroke="#1a5e54" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <h3>Odontopediatría</h3>
+        <p>Atención a los más pequeños con un enfoque paciente y preventivo, para que asocien la visita al dentista con una experiencia tranquila.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.5 8.5h11l-1 9.2a1.6 1.6 0 01-1.6 1.4H9.1a1.6 1.6 0 01-1.6-1.4l-1-9.2z" stroke="#1a5e54" stroke-width="1.5" stroke-linejoin="round"/><path d="M6.5 8.5c1.8-1.6 9.2-1.6 11 0" stroke="#1a5e54" stroke-width="1.5" stroke-linecap="round"/><path d="M17.8 4.4l.6 1.8 1.8.6-1.8.6-.6 1.8-.6-1.8-1.8-.6 1.8-.6.6-1.8z" fill="#1a5e54" opacity=".55"/></svg></div>
+        <h3>Estética dental</h3>
+        <p>Opciones para mejorar el aspecto de tu sonrisa, valoradas siempre a partir del estado de tus dientes y de lo que tú quieres conseguir.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 13h3.2l1.6-4.4 2.6 7.4 1.8-4.6 1.3 1.6h4.5" stroke="#1a5e54" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Urgencias y dolor</h3>
+        <p>Si te ha surgido un dolor o una molestia que no puede esperar, llámanos y valoramos contigo cuándo podemos atenderte.</p>
+      </article>
+
+    </div>
+
+    <p class="aviso">Cada boca es distinta: el tratamiento adecuado y su desarrollo solo pueden determinarse tras una valoración presencial. Esta página es informativa y no sustituye a una consulta.</p>
+  </div>
+</section>
+
+<!-- ============ PRIMERA VISITA ============ -->
+<section class="visita" id="primera-visita">
+  <div class="env">
+    <div class="sec-head">
+      <div class="eyebrow">Tu primera visita</div>
+      <h2>Tres pasos, sin sorpresas</h2>
+      <p>Saber qué va a pasar ayuda a venir más tranquilo. Así es como planteamos la primera cita en la clínica.</p>
+    </div>
+
+    <div class="pasos">
+      <div class="paso">
+        <div class="paso-num">1</div>
+        <h3>Nos llamas</h3>
+        <p>Hablamos por teléfono, nos cuentas qué te ocurre o si solo quieres una revisión, y buscamos juntos el hueco que mejor te venga.</p>
+      </div>
+      <div class="paso">
+        <div class="paso-num">2</div>
+        <h3>Te exploramos y escuchamos</h3>
+        <p>Revisamos dientes y encías con calma, preguntamos por tus antecedentes y por lo que te preocupa. Sin prisa y sin compromiso de continuar.</p>
+      </div>
+      <div class="paso">
+        <div class="paso-num">3</div>
+        <h3>Decidimos contigo</h3>
+        <p>Te explicamos lo que hemos encontrado y las opciones disponibles, resolvemos dudas y solo seguimos adelante cuando lo tienes claro.</p>
+      </div>
+    </div>
+
+    <div class="acciones">
+      <a class="btn btn-tel" href="tel:+34955299515">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M6.2 3.5h3.1l1.6 4-2 1.5a12.5 12.5 0 006.1 6.1l1.5-2 4 1.6v3.1a1.7 1.7 0 01-1.9 1.7C10.6 18.8 5.2 13.4 4.5 5.4A1.7 1.7 0 016.2 3.5z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+        </svg>
+        Llamar al 955 299 515
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section class="contacto" id="contacto">
+  <div class="env">
+    <div class="sec-head">
+      <div class="eyebrow">Contacto</div>
+      <h2>Estamos en Lebrija</h2>
+      <p>En la avenida Doctor Fleming, en planta baja y a pie de calle. Si necesitas indicaciones para llegar, pregúntanos al llamar.</p>
+    </div>
+
+    <div class="cont-grid">
+      <div class="datos">
+        <div class="dato">
+          <div class="ico-s"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.2 3.5h3.1l1.6 4-2 1.5a12.5 12.5 0 006.1 6.1l1.5-2 4 1.6v3.1a1.7 1.7 0 01-1.9 1.7C10.6 18.8 5.2 13.4 4.5 5.4A1.7 1.7 0 016.2 3.5z" stroke="#1a5e54" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+          <div>
+            <div class="dato-t">Teléfono</div>
+            <a class="dato-v" href="tel:+34955299515">955 299 515</a>
+          </div>
+        </div>
+
+        <div class="dato">
+          <div class="ico-s"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 20.5s-6.6-5-6.6-9.8a6.6 6.6 0 1113.2 0c0 4.8-6.6 9.8-6.6 9.8z" stroke="#1a5e54" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="10.6" r="2.4" stroke="#1a5e54" stroke-width="1.6"/></svg></div>
+          <div>
+            <div class="dato-t">Dirección</div>
+            <span class="dato-v">Avda. Doctor Fleming 21, bajo<br>41740 Lebrija (Sevilla)</span>
+          </div>
+        </div>
+
+        <div class="dato">
+          <div class="ico-s"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.4" stroke="#1a5e54" stroke-width="1.6"/><path d="M12 7.4V12l3 1.9" stroke="#1a5e54" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div>
+            <div class="dato-t">Horario</div>
+            <span class="dato-v">Consultar horario</span>
+          </div>
+        </div>
+
+        <div class="dato">
+          <div class="ico-s"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.6" y="5.6" width="16.8" height="12.8" rx="2.4" stroke="#1a5e54" stroke-width="1.6"/><path d="M4.4 7.4l7.6 5.4 7.6-5.4" stroke="#1a5e54" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div>
+            <div class="dato-t">Email</div>
+            <a class="dato-v" href="mailto:direccionlebrija1@gmail.com">direccionlebrija1@gmail.com</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mapa-caja">
+        <svg viewBox="0 0 640 400" role="img" aria-label="Mapa esquemático orientativo de la ubicación de la clínica en Lebrija">
+          <defs>
+            <linearGradient id="mfondo" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#f6f1e8"/><stop offset="1" stop-color="#eaf1ed"/>
+            </linearGradient>
+            <pattern id="mtrama" width="18" height="18" patternUnits="userSpaceOnUse">
+              <path d="M0 18L18 0" stroke="#1f6f63" stroke-opacity=".07" stroke-width="1.4"/>
+            </pattern>
+          </defs>
+
+          <rect x="0" y="0" width="640" height="400" fill="url(#mfondo)"/>
+          <rect x="0" y="0" width="640" height="400" fill="url(#mtrama)"/>
+
+          <!-- manzanas -->
+          <g fill="#ffffff" fill-opacity=".72" stroke="#1f6f63" stroke-opacity=".16" stroke-width="1.4">
+            <rect x="40" y="46" width="170" height="104" rx="8"/>
+            <rect x="248" y="46" width="128" height="104" rx="8"/>
+            <rect x="414" y="46" width="186" height="104" rx="8"/>
+            <rect x="40" y="252" width="150" height="110" rx="8"/>
+            <rect x="228" y="252" width="168" height="110" rx="8"/>
+            <rect x="434" y="252" width="166" height="110" rx="8"/>
+            <rect x="414" y="184" width="186" height="38" rx="8"/>
+          </g>
+
+          <!-- zona verde -->
+          <rect x="248" y="184" width="128" height="38" rx="8" fill="#3f9a8a" fill-opacity=".16" stroke="#1f6f63" stroke-opacity=".2" stroke-width="1.4"/>
+          <circle cx="288" cy="203" r="7" fill="#1f6f63" fill-opacity=".28"/>
+          <circle cx="336" cy="203" r="5" fill="#1f6f63" fill-opacity=".22"/>
+
+          <!-- avenida principal -->
+          <rect x="0" y="158" width="640" height="18" fill="#e3d7c2"/>
+          <path d="M0 167h640" stroke="#ffffff" stroke-width="2.4" stroke-dasharray="16 14"/>
+          <!-- calles secundarias -->
+          <rect x="216" y="0" width="14" height="400" fill="#ece3d4"/>
+          <rect x="390" y="0" width="14" height="400" fill="#ece3d4"/>
+          <rect x="0" y="230" width="640" height="12" fill="#ece3d4"/>
+
+          <!-- etiquetas -->
+          <g font-family="Seravek, Ubuntu, Calibri, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#2f4f49" fill-opacity=".8">
+            <text x="24" y="152">Avda. Doctor Fleming</text>
+            <text x="252" y="212" font-size="12">zona verde</text>
+            <text x="24" y="224" font-size="12">calle secundaria</text>
+          </g>
+
+          <!-- marcador -->
+          <g transform="translate(296,120)">
+            <ellipse cx="0" cy="54" rx="22" ry="7" fill="#16302c" opacity=".16"/>
+            <path d="M0 52C0 52-20 30-20 16A20 20 0 1120 16c0 14-20 36-20 36z" fill="#1f6f63"/>
+            <circle cx="0" cy="16" r="7.6" fill="#ffffff"/>
+          </g>
+          <g transform="translate(330,74)">
+            <rect x="0" y="0" width="216" height="46" rx="11" fill="#ffffff" opacity=".95" stroke="#1f6f63" stroke-opacity=".2" stroke-width="1.4"/>
+            <text x="16" y="21" font-family="Seravek, Ubuntu, Calibri, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="600" fill="#16302c">Clínica Dental Lebrija</text>
+            <text x="16" y="37" font-family="Seravek, Ubuntu, Calibri, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#2f4f49" fill-opacity=".8">Avda. Doctor Fleming 21, bajo</text>
+          </g>
+        </svg>
+        <p class="mapa-pie">Esquema orientativo dibujado a mano: no es un mapa a escala ni refleja el trazado real de las calles.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PIE ============ -->
+<footer>
+  <div class="env">
+    <div class="pie-grid">
+      <div>
+        <h3>Clínica Dental Lebrija</h3>
+        <p>Avda. Doctor Fleming 21, bajo · 41740 Lebrija (Sevilla)<br>Teléfono <a href="tel:+34955299515">955 299 515</a> · Consultar horario</p>
+        <a class="pie-mail" href="mailto:direccionlebrija1@gmail.com">direccionlebrija1@gmail.com</a>
+      </div>
+      <div>
+        <p class="pie-datos">Maqueta de rediseño con fines de demostración.<br>Los datos de contacto son los públicos del negocio.</p>
+      </div>
+    </div>
+    <p class="pie-linea">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    var t=document.querySelector(a.getAttribute('href'));
+    if(!t)return;
+    e.preventDefault();
+    var y=t.getBoundingClientRect().top+window.pageYOffset-70;
+    window.scrollTo({top:y,behavior:'smooth'});
+  });
+});
+</script>
+</body>
+</html>

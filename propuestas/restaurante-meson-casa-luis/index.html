@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mesón Casa Luis · Cocina tradicional y de caza · Úbeda</title>
+<meta name="description" content="Propuesta de rediseño no oficial para Restaurante Mesón Casa Luis, cocina tradicional y de caza en Úbeda, Jaén.">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --piedra:#F6F1E7;
+  --piedra-2:#EDE4D5;
+  --piedra-3:#E2D6C2;
+  --tinta:#1C1A15;
+  --tinta-2:#3A352C;
+  --verde:#1F3328;
+  --verde-2:#2C4A38;
+  --verde-3:#3E6349;
+  --oro:#B4833A;
+  --oro-claro:#D8AE63;
+  --vino:#6B2233;
+  --gris:#6E6657;
+  --linea:rgba(28,26,21,.14);
+  --linea-clara:rgba(246,241,231,.20);
+  --serif:Georgia,"Iowan Old Style","Times New Roman",Times,serif;
+  --sans:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  --barra:44px;
+  --max:1180px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  padding-top:var(--barra);
+  background:var(--piedra);
+  color:var(--tinta);
+  font-family:var(--sans);
+  font-size:17px;
+  line-height:1.62;
+  overflow-wrap:break-word;
+  word-break:break-word;
+  -webkit-font-smoothing:antialiased;
+}
+img,svg{max-width:100%;height:auto;display:block}
+a{color:inherit}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:400;line-height:1.14;margin:0;letter-spacing:-.01em}
+p{margin:0}
+ul{margin:0;padding:0;list-style:none}
+
+/* ============ LAYOUT ============ */
+.wrap{width:100%;max-width:var(--max);margin:0 auto;padding:0 24px}
+section{position:relative}
+.eyebrow{
+  font-family:var(--sans);font-size:12px;letter-spacing:.20em;text-transform:uppercase;
+  font-weight:600;color:var(--oro);margin:0 0 18px;display:flex;align-items:center;gap:12px;
+}
+.eyebrow::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(180,131,58,.55),rgba(180,131,58,0))}
+.eyebrow.centro{justify-content:center}
+.eyebrow.centro::after{display:none}
+.eyebrow.clara{color:var(--oro-claro)}
+.eyebrow.clara::after{background:linear-gradient(90deg,rgba(216,174,99,.5),rgba(216,174,99,0))}
+
+/* ============ BARRA FIJA ============ */
+.barra{
+  position:fixed;top:0;left:0;right:0;z-index:9999;
+  min-height:var(--barra);display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(180deg,#14201A 0%,#0E1813 100%);
+  border-bottom:1px solid rgba(180,131,58,.45);
+  color:#F0E7D6;
+  font-family:var(--sans);font-size:12.5px;line-height:1.35;letter-spacing:.055em;
+  text-align:center;padding:8px 16px;
+  word-break:normal;overflow-wrap:normal;hyphens:none;
+  box-shadow:0 2px 14px rgba(0,0,0,.28);
+}
+.barra-txt{display:block;max-width:100%}
+.barra b{color:var(--oro-claro);font-weight:600;letter-spacing:.09em}
+
+/* ============ CABECERA MARCA ============ */
+.cabecera{
+  background:var(--verde);
+  color:var(--piedra);
+  border-bottom:1px solid rgba(180,131,58,.25);
+}
+.cabecera .wrap{
+  display:flex;align-items:center;justify-content:space-between;gap:18px;
+  padding-top:16px;padding-bottom:16px;flex-wrap:wrap;
+}
+.marca{display:flex;align-items:center;gap:13px;min-width:0}
+.marca .sello{flex:0 0 auto;width:40px;height:40px}
+.marca .nombre{font-family:var(--serif);font-size:19px;line-height:1.1;letter-spacing:.005em}
+.marca .sub{font-family:var(--sans);font-size:10.5px;letter-spacing:.20em;text-transform:uppercase;color:var(--oro-claro);margin-top:3px}
+.nav{display:flex;gap:26px;font-size:13.5px;letter-spacing:.09em;text-transform:uppercase;flex-wrap:wrap}
+.nav a{text-decoration:none;color:rgba(246,241,231,.82);padding:4px 0;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
+.nav a:hover,.nav a:focus{color:#fff;border-color:var(--oro)}
+
+/* ============ HERO ============ */
+.hero{
+  position:relative;overflow:hidden;color:var(--piedra);
+  background:
+    radial-gradient(120% 90% at 78% 10%, rgba(62,99,73,.55) 0%, rgba(31,51,40,0) 60%),
+    radial-gradient(90% 70% at 10% 100%, rgba(107,34,51,.38) 0%, rgba(31,51,40,0) 62%),
+    linear-gradient(165deg,#25392D 0%,#1B2C22 55%,#141F19 100%);
+}
+.hero .textura{
+  position:absolute;inset:0;pointer-events:none;
+  background-image:
+    repeating-linear-gradient(90deg, rgba(246,241,231,.045) 0 1px, rgba(0,0,0,0) 1px 9px),
+    repeating-linear-gradient(0deg, rgba(0,0,0,.10) 0 1px, rgba(0,0,0,0) 1px 9px);
+  mask-image:radial-gradient(85% 75% at 50% 40%,#000 25%,transparent 100%);
+  -webkit-mask-image:radial-gradient(85% 75% at 50% 40%,#000 25%,transparent 100%);
+  opacity:.75;
+}
+.hero .wrap{position:relative;z-index:2;padding-top:82px;padding-bottom:86px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:56px;align-items:center}
+.hero h1{font-size:clamp(38px,5.6vw,66px);letter-spacing:-.022em;margin:0 0 22px}
+.hero h1 em{font-style:italic;color:var(--oro-claro)}
+.hero .entradilla{font-size:clamp(17px,1.5vw,19.5px);color:rgba(246,241,231,.86);max-width:36em;margin-bottom:34px}
+.hero .filete{width:74px;height:2px;background:linear-gradient(90deg,var(--oro),rgba(180,131,58,0));margin:0 0 26px}
+
+.acciones{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.btn{
+  display:inline-flex;align-items:center;gap:11px;text-decoration:none;
+  padding:15px 26px;border-radius:2px;font-size:16px;font-weight:600;letter-spacing:.015em;
+  transition:transform .18s, background .2s, border-color .2s;
+}
+.btn svg{flex:0 0 auto}
+.btn-oro{background:linear-gradient(180deg,#C89545,#A9782F);color:#1C1A15;border:1px solid #D8AE63;box-shadow:0 6px 20px rgba(0,0,0,.28)}
+.btn-oro:hover{transform:translateY(-2px)}
+.btn-linea{background:transparent;color:var(--piedra);border:1px solid rgba(246,241,231,.42)}
+.btn-linea:hover{border-color:var(--oro-claro);color:#fff}
+.tel-nota{font-size:13px;color:rgba(246,241,231,.62);letter-spacing:.05em;margin-top:16px}
+
+.hero-emblema{display:flex;justify-content:center}
+.hero-emblema svg{width:100%;max-width:340px}
+
+.tira{border-top:1px solid var(--linea-clara);background:rgba(13,20,16,.42);position:relative;z-index:2}
+.tira ul{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--linea-clara)}
+.tira li{background:transparent;padding:22px 24px;display:flex;gap:13px;align-items:flex-start;min-width:0}
+.tira .t{font-family:var(--serif);font-size:16.5px;color:#fff;margin-bottom:2px}
+.tira .d{font-size:13.5px;color:rgba(246,241,231,.66);line-height:1.5}
+.tira svg{flex:0 0 auto;margin-top:2px}
+
+/* ============ CARTA ============ */
+.carta{padding:92px 0 96px;background:
+   linear-gradient(180deg,var(--piedra) 0%,var(--piedra) 60%,var(--piedra-2) 100%);}
+.cab-seccion{max-width:640px;margin-bottom:52px}
+.cab-seccion h2{font-size:clamp(30px,3.6vw,44px);margin-bottom:16px}
+.cab-seccion p{color:var(--gris);font-size:16.5px}
+
+.rejilla{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.tarjeta{
+  background:#FBF8F1;border:1px solid var(--linea);border-radius:3px;padding:30px 26px 28px;
+  position:relative;transition:border-color .2s,transform .2s,box-shadow .2s;min-width:0;
+}
+.tarjeta::before{content:"";position:absolute;left:0;top:0;width:100%;height:3px;background:linear-gradient(90deg,var(--oro),rgba(180,131,58,.15))}
+.tarjeta:hover{transform:translateY(-3px);border-color:rgba(180,131,58,.5);box-shadow:0 12px 30px rgba(28,26,21,.08)}
+.tarjeta .icono{width:46px;height:46px;margin-bottom:20px}
+.tarjeta h3{font-size:22px;margin-bottom:10px}
+.tarjeta p{font-size:15.5px;color:var(--gris);line-height:1.6}
+.tarjeta .etiqueta{
+  display:inline-block;margin-top:16px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--vino);border:1px solid rgba(107,34,51,.28);border-radius:2px;padding:4px 9px;
+}
+.nota-carta{
+  margin-top:34px;padding:20px 24px;border-left:3px solid var(--oro);
+  background:rgba(180,131,58,.08);font-size:15px;color:var(--tinta-2);border-radius:0 3px 3px 0;
+}
+
+/* ============ PASOS ============ */
+.pasos{
+  padding:90px 0 94px;color:var(--piedra);
+  background:
+    repeating-linear-gradient(135deg, rgba(246,241,231,.035) 0 2px, rgba(0,0,0,0) 2px 12px),
+    linear-gradient(180deg,#223428 0%,#1A2A21 100%);
+}
+.pasos .cab-seccion h2{color:#fff}
+.pasos .cab-seccion p{color:rgba(246,241,231,.72)}
+.pasos-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}
+.paso{
+  border:1px solid rgba(246,241,231,.16);border-radius:3px;padding:32px 26px 30px;
+  background:linear-gradient(180deg,rgba(246,241,231,.055),rgba(246,241,231,.015));min-width:0;
+}
+.paso .num{
+  font-family:var(--serif);font-size:15px;color:var(--oro-claro);letter-spacing:.2em;
+  display:flex;align-items:center;gap:12px;margin-bottom:22px;
+}
+.paso .num::after{content:"";flex:1;height:1px;background:rgba(216,174,99,.3)}
+.paso .icono{width:42px;height:42px;margin-bottom:18px}
+.paso h3{font-size:21px;color:#fff;margin-bottom:10px}
+.paso p{font-size:15.5px;color:rgba(246,241,231,.74)}
+
+/* ============ CONTACTO ============ */
+.contacto{padding:92px 0 90px;background:var(--piedra-2)}
+.contacto-grid{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:48px;align-items:start}
+.datos li{
+  display:flex;gap:16px;padding:22px 0;border-bottom:1px solid var(--linea);align-items:flex-start;min-width:0;
+}
+.datos li:first-child{border-top:1px solid var(--linea)}
+.datos .ic{flex:0 0 auto;width:34px;height:34px}
+.datos .k{font-size:11.5px;letter-spacing:.17em;text-transform:uppercase;color:var(--gris);margin-bottom:5px}
+.datos .v{font-family:var(--serif);font-size:20px;line-height:1.35;color:var(--tinta)}
+.datos .v a{text-decoration:none;border-bottom:1px solid rgba(180,131,58,.6);padding-bottom:1px}
+.datos .v a:hover{color:var(--vino)}
+.datos .extra{font-size:14px;color:var(--gris);margin-top:5px}
+.cta-contacto{margin-top:30px;display:flex;flex-wrap:wrap;gap:13px}
+.btn-verde{background:var(--verde);color:var(--piedra);border:1px solid var(--verde)}
+.btn-verde:hover{background:var(--verde-2);transform:translateY(-2px)}
+.btn-oscuro-linea{background:transparent;color:var(--verde);border:1px solid rgba(31,51,40,.4)}
+.btn-oscuro-linea:hover{border-color:var(--verde);background:rgba(31,51,40,.05)}
+
+.mapa-caja{
+  background:#FBF8F1;border:1px solid var(--linea);border-radius:3px;padding:16px 16px 14px;
+  box-shadow:0 14px 34px rgba(28,26,21,.07);
+}
+.mapa-caja svg{width:100%;height:auto;border-radius:2px}
+.mapa-pie{
+  display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;justify-content:space-between;
+  margin-top:12px;font-size:12.5px;color:var(--gris);
+}
+.mapa-pie .leyenda{display:flex;align-items:center;gap:7px}
+.mapa-pie .punto{width:10px;height:10px;border-radius:50%;background:var(--vino);flex:0 0 auto}
+
+/* ============ PIE ============ */
+.pie{background:#141F19;color:rgba(246,241,231,.78);padding:62px 0 34px}
+.pie-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr);gap:40px}
+.pie h4{font-size:12px;font-family:var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--oro-claro);margin-bottom:16px;font-weight:600}
+.pie .lema{font-family:var(--serif);font-size:19px;color:#fff;line-height:1.45;margin-top:14px;max-width:24em}
+.pie li{padding:5px 0;font-size:15px}
+.pie a{text-decoration:none;border-bottom:1px solid rgba(180,131,58,.4)}
+.pie a:hover{color:#fff}
+.pie-final{
+  margin-top:46px;padding-top:22px;border-top:1px solid rgba(246,241,231,.15);
+  font-size:13px;color:rgba(246,241,231,.62);display:flex;flex-wrap:wrap;gap:10px 26px;justify-content:space-between;
+}
+.pie-final strong{color:var(--oro-claro);font-weight:600}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:1000px){
+  .hero-grid{grid-template-columns:1fr;gap:44px}
+  .hero-emblema{order:-1}
+  .hero-emblema svg{max-width:250px}
+  .rejilla{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pasos-grid{grid-template-columns:1fr}
+  .contacto-grid{grid-template-columns:1fr;gap:40px}
+  .pie-grid{grid-template-columns:1fr 1fr}
+  .tira ul{grid-template-columns:1fr}
+}
+@media (max-width:660px){
+  :root{--barra:58px}
+  body{font-size:16px}
+  .wrap{padding:0 18px}
+  .barra{font-size:11px;letter-spacing:.01em;line-height:1.45;padding:9px 12px}
+  .cabecera .wrap{flex-direction:column;align-items:flex-start;gap:14px}
+  .nav{gap:16px 20px;font-size:12px}
+  .hero .wrap{padding-top:52px;padding-bottom:58px}
+  .hero-emblema svg{max-width:200px}
+  .acciones{flex-direction:column;align-items:stretch}
+  .btn{justify-content:center;padding:15px 20px}
+  .carta,.pasos,.contacto{padding:64px 0}
+  .rejilla{grid-template-columns:1fr}
+  .pie-grid{grid-template-columns:1fr;gap:30px}
+  .cab-seccion{margin-bottom:38px}
+  .datos .v{font-size:18px}
+}
+</style>
+</head>
+<body>
+
+<!-- BARRA FIJA -->
+<div class="barra" role="note"><span class="barra-txt">Propuesta de diseño · maqueta no oficial · <b>FFFFFFstudio</b> · Ángel Rubio</span></div>
+
+<!-- CABECERA -->
+<header class="cabecera">
+  <div class="wrap">
+    <div class="marca">
+      <svg class="sello" viewBox="0 0 48 48" aria-hidden="true">
+        <circle cx="24" cy="24" r="22.5" fill="none" stroke="#B4833A" stroke-width="1.2"/>
+        <circle cx="24" cy="24" r="18.5" fill="none" stroke="rgba(216,174,99,.45)" stroke-width=".8"/>
+        <path d="M24 11c-1.6 3.2-4.6 4.8-7.6 5 1.2 3.4 1.4 7 .6 10.4 2.6-.6 5.2 0 7 1.8 1.8-1.8 4.4-2.4 7-1.8-.8-3.4-.6-7 .6-10.4-3-.2-6-1.8-7.6-5z" fill="none" stroke="#D8AE63" stroke-width="1.3" stroke-linejoin="round"/>
+        <path d="M18 31c2 2.4 4 3.6 6 3.6s4-1.2 6-3.6" fill="none" stroke="#D8AE63" stroke-width="1.3" stroke-linecap="round"/>
+        <circle cx="24" cy="24" r="1.7" fill="#B4833A"/>
+      </svg>
+      <div>
+        <div class="nombre">Mesón Casa Luis</div>
+        <div class="sub">Úbeda · Jaén</div>
+      </div>
+    </div>
+    <nav class="nav" aria-label="Navegación principal">
+      <a href="#carta">La carta</a>
+      <a href="#mesa">Tu mesa</a>
+      <a href="#contacto">Contacto</a>
+      <a href="tel:+34953823511">953 823 511</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="textura" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow clara">Cocina tradicional y de caza</p>
+        <h1>La cocina de monte y huerta, servida a <em>fuego lento</em> en el corazón de Úbeda.</h1>
+        <div class="filete" aria-hidden="true"></div>
+        <p class="entradilla">Guisos de cuchara, carnes de caza y recetas de siempre en un mesón de la Avenida Cristo Rey. Mesa tranquila, trato cercano y una carta que cambia con lo que da la temporada.</p>
+        <div class="acciones">
+          <a class="btn btn-oro" href="tel:+34953823511">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3h3l1.5 4.5-2 1.3a12.5 12.5 0 006.2 6.2l1.3-2L21 14.5v3a2.5 2.5 0 01-2.7 2.5A16.8 16.8 0 013.9 5.7 2.5 2.5 0 016.5 3z"/></svg>
+            Reservar mesa · 953 823 511
+          </a>
+          <a class="btn btn-linea" href="#carta">Ver la carta</a>
+        </div>
+        <p class="tel-nota">Reservas y encargos por teléfono · Consultar horario</p>
+      </div>
+      <div class="hero-emblema">
+        <svg viewBox="0 0 300 330" role="img" aria-label="Emblema decorativo: arco renacentista con motivo de caza y ramas de olivo">
+          <defs>
+            <linearGradient id="gOro" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#E4C286"/><stop offset="1" stop-color="#A9782F"/>
+            </linearGradient>
+            <linearGradient id="gFondo" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="rgba(246,241,231,.10)"/><stop offset="1" stop-color="rgba(246,241,231,.02)"/>
+            </linearGradient>
+          </defs>
+          <path d="M40 320V150a110 110 0 01220 0v170z" fill="url(#gFondo)" stroke="url(#gOro)" stroke-width="2"/>
+          <path d="M58 320V152a92 92 0 01184 0v168" fill="none" stroke="rgba(216,174,99,.45)" stroke-width="1"/>
+          <!-- dovelas del arco -->
+          <g stroke="rgba(216,174,99,.55)" stroke-width="1">
+            <path d="M150 42v18"/><path d="M96 58l8 16"/><path d="M204 58l-8 16"/>
+            <path d="M60 96l15 10"/><path d="M240 96l-15 10"/>
+          </g>
+          <!-- cabeza de ciervo estilizada -->
+          <g fill="none" stroke="url(#gOro)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M150 232c-16 0-27-12-27-28 0-14 6-24 6-36 0-9-4-15-4-15h50s-4 6-4 15c0 12 6 22 6 36 0 16-11 28-27 28z"/>
+            <path d="M136 175h28"/>
+            <path d="M125 168c-7-2-12-7-14-13 7-1 12 2 15 8M175 168c7-2 12-7 14-13-7-1-12 2-15 8"/>
+            <path d="M150 196v14"/>
+            <path d="M125 153c-8-10-10-22-9-34m9 34c-12-2-20-9-25-19m25 19c-14 3-24 0-33-7"/>
+            <path d="M175 153c8-10 10-22 9-34m-9 34c12-2 20-9 25-19m-25 19c14 3 24 0 33-7"/>
+          </g>
+          <!-- ramas de olivo -->
+          <g stroke="rgba(216,174,99,.8)" stroke-width="1.6" fill="none" stroke-linecap="round">
+            <path d="M88 300c14-14 22-34 24-56"/>
+            <path d="M212 300c-14-14-22-34-24-56"/>
+          </g>
+          <g fill="rgba(216,174,99,.55)">
+            <ellipse cx="97" cy="284" rx="7" ry="3.4" transform="rotate(-38 97 284)"/>
+            <ellipse cx="105" cy="266" rx="7" ry="3.4" transform="rotate(-52 105 266)"/>
+            <ellipse cx="110" cy="248" rx="6.5" ry="3.2" transform="rotate(-64 110 248)"/>
+            <ellipse cx="203" cy="284" rx="7" ry="3.4" transform="rotate(38 203 284)"/>
+            <ellipse cx="195" cy="266" rx="7" ry="3.4" transform="rotate(52 195 266)"/>
+            <ellipse cx="190" cy="248" rx="6.5" ry="3.2" transform="rotate(64 190 248)"/>
+          </g>
+          <path d="M40 320h220" stroke="url(#gOro)" stroke-width="2.4"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="tira">
+    <div class="wrap" style="padding-left:8px;padding-right:8px">
+      <ul>
+        <li>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#D8AE63" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 18c2-6 5-9 8-9s6 3 8 9"/><path d="M12 9V4"/><path d="M9 4h6"/></svg>
+          <div><div class="t">Recetario de la tierra</div><div class="d">Cocina jienense de guiso y brasa, elaborada cada día en casa.</div></div>
+        </li>
+        <li>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#D8AE63" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c3 3 4.5 6 4.5 9a4.5 4.5 0 01-9 0c0-3 1.5-6 4.5-9z"/><path d="M12 12v9"/></svg>
+          <div><div class="t">Temporada de caza</div><div class="d">Platos de caza según lo que ofrece cada época del año.</div></div>
+        </li>
+        <li>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#D8AE63" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V9l8-5 8 5v11"/><path d="M9 20v-6h6v6"/></svg>
+          <div><div class="t">A un paso del casco antiguo</div><div class="d">En Avda. Cristo Rey, cerca del centro monumental de Úbeda.</div></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CARTA -->
+<section class="carta" id="carta">
+  <div class="wrap">
+    <div class="cab-seccion">
+      <p class="eyebrow">La carta, por secciones</p>
+      <h2>Una cocina de casa, ordenada como se come aquí</h2>
+      <p>Del aperitivo compartido al postre de cuchara. La carta se organiza por familias de plato y se ajusta a lo que hay de temporada en el mercado y en el monte.</p>
+    </div>
+
+    <div class="rejilla">
+      <article class="tarjeta">
+        <svg class="icono" viewBox="0 0 48 48" fill="none" stroke="#1F3328" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="24" cy="24" r="14"/><circle cx="24" cy="24" r="8" stroke="#B4833A"/><path d="M24 4v4M24 40v4M4 24h4M40 24h4"/>
+        </svg>
+        <h3>Entrantes y aperitivos</h3>
+        <p>Raciones para empezar y compartir en el centro de la mesa: encurtidos, embutidos, frituras y preparaciones frías de la casa.</p>
+        <span class="etiqueta">Para compartir</span>
+      </article>
+
+      <article class="tarjeta">
+        <svg class="icono" viewBox="0 0 48 48" fill="none" stroke="#1F3328" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M8 22h32c0 9-7 16-16 16S8 31 8 22z"/><path d="M6 40h36" stroke="#B4833A"/><path d="M18 14c0-3 3-3 3-6M27 14c0-3 3-3 3-6"/>
+        </svg>
+        <h3>Cucharas y guisos</h3>
+        <p>Potajes, sopas y platos de olla cocinados a fuego lento, la base del recetario tradicional de la comarca.</p>
+        <span class="etiqueta">Fuego lento</span>
+      </article>
+
+      <article class="tarjeta">
+        <svg class="icono" viewBox="0 0 48 48" fill="none" stroke="#1F3328" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M24 38c-9 0-15-6-15-14 0-6 3-9 3-14h24c0 5 3 8 3 14 0 8-6 14-15 14z"/>
+          <path d="M12 10C8 8 6 5 6 2M36 10c4-2 6-5 6-8" stroke="#B4833A"/>
+          <path d="M19 24h10"/>
+        </svg>
+        <h3>Carnes de caza</h3>
+        <p>El corazón del mesón. Piezas de caza preparadas con los guisos y adobos propios de la cocina serrana, según temporada.</p>
+        <span class="etiqueta">Según temporada</span>
+      </article>
+
+      <article class="tarjeta">
+        <svg class="icono" viewBox="0 0 48 48" fill="none" stroke="#1F3328" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M10 24c6-8 14-12 22-12 4 0 6 2 6 4l-4 8 4 8c0 2-2 4-6 4-8 0-16-4-22-12z"/>
+          <path d="M14 24h10" stroke="#B4833A"/><circle cx="31" cy="20" r="1.4" fill="#1F3328"/>
+        </svg>
+        <h3>Carnes y pescados a la brasa</h3>
+        <p>Cortes y piezas pasados por la plancha o la parrilla, con guarniciones sencillas que dejan hablar al producto.</p>
+        <span class="etiqueta">A la plancha</span>
+      </article>
+
+      <article class="tarjeta">
+        <svg class="icono" viewBox="0 0 48 48" fill="none" stroke="#1F3328" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M24 40c-8 0-14-5-14-12h28c0 7-6 12-14 12z"/><path d="M24 28V16"/>
+          <path d="M24 16c-5 0-8-3-8-7 5 0 8 3 8 7zM24 16c5 0 8-3 8-7-5 0-8 3-8 7z" stroke="#B4833A"/>
+        </svg>
+        <h3>Verduras y ensaladas</h3>
+        <p>Platos de huerta y ensaladas de temporada, también como opción principal para quien busca algo más ligero.</p>
+        <span class="etiqueta">De huerta</span>
+      </article>
+
+      <article class="tarjeta">
+        <svg class="icono" viewBox="0 0 48 48" fill="none" stroke="#1F3328" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M16 6h16l-2 14a6 6 0 01-12 0z"/><path d="M24 26v12"/><path d="M17 40h14" stroke="#B4833A"/>
+        </svg>
+        <h3>Postres caseros y bodega</h3>
+        <p>Dulces de elaboración propia inspirados en la repostería tradicional, acompañados de una selección de vinos y bebidas.</p>
+        <span class="etiqueta">De la casa</span>
+      </article>
+    </div>
+
+    <p class="nota-carta"><strong>Nota:</strong> la disponibilidad de cada sección varía con la temporada y con el producto del día. Para conocer la carta vigente, alergenos o encargos especiales, lo mejor es llamar al restaurante.</p>
+  </div>
+</section>
+
+<!-- PASOS -->
+<section class="pasos" id="mesa">
+  <div class="wrap">
+    <div class="cab-seccion">
+      <p class="eyebrow clara">Tu mesa, paso a paso</p>
+      <h2>Reservar es una llamada corta</h2>
+      <p>Sin formularios ni intermediarios: se habla directamente con el mesón y se deja todo cerrado en un minuto.</p>
+    </div>
+    <div class="pasos-grid">
+      <article class="paso">
+        <div class="num">Paso 01</div>
+        <svg class="icono" viewBox="0 0 48 48" fill="none" stroke="#D8AE63" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M13 6h6l3 9-4 2.6a25 25 0 0012.4 12.4L33 26l9 3v6a5 5 0 01-5.4 5A33.6 33.6 0 018 11.4 5 5 0 0113 6z"/>
+        </svg>
+        <h3>Llama y cuéntanos</h3>
+        <p>Indícanos cuántos sois, el día y la franja que os viene bien. Si tenéis alguna alergia o preferencia, es el momento de decirlo.</p>
+      </article>
+      <article class="paso">
+        <div class="num">Paso 02</div>
+        <svg class="icono" viewBox="0 0 48 48" fill="none" stroke="#D8AE63" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="7" y="12" width="34" height="30" rx="3"/><path d="M7 21h34"/><path d="M16 6v8M32 6v8"/><path d="M17 30h14" stroke="#F6F1E7"/>
+        </svg>
+        <h3>Confirmamos la mesa</h3>
+        <p>Te decimos en el momento qué mesa podemos reservar y te comentamos qué hay de temporada esos días, incluida la caza.</p>
+      </article>
+      <article class="paso">
+        <div class="num">Paso 03</div>
+        <svg class="icono" viewBox="0 0 48 48" fill="none" stroke="#D8AE63" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 8v14a5 5 0 0010 0V8"/><path d="M17 22v18"/><path d="M34 8c-3 4-4 8-4 12a4 4 0 008 0c0-4-1-8-4-12z"/><path d="M34 24v16"/>
+        </svg>
+        <h3>Os sentáis a comer</h3>
+        <p>Llegáis, os acomodamos y os explicamos la carta del día. Lo demás es cuestión de tiempo: aquí se guisa despacio.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contacto" id="contacto">
+  <div class="wrap">
+    <div class="cab-seccion">
+      <p class="eyebrow">Dónde estamos</p>
+      <h2>Mesón Casa Luis, en Avenida Cristo Rey</h2>
+      <p>En pleno Úbeda, a poca distancia del conjunto monumental renacentista. Para reservas, encargos y horario, el teléfono es la vía más directa.</p>
+    </div>
+
+    <div class="contacto-grid">
+      <div>
+        <ul class="datos">
+          <li>
+            <svg class="ic" viewBox="0 0 32 32" fill="none" stroke="#1F3328" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4h4l2 6-2.6 1.7a16.6 16.6 0 008.2 8.2L22 17.3l6 2v4a3.3 3.3 0 01-3.6 3.3A22.3 22.3 0 015.4 7.6 3.3 3.3 0 019 4z"/></svg>
+            <div>
+              <div class="k">Teléfono</div>
+              <div class="v"><a href="tel:+34953823511">953 823 511</a></div>
+              <div class="extra">Reservas, encargos y consultas sobre la carta.</div>
+            </div>
+          </li>
+          <li>
+            <svg class="ic" viewBox="0 0 32 32" fill="none" stroke="#1F3328" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 29s10-9.4 10-16A10 10 0 006 13c0 6.6 10 16 10 16z"/><circle cx="16" cy="13" r="3.6" stroke="#B4833A"/></svg>
+            <div>
+              <div class="k">Dirección</div>
+              <div class="v">Avda. Cristo Rey 10, bajo<br>23400 Úbeda (Jaén)</div>
+              <div class="extra">Local a pie de calle.</div>
+            </div>
+          </li>
+          <li>
+            <svg class="ic" viewBox="0 0 32 32" fill="none" stroke="#1F3328" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="16" r="12"/><path d="M16 8v8l6 3.5" stroke="#B4833A"/></svg>
+            <div>
+              <div class="k">Horario</div>
+              <div class="v">Consultar horario</div>
+              <div class="extra">Llámanos y te indicamos los días y las franjas de servicio.</div>
+            </div>
+          </li>
+          <li>
+            <svg class="ic" viewBox="0 0 32 32" fill="none" stroke="#1F3328" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="7" width="24" height="18" rx="2.5"/><path d="M4.8 9L16 17.5 27.2 9" stroke="#B4833A"/></svg>
+            <div>
+              <div class="k">Correo</div>
+              <div class="v"><a href="mailto:mesoncasaluis@gmail.com">mesoncasaluis@gmail.com</a></div>
+              <div class="extra">Para consultas que no corran prisa.</div>
+            </div>
+          </li>
+        </ul>
+        <div class="cta-contacto">
+          <a class="btn btn-verde" href="tel:+34953823511">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3h3l1.5 4.5-2 1.3a12.5 12.5 0 006.2 6.2l1.3-2L21 14.5v3a2.5 2.5 0 01-2.7 2.5A16.8 16.8 0 013.9 5.7 2.5 2.5 0 016.5 3z"/></svg>
+            Llamar al 953 823 511
+          </a>
+          <a class="btn btn-oscuro-linea" href="mailto:mesoncasaluis@gmail.com">Escribir un correo</a>
+        </div>
+      </div>
+
+      <div class="mapa-caja">
+        <svg viewBox="0 0 600 420" role="img" aria-label="Mapa esquemático orientativo de la zona: Avenida Cristo Rey con el marcador del Mesón Casa Luis">
+          <defs>
+            <pattern id="tramaMapa" width="16" height="16" patternUnits="userSpaceOnUse">
+              <path d="M0 16L16 0" stroke="rgba(31,51,40,.07)" stroke-width="1"/>
+            </pattern>
+          </defs>
+          <rect width="600" height="420" fill="#F3EDE1"/>
+          <rect width="600" height="420" fill="url(#tramaMapa)"/>
+
+          <!-- manzanas -->
+          <g fill="#E6DBC7" stroke="rgba(31,51,40,.12)" stroke-width="1">
+            <rect x="34" y="34" width="150" height="110" rx="4"/>
+            <rect x="214" y="34" width="120" height="110" rx="4"/>
+            <rect x="366" y="34" width="200" height="72" rx="4"/>
+            <rect x="34" y="214" width="150" height="90" rx="4"/>
+            <rect x="214" y="214" width="120" height="90" rx="4"/>
+            <rect x="366" y="176" width="200" height="128" rx="4"/>
+            <rect x="34" y="336" width="300" height="52" rx="4"/>
+            <rect x="366" y="336" width="200" height="52" rx="4"/>
+          </g>
+
+          <!-- calles secundarias -->
+          <g stroke="#FBF8F1" stroke-width="18" stroke-linecap="square">
+            <path d="M199 24v380"/>
+            <path d="M350 24v380"/>
+            <path d="M24 320h552"/>
+          </g>
+          <!-- avenida principal -->
+          <path d="M24 176h552" stroke="#FBF8F1" stroke-width="34" stroke-linecap="square"/>
+          <path d="M24 176h552" stroke="rgba(180,131,58,.55)" stroke-width="34" stroke-linecap="square" opacity=".22"/>
+          <path d="M24 176h552" stroke="#B4833A" stroke-width="2" stroke-dasharray="16 14"/>
+
+          <!-- etiquetas de calle -->
+          <g font-family="Georgia, serif" fill="#5C5446">
+            <text x="40" y="167" font-size="17" letter-spacing="1.2">Avda. Cristo Rey</text>
+            <text x="212" y="404" font-size="13" fill="#7B7263">calle</text>
+            <text x="360" y="404" font-size="13" fill="#7B7263">calle</text>
+            <text x="40" y="312" font-size="13" fill="#7B7263">calle</text>
+          </g>
+
+          <!-- marcador -->
+          <g>
+            <ellipse cx="268" cy="150" rx="26" ry="8" fill="rgba(107,34,51,.14)"/>
+            <path d="M268 150s-19-17.5-19-30a19 19 0 0138 0c0 12.5-19 30-19 30z" fill="#6B2233"/>
+            <circle cx="268" cy="120" r="6.6" fill="#F6F1E7"/>
+          </g>
+          <g font-family="Georgia, serif">
+            <rect x="286" y="86" width="256" height="50" rx="3" fill="#1F3328"/>
+            <text x="300" y="106" font-size="15.5" fill="#F6F1E7">Mesón Casa Luis</text>
+            <text x="300" y="124" font-size="12.5" fill="#D8AE63" font-family="Segoe UI, system-ui, sans-serif">Avda. Cristo Rey 10, bajo</text>
+          </g>
+
+          <!-- indicación casco antiguo -->
+          <g>
+            <path d="M92 236l0 46" stroke="#1F3328" stroke-width="1.4" stroke-dasharray="5 5"/>
+            <path d="M92 230l-7 10h14z" fill="#1F3328"/>
+            <text x="106" y="248" font-family="Segoe UI, system-ui, sans-serif" font-size="12.5" fill="#5C5446">hacia el casco antiguo</text>
+          </g>
+
+          <!-- norte -->
+          <g transform="translate(548,376)">
+            <circle r="20" fill="#FBF8F1" stroke="rgba(31,51,40,.18)"/>
+            <path d="M0 -12l5 12-5 -3-5 3z" fill="#6B2233"/>
+            <text x="0" y="14" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="10" fill="#5C5446" letter-spacing="1">N</text>
+          </g>
+        </svg>
+        <div class="mapa-pie">
+          <span class="leyenda"><span class="punto" aria-hidden="true"></span> Mesón Casa Luis · Avda. Cristo Rey 10</span>
+          <span>Esquema orientativo dibujado a mano, sin escala real.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PIE -->
+<footer class="pie">
+  <div class="wrap">
+    <div class="pie-grid">
+      <div>
+        <div class="marca">
+          <svg class="sello" viewBox="0 0 48 48" aria-hidden="true">
+            <circle cx="24" cy="24" r="22.5" fill="none" stroke="#B4833A" stroke-width="1.2"/>
+            <path d="M24 11c-1.6 3.2-4.6 4.8-7.6 5 1.2 3.4 1.4 7 .6 10.4 2.6-.6 5.2 0 7 1.8 1.8-1.8 4.4-2.4 7-1.8-.8-3.4-.6-7 .6-10.4-3-.2-6-1.8-7.6-5z" fill="none" stroke="#D8AE63" stroke-width="1.3" stroke-linejoin="round"/>
+            <circle cx="24" cy="24" r="1.7" fill="#B4833A"/>
+          </svg>
+          <div>
+            <div class="nombre" style="color:#fff">Mesón Casa Luis</div>
+            <div class="sub">Cocina tradicional y de caza</div>
+          </div>
+        </div>
+        <p class="lema">Guisos de siempre y caza de temporada en Úbeda, servidos sin prisa.</p>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="tel:+34953823511">953 823 511</a></li>
+          <li><a href="mailto:mesoncasaluis@gmail.com">mesoncasaluis@gmail.com</a></li>
+          <li>Consultar horario</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Dirección</h4>
+        <ul>
+          <li>Avda. Cristo Rey 10, bajo</li>
+          <li>23400 Úbeda (Jaén)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pie-final">
+      <span>Propuesta de rediseño presentada por <strong>FFFFFFstudio</strong> — Ángel Rubio, diseñador web · Alicante</span>
+      <span>Maqueta no oficial · sin vinculación comercial</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var enlaces = document.querySelectorAll('a[href^="#"]');
+  for (var i=0;i<enlaces.length;i++){
+    enlaces[i].addEventListener('click', function(e){
+      var destino = document.querySelector(this.getAttribute('href'));
+      if(!destino) return;
+      e.preventDefault();
+      var y = destino.getBoundingClientRect().top + window.pageYOffset - 10;
+      window.scrollTo({top:y, behavior:'smooth'});
+    });
+  }
+})();
+</script>
+</body>
+</html>

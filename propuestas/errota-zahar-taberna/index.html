@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Errota Zahar Taberna · Balmaseda</title>
+<style>
+:root{
+  --tinta:#1c1714;
+  --tinta-2:#2a221d;
+  --crema:#f6efe3;
+  --crema-2:#efe4d2;
+  --papel:#fbf7ef;
+  --ocre:#c8761f;
+  --ocre-claro:#e9a33e;
+  --verde:#2f4436;
+  --verde-claro:#496a52;
+  --teja:#9c3a26;
+  --linea:rgba(28,23,20,.14);
+  --barra:52px;
+  --max:1120px;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+html,body{max-width:100%;overflow-x:hidden}
+body{
+  margin:0;
+  padding-top:var(--barra);
+  background:var(--papel);
+  color:var(--tinta);
+  font-family:var(--sans);
+  font-size:17px;
+  line-height:1.65;
+  overflow-wrap:break-word;
+}
+img,svg{max-width:100%;height:auto}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.1;margin:0;letter-spacing:-.01em}
+p{margin:0}
+a{color:inherit}
+
+/* ---------- barra fija ---------- */
+.aviso{
+  position:fixed;top:0;left:0;right:0;z-index:9999;
+  min-height:var(--barra);
+  display:flex;align-items:center;justify-content:center;
+  padding:8px 14px;
+  background:#1c1714;
+  color:#f3e7d3;
+  border-bottom:1px solid rgba(233,163,62,.45);
+  font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;
+  text-align:center;line-height:1.35;
+}
+.aviso span{font-weight:600;color:#e9a33e;white-space:normal;overflow-wrap:normal}
+.aviso{overflow-wrap:normal;word-break:keep-all}
+
+.env{max-width:var(--max);margin:0 auto;padding:0 22px;width:100%}
+section{position:relative}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(120% 90% at 88% 6%, rgba(233,163,62,.22) 0%, rgba(233,163,62,0) 58%),
+    radial-gradient(90% 70% at 4% 92%, rgba(73,106,82,.28) 0%, rgba(73,106,82,0) 60%),
+    linear-gradient(168deg,#241d19 0%,#1c1714 48%,#221c26 100%);
+  color:var(--crema);
+}
+.hero::before{
+  content:"";position:absolute;inset:0;
+  background-image:repeating-linear-gradient(90deg,rgba(246,239,227,.05) 0 1px,transparent 1px 7px);
+  opacity:.5;pointer-events:none;
+}
+.hero::after{
+  content:"";position:absolute;left:0;right:0;bottom:-1px;height:4px;
+  background:linear-gradient(90deg,var(--teja),var(--ocre-claro),var(--verde-claro));
+  pointer-events:none;opacity:.85;
+}
+.hero-in{position:relative;z-index:2;display:grid;grid-template-columns:1.12fr .88fr;gap:46px;align-items:center;padding:74px 0 86px}
+.kicker{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:12px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ocre-claro);margin-bottom:22px;
+}
+.kicker::before{content:"";width:34px;height:1px;background:var(--ocre);display:block;flex:none}
+.hero h1{font-size:clamp(2.5rem,6.4vw,4.35rem);color:#fdf7ec}
+.hero h1 em{font-style:normal;color:var(--ocre-claro);display:block}
+.hero .lead{margin-top:22px;max-width:34em;color:rgba(246,239,227,.82);font-size:1.075rem}
+.hero .sub{margin-top:14px;color:rgba(246,239,227,.6);font-size:.94rem}
+
+.acciones{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;align-items:center}
+.btn{
+  display:inline-flex;align-items:center;gap:12px;
+  padding:15px 26px;border-radius:999px;
+  background:linear-gradient(135deg,var(--ocre-claro),var(--ocre));
+  color:#1c1714;font-weight:700;text-decoration:none;
+  font-size:1.02rem;letter-spacing:.01em;
+  box-shadow:0 10px 26px -12px rgba(233,163,62,.85);
+  border:1px solid rgba(255,255,255,.18);
+}
+.btn small{display:block;font-weight:600;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;opacity:.72}
+.btn .tel{font-family:var(--serif);font-size:1.16rem;letter-spacing:.01em}
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:14px 22px;border-radius:999px;text-decoration:none;
+  border:1px solid rgba(246,239,227,.3);color:rgba(246,239,227,.9);
+  font-size:.93rem;font-weight:600;
+}
+
+/* emblema */
+.emblema{display:flex;justify-content:center}
+.emblema svg{width:100%;max-width:340px;display:block;filter:drop-shadow(0 18px 34px rgba(0,0,0,.45))}
+
+.tira{
+  position:relative;z-index:2;
+  border-top:1px solid rgba(246,239,227,.14);
+  display:grid;grid-template-columns:repeat(3,1fr);gap:0;
+}
+.tira div{padding:18px 20px;position:relative;z-index:3;font-size:.84rem;letter-spacing:.11em;text-transform:uppercase;color:rgba(246,239,227,.66);text-align:center}
+.tira div+div{border-left:1px solid rgba(246,239,227,.14)}
+
+/* ---------- títulos de sección ---------- */
+.cabecera{max-width:40em;margin-bottom:46px}
+.eyebrow{font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--teja);font-weight:700;margin-bottom:14px}
+.cabecera h2{font-size:clamp(1.85rem,4.2vw,2.75rem)}
+.cabecera p{margin-top:16px;color:rgba(28,23,20,.72)}
+
+.bloque{padding:88px 0}
+.bloque--crema{background:linear-gradient(180deg,var(--papel),var(--crema));border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+
+/* ---------- oferta ---------- */
+.rejilla{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:18px}
+.carta{
+  background:var(--papel);
+  border:1px solid var(--linea);
+  border-radius:16px;
+  padding:26px 24px 28px;
+  position:relative;overflow:hidden;
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+.carta::after{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:linear-gradient(180deg,var(--ocre-claro),var(--teja));
+  opacity:.75;
+}
+.carta:hover{transform:translateY(-3px);box-shadow:0 16px 34px -22px rgba(28,23,20,.6)}
+.carta .ico{width:46px;height:46px;display:block;margin-bottom:18px}
+.carta h3{font-size:1.22rem;margin-bottom:9px}
+.carta p{font-size:.95rem;color:rgba(28,23,20,.7)}
+
+/* ---------- pasos ---------- */
+.pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;counter-reset:p}
+.paso{
+  background:var(--papel);border:1px solid var(--linea);border-radius:18px;
+  padding:30px 26px 32px;position:relative;
+}
+.paso .num{
+  font-family:var(--serif);font-size:2.6rem;line-height:1;
+  color:var(--ocre);opacity:.9;display:block;margin-bottom:14px;
+}
+.paso h3{font-size:1.18rem;margin-bottom:10px}
+.paso p{font-size:.95rem;color:rgba(28,23,20,.72)}
+.paso .hilo{position:absolute;top:44px;right:-15px;width:30px;height:2px;background:repeating-linear-gradient(90deg,var(--ocre) 0 5px,transparent 5px 10px)}
+
+/* ---------- contacto ---------- */
+.contacto{display:grid;grid-template-columns:1fr 1.05fr;gap:40px;align-items:start}
+.datos{display:grid;gap:14px}
+.dato{
+  display:flex;gap:16px;align-items:flex-start;
+  background:var(--papel);border:1px solid var(--linea);border-radius:14px;padding:20px 20px;
+}
+.dato svg{width:26px;height:26px;flex:none;margin-top:2px}
+.dato .et{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(28,23,20,.5);font-weight:700}
+.dato .vl{font-family:var(--serif);font-size:1.18rem;margin-top:4px;display:block;text-decoration:none}
+.dato .vl a{text-decoration:none;border-bottom:1px solid var(--ocre);overflow-wrap:anywhere}
+.dato .vl{overflow-wrap:anywhere}
+.dato small{display:block;color:rgba(28,23,20,.6);font-size:.86rem;margin-top:4px}
+.mapa{
+  background:var(--papel);border:1px solid var(--linea);border-radius:18px;
+  padding:16px 16px 12px;
+}
+.mapa svg{display:block;width:100%;height:auto;border-radius:12px}
+.mapa .pie{font-size:.8rem;color:rgba(28,23,20,.55);padding:10px 4px 4px;text-align:center}
+
+/* ---------- pie ---------- */
+footer{
+  background:var(--tinta);color:rgba(246,239,227,.78);
+  padding:56px 0 42px;
+  background-image:repeating-linear-gradient(135deg,rgba(233,163,62,.05) 0 2px,transparent 2px 9px);
+}
+.pie-top{display:flex;flex-wrap:wrap;gap:26px;justify-content:space-between;align-items:flex-start;padding-bottom:28px;border-bottom:1px solid rgba(246,239,227,.16)}
+.pie-marca{font-family:var(--serif);font-size:1.6rem;color:var(--crema)}
+.pie-marca span{display:block;font-family:var(--sans);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--ocre-claro);margin-top:8px}
+.pie-datos{display:grid;gap:6px;font-size:.94rem}
+.pie-datos a{text-decoration:none;border-bottom:1px solid rgba(233,163,62,.6);overflow-wrap:anywhere}
+.pie-datos div{overflow-wrap:anywhere}
+.pie-fin{padding-top:24px;font-size:.86rem;color:rgba(246,239,227,.58);line-height:1.6}
+
+@media (max-width:900px){
+  .hero-in{grid-template-columns:1fr;gap:38px;padding:56px 0 66px}
+  .emblema{order:-1}
+  .emblema svg{max-width:248px}
+  .contacto{grid-template-columns:1fr;gap:28px}
+  .pasos{grid-template-columns:1fr}
+  .paso .hilo{display:none}
+}
+@media (max-width:620px){
+  :root{--barra:64px}
+  body{font-size:16px}
+  .env{padding:0 18px}
+  .bloque{padding:62px 0}
+  .aviso{font-size:11px;letter-spacing:.04em}
+  .tira{grid-template-columns:1fr}
+  .tira div+div{border-left:0;border-top:1px solid rgba(246,239,227,.14)}
+  .acciones{gap:12px}
+  .btn{width:100%;justify-content:center}
+  .btn-ghost{width:100%;justify-content:center}
+  .cabecera{margin-bottom:34px}
+}
+</style>
+</head>
+<body>
+
+<div class="aviso">Propuesta de diseño · maqueta no oficial · <span>FFFFFFstudio</span> · Ángel Rubio</div>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="env">
+    <div class="hero-in">
+      <div>
+        <div class="kicker">Balmaseda · Las Encartaciones</div>
+        <h1>La taberna del<em>barrio de siempre</em></h1>
+        <p class="lead">Barra abierta, café de mañana y pintxo al mediodía. Un sitio de pueblo donde se entra sin reservar, se pide en la barra y se sale habiendo hablado con alguien.</p>
+        <p class="sub">C/ Martín Mendia 17 · 48800 Balmaseda (Bizkaia)</p>
+        <div class="acciones">
+          <a class="btn" href="tel:+34946126280">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#1c1714" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3h3l1.6 4-2 1.4a12 12 0 0 0 5.5 5.5l1.4-2 4 1.6v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.5 5.2 2 2 0 0 1 6.5 3z"/></svg>
+            <span><small>Llama a la taberna</small><span class="tel">946 126 280</span></span>
+          </a>
+          <a class="btn-ghost" href="#contacto">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+            Cómo llegar
+          </a>
+        </div>
+      </div>
+
+      <div class="emblema">
+        <svg viewBox="0 0 300 300" role="img" aria-label="Emblema de la taberna: molino antiguo estilizado">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#e9a33e"/><stop offset="1" stop-color="#b3621a"/>
+            </linearGradient>
+            <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#f6efe3" stop-opacity=".95"/><stop offset="1" stop-color="#cbbda6" stop-opacity=".9"/>
+            </linearGradient>
+          </defs>
+          <circle cx="150" cy="150" r="139" fill="none" stroke="url(#g1)" stroke-width="2"/>
+          <circle cx="150" cy="150" r="128" fill="rgba(246,239,227,.05)" stroke="rgba(246,239,227,.28)" stroke-width="1" stroke-dasharray="3 7"/>
+          <!-- molino: cuerpo -->
+          <path d="M120 236 L130 150 L170 150 L180 236 Z" fill="url(#g2)" stroke="#1c1714" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M126 186 H174" stroke="#1c1714" stroke-width="1.6" opacity=".4"/>
+          <path d="M123 210 H177" stroke="#1c1714" stroke-width="1.6" opacity=".4"/>
+          <rect x="141" y="204" width="18" height="32" rx="3" fill="#2f4436" stroke="#1c1714" stroke-width="2"/>
+          <!-- tejado -->
+          <path d="M123 151 L150 124 L177 151 Z" fill="#9c3a26" stroke="#1c1714" stroke-width="2" stroke-linejoin="round"/>
+          <!-- aspas -->
+          <g transform="rotate(45 150 132)">
+            <g fill="rgba(233,163,62,.22)" stroke="#e9a33e" stroke-width="2">
+              <rect x="140" y="70" width="20" height="50" rx="4"/>
+              <rect x="140" y="144" width="20" height="50" rx="4"/>
+              <rect x="70" y="122" width="50" height="20" rx="4"/>
+              <rect x="180" y="122" width="50" height="20" rx="4"/>
+            </g>
+            <g stroke="#e9a33e" stroke-width="5" stroke-linecap="round">
+              <path d="M150 74 V190"/><path d="M74 132 H226"/>
+            </g>
+          </g>
+          <circle cx="150" cy="132" r="9" fill="#1c1714" stroke="#e9a33e" stroke-width="3"/>
+          <!-- suelo / agua -->
+          <path d="M64 236 H236" stroke="rgba(246,239,227,.5)" stroke-width="2"/>
+          <g stroke="#496a52" stroke-width="3" stroke-linecap="round" opacity=".85" fill="none">
+            <path d="M80 250 q12 -8 24 0 t24 0 t24 0 t24 0 t24 0"/>
+            <path d="M94 264 q12 -8 24 0 t24 0 t24 0 t24 0"/>
+          </g>
+          <text x="150" y="284" text-anchor="middle" font-family="Georgia,serif" font-size="17" letter-spacing="4" fill="#f6efe3">ERROTA ZAHAR</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="env">
+    <div class="tira">
+      <div>Taberna de pueblo</div>
+      <div>Barra y mesas</div>
+      <div>Grupos con aviso previo</div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ OFERTA ============ -->
+<section class="bloque bloque--crema" id="oferta">
+  <div class="env">
+    <div class="cabecera">
+      <div class="eyebrow">Lo que encontrarás</div>
+      <h2>De la primera mañana a la última caña</h2>
+      <p>Lo de una taberna de toda la vida: cosas sencillas, bien puestas y a cualquier hora del día. La oferta concreta puede variar según el día; lo mejor es preguntar en la barra.</p>
+    </div>
+
+    <div class="rejilla">
+      <article class="carta">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="#9c3a26" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M24 8v24" stroke="#c8761f"/><path d="M20 12l8 6-8 6 8 6" stroke="#c8761f"/>
+          <path d="M12 34h24l-2 6H14z" fill="rgba(200,118,31,.16)"/>
+        </svg>
+        <h3>Pintxos</h3>
+        <p>Los de la barra, para acompañar el vino o la caña sin sentarse a comer.</p>
+      </article>
+
+      <article class="carta">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="#9c3a26" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <ellipse cx="24" cy="28" rx="16" ry="7" fill="rgba(200,118,31,.14)"/>
+          <path d="M8 28c0-6 7-10 16-10s16 4 16 10"/>
+          <path d="M18 18c0-3 2-5 6-5s6 2 6 5" stroke="#c8761f"/>
+        </svg>
+        <h3>Raciones</h3>
+        <p>Para compartir en mesa cuando se junta cuadrilla o se alarga la sobremesa.</p>
+      </article>
+
+      <article class="carta">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="#9c3a26" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M8 26c0-5 7-9 16-9s16 4 16 9-7 9-16 9S8 31 8 26z" fill="rgba(200,118,31,.14)"/>
+          <path d="M14 24c4-2 16-2 20 0" stroke="#c8761f"/>
+        </svg>
+        <h3>Bocadillos</h3>
+        <p>El recurso de siempre: rápido, de mano y para llevar encima si hay prisa.</p>
+      </article>
+
+      <article class="carta">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="#9c3a26" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M11 18h22v12a8 8 0 0 1-8 8h-6a8 8 0 0 1-8-8z" fill="rgba(200,118,31,.14)"/>
+          <path d="M33 21h4a4 4 0 0 1 0 8h-4"/>
+          <path d="M18 12c0-2 2-2 2-4M25 12c0-2 2-2 2-4" stroke="#c8761f"/>
+        </svg>
+        <h3>Cafés y desayunos</h3>
+        <p>Abrir el día con calma, con el café puesto y el periódico en la barra.</p>
+      </article>
+
+      <article class="carta">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="#9c3a26" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M16 10h14l-2 22a5 5 0 0 1-10 0z" fill="rgba(200,118,31,.14)"/>
+          <path d="M23 32v6M18 38h10" stroke="#c8761f"/>
+          <path d="M16.6 19h12.8"/>
+        </svg>
+        <h3>Cañas y vinos</h3>
+        <p>La consumición de barra de toda la vida, tirada y servida al momento.</p>
+      </article>
+
+      <article class="carta">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="#9c3a26" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M10 34h28" />
+          <path d="M14 34V20a10 10 0 0 1 20 0v14" fill="rgba(200,118,31,.14)"/>
+          <path d="M20 34v-8h8v8" stroke="#c8761f"/>
+        </svg>
+        <h3>Refrescos y sin alcohol</h3>
+        <p>Opciones frías para quien conduce, para la cuadrilla joven o para el verano.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PASOS ============ -->
+<section class="bloque" id="como">
+  <div class="env">
+    <div class="cabecera">
+      <div class="eyebrow">Cómo funciona esto</div>
+      <h2>No tiene misterio</h2>
+      <p>Aquí no hay lista de espera ni aplicaciones. Tres pasos y ya estás dentro.</p>
+    </div>
+
+    <div class="pasos">
+      <article class="paso">
+        <span class="num">01</span>
+        <span class="hilo" aria-hidden="true"></span>
+        <h3>Acércate</h3>
+        <p>Estamos en la calle Martín Mendia, en pleno casco de Balmaseda. Se entra sin avisar y sin reservar.</p>
+      </article>
+      <article class="paso">
+        <span class="num">02</span>
+        <span class="hilo" aria-hidden="true"></span>
+        <h3>Pide en la barra</h3>
+        <p>Se pide directamente a quien esté detrás. Si tienes dudas sobre lo que hay ese día, pregunta: para eso está la barra.</p>
+      </article>
+      <article class="paso">
+        <span class="num">03</span>
+        <h3>¿Sois muchos? Llama antes</h3>
+        <p>Para cuadrillas, celebraciones o grupos grandes, lo mejor es llamar por teléfono con antelación y cuadrarlo.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section class="bloque bloque--crema" id="contacto">
+  <div class="env">
+    <div class="cabecera">
+      <div class="eyebrow">Dónde estamos</div>
+      <h2>En el casco de Balmaseda</h2>
+      <p>A pie desde el centro del pueblo. Si vienes de fuera, llama y te indicamos lo que necesites.</p>
+    </div>
+
+    <div class="contacto">
+      <div class="datos">
+        <div class="dato">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#c8761f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3h3l1.6 4-2 1.4a12 12 0 0 0 5.5 5.5l1.4-2 4 1.6v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.5 5.2 2 2 0 0 1 6.5 3z"/></svg>
+          <div>
+            <div class="et">Teléfono</div>
+            <span class="vl"><a href="tel:+34946126280">946 126 280</a></span>
+            <small>Para grupos y consultas del día.</small>
+          </div>
+        </div>
+
+        <div class="dato">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#c8761f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+          <div>
+            <div class="et">Dirección</div>
+            <span class="vl">C/ Martín Mendia 17</span>
+            <small>48800 Balmaseda · Bizkaia</small>
+          </div>
+        </div>
+
+        <div class="dato">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#c8761f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.4l3.4 2"/></svg>
+          <div>
+            <div class="et">Horario</div>
+            <span class="vl">Consultar horario</span>
+            <small>Lo más seguro es llamar por teléfono antes de acercarte.</small>
+          </div>
+        </div>
+
+        <div class="dato">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#c8761f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.6 6.6 12 13l8.4-6.4"/></svg>
+          <div>
+            <div class="et">Correo</div>
+            <span class="vl"><a href="mailto:tinosansebastian56@hotmail.com">tinosansebastian56@hotmail.com</a></span>
+            <small>Para lo que no corra prisa.</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="mapa">
+        <svg viewBox="0 0 520 360" role="img" aria-label="Mapa esquemático orientativo de la zona: calles estilizadas, río y marcador de la taberna en la calle Martín Mendia">
+          <defs>
+            <linearGradient id="mg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#f3ead9"/><stop offset="1" stop-color="#e7dbc4"/>
+            </linearGradient>
+            <pattern id="mz" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+              <rect width="14" height="14" fill="rgba(73,106,82,.10)"/>
+              <path d="M0 7h14" stroke="rgba(47,68,54,.18)" stroke-width="1.4"/>
+            </pattern>
+          </defs>
+
+          <rect width="520" height="360" rx="12" fill="url(#mg)"/>
+          <!-- manzanas -->
+          <g fill="url(#mz)" stroke="rgba(47,68,54,.22)" stroke-width="1.5">
+            <rect x="34" y="40" width="130" height="86" rx="6"/>
+            <rect x="212" y="34" width="118" height="92" rx="6"/>
+            <rect x="374" y="52" width="112" height="74" rx="6"/>
+            <rect x="34" y="188" width="118" height="82" rx="6"/>
+            <rect x="378" y="184" width="108" height="86" rx="6"/>
+          </g>
+
+          <!-- calles secundarias -->
+          <g stroke="#d8c9ae" stroke-width="16" stroke-linecap="round">
+            <path d="M188 20 V340"/>
+            <path d="M352 20 V340"/>
+            <path d="M20 156 H500"/>
+          </g>
+          <g stroke="rgba(246,239,227,.85)" stroke-width="2" stroke-dasharray="10 12">
+            <path d="M188 20 V340"/><path d="M352 20 V340"/><path d="M20 156 H500"/>
+          </g>
+
+          <!-- calle principal -->
+          <path d="M20 240 H500" stroke="#c8761f" stroke-width="22" stroke-linecap="round" opacity=".85"/>
+          <path d="M20 240 H500" stroke="rgba(255,246,230,.9)" stroke-width="2.5" stroke-dasharray="14 14"/>
+
+          <!-- río estilizado -->
+          <path d="M-10 318 q70 -22 140 0 t140 0 t140 0 t120 0" fill="none" stroke="rgba(73,106,82,.55)" stroke-width="13" stroke-linecap="round"/>
+          <path d="M-10 318 q70 -22 140 0 t140 0 t140 0 t120 0" fill="none" stroke="rgba(246,239,227,.45)" stroke-width="3"/>
+
+          <!-- etiquetas -->
+          <g font-family="Georgia,serif" font-size="15" fill="#5c4a38">
+            <text x="30" y="232">Martín Mendia</text>
+            <text x="200" y="40" transform="rotate(90 200 40)">Casco</text>
+            <text x="364" y="40" transform="rotate(90 364 40)">Pueblo</text>
+            <text x="34" y="148">Zona centro</text>
+            <text x="30" y="346" fill="#3d5a46">Río</text>
+          </g>
+
+          <!-- marcador -->
+          <g transform="translate(256,240)">
+            <ellipse cx="0" cy="6" rx="26" ry="8" fill="rgba(28,23,20,.18)"/>
+            <path d="M0 2 C-24 -26 -18 -56 0 -56 C18 -56 24 -26 0 2 Z" fill="#9c3a26" stroke="#1c1714" stroke-width="2.5"/>
+            <circle cx="0" cy="-36" r="9" fill="#f6efe3"/>
+          </g>
+          <g font-family="Georgia,serif" font-size="16" fill="#1c1714">
+            <rect x="286" y="182" width="196" height="34" rx="17" fill="rgba(251,247,239,.95)" stroke="rgba(28,23,20,.2)"/>
+            <text x="302" y="204">Errota Zahar Taberna</text>
+          </g>
+        </svg>
+        <p class="pie">Esquema orientativo dibujado a mano. No es un plano a escala.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PIE ============ -->
+<footer>
+  <div class="env">
+    <div class="pie-top">
+      <div class="pie-marca">Errota Zahar Taberna<span>Balmaseda · Bizkaia</span></div>
+      <div class="pie-datos">
+        <div>C/ Martín Mendia 17, 48800 Balmaseda</div>
+        <div><a href="tel:+34946126280">946 126 280</a></div>
+        <div><a href="mailto:tinosansebastian56@hotmail.com">tinosansebastian56@hotmail.com</a></div>
+        <div>Consultar horario</div>
+      </div>
+    </div>
+    <p class="pie-fin">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+</body>
+</html>
