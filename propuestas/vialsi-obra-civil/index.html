@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vialsi Obra Civil · Propuesta de diseño</title>
+<meta name="description" content="Maqueta de propuesta de rediseño para Vialsi Obra Civil: reformas integrales y obra civil en Andújar (Jaén).">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  :root{
+    --ink:#11161c;
+    --ink-2:#1b232c;
+    --steel:#3d4a57;
+    --steel-2:#65727f;
+    --line:#d3d8dd;
+    --line-strong:#b3bbc3;
+    --paper:#f4f5f3;
+    --paper-2:#e9ebe7;
+    --white:#ffffff;
+    --amber:#d8722a;
+    --amber-dark:#b25b1d;
+    --amber-soft:#f6e6d6;
+    --bar-h:44px;
+    --maxw:1180px;
+    --ff:"Helvetica Neue",Helvetica,Arial,"Liberation Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    --ff-mono:ui-monospace,"SFMono-Regular",Menlo,Consolas,"Liberation Mono",monospace;
+  }
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    overflow-x:hidden;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--ff);
+    font-size:17px;
+    line-height:1.6;
+    letter-spacing:.005em;
+    overflow-wrap:break-word;
+    word-break:break-word;
+  }
+  img,svg{max-width:100%}
+  svg{display:block}
+  a{color:inherit}
+  h1,h2,h3,h4{margin:0;line-height:1.08;letter-spacing:-.022em;font-weight:800}
+  p{margin:0}
+  ul{margin:0;padding:0;list-style:none}
+
+  /* ---------- barra fija ---------- */
+  .topbar{
+    position:fixed;inset:0 0 auto 0;z-index:9999;
+    height:var(--bar-h);
+    display:flex;align-items:center;justify-content:center;
+    background:var(--ink);
+    color:#f2f4f6;
+    border-bottom:1px solid rgba(255,255,255,.14);
+    padding:0 12px;
+  }
+  .topbar span{
+    font-family:var(--ff-mono);
+    font-size:11.5px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    text-align:center;
+    line-height:1.25;
+    max-width:100%;
+  }
+  .topbar b{color:var(--amber);font-weight:700}
+
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  @media (max-width:600px){.wrap{padding:0 18px}}
+
+  .eyebrow{
+    font-family:var(--ff-mono);
+    font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--steel-2);
+    display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--amber);flex:none}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    padding-top:calc(var(--bar-h) + 76px);
+    padding-bottom:84px;
+    background:
+      linear-gradient(180deg,#141b22 0%,#1b242d 58%,#202b35 100%);
+    color:#eef1f4;
+    overflow:hidden;
+  }
+  .grid-bg{
+    position:absolute;inset:0;pointer-events:none;
+    background-image:
+      linear-gradient(rgba(255,255,255,.055) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px),
+      linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px);
+    background-size:96px 96px,96px 96px,24px 24px,24px 24px;
+    -webkit-mask-image:radial-gradient(120% 90% at 78% 6%,#000 0%,rgba(0,0,0,.25) 68%,transparent 100%);
+    mask-image:radial-gradient(120% 90% at 78% 6%,#000 0%,rgba(0,0,0,.25) 68%,transparent 100%);
+  }
+  .hero::after{
+    content:"";position:absolute;left:0;right:0;bottom:0;height:5px;
+    background:linear-gradient(90deg,var(--amber) 0 22%,#2e3b46 22% 100%);
+  }
+  .hero-inner{position:relative;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:56px;align-items:center}
+  .brandmark{display:flex;align-items:center;gap:14px;margin-bottom:34px}
+  .brandmark .name{font-size:19px;font-weight:800;letter-spacing:.01em}
+  .brandmark .sub{font-family:var(--ff-mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#93a0ac}
+  h1{font-size:clamp(2.1rem,5.2vw,3.85rem);color:#fff}
+  h1 .em{
+    color:var(--amber);
+    background:linear-gradient(180deg,transparent 78%,rgba(216,114,42,.32) 78%);
+  }
+  .hero p.lead{margin-top:22px;font-size:clamp(1rem,1.5vw,1.16rem);color:#c3ccd5;max-width:38ch}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:34px}
+  .btn{
+    display:inline-flex;align-items:center;gap:12px;
+    padding:15px 24px;border-radius:2px;
+    font-weight:700;font-size:16px;text-decoration:none;
+    border:1px solid transparent;
+    transition:transform .18s ease,background .18s ease,border-color .18s ease,box-shadow .18s ease;
+  }
+  .btn-primary{background:var(--amber);color:#1a1207;box-shadow:0 0 0 0 rgba(216,114,42,.45)}
+  .btn-primary:hover{background:#e8823a;transform:translateY(-2px);box-shadow:0 10px 26px -12px rgba(216,114,42,.8)}
+  .btn-ghost{border-color:rgba(255,255,255,.28);color:#e8edf1}
+  .btn-ghost:hover{border-color:var(--amber);color:#fff;transform:translateY(-2px)}
+  .btn .num{font-family:var(--ff-mono);letter-spacing:.02em}
+  .hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px}
+  .tag{
+    font-family:var(--ff-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+    color:#a9b5c0;border:1px solid rgba(255,255,255,.18);
+    padding:6px 10px;border-radius:2px;background:rgba(255,255,255,.03);
+  }
+
+  .blueprint{border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.035);padding:14px;position:relative}
+  .blueprint .cap{
+    font-family:var(--ff-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+    color:#8d9aa6;margin-top:10px;display:block;
+  }
+
+  /* ---------- secciones ---------- */
+  section{position:relative}
+  .sec{padding:86px 0}
+  .sec-head{max-width:62ch;margin-bottom:46px}
+  .sec-head h2{font-size:clamp(1.65rem,3.2vw,2.5rem);margin-top:16px}
+  .sec-head p{margin-top:16px;color:var(--steel);font-size:1.03rem}
+
+  #servicios{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line)}
+  .card{
+    background:var(--white);padding:30px 26px 32px;position:relative;
+    transition:background .2s ease,transform .2s ease;
+  }
+  .card::before{
+    content:"";position:absolute;left:0;top:0;height:3px;width:0;background:var(--amber);
+    transition:width .28s ease;
+  }
+  .card:hover{background:#fbfbfa}
+  .card:hover::before{width:100%}
+  .card .idx{font-family:var(--ff-mono);font-size:11px;color:var(--steel-2);letter-spacing:.14em}
+  .card .ico{margin:16px 0 18px}
+  .card h3{font-size:1.14rem;letter-spacing:-.012em}
+  .card p{margin-top:10px;color:var(--steel);font-size:.97rem}
+
+  #obra{background:var(--paper-2)}
+  .note{
+    display:flex;gap:14px;align-items:flex-start;
+    border-left:3px solid var(--amber);background:var(--white);
+    padding:18px 20px;margin-bottom:34px;max-width:70ch;
+  }
+  .note p{font-size:.97rem;color:var(--steel)}
+  .note strong{color:var(--ink)}
+  .gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+  .slot{
+    position:relative;background:var(--white);
+    border:1px dashed var(--line-strong);
+    padding:12px;transition:border-color .22s ease,transform .22s ease;
+  }
+  .slot:hover{border-color:var(--amber);transform:translateY(-3px)}
+  .slot-frame{position:relative;width:100%;aspect-ratio:4/3;background:
+    repeating-linear-gradient(45deg,#f0f1ef 0 10px,#e7e9e5 10px 20px);
+    display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .slot-frame .cross{position:absolute;inset:0;opacity:.5}
+  .slot-label{
+    position:relative;z-index:2;text-align:center;padding:14px;
+  }
+  .slot-label span{
+    display:block;font-family:var(--ff-mono);font-size:10.5px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--steel);line-height:1.5;
+  }
+  .slot-meta{display:flex;justify-content:space-between;gap:10px;margin-top:11px;
+    font-family:var(--ff-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel-2)}
+
+  #proceso{background:var(--ink-2);color:#e9edf1}
+  #proceso .eyebrow{color:#96a3af}
+  #proceso .sec-head p{color:#b3bec8}
+  .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;counter-reset:s}
+  .step{border-top:2px solid rgba(255,255,255,.18);padding-top:22px;transition:border-color .24s ease}
+  .step:hover{border-color:var(--amber)}
+  .step .n{
+    font-family:var(--ff-mono);font-size:2.1rem;font-weight:700;color:var(--amber);
+    line-height:1;letter-spacing:-.03em;
+  }
+  .step h3{margin-top:14px;font-size:1.16rem;color:#fff}
+  .step p{margin-top:10px;color:#aeb9c3;font-size:.97rem}
+
+  #contacto{background:var(--white);border-top:1px solid var(--line)}
+  .contact-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:46px;align-items:start}
+  .dl{border-top:1px solid var(--line)}
+  .dl .row{display:grid;grid-template-columns:minmax(0,108px) minmax(0,1fr);gap:16px;padding:18px 0;border-bottom:1px solid var(--line)}
+  .dl dt{font-family:var(--ff-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel-2);padding-top:4px}
+  .dl dd{margin:0;font-size:1.02rem}
+  .dl dd a{text-decoration:none;border-bottom:1px solid var(--line-strong);transition:border-color .2s ease,color .2s ease}
+  .dl dd a:hover{color:var(--amber-dark);border-color:var(--amber)}
+  .dl dd .big{font-size:1.32rem;font-weight:800;letter-spacing:.01em;font-family:var(--ff-mono)}
+  .map-card{border:1px solid var(--line);background:var(--paper)}
+  .map-card .bar{
+    display:flex;justify-content:space-between;align-items:center;gap:12px;
+    padding:11px 14px;border-bottom:1px solid var(--line);background:var(--white);
+    font-family:var(--ff-mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--steel-2);
+  }
+  .map-card .bar em{font-style:normal;color:var(--amber-dark)}
+
+  footer{background:var(--ink);color:#c7d0d9;padding:54px 0 40px}
+  .foot-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,auto);gap:30px;align-items:end}
+  footer .mail{display:inline-block;margin-top:12px;color:#fff;font-size:1.06rem;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.3)}
+  footer .mail:hover{color:var(--amber);border-color:var(--amber)}
+  .credit{
+    font-family:var(--ff-mono);font-size:11px;letter-spacing:.06em;line-height:1.7;
+    color:#8d9aa6;border-top:1px solid rgba(255,255,255,.14);margin-top:34px;padding-top:20px;
+  }
+  .credit b{color:#e6ebef;font-weight:600}
+
+  @media (max-width:900px){
+    .hero-inner{grid-template-columns:minmax(0,1fr);gap:40px}
+    .cards,.gallery,.steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .contact-grid{grid-template-columns:minmax(0,1fr);gap:34px}
+    .foot-grid{grid-template-columns:minmax(0,1fr)}
+  }
+  @media (max-width:620px){
+    :root{--bar-h:56px}
+    body{font-size:16px}
+    .sec{padding:60px 0}
+    .hero{padding-top:calc(var(--bar-h) + 48px);padding-bottom:58px}
+    .cards,.gallery,.steps{grid-template-columns:minmax(0,1fr)}
+    .dl .row{grid-template-columns:minmax(0,1fr);gap:4px}
+    .btn{width:100%;justify-content:center}
+    .hero-actions{gap:10px}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<noscript><style>*{opacity:1!important;transform:none!important;visibility:visible!important}</style></noscript>
+</head>
+<body>
+
+<div class="topbar" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · <b>FFFFFFstudio</b> · Ángel Rubio</span>
+</div>
+
+<header class="hero">
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="wrap hero-inner">
+    <div>
+      <div class="brandmark">
+        <svg width="46" height="46" viewBox="0 0 46 46" aria-hidden="true">
+          <rect x="1" y="1" width="44" height="44" fill="none" stroke="#d8722a" stroke-width="2"/>
+          <path d="M8 34 L17 14 L23 27 L29 19 L38 34 Z" fill="none" stroke="#ffffff" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M8 38 H38" stroke="#8d9aa6" stroke-width="1.5"/>
+        </svg>
+        <div>
+          <div class="name">Vialsi Obra Civil</div>
+          <div class="sub">Andújar · Jaén</div>
+        </div>
+      </div>
+
+      <h1>Reformas integrales y <span class="em">obra civil</span> ejecutadas con criterio técnico.</h1>
+      <p class="lead">Viviendas, baños y cocinas, comunidades de vecinos y ascensores. Un mismo equipo responsable de la obra desde el replanteo hasta la entrega.</p>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="tel:+34630773817">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.4 2.1L8.1 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.4 1.8.6 2.8.7a2 2 0 0 1 1.8 2.1z"/>
+          </svg>
+          <span class="num">630 773 817</span>
+        </a>
+        <a class="btn btn-ghost" href="#obra">Ver obra terminada</a>
+      </div>
+
+      <div class="hero-tags">
+        <span class="tag">Reforma integral</span>
+        <span class="tag">Comunidades</span>
+        <span class="tag">Ascensores</span>
+        <span class="tag">Accesibilidad</span>
+      </div>
+    </div>
+
+    <div class="blueprint">
+      <svg viewBox="0 0 400 300" width="100%" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Esquema de planta dibujado a modo de plano técnico">
+        <defs>
+          <pattern id="pg" width="20" height="20" patternUnits="userSpaceOnUse">
+            <path d="M20 0 H0 V20" fill="none" stroke="rgba(255,255,255,.09)" stroke-width="1"/>
+          </pattern>
+          <pattern id="hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+            <line x1="0" y1="0" x2="0" y2="7" stroke="rgba(216,114,42,.5)" stroke-width="2"/>
+          </pattern>
+        </defs>
+        <rect width="400" height="300" fill="url(#pg)"/>
+        <rect x="40" y="52" width="320" height="196" fill="none" stroke="#e9edf1" stroke-width="3"/>
+        <line x1="196" y1="52" x2="196" y2="248" stroke="#e9edf1" stroke-width="3"/>
+        <line x1="196" y1="160" x2="360" y2="160" stroke="#e9edf1" stroke-width="3"/>
+        <rect x="40" y="52" width="60" height="60" fill="url(#hatch)" stroke="none"/>
+        <path d="M196 96 A26 26 0 0 1 222 122" fill="none" stroke="#8d9aa6" stroke-width="1.5"/>
+        <path d="M262 160 A24 24 0 0 1 286 184" fill="none" stroke="#8d9aa6" stroke-width="1.5"/>
+        <g stroke="#d8722a" stroke-width="1.4" fill="none">
+          <line x1="40" y1="270" x2="360" y2="270"/>
+          <line x1="40" y1="264" x2="40" y2="276"/>
+          <line x1="360" y1="264" x2="360" y2="276"/>
+          <line x1="22" y1="52" x2="22" y2="248"/>
+          <line x1="16" y1="52" x2="28" y2="52"/>
+          <line x1="16" y1="248" x2="28" y2="248"/>
+        </g>
+        <circle cx="200" cy="270" r="13" fill="#1b242d" stroke="none"/>
+        <text x="200" y="274" text-anchor="middle" font-family="monospace" font-size="11" fill="#d8722a">cota</text>
+        <text x="52" y="44" font-family="monospace" font-size="10" fill="#8d9aa6" letter-spacing="2">ESQUEMA · PLANTA TIPO</text>
+      </svg>
+      <span class="cap">Dibujo esquemático de la maqueta · sin valor de proyecto</span>
+    </div>
+  </div>
+</header>
+
+<section id="servicios" class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Servicios</div>
+      <h2>Lo que se ejecuta, de principio a fin</h2>
+      <p>Trabajos habituales del sector de la reforma y la obra civil, con la coordinación de oficios incluida y una sola interlocución para la propiedad o la comunidad.</p>
+    </div>
+
+    <div class="cards">
+      <article class="card">
+        <div class="idx">01</div>
+        <div class="ico">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#11161c" stroke-width="2" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 18 L20 6 L36 18"/><path d="M8 18 V34 H32 V18" stroke="#d8722a"/><path d="M17 34 V24 H23 V34"/>
+          </svg>
+        </div>
+        <h3>Reforma integral de viviendas</h3>
+        <p>Actuación completa sobre la vivienda: demolición, albañilería, instalaciones, revestimientos y acabados, con planificación por fases.</p>
+      </article>
+
+      <article class="card">
+        <div class="idx">02</div>
+        <div class="ico">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#11161c" stroke-width="2" stroke-linejoin="round" aria-hidden="true">
+            <rect x="6" y="14" width="28" height="20" rx="2"/><path d="M6 22 H34" stroke="#d8722a"/>
+            <path d="M14 14 V8 a4 4 0 0 1 8 0"/><circle cx="26" cy="28" r="2.5"/>
+          </svg>
+        </div>
+        <h3>Baños y cocinas</h3>
+        <p>Renovación de estancias húmedas: fontanería y saneamiento, electricidad, impermeabilización, alicatado y montaje de mobiliario y sanitarios.</p>
+      </article>
+
+      <article class="card">
+        <div class="idx">03</div>
+        <div class="ico">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#11161c" stroke-width="2" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 31 H37" stroke="#d8722a"/><path d="M8 31 V22 h8 v9"/><path d="M22 31 V16 h10 v15"/>
+            <path d="M3 36 H37" stroke-dasharray="4 4"/>
+          </svg>
+        </div>
+        <h3>Obra civil y urbanización</h3>
+        <p>Movimiento de tierras, soleras y pavimentos, redes de saneamiento y abastecimiento, muros, bordillos y remates de urbanización.</p>
+      </article>
+
+      <article class="card">
+        <div class="idx">04</div>
+        <div class="ico">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#11161c" stroke-width="2" stroke-linejoin="round" aria-hidden="true">
+            <rect x="7" y="6" width="26" height="28"/><path d="M7 15 H33 M7 24 H33" stroke="#d8722a"/>
+            <path d="M20 6 V34"/>
+          </svg>
+        </div>
+        <h3>Rehabilitación de comunidades</h3>
+        <p>Fachadas, cubiertas, zonas comunes, portales y escaleras, con reuniones de seguimiento y coordinación con la administración de la finca.</p>
+      </article>
+
+      <article class="card">
+        <div class="idx">05</div>
+        <div class="ico">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#11161c" stroke-width="2" stroke-linejoin="round" aria-hidden="true">
+            <rect x="11" y="4" width="18" height="32"/><path d="M11 20 H29" stroke="#d8722a"/>
+            <path d="M20 9 l4 5 h-8 z" fill="#d8722a" stroke="none"/><path d="M20 31 l-4-5 h8 z" fill="#d8722a" stroke="none"/>
+          </svg>
+        </div>
+        <h3>Instalación y adecuación de ascensores</h3>
+        <p>Obra asociada al ascensor: foso y hueco, recrecidos, apertura de huecos en forjado, acabados del recinto y adecuación del acceso.</p>
+      </article>
+
+      <article class="card">
+        <div class="idx">06</div>
+        <div class="ico">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#11161c" stroke-width="2" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="20" cy="20" r="15"/><circle cx="20" cy="12" r="3" fill="#d8722a" stroke="none"/>
+            <path d="M13 19 h14 M20 19 v8 M20 27 l-4 4 M20 27 l4 4" stroke="#d8722a"/>
+          </svg>
+        </div>
+        <h3>Accesibilidad</h3>
+        <p>Eliminación de barreras arquitectónicas: rampas, ensanche de accesos, salvaescaleras, pavimentos antideslizantes y adaptación de baños.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="obra" class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Obra terminada</div>
+      <h2>El espacio que hoy falta: vuestro trabajo, visible</h2>
+      <p>Esta sección es el motivo principal de la propuesta. Una web de reformas se decide mirando obra real: antes y después, detalles de acabado, ejecución en comunidades.</p>
+    </div>
+
+    <div class="note">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d8722a" stroke-width="2" stroke-linecap="round" style="flex:none;margin-top:2px" aria-hidden="true">
+        <circle cx="12" cy="12" r="9"/><path d="M12 8h.01M12 11v5"/>
+      </svg>
+      <p><strong>Ningún marco contiene una imagen.</strong> Son huecos reservados para vuestras propias fotografías de obra. En la maqueta no se muestra ninguna imagen que pueda confundirse con un trabajo real de Vialsi Obra Civil.</p>
+    </div>
+
+    <div class="gallery">
+      <figure class="slot" style="margin:0">
+        <div class="slot-frame">
+          <svg class="cross" viewBox="0 0 200 150" preserveAspectRatio="none" aria-hidden="true">
+            <line x1="0" y1="0" x2="200" y2="150" stroke="#c9cec7" stroke-width="1"/>
+            <line x1="200" y1="0" x2="0" y2="150" stroke="#c9cec7" stroke-width="1"/>
+            <rect x="1" y="1" width="198" height="148" fill="none" stroke="#c9cec7" stroke-width="1"/>
+          </svg>
+          <figcaption class="slot-label"><span>Espacio para vuestras fotos de obra</span></figcaption>
+        </div>
+        <div class="slot-meta"><span>Reforma integral</span><span>Antes / después</span></div>
+      </figure>
+
+      <figure class="slot" style="margin:0">
+        <div class="slot-frame">
+          <svg class="cross" viewBox="0 0 200 150" preserveAspectRatio="none" aria-hidden="true">
+            <line x1="0" y1="0" x2="200" y2="150" stroke="#c9cec7" stroke-width="1"/>
+            <line x1="200" y1="0" x2="0" y2="150" stroke="#c9cec7" stroke-width="1"/>
+            <rect x="1" y="1" width="198" height="148" fill="none" stroke="#c9cec7" stroke-width="1"/>
+          </svg>
+          <figcaption class="slot-label"><span>Espacio para vuestras fotos de obra</span></figcaption>
+        </div>
+        <div class="slot-meta"><span>Baños y cocinas</span><span>Detalle</span></div>
+      </figure>
+
+      <figure class="slot" style="margin:0">
+        <div class="slot-frame">
+          <svg class="cross" viewBox="0 0 200 150" preserveAspectRatio="none" aria-hidden="true">
+            <line x1="0" y1="0" x2="200" y2="150" stroke="#c9cec7" stroke-width="1"/>
+            <line x1="200" y1="0" x2="0" y2="150" stroke="#c9cec7" stroke-width="1"/>
+            <rect x="1" y="1" width="198" height="148" fill="none" stroke="#c9cec7" stroke-width="1"/>
+          </svg>
+          <figcaption class="slot-label"><span>Espacio para vuestras fotos de obra</span></figcaption>
+        </div>
+        <div class="slot-meta"><span>Comunidades</span><span>Zonas comunes</span></div>
+      </figure>
+
+      <figure class="slot" style="margin:0">
+        <div class="slot-frame">
+          <svg class="cross" viewBox="0 0 200 150" preserveAspectRatio="none" aria-hidden="true">
+            <line x1="0" y1="0" x2="200" y2="150" stroke="#c9cec7" stroke-width="1"/>
+            <line x1="200" y1="0" x2="0" y2="150" stroke="#c9cec7" stroke-width="1"/>
+            <rect x="1" y="1" width="198" height="148" fill="none" stroke="#c9cec7" stroke-width="1"/>
+          </svg>
+          <figcaption class="slot-label"><span>Espacio para vuestras fotos de obra</span></figcaption>
+        </div>
+        <div class="slot-meta"><span>Ascensores</span><span>Proceso</span></div>
+      </figure>
+
+      <figure class="slot" style="margin:0">
+        <div class="slot-frame">
+          <svg class="cross" viewBox="0 0 200 150" preserveAspectRatio="none" aria-hidden="true">
+            <line x1="0" y1="0" x2="200" y2="150" stroke="#c9cec7" stroke-width="1"/>
+            <line x1="200" y1="0" x2="0" y2="150" stroke="#c9cec7" stroke-width="1"/>
+            <rect x="1" y="1" width="198" height="148" fill="none" stroke="#c9cec7" stroke-width="1"/>
+          </svg>
+          <figcaption class="slot-label"><span>Espacio para vuestras fotos de obra</span></figcaption>
+        </div>
+        <div class="slot-meta"><span>Obra civil</span><span>Ejecución</span></div>
+      </figure>
+
+      <figure class="slot" style="margin:0">
+        <div class="slot-frame">
+          <svg class="cross" viewBox="0 0 200 150" preserveAspectRatio="none" aria-hidden="true">
+            <line x1="0" y1="0" x2="200" y2="150" stroke="#c9cec7" stroke-width="1"/>
+            <line x1="200" y1="0" x2="0" y2="150" stroke="#c9cec7" stroke-width="1"/>
+            <rect x="1" y="1" width="198" height="148" fill="none" stroke="#c9cec7" stroke-width="1"/>
+          </svg>
+          <figcaption class="slot-label"><span>Espacio para vuestras fotos de obra</span></figcaption>
+        </div>
+        <div class="slot-meta"><span>Accesibilidad</span><span>Entrega</span></div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="proceso" class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Cómo trabajamos</div>
+      <h2>Tres pasos, sin sorpresas por el camino</h2>
+      <p>Un método sencillo, pensado tanto para un particular que reforma su vivienda como para una comunidad que aprueba una actuación en junta.</p>
+    </div>
+    <div class="steps">
+      <article class="step">
+        <div class="n">01</div>
+        <h3>Visita y toma de datos</h3>
+        <p>Se visita el inmueble, se revisa el estado actual y se escuchan las necesidades para definir el alcance real de la actuación.</p>
+      </article>
+      <article class="step">
+        <div class="n">02</div>
+        <h3>Propuesta y planificación</h3>
+        <p>Se detalla por partidas lo que se va a ejecutar, con los oficios implicados y un orden de trabajos acordado antes de empezar.</p>
+      </article>
+      <article class="step">
+        <div class="n">03</div>
+        <h3>Ejecución y entrega</h3>
+        <p>Se ejecuta la obra con seguimiento y un interlocutor único, se repasan los remates y se entrega la zona limpia y terminada.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="contacto" class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Contacto</div>
+      <h2>Hablemos de vuestra obra</h2>
+      <p>La forma más rápida de valorar una reforma es una llamada y una visita al inmueble.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div>
+        <dl class="dl">
+          <div class="row">
+            <dt>Teléfono</dt>
+            <dd><a class="big" href="tel:+34630773817">630 773 817</a></dd>
+          </div>
+          <div class="row">
+            <dt>Email</dt>
+            <dd><a href="mailto:vialsiobracivil@gmail.com">vialsiobracivil@gmail.com</a></dd>
+          </div>
+          <div class="row">
+            <dt>Dirección</dt>
+            <dd>Ronda de la Estación, parcela 15, nave 10<br>23740 Andújar (Jaén)</dd>
+          </div>
+          <div class="row">
+            <dt>Horario</dt>
+            <dd>Consultar horario</dd>
+          </div>
+        </dl>
+        <a class="btn btn-primary" style="margin-top:26px" href="tel:+34630773817">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.4 2.1L8.1 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.4 1.8.6 2.8.7a2 2 0 0 1 1.8 2.1z"/>
+          </svg>
+          <span class="num">630 773 817</span>
+        </a>
+      </div>
+
+      <div class="map-card">
+        <div class="bar"><span>Plano esquemático · ubicación</span><em>Andújar (Jaén)</em></div>
+        <svg viewBox="0 0 520 380" width="100%" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Plano esquemático dibujado a mano con calles estilizadas y un marcador en la nave de Ronda de la Estación">
+          <defs>
+            <pattern id="mg" width="26" height="26" patternUnits="userSpaceOnUse">
+              <path d="M26 0 H0 V26" fill="none" stroke="#e0e3dd" stroke-width="1"/>
+            </pattern>
+          </defs>
+          <rect width="520" height="380" fill="#f4f5f3"/>
+          <rect width="520" height="380" fill="url(#mg)"/>
+
+          <g fill="#e6e9e2" stroke="#d3d8dd" stroke-width="1">
+            <rect x="40" y="46" width="130" height="86"/>
+            <rect x="206" y="46" width="104" height="86"/>
+            <rect x="346" y="46" width="134" height="60"/>
+            <rect x="40" y="172" width="130" height="70"/>
+            <rect x="206" y="172" width="104" height="70"/>
+            <rect x="40" y="282" width="180" height="62"/>
+            <rect x="258" y="282" width="222" height="62"/>
+          </g>
+
+          <g stroke="#c2c8cd" stroke-linecap="square">
+            <line x1="0" y1="152" x2="520" y2="152" stroke-width="14"/>
+            <line x1="0" y1="262" x2="520" y2="262" stroke-width="10"/>
+            <line x1="188" y1="0" x2="188" y2="380" stroke-width="12"/>
+            <line x1="328" y1="0" x2="328" y2="380" stroke-width="9"/>
+          </g>
+          <path d="M0 122 C120 122 150 118 240 118 C350 118 420 128 520 128" fill="none" stroke="#3d4a57" stroke-width="12" stroke-linecap="round"/>
+          <path d="M0 122 C120 122 150 118 240 118 C350 118 420 128 520 128" fill="none" stroke="#f4f5f3" stroke-width="2" stroke-dasharray="12 12"/>
+
+          <g>
+            <line x1="0" y1="336" x2="520" y2="336" stroke="#9aa4ae" stroke-width="3"/>
+            <line x1="0" y1="344" x2="520" y2="344" stroke="#9aa4ae" stroke-width="3"/>
+            <g stroke="#9aa4ae" stroke-width="2">
+              <line x1="20" y1="332" x2="20" y2="348"/><line x1="60" y1="332" x2="60" y2="348"/>
+              <line x1="100" y1="332" x2="100" y2="348"/><line x1="140" y1="332" x2="140" y2="348"/>
+              <line x1="180" y1="332" x2="180" y2="348"/><line x1="220" y1="332" x2="220" y2="348"/>
+              <line x1="260" y1="332" x2="260" y2="348"/><line x1="300" y1="332" x2="300" y2="348"/>
+              <line x1="340" y1="332" x2="340" y2="348"/><line x1="380" y1="332" x2="380" y2="348"/>
+              <line x1="420" y1="332" x2="420" y2="348"/><line x1="460" y1="332" x2="460" y2="348"/>
+              <line x1="500" y1="332" x2="500" y2="348"/>
+            </g>
+          </g>
+
+          <rect x="352" y="176" width="126" height="66" fill="#f6e6d6" stroke="#d8722a" stroke-width="2"/>
+          <text x="362" y="198" font-family="monospace" font-size="11" fill="#b25b1d">PARCELA 15</text>
+          <text x="362" y="214" font-family="monospace" font-size="11" fill="#b25b1d">NAVE 10</text>
+
+          <g transform="translate(415,150)">
+            <path d="M0 26 C0 26 17 8 17 -5 A17 17 0 1 0 -17 -5 C-17 8 0 26 0 26 Z" fill="#d8722a"/>
+            <circle cx="0" cy="-5" r="6.5" fill="#f4f5f3"/>
+          </g>
+
+          <text x="46" y="112" font-family="monospace" font-size="11" fill="#65727f" letter-spacing="1">RONDA DE LA ESTACIÓN</text>
+          <text x="46" y="328" font-family="monospace" font-size="10" fill="#65727f" letter-spacing="1">TRAZADO FERROVIARIO</text>
+          <text x="196" y="372" font-family="monospace" font-size="10" fill="#8f99a3" letter-spacing="1">DIBUJO ORIENTATIVO · SIN ESCALA</text>
+
+          <g transform="translate(480,300)">
+            <circle r="18" fill="none" stroke="#b3bbc3" stroke-width="1"/>
+            <path d="M0 -14 L5 4 L0 0 L-5 4 Z" fill="#3d4a57"/>
+            <text x="0" y="-20" text-anchor="middle" font-family="monospace" font-size="9" fill="#65727f">N</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="eyebrow" style="color:#8d9aa6">Vialsi Obra Civil</div>
+        <div style="margin-top:14px;font-size:1.05rem;font-weight:700;color:#fff">Reformas integrales y obra civil</div>
+        <a class="mail" href="mailto:vialsiobracivil@gmail.com">vialsiobracivil@gmail.com</a>
+        <div style="margin-top:14px;font-size:.95rem;color:#a9b5c0">Ronda de la Estación, parcela 15, nave 10<br>23740 Andújar (Jaén) · Consultar horario</div>
+      </div>
+      <div>
+        <a class="btn btn-ghost" href="tel:+34630773817"><span class="num">630 773 817</span></a>
+      </div>
+    </div>
+    <p class="credit"><b>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</b></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var bar = document.querySelector('.topbar');
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var t = document.querySelector(a.getAttribute('href'));
+      if(!t) return;
+      e.preventDefault();
+      var off = (bar ? bar.offsetHeight : 0) + 16;
+      var y = t.getBoundingClientRect().top + window.pageYOffset - off;
+      window.scrollTo({top:y, behavior:'smooth'});
+    });
+  });
+
+  var items = document.querySelectorAll('.card, .slot, .step, .map-card, .note');
+  if(!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches){ return; }
+  items.forEach(function(el){
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(14px)';
+    el.style.transition = 'opacity .5s ease, transform .5s ease';
+  });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        en.target.style.opacity = '1';
+        en.target.style.transform = 'none';
+        io.unobserve(en.target);
+      }
+    });
+  }, {threshold:.12});
+  items.forEach(function(el){ io.observe(el); });
+})();
+</script>
+</body>
+</html>
