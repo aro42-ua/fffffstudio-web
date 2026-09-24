@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stella Centro de Estética — Propuesta de diseño</title>
+<style>
+  :root{
+    --blanco:#FFFFFF;
+    --hueso:#FBF8F7;
+    --rosa:#F5E7E6;
+    --rosa-2:#EEDAD8;
+    --perla:#E6E3E0;
+    --gris:#8C8783;
+    --tinta:#2A2426;
+    --ciruela:#6B2B45;
+    --ciruela-cl:#8E3E5D;
+    --cobre:#B9795F;
+    --linea:rgba(42,36,38,.10);
+    --sans:"Avenir Next","Avenir","Futura","Century Gothic","Segoe UI",-apple-system,"Helvetica Neue",sans-serif;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --barra:38px;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;padding-top:var(--barra);overflow-x:hidden;background:var(--hueso);color:var(--tinta);
+    font-family:var(--sans);font-size:16px;line-height:1.65;
+    font-weight:400;letter-spacing:.005em;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%}
+  a{color:inherit}
+  h1,h2,h3,h4{margin:0;font-weight:500;letter-spacing:-.02em;line-height:1.08}
+  p{margin:0}
+  ul{margin:0;padding:0;list-style:none}
+
+  /* ---------- barra maqueta ---------- */
+  .maqueta{
+    position:fixed;top:0;left:0;right:0;z-index:100;height:var(--barra);
+    display:flex;align-items:center;justify-content:center;
+    background:#241C20;color:#EFE3E6;
+    font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    padding:0 14px;text-align:center;line-height:1.25;
+  }
+  .maqueta span{opacity:.6}
+
+  /* ---------- nav ---------- */
+  .nav{
+    position:sticky;top:var(--barra);z-index:60;
+    background:rgba(251,248,247,.82);backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--linea);
+  }
+  .nav-in{
+    max-width:1200px;margin:0 auto;padding:14px 24px;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+  }
+  .marca{display:flex;align-items:center;gap:10px;text-decoration:none}
+  .marca b{
+    font-weight:500;font-size:17px;letter-spacing:.22em;text-transform:uppercase;
+  }
+  .marca small{
+    display:block;font-family:var(--serif);font-style:italic;
+    font-size:11px;letter-spacing:.06em;color:var(--gris);text-transform:none;
+    margin-top:-2px;
+  }
+  .menu{display:flex;gap:28px;align-items:center}
+  .menu a{
+    text-decoration:none;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--gris);transition:color .25s;
+  }
+  .menu a:hover{color:var(--ciruela)}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;text-decoration:none;
+    background:var(--ciruela);color:#fff;border-radius:999px;
+    padding:11px 22px;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;
+    transition:background .3s,transform .3s,box-shadow .3s;
+    box-shadow:0 6px 18px -10px rgba(107,43,69,.8);
+  }
+  .btn:hover{background:var(--ciruela-cl);transform:translateY(-1px);box-shadow:0 12px 26px -12px rgba(107,43,69,.9)}
+  .btn-ghost{
+    background:transparent;color:var(--ciruela);border:1px solid rgba(107,43,69,.28);box-shadow:none;
+  }
+  .btn-ghost:hover{background:rgba(107,43,69,.06);color:var(--ciruela)}
+  @media(max-width:860px){.menu{display:none}}
+
+  /* ---------- layout ---------- */
+  .wrap{max-width:1200px;margin:0 auto;padding-left:24px;padding-right:24px}
+  section{position:relative}
+  .eyebrow{
+    font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--cobre);
+    display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--cobre);opacity:.5}
+  .lede{color:var(--gris);font-size:16.5px;max-width:56ch}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    padding-block:96px 104px;
+    background:
+      radial-gradient(120% 90% at 88% -10%,var(--rosa) 0%,rgba(245,231,230,0) 62%),
+      radial-gradient(90% 70% at -10% 110%,var(--perla) 0%,rgba(230,227,224,0) 60%),
+      linear-gradient(180deg,#fff 0%,var(--hueso) 100%);
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.08fr .92fr;gap:64px;align-items:center;
+  }
+  h1{
+    font-size:clamp(38px,6.2vw,74px);font-weight:400;letter-spacing:-.035em;
+  }
+  h1 em{
+    font-family:var(--serif);font-style:italic;font-weight:400;color:var(--ciruela);
+    letter-spacing:-.01em;
+  }
+  .hero p.lede{margin-top:24px}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+  .hero-meta{
+    margin-top:40px;padding-top:22px;border-top:1px solid var(--linea);
+    display:flex;flex-wrap:wrap;gap:28px;
+    font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gris);
+  }
+  .hero-art{position:relative;aspect-ratio:4/5;max-width:100%}
+  .hero-art svg{display:block;width:100%;height:100%}
+
+  /* reveal */
+  .rv{opacity:0;transform:translateY(22px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+  .rv.on{opacity:1;transform:none}
+
+  /* ---------- tratamientos ---------- */
+  .trat{padding-block:96px;background:var(--blanco);border-top:1px solid var(--linea)}
+  .sec-head{display:flex;flex-direction:column;gap:16px;margin-bottom:56px;max-width:62ch}
+  h2{font-size:clamp(28px,3.6vw,44px);font-weight:400;letter-spacing:-.03em}
+  h2 em{font-family:var(--serif);font-style:italic;color:var(--ciruela)}
+  .grupos{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+  .grupo{
+    border:1px solid var(--linea);border-radius:22px;padding:34px 32px 30px;
+    background:linear-gradient(180deg,var(--hueso) 0%,#fff 55%);
+    position:relative;overflow:hidden;
+  }
+  .grupo::after{
+    content:"";position:absolute;right:-60px;top:-60px;width:190px;height:190px;border-radius:50%;
+    background:radial-gradient(circle,var(--rosa) 0%,rgba(245,231,230,0) 70%);pointer-events:none;
+  }
+  .grupo h3{
+    font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--ciruela);
+    display:flex;align-items:center;gap:10px;
+  }
+  .grupo .sub{
+    font-family:var(--serif);font-style:italic;color:var(--gris);font-size:15px;margin-top:12px;
+  }
+  .lista{margin-top:26px;border-top:1px solid var(--linea)}
+  .lista li{
+    border-bottom:1px solid var(--linea);
+    padding:17px 2px;display:flex;align-items:baseline;gap:14px;
+    transition:padding-left .3s,color .3s;
+  }
+  .lista li:hover{padding-left:8px}
+  .lista .n{
+    font-family:var(--serif);font-size:12px;color:var(--cobre);min-width:22px;letter-spacing:.04em;
+  }
+  .lista .t{font-size:16.5px}
+  .lista .d{display:block;font-size:13.5px;color:var(--gris);margin-top:3px;letter-spacing:.01em}
+
+  /* ---------- primera visita ---------- */
+  .visita{
+    padding-block:96px;
+    background:
+      radial-gradient(80% 60% at 15% 0%,var(--rosa) 0%,rgba(245,231,230,0) 65%),
+      var(--hueso);
+    border-top:1px solid var(--linea);
+  }
+  .pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;counter-reset:p}
+  .paso{
+    background:#fff;border:1px solid var(--linea);border-radius:20px;padding:32px 28px;
+    position:relative;transition:transform .4s,box-shadow .4s;
+  }
+  .paso:hover{transform:translateY(-4px);box-shadow:0 26px 50px -34px rgba(42,36,38,.45)}
+  .paso .num{
+    font-family:var(--serif);font-size:34px;color:var(--rosa-2);line-height:1;
+  }
+  .paso h3{margin-top:14px;font-size:20px;letter-spacing:-.02em}
+  .paso p{margin-top:10px;color:var(--gris);font-size:15px}
+  .nota{
+    margin-top:34px;display:flex;flex-wrap:wrap;align-items:center;gap:14px;
+    border:1px dashed rgba(107,43,69,.3);border-radius:999px;
+    padding:14px 26px;background:rgba(255,255,255,.7);
+    font-size:14px;color:var(--tinta);
+  }
+  .nota b{font-weight:500}
+  .nota span{color:var(--gris)}
+
+  /* ---------- instagram ---------- */
+  .ig{padding-block:92px;background:var(--blanco);border-top:1px solid var(--linea)}
+  .ig-head{display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end;justify-content:space-between;margin-bottom:40px}
+  .mosaico{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+  .tile{
+    aspect-ratio:1/1;border-radius:16px;overflow:hidden;position:relative;
+    border:1px solid var(--linea);
+  }
+  .tile svg{display:block;width:100%;height:100%}
+  .tile::after{
+    content:"";position:absolute;inset:0;background:rgba(107,43,69,0);transition:background .35s;
+  }
+  .tile:hover::after{background:rgba(107,43,69,.07)}
+  .tile.big{grid-column:span 2;grid-row:span 2;aspect-ratio:1/1}
+
+  /* ---------- contacto ---------- */
+  .cont{
+    padding-block:96px;border-top:1px solid var(--linea);
+    background:linear-gradient(180deg,var(--hueso) 0%,#fff 100%);
+  }
+  .cont-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+  .datos{margin-top:34px;display:grid;gap:2px}
+  .dato{
+    display:flex;gap:16px;align-items:flex-start;padding:18px 0;border-top:1px solid var(--linea);
+  }
+  .dato:last-child{border-bottom:1px solid var(--linea)}
+  .dato .ic{flex:0 0 auto;margin-top:2px;color:var(--ciruela)}
+  .dato .k{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gris)}
+  .dato .v{font-size:17px;margin-top:4px;text-decoration:none;display:inline-block;overflow-wrap:anywhere}
+  .dato>span:last-child{min-width:0}
+  .ig-head .sec-head{min-width:0}
+  .ig-head h2{overflow-wrap:anywhere}
+  a.v:hover{color:var(--ciruela)}
+  .mapa{
+    border:1px solid var(--linea);border-radius:22px;overflow:hidden;background:#fff;
+    box-shadow:0 30px 60px -50px rgba(42,36,38,.6);
+  }
+  .mapa svg{display:block;width:100%;height:auto}
+  .mapa-pie{
+    padding:16px 22px;border-top:1px solid var(--linea);
+    display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;
+    font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--gris);
+  }
+
+  /* ---------- footer ---------- */
+  footer{background:#241C20;color:#E8DDE0;padding-block:64px 34px}
+  .f-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:40px}
+  footer .marca b{color:#fff}
+  footer .marca small{color:rgba(232,221,224,.55)}
+  .f-col h4{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(232,221,224,.5);margin-bottom:14px}
+  .f-col a,.f-col p{text-decoration:none;color:#E8DDE0;font-size:15px;display:block;margin-bottom:8px;transition:color .25s;word-break:break-word}
+  .f-col a:hover{color:var(--rosa-2)}
+  .f-bottom{
+    margin-top:48px;padding-top:22px;border-top:1px solid rgba(232,221,224,.14);
+    display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;
+    font-size:12.5px;color:rgba(232,221,224,.55);letter-spacing:.04em;
+  }
+  .f-bottom em{font-family:var(--serif);font-style:italic;color:var(--rosa-2)}
+
+  /* destello decorativo */
+  .sparkle{position:absolute;pointer-events:none;opacity:.5;animation:tw 6s ease-in-out infinite}
+  @keyframes tw{0%,100%{opacity:.18;transform:scale(.9)}50%{opacity:.6;transform:scale(1.06)}}
+
+  /* ---------- responsive ---------- */
+  @media(max-width:980px){
+    .hero-grid{grid-template-columns:1fr;gap:44px}
+    .hero-art{max-width:420px;margin:0 auto}
+    .grupos{grid-template-columns:1fr}
+    .pasos{grid-template-columns:1fr}
+    .cont-grid{grid-template-columns:1fr;gap:40px}
+    .f-grid{grid-template-columns:1fr 1fr}
+    .mosaico{grid-template-columns:repeat(4,1fr)}
+  }
+  @media(max-width:560px){
+    :root{--barra:46px}
+    .wrap{padding-left:18px;padding-right:18px}
+    .hero{padding-block:60px 70px}
+    .trat,.visita,.ig,.cont{padding-block:64px}
+    .grupo{padding:28px 22px 24px}
+    .paso{padding:26px 22px}
+    .f-grid{grid-template-columns:1fr;gap:30px}
+    .mosaico{grid-template-columns:repeat(2,1fr)}
+    .tile.big{grid-column:span 2;grid-row:span 1}
+    .hero-meta{gap:14px;flex-direction:column}
+    .maqueta{font-size:10px;letter-spacing:.08em}
+    .nota{border-radius:18px;padding:16px 20px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .rv{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="maqueta">Propuesta de diseño <span>·</span> maqueta no oficial <span>·</span> FFFFFFstudio <span>·</span> Ángel Rubio</div>
+
+<header class="nav">
+  <div class="nav-in">
+    <a class="marca" href="#inicio">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 1.5l2.1 6.6 6.9.1-5.6 4.1 2.1 6.6L12 14.7l-5.5 4.2 2.1-6.6L3 8.2l6.9-.1L12 1.5z" fill="#6B2B45" opacity=".9"/>
+        <path d="M19.5 17.5l.8 2.3 2.2.1-1.8 1.4.7 2.2-1.9-1.4-1.9 1.4.7-2.2-1.8-1.4 2.2-.1.8-2.3z" fill="#B9795F" opacity=".6"/>
+      </svg>
+      <span>
+        <b>Stella</b>
+        <small>centro de estética</small>
+      </span>
+    </a>
+    <nav class="menu">
+      <a href="#tratamientos">Tratamientos</a>
+      <a href="#visita">Tu primera visita</a>
+      <a href="#instagram">Instagram</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="btn" href="tel:+34965161031">Pedir cita</a>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="inicio">
+  <svg class="sparkle" style="top:12%;left:6%" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4L12 0z" fill="#B9795F"/></svg>
+  <svg class="sparkle" style="top:70%;left:46%;animation-delay:2s" width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4L12 0z" fill="#6B2B45"/></svg>
+
+  <div class="wrap hero-grid">
+    <div class="rv">
+      <p class="eyebrow">Alicante · Playa de San Juan</p>
+      <h1 style="margin-top:22px">Estética avanzada<br>en <em>Playa de San Juan</em></h1>
+      <p class="lede">Centro de estética con aparatología y cabina: depilación láser, radiofrecuencia, tratamientos corporales, faciales, micropigmentación y manicura. Cada tratamiento comienza con una valoración personalizada.</p>
+      <div class="hero-cta">
+        <a class="btn" href="tel:+34965161031">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.3-1.2a2 2 0 012.1-.5c.9.3 1.8.6 2.8.7a2 2 0 011.7 2z"/></svg>
+          Pedir cita
+        </a>
+        <a class="btn btn-ghost" href="#tratamientos">Ver tratamientos</a>
+      </div>
+      <div class="hero-meta">
+        <span>Av. Condomina 40</span>
+        <span>96 516 10 31</span>
+        <span>@stellacentrodeestetica</span>
+      </div>
+    </div>
+
+    <div class="hero-art rv" style="transition-delay:.15s">
+      <svg viewBox="0 0 400 500" role="img" aria-label="Composición decorativa de degradados y destellos">
+        <defs>
+          <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#FDF6F5"/><stop offset="55%" stop-color="#F1DEDC"/><stop offset="100%" stop-color="#E6E3E0"/>
+          </linearGradient>
+          <linearGradient id="g2" x1="0" y1="1" x2="1" y2="0">
+            <stop offset="0%" stop-color="#6B2B45" stop-opacity=".85"/><stop offset="100%" stop-color="#B9795F" stop-opacity=".55"/>
+          </linearGradient>
+          <radialGradient id="g3" cx="50%" cy="40%" r="60%">
+            <stop offset="0%" stop-color="#fff" stop-opacity=".95"/><stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+          </radialGradient>
+          <pattern id="dots" width="14" height="14" patternUnits="userSpaceOnUse">
+            <circle cx="2" cy="2" r="1" fill="#6B2B45" opacity=".16"/>
+          </pattern>
+        </defs>
+        <rect x="12" y="12" width="376" height="476" rx="188" fill="url(#g1)"/>
+        <rect x="12" y="12" width="376" height="476" rx="188" fill="url(#dots)"/>
+        <path d="M200 60c78 0 140 62 140 140 0 96-140 240-140 240S60 296 60 200C60 122 122 60 200 60z" fill="url(#g3)"/>
+        <circle cx="200" cy="215" r="118" fill="none" stroke="#6B2B45" stroke-opacity=".22"/>
+        <circle cx="200" cy="215" r="86" fill="none" stroke="#B9795F" stroke-opacity=".32"/>
+        <path d="M200 120l16.5 62.5L279 199l-62.5 16.5L200 278l-16.5-62.5L121 199l62.5-16.5L200 120z" fill="url(#g2)"/>
+        <path d="M300 330l7 25 25 7-25 7-7 25-7-25-25-7 25-7 7-25z" fill="#B9795F" opacity=".55"/>
+        <path d="M96 128l5 17 17 5-17 5-5 17-5-17-17-5 17-5 5-17z" fill="#6B2B45" opacity=".45"/>
+        <path d="M40 380c70 40 250 40 320 0" fill="none" stroke="#6B2B45" stroke-opacity=".18" stroke-width="1"/>
+        <path d="M40 404c70 40 250 40 320 0" fill="none" stroke="#6B2B45" stroke-opacity=".12" stroke-width="1"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TRATAMIENTOS ================= -->
+<section class="trat" id="tratamientos">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Tratamientos</p>
+      <h2>Dos formas de <em>cuidarte</em></h2>
+      <p class="lede">La aparatología y la cabina de belleza conviven en el mismo centro. Puedes combinarlas o centrarte en una sola: lo definimos juntos en la valoración.</p>
+    </div>
+
+    <div class="grupos">
+      <article class="grupo rv">
+        <h3>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1" stroke-linecap="round"/></svg>
+          Aparatología
+        </h3>
+        <p class="sub">Tecnología aplicada con valoración previa</p>
+        <ul class="lista">
+          <li><span class="n">01</span><span><span class="t">Depilación láser</span><span class="d">Sesiones planificadas por zona, con pauta individual.</span></span></li>
+          <li><span class="n">02</span><span><span class="t">Radiofrecuencia</span><span class="d">Protocolos faciales y corporales según la valoración.</span></span></li>
+          <li><span class="n">03</span><span><span class="t">Tratamientos corporales</span><span class="d">Programas de cuerpo adaptados a cada objetivo.</span></span></li>
+        </ul>
+      </article>
+
+      <article class="grupo rv" style="transition-delay:.12s">
+        <h3>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3c2.5 3.2 5 5.6 5 8.6A5 5 0 017 11.6C7 8.6 9.5 6.2 12 3z" stroke-linejoin="round"/><path d="M5 20h14" stroke-linecap="round"/></svg>
+          Belleza
+        </h3>
+        <p class="sub">Cabina, detalle y manos expertas</p>
+        <ul class="lista">
+          <li><span class="n">01</span><span><span class="t">Tratamientos faciales</span><span class="d">Higiene, hidratación y rutinas de cabina.</span></span></li>
+          <li><span class="n">02</span><span><span class="t">Micropigmentación</span><span class="d">Diseño previo y trabajo por sesiones.</span></span></li>
+          <li><span class="n">03</span><span><span class="t">Manicura y pedicura</span><span class="d">Cuidado de manos y pies con acabado a elegir.</span></span></li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRIMERA VISITA ================= -->
+<section class="visita" id="visita">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Tu primera visita</p>
+      <h2>Tres pasos, sin <em>prisa</em></h2>
+      <p class="lede">Antes de cualquier tratamiento hablamos contigo. Así sabes qué esperar en cada sesión y cómo continúa el proceso.</p>
+    </div>
+
+    <div class="pasos">
+      <article class="paso rv">
+        <div class="num">01</div>
+        <h3>Valoración</h3>
+        <p>Escuchamos qué te preocupa, revisamos la zona y resolvemos dudas antes de decidir nada.</p>
+      </article>
+      <article class="paso rv" style="transition-delay:.1s">
+        <div class="num">02</div>
+        <h3>Plan</h3>
+        <p>Proponemos los tratamientos adecuados, el número de sesiones orientativo y cómo se organizan.</p>
+      </article>
+      <article class="paso rv" style="transition-delay:.2s">
+        <div class="num">03</div>
+        <h3>Seguimiento</h3>
+        <p>Revisamos la evolución sesión a sesión y ajustamos el plan cuando hace falta.</p>
+      </article>
+    </div>
+
+    <div class="nota rv">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6B2B45" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.6v.8" stroke-linecap="round"/></svg>
+      <b>Consulta de valoración:</b><span>consultar</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= INSTAGRAM ================= -->
+<section class="ig" id="instagram">
+  <div class="wrap">
+    <div class="ig-head rv">
+      <div class="sec-head" style="margin-bottom:0">
+        <p class="eyebrow">En redes</p>
+        <h2>@stellacentrodeestetica</h2>
+      </div>
+      <a class="btn btn-ghost" href="https://www.instagram.com/stellacentrodeestetica/" target="_blank" rel="noopener">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg>
+        Seguir en Instagram
+      </a>
+    </div>
+
+    <div class="mosaico rv">
+      <div class="tile big"><svg viewBox="0 0 200 200" aria-hidden="true"><defs><linearGradient id="m1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FBF1F0"/><stop offset="100%" stop-color="#EBD6D4"/></linearGradient></defs><rect width="200" height="200" fill="url(#m1)"/><circle cx="100" cy="100" r="52" fill="none" stroke="#6B2B45" stroke-opacity=".25"/><path d="M100 62l9 29 29 9-29 9-9 29-9-29-29-9 29-9 9-29z" fill="#6B2B45" opacity=".35"/></svg></div>
+      <div class="tile"><svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" fill="#F3E6E4"/><circle cx="50" cy="50" r="26" fill="#fff" opacity=".7"/><path d="M50 34l5 11 11 5-11 5-5 11-5-11-11-5 11-5 5-11z" fill="#B9795F" opacity=".55"/></svg></div>
+      <div class="tile"><svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" fill="#EDEAE7"/><path d="M0 70c30 18 70 18 100 0v30H0z" fill="#E0D2D0"/><circle cx="50" cy="40" r="16" fill="none" stroke="#6B2B45" stroke-opacity=".3"/></svg></div>
+      <div class="tile"><svg viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="m2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fff"/><stop offset="100%" stop-color="#F1DEDC"/></linearGradient></defs><rect width="100" height="100" fill="url(#m2)"/><path d="M20 80c0-22 13-40 30-40s30 18 30 40" fill="none" stroke="#B9795F" stroke-opacity=".45"/></svg></div>
+      <div class="tile"><svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" fill="#F7EFEE"/><circle cx="35" cy="40" r="18" fill="#E3CFCD" opacity=".8"/><circle cx="64" cy="62" r="24" fill="#6B2B45" opacity=".15"/></svg></div>
+      <div class="tile"><svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" fill="#EFE9E6"/><path d="M10 50h80M50 10v80" stroke="#6B2B45" stroke-opacity=".14"/><path d="M50 36l6 8 8-6-6 8 8 6-10 1-1 10-5-9-9 5 5-9-9-5 10-1 3-8z" fill="#B9795F" opacity=".5"/></svg></div>
+      <div class="tile"><svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" fill="#FAF3F2"/><rect x="18" y="18" width="64" height="64" rx="32" fill="none" stroke="#6B2B45" stroke-opacity=".22"/><rect x="34" y="34" width="32" height="32" rx="16" fill="#EBD6D4"/></svg></div>
+      <div class="tile"><svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" fill="#E9E6E2"/><path d="M0 60c25-20 75-20 100 0v40H0z" fill="#F3E6E4"/><circle cx="72" cy="28" r="10" fill="#B9795F" opacity=".35"/></svg></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACTO ================= -->
+<section class="cont" id="contacto">
+  <div class="wrap cont-grid">
+    <div class="rv">
+      <p class="eyebrow">Contacto</p>
+      <h2 style="margin-top:16px">Te esperamos en <em>La Albufereta</em></h2>
+
+      <div class="datos">
+        <div class="dato">
+          <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.3-1.2a2 2 0 012.1-.5c.9.3 1.8.6 2.8.7a2 2 0 011.7 2z" stroke-linejoin="round"/></svg></span>
+          <span><span class="k">Teléfono</span><a class="v" href="tel:+34965161031">96 516 10 31</a></span>
+        </div>
+        <div class="dato">
+          <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 22s7-6.1 7-11a7 7 0 10-14 0c0 4.9 7 11 7 11z" stroke-linejoin="round"/><circle cx="12" cy="11" r="2.6"/></svg></span>
+          <span><span class="k">Dirección</span><span class="v">Av. Condomina 40, 03540 Alicante</span></span>
+        </div>
+        <div class="dato">
+          <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2" stroke-linecap="round"/></svg></span>
+          <span><span class="k">Horario</span><span class="v">Consultar horario</span></span>
+        </div>
+        <div class="dato">
+          <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 7l8 6 8-6" stroke-linejoin="round"/></svg></span>
+          <span><span class="k">Email</span><a class="v" href="mailto:publicidad.stellaestetica@gmail.com">publicidad.stellaestetica@gmail.com</a></span>
+        </div>
+      </div>
+
+      <div class="hero-cta" style="margin-top:30px">
+        <a class="btn" href="tel:+34965161031">Pedir cita por teléfono</a>
+      </div>
+    </div>
+
+    <div class="rv" style="transition-delay:.12s">
+      <div class="mapa">
+        <svg viewBox="0 0 600 440" role="img" aria-label="Mapa esquemático de la zona de Av. Condomina, Alicante">
+          <defs>
+            <linearGradient id="mar" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#E4EDEF"/><stop offset="100%" stop-color="#D6E4E8"/>
+            </linearGradient>
+            <linearGradient id="tierra" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#FBF7F6"/><stop offset="100%" stop-color="#F2ECEA"/>
+            </linearGradient>
+          </defs>
+          <rect width="600" height="440" fill="url(#tierra)"/>
+          <path d="M600 0v440H330c30-70 60-110 120-160C510 230 545 120 600 0z" fill="url(#mar)"/>
+          <path d="M330 440c30-70 60-110 120-160C510 230 545 120 600 0" fill="none" stroke="#9FBAC2" stroke-width="1.5"/>
+          <text x="512" y="366" font-family="Georgia,serif" font-style="italic" font-size="17" fill="#7E9AA3">Mediterráneo</text>
+
+          <g stroke="#DED6D3" stroke-width="10" stroke-linecap="round" fill="none">
+            <path d="M0 300h360"/><path d="M110 0v420"/><path d="M0 140h250"/><path d="M280 60L430 280"/>
+          </g>
+          <g stroke="#EDE6E3" stroke-width="5" fill="none">
+            <path d="M0 220h300"/><path d="M200 20v300"/><path d="M40 0v420"/><path d="M0 380h330"/>
+          </g>
+
+          <text x="18" y="292" font-family="Avenir Next,Segoe UI,sans-serif" font-size="12" letter-spacing="1.4" fill="#9C938F">AV. CONDOMINA</text>
+          <text x="122" y="60" font-family="Avenir Next,Segoe UI,sans-serif" font-size="12" letter-spacing="1.4" fill="#9C938F">ALBUFERETA</text>
+          <text x="300" y="418" font-family="Avenir Next,Segoe UI,sans-serif" font-size="12" letter-spacing="1.4" fill="#9C938F">PLAYA DE SAN JUAN</text>
+
+          <g>
+            <circle cx="206" cy="300" r="26" fill="#6B2B45" opacity=".10"/>
+            <circle cx="206" cy="300" r="16" fill="#6B2B45" opacity=".16"/>
+            <path d="M206 282c-8.3 0-15 6.7-15 15 0 11 15 27 15 27s15-16 15-27c0-8.3-6.7-15-15-15z" fill="#6B2B45"/>
+            <circle cx="206" cy="297" r="5.4" fill="#fff"/>
+          </g>
+          <g transform="translate(228 268)">
+            <rect x="0" y="0" width="152" height="46" rx="12" fill="#fff" stroke="#E3DBD8"/>
+            <text x="14" y="20" font-family="Avenir Next,Segoe UI,sans-serif" font-size="13" fill="#2A2426">Stella</text>
+            <text x="14" y="36" font-family="Georgia,serif" font-style="italic" font-size="12" fill="#8C8783">Av. Condomina 40</text>
+          </g>
+          <path d="M60 40l4 13 13 4-13 4-4 13-4-13-13-4 13-4 4-13z" fill="#B9795F" opacity=".35"/>
+        </svg>
+        <div class="mapa-pie">
+          <span>Mapa esquemático · orientativo</span>
+          <span>03540 Alicante</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <span class="marca" style="display:inline-flex">
+          <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5l2.1 6.6 6.9.1-5.6 4.1 2.1 6.6L12 14.7l-5.5 4.2 2.1-6.6L3 8.2l6.9-.1L12 1.5z" fill="#EBD6D4"/></svg>
+          <span><b>Stella</b><small>centro de estética</small></span>
+        </span>
+        <p style="color:rgba(232,221,224,.6);font-size:14.5px;margin-top:16px;max-width:34ch">Estética avanzada en Playa de San Juan, Alicante.</p>
+      </div>
+      <div class="f-col">
+        <h4>Contacto</h4>
+        <a href="tel:+34965161031">96 516 10 31</a>
+        <a href="mailto:publicidad.stellaestetica@gmail.com">publicidad.stellaestetica@gmail.com</a>
+        <a href="https://www.instagram.com/stellacentrodeestetica/" target="_blank" rel="noopener">@stellacentrodeestetica</a>
+      </div>
+      <div class="f-col">
+        <h4>Centro</h4>
+        <p>Av. Condomina 40</p>
+        <p>03540 Alicante</p>
+        <p>Consultar horario</p>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <span>Propuesta de rediseño presentada por <em>FFFFFFstudio</em> — Ángel Rubio, diseñador web · Alicante</span>
+      <span>Maqueta no oficial</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)){
+    els.forEach(function(e){e.classList.add('on')});
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){ en.target.classList.add('on'); io.unobserve(en.target); }
+    });
+  },{threshold:.14, rootMargin:'0px 0px -8% 0px'});
+  els.forEach(function(e){io.observe(e)});
+
+  // smooth scroll con compensación de barra fija + nav
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(ev){
+      var t = document.querySelector(a.getAttribute('href'));
+      if(!t) return;
+      ev.preventDefault();
+      var off = document.querySelector('.maqueta').offsetHeight + document.querySelector('.nav').offsetHeight + 8;
+      window.scrollTo({top: t.getBoundingClientRect().top + window.pageYOffset - off, behavior:'smooth'});
+    });
+  });
+})();
+</script>
+</body>
+</html>

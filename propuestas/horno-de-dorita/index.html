@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Horno de Dorita · Panadería y obrador artesano en Alicante</title>
+<meta name="description" content="Propuesta de rediseño web para Horno de Dorita, panadería y obrador artesano en el centro de Alicante. C/ Bazán 36.">
+<style>
+  /* ============ Tokens ============ */
+  :root{
+    --harina:#F4EDDF;      /* crema de harina */
+    --harina-2:#EADFC9;
+    --estraza:#E0CFAF;     /* papel de estraza */
+    --miga:#FBF6EC;
+    --corteza:#6B4326;     /* marrón corteza */
+    --corteza-2:#8A5C36;
+    --corteza-3:#3A2415;   /* tostado oscuro */
+    --teja:#B5462B;        /* acento rojo teja */
+    --mostaza:#C98A18;     /* acento mostaza */
+    --tinta:#2E1E12;
+    --tinta-2:#6A5540;
+    --tinta-3:#9A866E;
+    --linea:rgba(46,30,18,.16);
+
+    --display:"Hoefler Text","Baskerville","Big Caslon","Palatino Linotype","Book Antiqua",Palatino,Georgia,"Times New Roman",serif;
+    --sans:"Optima","Candara","Gill Sans","Gill Sans MT","Segoe UI","Lucida Grande","Trebuchet MS",sans-serif;
+
+    --max:1160px;
+    --gutter:clamp(18px,4vw,44px);
+    --ease:cubic-bezier(.2,.75,.25,1);
+    --barra:34px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    font-family:var(--sans);
+    color:var(--tinta);
+    background:var(--harina);
+    line-height:1.62;
+    font-size:16.5px;
+    overflow-x:hidden;
+    padding-top:var(--barra);
+  }
+  img,svg{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  ul{list-style:none}
+  h1,h2,h3,h4,.dsp{font-family:var(--display);font-weight:400;line-height:1.05;letter-spacing:-.015em}
+  ::selection{background:var(--mostaza);color:#fff}
+
+  .wrap{width:min(var(--max),100% - 2*var(--gutter));margin-inline:auto}
+  .eyebrow{
+    font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--corteza-2);display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--corteza-2);opacity:.6;flex:none}
+
+  /* ============ Grano de papel de estraza ============ */
+  body::after{
+    content:"";position:fixed;inset:0;z-index:9000;pointer-events:none;opacity:.5;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .36 0 0 0 0 .24 0 0 0 0 .12 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  }
+
+  /* ============ Barra de propuesta ============ */
+  .aviso{
+    position:fixed;top:0;left:0;right:0;z-index:10000;height:var(--barra);
+    display:flex;align-items:center;justify-content:center;gap:9px;
+    background:var(--corteza-3);color:var(--harina);
+    font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;
+    padding-inline:14px;text-align:center;white-space:nowrap;overflow:hidden;
+  }
+  .aviso i{width:5px;height:5px;border-radius:50%;background:var(--mostaza);flex:none}
+  @media (max-width:560px){.aviso{font-size:8.6px;letter-spacing:.06em;gap:6px}}
+
+  /* ============ Navegación ============ */
+  .nav{
+    position:sticky;top:var(--barra);z-index:900;
+    background:color-mix(in srgb,var(--harina) 84%,transparent);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--linea);
+  }
+  .nav-in{display:flex;align-items:center;justify-content:space-between;gap:16px;height:70px}
+  .marca{display:flex;align-items:center;gap:11px}
+  .marca .sello{width:36px;height:36px;flex:none}
+  .marca b{font-family:var(--display);font-size:20px;letter-spacing:.005em;font-weight:400;display:block;line-height:1}
+  .marca small{font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--tinta-3);display:block;margin-top:3px}
+  .menu{display:flex;align-items:center;gap:28px}
+  .menu a{font-size:13px;letter-spacing:.06em;color:var(--tinta-2);position:relative;padding-block:4px}
+  .menu a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--teja);transition:right .4s var(--ease)}
+  .menu a:hover{color:var(--tinta)}
+  .menu a:hover::after{right:0}
+  @media (min-width:901px){.menu .btn{display:none}}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;
+    background:var(--teja);color:var(--miga);
+    padding:13px 22px;border-radius:999px;
+    font-size:13px;letter-spacing:.09em;text-transform:uppercase;
+    border:1px solid var(--teja);
+    transition:background .3s var(--ease),color .3s var(--ease),transform .3s var(--ease);
+  }
+  .btn:hover{background:var(--corteza-3);border-color:var(--corteza-3);transform:translateY(-2px)}
+  .btn.ghost{background:transparent;color:var(--corteza);border-color:var(--linea)}
+  .btn.ghost:hover{background:var(--corteza);color:var(--miga);border-color:var(--corteza)}
+  .burger{display:none;width:42px;height:42px;border:1px solid var(--linea);border-radius:50%;background:transparent;cursor:pointer;align-items:center;justify-content:center}
+  .burger span{display:block;width:16px;height:1.5px;background:var(--tinta);position:relative}
+  .burger span::before,.burger span::after{content:"";position:absolute;left:0;width:16px;height:1.5px;background:var(--tinta);transition:transform .3s var(--ease)}
+  .burger span::before{top:-5px}.burger span::after{top:5px}
+
+  @media (max-width:900px){
+    .menu{
+      position:absolute;top:70px;left:0;right:0;
+      flex-direction:column;align-items:flex-start;gap:0;
+      background:var(--miga);border-bottom:1px solid var(--linea);
+      padding:6px var(--gutter) 20px;
+      display:none;
+    }
+    .nav.open .menu{display:flex}
+    .menu a{width:100%;padding:14px 0;border-bottom:1px solid var(--linea);font-size:15px}
+    .menu .btn{margin-top:16px;border-bottom:none}
+    .burger{display:flex}
+    .nav-cta{display:none}
+  }
+
+  /* ============ Hero ============ */
+  .hero{position:relative;overflow:hidden;padding-block:clamp(56px,8vw,104px) clamp(40px,5vw,68px)}
+  .hero::before{
+    content:"";position:absolute;top:-18%;right:-14%;width:min(760px,88vw);aspect-ratio:1;border-radius:50%;
+    background:radial-gradient(circle at 40% 38%,rgba(201,138,24,.26),rgba(201,138,24,.07) 46%,transparent 70%);
+    pointer-events:none;
+  }
+  .hero-grid{display:grid;grid-template-columns:1.06fr .94fr;gap:clamp(28px,4vw,60px);align-items:center;position:relative}
+  .hero h1{
+    font-size:clamp(40px,6.4vw,78px);margin-top:22px;
+  }
+  .hero h1 em{font-style:italic;color:var(--teja)}
+  .hero p.lead{
+    margin-top:24px;max-width:46ch;color:var(--tinta-2);font-size:clamp(16px,1.25vw,18.5px);
+  }
+  .hero-acciones{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+  .hero-datos{
+    margin-top:44px;padding-top:24px;border-top:1px solid var(--linea);
+    display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,54px);
+  }
+  .dato small{display:block;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--tinta-3);margin-bottom:6px}
+  .dato b{font-family:var(--display);font-size:19px;font-weight:400;letter-spacing:0}
+
+  .hero-art{position:relative}
+  .hero-art .marco{
+    background:
+      radial-gradient(ellipse at 50% 20%,rgba(255,255,255,.5),transparent 62%),
+      linear-gradient(168deg,var(--estraza),var(--harina-2) 58%,#D7C29E);
+    border:1px solid rgba(46,30,18,.14);
+    border-radius:min(280px,42%) min(280px,42%) 22px 22px;
+    padding:clamp(24px,3.4vw,44px);
+    box-shadow:0 28px 60px -34px rgba(58,36,21,.6);
+    position:relative;overflow:hidden;
+  }
+  .hero-art .marco::before{
+    content:"";position:absolute;inset:0;opacity:.5;
+    background-image:repeating-linear-gradient(112deg,rgba(107,67,38,.07) 0 1px,transparent 1px 9px);
+  }
+  .sello-precio{
+    position:absolute;left:-14px;bottom:26px;width:clamp(86px,11vw,116px);
+    animation:girar 34s linear infinite;
+  }
+  @keyframes girar{to{transform:rotate(360deg)}}
+  @media (prefers-reduced-motion:reduce){.sello-precio{animation:none}}
+
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;gap:34px}
+    .hero-art{order:-1}
+    .hero-art .marco{border-radius:min(220px,44%) min(220px,44%) 18px 18px}
+  }
+
+  /* ============ Cinta marquesina ============ */
+  .cinta{
+    background:var(--corteza-3);color:var(--harina);
+    border-block:1px solid rgba(255,255,255,.08);
+    overflow:hidden;width:100%;max-width:100%;
+    padding-block:14px;
+  }
+  .cinta-pista{display:flex;width:max-content;animation:desliza 34s linear infinite}
+  .cinta-pista span{
+    font-family:var(--display);font-size:clamp(17px,2vw,23px);
+    padding-inline:26px;display:inline-flex;align-items:center;gap:26px;white-space:nowrap;opacity:.94;
+  }
+  .cinta-pista span::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--mostaza);flex:none}
+  @keyframes desliza{to{transform:translateX(-50%)}}
+  @media (prefers-reduced-motion:reduce){.cinta-pista{animation:none}}
+
+  /* ============ Secciones ============ */
+  section{position:relative}
+  .sec{padding-block:clamp(64px,8vw,112px)}
+  .sec-cab{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;margin-bottom:clamp(34px,4vw,56px)}
+  .sec-cab h2{font-size:clamp(30px,4.2vw,50px);margin-top:16px;max-width:20ch}
+  .sec-cab p{color:var(--tinta-2);max-width:44ch}
+  @media (max-width:760px){.sec-cab{grid-template-columns:1fr}}
+
+  /* ---- Obrador (texto + espiga) ---- */
+  .obrador{background:var(--miga);border-block:1px solid var(--linea)}
+  .obrador-grid{display:grid;grid-template-columns:.42fr .58fr;gap:clamp(28px,5vw,72px);align-items:center}
+  .obrador-grid .texto p+p{margin-top:16px}
+  .obrador-grid .texto p{color:var(--tinta-2)}
+  .obrador-grid h2{font-size:clamp(28px,3.6vw,44px);margin:16px 0 22px}
+  @media (max-width:860px){.obrador-grid{grid-template-columns:1fr}}
+
+  /* ---- Productos ---- */
+  .prods{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--linea);border:1px solid var(--linea)}
+  .prod{
+    background:var(--harina);padding:clamp(24px,2.4vw,34px);
+    display:flex;flex-direction:column;gap:18px;min-height:340px;
+    transition:background .45s var(--ease);position:relative;
+  }
+  .prod:hover{background:var(--miga)}
+  .prod .ico{width:76px;height:76px;color:var(--corteza)}
+  .prod:hover .ico{color:var(--teja)}
+  .prod .ico{transition:color .4s var(--ease)}
+  .prod h3{font-size:23px;margin-top:auto}
+  .prod p{font-size:14.6px;color:var(--tinta-2);line-height:1.6}
+  .prod .num{position:absolute;top:18px;right:20px;font-size:10px;letter-spacing:.18em;color:var(--tinta-3)}
+  @media (max-width:1000px){.prods{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:560px){.prods{grid-template-columns:1fr}.prod{min-height:0}}
+
+  /* ---- Encargos ---- */
+  .encargos{background:linear-gradient(178deg,var(--corteza-3),#26160C);color:var(--harina);overflow:hidden}
+  .encargos .eyebrow{color:var(--mostaza)}
+  .encargos .eyebrow::before{background:var(--mostaza)}
+  .encargos h2{color:var(--harina)}
+  .encargos .sec-cab p{color:rgba(244,237,223,.7)}
+  .pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,2.6vw,34px)}
+  .paso{
+    border:1px solid rgba(244,237,223,.18);border-radius:4px;
+    padding:clamp(24px,2.6vw,36px);position:relative;
+    background:rgba(244,237,223,.03);
+    transition:background .4s var(--ease),border-color .4s var(--ease);
+  }
+  .paso:hover{background:rgba(244,237,223,.07);border-color:rgba(201,138,24,.5)}
+  .paso .n{
+    font-family:var(--display);font-size:52px;line-height:1;color:var(--mostaza);opacity:.9;
+  }
+  .paso h3{font-size:22px;margin:18px 0 10px;color:var(--harina)}
+  .paso p{font-size:14.8px;color:rgba(244,237,223,.72)}
+  .encargo-pie{
+    margin-top:clamp(34px,4vw,52px);padding-top:26px;border-top:1px solid rgba(244,237,223,.16);
+    display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between;
+  }
+  .encargo-pie .tel{font-family:var(--display);font-size:clamp(26px,3.4vw,40px);color:var(--harina)}
+  .encargo-pie .tel:hover{color:var(--mostaza)}
+  @media (max-width:860px){.pasos{grid-template-columns:1fr}}
+
+  /* ---- Instagram ---- */
+  .ig-cab{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:20px;margin-bottom:30px}
+  .ig-cab h2{font-size:clamp(28px,3.6vw,44px);margin-top:14px}
+  .mosaico{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+  .tile{
+    aspect-ratio:1;border:1px solid var(--linea);overflow:hidden;position:relative;
+    transition:transform .45s var(--ease);background:var(--estraza);
+  }
+  .tile:hover{transform:translateY(-4px)}
+  .tile svg{width:100%;height:100%}
+  .tile.wide{grid-column:span 2;grid-row:span 2;aspect-ratio:1}
+  @media (max-width:860px){.mosaico{grid-template-columns:repeat(3,1fr)}}
+  @media (max-width:460px){.mosaico{grid-template-columns:repeat(2,1fr)}.tile.wide{grid-column:span 2;grid-row:span 1}}
+
+  /* ---- Contacto ---- */
+  .contacto{background:var(--miga);border-top:1px solid var(--linea)}
+  .cont-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(28px,4vw,64px);align-items:start}
+  .fichas{display:grid;gap:2px;background:var(--linea);border:1px solid var(--linea);margin-top:28px}
+  .ficha{background:var(--miga);padding:22px 24px;display:flex;gap:16px;align-items:flex-start}
+  .ficha svg{width:22px;height:22px;flex:none;color:var(--teja);margin-top:3px}
+  .ficha small{display:block;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--tinta-3);margin-bottom:5px}
+  .ficha b{font-family:var(--display);font-size:19px;font-weight:400;display:block;letter-spacing:0}
+  .ficha b a:hover{color:var(--teja)}
+  .ficha span.nota{font-size:13.5px;color:var(--tinta-2)}
+  .mapa{
+    border:1px solid var(--linea);background:var(--harina);
+    border-radius:3px;overflow:hidden;
+  }
+  .mapa svg{width:100%;height:auto;display:block}
+  .mapa-pie{
+    display:flex;flex-wrap:wrap;gap:10px 20px;justify-content:space-between;align-items:center;
+    padding:14px 18px;border-top:1px solid var(--linea);font-size:12.5px;color:var(--tinta-2);
+  }
+  @media (max-width:900px){.cont-grid{grid-template-columns:1fr}}
+
+  /* ---- Footer ---- */
+  footer{background:var(--corteza-3);color:var(--harina);padding-block:clamp(48px,6vw,76px) 0}
+  .f-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:clamp(26px,4vw,56px)}
+  footer h4{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mostaza);font-family:var(--sans);margin-bottom:16px}
+  footer li{margin-bottom:9px;font-size:14.6px;color:rgba(244,237,223,.76)}
+  footer li a{display:inline-flex;align-items:center;gap:9px}
+  footer li a:hover{color:var(--mostaza)}
+  footer li svg{width:16px;height:16px;flex:none}
+  .f-marca .dsp{font-size:clamp(28px,3.6vw,40px);color:var(--harina);line-height:1.05}
+  .f-marca p{margin-top:14px;color:rgba(244,237,223,.62);max-width:34ch;font-size:14.6px}
+  .f-bottom{
+    margin-top:clamp(38px,5vw,60px);border-top:1px solid rgba(244,237,223,.16);
+    padding-block:22px;display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;
+    font-size:12.2px;color:rgba(244,237,223,.55);
+  }
+  .f-bottom b{color:var(--harina);font-weight:400}
+  @media (max-width:800px){.f-grid{grid-template-columns:1fr 1fr}.f-marca{grid-column:1/-1}}
+  @media (max-width:460px){.f-grid{grid-template-columns:1fr}}
+
+  /* ---- Revelado ---- */
+  .rv{opacity:0;transform:translateY(20px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+  .rv.in{opacity:1;transform:none}
+  .rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}.rv.d4{transition-delay:.32s}
+  @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<!-- Barra de propuesta -->
+<div class="aviso" role="note">
+  <i></i> Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio
+</div>
+
+<!-- Navegación -->
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="marca" href="#top" aria-label="Horno de Dorita, inicio">
+      <svg class="sello" viewBox="0 0 48 48" aria-hidden="true">
+        <circle cx="24" cy="24" r="23" fill="none" stroke="#6B4326" stroke-width="1"/>
+        <circle cx="24" cy="24" r="19.5" fill="none" stroke="#B5462B" stroke-width="1" stroke-dasharray="2 3"/>
+        <path d="M24 12c3.4 0 5.6 2.6 5.6 6.2 0 2.2-.7 3.7-.7 6.1 0 4.6 2.4 6.2 2.4 8.4 0 2.6-3.2 4.3-7.3 4.3s-7.3-1.7-7.3-4.3c0-2.2 2.4-3.8 2.4-8.4 0-2.4-.7-3.9-.7-6.1 0-3.6 2.2-6.2 5.6-6.2z" fill="none" stroke="#6B4326" stroke-width="1.2"/>
+        <path d="M24 14.5v20M20.6 20.5c1.4.6 2.2 1.7 2.4 3.2M27.4 20.5c-1.4.6-2.2 1.7-2.4 3.2M20.6 26c1.4.6 2.2 1.7 2.4 3.2M27.4 26c-1.4.6-2.2 1.7-2.4 3.2" fill="none" stroke="#C98A18" stroke-width="1.1" stroke-linecap="round"/>
+      </svg>
+      <span>
+        <b>Horno de Dorita</b>
+        <small>Obrador artesano · Alicante</small>
+      </span>
+    </a>
+
+    <nav class="menu" aria-label="Principal">
+      <a href="#obrador">El obrador</a>
+      <a href="#productos">Nuestro pan</a>
+      <a href="#encargos">Encargos</a>
+      <a href="#instagram">Instagram</a>
+      <a href="#contacto">Dónde estamos</a>
+      <a class="btn" href="tel:+34965200785">Hacer un encargo</a>
+    </nav>
+
+    <a class="btn nav-cta" href="tel:+34965200785">
+      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3.5h3l1.5 4-2 1.4a13 13 0 0 0 6.1 6.1l1.4-2 4 1.5v3a2 2 0 0 1-2.2 2A17.5 17.5 0 0 1 4.5 5.7 2 2 0 0 1 6.5 3.5z"/></svg>
+      Hacer un encargo
+    </a>
+
+    <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false"><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-texto">
+        <p class="eyebrow rv in">Panadería y obrador · C/ Bazán 36</p>
+        <h1 class="rv in d1">Pan de obrador,<br>cada mañana,<br>en la <em>calle Bazán</em></h1>
+        <p class="lead rv in d2">
+          Amasamos aquí mismo, detrás del mostrador. Masas largas, horneado del día
+          y el olor a pan recién hecho saliendo a la calle. Sin prisa y sin atajos:
+          así se trabaja en un obrador.
+        </p>
+        <div class="hero-acciones rv in d3">
+          <a class="btn" href="tel:+34965200785">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3.5h3l1.5 4-2 1.4a13 13 0 0 0 6.1 6.1l1.4-2 4 1.5v3a2 2 0 0 1-2.2 2A17.5 17.5 0 0 1 4.5 5.7 2 2 0 0 1 6.5 3.5z"/></svg>
+            Hacer un encargo
+          </a>
+          <a class="btn ghost" href="#productos">Ver lo que horneamos</a>
+        </div>
+        <div class="hero-datos rv in d4">
+          <div class="dato"><small>Dónde</small><b>C/ Bazán 36</b></div>
+          <div class="dato"><small>Teléfono</small><b><a href="tel:+34965200785">96 520 07 85</a></b></div>
+          <div class="dato"><small>Horario</small><b>Consultar horario</b></div>
+        </div>
+      </div>
+
+      <div class="hero-art rv in d2">
+        <div class="marco">
+          <!-- Ilustración: hogaza sobre tabla + espigas -->
+          <svg viewBox="0 0 420 460" role="img" aria-label="Ilustración de una hogaza de pan artesano con espigas de trigo">
+            <defs>
+              <linearGradient id="corte" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#C98A18"/>
+                <stop offset=".55" stop-color="#A9661F"/>
+                <stop offset="1" stop-color="#7A4620"/>
+              </linearGradient>
+              <linearGradient id="miga" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#FBF6EC"/>
+                <stop offset="1" stop-color="#E7D6B6"/>
+              </linearGradient>
+            </defs>
+
+            <!-- espigas de fondo -->
+            <g stroke="#8A5C36" stroke-width="1.7" fill="none" opacity=".62" stroke-linecap="round">
+              <path d="M52 380V92"/>
+              <path d="M52 124c-13-4-19-14-20-26 12 1 20 8 20 20zM52 124c13-4 19-14 20-26-12 1-20 8-20 20z"/>
+              <path d="M52 156c-13-4-19-14-20-26 12 1 20 8 20 20zM52 156c13-4 19-14 20-26-12 1-20 8-20 20z"/>
+              <path d="M52 188c-13-4-19-14-20-26 12 1 20 8 20 20zM52 188c13-4 19-14 20-26-12 1-20 8-20 20z"/>
+              <path d="M370 380V116"/>
+              <path d="M370 146c-12-4-18-13-19-24 11 1 19 7 19 19zM370 146c12-4 18-13 19-24-11 1-19 7-19 19z"/>
+              <path d="M370 176c-12-4-18-13-19-24 11 1 19 7 19 19zM370 176c12-4 18-13 19-24-11 1-19 7-19 19z"/>
+              <path d="M370 206c-12-4-18-13-19-24 11 1 19 7 19 19zM370 206c12-4 18-13 19-24-11 1-19 7-19 19z"/>
+            </g>
+
+            <!-- sombra -->
+            <ellipse cx="206" cy="336" rx="132" ry="16" fill="#6B4326" opacity=".2"/>
+
+            <!-- hogaza (batard) -->
+            <path d="M206 152c78 0 128 32 128 92 0 48-46 76-128 76S78 292 78 244c0-60 50-92 128-92z" fill="url(#corte)"/>
+            <path d="M206 152c78 0 128 32 128 92 0 48-46 76-128 76S78 292 78 244c0-60 50-92 128-92z" fill="none" stroke="#5A3418" stroke-width="2.6"/>
+            <!-- lomo iluminado -->
+            <path d="M206 160c62 0 106 22 118 62-30-24-72-36-118-36s-88 12-118 36c12-40 56-62 118-62z" fill="#D8A24A" opacity=".45"/>
+            <!-- greñado en hoja -->
+            <g fill="none" stroke-linecap="round">
+              <g stroke="#F7EDD8" stroke-width="9" opacity=".95">
+                <path d="M128 236c26-20 44-16 56 4"/>
+                <path d="M176 216c28-20 48-16 60 6"/>
+                <path d="M224 236c26-20 44-16 56 4"/>
+              </g>
+              <g stroke="#7A4620" stroke-width="2.4" opacity=".5">
+                <path d="M128 236c26-20 44-16 56 4"/>
+                <path d="M176 216c28-20 48-16 60 6"/>
+                <path d="M224 236c26-20 44-16 56 4"/>
+              </g>
+            </g>
+            <!-- harina espolvoreada sobre la corteza -->
+            <g fill="#FBF6EC" opacity=".55">
+              <circle cx="112" cy="268" r="2.6"/><circle cx="146" cy="286" r="2"/><circle cx="188" cy="272" r="1.8"/>
+              <circle cx="246" cy="288" r="2.4"/><circle cx="292" cy="266" r="2"/><circle cx="318" cy="284" r="1.6"/>
+              <circle cx="166" cy="300" r="1.6"/><circle cx="268" cy="304" r="1.8"/>
+            </g>
+
+            <!-- rebanada apoyada a la derecha -->
+            <g transform="translate(278 272) rotate(9)">
+              <path d="M0 0h86c0 40-19 66-43 66S0 40 0 0z" fill="url(#miga)" stroke="#5A3418" stroke-width="2.4"/>
+              <path d="M-3 0h92" stroke="#A9661F" stroke-width="8" stroke-linecap="round"/>
+              <g fill="#E2D0AE" opacity=".95">
+                <circle cx="26" cy="24" r="5"/><circle cx="48" cy="38" r="6"/><circle cx="64" cy="20" r="4"/>
+                <circle cx="36" cy="12" r="3"/><circle cx="56" cy="52" r="3.4"/><circle cx="20" cy="42" r="3"/>
+              </g>
+            </g>
+
+            <!-- tabla -->
+            <path d="M44 366h324a11 11 0 0 1 0 22H44a11 11 0 0 1 0-22z" fill="#8A5C36" opacity=".34"/>
+            <path d="M44 366h324" stroke="#6B4326" stroke-width="1.4" opacity=".3"/>
+            <!-- harina sobre la tabla -->
+            <g fill="#FBF6EC" opacity=".9">
+              <circle cx="104" cy="378" r="2.6"/><circle cx="132" cy="384" r="1.8"/><circle cx="292" cy="377" r="2.2"/>
+              <circle cx="318" cy="385" r="1.6"/><circle cx="196" cy="386" r="1.9"/><circle cx="240" cy="378" r="1.5"/>
+            </g>
+          </svg>
+        </div>
+
+        <!-- sello circular giratorio -->
+        <svg class="sello-precio" viewBox="0 0 120 120" aria-hidden="true">
+          <defs>
+            <path id="aro" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/>
+          </defs>
+          <circle cx="60" cy="60" r="58" fill="#B5462B"/>
+          <circle cx="60" cy="60" r="50" fill="none" stroke="#F4EDDF" stroke-width="1" stroke-opacity=".5"/>
+          <text font-family="Hoefler Text, Baskerville, Georgia, serif" font-size="11.6" fill="#F4EDDF" letter-spacing="2.6">
+            <textPath href="#aro" startOffset="0">HORNEADO CADA MAÑANA · MASA LENTA · </textPath>
+          </text>
+          <g stroke="#F4EDDF" stroke-width="1.6" fill="none" stroke-linecap="round">
+            <path d="M60 44v32"/>
+            <path d="M52 53c4 1.6 6.4 4.6 6.8 8.6M68 53c-4 1.6-6.4 4.6-6.8 8.6"/>
+            <path d="M52 64c4 1.6 6.4 4.6 6.8 8.6M68 64c-4 1.6-6.4 4.6-6.8 8.6"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CINTA ================= -->
+  <div class="cinta" aria-hidden="true">
+    <div class="cinta-pista">
+      <span>Masa madre</span><span>Horneado del día</span><span>Bollería de obrador</span><span>Dulces tradicionales</span><span>Encargos</span><span>C/ Bazán 36</span>
+      <span>Masa madre</span><span>Horneado del día</span><span>Bollería de obrador</span><span>Dulces tradicionales</span><span>Encargos</span><span>C/ Bazán 36</span>
+    </div>
+  </div>
+
+  <!-- ================= OBRADOR ================= -->
+  <section class="sec obrador" id="obrador">
+    <div class="wrap obrador-grid">
+      <div class="ilus rv">
+        <svg viewBox="0 0 300 300" role="img" aria-label="Ilustración de un horno de obrador con una pala de panadero">
+          <rect x="6" y="6" width="288" height="288" rx="6" fill="none" stroke="rgba(46,30,18,.18)"/>
+          <!-- cuerpo del horno -->
+          <path d="M56 228V128c0-52 42-88 94-88s94 36 94 88v100z" fill="#E0CFAF" stroke="#6B4326" stroke-width="2.2"/>
+          <path d="M40 228h220v22H40z" fill="#8A5C36" opacity=".35" stroke="#6B4326" stroke-width="2.2"/>
+          <!-- boca -->
+          <path d="M100 228v-72c0-28 22-48 50-48s50 20 50 48v72z" fill="#3A2415"/>
+          <!-- fuego -->
+          <path d="M150 214c-14 0-24-9-24-22 0-14 12-20 14-34 8 8 10 14 10 22 4-4 5-9 5-15 9 8 19 18 19 30 0 12-10 19-24 19z" fill="#C98A18"/>
+          <path d="M150 212c-7 0-12-5-12-12 0-8 7-11 8-19 6 6 9 12 9 18 2-2 3-5 3-8 4 4 7 8 7 13 0 6-5 8-15 8z" fill="#B5462B"/>
+          <!-- ladrillos -->
+          <g stroke="#6B4326" stroke-width="1.2" opacity=".45">
+            <path d="M56 160h44M200 160h44M56 190h44M200 190h44M78 145v30M222 145v30M78 175v30M222 175v30"/>
+          </g>
+          <!-- pala -->
+          <g stroke="#6B4326" stroke-width="2.2" fill="none" stroke-linecap="round">
+            <path d="M262 62 214 110"/>
+            <path d="M206 100c8-8 22-8 30 0s8 22 0 30l-15-15z" fill="#E0CFAF"/>
+          </g>
+          <!-- humo -->
+          <g stroke="#6B4326" stroke-width="1.6" fill="none" opacity=".4" stroke-linecap="round">
+            <path d="M116 34c8-6 0-14 8-20M150 28c8-6 0-14 8-20M184 34c8-6 0-14 8-20"/>
+          </g>
+        </svg>
+      </div>
+      <div class="texto rv d1">
+        <p class="eyebrow">El obrador</p>
+        <h2>Harina, agua, sal y tiempo. Lo demás es oficio.</h2>
+        <p>
+          Horno de Dorita es una panadería con obrador propio en pleno centro de Alicante.
+          Aquí se amasa, se forma y se hornea en el mismo sitio en el que se vende, que es
+          la única manera de que el pan llegue al mostrador como tiene que llegar.
+        </p>
+        <p>
+          Trabajamos con masas de fermentación larga, formado a mano y horneado escalonado
+          a lo largo de la mañana. Lo que sale del horno se pone en el mostrador; cuando se
+          acaba, se acaba.
+        </p>
+        <p>
+          Si buscas algo concreto —una pieza grande, dulces para una celebración, una cantidad
+          especial— lo mejor es avisarnos con tiempo y lo preparamos.
+        </p>
+        <div class="hero-acciones">
+          <a class="btn ghost" href="#encargos">Cómo funcionan los encargos</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PRODUCTOS ================= -->
+  <section class="sec" id="productos">
+    <div class="wrap">
+      <div class="sec-cab">
+        <div class="rv">
+          <p class="eyebrow">Nuestro pan</p>
+          <h2>Lo que sale del horno</h2>
+        </div>
+        <p class="rv d1">Cuatro familias que trabajamos a diario en el obrador. Lo disponible cada día depende de la hornada; pregúntanos en el mostrador.</p>
+      </div>
+
+      <div class="prods">
+        <article class="prod rv">
+          <span class="num">01</span>
+          <svg class="ico" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <path d="M32 12c16 0 26 10 26 24S46 56 32 56 6 50 6 36 16 12 32 12z"/>
+            <path d="M20 24c4 6 5 12 3 19M32 20c4 7 5 15 3 23M44 24c4 6 5 12 3 19" stroke-linecap="round"/>
+          </svg>
+          <h3>Panes de masa madre</h3>
+          <p>Fermentaciones largas y corteza con carácter. Hogazas y piezas del día, formadas a mano en el obrador.</p>
+        </article>
+
+        <article class="prod rv d1">
+          <span class="num">02</span>
+          <svg class="ico" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <path d="M10 44c0-10 10-18 22-18s22 8 22 18z" stroke-linejoin="round"/>
+            <path d="M6 44h52M32 26v-6M22 28c-2-5 0-9 4-11M42 28c2-5 0-9-4-11" stroke-linecap="round"/>
+            <path d="M18 36c3-3 7-4 10-2M36 34c3-2 7-1 10 2" stroke-linecap="round"/>
+          </svg>
+          <h3>Bollería de obrador</h3>
+          <p>Piezas de mantequilla y hojaldre hechas aquí, para el desayuno o la merienda. Saliendo del horno por la mañana.</p>
+        </article>
+
+        <article class="prod rv d2">
+          <span class="num">03</span>
+          <svg class="ico" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <path d="M14 30h36l-3 24H17z" stroke-linejoin="round"/>
+            <path d="M12 30c0-7 9-12 20-12s20 5 20 12" stroke-linecap="round"/>
+            <path d="M24 18c0-4 3-6 3-9M38 18c0-4-3-6-3-9" stroke-linecap="round"/>
+            <path d="M22 40h20M24 47h16" stroke-linecap="round" opacity=".6"/>
+          </svg>
+          <h3>Dulces tradicionales</h3>
+          <p>Recetas de siempre, hechas despacio y en tandas pequeñas. Lo clásico de toda la vida, sin florituras.</p>
+        </article>
+
+        <article class="prod rv d3">
+          <span class="num">04</span>
+          <svg class="ico" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <rect x="10" y="26" width="44" height="28" rx="3"/>
+            <path d="M6 26h52v8H6zM32 26v28" stroke-linejoin="round"/>
+            <path d="M32 26c-6 0-12-2-12-7s7-5 9-2 3 9 3 9zM32 26c6 0 12-2 12-7s-7-5-9-2-3 9-3 9z" stroke-linejoin="round"/>
+          </svg>
+          <h3>Encargos para celebraciones</h3>
+          <p>Preparamos piezas y cantidades especiales para comuniones, cumpleaños, comidas familiares o el trabajo. Avísanos con antelación.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ENCARGOS ================= -->
+  <section class="sec encargos" id="encargos">
+    <div class="wrap">
+      <div class="sec-cab">
+        <div class="rv">
+          <p class="eyebrow">Encargos</p>
+          <h2>Tres pasos y listo</h2>
+        </div>
+        <p class="rv d1">No hace falta formulario ni aplicación: un encargo se cierra hablando, como siempre se ha hecho en una panadería de barrio.</p>
+      </div>
+
+      <div class="pasos">
+        <article class="paso rv">
+          <div class="n">1</div>
+          <h3>Llámanos</h3>
+          <p>Marca el 96 520 07 85 o pásate por C/ Bazán 36 y cuéntanos qué necesitas y para cuándo.</p>
+        </article>
+        <article class="paso rv d1">
+          <div class="n">2</div>
+          <h3>Elegimos juntos</h3>
+          <p>Te decimos qué podemos preparar según la fecha y el tipo de pieza, y ajustamos cantidades contigo.</p>
+        </article>
+        <article class="paso rv d2">
+          <div class="n">3</div>
+          <h3>Recoges en el horno</h3>
+          <p>El día acordado lo tienes listo en el mostrador, recién hecho y preparado para llevar.</p>
+        </article>
+      </div>
+
+      <div class="encargo-pie rv d3">
+        <div>
+          <p class="eyebrow" style="margin-bottom:8px">Hablamos por teléfono</p>
+          <a class="tel" href="tel:+34965200785">96 520 07 85</a>
+        </div>
+        <a class="btn" href="tel:+34965200785">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3.5h3l1.5 4-2 1.4a13 13 0 0 0 6.1 6.1l1.4-2 4 1.5v3a2 2 0 0 1-2.2 2A17.5 17.5 0 0 1 4.5 5.7 2 2 0 0 1 6.5 3.5z"/></svg>
+          Hacer un encargo
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= INSTAGRAM ================= -->
+  <section class="sec" id="instagram">
+    <div class="wrap">
+      <div class="ig-cab">
+        <div class="rv">
+          <p class="eyebrow">El día a día</p>
+          <h2>@hornodedorita</h2>
+        </div>
+        <a class="btn ghost rv d1" href="https://www.instagram.com/hornodedorita" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.5"/><path d="M16.5 7.5h.01"/></svg>
+          Seguir en Instagram
+        </a>
+      </div>
+
+      <div class="mosaico rv d1">
+        <a class="tile wide" href="https://www.instagram.com/hornodedorita" target="_blank" rel="noopener" aria-label="Publicación de Instagram: hogaza recién horneada">
+          <svg viewBox="0 0 200 200" aria-hidden="true">
+            <rect width="200" height="200" fill="#E6D4B4"/>
+            <circle cx="100" cy="104" r="58" fill="#B5772F"/>
+            <g stroke="#FBF6EC" stroke-width="6" stroke-linecap="round" fill="none"><path d="M72 82c10 14 12 28 7 44"/><path d="M100 74c12 16 14 34 7 52"/><path d="M128 84c9 13 11 26 6 40"/></g>
+            <g stroke="#6B4326" stroke-width="1.4" opacity=".35" fill="none"><path d="M14 178h172"/></g>
+          </svg>
+        </a>
+        <a class="tile" href="https://www.instagram.com/hornodedorita" target="_blank" rel="noopener" aria-label="Publicación de Instagram: espigas de trigo">
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <rect width="100" height="100" fill="#F0E3C8"/>
+            <g stroke="#8A5C36" stroke-width="2" fill="none" stroke-linecap="round">
+              <path d="M50 88V26"/>
+              <path d="M50 44c-11-3-16-11-17-21 10 1 17 7 17 17zM50 44c11-3 16-11 17-21-10 1-17 7-17 17z"/>
+              <path d="M50 66c-11-3-16-11-17-21 10 1 17 7 17 17zM50 66c11-3 16-11 17-21-10 1-17 7-17 17z"/>
+            </g>
+          </svg>
+        </a>
+        <a class="tile" href="https://www.instagram.com/hornodedorita" target="_blank" rel="noopener" aria-label="Publicación de Instagram: bollería del día">
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <rect width="100" height="100" fill="#E4D2AE"/>
+            <path d="M18 68c0-16 14-28 32-28s32 12 32 28z" fill="#C98A18"/>
+            <path d="M14 68h72" stroke="#6B4326" stroke-width="2.4" stroke-linecap="round"/>
+            <g stroke="#FBF6EC" stroke-width="3" fill="none" stroke-linecap="round" opacity=".8"><path d="M34 58c5-5 11-6 16-3M54 55c5-3 11-2 15 3"/></g>
+          </svg>
+        </a>
+        <a class="tile" href="https://www.instagram.com/hornodedorita" target="_blank" rel="noopener" aria-label="Publicación de Instagram: rebanada de pan">
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <rect width="100" height="100" fill="#F4EDDF"/>
+            <path d="M28 40h44c0 30-10 44-22 44S28 70 28 40z" fill="#FBF6EC" stroke="#6B4326" stroke-width="2"/>
+            <path d="M26 40h48" stroke="#A9661F" stroke-width="7" stroke-linecap="round"/>
+            <g fill="#E0CFAF"><circle cx="44" cy="58" r="5"/><circle cx="58" cy="68" r="4"/><circle cx="52" cy="48" r="3"/></g>
+          </svg>
+        </a>
+        <a class="tile" href="https://www.instagram.com/hornodedorita" target="_blank" rel="noopener" aria-label="Publicación de Instagram: el horno encendido">
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <rect width="100" height="100" fill="#3A2415"/>
+            <path d="M24 76V52c0-16 12-26 26-26s26 10 26 26v24z" fill="#6B4326"/>
+            <path d="M38 76V58c0-9 5-15 12-15s12 6 12 15v18z" fill="#C98A18"/>
+            <path d="M50 72c-5 0-8-3-8-8 0-5 4-7 5-12 4 4 6 8 6 12 1-1 2-3 2-5 3 3 5 6 5 9 0 3-3 4-10 4z" fill="#B5462B"/>
+          </svg>
+        </a>
+        <a class="tile" href="https://www.instagram.com/hornodedorita" target="_blank" rel="noopener" aria-label="Publicación de Instagram: dulces tradicionales">
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <rect width="100" height="100" fill="#EADFC9"/>
+            <circle cx="50" cy="52" r="26" fill="#F4EDDF" stroke="#6B4326" stroke-width="2"/>
+            <circle cx="50" cy="52" r="14" fill="none" stroke="#B5462B" stroke-width="2" stroke-dasharray="3 4"/>
+            <g fill="#C98A18"><circle cx="50" cy="52" r="5"/></g>
+          </svg>
+        </a>
+        <a class="tile" href="https://www.instagram.com/hornodedorita" target="_blank" rel="noopener" aria-label="Publicación de Instagram: harina sobre la mesa">
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <rect width="100" height="100" fill="#E0CFAF"/>
+            <g fill="#FBF6EC" opacity=".9"><circle cx="30" cy="42" r="9"/><circle cx="52" cy="56" r="13"/><circle cx="72" cy="38" r="7"/><circle cx="66" cy="66" r="5"/><circle cx="34" cy="66" r="4"/></g>
+          </svg>
+        </a>
+        <a class="tile" href="https://www.instagram.com/hornodedorita" target="_blank" rel="noopener" aria-label="Publicación de Instagram: barras del día">
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <rect width="100" height="100" fill="#F0E3C8"/>
+            <g transform="rotate(-24 50 50)">
+              <rect x="22" y="34" width="56" height="12" rx="6" fill="#B5772F"/>
+              <rect x="22" y="54" width="56" height="12" rx="6" fill="#A9661F"/>
+              <g stroke="#FBF6EC" stroke-width="2.4" stroke-linecap="round"><path d="M34 40h6M48 40h6M62 40h6M34 60h6M48 60h6M62 60h6"/></g>
+            </g>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACTO ================= -->
+  <section class="sec contacto" id="contacto">
+    <div class="wrap cont-grid">
+      <div class="rv">
+        <p class="eyebrow">Dónde estamos</p>
+        <h2 style="font-size:clamp(28px,3.6vw,44px);margin-top:16px">En el centro, en la calle Bazán</h2>
+
+        <div class="fichas">
+          <div class="ficha">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3.5h3l1.5 4-2 1.4a13 13 0 0 0 6.1 6.1l1.4-2 4 1.5v3a2 2 0 0 1-2.2 2A17.5 17.5 0 0 1 4.5 5.7 2 2 0 0 1 6.5 3.5z"/></svg>
+            <div>
+              <small>Teléfono</small>
+              <b><a href="tel:+34965200785">96 520 07 85</a></b>
+              <span class="nota">Para encargos y consultas.</span>
+            </div>
+          </div>
+          <div class="ficha">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.3 7-11a7 7 0 1 0-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+            <div>
+              <small>Dirección</small>
+              <b>C/ Bazán 36</b>
+              <span class="nota">03001 Alicante · Centro</span>
+            </div>
+          </div>
+          <div class="ficha">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5.2l3.4 2"/></svg>
+            <div>
+              <small>Horario</small>
+              <b>Consultar horario</b>
+              <span class="nota">Llámanos y te lo confirmamos.</span>
+            </div>
+          </div>
+          <div class="ficha">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.6 7 8.4 6 8.4-6"/></svg>
+            <div>
+              <small>Email</small>
+              <b><a href="mailto:obradordorita@gmail.com">obradordorita@gmail.com</a></b>
+              <span class="nota">Para encargos con más detalle.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rv d1">
+        <div class="mapa">
+          <svg viewBox="0 0 640 420" role="img" aria-label="Mapa esquemático de la zona de la calle Bazán, en el centro de Alicante">
+            <rect width="640" height="420" fill="#F4EDDF"/>
+            <!-- manzanas -->
+            <g fill="#EADFC9" stroke="rgba(46,30,18,.14)">
+              <rect x="34" y="34" width="180" height="120" rx="3"/>
+              <rect x="248" y="34" width="150" height="120" rx="3"/>
+              <rect x="432" y="34" width="174" height="120" rx="3"/>
+              <rect x="34" y="196" width="180" height="86" rx="3"/>
+              <rect x="248" y="196" width="150" height="86" rx="3"/>
+              <rect x="432" y="196" width="174" height="86" rx="3"/>
+              <rect x="34" y="322" width="180" height="70" rx="3"/>
+              <rect x="248" y="322" width="358" height="70" rx="3"/>
+            </g>
+            <!-- calle principal (Bazán) -->
+            <rect x="0" y="160" width="640" height="30" fill="#E0CFAF"/>
+            <path d="M0 175h640" stroke="#FBF6EC" stroke-width="2" stroke-dasharray="14 12"/>
+            <!-- transversales -->
+            <rect x="216" y="0" width="30" height="420" fill="#EFE5D2"/>
+            <rect x="400" y="0" width="30" height="420" fill="#EFE5D2"/>
+            <rect x="0" y="288" width="640" height="26" fill="#EFE5D2"/>
+            <!-- etiquetas -->
+            <g font-family="Optima, Candara, Segoe UI, sans-serif" font-size="12" fill="#8A6A4A" letter-spacing="1.6">
+              <text x="40" y="153">CENTRO DE ALICANTE</text>
+              <text x="446" y="306">ZONA PEATONAL</text>
+            </g>
+            <text x="452" y="180" font-family="Hoefler Text, Baskerville, Georgia, serif" font-size="17" fill="#6B4326" letter-spacing="1">Calle Bazán</text>
+            <!-- marcador -->
+            <g transform="translate(300 175)">
+              <circle r="34" fill="#B5462B" opacity=".14"/>
+              <circle r="20" fill="#B5462B" opacity=".22"/>
+              <path d="M0-30c8.8 0 16 7.2 16 16 0 11.6-16 28-16 28s-16-16.4-16-28c0-8.8 7.2-16 16-16z" fill="#B5462B"/>
+              <circle cy="-14" r="5.4" fill="#F4EDDF"/>
+            </g>
+            <g>
+              <rect x="180" y="208" width="240" height="32" rx="16" fill="#FBF6EC" stroke="rgba(46,30,18,.16)"/>
+              <text x="300" y="230" text-anchor="middle" font-family="Hoefler Text, Baskerville, Georgia, serif" font-size="18" fill="#2E1E12">Horno de Dorita · nº 36</text>
+            </g>
+            <!-- brújula -->
+            <g transform="translate(596 380)" stroke="#8A6A4A" fill="none" stroke-width="1.3">
+              <circle r="16"/>
+              <path d="M0-11 4 0 0 11 -4 0z" fill="#B5462B" stroke="none"/>
+              <text x="0" y="-19" text-anchor="middle" font-family="Optima, Candara, sans-serif" font-size="9" fill="#8A6A4A" stroke="none" letter-spacing="1">N</text>
+            </g>
+          </svg>
+          <div class="mapa-pie">
+            <span>Mapa esquemático · C/ Bazán 36, 03001 Alicante</span>
+            <a href="tel:+34965200785" style="color:var(--teja)">¿Dudas? Llámanos al 96 520 07 85</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div class="f-marca">
+        <p class="dsp">Horno de Dorita</p>
+        <p>Panadería y obrador artesano en el centro de Alicante. Pan hecho aquí, cada mañana.</p>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="tel:+34965200785">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3.5h3l1.5 4-2 1.4a13 13 0 0 0 6.1 6.1l1.4-2 4 1.5v3a2 2 0 0 1-2.2 2A17.5 17.5 0 0 1 4.5 5.7 2 2 0 0 1 6.5 3.5z"/></svg>
+            96 520 07 85</a></li>
+          <li><a href="mailto:obradordorita@gmail.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.6 7 8.4 6 8.4-6"/></svg>
+            obradordorita@gmail.com</a></li>
+          <li><a href="https://www.instagram.com/hornodedorita" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.5"/><path d="M16.5 7.5h.01"/></svg>
+            @hornodedorita</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>El horno</h4>
+        <ul>
+          <li>C/ Bazán 36</li>
+          <li>03001 Alicante</li>
+          <li>Consultar horario</li>
+          <li style="margin-top:16px"><a href="#productos">Nuestro pan</a></li>
+          <li><a href="#encargos">Encargos</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <span>© Horno de Dorita · Panadería Dorita · Alicante</span>
+      <span>Propuesta de rediseño presentada por <b>FFFFFFstudio</b> — Ángel Rubio, diseñador web · Alicante</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Menú móvil
+  (function(){
+    var nav=document.getElementById('nav'), b=document.getElementById('burger');
+    b.addEventListener('click',function(){
+      var o=nav.classList.toggle('open');
+      b.setAttribute('aria-expanded',o?'true':'false');
+      b.setAttribute('aria-label',o?'Cerrar menú':'Abrir menú');
+    });
+    nav.querySelectorAll('.menu a').forEach(function(a){
+      a.addEventListener('click',function(){nav.classList.remove('open');b.setAttribute('aria-expanded','false');});
+    });
+  })();
+
+  // Revelado al hacer scroll
+  (function(){
+    var els=document.querySelectorAll('.rv:not(.in)');
+    if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+    var io=new IntersectionObserver(function(en){
+      en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+    },{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+    els.forEach(function(e){io.observe(e)});
+  })();
+</script>
+</body>
+</html>

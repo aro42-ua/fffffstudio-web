@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Podología Fontana · Cuidamos tus pies, cuidamos tu paso</title>
+<meta name="description" content="Propuesta de rediseño web para Podología Fontana, clínica de podología en Playa de San Juan, Alicante.">
+<style>
+  :root{
+    --crema:#FBF8F2;
+    --crema-2:#F4EEE3;
+    --blanco:#FFFFFF;
+    --azul:#0E3A57;
+    --azul-2:#164B6E;
+    --agua:#5DBDAF;
+    --agua-suave:#DDF1EC;
+    --coral:#F0745A;
+    --coral-suave:#FBE4DD;
+    --tinta:#1C2B36;
+    --tinta-2:#4B5B67;
+    --linea:#E6DFD2;
+    --display:"Avenir Next","Avenir","Gill Sans","Gill Sans MT","Optima","Segoe UI Variable Display","Segoe UI","Trebuchet MS","Helvetica Neue",sans-serif;
+    --texto:"Avenir Next","Avenir","Segoe UI","Gill Sans","Trebuchet MS","Helvetica Neue",Helvetica,sans-serif;
+    --radio:22px;
+    --sombra:0 18px 50px -20px rgba(14,58,87,.25);
+    --ancho:1160px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    font-family:var(--texto);
+    color:var(--tinta);
+    background:var(--crema);
+    line-height:1.55;
+    font-size:17px;
+    overflow-x:hidden;
+    padding-top:34px;
+  }
+  a{color:inherit;text-decoration:none}
+  ul{list-style:none}
+  svg{display:block}
+  .wrap{width:min(var(--ancho),calc(100% - 48px));margin-inline:auto}
+
+  /* ---------- Barra propuesta ---------- */
+  .propuesta{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    height:34px;display:flex;align-items:center;justify-content:center;gap:10px;
+    background:var(--azul);color:#CFE3EC;
+    font-size:12.5px;letter-spacing:.02em;
+    padding-inline:16px;text-align:center;
+  }
+  .propuesta b{color:#fff;font-weight:600}
+  .propuesta .dot{width:6px;height:6px;border-radius:50%;background:var(--coral);flex:none}
+
+  /* ---------- Nav ---------- */
+  .nav{
+    position:sticky;top:34px;z-index:90;
+    background:rgba(251,248,242,.85);
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(230,223,210,.7);
+  }
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .logo{display:flex;align-items:center;gap:12px;font-family:var(--display);font-weight:700;font-size:20px;color:var(--azul);letter-spacing:-.01em}
+  .logo small{display:block;font-weight:500;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--agua);line-height:1;margin-top:3px}
+  .logo .mark{width:40px;height:40px;border-radius:12px;background:var(--azul);display:grid;place-items:center;flex:none}
+  .menu{display:flex;gap:34px;font-size:15.5px;font-weight:500;color:var(--tinta-2)}
+  .menu a{position:relative;padding:4px 0}
+  .menu a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;background:var(--coral);transition:right .25s ease}
+  .menu a:hover{color:var(--azul)}
+  .menu a:hover::after{right:0}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:14px 24px;border-radius:999px;font-weight:600;font-size:15.5px;
+    background:var(--coral);color:#fff;
+    box-shadow:0 10px 24px -10px rgba(240,116,90,.7);
+    transition:transform .2s ease,box-shadow .2s ease,background .2s ease;
+    white-space:nowrap;
+  }
+  .btn:hover{transform:translateY(-2px);box-shadow:0 16px 30px -10px rgba(240,116,90,.75);background:#E9674C}
+  .btn.ghost{background:transparent;color:var(--azul);box-shadow:none;border:1.5px solid var(--linea)}
+  .btn.ghost:hover{border-color:var(--azul);background:#fff}
+  .btn.small{padding:11px 20px;font-size:14.5px}
+  .nav .btn{display:inline-flex}
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative;overflow:hidden;padding:88px 0 110px}
+  .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  .hero-bg{position:absolute;inset:0;z-index:-1;pointer-events:none}
+  .hero-bg .blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.75}
+  .hero-bg .b1{width:620px;height:620px;right:-160px;top:-180px;background:radial-gradient(circle,#CFEDE7 0%,rgba(207,237,231,0) 70%)}
+  .hero-bg .b2{width:420px;height:420px;left:-200px;bottom:-140px;background:radial-gradient(circle,#FBE4DD 0%,rgba(251,228,221,0) 70%)}
+  .hero-bg .grid{
+    position:absolute;inset:0;opacity:.45;
+    background-image:linear-gradient(rgba(14,58,87,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(14,58,87,.05) 1px,transparent 1px);
+    background-size:56px 56px;
+    mask-image:radial-gradient(ellipse at 60% 40%,#000 20%,transparent 70%);
+    -webkit-mask-image:radial-gradient(ellipse at 60% 40%,#000 20%,transparent 70%);
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--azul-2);
+    background:#fff;border:1px solid var(--linea);padding:8px 14px 8px 10px;border-radius:999px;
+    margin-bottom:26px;
+  }
+  .eyebrow i{width:8px;height:8px;border-radius:50%;background:var(--agua);box-shadow:0 0 0 4px var(--agua-suave)}
+  h1{
+    font-family:var(--display);font-weight:700;
+    font-size:clamp(40px,4.7vw,60px);line-height:1.02;letter-spacing:-.025em;
+    color:var(--azul);margin-bottom:26px;
+  }
+  h1 em{font-style:normal;color:var(--agua);position:relative;white-space:nowrap}
+  h1 em::after{
+    content:"";position:absolute;left:0;right:0;bottom:-2px;height:10px;border-radius:99px;
+    background:var(--coral-suave);z-index:-1;
+  }
+  .lead{font-size:19.5px;line-height:1.6;color:var(--tinta-2);max-width:520px;margin-bottom:38px}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-bottom:44px}
+  .hero-cta .btn{padding:17px 30px;font-size:16.5px}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:26px;color:var(--tinta-2);font-size:14.5px}
+  .hero-meta span{display:flex;align-items:center;gap:9px}
+  .hero-meta svg{width:18px;height:18px;color:var(--agua)}
+
+  .hero-art{position:relative;aspect-ratio:1/1;max-width:540px;justify-self:end;width:100%}
+  .hero-art svg{width:100%;height:100%}
+  .float{
+    position:absolute;background:#fff;border-radius:18px;padding:14px 18px;
+    box-shadow:var(--sombra);border:1px solid rgba(230,223,210,.6);
+    display:flex;align-items:center;gap:12px;font-size:14.5px;font-weight:500;color:var(--azul);
+    animation:flotar 6s ease-in-out infinite;
+  }
+  .float .ic{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;flex:none}
+  .float svg{width:20px;height:20px}
+  .f1{left:-18px;top:16%;animation-delay:-1s}
+  .f2{right:-10px;bottom:18%;animation-delay:-3s}
+  .f1 .ic{background:var(--agua-suave);color:var(--agua)}
+  .f2 .ic{background:var(--coral-suave);color:var(--coral)}
+  @keyframes flotar{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+  /* reveal on load */
+  .rv{opacity:0;transform:translateY(18px);animation:rv .8s cubic-bezier(.2,.7,.2,1) forwards}
+  .rv.d1{animation-delay:.05s}.rv.d2{animation-delay:.18s}.rv.d3{animation-delay:.3s}.rv.d4{animation-delay:.42s}.rv.d5{animation-delay:.55s}
+  @keyframes rv{to{opacity:1;transform:none}}
+
+  /* ---------- Sección genérica ---------- */
+  section{padding:96px 0}
+  .sec-head{max-width:640px;margin-bottom:56px}
+  .sec-head.center{margin-inline:auto;text-align:center}
+  .kicker{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--coral);margin-bottom:14px;display:flex;align-items:center;gap:12px}
+  .kicker::before{content:"";width:26px;height:2px;background:var(--coral);border-radius:2px}
+  .sec-head.center .kicker{justify-content:center}
+  h2{font-family:var(--display);font-weight:700;font-size:clamp(32px,3.8vw,46px);line-height:1.08;letter-spacing:-.02em;color:var(--azul);margin-bottom:16px}
+  .sec-head p{font-size:18px;color:var(--tinta-2)}
+
+  /* ---------- Servicios ---------- */
+  .servicios{background:#fff;position:relative}
+  .servicios::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,var(--linea),transparent)}
+  .grid-serv{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .card{
+    background:var(--crema);border:1px solid var(--linea);border-radius:var(--radio);
+    padding:32px 30px 30px;position:relative;overflow:hidden;
+    transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
+  }
+  .card::after{
+    content:"";position:absolute;right:-40px;top:-40px;width:140px;height:140px;border-radius:50%;
+    background:radial-gradient(circle,var(--agua-suave),transparent 70%);opacity:0;transition:opacity .3s ease;
+  }
+  .card:hover{transform:translateY(-5px);box-shadow:var(--sombra);border-color:#D8EFE9}
+  .card:hover::after{opacity:1}
+  .card .ico{
+    width:58px;height:58px;border-radius:17px;background:#fff;border:1px solid var(--linea);
+    display:grid;place-items:center;margin-bottom:24px;color:var(--azul);position:relative;z-index:1;
+  }
+  .card .ico svg{width:28px;height:28px}
+  .card h3{font-family:var(--display);font-size:22px;font-weight:700;letter-spacing:-.01em;color:var(--azul);margin-bottom:10px;position:relative;z-index:1}
+  .card p{color:var(--tinta-2);font-size:16px;position:relative;z-index:1}
+  .card .num{position:absolute;right:24px;top:24px;font-family:var(--display);font-size:13px;font-weight:600;color:var(--agua);letter-spacing:.1em}
+  .card.destacada{background:var(--azul);border-color:var(--azul);color:#fff}
+  .card.destacada .ico{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.15);color:#fff}
+  .card.destacada h3{color:#fff}
+  .card.destacada p{color:#C9DCE6}
+  .card.destacada .num{color:var(--coral)}
+  .card.destacada::after{background:radial-gradient(circle,rgba(93,189,175,.35),transparent 70%);opacity:1}
+
+  /* ---------- Primera visita ---------- */
+  .visita{position:relative;overflow:hidden}
+  .visita .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:start}
+  .visita .sec-head{margin-bottom:28px}
+  .pasos{display:grid;gap:0;counter-reset:paso;position:relative}
+  .paso{
+    display:grid;grid-template-columns:64px 1fr;gap:22px;padding:30px 0;
+    border-top:1px solid var(--linea);
+  }
+  .paso:last-child{border-bottom:1px solid var(--linea)}
+  .paso .n{
+    width:64px;height:64px;border-radius:20px;background:#fff;border:1px solid var(--linea);
+    display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:22px;color:var(--azul);
+    position:relative;
+  }
+  .paso .n::after{content:"";position:absolute;inset:-5px;border-radius:24px;border:1.5px dashed var(--agua);opacity:.5}
+  .paso:nth-child(2) .n{background:var(--agua-suave);border-color:transparent}
+  .paso:nth-child(3) .n{background:var(--coral-suave);border-color:transparent;color:var(--coral)}
+  .paso h3{font-family:var(--display);font-size:22px;font-weight:700;color:var(--azul);margin-bottom:8px;letter-spacing:-.01em;margin-top:6px}
+  .paso p{color:var(--tinta-2);font-size:16px}
+  .visita-side{position:sticky;top:130px}
+  .nota{
+    margin-top:28px;background:#fff;border-radius:var(--radio);padding:26px 28px;border:1px solid var(--linea);
+    display:flex;gap:16px;align-items:flex-start;
+  }
+  .nota svg{width:26px;height:26px;color:var(--coral);flex:none;margin-top:2px}
+  .nota p{color:var(--tinta-2);font-size:15.5px}
+  .nota b{color:var(--azul);display:block;margin-bottom:4px;font-size:16px}
+
+  /* ---------- FAQ ---------- */
+  .faq{background:var(--azul);color:#fff;position:relative;overflow:hidden}
+  .faq::before{
+    content:"";position:absolute;inset:0;
+    background-image:radial-gradient(rgba(255,255,255,.07) 1px,transparent 1px);
+    background-size:22px 22px;
+    mask-image:radial-gradient(ellipse at 80% 20%,#000 0%,transparent 60%);
+    -webkit-mask-image:radial-gradient(ellipse at 80% 20%,#000 0%,transparent 60%);
+  }
+  .faq .wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:70px;position:relative}
+  .faq h2{color:#fff}
+  .faq .kicker{color:var(--agua)}
+  .faq .kicker::before{background:var(--agua)}
+  .faq .sec-head p{color:#B9CFDB}
+  .faq .sec-head{margin-bottom:0}
+  .faq .btn.ghost{color:#fff;border-color:rgba(255,255,255,.25);margin-top:28px}
+  .faq .btn.ghost:hover{background:rgba(255,255,255,.08);border-color:#fff}
+  details{
+    border-top:1px solid rgba(255,255,255,.14);
+  }
+  details:last-child{border-bottom:1px solid rgba(255,255,255,.14)}
+  summary{
+    list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;
+    padding:24px 4px;font-family:var(--display);font-size:20px;font-weight:600;letter-spacing:-.01em;
+    transition:color .2s ease;
+  }
+  summary::-webkit-details-marker{display:none}
+  summary:hover{color:var(--agua)}
+  summary .plus{
+    width:34px;height:34px;border-radius:50%;border:1.5px solid rgba(255,255,255,.3);flex:none;
+    display:grid;place-items:center;transition:transform .3s ease,background .2s ease,border-color .2s ease;
+  }
+  summary .plus svg{width:14px;height:14px}
+  details[open] summary .plus{transform:rotate(45deg);background:var(--coral);border-color:var(--coral)}
+  details[open] summary{color:#fff}
+  details p{padding:0 60px 26px 4px;color:#C4D6E0;font-size:16.5px;line-height:1.6}
+
+  /* ---------- Contacto ---------- */
+  .contacto .wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:stretch}
+  .contacto .sec-head{margin-bottom:34px}
+  .datos{display:grid;gap:14px}
+  .dato{
+    display:flex;gap:18px;align-items:flex-start;background:#fff;border:1px solid var(--linea);
+    border-radius:18px;padding:20px 22px;transition:border-color .2s ease,transform .2s ease;
+  }
+  .dato:hover{border-color:var(--agua);transform:translateX(3px)}
+  .dato .ic{width:44px;height:44px;border-radius:13px;background:var(--agua-suave);color:var(--azul);display:grid;place-items:center;flex:none}
+  .dato .ic svg{width:22px;height:22px}
+  .dato b{display:block;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--tinta-2);font-weight:600;margin-bottom:5px}
+  .dato span,.dato a{font-size:17px;color:var(--azul);font-weight:500;display:block;line-height:1.45}
+  .dato a:hover{color:var(--coral)}
+  .dato .sub{font-size:14.5px;color:var(--tinta-2);font-weight:400;margin-top:2px}
+  .mapa{
+    background:#fff;border:1px solid var(--linea);border-radius:var(--radio);overflow:hidden;
+    display:flex;flex-direction:column;box-shadow:var(--sombra);
+  }
+  .mapa svg{width:100%;height:auto;flex:1}
+  .mapa .pie{padding:18px 24px;border-top:1px solid var(--linea);display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:14.5px;color:var(--tinta-2)}
+  .mapa .pie b{color:var(--azul);font-weight:600}
+  .mapa .tag{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--agua);background:var(--agua-suave);padding:6px 10px;border-radius:99px;white-space:nowrap}
+
+  /* ---------- CTA banda ---------- */
+  .banda{padding:0 0 96px}
+  .banda .box{
+    background:linear-gradient(135deg,#5DBDAF 0%,#3FA79A 100%);
+    border-radius:28px;padding:56px 60px;color:#fff;position:relative;overflow:hidden;
+    display:flex;justify-content:space-between;align-items:center;gap:40px;
+  }
+  .banda .box::before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:rgba(255,255,255,.12);right:-120px;top:-200px}
+  .banda .box::after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;border:40px solid rgba(255,255,255,.08);left:-100px;bottom:-140px}
+  .banda h2{color:#fff;font-size:clamp(28px,3.2vw,40px);margin-bottom:8px;position:relative}
+  .banda p{color:#E4F5F1;font-size:17px;position:relative}
+  .banda .btn{background:#fff;color:var(--azul);box-shadow:0 14px 30px -12px rgba(0,0,0,.35);position:relative;padding:18px 32px;font-size:16.5px}
+  .banda .btn:hover{background:var(--crema)}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--crema-2);border-top:1px solid var(--linea);padding:56px 0 30px;color:var(--tinta-2);font-size:15px}
+  .foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:44px}
+  .foot-top h4{font-family:var(--display);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--azul);margin-bottom:16px;font-weight:700}
+  .foot-top li{margin-bottom:9px}
+  .foot-top a:hover{color:var(--coral)}
+  .foot-top p{max-width:340px;margin-top:14px}
+  .foot-bottom{border-top:1px solid var(--linea);padding-top:24px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:13.5px}
+  .foot-bottom .firma{color:var(--azul);font-weight:500}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:1000px){
+    .hero .wrap,.visita .wrap,.faq .wrap,.contacto .wrap{grid-template-columns:1fr}
+    .hero-art{justify-self:center;max-width:460px}
+    .grid-serv{grid-template-columns:repeat(2,1fr)}
+    .visita-side{position:static}
+    .foot-top{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:640px){
+    body{font-size:16px}
+    .wrap{width:calc(100% - 40px)}
+    .propuesta{font-size:11px;height:38px;line-height:1.2}
+    body{padding-top:38px}
+    .nav{top:38px}
+    .nav .wrap{height:66px}
+    .menu{display:none}
+    .logo{font-size:17px}
+    .nav .btn{padding:10px 16px;font-size:14px}
+    .hero{padding:52px 0 70px}
+    .hero .wrap{gap:40px}
+    h1{font-size:40px}
+    .lead{font-size:17.5px}
+    .hero-cta .btn{width:100%;justify-content:center}
+    .hero-art{max-width:100%}
+    .float{font-size:13px;padding:11px 14px}
+    .f1{left:-6px;top:8%}
+    .f2{right:-6px;bottom:8%}
+    section{padding:68px 0}
+    .grid-serv{grid-template-columns:1fr}
+    .card{padding:28px 24px}
+    .paso{grid-template-columns:52px 1fr;gap:16px;padding:24px 0}
+    .paso .n{width:52px;height:52px;border-radius:16px;font-size:19px}
+    .paso .n::after{border-radius:20px}
+    summary{font-size:18px;padding:20px 2px}
+    details p{padding:0 8px 22px 2px}
+    .banda .box{flex-direction:column;align-items:flex-start;padding:40px 28px;border-radius:24px}
+    .banda .btn{width:100%;justify-content:center}
+    .foot-top{grid-template-columns:1fr;gap:28px}
+    .foot-bottom{flex-direction:column;gap:10px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .rv,.float{animation:none;opacity:1;transform:none}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<!-- Barra de propuesta -->
+<div class="propuesta" role="note">
+  <span class="dot" aria-hidden="true"></span>
+  <span>Propuesta de diseño · maqueta no oficial · <b>FFFFFFstudio</b> · Ángel Rubio</span>
+</div>
+
+<!-- Navegación -->
+<header class="nav">
+  <div class="wrap">
+    <a href="#" class="logo" aria-label="Podología Fontana, inicio">
+      <span class="mark" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8.5 21c-2.5 0-4-1.7-4-4 0-2.6 2-4.2 3.6-5.3C9.7 10.6 10 9.3 10 8c0-2.2 1.3-4 3.3-4 2.4 0 4.2 2.4 4.2 6.2 0 3.5-1.6 5.3-3.4 6.4-1.7 1-2.5 2.4-3.3 3.5-.6.8-1.3 1-2.3 1z"/>
+          <circle cx="7" cy="6.5" r="1.3"/><circle cx="4.5" cy="10" r="1.1"/>
+        </svg>
+      </span>
+      <span>Podología Fontana<small>Playa de San Juan · Alicante</small></span>
+    </a>
+    <nav class="menu" aria-label="Principal">
+      <a href="#servicios">Servicios</a>
+      <a href="#primera-visita">Primera visita</a>
+      <a href="#faq">Preguntas</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="btn small" href="tel:+34965774950">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+      Pedir cita
+    </a>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero" id="inicio">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="grid"></div>
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+  </div>
+  <div class="wrap">
+    <div>
+      <div class="eyebrow rv d1"><i></i> Clínica de podología en Alicante</div>
+      <h1 class="rv d2">Cuidamos tus pies,<br>cuidamos <em>tu paso</em>.</h1>
+      <p class="lead rv d3">Una clínica cercana y luminosa en la Playa de San Juan, donde cada tratamiento empieza por escucharte y entender cómo caminas.</p>
+      <div class="hero-cta rv d4">
+        <a class="btn" href="tel:+34965774950">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+          Pedir cita · 96 577 49 50
+        </a>
+        <a class="btn ghost" href="#servicios">Ver servicios</a>
+      </div>
+      <div class="hero-meta rv d5">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg> C.C. Fontana, local 37</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Horario: consultar</span>
+      </div>
+    </div>
+
+    <div class="hero-art rv d3" aria-hidden="true">
+      <svg viewBox="0 0 540 540" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="gA" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#DDF1EC"/><stop offset="1" stop-color="#BFE4DC"/>
+          </linearGradient>
+          <linearGradient id="gB" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#164B6E"/><stop offset="1" stop-color="#0E3A57"/>
+          </linearGradient>
+          <linearGradient id="gC" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F4EEE3"/>
+          </linearGradient>
+          <clipPath id="clipCard"><rect x="70" y="70" width="400" height="400" rx="44"/></clipPath>
+        </defs>
+        <!-- fondo redondo -->
+        <circle cx="270" cy="270" r="250" fill="url(#gA)"/>
+        <circle cx="270" cy="270" r="250" stroke="#fff" stroke-width="2" stroke-dasharray="4 10" opacity=".8"/>
+        <!-- tarjeta -->
+        <rect x="70" y="70" width="400" height="400" rx="44" fill="url(#gC)" stroke="#E6DFD2"/>
+        <g clip-path="url(#clipCard)">
+          <!-- ondas de fondo -->
+          <path d="M70 380 C 160 340, 220 420, 310 380 S 430 330, 470 370 V470 H70 Z" fill="#DDF1EC" opacity=".8"/>
+          <path d="M70 420 C 170 390, 230 450, 330 420 S 440 380, 470 410 V470 H70 Z" fill="#BFE4DC" opacity=".7"/>
+        </g>
+        <!-- huella / pie estilizado -->
+        <g transform="translate(180 120)">
+          <path d="M92 250c-32 0-52-22-52-52 0-34 26-55 47-69 21-14 25-32 25-50C112 47 129 24 156 24c32 0 56 32 56 82 0 46-21 70-45 84-22 13-33 32-43 46-8 10-18 14-32 14z" fill="url(#gB)"/>
+          <circle cx="66" cy="52" r="15" fill="url(#gB)"/>
+          <circle cx="38" cy="82" r="12" fill="url(#gB)"/>
+          <circle cx="24" cy="116" r="10" fill="url(#gB)"/>
+          <circle cx="22" cy="148" r="9" fill="url(#gB)"/>
+          <!-- linea de la pisada -->
+          <path d="M96 240c20-30 40-50 62-70" stroke="#5DBDAF" stroke-width="5" stroke-linecap="round" stroke-dasharray="1 12"/>
+        </g>
+        <!-- marcadores biomecánicos -->
+        <g stroke="#F0745A" stroke-width="2">
+          <circle cx="330" cy="160" r="9" fill="#fff"/>
+          <circle cx="330" cy="160" r="3" fill="#F0745A" stroke="none"/>
+          <line x1="339" y1="160" x2="400" y2="160" stroke-dasharray="3 5"/>
+          <circle cx="240" cy="330" r="9" fill="#fff"/>
+          <circle cx="240" cy="330" r="3" fill="#F0745A" stroke="none"/>
+          <line x1="240" y1="339" x2="240" y2="400" stroke-dasharray="3 5"/>
+        </g>
+        <!-- regla/ángulo -->
+        <g stroke="#0E3A57" stroke-width="1.5" opacity=".55">
+          <path d="M110 420 h130"/>
+          <path d="M110 414 v12 M175 416 v8 M240 414 v12"/>
+        </g>
+        <text x="118" y="446" font-family="Avenir Next, Avenir, Gill Sans, Segoe UI, sans-serif" font-size="11" fill="#0E3A57" opacity=".7" letter-spacing="2">ESTUDIO DE LA PISADA</text>
+        <!-- arco decorativo -->
+        <path d="M420 100 A 180 180 0 0 1 480 250" stroke="#F0745A" stroke-width="3" stroke-linecap="round" opacity=".9"/>
+        <circle cx="480" cy="250" r="6" fill="#F0745A"/>
+      </svg>
+      <div class="float f1">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+        Trato cercano y sin prisas
+      </div>
+      <div class="float f2">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></span>
+        Tratamiento láser
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Servicios -->
+<section class="servicios" id="servicios">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Servicios</div>
+      <h2>Todo lo que tus pies necesitan, en un mismo lugar.</h2>
+      <p>Desde el cuidado habitual hasta la cirugía y el estudio de la pisada. Te explicamos cada opción con claridad para que decidas con tranquilidad.</p>
+    </div>
+    <div class="grid-serv">
+      <article class="card">
+        <span class="num">01</span>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 21c-2.5 0-4-1.7-4-4 0-2.6 2-4.2 3.6-5.3C9.7 10.6 10 9.3 10 8c0-2.2 1.3-4 3.3-4 2.4 0 4.2 2.4 4.2 6.2 0 3.5-1.6 5.3-3.4 6.4-1.7 1-2.5 2.4-3.3 3.5-.6.8-1.3 1-2.3 1z"/><circle cx="7" cy="6.5" r="1.3"/><circle cx="4.5" cy="10" r="1.1"/></svg></div>
+        <h3>Quiropodia</h3>
+        <p>Cuidado integral del pie: uñas, durezas y callosidades. La visita de mantenimiento para caminar cómodo día a día.</p>
+      </article>
+      <article class="card">
+        <span class="num">02</span>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21 14 10"/><path d="m12.5 8.5 3-3a2.1 2.1 0 0 1 3 3l-3 3"/><path d="m14 10 3 3"/><path d="M5 19l-2 2"/><circle cx="18" cy="6" r="1"/></svg></div>
+        <h3>Cirugía podológica</h3>
+        <p>Intervenciones en consulta para resolver problemas que no mejoran con tratamientos conservadores, con seguimiento posterior.</p>
+      </article>
+      <article class="card destacada">
+        <span class="num">03</span>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17c3-1 5-6 9-6s6 5 9 4"/><path d="M3 12c3-1 5-4 9-4s6 3 9 2"/><path d="M4 21h16"/><path d="M6 3v3M12 3v2M18 3v3"/></svg></div>
+        <h3>Estudio biomecánico y plantillas a medida</h3>
+        <p>Analizamos cómo pisas y cómo caminas para diseñar plantillas personalizadas que acompañen tu forma de moverte.</p>
+      </article>
+      <article class="card">
+        <span class="num">04</span>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M3 12h3M18 12h3M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1"/><circle cx="12" cy="12" r="3.5"/></svg></div>
+        <h3>Tratamiento láser</h3>
+        <p>Tecnología láser aplicada a distintas afecciones del pie. Valoramos en consulta si es la opción adecuada para tu caso.</p>
+      </article>
+      <article class="card">
+        <span class="num">05</span>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="15" cy="4.5" r="2"/><path d="m8 21 3-6 2.5-3-1-4.5"/><path d="M11 7.5 8 10l-3-.5"/><path d="m12.5 12 3 2 2.5 5"/><path d="M12.5 7.5 15 9l3-1"/></svg></div>
+        <h3>Podología deportiva</h3>
+        <p>Prevención y tratamiento de molestias vinculadas a la actividad física, pensando en tu deporte y tu ritmo de entrenamiento.</p>
+      </article>
+      <article class="card">
+        <span class="num">06</span>
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.6-7 10-7 10z"/><path d="M12 8v6M9 11h6"/></svg></div>
+        <h3>Pie diabético</h3>
+        <p>Revisión y cuidado preventivo del pie en personas con diabetes, con atención especial a la piel, las uñas y la sensibilidad.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Primera visita -->
+<section class="visita" id="primera-visita">
+  <div class="wrap">
+    <div class="visita-side">
+      <div class="sec-head">
+        <div class="kicker">Tu primera visita</div>
+        <h2>Tres pasos, ninguna prisa.</h2>
+        <p>Sabemos que la primera vez genera dudas. Así es como lo hacemos para que llegues tranquilo y salgas con un plan claro.</p>
+      </div>
+      <a class="btn" href="tel:+34965774950">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+        Pedir cita
+      </a>
+      <div class="nota">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z"/><path d="M12 16v-4M12 8h.01"/></svg>
+        <p><b>Qué traer</b>Si tienes informes, pruebas anteriores o el calzado que sueles usar, tráelos: nos ayudan a entender mejor tu caso.</p>
+      </div>
+    </div>
+    <div class="pasos">
+      <div class="paso">
+        <div class="n">1</div>
+        <div>
+          <h3>Llámanos y elige día</h3>
+          <p>Reservamos tu cita por teléfono. Cuéntanos brevemente qué te preocupa para reservar el tiempo que necesites.</p>
+        </div>
+      </div>
+      <div class="paso">
+        <div class="n">2</div>
+        <div>
+          <h3>Te escuchamos y exploramos</h3>
+          <p>Hablamos de tus molestias, tu actividad y tu calzado. Después exploramos el pie y, si hace falta, observamos cómo caminas.</p>
+        </div>
+      </div>
+      <div class="paso">
+        <div class="n">3</div>
+        <div>
+          <h3>Un plan claro y a tu medida</h3>
+          <p>Te explicamos qué ocurre y las opciones disponibles, con sus pros y sus tiempos. Tú decides cómo seguir.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div>
+      <div class="sec-head">
+        <div class="kicker">Preguntas frecuentes</div>
+        <h2>Lo que nos preguntan antes de venir.</h2>
+        <p>Respuestas generales para orientarte. Cada caso es distinto: en consulta lo vemos con calma.</p>
+      </div>
+      <a class="btn ghost" href="#contacto">¿Otra duda? Escríbenos</a>
+    </div>
+    <div class="acordeon">
+      <details open>
+        <summary>¿Cuándo debería ir al podólogo?<span class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+        <p>Ante cualquier molestia persistente en los pies, cambios en uñas o piel, dolor al caminar o hacer deporte, o simplemente como revisión preventiva. No hace falta esperar a que duela.</p>
+      </details>
+      <details>
+        <summary>¿Qué diferencia hay entre quiropodia y pedicura?<span class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+        <p>La quiropodia es un tratamiento sanitario realizado por un podólogo, orientado a la salud del pie: uñas, durezas y otras afecciones. La pedicura es un servicio estético. Son cosas distintas con objetivos distintos.</p>
+      </details>
+      <details>
+        <summary>¿Para qué sirve un estudio de la pisada?<span class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+        <p>Permite observar cómo apoyas y cómo caminas o corres, para detectar patrones que puedan estar relacionados con molestias en pies, tobillos, rodillas o espalda, y valorar si unas plantillas personalizadas pueden ayudar.</p>
+      </details>
+      <details>
+        <summary>¿Necesito volante médico para pedir cita?<span class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+        <p>No. Puedes llamar directamente y reservar tu cita. Si tienes informes o pruebas anteriores, es útil traerlos, pero no son imprescindibles para la primera visita.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- Contacto -->
+<section class="contacto" id="contacto">
+  <div class="wrap">
+    <div>
+      <div class="sec-head">
+        <div class="kicker">Contacto</div>
+        <h2>Estamos en el Centro Comercial Fontana.</h2>
+        <p>En la Playa de San Juan, con aparcamiento en el propio centro comercial.</p>
+      </div>
+      <div class="datos">
+        <div class="dato">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></div>
+          <div>
+            <b>Teléfono</b>
+            <a href="tel:+34965774950">96 577 49 50</a>
+            <a href="tel:+34689189798">689 189 798</a>
+          </div>
+        </div>
+        <div class="dato">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div>
+            <b>Dirección</b>
+            <span>Av. de Holanda 12, Centro Comercial Fontana, local 37</span>
+            <span class="sub">03540 Alicante · Playa de San Juan</span>
+          </div>
+        </div>
+        <div class="dato">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <div>
+            <b>Horario</b>
+            <span>Consultar horario</span>
+            <span class="sub">Llámanos y te informamos de la disponibilidad.</span>
+          </div>
+        </div>
+        <div class="dato">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div>
+          <div>
+            <b>Email</b>
+            <a href="mailto:estebanpodologo@gmail.com">estebanpodologo@gmail.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mapa" aria-label="Mapa esquemático de la ubicación">
+      <svg viewBox="0 0 560 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="mapaT">
+        <title id="mapaT">Mapa esquemático: Centro Comercial Fontana, Avenida de Holanda, Playa de San Juan</title>
+        <defs>
+          <pattern id="mar" width="26" height="12" patternUnits="userSpaceOnUse">
+            <path d="M0 6 q6.5-5 13 0 t13 0" fill="none" stroke="#9FD6CC" stroke-width="1.4"/>
+          </pattern>
+          <linearGradient id="arena" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#F7EFDF"/><stop offset="1" stop-color="#F1E6D0"/></linearGradient>
+        </defs>
+        <rect width="560" height="520" fill="#F9F6F0"/>
+        <!-- manzanas -->
+        <g fill="#EFE9DD">
+          <rect x="30" y="30" width="150" height="110" rx="10"/>
+          <rect x="210" y="30" width="120" height="110" rx="10"/>
+          <rect x="30" y="180" width="150" height="120" rx="10"/>
+          <rect x="30" y="340" width="150" height="110" rx="10"/>
+          <rect x="210" y="340" width="120" height="110" rx="10"/>
+        </g>
+        <!-- verde -->
+        <rect x="210" y="180" width="120" height="120" rx="60" fill="#DDEFE3"/>
+        <!-- playa y mar -->
+        <path d="M400 0 C 380 120, 390 300, 380 520 H 560 V 0 Z" fill="url(#arena)"/>
+        <path d="M440 0 C 425 130, 435 330, 425 520 H 560 V 0 Z" fill="#CFEDE6"/>
+        <path d="M440 0 C 425 130, 435 330, 425 520 H 560 V 0 Z" fill="url(#mar)" opacity=".9"/>
+        <!-- calles -->
+        <g stroke="#fff" stroke-linecap="round">
+          <path d="M0 160 H 385" stroke-width="18"/>
+          <path d="M0 320 H 385" stroke-width="18"/>
+          <path d="M195 0 V 520" stroke-width="18"/>
+          <path d="M350 0 C 345 150, 350 350, 345 520" stroke-width="26"/>
+        </g>
+        <g stroke="#E1D9C9" stroke-width="1.5" stroke-dasharray="6 8">
+          <path d="M0 160 H 385"/><path d="M0 320 H 385"/><path d="M195 0 V 520"/>
+        </g>
+        <path d="M350 0 C 345 150, 350 350, 345 520" stroke="#E1D9C9" stroke-width="1.5" stroke-dasharray="10 10" fill="none"/>
+        <!-- etiquetas calles -->
+        <g font-family="Avenir Next, Avenir, Gill Sans, Segoe UI, sans-serif" font-size="11" fill="#7A8A95" letter-spacing="1.5">
+          <text x="60" y="152">AV. DE HOLANDA</text>
+          <text transform="translate(362 60) rotate(88)">AV. DE NIZA</text>
+          <text x="470" y="270" fill="#5DBDAF" font-weight="600">MEDITERRÁNEO</text>
+          <text x="392" y="480" fill="#A89B7E" font-size="10" transform="rotate(-86 392 480)">PLAYA DE SAN JUAN</text>
+        </g>
+        <!-- edificio Fontana -->
+        <rect x="222" y="190" width="98" height="98" rx="14" fill="#fff" stroke="#5DBDAF" stroke-width="2"/>
+        <rect x="236" y="204" width="70" height="70" rx="8" fill="#DDF1EC"/>
+        <text x="271" y="240" text-anchor="middle" font-family="Avenir Next, Avenir, Gill Sans, Segoe UI, sans-serif" font-size="10.5" fill="#0E3A57" font-weight="700" letter-spacing="1">C.C.</text>
+        <text x="271" y="255" text-anchor="middle" font-family="Avenir Next, Avenir, Gill Sans, Segoe UI, sans-serif" font-size="10.5" fill="#0E3A57" font-weight="700" letter-spacing="1">FONTANA</text>
+        <!-- pin -->
+        <g transform="translate(271 178)">
+          <circle cx="0" cy="0" r="22" fill="#F0745A" opacity=".18">
+            <animate attributeName="r" values="18;30;18" dur="2.6s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values=".25;0;.25" dur="2.6s" repeatCount="indefinite"/>
+          </circle>
+          <path d="M0 -34 c-11 0 -18 8 -18 18 c0 13 18 30 18 30 s18 -17 18 -30 c0 -10 -7 -18 -18 -18z" fill="#F0745A"/>
+          <circle cx="0" cy="-16" r="6.5" fill="#fff"/>
+        </g>
+        <!-- tarjeta local -->
+        <g transform="translate(60 372)">
+          <rect width="200" height="64" rx="12" fill="#0E3A57"/>
+          <text x="16" y="26" font-family="Avenir Next, Avenir, Gill Sans, Segoe UI, sans-serif" font-size="10" fill="#9FD6CC" letter-spacing="2">LOCAL 37</text>
+          <text x="16" y="46" font-family="Avenir Next, Avenir, Gill Sans, Segoe UI, sans-serif" font-size="14" fill="#fff" font-weight="600">Podología Fontana</text>
+        </g>
+        <!-- brújula -->
+        <g transform="translate(520 40)">
+          <circle r="16" fill="#fff" stroke="#E6DFD2"/>
+          <path d="M0 -11 L4 2 L0 -1 L-4 2 Z" fill="#F0745A"/>
+          <text y="28" text-anchor="middle" font-family="Avenir Next, Avenir, Gill Sans, Segoe UI, sans-serif" font-size="9" fill="#7A8A95" letter-spacing="1">N</text>
+        </g>
+      </svg>
+      <div class="pie">
+        <div><b>Av. de Holanda 12</b> · C.C. Fontana, local 37 · 03540 Alicante</div>
+        <span class="tag">Mapa esquemático</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Banda CTA -->
+<div class="banda">
+  <div class="wrap">
+    <div class="box">
+      <div>
+        <h2>¿Notas algo raro al caminar?</h2>
+        <p>No lo dejes para más adelante. Una llamada y lo vemos juntos.</p>
+      </div>
+      <a class="btn" href="tel:+34965774950">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+        Pedir cita · 96 577 49 50
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <a href="#" class="logo" aria-label="Podología Fontana">
+          <span class="mark" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 21c-2.5 0-4-1.7-4-4 0-2.6 2-4.2 3.6-5.3C9.7 10.6 10 9.3 10 8c0-2.2 1.3-4 3.3-4 2.4 0 4.2 2.4 4.2 6.2 0 3.5-1.6 5.3-3.4 6.4-1.7 1-2.5 2.4-3.3 3.5-.6.8-1.3 1-2.3 1z"/><circle cx="7" cy="6.5" r="1.3"/><circle cx="4.5" cy="10" r="1.1"/></svg>
+          </span>
+          <span>Podología Fontana<small>Playa de San Juan · Alicante</small></span>
+        </a>
+        <p>Clínica de podología en el Centro Comercial Fontana. Cuidamos tus pies, cuidamos tu paso.</p>
+      </div>
+      <div>
+        <h4>Servicios</h4>
+        <ul>
+          <li><a href="#servicios">Quiropodia</a></li>
+          <li><a href="#servicios">Cirugía podológica</a></li>
+          <li><a href="#servicios">Estudio biomecánico y plantillas</a></li>
+          <li><a href="#servicios">Tratamiento láser</a></li>
+          <li><a href="#servicios">Podología deportiva</a></li>
+          <li><a href="#servicios">Pie diabético</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="tel:+34965774950">96 577 49 50</a></li>
+          <li><a href="tel:+34689189798">689 189 798</a></li>
+          <li><a href="mailto:estebanpodologo@gmail.com">estebanpodologo@gmail.com</a></li>
+          <li>Av. de Holanda 12, C.C. Fontana, local 37<br>03540 Alicante</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© Podología Fontana · Alicante</span>
+      <span class="firma">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Acordeón FAQ: solo un elemento abierto a la vez
+  document.querySelectorAll('.acordeon details').forEach(function(d){
+    d.addEventListener('toggle',function(){
+      if(d.open){
+        document.querySelectorAll('.acordeon details').forEach(function(o){ if(o!==d) o.removeAttribute('open'); });
+      }
+    });
+  });
+  // Aparición suave de tarjetas y pasos al hacer scroll
+  if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var els=document.querySelectorAll('.card,.paso,.dato');
+    els.forEach(function(el,i){
+      el.style.opacity='0';el.style.transform='translateY(16px)';
+      el.style.transition='opacity .6s ease '+(i%3)*0.08+'s, transform .6s cubic-bezier(.2,.7,.2,1) '+(i%3)*0.08+'s, box-shadow .25s ease, border-color .25s ease';
+    });
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          var t=e.target;t.style.opacity='1';t.style.transform='none';io.unobserve(t);
+          setTimeout(function(){t.style.removeProperty('opacity');t.style.removeProperty('transform');t.style.removeProperty('transition');},900);
+        }
+      });
+    },{threshold:.15});
+    els.forEach(function(el){io.observe(el)});
+  }
+</script>
+</body>
+</html>

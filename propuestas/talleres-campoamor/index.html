@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Talleres Campoamor · Taller mecánico multimarca en Alicante</title>
+<meta name="description" content="Propuesta de rediseño web para Talleres Campoamor, taller mecánico multimarca de la red Eurorepar en Avda. de Alcoy 77, Alicante.">
+<style>
+  /* ---------- Tokens ---------- */
+  :root{
+    --ink:#15171a;          /* antracita profundo */
+    --ink-2:#1f2226;
+    --steel:#2c3036;        /* gris acero */
+    --steel-2:#3a4048;
+    --steel-3:#5a626c;
+    --mist:#9aa3ad;
+    --paper:#eef0f2;        /* gris claro */
+    --paper-2:#e2e5e8;
+    --white:#fafbfc;
+    --signal:#ff7a00;       /* naranja señal */
+    --signal-2:#ffa030;
+    --signal-ink:#1a0e00;
+
+    --display:'Bahnschrift','Barlow Condensed','Oswald','DIN Condensed','Franklin Gothic Medium','Arial Narrow','Helvetica Neue',sans-serif-condensed,sans-serif;
+    --body:'Avenir Next','Avenir','Segoe UI','Trebuchet MS','Helvetica Neue',system-ui,sans-serif;
+    --mono:'SF Mono','Cascadia Code','Consolas','DejaVu Sans Mono','Liberation Mono',monospace;
+
+    --gutter:clamp(20px,4vw,56px);
+    --max:1180px;
+    --bar:34px;
+    --nav:72px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    font-family:var(--body);
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.55;
+    font-size:16px;
+    overflow-x:hidden;
+    padding-top:var(--bar);
+  }
+  a{color:inherit;text-decoration:none}
+  img,svg{display:block;max-width:100%}
+  ::selection{background:var(--signal);color:var(--signal-ink)}
+
+  .wrap{width:min(100% - 2*var(--gutter),var(--max));margin-inline:auto}
+
+  /* ---------- Barra de propuesta (obligatoria) ---------- */
+  .proposal-bar{
+    position:fixed;inset:0 0 auto 0;height:var(--bar);z-index:1000;
+    background:var(--signal);color:var(--signal-ink);
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;
+    padding-inline:12px;text-align:center;
+    border-bottom:1px solid rgba(0,0,0,.18);
+  }
+  .proposal-bar .dot{width:7px;height:7px;background:var(--signal-ink);border-radius:50%;flex:none;animation:pulse 2s ease-in-out infinite}
+  @media (max-width:600px){:root{--bar:42px}.proposal-bar{font-size:10px;line-height:1.25;letter-spacing:.02em;gap:8px}}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+
+  /* ---------- Nav ---------- */
+  .nav{
+    position:sticky;top:var(--bar);z-index:900;
+    background:rgba(21,23,26,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    color:var(--white);height:var(--nav);
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .nav .wrap{height:100%;display:flex;align-items:center;justify-content:space-between;gap:24px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand-mark{width:38px;height:38px;flex:none}
+  .brand-text{font-family:var(--display);text-transform:uppercase;line-height:1;letter-spacing:.02em}
+  .brand-text b{display:block;font-size:19px;font-weight:700}
+  .brand-text span{display:block;font-size:10.5px;color:var(--mist);letter-spacing:.18em;margin-top:3px;font-family:var(--mono)}
+  .nav-links{display:flex;gap:28px;list-style:none;font-family:var(--display);text-transform:uppercase;letter-spacing:.1em;font-size:13.5px;font-weight:600}
+  .nav-links a{position:relative;padding-block:6px;color:#d6dbe0}
+  .nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;background:var(--signal);transition:right .25s ease}
+  .nav-links a:hover::after{right:0}
+  .nav-cta{display:inline-flex;align-items:center;gap:10px;background:var(--signal);color:var(--signal-ink);font-family:var(--display);font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:14px;padding:11px 18px;clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px);transition:background .2s}
+  .nav-cta:hover{background:var(--signal-2)}
+  .nav-cta svg{width:16px;height:16px}
+  @media (max-width:900px){.nav-links{display:none}}
+  @media (max-width:480px){.nav-cta span{display:none}.nav-cta{padding:11px 13px}}
+
+  /* ---------- Botones ---------- */
+  .btn{display:inline-flex;align-items:center;gap:12px;font-family:var(--display);font-weight:700;text-transform:uppercase;letter-spacing:.09em;font-size:15px;padding:16px 26px;transition:transform .2s,background .2s,color .2s;position:relative}
+  .btn svg{width:18px;height:18px;flex:none}
+  .btn-signal{background:var(--signal);color:var(--signal-ink);clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px)}
+  .btn-signal:hover{background:var(--signal-2);transform:translateY(-2px)}
+  .btn-ghost{color:var(--white);border:1.5px solid rgba(255,255,255,.35)}
+  .btn-ghost:hover{border-color:var(--signal);color:var(--signal)}
+  .btn-dark{background:var(--ink);color:var(--white);clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px)}
+  .btn-dark:hover{background:var(--steel)}
+
+  /* ---------- Etiquetas de sección ---------- */
+  .kicker{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--signal)}
+  .kicker::before{content:"";width:26px;height:2px;background:currentColor}
+  .h2{font-family:var(--display);font-weight:700;text-transform:uppercase;line-height:.95;letter-spacing:-.005em;font-size:clamp(38px,5.4vw,66px);margin-top:14px}
+  .lede{font-size:clamp(16px,1.3vw,18px);color:var(--steel-3);max-width:56ch;margin-top:18px}
+  .section{padding-block:clamp(72px,9vw,120px)}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;color:var(--white);overflow:hidden;
+    background:
+      radial-gradient(900px 500px at 85% 15%, rgba(255,122,0,.16), transparent 60%),
+      linear-gradient(180deg,#1b1e22 0%,#15171a 60%,#121416 100%);
+    min-height:calc(100vh - var(--bar) - var(--nav));
+    display:flex;align-items:center;
+  }
+  /* textura tipo chapa: retícula fina + diagonal */
+  .hero::before{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:
+      linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+    background-size:48px 48px;
+    mask-image:linear-gradient(180deg,rgba(0,0,0,.9),rgba(0,0,0,.2) 70%,transparent);
+    -webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,.9),rgba(0,0,0,.2) 70%,transparent);
+  }
+  .hero::after{
+    content:"";position:absolute;right:-8%;top:-10%;width:52%;height:130%;pointer-events:none;
+    background:repeating-linear-gradient(-55deg,rgba(255,122,0,.07) 0 14px,transparent 14px 40px);
+    clip-path:polygon(30% 0,100% 0,100% 100%,0 100%);
+    opacity:.9;
+  }
+  .hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:56px;align-items:center;padding-block:clamp(64px,8vw,110px)}
+  .hero .wrap>*{min-width:0}
+  .hero-eyebrow{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;font-family:var(--mono);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mist);animation:rise .7s ease both}
+  .hero-eyebrow .tag{color:var(--signal);border:1px solid rgba(255,122,0,.5);padding:5px 9px}
+  .h1{
+    font-family:var(--display);font-weight:700;text-transform:uppercase;line-height:.9;
+    font-size:clamp(50px,7vw,92px);margin-top:26px;letter-spacing:-.015em;overflow-wrap:anywhere;
+    animation:rise .8s .08s ease both;
+  }
+  .h1 em{font-style:normal;color:var(--signal);display:block}
+  .h1 .thin{font-weight:400;color:#c9d0d7}
+  .hero-p{margin-top:26px;font-size:clamp(17px,1.35vw,19.5px);color:#c2c9d1;max-width:52ch;animation:rise .8s .18s ease both}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:14px;}
+  .hero-ctas .btn{max-width:100%;white-space:normal;text-align:left}
+  .hero-ctas{margin-top:38px;animation:rise .8s .28s ease both}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:44px;padding-top:22px;border-top:1px solid rgba(255,255,255,.12);font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--mist);animation:rise .8s .4s ease both}
+  .hero-meta b{color:var(--white);font-weight:500}
+
+  /* placa / tarjeta técnica del hero */
+  .hero-card{position:relative;animation:rise 1s .3s ease both}
+  .plate{
+    background:linear-gradient(160deg,#2a2e34,#1c1f23);
+    border:1px solid rgba(255,255,255,.1);
+    box-shadow:0 40px 80px -30px rgba(0,0,0,.8),inset 0 1px 0 rgba(255,255,255,.08);
+    padding:28px;position:relative;
+  }
+  .plate::before,.plate::after{content:"";position:absolute;width:10px;height:10px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#8f979f,#3a4048 70%);box-shadow:inset 0 0 0 2px #1a1c1f}
+  .plate::before{top:12px;left:12px}
+  .plate::after{bottom:12px;right:12px}
+  .plate-head{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--mist);border-bottom:1px dashed rgba(255,255,255,.15);padding-bottom:14px}
+  .plate-head b{color:var(--signal);font-weight:500}
+  .plate-list{list-style:none;margin-top:18px;display:grid;gap:10px}
+  .plate-list li{display:flex;align-items:center;gap:14px;font-family:var(--display);text-transform:uppercase;letter-spacing:.06em;font-size:17px;color:#e6eaee;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+  .plate-list li:last-child{border-bottom:0}
+  .plate-list svg{width:22px;height:22px;flex:none;color:var(--signal)}
+  .plate-list .n{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--steel-3);letter-spacing:.1em}
+  .plate-foot{margin-top:18px;padding-top:14px;border-top:1px dashed rgba(255,255,255,.15);display:flex;justify-content:space-between;align-items:center;font-size:13.5px;color:var(--mist)}
+  .plate-foot a{color:var(--white);font-family:var(--display);font-size:20px;letter-spacing:.04em;font-weight:700}
+  .plate-foot a:hover{color:var(--signal)}
+  .hero-gear{position:absolute;right:-60px;bottom:-70px;width:220px;height:220px;color:rgba(255,255,255,.06);animation:spin 40s linear infinite;pointer-events:none}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+  @media (max-width:980px){
+    .hero .wrap{grid-template-columns:1fr;gap:40px}
+    .hero-gear{display:none}
+  }
+
+  /* ---------- Tira de marcas (texto) ---------- */
+  .marquee{max-width:100vw;background:var(--signal);color:var(--signal-ink);overflow:hidden;border-block:2px solid var(--ink)}
+  .marquee-track{display:flex;width:max-content;animation:scroll 32s linear infinite;font-family:var(--display);font-weight:700;text-transform:uppercase;letter-spacing:.14em;font-size:15px;padding-block:13px}
+  .marquee-track span{padding-inline:26px;white-space:nowrap;display:flex;align-items:center;gap:26px}
+  .marquee-track span::after{content:"";width:8px;height:8px;background:var(--signal-ink);transform:rotate(45deg)}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+  @media (prefers-reduced-motion:reduce){.marquee-track,.hero-gear,.proposal-bar .dot{animation:none}}
+
+  /* ---------- Servicios ---------- */
+  .services{background:var(--paper)}
+  .services-head{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:end}
+  .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:56px;background:var(--paper-2);border:2px solid var(--paper-2)}
+  .svc{background:var(--white);padding:34px 30px 30px;position:relative;overflow:hidden;transition:background .25s;min-height:280px;display:flex;flex-direction:column}
+  .svc::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--signal);transform:scaleY(0);transform-origin:top;transition:transform .3s ease}
+  .svc:hover::before{transform:scaleY(1)}
+  .svc:hover{background:#fff}
+  .svc-top{display:flex;justify-content:space-between;align-items:flex-start}
+  .svc-icon{width:52px;height:52px;color:var(--ink);background:var(--paper);display:grid;place-items:center;border:1px solid var(--paper-2)}
+  .svc-icon svg{width:28px;height:28px}
+  .svc-num{font-family:var(--mono);font-size:12px;color:var(--mist);letter-spacing:.14em}
+  .svc h3{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:26px;line-height:1;margin-top:26px;letter-spacing:.01em}
+  .svc p{color:var(--steel-3);font-size:15px;margin-top:12px;flex:1}
+  .svc-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:18px}
+  .svc-tags span{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel-2);background:var(--paper);padding:5px 8px;border:1px solid var(--paper-2)}
+  .services-note{margin-top:28px;font-family:var(--mono);font-size:12.5px;color:var(--steel-3);letter-spacing:.04em;display:flex;gap:12px;align-items:center}
+  .services-note::before{content:"";width:10px;height:10px;background:var(--signal);flex:none}
+  @media (max-width:980px){.services-grid{grid-template-columns:repeat(2,1fr)}.services-head{grid-template-columns:1fr}}
+  @media (max-width:600px){.services-grid{grid-template-columns:1fr}.svc{min-height:0}}
+
+  /* ---------- Cómo trabajamos ---------- */
+  .process{background:var(--ink);color:var(--white);position:relative;overflow:hidden}
+  .process::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,.03) 0 1px,transparent 1px 120px);pointer-events:none}
+  .process .lede{color:var(--mist)}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:64px;position:relative;counter-reset:step}
+  .steps::before{content:"";position:absolute;left:0;right:0;top:44px;height:2px;background:linear-gradient(90deg,var(--signal),rgba(255,122,0,.15))}
+  .step{position:relative;padding:0 36px 0 0;counter-increment:step}
+  .step + .step{padding-left:36px;border-left:1px solid rgba(255,255,255,.08)}
+  .step-num{
+    width:88px;height:88px;display:grid;place-items:center;position:relative;
+    font-family:var(--display);font-size:38px;font-weight:700;
+    background:var(--ink);color:var(--signal);
+    border:2px solid var(--signal);
+    clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px);
+  }
+  .step-num::before{content:"0" counter(step)}
+  .step h3{font-family:var(--display);text-transform:uppercase;font-weight:700;font-size:32px;line-height:1;margin-top:30px}
+  .step p{color:#b9c1c9;margin-top:14px;font-size:15.5px;max-width:34ch}
+  .step ul{list-style:none;margin-top:20px;display:grid;gap:8px;font-family:var(--mono);font-size:12.5px;color:var(--mist);letter-spacing:.03em}
+  .step li{display:flex;gap:10px;align-items:flex-start}
+  .step li::before{content:"";width:6px;height:6px;background:var(--signal);flex:none;margin-top:7px}
+  .process-cta{margin-top:64px;padding:32px 36px;border:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;background:linear-gradient(90deg,rgba(255,122,0,.08),transparent 60%)}
+  .process-cta strong{font-family:var(--display);text-transform:uppercase;font-size:clamp(24px,2.6vw,32px);line-height:1;font-weight:700}
+  .process-cta small{display:block;color:var(--mist);font-family:var(--body);font-size:14px;text-transform:none;letter-spacing:0;margin-top:8px;font-weight:400}
+  @media (max-width:900px){
+    .steps{grid-template-columns:1fr;gap:44px}
+    .steps::before{display:none}
+    .step + .step{padding-left:0;border-left:0;padding-top:0}
+    .step{padding-right:0}
+  }
+
+  /* ---------- Contacto ---------- */
+  .contact{background:var(--paper-2)}
+  .contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;margin-top:48px;align-items:stretch}
+  .contact-card{background:var(--white);border:1px solid #d5d9dd;display:flex;flex-direction:column}
+  .contact-row{padding:26px 30px;border-bottom:1px solid var(--paper-2);display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:start}
+  .contact-row:last-child{border-bottom:0}
+  .contact-row .ic{width:44px;height:44px;background:var(--ink);color:var(--signal);display:grid;place-items:center}
+  .contact-row .ic svg{width:22px;height:22px}
+  .contact-row .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--steel-3)}
+  .contact-row .val{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:clamp(20px,5vw,24px);line-height:1.05;margin-top:6px;letter-spacing:.01em}
+  .contact-row .val a{display:block}
+  .contact-row .val a:hover{color:var(--signal)}
+  .contact-row .val-email{font-size:clamp(14px,3.6vw,19px);text-transform:none;font-family:var(--mono);font-weight:500;overflow-wrap:anywhere}
+  .contact-row>div{min-width:0}
+  .contact-row .sub{color:var(--steel-3);font-size:14px;margin-top:6px}
+  .contact-row .hours{font-family:var(--display);font-size:clamp(18px,4.6vw,22px);text-transform:uppercase;font-weight:700;margin-top:6px;display:inline-flex;align-items:center;gap:10px}
+  .contact-row .hours::after{content:"";width:9px;height:9px;background:var(--signal);transform:rotate(45deg)}
+  .contact-actions{padding:24px 30px;margin-top:auto;background:var(--paper);display:flex;gap:12px;flex-wrap:wrap}
+
+  .map{background:var(--ink);position:relative;min-height:420px;border:1px solid #d5d9dd;overflow:hidden}
+  .map svg{width:100%;height:100%;position:absolute;inset:0}
+  .map-legend{position:absolute;left:18px;bottom:18px;background:rgba(21,23,26,.85);border:1px solid rgba(255,255,255,.12);padding:12px 14px;color:var(--white);font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;display:grid;gap:6px;backdrop-filter:blur(6px)}
+  .map-legend span{display:flex;align-items:center;gap:10px}
+  .map-legend i{width:12px;height:12px;background:var(--signal);display:inline-block;border-radius:50%;box-shadow:0 0 0 3px rgba(255,122,0,.3)}
+  .map-legend em{font-style:normal;color:var(--mist)}
+  .map-tag{position:absolute;right:18px;top:18px;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--mist);border:1px solid rgba(255,255,255,.15);padding:6px 9px}
+  @media (max-width:900px){.contact-grid{grid-template-columns:1fr}.map{min-height:360px}}
+
+  /* ---------- Footer ---------- */
+  .footer{background:#0f1113;color:var(--mist);padding-block:56px 32px;border-top:3px solid var(--signal)}
+  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+  .footer h4{font-family:var(--display);text-transform:uppercase;color:var(--white);font-size:14px;letter-spacing:.14em;font-weight:700;margin-bottom:16px}
+  .footer ul{list-style:none;display:grid;gap:9px;font-size:14.5px}
+  .footer a:hover{color:var(--signal)}
+  .footer-brand p{max-width:40ch;font-size:14.5px;margin-top:14px}
+  .footer-email{display:inline-flex;align-items:center;gap:10px;margin-top:18px;color:var(--white);font-family:var(--mono);font-size:13px;border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:4px}
+  .footer-email svg{width:16px;height:16px;color:var(--signal)}
+  .footer-bottom{margin-top:48px;padding-top:22px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:11.5px;letter-spacing:.05em}
+  .footer-credit{color:var(--white)}
+  .footer-credit b{color:var(--signal);font-weight:500}
+  @media (max-width:800px){.footer-grid{grid-template-columns:1fr 1fr}.footer-brand{grid-column:1/-1}}
+  @media (max-width:480px){.footer-grid{grid-template-columns:1fr}}
+
+  /* ---------- Reveal on scroll ---------- */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+  .reveal[data-delay="1"]{transition-delay:.1s}
+  .reveal[data-delay="2"]{transition-delay:.2s}
+  .reveal[data-delay="3"]{transition-delay:.3s}
+  .reveal[data-delay="4"]{transition-delay:.4s}
+  .reveal[data-delay="5"]{transition-delay:.5s}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+  /* ---------- Botón flotante móvil ---------- */
+  .fab{display:none}
+  @media (max-width:700px){
+    .fab{position:fixed;right:16px;bottom:16px;z-index:950;display:inline-flex;align-items:center;gap:10px;background:var(--signal);color:var(--signal-ink);font-family:var(--display);font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:14px;padding:14px 18px;box-shadow:0 14px 30px -10px rgba(0,0,0,.5);clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px)}
+    .fab svg{width:16px;height:16px}
+    .footer{padding-bottom:90px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== Barra fija obligatoria ===== -->
+<div class="proposal-bar" role="note">
+  <span class="dot" aria-hidden="true"></span>
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<!-- ===== Nav ===== -->
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Talleres Campoamor, inicio">
+      <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+        <path d="M6 0h34v28L28 40H0V12Z" fill="#ff7a00"/>
+        <path d="M13 12h6l4 7 4-7h6v16h-5v-9l-5 8-5-8v9h-5Z" fill="#15171a"/>
+      </svg>
+      <span class="brand-text"><b>Talleres Campoamor</b><span>Red Eurorepar · Alicante</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#proceso">Cómo trabajamos</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a class="nav-cta" href="tel:+34965241563">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.6 2.8.7a2 2 0 0 1 1.8 2z"/></svg>
+      <span>Pedir cita</span>
+    </a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ===== Hero ===== -->
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <p class="hero-eyebrow"><span class="tag">Multimarca</span><span>Avda. de Alcoy 77 · Campoamor · Alicante</span></p>
+      <h1 class="h1">Tu taller <span class="thin">de confianza</span> <em>en Campoamor</em></h1>
+      <p class="hero-p">Mantenimiento, diagnosis y reparación para todas las marcas, con la garantía de trabajar dentro de la red Eurorepar. Explicamos lo que hacemos, presupuestamos antes de tocar nada y te devolvemos el coche listo.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-signal" href="tel:+34965241563">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.6 2.8.7a2 2 0 0 1 1.8 2z"/></svg>
+          Pedir cita · 96 524 15 63
+        </a>
+        <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
+      </div>
+      <div class="hero-meta">
+        <span>Taller <b>multimarca</b></span>
+        <span>Miembro de la <b>red Eurorepar</b></span>
+        <span>Presupuesto <b>previo</b></span>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="plate">
+        <div class="plate-head"><span>Ficha de servicio</span><b>Campoamor · ALC</b></div>
+        <ul class="plate-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>Mantenimiento<span class="n">S-01</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg>Frenos<span class="n">S-02</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M7 21h10M8 9h3l2 4 2-6 1 4h2"/></svg>Diagnosis<span class="n">S-04</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h16M4 12h16M4 16h16"/><path d="M6 4l2 4M18 4l-2 4M6 20l2-4M18 20l-2-4"/></svg>Pre-ITV<span class="n">S-06</span></li>
+        </ul>
+        <div class="plate-foot"><span>Llámanos</span><a href="tel:+34658794491">658 794 491</a></div>
+      </div>
+      <svg class="hero-gear" viewBox="0 0 100 100" aria-hidden="true">
+        <path fill="currentColor" d="M50 0l7 9 11-4 3 11 11 2-2 11 10 6-6 9 7 9-9 6 2 11-11 2-3 11-11-4-7 9-7-9-11 4-3-11-11-2 2-11-10-6 6-9-7-9 9-6-2-11 11-2 3-11 11 4zM50 30a20 20 0 1 0 0 40 20 20 0 0 0 0-40z"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Tira ===== -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Mantenimiento</span><span>Frenos</span><span>Neumáticos</span><span>Diagnosis electrónica</span><span>Aire acondicionado</span><span>Pre-ITV</span><span>Multimarca</span><span>Red Eurorepar</span>
+    <span>Mantenimiento</span><span>Frenos</span><span>Neumáticos</span><span>Diagnosis electrónica</span><span>Aire acondicionado</span><span>Pre-ITV</span><span>Multimarca</span><span>Red Eurorepar</span>
+  </div>
+</div>
+
+<!-- ===== Servicios ===== -->
+<section class="section services" id="servicios">
+  <div class="wrap">
+    <div class="services-head">
+      <div class="reveal">
+        <span class="kicker">Servicios</span>
+        <h2 class="h2">Todo lo que tu coche<br>necesita, en un solo sitio</h2>
+        <p class="lede">Trabajamos con cualquier marca y modelo. Piezas y procedimientos según las especificaciones del fabricante, y un presupuesto claro antes de empezar.</p>
+      </div>
+      <a class="btn btn-dark reveal" data-delay="1" href="tel:+34965241563">Pedir cita</a>
+    </div>
+
+    <div class="services-grid">
+      <article class="svc reveal">
+        <div class="svc-top">
+          <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+          <span class="svc-num">S-01</span>
+        </div>
+        <h3>Mantenimiento y revisiones</h3>
+        <p>Cambio de aceite y filtros, correas, líquidos y revisiones periódicas según el plan del fabricante, respetando la garantía de tu vehículo.</p>
+        <div class="svc-tags"><span>Aceite</span><span>Filtros</span><span>Correas</span><span>Revisión oficial</span></div>
+      </article>
+
+      <article class="svc reveal" data-delay="1">
+        <div class="svc-top">
+          <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M12 3v3.5M12 17.5V21M3 12h3.5M17.5 12H21M6.3 6.3l2.5 2.5M15.2 15.2l2.5 2.5M6.3 17.7l2.5-2.5M15.2 8.8l2.5-2.5"/></svg></div>
+          <span class="svc-num">S-02</span>
+        </div>
+        <h3>Frenos</h3>
+        <p>Pastillas, discos, latiguillos y líquido de frenos. Revisión completa del sistema y comprobación en banco.</p>
+        <div class="svc-tags"><span>Pastillas</span><span>Discos</span><span>Purgado</span></div>
+      </article>
+
+      <article class="svc reveal" data-delay="2">
+        <div class="svc-top">
+          <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><circle cx="12" cy="12" r="5"/><path d="M12 2.5v4M12 17.5v4M2.5 12h4M17.5 12h4M5.3 5.3l2.8 2.8M15.9 15.9l2.8 2.8M5.3 18.7l2.8-2.8M15.9 8.1l2.8-2.8"/></svg></div>
+          <span class="svc-num">S-03</span>
+        </div>
+        <h3>Neumáticos</h3>
+        <p>Montaje, equilibrado y alineación de dirección. Asesoramiento sobre la medida y el tipo de neumático que mejor encaja con tu uso.</p>
+        <div class="svc-tags"><span>Montaje</span><span>Equilibrado</span><span>Alineación</span></div>
+      </article>
+
+      <article class="svc reveal">
+        <div class="svc-top">
+          <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4M7 10.5h2.5l1.5 3 2-6 1.5 3H17"/></svg></div>
+          <span class="svc-num">S-04</span>
+        </div>
+        <h3>Diagnosis electrónica</h3>
+        <p>Lectura de centralitas y localización de averías con equipo de diagnosis multimarca. Testigos encendidos, fallos intermitentes y sensores.</p>
+        <div class="svc-tags"><span>Centralita</span><span>Testigos</span><span>Sensores</span></div>
+      </article>
+
+      <article class="svc reveal" data-delay="1">
+        <div class="svc-top">
+          <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v3M12 18v3M4.2 6.5l2.6 1.5M17.2 16l2.6 1.5M4.2 17.5l2.6-1.5M17.2 8l2.6-1.5"/><circle cx="12" cy="12" r="4"/><path d="M12 8a4 4 0 0 1 4 4"/></svg></div>
+          <span class="svc-num">S-05</span>
+        </div>
+        <h3>Aire acondicionado</h3>
+        <p>Carga de gas, detección de fugas y revisión del circuito de climatización para que el coche enfríe como debe.</p>
+        <div class="svc-tags"><span>Carga de gas</span><span>Fugas</span><span>Filtro habitáculo</span></div>
+      </article>
+
+      <article class="svc reveal" data-delay="2">
+        <div class="svc-top">
+          <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16v11H4z"/><path d="M4 11h16M8 7V4h8v3M9 15l2 2 4-4"/></svg></div>
+          <span class="svc-num">S-06</span>
+        </div>
+        <h3>Pre-ITV</h3>
+        <p>Comprobamos luces, frenos, emisiones, dirección y neumáticos antes de la inspección para que vayas a la ITV sin sorpresas.</p>
+        <div class="svc-tags"><span>Luces</span><span>Emisiones</span><span>Dirección</span></div>
+      </article>
+    </div>
+
+    <p class="services-note reveal">¿Otra avería o duda? Llámanos y te decimos si podemos ayudarte.</p>
+  </div>
+</section>
+
+<!-- ===== Cómo trabajamos ===== -->
+<section class="section process" id="proceso">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="kicker">Cómo trabajamos</span>
+      <h2 class="h2">Sin sorpresas.<br>Tres pasos, claros.</h2>
+      <p class="lede">Queremos que sepas qué le pasa a tu coche, qué vamos a hacer y cuánto cuesta antes de que lo toquemos.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num" aria-hidden="true"></div>
+        <h3>Presupuesto</h3>
+        <p>Revisamos el vehículo, localizamos el problema y te preparamos un presupuesto detallado y sin compromiso.</p>
+        <ul><li>Diagnóstico previo</li><li>Presupuesto por escrito</li><li>Tú decides si seguimos</li></ul>
+      </div>
+      <div class="step reveal" data-delay="1">
+        <div class="step-num" aria-hidden="true"></div>
+        <h3>Reparación</h3>
+        <p>Una vez aprobado, hacemos el trabajo con piezas adecuadas para tu marca y siguiendo los procedimientos del fabricante.</p>
+        <ul><li>Piezas según especificación</li><li>Te avisamos si surge algo nuevo</li><li>Sin trabajos no autorizados</li></ul>
+      </div>
+      <div class="step reveal" data-delay="2">
+        <div class="step-num" aria-hidden="true"></div>
+        <h3>Entrega</h3>
+        <p>Comprobamos que todo funciona, te explicamos lo que hemos hecho y te entregamos el coche listo para rodar.</p>
+        <ul><li>Prueba final</li><li>Explicación del trabajo</li><li>Factura desglosada</li></ul>
+      </div>
+    </div>
+
+    <div class="process-cta reveal">
+      <strong>¿Hablamos de tu coche?<small>Llama y te decimos cuándo podemos verlo.</small></strong>
+      <a class="btn btn-signal" href="tel:+34965241563">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.6 2.8.7a2 2 0 0 1 1.8 2z"/></svg>
+        Pedir cita
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Contacto ===== -->
+<section class="section contact" id="contacto">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="kicker">Contacto</span>
+      <h2 class="h2">Estamos en la<br>Avenida de Alcoy</h2>
+      <p class="lede">En el barrio de Campoamor, en Alicante. Llámanos para pedir cita o consultar cualquier duda.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-card reveal">
+        <div class="contact-row">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.6 2.8.7a2 2 0 0 1 1.8 2z"/></svg></div>
+          <div>
+            <div class="lbl">Teléfonos</div>
+            <div class="val"><a href="tel:+34965241563">96 524 15 63</a><a href="tel:+34658794491">658 794 491</a></div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div>
+            <div class="lbl">Dirección</div>
+            <div class="val">Avda. de Alcoy 77</div>
+            <div class="sub">03009 Alicante · Barrio de Campoamor</div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <div>
+            <div class="lbl">Horario</div>
+            <div class="hours">Consultar horario</div>
+            <div class="sub">Llámanos y te confirmamos cuándo podemos atenderte.</div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div>
+          <div>
+            <div class="lbl">Email</div>
+            <div class="val val-email"><a href="mailto:tallercampoamor@gmail.com">tallercampoamor@gmail.com</a></div>
+          </div>
+        </div>
+        <div class="contact-actions">
+          <a class="btn btn-signal" href="tel:+34965241563">Pedir cita</a>
+          <a class="btn btn-dark" href="mailto:tallercampoamor@gmail.com">Escribir email</a>
+        </div>
+      </div>
+
+      <!-- Mapa esquemático (no es un mapa a escala) -->
+      <div class="map reveal" data-delay="1" role="img" aria-label="Mapa esquemático de la zona: Talleres Campoamor en la Avenida de Alcoy 77, barrio de Campoamor, Alicante">
+        <svg viewBox="0 0 640 480" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs>
+            <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+              <path d="M32 0H0V32" fill="none" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
+            </pattern>
+            <filter id="glow" x="-100%" y="-100%" width="300%" height="300%">
+              <feGaussianBlur stdDeviation="6" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <rect width="640" height="480" fill="#1a1d21"/>
+          <rect width="640" height="480" fill="url(#grid)"/>
+
+          <!-- manzanas -->
+          <g fill="#23272c" stroke="#2e3339" stroke-width="1">
+            <rect x="40" y="40" width="150" height="110" transform="rotate(-18 115 95)"/>
+            <rect x="60" y="200" width="140" height="120" transform="rotate(-18 130 260)"/>
+            <rect x="110" y="360" width="150" height="120" transform="rotate(-18 185 420)"/>
+            <rect x="330" y="20" width="160" height="110" transform="rotate(-18 410 75)"/>
+            <rect x="380" y="160" width="170" height="120" transform="rotate(-18 465 220)"/>
+            <rect x="420" y="320" width="180" height="120" transform="rotate(-18 510 380)"/>
+            <rect x="540" y="60" width="120" height="90" transform="rotate(-18 600 105)"/>
+          </g>
+
+          <!-- calles secundarias -->
+          <g stroke="#3b4148" stroke-width="10" stroke-linecap="round" fill="none">
+            <path d="M-20 170 L 660 -50"/>
+            <path d="M-20 330 L 660 110"/>
+            <path d="M-20 500 L 660 280"/>
+            <path d="M60 520 L 300 -40"/>
+            <path d="M420 520 L 660 -40"/>
+          </g>
+          <g stroke="#1a1d21" stroke-width="2" stroke-dasharray="6 10" fill="none" opacity=".7">
+            <path d="M-20 170 L 660 -50"/>
+            <path d="M-20 330 L 660 110"/>
+            <path d="M-20 500 L 660 280"/>
+          </g>
+
+          <!-- Avenida de Alcoy (principal) -->
+          <path d="M-20 420 L 660 120" stroke="#5a626c" stroke-width="30" stroke-linecap="round" fill="none"/>
+          <path d="M-20 420 L 660 120" stroke="#1a1d21" stroke-width="2" stroke-dasharray="14 12" fill="none"/>
+          <text transform="translate(90 400) rotate(-23.8)" fill="#c9d0d7" font-family="Bahnschrift,'Barlow Condensed','Arial Narrow',sans-serif" font-size="15" font-weight="700" letter-spacing="3">AVDA. DE ALCOY</text>
+
+          <!-- direcciones -->
+          <g fill="#7f8891" font-family="'SF Mono',Consolas,monospace" font-size="10.5" letter-spacing="1.5">
+            <text x="470" y="62" text-anchor="end" transform="rotate(-24 470 62)">→ HACIA SALIDA NORTE</text>
+            <text x="40" y="465" transform="rotate(-24 40 465)">← HACIA CENTRO</text>
+            <text x="400" y="452">BARRIO DE CAMPOAMOR</text>
+          </g>
+
+          <!-- marcador del taller -->
+          <g transform="translate(250 300)">
+            <circle r="26" fill="rgba(255,122,0,.18)">
+              <animate attributeName="r" values="18;34;18" dur="3s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values=".6;0;.6" dur="3s" repeatCount="indefinite"/>
+            </circle>
+            <circle r="11" fill="#ff7a00" filter="url(#glow)"/>
+            <circle r="4" fill="#15171a"/>
+            <!-- etiqueta -->
+            <g transform="translate(24 -46)">
+              <path d="M0 0h232v44H14L0 58Z" fill="#ff7a00"/>
+              <text x="12" y="19" fill="#1a0e00" font-family="Bahnschrift,'Barlow Condensed','Arial Narrow',sans-serif" font-size="13" font-weight="700" letter-spacing=".5" textLength="205" lengthAdjust="spacingAndGlyphs">TALLERES CAMPOAMOR</text>
+              <text x="12" y="35" fill="#1a0e00" font-family="'SF Mono',Consolas,monospace" font-size="10" letter-spacing="1">AVDA. DE ALCOY 77</text>
+            </g>
+          </g>
+
+          <!-- brújula -->
+          <g transform="translate(590 400)" fill="none" stroke="#7f8891" stroke-width="1.5">
+            <circle r="18"/>
+            <path d="M0 -14 L5 4 L0 0 L-5 4 Z" fill="#ff7a00" stroke="none"/>
+            <text y="-24" text-anchor="middle" fill="#c9d0d7" font-family="'SF Mono',Consolas,monospace" font-size="10" stroke="none">N</text>
+          </g>
+        </svg>
+        <span class="map-tag">Mapa esquemático · no a escala</span>
+        <div class="map-legend">
+          <span><i></i>Talleres Campoamor</span>
+          <span><em>Avda. de Alcoy 77 · 03009 Alicante</em></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== Footer ===== -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="#top">
+          <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+            <path d="M6 0h34v28L28 40H0V12Z" fill="#ff7a00"/>
+            <path d="M13 12h6l4 7 4-7h6v16h-5v-9l-5 8-5-8v9h-5Z" fill="#15171a"/>
+          </svg>
+          <span class="brand-text" style="color:#fafbfc"><b>Talleres Campoamor</b><span>Red Eurorepar · Alicante</span></span>
+        </a>
+        <p>Taller mecánico multimarca en el barrio de Campoamor, Alicante. Miembro de la red Eurorepar.</p>
+        <a class="footer-email" href="mailto:tallercampoamor@gmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          tallercampoamor@gmail.com
+        </a>
+      </div>
+      <div>
+        <h4>Servicios</h4>
+        <ul>
+          <li><a href="#servicios">Mantenimiento y revisiones</a></li>
+          <li><a href="#servicios">Frenos</a></li>
+          <li><a href="#servicios">Neumáticos</a></li>
+          <li><a href="#servicios">Diagnosis electrónica</a></li>
+          <li><a href="#servicios">Aire acondicionado</a></li>
+          <li><a href="#servicios">Pre-ITV</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="tel:+34965241563">96 524 15 63</a></li>
+          <li><a href="tel:+34658794491">658 794 491</a></li>
+          <li>Avda. de Alcoy 77</li>
+          <li>03009 Alicante</li>
+          <li>Horario: consultar</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© Talleres Campoamor · Alicante</span>
+      <span class="footer-credit">Propuesta de rediseño presentada por <b>FFFFFFstudio</b> — Ángel Rubio, diseñador web · Alicante</span>
+    </div>
+  </div>
+</footer>
+
+<a class="fab" href="tel:+34965241563" aria-label="Pedir cita por teléfono">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.6 2.8.7a2 2 0 0 1 1.8 2z"/></svg>
+  Pedir cita
+</a>
+
+<script>
+  (function(){
+    var els=document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}});
+    },{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+    els.forEach(function(e){io.observe(e)});
+  })();
+</script>
+</body>
+</html>

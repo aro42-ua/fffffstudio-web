@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>El Drac Centro Veterinario · Alicante — Propuesta de diseño</title>
+<meta name="description" content="Maqueta de propuesta web para El Drac Centro Veterinario, Alicante. Diseño de FFFFFFstudio — Ángel Rubio.">
+<style>
+/* ============================================================
+   El Drac Centro Veterinario — maqueta / FFFFFFstudio
+   ============================================================ */
+
+:root{
+  --blanco:#FBF8F2;
+  --blanco-2:#F4EFE4;
+  --crema:#EFE7D7;
+  --bosque:#1E4034;
+  --bosque-2:#2C5A47;
+  --bosque-3:#43776016;
+  --verde-claro:#8FB89F;
+  --albaricoque:#F0915C;
+  --albaricoque-2:#FBC9A4;
+  --azul:#3E6E8E;
+  --azul-claro:#BCD7E4;
+  --tinta:#20302A;
+  --tinta-suave:#4F6159;
+  --linea:#DDD2BE;
+
+  --rounded: ui-rounded, "SF Pro Rounded", "Segoe UI Rounded",
+             "Varela Round", "Hiragino Maru Gothic ProN",
+             "Trebuchet MS", "Avenir Next", system-ui, sans-serif;
+  --texto: "Optima", "Segoe UI", "Avenir Next", "Lucida Grande", system-ui, sans-serif;
+
+  --r-s:14px; --r-m:22px; --r-l:34px; --r-xl:52px;
+  --barra:38px;
+  --gutter: clamp(20px, 5vw, 64px);
+  --max: 1180px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--barra) + 78px)}
+body{
+  margin:0;
+  padding-top:var(--barra);
+  background:var(--blanco);
+  color:var(--tinta);
+  font-family:var(--texto);
+  font-size:17px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img,svg{max-width:100%}
+a{color:inherit}
+h1,h2,h3,h4{font-family:var(--rounded);font-weight:700;line-height:1.08;letter-spacing:-.02em;margin:0}
+p{margin:0}
+ul{margin:0;padding:0;list-style:none}
+
+/* ---------- textura de fondo global ---------- */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  opacity:.5;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(30,64,52,.14) 1px, transparent 0);
+  background-size:22px 22px;
+  mask-image:radial-gradient(120% 90% at 50% 0%, #000 10%, transparent 75%);
+  -webkit-mask-image:radial-gradient(120% 90% at 50% 0%, #000 10%, transparent 75%);
+}
+
+/* ============ BARRA DE MAQUETA (fija) ============ */
+.maqueta-bar{
+  position:fixed;top:0;left:0;right:0;height:var(--barra);z-index:999;
+  display:flex;align-items:center;justify-content:center;gap:.5em;
+  background:var(--tinta);
+  color:#EDE4D3;
+  font-family:var(--rounded);
+  font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;
+  border-bottom:1px solid rgba(255,255,255,.12);
+}
+.maqueta-bar span{opacity:.62}
+.maqueta-bar b{font-weight:700;opacity:1;color:var(--albaricoque-2)}
+.maqueta-bar .punto{width:4px;height:4px;border-radius:50%;background:var(--verde-claro);opacity:.7;flex:none}
+
+/* ============ NAVEGACIÓN ============ */
+.nav{
+  position:sticky;top:var(--barra);z-index:900;
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  background:rgba(251,248,242,.86);
+  background:color-mix(in srgb, var(--blanco) 86%, transparent);
+  border-bottom:1px solid transparent;
+  transition:border-color .3s ease, background .3s ease;
+}
+.nav.pegada{border-bottom-color:var(--linea)}
+.nav-in{
+  max-width:var(--max);margin:0 auto;padding:14px var(--gutter);
+  display:flex;align-items:center;gap:24px;
+}
+.marca{display:flex;align-items:center;gap:11px;text-decoration:none;flex:none}
+.marca .escudo{width:38px;height:38px;flex:none}
+.marca-txt{display:flex;flex-direction:column;line-height:1}
+.marca-txt strong{font-family:var(--rounded);font-size:19px;letter-spacing:-.03em;color:var(--bosque)}
+.marca-txt small{font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--tinta-suave);margin-top:4px}
+.nav-links{display:flex;gap:28px;margin-left:auto;align-items:center}
+.nav-links a{
+  font-family:var(--rounded);font-size:14.5px;font-weight:600;text-decoration:none;
+  color:var(--tinta-suave);position:relative;padding:3px 0;
+}
+.nav-links a::after{
+  content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;border-radius:2px;
+  background:var(--albaricoque);transition:right .32s cubic-bezier(.3,.8,.3,1);
+}
+.nav-links a:hover{color:var(--bosque)}
+.nav-links a:hover::after{right:0}
+
+.btn{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--rounded);font-weight:700;font-size:15px;letter-spacing:-.01em;
+  text-decoration:none;border-radius:999px;padding:13px 24px;border:1.5px solid transparent;
+  transition:transform .25s cubic-bezier(.3,1.4,.5,1), box-shadow .25s ease, background .25s ease, color .25s ease;
+  white-space:nowrap;
+}
+.btn svg{flex:none}
+.btn-primario{background:var(--bosque);color:#FDFBF6;box-shadow:0 6px 0 -1px rgba(30,64,52,.22), 0 14px 30px -14px rgba(30,64,52,.7)}
+.btn-primario:hover{transform:translateY(-2px);box-shadow:0 8px 0 -1px rgba(30,64,52,.22), 0 20px 34px -14px rgba(30,64,52,.75)}
+.btn-albaricoque{background:var(--albaricoque);color:#3A1C0B;box-shadow:0 6px 0 -1px rgba(190,98,44,.28), 0 14px 30px -14px rgba(240,145,92,.9)}
+.btn-albaricoque:hover{transform:translateY(-2px)}
+.btn-linea{border-color:var(--linea);color:var(--bosque);background:transparent}
+.btn-linea:hover{border-color:var(--bosque);background:#fff}
+.nav .btn{padding:11px 20px;font-size:14px}
+
+/* ============ LAYOUT ============ */
+.env{max-width:var(--max);margin:0 auto;padding:0 var(--gutter);position:relative;z-index:1}
+section{position:relative;z-index:1}
+
+.etiqueta{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--rounded);font-size:11.5px;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--bosque-2);
+  padding:7px 15px 7px 11px;border-radius:999px;
+  background:#ffffffb0;border:1px solid var(--linea);
+}
+.etiqueta .pip{width:7px;height:7px;border-radius:50%;background:var(--albaricoque)}
+
+/* ============ HERO ============ */
+.hero{padding:clamp(48px,7vw,86px) 0 clamp(60px,8vw,100px);overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.06fr .94fr;gap:clamp(28px,4vw,60px);align-items:center}
+.hero h1{
+  font-size:clamp(40px,5.6vw,70px);
+  color:var(--bosque);margin:22px 0 0;max-width:12ch;isolation:isolate;
+}
+.hero h1 .sub{display:block;color:var(--albaricoque);position:relative;width:max-content;max-width:100%;z-index:0}
+.hero h1 .sub::after{
+  content:"";position:absolute;left:0;bottom:.02em;height:.34em;width:100%;
+  background:var(--albaricoque-2);opacity:.45;border-radius:4px;z-index:-1;
+  transform-origin:left;animation:subrayar 1s .9s cubic-bezier(.2,.9,.3,1) both;
+}
+@keyframes subrayar{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.hero p.lead{margin-top:24px;max-width:44ch;font-size:18.5px;color:var(--tinta-suave)}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;align-items:center}
+.hero-nota{font-size:13.5px;color:var(--tinta-suave);margin-top:18px;display:flex;align-items:center;gap:9px}
+
+.hero-art{position:relative;aspect-ratio:1/1;max-width:520px;margin-left:auto;width:100%}
+.hero-art svg{position:absolute;inset:0;width:100%;height:100%}
+
+/* manchas decorativas */
+.mancha{position:absolute;border-radius:50%;filter:blur(60px);z-index:0;pointer-events:none}
+.m1{width:460px;height:460px;background:#8FB89F55;top:-140px;right:-120px}
+.m2{width:380px;height:380px;background:#F0915C33;bottom:-160px;left:-140px}
+.m3{width:300px;height:300px;background:#BCD7E455;top:40%;right:-60px}
+
+/* tira de confianza */
+.tira{
+  margin-top:clamp(34px,5vw,54px);
+  border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);
+  padding:20px 0;display:flex;flex-wrap:wrap;gap:10px 34px;align-items:center;
+}
+.tira li{display:flex;align-items:center;gap:10px;font-family:var(--rounded);font-weight:600;font-size:14.5px;color:var(--tinta-suave)}
+.tira svg{flex:none;color:var(--bosque-2)}
+
+/* ============ SERVICIOS ============ */
+.servicios{padding:clamp(64px,8vw,110px) 0;background:
+  linear-gradient(180deg, transparent, var(--blanco-2) 14%, var(--blanco-2) 86%, transparent);
+}
+.cab{max-width:620px}
+.cab h2{font-size:clamp(30px,4vw,46px);color:var(--bosque);margin-top:18px}
+.cab p{margin-top:16px;color:var(--tinta-suave);font-size:17.5px}
+
+.grid-serv{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+.card{
+  position:relative;background:#FDFBF6;border:1px solid var(--linea);
+  border-radius:var(--r-l);padding:28px 26px 30px;overflow:hidden;
+  transition:transform .35s cubic-bezier(.2,.9,.3,1), box-shadow .35s ease, border-color .35s ease;
+}
+.card::after{
+  content:"";position:absolute;right:-40px;top:-40px;width:130px;height:130px;border-radius:50%;
+  background:radial-gradient(circle at 30% 70%, var(--bosque-3), transparent 70%);
+  transition:transform .5s ease;
+}
+.card:hover{transform:translateY(-5px);border-color:#C8BCA4;box-shadow:0 26px 44px -30px rgba(30,64,52,.55)}
+.card:hover::after{transform:scale(1.5)}
+.card .ico{
+  width:52px;height:52px;border-radius:16px;display:grid;place-items:center;
+  background:#fff;border:1px solid var(--linea);color:var(--bosque);
+  box-shadow:0 8px 16px -12px rgba(30,64,52,.6);position:relative;z-index:1;
+}
+.card:nth-child(2) .ico{color:var(--azul)}
+.card:nth-child(3) .ico{color:var(--albaricoque)}
+.card:nth-child(5) .ico{color:var(--azul)}
+.card:nth-child(6) .ico{color:var(--albaricoque)}
+.card h3{font-size:20.5px;margin-top:20px;color:var(--bosque);position:relative;z-index:1}
+.card p{margin-top:10px;font-size:15.5px;color:var(--tinta-suave);position:relative;z-index:1}
+.card .pie{
+  margin-top:18px;font-family:var(--rounded);font-size:12px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--bosque-2);
+  display:inline-flex;align-items:center;gap:7px;position:relative;z-index:1;
+  padding:6px 12px;border-radius:999px;background:#8FB89F26;
+}
+
+/* ============ VISITA ============ */
+.visita{padding:clamp(64px,8vw,110px) 0;position:relative}
+.visita-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(30px,5vw,70px);align-items:start}
+.pasos{counter-reset:p;margin-top:6px}
+.paso{
+  display:grid;grid-template-columns:auto 1fr;gap:22px;padding:26px 0;
+  border-top:1px solid var(--linea);align-items:start;
+}
+.paso:last-child{border-bottom:1px solid var(--linea)}
+.paso .num{
+  counter-increment:p;width:46px;height:46px;border-radius:50%;
+  display:grid;place-items:center;flex:none;
+  font-family:var(--rounded);font-weight:700;font-size:17px;
+  background:var(--bosque);color:#FDFBF6;
+}
+.paso:nth-child(2) .num{background:var(--azul)}
+.paso:nth-child(3) .num{background:var(--albaricoque);color:#3A1C0B}
+.paso .num::before{content:"0" counter(p)}
+.paso h3{font-size:21px;color:var(--bosque)}
+.paso p{margin-top:8px;color:var(--tinta-suave);font-size:16px}
+
+.visita-art{
+  border-radius:var(--r-xl);padding:34px;position:relative;overflow:hidden;
+  background:
+    radial-gradient(110% 80% at 15% 10%, #2C5A47 0%, #1E4034 55%, #16302700 100%),
+    linear-gradient(160deg,#1E4034,#16302A);
+  color:#EDE4D3;
+  box-shadow:0 40px 70px -50px rgba(30,64,52,.9);
+}
+.visita-art .huellas{position:absolute;inset:0;opacity:.13;pointer-events:none}
+.visita-art h3{color:#FDFBF6;font-size:24px;position:relative}
+.visita-art p{margin-top:12px;color:#CBD8CF;font-size:16px;position:relative}
+.lista-check{margin-top:22px;display:grid;gap:12px;position:relative}
+.lista-check li{display:flex;gap:12px;align-items:flex-start;font-size:15.5px;color:#DCE6DE}
+.lista-check svg{flex:none;margin-top:3px;color:var(--albaricoque-2)}
+.visita-art .btn{margin-top:26px;position:relative}
+
+/* ============ CONTACTO ============ */
+.contacto{padding:clamp(64px,8vw,110px) 0 clamp(56px,7vw,90px);background:
+  linear-gradient(180deg,transparent,var(--blanco-2) 12%)}
+.cont-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(26px,4vw,54px);margin-top:42px;align-items:stretch}
+.datos{display:grid;gap:14px;align-content:start}
+.dato{
+  background:#FDFBF6;border:1px solid var(--linea);border-radius:var(--r-m);
+  padding:20px 22px;display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;
+  transition:border-color .3s ease, transform .3s ease;
+}
+a.dato{text-decoration:none}
+a.dato:hover{border-color:var(--bosque);transform:translateX(3px)}
+.dato .ico{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:#8FB89F26;color:var(--bosque);flex:none}
+.dato:nth-child(2) .ico{background:#BCD7E440;color:var(--azul)}
+.dato:nth-child(3) .ico{background:#FBC9A445;color:#B85A24}
+.dato small{display:block;font-family:var(--rounded);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--tinta-suave)}
+.dato strong{display:block;font-family:var(--rounded);font-size:19px;color:var(--bosque);margin-top:5px;letter-spacing:-.02em;font-weight:700}
+.dato span.det{display:block;font-size:14.5px;color:var(--tinta-suave);margin-top:3px}
+
+.mapa{
+  border:1px solid var(--linea);border-radius:var(--r-l);overflow:hidden;
+  background:#F6F1E6;min-height:340px;display:flex;flex-direction:column;
+}
+.mapa svg{display:block;width:100%;height:auto;flex:1}
+.mapa-pie{
+  padding:14px 20px;border-top:1px solid var(--linea);background:#FDFBF6;
+  display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between;
+  font-size:13.5px;color:var(--tinta-suave);
+}
+.mapa-pie b{font-family:var(--rounded);color:var(--bosque)}
+
+/* ============ FOOTER ============ */
+footer{background:var(--tinta);color:#C9D5CD;padding:56px 0 30px;position:relative;overflow:hidden}
+footer::before{
+  content:"";position:absolute;top:-90px;right:-60px;width:280px;height:280px;border-radius:50%;
+  background:radial-gradient(circle,#2C5A47,transparent 68%);opacity:.7;
+}
+.foot-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:34px;position:relative}
+.foot-grid h4{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#8FB89F;font-weight:700}
+.foot-grid ul{margin-top:14px;display:grid;gap:9px}
+.foot-grid a{text-decoration:none;font-size:15px;color:#DCE6DE;transition:color .25s ease}
+.foot-grid a:hover{color:var(--albaricoque-2)}
+.foot-marca strong{font-family:var(--rounded);font-size:23px;color:#FDFBF6;display:block;letter-spacing:-.03em}
+.foot-marca p{margin-top:12px;font-size:15px;max-width:34ch;color:#AEBFB6}
+.foot-linea{
+  margin-top:42px;padding-top:22px;border-top:1px solid rgba(255,255,255,.13);
+  display:flex;flex-wrap:wrap;gap:10px 20px;justify-content:space-between;align-items:center;
+  font-size:13px;color:#94A69D;position:relative;
+}
+.credito{font-family:var(--rounded);font-weight:600;color:#CBD8CF}
+.credito b{color:var(--albaricoque-2)}
+
+/* ============ ANIMACIÓN DE ENTRADA ============ */
+.rev{
+  opacity:0;transform:translateY(22px);
+  transition:opacity .8s cubic-bezier(.2,.8,.3,1), transform .8s cubic-bezier(.2,.8,.3,1);
+  transition-delay:var(--d,0ms);
+}
+.rev.on{opacity:1;transform:none}
+
+/* dibujo del trazo SVG */
+.trazo{stroke-dasharray:var(--len,900);stroke-dashoffset:var(--len,900);animation:dibuja 2.3s .3s cubic-bezier(.4,.1,.2,1) forwards}
+@keyframes dibuja{to{stroke-dashoffset:0}}
+.flota{animation:flota 6s ease-in-out infinite}
+.flota-2{animation:flota 7.5s ease-in-out .8s infinite}
+@keyframes flota{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation:none!important;transition:none!important}
+  .rev{opacity:1;transform:none}
+  .trazo{stroke-dashoffset:0}
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:980px){
+  .hero-grid{grid-template-columns:1fr;gap:34px}
+  .hero-art{max-width:420px;margin:0 auto}
+  .hero h1{max-width:100%}
+  .grid-serv{grid-template-columns:repeat(2,1fr)}
+  .visita-grid,.cont-grid{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:720px){
+  .nav-links{display:none}
+  .nav-in{gap:12px}
+  .marca .escudo{width:34px;height:34px}
+  .marca-txt strong{font-size:17px}
+}
+@media (max-width:560px){
+  body{font-size:16px}
+  :root{--barra:48px}
+  .maqueta-bar{
+    font-size:9.6px;letter-spacing:.055em;padding:6px 12px;line-height:1.35;
+    flex-wrap:wrap;text-align:center;gap:.35em;
+  }
+  .maqueta-bar .punto{width:3px;height:3px}
+  .grid-serv{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr;gap:26px}
+  .hero h1{font-size:clamp(33px,10vw,44px)}
+  .hero p.lead{font-size:17px}
+  .hero-cta .btn{width:100%;justify-content:center}
+  .tira{gap:12px 20px}
+  .tira li{font-size:13.5px}
+  .visita-art{padding:26px 22px}
+  .paso{grid-template-columns:auto 1fr;gap:16px}
+  .dato{padding:17px 18px;gap:13px}
+  .dato strong{font-size:17.5px}
+  .foot-linea{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<!-- ===================== BARRA DE MAQUETA ===================== -->
+<div class="maqueta-bar" role="note">
+  <span>Propuesta de diseño</span><i class="punto"></i>
+  <span class="larga">maqueta no oficial</span><i class="punto larga"></i>
+  <b>FFFFFFstudio</b><span>· Ángel Rubio</span>
+</div>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a href="#" class="marca" aria-label="El Drac Centro Veterinario, inicio">
+      <!-- escudo: hoja + huella -->
+      <svg class="escudo" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <rect x="1.2" y="1.2" width="45.6" height="45.6" rx="15" fill="#1E4034"/>
+        <path d="M15 32c0-8 6.5-14.5 17-15-0.5 10.5-7 17-15 17h-2z" fill="#8FB89F"/>
+        <path d="M15 32c3.6-4.5 8-8 14-10.5" stroke="#1E4034" stroke-width="1.6" stroke-linecap="round"/>
+        <circle cx="31.5" cy="15.5" r="3.1" fill="#F0915C"/>
+      </svg>
+      <span class="marca-txt">
+        <strong>El Drac</strong>
+        <small>Centro Veterinario</small>
+      </span>
+    </a>
+    <nav class="nav-links" aria-label="Principal">
+      <a href="#servicios">Servicios</a>
+      <a href="#visita">Tu primera visita</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="btn btn-primario" href="tel:+34965930490">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2.1z"/></svg>
+      <span class="nav-tel-txt">Pedir cita</span>
+    </a>
+  </div>
+</header>
+
+<main>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="mancha m1"></div>
+  <div class="mancha m2"></div>
+  <div class="mancha m3"></div>
+  <div class="env">
+    <div class="hero-grid">
+      <div>
+        <p class="etiqueta rev" style="--d:0ms"><i class="pip"></i> Clínica veterinaria · Alicante</p>
+        <h1 class="rev" style="--d:90ms">Cuidamos de tu mascota <span class="sub">como si fuera nuestra</span></h1>
+        <p class="lead rev" style="--d:180ms">
+          Medicina, cirugía y cuidado diario para perros y gatos en el centro de Alicante.
+          Un equipo cercano, explicaciones claras y el tiempo que cada animal necesita.
+        </p>
+        <div class="hero-cta rev" style="--d:270ms">
+          <a class="btn btn-albaricoque" href="tel:+34965930490">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2.1z"/></svg>
+            Pedir cita
+          </a>
+          <a class="btn btn-linea" href="#servicios">Ver servicios</a>
+        </div>
+        <p class="hero-nota rev" style="--d:340ms">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v4.5M12 16h.01"/></svg>
+          Consultar horario y disponibilidad por teléfono.
+        </p>
+      </div>
+
+      <!-- ILUSTRACIÓN: perro y gato de línea, huellas y hojas -->
+      <div class="hero-art rev" style="--d:150ms" aria-hidden="true">
+        <svg viewBox="0 0 520 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="gDisco" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#EFE7D7"/>
+              <stop offset="60%" stop-color="#E4EDE5"/>
+              <stop offset="100%" stop-color="#D8E7EE"/>
+            </linearGradient>
+            <linearGradient id="gHoja" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#8FB89F"/>
+              <stop offset="100%" stop-color="#2C5A47"/>
+            </linearGradient>
+            <pattern id="pRayas" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
+              <rect width="8" height="8" fill="none"/>
+              <line x1="0" y1="0" x2="0" y2="8" stroke="#1E4034" stroke-opacity=".1" stroke-width="2.4"/>
+            </pattern>
+          </defs>
+
+          <!-- disco de fondo -->
+          <circle cx="260" cy="262" r="222" fill="url(#gDisco)"/>
+          <circle cx="260" cy="262" r="222" fill="url(#pRayas)"/>
+          <circle cx="260" cy="262" r="222" fill="none" stroke="#1E4034" stroke-opacity=".12" stroke-width="1.4"/>
+          <circle cx="260" cy="262" r="196" fill="none" stroke="#1E4034" stroke-opacity=".08" stroke-width="1" stroke-dasharray="3 9"/>
+
+          <!-- arco albaricoque -->
+          <path d="M64 300a196 196 0 0 1 392 0" fill="none" stroke="#F0915C" stroke-opacity=".5" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 16"/>
+
+          <!-- hojas decorativas -->
+          <g class="flota" opacity=".95">
+            <path d="M96 128c26-16 54-10 66 8-14 20-44 25-66-8z" fill="url(#gHoja)" opacity=".8"/>
+            <path d="M96 128c20 0 38 5 52 15" stroke="#FBF8F2" stroke-width="2" stroke-linecap="round" opacity=".7"/>
+          </g>
+          <g class="flota-2" opacity=".9">
+            <path d="M436 178c-24-10-48-2-56 16 14 16 40 17 56-16z" fill="#8FB89F" opacity=".75"/>
+            <path d="M436 178c-18 2-33 8-44 18" stroke="#FBF8F2" stroke-width="2" stroke-linecap="round" opacity=".8"/>
+          </g>
+
+          <!-- ======== PERRO (línea, original y genérico) ======== -->
+          <g stroke="#1E4034" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+            <!-- cuerpo -->
+            <path class="trazo" style="--len:640" d="M150 392c-6-38-2-70 12-92 14-22 36-32 58-32 9-19 26-30 44-30"/>
+            <!-- lomo y cola -->
+            <path class="trazo" style="--len:420" d="M220 268c26 4 44 22 48 48 3 22-2 44-10 62" />
+            <path class="trazo" style="--len:260" d="M258 378c14 10 20 24 18 40" />
+            <!-- patas -->
+            <path class="trazo" style="--len:200" d="M162 384v28h34"/>
+            <path class="trazo" style="--len:200" d="M228 388v24h32"/>
+            <!-- cabeza -->
+            <path class="trazo" style="--len:520" d="M264 238c22 0 40 14 46 34 2 8 0 16-5 22-9 11-24 16-40 14"/>
+            <!-- hocico -->
+            <path class="trazo" style="--len:300" d="M310 272c14 2 26 10 30 20 2 7-3 13-11 14l-20 2"/>
+            <!-- oreja -->
+            <path class="trazo" style="--len:260" d="M266 240c-10-16-8-32 4-42 10 8 16 22 14 40"/>
+          </g>
+          <circle cx="341" cy="288" r="6.5" fill="#1E4034"/>
+          <circle cx="296" cy="262" r="4.6" fill="#1E4034"/>
+          <path d="M320 300c-4 5-11 6-16 2" stroke="#1E4034" stroke-width="4" stroke-linecap="round" fill="none"/>
+          <!-- pañuelo albaricoque -->
+          <path d="M252 302c16 12 36 14 54 6l-14 26c-14 4-30 0-42-10z" fill="#F0915C" opacity=".92"/>
+
+          <!-- ======== GATO (línea) ======== -->
+          <g stroke="#3E6E8E" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+            <path class="trazo" style="--len:560" d="M386 406c-16-6-26-20-26-38 0-24 16-42 38-46"/>
+            <path class="trazo" style="--len:420" d="M398 322c20 2 34 18 34 40 0 18-8 34-22 42"/>
+            <path class="trazo" style="--len:300" d="M386 406h48"/>
+            <!-- cola curva -->
+            <path class="trazo" style="--len:340" d="M434 404c22-2 34-16 30-34-3-12-13-18-22-14"/>
+            <!-- cabeza + orejas -->
+            <path class="trazo" style="--len:480" d="M372 300c-2-14 2-24 8-24 5 0 10 6 13 12 8-3 17-3 25 0 3-6 8-12 13-12 6 0 10 10 8 24"/>
+            <path class="trazo" style="--len:300" d="M371 302c-6 8-8 16-6 24 4 14 18 22 34 22s30-8 34-22c2-8 0-16-6-24"/>
+            <!-- bigotes -->
+            <path class="trazo" style="--len:120" d="M372 330h-20"/>
+            <path class="trazo" style="--len:120" d="M436 330h20"/>
+          </g>
+          <circle cx="391" cy="322" r="4.2" fill="#3E6E8E"/>
+          <circle cx="417" cy="322" r="4.2" fill="#3E6E8E"/>
+          <path d="M404 334l-5 4h10z" fill="#F0915C"/>
+
+          <!-- huellas -->
+          <g fill="#1E4034" opacity=".22">
+            <g transform="translate(118 452) rotate(-16)">
+              <ellipse cx="0" cy="0" rx="9" ry="7.5"/><circle cx="-11" cy="-10" r="3.4"/><circle cx="-3" cy="-14" r="3.4"/><circle cx="6" cy="-13" r="3.4"/><circle cx="12" cy="-6" r="3.2"/>
+            </g>
+            <g transform="translate(168 470) rotate(-6)" opacity=".8">
+              <ellipse cx="0" cy="0" rx="8" ry="6.6"/><circle cx="-10" cy="-9" r="3"/><circle cx="-2" cy="-12" r="3"/><circle cx="6" cy="-11" r="3"/><circle cx="11" cy="-5" r="2.8"/>
+            </g>
+            <g transform="translate(452 420) rotate(14)" opacity=".65">
+              <ellipse cx="0" cy="0" rx="7" ry="5.8"/><circle cx="-9" cy="-8" r="2.7"/><circle cx="-2" cy="-11" r="2.7"/><circle cx="5" cy="-10" r="2.7"/><circle cx="10" cy="-4" r="2.5"/>
+            </g>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <ul class="tira rev">
+      <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 5.6A5.5 5.5 0 0 0 12 6.9a5.5 5.5 0 0 0-8.8-1.3c-2 2-2 5.4 0 7.4l8.8 8.6 8.8-8.6c2-2 2-5.4 0-7.4z"/></svg> Trato cercano con cada animal</li>
+      <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.4-3 8-7 9-4-1-7-4.6-7-9V6l7-3z"/><path d="M9.5 12l1.8 1.8 3.4-3.6"/></svg> Medicina preventiva y seguimiento</li>
+      <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="3"/><path d="M12 21s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11z"/></svg> En Plaza Papa Juan Pablo II</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===================== SERVICIOS ===================== -->
+<section class="servicios" id="servicios">
+  <div class="env">
+    <div class="cab rev">
+      <p class="etiqueta"><i class="pip"></i> Servicios</p>
+      <h2>Todo lo que tu perro o gato necesita, en un mismo sitio</h2>
+      <p>Del chequeo rutinario al diagnóstico y el cuidado del día a día. Si no encuentras lo que buscas, pregúntanos por teléfono.</p>
+    </div>
+
+    <div class="grid-serv">
+      <article class="card rev">
+        <div class="ico">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 3v5a4.5 4.5 0 0 0 9 0V3"/><path d="M9 12.5v2.5a5 5 0 0 0 10 0v-1.2"/><circle cx="19" cy="11" r="2.2"/><circle cx="4.5" cy="3" r="1"/><circle cx="13.5" cy="3" r="1"/></svg>
+        </div>
+        <h3>Consultas y vacunación</h3>
+        <p>Revisiones generales, calendario vacunal, desparasitación, microchip y control de peso a lo largo de la vida del animal.</p>
+        <span class="pie">Con cita previa</span>
+      </article>
+
+      <article class="card rev">
+        <div class="ico">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l9.5 9.5"/><path d="M2.8 5.2a2.5 2.5 0 1 1 3.5-3.5l1.4 2.1-1.8 1.8L3.8 4.2z" /><path d="M20 4l-7 7"/><path d="M16.5 12.5l4.5 4.5a2 2 0 0 1-2.8 2.8l-4.5-4.5"/></svg>
+        </div>
+        <h3>Cirugía</h3>
+        <p>Intervenciones de tejidos blandos y esterilizaciones, con preparación previa, monitorización y seguimiento posoperatorio.</p>
+        <span class="pie">Valoración previa</span>
+      </article>
+
+      <article class="card rev">
+        <div class="ico">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20.5 20.5L16 16"/><path d="M8 11h6M11 8v6"/></svg>
+        </div>
+        <h3>Análisis y diagnóstico por imagen</h3>
+        <p>Analítica, radiología y ecografía para llegar antes al diagnóstico y decidir el tratamiento con criterio.</p>
+        <span class="pie">Consultar disponibilidad</span>
+      </article>
+
+      <article class="card rev">
+        <div class="ico">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5.5c2-1.8 5-2 6.6-.4 1.9 1.9 1.2 5.3.1 8.4-.9 2.6-1.6 5.5-3.2 5.5-1.3 0-1.7-2.2-3.5-2.2s-2.2 2.2-3.5 2.2c-1.6 0-2.3-2.9-3.2-5.5C4.2 10.4 3.5 7 5.4 5.1 7 3.5 10 3.7 12 5.5z"/></svg>
+        </div>
+        <h3>Odontología / dental</h3>
+        <p>Revisión de la boca, limpieza dental y tratamiento de problemas bucales que afectan al bienestar diario.</p>
+        <span class="pie">Consultar disponibilidad</span>
+      </article>
+
+      <article class="card rev">
+        <div class="ico">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6.5" r="2.5"/><circle cx="6" cy="17.5" r="2.5"/><path d="M8.2 8.2L20 19M8.2 15.8L20 5"/><path d="M13.5 13.5l2.5 2.5"/></svg>
+        </div>
+        <h3>Peluquería canina y felina</h3>
+        <p>Baño, corte y cuidado del pelaje, uñas y oídos, adaptando el ritmo al carácter de cada animal.</p>
+        <span class="pie">Con cita previa</span>
+      </article>
+
+      <article class="card rev">
+        <div class="ico">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h16l-1.4 11.2a2 2 0 0 1-2 1.8H7.4a2 2 0 0 1-2-1.8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/><path d="M9.5 13.5h5"/></svg>
+        </div>
+        <h3>Tienda y alimentación</h3>
+        <p>Dietas y productos seleccionados para cada etapa y necesidad, con recomendación personalizada en consulta.</p>
+        <span class="pie">Consultar disponibilidad</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PRIMERA VISITA ===================== -->
+<section class="visita" id="visita">
+  <div class="env">
+    <div class="visita-grid">
+      <div class="rev">
+        <p class="etiqueta"><i class="pip"></i> Tu primera visita</p>
+        <h2 style="font-size:clamp(30px,4vw,46px);color:var(--bosque);margin-top:18px">Sencillo, en tres pasos</h2>
+        <p style="margin-top:16px;color:var(--tinta-suave)">Queremos que la primera vez sea tranquila: para ti y, sobre todo, para tu mascota.</p>
+
+        <div class="pasos">
+          <div class="paso">
+            <div class="num" aria-hidden="true"></div>
+            <div>
+              <h3>Llámanos y reservamos hueco</h3>
+              <p>Nos cuentas qué le pasa o qué necesita y buscamos el momento que mejor os venga.</p>
+            </div>
+          </div>
+          <div class="paso">
+            <div class="num" aria-hidden="true"></div>
+            <div>
+              <h3>Consulta sin prisas</h3>
+              <p>Exploración completa, tus dudas resueltas y, si hace falta, las pruebas que ayuden a orientar el caso.</p>
+            </div>
+          </div>
+          <div class="paso">
+            <div class="num" aria-hidden="true"></div>
+            <div>
+              <h3>Plan claro y seguimiento</h3>
+              <p>Te explicamos las opciones y los siguientes pasos, y mantenemos el contacto durante el tratamiento.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="visita-art rev">
+        <svg class="huellas" viewBox="0 0 400 400" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+          <g fill="#FBF8F2">
+            <g transform="translate(60 90) rotate(-18) scale(1.1)"><ellipse rx="11" ry="9"/><circle cx="-13" cy="-12" r="4"/><circle cx="-4" cy="-17" r="4"/><circle cx="7" cy="-16" r="4"/><circle cx="15" cy="-7" r="3.7"/></g>
+            <g transform="translate(180 190) rotate(10) scale(1.3)"><ellipse rx="11" ry="9"/><circle cx="-13" cy="-12" r="4"/><circle cx="-4" cy="-17" r="4"/><circle cx="7" cy="-16" r="4"/><circle cx="15" cy="-7" r="3.7"/></g>
+            <g transform="translate(320 320) rotate(-8)"><ellipse rx="11" ry="9"/><circle cx="-13" cy="-12" r="4"/><circle cx="-4" cy="-17" r="4"/><circle cx="7" cy="-16" r="4"/><circle cx="15" cy="-7" r="3.7"/></g>
+            <g transform="translate(330 110) rotate(24) scale(.9)"><ellipse rx="11" ry="9"/><circle cx="-13" cy="-12" r="4"/><circle cx="-4" cy="-17" r="4"/><circle cx="7" cy="-16" r="4"/><circle cx="15" cy="-7" r="3.7"/></g>
+          </g>
+        </svg>
+        <h3>Qué conviene traer</h3>
+        <p>Un par de cosas ayudan a que la visita sea más rápida y precisa.</p>
+        <ul class="lista-check">
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> La cartilla sanitaria o el historial, si ya lo tienes.</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Transportín para gatos y animales pequeños; correa para perros.</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Los tratamientos o la dieta que esté tomando ahora.</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Tus dudas apuntadas: ninguna pregunta sobra.</li>
+        </ul>
+        <a class="btn btn-albaricoque" href="tel:+34965930490">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2.1z"/></svg>
+          Pedir cita · 96 593 04 90
+        </a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACTO ===================== -->
+<section class="contacto" id="contacto">
+  <div class="env">
+    <div class="cab rev">
+      <p class="etiqueta"><i class="pip"></i> Contacto</p>
+      <h2>Estamos en el centro de Alicante</h2>
+      <p>Llámanos para pedir cita o consultar el horario y la disponibilidad de cada servicio.</p>
+    </div>
+
+    <div class="cont-grid">
+      <div class="datos">
+        <a class="dato rev" href="tel:+34965930490">
+          <span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2.1z"/></svg></span>
+          <span>
+            <small>Teléfono</small>
+            <strong>96 593 04 90</strong>
+            <span class="det">Pedir cita y consultas</span>
+          </span>
+        </a>
+
+        <div class="dato rev">
+          <span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="3"/><path d="M12 21s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11z"/></svg></span>
+          <span>
+            <small>Dirección</small>
+            <strong>Plaza Papa Juan Pablo II 23, local 8</strong>
+            <span class="det">03005 Alicante</span>
+          </span>
+        </div>
+
+        <div class="dato rev">
+          <span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.4l3.4 2"/></svg></span>
+          <span>
+            <small>Horario</small>
+            <strong>Consultar horario</strong>
+            <span class="det">Te lo indicamos por teléfono</span>
+          </span>
+        </div>
+
+        <a class="dato rev" href="mailto:info@veterinarioeldrac.com">
+          <span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3.5 7.5l8.5 6 8.5-6"/></svg></span>
+          <span>
+            <small>Email</small>
+            <strong>info@veterinarioeldrac.com</strong>
+            <span class="det">Para consultas no urgentes</span>
+          </span>
+        </a>
+      </div>
+
+      <!-- MAPA ESQUEMÁTICO SVG -->
+      <div class="mapa rev">
+        <svg viewBox="0 0 640 400" role="img" aria-label="Mapa esquemático de la zona: Plaza Papa Juan Pablo II 23, local 8, Alicante">
+          <defs>
+            <linearGradient id="gMapa" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#F6F1E6"/>
+              <stop offset="100%" stop-color="#EDE7DA"/>
+            </linearGradient>
+            <pattern id="pTram" width="10" height="10" patternUnits="userSpaceOnUse">
+              <rect width="10" height="10" fill="none"/>
+              <circle cx="2" cy="2" r="1" fill="#1E4034" fill-opacity=".14"/>
+            </pattern>
+          </defs>
+
+          <rect width="640" height="400" fill="url(#gMapa)"/>
+          <rect width="640" height="400" fill="url(#pTram)"/>
+
+          <!-- zona verde -->
+          <path d="M20 292c50-26 104-24 150 6 34 22 24 74-22 88-52 16-112-4-134-38-14-22-8-44 6-56z" fill="#8FB89F" fill-opacity=".35"/>
+          <path d="M470 24c60-10 108 12 130 52 16 30-2 62-40 68-46 8-96-16-110-52-10-28 2-62 20-68z" fill="#BCD7E4" fill-opacity=".4"/>
+
+          <!-- manzanas -->
+          <g fill="#1E4034" fill-opacity=".07" stroke="#1E4034" stroke-opacity=".14">
+            <rect x="66" y="52" width="150" height="92" rx="9"/>
+            <rect x="252" y="44" width="120" height="100" rx="9"/>
+            <rect x="408" y="150" width="132" height="86" rx="9"/>
+            <rect x="80" y="186" width="112" height="70" rx="9"/>
+            <rect x="236" y="262" width="148" height="96" rx="9"/>
+            <rect x="424" y="284" width="146" height="80" rx="9"/>
+          </g>
+
+          <!-- calles -->
+          <g stroke="#FBF8F2" stroke-linecap="round" fill="none">
+            <path d="M0 168h640" stroke-width="22"/>
+            <path d="M228 0v400" stroke-width="18"/>
+            <path d="M400 0v400" stroke-width="14"/>
+            <path d="M0 272h640" stroke-width="14"/>
+          </g>
+          <g stroke="#1E4034" stroke-opacity=".16" stroke-linecap="round" fill="none" stroke-dasharray="7 10">
+            <path d="M0 168h640" stroke-width="1.4"/>
+            <path d="M228 0v400" stroke-width="1.4"/>
+          </g>
+
+          <!-- plaza -->
+          <circle cx="314" cy="168" r="56" fill="#FBF8F2"/>
+          <circle cx="314" cy="168" r="56" fill="none" stroke="#1E4034" stroke-opacity=".18" stroke-width="1.4"/>
+          <circle cx="314" cy="168" r="30" fill="#8FB89F" fill-opacity=".45"/>
+          <text x="314" y="248" text-anchor="middle" font-family="ui-rounded, 'Trebuchet MS', sans-serif" font-size="14" font-weight="700" fill="#2C5A47" opacity=".85">Plaza Papa Juan Pablo II</text>
+
+          <!-- recorrido -->
+          <path d="M120 336C190 336 246 300 268 240s24-48 40-56" fill="none" stroke="#3E6E8E" stroke-opacity=".55" stroke-width="3" stroke-dasharray="2 10" stroke-linecap="round"/>
+
+          <!-- pin -->
+          <g transform="translate(348 120)">
+            <ellipse cx="0" cy="54" rx="15" ry="5" fill="#1E4034" fill-opacity=".18"/>
+            <path d="M0 52c0 0-22-22-22-34a22 22 0 1 1 44 0C22 30 0 52 0 52z" fill="#F0915C"/>
+            <path d="M0 52c0 0-22-22-22-34a22 22 0 1 1 44 0C22 30 0 52 0 52z" fill="none" stroke="#B85A24" stroke-opacity=".5" stroke-width="1.5"/>
+            <g fill="#FFF7EF" transform="translate(0 16) scale(.72)">
+              <ellipse cx="0" cy="4" rx="8" ry="6.6"/><circle cx="-10" cy="-6" r="3.2"/><circle cx="-3.4" cy="-10" r="3.2"/><circle cx="3.4" cy="-10" r="3.2"/><circle cx="10" cy="-6" r="3.2"/>
+            </g>
+          </g>
+          <g transform="translate(374 92)">
+            <rect x="0" y="-16" width="184" height="34" rx="12" fill="#1E4034"/>
+            <text x="15" y="6" font-family="ui-rounded, 'Trebuchet MS', sans-serif" font-size="14.5" font-weight="700" fill="#FBF8F2">El Drac · local 8</text>
+          </g>
+
+          <!-- rosa de los vientos -->
+          <g transform="translate(586 348)" opacity=".55">
+            <circle r="22" fill="#FBF8F2" stroke="#1E4034" stroke-opacity=".2"/>
+            <path d="M0-15L5 0 0 15-5 0z" fill="#1E4034"/>
+            <path d="M0-15L5 0h-10z" fill="#F0915C"/>
+            <text x="0" y="-25" text-anchor="middle" font-family="ui-rounded, 'Trebuchet MS', sans-serif" font-size="10" font-weight="700" fill="#1E4034">N</text>
+          </g>
+        </svg>
+        <div class="mapa-pie">
+          <span><b>Plaza Papa Juan Pablo II 23, local 8</b> · 03005 Alicante</span>
+          <span>Mapa esquemático · no a escala</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="env">
+    <div class="foot-grid">
+      <div class="foot-marca">
+        <strong>El Drac Centro Veterinario</strong>
+        <p>Clínica veterinaria en Alicante. Cuidamos de tu mascota como si fuera nuestra.</p>
+        <p style="margin-top:14px"><a href="mailto:info@veterinarioeldrac.com">info@veterinarioeldrac.com</a></p>
+      </div>
+      <div>
+        <h4>Servicios</h4>
+        <ul>
+          <li><a href="#servicios">Consultas y vacunación</a></li>
+          <li><a href="#servicios">Cirugía</a></li>
+          <li><a href="#servicios">Análisis y diagnóstico por imagen</a></li>
+          <li><a href="#servicios">Dental</a></li>
+          <li><a href="#servicios">Peluquería</a></li>
+          <li><a href="#servicios">Tienda y alimentación</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="tel:+34965930490">96 593 04 90</a></li>
+          <li><a href="mailto:info@veterinarioeldrac.com">info@veterinarioeldrac.com</a></li>
+          <li>Plaza Papa Juan Pablo II 23, local 8</li>
+          <li>03005 Alicante</li>
+          <li>Horario: consultar</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-linea">
+      <span class="credito">Propuesta de rediseño presentada por <b>FFFFFFstudio</b> — Ángel Rubio, diseñador web · Alicante</span>
+      <span>Maqueta de demostración · contenido orientativo, no oficial</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Revelado al hacer scroll
+  var items = document.querySelectorAll('.rev');
+  if(!('IntersectionObserver' in window)){
+    items.forEach(function(el){el.classList.add('on');});
+  }else{
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); }
+      });
+    },{rootMargin:'0px 0px -8% 0px', threshold:.12});
+    items.forEach(function(el,i){
+      if(!el.style.getPropertyValue('--d')) el.style.setProperty('--d', Math.min(i*45,260)+'ms');
+      io.observe(el);
+    });
+    // el hero aparece de inmediato
+    requestAnimationFrame(function(){
+      document.querySelectorAll('.hero .rev').forEach(function(el){el.classList.add('on');});
+    });
+  }
+
+  // Borde de la nav al pegarse
+  var nav = document.getElementById('nav');
+  var onScroll = function(){ nav.classList.toggle('pegada', window.scrollY > 12); };
+  onScroll();
+  window.addEventListener('scroll', onScroll, {passive:true});
+})();
+</script>
+</body>
+</html>

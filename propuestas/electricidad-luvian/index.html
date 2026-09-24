@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Electricidad Luvian · Instalaciones eléctricas en Alicante</title>
+<style>
+/* ============================================================
+   PROPUESTA DE DISEÑO — Electricidad Luvian
+   FFFFFFstudio · Ángel Rubio
+   Paleta: grafito azulado / blanco / amarillo eléctrico / cobre
+   ============================================================ */
+
+:root{
+  --ink-900:#0b0e13;
+  --ink-850:#0f141b;
+  --ink-800:#141a23;
+  --ink-700:#1b232e;
+  --ink-600:#27313f;
+  --line:#2a3440;
+  --line-soft:#1e2731;
+  --paper:#f4f5f3;
+  --paper-dim:#c9cfd6;
+  --mute:#8b96a3;
+  --volt:#ffe11a;
+  --volt-deep:#d9bd00;
+  --copper:#c1793f;
+  --copper-soft:#e0a06a;
+
+  --ff-sans:"Helvetica Neue Condensed","Archivo","Oswald",
+            "Helvetica Neue",Helvetica,"Liberation Sans",Arial,sans-serif;
+  --ff-body:"Helvetica Neue",Helvetica,"Liberation Sans",Arial,sans-serif;
+  --ff-mono:"SFMono-Regular",Menlo,Consolas,"DejaVu Sans Mono",monospace;
+
+  --bar-h:34px;
+  --pad:clamp(20px,5vw,80px);
+  --maxw:1180px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--ink-900);
+  color:var(--paper);
+  font-family:var(--ff-body);
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img,svg{max-width:100%}
+a{color:inherit}
+
+/* ---------- tipografía ---------- */
+h1,h2,h3,.display{
+  font-family:var(--ff-sans);
+  font-weight:800;
+  letter-spacing:-.025em;
+  line-height:.98;
+  margin:0;
+  text-wrap:balance;
+}
+.eyebrow{
+  font-family:var(--ff-mono);
+  font-size:11px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--volt);
+  margin:0 0 18px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.eyebrow::before{
+  content:"";
+  width:26px;height:1px;
+  background:var(--copper);
+  flex:none;
+}
+.eyebrow.alt{color:var(--copper-soft)}
+.eyebrow.alt::before{background:var(--volt)}
+.lead{
+  font-size:clamp(15px,1.35vw,18px);
+  color:var(--paper-dim);
+  max-width:56ch;
+}
+.mono{font-family:var(--ff-mono);letter-spacing:.04em}
+
+/* ---------- barra de propuesta (fija) ---------- */
+.studiobar{
+  position:fixed;inset:0 0 auto 0;
+  height:var(--bar-h);
+  z-index:200;
+  display:flex;align-items:center;justify-content:center;
+  gap:8px;
+  background:#05070a;
+  border-bottom:1px solid #1a222c;
+  font-family:var(--ff-mono);
+  font-size:10.5px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:#7d8894;
+  padding:0 12px;
+  text-align:center;
+}
+.studiobar b{color:var(--volt);font-weight:600}
+.studiobar .dotpulse{
+  width:5px;height:5px;border-radius:50%;
+  background:var(--volt);flex:none;
+  animation:pulse 2.4s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{opacity:.25}50%{opacity:1}}
+
+/* ---------- navegación ---------- */
+.nav{
+  position:fixed;
+  top:var(--bar-h);left:0;right:0;
+  z-index:150;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:20px;
+  padding:14px var(--pad);
+  background:rgba(11,14,19,.82);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line-soft);
+}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none}
+.brand .mark{width:30px;height:30px;flex:none}
+.brand .txt{line-height:1}
+.brand .n1{
+  font-family:var(--ff-sans);font-weight:800;
+  font-size:17px;letter-spacing:-.02em;display:block;
+}
+.brand .n2{
+  font-family:var(--ff-mono);font-size:8.5px;
+  letter-spacing:.24em;text-transform:uppercase;
+  color:var(--mute);display:block;margin-top:3px;
+}
+.navlinks{display:flex;gap:26px;align-items:center}
+.navlinks a{
+  font-family:var(--ff-mono);
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--paper-dim);text-decoration:none;
+  padding:4px 0;position:relative;
+  transition:color .25s;
+}
+.navlinks a::after{
+  content:"";position:absolute;left:0;bottom:0;
+  width:0;height:1px;background:var(--volt);transition:width .3s;
+}
+.navlinks a:hover{color:var(--paper)}
+.navlinks a:hover::after{width:100%}
+
+.btn{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--ff-mono);
+  font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;
+  text-decoration:none;
+  padding:11px 18px;
+  border:1px solid transparent;
+  transition:transform .2s,background .25s,color .25s,border-color .25s;
+  white-space:nowrap;
+}
+.btn svg{flex:none}
+.btn-volt{background:var(--volt);color:#0b0e13;font-weight:700}
+.btn-volt:hover{background:#fff36b;transform:translateY(-2px)}
+.btn-ghost{border-color:var(--line);color:var(--paper)}
+.btn-ghost:hover{border-color:var(--volt);color:var(--volt)}
+.btn-lg{padding:16px 26px;font-size:12px}
+
+/* ---------- utilidades ---------- */
+.wrap{max-width:var(--maxw);margin:0 auto}
+section{padding:clamp(64px,8vw,120px) var(--pad);position:relative}
+.rule{
+  height:1px;background:var(--line-soft);
+  max-width:var(--maxw);margin:0 auto;
+}
+
+/* ---------- HERO ---------- */
+.hero{
+  padding-top:calc(var(--bar-h) + 130px);
+  padding-bottom:clamp(60px,7vw,100px);
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(900px 500px at 78% 8%, rgba(255,225,26,.09), transparent 62%),
+    radial-gradient(700px 480px at 5% 85%, rgba(193,121,63,.10), transparent 65%),
+    linear-gradient(180deg,#0b0e13 0%,#0f141b 100%);
+}
+.hero-grid-bg{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(var(--line-soft) 1px,transparent 1px),
+    linear-gradient(90deg,var(--line-soft) 1px,transparent 1px);
+  background-size:58px 58px;
+  mask-image:radial-gradient(circle at 60% 35%,#000 5%,transparent 72%);
+  -webkit-mask-image:radial-gradient(circle at 60% 35%,#000 5%,transparent 72%);
+  opacity:.65;
+  pointer-events:none;
+}
+.circuit-layer{position:absolute;inset:0;pointer-events:none;opacity:.5}
+.hero-inner{
+  position:relative;z-index:2;
+  max-width:var(--maxw);margin:0 auto;
+  display:grid;
+  grid-template-columns:minmax(0,1.05fr) minmax(0,.72fr);
+  gap:clamp(28px,4vw,64px);
+  align-items:end;
+}
+h1{
+  font-size:clamp(40px,6.4vw,82px);
+}
+h1 .hl{
+  color:var(--volt);
+  position:relative;
+  display:inline-block;
+}
+h1 .hl::after{
+  content:"";
+  position:absolute;left:0;right:0;bottom:.06em;
+  height:.07em;background:var(--copper);
+  opacity:.85;
+}
+.hero p.lead{margin:26px 0 34px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.hero-note{
+  font-family:var(--ff-mono);font-size:11px;
+  color:var(--mute);letter-spacing:.08em;
+  margin-top:22px;
+}
+
+/* panel esquema hero */
+.spec-panel{
+  border:1px solid var(--line);
+  background:linear-gradient(160deg,rgba(27,35,46,.85),rgba(15,20,27,.9));
+  padding:22px;
+  position:relative;
+}
+.spec-panel::before,.spec-panel::after{
+  content:"";position:absolute;width:9px;height:9px;
+  border:1px solid var(--volt);
+}
+.spec-panel::before{top:-1px;left:-1px;border-right:0;border-bottom:0}
+.spec-panel::after{bottom:-1px;right:-1px;border-left:0;border-top:0}
+.spec-title{
+  font-family:var(--ff-mono);font-size:10px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--mute);
+  display:flex;justify-content:space-between;
+  border-bottom:1px solid var(--line-soft);
+  padding-bottom:10px;margin-bottom:14px;
+}
+.spec-row{
+  display:flex;justify-content:space-between;gap:14px;
+  padding:9px 0;
+  border-bottom:1px dashed var(--line-soft);
+  font-family:var(--ff-mono);font-size:12px;
+}
+.spec-row:last-of-type{border-bottom:0}
+.spec-row span:first-child{color:var(--mute);letter-spacing:.08em;text-transform:uppercase;font-size:10px}
+.spec-row span:last-child{color:var(--paper);text-align:right}
+.spec-row a{text-decoration:none;color:var(--volt)}
+.spec-panel .diagram{margin-top:16px;border-top:1px solid var(--line-soft);padding-top:16px}
+
+/* ---------- tira marquesina ---------- */
+.ticker{
+  border-top:1px solid var(--line-soft);
+  border-bottom:1px solid var(--line-soft);
+  background:var(--ink-850);
+  overflow:hidden;
+  padding:13px 0;
+}
+.ticker-track{
+  display:flex;gap:0;width:max-content;
+  animation:slide 38s linear infinite;
+}
+.ticker-track span{
+  font-family:var(--ff-mono);
+  font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--mute);
+  padding:0 26px;
+  display:flex;align-items:center;gap:26px;
+}
+.ticker-track span::after{
+  content:"";width:4px;height:4px;background:var(--copper);
+  transform:rotate(45deg);display:block;
+}
+@keyframes slide{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){
+  .ticker-track{animation:none}
+  .studiobar .dotpulse{animation:none;opacity:.8}
+}
+
+/* ---------- cabecera de sección ---------- */
+.sec-head{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,.82fr);
+  gap:clamp(20px,4vw,60px);
+  align-items:end;
+  margin-bottom:clamp(34px,4vw,56px);
+}
+.sec-head h2{font-size:clamp(28px,3.9vw,50px)}
+.sec-num{
+  font-family:var(--ff-mono);
+  font-size:11px;letter-spacing:.2em;color:var(--copper);
+}
+
+/* ---------- SERVICIOS ---------- */
+.servicios{background:var(--ink-850)}
+.svc-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  border-top:1px solid var(--line);
+  border-left:1px solid var(--line);
+}
+.svc{
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  padding:28px 26px 32px;
+  position:relative;
+  background:transparent;
+  transition:background .35s;
+  min-height:225px;
+  display:flex;flex-direction:column;
+}
+.svc::after{
+  content:"";position:absolute;left:0;bottom:-1px;height:2px;width:0;
+  background:var(--volt);transition:width .4s cubic-bezier(.2,.7,.3,1);
+}
+.svc:hover{background:rgba(255,225,26,.045)}
+.svc:hover::after{width:100%}
+.svc .ico{
+  width:38px;height:38px;margin-bottom:20px;color:var(--volt);
+  transition:transform .35s;
+}
+.svc:hover .ico{transform:translateY(-3px)}
+.svc h3{
+  font-size:19px;letter-spacing:-.015em;margin-bottom:9px;
+  font-weight:700;
+}
+.svc p{
+  margin:0;font-size:14px;color:var(--mute);line-height:1.55;
+}
+.svc .idx{
+  position:absolute;top:24px;right:24px;
+  font-family:var(--ff-mono);font-size:10px;letter-spacing:.16em;
+  color:var(--line);
+  transition:color .3s;
+}
+.svc:hover .idx{color:var(--copper)}
+
+/* ---------- PROCESO ---------- */
+.proceso{
+  background:
+    linear-gradient(180deg,#0b0e13,#0f141b);
+  position:relative;overflow:hidden;
+}
+.proceso-bg{position:absolute;inset:0;opacity:.35;pointer-events:none}
+.steps{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:clamp(18px,2.4vw,32px);
+  position:relative;z-index:2;
+}
+.step{
+  border:1px solid var(--line);
+  background:rgba(15,20,27,.72);
+  padding:30px 26px 34px;
+  position:relative;
+}
+.step .n{
+  font-family:var(--ff-sans);
+  font-size:58px;font-weight:800;line-height:1;
+  color:transparent;
+  -webkit-text-stroke:1.5px var(--copper);
+  display:block;margin-bottom:18px;
+  letter-spacing:-.04em;
+}
+.step h3{font-size:21px;margin-bottom:10px}
+.step p{margin:0;color:var(--mute);font-size:14.5px}
+.step .wire{
+  position:absolute;top:46px;right:-22px;
+  width:22px;height:1px;background:var(--line);
+}
+.step .wire::after{
+  content:"";position:absolute;right:0;top:-2.5px;
+  width:5px;height:5px;background:var(--volt);transform:rotate(45deg);
+}
+.step:last-child .wire{display:none}
+
+/* ---------- URGENCIAS ---------- */
+.urgencias{
+  padding:0 var(--pad);
+}
+.urg-box{
+  max-width:var(--maxw);margin:0 auto;
+  background:
+    repeating-linear-gradient(135deg,rgba(11,14,19,.06) 0 12px,rgba(11,14,19,.13) 12px 24px),
+    linear-gradient(115deg,var(--volt) 0%,#ffd400 55%,var(--copper-soft) 130%);
+  color:#0b0e13;
+  padding:clamp(34px,4.4vw,56px);
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:clamp(24px,4vw,50px);
+  align-items:center;
+  position:relative;
+  overflow:hidden;
+}
+.urg-box .bolt-deco{
+  position:absolute;right:-30px;top:-40px;
+  width:280px;opacity:.14;color:#0b0e13;pointer-events:none;
+}
+.urg-box .eyebrow{color:#4a3c00}
+.urg-box .eyebrow::before{background:#0b0e13}
+.urg-box h2{font-size:clamp(27px,3.6vw,46px);color:#0b0e13}
+.urg-box p{
+  margin:14px 0 0;max-width:48ch;
+  color:#241f05;font-size:15px;
+}
+.urg-cta{position:relative;z-index:2;text-align:right}
+.urg-phone{
+  font-family:var(--ff-sans);
+  font-weight:800;font-size:clamp(28px,3.6vw,42px);
+  letter-spacing:-.02em;color:#0b0e13;
+  text-decoration:none;display:block;
+  white-space:nowrap;
+  transition:opacity .2s;
+}
+.urg-phone:hover{opacity:.68}
+.urg-cta .btn{
+  background:#0b0e13;color:var(--volt);margin-top:14px;
+}
+.urg-cta .btn:hover{background:#1b232e;transform:translateY(-2px)}
+
+/* ---------- CONTACTO ---------- */
+.contacto{background:var(--ink-850)}
+.contact-grid{
+  display:grid;
+  grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);
+  gap:clamp(26px,4vw,58px);
+  align-items:start;
+}
+.info-list{border-top:1px solid var(--line)}
+.info-item{
+  display:grid;grid-template-columns:34px 1fr;gap:16px;
+  padding:20px 0;
+  border-bottom:1px solid var(--line);
+  align-items:start;
+}
+.info-item .ico{width:22px;height:22px;color:var(--volt);margin-top:3px}
+.info-item .k{
+  font-family:var(--ff-mono);font-size:10px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--mute);display:block;margin-bottom:6px;
+}
+.info-item .v{font-size:17px;font-weight:600;letter-spacing:-.01em;text-decoration:none;display:block}
+.info-item a.v:hover{color:var(--volt)}
+.info-item .sub{font-size:13px;color:var(--mute);margin-top:4px}
+.contact-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+
+.map-frame{
+  border:1px solid var(--line);
+  background:var(--ink-800);
+  padding:12px;
+  position:relative;
+}
+.map-frame .caption{
+  display:flex;justify-content:space-between;gap:12px;
+  font-family:var(--ff-mono);font-size:10px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--mute);
+  padding:0 4px 11px;
+}
+.map-frame .caption b{color:var(--copper-soft);font-weight:500}
+.map-svg{display:block;width:100%;height:auto;background:var(--ink-900)}
+
+/* ---------- FOOTER ---------- */
+footer{
+  background:var(--ink-900);
+  border-top:1px solid var(--line);
+  padding:clamp(46px,5vw,72px) var(--pad) 30px;
+}
+.foot-grid{
+  max-width:var(--maxw);margin:0 auto;
+  display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr);
+  gap:clamp(24px,4vw,50px);
+  padding-bottom:36px;
+  border-bottom:1px solid var(--line-soft);
+}
+.foot-grid h4{
+  font-family:var(--ff-mono);font-size:10px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--mute);margin:0 0 14px;font-weight:400;
+}
+.foot-grid ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.foot-grid a{text-decoration:none;font-size:14px;color:var(--paper-dim);transition:color .2s}
+.foot-grid a:hover{color:var(--volt)}
+.foot-brand p{color:var(--mute);font-size:14px;max-width:38ch;margin:14px 0 0}
+.foot-bottom{
+  max-width:var(--maxw);margin:0 auto;
+  padding-top:22px;
+  display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
+  font-family:var(--ff-mono);font-size:10.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:#6b7683;
+}
+.foot-bottom .studio b{color:var(--volt);font-weight:600}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.3,1)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:1000px){
+  .hero-inner,.sec-head,.contact-grid{grid-template-columns:1fr}
+  .hero-inner{align-items:start}
+  .svc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .steps{grid-template-columns:1fr;gap:16px}
+  .step .wire{display:none}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .foot-brand{grid-column:1/-1}
+}
+@media (max-width:720px){
+  .navlinks{display:none}
+  .nav{padding:11px var(--pad)}
+  .hero{padding-top:calc(var(--bar-h) + 104px)}
+  .svc-grid{grid-template-columns:1fr}
+  .svc{min-height:0}
+  .urg-box{grid-template-columns:1fr;text-align:left}
+  .urg-cta{text-align:left}
+  .urg-box .bolt-deco{width:190px;right:-50px}
+  .foot-grid{grid-template-columns:1fr}
+  .studiobar{font-size:9px;letter-spacing:.08em}
+  .btn{width:100%;justify-content:center}
+  .hero-cta{gap:10px}
+  .contact-actions .btn{width:100%}
+}
+@media (max-width:400px){
+  .studiobar{letter-spacing:.04em;font-size:8.5px}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== BARRA DE PROPUESTA ===== -->
+<div class="studiobar" role="note">
+  <span class="dotpulse" aria-hidden="true"></span>
+  Propuesta de diseño · maqueta no oficial · <b>FFFFFFstudio</b> · Ángel Rubio
+</div>
+
+<!-- ===== NAV ===== -->
+<nav class="nav">
+  <a class="brand" href="#top">
+    <svg class="mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+      <rect x="1" y="1" width="38" height="38" stroke="#2a3440"/>
+      <path d="M22.5 6 12 22h7l-1.5 12L28 18h-7l1.5-12Z" fill="#ffe11a"/>
+      <path d="M6 20h4M30 20h4M20 6v2M20 32v2" stroke="#c1793f" stroke-width="1.2"/>
+    </svg>
+    <span class="txt">
+      <span class="n1">Electricidad Luvian</span>
+      <span class="n2">Alicante · desde el barrio</span>
+    </span>
+  </a>
+  <div class="navlinks">
+    <a href="#servicios">Servicios</a>
+    <a href="#proceso">Cómo trabajamos</a>
+    <a href="#urgencias">Urgencias</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+  <a class="btn btn-volt" href="tel:+34965924847">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+    96 592 48 47
+  </a>
+</nav>
+
+<!-- ===== HERO ===== -->
+<header class="hero" id="top">
+  <div class="hero-grid-bg" aria-hidden="true"></div>
+
+  <svg class="circuit-layer" viewBox="0 0 1440 760" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g stroke="#2a3440" stroke-width="1" fill="none">
+      <path d="M0 120h180v96h140v-58h210"/>
+      <path d="M1440 210h-190v110h-120v70h-160"/>
+      <path d="M0 640h240v-80h180v54h260"/>
+      <path d="M1440 700h-260v-92h-150"/>
+      <path d="M330 0v96h96v104"/>
+      <path d="M1090 0v150h-80v90"/>
+    </g>
+    <g fill="#c1793f">
+      <circle cx="180" cy="120" r="3"/><circle cx="320" cy="158" r="3"/>
+      <circle cx="1250" cy="210" r="3"/><circle cx="1130" cy="320" r="3"/>
+      <circle cx="240" cy="560" r="3"/><circle cx="420" cy="614" r="3"/>
+      <circle cx="426" cy="200" r="3"/><circle cx="1010" cy="240" r="3"/>
+    </g>
+    <g stroke="#ffe11a" stroke-width="1.4" fill="none" opacity=".55">
+      <path d="M530 158h120l24-24 24 24h120"/>
+      <path d="M660 614h160l22 22 22-22h96"/>
+    </g>
+  </svg>
+
+  <div class="hero-inner">
+    <div>
+      <p class="eyebrow">Instalador eléctrico · C/ Isabel La Católica 21, Alicante</p>
+      <h1>Instalaciones eléctricas en Alicante,<br><span class="hl">hechas con cabeza</span>.</h1>
+      <p class="lead">
+        Viviendas, locales y reformas: proyectamos el cuadro, dimensionamos las
+        protecciones y dejamos la instalación ordenada, documentada y lista para
+        funcionar. Además, material eléctrico en tienda para profesionales y particulares.
+      </p>
+      <div class="hero-cta">
+        <a class="btn btn-volt btn-lg" href="tel:+34965924847">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+          Llamar ahora
+        </a>
+        <a class="btn btn-ghost btn-lg" href="#servicios">Ver servicios</a>
+      </div>
+      <p class="hero-note">Zona Alfonso el Sabio / Estación · Tienda y taller en el mismo local</p>
+    </div>
+
+    <aside class="spec-panel">
+      <div class="spec-title"><span>Ficha del taller</span><span>03007</span></div>
+      <div class="spec-row"><span>Dirección</span><span>C/ Isabel La Católica 21<br>03007 Alicante</span></div>
+      <div class="spec-row"><span>Teléfono</span><span><a href="tel:+34965924847">96 592 48 47</a></span></div>
+      <div class="spec-row"><span>Email</span><span><a href="mailto:correo@luvian.net">correo@luvian.net</a></span></div>
+      <div class="spec-row"><span>Horario</span><span>Consultar horario</span></div>
+
+      <div class="diagram">
+        <svg viewBox="0 0 300 74" fill="none" aria-label="Esquema: acometida, cuadro general, protecciones y circuitos">
+          <g stroke="#2a3440" stroke-width="1">
+            <path d="M4 37h34"/><path d="M92 37h34"/><path d="M180 37h30"/>
+            <path d="M210 37v-22h58M210 37h58M210 37v22h58"/>
+          </g>
+          <rect x="38" y="21" width="54" height="32" stroke="#ffe11a"/>
+          <path d="M62 27 54 40h7l-1 8 9-14h-7l2-7Z" fill="#ffe11a"/>
+          <rect x="126" y="21" width="54" height="32" stroke="#c1793f"/>
+          <g stroke="#c1793f" stroke-width="1.4">
+            <path d="M137 28v18M148 28v18M159 28v18M170 28v18"/>
+          </g>
+          <g fill="#8b96a3">
+            <circle cx="268" cy="15" r="3"/><circle cx="268" cy="37" r="3"/><circle cx="268" cy="59" r="3"/>
+          </g>
+          <g fill="#6b7683" font-family="monospace" font-size="7" letter-spacing=".1em">
+            <text x="4" y="14">ACOMETIDA</text>
+            <text x="126" y="14">PROTECCIONES</text>
+            <text x="228" y="18">CIRCUITOS</text>
+          </g>
+        </svg>
+      </div>
+    </aside>
+  </div>
+</header>
+
+<!-- ===== TICKER ===== -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>Instalaciones</span><span>Cuadros y protecciones</span><span>Iluminación LED</span><span>Averías</span><span>Boletines</span><span>Material eléctrico</span>
+    <span>Instalaciones</span><span>Cuadros y protecciones</span><span>Iluminación LED</span><span>Averías</span><span>Boletines</span><span>Material eléctrico</span>
+  </div>
+</div>
+
+<!-- ===== SERVICIOS ===== -->
+<section class="servicios" id="servicios">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <p class="eyebrow">01 · Servicios</p>
+        <h2>Todo lo que necesita una instalación, de la acometida al último punto de luz.</h2>
+      </div>
+      <p class="lead">
+        Trabajamos obra nueva, reforma y mantenimiento. Cada intervención sale
+        con su esquema claro y sus protecciones donde tienen que estar.
+      </p>
+    </div>
+
+    <div class="svc-grid">
+
+      <article class="svc rv">
+        <span class="idx">/01</span>
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <path d="M6 20 24 7l18 13v21H6V20Z"/>
+          <path d="M19 41V29h10v12"/>
+          <path d="M24 15v5M24 26v4" stroke-linecap="round"/>
+        </svg>
+        <h3>Instalaciones en viviendas y locales</h3>
+        <p>Instalación completa o por fases, con reparto de circuitos y previsión de cargas según el uso real del espacio.</p>
+      </article>
+
+      <article class="svc rv">
+        <span class="idx">/02</span>
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <path d="M28 6 14 26h9l-2 16 16-22h-9l2-14Z" stroke-linejoin="round"/>
+          <path d="M5 14h6M5 34h9M37 38h6" stroke-linecap="round"/>
+        </svg>
+        <h3>Reformas eléctricas</h3>
+        <p>Renovación de instalaciones antiguas: sustitución de líneas, nuevos puntos y adaptación del cuadro a lo que hoy se conecta.</p>
+      </article>
+
+      <article class="svc rv">
+        <span class="idx">/03</span>
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <rect x="7" y="9" width="34" height="30"/>
+          <path d="M13 15v18M20 15v18M27 15v18M34 15v18" stroke-linecap="round"/>
+          <path d="M7 24h34" stroke-dasharray="3 3"/>
+        </svg>
+        <h3>Cuadros y protecciones</h3>
+        <p>Montaje y ampliación de cuadros: diferenciales, magnetotérmicos y separación de circuitos, rotulado y accesible.</p>
+      </article>
+
+      <article class="svc rv">
+        <span class="idx">/04</span>
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <path d="M24 6a13 13 0 0 0-8 23.3V34h16v-4.7A13 13 0 0 0 24 6Z"/>
+          <path d="M19 38h10M21 42h6" stroke-linecap="round"/>
+          <path d="M24 17v8" stroke-linecap="round"/>
+        </svg>
+        <h3>Iluminación LED</h3>
+        <p>Sustitución y diseño de alumbrado interior y de local: reparto de puntos, temperatura de luz y control de encendidos.</p>
+      </article>
+
+      <article class="svc rv">
+        <span class="idx">/05</span>
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <path d="M30 8a9 9 0 0 0-11.8 11.8L8 30l6 6 10.2-10.2A9 9 0 0 0 36 14l-5 5-4-4 5-5-2-2Z" stroke-linejoin="round"/>
+          <path d="M34 32l6 6M31 35l6 6" stroke-linecap="round"/>
+        </svg>
+        <h3>Averías y reparaciones</h3>
+        <p>Localización de faltas, cortocircuitos, derivaciones y disparos repetidos del diferencial. Se busca la causa, no el parche.</p>
+      </article>
+
+      <article class="svc rv">
+        <span class="idx">/06</span>
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <path d="M12 5h17l8 8v30H12V5Z" stroke-linejoin="round"/>
+          <path d="M29 5v8h8"/>
+          <path d="M18 23h13M18 29h13M18 35h8" stroke-linecap="round"/>
+        </svg>
+        <h3>Boletines y certificados</h3>
+        <p>Tramitación de la documentación de la instalación cuando la actuación lo requiere, con los datos técnicos que corresponden.</p>
+      </article>
+
+      <article class="svc rv">
+        <span class="idx">/07</span>
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <path d="M7 16h34l-3 26H10L7 16Z" stroke-linejoin="round"/>
+          <path d="M17 16V11a7 7 0 0 1 14 0v5"/>
+          <path d="M26 24l-6 9h5l-1 6 7-10h-5l1.5-5Z" stroke-linejoin="round"/>
+        </svg>
+        <h3>Material eléctrico en tienda</h3>
+        <p>Venta de material en el propio local: mecanismos, cable, protecciones y luminarias, con asesoramiento de quien lo instala.</p>
+      </article>
+
+      <article class="svc rv" style="background:rgba(193,121,63,.06)">
+        <span class="idx">/—</span>
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <circle cx="24" cy="24" r="17"/>
+          <path d="M24 15v9l6 5" stroke-linecap="round"/>
+        </svg>
+        <h3>¿Tu caso no está en la lista?</h3>
+        <p>Cuéntanos qué necesitas por teléfono o por email y te decimos si podemos hacerlo y cómo lo plantearíamos.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROCESO ===== -->
+<section class="proceso" id="proceso">
+  <svg class="proceso-bg" viewBox="0 0 1440 620" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <pattern id="dots" width="26" height="26" patternUnits="userSpaceOnUse">
+        <circle cx="1.5" cy="1.5" r="1.1" fill="#1e2731"/>
+      </pattern>
+    </defs>
+    <rect width="1440" height="620" fill="url(#dots)"/>
+    <g stroke="#212b36" fill="none" stroke-width="1">
+      <path d="M0 310h380l40-40h300l40 40h680"/>
+    </g>
+  </svg>
+
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <p class="eyebrow alt">02 · Cómo trabajamos</p>
+        <h2>Tres pasos, sin sorpresas por el camino.</h2>
+      </div>
+      <p class="lead">Antes de tocar un cable se ve la instalación, se define el alcance y se cierra el precio. Lo que se firma es lo que se ejecuta.</p>
+    </div>
+
+    <div class="steps">
+      <article class="step rv">
+        <span class="wire" aria-hidden="true"></span>
+        <span class="n">01</span>
+        <h3>Visita</h3>
+        <p>Vamos al sitio, revisamos el estado de la instalación, el cuadro y lo que hay previsto conectar. Escuchamos qué necesitas de verdad.</p>
+      </article>
+      <article class="step rv">
+        <span class="wire" aria-hidden="true"></span>
+        <span class="n">02</span>
+        <h3>Presupuesto cerrado</h3>
+        <p>Entregamos por escrito el alcance de los trabajos y el importe. Cerrado: si no cambia el encargo, no cambia la cifra.</p>
+      </article>
+      <article class="step rv">
+        <span class="n">03</span>
+        <h3>Ejecución</h3>
+        <p>Ejecutamos con el material acordado, dejamos el cuadro rotulado y la obra recogida, y explicamos qué se ha hecho antes de irnos.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== URGENCIAS ===== -->
+<section class="urgencias" id="urgencias">
+  <div class="urg-box rv">
+    <svg class="bolt-deco" viewBox="0 0 200 260" fill="currentColor" aria-hidden="true">
+      <path d="M120 0 30 150h60l-20 110 100-160h-62L120 0Z"/>
+    </svg>
+    <div>
+      <p class="eyebrow">03 · Urgencias y averías</p>
+      <h2>¿Te has quedado sin luz o te salta el diferencial?</h2>
+      <p>Llámanos y explícanos qué ha pasado: si salta al conectar algo, si es toda la vivienda o solo una zona, si huele o si hay humedad. Con eso podemos orientarte por teléfono y organizar la intervención.</p>
+    </div>
+    <div class="urg-cta">
+      <span class="mono" style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#4a3c00">Teléfono directo</span>
+      <a class="urg-phone" href="tel:+34965924847">96 592 48 47</a>
+      <a class="btn" href="tel:+34965924847">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+        Llamar ahora
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACTO ===== -->
+<section class="contacto" id="contacto">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <p class="eyebrow">04 · Contacto</p>
+        <h2>Estamos en Isabel La Católica, junto a Alfonso el Sabio.</h2>
+      </div>
+      <p class="lead">Puedes acercarte al local, llamarnos o escribirnos. Si vienes a por material, es el mismo sitio desde el que salimos a las obras.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="rv">
+        <div class="info-list">
+          <div class="info-item">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 21s7-6.3 7-11a7 7 0 1 0-14 0c0 4.7 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+            <div>
+              <span class="k">Dirección</span>
+              <span class="v">C/ Isabel La Católica 21<br>03007 Alicante</span>
+              <p class="sub" style="margin:6px 0 0">Zona Alfonso el Sabio / Estación</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+            <div>
+              <span class="k">Teléfono</span>
+              <a class="v" href="tel:+34965924847">96 592 48 47</a>
+            </div>
+          </div>
+          <div class="info-item">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14"/><path d="m2.5 6 9.5 7 9.5-7"/></svg>
+            <div>
+              <span class="k">Email</span>
+              <a class="v" href="mailto:correo@luvian.net">correo@luvian.net</a>
+            </div>
+          </div>
+          <div class="info-item">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2.3" stroke-linecap="round"/></svg>
+            <div>
+              <span class="k">Horario</span>
+              <span class="v">Consultar horario</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-actions">
+          <a class="btn btn-volt" href="tel:+34965924847">Llamar ahora</a>
+          <a class="btn btn-ghost" href="mailto:correo@luvian.net">Escribir un email</a>
+        </div>
+      </div>
+
+      <div class="map-frame rv">
+        <div class="caption"><span>Plano esquemático de situación</span><b>No a escala</b></div>
+        <svg class="map-svg" viewBox="0 0 640 430" role="img" aria-label="Plano esquemático: C/ Isabel La Católica 21, zona Alfonso el Sabio y Estación, Alicante">
+          <defs>
+            <pattern id="mgrid" width="32" height="32" patternUnits="userSpaceOnUse">
+              <path d="M32 0H0v32" fill="none" stroke="#161d26" stroke-width="1"/>
+            </pattern>
+          </defs>
+          <rect width="640" height="430" fill="#0b0e13"/>
+          <rect width="640" height="430" fill="url(#mgrid)"/>
+
+          <!-- manzanas -->
+          <g fill="#141a23" stroke="#1e2731">
+            <rect x="46" y="52" width="150" height="106"/>
+            <rect x="240" y="52" width="146" height="106"/>
+            <rect x="430" y="52" width="164" height="106"/>
+            <rect x="46" y="216" width="150" height="122"/>
+            <rect x="240" y="216" width="146" height="122"/>
+            <rect x="430" y="216" width="164" height="122"/>
+          </g>
+
+          <!-- viales -->
+          <g stroke="#27313f" stroke-width="12" stroke-linecap="square">
+            <path d="M0 186h640"/>
+            <path d="M218 0v430"/>
+            <path d="M408 0v430"/>
+          </g>
+          <g stroke="#0b0e13" stroke-width="1.5" stroke-dasharray="9 9">
+            <path d="M0 186h640"/><path d="M218 0v430"/><path d="M408 0v430"/>
+          </g>
+
+          <!-- via principal Alfonso el Sabio -->
+          <g stroke="#c1793f" stroke-width="2" opacity=".55">
+            <path d="M0 370h640"/>
+          </g>
+
+          <!-- marcador -->
+          <g>
+            <circle cx="300" cy="248" r="34" fill="rgba(255,225,26,.10)"/>
+            <circle cx="300" cy="248" r="20" fill="rgba(255,225,26,.18)"/>
+            <path d="M300 226a13 13 0 0 0-13 13c0 9.5 13 23 13 23s13-13.5 13-23a13 13 0 0 0-13-13Z" fill="#ffe11a"/>
+            <path d="M302 232l-6 9h4.4l-1.2 7 6.8-9.6h-4.6l1.6-6.4Z" fill="#0b0e13"/>
+          </g>
+
+          <!-- etiquetas -->
+          <g font-family="monospace" font-size="11" letter-spacing=".08em" fill="#8b96a3">
+            <text x="300" y="296" text-anchor="middle" fill="#f4f5f3">ELECTRICIDAD LUVIAN</text>
+            <text x="300" y="313" text-anchor="middle" fill="#8b96a3">C/ ISABEL LA CATÓLICA 21</text>
+            <text x="12" y="180">C/ ISABEL LA CATÓLICA</text>
+            <text x="12" y="392" fill="#e0a06a">AV. ALFONSO EL SABIO</text>
+            <text x="470" y="42">ESTACIÓN</text>
+            <text x="470" y="410" text-anchor="start">03007 · ALICANTE</text>
+          </g>
+
+          <!-- simbolo estacion -->
+          <g transform="translate(556,24)" stroke="#8b96a3" stroke-width="1.4" fill="none">
+            <rect x="0" y="0" width="22" height="16" rx="3"/>
+            <path d="M0 9h22M5 20l3-4M17 20l-3-4" stroke-linecap="round"/>
+            <circle cx="5.5" cy="12.5" r="1.3" fill="#8b96a3" stroke="none"/>
+            <circle cx="16.5" cy="12.5" r="1.3" fill="#8b96a3" stroke="none"/>
+          </g>
+
+          <!-- brujula -->
+          <g transform="translate(48,388)" fill="none" stroke="#2a3440">
+            <circle cx="0" cy="0" r="15"/>
+            <path d="M0-15v30M-15 0h30" stroke-dasharray="2 3"/>
+            <path d="M0-11 4 0h-8L0-11Z" fill="#ffe11a" stroke="none"/>
+            <text x="0" y="-19" text-anchor="middle" font-family="monospace" font-size="9" fill="#8b96a3" stroke="none">N</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <a class="brand" href="#top" style="margin-bottom:4px">
+        <svg class="mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+          <rect x="1" y="1" width="38" height="38" stroke="#2a3440"/>
+          <path d="M22.5 6 12 22h7l-1.5 12L28 18h-7l1.5-12Z" fill="#ffe11a"/>
+          <path d="M6 20h4M30 20h4M20 6v2M20 32v2" stroke="#c1793f" stroke-width="1.2"/>
+        </svg>
+        <span class="txt">
+          <span class="n1">Electricidad Luvian</span>
+          <span class="n2">Instalaciones y material eléctrico</span>
+        </span>
+      </a>
+      <p>C/ Isabel La Católica 21 · 03007 Alicante<br>Zona Alfonso el Sabio / Estación</p>
+    </div>
+
+    <div>
+      <h4>Servicios</h4>
+      <ul>
+        <li><a href="#servicios">Instalaciones</a></li>
+        <li><a href="#servicios">Reformas eléctricas</a></li>
+        <li><a href="#servicios">Cuadros y protecciones</a></li>
+        <li><a href="#servicios">Iluminación LED</a></li>
+        <li><a href="#servicios">Averías y reparaciones</a></li>
+        <li><a href="#servicios">Boletines y certificados</a></li>
+        <li><a href="#servicios">Material eléctrico</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="tel:+34965924847">96 592 48 47</a></li>
+        <li><a href="mailto:correo@luvian.net">correo@luvian.net</a></li>
+        <li><span style="font-size:14px;color:var(--paper-dim)">Consultar horario</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="foot-bottom">
+    <span>© Electricidad Luvian · Alicante</span>
+    <span class="studio">Propuesta de rediseño presentada por <b>FFFFFFstudio</b> — Ángel Rubio, diseñador web · Alicante</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)){
+    els.forEach(function(e){e.classList.add('in');});
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        var sibs = Array.prototype.slice.call(en.target.parentNode.children);
+        var i = sibs.indexOf(en.target);
+        en.target.style.transitionDelay = Math.min(i,7)*70 + 'ms';
+        en.target.classList.add('in');
+        io.unobserve(en.target);
+      }
+    });
+  },{rootMargin:'0px 0px -8% 0px',threshold:.12});
+  els.forEach(function(e){io.observe(e);});
+})();
+</script>
+
+</body>
+</html>

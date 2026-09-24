@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AURUM Estilistas · Peluquería en el centro de Alicante</title>
+<meta name="description" content="AURUM Estilistas — color, tratamiento capilar, peinado y maquillaje en C/ Bazán 8-10, Alicante.">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --ink:#08080A;
+  --ink-2:#0E0E11;
+  --ink-3:#141418;
+  --bone:#F2EEE6;
+  --bone-dim:#C9C3B8;
+  --mute:#8B8579;
+  --gold:#C9A24A;
+  --gold-lt:#E4CB8E;
+  --line:rgba(201,162,74,.28);
+  --line-soft:rgba(242,238,230,.10);
+  --serif:"Didot","Bodoni MT","Bodoni 72","Playfair Display","Hoefler Text",Garamond,"Times New Roman",serif;
+  --sans:"Futura","Avenir Next","Avenir","Gill Sans","Trebuchet MS",Helvetica,sans-serif;
+  --bar:34px;
+  --pad:clamp(20px,5vw,88px);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+html,body{max-width:100%;overflow-x:hidden}
+body{
+  margin:0;background:var(--ink);color:var(--bone);
+  font-family:var(--sans);font-weight:400;font-size:16px;line-height:1.7;
+  padding-top:var(--bar);
+  -webkit-font-smoothing:antialiased;
+}
+img,svg{max-width:100%}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;letter-spacing:-.01em}
+p{margin:0}
+::selection{background:var(--gold);color:#08080A}
+
+/* ============ UTILIDADES ============ */
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding-inline:var(--pad)}
+.eyebrow{
+  font-size:10px;letter-spacing:.42em;text-transform:uppercase;
+  color:var(--gold);font-weight:500;
+}
+.eyebrow-b{
+  font-size:10px;letter-spacing:.42em;text-transform:uppercase;color:var(--mute);
+}
+.rule{height:1px;background:linear-gradient(90deg,transparent,var(--line) 12%,var(--line) 88%,transparent);border:0;margin:0}
+.gold-txt{color:var(--gold)}
+
+/* ============ GRANO + TEXTURAS ============ */
+.grain{
+  position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.055;
+  mix-blend-mode:screen;
+}
+.marble{position:absolute;inset:0;pointer-events:none;opacity:.5}
+
+/* ============ BARRA DE PROPUESTA ============ */
+.proposal{
+  position:fixed;top:0;left:0;right:0;height:var(--bar);z-index:80;
+  display:flex;align-items:center;justify-content:center;
+  background:#000;border-bottom:1px solid rgba(201,162,74,.34);
+  font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:#9A9488;
+  padding-inline:12px;text-align:center;line-height:1.2;
+}
+.proposal b{color:var(--gold);font-weight:500}
+.proposal span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+
+/* ============ NAV ============ */
+.nav{
+  position:sticky;top:var(--bar);z-index:50;
+  background:rgba(8,8,10,.82);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line-soft);
+}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}
+.brand{display:flex;align-items:baseline;gap:10px}
+.brand .n{font-family:var(--serif);font-size:22px;letter-spacing:.22em;line-height:1}
+.brand .s{font-size:8.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--mute)}
+.nav-links{display:flex;gap:30px}
+.nav-links a{
+  font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--bone-dim);
+  position:relative;padding-block:6px;transition:color .35s ease;
+}
+.nav-links a::after{
+  content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--gold);
+  transition:width .45s cubic-bezier(.2,.7,.2,1);
+}
+.nav-links a:hover{color:var(--bone)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{
+  border:1px solid var(--line);padding:10px 20px;
+  font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold-lt);
+  transition:background .4s ease,color .4s ease;white-space:nowrap;
+}
+.nav-cta:hover{background:var(--gold);color:#08080A}
+
+/* ============ HERO ============ */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line-soft)}
+.hero-bg{position:absolute;inset:0;
+  background:
+    radial-gradient(120% 80% at 78% 12%,rgba(201,162,74,.16),transparent 58%),
+    radial-gradient(90% 70% at 10% 95%,rgba(201,162,74,.07),transparent 60%),
+    linear-gradient(180deg,#0A0A0C,#08080A 60%,#0C0B0E);
+}
+.hero-in{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(32px,5vw,72px);
+  align-items:center;padding-block:clamp(72px,11vw,132px)}
+.hero h1{
+  font-size:clamp(42px,7.4vw,88px);line-height:1.02;letter-spacing:-.025em;margin-block:22px 26px;
+}
+.hero h1 em{font-style:italic;color:var(--gold-lt)}
+.hero p.lead{color:var(--bone-dim);max-width:44ch;font-size:15.5px;font-weight:300}
+.hero-meta{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:30px}
+.hero-meta span{font-size:9.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--mute)}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:38px}
+.btn{
+  display:inline-flex;align-items:center;gap:12px;padding:16px 30px;
+  font-size:10px;letter-spacing:.3em;text-transform:uppercase;
+  border:1px solid var(--gold);color:#08080A;background:var(--gold);
+  transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s ease,background .4s ease;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 34px -14px rgba(201,162,74,.7);background:var(--gold-lt)}
+.btn-ghost{background:transparent;color:var(--bone);border-color:var(--line-soft)}
+.btn-ghost:hover{background:transparent;border-color:var(--gold);color:var(--gold-lt);box-shadow:none}
+.hero-art{position:relative;aspect-ratio:4/5;max-width:100%;width:100%}
+
+/* ============ MARQUEE ============ */
+.strip{border-block:1px solid var(--line-soft);overflow:hidden;background:var(--ink-2)}
+.strip-track{display:flex;width:max-content;animation:slide 34s linear infinite}
+.strip-track span{
+  padding:14px 30px;font-size:9.5px;letter-spacing:.36em;text-transform:uppercase;color:var(--mute);
+  display:flex;align-items:center;gap:30px;white-space:nowrap;
+}
+.strip-track span::after{content:"";width:4px;height:4px;background:var(--gold);transform:rotate(45deg)}
+@keyframes slide{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.strip-track{animation:none}}
+
+/* ============ SECCIONES ============ */
+section{position:relative}
+.sec{padding-block:clamp(66px,9vw,118px)}
+.sec-head{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:baseline;margin-bottom:clamp(34px,5vw,56px)}
+.sec-head h2{font-size:clamp(28px,4.4vw,50px);line-height:1.08}
+.sec-head .num{font-family:var(--serif);font-size:13px;color:var(--gold);letter-spacing:.1em;padding-top:8px}
+
+/* servicios */
+.srv{border-top:1px solid var(--line-soft)}
+.srv-item{
+  display:grid;grid-template-columns:34px 1fr auto;gap:clamp(16px,3vw,44px);align-items:center;
+  border-bottom:1px solid var(--line-soft);padding-block:26px;position:relative;transition:padding .45s ease;
+}
+.srv-item::before{
+  content:"";position:absolute;left:0;right:0;top:0;bottom:0;
+  background:linear-gradient(90deg,rgba(201,162,74,.09),transparent 55%);
+  opacity:0;transition:opacity .45s ease;pointer-events:none;
+}
+.srv-item:hover::before{opacity:1}
+.srv-item:hover{padding-inline-start:10px}
+.srv-n{font-family:var(--serif);font-size:12px;color:var(--gold);letter-spacing:.08em}
+.srv-t{font-family:var(--serif);font-size:clamp(20px,3vw,30px);line-height:1.2}
+.srv-d{display:block;font-family:var(--sans);font-size:12.5px;color:var(--mute);letter-spacing:.02em;margin-top:7px;font-weight:300;max-width:58ch}
+.srv-mark{width:26px;height:26px;flex:none;opacity:.75;transition:transform .5s cubic-bezier(.2,.7,.2,1),opacity .4s}
+.srv-item:hover .srv-mark{transform:rotate(90deg);opacity:1}
+
+/* salón */
+.salon{background:var(--ink-2);border-block:1px solid var(--line-soft);overflow:hidden}
+.salon-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-soft);
+  border:1px solid var(--line-soft);margin-top:clamp(28px,4vw,44px)}
+.val{background:var(--ink-2);padding:clamp(26px,3.4vw,42px)}
+.val svg{width:32px;height:32px;margin-bottom:22px}
+.val h3{font-size:20px;margin-bottom:12px}
+.val p{font-size:13.5px;color:var(--mute);font-weight:300;line-height:1.75}
+.salon-lead{max-width:52ch;color:var(--bone-dim);font-weight:300;font-size:15px}
+
+/* instagram */
+.ig-head{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;justify-content:space-between;margin-bottom:30px}
+.ig-head h2{font-size:clamp(26px,4vw,42px)}
+.ig-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.ig-cell{position:relative;aspect-ratio:1;overflow:hidden;border:1px solid var(--line-soft);display:block}
+.ig-cell svg{display:block;width:100%;height:100%}
+.ig-cell::after{
+  content:"";position:absolute;inset:0;background:rgba(8,8,10,.45);
+  opacity:0;transition:opacity .45s ease;
+}
+.ig-cell:hover::after{opacity:1}
+.ig-cell .tag{
+  position:absolute;left:0;right:0;bottom:0;padding:12px;z-index:2;
+  font-size:8.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-lt);
+  transform:translateY(8px);opacity:0;transition:.45s ease;
+}
+.ig-cell:hover .tag{transform:none;opacity:1}
+
+/* contacto */
+.contacto{background:var(--ink-3);border-top:1px solid var(--line-soft)}
+.ct-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:clamp(30px,5vw,64px);align-items:start}
+.ct-block{border-top:1px solid var(--line);padding-top:18px;margin-bottom:30px}
+.ct-block .lb{font-size:9.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--mute);display:block;margin-bottom:10px}
+.ct-block a,.ct-block p{font-family:var(--serif);font-size:clamp(19px,2.4vw,25px);line-height:1.45;display:block}
+.ct-block a{transition:color .35s ease}
+.ct-block a:hover{color:var(--gold-lt)}
+.ct-block .sm{font-family:var(--sans);font-size:12.5px;color:var(--mute);letter-spacing:.04em;font-weight:300;margin-top:8px}
+.map{border:1px solid var(--line-soft);background:#0A0A0C;position:relative}
+.map svg{display:block;width:100%;height:auto}
+.map-cap{
+  display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  padding:12px 16px;border-top:1px solid var(--line-soft);
+  font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--mute);
+}
+
+/* footer */
+footer{background:var(--ink);border-top:1px solid var(--line)}
+.ft{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:34px;padding-block:clamp(48px,6vw,72px)}
+.ft .brand .n{font-size:26px}
+.ft p{font-size:13px;color:var(--mute);font-weight:300;margin-top:16px;max-width:34ch}
+.ft h4{font-size:9.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--bone-dim);font-weight:500;margin:0 0 14px;font-family:var(--sans)}
+.ft ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.ft li a{font-size:13.5px;color:var(--mute);transition:color .3s}
+.ft li a:hover{color:var(--gold-lt)}
+.ft-bottom{border-top:1px solid var(--line-soft);padding-block:22px;display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between}
+.ft-bottom p{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#6E6960}
+.ft-bottom .studio{color:var(--gold);letter-spacing:.16em}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(22px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:960px){
+  .hero-in{grid-template-columns:1fr;padding-block:clamp(56px,10vw,88px)}
+  .hero-art{max-width:440px;margin-inline:auto;aspect-ratio:1/1}
+  .salon-grid{grid-template-columns:1fr}
+  .ct-grid{grid-template-columns:1fr}
+  .ft{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+}
+@media (max-width:640px){
+  body{font-size:15px}
+  .ig-grid{grid-template-columns:repeat(2,1fr)}
+  .sec-head{grid-template-columns:1fr;gap:10px}
+  .srv-item{grid-template-columns:24px 1fr;padding-block:22px}
+  .srv-mark{display:none}
+  .ft{grid-template-columns:1fr}
+  .nav-in{height:60px}
+  .brand .n{font-size:19px}
+  .brand .s{display:none}
+  .btn{padding:15px 24px;flex:1 1 auto;justify-content:center}
+  .proposal{font-size:8px;letter-spacing:.12em}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ GRANO GLOBAL ============ -->
+<svg class="grain" aria-hidden="true" focusable="false"><filter id="fgrain"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#fgrain)"/></svg>
+
+<!-- ============ BARRA DE PROPUESTA ============ -->
+<div class="proposal" role="note"><span>Propuesta de diseño · maqueta no oficial · <b>FFFFFFstudio</b> · Ángel Rubio</span></div>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top" aria-label="AURUM Estilistas, inicio">
+      <span class="n">AURUM</span><span class="s">Estilistas</span>
+    </a>
+    <nav class="nav-links" aria-label="Principal">
+      <a href="#servicios">Servicios</a>
+      <a href="#salon">El salón</a>
+      <a href="#instagram">Instagram</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="nav-cta" href="tel:+34965040501">Reservar cita</a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <svg class="marble" aria-hidden="true" preserveAspectRatio="none" viewBox="0 0 100 100">
+    <filter id="fmarble"><feTurbulence type="fractalNoise" baseFrequency="0.012 0.04" numOctaves="5" seed="7"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope="0.28"/></feComponentTransfer></filter>
+    <rect width="100" height="100" filter="url(#fmarble)" opacity="0.5"/>
+  </svg>
+  <div class="wrap hero-in">
+    <div>
+      <p class="eyebrow rv">Peluquería · Alicante centro</p>
+      <h1 class="rv">Color, tratamiento<br>y estilo, en el<br><em>centro de Alicante</em></h1>
+      <p class="lead rv">Un salón de alta gama donde el diagnóstico capilar, el color a medida y el acabado se trabajan con la misma precisión. Atención personalizada, solo con cita previa.</p>
+      <div class="cta-row rv">
+        <a class="btn" href="tel:+34965040501">Reservar cita
+          <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M0 5h12M8.5 1 12.5 5 8.5 9" stroke="currentColor" stroke-width="1.1"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
+      </div>
+      <div class="hero-meta rv">
+        <span>C/ Bazán 8-10</span><span>96 504 05 01</span><span>@aurumestilistas</span>
+      </div>
+    </div>
+    <div class="hero-art rv" aria-hidden="true">
+      <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid meet" width="100%" height="100%">
+        <defs>
+          <linearGradient id="gA" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#1A1820"/><stop offset="0.55" stop-color="#0D0D10"/><stop offset="1" stop-color="#171319"/>
+          </linearGradient>
+          <linearGradient id="gGold" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#8A6E2E"/><stop offset="0.45" stop-color="#E4CB8E"/><stop offset="1" stop-color="#9C7C34"/>
+          </linearGradient>
+          <filter id="fart"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope="0.09"/></feComponentTransfer></filter>
+        </defs>
+        <rect x="14" y="14" width="372" height="472" fill="url(#gA)"/>
+        <rect x="14" y="14" width="372" height="472" fill="none" stroke="url(#gGold)" stroke-width="1"/>
+        <rect x="30" y="30" width="340" height="440" fill="none" stroke="rgba(201,162,74,.22)" stroke-width="0.6"/>
+        <!-- arco -->
+        <path d="M110 430V210a90 90 0 0 1 180 0v220" fill="none" stroke="url(#gGold)" stroke-width="1.1" opacity="0.9"/>
+        <path d="M140 430V212a60 60 0 0 1 120 0v218" fill="none" stroke="rgba(201,162,74,.3)" stroke-width="0.7"/>
+        <!-- mechas -->
+        <g stroke="rgba(242,238,230,.20)" stroke-width="0.6" fill="none">
+          <path d="M155 430c0-120 10-160 45-190"/><path d="M175 430c0-130 12-170 40-196"/>
+          <path d="M245 430c0-120-10-160-45-190"/><path d="M225 430c0-130-12-170-40-196"/>
+        </g>
+        <circle cx="200" cy="196" r="26" fill="none" stroke="url(#gGold)" stroke-width="1"/>
+        <circle cx="200" cy="196" r="3" fill="#C9A24A"/>
+        <line x1="60" y1="430" x2="340" y2="430" stroke="rgba(201,162,74,.45)" stroke-width="0.8"/>
+        <g fill="#C9A24A" opacity=".8"><rect x="196" y="66" width="8" height="8" transform="rotate(45 200 70)"/></g>
+        <text x="200" y="462" text-anchor="middle" fill="#8B8579" font-family="Futura,Avenir,Helvetica,sans-serif" font-size="9" letter-spacing="5">A · U · R · U · M</text>
+        <rect x="14" y="14" width="372" height="472" filter="url(#fart)"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STRIP ============ -->
+<div class="strip" aria-hidden="true">
+  <div class="strip-track">
+    <span>Color a medida</span><span>Mechas y balayage</span><span>Tratamiento capilar</span><span>Corte y peinado</span><span>Maquillaje</span><span>Novias</span>
+    <span>Color a medida</span><span>Mechas y balayage</span><span>Tratamiento capilar</span><span>Corte y peinado</span><span>Maquillaje</span><span>Novias</span>
+  </div>
+</div>
+
+<!-- ============ SERVICIOS ============ -->
+<section class="sec" id="servicios">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="num">01</span>
+      <div>
+        <p class="eyebrow-b" style="margin-bottom:14px">Servicios</p>
+        <h2>Todo el cuidado del cabello,<br>bajo un mismo criterio.</h2>
+      </div>
+    </div>
+
+    <div class="srv">
+      <article class="srv-item rv">
+        <span class="srv-n">I</span>
+        <div>
+          <h3 class="srv-t">Color y mechas</h3>
+          <span class="srv-d">Coloración a medida, mechas, balayage y matices trabajados sobre un diagnóstico previo del cabello.</span>
+        </div>
+        <svg class="srv-mark" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 20 20 4M20 4h-8M20 4v8" stroke="#C9A24A" stroke-width="1"/></svg>
+      </article>
+
+      <article class="srv-item rv">
+        <span class="srv-n">II</span>
+        <div>
+          <h3 class="srv-t">Tratamientos capilares</h3>
+          <span class="srv-d">Protocolos de hidratación, reconstrucción y cuidado del cuero cabelludo adaptados a cada melena.</span>
+        </div>
+        <svg class="srv-mark" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 20 20 4M20 4h-8M20 4v8" stroke="#C9A24A" stroke-width="1"/></svg>
+      </article>
+
+      <article class="srv-item rv">
+        <span class="srv-n">III</span>
+        <div>
+          <h3 class="srv-t">Corte y peinado</h3>
+          <span class="srv-d">Corte estudiado según la forma del rostro y la caída del cabello, con acabado y peinado de salón.</span>
+        </div>
+        <svg class="srv-mark" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 20 20 4M20 4h-8M20 4v8" stroke="#C9A24A" stroke-width="1"/></svg>
+      </article>
+
+      <article class="srv-item rv">
+        <span class="srv-n">IV</span>
+        <div>
+          <h3 class="srv-t">Maquillaje para eventos</h3>
+          <span class="srv-d">Maquillaje profesional pensado para la luz, la duración y el carácter de cada celebración.</span>
+        </div>
+        <svg class="srv-mark" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 20 20 4M20 4h-8M20 4v8" stroke="#C9A24A" stroke-width="1"/></svg>
+      </article>
+
+      <article class="srv-item rv">
+        <span class="srv-n">V</span>
+        <div>
+          <h3 class="srv-t">Novias y ocasiones especiales</h3>
+          <span class="srv-d">Peinado y maquillaje de novia con prueba previa, coordinando también al acompañamiento más cercano.</span>
+        </div>
+        <svg class="srv-mark" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 20 20 4M20 4h-8M20 4v8" stroke="#C9A24A" stroke-width="1"/></svg>
+      </article>
+    </div>
+
+    <div class="cta-row rv" style="margin-top:44px">
+      <a class="btn" href="tel:+34965040501">Reservar cita
+        <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M0 5h12M8.5 1 12.5 5 8.5 9" stroke="currentColor" stroke-width="1.1"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EL SALÓN ============ -->
+<section class="sec salon" id="salon">
+  <svg class="marble" aria-hidden="true" preserveAspectRatio="none" viewBox="0 0 100 100" style="opacity:.35">
+    <filter id="fmarble2"><feTurbulence type="fractalNoise" baseFrequency="0.01 0.05" numOctaves="5" seed="19"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope="0.22"/></feComponentTransfer></filter>
+    <rect width="100" height="100" filter="url(#fmarble2)"/>
+  </svg>
+  <div class="wrap" style="position:relative">
+    <div class="sec-head rv">
+      <span class="num">02</span>
+      <div>
+        <p class="eyebrow-b" style="margin-bottom:14px">El salón</p>
+        <h2>Un espacio tranquilo<br>en pleno centro.</h2>
+      </div>
+    </div>
+    <p class="salon-lead rv">AURUM Estilistas trabaja en C/ Bazán, a pocos pasos de la Rambla. Un salón pensado para que cada visita tenga tiempo, calma y un resultado a medida.</p>
+
+    <div class="salon-grid">
+      <div class="val rv">
+        <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><circle cx="16" cy="16" r="13" stroke="#C9A24A" stroke-width="0.9"/><path d="M16 6v20M6 16h20" stroke="rgba(242,238,230,.22)" stroke-width="0.7"/><circle cx="16" cy="16" r="4" fill="#C9A24A" opacity=".85"/></svg>
+        <h3>Diagnóstico primero</h3>
+        <p>Antes de cualquier técnica se valora el estado del cabello y lo que se quiere conseguir, para decidir juntos el camino.</p>
+      </div>
+      <div class="val rv">
+        <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 3 29 16 16 29 3 16Z" stroke="#C9A24A" stroke-width="0.9"/><path d="M16 9 23 16l-7 7-7-7Z" stroke="rgba(242,238,230,.22)" stroke-width="0.7"/></svg>
+        <h3>Trabajo artesanal</h3>
+        <p>Cada color y cada corte se ejecutan a mano, sin fórmulas cerradas, cuidando el detalle hasta el último acabado.</p>
+      </div>
+      <div class="val rv">
+        <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="4" y="4" width="24" height="24" stroke="#C9A24A" stroke-width="0.9"/><path d="M4 11h24M11 4v24" stroke="rgba(242,238,230,.22)" stroke-width="0.7"/><circle cx="21" cy="20" r="4" fill="none" stroke="#C9A24A" stroke-width="0.9"/></svg>
+        <h3>Atención con cita</h3>
+        <p>Se reserva el tiempo necesario para cada servicio, de forma que la visita sea tranquila y sin prisas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INSTAGRAM ============ -->
+<section class="sec" id="instagram">
+  <div class="wrap">
+    <div class="ig-head rv">
+      <div>
+        <p class="eyebrow-b" style="margin-bottom:14px">Instagram</p>
+        <h2 style="font-family:var(--serif)">@aurumestilistas</h2>
+      </div>
+      <a class="nav-cta" href="https://www.instagram.com/aurumestilistas/" target="_blank" rel="noopener">Seguir en Instagram</a>
+    </div>
+    <hr class="rule" style="margin-bottom:26px">
+    <div class="ig-grid rv" id="igGrid"></div>
+    <p class="eyebrow-b rv" style="margin-top:18px">Espacio reservado para el feed real del salón</p>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section class="sec contacto" id="contacto">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="num">03</span>
+      <div>
+        <p class="eyebrow-b" style="margin-bottom:14px">Contacto</p>
+        <h2>Pide tu cita.</h2>
+      </div>
+    </div>
+
+    <div class="ct-grid">
+      <div class="rv">
+        <div class="ct-block">
+          <span class="lb">Teléfono</span>
+          <a href="tel:+34965040501">96 504 05 01</a>
+          <a href="tel:+34635004151">635 004 151</a>
+        </div>
+        <div class="ct-block">
+          <span class="lb">Dirección</span>
+          <p>C/ Bazán 8-10<br>03001 Alicante</p>
+        </div>
+        <div class="ct-block">
+          <span class="lb">Horario</span>
+          <p>Consultar horario</p>
+          <span class="sm">Atención con cita previa. Llámanos para conocer la disponibilidad.</span>
+        </div>
+        <div class="ct-block">
+          <span class="lb">Email</span>
+          <a href="mailto:alicante.aurum@gmail.com" style="font-size:clamp(15px,1.9vw,20px);word-break:break-word">alicante.aurum@gmail.com</a>
+        </div>
+        <div class="cta-row">
+          <a class="btn" href="tel:+34965040501">Reservar cita
+            <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M0 5h12M8.5 1 12.5 5 8.5 9" stroke="currentColor" stroke-width="1.1"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="map rv">
+        <svg viewBox="0 0 640 460" role="img" aria-label="Mapa esquemático de la ubicación de AURUM Estilistas en la calle Bazán 8-10, Alicante">
+          <defs>
+            <pattern id="pgrid" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M40 0H0V40" fill="none" stroke="rgba(242,238,230,.045)" stroke-width="1"/>
+            </pattern>
+          </defs>
+          <rect width="640" height="460" fill="#0A0A0C"/>
+          <rect width="640" height="460" fill="url(#pgrid)"/>
+          <!-- manzanas -->
+          <g fill="rgba(242,238,230,.035)" stroke="rgba(242,238,230,.09)" stroke-width="1">
+            <rect x="52" y="54" width="150" height="108"/><rect x="230" y="54" width="164" height="108"/>
+            <rect x="422" y="54" width="166" height="150"/>
+            <rect x="52" y="196" width="150" height="120"/><rect x="230" y="196" width="164" height="120"/>
+            <rect x="52" y="348" width="150" height="72"/><rect x="230" y="348" width="164" height="72"/>
+            <rect x="422" y="240" width="166" height="180"/>
+          </g>
+          <!-- viales -->
+          <g stroke="rgba(201,162,74,.18)" stroke-width="1">
+            <path d="M216 30v400M408 30v400M30 180h580M30 332h580"/>
+          </g>
+          <!-- calle Bazán destacada -->
+          <path d="M216 180 216 332" stroke="#C9A24A" stroke-width="2.4" opacity=".9"/>
+          <text x="196" y="264" fill="#E4CB8E" font-family="Futura,Avenir,Helvetica,sans-serif" font-size="11" letter-spacing="3" transform="rotate(-90 196 264)" text-anchor="middle">C/ BAZÁN</text>
+          <text x="470" y="172" fill="#8B8579" font-family="Futura,Avenir,Helvetica,sans-serif" font-size="10" letter-spacing="3">RAMBLA</text>
+          <text x="64" y="326" fill="#8B8579" font-family="Futura,Avenir,Helvetica,sans-serif" font-size="10" letter-spacing="3">CENTRO</text>
+          <!-- marcador -->
+          <g>
+            <circle cx="216" cy="256" r="26" fill="none" stroke="rgba(201,162,74,.35)" stroke-width="1"/>
+            <circle cx="216" cy="256" r="15" fill="none" stroke="#C9A24A" stroke-width="1.2"/>
+            <circle cx="216" cy="256" r="4.5" fill="#C9A24A"/>
+            <path d="M216 214v-18M216 316v18M174 256h-18M258 256h18" stroke="rgba(201,162,74,.5)" stroke-width="1"/>
+          </g>
+          <text x="252" y="238" fill="#F2EEE6" font-family="Didot,Bodoni MT,Georgia,serif" font-size="17" letter-spacing="2">AURUM</text>
+          <text x="252" y="256" fill="#8B8579" font-family="Futura,Avenir,Helvetica,sans-serif" font-size="9.5" letter-spacing="2.5">C/ BAZÁN 8-10</text>
+          <!-- norte -->
+          <g transform="translate(586,404)">
+            <path d="M0-18 6 6 0 1-6 6Z" fill="none" stroke="#C9A24A" stroke-width="1"/>
+            <text x="0" y="22" fill="#8B8579" font-family="Futura,Avenir,Helvetica,sans-serif" font-size="9" letter-spacing="2" text-anchor="middle">N</text>
+          </g>
+        </svg>
+        <div class="map-cap"><span>Plano esquemático</span><span>03001 · Alicante</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap ft">
+    <div>
+      <div class="brand"><span class="n">AURUM</span><span class="s">Estilistas</span></div>
+      <p>Peluquería de alta gama en el centro de Alicante. Color, tratamiento capilar, peinado y maquillaje.</p>
+    </div>
+    <div>
+      <h4>Salón</h4>
+      <ul>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#salon">El salón</a></li>
+        <li><a href="#instagram">Instagram</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="tel:+34965040501">96 504 05 01</a></li>
+        <li><a href="tel:+34635004151">635 004 151</a></li>
+        <li><a href="mailto:alicante.aurum@gmail.com">alicante.aurum@gmail.com</a></li>
+        <li><a href="https://www.instagram.com/aurumestilistas/" target="_blank" rel="noopener">@aurumestilistas</a></li>
+        <li><a href="#contacto">C/ Bazán 8-10, 03001 Alicante</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap ft-bottom">
+    <p class="studio">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+    <p>Maqueta no oficial · AURUM Estilistas</p>
+  </div>
+</footer>
+
+<script>
+/* ---- mosaico Instagram: placeholders SVG generados ---- */
+(function(){
+  var grid=document.getElementById('igGrid');
+  if(!grid)return;
+  var tags=['Color','Mechas','Tratamiento','Peinado','Maquillaje','Novia','Balayage','Salón'];
+  var html='';
+  for(var i=0;i<8;i++){
+    var seed=i*13+5, rot=(i*37)%180;
+    html+='<a class="ig-cell" href="https://www.instagram.com/aurumestilistas/" target="_blank" rel="noopener" aria-label="Publicación de Instagram de AURUM Estilistas">'
+      +'<svg viewBox="0 0 200 200" preserveAspectRatio="none" aria-hidden="true">'
+      +'<defs><linearGradient id="ig'+i+'" gradientTransform="rotate('+rot+' .5 .5)">'
+      +'<stop offset="0" stop-color="'+(i%3===0?'#1B1720':'#121218')+'"/>'
+      +'<stop offset="0.6" stop-color="#0B0B0E"/>'
+      +'<stop offset="1" stop-color="'+(i%2===0?'#191410':'#14121A')+'"/></linearGradient>'
+      +'<filter id="ign'+i+'"><feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="2" seed="'+seed+'"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope="0.13"/></feComponentTransfer></filter></defs>'
+      +'<rect width="200" height="200" fill="url(#ig'+i+')"/>'
+      +'<g fill="none" stroke="rgba(201,162,74,.30)" stroke-width="0.8">'
+      +(i%4===0?'<circle cx="100" cy="100" r="46"/><circle cx="100" cy="100" r="66"/>':'')
+      +(i%4===1?'<path d="M40 160 100 40l60 120Z"/><path d="M70 160 100 100l30 60"/>':'')
+      +(i%4===2?'<rect x="46" y="46" width="108" height="108"/><rect x="70" y="70" width="60" height="60" transform="rotate(45 100 100)"/>':'')
+      +(i%4===3?'<path d="M30 140c30-70 110-70 140 0"/><path d="M30 110c30-70 110-70 140 0"/><path d="M30 170c30-70 110-70 140 0"/>':'')
+      +'</g>'
+      +'<circle cx="100" cy="100" r="2.5" fill="#C9A24A"/>'
+      +'<rect width="200" height="200" filter="url(#ign'+i+')"/>'
+      +'</svg><span class="tag">'+tags[i]+'</span></a>';
+  }
+  grid.innerHTML=html;
+})();
+
+/* ---- reveal al hacer scroll ---- */
+(function(){
+  var els=[].slice.call(document.querySelectorAll('.rv'));
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        var sibs=[].slice.call(en.target.parentNode.children).filter(function(c){return c.classList.contains('rv')});
+        en.target.style.transitionDelay=(Math.min(sibs.indexOf(en.target),5)*90)+'ms';
+        en.target.classList.add('in');
+        io.unobserve(en.target);
+      }
+    });
+  },{rootMargin:'0px 0px -8% 0px',threshold:0.08});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>

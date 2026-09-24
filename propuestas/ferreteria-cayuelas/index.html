@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ferretería Cayuelas — C/ Jaime Segarra 42, Alicante</title>
+<meta name="description" content="Propuesta de rediseño web para Ferretería Cayuelas: ferretería, cerrajería, pintura y fontanería en el barrio de Carolinas, Alicante.">
+<style>
+  :root{
+    --marino:#0e1c2e;
+    --marino-2:#152740;
+    --marino-3:#1d3454;
+    --marino-4:#27436b;
+    --cemento:#8d928f;
+    --cemento-2:#b9bcb9;
+    --cemento-3:#d8dad6;
+    --hueso:#f2f2ef;
+    --blanco:#ffffff;
+    --amarillo:#ffcc00;
+    --amarillo-2:#ffd733;
+    --amarillo-3:#e0ac00;
+    --tinta:#12171d;
+    --suave:#5d6874;
+    --linea:rgba(14,28,46,.14);
+    --linea-osc:rgba(255,255,255,.12);
+
+    --cond:"Archivo Narrow","Roboto Condensed","Oswald","Helvetica Neue Condensed Bold","HelveticaNeue-CondensedBold","Arial Narrow","Liberation Sans Narrow","DIN Condensed",Impact,"Haettenschweiler",sans-serif;
+    --sans:"Helvetica Neue",Helvetica,"Segoe UI","Liberation Sans",Arial,sans-serif;
+    --mono:"SF Mono",Menlo,Consolas,"DejaVu Sans Mono","Courier New",monospace;
+
+    --ancho:1180px;
+    --barra:30px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    font-family:var(--sans);
+    color:var(--tinta);
+    background:var(--hueso);
+    line-height:1.6;
+    font-size:16px;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    max-width:100%;
+  }
+  img,svg{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  button{font:inherit}
+  ul{list-style:none}
+  ::selection{background:var(--amarillo);color:var(--marino)}
+
+  .cond{font-family:var(--cond);font-stretch:condensed;font-weight:700;letter-spacing:-.005em;text-transform:uppercase;line-height:.94}
+
+  /* ═══ barra de propuesta ═══ */
+  .aviso{
+    position:fixed;top:0;left:0;right:0;z-index:200;
+    height:var(--barra);
+    background:var(--tinta);color:var(--cemento-2);
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;
+    display:flex;align-items:center;justify-content:center;gap:9px;
+    padding:0 14px;white-space:nowrap;overflow:hidden;
+    border-bottom:1px solid rgba(255,204,0,.35);
+  }
+  .aviso b{color:var(--amarillo);font-weight:600}
+  .aviso .sq{width:6px;height:6px;background:var(--amarillo);flex:none;
+    clip-path:polygon(0 0,50% 0,50% 50%,100% 50%,100% 100%,50% 100%,50% 50%,0 50%)}
+  @media (max-width:620px){
+    .aviso{font-size:9px;letter-spacing:.01em;gap:6px}
+    .aviso .sq{display:none}
+  }
+
+  .wrap{width:min(var(--ancho),calc(100% - 56px));margin-inline:auto}
+  @media (max-width:640px){.wrap{width:calc(100% - 36px)}}
+
+  /* ═══ nav ═══ */
+  .nav{
+    position:sticky;top:var(--barra);z-index:150;
+    background:rgba(14,28,46,.95);
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--linea-osc);
+  }
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;height:74px}
+  .marca{display:flex;align-items:center;gap:13px;min-width:0}
+  .marca .cuad{width:34px;height:34px;flex:none;display:grid;grid-template:1fr 1fr/1fr 1fr;gap:2px}
+  .marca .cuad i{display:block;background:var(--cemento)}
+  .marca .cuad i:nth-child(1){background:var(--amarillo)}
+  .marca .cuad i:nth-child(4){background:var(--amarillo)}
+  .marca .txt{min-width:0}
+  .marca .txt b{display:block;font-family:var(--cond);font-stretch:condensed;font-weight:700;
+    text-transform:uppercase;font-size:22px;line-height:1;color:var(--blanco);letter-spacing:.005em}
+  .marca .txt small{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--cemento);margin-top:3px}
+  .nav ul{display:flex;gap:30px;font-family:var(--cond);font-stretch:condensed;font-weight:600;
+    text-transform:uppercase;font-size:14px;letter-spacing:.09em}
+  .nav ul a{color:var(--cemento-3);position:relative;padding:8px 0;display:inline-block;transition:color .25s}
+  .nav ul a::after{content:"";position:absolute;left:0;right:100%;bottom:2px;height:2px;background:var(--amarillo);transition:right .35s cubic-bezier(.2,.7,.2,1)}
+  .nav ul a:hover{color:var(--blanco)}
+  .nav ul a:hover::after{right:0}
+  .nav .tel{
+    display:inline-flex;align-items:center;gap:9px;flex:none;
+    background:var(--amarillo);color:var(--marino);
+    font-family:var(--cond);font-stretch:condensed;font-weight:700;text-transform:uppercase;
+    font-size:16px;letter-spacing:.04em;
+    padding:11px 18px;border:2px solid var(--amarillo);
+    transition:background .25s,color .25s,transform .25s;
+  }
+  .nav .tel:hover{background:transparent;color:var(--amarillo);transform:translateY(-1px)}
+  .nav .tel svg{width:15px;height:15px;flex:none}
+  @media (max-width:1000px){.nav ul{display:none}}
+  @media (max-width:640px){
+    .nav .wrap{height:64px}
+    .marca .txt small{display:none}
+    .marca .txt b{font-size:19px}
+    .marca .cuad{width:28px;height:28px}
+    .nav .tel{font-size:14px;padding:9px 13px;gap:7px}
+  }
+  @media (max-width:380px){.nav .tel span{display:none}.nav .tel{padding:10px}}
+
+  /* ═══ hero ═══ */
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(900px 520px at 82% 18%, rgba(39,67,107,.85), transparent 68%),
+      linear-gradient(168deg,#14273f 0%,#0e1c2e 52%,#0a1523 100%);
+    color:var(--blanco);
+    padding:96px 0 0;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+    background-image:
+      linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+    background-size:46px 46px;
+    mask-image:radial-gradient(circle at 30% 40%,#000 10%,transparent 72%);
+    -webkit-mask-image:radial-gradient(circle at 30% 40%,#000 10%,transparent 72%);
+  }
+  .hero::after{
+    content:"";position:absolute;left:0;right:0;bottom:0;height:8px;
+    background:repeating-linear-gradient(135deg,var(--amarillo) 0 18px,var(--marino) 18px 36px);
+  }
+  .hero .wrap{position:relative;z-index:2}
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:56px;align-items:center;padding-bottom:104px}
+
+  .kicker{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--amarillo);border:1px solid rgba(255,204,0,.42);
+    padding:7px 13px;margin-bottom:26px;
+  }
+  .kicker .pip{width:5px;height:5px;background:var(--amarillo);flex:none}
+  h1{
+    font-family:var(--cond);font-stretch:condensed;font-weight:700;text-transform:uppercase;
+    font-size:clamp(40px,6.4vw,80px);line-height:.9;letter-spacing:-.015em;
+    margin-bottom:26px;
+  }
+  h1 .am{color:var(--amarillo)}
+  h1 .ln{display:block}
+  .hero p.lead{font-size:17.5px;color:#c7d0dc;max-width:52ch;margin-bottom:34px;line-height:1.65}
+  .acciones{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:11px;
+    font-family:var(--cond);font-stretch:condensed;font-weight:700;text-transform:uppercase;
+    font-size:17px;letter-spacing:.05em;
+    padding:16px 26px;border:2px solid transparent;
+    transition:transform .3s cubic-bezier(.2,.7,.2,1),background .25s,color .25s,box-shadow .3s;
+  }
+  .btn svg{width:17px;height:17px;flex:none}
+  .btn-am{background:var(--amarillo);color:var(--marino);border-color:var(--amarillo);box-shadow:0 14px 34px -16px rgba(255,204,0,.8)}
+  .btn-am:hover{background:var(--amarillo-2);border-color:var(--amarillo-2);transform:translateY(-2px)}
+  .btn-fan{background:transparent;color:var(--blanco);border-color:rgba(255,255,255,.34)}
+  .btn-fan:hover{border-color:var(--amarillo);color:var(--amarillo);transform:translateY(-2px)}
+  .btn-oscuro{background:var(--marino);color:var(--blanco);border-color:var(--marino)}
+  .btn-oscuro:hover{background:var(--marino-4);border-color:var(--marino-4);transform:translateY(-2px)}
+
+  .movil-destacado{
+    margin-top:30px;display:inline-flex;align-items:stretch;
+    border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.05);
+    max-width:100%;
+  }
+  .movil-destacado .et{
+    display:flex;align-items:center;padding:12px 15px;background:rgba(255,204,0,.12);
+    font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--amarillo);
+    border-right:1px solid rgba(255,255,255,.15);
+  }
+  .movil-destacado a{
+    display:flex;align-items:center;gap:10px;padding:11px 18px;
+    font-family:var(--cond);font-stretch:condensed;font-weight:700;font-size:25px;letter-spacing:.02em;color:var(--blanco);
+    transition:color .25s;white-space:nowrap;
+  }
+  .movil-destacado a:hover{color:var(--amarillo)}
+  .movil-destacado svg{width:17px;height:17px;flex:none;color:var(--amarillo)}
+
+  /* cuatro cuadrantes hero */
+  .quad{
+    display:grid;grid-template-columns:1fr 1fr;gap:3px;background:rgba(255,255,255,.16);
+    border:3px solid rgba(255,255,255,.16);
+  }
+  .quad .q{
+    background:var(--marino-2);padding:26px 22px 24px;position:relative;overflow:hidden;
+    transition:background .3s;min-height:186px;
+    display:flex;flex-direction:column;justify-content:space-between;
+  }
+  .quad .q:nth-child(1),.quad .q:nth-child(4){background:var(--marino-3)}
+  .quad .q:hover{background:var(--marino-4)}
+  .quad .q svg{width:34px;height:34px;color:var(--amarillo);stroke-width:1.7}
+  .quad .q b{font-family:var(--cond);font-stretch:condensed;font-weight:700;text-transform:uppercase;
+    font-size:19px;letter-spacing:.03em;color:var(--blanco);margin-top:20px}
+  .quad .q i{position:absolute;top:10px;right:13px;font-family:var(--mono);font-style:normal;
+    font-size:10px;color:rgba(255,255,255,.3);letter-spacing:.08em}
+
+  @media (max-width:900px){
+    .hero{padding-top:64px}
+    .hero-grid{grid-template-columns:1fr;gap:44px;padding-bottom:78px}
+  }
+  @media (max-width:640px){
+    .hero{padding-top:48px}
+    .hero-grid{padding-bottom:62px;gap:36px}
+    .hero p.lead{font-size:16px}
+    .acciones{gap:10px}
+    .btn{width:100%;justify-content:center;font-size:16px;padding:15px 18px}
+    .movil-destacado{width:100%}
+    .movil-destacado .et{display:none}
+    .movil-destacado a{justify-content:center;width:100%;font-size:23px}
+    .quad .q{min-height:128px;padding:18px 14px}
+    .quad .q svg{width:28px;height:28px}
+    .quad .q b{font-size:16px;margin-top:14px}
+  }
+
+  /* ═══ tira de datos ═══ */
+  .tira{background:var(--amarillo);color:var(--marino);border-bottom:3px solid var(--marino)}
+  .tira .wrap{display:flex;flex-wrap:wrap;gap:10px 40px;align-items:center;justify-content:space-between;padding:16px 0}
+  .tira span{display:inline-flex;align-items:center;gap:10px;
+    font-family:var(--cond);font-stretch:condensed;font-weight:700;text-transform:uppercase;
+    font-size:16px;letter-spacing:.05em}
+  .tira svg{width:16px;height:16px;flex:none}
+  @media (max-width:640px){
+    .tira .wrap{flex-direction:column;align-items:flex-start;gap:9px;padding:15px 0}
+    .tira span{font-size:14.5px}
+  }
+
+  /* ═══ secciones ═══ */
+  section{padding:104px 0}
+  @media (max-width:640px){section{padding:68px 0}}
+  .cab{margin-bottom:54px;max-width:62ch}
+  .cab .num{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--suave);display:flex;align-items:center;gap:12px;margin-bottom:18px}
+  .cab .num::after{content:"";height:1px;flex:1;background:var(--linea)}
+  h2{font-family:var(--cond);font-stretch:condensed;font-weight:700;text-transform:uppercase;
+    font-size:clamp(32px,4.6vw,54px);line-height:.94;letter-spacing:-.012em;color:var(--marino);margin-bottom:18px}
+  h2 .am{color:var(--amarillo-3)}
+  .cab p{color:var(--suave);font-size:16.5px;max-width:56ch}
+  @media (max-width:640px){.cab{margin-bottom:36px}.cab p{font-size:15.5px}}
+
+  /* ═══ oficios ═══ */
+  .oficios{background:var(--blanco);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+  .rejilla{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--linea);border:2px solid var(--marino)}
+  .carta{
+    background:var(--blanco);padding:42px 38px 40px;position:relative;
+    transition:background .35s,transform .35s;
+    display:flex;flex-direction:column;
+  }
+  .carta::before{
+    content:"";position:absolute;left:0;top:0;width:0;height:5px;background:var(--amarillo);
+    transition:width .45s cubic-bezier(.2,.7,.2,1);
+  }
+  .carta:hover::before{width:100%}
+  .carta:hover{background:#fbfbf8}
+  .carta .top{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:26px}
+  .icono{
+    width:66px;height:66px;flex:none;display:grid;place-items:center;
+    background:var(--marino);color:var(--amarillo);
+    transition:transform .4s cubic-bezier(.2,.7,.2,1);
+  }
+  .carta:hover .icono{transform:rotate(-6deg)}
+  .icono svg{width:33px;height:33px;stroke-width:1.6}
+  .carta .idx{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--cemento);padding-top:6px}
+  .carta h3{font-family:var(--cond);font-stretch:condensed;font-weight:700;text-transform:uppercase;
+    font-size:31px;line-height:1;letter-spacing:-.005em;color:var(--marino);margin-bottom:14px}
+  .carta p{color:var(--suave);font-size:15.8px;margin-bottom:22px}
+  .carta ul{margin-top:auto;display:flex;flex-wrap:wrap;gap:8px}
+  .carta ul li{
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--marino-3);border:1px solid var(--linea);padding:6px 10px;background:var(--hueso);
+  }
+  @media (max-width:860px){
+    .rejilla{grid-template-columns:1fr}
+    .carta{padding:32px 24px 30px}
+    .carta h3{font-size:27px}
+    .icono{width:56px;height:56px}
+    .icono svg{width:28px;height:28px}
+  }
+
+  /* ═══ cerrajería ═══ */
+  .cerraj{
+    background:
+      radial-gradient(760px 420px at 88% 30%, rgba(255,204,0,.13), transparent 66%),
+      linear-gradient(160deg,#152740,#0c1828);
+    color:var(--blanco);position:relative;overflow:hidden;
+  }
+  .cerraj::before{
+    content:"";position:absolute;inset:0;pointer-events:none;opacity:.35;
+    background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.05) 0 2px,transparent 2px 11px);
+  }
+  .cerraj .wrap{position:relative;z-index:2}
+  .cerraj-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.72fr);gap:52px;align-items:center}
+  .cerraj h2{color:var(--blanco)}
+  .cerraj h2 .am{color:var(--amarillo)}
+  .cerraj .num{color:var(--cemento)}
+  .cerraj .num::after{background:rgba(255,255,255,.16)}
+  .cerraj p.t{color:#c3ccd8;font-size:17px;max-width:50ch;margin-bottom:32px}
+  .cerraj .panel{
+    border:2px solid rgba(255,255,255,.16);background:rgba(255,255,255,.045);
+    padding:32px 30px;
+  }
+  .cerraj .panel .et{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--amarillo);margin-bottom:14px}
+  .cerraj .panel .tel-grande{
+    display:inline-flex;align-items:center;gap:14px;
+    font-family:var(--cond);font-stretch:condensed;font-weight:700;
+    font-size:clamp(32px,5vw,48px);line-height:1;letter-spacing:.01em;color:var(--blanco);
+    transition:color .25s;margin-bottom:8px;max-width:100%;
+  }
+  .cerraj .panel .tel-grande:hover{color:var(--amarillo)}
+  .cerraj .panel .tel-grande svg{width:30px;height:30px;flex:none;color:var(--amarillo)}
+  .cerraj .panel small{display:block;color:var(--cemento);font-size:13.5px;margin-bottom:24px}
+  .cerraj .panel .btn{width:100%;justify-content:center}
+  .lista-cerraj{display:grid;gap:12px;margin-bottom:34px}
+  .lista-cerraj li{display:flex;gap:13px;align-items:flex-start;color:#cfd6e0;font-size:15.8px}
+  .lista-cerraj .mk{width:9px;height:9px;flex:none;margin-top:8px;background:var(--amarillo);
+    clip-path:polygon(0 0,50% 0,50% 50%,100% 50%,100% 100%,50% 100%,50% 50%,0 50%)}
+  @media (max-width:900px){.cerraj-grid{grid-template-columns:1fr;gap:40px}}
+  @media (max-width:640px){.cerraj .panel{padding:24px 20px}.cerraj p.t{font-size:16px}}
+
+  /* ═══ pasos ═══ */
+  .pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--linea);border:2px solid var(--marino)}
+  .paso{background:var(--blanco);padding:38px 32px 36px;position:relative;transition:background .3s}
+  .paso:hover{background:#fbfbf8}
+  .paso .n{
+    font-family:var(--cond);font-stretch:condensed;font-weight:700;font-size:66px;line-height:.8;
+    color:var(--cemento-3);margin-bottom:20px;display:block;transition:color .3s;
+  }
+  .paso:hover .n{color:var(--amarillo)}
+  .paso h4{font-family:var(--cond);font-stretch:condensed;font-weight:700;text-transform:uppercase;
+    font-size:23px;letter-spacing:.01em;color:var(--marino);margin-bottom:12px;line-height:1.05}
+  .paso p{color:var(--suave);font-size:15.5px}
+  .paso::after{content:"";position:absolute;left:32px;right:32px;bottom:0;height:3px;background:var(--marino);opacity:0;transition:opacity .3s}
+  .paso:hover::after{opacity:1}
+  @media (max-width:860px){.pasos{grid-template-columns:1fr}.paso{padding:28px 24px}.paso .n{font-size:52px;margin-bottom:12px}}
+
+  /* ═══ contacto ═══ */
+  .contacto{background:var(--marino);color:var(--blanco)}
+  .contacto h2{color:var(--blanco)}
+  .contacto .num{color:var(--cemento)}
+  .contacto .num::after{background:rgba(255,255,255,.16)}
+  .contacto .cab p{color:#b9c3d0}
+  .cont-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:48px;align-items:start}
+  .fichas{display:grid;gap:2px;background:rgba(255,255,255,.14);border:2px solid rgba(255,255,255,.16)}
+  .ficha{background:var(--marino-2);padding:24px 24px;display:flex;gap:18px;align-items:flex-start;transition:background .3s}
+  .ficha:hover{background:var(--marino-3)}
+  .ficha .ic{width:40px;height:40px;flex:none;display:grid;place-items:center;border:1px solid rgba(255,204,0,.4);color:var(--amarillo)}
+  .ficha .ic svg{width:19px;height:19px}
+  .ficha .et{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--cemento);margin-bottom:7px}
+  .ficha .v{font-family:var(--cond);font-stretch:condensed;font-weight:700;font-size:24px;line-height:1.1;color:var(--blanco);letter-spacing:.01em}
+  .ficha .v a{transition:color .25s;display:inline-block}
+  .ficha .v a:hover{color:var(--amarillo)}
+  .ficha .v.peq{font-family:var(--sans);font-weight:600;font-size:16px;letter-spacing:0;line-height:1.45;word-break:break-word}
+  .ficha .sub{color:var(--cemento);font-size:13.5px;margin-top:5px}
+
+  .mapa{border:2px solid rgba(255,255,255,.16);background:#0b1624;position:relative;overflow:hidden}
+  .mapa svg{width:100%;height:auto;display:block}
+  .mapa .pie{
+    display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;justify-content:space-between;
+    padding:14px 18px;border-top:1px solid rgba(255,255,255,.14);
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--cemento);
+  }
+  .mapa .pie b{color:var(--amarillo);font-weight:600}
+  @media (max-width:900px){.cont-grid{grid-template-columns:1fr;gap:34px}}
+  @media (max-width:640px){.ficha{padding:20px 18px;gap:14px}.ficha .v{font-size:21px}}
+
+  /* ═══ footer ═══ */
+  footer{background:var(--tinta);color:var(--cemento-2);padding:64px 0 0}
+  .f-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:44px;padding-bottom:48px}
+  .f-marca .cuad{width:44px;height:44px;display:grid;grid-template:1fr 1fr/1fr 1fr;gap:2px;margin-bottom:18px}
+  .f-marca .cuad i{background:var(--cemento)}
+  .f-marca .cuad i:nth-child(1),.f-marca .cuad i:nth-child(4){background:var(--amarillo)}
+  .f-marca b{font-family:var(--cond);font-stretch:condensed;font-weight:700;text-transform:uppercase;
+    font-size:27px;color:var(--blanco);display:block;margin-bottom:10px;letter-spacing:.01em}
+  .f-marca p{font-size:14.5px;color:var(--cemento);max-width:36ch}
+  footer h5{font-family:var(--cond);font-stretch:condensed;font-weight:700;text-transform:uppercase;
+    font-size:15px;letter-spacing:.14em;color:var(--amarillo);margin-bottom:16px}
+  footer li{font-size:14.5px;margin-bottom:9px;color:var(--cemento-2);word-break:break-word}
+  footer li a{transition:color .25s}
+  footer li a:hover{color:var(--amarillo)}
+  .abajo{
+    border-top:1px solid rgba(255,255,255,.1);padding:22px 0 28px;
+    display:flex;flex-wrap:wrap;gap:10px 24px;align-items:center;justify-content:space-between;
+    font-size:12.5px;color:var(--cemento);
+  }
+  .abajo .studio{font-family:var(--mono);font-size:11px;letter-spacing:.04em}
+  .abajo .studio b{color:var(--blanco);font-weight:600}
+  @media (max-width:860px){.f-grid{grid-template-columns:1fr 1fr;gap:34px}.f-marca{grid-column:1/-1}}
+  @media (max-width:640px){
+    footer{padding-top:46px}
+    .f-grid{grid-template-columns:1fr;gap:28px;padding-bottom:32px}
+    .abajo{flex-direction:column;align-items:flex-start}
+  }
+
+  /* ═══ scroll reveal ═══ */
+  .sr{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+  .sr.in{opacity:1;transform:none}
+  .sr.d1{transition-delay:.08s}.sr.d2{transition-delay:.16s}.sr.d3{transition-delay:.24s}.sr.d4{transition-delay:.32s}
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .sr{opacity:1;transform:none}
+    html{scroll-behavior:auto}
+  }
+  :focus-visible{outline:3px solid var(--amarillo);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<div class="aviso">
+  <span class="sq"></span>
+  <span>Propuesta de diseño · maqueta no oficial · <b>FFFFFFstudio</b> · Ángel Rubio</span>
+  <span class="sq"></span>
+</div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="marca" href="#">
+      <span class="cuad" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span class="txt">
+        <b>Cayuelas</b>
+        <small>Ferretería · Alicante</small>
+      </span>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="#oficios">Oficios</a></li>
+        <li><a href="#cerrajeria">Cerrajería</a></li>
+        <li><a href="#trabajo">Cómo trabajamos</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+    <a class="tel" href="tel:+34965242994">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+      <span>96 524 29 94</span>
+    </a>
+  </div>
+</header>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="kicker sr"><span class="pip"></span>C/ Jaime Segarra 42 · Carolinas-Pla</span>
+        <h1 class="sr d1">
+          <span class="ln">Ferretería, <span class="am">cerrajería</span>,</span>
+          <span class="ln">pintura y fontanería</span>
+          <span class="ln">en Carolinas</span>
+        </h1>
+        <p class="lead sr d2">Cuatro oficios en un mismo mostrador. Se atiende el encargo pequeño y el trabajo de casa completa, con el mismo criterio de siempre: escuchar el problema, entender la pieza y resolverlo bien a la primera.</p>
+        <div class="acciones sr d3">
+          <a class="btn btn-am" href="tel:+34965242994">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+            Llamar
+          </a>
+          <a class="btn btn-fan" href="#oficios">Ver los cuatro oficios</a>
+        </div>
+        <div class="movil-destacado sr d4">
+          <span class="et">Móvil</span>
+          <a href="tel:+34607370370">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18.5h2"/></svg>
+            607 370 370
+          </a>
+        </div>
+      </div>
+
+      <div class="quad sr d2" aria-hidden="true">
+        <div class="q">
+          <i>01</i>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 3.5a4.6 4.6 0 0 0-1.2 4.4L4 17.2V21h3.8l9.3-9.3a4.6 4.6 0 0 0 5.4-6.4l-2.9 2.9-2.5-.7-.7-2.5 2.9-2.9a4.6 4.6 0 0 0-4.8 1.4Z"/></svg>
+          <b>Ferretería</b>
+        </div>
+        <div class="q">
+          <i>02</i>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10.5" width="16" height="11" rx="2"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/><circle cx="12" cy="15.5" r="1.4"/><path d="M12 17v2"/></svg>
+          <b>Cerrajería</b>
+        </div>
+        <div class="q">
+          <i>03</i>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3.5" width="14" height="5.5" rx="1"/><path d="M17 6.2h3.2a1 1 0 0 1 1 1v3.6a1 1 0 0 1-1 1H12v2.4"/><rect x="10" y="14.2" width="4" height="7.3" rx="1.2"/></svg>
+          <b>Pintura</b>
+        </div>
+        <div class="q">
+          <i>04</i>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5h5.5V6a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v2.5H19"/><path d="M8.5 8.5v7H14v-7"/><path d="M14 12h3.5a3.5 3.5 0 0 1 3.5 3.5V20"/><path d="M6 15.5h5"/></svg>
+          <b>Fontanería</b>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="tira">
+  <div class="wrap">
+    <span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10.5c0 6-8 11.5-8 11.5S4 16.5 4 10.5a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10.3" r="2.7"/></svg>
+      C/ Jaime Segarra 42 · 03012 Alicante
+    </span>
+    <span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+      96 524 29 94 · 607 370 370
+    </span>
+    <span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.2 1.9"/></svg>
+      Consultar horario
+    </span>
+  </div>
+</div>
+
+<!-- ═══════════ OFICIOS ═══════════ -->
+<section class="oficios" id="oficios">
+  <div class="wrap">
+    <div class="cab sr">
+      <div class="num">01 / Los cuatro cuadrantes</div>
+      <h2>Cuatro oficios<br>bajo un <span class="am">mismo techo</span></h2>
+      <p>No hace falta ir de un sitio a otro. La misma puerta resuelve el tornillo que falta, la cerradura que no gira, el bote de pintura para la habitación y el grifo que gotea.</p>
+    </div>
+
+    <div class="rejilla">
+      <article class="carta sr">
+        <div class="top">
+          <div class="icono">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 3.5a4.6 4.6 0 0 0-1.2 4.4L4 17.2V21h3.8l9.3-9.3a4.6 4.6 0 0 0 5.4-6.4l-2.9 2.9-2.5-.7-.7-2.5 2.9-2.9a4.6 4.6 0 0 0-4.8 1.4Z"/></svg>
+          </div>
+          <span class="idx">01</span>
+        </div>
+        <h3>Ferretería</h3>
+        <p>El fondo de armario de cualquier arreglo: herramienta de mano, tornillería y fijaciones, herrajes, menaje y material suelto. Se atiende por unidades, se busca la medida exacta y se explica cómo se monta.</p>
+        <ul>
+          <li>Tornillería</li><li>Herramienta</li><li>Herrajes</li><li>Menaje</li>
+        </ul>
+      </article>
+
+      <article class="carta sr d1">
+        <div class="top">
+          <div class="icono">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10.5" width="16" height="11" rx="2"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/><circle cx="12" cy="15.5" r="1.4"/><path d="M12 17v2"/></svg>
+          </div>
+          <span class="idx">02</span>
+        </div>
+        <h3>Cerrajería</h3>
+        <p>Copias de llave, cilindros y bombines, cambio y ajuste de cerraduras, y aperturas cuando la puerta se ha quedado cerrada. Se revisa antes qué tipo de cierre hay para no forzar lo que aún sirve.</p>
+        <ul>
+          <li>Copias de llave</li><li>Bombines</li><li>Cerraduras</li><li>Aperturas</li>
+        </ul>
+      </article>
+
+      <article class="carta sr d2">
+        <div class="top">
+          <div class="icono">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3.5" width="14" height="5.5" rx="1"/><path d="M17 6.2h3.2a1 1 0 0 1 1 1v3.6a1 1 0 0 1-1 1H12v2.4"/><rect x="10" y="14.2" width="4" height="7.3" rx="1.2"/></svg>
+          </div>
+          <span class="idx">03</span>
+        </div>
+        <h3>Pintura</h3>
+        <p>Pintura para interior y exterior, esmaltes, imprimaciones y tratamientos, con todo lo que va alrededor: rodillos, brochas, cintas, masillas y protecciones. Orientación sobre acabado, rendimiento y preparación del soporte.</p>
+        <ul>
+          <li>Interior y exterior</li><li>Esmaltes</li><li>Imprimaciones</li><li>Útiles</li>
+        </ul>
+      </article>
+
+      <article class="carta sr d3">
+        <div class="top">
+          <div class="icono">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5h5.5V6a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v2.5H19"/><path d="M8.5 8.5v7H14v-7"/><path d="M14 12h3.5a3.5 3.5 0 0 1 3.5 3.5V20"/><path d="M6 15.5h5"/></svg>
+          </div>
+          <span class="idx">04</span>
+        </div>
+        <h3>Fontanería</h3>
+        <p>Griferías, sifones, latiguillos, juntas, llaves de paso y accesorios de desagüe. Material para la reparación puntual del goteo y para la sustitución completa, con las medidas y roscas comprobadas en mostrador.</p>
+        <ul>
+          <li>Griferías</li><li>Juntas y sifones</li><li>Llaves de paso</li><li>Desagües</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CERRAJERÍA ═══════════ -->
+<section class="cerraj" id="cerrajeria">
+  <div class="wrap">
+    <div class="cerraj-grid">
+      <div class="sr">
+        <div class="cab" style="margin-bottom:32px">
+          <div class="num">02 / Cerrajería</div>
+          <h2>Cerrajería:<br>¿te has quedado <span class="am">fuera?</span></h2>
+        </div>
+        <p class="t">Puerta cerrada, llave partida dentro del bombín o cerradura que ya no gira. Antes de forzar nada, lo primero es una llamada: contando qué puerta es y qué ha pasado, se puede valorar la salida más razonable.</p>
+        <ul class="lista-cerraj">
+          <li><span class="mk"></span><span>Apertura de puertas cuando la llave se queda dentro o se ha perdido.</span></li>
+          <li><span class="mk"></span><span>Sustitución de bombines y cilindros, y cambio de cerradura completa.</span></li>
+          <li><span class="mk"></span><span>Extracción de llaves rotas y revisión del cierre para evitar que se repita.</span></li>
+          <li><span class="mk"></span><span>Copias de llave y juegos nuevos para la vivienda o el local.</span></li>
+        </ul>
+      </div>
+
+      <aside class="panel sr d2">
+        <div class="et">Llama directamente al móvil</div>
+        <a class="tel-grande" href="tel:+34607370370">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18.5h2"/></svg>
+          607 370 370
+        </a>
+        <small>Cuéntanos el tipo de puerta y la incidencia y te confirmamos si podemos atenderla y en qué plazo.</small>
+        <a class="btn btn-am" href="tel:+34607370370">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+          Consultar disponibilidad
+        </a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CÓMO TRABAJAMOS ═══════════ -->
+<section id="trabajo">
+  <div class="wrap">
+    <div class="cab sr">
+      <div class="num">03 / Método</div>
+      <h2>Cómo trabajamos</h2>
+      <p>Tres pasos, sin vueltas. La mayoría de los arreglos se resuelven en el mostrador; el resto, con una visita para ver la pieza en su sitio.</p>
+    </div>
+    <div class="pasos">
+      <div class="paso sr">
+        <span class="n">01</span>
+        <h4>Nos cuentas el problema</h4>
+        <p>Por teléfono o en la tienda. Una foto, la pieza vieja o las medidas ayudan mucho a acertar a la primera.</p>
+      </div>
+      <div class="paso sr d1">
+        <span class="n">02</span>
+        <h4>Vemos la solución</h4>
+        <p>Se comprueba la medida, el material y el acabado, y se plantea qué hace falta de verdad y qué se puede aprovechar.</p>
+      </div>
+      <div class="paso sr d2">
+        <span class="n">03</span>
+        <h4>Lo resolvemos</h4>
+        <p>Te llevas el material preparado con las indicaciones de montaje, o se valora la intervención en tu domicilio o local.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CONTACTO ═══════════ -->
+<section class="contacto" id="contacto">
+  <div class="wrap">
+    <div class="cab sr">
+      <div class="num">04 / Contacto</div>
+      <h2>Dónde estamos</h2>
+      <p>En pleno barrio de Carolinas-Pla, en la calle Jaime Segarra. Si vas a venir a por algo concreto, llama antes y te lo dejamos apartado.</p>
+    </div>
+
+    <div class="cont-grid">
+      <div class="fichas sr">
+        <div class="ficha">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg></span>
+          <div>
+            <div class="et">Teléfono tienda</div>
+            <div class="v"><a href="tel:+34965242994">96 524 29 94</a></div>
+          </div>
+        </div>
+        <div class="ficha">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18.5h2"/></svg></span>
+          <div>
+            <div class="et">Móvil</div>
+            <div class="v"><a href="tel:+34607370370">607 370 370</a></div>
+            <div class="sub">También para avisos de cerrajería.</div>
+          </div>
+        </div>
+        <div class="ficha">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10.5c0 6-8 11.5-8 11.5S4 16.5 4 10.5a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10.3" r="2.7"/></svg></span>
+          <div>
+            <div class="et">Dirección</div>
+            <div class="v peq">C/ Jaime Segarra 42<br>03012 Alicante · Carolinas-Pla</div>
+          </div>
+        </div>
+        <div class="ficha">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.2 1.9"/></svg></span>
+          <div>
+            <div class="et">Horario</div>
+            <div class="v peq">Consultar horario</div>
+            <div class="sub">Llámanos antes de desplazarte.</div>
+          </div>
+        </div>
+        <div class="ficha">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6 8.5-6"/></svg></span>
+          <div>
+            <div class="et">Email</div>
+            <div class="v peq"><a href="mailto:sucealsl@yahoo.es">sucealsl@yahoo.es</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mapa sr d2">
+        <svg viewBox="0 0 640 440" role="img" aria-label="Plano esquemático de la ubicación de Ferretería Cayuelas en C/ Jaime Segarra 42, barrio de Carolinas-Pla, Alicante">
+          <defs>
+            <pattern id="tram" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+              <rect width="14" height="14" fill="#0b1624"/>
+              <path d="M0 0v14" stroke="#16273c" stroke-width="1.2"/>
+            </pattern>
+          </defs>
+          <rect width="640" height="440" fill="url(#tram)"/>
+
+          <!-- manzanas -->
+          <g fill="#13243a" stroke="#1e3350" stroke-width="1.5">
+            <rect x="34" y="34" width="180" height="112"/>
+            <rect x="240" y="34" width="150" height="112"/>
+            <rect x="416" y="34" width="190" height="112"/>
+            <rect x="34" y="196" width="180" height="96"/>
+            <rect x="416" y="196" width="190" height="96"/>
+            <rect x="34" y="330" width="180" height="80"/>
+            <rect x="240" y="330" width="150" height="80"/>
+            <rect x="416" y="330" width="190" height="80"/>
+          </g>
+
+          <!-- manzana destacada -->
+          <rect x="240" y="196" width="150" height="96" fill="#1b3050" stroke="#ffcc00" stroke-width="2" stroke-dasharray="7 5"/>
+
+          <!-- viales -->
+          <g stroke="#223b5c" stroke-width="1.2" fill="none">
+            <path d="M0 171h640M0 311h640M227 0v440M403 0v440"/>
+          </g>
+
+          <!-- calle principal -->
+          <path d="M0 171h640" stroke="#ffcc00" stroke-width="4" opacity=".92"/>
+          <text x="44" y="160" fill="#ffcc00" font-family="Menlo,monospace" font-size="13" letter-spacing="2.5">C/ JAIME SEGARRA</text>
+
+          <!-- calles secundarias -->
+          <text x="240" y="326" fill="#66788e" font-family="Menlo,monospace" font-size="11" letter-spacing="2">CAROLINAS — PLA</text>
+          <text x="412" y="26" fill="#4f6278" font-family="Menlo,monospace" font-size="11" letter-spacing="2">ALICANTE 03012</text>
+
+          <!-- marcador -->
+          <g transform="translate(315,171)">
+            <circle r="46" fill="#ffcc00" opacity=".08"/>
+            <circle r="28" fill="#ffcc00" opacity=".14"/>
+            <path d="M0-34c-11 0-20 9-20 20 0 14 20 33 20 33s20-19 20-33c0-11-9-20-20-20Z" fill="#ffcc00" stroke="#0e1c2e" stroke-width="2.5"/>
+            <circle cy="-14" r="7" fill="#0e1c2e"/>
+          </g>
+          <g transform="translate(315,171)">
+            <rect x="-58" y="36" width="116" height="30" fill="#0e1c2e" stroke="#ffcc00" stroke-width="1.5"/>
+            <text x="0" y="56" text-anchor="middle" fill="#ffffff" font-family="Menlo,monospace" font-size="13" letter-spacing="1.5">Nº 42</text>
+          </g>
+
+          <!-- rosa de los vientos -->
+          <g transform="translate(562,390)">
+            <g stroke="#5c718a" stroke-width="1.4" fill="none"><path d="M0-22v44M-22 0h44"/></g>
+            <path d="M0-24 5-10h-10Z" fill="#ffcc00"/>
+            <text x="0" y="-28" text-anchor="middle" fill="#8d928f" font-family="Menlo,monospace" font-size="10">N</text>
+          </g>
+        </svg>
+        <div class="pie">
+          <span>Plano esquemático · no a escala</span>
+          <span><b>C/ Jaime Segarra 42 · 03012 Alicante</b></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div class="f-marca">
+        <span class="cuad" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <b>Ferretería Cayuelas</b>
+        <p>Ferretería, cerrajería, pintura y fontanería en el barrio de Carolinas-Pla, Alicante.</p>
+      </div>
+      <div>
+        <h5>Contacto</h5>
+        <ul>
+          <li><a href="tel:+34965242994">96 524 29 94</a></li>
+          <li><a href="tel:+34607370370">607 370 370</a></li>
+          <li><a href="mailto:sucealsl@yahoo.es">sucealsl@yahoo.es</a></li>
+          <li>C/ Jaime Segarra 42</li>
+          <li>03012 Alicante</li>
+          <li>Consultar horario</li>
+        </ul>
+      </div>
+      <div>
+        <h5>Secciones</h5>
+        <ul>
+          <li><a href="#oficios">Los cuatro oficios</a></li>
+          <li><a href="#cerrajeria">Cerrajería</a></li>
+          <li><a href="#trabajo">Cómo trabajamos</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="abajo">
+      <span>Ferretería Cayuelas · Carolinas-Pla, Alicante</span>
+      <span class="studio">Propuesta de rediseño presentada por <b>FFFFFFstudio</b> — Ángel Rubio, diseñador web · Alicante</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.sr');
+  if (!('IntersectionObserver' in window)) {
+    for (var i=0;i<els.length;i++) els[i].classList.add('in');
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+    });
+  }, { threshold:.12, rootMargin:'0px 0px -7% 0px' });
+  els.forEach(function(e){ io.observe(e); });
+})();
+</script>
+</body>
+</html>

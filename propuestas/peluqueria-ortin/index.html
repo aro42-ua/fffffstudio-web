@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Peluquería Ortín — Calle Segura 17, Alicante</title>
+<meta name="description" content="Propuesta de rediseño web para Peluquería Ortín, peluquería de mujer y hombre en el centro de Alicante.">
+<style>
+  :root{
+    --negro:#171514;
+    --negro-2:#211e1c;
+    --negro-3:#2b2725;
+    --crema:#f4ecdf;
+    --crema-2:#ece2d0;
+    --crema-3:#e2d5bf;
+    --burdeos:#6d1f2c;
+    --burdeos-2:#8a2a3a;
+    --cobre:#b8763f;
+    --cobre-2:#d9a06a;
+    --tinta:#2a2422;
+    --tinta-suave:#6f625c;
+    --linea:rgba(23,21,20,.14);
+    --serif:"Didot","Bodoni MT","Bodoni 72","Playfair Display","Cormorant Garamond","Libre Caslon Text","Baskerville","Times New Roman",Georgia,serif;
+    --sans:"Avenir Next","Avenir","Gill Sans","Gill Sans MT","Segoe UI","Trebuchet MS","Helvetica Neue",Helvetica,Arial,sans-serif;
+    --mono:"SF Mono","Menlo","Consolas","Courier New",monospace;
+    --ancho:1180px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    color:var(--tinta);
+    background:var(--crema);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--burdeos);color:var(--crema)}
+  a{color:inherit;text-decoration:none}
+  img,svg{display:block;max-width:100%}
+  button{font:inherit}
+
+  /* ——— barra de propuesta ——— */
+  .aviso{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    height:28px;
+    background:var(--negro);color:var(--crema-3);
+    font-family:var(--mono);font-size:11px;letter-spacing:.04em;
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    padding:0 16px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .aviso b{color:var(--cobre-2);font-weight:600}
+  .aviso .dot{width:5px;height:5px;border-radius:50%;background:var(--burdeos-2);flex:none}
+  @media (max-width:560px){
+    .aviso{font-size:10px;letter-spacing:0;text-align:center}
+    .aviso .dot{display:none}
+  }
+
+  /* ——— grano ——— */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:50;pointer-events:none;
+    opacity:.35;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .wrap{width:min(var(--ancho),calc(100% - 48px));margin-inline:auto}
+  @media (max-width:560px){.wrap{width:calc(100% - 40px)}}
+
+  /* ——— nav ——— */
+  .nav{
+    position:sticky;top:28px;z-index:60;
+    background:rgba(244,236,223,.86);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--linea);
+  }
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .marca{display:flex;align-items:center;gap:12px}
+  .marca .mono{
+    width:38px;height:38px;border:1px solid var(--tinta);border-radius:50%;
+    display:grid;place-items:center;
+    font-family:var(--serif);font-size:20px;line-height:1;color:var(--tinta);
+    position:relative;
+  }
+  .marca .mono::after{
+    content:"";position:absolute;inset:3px;border-radius:50%;border:1px solid var(--cobre);opacity:.6;
+  }
+  .marca .nombre{font-family:var(--serif);font-size:22px;letter-spacing:.01em;color:var(--tinta)}
+  .marca .nombre small{display:block;font-family:var(--sans);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--tinta-suave);margin-top:-2px}
+  .nav ul{display:flex;gap:34px;list-style:none;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+  .nav ul a{position:relative;padding:6px 0;color:var(--tinta)}
+  .nav ul a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--burdeos);transition:right .35s cubic-bezier(.2,.7,.2,1)}
+  .nav ul a:hover::after{right:0}
+  .nav .tel{
+    display:inline-flex;align-items:center;gap:9px;
+    font-family:var(--serif);font-size:17px;letter-spacing:.02em;
+    padding:9px 16px;border:1px solid var(--tinta);border-radius:999px;
+    transition:background .3s,color .3s;
+  }
+  .nav .tel:hover{background:var(--tinta);color:var(--crema)}
+  .nav .tel svg{width:14px;height:14px}
+  @media (max-width:900px){.nav ul{display:none}}
+  @media (max-width:560px){
+    .nav .wrap{height:64px}
+    .nav .tel span{display:none}
+    .nav .tel{padding:11px;border-radius:50%}
+    .marca .nombre{font-size:20px}
+  }
+
+  /* ——— botones ——— */
+  .btn{
+    display:inline-flex;align-items:center;gap:12px;
+    padding:16px 26px;border-radius:2px;
+    font-size:13px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;
+    transition:transform .35s cubic-bezier(.2,.7,.2,1),background .3s,color .3s,box-shadow .3s;
+    position:relative;overflow:hidden;
+  }
+  .btn svg{width:16px;height:16px;flex:none;transition:transform .35s}
+  .btn:hover svg{transform:translateX(3px)}
+  .btn-burdeos{background:var(--burdeos);color:var(--crema);box-shadow:0 12px 30px -12px rgba(109,31,44,.7)}
+  .btn-burdeos:hover{background:var(--burdeos-2);transform:translateY(-2px)}
+  .btn-linea{border:1px solid rgba(244,236,223,.4);color:var(--crema)}
+  .btn-linea:hover{border-color:var(--crema);background:rgba(244,236,223,.06)}
+  .btn-oscuro{background:var(--tinta);color:var(--crema)}
+  .btn-oscuro:hover{background:var(--negro)}
+
+  /* ——— hero ——— */
+  .hero{
+    position:relative;
+    background:var(--negro);
+    color:var(--crema);
+    min-height:calc(100vh - 100px);
+    display:flex;align-items:center;
+    overflow:hidden;
+    isolation:isolate;
+  }
+  .hero::before{ /* luz cálida */
+    content:"";position:absolute;inset:0;z-index:-2;
+    background:
+      radial-gradient(900px 600px at 78% 30%,rgba(184,118,63,.22),transparent 60%),
+      radial-gradient(700px 500px at 20% 90%,rgba(109,31,44,.35),transparent 60%),
+      linear-gradient(180deg,#1b1817 0%,var(--negro) 60%,#141211 100%);
+  }
+  .hero::after{ /* textura de rayas finas tipo lino */
+    content:"";position:absolute;inset:0;z-index:-1;opacity:.5;
+    background:repeating-linear-gradient(90deg,transparent 0 3px,rgba(255,255,255,.012) 3px 4px);
+  }
+  .hero .wrap{
+    display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;
+    padding-block:110px 90px;
+  }
+  .hero .kicker{
+    display:inline-flex;align-items:center;gap:14px;
+    font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--cobre-2);
+    margin-bottom:30px;
+  }
+  .hero .kicker::before{content:"";width:40px;height:1px;background:var(--cobre)}
+  .hero h1{
+    font-family:var(--serif);font-weight:400;
+    font-size:clamp(44px,6.4vw,88px);line-height:.98;letter-spacing:-.015em;
+    color:var(--crema);
+    max-width:12ch;
+  }
+  .hero h1 em{font-style:italic;color:var(--cobre-2)}
+  .hero h1 .segura{white-space:nowrap}
+  .hero p.lead{
+    margin-top:30px;max-width:46ch;
+    font-size:18px;line-height:1.65;color:rgba(244,236,223,.72);
+  }
+  .hero .acciones{display:flex;flex-wrap:wrap;gap:16px;margin-top:44px;align-items:center}
+  .hero .dir{
+    margin-top:56px;display:flex;flex-wrap:wrap;gap:36px;
+    font-size:13px;letter-spacing:.06em;color:rgba(244,236,223,.6);
+  }
+  .hero .dir span{display:flex;align-items:center;gap:10px}
+  .hero .dir svg{width:14px;height:14px;color:var(--cobre-2)}
+
+  /* emblema del hero */
+  .emblema{position:relative;aspect-ratio:1/1;max-width:520px;margin-left:auto;width:100%}
+  .emblema svg{width:100%;height:100%}
+  .emblema .anillo{animation:girar 70s linear infinite;transform-origin:center}
+  @keyframes girar{to{transform:rotate(360deg)}}
+  .emblema .mechon{stroke-dasharray:900;stroke-dashoffset:900;animation:trazar 2.6s cubic-bezier(.4,0,.2,1) forwards}
+  .emblema .mechon:nth-child(2){animation-delay:.25s}
+  .emblema .mechon:nth-child(3){animation-delay:.5s}
+  .emblema .mechon:nth-child(4){animation-delay:.75s}
+  .emblema .mechon:nth-child(5){animation-delay:1s}
+  @keyframes trazar{to{stroke-dashoffset:0}}
+
+  /* entrada escalonada */
+  .rev{opacity:0;transform:translateY(22px);animation:rev .9s cubic-bezier(.2,.7,.2,1) forwards}
+  .rev.d1{animation-delay:.1s}.rev.d2{animation-delay:.25s}.rev.d3{animation-delay:.4s}.rev.d4{animation-delay:.55s}.rev.d5{animation-delay:.7s}
+  @keyframes rev{to{opacity:1;transform:none}}
+
+  /* cinta inferior del hero */
+  .cinta{
+    border-top:1px solid rgba(244,236,223,.1);
+    background:rgba(0,0,0,.25);
+    color:rgba(244,236,223,.55);
+    font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+    overflow:hidden;white-space:nowrap;
+  }
+  html,body{overflow-x:hidden;max-width:100%}
+  .cinta{position:absolute;left:0;right:0;bottom:0;width:100%;box-sizing:border-box}
+  .cinta .pista{display:inline-flex;gap:0;animation:desliza 40s linear infinite}
+  .cinta .pista span{display:inline-flex;align-items:center;gap:24px;padding:16px 24px 16px 0}
+  .cinta .pista span::after{content:"";width:5px;height:5px;border-radius:50%;background:var(--cobre);display:inline-block}
+  @keyframes desliza{to{transform:translateX(-50%)}}
+
+  @media (max-width:1000px){
+    .hero .wrap{grid-template-columns:1fr;padding-block:80px 60px}
+    .emblema{max-width:360px;margin:10px auto 0}
+  }
+  @media (max-width:560px){
+    .hero{min-height:auto}
+    .hero .wrap{padding-block:64px 48px;gap:24px}
+    .hero h1{font-size:44px}
+    .hero p.lead{font-size:16px;margin-top:22px}
+    .hero .acciones{margin-top:32px}
+    .hero .acciones .btn{width:100%;justify-content:center}
+    .hero .dir{margin-top:36px;gap:14px;flex-direction:column}
+    .emblema{max-width:280px}
+  }
+
+  /* ——— cabeceras de sección ——— */
+  section{position:relative}
+  .cab{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:end;margin-bottom:64px}
+  .cab .num{
+    font-family:var(--serif);font-size:14px;letter-spacing:.2em;color:var(--burdeos);
+    writing-mode:vertical-rl;transform:rotate(180deg);
+    padding-top:10px;border-bottom:none;border-right:1px solid var(--burdeos);
+    padding-right:12px;align-self:stretch;
+  }
+  .cab .kicker{font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--burdeos);margin-bottom:14px}
+  .cab h2{
+    font-family:var(--serif);font-weight:400;
+    font-size:clamp(36px,4.6vw,60px);line-height:1.02;letter-spacing:-.01em;
+    max-width:18ch;
+  }
+  .cab h2 em{font-style:italic;color:var(--burdeos)}
+  .cab p{max-width:52ch;margin-top:18px;color:var(--tinta-suave);font-size:16px}
+  @media (max-width:560px){
+    .cab{grid-template-columns:1fr;gap:16px;margin-bottom:40px}
+    .cab .num{writing-mode:horizontal-tb;transform:none;border-right:none;border-bottom:1px solid var(--burdeos);padding:0 0 8px;width:max-content;align-self:start}
+  }
+
+  /* ——— servicios ——— */
+  .servicios{padding-block:120px}
+  .servicios::before{ /* peine de fondo */
+    content:"";position:absolute;right:-120px;top:80px;width:520px;height:520px;opacity:.06;pointer-events:none;
+    background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%23171514' stroke-width='1'%3E%3Cpath d='M10 40h80v8H10z'/%3E%3Cpath d='M14 48v14M20 48v14M26 48v14M32 48v14M38 48v14M44 48v14M50 48v14M56 48v14M62 48v14M68 48v14M74 48v14M80 48v14M86 48v14'/%3E%3C/svg%3E") center/contain no-repeat;
+    transform:rotate(-18deg);
+  }
+  .dos{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+  .col{
+    background:var(--crema-2);
+    border:1px solid var(--linea);
+    padding:44px 44px 40px;
+    position:relative;overflow:hidden;
+  }
+  .col::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--burdeos),var(--cobre))}
+  .col.hombre::before{background:linear-gradient(90deg,var(--negro-3),var(--cobre))}
+  .col header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:28px;padding-bottom:22px;border-bottom:1px solid var(--linea)}
+  .col header h3{font-family:var(--serif);font-weight:400;font-size:34px;letter-spacing:-.01em}
+  .col header h3 small{display:block;font-family:var(--sans);font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--tinta-suave);margin-top:4px}
+  .col header .ico{width:52px;height:52px;border-radius:50%;border:1px solid var(--tinta);display:grid;place-items:center;color:var(--tinta);flex:none}
+  .col header .ico svg{width:24px;height:24px}
+  .lista{list-style:none;display:grid;gap:0}
+  .lista li{
+    display:grid;grid-template-columns:36px 1fr;gap:18px;align-items:start;
+    padding:20px 0;border-bottom:1px dashed rgba(23,21,20,.18);
+    transition:padding-left .35s cubic-bezier(.2,.7,.2,1);
+  }
+  .lista li:last-child{border-bottom:none}
+  .lista li:hover{padding-left:8px}
+  .lista .n{font-family:var(--serif);font-size:15px;color:var(--burdeos);padding-top:4px;font-style:italic}
+  .lista h4{font-family:var(--serif);font-weight:400;font-size:22px;letter-spacing:-.005em;margin-bottom:5px}
+  .lista p{font-size:14.5px;color:var(--tinta-suave);line-height:1.55}
+  .servicios .nota{
+    margin-top:36px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;
+    padding:26px 32px;border:1px solid var(--linea);background:transparent;
+  }
+  .servicios .nota p{font-family:var(--serif);font-size:20px;font-style:italic;max-width:52ch}
+  @media (max-width:900px){.dos{grid-template-columns:1fr}}
+  @media (max-width:560px){
+    .servicios{padding-block:72px}
+    .col{padding:30px 22px 24px}
+    .col header h3{font-size:28px}
+    .lista h4{font-size:19px}
+    .servicios .nota{padding:22px}
+    .servicios .nota .btn{width:100%;justify-content:center}
+  }
+
+  /* ——— por qué ortín ——— */
+  .porque{
+    background:var(--negro);color:var(--crema);
+    padding-block:120px;
+    overflow:hidden;
+  }
+  .porque::before{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:
+      radial-gradient(700px 400px at 10% 0%,rgba(109,31,44,.35),transparent 60%),
+      radial-gradient(600px 400px at 95% 100%,rgba(184,118,63,.16),transparent 60%);
+  }
+  .porque .cab .kicker,.porque .cab .num{color:var(--cobre-2);border-color:var(--cobre)}
+  .porque .cab h2{color:var(--crema)}
+  .porque .cab h2 em{color:var(--cobre-2)}
+  .porque .cab p{color:rgba(244,236,223,.65)}
+  .valores{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid rgba(244,236,223,.14);position:relative}
+  .valor{
+    padding:44px 36px 40px;
+    border-right:1px solid rgba(244,236,223,.14);
+    position:relative;
+    transition:background .4s;
+  }
+  .valor:last-child{border-right:none}
+  .valor:hover{background:rgba(244,236,223,.03)}
+  .valor .ico{width:56px;height:56px;color:var(--cobre-2);margin-bottom:34px}
+  .valor .ico svg{width:100%;height:100%}
+  .valor .num{position:absolute;top:22px;right:26px;font-family:var(--serif);font-style:italic;font-size:15px;color:rgba(244,236,223,.35)}
+  .valor h3{font-family:var(--serif);font-weight:400;font-size:28px;line-height:1.1;margin-bottom:14px;letter-spacing:-.01em}
+  .valor p{color:rgba(244,236,223,.66);font-size:15.5px;line-height:1.6}
+  .porque .cita{
+    margin-top:80px;display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center;
+  }
+  .porque .cita .tijera{width:74px;height:74px;color:var(--cobre-2);flex:none}
+  .porque .cita p{font-family:var(--serif);font-size:clamp(24px,3vw,36px);line-height:1.2;font-style:italic;max-width:26ch;color:var(--crema)}
+  @media (max-width:900px){
+    .valores{grid-template-columns:1fr}
+    .valor{border-right:none;border-bottom:1px solid rgba(244,236,223,.14)}
+    .valor:last-child{border-bottom:none}
+  }
+  @media (max-width:560px){
+    .porque{padding-block:72px}
+    .valor{padding:30px 22px 28px}
+    .valor .ico{width:44px;height:44px;margin-bottom:22px}
+    .porque .cita{grid-template-columns:1fr;gap:18px;margin-top:52px}
+    .porque .cita .tijera{width:48px;height:48px}
+  }
+
+  /* ——— contacto ——— */
+  .contacto{padding-block:120px;background:var(--crema)}
+  .contacto .grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:stretch}
+  .ficha{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--tinta)}
+  .ficha .fila{padding:28px 0;border-bottom:1px solid var(--linea);display:grid;grid-template-columns:120px 1fr;gap:20px;align-items:start}
+  .ficha .fila .et{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--burdeos);padding-top:8px}
+  .ficha .fila .v{font-family:var(--serif);font-size:26px;line-height:1.2;letter-spacing:-.01em}
+  .ficha .fila .v small{display:block;font-family:var(--sans);font-size:14px;color:var(--tinta-suave);margin-top:6px;letter-spacing:0}
+  .ficha .fila .v a{border-bottom:1px solid transparent;transition:border-color .3s,color .3s}
+  .ficha .fila .v a:hover{border-color:var(--burdeos);color:var(--burdeos)}
+  .ficha .acc{margin-top:34px;display:flex;flex-wrap:wrap;gap:14px}
+  .mapa{
+    background:var(--crema-2);
+    border:1px solid var(--linea);
+    position:relative;overflow:hidden;
+    min-height:460px;
+  }
+  .mapa svg{width:100%;height:100%;position:absolute;inset:0}
+  .mapa .leyenda{
+    position:absolute;left:20px;bottom:20px;
+    background:rgba(244,236,223,.92);border:1px solid var(--linea);
+    padding:12px 16px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--tinta-suave);
+    backdrop-filter:blur(6px);
+  }
+  .mapa .leyenda b{display:block;font-family:var(--serif);font-size:16px;letter-spacing:0;text-transform:none;color:var(--tinta);margin-bottom:2px}
+  .pin{animation:late 2.4s ease-in-out infinite;transform-origin:center}
+  @keyframes late{0%,100%{opacity:.35;transform:scale(.6)}50%{opacity:0;transform:scale(1.6)}}
+  @media (max-width:900px){
+    .contacto .grid{grid-template-columns:1fr}
+    .mapa{min-height:380px}
+  }
+  @media (max-width:560px){
+    .contacto{padding-block:72px}
+    .ficha .fila{grid-template-columns:1fr;gap:8px;padding:22px 0}
+    .ficha .fila .v{font-size:22px}
+    .ficha .acc .btn{width:100%;justify-content:center}
+    .mapa{min-height:320px}
+  }
+
+  /* ——— footer ——— */
+  footer{background:var(--negro);color:rgba(244,236,223,.7);padding-block:64px 36px;border-top:3px solid var(--burdeos)}
+  footer .arriba{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:40px;padding-bottom:48px;border-bottom:1px solid rgba(244,236,223,.12)}
+  footer .marca .mono{border-color:rgba(244,236,223,.5);color:var(--crema)}
+  footer .marca .nombre{color:var(--crema)}
+  footer .marca .nombre small{color:rgba(244,236,223,.5)}
+  footer p{font-size:14px;line-height:1.7;max-width:36ch;margin-top:18px}
+  footer h5{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--cobre-2);margin-bottom:18px}
+  footer ul{list-style:none;display:grid;gap:10px;font-size:15px}
+  footer ul a{transition:color .3s}
+  footer ul a:hover{color:var(--crema)}
+  footer .abajo{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-top:26px;font-size:12px;letter-spacing:.04em;color:rgba(244,236,223,.45)}
+  footer .abajo .studio{color:rgba(244,236,223,.6)}
+  footer .abajo .studio b{color:var(--cobre-2);font-weight:600}
+  @media (max-width:900px){footer .arriba{grid-template-columns:1fr 1fr}}
+  @media (max-width:560px){
+    footer{padding-block:48px 28px}
+    footer .arriba{grid-template-columns:1fr;gap:32px}
+    footer .abajo{flex-direction:column}
+  }
+
+  /* ——— reveals por scroll ——— */
+  .sr{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+  .sr.in{opacity:1;transform:none}
+  .sr.l1{transition-delay:.1s}.sr.l2{transition-delay:.22s}.sr.l3{transition-delay:.34s}
+  @media (prefers-reduced-motion:reduce){
+    .sr,.rev{opacity:1;transform:none;animation:none;transition:none}
+    .emblema .anillo,.cinta .pista,.pin,.emblema .mechon{animation:none;stroke-dashoffset:0}
+  }
+</style>
+</head>
+<body>
+
+<!-- Barra de propuesta (obligatoria) -->
+<div class="aviso" role="note">
+  <span class="dot"></span>
+  <span>Propuesta de diseño · maqueta no oficial · <b>FFFFFFstudio</b> · Ángel Rubio</span>
+</div>
+
+<!-- Navegación -->
+<nav class="nav" aria-label="Principal">
+  <div class="wrap">
+    <a class="marca" href="#inicio" aria-label="Peluquería Ortín, inicio">
+      <span class="mono">O</span>
+      <span class="nombre">Ortín<small>Peluquería · Alicante</small></span>
+    </a>
+    <ul>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#porque">Por qué Ortín</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a class="tel" href="tel:+34965213007" aria-label="Llamar al 96 521 30 07">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg>
+      <span>96 521 30 07</span>
+    </a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<header class="hero" id="inicio">
+  <div class="wrap">
+    <div>
+      <p class="kicker rev d1">Centro de Alicante · C/ Segura 17</p>
+      <h1 class="rev d2">Tu peluquería de siempre, <em>en la <span class="segura">calle Segura</span></em></h1>
+      <p class="lead rev d3">Peluquería para mujer y hombre en el corazón de Alicante. Corte, color, mechas, tratamientos, peinados para eventos y barbería, con el trato cercano de una peluquería de barrio.</p>
+      <div class="acciones rev d4">
+        <a class="btn btn-burdeos" href="tel:+34965213007">
+          Reservar cita
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn-linea" href="#servicios">Ver servicios</a>
+      </div>
+      <div class="dir rev d5">
+        <span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-7 7-12a7 7 0 1 0-14 0c0 5 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          C/ Segura 17, 03004 Alicante
+        </span>
+        <span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          Horario: consultar por teléfono
+        </span>
+      </div>
+    </div>
+
+    <!-- Emblema SVG: anillo tipográfico, tijeras y mechones -->
+    <div class="emblema rev d3" aria-hidden="true">
+      <svg viewBox="0 0 520 520" fill="none">
+        <defs>
+          <path id="circ" d="M260,260 m-200,0 a200,200 0 1,1 400,0 a200,200 0 1,1 -400,0"/>
+          <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+            <stop offset="0" stop-color="#b8763f" stop-opacity=".22"/>
+            <stop offset="1" stop-color="#b8763f" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="hebra" x1="0" x2="1">
+            <stop offset="0" stop-color="#d9a06a"/>
+            <stop offset="1" stop-color="#8a2a3a"/>
+          </linearGradient>
+        </defs>
+        <circle cx="260" cy="260" r="240" fill="url(#glow)"/>
+        <circle cx="260" cy="260" r="228" stroke="rgba(244,236,223,.12)"/>
+        <circle cx="260" cy="260" r="170" stroke="rgba(244,236,223,.08)" stroke-dasharray="2 8"/>
+
+        <g class="anillo">
+          <text font-family="Avenir Next, Gill Sans, Segoe UI, Helvetica, sans-serif" font-size="12.5" letter-spacing="4.2" fill="rgba(244,236,223,.55)">
+            <textPath href="#circ" startOffset="0">PELUQUERÍA ORTÍN · CALLE SEGURA 17 · ALICANTE CENTRO · MUJER &amp; HOMBRE · PELUQUERÍA ORTÍN · CALLE SEGURA 17 · ALICANTE CENTRO ·</textPath>
+          </text>
+        </g>
+
+        <!-- mechones -->
+        <g stroke="url(#hebra)" stroke-width="1.6" stroke-linecap="round">
+          <path class="mechon" d="M150 330 C 200 300, 210 230, 190 180 S 250 130, 300 170 S 330 260, 290 300 S 340 360, 400 330"/>
+          <path class="mechon" d="M140 350 C 195 320, 215 250, 195 200 S 255 150, 305 190 S 335 280, 295 320 S 345 380, 405 350" opacity=".7"/>
+          <path class="mechon" d="M130 370 C 190 340, 220 270, 200 220 S 260 170, 310 210 S 340 300, 300 340 S 350 400, 410 370" opacity=".45"/>
+          <path class="mechon" d="M160 310 C 205 280, 205 210, 185 160 S 245 110, 295 150 S 325 240, 285 280 S 335 340, 395 310" opacity=".5"/>
+          <path class="mechon" d="M170 290 C 210 260, 200 190, 180 140 S 240 90, 290 130 S 320 220, 280 260 S 330 320, 390 290" opacity=".3"/>
+        </g>
+
+        <!-- tijeras -->
+        <g transform="translate(260 262) rotate(-32)" stroke="#f4ecdf" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+          <path d="M-8 6 L 70 -34"/>
+          <path d="M-8 -6 L 70 34"/>
+          <path d="M-8 6 L 70 -34 L 78 -30 L 0 12 Z" fill="rgba(244,236,223,.12)"/>
+          <path d="M-8 -6 L 70 34 L 78 30 L 0 -12 Z" fill="rgba(244,236,223,.12)"/>
+          <circle cx="-30" cy="22" r="14" stroke="#d9a06a"/>
+          <circle cx="-30" cy="-22" r="14" stroke="#d9a06a"/>
+          <path d="M-18 14 L -8 6 M-18 -14 L -8 -6"/>
+          <circle cx="-4" cy="0" r="3" fill="#d9a06a" stroke="none"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <div class="cinta" aria-hidden="true">
+    <div class="pista">
+      <span>Corte</span><span>Color</span><span>Mechas</span><span>Tratamientos</span><span>Peinados para eventos</span><span>Barbería</span><span>Mujer &amp; hombre</span>
+      <span>Corte</span><span>Color</span><span>Mechas</span><span>Tratamientos</span><span>Peinados para eventos</span><span>Barbería</span><span>Mujer &amp; hombre</span>
+    </div>
+  </div>
+</header>
+
+<!-- Servicios -->
+<section class="servicios" id="servicios">
+  <div class="wrap">
+    <div class="cab sr">
+      <span class="num">01</span>
+      <div>
+        <p class="kicker">Servicios</p>
+        <h2>Peluquería para <em>mujer</em> y <em>hombre</em></h2>
+        <p>Lo esencial hecho bien: corte, color y cuidado del cabello, además de peinados para ocasiones especiales y servicio de barbería.</p>
+      </div>
+    </div>
+
+    <div class="dos">
+      <article class="col mujer sr l1">
+        <header>
+          <h3>Mujer<small>Peluquería</small></h3>
+          <span class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 21c0-5 1-9 3-13 1-2 2-3 3-4 1 1 2 2 3 4 2 4 3 8 3 13"/><path d="M9 9c1 3 1 7 0 12M15 9c-1 3-1 7 0 12"/><path d="M12 4c-2 1-3 3-3 5"/></svg>
+          </span>
+        </header>
+        <ul class="lista">
+          <li><span class="n">i</span><div><h4>Corte</h4><p>Cortes a medida, del clásico al actual, pensados para tu tipo de cabello y tu día a día.</p></div></li>
+          <li><span class="n">ii</span><div><h4>Color</h4><p>Coloración completa, retoque de raíz y matices para un resultado natural y duradero.</p></div></li>
+          <li><span class="n">iii</span><div><h4>Mechas</h4><p>Mechas y técnicas de aclarado para aportar luz y movimiento al cabello.</p></div></li>
+          <li><span class="n">iv</span><div><h4>Tratamientos</h4><p>Cuidados específicos para hidratar, reparar y mantener el cabello sano.</p></div></li>
+          <li><span class="n">v</span><div><h4>Peinados para eventos</h4><p>Recogidos y peinados para bodas, comuniones, celebraciones y ocasiones especiales.</p></div></li>
+        </ul>
+      </article>
+
+      <article class="col hombre sr l2">
+        <header>
+          <h3>Hombre<small>Peluquería &amp; barbería</small></h3>
+          <span class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3l11 11"/><path d="M20 3L9 14"/><circle cx="6.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/><path d="M9 14l-.8 1.6M15 14l.8 1.6"/></svg>
+          </span>
+        </header>
+        <ul class="lista">
+          <li><span class="n">i</span><div><h4>Corte de caballero</h4><p>Corte con tijera y máquina, degradados y acabados cuidados.</p></div></li>
+          <li><span class="n">ii</span><div><h4>Barbería</h4><p>Arreglo y perfilado de barba, con afeitado y cuidado de la piel.</p></div></li>
+          <li><span class="n">iii</span><div><h4>Color y camuflaje de canas</h4><p>Coloración discreta para un resultado natural, sin efecto tinte.</p></div></li>
+          <li><span class="n">iv</span><div><h4>Tratamientos</h4><p>Cuidado del cabello y del cuero cabelludo para mantenerlo fuerte y sano.</p></div></li>
+          <li><span class="n">v</span><div><h4>Peinados para eventos</h4><p>Acabado y peinado para bodas, celebraciones y ocasiones especiales.</p></div></li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="nota sr l3">
+      <p>¿Tienes dudas sobre qué servicio necesitas? Llámanos y te asesoramos sin compromiso.</p>
+      <a class="btn btn-oscuro" href="tel:+34965213007">
+        Llamar ahora
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Por qué Ortín -->
+<section class="porque" id="porque">
+  <div class="wrap">
+    <div class="cab sr">
+      <span class="num">02</span>
+      <div>
+        <p class="kicker">Por qué Ortín</p>
+        <h2>Una peluquería de barrio, <em>con clase</em></h2>
+        <p>Lo que se espera de una peluquería del centro de Alicante: oficio, trato cercano y un espacio donde apetece volver.</p>
+      </div>
+    </div>
+
+    <div class="valores">
+      <article class="valor sr l1">
+        <span class="num">i</span>
+        <div class="ico" aria-hidden="true">
+          <svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M10 8l24 24"/><path d="M46 8L22 32"/><circle cx="15" cy="41" r="6"/><circle cx="41" cy="41" r="6"/><path d="M22 32l-2.5 4M34 32l2.5 4"/><path d="M28 26v0"/></svg>
+        </div>
+        <h3>Oficio y atención al detalle</h3>
+        <p>Trabajamos con calma y con las manos: cada corte y cada color se hace a medida, escuchando primero lo que quieres.</p>
+      </article>
+      <article class="valor sr l2">
+        <span class="num">ii</span>
+        <div class="ico" aria-hidden="true">
+          <svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 30c3-8 9-12 16-12s13 4 16 12"/><path d="M8 34h40"/><path d="M12 34c0 8 7 14 16 14s16-6 16-14"/><path d="M28 18v-6"/><circle cx="28" cy="10" r="2"/></svg>
+        </div>
+        <h3>Trato cercano</h3>
+        <p>Te llamamos por tu nombre. Una peluquería de barrio donde el trato es personal y el consejo, sincero.</p>
+      </article>
+      <article class="valor sr l3">
+        <span class="num">iii</span>
+        <div class="ico" aria-hidden="true">
+          <svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M28 46s16-11 16-24a16 16 0 0 0-32 0c0 13 16 24 16 24z"/><circle cx="28" cy="22" r="5"/><path d="M8 50h40"/></svg>
+        </div>
+        <h3>En pleno centro</h3>
+        <p>En la calle Segura, a un paso de todo. Fácil de llegar andando y con la comodidad de estar en el centro de Alicante.</p>
+      </article>
+    </div>
+
+    <div class="cita sr">
+      <svg class="tijera" viewBox="0 0 74 74" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M14 10l32 32"/><path d="M60 10L28 42"/><circle cx="20" cy="54" r="8"/><circle cx="54" cy="54" r="8"/><path d="M28 42l-3.5 5.5M46 42l3.5 5.5"/>
+        <path d="M6 30c6 2 12 2 18 0M50 30c6 2 12 2 18 0" opacity=".5"/>
+      </svg>
+      <p>Cortar bien es solo el principio. Lo importante es que salgas por la puerta sintiéndote tú.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Contacto -->
+<section class="contacto" id="contacto">
+  <div class="wrap">
+    <div class="cab sr">
+      <span class="num">03</span>
+      <div>
+        <p class="kicker">Contacto</p>
+        <h2>Reserva tu cita <em>por teléfono</em></h2>
+        <p>Llámanos y buscamos el momento que mejor te venga. Estamos en el centro de Alicante, en la calle Segura.</p>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="sr l1">
+        <div class="ficha">
+          <div class="fila">
+            <span class="et">Teléfono</span>
+            <span class="v"><a href="tel:+34965213007">96 521 30 07</a><small>Reservas y consultas</small></span>
+          </div>
+          <div class="fila">
+            <span class="et">Dirección</span>
+            <span class="v">C/ Segura 17<small>03004 Alicante · Centro</small></span>
+          </div>
+          <div class="fila">
+            <span class="et">Horario</span>
+            <span class="v">Consultar horario<small>Llámanos para confirmar disponibilidad</small></span>
+          </div>
+        </div>
+        <div class="acc">
+          <a class="btn btn-burdeos" href="tel:+34965213007">
+            Reservar cita
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Mapa esquemático SVG (no a escala) -->
+      <div class="mapa sr l2" role="img" aria-label="Mapa esquemático de la ubicación en la calle Segura, centro de Alicante">
+        <svg viewBox="0 0 640 460" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <pattern id="cuad" width="20" height="20" patternUnits="userSpaceOnUse">
+              <path d="M20 0H0V20" fill="none" stroke="rgba(23,21,20,.06)" stroke-width="1"/>
+            </pattern>
+          </defs>
+          <rect width="640" height="460" fill="#ece2d0"/>
+          <rect width="640" height="460" fill="url(#cuad)"/>
+
+          <!-- manzanas -->
+          <g fill="#e2d5bf" stroke="rgba(23,21,20,.12)">
+            <rect x="40" y="40" width="150" height="110" rx="3"/>
+            <rect x="230" y="40" width="130" height="110" rx="3"/>
+            <rect x="400" y="40" width="200" height="110" rx="3"/>
+            <rect x="40" y="190" width="150" height="90" rx="3"/>
+            <rect x="230" y="190" width="130" height="90" rx="3"/>
+            <rect x="400" y="190" width="200" height="90" rx="3"/>
+            <rect x="40" y="320" width="150" height="110" rx="3"/>
+            <rect x="230" y="320" width="130" height="110" rx="3"/>
+            <rect x="400" y="320" width="200" height="110" rx="3"/>
+          </g>
+
+          <!-- calles -->
+          <g stroke="#f4ecdf" stroke-width="22" stroke-linecap="round">
+            <path d="M0 170H640"/><path d="M0 300H640"/>
+            <path d="M210 0V460"/><path d="M380 0V460"/>
+          </g>
+          <g stroke="rgba(23,21,20,.2)" stroke-width="1" stroke-dasharray="6 8">
+            <path d="M0 170H640"/><path d="M0 300H640"/>
+            <path d="M210 0V460"/><path d="M380 0V460"/>
+          </g>
+
+          <!-- calle segura destacada -->
+          <path d="M0 300H640" stroke="#6d1f2c" stroke-width="3" stroke-linecap="round" opacity=".85"/>
+
+          <!-- etiquetas -->
+          <g font-family="Avenir Next, Gill Sans, Segoe UI, Helvetica, sans-serif" font-size="11" letter-spacing="2" fill="rgba(23,21,20,.5)">
+            <text x="24" y="164">CENTRO DE ALICANTE</text>
+            <text x="470" y="294" fill="#6d1f2c" font-weight="600">C/ SEGURA</text>
+          </g>
+
+          <!-- pin -->
+          <g transform="translate(300 300)">
+            <circle class="pin" r="26" fill="#6d1f2c"/>
+            <circle r="7" fill="#6d1f2c" stroke="#f4ecdf" stroke-width="3"/>
+            <g transform="translate(0 -14)">
+              <path d="M-16 -46h32v34l-16 12-16-12z" fill="#171514"/>
+              <text x="0" y="-25" text-anchor="middle" font-family="Didot, Bodoni MT, Playfair Display, Georgia, serif" font-size="19" fill="#f4ecdf">17</text>
+            </g>
+          </g>
+
+          <!-- brújula -->
+          <g transform="translate(590 60)" stroke="rgba(23,21,20,.45)" fill="none" stroke-width="1">
+            <circle r="18"/>
+            <path d="M0 -14V14M-14 0H14" opacity=".5"/>
+            <path d="M0 -14l5 12H-5z" fill="#6d1f2c" stroke="none"/>
+            <text y="-24" text-anchor="middle" font-family="Avenir Next, Gill Sans, Helvetica, sans-serif" font-size="10" fill="rgba(23,21,20,.6)" stroke="none">N</text>
+          </g>
+        </svg>
+        <div class="leyenda">
+          <b>Peluquería Ortín</b>
+          C/ Segura 17 · Mapa esquemático, no a escala
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="wrap">
+    <div class="arriba">
+      <div>
+        <div class="marca">
+          <span class="mono">O</span>
+          <span class="nombre">Ortín<small>Peluquería · Alicante</small></span>
+        </div>
+        <p>Peluquería para mujer y hombre en el centro de Alicante. Tu peluquería de siempre, en la calle Segura.</p>
+      </div>
+      <div>
+        <h5>Contacto</h5>
+        <ul>
+          <li><a href="tel:+34965213007">96 521 30 07</a></li>
+          <li>C/ Segura 17</li>
+          <li>03004 Alicante · Centro</li>
+          <li>Horario: consultar</li>
+        </ul>
+      </div>
+      <div>
+        <h5>Secciones</h5>
+        <ul>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#porque">Por qué Ortín</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="abajo">
+      <span>Peluquería Ortín · Alicante</span>
+      <span class="studio">Propuesta de rediseño presentada por <b>FFFFFFstudio</b> — Ángel Rubio, diseñador web · Alicante</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var els = document.querySelectorAll('.sr');
+    if (!('IntersectionObserver' in window)) { els.forEach(function(e){ e.classList.add('in'); }); return; }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { threshold: .12, rootMargin: '0px 0px -8% 0px' });
+    els.forEach(function(e){ io.observe(e); });
+  })();
+</script>
+</body>
+</html>

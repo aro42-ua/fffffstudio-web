@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ferretería Urbana · Alicante — Propuesta de diseño</title>
+<style>
+:root{
+  --graf-900:#15171a;
+  --graf-800:#1e2126;
+  --graf-700:#2b2f36;
+  --graf-600:#3d434c;
+  --graf-400:#79818d;
+  --graf-200:#c9ced6;
+  --graf-100:#e7eaee;
+  --papel:#f4f5f7;
+  --blanco:#ffffff;
+  --naranja:#ff5a1f;
+  --naranja-osc:#d8410c;
+  --amarillo:#ffc700;
+  --verde:#1fae6a;
+  --barra:44px;
+  --radio:3px;
+  --sans:"Helvetica Neue Condensed","Helvetica Neue",Helvetica,"Liberation Sans Narrow","DejaVu Sans Condensed",sans-serif;
+  --texto:"Helvetica Neue",Helvetica,"Liberation Sans","DejaVu Sans",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--papel);
+  color:var(--graf-900);
+  font-family:var(--texto);
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img,svg{max-width:100%}
+h1,h2,h3,h4{font-family:var(--sans);font-weight:800;letter-spacing:-.02em;line-height:.98;margin:0;text-transform:uppercase}
+p{margin:0}
+a{color:inherit}
+
+/* ---------- barra propuesta ---------- */
+.propuesta{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  height:var(--barra);
+  display:flex;align-items:center;justify-content:center;
+  background:var(--graf-900);
+  color:var(--graf-200);
+  font-family:var(--sans);
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  padding:0 14px;
+  border-bottom:1px solid #000;
+}
+.propuesta span{
+  display:block;
+  max-width:100%;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  text-align:center;
+}
+.propuesta b{color:var(--amarillo);font-weight:800}
+
+/* ---------- cabecera ---------- */
+.nav{
+  position:sticky;top:var(--barra);z-index:150;
+  background:rgba(244,245,247,.92);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--graf-200);
+}
+.nav-in{
+  max-width:1180px;margin:0 auto;padding:12px 24px;
+  display:flex;align-items:center;gap:18px;
+}
+.marca{display:flex;align-items:center;gap:10px;text-decoration:none;margin-right:auto;min-width:0}
+.marca .tuerca{flex:0 0 auto}
+.marca-txt{min-width:0}
+.marca-txt .n1{font-family:var(--sans);font-weight:800;font-size:19px;letter-spacing:-.02em;text-transform:uppercase;display:block;line-height:1}
+.marca-txt .n2{font-family:var(--sans);font-size:9.5px;letter-spacing:.3em;color:var(--graf-400);text-transform:uppercase;display:block;margin-top:3px}
+.nav-links{display:flex;gap:26px;font-family:var(--sans);font-size:12px;letter-spacing:.13em;text-transform:uppercase}
+.nav-links a{text-decoration:none;color:var(--graf-600);padding:4px 0;border-bottom:2px solid transparent;transition:.18s}
+.nav-links a:hover{color:var(--graf-900);border-color:var(--naranja)}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--sans);font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:800;
+  padding:11px 18px;border-radius:var(--radio);text-decoration:none;
+  border:1px solid transparent;transition:.18s;white-space:nowrap;
+}
+.btn-p{background:var(--naranja);color:#fff;box-shadow:0 2px 0 var(--naranja-osc)}
+.btn-p:hover{background:var(--naranja-osc);box-shadow:0 1px 0 var(--naranja-osc);transform:translateY(1px)}
+.btn-g{background:transparent;color:var(--graf-900);border-color:var(--graf-600)}
+.btn-g:hover{background:var(--graf-900);color:#fff;border-color:var(--graf-900)}
+.btn-l{background:var(--amarillo);color:var(--graf-900);box-shadow:0 2px 0 #c99c00}
+.btn-l:hover{transform:translateY(1px);box-shadow:0 1px 0 #c99c00}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    linear-gradient(180deg,var(--graf-800) 0%,var(--graf-900) 100%);
+  color:#fff;
+  padding:78px 0 0;
+}
+.hero::before{
+  content:"";position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.055) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px);
+  background-size:56px 56px;
+  mask-image:radial-gradient(120% 90% at 20% 10%,#000 20%,transparent 80%);
+  -webkit-mask-image:radial-gradient(120% 90% at 20% 10%,#000 20%,transparent 80%);
+}
+.hero::after{
+  content:"";position:absolute;right:-180px;top:-140px;width:620px;height:620px;
+  background:radial-gradient(circle,rgba(255,90,31,.30),transparent 62%);
+  pointer-events:none;
+}
+.hero-in{position:relative;z-index:2;max-width:1180px;margin:0 auto;padding:0 24px 0}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:48px;align-items:center}
+.kicker{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--sans);font-size:11px;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--amarillo);margin-bottom:22px;
+}
+.kicker::before{content:"";width:30px;height:2px;background:var(--amarillo)}
+.hero h1{
+  font-size:clamp(34px,5.4vw,66px);
+  color:#fff;
+  text-wrap:balance;
+}
+.hero h1 em{font-style:normal;color:var(--naranja);display:inline-block}
+.hero h1 .sub{display:block;color:var(--graf-200);font-size:.46em;font-weight:700;letter-spacing:.01em;margin-top:18px;text-transform:none;line-height:1.35;max-width:30ch}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.hero-tel{
+  display:block;margin-top:20px;
+  font-family:var(--sans);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--graf-400);
+}
+.hero-pad{padding-bottom:86px}
+
+/* estantería hero */
+.estante{
+  border:1px solid rgba(255,255,255,.13);
+  border-radius:var(--radio);
+  background:linear-gradient(155deg,rgba(255,255,255,.06),rgba(255,255,255,.015));
+  padding:10px;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  overflow:hidden;
+}
+.estante .celda{
+  aspect-ratio:1/1;
+  background:rgba(0,0,0,.28);
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid rgba(255,255,255,.07);
+  transition:.25s;
+}
+.estante .celda:hover{background:rgba(255,90,31,.14);border-color:rgba(255,90,31,.5)}
+.estante .celda svg{width:46%;height:46%;stroke:var(--graf-200);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;transition:.25s}
+.estante .celda:hover svg{stroke:var(--amarillo)}
+
+/* cinta */
+.cinta{
+  position:relative;z-index:3;
+  background:var(--amarillo);
+  border-top:2px solid var(--graf-900);border-bottom:2px solid var(--graf-900);
+  overflow:hidden;
+}
+.cinta-in{
+  display:flex;gap:0;
+  max-width:1180px;margin:0 auto;padding:0 24px;
+  font-family:var(--sans);font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:800;
+  color:var(--graf-900);
+  flex-wrap:wrap;
+}
+.cinta-in span{padding:11px 22px 11px 0;display:flex;align-items:center;gap:9px}
+.cinta-in span::before{content:"";width:7px;height:7px;background:var(--graf-900);transform:rotate(45deg);flex:0 0 auto}
+
+/* ---------- secciones ---------- */
+.sec{max-width:1180px;margin:0 auto;padding:88px 24px}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+.sec-num{font-family:var(--sans);font-size:11px;letter-spacing:.3em;color:var(--naranja);text-transform:uppercase;margin-bottom:12px;display:block}
+.sec h2{font-size:clamp(27px,3.6vw,44px)}
+.sec-lead{max-width:42ch;color:var(--graf-600);font-size:15.5px}
+
+/* retícula estantería */
+.rack{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:0;
+  border:1.5px solid var(--graf-900);
+  background:var(--blanco);
+  border-radius:var(--radio);
+  overflow:hidden;
+}
+.item{
+  padding:30px 26px 32px;
+  border-right:1px solid var(--graf-100);
+  border-bottom:1px solid var(--graf-100);
+  position:relative;
+  transition:.22s;
+  background:var(--blanco);
+}
+.item:nth-child(3n){border-right:0}
+.item:nth-child(n+4){border-bottom:0}
+.item::after{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:transparent;transition:.22s;
+}
+.item:hover{background:#fbfbfc}
+.item:hover::after{background:var(--naranja)}
+.ico{
+  width:48px;height:48px;border:1.5px solid var(--graf-900);border-radius:var(--radio);
+  display:flex;align-items:center;justify-content:center;margin-bottom:20px;
+  background:var(--papel);transition:.22s;
+}
+.item:hover .ico{background:var(--amarillo);border-color:var(--graf-900)}
+.ico svg{width:26px;height:26px;stroke:var(--graf-900);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.item h3{font-size:17px;letter-spacing:.01em;margin-bottom:9px}
+.item p{font-size:14.5px;color:var(--graf-600);line-height:1.55}
+.etq{
+  display:inline-block;margin-top:14px;
+  font-family:var(--sans);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--graf-400);border:1px solid var(--graf-200);border-radius:99px;padding:3px 10px;
+}
+
+/* servicios */
+.serv-wrap{background:var(--graf-900);color:#fff;position:relative;overflow:hidden}
+.serv-wrap::before{
+  content:"";position:absolute;inset:0;
+  background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.028) 0 2px,transparent 2px 11px);
+}
+.serv-wrap .sec{position:relative;z-index:2}
+.serv-wrap h2,.serv-wrap h3{color:#fff}
+.serv-wrap .sec-lead{color:var(--graf-400)}
+.serv-list{display:grid;gap:0;border-top:1px solid var(--graf-700)}
+.serv{
+  display:grid;grid-template-columns:64px minmax(0,1fr) auto;
+  gap:24px;align-items:center;
+  padding:26px 0;border-bottom:1px solid var(--graf-700);
+  transition:.22s;
+}
+.serv:hover{background:rgba(255,255,255,.03)}
+.serv .n{font-family:var(--sans);font-size:12px;letter-spacing:.2em;color:var(--naranja)}
+.serv h3{font-size:20px;margin-bottom:6px}
+.serv p{color:var(--graf-400);font-size:14.5px;max-width:56ch}
+.serv .accion{
+  font-family:var(--sans);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  border:1px solid var(--graf-600);border-radius:99px;padding:8px 16px;color:var(--graf-200);
+  white-space:nowrap;transition:.22s;text-decoration:none;
+}
+.serv:hover .accion{border-color:var(--amarillo);color:var(--amarillo)}
+
+/* contacto */
+.cont-grid{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:0;border:1.5px solid var(--graf-900);border-radius:var(--radio);overflow:hidden;background:var(--blanco)}
+.cont-info{padding:40px 36px}
+.dato{padding:18px 0;border-bottom:1px dashed var(--graf-200)}
+.dato:last-of-type{border-bottom:0}
+.dato .et{font-family:var(--sans);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--graf-400);display:block;margin-bottom:7px}
+.dato .vl{font-family:var(--sans);font-size:19px;font-weight:800;letter-spacing:-.01em;text-decoration:none;display:block;line-height:1.25}
+.dato a.vl:hover{color:var(--naranja)}
+.dato .nota{font-size:13.5px;color:var(--graf-600);margin-top:5px}
+.mapa{background:var(--graf-100);position:relative;min-height:340px;border-left:1.5px solid var(--graf-900)}
+.mapa svg{display:block;width:100%;height:100%;position:absolute;inset:0}
+.mapa-pie{
+  position:absolute;left:16px;bottom:16px;right:16px;
+  background:var(--graf-900);color:#fff;padding:11px 14px;border-radius:var(--radio);
+  font-family:var(--sans);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+  display:flex;align-items:center;gap:9px;
+}
+.mapa-pie i{width:8px;height:8px;background:var(--naranja);border-radius:50%;flex:0 0 auto;display:block}
+
+/* footer */
+footer{background:var(--graf-900);color:var(--graf-400);padding:56px 0 0}
+.f-in{max-width:1180px;margin:0 auto;padding:0 24px}
+.f-top{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr);gap:36px;padding-bottom:40px;border-bottom:1px solid var(--graf-700)}
+.f-top h4{color:#fff;font-size:12px;letter-spacing:.2em;margin-bottom:16px}
+.f-top a{color:var(--graf-200);text-decoration:none;display:block;padding:4px 0;font-size:14.5px;word-break:break-word}
+.f-top a:hover{color:var(--amarillo)}
+.f-logo .n1{font-family:var(--sans);font-weight:800;font-size:26px;color:#fff;text-transform:uppercase;letter-spacing:-.02em;line-height:1}
+.f-logo p{font-size:14px;margin-top:12px;max-width:34ch}
+.f-bot{padding:22px 0 30px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:12px}
+.f-bot .credito{color:var(--graf-200)}
+.f-bot .credito b{color:var(--amarillo);font-weight:700}
+
+/* animación entrada */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s cubic-bezier(.22,.8,.3,1)}
+.rv.on{opacity:1;transform:none}
+
+@media (max-width:940px){
+  .hero-grid{grid-template-columns:1fr;gap:38px}
+  .rack{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .item:nth-child(3n){border-right:1px solid var(--graf-100)}
+  .item:nth-child(2n){border-right:0}
+  .item:nth-child(n+4){border-bottom:1px solid var(--graf-100)}
+  .item:nth-child(n+5){border-bottom:0}
+  .cont-grid{grid-template-columns:1fr}
+  .mapa{border-left:0;border-top:1.5px solid var(--graf-900)}
+  .f-top{grid-template-columns:1fr 1fr}
+  .f-logo{grid-column:1/-1}
+}
+@media (max-width:720px){
+  .nav-links{display:none}
+  .sec{padding:60px 20px}
+  .hero-in{padding:0 20px}
+  .cinta-in{padding:0 20px}
+  .f-in{padding:0 20px}
+  .rack{grid-template-columns:1fr}
+  .item{border-right:0!important;border-bottom:1px solid var(--graf-100)!important}
+  .item:last-child{border-bottom:0!important}
+  .serv{grid-template-columns:1fr;gap:12px;align-items:flex-start}
+  .serv .accion{justify-self:start}
+  .cont-info{padding:30px 22px}
+  .hero{padding-top:56px}
+  .hero-pad{padding-bottom:64px}
+  .estante{grid-template-columns:repeat(3,1fr)}
+  .f-bot{flex-direction:column;gap:8px}
+}
+@media (max-width:420px){
+  .propuesta{font-size:9.5px;letter-spacing:.08em}
+  .hero h1{font-size:31px}
+  .hero-cta .btn{flex:1 1 100%;justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .rv{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<div class="propuesta" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · <b>FFFFFFstudio</b> · Ángel Rubio</span>
+</div>
+
+<header class="nav">
+  <div class="nav-in">
+    <a class="marca" href="#top">
+      <svg class="tuerca" width="34" height="34" viewBox="0 0 34 34" aria-hidden="true">
+        <path d="M17 2.6l5.4 3.1 5.4 3.1v12.4L22.4 24.3 17 27.4l-5.4-3.1-5.4-3.1V8.8L11.6 5.7z" fill="#15171a"/>
+        <circle cx="17" cy="15" r="5.2" fill="#ff5a1f"/>
+      </svg>
+      <span class="marca-txt">
+        <span class="n1">Ferretería Urbana</span>
+        <span class="n2">Benalúa · Alicante</span>
+      </span>
+    </a>
+    <nav class="nav-links" aria-label="Principal">
+      <a href="#encontraras">Qué encontrarás</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="btn btn-p" href="tel:+34965926903">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+      Llámanos
+    </a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-in hero-pad">
+      <div class="hero-grid">
+        <div class="rv">
+          <span class="kicker">Ferretería de barrio · Benalúa-Florida</span>
+          <h1>
+            La ferretería<br>de tu barrio,<br><em>con de todo</em><br>y con consejo
+            <span class="sub">Copia de llaves, pintura, electricidad y fontanería. Entras con una duda y sales con la solución.</span>
+          </h1>
+          <div class="hero-cta">
+            <a class="btn btn-l" href="tel:+34965926903">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+              Llámanos
+            </a>
+            <a class="btn btn-g" href="#encontraras" style="color:#fff;border-color:rgba(255,255,255,.35)">Ver qué encontrarás</a>
+          </div>
+          <span class="hero-tel">C/ Cardenal Belluga 23 · 03005 Alicante</span>
+        </div>
+
+        <div class="rv" aria-hidden="true">
+          <div class="estante">
+            <div class="celda"><svg viewBox="0 0 32 32"><circle cx="10" cy="12" r="5"/><path d="M13.6 15.6L25 27M22 24l2.5-2.5M19 21l2.5-2.5"/></svg></div>
+            <div class="celda"><svg viewBox="0 0 32 32"><path d="M11 4h10v9H11z"/><path d="M13 13h6l1.5 7a2 2 0 0 1-2 2.4h-5A2 2 0 0 1 11.5 20z"/><path d="M16 22.4V28"/></svg></div>
+            <div class="celda"><svg viewBox="0 0 32 32"><path d="M16 4a8 8 0 0 0-4.6 14.6c.8.6 1.3 1.5 1.3 2.5V22h6.6v-.9c0-1 .5-1.9 1.3-2.5A8 8 0 0 0 16 4z"/><path d="M13 25h6M14 28h4"/></svg></div>
+            <div class="celda"><svg viewBox="0 0 32 32"><path d="M5 12h9v8H5z"/><path d="M14 16h6a3 3 0 0 0 3-3V9a3 3 0 0 1 3-3h1"/><path d="M3 10v12"/></svg></div>
+            <div class="celda"><svg viewBox="0 0 32 32"><path d="M6 20l9-9"/><path d="M4 22l3 3 4-4-3-3z"/><path d="M18 4l4 4-5 5-4-4z" /><path d="M22 12l6 6-3 3-6-6"/></svg></div>
+            <div class="celda"><svg viewBox="0 0 32 32"><path d="M16 27C9 22 5 18 5 13.5A5.5 5.5 0 0 1 16 11a5.5 5.5 0 0 1 11 2.5C27 18 23 22 16 27z"/><path d="M16 11v16"/></svg></div>
+            <div class="celda"><svg viewBox="0 0 32 32"><path d="M4 26h24"/><path d="M7 26V14l9-7 9 7v12"/><path d="M13 26v-7h6v7"/></svg></div>
+            <div class="celda"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="3"/><path d="M16 4v5M16 23v5M4 16h5M23 16h5M7.5 7.5l3.5 3.5M21 21l3.5 3.5M24.5 7.5L21 11M11 21l-3.5 3.5"/></svg></div>
+            <div class="celda"><svg viewBox="0 0 32 32"><path d="M6 6h20v6H6z"/><path d="M10 12v14M22 12v14"/><path d="M10 19h12"/></svg></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cinta">
+    <div class="cinta-in">
+      <span>Copia de llaves</span>
+      <span>Pintura a medida</span>
+      <span>Electricidad</span>
+      <span>Fontanería</span>
+      <span>Consejo de mostrador</span>
+    </div>
+  </div>
+
+  <!-- QUÉ ENCONTRARÁS -->
+  <section class="sec" id="encontraras">
+    <div class="sec-head rv">
+      <div>
+        <span class="sec-num">01 — Secciones</span>
+        <h2>Qué encontrarás</h2>
+      </div>
+      <p class="sec-lead">Una tienda de barrio ordenada como una estantería: cada cosa en su sitio y alguien detrás del mostrador que sabe dónde está.</p>
+    </div>
+
+    <div class="rack rv">
+      <article class="item">
+        <div class="ico"><svg viewBox="0 0 24 24"><circle cx="8" cy="9" r="3.6"/><path d="M10.6 11.6L19 20M17 18l1.8-1.8M14.6 15.6l1.8-1.8"/></svg></div>
+        <h3>Copia de llaves</h3>
+        <p>Llaves de casa, portal, buzón o candado. Se copian en el mostrador y se comprueban antes de que te vayas.</p>
+        <span class="etq">Al momento</span>
+      </article>
+
+      <article class="item">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M8.5 3h7v6.5h-7z"/><path d="M10 9.5h4l1.1 5.2a1.6 1.6 0 0 1-1.6 1.9h-3a1.6 1.6 0 0 1-1.6-1.9z"/><path d="M12 16.6V21"/></svg></div>
+        <h3>Pintura y color a medida</h3>
+        <p>Pintura para interior y exterior, esmaltes y barnices. El color se prepara en tienda a partir del tono que buscas.</p>
+        <span class="etq">Color a medida</span>
+      </article>
+
+      <article class="item">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.4 1 1.1 1 1.8v.3h5v-.3c0-.7.4-1.4 1-1.8A6 6 0 0 0 12 3z"/><path d="M10 18.5h4M10.8 21h2.4"/></svg></div>
+        <h3>Electricidad</h3>
+        <p>Bombillas, enchufes, interruptores, cable, regletas y pequeño material para arreglos de casa.</p>
+        <span class="etq">Material eléctrico</span>
+      </article>
+
+      <article class="item">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 9h7v6H3z"/><path d="M10 12h5a2.5 2.5 0 0 0 2.5-2.5V8A2.5 2.5 0 0 1 20 5.5h1"/><path d="M2 7v10"/></svg></div>
+        <h3>Fontanería</h3>
+        <p>Grifería, latiguillos, juntas, desagües y accesorios para resolver una fuga o cambiar un grifo.</p>
+        <span class="etq">Piezas sueltas</span>
+      </article>
+
+      <article class="item">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 15l7-7"/><path d="M2.5 16.5l2.5 2.5L8 16l-2.5-2.5z"/><path d="M14 3l3 3-3.8 3.8-3-3z"/><path d="M17 9l4.5 4.5-2.2 2.2L14.8 11"/></svg></div>
+        <h3>Herramientas</h3>
+        <p>Manuales y eléctricas, tornillería, brocas y accesorios. También lo pequeño que nunca encuentras en otro sitio.</p>
+        <span class="etq">Manual y eléctrica</span>
+      </article>
+
+      <article class="item">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M5.5 20V11L12 5.5 18.5 11v9"/><path d="M10 20v-5h4v5"/></svg></div>
+        <h3>Hogar y jardín</h3>
+        <p>Menaje, limpieza, cerrajería de casa, riego y todo lo que pide una terraza o un patio de barrio.</p>
+        <span class="etq">Día a día</span>
+      </article>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <div class="serv-wrap" id="servicios">
+    <section class="sec">
+      <div class="sec-head rv">
+        <div>
+          <span class="sec-num">02 — Servicios</span>
+          <h2>Lo que hacemos<br>en el mostrador</h2>
+        </div>
+        <p class="sec-lead">Servicios de tienda de toda la vida. Si necesitas algo concreto, lo mejor es preguntar por teléfono o pasarte.</p>
+      </div>
+
+      <div class="serv-list rv">
+        <div class="serv">
+          <span class="n">S/01</span>
+          <div>
+            <h3>Copia de llaves al momento</h3>
+            <p>Se duplica en tienda mientras esperas y se prueba antes de entregarla.</p>
+          </div>
+          <a class="accion" href="tel:+34965926903">Consultar</a>
+        </div>
+        <div class="serv">
+          <span class="n">S/02</span>
+          <div>
+            <h3>Asesoramiento</h3>
+            <p>Cuéntanos el problema —una fuga, un enchufe, una pared por pintar— y te decimos qué material necesitas y cómo hacerlo.</p>
+          </div>
+          <a class="accion" href="tel:+34965926903">Consultar</a>
+        </div>
+        <div class="serv">
+          <span class="n">S/03</span>
+          <div>
+            <h3>Pedidos por encargo</h3>
+            <p>¿No está en tienda? Se puede pedir. Pregúntanos por la pieza que buscas y te decimos si podemos traerla.</p>
+          </div>
+          <a class="accion" href="tel:+34965926903">Consultar</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- CONTACTO -->
+  <section class="sec" id="contacto">
+    <div class="sec-head rv">
+      <div>
+        <span class="sec-num">03 — Contacto</span>
+        <h2>Dónde estamos</h2>
+      </div>
+      <p class="sec-lead">En pleno Benalúa-Florida. Si tienes dudas antes de venir, llama y te lo resolvemos por teléfono.</p>
+    </div>
+
+    <div class="cont-grid rv">
+      <div class="cont-info">
+        <div class="dato">
+          <span class="et">Teléfono</span>
+          <a class="vl" href="tel:+34965926903">96 592 69 03</a>
+          <p class="nota">Llámanos para consultar disponibilidad o un encargo.</p>
+        </div>
+        <div class="dato">
+          <span class="et">Dirección</span>
+          <span class="vl">C/ Cardenal Belluga 23<br>03005 Alicante</span>
+          <p class="nota">Barrio de Benalúa-Florida.</p>
+        </div>
+        <div class="dato">
+          <span class="et">Horario</span>
+          <span class="vl">Consultar horario</span>
+          <p class="nota">Consúltanos el horario por teléfono.</p>
+        </div>
+        <div class="dato">
+          <span class="et">Email</span>
+          <a class="vl" href="mailto:urbana10@hotmail.es" style="font-size:16px;word-break:break-all">urbana10@hotmail.es</a>
+        </div>
+        <div style="margin-top:22px;display:flex;flex-wrap:wrap;gap:10px">
+          <a class="btn btn-p" href="tel:+34965926903">Llámanos</a>
+          <a class="btn btn-g" href="mailto:urbana10@hotmail.es">Escríbenos</a>
+        </div>
+      </div>
+
+      <div class="mapa">
+        <svg viewBox="0 0 620 420" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Mapa esquemático de la zona de Benalúa-Florida con la ubicación de la ferretería en C/ Cardenal Belluga 23">
+          <defs>
+            <pattern id="tram" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+              <line x1="0" y1="0" x2="0" y2="9" stroke="#c9ced6" stroke-width="1"/>
+            </pattern>
+          </defs>
+          <rect width="620" height="420" fill="#e7eaee"/>
+          <rect width="620" height="420" fill="url(#tram)" opacity=".55"/>
+
+          <!-- manzanas -->
+          <g fill="#f4f5f7" stroke="#c9ced6" stroke-width="1.5">
+            <rect x="40" y="40" width="150" height="105" rx="2"/>
+            <rect x="222" y="40" width="150" height="105" rx="2"/>
+            <rect x="404" y="40" width="176" height="105" rx="2"/>
+            <rect x="40" y="177" width="150" height="105" rx="2"/>
+            <rect x="404" y="177" width="176" height="105" rx="2"/>
+            <rect x="40" y="314" width="150" height="86" rx="2"/>
+            <rect x="222" y="314" width="150" height="86" rx="2"/>
+            <rect x="404" y="314" width="176" height="86" rx="2"/>
+          </g>
+          <!-- manzana destacada -->
+          <rect x="222" y="177" width="150" height="105" rx="2" fill="#ffffff" stroke="#15171a" stroke-width="2"/>
+
+          <!-- viales -->
+          <g stroke="#ffffff" stroke-width="14" stroke-linecap="square">
+            <line x1="0" y1="161" x2="620" y2="161"/>
+            <line x1="0" y1="298" x2="620" y2="298"/>
+            <line x1="206" y1="0" x2="206" y2="420"/>
+            <line x1="388" y1="0" x2="388" y2="420"/>
+          </g>
+          <g stroke="#c9ced6" stroke-width="1" stroke-dasharray="7 7">
+            <line x1="0" y1="161" x2="620" y2="161"/>
+            <line x1="0" y1="298" x2="620" y2="298"/>
+            <line x1="206" y1="0" x2="206" y2="420"/>
+            <line x1="388" y1="0" x2="388" y2="420"/>
+          </g>
+
+          <!-- rótulos de calle -->
+          <g font-family="Helvetica,Arial,sans-serif" font-size="11" letter-spacing="2" fill="#79818d">
+            <text x="24" y="157">C/ CARDENAL BELLUGA</text>
+            <text x="24" y="294">CALLE</text>
+            <text x="212" y="30" transform="rotate(90 212 30)">CALLE</text>
+            <text x="394" y="30" transform="rotate(90 394 30)">CALLE</text>
+          </g>
+
+          <!-- marcador -->
+          <g>
+            <circle cx="297" cy="176" r="30" fill="#ff5a1f" opacity=".16"/>
+            <circle cx="297" cy="176" r="19" fill="#ff5a1f" opacity=".26"/>
+            <path d="M297 146a13.5 13.5 0 0 0-13.5 13.5c0 9.6 13.5 22.5 13.5 22.5s13.5-12.9 13.5-22.5A13.5 13.5 0 0 0 297 146z" fill="#15171a"/>
+            <circle cx="297" cy="159.5" r="5" fill="#ffc700"/>
+          </g>
+          <g font-family="Helvetica,Arial,sans-serif" fill="#15171a">
+            <text x="297" y="206" font-size="13" font-weight="bold" text-anchor="middle" letter-spacing="1">FERRETERÍA URBANA</text>
+            <text x="297" y="223" font-size="11" text-anchor="middle" fill="#3d434c" letter-spacing="1">Nº 23</text>
+          </g>
+
+          <!-- rosa de los vientos -->
+          <g transform="translate(556,372)">
+            <circle r="20" fill="#ffffff" stroke="#15171a" stroke-width="1.5"/>
+            <path d="M0 -13 L4.5 2 L0 -1 L-4.5 2 Z" fill="#ff5a1f"/>
+            <text y="14" font-family="Helvetica,Arial,sans-serif" font-size="9" text-anchor="middle" fill="#3d434c">N</text>
+          </g>
+        </svg>
+        <div class="mapa-pie"><i></i> Mapa esquemático · C/ Cardenal Belluga 23, Benalúa-Florida</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="f-in">
+    <div class="f-top">
+      <div class="f-logo">
+        <span class="n1">Ferretería Urbana</span>
+        <p>Ferretería de barrio en Benalúa-Florida: copia de llaves, pintura, electricidad y fontanería, con consejo de mostrador.</p>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <a href="tel:+34965926903">96 592 69 03</a>
+        <a href="mailto:urbana10@hotmail.es">urbana10@hotmail.es</a>
+        <a href="#contacto">Consultar horario</a>
+      </div>
+      <div>
+        <h4>Dónde</h4>
+        <a href="#contacto">C/ Cardenal Belluga 23</a>
+        <a href="#contacto">03005 Alicante</a>
+        <a href="#encontraras">Qué encontrarás</a>
+      </div>
+    </div>
+    <div class="f-bot">
+      <span class="credito">Propuesta de rediseño presentada por <b>FFFFFFstudio</b> — Ángel Rubio, diseñador web · Alicante</span>
+      <span>Maqueta de demostración · contenido no oficial</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)){
+    els.forEach(function(e){e.classList.add('on');});
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        en.target.classList.add('on');
+        io.unobserve(en.target);
+      }
+    });
+  },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(el,i){ el.style.transitionDelay = (Math.min(i,4)*70)+'ms'; io.observe(el); });
+})();
+</script>
+</body>
+</html>
