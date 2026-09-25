@@ -17,6 +17,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
 
       - name: Descargar maquetas nuevas de Drive
         id: sync
@@ -32,4 +35,5 @@ jobs:
           git config user.email "angelrubioortiz2005@gmail.com"
           git add propuestas/
           git commit -m "Propuestas: ${{ steps.sync.outputs.slugs }}"
-          git push
+          git pull --rebase origin main
+          git push origin HEAD:main
