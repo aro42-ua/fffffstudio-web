@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grupo Rubira Altábix — Fontanería, desatascos y reformas en Elche</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  :root{
+    --azul-900:#071a2e;
+    --azul-800:#0c2743;
+    --azul-700:#123659;
+    --azul-600:#1b4b78;
+    --azul-300:#7fa8cc;
+    --gris-050:#f5f7f9;
+    --gris-100:#e8ecf1;
+    --gris-300:#c3ccd6;
+    --gris-500:#6d7a89;
+    --gris-700:#39434f;
+    --ambar:#e8933a;
+    --blanco:#ffffff;
+    --barra:46px;
+  }
+  html,body{margin:0;padding:0;max-width:100%;overflow-x:hidden}
+  body{
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--gris-700);
+    background:var(--blanco);
+    padding-top:var(--barra);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.6;
+  }
+  img,svg{max-width:100%}
+  a{color:inherit}
+
+  /* ---------- barra fija ---------- */
+  .aviso{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    min-height:var(--barra);
+    display:flex;align-items:center;justify-content:center;
+    text-align:center;
+    padding:6px 12px;
+    background:linear-gradient(90deg,#071a2e 0%,#123659 55%,#1b4b78 100%);
+    color:#dce6f0;
+    font-size:clamp(10px,2.7vw,12.5px);
+    letter-spacing:.04em;
+    line-height:1.35;
+    border-bottom:1px solid rgba(232,147,58,.55);
+    box-shadow:0 2px 12px rgba(7,26,46,.28);
+  }
+  .aviso span{font-weight:600;color:#fff}
+
+  .envoltorio{width:100%;max-width:1120px;margin:0 auto;padding:0 20px}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(900px 480px at 88% -12%,rgba(232,147,58,.22),transparent 62%),
+      radial-gradient(700px 520px at 6% 106%,rgba(127,168,204,.24),transparent 60%),
+      linear-gradient(158deg,#071a2e 0%,#0c2743 48%,#123659 100%);
+    color:#eaf1f8;
+    padding:clamp(44px,8vw,86px) 0 clamp(48px,8vw,90px);
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),
+                     linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+    background-size:44px 44px;
+    mask-image:linear-gradient(to bottom,rgba(0,0,0,.9),transparent 78%);
+    -webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,.9),transparent 78%);
+  }
+  .hero .envoltorio{position:relative;z-index:2}
+  .lugar{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+    color:#f4c18a;
+    border:1px solid rgba(232,147,58,.45);
+    background:rgba(232,147,58,.10);
+    padding:6px 13px;border-radius:999px;
+    margin-bottom:22px;
+  }
+  .lugar svg{flex:0 0 auto}
+  h1{
+    margin:0 0 14px;
+    font-size:clamp(30px,7.4vw,58px);
+    line-height:1.06;
+    letter-spacing:-.02em;
+    font-weight:800;
+    color:#fff;
+  }
+  h1 .fina{display:block;font-weight:400;color:var(--azul-300);font-size:clamp(15px,3.4vw,23px);letter-spacing:.01em;margin-top:12px;line-height:1.35}
+  .hero p.entradilla{
+    margin:0 0 30px;max-width:56ch;
+    font-size:clamp(15px,3.4vw,18px);
+    color:#c5d5e4;
+  }
+  .acciones{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .boton{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:15px 24px;border-radius:12px;
+    font-size:clamp(15px,3.6vw,17px);font-weight:700;
+    text-decoration:none;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .boton svg{flex:0 0 auto}
+  .boton-principal{
+    background:linear-gradient(180deg,#f0a44a,#e8933a);
+    color:#2a1705;
+    box-shadow:0 10px 26px rgba(232,147,58,.32);
+  }
+  .boton-principal:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(232,147,58,.42)}
+  .boton-secundario{
+    background:rgba(255,255,255,.07);
+    color:#e7f0f8;
+    border:1px solid rgba(199,217,234,.32);
+  }
+  .boton-secundario:hover{background:rgba(255,255,255,.13)}
+  .apunte{margin:22px 0 0;font-size:13.5px;color:#9db4c9}
+
+  .tira{
+    background:var(--azul-900);
+    border-top:1px solid rgba(255,255,255,.07);
+    padding:16px 0;
+  }
+  .tira ul{
+    list-style:none;margin:0;padding:0;
+    display:flex;flex-wrap:wrap;gap:10px 26px;justify-content:center;
+    font-size:13px;color:#a8bfd4;letter-spacing:.03em;
+  }
+  .tira li{display:flex;align-items:center;gap:8px}
+  .punto{width:6px;height:6px;border-radius:50%;background:var(--ambar);flex:0 0 auto}
+
+  /* ---------- secciones ---------- */
+  section{padding:clamp(48px,7.5vw,84px) 0}
+  .encabezado{max-width:60ch;margin-bottom:clamp(26px,4vw,40px)}
+  .etiqueta{
+    display:block;font-size:12px;font-weight:700;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--azul-600);margin-bottom:10px;
+  }
+  h2{
+    margin:0 0 12px;
+    font-size:clamp(24px,5.4vw,38px);
+    line-height:1.14;letter-spacing:-.015em;font-weight:800;
+    color:var(--azul-800);
+  }
+  .encabezado p{margin:0;font-size:clamp(15px,3.3vw,17px);color:var(--gris-500)}
+
+  #servicios{background:var(--gris-050);border-top:1px solid var(--gris-100);border-bottom:1px solid var(--gris-100)}
+  .rejilla{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+  .tarjeta{
+    background:#fff;border:1px solid var(--gris-100);
+    border-radius:16px;padding:24px 22px;
+    box-shadow:0 1px 2px rgba(7,26,46,.04),0 12px 26px -20px rgba(7,26,46,.4);
+    position:relative;overflow:hidden;
+  }
+  .tarjeta::before{
+    content:"";position:absolute;left:0;top:0;bottom:0;width:3px;
+    background:linear-gradient(180deg,var(--azul-600),var(--azul-300));
+  }
+  .icono{
+    width:46px;height:46px;border-radius:12px;
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(150deg,#12365914,#1b4b7826);
+    border:1px solid #dae3ec;
+    margin-bottom:16px;
+  }
+  .tarjeta h3{margin:0 0 8px;font-size:17.5px;font-weight:700;color:var(--azul-800);line-height:1.3}
+  .tarjeta p{margin:0;font-size:14.8px;color:var(--gris-500)}
+
+  /* ---------- pasos ---------- */
+  .pasos{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;counter-reset:p}
+  .paso{
+    position:relative;
+    padding:26px 22px 24px;
+    border-radius:16px;
+    background:linear-gradient(160deg,#0c2743,#123659);
+    color:#dfeaf4;
+    overflow:hidden;
+  }
+  .paso::after{
+    content:"";position:absolute;right:-40px;bottom:-60px;width:150px;height:150px;border-radius:50%;
+    background:radial-gradient(circle,rgba(232,147,58,.20),transparent 70%);
+  }
+  .num{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:38px;height:38px;border-radius:10px;
+    background:rgba(232,147,58,.16);
+    border:1px solid rgba(232,147,58,.45);
+    color:#f6c48f;font-weight:800;font-size:16px;
+    margin-bottom:15px;position:relative;z-index:2;
+  }
+  .paso h3{margin:0 0 8px;font-size:18px;color:#fff;font-weight:700;position:relative;z-index:2}
+  .paso p{margin:0;font-size:14.8px;color:#b8cbdd;position:relative;z-index:2}
+
+  /* ---------- contacto ---------- */
+  #contacto{background:var(--gris-050);border-top:1px solid var(--gris-100)}
+  .contacto-caja{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;align-items:start}
+  .datos{
+    background:#fff;border:1px solid var(--gris-100);border-radius:18px;
+    padding:clamp(22px,4vw,30px);
+    box-shadow:0 14px 34px -26px rgba(7,26,46,.5);
+  }
+  .dato{display:flex;gap:14px;padding:16px 0;border-bottom:1px dashed var(--gris-100)}
+  .dato:last-of-type{border-bottom:0}
+  .dato .icono{margin:0;width:40px;height:40px;flex:0 0 auto;border-radius:10px}
+  .dato .cuerpo{min-width:0}
+  .dato dt{font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gris-500);margin:0 0 3px}
+  .dato dd{margin:0;font-size:16px;font-weight:600;color:var(--azul-800);overflow-wrap:anywhere}
+  .dato dd a{text-decoration:none;border-bottom:2px solid rgba(232,147,58,.55)}
+  .dato dd small{display:block;font-weight:400;font-size:13.5px;color:var(--gris-500);margin-top:3px}
+  dl{margin:0}
+  .datos .boton{margin-top:22px;width:100%;justify-content:center}
+  .datos .boton-principal{color:#2a1705}
+
+  .mapa{
+    background:#fff;border:1px solid var(--gris-100);border-radius:18px;
+    padding:14px 14px 10px;
+    box-shadow:0 14px 34px -26px rgba(7,26,46,.5);
+  }
+  .mapa svg{display:block;width:100%;height:auto;border-radius:12px}
+  .mapa .pie-mapa{
+    margin:10px 4px 6px;font-size:12.5px;color:var(--gris-500);line-height:1.5;
+  }
+
+  /* ---------- pie ---------- */
+  footer{
+    background:var(--azul-900);color:#b9cbdd;
+    padding:clamp(34px,6vw,54px) 0 30px;
+  }
+  .pie-rejilla{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px;align-items:start}
+  footer .marca{font-size:19px;font-weight:800;color:#fff;letter-spacing:-.01em;margin:0 0 6px}
+  footer .oficio{margin:0;font-size:14px;color:#8fa9c0}
+  footer a{color:#f4c18a;text-decoration:none;overflow-wrap:anywhere;border-bottom:1px solid rgba(244,193,138,.35)}
+  footer .bloque p{margin:0 0 6px;font-size:14.5px}
+  footer .titulillo{font-size:11.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#6f88a0;margin:0 0 10px}
+  .credito{
+    margin-top:clamp(26px,4vw,38px);padding-top:18px;
+    border-top:1px solid rgba(255,255,255,.1);
+    font-size:13px;color:#8fa9c0;line-height:1.6;
+  }
+</style>
+</head>
+<body>
+
+<div class="aviso">Propuesta de diseño · maqueta no oficial · <span>FFFFFFstudio</span> · Ángel Rubio</div>
+
+<header class="hero">
+  <div class="envoltorio">
+    <span class="lugar">
+      <svg width="12" height="14" viewBox="0 0 12 14" fill="none" aria-hidden="true"><path d="M6 .8c-2.6 0-4.7 2-4.7 4.6C1.3 8.7 6 13.2 6 13.2s4.7-4.5 4.7-7.8C10.7 2.8 8.6.8 6 .8Zm0 6.4a1.8 1.8 0 1 1 0-3.6 1.8 1.8 0 0 1 0 3.6Z" fill="#f4c18a"/></svg>
+      Elche · Alicante
+    </span>
+    <h1>
+      Grupo Rubira Altábix
+      <span class="fina">Fontanería, desatascos y reformas en Elche</span>
+    </h1>
+    <p class="entradilla">Trabajos de agua y obra para viviendas, locales y comunidades: una fuga, un atasco, una instalación nueva o el baño entero. Nos lo cuentas por teléfono y lo vemos.</p>
+    <div class="acciones">
+      <a class="boton boton-principal" href="tel:+34965455908">
+        <svg width="17" height="17" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.1 1.6h2.3l1.2 3-1.6 1.1a8.4 8.4 0 0 0 4.3 4.3l1.1-1.6 3 1.2v2.3c0 .8-.6 1.4-1.4 1.4A11.6 11.6 0 0 1 1.7 3c0-.8.6-1.4 1.4-1.4Z" stroke="#2a1705" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        Llamar al 96 545 59 08
+      </a>
+      <a class="boton boton-secundario" href="#servicios">Ver qué hacemos</a>
+    </div>
+    <p class="apunte">C/ Clemente Gonzálvez Valls 14, 03202 Elche · Consultar horario</p>
+  </div>
+</header>
+
+<div class="tira">
+  <div class="envoltorio">
+    <ul>
+      <li><span class="punto"></span>Fontanería</li>
+      <li><span class="punto"></span>Desatascos</li>
+      <li><span class="punto"></span>Fugas de agua</li>
+      <li><span class="punto"></span>Reformas de baño y cocina</li>
+      <li><span class="punto"></span>Comunidades</li>
+    </ul>
+  </div>
+</div>
+
+<section id="servicios">
+  <div class="envoltorio">
+    <div class="encabezado">
+      <span class="etiqueta">Servicios</span>
+      <h2>Lo que resolvemos</h2>
+      <p>Del arreglo puntual a la reforma completa. Si no sabes en qué categoría entra lo tuyo, llama y lo aclaramos.</p>
+    </div>
+    <div class="rejilla">
+
+      <article class="tarjeta">
+        <div class="icono">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h6v4H5zM8 8v5a4 4 0 0 0 4 4h3" stroke="#123659" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><rect x="15" y="14.5" width="5" height="5" rx="1" stroke="#e8933a" stroke-width="1.7"/></svg>
+        </div>
+        <h3>Fontanería general</h3>
+        <p>Grifería, cisternas, desagües, sifones, calentadores, sustitución de tuberías y pequeñas averías del día a día.</p>
+      </article>
+
+      <article class="tarjeta">
+        <div class="icono">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h9a4 4 0 0 1 4 4v3" stroke="#123659" stroke-width="1.7" stroke-linecap="round"/><path d="M14.5 12.5 17 15l2.5-2.5" stroke="#e8933a" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 4.5v5M7.5 5.5v3" stroke="#123659" stroke-width="1.7" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Desatascos</h3>
+        <p>Atascos en fregaderos, lavabos, inodoros, bajantes y arquetas. Localizamos dónde está el tapón y lo abrimos.</p>
+      </article>
+
+      <article class="tarjeta">
+        <div class="icono">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3.5s4.5 5 4.5 8a4.5 4.5 0 0 1-9 0c0-3 4.5-8 4.5-8Z" stroke="#123659" stroke-width="1.7" stroke-linejoin="round"/><path d="M12 19.5v1.5M8 19l-1 1.5M16 19l1 1.5" stroke="#e8933a" stroke-width="1.7" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Reparación de fugas</h3>
+        <p>Humedades, goteos y pérdidas de presión. Buscamos el punto de la fuga y reparamos con el menor destrozo posible.</p>
+      </article>
+
+      <article class="tarjeta">
+        <div class="icono">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="4" width="17" height="16" rx="2" stroke="#123659" stroke-width="1.7"/><path d="M3.5 10h17M12 10v10" stroke="#123659" stroke-width="1.7"/><path d="M7 7h2" stroke="#e8933a" stroke-width="1.7" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Reformas de baño y cocina</h3>
+        <p>Reforma completa o por partes: demolición, alicatado, sanitarios, muebles y toda la instalación de agua y desagüe.</p>
+      </article>
+
+      <article class="tarjeta">
+        <div class="icono">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 18V9l8-5 8 5v9" stroke="#123659" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 18h16" stroke="#123659" stroke-width="1.7" stroke-linecap="round"/><path d="M9.5 18v-4h5v4" stroke="#e8933a" stroke-width="1.7" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Instalaciones de agua</h3>
+        <p>Redes de agua fría y caliente, contadores, llaves de paso y renovación de instalaciones antiguas en obra nueva o rehabilitación.</p>
+      </article>
+
+      <article class="tarjeta">
+        <div class="icono">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="7.5" width="7" height="13" rx="1.4" stroke="#123659" stroke-width="1.7"/><rect x="13.5" y="3.5" width="7" height="17" rx="1.4" stroke="#123659" stroke-width="1.7"/><path d="M16 7.5h2M16 11h2" stroke="#e8933a" stroke-width="1.7" stroke-linecap="round"/><path d="M6 11.5h2M6 15h2" stroke="#123659" stroke-width="1.7" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Mantenimiento para comunidades</h3>
+        <p>Trabajo continuado con administradores y presidentes: bajantes, arquetas, grupos de presión y averías de zonas comunes.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="como">
+  <div class="envoltorio">
+    <div class="encabezado">
+      <span class="etiqueta">Cómo trabajamos</span>
+      <h2>Tres pasos y a trabajar</h2>
+      <p>Sin vueltas: una llamada, una visita para ver el alcance real y un presupuesto antes de empezar.</p>
+    </div>
+    <div class="pasos">
+      <article class="paso">
+        <span class="num">1</span>
+        <h3>Nos llamáis</h3>
+        <p>Cuéntanos qué pasa y dónde. Con dos datos por teléfono ya nos hacemos una idea de lo que hace falta llevar.</p>
+      </article>
+      <article class="paso">
+        <span class="num">2</span>
+        <h3>Vamos a verlo</h3>
+        <p>Nos pasamos por la vivienda, el local o la comunidad y comprobamos la avería o el alcance de la obra sobre el terreno.</p>
+      </article>
+      <article class="paso">
+        <span class="num">3</span>
+        <h3>Presupuesto y trabajo</h3>
+        <p>Te decimos qué hay que hacer y lo que cuesta. Con tu conformidad, lo ejecutamos y dejamos la zona limpia.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="envoltorio">
+    <div class="encabezado">
+      <span class="etiqueta">Contacto</span>
+      <h2>Estamos en Elche</h2>
+      <p>Nos tenéis en Elche. Lo más rápido siempre es el teléfono.</p>
+    </div>
+
+    <div class="contacto-caja">
+      <div class="datos">
+        <dl>
+          <div class="dato">
+            <div class="icono">
+              <svg width="20" height="20" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.1 1.6h2.3l1.2 3-1.6 1.1a8.4 8.4 0 0 0 4.3 4.3l1.1-1.6 3 1.2v2.3c0 .8-.6 1.4-1.4 1.4A11.6 11.6 0 0 1 1.7 3c0-.8.6-1.4 1.4-1.4Z" stroke="#123659" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="cuerpo">
+              <dt>Teléfono</dt>
+              <dd><a href="tel:+34965455908">96 545 59 08</a></dd>
+            </div>
+          </div>
+
+          <div class="dato">
+            <div class="icono">
+              <svg width="20" height="20" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1.2c-2.7 0-4.9 2.1-4.9 4.8C3.1 9.3 8 14.2 8 14.2s4.9-4.9 4.9-8.2c0-2.7-2.2-4.8-4.9-4.8Z" stroke="#123659" stroke-width="1.5" stroke-linejoin="round"/><circle cx="8" cy="6" r="1.8" stroke="#e8933a" stroke-width="1.5"/></svg>
+            </div>
+            <div class="cuerpo">
+              <dt>Dirección</dt>
+              <dd>C/ Clemente Gonzálvez Valls 14, 03202 Elche</dd>
+            </div>
+          </div>
+
+          <div class="dato">
+            <div class="icono">
+              <svg width="20" height="20" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.3" stroke="#123659" stroke-width="1.5"/><path d="M8 4.4V8l2.6 1.7" stroke="#e8933a" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <div class="cuerpo">
+              <dt>Horario</dt>
+              <dd>Consultar horario</dd>
+            </div>
+          </div>
+
+          <div class="dato">
+            <div class="icono">
+              <svg width="20" height="20" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="1.7" y="3.3" width="12.6" height="9.4" rx="1.4" stroke="#123659" stroke-width="1.5"/><path d="m2.3 4.4 5.7 4.2 5.7-4.2" stroke="#e8933a" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="cuerpo">
+              <dt>Email</dt>
+              <dd><a href="mailto:info@gruporubiraaltabix.com">info@gruporubiraaltabix.com</a></dd>
+            </div>
+          </div>
+        </dl>
+
+        <a class="boton boton-principal" href="tel:+34965455908">
+          <svg width="17" height="17" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.1 1.6h2.3l1.2 3-1.6 1.1a8.4 8.4 0 0 0 4.3 4.3l1.1-1.6 3 1.2v2.3c0 .8-.6 1.4-1.4 1.4A11.6 11.6 0 0 1 1.7 3c0-.8.6-1.4 1.4-1.4Z" stroke="#2a1705" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          Llamar ahora
+        </a>
+      </div>
+
+      <div class="mapa">
+        <svg viewBox="0 0 420 300" role="img" aria-label="Plano esquemático y decorativo de la zona, con un marcador en la posición aproximada del local. No es un mapa real.">
+          <defs>
+            <linearGradient id="fondoPlano" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#eef2f6"/>
+              <stop offset="1" stop-color="#dde5ed"/>
+            </linearGradient>
+          </defs>
+          <rect width="420" height="300" fill="url(#fondoPlano)"/>
+          <!-- manzanas -->
+          <g fill="#ccd7e2">
+            <rect x="18" y="20" width="118" height="80" rx="5"/>
+            <rect x="160" y="20" width="96" height="80" rx="5"/>
+            <rect x="282" y="20" width="120" height="52" rx="5"/>
+            <rect x="18" y="128" width="118" height="66" rx="5"/>
+            <rect x="282" y="98" width="120" height="96" rx="5"/>
+            <rect x="18" y="222" width="90" height="60" rx="5"/>
+            <rect x="132" y="222" width="130" height="60" rx="5"/>
+            <rect x="286" y="222" width="116" height="60" rx="5"/>
+          </g>
+          <!-- manzana del local -->
+          <rect x="160" y="128" width="96" height="66" rx="5" fill="#bcccdc"/>
+          <!-- calles -->
+          <g stroke="#f7fafc" stroke-linecap="round">
+            <path d="M148 8v284" stroke-width="14"/>
+            <path d="M270 8v284" stroke-width="12"/>
+            <path d="M8 114h404" stroke-width="14"/>
+            <path d="M8 208h404" stroke-width="12"/>
+            <path d="M282 86h128" stroke-width="8"/>
+          </g>
+          <g stroke="#c9d5e1" stroke-width="1" stroke-dasharray="7 9">
+            <path d="M148 8v284"/>
+            <path d="M8 114h404"/>
+          </g>
+          <!-- zona verde decorativa -->
+          <circle cx="342" cy="252" r="20" fill="#c3d6c8"/>
+          <circle cx="368" cy="262" r="12" fill="#cbdccf"/>
+          <!-- marcador -->
+          <g transform="translate(206 96)">
+            <ellipse cx="0" cy="44" rx="15" ry="5" fill="#0c2743" opacity=".18"/>
+            <path d="M0 42C0 42 17 22.5 17 13A17 17 0 1 0-17 13C-17 22.5 0 42 0 42Z" fill="#e8933a" stroke="#0c2743" stroke-width="2.4"/>
+            <circle cx="0" cy="13" r="5.6" fill="#0c2743"/>
+          </g>
+          <text x="14" y="296" font-family="system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="11" fill="#7d8b99">Plano orientativo · no es un mapa real</text>
+        </svg>
+        <p class="pie-mapa">Ilustración esquemática de la zona, hecha solo para situar visualmente el local. Para llegar, usa la dirección completa: C/ Clemente Gonzálvez Valls 14, 03202 Elche.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="envoltorio">
+    <div class="pie-rejilla">
+      <div class="bloque">
+        <p class="marca">Grupo Rubira Altábix</p>
+        <p class="oficio">Fontanería, desatascos y reformas · Elche (Alicante)</p>
+      </div>
+      <div class="bloque">
+        <p class="titulillo">Contacto</p>
+        <p><a href="tel:+34965455908">96 545 59 08</a></p>
+        <p><a href="mailto:info@gruporubiraaltabix.com">info@gruporubiraaltabix.com</a></p>
+      </div>
+      <div class="bloque">
+        <p class="titulillo">Dirección</p>
+        <p>C/ Clemente Gonzálvez Valls 14<br>03202 Elche</p>
+        <p>Consultar horario</p>
+      </div>
+    </div>
+    <p class="credito">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+</body>
+</html>

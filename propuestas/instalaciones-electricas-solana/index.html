@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Instalaciones Eléctricas Solana S.L. — Electricista en Cuéllar (Segovia)</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --graf:#14171c;
+  --graf-2:#1d222a;
+  --graf-3:#2a313b;
+  --linea:#39414d;
+  --gris:#6d7683;
+  --claro:#f4f5f7;
+  --blanco:#ffffff;
+  --ambar:#f7b91c;
+  --ambar-osc:#c78d00;
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  padding-top:44px;
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  background:var(--blanco);
+  color:var(--graf);
+  line-height:1.6;
+  overflow-x:hidden;
+}
+img,svg{max-width:100%}
+a{color:inherit}
+.wrap{width:100%;max-width:1160px;margin:0 auto;padding:0 20px}
+
+/* ---------- barra fija ---------- */
+.barra{
+  position:fixed;top:0;left:0;right:0;z-index:99;
+  background:var(--graf);
+  color:#e8eaee;
+  border-bottom:2px solid var(--ambar);
+  font-size:clamp(10.5px,2.6vw,13px);
+  letter-spacing:.02em;
+  line-height:1.3;
+  padding:8px 14px;
+  text-align:center;
+  min-height:44px;
+  display:flex;align-items:center;justify-content:center;
+}
+.barra span{display:inline-block;max-width:100%}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;
+  background:
+    radial-gradient(900px 420px at 88% -10%,rgba(247,185,28,.22),transparent 60%),
+    linear-gradient(160deg,#1a1f27 0%,#14171c 55%,#0f1216 100%);
+  color:var(--blanco);
+  overflow:hidden;
+}
+.hero::before{
+  content:"";position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+  background-size:52px 52px;
+  mask-image:linear-gradient(180deg,rgba(0,0,0,.9),transparent 85%);
+  -webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,.9),transparent 85%);
+}
+.hero-in{position:relative;padding:clamp(44px,8vw,96px) 0 clamp(40px,7vw,84px)}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ambar);
+  border:1px solid rgba(247,185,28,.4);
+  border-radius:2px;
+  padding:6px 11px;
+  margin:0 0 22px;
+}
+.eyebrow svg{flex:0 0 auto}
+h1{
+  font-size:clamp(30px,7.4vw,60px);
+  line-height:1.05;
+  letter-spacing:-.02em;
+  font-weight:800;
+  margin:0 0 6px;
+  max-width:16ch;
+}
+h1 .sl{display:block;font-size:.42em;font-weight:600;letter-spacing:.06em;color:var(--gris);margin-top:10px}
+.hero p.lead{
+  font-size:clamp(16px,4vw,20px);
+  color:#c3c9d2;
+  max-width:44ch;
+  margin:22px 0 32px;
+}
+.hero .rule{width:64px;height:4px;background:var(--ambar);margin:26px 0 0}
+.acciones{display:flex;flex-wrap:wrap;gap:12px}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:clamp(15px,3.8vw,17px);font-weight:700;
+  text-decoration:none;
+  padding:15px 22px;
+  border-radius:2px;
+  border:2px solid transparent;
+}
+.btn-1{background:var(--ambar);color:#15181d;box-shadow:0 10px 24px -12px rgba(247,185,28,.8)}
+.btn-2{border-color:var(--linea);color:var(--blanco)}
+.hero-datos{
+  display:flex;flex-wrap:wrap;gap:8px 26px;
+  margin-top:34px;padding-top:24px;
+  border-top:1px solid rgba(255,255,255,.1);
+  font-size:14px;color:#98a1ad;
+}
+.hero-datos b{color:#e4e7ec;font-weight:600}
+
+/* ---------- secciones ---------- */
+section{padding:clamp(48px,8vw,88px) 0}
+.sec-claro{background:var(--claro)}
+.kicker{
+  font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ambar-osc);margin:0 0 12px;
+}
+h2{
+  font-size:clamp(24px,5.6vw,38px);
+  line-height:1.12;letter-spacing:-.015em;font-weight:800;
+  margin:0 0 14px;max-width:22ch;
+}
+.sub{color:#59616d;font-size:clamp(15px,3.6vw,17px);max-width:56ch;margin:0 0 34px}
+
+/* servicios */
+.grid-serv{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:14px}
+.card{
+  background:var(--blanco);
+  border:1px solid #e0e3e8;
+  border-top:3px solid var(--graf);
+  border-radius:2px;
+  padding:24px 22px 26px;
+}
+.card .ico{
+  width:42px;height:42px;display:flex;align-items:center;justify-content:center;
+  background:var(--graf);border-radius:2px;margin-bottom:16px;
+}
+.card h3{font-size:clamp(17px,4.2vw,19px);font-weight:700;margin:0 0 8px;letter-spacing:-.01em}
+.card p{margin:0;font-size:15px;color:#5c646f}
+
+/* pasos */
+.pasos{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;counter-reset:p}
+.paso{
+  background:var(--graf-2);color:var(--blanco);
+  border-radius:2px;padding:26px 22px 28px;
+  position:relative;overflow:hidden;
+}
+.paso .num{
+  font-size:clamp(36px,9vw,52px);font-weight:800;line-height:1;
+  color:var(--ambar);letter-spacing:-.04em;display:block;margin-bottom:12px;
+}
+.paso h3{font-size:clamp(17px,4.2vw,20px);margin:0 0 8px;font-weight:700}
+.paso p{margin:0;color:#aeb6c1;font-size:15px}
+.paso::after{content:"";position:absolute;left:22px;right:22px;top:0;height:2px;background:linear-gradient(90deg,var(--ambar),transparent)}
+
+/* contacto */
+.contacto{background:var(--graf);color:var(--blanco)}
+.contacto h2{color:var(--blanco)}
+.contacto .sub{color:#a3abb6}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:26px;align-items:start}
+.bloque{border:1px solid var(--linea);border-radius:2px;padding:22px}
+.fila{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.fila:last-child{border-bottom:0;padding-bottom:0}
+.fila:first-child{padding-top:0}
+.fila .et{font-size:11.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--ambar);margin:0 0 3px}
+.fila .vl{font-size:clamp(15px,3.8vw,17px);font-weight:600;margin:0;word-break:break-word;overflow-wrap:anywhere}
+.fila .vl a{text-decoration:none;border-bottom:1px solid rgba(247,185,28,.5)}
+.fila .vl.tel a{border-bottom:0;font-size:clamp(19px,5.4vw,25px);font-weight:800;letter-spacing:-.01em}
+.fila .mini{font-size:13.5px;color:#98a1ad;margin:4px 0 0}
+.mapa-caja{border:1px solid var(--linea);border-radius:2px;padding:14px;background:var(--graf-2)}
+.mapa-caja svg{display:block;width:100%;height:auto;border-radius:2px}
+.nota{font-size:12.5px;color:#8b93a0;margin:12px 2px 0;line-height:1.5}
+
+/* pie */
+footer{background:#0f1216;color:#9aa2ae;padding:36px 0;border-top:1px solid #23282f}
+footer .fmail{margin:0 0 16px}
+footer .fmail a{color:var(--blanco);font-weight:600;text-decoration:none;border-bottom:1px solid var(--ambar);word-break:break-word;overflow-wrap:anywhere}
+footer .firma{font-size:13px;line-height:1.6;margin:0;padding-top:16px;border-top:1px solid #23282f}
+footer .nombre{color:#d6dae0;font-weight:700;font-size:14px;margin:0 0 4px}
+</style>
+</head>
+<body>
+
+<div class="barra"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<header class="hero">
+  <div class="hero-in wrap">
+    <p class="eyebrow">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" fill="#f7b91c"/></svg>
+      Electricista en Cuéllar · Segovia
+    </p>
+    <h1>Instalaciones eléctricas hechas como toca
+      <span class="sl">Instalaciones Eléctricas Solana S.L.</span>
+    </h1>
+    <p class="lead">Trabajos eléctricos en vivienda, local, nave y comunidad: instalación nueva, reforma, avería o legalización. Nos lo contáis y lo vemos.</p>
+    <div class="acciones">
+      <a class="btn btn-1" href="tel:+34921142048">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 3h3.5l1.8 4.4-2.2 1.6a12 12 0 0 0 6.9 6.9l1.6-2.2L21 15.5V19a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2Z" stroke="#15181d" stroke-width="2" stroke-linejoin="round"/></svg>
+        Llamar al 921 142 048
+      </a>
+      <a class="btn btn-2" href="#contacto">Ver dónde estamos</a>
+    </div>
+    <div class="hero-datos">
+      <span><b>Ctra. El Henar 14-16</b> · 40200 Cuéllar</span>
+      <span>Horario: <b>Consultar horario</b></span>
+    </div>
+    <div class="rule"></div>
+  </div>
+</header>
+
+<section class="sec-claro" id="servicios">
+  <div class="wrap">
+    <p class="kicker">Servicios</p>
+    <h2>Lo que hacemos</h2>
+    <p class="sub">Trabajo eléctrico para particulares, negocios y comunidades. Si lo que necesitáis no aparece aquí, preguntadlo por teléfono.</p>
+    <div class="grid-serv">
+
+      <article class="card">
+        <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V21H3V10.5Z" stroke="#f7b91c" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 9v3.5h2.5L11 17" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <h3>Instalaciones en vivienda y local</h3>
+        <p>Instalación eléctrica completa en obra nueva y reforma: canalizaciones, cableado, mecanismos y puesta en marcha.</p>
+      </article>
+
+      <article class="card">
+        <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="1.5" stroke="#f7b91c" stroke-width="1.8"/><path d="M8 8h8M8 12h8M8 16h5" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        <h3>Boletines y legalizaciones</h3>
+        <p>Tramitación del boletín de instalación y la documentación necesaria para legalizar o dar de alta el suministro.</p>
+      </article>
+
+      <article class="card">
+        <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1.5" stroke="#f7b91c" stroke-width="1.8"/><path d="M7 8v4M11 8v4M15 8v4M6 16h12" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        <h3>Cuadros eléctricos</h3>
+        <p>Montaje, ampliación y renovación de cuadros y protecciones: diferenciales, automáticos y separación de circuitos.</p>
+      </article>
+
+      <article class="card">
+        <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 3l-1 6h4l-6 12 1-7H8l3-11h3Z" stroke="#f7b91c" stroke-width="1.8" stroke-linejoin="round"/><path d="M3 5h3M3 19h4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        <h3>Averías y reparaciones</h3>
+        <p>Localización y arreglo de fallos: saltos de diferencial, enchufes o líneas sin tensión, cortocircuitos y sustituciones.</p>
+      </article>
+
+      <article class="card">
+        <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3a6 6 0 0 1 6 6c0 2.4-1.5 3.7-2.2 5H8.2C7.5 12.7 6 11.4 6 9a6 6 0 0 1 6-6Z" stroke="#f7b91c" stroke-width="1.8" stroke-linejoin="round"/><path d="M9.5 17h5M10.5 20h3" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        <h3>Iluminación</h3>
+        <p>Puntos de luz, luminarias interiores y exteriores, cambio a LED y alumbrado de zonas comunes y de trabajo.</p>
+      </article>
+
+      <article class="card">
+        <span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14.5 3.5l6 6-2.5 2.5-6-6 2.5-2.5Z" stroke="#f7b91c" stroke-width="1.8" stroke-linejoin="round"/><path d="M11 7 4 14v6h6l7-7" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
+        <h3>Mantenimiento de comunidades y naves</h3>
+        <p>Revisiones y mantenimiento de la instalación en comunidades de vecinos, naves y locales, con avisos puntuales o continuados.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="como">
+  <div class="wrap">
+    <p class="kicker">Cómo trabajamos</p>
+    <h2>Tres pasos, sin vueltas</h2>
+    <p class="sub">La misma forma de trabajar para una avería en casa y para la instalación de un local entero.</p>
+    <div class="pasos">
+      <article class="paso">
+        <span class="num">01</span>
+        <h3>Nos contáis qué necesitáis</h3>
+        <p>Una llamada o un correo con lo que pasa o lo que queréis hacer. Con eso ya sabemos por dónde empezar.</p>
+      </article>
+      <article class="paso">
+        <span class="num">02</span>
+        <h3>Vamos a verlo</h3>
+        <p>Nos pasamos por la vivienda, el local o la nave para ver la instalación y medir el trabajo real que hay.</p>
+      </article>
+      <article class="paso">
+        <span class="num">03</span>
+        <h3>Presupuesto y ejecución</h3>
+        <p>Os damos el presupuesto con lo que incluye. Si lo aprobáis, acordamos fecha y lo ejecutamos.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="contacto" id="contacto">
+  <div class="wrap">
+    <p class="kicker" style="color:var(--ambar)">Contacto</p>
+    <h2>Estamos en Cuéllar</h2>
+    <p class="sub">Llamad y comentadnos el trabajo. Si preferís escribir, tenéis el correo en el pie de la página.</p>
+    <div class="cols">
+
+      <div class="bloque">
+        <div class="fila">
+          <div>
+            <p class="et">Teléfono</p>
+            <p class="vl tel"><a href="tel:+34921142048">921 142 048</a></p>
+          </div>
+        </div>
+        <div class="fila">
+          <div>
+            <p class="et">Dirección</p>
+            <p class="vl">Ctra. El Henar 14-16, 40200 Cuéllar</p>
+            <p class="mini">Cuéllar, provincia de Segovia.</p>
+          </div>
+        </div>
+        <div class="fila">
+          <div>
+            <p class="et">Horario</p>
+            <p class="vl">Consultar horario</p>
+          </div>
+        </div>
+        <div class="fila">
+          <div>
+            <p class="et">Correo</p>
+            <p class="vl"><a href="mailto:ie_solana_@hotmail.com">ie_solana_@hotmail.com</a></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mapa-caja">
+        <svg viewBox="0 0 400 300" role="img" aria-label="Mapa esquemático decorativo: representación abstracta de calles y manzanas con un marcador en la posición del local. No es un mapa real ni a escala.">
+          <rect width="400" height="300" fill="#161a20"/>
+          <g fill="#20262f">
+            <rect x="18" y="18" width="120" height="78" rx="2"/>
+            <rect x="158" y="18" width="94" height="78" rx="2"/>
+            <rect x="272" y="18" width="110" height="46" rx="2"/>
+            <rect x="18" y="126" width="88" height="70" rx="2"/>
+            <rect x="126" y="126" width="126" height="70" rx="2"/>
+            <rect x="272" y="94" width="110" height="102" rx="2"/>
+            <rect x="18" y="226" width="150" height="56" rx="2"/>
+            <rect x="188" y="226" width="194" height="56" rx="2"/>
+          </g>
+          <g stroke="#2e3742" stroke-width="1">
+            <path d="M18 57h120M158 57h94M40 18v78M200 126v70M300 130h82M300 160h82"/>
+          </g>
+          <g stroke="#38414d" stroke-width="12" stroke-linecap="square">
+            <path d="M0 110h400"/>
+            <path d="M262 0v300"/>
+            <path d="M116 110v190"/>
+            <path d="M0 210h400"/>
+          </g>
+          <g stroke="#f7b91c" stroke-width="2" stroke-dasharray="8 7" opacity=".55">
+            <path d="M0 110h400"/>
+          </g>
+          <circle cx="262" cy="110" r="6" fill="#161a20" stroke="#4a5462" stroke-width="2"/>
+          <g transform="translate(180 62)">
+            <ellipse cx="0" cy="44" rx="15" ry="4.5" fill="#000" opacity=".45"/>
+            <path d="M0 42C0 42-15 24-15 14A15 15 0 0 1 15 14c0 10-15 28-15 28Z" fill="#f7b91c"/>
+            <path d="M1 6-6 16h5l-2 8 8-11H1l1-7Z" fill="#14171c"/>
+          </g>
+          <text x="20" y="296" fill="#6d7683" font-family="system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="11">Esquema decorativo — no es un mapa real</text>
+        </svg>
+        <p class="nota">Ilustración orientativa: las calles y manzanas son formas abstractas y el marcador solo señala, de forma aproximada, dónde está el local. No sustituye a un mapa.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="fmail">Correo: <a href="mailto:ie_solana_@hotmail.com">ie_solana_@hotmail.com</a></p>
+    <p class="nombre">Instalaciones Eléctricas Solana S.L. · Cuéllar (Segovia)</p>
+    <p class="firma">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+</body>
+</html>

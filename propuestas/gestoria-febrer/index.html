@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gestoría Febrer — Benicarló | Propuesta de diseño</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --pizarra:#16333b;
+  --pizarra-2:#0e2429;
+  --verde:#1f4d45;
+  --crema:#f6f2e9;
+  --crema-2:#ece5d7;
+  --texto:#1b2b2e;
+  --texto-suave:#4c6167;
+  --acento:#b08b4f;
+  --borde:rgba(22,51,59,.14);
+  --barra:52px;
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;padding-top:var(--barra);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  background:var(--crema);color:var(--texto);
+  line-height:1.6;overflow-x:hidden;
+}
+img,svg{max-width:100%}
+a{color:inherit}
+h1,h2,h3{line-height:1.15;margin:0;letter-spacing:-.015em}
+.wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 20px}
+
+/* barra fija */
+.barra{
+  position:fixed;top:0;left:0;right:0;z-index:99;
+  min-height:var(--barra);display:flex;align-items:center;justify-content:center;
+  background:var(--pizarra-2);color:#e7ded0;
+  border-bottom:1px solid rgba(176,139,79,.35);
+  padding:8px 14px;text-align:center;
+}
+.barra span{
+  font-size:clamp(10px,2.7vw,13px);line-height:1.35;
+  letter-spacing:.06em;text-transform:uppercase;font-weight:500;
+}
+.barra b{color:var(--acento);font-weight:600}
+
+/* hero */
+.hero{
+  position:relative;overflow:hidden;color:#f3efe6;
+  background:
+    radial-gradient(1000px 520px at 82% -12%,rgba(176,139,79,.28),transparent 62%),
+    radial-gradient(760px 420px at 4% 108%,rgba(31,77,69,.65),transparent 66%),
+    linear-gradient(160deg,var(--pizarra) 0%,var(--pizarra-2) 58%,#0a1c20 100%);
+  padding:clamp(52px,9vw,104px) 0 clamp(56px,9vw,96px);
+}
+.hero::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+  background-size:52px 52px;
+  mask-image:linear-gradient(to bottom,rgba(0,0,0,.9),transparent 78%);
+  -webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,.9),transparent 78%);
+}
+.hero .wrap{position:relative;z-index:1}
+.kicker{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:clamp(10px,2.6vw,12px);letter-spacing:.18em;text-transform:uppercase;
+  color:#cdbb99;border:1px solid rgba(176,139,79,.45);border-radius:999px;
+  padding:6px 14px;margin-bottom:26px;
+}
+.kicker i{width:6px;height:6px;border-radius:50%;background:var(--acento);flex:none}
+.hero h1{font-size:clamp(34px,8.6vw,66px);font-weight:600;margin-bottom:20px}
+.hero h1 em{display:block;font-style:normal;color:var(--acento);font-size:.42em;letter-spacing:.14em;text-transform:uppercase;font-weight:600;margin-bottom:14px}
+.lede{font-size:clamp(16px,4.1vw,21px);color:#cfd9d8;max-width:38ch;margin:0 0 34px}
+.acciones{display:flex;flex-wrap:wrap;gap:12px}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;text-decoration:none;
+  padding:15px 24px;border-radius:10px;font-weight:600;
+  font-size:clamp(15px,3.7vw,17px);letter-spacing:.01em;
+}
+.btn-p{background:var(--acento);color:#16130d;box-shadow:0 12px 28px rgba(0,0,0,.28)}
+.btn-s{border:1px solid rgba(243,239,230,.34);color:#f3efe6}
+.hero-meta{
+  margin-top:34px;padding-top:22px;border-top:1px solid rgba(243,239,230,.16);
+  display:flex;flex-wrap:wrap;gap:8px 28px;font-size:14px;color:#a9bcbb;
+}
+
+/* secciones */
+section{padding:clamp(52px,8vw,92px) 0}
+.tit{font-size:clamp(11px,2.8vw,12px);letter-spacing:.2em;text-transform:uppercase;color:var(--acento);font-weight:700;margin-bottom:14px}
+h2{font-size:clamp(26px,6.2vw,40px);font-weight:600;margin-bottom:16px}
+.sub{color:var(--texto-suave);max-width:56ch;font-size:clamp(15px,3.9vw,17px);margin:0}
+
+/* servicios */
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));margin-top:38px}
+.card{
+  background:#fff;border:1px solid var(--borde);border-radius:14px;
+  padding:26px 24px;box-shadow:0 1px 2px rgba(22,51,59,.05);
+}
+.ico{
+  width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(145deg,var(--verde),var(--pizarra));margin-bottom:18px;
+}
+.ico svg{width:21px;height:21px;stroke:#e6d8bd;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.card h3{font-size:clamp(17px,4.2vw,19px);font-weight:650;margin-bottom:8px}
+.card p{margin:0;color:var(--texto-suave);font-size:15px}
+
+/* pasos */
+.pasos-sec{background:var(--pizarra);color:#eee7da;
+  background-image:radial-gradient(700px 360px at 92% 8%,rgba(176,139,79,.2),transparent 60%),linear-gradient(180deg,var(--pizarra),var(--pizarra-2))}
+.pasos-sec h2{color:#fff}
+.pasos-sec .sub{color:#b9c8c7}
+.pasos{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));margin-top:40px;counter-reset:p}
+.paso{border:1px solid rgba(243,239,230,.18);border-radius:14px;padding:26px 22px;background:rgba(255,255,255,.035)}
+.num{
+  font-size:13px;font-weight:700;letter-spacing:.1em;color:var(--acento);
+  display:flex;align-items:center;gap:10px;margin-bottom:16px;
+}
+.num s{flex:1;height:1px;background:rgba(176,139,79,.35);text-decoration:none}
+.paso h3{font-size:clamp(17px,4.3vw,20px);font-weight:600;margin-bottom:9px;color:#fff}
+.paso p{margin:0;color:#b9c8c7;font-size:15px}
+
+/* contacto */
+.contacto{background:var(--crema-2)}
+.cbox{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));margin-top:38px;align-items:start}
+.panel{background:#fff;border:1px solid var(--borde);border-radius:16px;padding:26px 24px}
+.dato{padding:16px 0;border-bottom:1px solid var(--borde)}
+.dato:first-child{padding-top:0}
+.dato:last-child{border-bottom:0;padding-bottom:0}
+.dato span{display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--acento);font-weight:700;margin-bottom:6px}
+.dato a,.dato p{margin:0;font-size:clamp(16px,4.2vw,18px);font-weight:600;text-decoration:none;color:var(--texto);overflow-wrap:anywhere}
+.dato small{display:block;font-weight:400;font-size:14px;color:var(--texto-suave);margin-top:4px}
+.mapa{background:#fff;border:1px solid var(--borde);border-radius:16px;padding:16px;overflow:hidden}
+.mapa svg{display:block;width:100%;height:auto;border-radius:10px}
+.nota{margin:12px 2px 0;font-size:12.5px;color:var(--texto-suave)}
+
+/* aviso */
+.aviso{background:var(--crema);padding:clamp(40px,7vw,66px) 0}
+.aviso-in{border:1px solid var(--borde);border-left:3px solid var(--acento);border-radius:12px;background:#fff;padding:24px}
+.aviso-in h3{font-size:clamp(18px,4.6vw,22px);font-weight:600;margin-bottom:10px}
+.aviso-in p{margin:0;color:var(--texto-suave);font-size:15.5px;max-width:64ch}
+
+/* pie */
+footer{background:var(--pizarra-2);color:#c6d2d1;padding:clamp(40px,7vw,64px) 0 34px}
+footer h3{color:#fff;font-size:clamp(19px,5vw,24px);font-weight:600;margin-bottom:12px}
+.pie-grid{display:grid;gap:26px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+footer a{color:#e7dcc6;text-decoration:none;overflow-wrap:anywhere;font-weight:600}
+footer p{margin:6px 0;font-size:15px}
+.firma{margin-top:34px;padding-top:20px;border-top:1px solid rgba(243,239,230,.16);font-size:13.5px;color:#93a6a5;text-align:center;line-height:1.6}
+</style>
+</head>
+<body>
+
+<div class="barra"><span>Propuesta de diseño · maqueta no oficial · <b>FFFFFFstudio</b> · Ángel Rubio</span></div>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="kicker"><i></i>Gestoría y asesoría · Benicarló</span>
+    <h1><em>Gestoría</em>Febrer</h1>
+    <p class="lede">Asesoría fiscal, contable y laboral para autónomos, pymes y particulares. Hablamos claro y nos ocupamos de los plazos.</p>
+    <div class="acciones">
+      <a class="btn btn-p" href="tel:+34964471462">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+        Llamar al 964 471 462
+      </a>
+      <a class="btn btn-s" href="#contacto">Cómo llegar</a>
+    </div>
+    <div class="hero-meta">
+      <span>C/ de Pius XII 4, Benicarló</span>
+      <span>Consultar horario</span>
+    </div>
+  </div>
+</header>
+
+<section id="servicios">
+  <div class="wrap">
+    <p class="tit">Servicios</p>
+    <h2>Todo lo administrativo, en un solo sitio</h2>
+    <p class="sub">Gestionamos los trámites y las obligaciones periódicas para que puedas dedicarte a lo tuyo.</p>
+    <div class="grid">
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h12l4 4v12H4z"/><path d="M8 12h8M8 16h5"/></svg></div>
+        <h3>Asesoría fiscal</h3>
+        <p>Declaraciones periódicas, IVA, IRPF, renta y atención a requerimientos de la Administración.</p>
+      </article>
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V5"/><path d="M4 19h16"/><path d="M8 15v-4M12 15V8M16 15v-6"/></svg></div>
+        <h3>Contabilidad</h3>
+        <p>Llevanza contable, libros oficiales, cierres y presentación de cuentas.</p>
+      </article>
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-5 6-5s6 1.7 6 5"/><path d="M16 9h5M16 13h5"/></svg></div>
+        <h3>Laboral y nóminas</h3>
+        <p>Contratos, altas y bajas, nóminas, seguros sociales y comunicaciones con la Seguridad Social.</p>
+      </article>
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21V9l9-6 9 6v12"/><path d="M9 21v-7h6v7"/></svg></div>
+        <h3>Autónomos, pymes y sociedades</h3>
+        <p>Alta de actividad, constitución de sociedades y acompañamiento en el día a día del negocio.</p>
+      </article>
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 15h18l-2-5H5z"/><circle cx="7.5" cy="18" r="1.6"/><circle cx="16.5" cy="18" r="1.6"/><path d="M7 10V7h10v3"/></svg></div>
+        <h3>Trámites de vehículos</h3>
+        <p>Transferencias, bajas, duplicados de permiso y gestiones de matriculación.</p>
+      </article>
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 4v6c0 4-3.4 7-8 8-4.6-1-8-4-8-8V7z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg></div>
+        <h3>Herencias y sucesiones</h3>
+        <p>Documentación, impuesto de sucesiones y donaciones, y trámites de adjudicación.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="pasos-sec">
+  <div class="wrap">
+    <p class="tit">Tu primera visita</p>
+    <h2>Tres pasos, sin compromiso</h2>
+    <p class="sub">Así empezamos con cualquier cliente nuevo, sea particular, autónomo o empresa.</p>
+    <div class="pasos">
+      <article class="paso">
+        <p class="num">01 <s></s></p>
+        <h3>Primera cita sin compromiso</h3>
+        <p>Nos cuentas tu caso por teléfono o en la oficina. Escuchar no cuesta nada.</p>
+      </article>
+      <article class="paso">
+        <p class="num">02 <s></s></p>
+        <h3>Revisamos vuestra situación</h3>
+        <p>Vemos la documentación, aclaramos dudas y te explicamos las opciones en lenguaje llano.</p>
+      </article>
+      <article class="paso">
+        <p class="num">03 <s></s></p>
+        <h3>Nos encargamos de los plazos</h3>
+        <p>Asumimos los trámites y el calendario de obligaciones, y te avisamos cuando haga falta algo.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="contacto" id="contacto">
+  <div class="wrap">
+    <p class="tit">Contacto</p>
+    <h2>Estamos en Benicarló</h2>
+    <p class="sub">Puedes llamarnos o pasarte por la oficina para una primera consulta.</p>
+    <div class="cbox">
+      <div class="panel">
+        <div class="dato">
+          <span>Teléfono</span>
+          <a href="tel:+34964471462">964 471 462</a>
+        </div>
+        <div class="dato">
+          <span>Dirección</span>
+          <p>C/ de Pius XII 4, 12580 Benicarló<small>Castellón</small></p>
+        </div>
+        <div class="dato">
+          <span>Horario</span>
+          <p>Consultar horario</p>
+        </div>
+        <div class="dato">
+          <span>Email</span>
+          <a href="mailto:info@gestoriafebrer.com">info@gestoriafebrer.com</a>
+        </div>
+      </div>
+      <div class="mapa">
+        <svg viewBox="0 0 400 300" role="img" aria-label="Mapa esquemático decorativo de la zona de la oficina">
+          <rect width="400" height="300" fill="#eef1ec"/>
+          <g fill="#e2e7df">
+            <rect x="18" y="20" width="120" height="86" rx="4"/>
+            <rect x="162" y="20" width="96" height="86" rx="4"/>
+            <rect x="282" y="20" width="100" height="120" rx="4"/>
+            <rect x="18" y="132" width="120" height="70" rx="4"/>
+            <rect x="162" y="132" width="96" height="70" rx="4"/>
+            <rect x="18" y="228" width="160" height="56" rx="4"/>
+            <rect x="204" y="228" width="178" height="56" rx="4"/>
+            <rect x="282" y="166" width="100" height="36" rx="4"/>
+          </g>
+          <g stroke="#ffffff" stroke-width="12" stroke-linecap="round">
+            <path d="M150 8 V292"/>
+            <path d="M270 8 V292"/>
+            <path d="M8 119 H392"/>
+            <path d="M8 215 H392"/>
+          </g>
+          <g stroke="#cfd6cc" stroke-width="1.5" stroke-dasharray="6 7">
+            <path d="M150 8 V292"/><path d="M270 8 V292"/>
+            <path d="M8 119 H392"/><path d="M8 215 H392"/>
+          </g>
+          <path d="M300 200 q30 30 70 34" stroke="#dbe3da" stroke-width="9" fill="none" stroke-linecap="round"/>
+          <g transform="translate(150,119)">
+            <circle r="26" fill="#b08b4f" opacity=".16"/>
+            <circle r="15" fill="#b08b4f" opacity=".26"/>
+            <path d="M0 -26 c-8.2 0 -15 6.6 -15 14.8 C-15 -2 0 12 0 12 s15 -14 15 -23.2 C15 -19.4 8.2 -26 0 -26 z" fill="#16333b"/>
+            <circle cy="-11" r="5" fill="#f6f2e9"/>
+          </g>
+          <text x="20" y="296" font-family="system-ui,Arial,sans-serif" font-size="11" fill="#8a968c">Esquema decorativo · no es un mapa real</text>
+        </svg>
+        <p class="nota">Ilustración orientativa de la ubicación de la oficina. Para indicaciones exactas, mejor una llamada.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="aviso">
+  <div class="wrap">
+    <div class="aviso-in">
+      <h3>Un detalle técnico que conviene resolver</h3>
+      <p>Hoy, al entrar en gestoriafebrer.com, el navegador muestra un aviso de «sitio no seguro» porque el certificado HTTPS no corresponde al dominio. Es un problema de configuración, no de la gestoría, pero muchos visitantes se dan la vuelta antes de llegar a la web. Esta maqueta plantea cómo podría verse el sitio una vez corregido.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="pie-grid">
+      <div>
+        <h3>Gestoría Febrer</h3>
+        <p>C/ de Pius XII 4, 12580 Benicarló (Castellón)</p>
+        <p>Consultar horario</p>
+      </div>
+      <div>
+        <h3>Contacto</h3>
+        <p><a href="tel:+34964471462">964 471 462</a></p>
+        <p><a href="mailto:info@gestoriafebrer.com">info@gestoriafebrer.com</a></p>
+      </div>
+    </div>
+    <p class="firma">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+</body>
+</html>

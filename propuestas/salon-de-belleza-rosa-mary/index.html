@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Salón de Belleza Rosa Mary · Centro de estética en Cuéllar</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  :root{
+    --crema:#fdf7f3;
+    --crema-2:#f8ece5;
+    --rosa:#e3aaa8;
+    --rosa-suave:#f3d4d0;
+    --rosa-prof:#b97a7c;
+    --terracota:#c47a5c;
+    --terracota-suave:#e2a98d;
+    --bronce:#a87f4e;
+    --tinta:#3f3230;
+    --tinta-suave:#6d5b58;
+    --blanco:#fffdfc;
+    --radio:28px;
+    --sombra:0 18px 40px -22px rgba(101,66,60,.35);
+    --barra:46px;
+  }
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    padding-top:var(--barra);
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--tinta);
+    background:var(--crema);
+    line-height:1.65;
+    overflow-x:hidden;
+  }
+  img,svg{max-width:100%}
+  a{color:inherit}
+  h1,h2,h3{line-height:1.15;margin:0;font-weight:600;letter-spacing:-.015em}
+
+  /* ---------- barra fija ---------- */
+  .barra{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    min-height:var(--barra);
+    display:flex;align-items:center;justify-content:center;
+    padding:7px 14px;
+    background:linear-gradient(100deg,#4a3a38,#6b4f4b 55%,#8a5f56);
+    color:#fdeee8;
+    font-size:clamp(10px,2.6vw,12.5px);
+    letter-spacing:.055em;
+    text-transform:uppercase;
+    text-align:center;
+    box-shadow:0 2px 14px rgba(70,45,40,.28);
+  }
+  .barra span{display:inline-block;max-width:100%}
+
+  .env{width:100%;max-width:1120px;margin:0 auto;padding:0 20px}
+  section{position:relative}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    padding:clamp(48px,9vw,96px) 0 clamp(60px,9vw,104px);
+    background:
+      radial-gradient(120% 90% at 8% 0%,#fff6f1 0%,rgba(255,246,241,0) 60%),
+      radial-gradient(90% 80% at 100% 10%,#f6dcd2 0%,rgba(246,220,210,0) 65%),
+      linear-gradient(170deg,var(--crema) 0%,var(--crema-2) 100%);
+  }
+  .blob{position:absolute;border-radius:50%;filter:blur(2px);opacity:.55;pointer-events:none}
+  .blob-1{width:min(62vw,420px);aspect-ratio:1;right:-14%;top:-12%;
+    background:radial-gradient(circle at 35% 35%,var(--rosa-suave),rgba(243,212,208,0) 70%)}
+  .blob-2{width:min(50vw,320px);aspect-ratio:1;left:-16%;bottom:-18%;
+    background:radial-gradient(circle at 60% 40%,var(--terracota-suave),rgba(226,169,141,0) 72%)}
+  .hero .env{position:relative;z-index:2}
+  .kicker{
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:clamp(11px,2.7vw,13px);letter-spacing:.14em;text-transform:uppercase;
+    color:var(--rosa-prof);font-weight:600;margin-bottom:20px;
+  }
+  .kicker::before{content:"";width:34px;height:1px;background:var(--rosa);flex:0 0 auto}
+  h1{font-size:clamp(34px,8.6vw,62px);max-width:20ch}
+  h1 em{font-style:normal;color:var(--terracota);display:block}
+  .lead{
+    margin:22px 0 0;max-width:46ch;
+    font-size:clamp(16px,4vw,20px);color:var(--tinta-suave);
+  }
+  .acciones{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:15px 26px;border-radius:999px;text-decoration:none;
+    font-weight:600;font-size:clamp(15px,3.7vw,16px);
+    transition:transform .18s ease,box-shadow .18s ease;
+  }
+  .btn:hover{transform:translateY(-2px)}
+  .btn-1{
+    background:linear-gradient(120deg,var(--terracota),var(--rosa-prof));
+    color:#fff9f6;box-shadow:0 14px 28px -14px rgba(180,104,86,.75);
+  }
+  .btn-2{background:rgba(255,255,255,.75);color:var(--tinta);border:1px solid var(--rosa-suave)}
+  .btn svg{flex:0 0 auto}
+  .hero-nota{margin-top:18px;font-size:13.5px;color:var(--tinta-suave)}
+
+  .tarjeta-hero{
+    margin-top:clamp(34px,6vw,54px);
+    display:grid;gap:14px;
+    grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));
+  }
+  .mini{
+    background:rgba(255,255,255,.72);
+    border:1px solid rgba(227,170,168,.4);
+    border-radius:20px;padding:18px 20px;
+  }
+  .mini strong{display:block;font-size:14.5px;letter-spacing:.02em}
+  .mini span{font-size:13.5px;color:var(--tinta-suave)}
+
+  /* ---------- onda separadora ---------- */
+  .onda{display:block;width:100%;height:auto;margin-bottom:-1px}
+
+  /* ---------- servicios ---------- */
+  .servicios{background:var(--blanco);padding:clamp(52px,8vw,90px) 0}
+  .cab{max-width:52ch;margin-bottom:clamp(30px,5vw,44px)}
+  .cab h2{font-size:clamp(26px,6.2vw,40px)}
+  .cab p{margin:14px 0 0;color:var(--tinta-suave);font-size:clamp(15px,3.8vw,17px)}
+  .grid-serv{
+    display:grid;gap:16px;
+    grid-template-columns:repeat(auto-fit,minmax(min(100%,255px),1fr));
+  }
+  .serv{
+    position:relative;overflow:hidden;
+    padding:26px 24px 28px;border-radius:var(--radio);
+    background:linear-gradient(165deg,#fffaf7,#fdf1eb);
+    border:1px solid rgba(227,170,168,.38);
+    box-shadow:var(--sombra);
+  }
+  .serv::after{
+    content:"";position:absolute;width:150px;height:150px;border-radius:50%;
+    right:-62px;top:-62px;
+    background:radial-gradient(circle at 40% 60%,rgba(243,212,208,.75),rgba(243,212,208,0) 70%);
+  }
+  .ico{
+    position:relative;z-index:1;
+    width:52px;height:52px;border-radius:50%;
+    display:grid;place-items:center;margin-bottom:16px;
+    background:linear-gradient(140deg,var(--rosa-suave),#f7e3d6);
+    color:var(--rosa-prof);
+  }
+  .serv h3{position:relative;z-index:1;font-size:clamp(18px,4.4vw,20px)}
+  .serv p{position:relative;z-index:1;margin:10px 0 0;color:var(--tinta-suave);font-size:15px}
+
+  /* ---------- pasos ---------- */
+  .pasos{
+    padding:clamp(52px,8vw,90px) 0;
+    background:
+      radial-gradient(80% 60% at 100% 0%,#f7ddd1 0%,rgba(247,221,209,0) 70%),
+      linear-gradient(180deg,var(--crema-2),var(--crema));
+  }
+  .grid-pasos{
+    display:grid;gap:18px;
+    grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));
+    counter-reset:p;
+  }
+  .paso{
+    background:rgba(255,255,255,.8);
+    border:1px solid rgba(168,127,78,.22);
+    border-radius:var(--radio);padding:28px 24px;
+  }
+  .num{
+    width:46px;height:46px;border-radius:50%;
+    display:grid;place-items:center;margin-bottom:16px;
+    font-weight:700;font-size:18px;
+    color:#fff9f4;background:linear-gradient(135deg,var(--bronce),var(--terracota));
+    box-shadow:0 10px 20px -12px rgba(168,127,78,.9);
+  }
+  .paso h3{font-size:clamp(17px,4.2vw,19px)}
+  .paso p{margin:10px 0 0;color:var(--tinta-suave);font-size:15px}
+
+  /* ---------- contacto ---------- */
+  .contacto{background:var(--blanco);padding:clamp(52px,8vw,90px) 0}
+  .cols{
+    display:grid;gap:22px;
+    grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));
+    align-items:start;
+  }
+  .datos{
+    background:linear-gradient(165deg,#fffaf7,#fbeee8);
+    border:1px solid rgba(227,170,168,.4);
+    border-radius:var(--radio);padding:clamp(24px,4.5vw,34px);
+    box-shadow:var(--sombra);
+  }
+  .dato{display:flex;gap:14px;padding:16px 0;border-bottom:1px dashed rgba(185,122,124,.3)}
+  .dato:last-child{border-bottom:0;padding-bottom:0}
+  .dato:first-of-type{padding-top:0}
+  .dato .ico{width:42px;height:42px;margin:0;flex:0 0 auto}
+  .dato .txt{min-width:0}
+  .dato h3{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--rosa-prof)}
+  .dato p{margin:5px 0 0;font-size:clamp(15px,3.9vw,17px);overflow-wrap:anywhere}
+  .dato a{text-decoration:none;border-bottom:1px solid var(--rosa-suave)}
+  .mapa-caja{
+    border-radius:var(--radio);overflow:hidden;
+    border:1px solid rgba(227,170,168,.4);
+    background:#fbf3ee;box-shadow:var(--sombra);
+  }
+  .mapa-caja svg{display:block;width:100%;height:auto}
+  .mapa-pie{
+    padding:12px 18px 16px;font-size:12.5px;color:var(--tinta-suave);
+    border-top:1px solid rgba(227,170,168,.4);
+  }
+
+  /* ---------- pie ---------- */
+  footer{
+    background:linear-gradient(160deg,#4a3a38,#6b4f4b);
+    color:#f6e3dc;padding:clamp(40px,7vw,64px) 0 32px;
+  }
+  footer h2{font-size:clamp(22px,5.4vw,30px);color:#fff7f3;max-width:24ch}
+  .pie-grid{
+    display:grid;gap:22px;margin-top:26px;
+    grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));
+  }
+  .pie-grid p{margin:0 0 6px;font-size:15px;overflow-wrap:anywhere}
+  .pie-grid a{color:#ffd9cb;text-decoration:none;border-bottom:1px solid rgba(255,217,203,.45)}
+  .pie-et{font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:#d5b6ae;margin-bottom:8px}
+  .firma{
+    margin-top:clamp(30px,5vw,44px);padding-top:20px;
+    border-top:1px solid rgba(255,225,215,.22);
+    font-size:clamp(12px,3.2vw,13.5px);color:#e2c8c0;
+  }
+</style>
+</head>
+<body>
+
+<div class="barra" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <span class="blob blob-1"></span>
+  <span class="blob blob-2"></span>
+  <div class="env">
+    <p class="kicker">Centro de estética en Cuéllar</p>
+    <h1>Salón de Belleza <em>Rosa Mary</em></h1>
+    <p class="lead">Tratamientos faciales y corporales en Cuéllar, con trato cercano
+      y un plan pensado para tu piel. Pide cita por teléfono y lo vemos con calma.</p>
+    <div class="acciones">
+      <a class="btn btn-1" href="tel:+34921140465">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 3h3l1.4 4-2 1.3a12 12 0 0 0 5.7 5.7l1.3-2 4 1.4v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.6 5.2 2 2 0 0 1 6.6 3z"/></svg>
+        Llamar al 921 140 465
+      </a>
+      <a class="btn btn-2" href="#servicios">Ver servicios</a>
+    </div>
+    <p class="hero-nota">C/ Alfonso X el Sabio 1, 40200 Cuéllar (Segovia) · Consultar horario</p>
+
+    <div class="tarjeta-hero">
+      <div class="mini"><strong>Cita previa</strong><span>Por teléfono, sin formularios</span></div>
+      <div class="mini"><strong>En Cuéllar</strong><span>C/ Alfonso X el Sabio 1</span></div>
+      <div class="mini"><strong>Trato cercano</strong><span>Te escuchamos antes de empezar</span></div>
+    </div>
+  </div>
+</section>
+
+<svg class="onda" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+  <path d="M0,42 C220,74 400,6 700,26 C980,44 1180,74 1440,34 L1440,70 L0,70 Z" fill="#fffdfc"/>
+</svg>
+
+<!-- SERVICIOS -->
+<section class="servicios" id="servicios">
+  <div class="env">
+    <div class="cab">
+      <h2>Lo que hacemos</h2>
+      <p>Servicios de estética facial, corporal y de imagen. Cada sesión se adapta a lo que
+        necesitas en ese momento; lo comentamos antes de empezar.</p>
+    </div>
+    <div class="grid-serv">
+
+      <article class="serv">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M9 10.5h.01M15 10.5h.01M9.3 15a4 4 0 0 0 5.4 0"/></svg></div>
+        <h3>Tratamientos faciales</h3>
+        <p>Limpieza e hidratación del rostro, con productos y técnicas elegidas según tu tipo de piel.</p>
+      </article>
+
+      <article class="serv">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c3-6 6-9 14-15"/><path d="M8.5 14.5c1.5 1 2.5 2.5 3 4.5"/><path d="M12 10c1.7 1 3 2.6 3.6 4.6"/></svg></div>
+        <h3>Depilación</h3>
+        <p>Depilación de distintas zonas del cuerpo y del rostro, con cita previa y a tu ritmo.</p>
+      </article>
+
+      <article class="serv">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5v17"/><path d="M8 7.5h8M7 12h10M8.5 16.5h7"/></svg></div>
+        <h3>Mesoterapia</h3>
+        <p>Sesiones de mesoterapia estética dentro de un plan de trabajo que valoramos contigo.</p>
+      </article>
+
+      <article class="serv">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2.2"/><path d="M12 5.2a6.8 6.8 0 0 1 0 13.6"/><path d="M12 2a10 10 0 0 1 0 20"/><path d="M8.5 8.8a4.5 4.5 0 0 0 0 6.4"/></svg></div>
+        <h3>Radiofrecuencia</h3>
+        <p>Tratamientos corporales y faciales con radiofrecuencia, siempre según lo que valoremos en consulta.</p>
+      </article>
+
+      <article class="serv">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="3.5" width="8" height="12" rx="4"/><path d="M8 9.5h8"/><path d="M6.5 20.5h11"/></svg></div>
+        <h3>Manicura y pedicura</h3>
+        <p>Cuidado de manos y pies: uñas, hidratación y acabado como prefieras llevarlo.</p>
+      </article>
+
+      <article class="serv">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l9.5-9.5"/><path d="M14 4.5l5.5 5.5-3 3-5.5-5.5z"/><path d="M4 20l1-3.5 2.5 2.5z"/></svg></div>
+        <h3>Maquillaje</h3>
+        <p>Maquillaje para el día a día o para una ocasión especial, hablado antes contigo.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- PASOS -->
+<section class="pasos">
+  <div class="env">
+    <div class="cab">
+      <h2>Tu primera visita</h2>
+      <p>Sin prisas y sin sorpresas: así es una primera cita con nosotras.</p>
+    </div>
+    <div class="grid-pasos">
+      <article class="paso">
+        <div class="num">1</div>
+        <h3>Pedís cita por teléfono</h3>
+        <p>Nos llamáis al 921 140 465 y buscamos juntas un momento que os venga bien.</p>
+      </article>
+      <article class="paso">
+        <div class="num">2</div>
+        <h3>Valoramos qué necesitáis</h3>
+        <p>En el salón lo vemos con calma: qué os preocupa, qué queréis cuidar y qué servicio encaja mejor.</p>
+      </article>
+      <article class="paso">
+        <div class="num">3</div>
+        <h3>Sesión y cuidados en casa</h3>
+        <p>Hacemos la sesión y os explicamos cómo continuar el cuidado en casa hasta la siguiente cita.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contacto" id="contacto">
+  <div class="env">
+    <div class="cab">
+      <h2>Dónde estamos</h2>
+      <p>En Cuéllar. Lo más sencillo es llamar y reservar tu hueco.</p>
+    </div>
+    <div class="cols">
+      <div class="datos">
+        <div class="dato">
+          <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 3h3l1.4 4-2 1.3a12 12 0 0 0 5.7 5.7l1.3-2 4 1.4v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.6 5.2 2 2 0 0 1 6.6 3z"/></svg></div>
+          <div class="txt">
+            <h3>Teléfono</h3>
+            <p><a href="tel:+34921140465">921 140 465</a></p>
+          </div>
+        </div>
+        <div class="dato">
+          <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-10.3A6.5 6.5 0 0 1 12 4.2a6.5 6.5 0 0 1 6.5 6.5C18.5 15.4 12 21 12 21z"/><circle cx="12" cy="10.6" r="2.3"/></svg></div>
+          <div class="txt">
+            <h3>Dirección</h3>
+            <p>C/ Alfonso X el Sabio 1, 40200 Cuéllar</p>
+          </div>
+        </div>
+        <div class="dato">
+          <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg></div>
+          <div class="txt">
+            <h3>Horario</h3>
+            <p>Consultar horario</p>
+          </div>
+        </div>
+        <div class="dato">
+          <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="13" rx="2.5"/><path d="M4 7l8 6 8-6"/></svg></div>
+          <div class="txt">
+            <h3>Email</h3>
+            <p><a href="mailto:mariarosamarotosa@gmail.com">mariarosamarotosa@gmail.com</a></p>
+          </div>
+        </div>
+        <div class="dato">
+          <div class="txt" style="flex:1">
+            <a class="btn btn-1" href="tel:+34921140465" style="margin-top:6px">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 3h3l1.4 4-2 1.3a12 12 0 0 0 5.7 5.7l1.3-2 4 1.4v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.6 5.2 2 2 0 0 1 6.6 3z"/></svg>
+              Pedir cita por teléfono
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mapa-caja">
+        <svg viewBox="0 0 420 320" role="img" aria-label="Mapa esquemático decorativo: calles y manzanas abstractas con un marcador en la posición del salón.">
+          <defs>
+            <linearGradient id="fondoMapa" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#fdf3ee"/>
+              <stop offset="1" stop-color="#f6e2d8"/>
+            </linearGradient>
+            <linearGradient id="pin" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#c47a5c"/>
+              <stop offset="1" stop-color="#b97a7c"/>
+            </linearGradient>
+          </defs>
+          <rect width="420" height="320" fill="url(#fondoMapa)"/>
+          <!-- manzanas -->
+          <g fill="#ffffff" opacity=".82">
+            <rect x="24" y="26" width="118" height="74" rx="12"/>
+            <rect x="172" y="18" width="96" height="60" rx="12"/>
+            <rect x="298" y="34" width="96" height="88" rx="12"/>
+            <rect x="30" y="140" width="92" height="72" rx="12"/>
+            <rect x="152" y="112" width="120" height="96" rx="14"/>
+            <rect x="308" y="156" width="86" height="64" rx="12"/>
+            <rect x="34" y="250" width="110" height="48" rx="12"/>
+            <rect x="176" y="244" width="94" height="56" rx="12"/>
+            <rect x="302" y="252" width="92" height="46" rx="12"/>
+          </g>
+          <!-- calles -->
+          <g stroke="#e8cbbe" stroke-width="12" stroke-linecap="round" fill="none">
+            <path d="M0 120 H420"/>
+            <path d="M0 232 H420"/>
+            <path d="M150 0 V320"/>
+            <path d="M288 0 V320"/>
+          </g>
+          <g stroke="#f7e6dd" stroke-width="3" stroke-dasharray="9 11" fill="none">
+            <path d="M0 120 H420"/>
+            <path d="M150 0 V320"/>
+          </g>
+          <!-- plaza decorativa -->
+          <circle cx="288" cy="120" r="26" fill="#efd4c6"/>
+          <circle cx="288" cy="120" r="12" fill="#e3b49f" opacity=".8"/>
+          <!-- marcador del local -->
+          <g transform="translate(150 232)">
+            <circle r="30" fill="#c47a5c" opacity=".14"/>
+            <circle r="18" fill="#c47a5c" opacity=".2"/>
+            <path d="M0 -34c-9.4 0-17 7.6-17 17C-17 -5 0 14 0 14s17-19 17-31c0-9.4-7.6-17-17-17z" fill="url(#pin)"/>
+            <circle cy="-17" r="6" fill="#fff6f1"/>
+          </g>
+          <text x="150" y="272" text-anchor="middle" font-family="system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="14" font-weight="600" fill="#6d5b58">Rosa Mary</text>
+        </svg>
+        <p class="mapa-pie">Ilustración decorativa: las calles y manzanas son esquemáticas y no
+          representan el plano real de Cuéllar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PIE -->
+<footer>
+  <div class="env">
+    <h2>¿Hablamos de lo que necesita tu piel?</h2>
+    <div class="pie-grid">
+      <div>
+        <p class="pie-et">Teléfono</p>
+        <p><a href="tel:+34921140465">921 140 465</a></p>
+      </div>
+      <div>
+        <p class="pie-et">Email</p>
+        <p><a href="mailto:mariarosamarotosa@gmail.com">mariarosamarotosa@gmail.com</a></p>
+      </div>
+      <div>
+        <p class="pie-et">Dónde</p>
+        <p>C/ Alfonso X el Sabio 1<br>40200 Cuéllar (Segovia)</p>
+      </div>
+      <div>
+        <p class="pie-et">Horario</p>
+        <p>Consultar horario</p>
+      </div>
+    </div>
+    <p class="firma">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+</body>
+</html>
