@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cerrajería Rodríguez · Segorbe</title>
+<meta name="description" content="Cerrajería Rodríguez en Segorbe (Castellón). Cerraduras, aperturas, puertas metálicas, rejas y mantenimiento. Teléfono 964 710 469.">
+<style>
+:root{
+  --steel-900:#0f1620;
+  --steel-800:#16202c;
+  --steel-700:#1e2b3a;
+  --steel-600:#2b3a4d;
+  --line:#e3e7ec;
+  --line-dark:#32445a;
+  --paper:#ffffff;
+  --paper-2:#f5f7f9;
+  --ink:#131a22;
+  --ink-2:#4b5866;
+  --brass:#c8922e;
+  --brass-soft:#f0d79a;
+  --bar-h:40px;
+  --radius:14px;
+  --maxw:1140px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{max-width:100%;overflow-x:hidden}
+body{
+  margin:0;
+  padding-top:var(--bar-h);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img,svg{max-width:100%}
+h1,h2,h3{line-height:1.15;margin:0;letter-spacing:-.02em;font-weight:700}
+p{margin:0}
+a{color:inherit}
+
+/* ---------- barra fija de propuesta ---------- */
+.proposal-bar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  min-height:var(--bar-h);
+  display:flex;align-items:center;justify-content:center;
+  background:var(--steel-900);
+  color:#e8edf3;
+  border-bottom:1px solid var(--line-dark);
+  padding:8px 14px;
+  text-align:center;
+  font-size:12px;
+  letter-spacing:.04em;
+}
+.proposal-bar span{display:block;max-width:100%}
+
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 20px}
+
+/* ---------- cabecera ---------- */
+.site-head{
+  border-bottom:1px solid var(--line);
+  background:var(--paper);
+}
+.site-head .wrap{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:16px;flex-wrap:wrap;padding-top:16px;padding-bottom:16px;
+}
+.brand{display:flex;align-items:center;gap:11px;min-width:0}
+.brand .mark{flex:0 0 auto}
+.brand-txt{min-width:0}
+.brand-name{font-weight:700;font-size:17px;letter-spacing:-.01em;white-space:nowrap}
+.brand-sub{font-size:12px;color:var(--ink-2);letter-spacing:.06em;text-transform:uppercase}
+.head-tel{
+  display:inline-flex;align-items:center;gap:9px;
+  text-decoration:none;font-weight:700;font-size:17px;
+  padding:10px 16px;border-radius:999px;
+  background:var(--steel-900);color:#fff;white-space:nowrap;
+}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(900px 420px at 88% -10%, rgba(200,146,46,.20), transparent 62%),
+    linear-gradient(160deg, var(--steel-900) 0%, var(--steel-700) 62%, var(--steel-600) 100%);
+  color:#eef2f7;
+}
+.hero::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+                   linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+  background-size:46px 46px;
+  mask-image:linear-gradient(to bottom, rgba(0,0,0,.6), transparent 78%);
+  -webkit-mask-image:linear-gradient(to bottom, rgba(0,0,0,.6), transparent 78%);
+}
+.hero .wrap{position:relative;z-index:1;padding-top:64px;padding-bottom:64px}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center}
+.eyebrow{
+  display:inline-block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--brass-soft);border:1px solid rgba(240,215,154,.35);
+  padding:6px 12px;border-radius:999px;margin-bottom:20px;
+}
+.hero h1{font-size:clamp(30px,4.6vw,50px);color:#fff}
+.hero h1 em{font-style:normal;color:var(--brass-soft)}
+.hero p.lead{margin-top:18px;font-size:clamp(15px,1.5vw,18px);color:#c3ced9;max-width:34em}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  text-decoration:none;font-weight:700;
+  padding:15px 22px;border-radius:12px;font-size:16px;
+}
+.btn-primary{background:var(--brass);color:#1b1305;border:1px solid #dcab4c}
+.btn-primary .num{font-size:19px;letter-spacing:.01em}
+.btn-ghost{background:rgba(255,255,255,.06);color:#eef2f7;border:1px solid rgba(255,255,255,.22)}
+.hero-note{margin-top:16px;font-size:13px;color:#93a3b4}
+
+.hero-card{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:18px;padding:22px;
+  backdrop-filter:blur(2px);
+}
+.hero-card h2{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--brass-soft)}
+.hero-card ul{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:12px}
+.hero-card li{display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#d5dee7}
+.hero-card li svg{flex:0 0 auto;margin-top:3px}
+
+/* ---------- secciones ---------- */
+section{scroll-margin-top:calc(var(--bar-h) + 12px)}
+.sec{padding:66px 0}
+.sec-alt{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.sec-head{max-width:46em;margin-bottom:36px}
+.kicker{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--brass);font-weight:700}
+.sec-head h2{font-size:clamp(24px,3vw,34px);margin-top:10px}
+.sec-head p{margin-top:12px;color:var(--ink-2);font-size:16px}
+
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px;display:flex;flex-direction:column;gap:12px;
+}
+.card .ico{
+  width:46px;height:46px;border-radius:11px;
+  background:linear-gradient(145deg,var(--steel-800),var(--steel-600));
+  display:flex;align-items:center;justify-content:center;flex:0 0 auto;
+}
+.card h3{font-size:18px}
+.card p{color:var(--ink-2);font-size:15px}
+
+/* ---------- pasos ---------- */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:s}
+.step{
+  position:relative;background:var(--paper);border:1px solid var(--line);
+  border-radius:var(--radius);padding:26px 24px 24px;
+}
+.step .n{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:38px;height:38px;border-radius:50%;
+  border:1.5px solid var(--brass);color:var(--brass);
+  font-weight:700;font-size:16px;margin-bottom:14px;
+}
+.step h3{font-size:17px}
+.step p{color:var(--ink-2);font-size:15px;margin-top:9px}
+
+/* ---------- contacto ---------- */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start}
+.contact-box{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+  padding:26px;
+}
+.dl{display:grid;gap:18px;margin:0}
+.dl .row{display:flex;gap:13px;align-items:flex-start}
+.dl .row svg{flex:0 0 auto;margin-top:2px}
+.dl dt{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);font-weight:700}
+.dl dd{margin:3px 0 0;font-size:16px;font-weight:600;word-break:break-word}
+.dl dd a{text-decoration:none}
+.dl dd.big{font-size:clamp(22px,3.6vw,28px);font-weight:700;letter-spacing:-.01em}
+.badge-acc{
+  display:inline-flex;align-items:center;gap:9px;margin-top:22px;
+  background:#eef4ee;border:1px solid #cfe0cf;color:#1f4024;
+  padding:10px 14px;border-radius:10px;font-size:14px;font-weight:600;
+}
+.map-box{
+  background:var(--steel-900);border:1px solid var(--line-dark);border-radius:var(--radius);
+  padding:14px;
+}
+.map-box svg{display:block;width:100%;height:auto;border-radius:9px}
+.map-cap{color:#93a3b4;font-size:12.5px;margin-top:11px;text-align:center}
+
+/* ---------- pie ---------- */
+.site-foot{background:var(--steel-900);color:#c3ced9;padding:44px 0 30px}
+.foot-grid{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:flex-start}
+.foot-grid .brand-name{color:#fff}
+.foot-grid .brand-sub{color:#8b9aab}
+.foot-links{display:grid;gap:7px;font-size:15px}
+.foot-links a{text-decoration:none;color:#dbe3ea;word-break:break-word}
+.foot-rule{border:0;border-top:1px solid var(--line-dark);margin:28px 0 18px}
+.foot-note{font-size:12.5px;color:#8b9aab;line-height:1.7}
+.foot-note strong{color:#c3ced9;font-weight:600}
+
+/* ---------- responsive ---------- */
+@media (max-width:980px){
+  .hero-grid{grid-template-columns:1fr;gap:32px}
+  .cards,.steps{grid-template-columns:1fr 1fr}
+  .contact-grid{grid-template-columns:1fr}
+}
+@media (max-width:660px){
+  :root{--bar-h:56px}
+  .proposal-bar{font-size:11px;letter-spacing:.02em;line-height:1.4}
+  .wrap{padding:0 16px}
+  .site-head .wrap{gap:12px}
+  .brand-name{font-size:16px;white-space:normal}
+  .head-tel{font-size:15px;padding:9px 14px}
+  .hero .wrap{padding-top:44px;padding-bottom:48px}
+  .sec{padding:48px 0}
+  .cards,.steps{grid-template-columns:1fr}
+  .btn{width:100%;justify-content:center}
+  .cta-row{gap:10px}
+  .foot-grid{flex-direction:column;gap:20px}
+}
+@media (max-width:400px){
+  .brand-sub{font-size:11px;letter-spacing:.04em}
+  .head-tel{font-size:14px;gap:7px}
+}
+</style>
+</head>
+<body>
+
+<div class="proposal-bar" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<header class="site-head">
+  <div class="wrap">
+    <div class="brand">
+      <svg class="mark" width="38" height="38" viewBox="0 0 38 38" fill="none" aria-hidden="true">
+        <rect x="1" y="1" width="36" height="36" rx="10" fill="#16202c"/>
+        <rect x="1" y="1" width="36" height="36" rx="10" stroke="#2b3a4d"/>
+        <circle cx="15.5" cy="15.5" r="5.6" stroke="#c8922e" stroke-width="2.2"/>
+        <path d="M19.4 19.4 L28 28" stroke="#c8922e" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M24.4 24.4 L27.2 21.6" stroke="#c8922e" stroke-width="2.2" stroke-linecap="round"/>
+        <circle cx="15.5" cy="15.5" r="1.7" fill="#c8922e"/>
+      </svg>
+      <div class="brand-txt">
+        <div class="brand-name">Cerrajería Rodríguez</div>
+        <div class="brand-sub">Segorbe · Castellón</div>
+      </div>
+    </div>
+    <a class="head-tel" href="tel:+34964710469">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M6.5 3h3l1.5 4-2 1.5a12 12 0 0 0 6.5 6.5L17 13l4 1.5v3a2.5 2.5 0 0 1-2.7 2.5C10.9 19.6 4.4 13.1 4 5.7A2.5 2.5 0 0 1 6.5 3Z" stroke="#f0d79a" stroke-width="1.8" stroke-linejoin="round"/>
+      </svg>
+      964 710 469
+    </a>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow">Cerrajería en Segorbe</span>
+          <h1>Cerraduras, puertas metálicas y rejas.<br><em>Trabajo de cerrajería en Segorbe.</em></h1>
+          <p class="lead">Cerrajería Rodríguez trabaja la construcción, la instalación y el mantenimiento en metal. Si necesitas una apertura, cambiar una cerradura o montar una reja, lo más rápido es una llamada.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="tel:+34964710469">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6.5 3h3l1.5 4-2 1.5a12 12 0 0 0 6.5 6.5L17 13l4 1.5v3a2.5 2.5 0 0 1-2.7 2.5C10.9 19.6 4.4 13.1 4 5.7A2.5 2.5 0 0 1 6.5 3Z" stroke="#1b1305" stroke-width="1.8" stroke-linejoin="round"/>
+              </svg>
+              <span class="num">Llamar: 964 710 469</span>
+            </a>
+            <a class="btn btn-ghost" href="#contacto">Ver dónde estamos</a>
+          </div>
+          <p class="hero-note">Avda. Mediterráneo s/n · 12400 Segorbe (Castellón)</p>
+        </div>
+
+        <aside class="hero-card">
+          <h2>En qué podemos ayudarte</h2>
+          <ul>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5 10 17.5 19 7" stroke="#c8922e" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Cerraduras: cambio, reparación y bombines
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5 10 17.5 19 7" stroke="#c8922e" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Aperturas de puertas
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5 10 17.5 19 7" stroke="#c8922e" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Puertas metálicas y rejas a medida
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5 10 17.5 19 7" stroke="#c8922e" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Mantenimiento y ajuste de cierres
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section class="sec" id="servicios">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Servicios</span>
+        <h2>Trabajos de cerrajería en metal</h2>
+        <p>Construcción, instalaciones y mantenimiento. Cuéntanos qué necesitas por teléfono y te decimos cómo lo abordamos.</p>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <div class="ico">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="4.5" y="10" width="15" height="10.5" rx="2.2" stroke="#f0d79a" stroke-width="1.8"/>
+              <path d="M8 10V7.5a4 4 0 0 1 8 0V10" stroke="#f0d79a" stroke-width="1.8" stroke-linecap="round"/>
+              <circle cx="12" cy="15.2" r="1.7" fill="#c8922e"/>
+            </svg>
+          </div>
+          <h3>Cerraduras y bombines</h3>
+          <p>Cambio, reparación y ajuste de cerraduras en viviendas, locales y naves. También copia de la instalación cuando hace falta unificar llaves.</p>
+        </article>
+
+        <article class="card">
+          <div class="ico">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 20V5.5A1.5 1.5 0 0 1 7.5 4H15a1.5 1.5 0 0 1 1.5 1.5V20" stroke="#f0d79a" stroke-width="1.8" stroke-linejoin="round"/>
+              <path d="M4 20h16" stroke="#f0d79a" stroke-width="1.8" stroke-linecap="round"/>
+              <circle cx="13.6" cy="12.6" r="1.2" fill="#c8922e"/>
+              <path d="M19.5 9.5 21 11l-1.5 1.5" stroke="#c8922e" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Aperturas de puertas</h3>
+          <p>Puertas bloqueadas, llaves partidas dentro del bombín o cierres que ya no giran. Intentamos siempre la apertura menos agresiva posible.</p>
+        </article>
+
+        <article class="card">
+          <div class="ico">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="4" y="4" width="16" height="16" rx="2" stroke="#f0d79a" stroke-width="1.8"/>
+              <path d="M12 4v16M4 12h16" stroke="#f0d79a" stroke-width="1.5"/>
+              <path d="M8 8.5h.01M16 15.5h.01" stroke="#c8922e" stroke-width="2.4" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Puertas metálicas</h3>
+          <p>Fabricación, instalación y reparación de puertas metálicas para viviendas, garajes, locales y naves.</p>
+        </article>
+
+        <article class="card">
+          <div class="ico">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="4" y="5" width="16" height="14" rx="1.6" stroke="#f0d79a" stroke-width="1.8"/>
+              <path d="M9 5v14M15 5v14M4 10h16M4 14h16" stroke="#c8922e" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <h3>Rejas y protecciones</h3>
+          <p>Rejas a medida para ventanas y huecos, vallados y protecciones metálicas, tomando medidas en el sitio.</p>
+        </article>
+
+        <article class="card">
+          <div class="ico">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M14.8 4.6a4.6 4.6 0 0 0 5.6 6.2L12 19.2a2.4 2.4 0 0 1-3.4-3.4l6.2-11.2Z" stroke="#f0d79a" stroke-width="1.7" stroke-linejoin="round"/>
+              <circle cx="9.6" cy="16.6" r="1.1" fill="#c8922e"/>
+            </svg>
+          </div>
+          <h3>Mantenimiento</h3>
+          <p>Revisión y puesta a punto de cierres, herrajes y elementos metálicos para comunidades, comercios y empresas.</p>
+        </article>
+
+        <article class="card">
+          <div class="ico">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 19.5 8 7.5l4 3 4-3 4 12" stroke="#f0d79a" stroke-width="1.8" stroke-linejoin="round"/>
+              <path d="M4 19.5h16" stroke="#c8922e" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Trabajos de construcción</h3>
+          <p>Estructuras e instalaciones metálicas dentro de obra, coordinadas con el resto del trabajo que haya en marcha.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CÓMO TRABAJAMOS -->
+  <section class="sec sec-alt" id="proceso">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Cómo trabajamos</span>
+        <h2>Tres pasos, sin vueltas</h2>
+        <p>La mayoría de consultas se resuelven antes con una llamada que con un formulario.</p>
+      </div>
+
+      <div class="steps">
+        <article class="step">
+          <div class="n">1</div>
+          <h3>Nos llamas y lo cuentas</h3>
+          <p>Nos dices qué ha pasado y dónde. Con eso valoramos si es algo que se soluciona en el momento o si conviene pasar a ver el trabajo.</p>
+        </article>
+        <article class="step">
+          <div class="n">2</div>
+          <h3>Vemos el trabajo</h3>
+          <p>Tomamos medidas y revisamos la instalación en el sitio. Te explicamos qué opciones hay antes de tocar nada.</p>
+        </article>
+        <article class="step">
+          <div class="n">3</div>
+          <h3>Lo ejecutamos</h3>
+          <p>Hacemos el trabajo acordado y te dejamos el cierre o la instalación funcionando y comprobada.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="sec" id="contacto">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Contacto</span>
+        <h2>Estamos en Segorbe</h2>
+        <p>Para cualquier consulta, lo más directo es el teléfono.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-box">
+          <dl class="dl">
+            <div class="row">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6.5 3h3l1.5 4-2 1.5a12 12 0 0 0 6.5 6.5L17 13l4 1.5v3a2.5 2.5 0 0 1-2.7 2.5C10.9 19.6 4.4 13.1 4 5.7A2.5 2.5 0 0 1 6.5 3Z" stroke="#c8922e" stroke-width="1.8" stroke-linejoin="round"/>
+              </svg>
+              <div>
+                <dt>Teléfono</dt>
+                <dd class="big"><a href="tel:+34964710469">964 710 469</a></dd>
+              </div>
+            </div>
+
+            <div class="row">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11Z" stroke="#c8922e" stroke-width="1.8" stroke-linejoin="round"/>
+                <circle cx="12" cy="10" r="2.5" stroke="#c8922e" stroke-width="1.8"/>
+              </svg>
+              <div>
+                <dt>Dirección</dt>
+                <dd>Avda. Mediterráneo s/n<br>12400 Segorbe (Castellón)</dd>
+              </div>
+            </div>
+
+            <div class="row">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <rect x="3.5" y="5.5" width="17" height="13" rx="2" stroke="#c8922e" stroke-width="1.8"/>
+                <path d="m4.5 7 7.5 5.5L19.5 7" stroke="#c8922e" stroke-width="1.8" stroke-linejoin="round"/>
+              </svg>
+              <div>
+                <dt>Email</dt>
+                <dd><a href="mailto:cerrajeriadrs@gmail.com">cerrajeriadrs@gmail.com</a></dd>
+              </div>
+            </div>
+
+            <div class="row">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="12" cy="12" r="8.5" stroke="#c8922e" stroke-width="1.8"/>
+                <path d="M12 7.2V12l3.2 2" stroke="#c8922e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <div>
+                <dt>Horario</dt>
+                <dd>Consultar horario</dd>
+              </div>
+            </div>
+          </dl>
+
+          <div class="badge-acc">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="9" stroke="#1f4024" stroke-width="1.7"/>
+              <circle cx="12" cy="7.2" r="1.5" fill="#1f4024"/>
+              <path d="M8 10.4h8M12 10.4v4m0 0-2.2 4m2.2-4 2.2 4" stroke="#1f4024" stroke-width="1.7" stroke-linecap="round"/>
+            </svg>
+            Local accesible
+          </div>
+        </div>
+
+        <div class="map-box">
+          <svg viewBox="0 0 520 340" role="img" aria-label="Mapa esquemático de la zona del taller">
+            <defs>
+              <linearGradient id="mapbg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#16202c"/>
+                <stop offset="1" stop-color="#22303f"/>
+              </linearGradient>
+            </defs>
+            <rect width="520" height="340" rx="10" fill="url(#mapbg)"/>
+
+            <!-- manzanas abstractas -->
+            <g fill="#1d2a38" stroke="#2c3d51" stroke-width="1.5">
+              <rect x="34" y="34" width="150" height="90" rx="6"/>
+              <rect x="212" y="34" width="118" height="90" rx="6"/>
+              <rect x="358" y="34" width="128" height="122" rx="6"/>
+              <rect x="34" y="156" width="150" height="70" rx="6"/>
+              <rect x="34" y="256" width="96" height="52" rx="6"/>
+              <rect x="158" y="256" width="130" height="52" rx="6"/>
+              <rect x="316" y="256" width="170" height="52" rx="6"/>
+              <rect x="358" y="188" width="128" height="38" rx="6"/>
+            </g>
+
+            <!-- viario -->
+            <g stroke="#3a4f68" stroke-linecap="round">
+              <path d="M18 140h484" stroke-width="16"/>
+              <path d="M198 18v300" stroke-width="12"/>
+              <path d="M344 18v300" stroke-width="10"/>
+              <path d="M18 242h484" stroke-width="10"/>
+            </g>
+            <g stroke="#6b8aa8" stroke-width="2" stroke-dasharray="14 12" stroke-linecap="round">
+              <path d="M18 140h484"/>
+              <path d="M198 18v300"/>
+            </g>
+
+            <!-- marcador -->
+            <g transform="translate(236,96)">
+              <ellipse cx="0" cy="62" rx="22" ry="7" fill="#000" opacity=".35"/>
+              <path d="M0 60C0 60 26 33.5 26 20A26 26 0 1 0-26 20C-26 33.5 0 60 0 60Z" fill="#c8922e" stroke="#f0d79a" stroke-width="2"/>
+              <circle cx="0" cy="20" r="9.5" fill="#16202c"/>
+              <path d="M-4 20.5 -1 23.5 4.5 17.5" stroke="#f0d79a" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+
+            <!-- etiqueta -->
+            <g transform="translate(236,182)">
+              <rect x="-96" y="0" width="192" height="34" rx="9" fill="#0f1620" stroke="#3a4f68"/>
+              <text x="0" y="22" text-anchor="middle" fill="#e8edf3" font-family="-apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600">Cerrajería Rodríguez</text>
+            </g>
+          </svg>
+          <p class="map-cap">Mapa esquemático, sin escala. Dirección: Avda. Mediterráneo s/n, 12400 Segorbe (Castellón).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="brand">
+        <svg class="mark" width="36" height="36" viewBox="0 0 38 38" fill="none" aria-hidden="true">
+          <rect x="1" y="1" width="36" height="36" rx="10" fill="#16202c" stroke="#32445a"/>
+          <circle cx="15.5" cy="15.5" r="5.6" stroke="#c8922e" stroke-width="2.2"/>
+          <path d="M19.4 19.4 L28 28" stroke="#c8922e" stroke-width="2.2" stroke-linecap="round"/>
+          <path d="M24.4 24.4 L27.2 21.6" stroke="#c8922e" stroke-width="2.2" stroke-linecap="round"/>
+          <circle cx="15.5" cy="15.5" r="1.7" fill="#c8922e"/>
+        </svg>
+        <div class="brand-txt">
+          <div class="brand-name">Cerrajería Rodríguez</div>
+          <div class="brand-sub">Construcción · Instalaciones · Mantenimiento</div>
+        </div>
+      </div>
+      <div class="foot-links">
+        <a href="tel:+34964710469"><strong>964 710 469</strong></a>
+        <a href="mailto:cerrajeriadrs@gmail.com">cerrajeriadrs@gmail.com</a>
+        <span>Avda. Mediterráneo s/n · 12400 Segorbe (Castellón)</span>
+        <span>Local accesible · Consultar horario</span>
+      </div>
+    </div>
+
+    <hr class="foot-rule">
+    <p class="foot-note">
+      <strong>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</strong><br>
+      Maqueta de demostración sin relación oficial con el negocio. Los datos de contacto son públicos; el resto del contenido es texto de ejemplo, pendiente de revisión por el propietario.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

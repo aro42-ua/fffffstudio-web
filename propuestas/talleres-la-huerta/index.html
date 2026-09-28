@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Talleres La Huerta · Taller mecánico multimarca en Vila-real</title>
+<style>
+  :root{
+    --ink:#0e1418;
+    --ink-2:#1a232a;
+    --steel:#5b6a75;
+    --line:#d9e0e5;
+    --paper:#ffffff;
+    --paper-2:#f2f5f7;
+    --accent:#c9411f;
+    --accent-dk:#a33317;
+    --gap:clamp(20px,4vw,40px);
+    --bar-h:44px;
+  }
+  *{box-sizing:border-box}
+  html,body{max-width:100%;overflow-x:hidden}
+  body{
+    margin:0;
+    padding-top:var(--bar-h);
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Helvetica Neue",Helvetica,Arial,"Segoe UI",system-ui,sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-text-size-adjust:100%;
+  }
+  img,svg{max-width:100%}
+  h1,h2,h3{line-height:1.15;margin:0;letter-spacing:-.02em;font-weight:800}
+  p{margin:0}
+  a{color:inherit}
+
+  /* Barra fija */
+  .topbar{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    min-height:var(--bar-h);
+    display:flex;align-items:center;justify-content:center;
+    background:var(--ink);color:#e8eef2;
+    border-bottom:1px solid rgba(255,255,255,.14);
+    font-size:12px;letter-spacing:.06em;text-transform:uppercase;
+    padding:8px 16px;text-align:center;
+  }
+  .topbar span{max-width:100%}
+
+  .wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 clamp(16px,4vw,32px)}
+  section{padding:clamp(48px,7vw,88px) 0}
+
+  /* Nav */
+  .brandbar{border-bottom:1px solid var(--line);background:var(--paper)}
+  .brandbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:16px;padding-bottom:16px;flex-wrap:wrap}
+  .logo{display:flex;align-items:center;gap:12px;min-width:0}
+  .logo .mark{flex:0 0 auto}
+  .logo b{display:block;font-size:17px;font-weight:800;letter-spacing:-.01em;line-height:1.2}
+  .logo small{display:block;font-size:12px;color:var(--steel);letter-spacing:.06em;text-transform:uppercase}
+  .navtel{
+    display:inline-flex;align-items:center;gap:8px;
+    font-weight:700;text-decoration:none;font-size:15px;
+    border:1px solid var(--line);border-radius:999px;padding:9px 16px;white-space:nowrap;
+  }
+  .navtel:hover{border-color:var(--ink)}
+
+  /* Hero */
+  .hero{
+    background:
+      radial-gradient(1000px 520px at 82% -10%, rgba(201,65,31,.18), transparent 62%),
+      linear-gradient(160deg,#101a21 0%,#16222b 46%,#0d1418 100%);
+    color:#f4f7f9;position:relative;overflow:hidden;
+  }
+  .hero .wrap{position:relative;z-index:2}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(24px,5vw,56px);align-items:center}
+  .eyebrow{
+    display:inline-block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    color:#ffbfa9;border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:6px 14px;margin-bottom:22px;
+  }
+  .hero h1{font-size:clamp(32px,5.4vw,58px);color:#fff}
+  .hero h1 em{font-style:normal;color:#ff8f6b}
+  .hero p.lede{margin-top:20px;font-size:clamp(16px,2vw,19px);color:#c3ced6;max-width:36em}
+  .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;
+    padding:15px 26px;border-radius:6px;font-size:16px;line-height:1.2;
+  }
+  .btn-main{background:var(--accent);color:#fff;border:1px solid var(--accent)}
+  .btn-main:hover{background:var(--accent-dk);border-color:var(--accent-dk)}
+  .btn-ghost{background:transparent;color:#f4f7f9;border:1px solid rgba(255,255,255,.34)}
+  .btn-ghost:hover{border-color:#fff}
+  .hero-facts{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:34px;padding-top:22px;border-top:1px solid rgba(255,255,255,.14);color:#aebac4;font-size:14px}
+  .hero-facts span{display:inline-flex;align-items:center;gap:8px}
+  .hero-art{display:flex;justify-content:center}
+  .hero-art svg{width:100%;height:auto;max-width:380px}
+
+  /* Servicios */
+  .sec-head{max-width:46em;margin-bottom:clamp(28px,4vw,44px)}
+  .kicker{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:12px}
+  .sec-head h2{font-size:clamp(26px,3.6vw,40px)}
+  .sec-head p{margin-top:14px;color:var(--steel)}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .card{
+    border:1px solid var(--line);border-radius:10px;padding:26px 24px;background:var(--paper);
+    display:flex;flex-direction:column;gap:12px;
+  }
+  .card .ico{width:38px;height:38px;flex:0 0 auto}
+  .card h3{font-size:18px}
+  .card p{color:var(--steel);font-size:15.5px}
+
+  /* Proceso */
+  .proceso{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:s}
+  .step{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:26px 24px}
+  .step .num{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:40px;height:40px;border-radius:50%;background:var(--ink);color:#fff;
+    font-weight:800;font-size:16px;margin-bottom:16px;
+  }
+  .step h3{font-size:18px;margin-bottom:10px}
+  .step p{color:var(--steel);font-size:15.5px}
+
+  /* Contacto */
+  .contacto-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,44px);align-items:start}
+  .info-list{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:4px}
+  .info-list li{display:flex;gap:16px;padding:18px 0;border-top:1px solid var(--line)}
+  .info-list li:last-child{border-bottom:1px solid var(--line)}
+  .info-list .ico{flex:0 0 auto;width:24px;height:24px;margin-top:3px}
+  .info-list .lbl{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);display:block;margin-bottom:3px}
+  .info-list .val{font-weight:700;font-size:17px;word-break:break-word}
+  .info-list a{text-decoration:none;border-bottom:1px solid var(--line)}
+  .info-list a:hover{border-color:var(--ink)}
+  .note{margin-top:22px;font-size:14px;color:var(--steel)}
+  .mapbox{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--paper-2)}
+  .mapbox svg{display:block;width:100%;height:auto}
+  .mapcap{padding:14px 18px;border-top:1px solid var(--line);font-size:13.5px;color:var(--steel);background:var(--paper)}
+
+  /* Footer */
+  footer{background:var(--ink);color:#c9d3da;padding:clamp(40px,5vw,60px) 0 28px}
+  .foot-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:start}
+  footer .fb{color:#fff;font-weight:800;font-size:18px}
+  footer a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.3);word-break:break-word}
+  footer .foot-line{margin-top:34px;padding-top:20px;border-top:1px solid rgba(255,255,255,.16);font-size:13.5px;color:#9aa8b2}
+  footer ul{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:8px;font-size:15px}
+
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr}
+    .hero-art{order:-1;margin-bottom:8px}
+    .hero-art svg{max-width:280px}
+    .grid-3,.steps{grid-template-columns:1fr 1fr}
+    .contacto-grid,.foot-grid{grid-template-columns:1fr}
+  }
+  @media (max-width:640px){
+    :root{--bar-h:58px}
+    body{font-size:16px}
+    .grid-3,.steps{grid-template-columns:1fr}
+    .topbar{font-size:11px;letter-spacing:.04em;line-height:1.35}
+    .brandbar .wrap{gap:12px}
+    .btn{width:100%;justify-content:center}
+    .cta-row{gap:12px}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<header class="brandbar">
+  <div class="wrap">
+    <div class="logo">
+      <svg class="mark" width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="#0e1418"/>
+        <path d="M20 9.5a10.5 10.5 0 1 0 0 21 10.5 10.5 0 0 0 0-21Zm0 4a6.5 6.5 0 1 1 0 13 6.5 6.5 0 0 1 0-13Z" fill="#c9411f"/>
+        <rect x="18.6" y="4.5" width="2.8" height="6" rx="1.2" fill="#fff"/>
+        <rect x="18.6" y="29.5" width="2.8" height="6" rx="1.2" fill="#fff"/>
+        <rect x="4.5" y="18.6" width="6" height="2.8" rx="1.2" fill="#fff"/>
+        <rect x="29.5" y="18.6" width="6" height="2.8" rx="1.2" fill="#fff"/>
+      </svg>
+      <span>
+        <b>Talleres La Huerta</b>
+        <small>Vila-real · Castellón</small>
+      </span>
+    </div>
+    <a class="navtel" href="tel:+34964521642">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c9411f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+      964 521 642
+    </a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">Taller mecánico multimarca</span>
+        <h1>Mantenimiento y reparación de vehículos <em>en Vila-real</em></h1>
+        <p class="lede">Talleres La Huerta es un taller multimarca en Vila-real dedicado al mantenimiento y la reparación de vehículos. Cuéntanos qué le pasa a tu coche y te decimos cómo lo revisamos.</p>
+        <div class="cta-row">
+          <a class="btn btn-main" href="tel:+34964521642">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+            Llamar al 964 521 642
+          </a>
+          <a class="btn btn-ghost" href="#contacto">Cómo llegar</a>
+        </div>
+        <div class="hero-facts">
+          <span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff8f6b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            C/ Vázquez de Mella 95, Vila-real
+          </span>
+          <span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff8f6b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h5"/></svg>
+            Multimarca
+          </span>
+          <span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff8f6b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            Consultar horario
+          </span>
+        </div>
+      </div>
+      <div class="hero-art">
+        <svg viewBox="0 0 320 320" role="img" aria-label="Ilustración de llave inglesa y engranaje">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#3a4a56"/><stop offset="1" stop-color="#1c262e"/>
+            </linearGradient>
+            <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#ff9b78"/><stop offset="1" stop-color="#c9411f"/>
+            </linearGradient>
+          </defs>
+          <circle cx="160" cy="160" r="142" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="1.5"/>
+          <circle cx="160" cy="160" r="112" fill="url(#g1)" stroke="rgba(255,255,255,.16)" stroke-width="1.5"/>
+          <g fill="url(#g2)">
+            <g id="teeth">
+              <rect x="150" y="30" width="20" height="30" rx="4"/>
+            </g>
+            <use href="#teeth" transform="rotate(45 160 160)"/>
+            <use href="#teeth" transform="rotate(90 160 160)"/>
+            <use href="#teeth" transform="rotate(135 160 160)"/>
+            <use href="#teeth" transform="rotate(180 160 160)"/>
+            <use href="#teeth" transform="rotate(225 160 160)"/>
+            <use href="#teeth" transform="rotate(270 160 160)"/>
+            <use href="#teeth" transform="rotate(315 160 160)"/>
+          </g>
+          <circle cx="160" cy="160" r="78" fill="#0e1418" stroke="rgba(255,255,255,.18)" stroke-width="1.5"/>
+          <g transform="rotate(-40 160 160) translate(160 163) scale(.88) translate(-160 -163)" fill="#e6edf2">
+            <path d="M160 86a26 26 0 1 1 0 52 26 26 0 0 1 0-52Zm0 13a13 13 0 1 0 0 26 13 13 0 0 0 0-26Z" fill-rule="evenodd"/>
+            <rect x="150" y="118" width="20" height="92" rx="5"/>
+            <path d="M136 208a24 24 0 0 1 48 0v44h-15v-28h-18v28h-15Z"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="servicios">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Servicios</div>
+      <h2>Mecánica general para el día a día de tu vehículo</h2>
+      <p>Trabajos habituales de mantenimiento y reparación en un taller multimarca. Si lo que necesitas no aparece aquí, llámanos y lo vemos.</p>
+    </div>
+    <div class="grid-3">
+      <article class="card">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#c9411f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 14 4 4h16l-2 10"/><path d="M4 14h16v5H4z"/><circle cx="8" cy="19" r="1.6"/><circle cx="16" cy="19" r="1.6"/></svg>
+        <h3>Mantenimiento periódico</h3>
+        <p>Revisiones de mantenimiento del vehículo, cambio de aceite y sustitución de filtros según lo que necesite cada coche.</p>
+      </article>
+      <article class="card">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#c9411f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.4"/><path d="M12 3v5M12 16v5M3 12h5M16 12h5"/></svg>
+        <h3>Frenos y suspensión</h3>
+        <p>Revisión y sustitución de pastillas, discos y elementos de suspensión y dirección cuando la comprobación lo aconseja.</p>
+      </article>
+      <article class="card">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#c9411f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m13 2-8 11h6l-2 9 8-11h-6l2-9Z"/></svg>
+        <h3>Diagnosis y electricidad</h3>
+        <p>Localización de averías eléctricas y electrónicas, revisión de batería, alternador, motor de arranque y alumbrado.</p>
+      </article>
+      <article class="card">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#c9411f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 18 0"/><path d="M12 12 7.5 7.5"/><path d="M3 12v5h18v-5"/></svg>
+        <h3>Motor y distribución</h3>
+        <p>Reparación de mecánica de motor, circuito de refrigeración y sustitución de kit de distribución y correas auxiliares.</p>
+      </article>
+      <article class="card">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#c9411f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3"/><path d="M12 3.5v5M12 15.5v5M3.5 12h5M15.5 12h5"/></svg>
+        <h3>Neumáticos y alineación</h3>
+        <p>Montaje y equilibrado de neumáticos, revisión de presiones y comprobación del desgaste de las ruedas.</p>
+      </article>
+      <article class="card">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#c9411f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6l1 4H8l1-4Z"/><path d="M6 7h12v14H6z"/><path d="M9.5 11.5h5M9.5 15.5h5"/></svg>
+        <h3>Preparación para la ITV</h3>
+        <p>Comprobación previa de los puntos que se revisan en la inspección y reparación de lo que salga defectuoso.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="proceso" id="proceso">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Cómo trabajamos</div>
+      <h2>Tres pasos, sin sorpresas</h2>
+      <p>Una forma de trabajar sencilla para que sepas en todo momento qué se va a hacer con tu vehículo.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h3>Nos cuentas la avería</h3>
+        <p>Llámanos o acércate al taller y explícanos qué le pasa al vehículo: ruidos, avisos en el cuadro o el mantenimiento que toca.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3>Revisamos y te lo explicamos</h3>
+        <p>Comprobamos el vehículo, te decimos qué hemos encontrado y qué trabajo haría falta, en palabras que se entiendan.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3>Reparamos con tu visto bueno</h3>
+        <p>Solo se hace lo que apruebas. Cuando el trabajo está terminado te avisamos para que pases a recoger el coche.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap">
+    <div class="contacto-grid">
+      <div>
+        <div class="kicker">Contacto</div>
+        <h2 style="font-size:clamp(26px,3.6vw,40px)">Estamos en Vila-real</h2>
+        <p style="margin-top:14px;color:var(--steel)">Para pedir cita o consultar cualquier duda sobre tu vehículo, lo más rápido es llamar por teléfono.</p>
+        <ul class="info-list">
+          <li>
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#c9411f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+            <span><span class="lbl">Teléfono</span><span class="val"><a href="tel:+34964521642">964 521 642</a></span></span>
+          </li>
+          <li>
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#c9411f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span><span class="lbl">Dirección</span><span class="val">C/ Vázquez de Mella 95<br>12540 Vila-real (Castellón)</span></span>
+          </li>
+          <li>
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#c9411f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            <span><span class="lbl">Horario</span><span class="val">Consultar horario</span></span>
+          </li>
+          <li>
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#c9411f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6 8.5-6"/></svg>
+            <span><span class="lbl">Email</span><span class="val"><a href="mailto:lahuerta3@gmail.com">lahuerta3@gmail.com</a></span></span>
+          </li>
+        </ul>
+        <p class="note">Para confirmar el horario de atención, llama al taller.</p>
+        <div class="cta-row">
+          <a class="btn btn-main" href="tel:+34964521642">Llamar al taller</a>
+        </div>
+      </div>
+
+      <div class="mapbox">
+        <svg viewBox="0 0 520 380" role="img" aria-label="Mapa esquemático de la ubicación del taller">
+          <rect width="520" height="380" fill="#eef2f5"/>
+          <g fill="#e2e8ed">
+            <rect x="34" y="34" width="140" height="92" rx="4"/>
+            <rect x="214" y="34" width="118" height="92" rx="4"/>
+            <rect x="372" y="34" width="114" height="130" rx="4"/>
+            <rect x="34" y="166" width="140" height="80" rx="4"/>
+            <rect x="214" y="166" width="118" height="80" rx="4"/>
+            <rect x="372" y="204" width="114" height="142" rx="4"/>
+            <rect x="34" y="286" width="140" height="60" rx="4"/>
+            <rect x="214" y="286" width="118" height="60" rx="4"/>
+          </g>
+          <g stroke="#ffffff" stroke-linecap="square">
+            <path d="M194 0V380" stroke-width="26"/>
+            <path d="M352 0V380" stroke-width="18"/>
+            <path d="M0 146H520" stroke-width="26"/>
+            <path d="M0 266H520" stroke-width="18"/>
+          </g>
+          <g stroke="#c3ccd4" stroke-width="1.5" stroke-dasharray="7 7">
+            <path d="M194 0V380"/>
+            <path d="M0 146H520"/>
+          </g>
+          <circle cx="194" cy="146" r="9" fill="#ffffff" stroke="#c3ccd4" stroke-width="1.5"/>
+          <g transform="translate(194 146)">
+            <circle r="46" fill="#c9411f" opacity=".12"/>
+            <circle r="28" fill="#c9411f" opacity=".16"/>
+          </g>
+          <g transform="translate(194 100)">
+            <path d="M0 52c0 0-19-20-19-33a19 19 0 1 1 38 0c0 13-19 33-19 33Z" fill="#c9411f"/>
+            <circle cx="0" cy="18" r="7" fill="#ffffff"/>
+          </g>
+          <rect x="34" y="34" width="452" height="312" fill="none" stroke="rgba(0,0,0,.06)"/>
+        </svg>
+        <div class="mapcap">Mapa esquemático, solo orientativo. Dirección exacta: C/ Vázquez de Mella 95, 12540 Vila-real (Castellón).</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="fb">Talleres La Huerta</div>
+        <p style="margin-top:10px;max-width:34em">Taller mecánico multimarca. Mantenimiento y reparación de vehículos en Vila-real (Castellón).</p>
+      </div>
+      <div>
+        <div class="fb" style="font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#9aa8b2">Contacto</div>
+        <ul>
+          <li><a href="tel:+34964521642">964 521 642</a></li>
+          <li><a href="mailto:lahuerta3@gmail.com">lahuerta3@gmail.com</a></li>
+          <li>C/ Vázquez de Mella 95, 12540 Vila-real (Castellón)</li>
+          <li>Consultar horario</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-line">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</div>
+  </div>
+</footer>
+
+</body>
+</html>

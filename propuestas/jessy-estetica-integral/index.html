@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jessy Estética Integral · Onda (Castellón)</title>
+<meta name="description" content="Jessy Estética Integral — centro de estética y belleza en Onda (Castellón). Maquillaje de fiesta y de novia, solárium y complementos.">
+<style>
+  :root{
+    --arena:#f7f2ee;
+    --arena-2:#efe4dc;
+    --crema:#fffcfa;
+    --tinta:#2b2320;
+    --tinta-2:#5b4c45;
+    --oro:#a9793f;
+    --oro-claro:#c99e63;
+    --rosa:#c98a8a;
+    --linea:#e3d5cb;
+    --sombra:0 1px 2px rgba(43,35,32,.05), 0 8px 28px rgba(43,35,32,.07);
+    --radio:18px;
+    --barra:44px;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    padding-top:var(--barra);
+    background:var(--crema);
+    color:var(--tinta);
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+    font-size:17px;
+    line-height:1.65;
+    overflow-x:hidden;
+  }
+  img,svg{max-width:100%}
+  h1,h2,h3{margin:0;line-height:1.15;font-weight:600;letter-spacing:-.01em}
+  p{margin:0}
+  a{color:inherit}
+
+  .sans{font-family:"Avenir Next","Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+
+  /* ---------- Barra fija de propuesta ---------- */
+  .barra{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    min-height:var(--barra);
+    display:flex; align-items:center; justify-content:center;
+    padding:8px 16px;
+    background:#2b2320;
+    color:#f3e9e2;
+    font-family:"Avenir Next","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:13px; line-height:1.4; letter-spacing:.04em;
+    text-align:center;
+    border-bottom:1px solid #4a3d37;
+  }
+
+  .env{width:100%;max-width:1120px;margin:0 auto;padding:0 24px}
+  @media (max-width:560px){
+    :root{--barra:62px}
+    .barra{font-size:12px;letter-spacing:.02em}
+    .env{padding:0 18px}
+  }
+
+  /* ---------- Cabecera ---------- */
+  .cab{
+    position:relative; z-index:20;
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    padding:20px 0 12px;
+  }
+  .marca{display:flex;align-items:center;gap:12px;text-decoration:none}
+  .marca .sello{width:44px;height:44px;flex:0 0 44px}
+  .marca b{display:block;font-size:19px;font-weight:600;letter-spacing:.01em}
+  .marca span{
+    display:block;font-family:"Avenir Next","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--tinta-2)
+  }
+  .nav{display:flex;align-items:center;gap:26px}
+  .nav a{
+    font-family:"Avenir Next","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:13px;letter-spacing:.09em;text-transform:uppercase;
+    text-decoration:none;color:var(--tinta-2)
+  }
+  .nav a:hover{color:var(--oro)}
+  @media (max-width:860px){ .nav{display:none} }
+
+  /* ---------- Botones ---------- */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    font-family:"Avenir Next","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:15px;font-weight:600;letter-spacing:.02em;
+    text-decoration:none;border-radius:999px;
+    padding:14px 26px;border:1px solid transparent;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn svg{flex:0 0 auto}
+  .btn-oro{background:#6d4a20;color:#fff8f0;box-shadow:var(--sombra)}
+  .btn-oro:hover{transform:translateY(-1px)}
+  .btn-linea{background:#fff;color:#4a3b33;border-color:var(--linea)}
+  .btn-linea:hover{border-color:var(--oro-claro);color:var(--oro)}
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative;overflow:hidden;padding:26px 0 78px}
+  .hero::before{
+    content:"";position:absolute;inset:-160px -20% auto -20%;height:640px;z-index:0;
+    background:
+      radial-gradient(60% 55% at 22% 28%, rgba(201,138,138,.22), rgba(201,138,138,0) 70%),
+      radial-gradient(55% 50% at 82% 18%, rgba(201,158,99,.28), rgba(201,158,99,0) 72%),
+      linear-gradient(170deg,#fbf5f0 0%, #fffcfa 62%);
+  }
+  .hero .env{position:relative;z-index:1}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center;padding-top:34px}
+  .ojal{
+    display:inline-flex;align-items:center;gap:9px;
+    font-family:"Avenir Next","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:#7a5c33;
+    background:#fff;border:1px solid var(--linea);border-radius:999px;padding:7px 16px;
+  }
+  .punto{width:6px;height:6px;border-radius:50%;background:var(--oro-claro);display:inline-block}
+  h1{font-size:clamp(34px,5vw,58px);margin:22px 0 0}
+  h1 em{font-style:italic;color:var(--oro)}
+  .entradilla{margin-top:20px;font-size:19px;color:var(--tinta-2);max-width:30em}
+  .acciones{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+  .apunte{
+    margin-top:18px;font-family:"Avenir Next","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:13.5px;color:#7b6a62
+  }
+  .hero-art{position:relative}
+  .hero-art svg{display:block;width:100%;height:auto;filter:drop-shadow(0 18px 40px rgba(94,66,48,.13))}
+  @media (max-width:900px){
+    .hero{padding-bottom:56px}
+    .hero-grid{grid-template-columns:1fr;gap:34px;padding-top:18px}
+    .hero-art{max-width:420px;margin:0 auto}
+  }
+
+  /* ---------- Secciones ---------- */
+  section{padding:74px 0}
+  .tono{background:linear-gradient(180deg,#faf5f1,#f6efe9)}
+  .cabecera-sec{max-width:38em;margin-bottom:38px}
+  .etq{
+    font-family:"Avenir Next","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--oro);
+    display:block;margin-bottom:12px
+  }
+  h2{font-size:clamp(27px,3.4vw,40px)}
+  .sub{margin-top:14px;color:var(--tinta-2);font-size:17.5px}
+
+  .rejilla{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  @media (max-width:900px){ .rejilla{grid-template-columns:1fr} }
+
+  .tarjeta{
+    background:#fff;border:1px solid var(--linea);border-radius:var(--radio);
+    padding:28px 26px;box-shadow:var(--sombra);
+    display:flex;flex-direction:column;gap:12px;
+  }
+  .tarjeta .icono{width:46px;height:46px}
+  .tarjeta h3{font-size:21px}
+  .tarjeta p{color:var(--tinta-2);font-size:16px}
+  .destacada{border-color:#e0c9ad;background:linear-gradient(180deg,#fffaf4,#fff)}
+  .marca-serv{
+    font-family:"Avenir Next","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#8a6a3c;
+  }
+
+  .nota-honesta{
+    margin-top:26px;padding:18px 20px;border-left:3px solid var(--oro-claro);
+    background:#fffdfb;border-radius:0 12px 12px 0;
+    font-family:"Avenir Next","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:14px;color:#6c5a51;
+  }
+
+  /* ---------- Pasos ---------- */
+  .pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;counter-reset:p}
+  @media (max-width:900px){ .pasos{grid-template-columns:1fr} }
+  .paso{
+    position:relative;background:#fff;border:1px solid var(--linea);border-radius:var(--radio);
+    padding:30px 26px 26px;box-shadow:var(--sombra)
+  }
+  .num{
+    width:42px;height:42px;border-radius:50%;
+    background:#6d4a20;color:#fff7ee;
+    display:flex;align-items:center;justify-content:center;
+    font-family:"Avenir Next","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:16px;font-weight:700;margin-bottom:16px
+  }
+  .paso h3{font-size:20px;margin-bottom:10px}
+  .paso p{color:var(--tinta-2);font-size:16px}
+
+  /* ---------- Contacto ---------- */
+  .contacto-grid{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:stretch}
+  @media (max-width:900px){ .contacto-grid{grid-template-columns:1fr} }
+  .ficha{
+    background:#fff;border:1px solid var(--linea);border-radius:var(--radio);
+    padding:32px 30px;box-shadow:var(--sombra)
+  }
+  .dato{display:flex;gap:16px;align-items:flex-start;padding:16px 0;border-bottom:1px solid #f0e6df}
+  .dato:last-of-type{border-bottom:0}
+  .dato .ic{flex:0 0 26px;margin-top:2px}
+  .dato .k{
+    font-family:"Avenir Next","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#8d7a70;display:block;margin-bottom:3px
+  }
+  .dato .v{font-size:18px;color:var(--tinta);text-decoration:none;word-break:break-word}
+  a.v:hover{color:var(--oro)}
+  .mapa{
+    background:#fff;border:1px solid var(--linea);border-radius:var(--radio);
+    box-shadow:var(--sombra);padding:14px;display:flex;flex-direction:column
+  }
+  .mapa svg{display:block;width:100%;height:auto;border-radius:12px}
+  .pie-mapa{
+    font-family:"Avenir Next","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:12.5px;color:#8d7a70;padding:12px 6px 4px;text-align:center
+  }
+
+  /* ---------- Pie ---------- */
+  footer{background:#2b2320;color:#efe2d9;padding:56px 0 30px}
+  .pie-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:30px;align-items:start}
+  @media (max-width:760px){ .pie-grid{grid-template-columns:1fr} }
+  footer b{font-size:20px;display:block}
+  footer .pd{color:#c3b0a5;font-size:16px;margin-top:8px}
+  footer a{color:#f3e4d6}
+  .pie-legal{
+    margin-top:38px;padding-top:20px;border-top:1px solid #463831;
+    font-family:"Avenir Next","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:13px;color:#c8b6ab;line-height:1.6
+  }
+  .pie-legal .firma{color:#e8d7c9}
+</style>
+</head>
+<body>
+
+<div class="barra">Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</div>
+
+<header class="hero">
+  <div class="env">
+    <div class="cab">
+      <a class="marca" href="#inicio">
+        <svg class="sello" viewBox="0 0 48 48" aria-hidden="true">
+          <defs>
+            <linearGradient id="g-sello" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#c99e63"/><stop offset="1" stop-color="#a9793f"/>
+            </linearGradient>
+          </defs>
+          <circle cx="24" cy="24" r="23" fill="none" stroke="url(#g-sello)" stroke-width="1.4"/>
+          <path d="M24 11c4.6 2.9 6.9 6.9 6.9 11.6 0 4.9-3.1 8.9-6.9 11.9-3.8-3-6.9-7-6.9-11.9C17.1 17.9 19.4 13.9 24 11Z" fill="none" stroke="url(#g-sello)" stroke-width="1.4"/>
+          <path d="M24 16.5v18" stroke="#c98a8a" stroke-width="1.2" stroke-linecap="round"/>
+          <circle cx="24" cy="38" r="1.7" fill="#a9793f"/>
+        </svg>
+        <span>
+          <b>Jessy</b>
+          <span>Estética Integral</span>
+        </span>
+      </a>
+      <nav class="nav">
+        <a href="#servicios">Servicios</a>
+        <a href="#visita">Tu primera visita</a>
+        <a href="#contacto">Contacto</a>
+        <a href="tel:+34610291620">610 291 620</a>
+      </nav>
+    </div>
+
+    <div class="hero-grid" id="inicio">
+      <div>
+        <span class="ojal"><span class="punto"></span> Onda · Castellón</span>
+        <h1>Belleza cuidada,<br><em>cerca de ti</em>.</h1>
+        <p class="entradilla">Centro de estética y belleza en Onda. Maquillaje de fiesta y de novia, solárium y complementos, con una atención cercana y tranquila.</p>
+        <div class="acciones">
+          <a class="btn btn-oro" href="tel:+34610291620">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/>
+            </svg>
+            Llamar al 610 291 620
+          </a>
+          <a class="btn btn-linea" href="#servicios">Ver servicios</a>
+        </div>
+        <p class="apunte">Pide cita por teléfono · C/ Cervantes 10, bajo — Onda</p>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 440 400" role="presentation">
+          <defs>
+            <linearGradient id="g-fondo" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#fdf6ef"/><stop offset="1" stop-color="#f3e4d8"/>
+            </linearGradient>
+            <linearGradient id="g-arco" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#f9e7d6"/><stop offset="1" stop-color="#eccfb3"/>
+            </linearGradient>
+            <linearGradient id="g-rosa" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#e6bcbc"/><stop offset="1" stop-color="#c98a8a"/>
+            </linearGradient>
+            <linearGradient id="g-sol" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#f2c37a"/><stop offset="1" stop-color="#d09a4d"/>
+            </linearGradient>
+          </defs>
+
+          <rect x="8" y="8" width="424" height="384" rx="28" fill="url(#g-fondo)"/>
+          <rect x="8" y="8" width="424" height="384" rx="28" fill="none" stroke="#e3d5cb"/>
+
+          <!-- arco decorativo -->
+          <path d="M120 344V178a100 100 0 0 1 200 0v166Z" fill="url(#g-arco)" opacity=".75"/>
+          <path d="M120 344V178a100 100 0 0 1 200 0v166" fill="none" stroke="#dcbfa2" stroke-width="1.5"/>
+
+          <!-- sol / solárium -->
+          <circle cx="220" cy="164" r="44" fill="url(#g-sol)" opacity=".92"/>
+          <g stroke="#d5a25b" stroke-width="2.4" stroke-linecap="round" opacity=".8">
+            <path d="M220 96v-18"/><path d="M220 232v18"/>
+            <path d="M152 164h-18"/><path d="M288 164h18"/>
+            <path d="M172 116l-13-13"/><path d="M268 212l13 13"/>
+            <path d="M268 116l13-13"/><path d="M172 212l-13 13"/>
+          </g>
+
+          <!-- pétalos / flor -->
+          <g opacity=".9">
+            <ellipse cx="220" cy="286" rx="17" ry="34" fill="url(#g-rosa)"/>
+            <ellipse cx="220" cy="286" rx="34" ry="17" fill="url(#g-rosa)" opacity=".82"/>
+            <ellipse cx="220" cy="286" rx="17" ry="34" fill="url(#g-rosa)" opacity=".7" transform="rotate(45 220 286)"/>
+            <ellipse cx="220" cy="286" rx="17" ry="34" fill="url(#g-rosa)" opacity=".7" transform="rotate(-45 220 286)"/>
+            <circle cx="220" cy="286" r="9" fill="#fdf3ea"/>
+          </g>
+
+          <!-- hojas finas -->
+          <path d="M96 330c34-14 58-40 68-74" fill="none" stroke="#c9a583" stroke-width="1.6" stroke-linecap="round"/>
+          <path d="M344 330c-34-14-58-40-68-74" fill="none" stroke="#c9a583" stroke-width="1.6" stroke-linecap="round"/>
+          <circle cx="96" cy="330" r="4" fill="#c98a8a"/>
+          <circle cx="344" cy="330" r="4" fill="#c98a8a"/>
+
+          <line x1="60" y1="344" x2="380" y2="344" stroke="#dcc6b4" stroke-width="1.5"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ SERVICIOS ============ -->
+<section id="servicios" class="tono">
+  <div class="env">
+    <div class="cabecera-sec">
+      <span class="etq">Servicios</span>
+      <h2>Lo que hacemos en el centro</h2>
+      <p class="sub">Estos son los servicios que figuran en nuestra ficha de comercio. Para cualquier duda sobre un tratamiento concreto, lo mejor es una llamada.</p>
+    </div>
+
+    <div class="rejilla">
+      <article class="tarjeta destacada">
+        <svg class="icono" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <rect x="18" y="6" width="12" height="20" rx="6" fill="#efd0d0" stroke="#c98a8a" stroke-width="1.6"/>
+          <path d="M20 26h8l2 14a2 2 0 0 1-2 2.3h-8A2 2 0 0 1 18 40Z" fill="#fff" stroke="#a9793f" stroke-width="1.6"/>
+          <path d="M22 12h4" stroke="#c98a8a" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <span class="marca-serv">Maquillaje</span>
+        <h3>Maquillaje de fiesta</h3>
+        <p>Para bodas, comuniones, cenas y celebraciones: un maquillaje pensado para ti y para la ocasión, que aguante toda la noche.</p>
+      </article>
+
+      <article class="tarjeta destacada">
+        <svg class="icono" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <path d="M12 42c0-9 5.4-15 12-15s12 6 12 15Z" fill="#fff" stroke="#a9793f" stroke-width="1.6"/>
+          <path d="M14 30c3-8 7-12 10-12s7 4 10 12" fill="none" stroke="#e3d5cb" stroke-width="1.4"/>
+          <circle cx="24" cy="14" r="8" fill="#f6e4e4" stroke="#c98a8a" stroke-width="1.6"/>
+          <path d="M24 6v2M18.3 8.3l1.4 1.4M34 14h-2M16 14h-2M29.7 8.3l-1.4 1.4" stroke="#c98a8a" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+        <span class="marca-serv">Maquillaje</span>
+        <h3>Maquillaje de novia</h3>
+        <p>El día más fotografiado de tu vida merece calma. Trabajamos el look contigo con antelación para que ese día todo esté decidido.</p>
+      </article>
+
+      <article class="tarjeta destacada">
+        <svg class="icono" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <circle cx="24" cy="24" r="9" fill="#f7dfbb" stroke="#a9793f" stroke-width="1.6"/>
+          <g stroke="#c99e63" stroke-width="2" stroke-linecap="round">
+            <path d="M24 5v6"/><path d="M24 37v6"/><path d="M5 24h6"/><path d="M37 24h6"/>
+            <path d="M10.6 10.6l4.2 4.2"/><path d="M33.2 33.2l4.2 4.2"/>
+            <path d="M37.4 10.6l-4.2 4.2"/><path d="M14.8 33.2l-4.2 4.2"/>
+          </g>
+        </svg>
+        <span class="marca-serv">Cabina</span>
+        <h3>Solárium</h3>
+        <p>Servicio de solárium en el propio centro. Te explicamos cómo funciona y resolvemos tus dudas antes de la primera sesión.</p>
+      </article>
+
+      <article class="tarjeta destacada">
+        <svg class="icono" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <path d="M10 18h28l-2.4 22a3 3 0 0 1-3 2.7H15.4a3 3 0 0 1-3-2.7Z" fill="#fff" stroke="#a9793f" stroke-width="1.6"/>
+          <path d="M18 20v-4a6 6 0 0 1 12 0v4" fill="none" stroke="#c98a8a" stroke-width="1.6" stroke-linecap="round"/>
+          <circle cx="24" cy="30" r="3.4" fill="#f0d8d8" stroke="#c98a8a" stroke-width="1.4"/>
+        </svg>
+        <span class="marca-serv">Tienda</span>
+        <h3>Complementos</h3>
+        <p>Una selección de complementos disponible en el centro, para rematar el conjunto el día del evento o para un regalo.</p>
+      </article>
+
+      <article class="tarjeta">
+        <svg class="icono" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <path d="M24 8c7 4.4 10.6 10.3 10.6 17.3S30 38 24 42c-6-4-10.6-9.7-10.6-16.7S17 12.4 24 8Z" fill="#fbeee2" stroke="#a9793f" stroke-width="1.6"/>
+          <path d="M24 14v22" stroke="#c99e63" stroke-width="1.4" stroke-linecap="round"/>
+          <path d="M24 22l5-4M24 29l-5-4" stroke="#c98a8a" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+        <span class="marca-serv">Estética</span>
+        <h3>Estética y belleza</h3>
+        <p>Jessy Estética Integral es un centro de estética y belleza. Si buscas un servicio concreto, pregúntanoslo por teléfono y te decimos si lo ofrecemos.</p>
+      </article>
+
+      <article class="tarjeta">
+        <svg class="icono" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <rect x="7" y="11" width="34" height="26" rx="5" fill="#fff" stroke="#a9793f" stroke-width="1.6"/>
+          <path d="M14 21h20M14 27h13" stroke="#c99e63" stroke-width="1.8" stroke-linecap="round"/>
+          <circle cx="36" cy="12" r="5" fill="#c98a8a"/>
+        </svg>
+        <span class="marca-serv">Cita</span>
+        <h3>¿No sabes qué pedir?</h3>
+        <p>Cuéntanos el evento o lo que tienes en mente y te orientamos sobre qué servicio encaja mejor y cuánto tiempo necesitamos.</p>
+      </article>
+    </div>
+
+    <p class="nota-honesta">Nota de la maqueta: esta página solo recoge los servicios que aparecen en la ficha oficial del centro. El listado real puede ampliarse con lo que nos indique el negocio.</p>
+  </div>
+</section>
+
+<!-- ============ PRIMERA VISITA ============ -->
+<section id="visita">
+  <div class="env">
+    <div class="cabecera-sec">
+      <span class="etq">Tu primera visita</span>
+      <h2>Sencillo, en tres pasos</h2>
+      <p class="sub">Sin formularios ni complicaciones: una llamada basta para empezar.</p>
+    </div>
+
+    <div class="pasos">
+      <article class="paso">
+        <div class="num">1</div>
+        <h3>Llama y cuéntanos</h3>
+        <p>Marca el <a href="tel:+34610291620" style="color:var(--oro);text-decoration:none;font-weight:600">610 291 620</a> y dinos qué necesitas y para cuándo. Si es una boda o un evento con fecha, mejor con margen.</p>
+      </article>
+      <article class="paso">
+        <div class="num">2</div>
+        <h3>Cerramos día y hora</h3>
+        <p>Buscamos juntos el hueco que mejor te venga y te confirmamos cuánto tiempo hay que reservar para el servicio.</p>
+      </article>
+      <article class="paso">
+        <div class="num">3</div>
+        <h3>Te esperamos en el centro</h3>
+        <p>Nos ves en C/ Cervantes 10, bajo, en Onda. Llega con tiempo, ponte cómoda y nosotras nos ocupamos del resto.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section id="contacto" class="tono">
+  <div class="env">
+    <div class="cabecera-sec">
+      <span class="etq">Contacto</span>
+      <h2>Dónde estamos</h2>
+      <p class="sub">En Onda. Lo más rápido para pedir cita o preguntar cualquier cosa es una llamada.</p>
+    </div>
+
+    <div class="contacto-grid">
+      <div class="ficha">
+        <div class="dato">
+          <svg class="ic" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#a9793f" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/>
+          </svg>
+          <div>
+            <span class="k">Teléfono</span>
+            <a class="v" href="tel:+34610291620">610 291 620</a>
+          </div>
+        </div>
+
+        <div class="dato">
+          <svg class="ic" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#a9793f" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 10.4c0 5.4-8 12.6-8 12.6S4 15.8 4 10.4a8 8 0 1 1 16 0Z"/>
+            <circle cx="12" cy="10.2" r="2.8"/>
+          </svg>
+          <div>
+            <span class="k">Dirección</span>
+            <span class="v">C/ Cervantes 10, bajo<br>12200 Onda (Castellón)</span>
+          </div>
+        </div>
+
+        <div class="dato">
+          <svg class="ic" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#a9793f" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="9"/><path d="M12 6.8V12l3.4 2"/>
+          </svg>
+          <div>
+            <span class="k">Horario</span>
+            <span class="v">Consultar horario</span>
+          </div>
+        </div>
+
+        <div class="dato">
+          <svg class="ic" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#a9793f" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2.5" y="4.5" width="19" height="15" rx="3"/><path d="m3.5 6.5 8.5 6 8.5-6"/>
+          </svg>
+          <div>
+            <span class="k">Email</span>
+            <a class="v" href="mailto:jessytg81@gmail.com">jessytg81@gmail.com</a>
+          </div>
+        </div>
+
+        <div class="acciones" style="margin-top:22px">
+          <a class="btn btn-oro" href="tel:+34610291620">Llamar ahora</a>
+          <a class="btn btn-linea" href="mailto:jessytg81@gmail.com">Escribir un email</a>
+        </div>
+      </div>
+
+      <div class="mapa">
+        <svg viewBox="0 0 520 380" role="img" aria-label="Mapa esquemático de la zona del centro, con un marcador en la ubicación del local">
+          <defs>
+            <linearGradient id="g-mapa" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#fbf6f1"/><stop offset="1" stop-color="#f2e9e1"/>
+            </linearGradient>
+            <linearGradient id="g-pin" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#c98a8a"/><stop offset="1" stop-color="#9d5c5c"/>
+            </linearGradient>
+          </defs>
+
+          <rect width="520" height="380" rx="12" fill="url(#g-mapa)"/>
+
+          <!-- manzanas -->
+          <g fill="#ffffff" stroke="#e7dbd1" stroke-width="1.5">
+            <rect x="34" y="34" width="150" height="104" rx="8"/>
+            <rect x="222" y="34" width="120" height="104" rx="8"/>
+            <rect x="380" y="34" width="106" height="150" rx="8"/>
+            <rect x="34" y="176" width="150" height="90" rx="8"/>
+            <rect x="222" y="176" width="120" height="90" rx="8"/>
+            <rect x="34" y="304" width="150" height="46" rx="8"/>
+            <rect x="222" y="304" width="264" height="46" rx="8"/>
+            <rect x="380" y="222" width="106" height="44" rx="8"/>
+          </g>
+
+          <!-- calles -->
+          <g stroke="#e0d0c2" stroke-linecap="round">
+            <path d="M0 157h520" stroke-width="16"/>
+            <path d="M0 285h520" stroke-width="16"/>
+            <path d="M203 0v380" stroke-width="16"/>
+            <path d="M361 0v380" stroke-width="16"/>
+          </g>
+          <g stroke="#fbf6f1" stroke-width="2" stroke-dasharray="12 12" stroke-linecap="round">
+            <path d="M0 157h520"/><path d="M0 285h520"/>
+            <path d="M203 0v380"/><path d="M361 0v380"/>
+          </g>
+
+          <!-- marcador -->
+          <g>
+            <ellipse cx="282" cy="232" rx="20" ry="6" fill="#c98a8a" opacity=".22"/>
+            <path d="M282 232s-20-17.8-20-30a20 20 0 1 1 40 0c0 12.2-20 30-20 30Z" fill="url(#g-pin)"/>
+            <circle cx="282" cy="201" r="7.4" fill="#fff8f4"/>
+          </g>
+          <rect x="196" y="244" width="172" height="34" rx="10" fill="#fffdfb" stroke="#e7dbd1"/>
+          <text x="282" y="266" text-anchor="middle" font-family="Avenir Next, Segoe UI, Helvetica, Arial, sans-serif" font-size="14" fill="#5b4c45">C/ Cervantes 10, bajo</text>
+
+          <!-- rosa de los vientos -->
+          <g transform="translate(456 322)">
+            <circle r="20" fill="#fffdfb" stroke="#e7dbd1"/>
+            <path d="M0 -13 4 0 0 4 -4 0Z" fill="#c98a8a"/>
+            <path d="M0 13 4 0 0 -4 -4 0Z" fill="#d9c6b6"/>
+            <text x="0" y="-22" text-anchor="middle" font-family="Avenir Next, Segoe UI, Helvetica, Arial, sans-serif" font-size="10" fill="#8d7a70">N</text>
+          </g>
+        </svg>
+        <p class="pie-mapa">Mapa esquemático, no a escala · Onda (Castellón)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="env">
+    <div class="pie-grid">
+      <div>
+        <b>Jessy Estética Integral</b>
+        <p class="pd">C/ Cervantes 10, bajo · 12200 Onda (Castellón)<br>
+        Tel. <a href="tel:+34610291620">610 291 620</a> · <a href="mailto:jessytg81@gmail.com">jessytg81@gmail.com</a><br>
+        Consultar horario</p>
+      </div>
+      <div>
+        <b style="font-size:13px;letter-spacing:.18em;text-transform:uppercase;font-family:'Avenir Next',Segoe UI,Helvetica,Arial,sans-serif;color:#c3b0a5">Secciones</b>
+        <p class="pd">
+          <a href="#servicios" style="text-decoration:none">Servicios</a><br>
+          <a href="#visita" style="text-decoration:none">Tu primera visita</a><br>
+          <a href="#contacto" style="text-decoration:none">Contacto</a>
+        </p>
+      </div>
+    </div>
+    <div class="pie-legal">
+      <span class="firma">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</span><br>
+      Maqueta no oficial, sin relación contractual con el negocio. Datos de contacto tomados de su ficha pública.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
