@@ -1,0 +1,692 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gestoría Gestordes · Gestoría administrativa y seguros en Ordes</title>
+<meta name="description" content="Maqueta de propuesta de rediseño para Gestoría Gestordes, gestoría administrativa y seguros en Ordes (A Coruña).">
+<style>
+:root{
+  --ink:#10151c;
+  --ink-2:#2b3542;
+  --muted:#5a6675;
+  --line:#dfe4ea;
+  --line-soft:#eceff3;
+  --bg:#ffffff;
+  --bg-2:#f5f7f9;
+  --brand:#0f3d5c;
+  --brand-2:#1b6b8c;
+  --accent:#b8892f;
+  --white:#fff;
+  --r:14px;
+  --maxw:1180px;
+  --bar-h:44px;
+  --nav-h:74px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;max-width:100%;overflow-x:hidden}
+html{scroll-behavior:smooth}
+body{
+  padding-top:calc(var(--bar-h) + var(--nav-h));
+  background:var(--bg);color:var(--ink);
+  font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;
+}
+img,svg{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3,h4{margin:0;line-height:1.18;letter-spacing:-.018em;font-weight:650}
+p{margin:0}
+ul{margin:0;padding:0;list-style:none}
+
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.eyebrow{
+  font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  font-weight:700;color:var(--brand-2);margin-bottom:14px;
+}
+.lead{color:var(--muted);font-size:18px}
+
+/* ---------- barra fija ---------- */
+.mockbar{
+  position:fixed;top:0;left:0;right:0;z-index:100;height:var(--bar-h);
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(90deg,#0d1620,#1a2b3a 50%,#0d1620);
+  color:#e7edf3;text-align:center;
+  border-bottom:1px solid rgba(255,255,255,.14);
+}
+.mockbar span{
+  font-size:12px;letter-spacing:.06em;font-weight:600;
+  padding:0 14px;line-height:1.3;
+}
+
+
+/* ---------- cabecera ---------- */
+.nav{
+  position:fixed;top:var(--bar-h);left:0;right:0;z-index:90;height:var(--nav-h);
+  background:rgba(255,255,255,.92);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.nav-in{display:flex;align-items:center;gap:20px;height:100%}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex:0 0 auto}
+.brand-mark{width:40px;height:40px;flex:0 0 auto}
+.brand-txt strong{display:block;font-size:17px;font-weight:700;letter-spacing:-.02em}
+.brand-txt em{
+  display:block;font-style:normal;font-size:11px;color:var(--muted);
+  letter-spacing:.11em;text-transform:uppercase;font-weight:600;margin-top:2px;
+}
+.nav-links{display:flex;gap:26px;margin-left:auto}
+.nav-links a{
+  text-decoration:none;font-size:14.5px;font-weight:550;color:var(--ink-2);
+  padding:6px 0;border-bottom:2px solid transparent;
+}
+.nav-links a:hover{color:var(--brand);border-bottom-color:var(--accent)}
+.nav-cta{
+  margin-left:20px;display:inline-flex;align-items:center;gap:8px;
+  background:var(--brand);color:#fff;text-decoration:none;
+  padding:11px 18px;border-radius:10px;font-size:14.5px;font-weight:650;
+  white-space:nowrap;
+}
+.nav-cta:hover{background:#0b2f47}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(1000px 520px at 88% -12%,rgba(27,107,140,.22),transparent 62%),
+    radial-gradient(760px 420px at 4% 108%,rgba(184,137,47,.14),transparent 60%),
+    linear-gradient(170deg,#f7f9fb,#eef2f6);
+  border-bottom:1px solid var(--line);
+}
+.hero-grid{
+  display:grid;grid-template-columns:1.06fr .94fr;gap:56px;align-items:center;
+  padding-top:78px;padding-bottom:84px;
+}
+.hero h1{font-size:clamp(2rem,3.5vw,2.95rem);letter-spacing:-.03em;text-wrap:balance}
+.hero h1 .hl{color:var(--brand);display:block}
+.hero p.lead{margin-top:22px;max-width:52ch;font-size:19px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;text-decoration:none;
+  border-radius:12px;font-weight:680;font-size:16px;padding:15px 24px;
+  border:1px solid transparent;
+}
+.btn-primary{background:var(--brand);color:#fff;box-shadow:0 10px 26px -14px rgba(15,61,92,.7)}
+.btn-primary:hover{background:#0b2f47}
+.btn-ghost{background:#fff;color:var(--brand);border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--brand-2);color:var(--brand-2)}
+.hero-note{
+  margin-top:26px;display:flex;flex-wrap:wrap;gap:10px 22px;
+  font-size:14px;color:var(--muted);
+}
+.hero-note span{display:inline-flex;align-items:center;gap:8px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex:0 0 auto}
+
+.hero-card{
+  background:#fff;border:1px solid var(--line);border-radius:18px;
+  padding:26px;box-shadow:0 30px 60px -38px rgba(16,21,28,.4);
+}
+.hero-card h3{font-size:15px;letter-spacing:.1em;text-transform:uppercase;color:var(--brand-2);font-size:12px}
+.hero-card ul{margin-top:18px;display:grid;gap:14px}
+.hero-card li{display:flex;gap:12px;align-items:flex-start;font-size:15.5px;color:var(--ink-2)}
+.tick{width:20px;height:20px;flex:0 0 auto;margin-top:2px}
+.hero-card .card-foot{
+  margin-top:22px;padding-top:18px;border-top:1px solid var(--line-soft);
+  font-size:14px;color:var(--muted);
+}
+
+/* ---------- aviso web actual ---------- */
+.notice{background:var(--ink);color:#dce4ec}
+.notice-in{
+  display:flex;gap:22px;align-items:flex-start;padding-top:30px;padding-bottom:30px;
+}
+.notice svg{flex:0 0 auto;margin-top:2px}
+.notice h2{font-size:18px;color:#fff;margin-bottom:6px}
+.notice p{font-size:15px;color:#aab8c6;max-width:78ch}
+
+/* ---------- secciones ---------- */
+.sec{padding:84px 0}
+.sec.alt{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.sec-head{max-width:64ch;margin-bottom:46px}
+.sec-head h2{font-size:clamp(1.55rem,2.7vw,2.25rem)}
+.sec-head p{margin-top:16px;color:var(--muted);font-size:17.5px}
+
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--r);
+  padding:26px;display:flex;flex-direction:column;gap:14px;
+  transition:border-color .2s,transform .2s,box-shadow .2s;
+}
+.card:hover{border-color:#c3cdd8;transform:translateY(-2px);box-shadow:0 18px 36px -26px rgba(16,21,28,.42)}
+.card-ico{
+  width:46px;height:46px;border-radius:11px;flex:0 0 auto;
+  background:linear-gradient(145deg,#eaf1f6,#dbe6ee);
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid #d3dee7;
+}
+.card h3{font-size:18.5px}
+.card p{font-size:15px;color:var(--muted)}
+.card ul{display:grid;gap:8px;margin-top:2px}
+.card li{
+  font-size:14.5px;color:var(--ink-2);padding-left:16px;position:relative;
+}
+.card li::before{
+  content:"";position:absolute;left:0;top:.62em;
+  width:6px;height:6px;border-radius:50%;background:var(--accent);
+}
+
+/* ---------- pasos ---------- */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;counter-reset:s}
+.step{
+  position:relative;background:#fff;border:1px solid var(--line);
+  border-radius:var(--r);padding:30px 26px 26px;
+}
+.step-n{
+  width:44px;height:44px;border-radius:12px;
+  background:var(--brand);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:18px;margin-bottom:18px;
+}
+.step h3{font-size:18px;margin-bottom:10px}
+.step p{font-size:15px;color:var(--muted)}
+
+/* ---------- contacto ---------- */
+.contact-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:38px;align-items:start}
+.cbox{
+  background:#fff;border:1px solid var(--line);border-radius:var(--r);
+  padding:28px;display:grid;gap:22px;
+}
+.crow{display:flex;gap:14px;align-items:flex-start}
+.crow .ci{
+  width:38px;height:38px;border-radius:10px;flex:0 0 auto;
+  background:linear-gradient(145deg,#eaf1f6,#dbe6ee);border:1px solid #d3dee7;
+  display:flex;align-items:center;justify-content:center;
+}
+.crow h4{font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--brand-2);margin-bottom:6px}
+.crow a{text-decoration:none;font-weight:650;font-size:18px;color:var(--ink);display:block;word-break:break-word}
+.crow a:hover{color:var(--brand-2)}
+.crow p{font-size:15.5px;color:var(--ink-2)}
+.crow small{display:block;font-size:13.5px;color:var(--muted);margin-top:4px}
+.badge-horario{
+  display:inline-flex;align-items:center;gap:8px;
+  background:#f4f0e6;border:1px solid #e3d8bf;color:#6b5420;
+  border-radius:999px;padding:7px 14px;font-size:13.5px;font-weight:650;
+}
+.mapbox{
+  background:#fff;border:1px solid var(--line);border-radius:var(--r);
+  overflow:hidden;
+}
+.mapbox .map-cap{
+  padding:14px 20px;border-top:1px solid var(--line-soft);
+  font-size:13px;color:var(--muted);display:flex;flex-wrap:wrap;gap:6px 14px;justify-content:space-between;
+}
+.mapsvg{width:100%;height:auto;display:block}
+
+/* ---------- pie ---------- */
+footer{background:var(--ink);color:#c5d0db;padding:56px 0 30px}
+.f-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:34px}
+footer h4{color:#fff;font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px}
+footer a{color:#c5d0db;text-decoration:none;word-break:break-word}
+footer a:hover{color:#fff}
+footer ul{display:grid;gap:9px;font-size:15px}
+.f-brand{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.f-brand strong{color:#fff;font-size:17px}
+.f-about{font-size:14.5px;color:#9fadbb;max-width:44ch}
+.f-bottom{
+  margin-top:40px;padding-top:22px;border-top:1px solid rgba(255,255,255,.14);
+  display:flex;flex-wrap:wrap;gap:10px 20px;justify-content:space-between;
+  font-size:13.5px;color:#93a2b1;
+}
+.f-bottom .studio{color:#e3e9ef;font-weight:600}
+
+@media (max-width:1000px){
+  .hero-grid{grid-template-columns:1fr;gap:38px;padding-top:58px;padding-bottom:64px}
+  .cards,.steps{grid-template-columns:repeat(2,1fr)}
+  .contact-grid{grid-template-columns:1fr;gap:26px}
+  .f-grid{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+}
+@media (max-width:640px){
+  :root{--bar-h:58px;--nav-h:64px}
+  body{font-size:16px}
+  .wrap{padding:0 18px}
+  .nav-in{gap:8px;flex-wrap:nowrap}
+  .brand{min-width:0;flex:1 1 auto}
+  .brand-txt{min-width:0;overflow:hidden}
+  .nav-cta{margin-left:auto;padding:10px 12px;font-size:13px;flex:0 0 auto}
+  .brand-mark{width:32px;height:32px}
+  .brand-txt strong{font-size:14.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .brand-txt em{font-size:9.5px;letter-spacing:.06em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .hero-grid{padding-top:44px;padding-bottom:52px}
+  .hero h1{font-size:clamp(1.7rem,7.3vw,2.2rem)}
+  .hero p.lead{font-size:17px}
+  .hero-actions{gap:10px}
+  .btn{width:100%;justify-content:center;padding:15px 18px}
+  .sec{padding:56px 0}
+  .sec-head{margin-bottom:32px}
+  .cards,.steps{grid-template-columns:1fr}
+  .notice-in{flex-direction:column;gap:14px;padding-top:26px;padding-bottom:26px}
+  .f-grid{grid-template-columns:1fr;gap:28px}
+  .f-bottom{flex-direction:column}
+  .mockbar span{font-size:11px;letter-spacing:.02em}
+}
+</style>
+</head>
+<body>
+
+<div class="mockbar" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top">
+      <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
+        <defs><linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#1b6b8c"/><stop offset="1" stop-color="#0f3d5c"/>
+        </linearGradient></defs>
+        <rect x="1" y="1" width="46" height="46" rx="12" fill="url(#bg1)"/>
+        <path d="M15 32V19h4.4c3.4 0 5.6 2.4 5.6 6.4S22.8 32 19.4 32H15Z" fill="#fff" opacity=".95"/>
+        <rect x="28" y="19" width="3.4" height="13" rx="1.7" fill="#b8892f"/>
+        <rect x="34" y="23" width="3.4" height="9" rx="1.7" fill="#fff" opacity=".8"/>
+      </svg>
+      <span class="brand-txt">
+        <strong>Gestoría Gestordes</strong>
+        <em>Gestoría y seguros · Ordes</em>
+      </span>
+    </a>
+    <nav class="nav-links" aria-label="Secciones">
+      <a href="#servicios">Servicios</a>
+      <a href="#pasos">Primera visita</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="nav-cta" href="tel:881864528">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+        <path d="M6 3h3l2 5-2.4 1.6a12 12 0 0 0 5.8 5.8L16 13l5 2v3a2 2 0 0 1-2.2 2A16.8 16.8 0 0 1 4 5.2 2 2 0 0 1 6 3Z"/>
+      </svg>
+      881 864 528
+    </a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">Gestoría administrativa y seguros · Ordes (A Coruña)</div>
+        <h1>Tu gestoría de confianza <span class="hl">en el centro de Ordes</span></h1>
+        <p class="lead">
+          Trámites fiscales, contabilidad, nóminas, altas de autónomos, sociedades,
+          vehículos y seguros. Atención directa y en persona, en Mundito 5, sin
+          intermediarios y hablando claro.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="tel:881864528">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+              <path d="M6 3h3l2 5-2.4 1.6a12 12 0 0 0 5.8 5.8L16 13l5 2v3a2 2 0 0 1-2.2 2A16.8 16.8 0 0 1 4 5.2 2 2 0 0 1 6 3Z"/>
+            </svg>
+            Llamar al 881 864 528
+          </a>
+          <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
+        </div>
+        <div class="hero-note">
+          <span><i class="dot"></i>Mundito, 5 Bajo — 15680 Ordes</span>
+          <span><i class="dot"></i>881 864 528 / 698 191 778</span>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <h3>En qué te podemos ayudar</h3>
+        <ul>
+          <li><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#1b6b8c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Declaraciones e impuestos, dentro de plazo</li>
+          <li><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#1b6b8c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Contabilidad y nóminas de tu negocio</li>
+          <li><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#1b6b8c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Alta de autónomo o constitución de sociedad</li>
+          <li><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#1b6b8c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Transferencias y trámites de vehículos</li>
+          <li><svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#1b6b8c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Seguros: revisión de pólizas y siniestros</li>
+        </ul>
+        <p class="card-foot">Cuéntanos tu caso por teléfono y te decimos qué documentación necesitas traer.</p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- AVISO WEB ACTUAL -->
+  <section class="notice">
+    <div class="wrap notice-in">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#b8892f" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/>
+      </svg>
+      <div>
+        <h2>Por qué esta maqueta</h2>
+        <p>
+          El dominio gestordes.com está pagado y el correo funciona, pero hoy quien lo
+          teclea ve una página de aparcamiento de Dinahosting con enlaces a hosting y VPS,
+          no a la gestoría. Esta propuesta muestra qué vería ese visitante en su lugar.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section class="sec" id="servicios">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Servicios</div>
+        <h2>Todo lo administrativo de tu negocio, por áreas</h2>
+        <p>
+          Servicios habituales de una gestoría administrativa. Cada caso se estudia
+          por separado: consúltanos el tuyo y te explicamos el alcance y la documentación.
+        </p>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <div class="card-ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0f3d5c" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h5M8 16h3"/>
+            </svg>
+          </div>
+          <h3>Fiscal</h3>
+          <p>Cumplimiento de obligaciones con Hacienda, con los plazos controlados.</p>
+          <ul>
+            <li>IVA y retenciones trimestrales</li>
+            <li>Renta y patrimonio</li>
+            <li>Impuesto de sociedades</li>
+            <li>Requerimientos y notificaciones</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="card-ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0f3d5c" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>
+            </svg>
+          </div>
+          <h3>Contable</h3>
+          <p>Contabilidad al día para saber en todo momento cómo va el negocio.</p>
+          <ul>
+            <li>Libros y registros obligatorios</li>
+            <li>Cierre de ejercicio</li>
+            <li>Cuentas anuales y depósito</li>
+            <li>Facturación y control de gastos</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="card-ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0f3d5c" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="9" cy="8" r="3.4"/><path d="M3 20c0-3.2 2.7-5.2 6-5.2s6 2 6 5.2"/><path d="M17 11h4M19 9v4"/>
+            </svg>
+          </div>
+          <h3>Laboral</h3>
+          <p>Gestión de personal y relación con la Seguridad Social.</p>
+          <ul>
+            <li>Altas, bajas y contratos</li>
+            <li>Nóminas y seguros sociales</li>
+            <li>Partes de baja y vacaciones</li>
+            <li>Comunicaciones con la Seguridad Social</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="card-ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0f3d5c" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 21V9l6-4 6 4v12"/><path d="M15 21V13h6v8"/><path d="M7 13h2M7 17h2"/>
+            </svg>
+          </div>
+          <h3>Autónomos y sociedades</h3>
+          <p>Desde el primer día de actividad y durante toda la vida de la empresa.</p>
+          <ul>
+            <li>Alta de autónomo y epígrafes</li>
+            <li>Constitución de sociedades</li>
+            <li>Cambios, ceses y liquidaciones</li>
+            <li>Certificados y trámites registrales</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="card-ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0f3d5c" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 16v-4l2-5h11l3 5h2v4"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M9 17h6"/>
+            </svg>
+          </div>
+          <h3>Vehículos</h3>
+          <p>Trámites de tráfico sin colas ni vueltas innecesarias.</p>
+          <ul>
+            <li>Transferencias de compraventa</li>
+            <li>Matriculaciones y bajas</li>
+            <li>Duplicados de permiso</li>
+            <li>Cambios de domicilio y titularidad</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="card-ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0f3d5c" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 3l7 3v6c0 4.2-2.9 7.5-7 9-4.1-1.5-7-4.8-7-9V6l7-3Z"/><path d="M9.2 12.2l2 2 3.6-3.8"/>
+            </svg>
+          </div>
+          <h3>Seguros</h3>
+          <p>Revisión de coberturas y acompañamiento cuando toca usarlas.</p>
+          <ul>
+            <li>Hogar, vida y accidentes</li>
+            <li>Automóvil y flotas</li>
+            <li>Negocio y responsabilidad civil</li>
+            <li>Tramitación de siniestros</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PASOS -->
+  <section class="sec alt" id="pasos">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Cómo empezamos</div>
+        <h2>Tu primera visita, en 3 pasos</h2>
+        <p>Sin papeleo previo ni formularios largos: una llamada y una conversación.</p>
+      </div>
+      <div class="steps">
+        <article class="step">
+          <div class="step-n">1</div>
+          <h3>Llamas y nos cuentas tu caso</h3>
+          <p>Marca el 881 864 528 o el 698 191 778 y explícanos brevemente qué necesitas. Te decimos si es algo que resolvemos y qué documentación conviene traer.</p>
+        </article>
+        <article class="step">
+          <div class="step-n">2</div>
+          <h3>Nos vemos en la oficina</h3>
+          <p>Te esperamos en Mundito, 5 Bajo, en Ordes. Revisamos tus papeles contigo y te explicamos las opciones en lenguaje claro, sin tecnicismos.</p>
+        </article>
+        <article class="step">
+          <div class="step-n">3</div>
+          <h3>Nos ocupamos del trámite</h3>
+          <p>Presentamos, registramos y hacemos el seguimiento. Te avisamos de cada plazo y te mantenemos al día de cómo va el expediente.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="sec" id="contacto">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Contacto</div>
+        <h2>Estamos en Mundito, 5 — Ordes</h2>
+        <p>Llámanos y te atendemos directamente. También puedes pasar por la oficina.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="cbox">
+          <div class="crow">
+            <span class="ci">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0f3d5c" stroke-width="2.1" stroke-linecap="round" aria-hidden="true">
+                <path d="M6 3h3l2 5-2.4 1.6a12 12 0 0 0 5.8 5.8L16 13l5 2v3a2 2 0 0 1-2.2 2A16.8 16.8 0 0 1 4 5.2 2 2 0 0 1 6 3Z"/>
+              </svg>
+            </span>
+            <div>
+              <h4>Teléfonos</h4>
+              <a href="tel:881864528">881 864 528</a>
+              <a href="tel:698191778">698 191 778</a>
+            </div>
+          </div>
+
+          <div class="crow">
+            <span class="ci">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0f3d5c" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/>
+              </svg>
+            </span>
+            <div>
+              <h4>Dirección</h4>
+              <p>Mundito, 5 Bajo<br>15680 Ordes (A Coruña)</p>
+              <small>Oficina a pie de calle.</small>
+            </div>
+          </div>
+
+          <div class="crow">
+            <span class="ci">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0f3d5c" stroke-width="2.1" stroke-linecap="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3 2"/>
+              </svg>
+            </span>
+            <div>
+              <h4>Horario</h4>
+              <span class="badge-horario">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true">
+                  <path d="M6 3h3l2 5-2.4 1.6a12 12 0 0 0 5.8 5.8L16 13l5 2v3a2 2 0 0 1-2.2 2A16.8 16.8 0 0 1 4 5.2 2 2 0 0 1 6 3Z"/>
+                </svg>
+                Consultar horario
+              </span>
+            </div>
+          </div>
+
+          <a class="btn btn-primary" href="tel:881864528" style="justify-content:center">Llamar ahora</a>
+        </div>
+
+        <div class="mapbox">
+          <svg class="mapsvg" viewBox="0 0 640 400" role="img" aria-label="Mapa esquemático de situación de la oficina en Ordes, con calles genéricas y un marcador en Mundito, 5.">
+            <defs>
+              <linearGradient id="mland" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#f2f6f8"/><stop offset="1" stop-color="#e7eef2"/>
+              </linearGradient>
+              <linearGradient id="mpin" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#1b6b8c"/><stop offset="1" stop-color="#0f3d5c"/>
+              </linearGradient>
+            </defs>
+            <rect width="640" height="400" fill="url(#mland)"/>
+            <!-- manzanas -->
+            <g fill="#dde6ec">
+              <rect x="38" y="34" width="150" height="104" rx="6"/>
+              <rect x="222" y="34" width="130" height="104" rx="6"/>
+              <rect x="386" y="34" width="216" height="104" rx="6"/>
+              <rect x="38" y="176" width="150" height="86" rx="6"/>
+              <rect x="386" y="176" width="130" height="86" rx="6"/>
+              <rect x="550" y="176" width="52" height="86" rx="6"/>
+              <rect x="38" y="300" width="212" height="66" rx="6"/>
+              <rect x="284" y="300" width="150" height="66" rx="6"/>
+              <rect x="468" y="300" width="134" height="66" rx="6"/>
+            </g>
+            <!-- zona verde -->
+            <rect x="222" y="176" width="130" height="86" rx="8" fill="#d7e6d9"/>
+            <text x="287" y="224" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#6e8a73">Zona verde</text>
+            <!-- calles -->
+            <g stroke="#ffffff" stroke-linecap="square">
+              <line x1="0" y1="157" x2="640" y2="157" stroke-width="20"/>
+              <line x1="0" y1="281" x2="640" y2="281" stroke-width="16"/>
+              <line x1="205" y1="0" x2="205" y2="400" stroke-width="16"/>
+              <line x1="369" y1="0" x2="369" y2="400" stroke-width="20"/>
+              <line x1="533" y1="157" x2="533" y2="400" stroke-width="14"/>
+            </g>
+            <g stroke="#c8d4dc" stroke-dasharray="7 9" stroke-width="1.4">
+              <line x1="0" y1="157" x2="640" y2="157"/>
+              <line x1="369" y1="0" x2="369" y2="400"/>
+            </g>
+            <!-- rotulos calles -->
+            <g font-family="sans-serif" font-size="11.5" fill="#7b8b98" letter-spacing=".06em">
+              <text x="52" y="152">CALLE PRINCIPAL</text>
+              <text x="52" y="277">CALLE SECUNDARIA</text>
+              <text x="212" y="30" transform="rotate(90 212 30)">TRAVESÍA</text>
+              <text x="377" y="30" transform="rotate(90 377 30)">AVENIDA</text>
+            </g>
+            <!-- marcador -->
+            <g transform="translate(369,157)">
+              <ellipse cx="0" cy="34" rx="22" ry="7" fill="#0f3d5c" opacity=".16"/>
+              <circle cx="0" cy="0" r="30" fill="#1b6b8c" opacity=".12"/>
+              <path d="M0 32c0 0-15-17-15-26a15 15 0 1 1 30 0c0 9-15 26-15 26Z" fill="url(#mpin)"/>
+              <circle cx="0" cy="6" r="5.4" fill="#fff"/>
+            </g>
+            <g transform="translate(369,157)">
+              <rect x="22" y="-34" width="196" height="46" rx="9" fill="#ffffff" stroke="#d3dee7"/>
+              <text x="36" y="-16" font-family="sans-serif" font-size="13" font-weight="700" fill="#10151c">Gestoría Gestordes</text>
+              <text x="36" y="2" font-family="sans-serif" font-size="11.5" fill="#5a6675">Mundito, 5 Bajo · Ordes</text>
+            </g>
+          </svg>
+          <div class="map-cap">
+            <span>Mapa esquemático orientativo, no a escala.</span>
+            <span>Mundito, 5 Bajo — 15680 Ordes (A Coruña)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <div class="f-brand">
+          <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
+            <rect x="1" y="1" width="46" height="46" rx="12" fill="#1b3b50"/>
+            <path d="M15 32V19h4.4c3.4 0 5.6 2.4 5.6 6.4S22.8 32 19.4 32H15Z" fill="#fff" opacity=".95"/>
+            <rect x="28" y="19" width="3.4" height="13" rx="1.7" fill="#b8892f"/>
+            <rect x="34" y="23" width="3.4" height="9" rx="1.7" fill="#fff" opacity=".8"/>
+          </svg>
+          <strong>Gestoría Gestordes</strong>
+        </div>
+        <p class="f-about">Gestoría administrativa y seguros en Ordes (A Coruña). Fiscal, contable, laboral, autónomos y sociedades, vehículos y seguros.</p>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="tel:881864528">881 864 528</a></li>
+          <li><a href="tel:698191778">698 191 778</a></li>
+          <li><a href="mailto:gestordes@gestordes.com">gestordes@gestordes.com</a></li>
+          <li>Consultar horario</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Oficina</h4>
+        <ul>
+          <li>Mundito, 5 Bajo</li>
+          <li>15680 Ordes (A Coruña)</li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#contacto">Cómo llegar</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <span class="studio">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</span>
+      <span>Maqueta no oficial · contenidos pendientes de validación por el negocio</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.nav-links a, a[href^="#"]').forEach(function(a){
+  a.addEventListener('click', function(e){
+    var id = a.getAttribute('href');
+    if(!id || id === '#' || id.length < 2) return;
+    var t = document.querySelector(id);
+    if(!t) return;
+    e.preventDefault();
+    var bar = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--bar-h')) || 44;
+    var nav = document.querySelector('.nav');
+    var off = bar + (nav ? nav.offsetHeight : 0) - 1;
+    window.scrollTo({top: t.getBoundingClientRect().top + window.pageYOffset - off, behavior:'smooth'});
+  });
+});
+</script>
+</body>
+</html>

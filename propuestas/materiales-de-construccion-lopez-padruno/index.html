@@ -1,0 +1,944 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Materiales de Construcción López Padruno — Almacén de materiales y cerámica en Panes (Asturias)</title>
+<meta name="description" content="Almacén mayorista y minorista de materiales de construcción y cerámica en Panes, Peñamellera Baja (Asturias). Venta a profesionales y a particulares.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* ===== Tokens ===== */
+:root{
+  --ink:#16181c;
+  --ink-2:#31363f;
+  --muted:#5d6570;
+  --line:#dfe1e4;
+  --line-2:#eceef0;
+  --paper:#ffffff;
+  --paper-2:#f6f6f4;
+  --paper-3:#eeefec;
+  --brand:#b4442a;        /* terracota / cerámica */
+  --brand-dk:#8e3320;
+  --brand-lt:#f4e3dd;
+  --steel:#33404d;        /* hormigón oscuro */
+  --steel-2:#1d252e;
+  --ochre:#c98a26;
+  --radius:14px;
+  --radius-sm:9px;
+  --bar-h:40px;
+  --maxw:1180px;
+  --ff:"Helvetica Neue",Helvetica,Arial,"Segoe UI",system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+html{max-width:100%;overflow-x:hidden}
+body{max-width:100%;overflow-x:clip}
+body{
+  margin:0;
+  font-family:var(--ff);
+  color:var(--ink);
+  background:var(--paper);
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img,svg{max-width:100%;display:block}
+h1,h2,h3,h4{margin:0;line-height:1.14;letter-spacing:-.02em;font-weight:800}
+p{margin:0}
+a{color:inherit}
+ul,ol{margin:0;padding:0;list-style:none}
+
+/* ===== Layout ===== */
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.section{padding:76px 0}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:11.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--brand);margin-bottom:18px;
+}
+.eyebrow::before{content:"";width:22px;height:2px;background:var(--brand);flex:0 0 auto}
+.eyebrow.on-dark{color:#e8b7a6}
+.eyebrow.on-dark::before{background:#e8b7a6}
+.lede{color:var(--muted);font-size:17px;max-width:62ch}
+
+/* ===== Barra fija de maqueta ===== */
+.mockbar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  min-height:var(--bar-h);
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(90deg,#11161c 0%,#232d38 55%,#11161c 100%);
+  color:#e9ecef;
+  border-bottom:1px solid rgba(255,255,255,.12);
+  padding:8px 14px;
+}
+.mockbar span{
+  font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  text-align:center;line-height:1.35;
+}
+.mockbar b{color:#f0a488;font-weight:800}
+body{padding-top:var(--bar-h)}
+
+/* ===== Cabecera ===== */
+.site-head{
+  position:sticky;top:var(--bar-h);z-index:90;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.head-in{display:flex;align-items:center;gap:18px;min-height:74px;padding:10px 24px}
+.brand{display:flex;align-items:center;gap:12px;min-width:0;text-decoration:none}
+.brand-mark{width:42px;height:42px;flex:0 0 auto}
+.brand-txt{min-width:0}
+.brand-name{
+  font-size:15px;font-weight:800;letter-spacing:-.01em;line-height:1.15;
+  color:var(--ink);
+}
+.brand-name span{display:block;font-size:10.5px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);margin-top:3px}
+.nav{margin-left:auto;display:flex;align-items:center;gap:26px}
+.nav a{font-size:14px;font-weight:600;color:var(--ink-2);text-decoration:none;white-space:nowrap}
+.nav a:hover{color:var(--brand)}
+.head-cta{margin-left:6px;white-space:nowrap}
+
+/* ===== Botones ===== */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-family:inherit;font-size:15px;font-weight:700;letter-spacing:-.005em;
+  padding:14px 22px;border-radius:var(--radius-sm);
+  text-decoration:none;border:1.5px solid transparent;cursor:pointer;
+  transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+  max-width:100%;
+}
+.btn svg{flex:0 0 auto}
+.btn-primary{
+  background:linear-gradient(170deg,var(--brand) 0%,var(--brand-dk) 100%);
+  color:#fff;box-shadow:0 8px 20px -10px rgba(142,51,32,.65);
+}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 12px 26px -10px rgba(142,51,32,.7)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--ink-2)}
+.btn-ghost-lt{background:rgba(255,255,255,.07);color:#fff;border-color:rgba(255,255,255,.3)}
+.btn-ghost-lt:hover{background:rgba(255,255,255,.14)}
+.btn-sm{padding:11px 17px;font-size:14px}
+
+/* ===== Hero ===== */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(1100px 520px at 82% -10%,rgba(201,138,38,.22),transparent 62%),
+    radial-gradient(760px 480px at 6% 108%,rgba(180,68,42,.20),transparent 66%),
+    linear-gradient(165deg,#222c36 0%,#18202a 48%,#10151b 100%);
+  color:#fff;
+}
+.hero-grid-bg{position:absolute;inset:0;opacity:.5;pointer-events:none}
+.hero-in{position:relative;display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);
+  gap:52px;align-items:center;padding:86px 0 90px}
+.hero h1{font-size:clamp(2.05rem,4.4vw,3.5rem);color:#fff;letter-spacing:-.033em}
+.hero h1 em{font-style:normal;color:#f0a488}
+.hero p.sub{margin-top:22px;font-size:17.5px;color:#c3cbd4;max-width:56ch}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.hero-tel{
+  margin-top:20px;font-size:13px;color:#93a0ad;display:flex;align-items:center;gap:8px;flex-wrap:wrap
+}
+.hero-facts{
+  display:flex;flex-wrap:wrap;gap:10px;margin-top:34px;
+  padding-top:28px;border-top:1px solid rgba(255,255,255,.14)
+}
+.chip{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12.5px;font-weight:700;color:#dfe5eb;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);
+  padding:8px 13px;border-radius:99px;
+}
+.chip i{width:6px;height:6px;border-radius:99px;background:#f0a488;flex:0 0 auto}
+
+/* tarjeta visual del hero */
+.hero-card{
+  border-radius:18px;overflow:hidden;
+  background:linear-gradient(160deg,rgba(255,255,255,.12),rgba(255,255,255,.03));
+  border:1px solid rgba(255,255,255,.16);
+  box-shadow:0 30px 60px -30px rgba(0,0,0,.7);
+  padding:12px;
+}
+.hero-card > svg{border-radius:12px;width:100%;height:auto}
+
+/* ===== Aviso de dominio ===== */
+.notice{background:var(--brand-lt);border-top:1px solid #e6cdc4;border-bottom:1px solid #e6cdc4}
+.notice-in{display:flex;gap:16px;align-items:flex-start;padding:22px 24px}
+.notice svg{flex:0 0 auto;margin-top:2px}
+.notice h3{font-size:15px;letter-spacing:-.01em;color:#6f2a19}
+.notice p{font-size:14.5px;color:#7d3c29;margin-top:5px;max-width:78ch}
+.notice code{
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:13px;background:rgba(142,51,32,.11);padding:1px 6px;border-radius:5px;
+  word-break:break-word;
+}
+
+/* ===== Catálogo ===== */
+.sec-head{max-width:70ch;margin-bottom:44px}
+.sec-head h2{font-size:clamp(1.6rem,3vw,2.35rem)}
+.sec-head p{margin-top:16px}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.card{
+  border:1px solid var(--line);border-radius:var(--radius);
+  background:linear-gradient(180deg,#fff 0%,var(--paper-2) 100%);
+  padding:26px 24px 24px;display:flex;flex-direction:column;
+  transition:border-color .18s ease, transform .18s ease, box-shadow .18s ease;
+}
+.card:hover{border-color:#c9ccd0;transform:translateY(-2px);box-shadow:0 14px 30px -20px rgba(0,0,0,.3)}
+.card-ico{
+  width:46px;height:46px;border-radius:11px;flex:0 0 auto;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(150deg,var(--steel) 0%,var(--steel-2) 100%);
+  margin-bottom:18px;
+}
+.card.accent .card-ico{background:linear-gradient(150deg,var(--brand) 0%,var(--brand-dk) 100%)}
+.card h3{font-size:17.5px;letter-spacing:-.015em}
+.card p{margin-top:9px;font-size:14.5px;color:var(--muted)}
+.card ul{margin-top:16px;padding-top:15px;border-top:1px solid var(--line-2);display:grid;gap:7px}
+.card li{font-size:13.5px;color:var(--ink-2);display:flex;gap:9px;align-items:flex-start}
+.card li::before{
+  content:"";width:5px;height:5px;border-radius:1px;background:var(--brand);
+  flex:0 0 auto;margin-top:8px;
+}
+.card .tag{
+  align-self:flex-start;margin-bottom:14px;
+  font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--brand-dk);background:var(--brand-lt);border-radius:99px;padding:5px 11px;
+}
+
+/* ===== Públicos ===== */
+.audience{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:20px}
+.aud{
+  border-radius:var(--radius);padding:30px 28px;
+  border:1px solid var(--line);
+  background:linear-gradient(155deg,var(--paper-3) 0%,#fff 100%);
+}
+.aud.dark{
+  border-color:transparent;color:#fff;
+  background:linear-gradient(155deg,var(--steel) 0%,var(--steel-2) 100%);
+}
+.aud h3{font-size:19px}
+.aud p{margin-top:11px;font-size:15px;color:var(--muted)}
+.aud.dark p{color:#bac3cc}
+.aud .kicker{
+  font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--brand);margin-bottom:12px
+}
+.aud.dark .kicker{color:#f0a488}
+
+/* ===== Pasos ===== */
+.steps-sec{
+  background:
+    radial-gradient(800px 400px at 92% 0%,rgba(201,138,38,.14),transparent 60%),
+    linear-gradient(170deg,#1b232c 0%,#12181e 100%);
+  color:#fff;
+}
+.steps-sec .sec-head h2{color:#fff}
+.steps-sec .sec-head p{color:#aab4bf}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;counter-reset:s}
+.step{
+  position:relative;border-radius:var(--radius);padding:28px 26px 26px;
+  background:linear-gradient(170deg,rgba(255,255,255,.085),rgba(255,255,255,.025));
+  border:1px solid rgba(255,255,255,.14);
+}
+.step-n{
+  font-size:13px;font-weight:800;letter-spacing:.1em;color:#f0a488;
+  display:flex;align-items:center;gap:10px;margin-bottom:16px
+}
+.step-n span{
+  width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;
+  background:rgba(240,164,136,.16);border:1px solid rgba(240,164,136,.4);font-size:14px;color:#fff
+}
+.step h3{font-size:18px;color:#fff}
+.step p{margin-top:10px;font-size:14.5px;color:#b3bdc7}
+
+/* ===== Contacto ===== */
+.contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:34px;align-items:start}
+.info-list{display:grid;gap:14px;margin-top:6px}
+.info{
+  display:flex;gap:15px;align-items:flex-start;
+  border:1px solid var(--line);border-radius:var(--radius-sm);
+  padding:18px 19px;background:#fff;
+}
+.info-ico{
+  width:38px;height:38px;border-radius:9px;flex:0 0 auto;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--paper-3);border:1px solid var(--line);
+}
+.info-k{font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+.info-v{font-size:16px;font-weight:700;margin-top:4px;letter-spacing:-.01em;word-break:break-word}
+.info-v a{text-decoration:none}
+.info-v a:hover{color:var(--brand)}
+.info-sub{font-size:13.5px;color:var(--muted);margin-top:3px}
+.contact-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.map-box{
+  border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#fff;
+}
+.map-box > svg{width:100%;height:auto;display:block}
+.map-cap{
+  padding:13px 18px;border-top:1px solid var(--line);
+  font-size:12.5px;color:var(--muted);background:var(--paper-2);
+}
+
+/* ===== Pie ===== */
+.foot{background:linear-gradient(175deg,#12181e 0%,#0b0f13 100%);color:#c8d0d8;padding:60px 0 0}
+.foot-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr) minmax(0,1fr);gap:36px}
+.foot h4{
+  font-size:10.5px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;
+  color:#7f8b97;margin-bottom:14px
+}
+.foot-brand .brand-name{color:#fff}
+.foot-brand .brand-name span{color:#8b96a1}
+.foot p.about{margin-top:16px;font-size:14px;color:#98a4b0;max-width:42ch}
+.foot ul{display:grid;gap:9px}
+.foot li,.foot a{font-size:14px;color:#c8d0d8;text-decoration:none;word-break:break-word}
+.foot a:hover{color:#f0a488}
+.foot-bar{
+  margin-top:50px;border-top:1px solid rgba(255,255,255,.12);
+  padding:24px 0 30px;display:flex;flex-wrap:wrap;gap:12px 24px;
+  align-items:center;justify-content:space-between;
+}
+.foot-bar p{font-size:12.5px;color:#7f8b97}
+.credit{
+  font-size:12.5px;font-weight:700;color:#e2e8ee;
+  display:inline-flex;align-items:center;gap:9px;flex-wrap:wrap;
+}
+.credit i{width:7px;height:7px;border-radius:2px;background:#f0a488;flex:0 0 auto}
+
+/* ===== Responsive ===== */
+@media (max-width:1040px){
+  .hero-in{grid-template-columns:1fr;gap:40px;padding:64px 0 70px}
+  .hero-card{order:2}
+  .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .steps{grid-template-columns:1fr;gap:16px}
+  .contact-grid{grid-template-columns:1fr;gap:28px}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:30px}
+  .foot-brand{grid-column:1/-1}
+}
+@media (max-width:860px){
+  .nav{display:none}
+  .head-in{min-height:66px}
+}
+@media (max-width:680px){
+  :root{--bar-h:52px}
+  .wrap{padding:0 16px}
+  .section{padding:52px 0}
+  .head-in{padding:8px 16px;gap:10px;min-height:0}
+  .brand-mark{width:36px;height:36px}
+  .brand-name{font-size:14px}
+  .brand-name span{display:none}
+  .head-cta{padding:10px 14px;font-size:13.5px}
+  .notice-in{padding:20px 16px;gap:13px}
+  .hero-in{padding:48px 0 54px;gap:32px}
+  .hero p.sub{font-size:16px}
+  .hero-actions{gap:10px}
+  .hero-actions .btn{width:100%}
+  .cards{grid-template-columns:1fr}
+  .audience{grid-template-columns:1fr}
+  .aud{padding:26px 22px}
+  .sec-head{margin-bottom:32px}
+  .foot-grid{grid-template-columns:1fr;gap:28px}
+  .foot{padding-top:48px}
+  .foot-bar{flex-direction:column;align-items:flex-start;gap:14px}
+  .contact-actions .btn{width:100%}
+  .mockbar span{font-size:10.5px;letter-spacing:.04em}
+}
+@media (max-width:400px){
+  .brand-name{font-size:13.5px}
+  .brand-mark{width:38px;height:38px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<!-- Barra fija de maqueta -->
+<div class="mockbar" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · <b>FFFFFFstudio</b> · Ángel Rubio</span>
+</div>
+
+<!-- Cabecera -->
+<header class="site-head">
+  <div class="head-in">
+    <a class="brand" href="#inicio">
+      <svg class="brand-mark" viewBox="0 0 48 48" role="img" aria-label="Logotipo">
+        <defs>
+          <linearGradient id="lg1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#3b4a59"/><stop offset="1" stop-color="#1d252e"/>
+          </linearGradient>
+          <linearGradient id="lg2" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#c9532f"/><stop offset="1" stop-color="#8e3320"/>
+          </linearGradient>
+        </defs>
+        <rect x="0" y="0" width="48" height="48" rx="11" fill="url(#lg1)"/>
+        <rect x="8" y="26" width="15" height="7.5" rx="1.6" fill="#e6e9ec"/>
+        <rect x="25" y="26" width="15" height="7.5" rx="1.6" fill="#e6e9ec"/>
+        <rect x="8" y="35.5" width="32" height="4.5" rx="1.4" fill="#9aa5b0"/>
+        <rect x="16.5" y="16.5" width="15" height="7.5" rx="1.6" fill="url(#lg2)"/>
+        <path d="M24 6.5 12.5 13.5h23L24 6.5Z" fill="#c98a26"/>
+      </svg>
+      <span class="brand-txt">
+        <span class="brand-name">López Padruno<span>Materiales de construcción</span></span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Navegación principal">
+      <a href="#catalogo">Catálogo</a>
+      <a href="#clientes">Profesionales y particulares</a>
+      <a href="#proceso">Cómo trabajamos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="btn btn-primary btn-sm head-cta" href="tel:985414058">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/>
+      </svg>
+      985 41 40 58
+    </a>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero" id="inicio">
+  <svg class="hero-grid-bg" aria-hidden="true" preserveAspectRatio="none" viewBox="0 0 1200 620">
+    <defs>
+      <pattern id="brickp" width="120" height="56" patternUnits="userSpaceOnUse">
+        <path d="M0 0h120M0 28h120M0 56h120" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+        <path d="M0 0v28M60 0v28M30 28v28M90 28v28" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+      </pattern>
+    </defs>
+    <rect width="1200" height="620" fill="url(#brickp)"/>
+  </svg>
+  <div class="wrap">
+    <div class="hero-in">
+      <div>
+        <span class="eyebrow on-dark">Panes · Peñamellera Baja · Asturias</span>
+        <h1>Materiales de construcción y <em>cerámica</em> en el oriente de Asturias</h1>
+        <p class="sub">Almacén mayorista y minorista. Material de obra, cerámica y azulejo, baño y aislamiento para profesionales de la construcción, reformas y particulares.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="tel:985414058">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/>
+            </svg>
+            Llamar al 985 41 40 58
+          </a>
+          <a class="btn btn-ghost-lt" href="#catalogo">Ver el catálogo</a>
+        </div>
+        <p class="hero-tel">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f0a488" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          Travesía de Panes nº 7, 33570 Panes (Peñamellera Baja, Asturias)
+        </p>
+        <div class="hero-facts">
+          <span class="chip"><i></i>Venta a profesionales</span>
+          <span class="chip"><i></i>Venta a particulares</span>
+          <span class="chip"><i></i>Almacén mayorista y minorista</span>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <svg viewBox="0 0 520 400" role="img" aria-label="Ilustración esquemática de un almacén de materiales con palés, sacos y piezas de cerámica">
+          <defs>
+            <linearGradient id="hbg" x1="0" y1="0" x2="0.4" y2="1">
+              <stop offset="0" stop-color="#f3f1ee"/><stop offset="1" stop-color="#dcd9d4"/>
+            </linearGradient>
+            <linearGradient id="hterr" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#d16a42"/><stop offset="1" stop-color="#9c3d22"/>
+            </linearGradient>
+            <linearGradient id="hgrey" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#8e99a3"/><stop offset="1" stop-color="#5e6a75"/>
+            </linearGradient>
+            <linearGradient id="hsack" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#e9dfcd"/><stop offset="1" stop-color="#c9b895"/>
+            </linearGradient>
+            <linearGradient id="hwood" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#b58a55"/><stop offset="1" stop-color="#8b6537"/>
+            </linearGradient>
+            <linearGradient id="hochre" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#e0a746"/><stop offset="1" stop-color="#b57d1c"/>
+            </linearGradient>
+          </defs>
+
+          <rect width="520" height="400" fill="url(#hbg)"/>
+          <!-- estructura nave -->
+          <g stroke="#c2beb7" stroke-width="2" fill="none">
+            <path d="M40 300V96M480 300V96M40 96h440M40 140h440M40 184h440"/>
+          </g>
+          <path d="M28 96 260 34l232 62" fill="none" stroke="#a9a5a0" stroke-width="3"/>
+
+          <!-- estante superior: azulejos -->
+          <g>
+            <rect x="62" y="104" width="52" height="34" rx="3" fill="url(#hterr)"/>
+            <rect x="120" y="104" width="52" height="34" rx="3" fill="url(#hgrey)"/>
+            <rect x="178" y="104" width="52" height="34" rx="3" fill="url(#hochre)"/>
+            <rect x="236" y="104" width="52" height="34" rx="3" fill="#e7e3dc" stroke="#c9c4bb"/>
+            <rect x="294" y="104" width="52" height="34" rx="3" fill="url(#hterr)"/>
+            <rect x="352" y="104" width="52" height="34" rx="3" fill="url(#hgrey)"/>
+            <rect x="410" y="104" width="52" height="34" rx="3" fill="url(#hochre)"/>
+          </g>
+          <!-- estante medio: sacos -->
+          <g>
+            <rect x="66" y="152" width="70" height="30" rx="7" fill="url(#hsack)"/>
+            <rect x="146" y="152" width="70" height="30" rx="7" fill="url(#hsack)"/>
+            <rect x="226" y="152" width="70" height="30" rx="7" fill="url(#hsack)"/>
+            <rect x="306" y="152" width="70" height="30" rx="7" fill="url(#hsack)"/>
+            <rect x="386" y="152" width="70" height="30" rx="7" fill="url(#hsack)"/>
+            <g stroke="#b3a07d" stroke-width="1.6">
+              <path d="M101 152v30M181 152v30M261 152v30M341 152v30M421 152v30"/>
+            </g>
+          </g>
+          <!-- suelo -->
+          <rect x="0" y="300" width="520" height="100" fill="#cfcbc4"/>
+          <g stroke="#bdb8b0" stroke-width="2">
+            <path d="M0 330h520M0 362h520"/>
+            <path d="M80 300v100M200 300v100M320 300v100M440 300v100"/>
+          </g>
+
+          <!-- palé de ladrillos -->
+          <g>
+            <rect x="70" y="234" width="136" height="14" fill="url(#hterr)"/>
+            <rect x="70" y="250" width="136" height="14" fill="url(#hterr)"/>
+            <rect x="70" y="266" width="136" height="14" fill="url(#hterr)"/>
+            <g stroke="rgba(255,255,255,.45)" stroke-width="1.6">
+              <path d="M104 234v14M138 234v14M172 234v14M87 250v14M121 250v14M155 250v14M189 250v14M104 266v14M138 266v14M172 266v14"/>
+            </g>
+            <rect x="62" y="282" width="152" height="16" rx="2" fill="url(#hwood)"/>
+            <rect x="76" y="298" width="16" height="10" fill="#7d5a30"/>
+            <rect x="184" y="298" width="16" height="10" fill="#7d5a30"/>
+          </g>
+
+          <!-- sanitario esquemático -->
+          <g transform="translate(250,224)">
+            <path d="M6 46c0-22 14-34 34-34h30c14 0 20 8 20 18v6H6Z" fill="#fff" stroke="#c9c4bb" stroke-width="2"/>
+            <rect x="18" y="36" width="56" height="34" rx="9" fill="#fff" stroke="#c9c4bb" stroke-width="2"/>
+            <rect x="0" y="70" width="92" height="8" rx="3" fill="#dcd8d1"/>
+            <path d="M84 8v14" stroke="url(#hgrey)" stroke-width="5" stroke-linecap="round"/>
+          </g>
+
+          <!-- panel de aislamiento -->
+          <g transform="translate(368,222)">
+            <rect x="0" y="12" width="96" height="66" rx="4" fill="url(#hochre)" opacity=".85"/>
+            <rect x="8" y="4" width="96" height="66" rx="4" fill="url(#hochre)"/>
+            <g stroke="rgba(255,255,255,.5)" stroke-width="2">
+              <path d="M8 26h96M8 48h96"/>
+            </g>
+          </g>
+
+          <!-- carretilla -->
+          <g transform="translate(60,196)" opacity=".9">
+            <path d="M0 6h14l10 46h44" stroke="url(#hgrey)" stroke-width="5" fill="none" stroke-linecap="round"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Aviso de dominio -->
+<section class="notice">
+  <div class="wrap">
+    <div class="notice-in">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b4442a" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4"/><path d="M12 17h.01"/>
+      </svg>
+      <div>
+        <h3>Por qué esta propuesta</h3>
+        <p>El dominio <code>lopezpadruno.com</code> ya no existe: las consultas de DNS devuelven <code>NXDOMAIN</code>. El Ayuntamiento de Peñamellera Baja lo sigue publicando como web del negocio, así que quien lo busque hoy llega a una página que no carga. Esta maqueta plantea cómo podría verse una web nueva con los datos de contacto reales del almacén.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Catálogo -->
+<section class="section" id="catalogo">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Catálogo</span>
+      <h2>Lo que se puede encontrar en el almacén</h2>
+      <p class="lede">Familias de producto habituales de un almacén de materiales de construcción y cerámica. Para referencias concretas, existencias o plazos, lo más rápido es una llamada.</p>
+    </div>
+
+    <div class="cards">
+      <article class="card">
+        <span class="card-ico" aria-hidden="true">
+          <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="6" width="20" height="5" rx="1"/><rect x="2" y="13" width="20" height="5" rx="1"/><path d="M9 6v5M16 6v5M5.5 13v5M12.5 13v5M19 13v5"/>
+          </svg>
+        </span>
+        <h3>Materiales de obra</h3>
+        <p>Lo básico de la estructura y el cerramiento, en sacos y en palé.</p>
+        <ul>
+          <li>Cementos, morteros y yesos</li>
+          <li>Áridos y arenas</li>
+          <li>Ladrillo, bloque y bovedilla</li>
+          <li>Hormigón y prefabricados</li>
+        </ul>
+      </article>
+
+      <article class="card accent">
+        <span class="tag">Especialidad</span>
+        <span class="card-ico" aria-hidden="true">
+          <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/>
+          </svg>
+        </span>
+        <h3>Cerámica y azulejo</h3>
+        <p>Pavimento y revestimiento para vivienda, local y exterior.</p>
+        <ul>
+          <li>Gres y porcelánico</li>
+          <li>Azulejo de pared</li>
+          <li>Piezas de remate y rodapié</li>
+          <li>Adhesivos y material de juntas</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <span class="card-ico" aria-hidden="true">
+          <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 12h16v4a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-4Z"/><path d="M7 12V6a2 2 0 0 1 2-2h1"/><path d="M17 8V6"/>
+          </svg>
+        </span>
+        <h3>Baño y saneamiento</h3>
+        <p>Equipamiento de baño y material de fontanería para la reforma.</p>
+        <ul>
+          <li>Sanitarios y platos de ducha</li>
+          <li>Muebles y encimeras de baño</li>
+          <li>Grifería y accesorios</li>
+          <li>Tubería y desagües</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <span class="card-ico" aria-hidden="true">
+          <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M3 14h18"/><path d="M8 4v16M14 4v16"/>
+          </svg>
+        </span>
+        <h3>Aislamiento e impermeabilización</h3>
+        <p>Soluciones para cubierta, fachada y suelo.</p>
+        <ul>
+          <li>Aislamiento térmico en panel y rollo</li>
+          <li>Aislamiento acústico</li>
+          <li>Láminas impermeabilizantes</li>
+          <li>Placa de yeso laminado y perfilería</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <span class="card-ico" aria-hidden="true">
+          <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 3.5 20.5 10 10 20.5H3.5V14L14 3.5Z"/><path d="M12 6l6 6"/>
+          </svg>
+        </span>
+        <h3>Acabados y complementos</h3>
+        <p>El material que cierra la obra y la deja terminada.</p>
+        <ul>
+          <li>Pinturas y tratamientos</li>
+          <li>Piedra y material de exterior</li>
+          <li>Pequeña herramienta y consumibles</li>
+          <li>Material de seguridad de obra</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <span class="card-ico" aria-hidden="true">
+          <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 17V7l7-3 7 3v10"/><path d="M17 10h3l1 3v4h-4"/><circle cx="7" cy="18.5" r="1.8"/><circle cx="17" cy="18.5" r="1.8"/>
+          </svg>
+        </span>
+        <h3>Suministro y entrega</h3>
+        <p>Preparación del pedido en almacén y entrega del material.</p>
+        <ul>
+          <li>Pedidos por teléfono</li>
+          <li>Carga en almacén</li>
+          <li>Entrega de material a obra</li>
+          <li>Suministro por fases de obra</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Públicos -->
+<section class="section" id="clientes" style="background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">A quién atendemos</span>
+      <h2>Venta a profesionales y venta a particulares</h2>
+      <p class="lede">El mismo almacén sirve a la empresa que trabaja por metros y a quien está arreglando una casa.</p>
+    </div>
+    <div class="audience">
+      <article class="aud dark">
+        <p class="kicker">Profesionales</p>
+        <h3>Constructoras, reformistas y oficios</h3>
+        <p>Suministro de material de obra por palés y cantidades de obra, con el pedido preparado para cargar y la posibilidad de ir sirviendo según avanza el trabajo. Trato directo con quien conoce el almacén y el material.</p>
+      </article>
+      <article class="aud">
+        <p class="kicker">Particulares</p>
+        <h3>Reformas y obra en vivienda</h3>
+        <p>Atención al cliente que compra para su casa: elegir la cerámica, calcular lo que hace falta, resolver dudas de material y llevarse cantidades pequeñas sin necesidad de ser empresa.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Pasos -->
+<section class="section steps-sec" id="proceso">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow on-dark">Cómo trabajamos</span>
+      <h2>En tres pasos</h2>
+      <p>Del primer contacto al material en obra, sin vueltas de más.</p>
+    </div>
+    <ol class="steps">
+      <li class="step">
+        <p class="step-n"><span>1</span>Consulta</p>
+        <h3>Cuéntanos qué necesitas</h3>
+        <p>Por teléfono o en el almacén. Con los metros, el tipo de obra o simplemente una idea de lo que hay que hacer, se concreta qué material encaja y en qué cantidad.</p>
+      </li>
+      <li class="step">
+        <p class="step-n"><span>2</span>Presupuesto</p>
+        <h3>Te pasamos el presupuesto</h3>
+        <p>Un detalle claro del material, las cantidades y las condiciones de suministro, para que puedas comparar y decidir antes de comprometerte a nada.</p>
+      </li>
+      <li class="step">
+        <p class="step-n"><span>3</span>Entrega</p>
+        <h3>Preparamos y entregamos</h3>
+        <p>El pedido se prepara en almacén para recoger o se entrega en obra, y si el trabajo va por fases se puede ir sirviendo a medida que se necesita.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- Contacto -->
+<section class="section" id="contacto">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Contacto</span>
+      <h2>Dónde estamos y cómo localizarnos</h2>
+      <p class="lede">La vía más rápida para saber si hay un material disponible es llamar al almacén.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div>
+        <div class="info-list">
+          <div class="info">
+            <span class="info-ico" aria-hidden="true">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#b4442a" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/>
+              </svg>
+            </span>
+            <div>
+              <p class="info-k">Teléfono</p>
+              <p class="info-v"><a href="tel:985414058">985 41 40 58</a></p>
+              <p class="info-sub">Consultas de material, existencias y presupuestos</p>
+            </div>
+          </div>
+
+          <div class="info">
+            <span class="info-ico" aria-hidden="true">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#33404d" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/>
+              </svg>
+            </span>
+            <div>
+              <p class="info-k">Almacén</p>
+              <p class="info-v">Travesía de Panes nº 7</p>
+              <p class="info-sub">33570 Panes · Peñamellera Baja · Asturias</p>
+            </div>
+          </div>
+
+          <div class="info">
+            <span class="info-ico" aria-hidden="true">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#33404d" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/>
+              </svg>
+            </span>
+            <div>
+              <p class="info-k">Horario</p>
+              <p class="info-v">Consultar horario</p>
+              <p class="info-sub">Por teléfono se confirma el horario de atención del almacén</p>
+            </div>
+          </div>
+
+          <div class="info">
+            <span class="info-ico" aria-hidden="true">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#33404d" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>
+              </svg>
+            </span>
+            <div>
+              <p class="info-k">Correo electrónico</p>
+              <p class="info-v"><a href="mailto:lopezpadrunoceramica@outlook.es">lopezpadrunoceramica@outlook.es</a></p>
+              <p class="info-sub">Para consultas que no corren prisa</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-actions">
+          <a class="btn btn-primary" href="tel:985414058">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/>
+            </svg>
+            Llamar al almacén
+          </a>
+          <a class="btn btn-ghost" href="mailto:lopezpadrunoceramica@outlook.es">Escribir un correo</a>
+        </div>
+      </div>
+
+      <!-- Mapa esquemático -->
+      <div class="map-box">
+        <svg viewBox="0 0 640 440" role="img" aria-label="Mapa esquemático y no a escala de la ubicación del almacén en Travesía de Panes número 7">
+          <defs>
+            <linearGradient id="mbg" x1="0" y1="0" x2="0.5" y2="1">
+              <stop offset="0" stop-color="#f4f5f2"/><stop offset="1" stop-color="#e6e8e3"/>
+            </linearGradient>
+            <linearGradient id="mpin" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#c9532f"/><stop offset="1" stop-color="#8e3320"/>
+            </linearGradient>
+            <linearGradient id="mriver" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#b9cfd8"/><stop offset="1" stop-color="#9dbcc9"/>
+            </linearGradient>
+          </defs>
+
+          <rect width="640" height="440" fill="url(#mbg)"/>
+
+          <!-- manzanas -->
+          <g fill="#dcded8">
+            <rect x="46" y="54" width="146" height="94" rx="5"/>
+            <rect x="242" y="54" width="126" height="94" rx="5"/>
+            <rect x="418" y="54" width="176" height="94" rx="5"/>
+            <rect x="46" y="200" width="146" height="86" rx="5"/>
+            <rect x="418" y="200" width="176" height="86" rx="5"/>
+            <rect x="46" y="338" width="146" height="66" rx="5"/>
+            <rect x="242" y="338" width="126" height="66" rx="5"/>
+            <rect x="418" y="338" width="176" height="66" rx="5"/>
+          </g>
+
+          <!-- vía general -->
+          <path d="M0 174h640" stroke="#c6c8c2" stroke-width="26" fill="none"/>
+          <path d="M0 174h640" stroke="#fdfdfc" stroke-width="18" fill="none"/>
+          <path d="M0 174h640" stroke="#d8b25e" stroke-width="2" stroke-dasharray="20 16" fill="none"/>
+
+          <!-- vía vertical -->
+          <path d="M214 0v440" stroke="#c6c8c2" stroke-width="22" fill="none"/>
+          <path d="M214 0v440" stroke="#fdfdfc" stroke-width="14" fill="none"/>
+
+          <!-- vía inferior -->
+          <path d="M0 312h640" stroke="#cdcfc9" stroke-width="18" fill="none"/>
+          <path d="M0 312h640" stroke="#fdfdfc" stroke-width="11" fill="none"/>
+
+          <!-- travesía (destacada) -->
+          <path d="M390 174v138" stroke="#c6c8c2" stroke-width="22" fill="none"/>
+          <path d="M390 174v138" stroke="#fdfdfc" stroke-width="14" fill="none"/>
+
+          <!-- cauce esquemático -->
+          <path d="M0 418c90-26 170 10 268-8 96-18 190 16 372-6" stroke="url(#mriver)" stroke-width="16" fill="none" stroke-linecap="round" opacity=".85"/>
+
+          <!-- parcela del almacén -->
+          <rect x="248" y="200" width="116" height="86" rx="5" fill="#f0ded6" stroke="#c9532f" stroke-width="2" stroke-dasharray="7 5"/>
+          <g fill="#c6bcb4">
+            <rect x="262" y="228" width="40" height="42" rx="3"/>
+            <rect x="310" y="240" width="42" height="30" rx="3"/>
+          </g>
+
+          <!-- marcador -->
+          <g transform="translate(306,184)">
+            <ellipse cx="0" cy="56" rx="17" ry="6" fill="rgba(0,0,0,.16)"/>
+            <path d="M0 54C0 54-22 30-22 17A22 22 0 0 1 22 17C22 30 0 54 0 54Z" fill="url(#mpin)"/>
+            <circle cx="0" cy="17" r="8" fill="#fff"/>
+          </g>
+
+          <!-- etiquetas -->
+          <g font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-weight="700">
+            <text x="24" y="166" font-size="14" fill="#6a7178">Vía principal</text>
+            <text x="400" y="304" font-size="14" fill="#8e3320" transform="rotate(-90 400 304)">Travesía de Panes</text>
+            <text x="24" y="304" font-size="13" fill="#8b9299">Calle secundaria</text>
+            <text x="256" y="280" font-size="13.5" fill="#8e3320">Nº 7 · Almacén</text>
+            <text x="500" y="412" font-size="12.5" fill="#7f97a3">Cauce</text>
+          </g>
+
+          <!-- rosa y escala esquemáticas -->
+          <g transform="translate(588,44)">
+            <circle cx="0" cy="0" r="19" fill="#fff" stroke="#d4d6d0"/>
+            <path d="M0-13 5 2h-10Z" fill="#8e3320"/>
+            <text x="0" y="-19" font-size="10" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-weight="700" fill="#6a7178" text-anchor="middle">N</text>
+          </g>
+        </svg>
+        <p class="map-cap">Mapa esquemático, no a escala y sin valor cartográfico. Dirección exacta: Travesía de Panes nº 7, 33570 Panes (Peñamellera Baja, Asturias).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pie -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <span class="brand">
+          <svg class="brand-mark" viewBox="0 0 48 48" role="img" aria-label="Logotipo">
+            <rect x="0" y="0" width="48" height="48" rx="11" fill="#212a34"/>
+            <rect x="8" y="26" width="15" height="7.5" rx="1.6" fill="#e6e9ec"/>
+            <rect x="25" y="26" width="15" height="7.5" rx="1.6" fill="#e6e9ec"/>
+            <rect x="8" y="35.5" width="32" height="4.5" rx="1.4" fill="#9aa5b0"/>
+            <rect x="16.5" y="16.5" width="15" height="7.5" rx="1.6" fill="#b4442a"/>
+            <path d="M24 6.5 12.5 13.5h23L24 6.5Z" fill="#c98a26"/>
+          </svg>
+          <span class="brand-txt">
+            <span class="brand-name">Materiales de Construcción López Padruno<span>Panes · Asturias</span></span>
+          </span>
+        </span>
+        <p class="about">Almacén mayorista y minorista de materiales de construcción y cerámica en Panes, Peñamellera Baja (Asturias). Venta a profesionales y a particulares.</p>
+      </div>
+
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="tel:985414058">985 41 40 58</a></li>
+          <li><a href="mailto:lopezpadrunoceramica@outlook.es">lopezpadrunoceramica@outlook.es</a></li>
+          <li>Travesía de Panes nº 7</li>
+          <li>33570 Panes (Peñamellera Baja), Asturias</li>
+          <li>Consultar horario</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Secciones</h4>
+        <ul>
+          <li><a href="#catalogo">Catálogo</a></li>
+          <li><a href="#clientes">Profesionales y particulares</a></li>
+          <li><a href="#proceso">Cómo trabajamos</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot-bar">
+      <p>Materiales de Construcción López Padruno · Panes, Peñamellera Baja (Asturias)</p>
+      <p class="credit"><i></i>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* Desplazamiento suave en los enlaces internos, compensando las barras fijas */
+  var bar = document.querySelector('.mockbar');
+  var head = document.querySelector('.site-head');
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var id = a.getAttribute('href');
+      if(!id || id === '#') return;
+      var t = document.querySelector(id);
+      if(!t) return;
+      e.preventDefault();
+      var off = (bar ? bar.offsetHeight : 0) + (head ? head.offsetHeight : 0) + 8;
+      var y = t.getBoundingClientRect().top + window.pageYOffset - off;
+      window.scrollTo({top: y < 0 ? 0 : y, behavior: 'smooth'});
+    });
+  });
+})();
+</script>
+</body>
+</html>

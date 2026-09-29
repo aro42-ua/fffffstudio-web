@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hotel Villa de Betanzos — Propuesta de rediseño · FFFFFFstudio</title>
+<meta name="description" content="Maqueta de propuesta de rediseño para Hotel Villa de Betanzos, hotel de 30 habitaciones en un palacete de Betanzos (A Coruña).">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  :root{
+    --ink:#131a17;
+    --ink-soft:#26332d;
+    --cream:#f6f1e7;
+    --cream-2:#efe7d8;
+    --paper:#fbf8f2;
+    --gold:#a98545;
+    --gold-soft:#c9ab74;
+    --green:#1d3b31;
+    --green-2:#2b5548;
+    --line:rgba(19,26,23,.14);
+    --txt:#2a322e;
+    --txt-soft:#5c6660;
+    --bar-h:44px;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua","Times New Roman",Georgia,serif;
+    --sans:"Helvetica Neue",Inter,Helvetica,Arial,system-ui,sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--paper);color:var(--txt);
+    padding-top:var(--bar-h);
+    font-family:var(--sans);font-size:16px;line-height:1.65;
+    overflow-x:hidden;
+  }
+  img,svg{max-width:100%;display:block}
+  h1,h2,h3{font-family:var(--serif);font-weight:400;color:var(--green);letter-spacing:-.01em;margin:0}
+  p{margin:0}
+  a{color:inherit}
+
+  /* ---------- barra fija ---------- */
+  .bar{
+    position:fixed;top:0;left:0;right:0;z-index:60;
+    min-height:var(--bar-h);display:flex;align-items:center;justify-content:center;
+    background:var(--ink);color:#e8e2d5;
+    font-size:12px;letter-spacing:.09em;text-transform:uppercase;
+    padding:9px 16px;text-align:center;line-height:1.45;
+    border-bottom:1px solid rgba(201,171,116,.35);
+  }
+  .bar span{max-width:960px}
+
+  /* ---------- nav ---------- */
+  .nav{
+    position:sticky;top:var(--bar-h);z-index:50;
+    background:rgba(251,248,242,.94);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-in{
+    max-width:1180px;margin:0 auto;padding:14px 24px;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+  }
+  .brand{display:flex;align-items:center;gap:12px;min-width:0}
+  .brand-mark{flex:0 0 auto}
+  .brand-txt{min-width:0}
+  .brand-txt strong{
+    display:block;font-family:var(--serif);font-size:17px;color:var(--green);
+    font-weight:400;letter-spacing:.02em;line-height:1.2;
+  }
+  .brand-txt em{
+    display:block;font-style:normal;font-size:10px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--gold);
+  }
+  .nav-links{display:flex;align-items:center;gap:26px}
+  .nav-links a{
+    text-decoration:none;font-size:13px;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--txt-soft);padding:4px 0;border-bottom:1px solid transparent;
+  }
+  .nav-links a:hover{color:var(--green);border-bottom-color:var(--gold)}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    padding:13px 24px;border-radius:2px;text-decoration:none;
+    font-size:13px;letter-spacing:.09em;text-transform:uppercase;
+    border:1px solid var(--green);background:var(--green);color:#f7f3ea;
+    transition:background .2s,color .2s,border-color .2s;white-space:nowrap;
+  }
+  .btn:hover{background:var(--green-2);border-color:var(--green-2)}
+  .btn-ghost{background:transparent;color:var(--green)}
+  .btn-ghost:hover{background:rgba(29,59,49,.07);color:var(--green)}
+  .btn-gold{border-color:var(--gold);background:var(--gold);color:#1b1408}
+  .btn-gold:hover{background:var(--gold-soft);border-color:var(--gold-soft)}
+  .btn-sm{padding:10px 18px;font-size:12px}
+  .nav .btn{flex:0 0 auto}
+
+  /* ---------- layout ---------- */
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+  section{scroll-margin-top:calc(var(--bar-h) + 76px)}
+  .eyebrow{
+    font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);
+    display:flex;align-items:center;gap:12px;margin-bottom:18px;
+  }
+  .eyebrow::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,var(--gold-soft),transparent)}
+  .lead{color:var(--txt-soft);font-size:17px;max-width:62ch}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;overflow:hidden;background:
+      radial-gradient(120% 90% at 85% 8%, rgba(169,133,69,.28), transparent 60%),
+      radial-gradient(100% 120% at 5% 100%, rgba(43,85,72,.55), transparent 65%),
+      linear-gradient(160deg,#14251f 0%,#1d3b31 45%,#112019 100%);
+    color:#f2ece0;padding:92px 0 96px;
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+    background-image:linear-gradient(rgba(246,241,231,.055) 1px,transparent 1px);
+    background-size:100% 7px;
+  }
+  .hero-grid{
+    position:relative;z-index:2;display:grid;grid-template-columns:1.08fr .92fr;
+    gap:56px;align-items:center;
+  }
+  .hero .eyebrow{color:var(--gold-soft)}
+  .hero h1{
+    color:#fbf7ef;font-size:clamp(2.35rem,4.6vw,4rem);line-height:1.05;margin:0 0 22px;
+  }
+  .hero h1 i{font-style:italic;color:var(--gold-soft)}
+  .hero p.lead{color:rgba(242,236,224,.82);font-size:18px}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+  .hero .btn-ghost{color:#f2ece0;border-color:rgba(242,236,224,.45)}
+  .hero .btn-ghost:hover{background:rgba(242,236,224,.12);color:#fff}
+  .hero-facts{
+    display:flex;flex-wrap:wrap;gap:12px 32px;margin-top:38px;
+    padding-top:26px;border-top:1px solid rgba(242,236,224,.18);
+    font-size:13px;letter-spacing:.05em;color:rgba(242,236,224,.72);
+  }
+  .hero-facts span{display:flex;align-items:center;gap:9px}
+  .dot{width:5px;height:5px;border-radius:50%;background:var(--gold-soft);flex:0 0 auto}
+
+  /* fachada svg */
+  .facade{
+    border:1px solid rgba(201,171,116,.4);padding:14px;background:rgba(9,17,13,.3);
+  }
+
+  /* ---------- servicios ---------- */
+  .band{padding:88px 0}
+  .band-cream{background:var(--cream);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .head-2{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;margin-bottom:44px}
+  .head-2 h2{font-size:clamp(1.8rem,3vw,2.6rem);line-height:1.15}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .card{
+    background:var(--paper);border:1px solid var(--line);padding:30px 26px 32px;
+    display:flex;flex-direction:column;gap:14px;
+    transition:transform .2s,box-shadow .2s,border-color .2s;
+  }
+  .card:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(19,26,23,.09);border-color:var(--gold-soft)}
+  .card h3{font-size:1.24rem}
+  .card p{font-size:15px;color:var(--txt-soft)}
+  .ico{
+    width:46px;height:46px;border:1px solid var(--gold-soft);border-radius:50%;
+    display:grid;place-items:center;flex:0 0 auto;background:rgba(169,133,69,.08);
+  }
+  .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:6px}
+  .tag{
+    font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+    border:1px solid var(--line);padding:5px 10px;color:var(--txt-soft);border-radius:2px;
+  }
+
+  /* ---------- pasos ---------- */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);background:var(--paper)}
+  .step{padding:34px 30px 36px;border-right:1px solid var(--line);position:relative}
+  .step:last-child{border-right:none}
+  .step-n{
+    font-family:var(--serif);font-size:2.6rem;line-height:1;color:var(--gold-soft);
+    display:block;margin-bottom:14px;
+  }
+  .step h3{font-size:1.18rem;margin-bottom:10px}
+  .step p{font-size:15px;color:var(--txt-soft)}
+  .steps-cta{margin-top:30px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .steps-note{font-size:13px;color:var(--txt-soft)}
+
+  /* ---------- contacto ---------- */
+  .contact-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:40px;align-items:start}
+  .info{border:1px solid var(--line);background:var(--paper)}
+  .info-row{display:flex;gap:16px;padding:22px 24px;border-bottom:1px solid var(--line)}
+  .info-row:last-child{border-bottom:none}
+  .info-row .ico{width:38px;height:38px}
+  .info-row h3{font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-family:var(--sans);margin-bottom:5px}
+  .info-row p,.info-row a{font-size:16px;color:var(--txt);text-decoration:none;word-break:break-word}
+  .info-row a:hover{color:var(--green);text-decoration:underline}
+  .map{border:1px solid var(--line);background:var(--cream-2);padding:12px}
+  .map figcaption{font-size:12px;color:var(--txt-soft);padding:10px 4px 2px;letter-spacing:.03em}
+
+  /* ---------- pie ---------- */
+  footer{background:var(--ink);color:#d9d3c6;padding:62px 0 34px;margin-top:0}
+  .foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:36px}
+  footer h3{color:#f0ebe0;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;font-family:var(--sans);margin-bottom:14px}
+  footer p,footer a{font-size:14.5px;color:rgba(217,211,198,.82);text-decoration:none;line-height:1.85}
+  footer a:hover{color:var(--gold-soft)}
+  .foot-brand strong{font-family:var(--serif);font-size:1.4rem;color:#f4efe4;font-weight:400;display:block;margin-bottom:8px}
+  .foot-bottom{
+    margin-top:40px;padding-top:22px;border-top:1px solid rgba(217,211,198,.18);
+    display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;
+    font-size:13px;color:rgba(217,211,198,.7);
+  }
+  .foot-bottom .sign{color:var(--gold-soft)}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:980px){
+    .hero-grid{grid-template-columns:1fr;gap:40px}
+    .cards{grid-template-columns:1fr 1fr}
+    .contact-grid{grid-template-columns:1fr;gap:30px}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .nav-links{display:none}
+  }
+  @media (max-width:720px){
+    .steps{grid-template-columns:1fr}
+    .step{border-right:none;border-bottom:1px solid var(--line)}
+    .step:last-child{border-bottom:none}
+  }
+  @media (max-width:640px){
+    .wrap{padding:0 16px}
+    .nav-in{padding:12px 16px}
+    .hero{padding:56px 0 62px}
+    .band{padding:60px 0}
+    .cards{grid-template-columns:1fr;gap:16px}
+    .head-2{grid-template-columns:1fr;align-items:start;gap:18px;margin-bottom:30px}
+    .foot-grid{grid-template-columns:1fr;gap:28px}
+    .hero-cta .btn,.steps-cta .btn{width:100%}
+    .hero-facts{gap:10px 20px;font-size:12.5px}
+    .bar{font-size:10.5px;letter-spacing:.06em}
+    .brand-txt strong{font-size:15px}
+    .nav .btn{padding:9px 13px;font-size:11px;letter-spacing:.05em}
+    .info-row{padding:18px 16px;gap:13px}
+    .info-row p,.info-row a{font-size:14.5px}
+    .steps-note{font-size:12.5px}
+  }
+</style>
+</head>
+<body>
+
+<div class="bar"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<header class="nav">
+  <div class="nav-in">
+    <div class="brand">
+      <svg class="brand-mark" width="34" height="38" viewBox="0 0 34 38" aria-hidden="true">
+        <path d="M17 2 32 11v25H2V11L17 2Z" fill="none" stroke="#1d3b31" stroke-width="1.3"/>
+        <path d="M17 6.5 28 13v19H6V13l11-6.5Z" fill="none" stroke="#a98545" stroke-width=".9"/>
+        <rect x="14.6" y="22" width="4.8" height="10" fill="#1d3b31" opacity=".85"/>
+        <rect x="9" y="17" width="3.2" height="3.6" fill="#a98545"/>
+        <rect x="21.8" y="17" width="3.2" height="3.6" fill="#a98545"/>
+      </svg>
+      <span class="brand-txt">
+        <strong>Hotel Villa de Betanzos</strong>
+        <em>Betanzos · A Coruña</em>
+      </span>
+    </div>
+    <nav class="nav-links" aria-label="Secciones">
+      <a href="#alojamiento">Alojamiento</a>
+      <a href="#reserva">Tu reserva</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="btn btn-sm" href="tel:+34981773701">981 773 701</a>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Hotel en un palacete de Betanzos</p>
+        <h1>Dormir en un palacete,<br><i>despertar en Betanzos</i></h1>
+        <p class="lead">Treinta habitaciones en un palacete de la Avenida de Castilla, a un paso del casco histórico. Un alojamiento tranquilo para descubrir Betanzos y las Mariñas, tanto si viajas por placer como por trabajo.</p>
+        <div class="hero-cta">
+          <a class="btn btn-gold" href="tel:+34981773701">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6.6 3.5h3l1.5 4-2 1.4a12 12 0 0 0 6 6l1.4-2 4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.6 5.7 2 2 0 0 1 6.6 3.5Z"/></svg>
+            Reservar por teléfono
+          </a>
+          <a class="btn btn-ghost" href="#alojamiento">Ver el alojamiento</a>
+        </div>
+        <div class="hero-facts">
+          <span><i class="dot"></i>30 habitaciones</span>
+          <span><i class="dot"></i>Edificio tipo palacete</span>
+          <span><i class="dot"></i>Avenida de Castilla, 38</span>
+        </div>
+      </div>
+      <figure class="facade" style="margin:0">
+        <svg viewBox="0 0 420 320" role="img" aria-label="Ilustración esquemática de la fachada de un palacete">
+          <defs>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#20463a"/><stop offset="1" stop-color="#0e1a15"/>
+            </linearGradient>
+            <linearGradient id="wall" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#f4eddf"/><stop offset="1" stop-color="#d8ccb4"/>
+            </linearGradient>
+            <linearGradient id="win" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#c9ab74"/><stop offset="1" stop-color="#8a6c36"/>
+            </linearGradient>
+          </defs>
+          <rect width="420" height="320" fill="url(#sky)"/>
+          <circle cx="342" cy="58" r="26" fill="#c9ab74" opacity=".22"/>
+          <circle cx="342" cy="58" r="14" fill="#e3c891" opacity=".5"/>
+          <!-- cuerpo -->
+          <rect x="84" y="96" width="252" height="192" fill="url(#wall)"/>
+          <!-- tejado -->
+          <path d="M70 98 210 40 350 98Z" fill="#33403a"/>
+          <path d="M70 98 350 98" stroke="#a98545" stroke-width="2"/>
+          <!-- torre central -->
+          <rect x="186" y="62" width="48" height="36" fill="#e9e0cc"/>
+          <path d="M178 64 210 44 242 64Z" fill="#33403a"/>
+          <!-- ventanas fila 1 -->
+          <g fill="url(#win)">
+            <rect x="104" y="120" width="26" height="42" rx="13"/>
+            <rect x="146" y="120" width="26" height="42" rx="13"/>
+            <rect x="188" y="120" width="26" height="42" rx="13"/>
+            <rect x="230" y="120" width="26" height="42" rx="13"/>
+            <rect x="272" y="120" width="26" height="42" rx="13"/>
+            <rect x="104" y="186" width="26" height="42" rx="13"/>
+            <rect x="146" y="186" width="26" height="42" rx="13"/>
+            <rect x="230" y="186" width="26" height="42" rx="13"/>
+            <rect x="272" y="186" width="26" height="42" rx="13"/>
+          </g>
+          <!-- balcon -->
+          <rect x="182" y="176" width="56" height="8" fill="#33403a"/>
+          <rect x="196" y="184" width="28" height="44" rx="14" fill="url(#win)"/>
+          <!-- porton -->
+          <path d="M192 288v-38a18 18 0 0 1 36 0v38Z" fill="#33403a"/>
+          <path d="M210 250v38" stroke="#a98545" stroke-width="1.4"/>
+          <!-- escalinata -->
+          <rect x="176" y="288" width="68" height="6" fill="#cbbfa6"/>
+          <rect x="166" y="294" width="88" height="6" fill="#bdb096"/>
+          <!-- seto -->
+          <g fill="#2b5548">
+            <circle cx="106" cy="292" r="17"/><circle cx="132" cy="296" r="13"/>
+            <circle cx="312" cy="292" r="17"/><circle cx="288" cy="296" r="13"/>
+          </g>
+          <rect x="0" y="300" width="420" height="20" fill="#0c1512"/>
+        </svg>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ALOJAMIENTO / SERVICIOS -->
+  <section id="alojamiento" class="band band-cream">
+    <div class="wrap">
+      <div class="head-2">
+        <div>
+          <p class="eyebrow">Alojamiento y servicios</p>
+          <h2>Lo que encontrarás en la casa</h2>
+        </div>
+        <a class="btn btn-ghost btn-sm" href="tel:+34981773701">Consultar disponibilidad</a>
+      </div>
+      <p class="lead" style="margin-bottom:34px">Un hotel de 30 habitaciones pensado para estancias cortas, escapadas y viajes de trabajo. Si necesitas una habitación concreta o tienes cualquier petición especial, lo mejor es preguntarnos por teléfono.</p>
+      <div class="cards">
+
+        <article class="card">
+          <span class="ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a98545" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3 17v-4h13a4 4 0 0 1 4 4v2"/><path d="M3 20v-3"/><path d="M6.5 13V9.5A1.5 1.5 0 0 1 8 8h3.5A1.5 1.5 0 0 1 13 9.5V13"/></svg>
+          </span>
+          <h3>Habitaciones</h3>
+          <p>Treinta habitaciones distribuidas por las plantas del palacete, con distintas orientaciones y capacidades. Consúltanos qué opción encaja mejor con tu viaje.</p>
+          <div class="tags"><span class="tag">Individual</span><span class="tag">Doble</span><span class="tag">Estancias largas</span></div>
+        </article>
+
+        <article class="card">
+          <span class="ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a98545" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 9h12v4a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9Z"/><path d="M16 10h2.5a2.5 2.5 0 0 1 0 5H16"/><path d="M7 5.5c0-1 1.5-1 1.5-2M11 5.5c0-1 1.5-1 1.5-2"/></svg>
+          </span>
+          <h3>Desayuno</h3>
+          <p>Servicio de desayuno para los huéspedes antes de salir a caminar por el casco antiguo. Pregúntanos por el horario y por las opciones disponibles cada día.</p>
+          <div class="tags"><span class="tag">Para huéspedes</span><span class="tag">Café</span></div>
+        </article>
+
+        <article class="card">
+          <span class="ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a98545" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="8" r="2.6"/><circle cx="16" cy="9.5" r="2.2"/><path d="M3.5 19v-1.5A4 4 0 0 1 7.5 13.5h3A4 4 0 0 1 14.5 17.5V19"/><path d="M16 13.5h.7a3.8 3.8 0 0 1 3.8 3.8V19"/></svg>
+          </span>
+          <h3>Eventos y grupos</h3>
+          <p>Espacio para celebraciones familiares, reuniones y grupos que necesitan varias habitaciones en las mismas fechas. Lo organizamos contigo caso por caso.</p>
+          <div class="tags"><span class="tag">Celebraciones</span><span class="tag">Reuniones</span><span class="tag">Grupos</span></div>
+        </article>
+
+        <article class="card">
+          <span class="ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a98545" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5"/><circle cx="15.5" cy="14.5" r="2"/></svg>
+          </span>
+          <h3>Recepción y atención</h3>
+          <p>Te atendemos directamente para entradas, salidas, peticiones durante la estancia y consejos sobre qué ver y dónde comer en Betanzos.</p>
+          <div class="tags"><span class="tag">Atención directa</span><span class="tag">Recomendaciones</span></div>
+        </article>
+
+        <article class="card">
+          <span class="ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a98545" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M12 20s6.5-5.1 6.5-10A6.5 6.5 0 0 0 5.5 10c0 4.9 6.5 10 6.5 10Z"/><circle cx="12" cy="10" r="2.3"/></svg>
+          </span>
+          <h3>Junto al casco histórico</h3>
+          <p>El palacete está en la Avenida de Castilla, a corta distancia del centro de Betanzos: iglesias, plazas y paseos junto al río, todo a pie.</p>
+          <div class="tags"><span class="tag">A pie</span><span class="tag">Turismo</span><span class="tag">Viaje de trabajo</span></div>
+        </article>
+
+        <article class="card">
+          <span class="ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#a98545" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><rect x="2.5" y="7.5" width="19" height="9" rx="2"/><path d="M6 7.5V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1.5"/><path d="M6 16.5V19M18 16.5V19"/></svg>
+          </span>
+          <h3>Llegada en coche</h3>
+          <p>Acceso cómodo desde la carretera para quien llega en coche. Si viajas con vehículo, dínoslo al reservar y te explicamos cómo hacerlo.</p>
+          <div class="tags"><span class="tag">Fácil acceso</span><span class="tag">Indicaciones</span></div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- RESERVA EN 3 PASOS -->
+  <section id="reserva" class="band">
+    <div class="wrap">
+      <div class="head-2">
+        <div>
+          <p class="eyebrow">Sin formularios ni intermediarios</p>
+          <h2>Tu reserva en 3 pasos</h2>
+        </div>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <span class="step-n">01</span>
+          <h3>Llámanos</h3>
+          <p>Marca el 981 773 701 y cuéntanos las fechas, cuántas personas sois y si necesitas algo en particular.</p>
+        </div>
+        <div class="step">
+          <span class="step-n">02</span>
+          <h3>Elegimos tu habitación</h3>
+          <p>Vemos juntos qué habitación de la casa encaja mejor con tu estancia y te confirmamos la disponibilidad.</p>
+        </div>
+        <div class="step">
+          <span class="step-n">03</span>
+          <h3>Te esperamos</h3>
+          <p>Te confirmamos la reserva y te damos las indicaciones para llegar al palacete de la Avenida de Castilla.</p>
+        </div>
+      </div>
+      <div class="steps-cta">
+        <a class="btn" href="tel:+34981773701">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6.6 3.5h3l1.5 4-2 1.4a12 12 0 0 0 6 6l1.4-2 4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.6 5.7 2 2 0 0 1 6.6 3.5Z"/></svg>
+          Llamar al 981 773 701
+        </a>
+        <p class="steps-note">También puedes escribirnos a reservas@hotelvilladebetanzos.com</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="band band-cream">
+    <div class="wrap">
+      <div class="head-2">
+        <div>
+          <p class="eyebrow">Dónde estamos</p>
+          <h2>Contacto y cómo llegar</h2>
+        </div>
+      </div>
+      <div class="contact-grid">
+        <div class="info">
+          <div class="info-row">
+            <span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a98545" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M6.6 3.5h3l1.5 4-2 1.4a12 12 0 0 0 6 6l1.4-2 4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.6 5.7 2 2 0 0 1 6.6 3.5Z"/></svg></span>
+            <div><h3>Teléfono</h3><a href="tel:+34981773701">+34 981 773 701</a></div>
+          </div>
+          <div class="info-row">
+            <span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a98545" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M12 20s6.5-5.1 6.5-10A6.5 6.5 0 0 0 5.5 10c0 4.9 6.5 10 6.5 10Z"/><circle cx="12" cy="10" r="2.3"/></svg></span>
+            <div><h3>Dirección</h3><p>Avenida de Castilla, 38<br>15300 Betanzos (A Coruña)</p></div>
+          </div>
+          <div class="info-row">
+            <span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a98545" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg></span>
+            <div><h3>Horario</h3><p>Consultar horario</p></div>
+          </div>
+          <div class="info-row">
+            <span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a98545" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="M3.8 6.6 12 12.8l8.2-6.2"/></svg></span>
+            <div><h3>Correo</h3><a href="mailto:reservas@hotelvilladebetanzos.com">reservas@hotelvilladebetanzos.com</a></div>
+          </div>
+        </div>
+
+        <figure class="map" style="margin:0">
+          <svg viewBox="0 0 560 360" role="img" aria-label="Mapa esquemático de situación del hotel en la Avenida de Castilla, Betanzos">
+            <defs>
+              <linearGradient id="mapbg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#f6f1e7"/><stop offset="1" stop-color="#e7dfcd"/>
+              </linearGradient>
+            </defs>
+            <rect width="560" height="360" fill="url(#mapbg)"/>
+            <!-- manzanas -->
+            <g fill="#ded4bd">
+              <rect x="34" y="34" width="150" height="86" rx="3"/>
+              <rect x="212" y="34" width="120" height="86" rx="3"/>
+              <rect x="360" y="34" width="166" height="60" rx="3"/>
+              <rect x="34" y="216" width="128" height="104" rx="3"/>
+              <rect x="190" y="242" width="150" height="78" rx="3"/>
+              <rect x="368" y="216" width="158" height="104" rx="3"/>
+            </g>
+            <!-- rio -->
+            <path d="M360 94c40 22 90 18 166 40v40c-78-22-124-14-166-34Z" fill="#b9cfc6" opacity=".85"/>
+            <text x="452" y="128" font-family="Georgia,serif" font-size="12" fill="#5c6660" font-style="italic">río</text>
+            <!-- avenida principal -->
+            <rect x="0" y="150" width="560" height="42" fill="#cfc3a8"/>
+            <line x1="0" y1="171" x2="560" y2="171" stroke="#f6f1e7" stroke-width="2.5" stroke-dasharray="20 16"/>
+            <!-- calles transversales -->
+            <rect x="184" y="0" width="26" height="360" fill="#cfc3a8"/>
+            <rect x="340" y="0" width="26" height="360" fill="#cfc3a8"/>
+            <rect x="0" y="206" width="560" height="14" fill="#d8cdb5"/>
+            <!-- edificio hotel -->
+            <rect x="238" y="196" width="76" height="44" rx="2" fill="#1d3b31"/>
+            <rect x="244" y="202" width="64" height="32" rx="2" fill="none" stroke="#c9ab74" stroke-width="1.2"/>
+            <!-- marcador -->
+            <g transform="translate(276,140)">
+              <path d="M0 42C0 42 20 22 20 8A20 20 0 0 0-20 8c0 14 20 34 20 34Z" fill="#a98545"/>
+              <circle cx="0" cy="8" r="7.5" fill="#f6f1e7"/>
+            </g>
+            <!-- etiquetas -->
+            <text x="20" y="142" font-family="Helvetica,Arial,sans-serif" font-size="11.5" fill="#3f4a44" letter-spacing=".8">AVENIDA DE CASTILLA</text>
+            <text x="238" y="262" font-family="Georgia,serif" font-size="15" fill="#1d3b31">Hotel Villa de Betanzos</text>
+            <text x="238" y="280" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#5c6660">nº 38 · 15300 Betanzos</text>
+            <text x="56" y="70" font-family="Helvetica,Arial,sans-serif" font-size="12" fill="#77807a" letter-spacing="1">CASCO HISTÓRICO</text>
+            <!-- rosa de los vientos -->
+            <g transform="translate(512,330)">
+              <circle r="18" fill="#f6f1e7" stroke="#c9ab74" stroke-width="1"/>
+              <path d="M0-13 4 0h-8Z" fill="#1d3b31"/><path d="M0 13 4 0h-8Z" fill="#c9ab74"/>
+              <text x="-3.5" y="-19" font-family="Helvetica,Arial,sans-serif" font-size="9" fill="#5c6660">N</text>
+            </g>
+          </svg>
+          <figcaption>Plano esquemático orientativo, no a escala. Dirección exacta: Avenida de Castilla, 38 — 15300 Betanzos (A Coruña).</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <strong>Hotel Villa de Betanzos</strong>
+        <p>Hotel de 30 habitaciones en un palacete de Betanzos, A Coruña. Reservas y consultas por teléfono o correo.</p>
+      </div>
+      <div>
+        <h3>Contacto</h3>
+        <p>
+          <a href="tel:+34981773701">+34 981 773 701</a><br>
+          <a href="mailto:reservas@hotelvilladebetanzos.com">reservas@hotelvilladebetanzos.com</a><br>
+          Consultar horario
+        </p>
+      </div>
+      <div>
+        <h3>Dirección</h3>
+        <p>Avenida de Castilla, 38<br>15300 Betanzos<br>A Coruña</p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© Hotel Villa de Betanzos</span>
+      <span class="sign">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var bar = document.querySelector('.bar');
+    function sync(){
+      var h = bar.offsetHeight;
+      document.documentElement.style.setProperty('--bar-h', h + 'px');
+    }
+    sync();
+    window.addEventListener('resize', sync);
+    window.addEventListener('load', sync);
+  })();
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var t = document.querySelector(a.getAttribute('href'));
+      if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth', block:'start'}); }
+    });
+  });
+  var cards = document.querySelectorAll('.card, .step');
+  if('IntersectionObserver' in window){
+    cards.forEach(function(el,i){
+      el.style.opacity = 0; el.style.transform = 'translateY(14px)';
+      el.style.transition = 'opacity .5s ease ' + (i%3*0.07) + 's, transform .5s ease ' + (i%3*0.07) + 's';
+    });
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.style.opacity = 1; en.target.style.transform = 'none'; io.unobserve(en.target); }
+      });
+    },{threshold:.12});
+    cards.forEach(function(el){ io.observe(el); });
+  }
+</script>
+</body>
+</html>
