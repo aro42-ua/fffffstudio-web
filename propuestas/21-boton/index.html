@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>21 Botón — Huesca | Propuesta de diseño</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  :root{
+    --crema:#FBF6EE;
+    --crema-2:#F4EADC;
+    --papel:#FFFDF9;
+    --tinta:#2B2420;
+    --tinta-2:#5C4F45;
+    --granate:#8C2F39;
+    --granate-osc:#6E232C;
+    --hilo:#B5813F;
+    --linea:#E2D5C3;
+    --sombra:0 1px 2px rgba(43,36,32,.05),0 12px 32px -12px rgba(43,36,32,.18);
+    --r:14px;
+    --barra:44px;
+    --fuente:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua","Georgia",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  }
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;padding-top:var(--barra);
+    background:var(--crema);color:var(--tinta);
+    font-family:var(--sans);font-size:17px;line-height:1.65;
+    overflow-x:hidden;
+  }
+  img,svg{max-width:100%}
+  h1,h2,h3{font-family:var(--fuente);font-weight:600;line-height:1.15;margin:0;letter-spacing:-.01em}
+  p{margin:0}
+  a{color:inherit}
+
+  /* ---------- barra fija ---------- */
+  .aviso{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    min-height:var(--barra);display:flex;align-items:center;justify-content:center;
+    background:var(--tinta);color:#F6EFE4;
+    padding:7px 14px;text-align:center;
+    font-size:12.5px;line-height:1.3;letter-spacing:.02em;
+    border-bottom:1px solid #4a3f37;
+  }
+  .aviso span{display:block;max-width:70ch;text-wrap:balance}
+  .aviso b{font-weight:600;color:#fff}
+
+  .wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 24px}
+  section{position:relative}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(1000px 520px at 82% -8%, rgba(181,129,63,.20), transparent 62%),
+      radial-gradient(760px 440px at 8% 104%, rgba(140,47,57,.13), transparent 64%),
+      linear-gradient(170deg,var(--papel) 0%,var(--crema-2) 100%);
+    border-bottom:1px solid var(--linea);
+  }
+  .hero-deco{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.5}
+  .hero-in{position:relative;display:grid;grid-template-columns:1.12fr .88fr;gap:56px;align-items:center;padding:78px 24px 84px}
+  .marca{display:flex;align-items:center;gap:12px;margin-bottom:30px}
+  .marca-txt{font-family:var(--fuente);font-size:21px;font-weight:600;letter-spacing:.01em}
+  .marca-txt span{display:block;font-family:var(--sans);font-size:11px;font-weight:600;
+    letter-spacing:.20em;text-transform:uppercase;color:var(--hilo);margin-top:2px}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;
+    font-size:11.5px;font-weight:700;letter-spacing:.17em;text-transform:uppercase;
+    color:var(--granate);background:rgba(140,47,57,.07);
+    border:1px solid rgba(140,47,57,.18);border-radius:999px;padding:6px 14px;margin-bottom:22px}
+  .eyebrow .pt{width:6px;height:6px;border-radius:50%;background:var(--granate);flex:none}
+  h1{font-size:clamp(2.1rem,5.4vw,3.45rem)}
+  h1 em{font-style:italic;color:var(--granate)}
+  .lead{margin-top:20px;font-size:clamp(1rem,1.6vw,1.12rem);color:var(--tinta-2);max-width:50ch}
+  .ctas{display:flex;flex-wrap:wrap;gap:13px;margin-top:34px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    padding:15px 26px;border-radius:999px;text-decoration:none;
+    font-size:15.5px;font-weight:650;letter-spacing:.01em;border:1px solid transparent}
+  .btn-1{background:var(--granate);color:#FFF8F2;border-color:var(--granate-osc);
+    box-shadow:0 10px 24px -12px rgba(110,35,44,.65)}
+  .btn-2{background:rgba(255,255,255,.7);color:var(--tinta);border-color:var(--linea)}
+  .hero-meta{margin-top:30px;display:flex;flex-wrap:wrap;gap:8px 22px;
+    font-size:14px;color:var(--tinta-2)}
+  .hero-meta span{display:inline-flex;align-items:center;gap:8px}
+
+  /* tarjeta ilustración hero */
+  .hero-art{background:var(--papel);border:1px solid var(--linea);border-radius:22px;
+    padding:20px;box-shadow:var(--sombra)}
+  .hero-art svg{display:block;width:100%;height:auto}
+  .hero-art figcaption{margin-top:14px;font-size:12.5px;color:var(--tinta-2);
+    text-align:center;letter-spacing:.03em}
+
+  /* ---------- cabecera de sección ---------- */
+  .sec{padding:84px 0}
+  .sec-alt{background:var(--papel);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+  .sec-head{max-width:60ch;margin-bottom:44px}
+  .kicker{font-size:11.5px;font-weight:700;letter-spacing:.19em;text-transform:uppercase;
+    color:var(--hilo);margin-bottom:13px}
+  .sec-head h2{font-size:clamp(1.65rem,3.3vw,2.3rem)}
+  .sec-head p{margin-top:15px;color:var(--tinta-2)}
+
+  /* ---------- servicios ---------- */
+  .grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+  .card{background:var(--crema);border:1px solid var(--linea);border-radius:var(--r);
+    padding:26px 24px 28px}
+  .sec-alt .card{background:var(--crema)}
+  .ico{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(150deg,rgba(181,129,63,.16),rgba(140,47,57,.10));
+    border:1px solid rgba(181,129,63,.28);margin-bottom:17px}
+  .ico svg{width:24px;height:24px;display:block}
+  .card h3{font-size:1.16rem}
+  .card p{margin-top:9px;font-size:15px;color:var(--tinta-2)}
+
+  /* ---------- pasos ---------- */
+  .pasos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;counter-reset:p}
+  .paso{position:relative;background:var(--papel);border:1px solid var(--linea);
+    border-radius:var(--r);padding:30px 26px 28px}
+  .paso .n{font-family:var(--fuente);font-size:34px;line-height:1;color:var(--granate);
+    display:block;margin-bottom:14px}
+  .paso .n::after{content:"";display:block;width:34px;height:2px;background:var(--hilo);
+    margin-top:12px;opacity:.55}
+  .paso h3{font-size:1.1rem}
+  .paso p{margin-top:9px;font-size:15px;color:var(--tinta-2)}
+
+  /* ---------- contacto ---------- */
+  .cont{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:start}
+  .datos{background:var(--papel);border:1px solid var(--linea);border-radius:18px;
+    padding:30px 28px;box-shadow:var(--sombra)}
+  .fila{display:flex;gap:15px;padding:17px 0;border-bottom:1px dashed var(--linea)}
+  .fila:last-of-type{border-bottom:0;padding-bottom:4px}
+  .fila .ico{width:38px;height:38px;border-radius:10px;margin:0;flex:none}
+  .fila .ico svg{width:19px;height:19px}
+  .fila .et{font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--hilo)}
+  .fila .vl{font-family:var(--fuente);font-size:1.12rem;margin-top:2px;overflow-wrap:anywhere}
+  .fila .vl a{text-decoration:none}
+  .fila .nt{font-size:13.5px;color:var(--tinta-2);margin-top:3px}
+  .datos .btn{width:100%;margin-top:24px}
+  .mapa{background:var(--papel);border:1px solid var(--linea);border-radius:18px;
+    padding:16px;box-shadow:var(--sombra)}
+  .mapa svg{display:block;width:100%;height:auto;border-radius:10px}
+  .mapa-pie{display:flex;align-items:center;gap:9px;margin-top:13px;padding:0 4px;
+    font-size:12.5px;color:var(--tinta-2)}
+  .mapa-pie .pin{width:9px;height:9px;border-radius:50%;background:var(--granate);flex:none}
+
+  /* ---------- pie ---------- */
+  footer{background:var(--tinta);color:#EFE5D7;padding:52px 0 40px}
+  .f-top{display:grid;grid-template-columns:1.2fr 1fr;gap:34px;align-items:start}
+  footer .marca-txt{color:#FFFDF9}
+  footer .marca-txt span{color:#D7A867}
+  .f-txt{margin-top:16px;font-size:15px;color:#C3B5A4;max-width:42ch}
+  .f-list{list-style:none;margin:0;padding:0;font-size:15px}
+  .f-list li{padding:5px 0;color:#DCD0BF;overflow-wrap:anywhere}
+  .f-list a{text-decoration:none;color:#F3D9A8}
+  .f-h{font-size:11.5px;font-weight:700;letter-spacing:.17em;text-transform:uppercase;
+    color:#9E8B76;margin-bottom:10px}
+  .f-rule{height:1px;background:#463A32;margin:36px 0 20px}
+  .f-firma{font-size:13.5px;color:#B3A492;line-height:1.6}
+
+  @media (max-width:980px){
+    .hero-in{grid-template-columns:1fr;gap:38px;padding:56px 24px 62px}
+    .grid3,.pasos{grid-template-columns:1fr 1fr}
+    .cont{grid-template-columns:1fr;gap:22px}
+    .f-top{grid-template-columns:1fr;gap:26px}
+  }
+  @media (max-width:640px){
+    :root{--barra:58px}
+    body{font-size:16px}
+    .wrap{padding:0 18px}
+    .aviso{font-size:12px;padding:8px 14px}
+    .sec{padding:58px 0}
+    .sec-head{margin-bottom:30px}
+    .grid3,.pasos{grid-template-columns:1fr}
+    .hero-in{padding:44px 18px 52px}
+    .marca{margin-bottom:22px}
+    .ctas .btn{flex:1 1 100%}
+    .hero-meta{flex-direction:column;gap:7px}
+    .datos,.mapa{padding:20px 18px}
+    .paso{padding:24px 20px}
+  }
+</style>
+</head>
+<body>
+
+<div class="aviso"><span>Propuesta de diseño · maqueta no oficial · <b>FFFFFFstudio</b> · Ángel Rubio</span></div>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <svg class="hero-deco" viewBox="0 0 1200 620" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M-40 470 C 180 380, 300 560, 520 470 S 900 330, 1240 430" fill="none" stroke="#B5813F" stroke-opacity=".30" stroke-width="1.6"/>
+    <path d="M-40 520 C 200 440, 320 610, 560 520 S 940 390, 1240 490" fill="none" stroke="#8C2F39" stroke-opacity=".18" stroke-width="1.2"/>
+    <path d="M-40 110 C 220 40, 360 200, 620 120 S 960 20, 1240 90" fill="none" stroke="#B5813F" stroke-opacity=".22" stroke-width="1.2"/>
+  </svg>
+
+  <div class="wrap hero-in">
+    <div>
+      <div class="marca">
+        <svg width="44" height="44" viewBox="0 0 44 44" aria-hidden="true">
+          <circle cx="22" cy="22" r="21" fill="#FFFDF9" stroke="#8C2F39" stroke-width="1.6"/>
+          <circle cx="22" cy="22" r="15.5" fill="none" stroke="#B5813F" stroke-width="1" stroke-dasharray="3 3"/>
+          <circle cx="17.5" cy="19" r="2.5" fill="#8C2F39"/><circle cx="26.5" cy="19" r="2.5" fill="#8C2F39"/>
+          <circle cx="17.5" cy="26.5" r="2.5" fill="#8C2F39"/><circle cx="26.5" cy="26.5" r="2.5" fill="#8C2F39"/>
+        </svg>
+        <div class="marca-txt">21 Botón<span>Huesca</span></div>
+      </div>
+
+      <div class="eyebrow"><i class="pt"></i>Mercería · Complementos · Textil</div>
+      <h1>El botón que falta, el hilo exacto, <em>el arreglo a medida</em>.</h1>
+      <p class="lead">Mercería de barrio en el centro de Huesca. Botones y cierres, hilos y lanas, telas por metro, complementos y arreglos de confección. Si no sabe qué necesita, tráigalo y lo vemos juntos.</p>
+
+      <div class="ctas">
+        <a class="btn btn-1" href="tel:+34615993570">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 16.9v2.6a2 2 0 0 1-2.2 2 19.5 19.5 0 0 1-8.5-3 19.2 19.2 0 0 1-5.9-5.9 19.5 19.5 0 0 1-3-8.6A2 2 0 0 1 3.4 2H6a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L7.1 9.7a15.5 15.5 0 0 0 5.9 5.9l1.2-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/>
+          </svg>
+          Llamar 615 993 570
+        </a>
+        <a class="btn btn-2" href="#contacto">Cómo llegar</a>
+      </div>
+
+      <div class="hero-meta">
+        <span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8C2F39" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.8"/></svg>
+          Calle Cabestany, 5 · 22002 Huesca
+        </span>
+        <span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8C2F39" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.2V12l3.4 2"/></svg>
+          Consultar horario
+        </span>
+      </div>
+    </div>
+
+    <figure class="hero-art">
+      <svg viewBox="0 0 420 330" role="img" aria-label="Ilustración de carrete de hilo, botones, aguja y tijeras">
+        <defs>
+          <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#F7EEE0"/><stop offset="1" stop-color="#EADCC6"/>
+          </linearGradient>
+          <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#A83945"/><stop offset="1" stop-color="#6E232C"/>
+          </linearGradient>
+        </defs>
+        <rect x="0" y="0" width="420" height="330" rx="12" fill="url(#g1)"/>
+        <g stroke="#D9C8AE" stroke-width="1" opacity=".75">
+          <path d="M0 55H420M0 110H420M0 165H420M0 220H420M0 275H420"/>
+        </g>
+        <!-- hilo suelto -->
+        <path d="M18 250 C 90 200, 130 292, 205 240 S 320 160, 404 214" fill="none" stroke="#B5813F" stroke-width="2.4" stroke-linecap="round" opacity=".85"/>
+        <!-- carrete -->
+        <g transform="translate(60 88)">
+          <rect x="0" y="0" width="18" height="122" rx="5" fill="#C99A5E"/>
+          <rect x="70" y="0" width="18" height="122" rx="5" fill="#C99A5E"/>
+          <rect x="14" y="16" width="60" height="90" rx="6" fill="url(#g2)"/>
+          <g stroke="#F2D6D9" stroke-opacity=".45" stroke-width="2">
+            <path d="M14 30h60M14 46h60M14 62h60M14 78h60M14 94h60"/>
+          </g>
+        </g>
+        <!-- aguja + hilo -->
+        <g transform="translate(196 60) rotate(22)">
+          <path d="M0 0 L112 34" stroke="#8A8A8A" stroke-width="4" stroke-linecap="round"/>
+          <ellipse cx="4" cy="1" rx="6" ry="9" fill="none" stroke="#8A8A8A" stroke-width="3" transform="rotate(17 4 1)"/>
+          <path d="M6 -4 C 34 -30, 58 6, 92 -18" fill="none" stroke="#8C2F39" stroke-width="2.2" stroke-linecap="round"/>
+        </g>
+        <!-- botones -->
+        <g>
+          <g transform="translate(300 186)">
+            <circle r="34" fill="#FFFDF9" stroke="#C0A07A" stroke-width="2"/>
+            <circle r="24" fill="none" stroke="#DCC7A6" stroke-width="1.4" stroke-dasharray="4 4"/>
+            <circle cx="-8" cy="-8" r="4" fill="#8C2F39"/><circle cx="8" cy="-8" r="4" fill="#8C2F39"/>
+            <circle cx="-8" cy="8" r="4" fill="#8C2F39"/><circle cx="8" cy="8" r="4" fill="#8C2F39"/>
+          </g>
+          <g transform="translate(232 246)">
+            <circle r="22" fill="#8C2F39" opacity=".92"/>
+            <circle r="14" fill="none" stroke="#F0D9DC" stroke-opacity=".5" stroke-width="1.3"/>
+            <circle cx="-5.5" cy="0" r="3" fill="#FBF6EE"/><circle cx="5.5" cy="0" r="3" fill="#FBF6EE"/>
+          </g>
+          <g transform="translate(366 254)">
+            <circle r="17" fill="#B5813F"/>
+            <circle cx="0" cy="-5" r="2.6" fill="#FBF6EE"/><circle cx="0" cy="5" r="2.6" fill="#FBF6EE"/>
+          </g>
+        </g>
+        <!-- tijeras -->
+        <g transform="translate(58 232)" stroke="#6E6A66" stroke-width="4" fill="none" stroke-linecap="round">
+          <path d="M6 6 L64 56"/><path d="M6 56 L64 6"/>
+          <circle cx="72" cy="62" r="9"/><circle cx="72" cy="0" r="9"/>
+        </g>
+      </svg>
+      <figcaption>Mercería, botones y cierres, hilos y lanas, arreglos y telas por metro.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ SERVICIOS ============ -->
+<section class="sec sec-alt" id="servicios">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Lo que encontrará en la tienda</div>
+      <h2>Todo para coser, remendar y terminar bien una prenda</h2>
+      <p>Producto de mercería y atención de mostrador: se pregunta, se compara y se resuelve en el momento. Consulte disponibilidad y presupuesto sin compromiso.</p>
+    </div>
+
+    <div class="grid3">
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#8C2F39" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7z"/><path d="M8 7V5.5A3.5 3.5 0 0 1 11.5 2h1A3.5 3.5 0 0 1 16 5.5V7"/><path d="M8 12h8"/></svg></div>
+        <h3>Mercería</h3>
+        <p>El surtido de siempre: gomas, cintas, encajes, alfileres, agujas, dedales, entretelas y todo el pequeño material que hace falta.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#8C2F39" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="9.6" cy="9.6" r="1.3"/><circle cx="14.4" cy="9.6" r="1.3"/><circle cx="9.6" cy="14.4" r="1.3"/><circle cx="14.4" cy="14.4" r="1.3"/></svg></div>
+        <h3>Botones y cierres</h3>
+        <p>Botones por unidad o por juego, corchetes, automáticos, velcro y cremalleras de distintos largos y colores. Traiga la prenda y buscamos el que encaja.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#8C2F39" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h3v16H6zM15 4h3v16h-3z"/><path d="M9 8h6M9 12h6M9 16h6"/></svg></div>
+        <h3>Hilos y lanas</h3>
+        <p>Hilos de costura en carta de colores, hilo de bordar, ovillos de lana y agujas para tejer y ganchillo.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#8C2F39" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6 L14 16"/><path d="M4 16 L14 6"/><circle cx="17.5" cy="18" r="2.6"/><circle cx="17.5" cy="4" r="2.6"/></svg></div>
+        <h3>Arreglos y confección</h3>
+        <p>Bajos, cinturas, cremalleras, forros y ajustes de talla. Cuéntenos qué necesita la prenda y le indicamos plazo y presupuesto.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#8C2F39" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 7 6v4c0 4 5 11 5 11s5-7 5-11V6z"/><path d="M9.5 8.5h5"/></svg></div>
+        <h3>Complementos</h3>
+        <p>Pañuelos, bufandas, calcetería, cinturones y detalles de temporada para redondear un conjunto.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#8C2F39" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8c3-3 6 3 9 0s6-3 9 0"/><path d="M3 14c3-3 6 3 9 0s6-3 9 0"/><path d="M3 20c3-3 6 3 9 0s6-3 9 0"/></svg></div>
+        <h3>Telas por metro</h3>
+        <p>Corte a medida para costura, tapicería ligera y proyectos del hogar. Se corta el metraje que necesite, ni más ni menos.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CÓMO TRABAJAMOS ============ -->
+<section class="sec" id="proceso">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Cómo trabajamos</div>
+      <h2>Tres pasos y la prenda resuelta</h2>
+      <p>Sin formularios ni intermediarios: mostrador, una pregunta clara y una respuesta concreta.</p>
+    </div>
+
+    <div class="pasos">
+      <article class="paso">
+        <span class="n">01</span>
+        <h3>Nos cuenta qué necesita</h3>
+        <p>Por teléfono o en la tienda. Si puede, traiga la prenda, el botón roto o una muestra del hilo: con eso acertamos a la primera.</p>
+      </article>
+      <article class="paso">
+        <span class="n">02</span>
+        <h3>Buscamos la solución exacta</h3>
+        <p>Comparamos material, color y medida sobre el mostrador. Si es un arreglo, tomamos referencias y le decimos plazo y presupuesto antes de empezar.</p>
+      </article>
+      <article class="paso">
+        <span class="n">03</span>
+        <h3>Lo recoge terminado</h3>
+        <p>Le avisamos cuando esté listo y lo revisamos juntos en la entrega. Si algo no encaja como esperaba, se ajusta.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section class="sec sec-alt" id="contacto">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Contacto y localización</div>
+      <h2>Estamos en la calle Cabestany, en Huesca</h2>
+      <p>La forma más rápida de saber si tenemos lo que busca es una llamada.</p>
+    </div>
+
+    <div class="cont">
+      <div class="datos">
+        <div class="fila">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#8C2F39" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16.9v2.6a2 2 0 0 1-2.2 2 19.5 19.5 0 0 1-8.5-3 19.2 19.2 0 0 1-5.9-5.9 19.5 19.5 0 0 1-3-8.6A2 2 0 0 1 3.4 2H6a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L7.1 9.7a15.5 15.5 0 0 0 5.9 5.9l1.2-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></div>
+          <div>
+            <div class="et">Teléfono</div>
+            <div class="vl"><a href="tel:+34615993570">615 993 570</a></div>
+          </div>
+        </div>
+        <div class="fila">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#8C2F39" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.8"/></svg></div>
+          <div>
+            <div class="et">Dirección</div>
+            <div class="vl">Calle Cabestany, 5</div>
+            <div class="nt">22002 Huesca (Huesca)</div>
+          </div>
+        </div>
+        <div class="fila">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#8C2F39" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.2V12l3.4 2"/></svg></div>
+          <div>
+            <div class="et">Horario</div>
+            <div class="vl">Consultar horario</div>
+            <div class="nt">Llámenos y le confirmamos cuándo puede pasar.</div>
+          </div>
+        </div>
+        <div class="fila">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#8C2F39" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.6 6.6 12 13l8.4-6.4"/></svg></div>
+          <div>
+            <div class="et">Email</div>
+            <div class="vl"><a href="mailto:21boton@gmail.com">21boton@gmail.com</a></div>
+          </div>
+        </div>
+        <a class="btn btn-1" href="tel:+34615993570">Llamar ahora</a>
+      </div>
+
+      <div class="mapa">
+        <svg viewBox="0 0 520 400" role="img" aria-label="Plano esquemático de situación de la tienda: marcador sobre la calle Cabestany">
+          <rect x="0" y="0" width="520" height="400" fill="#F3EADB"/>
+          <!-- manzanas -->
+          <g fill="#E7DAC4">
+            <rect x="26" y="26" width="168" height="120" rx="8"/>
+            <rect x="240" y="26" width="120" height="120" rx="8"/>
+            <rect x="404" y="26" width="92" height="120" rx="8"/>
+            <rect x="26" y="196" width="130" height="90" rx="8"/>
+            <rect x="204" y="196" width="156" height="90" rx="8"/>
+            <rect x="404" y="196" width="92" height="90" rx="8"/>
+            <rect x="26" y="332" width="200" height="46" rx="8"/>
+            <rect x="276" y="332" width="220" height="46" rx="8"/>
+          </g>
+          <!-- calles verticales -->
+          <g stroke="#FFFDF9" stroke-width="20" stroke-linecap="square">
+            <path d="M216 10 V 400"/><path d="M382 10 V 400"/>
+          </g>
+          <!-- calle principal (Cabestany) -->
+          <path d="M-10 172 H 530" stroke="#FFFDF9" stroke-width="30"/>
+          <path d="M-10 172 H 530" stroke="#D9C8AE" stroke-width="30" stroke-opacity=".0"/>
+          <path d="M-10 172 H 530" stroke="#C6A877" stroke-width="2" stroke-dasharray="14 12"/>
+          <path d="M-10 308 H 530" stroke="#FFFDF9" stroke-width="18"/>
+          <!-- etiquetas de calle -->
+          <text x="40" y="167" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="13" font-weight="700" fill="#8C6A3C" letter-spacing="1.4">CALLE CABESTANY</text>
+          <text x="226" y="378" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="11.5" fill="#A08A6A" letter-spacing="1.2" transform="rotate(-90 226 378)">CALLE</text>
+          <text x="392" y="378" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="11.5" fill="#A08A6A" letter-spacing="1.2" transform="rotate(-90 392 378)">CALLE</text>
+          <!-- marcador -->
+          <g transform="translate(286 172)">
+            <ellipse cx="0" cy="6" rx="22" ry="7" fill="#8C2F39" opacity=".16"/>
+            <circle cx="0" cy="-2" r="30" fill="#8C2F39" opacity=".12"/>
+            <path d="M0 4 C -14 -14, -19 -22, -19 -30 A 19 19 0 1 1 19 -30 C 19 -22, 14 -14, 0 4 Z" fill="#8C2F39"/>
+            <circle cx="0" cy="-30" r="7.5" fill="#FBF6EE"/>
+            <circle cx="-2.6" cy="-32" r="1.5" fill="#8C2F39"/><circle cx="2.6" cy="-32" r="1.5" fill="#8C2F39"/>
+            <circle cx="-2.6" cy="-27.4" r="1.5" fill="#8C2F39"/><circle cx="2.6" cy="-27.4" r="1.5" fill="#8C2F39"/>
+          </g>
+          <text x="286" y="212" text-anchor="middle" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="14" font-weight="700" fill="#2B2420">21 Botón · nº 5</text>
+        </svg>
+        <div class="mapa-pie"><i class="pin"></i>Plano esquemático orientativo, no a escala.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PIE ============ -->
+<footer>
+  <div class="wrap">
+    <div class="f-top">
+      <div>
+        <div class="marca">
+          <svg width="40" height="40" viewBox="0 0 44 44" aria-hidden="true">
+            <circle cx="22" cy="22" r="21" fill="none" stroke="#D7A867" stroke-width="1.6"/>
+            <circle cx="17.5" cy="19" r="2.4" fill="#D7A867"/><circle cx="26.5" cy="19" r="2.4" fill="#D7A867"/>
+            <circle cx="17.5" cy="26.5" r="2.4" fill="#D7A867"/><circle cx="26.5" cy="26.5" r="2.4" fill="#D7A867"/>
+          </svg>
+          <div class="marca-txt">21 Botón<span>Huesca</span></div>
+        </div>
+        <p class="f-txt">Mercería, complementos y textil en el centro de Huesca. Atención de mostrador y arreglos de confección.</p>
+      </div>
+      <div>
+        <div class="f-h">Contacto</div>
+        <ul class="f-list">
+          <li><a href="tel:+34615993570">615 993 570</a></li>
+          <li><a href="mailto:21boton@gmail.com">21boton@gmail.com</a></li>
+          <li>Calle Cabestany, 5 — 22002 Huesca</li>
+          <li>Consultar horario</li>
+        </ul>
+      </div>
+    </div>
+    <div class="f-rule"></div>
+    <p class="f-firma">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+</body>
+</html>

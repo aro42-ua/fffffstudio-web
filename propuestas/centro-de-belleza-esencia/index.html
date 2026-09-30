@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Centro de Belleza Esencia — Yecla | Propuesta de diseño</title>
+<meta name="description" content="Propuesta de diseño (maqueta no oficial) para Centro de Belleza Esencia, centro de belleza y estética en Yecla, Murcia.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  :root{
+    --arena:#f7f2ee;
+    --arena-2:#efe6df;
+    --crema:#fffdfb;
+    --tinta:#2e2a28;
+    --tinta-2:#5c534e;
+    --tinta-3:#8a7f78;
+    --rosa:#c9a2a0;
+    --rosa-claro:#e8d3d1;
+    --verde:#6f7f6a;
+    --verde-claro:#dbe2d6;
+    --linea:#e3d8d0;
+    --dorado:#b99a6b;
+    --barra:#2e2a28;
+    --radio:18px;
+    --sombra:0 1px 2px rgba(46,42,40,.04), 0 12px 32px rgba(46,42,40,.07);
+    --barra-h:44px;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    padding-top:var(--barra-h);
+    background:var(--arena);
+    color:var(--tinta);
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+    font-size:17px;
+    line-height:1.65;
+    overflow-x:hidden;
+  }
+  img,svg{max-width:100%}
+  h1,h2,h3{margin:0;font-weight:500;letter-spacing:-.01em;line-height:1.15}
+  p{margin:0}
+  a{color:inherit}
+
+  .aviso{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    min-height:var(--barra-h);
+    display:flex;align-items:center;justify-content:center;
+    background:var(--barra);color:#f4ece6;
+    padding:9px 14px;
+    font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:12.5px;line-height:1.35;letter-spacing:.02em;
+    text-align:center;
+    border-bottom:1px solid #4a4340;
+  }
+  .aviso span{display:block;max-width:60rem}
+
+  .env{width:100%;max-width:1160px;margin:0 auto;padding:0 28px}
+  .sec{padding:84px 0}
+  .etq{
+    font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--dorado);margin-bottom:18px;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;overflow:hidden;background:linear-gradient(170deg,#fffdfb 0%,#f7f2ee 55%,#f0e7e2 100%)}
+  .hero-deco{position:absolute;inset:0;pointer-events:none}
+  .hero-grid{
+    position:relative;
+    display:grid;grid-template-columns:1.08fr .92fr;gap:56px;align-items:center;
+    padding:96px 0 104px;
+  }
+  .marca{display:flex;align-items:center;gap:14px;margin-bottom:38px}
+  .marca-txt{line-height:1.1}
+  .marca-txt b{display:block;font-weight:500;font-size:19px;letter-spacing:.01em}
+  .marca-txt small{
+    display:block;
+    font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--tinta-3);margin-top:4px;
+  }
+  h1{font-size:clamp(2.1rem,5.1vw,3.6rem)}
+  h1 em{font-style:italic;color:var(--rosa)}
+  .hero p.sub{margin-top:24px;font-size:1.09rem;color:var(--tinta-2);max-width:34rem}
+  .hero-local{
+    margin-top:22px;
+    display:inline-flex;align-items:center;gap:9px;
+    font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:13px;color:var(--tinta-2);
+  }
+  .ctas{margin-top:38px;display:flex;flex-wrap:wrap;gap:14px}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    padding:15px 26px;border-radius:999px;text-decoration:none;
+    font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:14.5px;font-weight:600;letter-spacing:.01em;
+    border:1px solid transparent;transition:transform .18s ease, background .18s ease;
+  }
+  .btn-1{background:var(--tinta);color:#fdf9f6;box-shadow:var(--sombra)}
+  .btn-1:hover{background:#443d3a;transform:translateY(-1px)}
+  .btn-2{background:transparent;color:var(--tinta);border-color:var(--linea)}
+  .btn-2:hover{background:#fffdfb}
+  .tel-nota{
+    margin-top:16px;
+    font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:12.5px;color:var(--tinta-3);
+  }
+  .hero-art{position:relative}
+  .hero-art svg{display:block;width:100%;height:auto;border-radius:var(--radio);box-shadow:var(--sombra)}
+
+  /* ---------- SERVICIOS ---------- */
+  .servicios{background:var(--crema);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+  .cab{max-width:36rem;margin-bottom:52px}
+  .cab h2{font-size:clamp(1.65rem,3.4vw,2.35rem)}
+  .cab p{margin-top:16px;color:var(--tinta-2)}
+  .rejilla{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .tarjeta{
+    background:var(--arena);
+    border:1px solid var(--linea);border-radius:var(--radio);
+    padding:30px 26px 32px;
+    display:flex;flex-direction:column;gap:14px;
+    min-width:0;
+  }
+  .ico{
+    width:52px;height:52px;border-radius:50%;
+    background:#fffdfb;border:1px solid var(--linea);
+    display:flex;align-items:center;justify-content:center;flex:0 0 auto;
+  }
+  .ico svg{width:26px;height:26px;display:block}
+  .tarjeta h3{font-size:1.2rem}
+  .tarjeta p{font-size:.95rem;color:var(--tinta-2)}
+
+  /* ---------- PASOS ---------- */
+  .pasos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;counter-reset:p}
+  .paso{
+    position:relative;padding:34px 26px 30px;
+    background:var(--crema);border:1px solid var(--linea);border-radius:var(--radio);
+    min-width:0;
+  }
+  .num{
+    width:42px;height:42px;border-radius:50%;
+    background:var(--rosa-claro);color:#6f4f4d;
+    display:flex;align-items:center;justify-content:center;
+    font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:14px;font-weight:700;margin-bottom:18px;
+  }
+  .paso h3{font-size:1.12rem;margin-bottom:10px}
+  .paso p{font-size:.95rem;color:var(--tinta-2)}
+
+  /* ---------- CONTACTO ---------- */
+  .contacto{background:linear-gradient(180deg,#f0e8e3 0%,#f7f2ee 100%);border-top:1px solid var(--linea)}
+  .cont-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:44px;align-items:start}
+  .datos{
+    background:var(--crema);border:1px solid var(--linea);border-radius:var(--radio);
+    padding:34px 30px;box-shadow:var(--sombra);
+  }
+  .dato{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid var(--linea)}
+  .dato:last-of-type{border-bottom:0;padding-bottom:4px}
+  .dato .ico{width:40px;height:40px;background:var(--verde-claro);border-color:#cfd8c9}
+  .dato .ico svg{width:20px;height:20px}
+  .dato-txt{min-width:0}
+  .dato-txt span{
+    display:block;
+    font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--tinta-3);margin-bottom:5px;
+  }
+  .dato-txt strong{font-weight:500;font-size:1.06rem;display:block;overflow-wrap:break-word}
+  .dato-txt a{text-decoration:none;border-bottom:1px solid var(--rosa)}
+  .dato-txt p{font-size:.92rem;color:var(--tinta-2);margin-top:4px}
+  .mapa{
+    background:var(--crema);border:1px solid var(--linea);border-radius:var(--radio);
+    padding:16px;box-shadow:var(--sombra);
+  }
+  .mapa svg{display:block;width:100%;height:auto;border-radius:12px}
+  .mapa .pie-mapa{
+    margin-top:12px;padding:0 6px 4px;
+    font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:11.5px;color:var(--tinta-3);
+  }
+
+  /* ---------- PIE ---------- */
+  footer{background:var(--tinta);color:#e8dfd9;padding:60px 0 44px}
+  .pie-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:34px;align-items:start}
+  footer h3{font-size:1.25rem;color:#fdf9f6;margin-bottom:12px}
+  footer p{color:#c2b6af;font-size:.95rem}
+  footer a{color:#f0e3dd;text-decoration:none;border-bottom:1px solid #6b605b;overflow-wrap:break-word}
+  .pie-datos p{margin-bottom:8px}
+  .firma{
+    margin-top:44px;padding-top:22px;border-top:1px solid #4a4340;
+    font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:12.5px;color:#b5a8a1;line-height:1.6;
+  }
+
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;gap:44px;padding:64px 0 76px}
+    .hero-art{order:-1}
+    .rejilla{grid-template-columns:repeat(2,1fr)}
+    .pasos-grid{grid-template-columns:1fr}
+    .cont-grid{grid-template-columns:1fr;gap:28px}
+    .pie-grid{grid-template-columns:1fr;gap:26px}
+  }
+  @media (max-width:620px){
+    :root{--barra-h:58px}
+    body{font-size:16px}
+    .env{padding:0 20px}
+    .sec{padding:60px 0}
+    .aviso{font-size:11.5px;letter-spacing:.01em;padding:8px 14px}
+    .hero-grid{padding:46px 0 60px}
+    .marca{margin-bottom:28px}
+    .rejilla{grid-template-columns:1fr;gap:16px}
+    .tarjeta{padding:26px 22px}
+    .ctas{gap:11px}
+    .btn{width:100%;padding:16px 20px}
+    .datos{padding:26px 22px}
+    .cab{margin-bottom:38px}
+    footer{padding:48px 0 36px}
+  }
+</style>
+</head>
+<body>
+
+<div class="aviso" role="note"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="hero-deco" aria-hidden="true">
+    <svg width="100%" height="100%" viewBox="0 0 1200 620" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0">
+      <circle cx="1090" cy="80" r="220" fill="#e8d3d1" opacity=".26"/>
+      <circle cx="120" cy="560" r="180" fill="#dbe2d6" opacity=".3"/>
+      <path d="M-40 470 C 220 400, 420 520, 700 440 S 1100 380, 1260 430" fill="none" stroke="#e3d8d0" stroke-width="1.4"/>
+      <path d="M-40 510 C 240 440, 440 560, 720 480 S 1120 420, 1260 470" fill="none" stroke="#e3d8d0" stroke-width="1"/>
+    </svg>
+  </div>
+
+  <div class="env">
+    <div class="hero-grid">
+      <div>
+        <div class="marca">
+          <svg width="46" height="46" viewBox="0 0 48 48" aria-hidden="true">
+            <circle cx="24" cy="24" r="23" fill="none" stroke="#c9a2a0" stroke-width="1.2"/>
+            <path d="M24 12 C 31 17, 31 28, 24 36 C 17 28, 17 17, 24 12 Z" fill="#e8d3d1"/>
+            <path d="M24 12 C 31 17, 31 28, 24 36" fill="none" stroke="#b98d8b" stroke-width="1.1"/>
+            <line x1="24" y1="14" x2="24" y2="36" stroke="#b98d8b" stroke-width=".9"/>
+          </svg>
+          <span class="marca-txt">
+            <b>Centro de Belleza Esencia</b>
+            <small>Yecla · Murcia</small>
+          </span>
+        </div>
+
+        <h1>Tu centro de belleza y estética<br><em>en el corazón de Yecla</em></h1>
+
+        <p class="sub">Tratamientos faciales, corporales y estética diaria en un espacio tranquilo, con atención personal y cita previa. Cuéntanos qué necesitas y lo vemos contigo.</p>
+
+        <p class="hero-local">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8a7f78" stroke-width="1.6" aria-hidden="true">
+            <path d="M12 21s7-6.2 7-11a7 7 0 10-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/>
+          </svg>
+          C/ San Pascual, 69 bajo · 30510 Yecla (Murcia)
+        </p>
+
+        <div class="ctas">
+          <a class="btn btn-1" href="tel:+34626634907">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true">
+              <path d="M6.5 3h3l1.6 4-2.1 1.5a11 11 0 006.5 6.5L17 12.9l4 1.6v3a2 2 0 01-2.2 2A16.5 16.5 0 014.5 5.2 2 2 0 016.5 3z"/>
+            </svg>
+            Llamar
+          </a>
+          <a class="btn btn-2" href="#servicios">Ver servicios</a>
+        </div>
+        <p class="tel-nota">Teléfono 626 634 907 · Consultar horario</p>
+      </div>
+
+      <div class="hero-art">
+        <svg viewBox="0 0 520 470" role="img" aria-label="Ilustración abstracta de un espacio de estética sereno">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#fffdfb"/><stop offset="1" stop-color="#f1e7e1"/>
+            </linearGradient>
+            <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#e8d3d1"/><stop offset="1" stop-color="#d8bfbd"/>
+            </linearGradient>
+          </defs>
+          <rect width="520" height="470" rx="18" fill="url(#g1)"/>
+          <circle cx="260" cy="196" r="128" fill="#fffdfb" stroke="#e3d8d0"/>
+          <circle cx="260" cy="196" r="98" fill="url(#g2)" opacity=".55"/>
+          <path d="M260 120 C 300 152, 300 224, 260 268 C 220 224, 220 152, 260 120 Z" fill="#fffdfb" opacity=".85"/>
+          <path d="M260 120 C 300 152, 300 224, 260 268" fill="none" stroke="#c9a2a0" stroke-width="1.5"/>
+          <path d="M260 120 C 220 152, 220 224, 260 268" fill="none" stroke="#c9a2a0" stroke-width="1.5"/>
+          <line x1="260" y1="126" x2="260" y2="268" stroke="#c9a2a0" stroke-width="1"/>
+          <g stroke="#6f7f6a" stroke-width="1.3" fill="none" opacity=".75">
+            <path d="M150 300 C 186 282, 214 296, 236 286"/>
+            <path d="M284 286 C 306 296, 334 282, 370 300"/>
+          </g>
+          <g fill="none" stroke="#e3d8d0" stroke-width="1.2">
+            <rect x="60" y="340" width="400" height="86" rx="14"/>
+            <line x1="60" y1="372" x2="460" y2="372"/>
+          </g>
+          <circle cx="104" cy="399" r="12" fill="#dbe2d6"/>
+          <circle cx="140" cy="399" r="12" fill="#e8d3d1"/>
+          <circle cx="176" cy="399" r="12" fill="#f0e7e2"/>
+          <g stroke="#c9a2a0" stroke-width="1.1" fill="none" opacity=".8">
+            <line x1="240" y1="392" x2="420" y2="392"/>
+            <line x1="240" y1="408" x2="360" y2="408"/>
+          </g>
+          <circle cx="86" cy="96" r="30" fill="#dbe2d6" opacity=".7"/>
+          <circle cx="442" cy="104" r="20" fill="#e8d3d1" opacity=".8"/>
+          <path d="M40 200 C 70 186, 70 246, 40 232" fill="none" stroke="#e3d8d0" stroke-width="1.2"/>
+          <path d="M480 200 C 450 186, 450 246, 480 232" fill="none" stroke="#e3d8d0" stroke-width="1.2"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ SERVICIOS ============ -->
+<section class="sec servicios" id="servicios">
+  <div class="env">
+    <div class="cab">
+      <p class="etq">Servicios</p>
+      <h2>Lo que puedes reservar en el centro</h2>
+      <p>Una selección de tratamientos y cuidados de estética. Si no sabes por dónde empezar, llámanos y lo valoramos contigo antes de reservar.</p>
+    </div>
+
+    <div class="rejilla">
+      <article class="tarjeta">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#c9a2a0" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+            <path d="M12 3c4.2 0 7.5 3.4 7.5 7.8 0 5-3.6 8.5-7.5 10.2-3.9-1.7-7.5-5.2-7.5-10.2C4.5 6.4 7.8 3 12 3z"/>
+            <path d="M9 11.5c1.1 1.2 4.9 1.2 6 0"/>
+          </svg>
+        </span>
+        <h3>Tratamientos faciales</h3>
+        <p>Limpiezas e higiene facial y tratamientos adaptados a tu tipo de piel, con productos profesionales.</p>
+      </article>
+
+      <article class="tarjeta">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#6f7f6a" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+            <path d="M12 21c4-2.5 6-6 6-10V5.5c-2.2 0-4.4.6-6 2-1.6-1.4-3.8-2-6-2V11c0 4 2 7.5 6 10z"/>
+            <path d="M12 8.5V19"/>
+          </svg>
+        </span>
+        <h3>Tratamientos corporales</h3>
+        <p>Cuidado del cuerpo con protocolos de cabina: sesiones individuales o en pauta continuada según tu caso.</p>
+      </article>
+
+      <article class="tarjeta">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#b99a6b" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+            <path d="M5 19c2-6 6-10 14-14"/>
+            <path d="M6.5 13.5c2.6-.3 4.3.6 5 3"/>
+            <circle cx="6" cy="18" r="2.2"/>
+          </svg>
+        </span>
+        <h3>Depilación</h3>
+        <p>Depilación por zonas para rostro y cuerpo, con la técnica que mejor se ajuste a tu piel.</p>
+      </article>
+
+      <article class="tarjeta">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#c9a2a0" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+            <path d="M8.5 20V9.5a3.5 3.5 0 017 0V20z"/>
+            <path d="M8.5 13.5h7"/>
+            <path d="M12 6V3.5"/>
+          </svg>
+        </span>
+        <h3>Manicura y pedicura</h3>
+        <p>Cuidado de manos y pies, esmaltado y acabados clásicos o de larga duración.</p>
+      </article>
+
+      <article class="tarjeta">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#6f7f6a" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+            <path d="M2.5 12S6 7 12 7s9.5 5 9.5 5-3.5 5-9.5 5-9.5-5-9.5-5z"/>
+            <circle cx="12" cy="12" r="2.6"/>
+          </svg>
+        </span>
+        <h3>Cejas y pestañas</h3>
+        <p>Diseño y arreglo de cejas, tinte y servicios de pestañas para definir la mirada.</p>
+      </article>
+
+      <article class="tarjeta">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#b99a6b" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+            <path d="M14.5 4.5l5 5L9 20H4v-5z"/>
+            <path d="M12.5 6.5l5 5"/>
+          </svg>
+        </span>
+        <h3>Maquillaje</h3>
+        <p>Maquillaje profesional para el día a día o para una ocasión concreta, adaptado a lo que busques.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRIMERA VISITA ============ -->
+<section class="sec" id="primera-visita">
+  <div class="env">
+    <div class="cab">
+      <p class="etq">Tu primera visita</p>
+      <h2>Cómo empezamos, en tres pasos</h2>
+      <p>Sin complicaciones: una llamada, una valoración tranquila y tu sesión reservada.</p>
+    </div>
+
+    <div class="pasos-grid">
+      <article class="paso">
+        <div class="num">1</div>
+        <h3>Nos llamas</h3>
+        <p>Marcas el 626 634 907, nos cuentas qué te interesa y buscamos un hueco que te encaje. Puedes consultar el horario en la misma llamada.</p>
+      </article>
+      <article class="paso">
+        <div class="num">2</div>
+        <h3>Valoramos contigo</h3>
+        <p>En el centro hablamos de lo que buscas y revisamos tu caso antes de decidir el tratamiento. Si algo no es para ti, te lo decimos.</p>
+      </article>
+      <article class="paso">
+        <div class="num">3</div>
+        <h3>Reservas tu sesión</h3>
+        <p>Dejamos fijada la cita y las indicaciones de cuidado que correspondan. Las siguientes sesiones se agendan cuando tú quieras.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section class="sec contacto" id="contacto">
+  <div class="env">
+    <div class="cab">
+      <p class="etq">Contacto y ubicación</p>
+      <h2>Estamos en Yecla, a pie de calle</h2>
+      <p>Atendemos con cita previa. Llama y te confirmamos disponibilidad.</p>
+    </div>
+
+    <div class="cont-grid">
+      <div class="datos">
+        <div class="dato">
+          <span class="ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#5c6b57" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+              <path d="M6.5 3h3l1.6 4-2.1 1.5a11 11 0 006.5 6.5L17 12.9l4 1.6v3a2 2 0 01-2.2 2A16.5 16.5 0 014.5 5.2 2 2 0 016.5 3z"/>
+            </svg>
+          </span>
+          <div class="dato-txt">
+            <span>Teléfono</span>
+            <strong><a href="tel:+34626634907">626 634 907</a></strong>
+            <p>Llamada directa al centro.</p>
+          </div>
+        </div>
+
+        <div class="dato">
+          <span class="ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#5c6b57" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+              <path d="M12 21s7-6.2 7-11a7 7 0 10-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/>
+            </svg>
+          </span>
+          <div class="dato-txt">
+            <span>Dirección</span>
+            <strong>C/ San Pascual, 69 bajo<br>30510 Yecla (Murcia)</strong>
+          </div>
+        </div>
+
+        <div class="dato">
+          <span class="ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#5c6b57" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>
+            </svg>
+          </span>
+          <div class="dato-txt">
+            <span>Horario</span>
+            <strong>Consultar horario</strong>
+            <p>Te lo indicamos por teléfono al pedir la cita.</p>
+          </div>
+        </div>
+
+        <div class="dato">
+          <span class="ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#5c6b57" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+              <rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3.8 6.8L12 13l8.2-6.2"/>
+            </svg>
+          </span>
+          <div class="dato-txt">
+            <span>Email</span>
+            <strong><a href="mailto:esenciayecla@gmail.com">esenciayecla@gmail.com</a></strong>
+          </div>
+        </div>
+
+        <div style="margin-top:26px">
+          <a class="btn btn-1" href="tel:+34626634907" style="width:100%">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true">
+              <path d="M6.5 3h3l1.6 4-2.1 1.5a11 11 0 006.5 6.5L17 12.9l4 1.6v3a2 2 0 01-2.2 2A16.5 16.5 0 014.5 5.2 2 2 0 016.5 3z"/>
+            </svg>
+            Llamar al 626 634 907
+          </a>
+        </div>
+      </div>
+
+      <div class="mapa">
+        <svg viewBox="0 0 560 400" role="img" aria-label="Mapa esquemático de la ubicación del centro en la calle San Pascual">
+          <rect width="560" height="400" rx="12" fill="#f5efe9"/>
+          <g fill="#ece3db">
+            <rect x="24" y="24" width="150" height="104" rx="7"/>
+            <rect x="196" y="24" width="120" height="104" rx="7"/>
+            <rect x="404" y="24" width="132" height="150" rx="7"/>
+            <rect x="24" y="196" width="150" height="88" rx="7"/>
+            <rect x="196" y="312" width="120" height="64" rx="7"/>
+            <rect x="404" y="312" width="132" height="64" rx="7"/>
+            <rect x="24" y="312" width="150" height="64" rx="7"/>
+          </g>
+          <g stroke="#ffffff" stroke-width="20" stroke-linecap="round">
+            <line x1="0" y1="160" x2="560" y2="160"/>
+            <line x1="0" y1="212" x2="560" y2="212"/>
+            <line x1="186" y1="0" x2="186" y2="400"/>
+            <line x1="392" y1="0" x2="392" y2="400"/>
+          </g>
+          <g stroke="#dfd4ca" stroke-width="1" stroke-dasharray="7 8">
+            <line x1="0" y1="186" x2="560" y2="186"/>
+          </g>
+          <g fill="#8a7f78" font-family="ui-sans-serif,system-ui,Helvetica,Arial,sans-serif" font-size="19" letter-spacing=".06em">
+            <text x="34" y="153">C/ SAN PASCUAL</text>
+          </g>
+          <g transform="translate(240,186)">
+            <circle r="30" fill="#c9a2a0" opacity=".16"/>
+            <circle r="18" fill="#c9a2a0" opacity=".26"/>
+            <path d="M0 -26 C 13 -26, 22 -17, 22 -5 C 22 9, 6 22, 0 30 C -6 22, -22 9, -22 -5 C -22 -17, -13 -26, 0 -26 Z" fill="#2e2a28"/>
+            <circle cx="0" cy="-5" r="6.5" fill="#f7f2ee"/>
+          </g>
+          <g font-family="ui-sans-serif,system-ui,Helvetica,Arial,sans-serif">
+            <rect x="286" y="236" width="252" height="66" rx="12" fill="#fffdfb" stroke="#e3d8d0"/>
+            <text x="304" y="264" font-size="20" font-weight="600" fill="#2e2a28">Esencia · nº 69 bajo</text>
+            <text x="304" y="288" font-size="17" fill="#8a7f78">Yecla (Murcia)</text>
+          </g>
+        </svg>
+        <p class="pie-mapa">Mapa esquemático orientativo, no a escala.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PIE ============ -->
+<footer>
+  <div class="env">
+    <div class="pie-grid">
+      <div>
+        <h3>Centro de Belleza Esencia</h3>
+        <p>Centro de belleza y estética en Yecla (Murcia). Atención con cita previa.</p>
+      </div>
+      <div class="pie-datos">
+        <p><a href="tel:+34626634907">626 634 907</a></p>
+        <p><a href="mailto:esenciayecla@gmail.com">esenciayecla@gmail.com</a></p>
+        <p>C/ San Pascual, 69 bajo · 30510 Yecla (Murcia)</p>
+        <p>Consultar horario</p>
+      </div>
+    </div>
+    <p class="firma">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cafetería Escuela de Música — Yecla | Propuesta de diseño</title>
+<style>
+  :root{
+    --crema:#fbf6ef;
+    --papel:#fffdfa;
+    --cafe:#6f4326;
+    --cafe-osc:#472716;
+    --cafe-claro:#a9764c;
+    --cobre:#c8853f;
+    --cobre-claro:#f0dcc0;
+    --tinta:#33231a;
+    --tinta-suave:#6d574a;
+    --linea:#e9dbc8;
+    --sombra:0 14px 34px rgba(71,39,22,.10);
+    --sombra-sm:0 6px 18px rgba(71,39,22,.07);
+    --r:18px;
+    --barra:46px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;max-width:100%;overflow-x:hidden}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    background:var(--crema);
+    color:var(--tinta);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    padding-top:var(--barra);
+  }
+  svg{max-width:100%;display:block}
+  h1,h2,h3{line-height:1.15;margin:0;letter-spacing:-.02em}
+  p{margin:0}
+  a{color:inherit}
+
+  /* ---------- barra fija ---------- */
+  .aviso{
+    position:fixed;top:0;left:0;right:0;z-index:999;
+    min-height:var(--barra);
+    display:flex;align-items:center;justify-content:center;
+    background:var(--cafe-osc);
+    color:#fbeedd;
+    padding:7px 12px;
+    text-align:center;
+    font-size:12.5px;
+    letter-spacing:.015em;
+    border-bottom:1px solid rgba(255,255,255,.14);
+  }
+  .aviso span{display:block;max-width:900px;text-wrap:balance}
+
+  .wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 24px}
+  section{position:relative}
+
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:9px;
+    background:rgba(111,67,38,.08);
+    color:var(--cafe);
+    border:1px solid rgba(111,67,38,.17);
+    border-radius:999px;padding:6px 14px;
+    font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;
+  }
+  .titulo-sec{font-size:clamp(1.6rem,4vw,2.4rem);color:var(--cafe-osc);margin-top:18px}
+  .sub-sec{margin-top:14px;color:var(--tinta-suave);max-width:58ch;font-size:1.02rem}
+
+  /* ---------- hero ---------- */
+  .hero{
+    overflow:hidden;
+    background:
+      radial-gradient(860px 500px at 88% -12%, rgba(200,133,63,.28), transparent 64%),
+      linear-gradient(168deg,#fffdf9 0%, #f8ebd9 56%, #f2e0c6 100%);
+    border-bottom:1px solid var(--linea);
+  }
+  .hero-grid{display:grid;grid-template-columns:1.06fr .94fr;gap:48px;align-items:center;padding:70px 0 80px}
+  h1{font-size:clamp(2rem,5.1vw,3.4rem);margin:20px 0 0;color:var(--cafe-osc);text-wrap:balance}
+  h1 em{font-style:normal;color:var(--cobre);display:block}
+  .lead{margin-top:20px;font-size:clamp(1rem,2.3vw,1.15rem);color:var(--tinta-suave);max-width:46ch}
+  .cta-row{display:flex;flex-wrap:wrap;gap:13px;margin-top:30px}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    padding:15px 25px;border-radius:999px;
+    text-decoration:none;font-weight:700;font-size:1rem;
+    border:2px solid transparent;
+  }
+  .btn-principal{background:var(--cafe);color:#fff;box-shadow:0 10px 24px rgba(111,67,38,.26)}
+  .btn-sec{background:rgba(255,255,255,.72);border-color:rgba(111,67,38,.24);color:var(--cafe-osc)}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:28px;font-size:.92rem;color:var(--tinta-suave)}
+  .hero-meta div{display:flex;align-items:center;gap:8px}
+
+  /* tarjeta ilustrada del hero */
+  .tarjeta-hero{
+    background:var(--papel);
+    border:1px solid var(--linea);
+    border-radius:26px;
+    box-shadow:var(--sombra);
+    padding:26px;
+  }
+  .tarjeta-hero .tag{font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--cafe-claro)}
+  .pentagrama{margin-top:18px;border-radius:14px;overflow:hidden;background:linear-gradient(160deg,#fff8ee,#f6e7cf)}
+  .lista-hero{list-style:none;margin:20px 0 0;padding:0;display:grid;gap:10px}
+  .lista-hero li{display:flex;gap:11px;align-items:flex-start;font-size:.95rem;color:var(--tinta-suave)}
+  .punto{flex:0 0 auto;width:18px;height:18px;margin-top:2px;border-radius:50%;background:var(--cobre-claro);
+    display:inline-flex;align-items:center;justify-content:center}
+
+  /* ---------- oferta ---------- */
+  .oferta{padding:78px 0}
+  .rejilla{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:38px}
+  .carta{
+    background:var(--papel);border:1px solid var(--linea);border-radius:var(--r);
+    padding:26px 24px 28px;box-shadow:var(--sombra-sm);
+  }
+  .icono{
+    width:48px;height:48px;border-radius:14px;
+    background:linear-gradient(150deg,#f7e6cd,#eed4ae);
+    display:flex;align-items:center;justify-content:center;margin-bottom:16px;
+  }
+  .carta h3{font-size:1.1rem;color:var(--cafe-osc)}
+  .carta p{margin-top:9px;font-size:.95rem;color:var(--tinta-suave)}
+
+  /* ---------- pasos ---------- */
+  .pasos{padding:74px 0;background:linear-gradient(180deg,#f7ecdd,#fbf6ef);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+  .rejilla-pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:38px}
+  .paso{background:var(--papel);border:1px solid var(--linea);border-radius:var(--r);padding:26px 24px;box-shadow:var(--sombra-sm);position:relative}
+  .num{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:40px;height:40px;border-radius:12px;
+    background:var(--cafe);color:#fff;font-weight:800;font-size:1.05rem;
+    margin-bottom:15px;
+  }
+  .paso h3{font-size:1.06rem;color:var(--cafe-osc)}
+  .paso p{margin-top:9px;font-size:.95rem;color:var(--tinta-suave)}
+
+  /* ---------- contacto ---------- */
+  .contacto{padding:78px 0}
+  .contacto-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:34px;margin-top:38px;align-items:start}
+  .datos{background:var(--papel);border:1px solid var(--linea);border-radius:var(--r);padding:28px 26px;box-shadow:var(--sombra-sm)}
+  .dato{display:flex;gap:14px;padding:16px 0;border-bottom:1px dashed var(--linea)}
+  .dato:last-of-type{border-bottom:0;padding-bottom:4px}
+  .dato .ic{flex:0 0 auto;width:38px;height:38px;border-radius:11px;background:var(--cobre-claro);display:flex;align-items:center;justify-content:center}
+  .dato-et{font-size:11.5px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;color:var(--cafe-claro)}
+  .dato-val{font-size:1.02rem;font-weight:600;color:var(--cafe-osc);word-break:break-word}
+  .dato-val a{text-decoration:none}
+  .dato small{display:block;color:var(--tinta-suave);font-weight:400;font-size:.88rem;margin-top:2px}
+  .mapa{background:var(--papel);border:1px solid var(--linea);border-radius:var(--r);padding:18px;box-shadow:var(--sombra-sm)}
+  .mapa-pie{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:14px;font-size:.84rem;color:var(--tinta-suave)}
+  .mapa-pie span{display:inline-flex;align-items:center;gap:7px}
+  .llave{width:11px;height:11px;border-radius:3px;background:var(--cobre)}
+  .llave.calle{background:#e4d5bf;border-radius:2px}
+
+  /* ---------- pie ---------- */
+  footer{background:var(--cafe-osc);color:#f6e7d5;padding:52px 0 40px}
+  .pie-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:start}
+  footer h3{font-size:1.15rem;color:#fff}
+  footer p{margin-top:10px;font-size:.94rem;color:rgba(246,231,213,.78)}
+  footer a{color:#f3d9b6;text-decoration:none;border-bottom:1px solid rgba(243,217,182,.4)}
+  .pie-datos{display:grid;gap:9px;font-size:.95rem}
+  .credito{
+    margin-top:38px;padding-top:22px;border-top:1px solid rgba(246,231,213,.2);
+    font-size:.88rem;color:rgba(246,231,213,.72);text-wrap:balance;
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;gap:34px;padding:52px 0 60px}
+    .rejilla,.rejilla-pasos{grid-template-columns:1fr 1fr}
+    .contacto-grid{grid-template-columns:1fr}
+    .pie-grid{grid-template-columns:1fr}
+  }
+  @media (max-width:620px){
+    :root{--barra:58px}
+    .wrap{padding:0 18px}
+    .aviso{font-size:11.6px;line-height:1.35;padding:8px 14px}
+    .rejilla,.rejilla-pasos{grid-template-columns:1fr}
+    .oferta,.pasos,.contacto{padding:56px 0}
+    .btn{width:100%}
+    .tarjeta-hero{padding:20px}
+    .datos{padding:22px 18px}
+    .lead{max-width:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="aviso"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="#6f4326" stroke-width="2"/><path d="M12 7v5l3.5 2" stroke="#6f4326" stroke-width="2" stroke-linecap="round"/></svg>
+          Yecla · Murcia
+        </span>
+        <h1>Cafetería Escuela de Música<em>Tu café de siempre, en C/ España</em></h1>
+        <p class="lead">Una cafetería de barrio en el centro de Yecla: desayunos tranquilos, café recién hecho y un rato de terraza. Llama y te contamos qué hay hoy.</p>
+        <div class="cta-row">
+          <a class="btn btn-principal" href="tel:+34678887281">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 3h3.2l1.6 4-2 1.4a12 12 0 0 0 5.8 5.8l1.4-2 4 1.6V19c0 1.1-.9 2-2 2A16 16 0 0 1 3 5c0-1.1.9-2 2-2Z" stroke="#fff" stroke-width="2" stroke-linejoin="round"/></svg>
+            Llamar: 678 887 281
+          </a>
+          <a class="btn btn-sec" href="#contacto">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="#472716" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5" stroke="#472716" stroke-width="2"/></svg>
+            Cómo llegar
+          </a>
+        </div>
+        <div class="hero-meta">
+          <div>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="#a9764c" stroke-width="2" stroke-linejoin="round"/></svg>
+            C/ España, 12 · 30510 Yecla
+          </div>
+          <div>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="15" rx="2" stroke="#a9764c" stroke-width="2"/><path d="M8 3v4M16 3v4M3 10h18" stroke="#a9764c" stroke-width="2" stroke-linecap="round"/></svg>
+            Consultar horario
+          </div>
+        </div>
+      </div>
+
+      <div class="tarjeta-hero">
+        <span class="tag">Cafetería · Bar</span>
+        <!-- pentagrama abstracto: guiño al nombre -->
+        <div class="pentagrama">
+          <svg viewBox="0 0 420 190" width="100%" height="auto" role="img" aria-label="Ilustración abstracta de un pentagrama con una taza de café">
+            <g stroke="#e0cbab" stroke-width="2">
+              <line x1="24" y1="44" x2="396" y2="44"/>
+              <line x1="24" y1="64" x2="396" y2="64"/>
+              <line x1="24" y1="84" x2="396" y2="84"/>
+              <line x1="24" y1="104" x2="396" y2="104"/>
+              <line x1="24" y1="124" x2="396" y2="124"/>
+            </g>
+            <!-- notas como granos/tazas -->
+            <g fill="#c8853f">
+              <ellipse cx="76" cy="104" rx="11" ry="8" transform="rotate(-18 76 104)"/>
+              <rect x="85" y="66" width="3" height="36" rx="1.5"/>
+              <ellipse cx="146" cy="64" rx="11" ry="8" transform="rotate(-18 146 64)"/>
+              <rect x="155" y="26" width="3" height="36" rx="1.5"/>
+              <ellipse cx="216" cy="124" rx="11" ry="8" transform="rotate(-18 216 124)"/>
+              <rect x="225" y="86" width="3" height="36" rx="1.5"/>
+            </g>
+            <g fill="#6f4326">
+              <ellipse cx="286" cy="84" rx="11" ry="8" transform="rotate(-18 286 84)"/>
+              <rect x="295" y="46" width="3" height="36" rx="1.5"/>
+              <path d="M298 46c14 4 22 10 22 18" stroke="#6f4326" stroke-width="3" fill="none" stroke-linecap="round"/>
+            </g>
+            <!-- taza -->
+            <g>
+              <path d="M330 116h44v18a16 16 0 0 1-16 16h-12a16 16 0 0 1-16-16v-18Z" fill="#6f4326"/>
+              <path d="M374 120h8a9 9 0 0 1 0 18h-8" stroke="#6f4326" stroke-width="4" fill="none" stroke-linecap="round"/>
+              <rect x="322" y="152" width="60" height="6" rx="3" fill="#a9764c"/>
+              <g stroke="#c8853f" stroke-width="3" fill="none" stroke-linecap="round">
+                <path d="M344 106c-5-6 5-10 0-17"/>
+                <path d="M360 106c-5-6 5-10 0-17"/>
+              </g>
+            </g>
+          </svg>
+        </div>
+        <ul class="lista-hero">
+          <li><span class="punto"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#6f4326" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Desayunos, almuerzos y café para llevar.</li>
+          <li><span class="punto"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#6f4326" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Terraza para sentarse con calma.</li>
+          <li><span class="punto"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#6f4326" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>En pleno centro, a pie de calle.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= OFERTA ================= -->
+<section class="oferta" id="oferta">
+  <div class="wrap">
+    <span class="eyebrow">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 20h16M6 4h9v6a4.5 4.5 0 0 1-9 0V4Z" stroke="#6f4326" stroke-width="2" stroke-linejoin="round"/></svg>
+      Qué encontrarás
+    </span>
+    <h2 class="titulo-sec">Barra, mesa y terraza</h2>
+    <p class="sub-sec">Lo de una cafetería de toda la vida, bien hecho. Para el detalle del día a día, lo mejor es preguntar en barra o por teléfono.</p>
+
+    <div class="rejilla">
+      <article class="carta">
+        <div class="icono">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9Z" stroke="#6f4326" stroke-width="2" stroke-linejoin="round"/><path d="M17 10h2a2.5 2.5 0 0 1 0 5h-2" stroke="#6f4326" stroke-width="2" stroke-linecap="round"/><path d="M8 5c-1.5-1.5 1.5-2.5 0-4M12 5c-1.5-1.5 1.5-2.5 0-4" stroke="#c8853f" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Desayunos</h3>
+        <p>Café con leche, zumo y algo dulce o salado para empezar el día sin prisa.</p>
+      </article>
+      <article class="carta">
+        <div class="icono">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3c-1.2 2 .6 3.2 0 5M12 3c-1.2 2 .6 3.2 0 5M17 3c-1.2 2 .6 3.2 0 5" stroke="#c8853f" stroke-width="2" stroke-linecap="round"/><path d="M5 11h14l-1.4 8.2a2 2 0 0 1-2 1.8H8.4a2 2 0 0 1-2-1.8L5 11Z" stroke="#6f4326" stroke-width="2" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Café de especialidad</h3>
+        <p>Café cuidado en la taza, solo, cortado o con leche, y también para llevar.</p>
+      </article>
+      <article class="carta">
+        <div class="icono">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="7" width="18" height="11" rx="3" stroke="#6f4326" stroke-width="2"/><path d="M3 12h18" stroke="#6f4326" stroke-width="2"/><path d="M7.5 10.2h3M13.5 14.6h3" stroke="#c8853f" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Tostadas y bollería</h3>
+        <p>Tostadas recién hechas y bollería para acompañar el café de media mañana.</p>
+      </article>
+      <article class="carta">
+        <div class="icono">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6v5a4 4 0 0 0 8 0V6" stroke="#6f4326" stroke-width="2" stroke-linecap="round"/><path d="M8 15v5" stroke="#6f4326" stroke-width="2" stroke-linecap="round"/><path d="M4 6v3M8 6v3M12 6v3" stroke="#c8853f" stroke-width="2" stroke-linecap="round"/><path d="M17 4c2.4 0 3.5 2.6 3.5 6s-1.1 4.5-1.1 4.5V20" stroke="#6f4326" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Almuerzos</h3>
+        <p>Bocadillos y platos de almuerzo para el descanso de media jornada.</p>
+      </article>
+      <article class="carta">
+        <div class="icono">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="13" r="7" stroke="#6f4326" stroke-width="2"/><path d="M8.5 11.5h7M9.5 15h5" stroke="#c8853f" stroke-width="2" stroke-linecap="round"/><path d="M9 6l1-2h4l1 2" stroke="#6f4326" stroke-width="2" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Tapas y raciones</h3>
+        <p>Tapas y raciones para compartir en barra o en mesa, con la caña o el refresco.</p>
+      </article>
+      <article class="carta">
+        <div class="icono">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4 3 11h18L12 4Z" stroke="#6f4326" stroke-width="2" stroke-linejoin="round"/><path d="M12 11v9" stroke="#6f4326" stroke-width="2" stroke-linecap="round"/><path d="M6 20h12" stroke="#c8853f" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Terraza</h3>
+        <p>Mesas fuera para tomar algo al aire libre cuando acompaña el tiempo.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PASOS ================= -->
+<section class="pasos" id="visita">
+  <div class="wrap">
+    <span class="eyebrow">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6" stroke="#6f4326" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Tu visita
+    </span>
+    <h2 class="titulo-sec">Así de fácil</h2>
+    <p class="sub-sec">Tres pasos y ya estás sentado. Sin reservas complicadas ni vueltas.</p>
+
+    <div class="rejilla-pasos">
+      <div class="paso">
+        <span class="num">1</span>
+        <h3>Llámanos o pásate</h3>
+        <p>Si vienes en grupo o quieres algo concreto, una llamada al <a href="tel:+34678887281" style="color:var(--cafe);font-weight:600">678 887 281</a> lo resuelve.</p>
+      </div>
+      <div class="paso">
+        <span class="num">2</span>
+        <h3>Elige tu sitio</h3>
+        <p>Barra para el café rápido, mesa para el almuerzo con calma o terraza si apetece la calle.</p>
+      </div>
+      <div class="paso">
+        <span class="num">3</span>
+        <h3>Te lo preparamos</h3>
+        <p>Te contamos lo que hay hoy, lo pides y te lo servimos. También para llevar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACTO ================= -->
+<section class="contacto" id="contacto">
+  <div class="wrap">
+    <span class="eyebrow">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="#6f4326" stroke-width="2" stroke-linejoin="round"/></svg>
+      Contacto
+    </span>
+    <h2 class="titulo-sec">Dónde estamos</h2>
+    <p class="sub-sec">En el centro de Yecla, en la calle España. Si tienes dudas, llama y te atendemos.</p>
+
+    <div class="contacto-grid">
+      <div class="datos">
+        <div class="dato">
+          <span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 3h3.2l1.6 4-2 1.4a12 12 0 0 0 5.8 5.8l1.4-2 4 1.6V19c0 1.1-.9 2-2 2A16 16 0 0 1 3 5c0-1.1.9-2 2-2Z" stroke="#6f4326" stroke-width="2" stroke-linejoin="round"/></svg></span>
+          <div>
+            <span class="dato-et">Teléfono</span>
+            <span class="dato-val"><a href="tel:+34678887281">678 887 281</a></span>
+          </div>
+        </div>
+        <div class="dato">
+          <span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="#6f4326" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5" stroke="#6f4326" stroke-width="2"/></svg></span>
+          <div>
+            <span class="dato-et">Dirección</span>
+            <span class="dato-val">C/ España, 12<small>30510 Yecla (Murcia)</small></span>
+          </div>
+        </div>
+        <div class="dato">
+          <span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="15" rx="2" stroke="#6f4326" stroke-width="2"/><path d="M8 3v4M16 3v4M3 10h18" stroke="#6f4326" stroke-width="2" stroke-linecap="round"/></svg></span>
+          <div>
+            <span class="dato-et">Horario</span>
+            <span class="dato-val">Consultar horario<small>Llámanos y te lo confirmamos.</small></span>
+          </div>
+        </div>
+        <div class="dato">
+          <span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5" stroke="#6f4326" stroke-width="2"/><path d="m4 7 8 6 8-6" stroke="#6f4326" stroke-width="2" stroke-linejoin="round"/></svg></span>
+          <div>
+            <span class="dato-et">Email</span>
+            <span class="dato-val"><a href="mailto:cedmyecla@gmail.com">cedmyecla@gmail.com</a></span>
+          </div>
+        </div>
+        <a class="btn btn-principal" style="margin-top:22px" href="tel:+34678887281">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 3h3.2l1.6 4-2 1.4a12 12 0 0 0 5.8 5.8l1.4-2 4 1.6V19c0 1.1-.9 2-2 2A16 16 0 0 1 3 5c0-1.1.9-2 2-2Z" stroke="#fff" stroke-width="2" stroke-linejoin="round"/></svg>
+          Llamar ahora
+        </a>
+      </div>
+
+      <div class="mapa">
+        <svg viewBox="0 0 560 400" width="100%" height="auto" role="img" aria-label="Mapa esquemático con calles abstractas y un marcador en la calle España número 12">
+          <rect width="560" height="400" rx="12" fill="#fdf7ee"/>
+          <!-- manzanas -->
+          <g fill="#f4e9d7">
+            <rect x="28" y="28" width="180" height="120" rx="8"/>
+            <rect x="250" y="28" width="140" height="120" rx="8"/>
+            <rect x="432" y="28" width="100" height="120" rx="8"/>
+            <rect x="28" y="248" width="150" height="124" rx="8"/>
+            <rect x="220" y="248" width="180" height="124" rx="8"/>
+            <rect x="442" y="248" width="90" height="124" rx="8"/>
+            <rect x="28" y="190" width="120" height="26" rx="6"/>
+            <rect x="466" y="190" width="66" height="26" rx="6"/>
+          </g>
+          <!-- calles -->
+          <g stroke="#e4d5bf" stroke-width="16" stroke-linecap="round">
+            <line x1="20" y1="178" x2="540" y2="178"/>
+            <line x1="20" y1="232" x2="540" y2="232"/>
+            <line x1="228" y1="14" x2="228" y2="386"/>
+            <line x1="412" y1="14" x2="412" y2="386"/>
+          </g>
+          <!-- calle España destacada -->
+          <line x1="20" y1="205" x2="540" y2="205" stroke="#e8c79b" stroke-width="26" stroke-linecap="round"/>
+          <line x1="20" y1="205" x2="540" y2="205" stroke="#fdf7ee" stroke-width="2" stroke-dasharray="14 12"/>
+          <text x="46" y="200" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="15" font-weight="700" fill="#8a5a31" letter-spacing="0.5">C/ ESPAÑA</text>
+          <!-- marcador -->
+          <g transform="translate(300,205)">
+            <ellipse cx="0" cy="6" rx="22" ry="7" fill="rgba(111,67,38,.18)"/>
+            <path d="M0 2c0 0 20-16.5 20-30A20 20 0 1 0-20-28C-20-14.5 0 2 0 2Z" fill="#6f4326"/>
+            <circle cx="0" cy="-29" r="7.5" fill="#fdf7ee"/>
+          </g>
+          <text x="330" y="168" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="14" font-weight="700" fill="#472716">Nº 12</text>
+          <!-- rosa de los vientos -->
+          <g transform="translate(508,352)">
+            <circle r="18" fill="#fdf7ee" stroke="#e4d5bf" stroke-width="2"/>
+            <path d="M0-11 4 1h-8Z" fill="#c8853f"/>
+            <path d="M0 11 4 1h-8Z" fill="#dccbb2"/>
+            <text x="0" y="-20" text-anchor="middle" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="10" font-weight="700" fill="#8a5a31">N</text>
+          </g>
+        </svg>
+        <div class="mapa-pie">
+          <span><i class="llave"></i> Cafetería Escuela de Música</span>
+          <span><i class="llave calle"></i> Calles del entorno</span>
+          <span>Mapa esquemático, no a escala</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PIE ================= -->
+<footer>
+  <div class="wrap">
+    <div class="pie-grid">
+      <div>
+        <h3>Cafetería Escuela de Música</h3>
+        <p>Cafetería y bar en el centro de Yecla. C/ España, 12 · 30510 Yecla (Murcia).</p>
+        <p style="margin-top:6px">Consultar horario.</p>
+      </div>
+      <div class="pie-datos">
+        <div>Teléfono: <a href="tel:+34678887281">678 887 281</a></div>
+        <div>Email: <a href="mailto:cedmyecla@gmail.com">cedmyecla@gmail.com</a></div>
+      </div>
+    </div>
+    <p class="credito">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+</body>
+</html>
