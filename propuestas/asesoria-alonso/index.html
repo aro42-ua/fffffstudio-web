@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Asesoría Alonso · Betanzos</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --ink:#0f1b24;
+  --ink-2:#2b3a45;
+  --muted:#5b6b76;
+  --line:#dde4e8;
+  --bg:#ffffff;
+  --bg-soft:#f4f7f8;
+  --brand:#0d4f63;
+  --brand-2:#11718c;
+  --accent:#b98a2e;
+  --radius:16px;
+  --bar-h:44px;
+  --maxw:1140px;
+}
+html,body{margin:0;padding:0;max-width:100%;overflow-x:hidden}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+  font-size:17px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  padding-top:calc(var(--bar-h) + 66px);
+}
+img,svg{max-width:100%;display:block}
+h1,h2,h3{margin:0;line-height:1.14;letter-spacing:-.02em;font-weight:650}
+p{margin:0}
+a{color:inherit}
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+/* ---------- barra fija ---------- */
+.topstack{position:fixed;top:0;left:0;right:0;z-index:999}
+.mockbar{
+  height:var(--bar-h);
+  display:flex;align-items:center;justify-content:center;
+  background:#0f1b24;
+  color:#e8eef1;
+  border-bottom:1px solid rgba(255,255,255,.12);
+}
+.mockbar span{
+  font-size:12px;letter-spacing:.06em;text-transform:uppercase;
+  text-align:center;padding:0 12px;line-height:1.3;
+  font-weight:600;
+}
+
+/* ---------- nav ---------- */
+.nav{
+  background:rgba(255,255,255,.94);
+  backdrop-filter:saturate(180%) blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.nav-in{display:flex;align-items:center;gap:16px;min-height:66px;flex-wrap:wrap;padding:10px 24px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;margin-right:auto}
+.mark{
+  width:38px;height:38px;flex:0 0 38px;border-radius:11px;
+  background:linear-gradient(145deg,var(--brand-2),var(--brand) 70%);
+  color:#fff;display:grid;place-items:center;
+  font-weight:700;font-size:15px;letter-spacing:.02em;
+  box-shadow:0 6px 16px rgba(13,79,99,.28);
+}
+.brand b{display:block;font-size:17px;font-weight:650;letter-spacing:-.01em}
+.brand small{display:block;font-size:11.5px;color:var(--muted);letter-spacing:.09em;text-transform:uppercase}
+.nav-links{display:flex;gap:26px;list-style:none;margin:0;padding:0}
+.nav-links a{text-decoration:none;font-size:14.5px;color:var(--ink-2);font-weight:550}
+.nav-links a:hover{color:var(--brand)}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  padding:12px 20px;border-radius:999px;text-decoration:none;
+  font-weight:600;font-size:15px;white-space:nowrap;border:1px solid transparent;
+}
+.btn-main{background:var(--brand);color:#fff;box-shadow:0 8px 20px rgba(13,79,99,.22)}
+.btn-main:hover{background:#0a3f50}
+.btn-ghost{border-color:var(--line);color:var(--ink);background:#fff}
+.btn-ghost:hover{border-color:var(--brand);color:var(--brand)}
+.btn svg{flex:0 0 auto}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:var(--bg-soft);border-bottom:1px solid var(--line)}
+.hero::before{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(900px 480px at 88% -8%,rgba(17,113,140,.20),transparent 62%),
+    radial-gradient(620px 420px at 2% 104%,rgba(185,138,46,.14),transparent 64%);
+}
+.hero-in{position:relative;display:grid;grid-template-columns:1.08fr .92fr;gap:56px;align-items:center;padding:84px 24px 88px}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:12px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--brand);background:rgba(13,79,99,.07);
+  border:1px solid rgba(13,79,99,.16);
+  padding:7px 14px;border-radius:999px;margin-bottom:22px;
+}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.hero h1{font-size:clamp(2.05rem,4.6vw,3.5rem)}
+.hero h1 em{font-style:normal;color:var(--brand);display:block}
+.hero p.lead{margin-top:20px;font-size:clamp(1rem,1.3vw,1.14rem);color:var(--ink-2);max-width:34em}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.hero-note{margin-top:18px;font-size:13.5px;color:var(--muted)}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px;padding:0;list-style:none}
+.pills li{
+  font-size:13px;font-weight:550;color:var(--ink-2);
+  background:#fff;border:1px solid var(--line);
+  padding:7px 13px;border-radius:999px;
+}
+
+/* tarjeta hero */
+.card-hero{
+  background:#fff;border:1px solid var(--line);border-radius:22px;
+  padding:26px;box-shadow:0 26px 60px -30px rgba(15,27,36,.35);
+}
+.card-hero h3{font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.cl{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:14px}
+.cl li{display:flex;gap:13px;align-items:flex-start;font-size:15px;color:var(--ink-2)}
+.tick{
+  flex:0 0 22px;width:22px;height:22px;border-radius:50%;margin-top:1px;
+  background:rgba(13,79,99,.09);color:var(--brand);
+  display:grid;place-items:center;
+}
+.card-hero .sep{height:1px;background:var(--line);margin:22px 0}
+.contact-mini{display:grid;gap:10px;font-size:14.5px}
+.contact-mini a{text-decoration:none;font-weight:600;color:var(--brand);word-break:break-word}
+.contact-mini span{color:var(--muted);display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+
+/* ---------- secciones ---------- */
+section{padding:84px 0}
+.sec-head{max-width:46em;margin-bottom:42px}
+.sec-head .kicker{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.sec-head h2{font-size:clamp(1.6rem,3vw,2.3rem);margin-top:12px}
+.sec-head p{margin-top:14px;color:var(--muted);font-size:1.03rem}
+
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.svc{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:26px 24px 28px;transition:border-color .18s,transform .18s,box-shadow .18s;
+}
+.svc:hover{border-color:rgba(13,79,99,.4);transform:translateY(-3px);box-shadow:0 18px 40px -26px rgba(15,27,36,.4)}
+.ico{
+  width:46px;height:46px;border-radius:13px;margin-bottom:18px;
+  background:linear-gradient(145deg,rgba(17,113,140,.13),rgba(13,79,99,.07));
+  border:1px solid rgba(13,79,99,.13);
+  display:grid;place-items:center;color:var(--brand);
+}
+.svc h3{font-size:1.09rem}
+.svc p{margin-top:9px;color:var(--muted);font-size:14.6px}
+.svc ul{list-style:none;margin:15px 0 0;padding:0;display:grid;gap:7px}
+.svc ul li{font-size:13.6px;color:var(--ink-2);padding-left:15px;position:relative}
+.svc ul li::before{content:"";position:absolute;left:0;top:.62em;width:5px;height:5px;border-radius:50%;background:var(--accent)}
+
+/* pasos */
+.steps-sec{background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;counter-reset:s}
+.step{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:28px 24px;position:relative;
+}
+.step .num{
+  width:42px;height:42px;border-radius:12px;display:grid;place-items:center;
+  background:var(--brand);color:#fff;font-weight:700;font-size:16px;margin-bottom:18px;
+}
+.step h3{font-size:1.09rem}
+.step p{margin-top:10px;color:var(--muted);font-size:14.6px}
+
+/* contacto */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+.panel{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px}
+.rows{display:grid;gap:0;margin-top:6px}
+.row{display:flex;gap:15px;padding:17px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+.row:last-child{border-bottom:0}
+.row .ico-s{
+  flex:0 0 38px;width:38px;height:38px;border-radius:11px;
+  background:rgba(13,79,99,.07);color:var(--brand);display:grid;place-items:center;
+}
+.row .k{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:650}
+.row .v{font-size:15.6px;font-weight:600;margin-top:3px;word-break:break-word}
+.row .v a{text-decoration:none;color:var(--brand)}
+.row .v.plain{font-weight:550;color:var(--ink-2)}
+.map-panel{padding:0;overflow:hidden}
+.map-cap{padding:16px 22px;border-top:1px solid var(--line);font-size:12.6px;color:var(--muted)}
+.map-box{background:#eef3f5;display:block}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+
+/* aviso seguridad */
+.alertbox{
+  margin-top:30px;border:1px solid rgba(185,138,46,.42);
+  background:linear-gradient(180deg,rgba(185,138,46,.10),rgba(185,138,46,.04));
+  border-radius:var(--radius);padding:22px 24px;
+}
+.alertbox h3{font-size:1.02rem;display:flex;gap:10px;align-items:center}
+.alertbox p{margin-top:9px;font-size:14.4px;color:var(--ink-2)}
+
+/* footer */
+footer{background:#0f1b24;color:#c3d0d8;padding:56px 0 34px;margin-top:0}
+.f-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:34px}
+footer h4{margin:0 0 14px;font-size:11.6px;letter-spacing:.13em;text-transform:uppercase;color:#7f94a1;font-weight:700}
+footer a{color:#e8eef1;text-decoration:none;word-break:break-word}
+footer a:hover{color:#fff;text-decoration:underline}
+footer .fl{list-style:none;margin:0;padding:0;display:grid;gap:9px;font-size:14.6px}
+.f-brand b{color:#fff;font-size:18px;display:block}
+.f-brand p{margin-top:10px;font-size:14.4px;max-width:30em;color:#9db0bc}
+.f-bottom{
+  margin-top:40px;padding-top:22px;border-top:1px solid rgba(255,255,255,.12);
+  display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;
+  font-size:13px;color:#8ea2ae;
+}
+.f-bottom strong{color:#e8eef1;font-weight:600}
+
+@media (max-width:980px){
+  .hero-in{grid-template-columns:1fr;gap:40px;padding:60px 24px 64px}
+  .grid-3,.steps{grid-template-columns:1fr 1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .f-grid{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+}
+@media (max-width:620px){
+  :root{--bar-h:58px}
+  body{font-size:16px}
+  .wrap{padding:0 16px}
+  .nav-in{padding:10px 16px;min-height:60px;gap:10px}
+  .brand small{font-size:10.5px}
+  .nav .btn{padding:10px 15px;font-size:14px}
+  .hero-in{padding:44px 16px 52px;gap:32px}
+  section{padding:56px 0}
+  .grid-3,.steps{grid-template-columns:1fr}
+  .f-grid{grid-template-columns:1fr;gap:26px}
+  .card-hero{padding:22px}
+  .panel{padding:22px 18px}
+  .hero-cta .btn,.cta-row .btn{flex:1 1 100%}
+  .sec-head{margin-bottom:30px}
+}
+</style>
+</head>
+<body>
+
+<div class="topstack" id="topstack">
+<div class="mockbar" role="note"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<header class="nav">
+  <div class="nav-in">
+    <a class="brand" href="#inicio">
+      <span class="mark" aria-hidden="true">AA</span>
+      <span>
+        <b>Asesoría Alonso</b>
+        <small>Betanzos</small>
+      </span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#proceso">Cómo trabajamos</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a class="btn btn-main" href="tel:+34981773991">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+      981 773 991
+    </a>
+  </div>
+</header>
+</div>
+
+<main id="inicio">
+
+  <!-- HERO -->
+  <section class="hero" style="padding:0">
+    <div class="hero-in wrap">
+      <div>
+        <span class="eyebrow"><span class="dot" aria-hidden="true"></span>Asesoría fiscal · laboral · jurídica</span>
+        <h1>Su asesoría de confianza en Betanzos<em>con trato directo y cercano.</em></h1>
+        <p class="lead">Acompañamos a autónomos, pymes y particulares en sus obligaciones fiscales, laborales y contables. Explicamos cada trámite con claridad, sin tecnicismos innecesarios, y respondemos cuando hace falta.</p>
+        <div class="hero-cta">
+          <a class="btn btn-main" href="tel:+34981773991">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+            Llamar al 981 773 991
+          </a>
+          <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
+        </div>
+        <p class="hero-note">Praza do Peirao, nº 6, Bajo — 15300 Betanzos (A Coruña)</p>
+        <ul class="pills">
+          <li>Autónomos</li>
+          <li>Sociedades</li>
+          <li>Nóminas y seguros sociales</li>
+          <li>Herencias y contratos</li>
+        </ul>
+      </div>
+
+      <aside class="card-hero">
+        <h3>En qué podemos ayudarle</h3>
+        <ul class="cl">
+          <li><span class="tick" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Alta de actividad y elección del régimen que le corresponde</li>
+          <li><span class="tick" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Declaraciones trimestrales y anuales presentadas en plazo</li>
+          <li><span class="tick" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Contratos, nóminas y gestión del personal de su empresa</li>
+          <li><span class="tick" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Respuesta a requerimientos y notificaciones de la Administración</li>
+        </ul>
+        <div class="sep"></div>
+        <div class="contact-mini">
+          <div><span>Teléfono</span><a href="tel:+34981773991">+34 981 773 991</a></div>
+          <div><span>Correo</span><a href="mailto:alonsosanmartin@telefonica.net">alonsosanmartin@telefonica.net</a></div>
+          <div><span>Horario</span><a href="tel:+34981773991">Consultar horario</a></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section id="servicios">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="kicker">Servicios</div>
+        <h2>Todo lo que su negocio necesita, en un mismo despacho</h2>
+        <p>Trabajo integral de asesoría para que no tenga que coordinar varios profesionales: lo fiscal, lo laboral, lo contable y lo jurídico desde un único interlocutor.</p>
+      </div>
+
+      <div class="grid-3">
+        <article class="svc">
+          <div class="ico" aria-hidden="true"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h3M8 14h3M8 18h3"/><path d="M14.5 13.5l2 2 3-3.5"/></svg></div>
+          <h3>Asesoría fiscal</h3>
+          <p>Cumplimiento tributario ordenado y revisado antes de cada presentación.</p>
+          <ul>
+            <li>IVA y retenciones trimestrales</li>
+            <li>IRPF y renta de particulares</li>
+            <li>Impuesto de Sociedades</li>
+            <li>Requerimientos y recursos</li>
+          </ul>
+        </article>
+
+        <article class="svc">
+          <div class="ico" aria-hidden="true"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 20v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="7" r="3.5"/><path d="M22 20v-2a4 4 0 0 0-3-3.8"/><path d="M16.5 3.7a3.5 3.5 0 0 1 0 6.6"/></svg></div>
+          <h3>Asesoría laboral</h3>
+          <p>Gestión del día a día con los trabajadores y relación con la Seguridad Social.</p>
+          <ul>
+            <li>Altas, bajas y variaciones</li>
+            <li>Nóminas y seguros sociales</li>
+            <li>Contratos y modificaciones</li>
+            <li>Despidos y finiquitos</li>
+          </ul>
+        </article>
+
+        <article class="svc">
+          <div class="ico" aria-hidden="true"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><rect x="4" y="11" width="4" height="7" rx="1"/><rect x="10" y="7" width="4" height="11" rx="1"/><rect x="16" y="4" width="4" height="14" rx="1"/></svg></div>
+          <h3>Contabilidad</h3>
+          <p>Libros al día y cuentas comprensibles para tomar decisiones con criterio.</p>
+          <ul>
+            <li>Contabilidad de empresas</li>
+            <li>Libros registro de autónomos</li>
+            <li>Cuentas anuales y depósito</li>
+            <li>Cierre de ejercicio</li>
+          </ul>
+        </article>
+
+        <article class="svc">
+          <div class="ico" aria-hidden="true"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M5 7h14"/><path d="M7 7l-3 6h6z"/><path d="M17 7l-3 6h6z"/><path d="M8 21h8"/></svg></div>
+          <h3>Área jurídica</h3>
+          <p>Orientación legal para las decisiones que afectan a su patrimonio y su empresa.</p>
+          <ul>
+            <li>Contratos y arrendamientos</li>
+            <li>Herencias y sucesiones</li>
+            <li>Reclamaciones civiles</li>
+            <li>Reuniones y acuerdos societarios</li>
+          </ul>
+        </article>
+
+        <article class="svc">
+          <div class="ico" aria-hidden="true"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></div>
+          <h3>Autónomos</h3>
+          <p>Desde el alta hasta la rutina trimestral, con todo explicado paso a paso.</p>
+          <ul>
+            <li>Alta en Hacienda y RETA</li>
+            <li>Bases de cotización</li>
+            <li>Facturación y deducciones</li>
+            <li>Bonificaciones aplicables</li>
+          </ul>
+        </article>
+
+        <article class="svc">
+          <div class="ico" aria-hidden="true"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V8l6-4 6 4v13"/><path d="M15 21V11l6 3v7"/><path d="M7 12h2M7 16h2"/><path d="M3 21h18"/></svg></div>
+          <h3>Sociedades</h3>
+          <p>Constitución y acompañamiento continuo de sociedades y comunidades de bienes.</p>
+          <ul>
+            <li>Constitución y estatutos</li>
+            <li>Obligaciones periódicas</li>
+            <li>Libros y actas societarias</li>
+            <li>Disolución y liquidación</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESO -->
+  <section id="proceso" class="steps-sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="kicker">Cómo trabajamos</div>
+        <h2>Tres pasos, sin sorpresas</h2>
+        <p>Una forma de trabajar sencilla y transparente: primero entender su situación, después ordenarla y, a partir de ahí, mantenerla al día.</p>
+      </div>
+      <div class="steps">
+        <article class="step">
+          <div class="num" aria-hidden="true">1</div>
+          <h3>Primera conversación</h3>
+          <p>Nos cuenta su situación y qué necesita. Revisamos su caso concreto, le decimos con qué podemos ayudarle y qué documentación hará falta.</p>
+        </article>
+        <article class="step">
+          <div class="num" aria-hidden="true">2</div>
+          <h3>Puesta en orden</h3>
+          <p>Analizamos la documentación, identificamos lo urgente y lo que puede esperar, y preparamos un plan de trabajo claro antes de presentar nada.</p>
+        </article>
+        <article class="step">
+          <div class="num" aria-hidden="true">3</div>
+          <h3>Seguimiento continuo</h3>
+          <p>Nos ocupamos de los plazos y le avisamos de lo que le afecta. Cuando surge una duda o una notificación, tiene a quién llamar.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="kicker">Contacto</div>
+        <h2>Estamos en el centro de Betanzos</h2>
+        <p>La forma más rápida de empezar es una llamada. Si lo prefiere, escríbanos un correo indicando su caso y le respondemos.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="panel">
+          <div class="rows">
+            <div class="row">
+              <span class="ico-s" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span>
+              <div>
+                <div class="k">Teléfono</div>
+                <div class="v"><a href="tel:+34981773991">+34 981 773 991</a></div>
+              </div>
+            </div>
+            <div class="row">
+              <span class="ico-s" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 6-9 12-9 12S3 16 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+              <div>
+                <div class="k">Dirección</div>
+                <div class="v">Praza do Peirao, nº 6, Bajo</div>
+                <div class="v plain">15300 Betanzos (A Coruña)</div>
+              </div>
+            </div>
+            <div class="row">
+              <span class="ico-s" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="M3 6l9 7 9-7"/></svg></span>
+              <div>
+                <div class="k">Correo electrónico</div>
+                <div class="v"><a href="mailto:alonsosanmartin@telefonica.net">alonsosanmartin@telefonica.net</a></div>
+              </div>
+            </div>
+            <div class="row">
+              <span class="ico-s" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span>
+              <div>
+                <div class="k">Horario de atención</div>
+                <div class="v plain">Consultar horario</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cta-row">
+            <a class="btn btn-main" href="tel:+34981773991">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+              Llamar ahora
+            </a>
+            <a class="btn btn-ghost" href="mailto:alonsosanmartin@telefonica.net">Escribir un correo</a>
+          </div>
+
+          <div class="alertbox">
+            <h3>
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#b98a2e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="10.5" width="17" height="11" rx="2"/><path d="M7.5 10.5V7a4.5 4.5 0 0 1 9 0v3.5"/></svg>
+              Nota técnica de esta propuesta
+            </h3>
+            <p>La web actual muestra un aviso de seguridad a pantalla completa porque el certificado HTTPS no corresponde al dominio: Chrome indica «la conexión no es privada» y la página solo carga sin cifrar. Esta maqueta se plantea junto con la corrección del certificado y la redirección correcta a HTTPS, para que nadie se encuentre esa pantalla antes de llegar al contenido.</p>
+          </div>
+        </div>
+
+        <div class="panel map-panel">
+          <svg class="map-box" viewBox="0 0 600 460" width="100%" height="auto" role="img" aria-label="Mapa esquemático de la zona del despacho en Betanzos, junto a la ría">
+            <defs>
+              <linearGradient id="agua" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#bcd9e4"/>
+                <stop offset="1" stop-color="#9cc3d2"/>
+              </linearGradient>
+              <linearGradient id="tierra" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#f1f5f6"/>
+                <stop offset="1" stop-color="#e4ebed"/>
+              </linearGradient>
+              <filter id="sombraPin" x="-60%" y="-60%" width="220%" height="220%">
+                <feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#0f1b24" flood-opacity="0.32"/>
+              </filter>
+            </defs>
+
+            <rect width="600" height="460" fill="url(#tierra)"/>
+            <!-- ria / agua -->
+            <path d="M0 376 C 90 352 150 392 238 374 C 330 356 400 400 480 382 C 532 370 570 384 600 374 L600 460 L0 460 Z" fill="url(#agua)"/>
+            <path d="M0 376 C 90 352 150 392 238 374 C 330 356 400 400 480 382 C 532 370 570 384 600 374" fill="none" stroke="#7aa9bb" stroke-width="2.5"/>
+
+            <!-- manzanas -->
+            <g fill="#dde5e8">
+              <rect x="42" y="60" width="128" height="86" rx="6"/>
+              <rect x="206" y="48" width="104" height="98" rx="6"/>
+              <rect x="346" y="60" width="150" height="86" rx="6"/>
+              <rect x="42" y="196" width="110" height="104" rx="6"/>
+              <rect x="190" y="196" width="134" height="60" rx="6"/>
+              <rect x="190" y="276" width="134" height="52" rx="6"/>
+              <rect x="362" y="196" width="134" height="104" rx="6"/>
+              <rect x="508" y="100" width="70" height="200" rx="6"/>
+            </g>
+
+            <!-- calles -->
+            <g stroke="#ffffff" stroke-linecap="round" fill="none">
+              <path d="M0 172 H600" stroke-width="22"/>
+              <path d="M0 322 H600" stroke-width="18"/>
+              <path d="M184 0 V356" stroke-width="20"/>
+              <path d="M338 0 V356" stroke-width="16"/>
+              <path d="M26 20 V356" stroke-width="12"/>
+              <path d="M504 40 V356" stroke-width="12"/>
+              <path d="M184 240 L338 240" stroke-width="10"/>
+            </g>
+            <g stroke="#cfdbe0" stroke-linecap="round" fill="none" stroke-width="1.5">
+              <path d="M0 161 H600 M0 183 H600"/>
+              <path d="M173 0 V356 M195 0 V356"/>
+            </g>
+
+            <!-- plaza / peirao -->
+            <rect x="196" y="334" width="300" height="34" rx="10" fill="#e9dfc6"/>
+            <text x="346" y="357" text-anchor="middle" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="15" font-weight="600" fill="#8b7638">Praza do Peirao</text>
+
+            <!-- etiquetas calles -->
+            <g font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="13" fill="#8696a0">
+              <text x="16" y="166" >Casco histórico</text>
+              <text x="396" y="318">Zona centro</text>
+              <text x="24" y="416" fill="#5f8a9b">Ría de Betanzos</text>
+            </g>
+
+            <!-- marcador -->
+            <g filter="url(#sombraPin)">
+              <circle cx="264" cy="300" r="26" fill="#0d4f63"/>
+              <path d="M264 340 L250 312 L278 312 Z" fill="#0d4f63"/>
+              <circle cx="264" cy="300" r="9" fill="#ffffff"/>
+            </g>
+            <g font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif">
+              <rect x="300" y="238" width="212" height="52" rx="11" fill="#ffffff" stroke="#dde4e8"/>
+              <text x="318" y="260" font-size="15" font-weight="700" fill="#0f1b24">Asesoría Alonso</text>
+              <text x="318" y="279" font-size="13" fill="#5b6b76">Praza do Peirao, 6 · Bajo</text>
+            </g>
+          </svg>
+          <div class="map-cap">Mapa esquemático orientativo, dibujado para esta propuesta. No representa el trazado real de las calles ni sustituye a un mapa de navegación.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div class="f-brand">
+        <b>Asesoría Alonso</b>
+        <p>Asesoría fiscal, laboral, contable y jurídica en Betanzos. Atención directa y personal para autónomos, empresas y particulares.</p>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul class="fl">
+          <li><a href="tel:+34981773991">+34 981 773 991</a></li>
+          <li><a href="mailto:alonsosanmartin@telefonica.net">alonsosanmartin@telefonica.net</a></li>
+          <li>Consultar horario</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Dirección</h4>
+        <ul class="fl">
+          <li>Praza do Peirao, nº 6, Bajo</li>
+          <li>15300 Betanzos (A Coruña)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <span>Alonso San Martín · Asesoría Alonso, Betanzos</span>
+      <strong>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</strong>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var stack=document.getElementById('topstack');
+  function fit(){
+    if(!stack)return;
+    document.body.style.paddingTop=stack.offsetHeight+'px';
+  }
+  fit();
+  window.addEventListener('resize',fit);
+  window.addEventListener('load',fit);
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.querySelector(a.getAttribute('href'));
+      if(!t)return;
+      e.preventDefault();
+      var off=(stack?stack.offsetHeight:110)+10;
+      window.scrollTo({top:t.getBoundingClientRect().top+window.pageYOffset-off,behavior:'smooth'});
+    });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Restaurante El Maquinista · Tarazona</title>
+<meta name="description" content="Propuesta de rediseño no oficial para Restaurante El Maquinista, Tarazona (Zaragoza). Maqueta de FFFFFFstudio.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* ===== Tokens ===== */
+:root{
+  --espresso:#241a15;
+  --espresso-2:#30231c;
+  --crema:#f6efe6;
+  --crema-2:#efe4d6;
+  --terracota:#c0562f;
+  --terracota-2:#9e4324;
+  --mostaza:#e0a33c;
+  --verde:#4e6049;
+  --texto:#2b1f19;
+  --texto-suave:#6b5a4e;
+  --linea:rgba(36,26,21,.13);
+  --sombra:0 18px 48px -24px rgba(36,26,21,.45);
+  --r-s:10px; --r-m:18px; --r-l:28px;
+  --barra:44px;
+  --max:1120px;
+  --gutter:16px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  padding-top:var(--barra);
+  background:var(--crema);
+  color:var(--texto);
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+img,svg{max-width:100%}
+h1,h2,h3{margin:0;line-height:1.12;letter-spacing:-.015em;font-weight:600}
+p{margin:0}
+a{color:inherit}
+.wrap{width:100%;max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+.sans{font-family:"Helvetica Neue",Helvetica,Arial,"Segoe UI",system-ui,sans-serif}
+
+/* ===== Barra fija ===== */
+.aviso{
+  position:fixed;inset:0 0 auto 0;z-index:100;
+  height:var(--barra);display:flex;align-items:center;justify-content:center;
+  background:var(--espresso);
+  color:#f3e7d8;
+  border-bottom:1px solid rgba(224,163,60,.35);
+  padding:0 10px;
+}
+.aviso span{
+  font-family:"Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;
+  font-size:12px;line-height:1.3;letter-spacing:.045em;
+  text-align:center;
+  overflow-wrap:break-word;
+}
+.aviso b{color:var(--mostaza);font-weight:600}
+
+/* ===== Nav ===== */
+.nav{
+  position:sticky;top:var(--barra);z-index:90;
+  background:rgba(246,239,230,.92);
+  -webkit-backdrop-filter:saturate(1.3) blur(10px);backdrop-filter:saturate(1.3) blur(10px);
+  border-bottom:1px solid var(--linea);
+}
+.nav-in{display:flex;align-items:center;gap:14px;min-height:62px;padding:8px var(--gutter);max-width:var(--max);margin:0 auto}
+.marca{display:flex;align-items:center;gap:10px;min-width:0;text-decoration:none;flex:1 1 auto}
+.marca-ico{flex:0 0 auto;width:34px;height:34px}
+.marca-tx{min-width:0}
+.marca-tx strong{display:block;font-size:16.5px;letter-spacing:-.01em;line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.marca-tx small{display:block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--texto-suave);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}
+.nav-links{display:none;gap:22px}
+.nav-links a{font-size:14px;text-decoration:none;color:var(--texto-suave);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;letter-spacing:.01em}
+.nav-links a:hover{color:var(--terracota)}
+.nav-tel{
+  flex:0 0 auto;display:inline-flex;align-items:center;gap:7px;
+  background:var(--terracota);color:#fff;text-decoration:none;
+  padding:10px 15px;border-radius:999px;
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:14px;font-weight:600;
+  box-shadow:0 8px 20px -12px rgba(192,86,47,.9);
+}
+.nav-tel:hover{background:var(--terracota-2)}
+.nav-tel .lbl{display:none}
+
+/* ===== Hero ===== */
+.hero{position:relative;overflow:hidden;background:var(--espresso);color:#f6ece0}
+.hero-bg{position:absolute;inset:0;
+  background:
+    radial-gradient(90% 70% at 85% 10%, rgba(224,163,60,.30), transparent 60%),
+    radial-gradient(70% 60% at 8% 95%, rgba(192,86,47,.42), transparent 62%),
+    linear-gradient(160deg,#2b1f18 0%,#241a15 55%,#1c1410 100%);
+}
+.hero-grano{position:absolute;inset:0;opacity:.5;
+  background-image:repeating-linear-gradient(115deg, rgba(255,255,255,.035) 0 1px, transparent 1px 7px);}
+.hero-in{position:relative;padding:62px 0 0}
+.hero-grid{display:grid;gap:34px;align-items:center}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mostaza);
+  border:1px solid rgba(224,163,60,.4);border-radius:999px;padding:7px 14px;
+}
+.eyebrow i{width:5px;height:5px;border-radius:50%;background:var(--mostaza);display:block}
+h1{font-size:clamp(2.1rem,8.4vw,4.1rem);margin:20px 0 0;letter-spacing:-.025em}
+h1 em{display:block;font-style:normal;color:var(--mostaza)}
+.hero p.lead{margin-top:18px;font-size:clamp(1rem,3.6vw,1.17rem);color:rgba(246,236,224,.82);max-width:46ch}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:15px;font-weight:600;
+  text-decoration:none;padding:15px 22px;border-radius:999px;border:1px solid transparent;
+  transition:transform .15s ease, background .15s ease;
+}
+.btn:active{transform:translateY(1px)}
+.btn-pri{background:var(--mostaza);color:#2a1d13;box-shadow:0 14px 30px -16px rgba(224,163,60,.85)}
+.btn-pri:hover{background:#edb15a}
+.btn-sec{border-color:rgba(246,236,224,.32);color:#f6ece0}
+.btn-sec:hover{background:rgba(246,236,224,.1)}
+.hero-notas{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:24px;padding-bottom:6px}
+.hero-notas span{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:12.5px;color:rgba(246,236,224,.66);display:inline-flex;align-items:center;gap:7px}
+.hero-notas svg{flex:0 0 auto}
+
+/* tarjeta ilustración hero */
+.hero-art{margin-bottom:8px;position:relative;border-radius:var(--r-l);overflow:hidden;border:1px solid rgba(246,236,224,.16);
+  background:linear-gradient(170deg,rgba(246,236,224,.1),rgba(246,236,224,.02));box-shadow:var(--sombra)}
+.hero-art svg{display:block;width:100%;height:auto}
+
+/* vías decorativas */
+.vias{position:relative;height:30px;margin-top:40px;background:var(--espresso)}
+.vias svg{display:block;width:100%;height:30px}
+
+/* ===== Secciones ===== */
+section{padding:62px 0}
+.sec-cab{max-width:62ch}
+.kicker{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--terracota);font-weight:600}
+h2{font-size:clamp(1.65rem,6vw,2.5rem);margin:12px 0 0}
+.sec-cab p{margin-top:14px;color:var(--texto-suave);font-size:clamp(1rem,3.4vw,1.08rem)}
+
+/* Oferta */
+.cards{display:grid;gap:16px;margin-top:38px;grid-template-columns:1fr}
+.card{
+  background:#fff;border:1px solid var(--linea);border-radius:var(--r-m);
+  padding:24px 22px;position:relative;overflow:hidden;
+  box-shadow:0 10px 26px -22px rgba(36,26,21,.5);
+}
+.card::after{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,var(--mostaza),var(--terracota));opacity:.85}
+.card .ic{width:44px;height:44px;border-radius:12px;background:var(--crema-2);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.card h3{font-size:1.18rem}
+.card p{margin-top:9px;color:var(--texto-suave);font-size:15.5px}
+.card.destaca{background:linear-gradient(165deg,#30231c,#241a15);color:#f6ece0;border-color:rgba(224,163,60,.3)}
+.card.destaca p{color:rgba(246,236,224,.76)}
+.card.destaca .ic{background:rgba(224,163,60,.16)}
+
+/* Franja */
+.franja{background:var(--espresso-2);color:#f6ece0;padding:52px 0}
+.franja .sec-cab p{color:rgba(246,236,224,.76)}
+.franja .kicker{color:var(--mostaza)}
+.pasos{display:grid;gap:16px;margin-top:36px;grid-template-columns:1fr;counter-reset:p}
+.paso{
+  position:relative;border:1px solid rgba(246,236,224,.16);border-radius:var(--r-m);
+  padding:26px 22px 24px;background:rgba(246,236,224,.05);
+}
+.paso-n{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  display:inline-flex;align-items:center;justify-content:center;
+  width:40px;height:40px;border-radius:50%;
+  background:var(--mostaza);color:#2a1d13;font-weight:700;font-size:16px;margin-bottom:14px;
+}
+.paso h3{font-size:1.14rem}
+.paso p{margin-top:9px;color:rgba(246,236,224,.76);font-size:15.5px}
+.paso .mini{display:inline-flex;align-items:center;gap:8px;margin-top:16px;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:13.5px;color:var(--mostaza);text-decoration:none;font-weight:600}
+.franja-cta{margin-top:30px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.franja-cta .nota{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:13px;color:rgba(246,236,224,.6)}
+
+/* Contacto */
+.cont-grid{display:grid;gap:22px;margin-top:38px;grid-template-columns:1fr}
+.datos{display:grid;gap:12px}
+.dato{
+  display:flex;gap:14px;align-items:flex-start;
+  background:#fff;border:1px solid var(--linea);border-radius:var(--r-m);padding:18px;
+  text-decoration:none;
+}
+.dato .ic{flex:0 0 auto;width:40px;height:40px;border-radius:11px;background:var(--crema-2);display:flex;align-items:center;justify-content:center}
+.dato .tx{min-width:0;display:flex;flex-direction:column}
+.dato .et{display:block;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--texto-suave)}
+.dato .vl{display:block;font-size:17px;margin-top:3px;font-weight:600;overflow-wrap:break-word}
+.dato .sub{display:block;font-size:14px;color:var(--texto-suave);margin-top:2px;overflow-wrap:break-word}
+a.dato:hover{border-color:var(--terracota)}
+.mapa{
+  border:1px solid var(--linea);border-radius:var(--r-m);overflow:hidden;background:#fff;
+  box-shadow:0 10px 26px -22px rgba(36,26,21,.5);
+}
+.mapa svg{display:block;width:100%;height:auto}
+.mapa-pie{padding:13px 16px;border-top:1px solid var(--linea);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:12.5px;color:var(--texto-suave)}
+
+/* Pie */
+footer{background:var(--espresso);color:rgba(246,236,224,.78);padding:52px 0 36px}
+.pie-grid{display:grid;gap:30px;grid-template-columns:1fr}
+.pie-marca{display:flex;align-items:center;gap:11px}
+.pie-marca strong{color:#f6ece0;font-size:17px}
+.pie h4{margin:0 0 12px;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mostaza);font-weight:600}
+.pie ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.pie a{color:rgba(246,236,224,.8);text-decoration:none;overflow-wrap:break-word}
+.pie a:hover{color:var(--mostaza)}
+.pie-sep{height:1px;background:rgba(246,236,224,.14);margin:32px 0 20px}
+.pie-legal{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:12.5px;color:rgba(246,236,224,.6);display:grid;gap:8px}
+.pie-legal strong{color:rgba(246,236,224,.85);font-weight:600}
+
+/* Barra móvil inferior */
+.movil{
+  position:fixed;left:0;right:0;bottom:0;z-index:95;
+  display:flex;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+  background:rgba(36,26,21,.96);border-top:1px solid rgba(224,163,60,.3);
+}
+.movil a{
+  flex:1 1 0;min-width:0;display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:13px 10px;border-radius:999px;text-decoration:none;
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:14.5px;font-weight:600;
+}
+.movil .m1{background:var(--mostaza);color:#2a1d13}
+.movil .m2{background:transparent;color:#f6ece0;border:1px solid rgba(246,236,224,.35)}
+.espaciador-movil{height:76px}
+
+/* ===== Responsive ===== */
+@media (min-width:640px){
+  .cards{grid-template-columns:1fr 1fr}
+  .pasos{grid-template-columns:repeat(3,1fr)}
+  .pie-grid{grid-template-columns:1.4fr 1fr 1fr}
+}
+@media (min-width:900px){
+  :root{--gutter:28px;--barra:40px}
+  body{font-size:17.5px}
+  .nav-links{display:flex}
+  .nav-tel .lbl{display:inline}
+  .hero-in{padding:86px 0 0}
+  .hero-grid{grid-template-columns:1.08fr .92fr;gap:48px}
+  section{padding:86px 0}
+  .cards{grid-template-columns:repeat(3,1fr)}
+  .cards .card:nth-child(4){grid-column:span 2}
+  .cont-grid{grid-template-columns:1fr 1.15fr;align-items:start}
+  .movil{display:none}
+  .espaciador-movil{display:none}
+  .franja{padding:80px 0}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<div class="aviso" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · <b>FFFFFFstudio</b> · Ángel Rubio</span>
+</div>
+
+<header class="nav">
+  <div class="nav-in">
+    <a class="marca" href="#inicio">
+      <svg class="marca-ico" viewBox="0 0 40 40" aria-hidden="true">
+        <circle cx="20" cy="20" r="19" fill="#241a15"/>
+        <path d="M11 25h18M13 25l1.6-8h10.8L27 25" stroke="#e0a33c" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="16" cy="27.5" r="2.1" fill="#c0562f"/>
+        <circle cx="24" cy="27.5" r="2.1" fill="#c0562f"/>
+        <path d="M19 13.5c0-2 2.5-2.4 2.5-4.5" stroke="#f6ece0" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+      </svg>
+      <span class="marca-tx">
+        <strong>El Maquinista</strong>
+        <small>Tarazona</small>
+      </span>
+    </a>
+    <nav class="nav-links" aria-label="Secciones">
+      <a href="#oferta">Qué ofrecemos</a>
+      <a href="#reservar">Cómo reservar</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="nav-tel" href="tel:+34639832214">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+      <span class="lbl">639&nbsp;832&nbsp;214</span>
+    </a>
+  </div>
+</header>
+
+<main id="inicio">
+
+  <!-- HERO -->
+  <section class="hero" style="padding:0">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-grano" aria-hidden="true"></div>
+    <div class="hero-in">
+      <div class="wrap">
+        <div class="hero-grid">
+          <div>
+            <span class="eyebrow"><i></i>Restaurante y bar de comidas · Tarazona</span>
+            <h1>Cocina de todos los días<em>con la mesa puesta</em></h1>
+            <p class="lead">Menú del día, carta y raciones para compartir en el centro de Tarazona. Un sitio tranquilo para comer bien, sin complicaciones y con trato cercano.</p>
+            <div class="ctas">
+              <a class="btn btn-pri" href="tel:+34639832214">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+                Llamar: 639 832 214
+              </a>
+              <a class="btn btn-sec" href="#reservar">Cómo reservar</a>
+            </div>
+            <div class="hero-notas">
+              <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> Avenida de la Paz, 6</span>
+              <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Consultar horario</span>
+              <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 20v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="7" r="4"/><path d="M22 20v-2a4 4 0 0 0-3-3.9"/></svg> Comidas de grupo</span>
+            </div>
+          </div>
+
+          <div class="hero-art" aria-hidden="true">
+            <svg viewBox="0 0 520 420" role="presentation">
+              <defs>
+                <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#3a2a21"/><stop offset="1" stop-color="#1e1611"/>
+                </linearGradient>
+                <linearGradient id="gplato" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#f6efe6"/><stop offset="1" stop-color="#ddcdb9"/>
+                </linearGradient>
+                <linearGradient id="gmantel" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#c0562f"/><stop offset="1" stop-color="#9e4324"/>
+                </linearGradient>
+                <radialGradient id="glow" cx="50%" cy="18%" r="62%">
+                  <stop offset="0" stop-color="#e0a33c" stop-opacity=".55"/><stop offset="1" stop-color="#e0a33c" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+              <rect width="520" height="420" fill="url(#g1)"/>
+              <rect width="520" height="420" fill="url(#glow)"/>
+              <!-- lámpara -->
+              <path d="M260 0v52" stroke="#e0a33c" stroke-opacity=".5" stroke-width="2"/>
+              <path d="M222 86c0-21 17-34 38-34s38 13 38 34Z" fill="#e0a33c" fill-opacity=".9"/>
+              <ellipse cx="260" cy="86" rx="38" ry="6" fill="#f6ece0" fill-opacity=".55"/>
+              <!-- mantel -->
+              <rect x="40" y="246" width="440" height="22" rx="6" fill="url(#gmantel)"/>
+              <rect x="40" y="268" width="440" height="110" fill="#8e3a1f" fill-opacity=".55"/>
+              <!-- plato grande -->
+              <ellipse cx="260" cy="236" rx="96" ry="30" fill="#000" fill-opacity=".25"/>
+              <ellipse cx="260" cy="228" rx="94" ry="28" fill="url(#gplato)"/>
+              <ellipse cx="260" cy="226" rx="66" ry="18" fill="#e4d3bd"/>
+              <ellipse cx="260" cy="224" rx="40" ry="11" fill="#b9754a"/>
+              <ellipse cx="248" cy="221" rx="15" ry="5" fill="#d79a5d"/>
+              <ellipse cx="275" cy="226" rx="11" ry="4" fill="#8d4f2c"/>
+              <!-- vapor -->
+              <g stroke="#f6ece0" stroke-opacity=".32" stroke-width="3" fill="none" stroke-linecap="round">
+                <path d="M242 198c-8-12 8-18 0-30"/>
+                <path d="M262 192c-9-14 9-21 0-34"/>
+                <path d="M282 198c-8-12 8-18 0-30"/>
+              </g>
+              <!-- platos laterales -->
+              <ellipse cx="108" cy="250" rx="52" ry="16" fill="#000" fill-opacity=".22"/>
+              <ellipse cx="108" cy="244" rx="50" ry="15" fill="#efe4d6"/>
+              <ellipse cx="108" cy="242" rx="32" ry="9" fill="#cdb79c"/>
+              <ellipse cx="412" cy="250" rx="52" ry="16" fill="#000" fill-opacity=".22"/>
+              <ellipse cx="412" cy="244" rx="50" ry="15" fill="#efe4d6"/>
+              <ellipse cx="412" cy="242" rx="32" ry="9" fill="#cdb79c"/>
+              <!-- copas -->
+              <g fill="none" stroke="#f6ece0" stroke-opacity=".6" stroke-width="2.5">
+                <path d="M172 160h34l-4 26a13 13 0 0 1-26 0Z"/><path d="M189 199v34M178 236h22"/>
+                <path d="M314 160h34l-4 26a13 13 0 0 1-26 0Z"/><path d="M331 199v34M320 236h22"/>
+              </g>
+              <path d="M174 170h30l-2 14a12 12 0 0 1-26 0Z" fill="#c0562f" fill-opacity=".75"/>
+              <path d="M316 170h30l-2 14a12 12 0 0 1-26 0Z" fill="#c0562f" fill-opacity=".75"/>
+              <!-- cubiertos -->
+              <g stroke="#e0a33c" stroke-opacity=".8" stroke-width="3" stroke-linecap="round">
+                <path d="M62 300v62"/><path d="M62 300c-6 0-6 16 0 16s6-16 0-16"/>
+                <path d="M458 300v62"/><path d="M452 300v14M458 300v14M464 300v14"/>
+              </g>
+              <!-- taza -->
+              <g>
+                <rect x="222" y="312" width="76" height="40" rx="9" fill="#efe4d6"/>
+                <rect x="232" y="320" width="56" height="12" rx="6" fill="#6b4328"/>
+                <path d="M298 322c14 0 14 18 0 18" stroke="#efe4d6" stroke-width="6" fill="none"/>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- vías -->
+      <div class="vias" aria-hidden="true">
+        <svg viewBox="0 0 1200 30" preserveAspectRatio="none">
+          <rect width="1200" height="30" fill="#1c1410"/>
+          <g stroke="#e0a33c" stroke-opacity=".32" stroke-width="2">
+            <path d="M0 11h1200"/><path d="M0 21h1200"/>
+          </g>
+          <g stroke="#e0a33c" stroke-opacity=".18" stroke-width="3">
+            <path d="M20 6v20M70 6v20M120 6v20M170 6v20M220 6v20M270 6v20M320 6v20M370 6v20M420 6v20M470 6v20M520 6v20M570 6v20M620 6v20M670 6v20M720 6v20M770 6v20M820 6v20M870 6v20M920 6v20M970 6v20M1020 6v20M1070 6v20M1120 6v20M1170 6v20"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFERTA -->
+  <section id="oferta">
+    <div class="wrap">
+      <div class="sec-cab">
+        <span class="kicker">Qué ofrecemos</span>
+        <h2>Un bar de comidas y un restaurante, en el mismo sitio</h2>
+        <p>Desde el café de la mañana hasta la comida de sobremesa. Para el día a día o para juntar a la familia, y siempre con la opción de preguntar qué hay hoy.</p>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <div class="ic">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c0562f" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3v8a3 3 0 0 0 6 0V3M8 11v10"/><path d="M17 3c-2 2-2 6 0 8v10"/></svg>
+          </div>
+          <h3>Menú del día</h3>
+          <p>Propuesta diaria de cocina casera, pensada para comer completo y salir a tiempo. Consulta por teléfono la opción del día.</p>
+        </article>
+
+        <article class="card">
+          <div class="ic">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c0562f" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg>
+          </div>
+          <h3>Carta</h3>
+          <p>Para cuando apetece elegir con calma. Platos de cocina tradicional y sugerencias según el mercado y la temporada.</p>
+        </article>
+
+        <article class="card">
+          <div class="ic">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c0562f" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <h3>Raciones para compartir</h3>
+          <p>Platos para poner en el centro de la mesa y picar entre varios, con o sin reserva previa, en barra o sentados.</p>
+        </article>
+
+        <article class="card destaca">
+          <div class="ic">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e0a33c" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 20v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="7" r="4"/><path d="M22 20v-2a4 4 0 0 0-3-3.9M16.5 3.1a4 4 0 0 1 0 7.8"/></svg>
+          </div>
+          <h3>Comidas de grupo y celebraciones</h3>
+          <p>Mesas largas para familias, cuadrillas y comidas de empresa. Lo hablamos antes por teléfono y lo preparamos a medida del grupo: número de personas, hora y propuesta de cocina.</p>
+        </article>
+
+        <article class="card">
+          <div class="ic">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c0562f" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9h14v6a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5z"/><path d="M17 10h2a3 3 0 0 1 0 6h-2"/><path d="M6 5c0-1 1-1.2 1-2M10 5c0-1 1-1.2 1-2"/></svg>
+          </div>
+          <h3>Cafés y desayunos</h3>
+          <p>Para empezar el día o hacer una parada a media mañana. Café, algo dulce o salado y un rato de barra sin prisa.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESERVAR -->
+  <section class="franja" id="reservar">
+    <div class="wrap">
+      <div class="sec-cab">
+        <span class="kicker">Cómo reservar</span>
+        <h2>Tres pasos y la mesa queda guardada</h2>
+        <p>La reserva se gestiona por teléfono, directamente con el restaurante. Así se confirma al momento y se puede adaptar a lo que necesite cada mesa.</p>
+      </div>
+
+      <div class="pasos">
+        <article class="paso">
+          <div class="paso-n">1</div>
+          <h3>Llama al restaurante</h3>
+          <p>Marca el 639 832 214. Si llamas desde el móvil, basta con tocar el botón y hablamos directamente.</p>
+          <a class="mini" href="tel:+34639832214">Llamar ahora
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </article>
+
+        <article class="paso">
+          <div class="paso-n">2</div>
+          <h3>Dinos día, hora y personas</h3>
+          <p>Con esos tres datos buscamos la mesa que mejor encaje. Es también el momento de contarnos si hay niños, un grupo grande o alguna necesidad en la cocina.</p>
+        </article>
+
+        <article class="paso">
+          <div class="paso-n">3</div>
+          <h3>Te confirmamos la mesa</h3>
+          <p>Confirmamos en la misma llamada y, si es una comida de grupo, dejamos acordada la propuesta antes del día de la cita.</p>
+        </article>
+      </div>
+
+      <div class="franja-cta">
+        <a class="btn btn-pri" href="tel:+34639832214">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+          Reservar por teléfono
+        </a>
+        <span class="nota">Consultar horario de atención y de cocina al llamar.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <div class="wrap">
+      <div class="sec-cab">
+        <span class="kicker">Contacto y cómo llegar</span>
+        <h2>Estamos en la Avenida de la Paz</h2>
+        <p>En pleno Tarazona, con la entrada a pie de avenida. Si vienes de fuera, el plano de abajo sitúa el local de forma esquemática.</p>
+      </div>
+
+      <div class="cont-grid">
+        <div class="datos">
+          <a class="dato" href="tel:+34639832214">
+            <span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#c0562f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg></span>
+            <span class="tx">
+              <span class="et">Teléfono y reservas</span>
+              <span class="vl">639 832 214</span>
+              <span class="sub">Toca para llamar desde el móvil</span>
+            </span>
+          </a>
+
+          <div class="dato">
+            <span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#c0562f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span class="tx">
+              <span class="et">Dirección</span>
+              <span class="vl">Avenida de la Paz, 6</span>
+              <span class="sub">50500 Tarazona (Zaragoza)</span>
+            </span>
+          </div>
+
+          <div class="dato">
+            <span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#c0562f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+            <span class="tx">
+              <span class="et">Horario</span>
+              <span class="vl">Consultar horario</span>
+              <span class="sub">Lo confirmamos por teléfono</span>
+            </span>
+          </div>
+
+          <a class="dato" href="mailto:lauraqsanmartin@gmail.com">
+            <span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#c0562f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3 7l9 6 9-6"/></svg></span>
+            <span class="tx">
+              <span class="et">Correo</span>
+              <span class="vl">Escríbenos</span>
+              <span class="sub">lauraqsanmartin@gmail.com</span>
+            </span>
+          </a>
+        </div>
+
+        <div class="mapa">
+          <svg viewBox="0 0 640 440" role="img" aria-label="Plano esquemático: el restaurante se sitúa en la Avenida de la Paz, número 6, en Tarazona.">
+            <defs>
+              <linearGradient id="gm" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#f6efe6"/><stop offset="1" stop-color="#eadfd0"/>
+              </linearGradient>
+            </defs>
+            <rect width="640" height="440" fill="url(#gm)"/>
+            <!-- manzanas -->
+            <g fill="#e2d4c1">
+              <rect x="34" y="34" width="168" height="112" rx="8"/>
+              <rect x="248" y="34" width="150" height="112" rx="8"/>
+              <rect x="444" y="34" width="162" height="112" rx="8"/>
+              <rect x="34" y="248" width="140" height="92" rx="8"/>
+              <rect x="220" y="248" width="178" height="92" rx="8"/>
+              <rect x="444" y="248" width="162" height="92" rx="8"/>
+              <rect x="34" y="382" width="250" height="40" rx="8"/>
+              <rect x="330" y="382" width="276" height="40" rx="8"/>
+            </g>
+            <!-- zona verde -->
+            <rect x="248" y="34" width="150" height="112" rx="8" fill="#cfd9c4"/>
+            <g stroke="#9fb08f" stroke-width="2" fill="none">
+              <path d="M268 120c12-18 28-18 40 0M330 126c10-14 24-14 34 0"/>
+            </g>
+            <!-- avenida principal -->
+            <rect x="0" y="170" width="640" height="62" fill="#fffaf2"/>
+            <rect x="0" y="170" width="640" height="3" fill="#dccdb8"/>
+            <rect x="0" y="229" width="640" height="3" fill="#dccdb8"/>
+            <g stroke="#e0a33c" stroke-width="4" stroke-dasharray="26 20" opacity=".75">
+              <path d="M0 201h640"/>
+            </g>
+            <!-- calles secundarias -->
+            <g fill="#fffaf2">
+              <rect x="210" y="0" width="34" height="440"/>
+              <rect x="404" y="0" width="36" height="440"/>
+              <rect x="0" y="348" width="640" height="30"/>
+            </g>
+            <g stroke="#dccdb8" stroke-width="2.5">
+              <path d="M210 0v440M244 0v440M404 0v440M440 0v440M0 348h640M0 378h640"/>
+            </g>
+            <!-- etiquetas -->
+            <g font-family="Helvetica Neue, Helvetica, Arial, sans-serif" fill="#8a7768">
+              <text x="16" y="163" font-size="15" letter-spacing="1.6">AVENIDA DE LA PAZ</text>
+              <text x="252" y="86" font-size="13" fill="#6f8060">Zona verde</text>
+              <text x="458" y="372" font-size="13">Casco urbano</text>
+            </g>
+            <!-- marcador -->
+            <g>
+              <ellipse cx="320" cy="268" rx="30" ry="9" fill="#241a15" opacity=".16"/>
+              <path d="M320 182c-21 0-38 17-38 38 0 27 38 50 38 50s38-23 38-50c0-21-17-38-38-38Z" fill="#c0562f"/>
+              <circle cx="320" cy="220" r="14" fill="#f6efe6"/>
+              <path d="M314 213v8a3 3 0 0 0 6 0v-8M317 221v7M326 213c-2 2-2 6 0 8v7" stroke="#c0562f" stroke-width="2" fill="none" stroke-linecap="round"/>
+            </g>
+            <g font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+              <rect x="190" y="286" width="260" height="46" rx="10" fill="#241a15"/>
+              <text x="206" y="306" font-size="15" fill="#f6efe6" font-weight="600">El Maquinista</text>
+              <text x="206" y="324" font-size="12.5" fill="#e0a33c">Avenida de la Paz, 6 · Tarazona</text>
+            </g>
+            <!-- brújula -->
+            <g transform="translate(588,404)">
+              <circle r="22" fill="#fffaf2" stroke="#dccdb8" stroke-width="2"/>
+              <path d="M0-14 5 2h-10Z" fill="#c0562f"/>
+              <text x="0" y="16" text-anchor="middle" font-size="10" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" fill="#8a7768">N</text>
+            </g>
+          </svg>
+          <div class="mapa-pie">Plano esquemático orientativo, no a escala. Dirección exacta: Avenida de la Paz, 6 — 50500 Tarazona (Zaragoza).</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="pie">
+  <div class="wrap">
+    <div class="pie-grid">
+      <div>
+        <div class="pie-marca">
+          <svg width="34" height="34" viewBox="0 0 40 40" aria-hidden="true">
+            <circle cx="20" cy="20" r="19" fill="#30231c"/>
+            <path d="M11 25h18M13 25l1.6-8h10.8L27 25" stroke="#e0a33c" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="16" cy="27.5" r="2.1" fill="#c0562f"/>
+            <circle cx="24" cy="27.5" r="2.1" fill="#c0562f"/>
+          </svg>
+          <strong>Restaurante El Maquinista</strong>
+        </div>
+        <p style="margin-top:14px;font-size:15.5px;max-width:38ch">Restaurante y bar de comidas en Tarazona (Zaragoza). Cocina del día, carta y mesas para grupos.</p>
+      </div>
+
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="tel:+34639832214">639 832 214</a></li>
+          <li><a href="mailto:lauraqsanmartin@gmail.com">lauraqsanmartin@gmail.com</a></li>
+          <li>Avenida de la Paz, 6<br>50500 Tarazona (Zaragoza)</li>
+          <li>Consultar horario</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Secciones</h4>
+        <ul>
+          <li><a href="#oferta">Qué ofrecemos</a></li>
+          <li><a href="#reservar">Cómo reservar</a></li>
+          <li><a href="#contacto">Contacto y cómo llegar</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pie-sep"></div>
+    <div class="pie-legal">
+      <p><strong>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</strong></p>
+      <p>Maqueta de demostración sin vínculo oficial con el negocio. Los datos de contacto son públicos; el resto de contenidos son textos de ejemplo pendientes de validar con el restaurante.</p>
+    </div>
+  </div>
+</footer>
+
+<nav class="movil" aria-label="Acciones rápidas">
+  <a class="m1" href="tel:+34639832214">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+    Llamar
+  </a>
+  <a class="m2" href="#contacto">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+    Cómo llegar
+  </a>
+</nav>
+<div class="espaciador-movil" aria-hidden="true"></div>
+
+<script>
+(function(){
+  // Desplazamiento suave teniendo en cuenta la barra fija y el nav
+  var barra = 44, nav = 62;
+  function offset(){
+    var a = document.querySelector('.aviso');
+    var n = document.querySelector('.nav');
+    return (a ? a.offsetHeight : barra) + (n ? n.offsetHeight : nav) + 8;
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var id = a.getAttribute('href');
+      if(!id || id === '#') return;
+      var t = document.querySelector(id);
+      if(!t) return;
+      e.preventDefault();
+      var y = t.getBoundingClientRect().top + window.pageYOffset - offset();
+      window.scrollTo({top: y < 0 ? 0 : y, behavior: 'smooth'});
+    });
+  });
+})();
+</script>
+</body>
+</html>
