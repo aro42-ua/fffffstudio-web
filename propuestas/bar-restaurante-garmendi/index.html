@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bar &amp; Restaurante Garmendi · Falces</title>
+<meta name="description" content="Propuesta de diseño web para Bar &amp; Restaurante Garmendi, bar y restaurante de cocina navarra en Falces (Navarra).">
+<meta name="robots" content="noindex, nofollow">
+<style>
+:root{
+  --wine:#4a1220;
+  --wine-deep:#2e0b14;
+  --wine-soft:#6b2033;
+  --clay:#b5603f;
+  --ember:#d98b4a;
+  --cream:#faf5ec;
+  --cream-2:#f2e9d8;
+  --paper:#fffdf8;
+  --olive:#5d6b4b;
+  --ink:#241a17;
+  --ink-soft:#5c4c45;
+  --line:rgba(74,18,32,.14);
+  --bar-h:44px;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --serif:ui-serif,Georgia,"Times New Roman",Times,serif;
+  --wrap:1120px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  padding-top:var(--bar-h);
+  font-family:var(--sans);
+  color:var(--ink);
+  background:var(--cream);
+  line-height:1.6;
+  font-size:16px;
+  overflow-wrap:break-word;
+}
+img,svg{max-width:100%}
+a{color:inherit}
+h1,h2,h3{margin:0;font-family:var(--serif);font-weight:600;line-height:1.1;letter-spacing:-.01em}
+p{margin:0}
+ul{margin:0;padding:0;list-style:none}
+
+/* ---------- barra fija ---------- */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  background:var(--wine-deep);
+  color:#f3e2d6;
+  border-bottom:1px solid rgba(217,139,74,.35);
+  display:flex;align-items:center;justify-content:center;
+  min-height:var(--bar-h);
+  padding:7px 14px;
+  text-align:center;
+  font-size:11.5px;letter-spacing:.03em;
+  line-height:1.35;
+}
+.topbar span{display:inline-block;max-width:100%}
+.topbar b{color:var(--ember);font-weight:600}
+
+/* ---------- utilidades ---------- */
+.wrap{width:100%;max-width:var(--wrap);margin:0 auto;padding:0 clamp(18px,5vw,40px)}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:11px;letter-spacing:.17em;text-transform:uppercase;font-weight:600;
+}
+.eyebrow .rule{display:block;width:26px;height:1px;background:currentColor;opacity:.55;flex:0 0 auto}
+.lead{font-size:clamp(15px,1.5vw,17px);color:var(--ink-soft)}
+section{padding:clamp(56px,7vw,96px) 0}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(130% 95% at 88% 8%, rgba(217,139,74,.34) 0%, rgba(217,139,74,0) 58%),
+    radial-gradient(110% 80% at 4% 96%, rgba(93,107,75,.38) 0%, rgba(93,107,75,0) 60%),
+    linear-gradient(168deg, var(--wine-deep) 0%, var(--wine) 46%, #5d1826 100%);
+  color:#f8ece2;
+  padding:clamp(56px,8vw,104px) 0 clamp(60px,8vw,104px);
+}
+.hero::after{
+  content:"";position:absolute;inset:auto 0 0 0;height:120px;pointer-events:none;
+  background:linear-gradient(to top,rgba(46,11,20,.55),transparent);
+}
+.hero .wrap{position:relative;z-index:2}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,300px);gap:clamp(28px,4vw,56px);align-items:center}
+.hero .eyebrow{color:var(--ember)}
+.hero h1{
+  margin:20px 0 0;
+  font-size:clamp(34px,6.6vw,70px);
+  letter-spacing:-.025em;
+  color:#fff;
+}
+.hero h1 .amp{color:var(--ember);font-style:italic;padding:0 .06em}
+.hero h1 .ln{display:block}
+.hero-sub{margin-top:18px;max-width:34em;color:rgba(248,236,226,.86);font-size:clamp(15px,1.6vw,18px)}
+.hero-meta{
+  margin-top:26px;display:flex;flex-wrap:wrap;gap:8px 10px;
+  font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:rgba(248,236,226,.72)
+}
+.hero-meta li{border:1px solid rgba(248,236,226,.26);border-radius:100px;padding:5px 13px}
+.cta-row{margin-top:32px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:14px 24px;border-radius:100px;
+  font-weight:650;font-size:15px;text-decoration:none;
+  border:1px solid transparent;transition:transform .15s ease, background .15s ease;
+}
+.btn-main{background:var(--ember);color:#33100a;box-shadow:0 10px 26px -12px rgba(217,139,74,.8)}
+.btn-main:hover{background:#e89d5c;transform:translateY(-1px)}
+.btn-ghost{border-color:rgba(248,236,226,.38);color:#f8ece2}
+.btn-ghost:hover{background:rgba(248,236,226,.1)}
+.btn svg{flex:0 0 auto}
+.hero-art{display:flex;justify-content:center}
+.hero-art svg{width:100%;height:auto;max-width:300px}
+
+/* ---------- servicios ---------- */
+.servicios{background:var(--cream)}
+.sec-head{max-width:660px}
+.sec-head .eyebrow{color:var(--clay)}
+.sec-head h2{margin:18px 0 0;font-size:clamp(26px,3.6vw,40px)}
+.sec-head p{margin-top:14px}
+.cards{margin-top:clamp(32px,4vw,52px);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(14px,1.8vw,22px)}
+.card{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:clamp(22px,2.4vw,30px);
+  position:relative;overflow:hidden;
+}
+.card::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--clay),var(--ember));
+  opacity:.75;
+}
+.card-ico{
+  width:48px;height:48px;border-radius:13px;
+  background:linear-gradient(145deg,rgba(181,96,63,.15),rgba(217,139,74,.1));
+  border:1px solid rgba(181,96,63,.2);
+  display:flex;align-items:center;justify-content:center;
+}
+.card h3{margin:18px 0 0;font-size:clamp(18px,1.9vw,22px)}
+.card p{margin-top:9px;font-size:14.5px;color:var(--ink-soft)}
+.card-tag{
+  margin-top:16px;display:inline-block;font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--clay);font-weight:650;
+}
+
+/* ---------- reservar ---------- */
+.reservar{background:linear-gradient(180deg,var(--cream-2),#ece0cb);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.steps{margin-top:clamp(32px,4vw,52px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2vw,26px)}
+.step{position:relative;padding-top:26px;border-top:2px solid rgba(74,18,32,.18)}
+.step-n{
+  position:absolute;top:-19px;left:0;
+  width:38px;height:38px;border-radius:50%;
+  background:var(--wine);color:var(--ember);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-size:17px;font-weight:600;
+}
+.step h3{margin:0 0 8px;font-size:clamp(17px,1.8vw,21px)}
+.step p{font-size:14.5px;color:var(--ink-soft)}
+.reservar-note{
+  margin-top:clamp(28px,3vw,40px);
+  display:flex;flex-wrap:wrap;gap:14px 20px;align-items:center;
+  background:var(--paper);border:1px solid var(--line);border-radius:16px;
+  padding:18px clamp(18px,2.2vw,26px);
+}
+.reservar-note p{font-size:14.5px;color:var(--ink-soft);flex:1 1 240px;min-width:0}
+.tel-strong{
+  font-family:var(--serif);font-size:clamp(20px,2.4vw,26px);
+  color:var(--wine);text-decoration:none;white-space:nowrap;font-weight:600;
+}
+.tel-strong:hover{color:var(--clay)}
+
+/* ---------- contacto ---------- */
+.contacto{background:var(--wine-deep);color:#f3e4da}
+.contacto .eyebrow{color:var(--ember)}
+.contacto h2{color:#fff}
+.contacto .sec-head p{color:rgba(243,228,218,.8)}
+.contact-grid{margin-top:clamp(32px,4vw,52px);display:grid;grid-template-columns:minmax(0,0.95fr) minmax(0,1.05fr);gap:clamp(26px,3.4vw,48px);align-items:start}
+.data-list{display:grid;gap:4px}
+.data{
+  display:flex;gap:16px;align-items:flex-start;
+  padding:20px 0;border-bottom:1px solid rgba(243,228,218,.16);
+}
+.data:first-child{padding-top:0}
+.data-ico{
+  flex:0 0 auto;width:40px;height:40px;border-radius:11px;
+  background:rgba(217,139,74,.14);border:1px solid rgba(217,139,74,.3);
+  display:flex;align-items:center;justify-content:center;
+}
+.data-body{min-width:0}
+.data-k{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:rgba(243,228,218,.6);font-weight:600}
+.data-v{margin-top:5px;font-family:var(--serif);font-size:clamp(17px,1.9vw,21px);color:#fff;text-decoration:none;display:block}
+a.data-v:hover{color:var(--ember)}
+.data-note{margin-top:4px;font-size:13.5px;color:rgba(243,228,218,.66)}
+.map-card{
+  background:#3a0e1a;border:1px solid rgba(243,228,218,.16);
+  border-radius:18px;padding:14px;overflow:hidden;
+}
+.map-card svg{display:block;width:100%;height:auto;border-radius:10px}
+.map-cap{
+  margin-top:12px;padding:0 4px 2px;
+  font-size:12px;letter-spacing:.05em;color:rgba(243,228,218,.6);
+}
+
+/* ---------- pie ---------- */
+.pie{background:#1f070d;color:rgba(243,228,218,.78);padding:clamp(40px,5vw,60px) 0}
+.pie-top{display:flex;flex-wrap:wrap;gap:22px 32px;justify-content:space-between;align-items:flex-end}
+.pie-brand{font-family:var(--serif);font-size:clamp(19px,2.2vw,24px);color:#fff;line-height:1.25}
+.pie-brand small{display:block;font-family:var(--sans);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ember);margin-top:9px;font-weight:600}
+.pie-contact{display:grid;gap:7px;font-size:14.5px}
+.pie-contact a{text-decoration:none;color:rgba(243,228,218,.9)}
+.pie-contact a:hover{color:var(--ember)}
+.pie-rule{height:1px;background:rgba(243,228,218,.16);margin:clamp(26px,3vw,36px) 0 20px}
+.pie-legal{font-size:12.5px;color:rgba(243,228,218,.6);line-height:1.6}
+.pie-legal strong{color:rgba(243,228,218,.9);font-weight:600}
+
+/* ---------- responsive ---------- */
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:minmax(0,1fr)}
+  .hero-art{order:-1;justify-content:flex-start}
+  .hero-art svg{max-width:210px}
+  .contact-grid{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:680px){
+  :root{--bar-h:58px}
+  .cards{grid-template-columns:minmax(0,1fr)}
+  .steps{grid-template-columns:minmax(0,1fr);gap:34px}
+  .step{padding-top:24px}
+  .hero-meta{font-size:11px}
+  .tel-strong{font-size:22px}
+  .pie-top{flex-direction:column;align-items:flex-start}
+}
+@media (max-width:420px){
+  .btn{width:100%;justify-content:center}
+  .cta-row{gap:10px}
+}
+@media print{
+  .topbar{position:static}
+  body{padding-top:0}
+  *{animation:none!important;transition:none!important;opacity:1!important;transform:none!important}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · <b>FFFFFFstudio</b> · Ángel Rubio</span>
+</div>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow"><span class="rule"></span>Falces · Navarra</span>
+        <h1><span class="ln">Bar <span class="amp">&amp;</span> Restaurante</span><span class="ln">Garmendi</span></h1>
+        <p class="hero-sub">Bar y restaurante de cocina navarra en el centro de Falces. Barra para el día a día y comedor para comer con calma, con o sin compañía.</p>
+        <ul class="hero-meta">
+          <li>Cocina navarra</li>
+          <li>Barra y comedor</li>
+          <li>Calle La Cruz, 8</li>
+        </ul>
+        <div class="cta-row">
+          <a class="btn btn-main" href="tel:+34948734356">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8.1 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2z"/></svg>
+            Llamar al 948 73 43 56
+          </a>
+          <a class="btn btn-ghost" href="#contacto">Dónde estamos</a>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="120" cy="120" r="112" stroke="rgba(248,236,226,.2)"/>
+          <circle cx="120" cy="120" r="88" stroke="rgba(217,139,74,.45)" stroke-dasharray="3 7"/>
+          <g stroke="#f0ddd0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M120 44v152"/>
+            <path d="M120 70c-13-4-22-12-24-24 13 1 22 9 24 24z"/>
+            <path d="M120 70c13-4 22-12 24-24-13 1-22 9-24 24z"/>
+            <path d="M120 104c-13-4-22-12-24-24 13 1 22 9 24 24z"/>
+            <path d="M120 104c13-4 22-12 24-24-13 1-22 9-24 24z"/>
+            <path d="M120 138c-13-4-22-12-24-24 13 1 22 9 24 24z"/>
+            <path d="M120 138c13-4 22-12 24-24-13 1-22 9-24 24z"/>
+          </g>
+          <g stroke="rgba(217,139,74,.9)" stroke-width="2.4" stroke-linecap="round">
+            <path d="M74 186h92"/>
+            <path d="M88 186v14"/><path d="M152 186v14"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ SERVICIOS ============ -->
+<section class="servicios" id="servicios">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow"><span class="rule"></span>Lo que ofrecemos</span>
+      <h2>Un bar de pueblo y un comedor de cocina navarra</h2>
+      <p class="lead">Del café de la mañana a la comida de celebración, en el mismo sitio y con el mismo trato de siempre.</p>
+    </div>
+    <div class="cards">
+
+      <article class="card">
+        <div class="card-ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b5603f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9z"/><path d="M16 10h2a2.5 2.5 0 0 1 0 5h-2"/><path d="M4 22h13"/><path d="M8 3v2.5"/><path d="M12 3v2.5"/></svg>
+        </div>
+        <h3>Barra y desayunos</h3>
+        <p>Café, pinchos y el rato de barra que hace de un bar el punto de encuentro del pueblo.</p>
+        <span class="card-tag">Cada día</span>
+      </article>
+
+      <article class="card">
+        <div class="card-ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b5603f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3v7a2.5 2.5 0 0 0 5 0V3"/><path d="M7.5 10v11"/><path d="M17 3c-1.8 1.6-2.5 3.4-2.5 5.5S15.2 12 17 13v8"/></svg>
+        </div>
+        <h3>Menú del día</h3>
+        <p>Propuesta diaria de cocina casera, con primero, segundo y postre. Se consulta en el bar o por teléfono.</p>
+        <span class="card-tag">Comedor</span>
+      </article>
+
+      <article class="card">
+        <div class="card-ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b5603f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20c4.4 0 8-3.6 8-8H4c0 4.4 3.6 8 8 8z"/><path d="M3 20h18"/><path d="M12 4c-1.4 1-2 2-1.2 3.2.6.9.5 1.6-.3 2.3"/><path d="M16 5.5c-1 .8-1.4 1.6-.8 2.5"/></svg>
+        </div>
+        <h3>Carta de cocina navarra</h3>
+        <p>Platos de la tradición de la zona, con producto de temporada de la Ribera. La carta se consulta en el local.</p>
+        <span class="card-tag">Tradición</span>
+      </article>
+
+      <article class="card">
+        <div class="card-ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b5603f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17.5" cy="9.5" r="2.4"/><path d="M17 15.2a5.6 5.6 0 0 1 4.5 4.8"/></svg>
+        </div>
+        <h3>Comidas de grupo</h3>
+        <p>Comidas familiares, cuadrillas y celebraciones. Se organizan hablando antes con el restaurante.</p>
+        <span class="card-tag">Bajo reserva</span>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ CÓMO RESERVAR ============ -->
+<section class="reservar" id="reservar">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow"><span class="rule"></span>Cómo reservar</span>
+      <h2>Tres pasos, una llamada</h2>
+      <p class="lead">La reserva se hace por teléfono, hablando directamente con el restaurante.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-n">1</div>
+        <h3>Llama al restaurante</h3>
+        <p>Marca el <a class="tel-strong" style="font-size:inherit" href="tel:+34948734356">948 73 43 56</a> y te atiende el propio local.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">2</div>
+        <h3>Di cuántos y cuándo</h3>
+        <p>Número de personas y el día que os interesa. Si es un grupo, conviene avisar con antelación.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">3</div>
+        <h3>Confirma los detalles</h3>
+        <p>En la misma llamada se cierra la mesa y se comentan las necesidades que haya en la comida.</p>
+      </div>
+    </div>
+    <div class="reservar-note">
+      <p>Para cualquier duda sobre disponibilidad, menú del día o comidas de grupo, lo más rápido es llamar.</p>
+      <a class="tel-strong" href="tel:+34948734356">948 73 43 56</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section class="contacto" id="contacto">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow"><span class="rule"></span>Contacto</span>
+      <h2>En el centro de Falces</h2>
+      <p>Calle La Cruz, 8 · 31370 Falces (Navarra)</p>
+    </div>
+    <div class="contact-grid">
+      <div class="data-list">
+
+        <div class="data">
+          <div class="data-ico">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#d98b4a" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8.1 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2z"/></svg>
+          </div>
+          <div class="data-body">
+            <div class="data-k">Teléfono</div>
+            <a class="data-v" href="tel:+34948734356">948 73 43 56</a>
+            <div class="data-note">Reservas y consultas.</div>
+          </div>
+        </div>
+
+        <div class="data">
+          <div class="data-ico">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#d98b4a" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10.5c0 5.5-8 11.5-8 11.5S4 16 4 10.5a8 8 0 0 1 16 0z"/><circle cx="12" cy="10.3" r="2.7"/></svg>
+          </div>
+          <div class="data-body">
+            <div class="data-k">Dirección</div>
+            <span class="data-v">Calle La Cruz, 8</span>
+            <div class="data-note">31370 Falces (Navarra)</div>
+          </div>
+        </div>
+
+        <div class="data">
+          <div class="data-ico">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#d98b4a" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.2v5.1l3.4 2"/></svg>
+          </div>
+          <div class="data-body">
+            <div class="data-k">Horario</div>
+            <span class="data-v">Consultar horario</span>
+            <div class="data-note">Por teléfono se confirma el horario del día.</div>
+          </div>
+        </div>
+
+        <div class="data">
+          <div class="data-ico">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#d98b4a" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.6 6.6 12 13l8.4-6.4"/></svg>
+          </div>
+          <div class="data-body">
+            <div class="data-k">Correo</div>
+            <a class="data-v" href="mailto:fergarmendi@gmail.com">fergarmendi@gmail.com</a>
+            <div class="data-note">Para consultas que no corran prisa.</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="map-card">
+        <svg viewBox="0 0 520 380" role="img" aria-label="Plano esquemático y abstracto de la zona del local, sin referencias geográficas reales.">
+          <rect width="520" height="380" rx="10" fill="#331019"/>
+          <g stroke="rgba(243,228,218,.07)" stroke-width="1">
+            <path d="M0 48h520M0 110h520M0 172h520M0 234h520M0 296h520"/>
+            <path d="M62 0v380M144 0v380M226 0v380M308 0v380M390 0v380M472 0v380"/>
+          </g>
+          <g fill="rgba(93,107,75,.3)">
+            <rect x="30" y="248" width="124" height="96" rx="8"/>
+            <rect x="378" y="38" width="118" height="80" rx="8"/>
+          </g>
+          <g stroke="#f0ddd0" stroke-linecap="round" fill="none">
+            <path d="M-10 212h540" stroke-width="20" opacity=".16"/>
+            <path d="M-10 212h540" stroke-width="2.4" opacity=".55" stroke-dasharray="14 12"/>
+            <path d="M196 -10v400" stroke-width="16" opacity=".14"/>
+            <path d="M196 -10v400" stroke-width="2" opacity=".42" stroke-dasharray="10 10"/>
+            <path d="M330 -10v230 a40 40 0 0 0 40 40 h160" stroke-width="14" opacity=".12"/>
+            <path d="M330 -10v230 a40 40 0 0 0 40 40 h160" stroke-width="2" opacity=".38" stroke-dasharray="10 10"/>
+            <path d="M-10 108 C 90 108, 130 60, 240 60 S 400 128, 530 118" stroke-width="12" opacity=".1"/>
+            <path d="M-10 108 C 90 108, 130 60, 240 60 S 400 128, 530 118" stroke-width="1.8" opacity=".3" stroke-dasharray="8 10"/>
+          </g>
+          <g fill="rgba(243,228,218,.09)">
+            <rect x="214" y="124" width="62" height="54" rx="6"/>
+            <rect x="214" y="246" width="78" height="62" rx="6"/>
+            <rect x="92" y="124" width="72" height="56" rx="6"/>
+            <rect x="398" y="276" width="90" height="62" rx="6"/>
+          </g>
+          <g>
+            <circle cx="196" cy="212" r="44" fill="rgba(217,139,74,.13)"/>
+            <circle cx="196" cy="212" r="26" fill="rgba(217,139,74,.22)"/>
+            <path d="M196 232c0 0-13-11.6-13-19.6a13 13 0 0 1 26 0c0 8-13 19.6-13 19.6z" fill="#d98b4a"/>
+            <circle cx="196" cy="211.6" r="4.6" fill="#331019"/>
+          </g>
+          <g font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial,sans-serif">
+            <rect x="244" y="112" width="166" height="56" rx="9" fill="#2a0c14" stroke="rgba(217,139,74,.4)"/>
+            <path d="M262 168 L262 186 L247 170" fill="#2a0c14"/>
+            <text x="258" y="136" fill="#f3e4da" font-size="17" font-weight="600">Garmendi</text>
+            <text x="258" y="156" fill="rgba(243,228,218,.65)" font-size="13">Calle La Cruz, 8</text>
+            <text x="30" y="362" fill="rgba(243,228,218,.42)" font-size="11" letter-spacing="1.2">PLANO ESQUEMÁTICO · NO A ESCALA</text>
+          </g>
+        </svg>
+        <p class="map-cap">Esquema orientativo del entorno del local. No es un mapa a escala.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PIE ============ -->
+<footer class="pie">
+  <div class="wrap">
+    <div class="pie-top">
+      <div class="pie-brand">
+        Bar &amp; Restaurante Garmendi
+        <small>Falces · Navarra</small>
+      </div>
+      <div class="pie-contact">
+        <a href="tel:+34948734356">948 73 43 56</a>
+        <a href="mailto:fergarmendi@gmail.com">fergarmendi@gmail.com</a>
+        <span>Calle La Cruz, 8 · 31370 Falces (Navarra)</span>
+        <span>Consultar horario</span>
+      </div>
+    </div>
+    <div class="pie-rule"></div>
+    <p class="pie-legal"><strong>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</strong></p>
+    <p class="pie-legal">Maqueta de demostración sin vínculo oficial con el negocio. Los contenidos de servicios son orientativos y deben confirmarse con el local.</p>
+  </div>
+</footer>
+
+<script>
+/* Ajusta el espacio superior a la altura real de la barra fija.
+   El contenido es visible sin JS; esto solo afina el padding. */
+(function(){
+  var bar=document.querySelector('.topbar');
+  function fit(){
+    if(!bar) return;
+    document.body.style.paddingTop=Math.ceil(bar.getBoundingClientRect().height)+'px';
+  }
+  fit();
+  window.addEventListener('resize',fit);
+  window.addEventListener('load',fit);
+})();
+</script>
+</body>
+</html>

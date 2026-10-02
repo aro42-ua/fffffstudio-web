@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Floristeria Piliflor — Propuesta de diseño</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+  :root{
+    --verde-900:#15301f;
+    --verde-800:#1d4029;
+    --verde-700:#2a5a39;
+    --verde-500:#4b8158;
+    --verde-200:#c4dcc8;
+    --crema:#faf6ef;
+    --crema-2:#f2ebdf;
+    --rosa:#c9657a;
+    --rosa-200:#f0cfd6;
+    --tierra:#a9703f;
+    --tinta:#20261f;
+    --tinta-60:#5c6459;
+    --linea:rgba(21,48,31,.13);
+    --radio:18px;
+    --sombra:0 1px 2px rgba(21,48,31,.05), 0 14px 40px -22px rgba(21,48,31,.35);
+    --max:1120px;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  html,body{max-width:100%;overflow-x:hidden}
+  body{
+    margin:0;
+    padding-top:46px;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    color:var(--tinta);
+    background:var(--crema);
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%}
+  a{color:inherit}
+  h1,h2,h3{margin:0;line-height:1.12;letter-spacing:-.02em;font-weight:650}
+  p{margin:0}
+
+  /* ---------- barra fija ---------- */
+  .aviso{
+    position:fixed;top:0;left:0;right:0;z-index:60;
+    background:var(--verde-900);
+    color:#eadfd0;
+    border-bottom:1px solid rgba(255,255,255,.12);
+  }
+  .aviso__in{
+    max-width:var(--max);margin:0 auto;
+    padding:9px 20px;
+    font-size:12.5px;line-height:1.35;letter-spacing:.035em;
+    text-align:center;
+    display:flex;align-items:center;justify-content:center;gap:9px;
+    min-height:28px;
+  }
+  .aviso__dot{width:7px;height:7px;border-radius:50%;background:var(--rosa);flex:0 0 auto}
+  .aviso__t{display:block}
+
+  /* ---------- layout ---------- */
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+  section{position:relative}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12px;letter-spacing:.17em;text-transform:uppercase;
+    color:var(--verde-700);font-weight:600;margin-bottom:14px;
+  }
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--verde-500);display:block}
+  .lead{color:var(--tinta-60);font-size:17px;max-width:58ch}
+
+  /* ---------- hero ---------- */
+  .hero{
+    overflow:hidden;
+    background:
+      radial-gradient(90% 120% at 88% 8%, rgba(240,207,214,.55) 0%, rgba(240,207,214,0) 58%),
+      radial-gradient(70% 90% at 4% 96%, rgba(196,220,200,.6) 0%, rgba(196,220,200,0) 62%),
+      linear-gradient(176deg,#fbf8f2 0%,#f4eee3 100%);
+    border-bottom:1px solid var(--linea);
+  }
+  .hero__in{
+    max-width:var(--max);margin:0 auto;padding:78px 24px 86px;
+    display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);
+    gap:52px;align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(40px,6.1vw,74px);
+    font-weight:680;letter-spacing:-.035em;
+    margin:0 0 20px;
+  }
+  .hero h1 .l2{display:block;color:var(--verde-700)}
+  .hero__sub{font-size:19px;color:var(--tinta-60);max-width:40ch;margin-bottom:12px}
+  .hero__loc{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:14.5px;color:var(--verde-700);font-weight:550;margin-bottom:30px;
+  }
+  .cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:15px 24px;border-radius:999px;
+    text-decoration:none;font-weight:600;font-size:16px;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+  }
+  .btn--main{background:var(--verde-800);color:#fdfbf7;box-shadow:0 10px 26px -12px rgba(21,48,31,.65)}
+  .btn--main:hover{background:var(--verde-900);transform:translateY(-1px)}
+  .btn--ghost{border:1px solid rgba(21,48,31,.25);color:var(--verde-900)}
+  .btn--ghost:hover{background:rgba(21,48,31,.05)}
+  .btn svg{flex:0 0 auto}
+
+  /* ramo decorativo */
+  .hero__art{display:flex;justify-content:center;min-width:0}
+  .bouquet{width:100%;max-width:380px;height:auto;filter:drop-shadow(0 26px 40px rgba(21,48,31,.18))}
+
+  /* ---------- servicios ---------- */
+  .servicios{padding:84px 0 20px}
+  .sec-head{max-width:var(--max);margin:0 auto;padding:0 24px 38px}
+  .sec-head h2{font-size:clamp(28px,3.4vw,40px);margin-bottom:14px}
+  .grid4{
+    max-width:var(--max);margin:0 auto;padding:0 24px;
+    display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;
+  }
+  .card{
+    background:#fff;border:1px solid var(--linea);border-radius:var(--radio);
+    padding:26px 22px 28px;box-shadow:var(--sombra);
+    display:flex;flex-direction:column;gap:12px;min-width:0;
+  }
+  .card__ic{
+    width:46px;height:46px;border-radius:13px;
+    background:var(--crema-2);
+    display:flex;align-items:center;justify-content:center;
+    border:1px solid rgba(21,48,31,.08);
+  }
+  .card h3{font-size:18.5px}
+  .card p{font-size:15px;color:var(--tinta-60);line-height:1.6}
+  .nota{
+    max-width:var(--max);margin:26px auto 0;padding:0 24px;
+    font-size:13.5px;color:var(--tinta-60);
+  }
+  .nota span{
+    display:block;border-left:2px solid var(--verde-200);padding:4px 0 4px 14px;
+  }
+
+  /* ---------- pasos ---------- */
+  .pasos{padding:86px 0 90px}
+  .pasos__box{
+    max-width:var(--max);margin:0 auto;
+    background:var(--verde-900);color:#eef3ea;border-radius:26px;
+    padding:52px 44px 56px;
+    background-image:
+      radial-gradient(70% 100% at 100% 0%, rgba(201,101,122,.3) 0%, rgba(201,101,122,0) 60%),
+      radial-gradient(60% 90% at 0% 100%, rgba(75,129,88,.45) 0%, rgba(75,129,88,0) 65%);
+    background-color:var(--verde-900);
+  }
+  .pasos__box .eyebrow{color:var(--verde-200)}
+  .pasos__box .eyebrow::before{background:var(--verde-200)}
+  .pasos__box h2{font-size:clamp(26px,3.2vw,38px);color:#fff;margin-bottom:34px;max-width:22ch}
+  .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+  .step{
+    border-top:1px solid rgba(255,255,255,.22);padding-top:20px;min-width:0;
+  }
+  .step__n{
+    font-size:13px;letter-spacing:.14em;color:var(--rosa-200);
+    font-weight:650;margin-bottom:10px;display:block;
+  }
+  .step h3{font-size:19px;color:#fff;margin-bottom:8px}
+  .step p{font-size:15px;color:rgba(238,243,234,.78);line-height:1.6}
+
+  /* ---------- contacto ---------- */
+  .contacto{padding:0 0 92px}
+  .contacto__grid{
+    max-width:var(--max);margin:0 auto;padding:0 24px;
+    display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.04fr);gap:40px;align-items:start;
+  }
+  .datos{display:flex;flex-direction:column;gap:2px}
+  .datos h2{font-size:clamp(26px,3.2vw,38px);margin-bottom:16px}
+  .dl{list-style:none;margin:18px 0 0;padding:0;display:flex;flex-direction:column}
+  .dl li{
+    display:flex;gap:14px;align-items:flex-start;
+    padding:16px 0;border-top:1px solid var(--linea);min-width:0;
+  }
+  .dl li:last-child{border-bottom:1px solid var(--linea)}
+  .dl .k{
+    font-size:12px;letter-spacing:.13em;text-transform:uppercase;
+    color:var(--verde-700);font-weight:650;width:94px;flex:0 0 94px;padding-top:3px;
+  }
+  .dl .v{font-size:16.5px;min-width:0;overflow-wrap:anywhere}
+  .dl .v a{text-decoration:none;font-weight:600;border-bottom:1px solid var(--verde-200)}
+  .dl .v small{display:block;font-size:14px;color:var(--tinta-60);font-weight:400;border:0}
+  .pill{
+    display:inline-flex;align-items:center;gap:8px;margin-top:22px;
+    background:var(--crema-2);border:1px solid rgba(21,48,31,.1);
+    border-radius:999px;padding:9px 16px;font-size:14px;color:var(--verde-800);font-weight:550;
+  }
+  .mapa{
+    background:#fff;border:1px solid var(--linea);border-radius:var(--radio);
+    padding:16px;box-shadow:var(--sombra);
+  }
+  .mapa svg{display:block;width:100%;height:auto;border-radius:10px}
+  .mapa__cap{
+    font-size:12.5px;color:var(--tinta-60);padding:12px 4px 2px;
+    display:flex;align-items:center;gap:8px;line-height:1.4;
+  }
+  .mapa__cap i{width:8px;height:8px;border-radius:50%;background:var(--rosa);flex:0 0 auto}
+
+  /* ---------- pie ---------- */
+  footer{background:var(--verde-900);color:#dfe8da;padding:50px 0 44px}
+  .foot{
+    max-width:var(--max);margin:0 auto;padding:0 24px;
+    display:grid;grid-template-columns:minmax(0,1fr) minmax(0,auto);gap:28px;align-items:end;
+  }
+  .foot__name{font-size:21px;color:#fff;font-weight:650;letter-spacing:-.02em}
+  .foot__mail{margin-top:10px;font-size:16px}
+  .foot__mail a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.4);overflow-wrap:anywhere}
+  .foot__meta{font-size:14px;color:rgba(223,232,218,.72);margin-top:8px}
+  .firma{
+    font-size:13.5px;color:rgba(223,232,218,.8);line-height:1.5;
+    border-top:1px solid rgba(255,255,255,.16);padding-top:16px;
+  }
+  .foot__studio{display:flex;align-items:center;gap:10px;justify-content:flex-start}
+  .foot__studio b{font-size:14px;letter-spacing:.02em;color:#fff}
+  .foot__bottom{
+    max-width:var(--max);margin:34px auto 0;padding:0 24px;
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:900px){
+    .hero__in{grid-template-columns:minmax(0,1fr);gap:38px;padding:52px 20px 60px}
+    .hero__art{order:-1}
+    .bouquet{max-width:290px}
+    .grid4{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .steps{grid-template-columns:minmax(0,1fr);gap:4px}
+    .step{padding:18px 0 4px}
+    .contacto__grid{grid-template-columns:minmax(0,1fr);gap:28px}
+    .pasos__box{padding:38px 24px 42px;border-radius:22px}
+  }
+  @media (max-width:620px){
+    body{padding-top:62px;font-size:16px}
+    .aviso__in{padding:8px 14px;font-size:11.5px;letter-spacing:.01em;gap:7px;min-height:44px}
+    .wrap,.sec-head,.grid4,.nota,.contacto__grid,.foot,.foot__bottom{padding-left:16px;padding-right:16px}
+    .hero__in{padding:40px 16px 52px}
+    .hero__sub{font-size:17px}
+    .grid4{grid-template-columns:minmax(0,1fr)}
+    .servicios{padding:60px 0 10px}
+    .pasos{padding:60px 0 64px}
+    .pasos__box{padding:32px 18px 36px}
+    .contacto{padding-bottom:66px}
+    .dl li{flex-direction:column;gap:4px}
+    .dl .k{width:auto;flex:none;padding-top:0}
+    .btn{padding:14px 20px;font-size:15.5px}
+    .cta{gap:10px}
+    .cta .btn{width:100%;justify-content:center}
+    .foot{grid-template-columns:minmax(0,1fr);gap:22px;align-items:start}
+  }
+  @media print{
+    .aviso{position:static}
+    body{padding-top:0}
+    *{animation:none !important;transition:none !important}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== barra fija ===== -->
+<div class="aviso" role="note">
+  <div class="aviso__in">
+    <span class="aviso__dot" aria-hidden="true"></span>
+    <span class="aviso__t">Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+  </div>
+</div>
+
+<!-- ===== hero ===== -->
+<section class="hero">
+  <div class="hero__in">
+    <div>
+      <span class="eyebrow">Floristería en el Mercat Municipal</span>
+      <h1>Floristeria<span class="l2">Piliflor</span></h1>
+      <p class="hero__sub">Flores, plantas y jardinería desde nuestro puesto fijo del mercado municipal.</p>
+      <span class="hero__loc">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+          <circle cx="12" cy="10" r="2.6" stroke="currentColor" stroke-width="1.7"/>
+        </svg>
+        Benicarló, Castellón
+      </span>
+      <div class="cta">
+        <a class="btn btn--main" href="tel:+34964470874">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6.3 3.5h3l1.5 4-2 1.4a11.5 11.5 0 0 0 5.9 5.9l1.4-2 4 1.5v3a1.7 1.7 0 0 1-1.9 1.7C10.6 18.4 5.6 13.4 4.6 5.4A1.7 1.7 0 0 1 6.3 3.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+          </svg>
+          Llamar al 96 447 08 74
+        </a>
+        <a class="btn btn--ghost" href="#contacto">Ver cómo llegar</a>
+      </div>
+    </div>
+
+    <div class="hero__art">
+      <!-- ramo esquemático -->
+      <svg class="bouquet" viewBox="0 0 320 340" role="img" aria-label="Ilustración de un ramo de flores">
+        <defs>
+          <linearGradient id="gJar" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#f7efe3"/><stop offset="1" stop-color="#e5d6c0"/>
+          </linearGradient>
+          <linearGradient id="gLeaf" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#4b8158"/><stop offset="1" stop-color="#1d4029"/>
+          </linearGradient>
+        </defs>
+        <circle cx="160" cy="132" r="118" fill="#fff" opacity=".66"/>
+        <circle cx="160" cy="132" r="118" fill="none" stroke="rgba(21,48,31,.12)"/>
+        <!-- tallos -->
+        <g stroke="url(#gLeaf)" stroke-width="3" fill="none" stroke-linecap="round">
+          <path d="M160 250V118"/>
+          <path d="M160 248C150 210 122 188 104 150"/>
+          <path d="M160 248c10-38 38-60 56-98"/>
+          <path d="M160 250c-4-30-24-48-42-58"/>
+          <path d="M160 250c4-30 24-48 42-58"/>
+        </g>
+        <!-- hojas -->
+        <g fill="url(#gLeaf)" opacity=".92">
+          <path d="M160 206c-20-4-32-18-33-34 18 2 31 15 33 34Z"/>
+          <path d="M160 188c20-4 32-18 33-34-18 2-31 15-33 34Z"/>
+          <path d="M131 176c-16-8-23-24-20-39 15 7 22 23 20 39Z"/>
+          <path d="M190 164c16-8 23-24 20-39-15 7-22 23-20 39Z"/>
+        </g>
+        <!-- flores -->
+        <g>
+          <g transform="translate(160,104)">
+            <g fill="#c9657a">
+              <ellipse cx="0" cy="-19" rx="11" ry="18"/><ellipse cx="0" cy="19" rx="11" ry="18"/>
+              <ellipse cx="-19" cy="0" rx="18" ry="11"/><ellipse cx="19" cy="0" rx="18" ry="11"/>
+            </g>
+            <circle r="9.5" fill="#f0cfd6"/><circle r="4" fill="#a9703f"/>
+          </g>
+          <g transform="translate(104,142) scale(.76)">
+            <g fill="#f0cfd6">
+              <ellipse cx="0" cy="-19" rx="11" ry="18"/><ellipse cx="0" cy="19" rx="11" ry="18"/>
+              <ellipse cx="-19" cy="0" rx="18" ry="11"/><ellipse cx="19" cy="0" rx="18" ry="11"/>
+            </g>
+            <circle r="9.5" fill="#fff"/><circle r="4" fill="#c9657a"/>
+          </g>
+          <g transform="translate(217,144) scale(.82)">
+            <g fill="#e8b7a0">
+              <ellipse cx="0" cy="-19" rx="11" ry="18"/><ellipse cx="0" cy="19" rx="11" ry="18"/>
+              <ellipse cx="-19" cy="0" rx="18" ry="11"/><ellipse cx="19" cy="0" rx="18" ry="11"/>
+            </g>
+            <circle r="9.5" fill="#faf6ef"/><circle r="4" fill="#a9703f"/>
+          </g>
+          <g fill="#fff" stroke="rgba(21,48,31,.18)">
+            <circle cx="128" cy="100" r="7"/><circle cx="196" cy="98" r="6"/><circle cx="178" cy="176" r="6"/>
+          </g>
+        </g>
+        <!-- jarrón -->
+        <path d="M118 250h84l-11 62a14 14 0 0 1-14 12h-34a14 14 0 0 1-14-12l-11-62Z" fill="url(#gJar)" stroke="rgba(21,48,31,.22)" stroke-width="1.5"/>
+        <path d="M124 274h72" stroke="rgba(21,48,31,.16)" stroke-width="1.5"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ===== servicios ===== -->
+<section class="servicios" id="servicios">
+  <div class="sec-head">
+    <span class="eyebrow">Servicios</span>
+    <h2>Flor cortada, planta y jardín</h2>
+    <p class="lead">Una selección de los servicios habituales de una floristería con puesto en el mercado. Pregúntanos por teléfono y te contamos qué hay disponible cada día.</p>
+  </div>
+
+  <div class="grid4">
+    <article class="card">
+      <div class="card__ic">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 13v8" stroke="#1d4029" stroke-width="1.7" stroke-linecap="round"/>
+          <circle cx="12" cy="9" r="2.4" stroke="#c9657a" stroke-width="1.7"/>
+          <path d="M12 6.6C12 4.6 10.6 3 9 3c-.6 2 .6 3.6 3 3.6ZM12 6.6C12 4.6 13.4 3 15 3c.6 2-.6 3.6-3 3.6ZM9.6 9C7.6 9 6 10.4 6 12c2 .6 3.6-.6 3.6-3ZM14.4 9c2 0 3.6 1.4 3.6 3-2 .6-3.6-.6-3.6-3Z" stroke="#4b8158" stroke-width="1.5" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h3>Ramos y bouquets</h3>
+      <p>Ramos de flor cortada y bouquets preparados a mano, también envueltos para regalo.</p>
+    </article>
+
+    <article class="card">
+      <div class="card__ic">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M6 10h12l-1.2 9.2a1.8 1.8 0 0 1-1.8 1.6H9a1.8 1.8 0 0 1-1.8-1.6L6 10Z" stroke="#a9703f" stroke-width="1.6" stroke-linejoin="round"/>
+          <path d="M12 10V6" stroke="#4b8158" stroke-width="1.6" stroke-linecap="round"/>
+          <path d="M12 7c-3 0-4.6-1.6-4.6-4C10.4 3 12 4.6 12 7ZM12 7c2.4 0 4-1.4 4-3.4C13.6 3.6 12 5 12 7Z" stroke="#4b8158" stroke-width="1.5" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h3>Plantas de interior y exterior</h3>
+      <p>Planta verde, de flor y de temporada, con indicaciones básicas de riego y luz.</p>
+    </article>
+
+    <article class="card">
+      <div class="card__ic">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 20h16" stroke="#1d4029" stroke-width="1.7" stroke-linecap="round"/>
+          <path d="M9 20c-3-1-4.6-3.6-4.6-7.4C8.2 13 10 15.4 9 20Z" stroke="#4b8158" stroke-width="1.6" stroke-linejoin="round"/>
+          <path d="M14 20c3-1.4 4.6-4.4 4.6-9C13.8 12 12.6 15.2 14 20Z" stroke="#4b8158" stroke-width="1.6" stroke-linejoin="round"/>
+          <path d="M14.5 6.5 19 3" stroke="#a9703f" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h3>Jardinería y productos de jardín</h3>
+      <p>Macetas, sustratos y artículos de jardín para mantener las plantas en casa, patio o terraza.</p>
+    </article>
+
+    <article class="card">
+      <div class="card__ic">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="3.5" y="5.5" width="17" height="15" rx="2.5" stroke="#1d4029" stroke-width="1.6"/>
+          <path d="M3.5 10h17M8 3.5v4M16 3.5v4" stroke="#1d4029" stroke-width="1.6" stroke-linecap="round"/>
+          <circle cx="12" cy="15.4" r="2.2" fill="#c9657a"/>
+        </svg>
+      </div>
+      <h3>Arreglos para fechas señaladas</h3>
+      <p>Composiciones y centros para celebraciones, aniversarios y encargos de temporada.</p>
+    </article>
+  </div>
+
+  <p class="nota"><span>Los servicios de esta página son orientativos del sector y no constituyen un catálogo: la disponibilidad y las condiciones las define la floristería.</span></p>
+</section>
+
+<!-- ===== pasos ===== -->
+<section class="pasos" id="encargo">
+  <div class="wrap">
+    <div class="pasos__box">
+      <span class="eyebrow">Cómo trabajamos</span>
+      <h2>Tu encargo, paso a paso</h2>
+      <div class="steps">
+        <div class="step">
+          <span class="step__n">PASO 01</span>
+          <h3>Nos lo cuentas</h3>
+          <p>Nos llamas o te pasas por el puesto y nos explicas la ocasión, el estilo que buscas y para cuándo lo necesitas.</p>
+        </div>
+        <div class="step">
+          <span class="step__n">PASO 02</span>
+          <h3>Lo preparamos</h3>
+          <p>Elegimos juntos entre lo que hay disponible y montamos el ramo, la planta o la composición a mano.</p>
+        </div>
+        <div class="step">
+          <span class="step__n">PASO 03</span>
+          <h3>Lo recoges</h3>
+          <p>Te avisamos cuando esté listo para recogerlo en el puesto del mercado, envuelto y con los cuidados explicados.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== contacto ===== -->
+<section class="contacto" id="contacto">
+  <div class="contacto__grid">
+    <div class="datos">
+      <span class="eyebrow">Contacto</span>
+      <h2>Dónde encontrarnos</h2>
+      <p class="lead">Estamos en el Mercat Municipal de Benicarló, en la parada 42.</p>
+
+      <ul class="dl">
+        <li>
+          <span class="k">Teléfono</span>
+          <span class="v">
+            <a href="tel:+34964470874">96 447 08 74</a>
+            <small>Móvil: <a href="tel:+34639391665">639 391 665</a></small>
+          </span>
+        </li>
+        <li>
+          <span class="k">Dirección</span>
+          <span class="v">Plaza Mercat Municipal, parada 42<br>12580 Benicarló (Castellón)</span>
+        </li>
+        <li>
+          <span class="k">Email</span>
+          <span class="v"><a href="mailto:piliperaire@gmail.com">piliperaire@gmail.com</a></span>
+        </li>
+        <li>
+          <span class="k">Horario</span>
+          <span class="v">Consultar horario</span>
+        </li>
+      </ul>
+
+      <span class="pill">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.7"/>
+          <path d="M12 7.6V12l3 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+        </svg>
+        Consultar horario por teléfono
+      </span>
+    </div>
+
+    <div class="mapa">
+      <!-- mapa esquemático: formas abstractas, no un mapa real -->
+      <svg viewBox="0 0 520 360" role="img" aria-label="Esquema abstracto de situación del puesto en el mercado">
+        <defs>
+          <linearGradient id="gMap" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#f4f1e8"/><stop offset="1" stop-color="#eae4d6"/>
+          </linearGradient>
+          <pattern id="pDots" width="16" height="16" patternUnits="userSpaceOnUse">
+            <circle cx="3" cy="3" r="1.1" fill="rgba(21,48,31,.14)"/>
+          </pattern>
+        </defs>
+        <rect width="520" height="360" rx="10" fill="url(#gMap)"/>
+        <rect width="520" height="360" rx="10" fill="url(#pDots)"/>
+
+        <!-- manzanas -->
+        <g fill="#fff" opacity=".82" stroke="rgba(21,48,31,.1)">
+          <rect x="24" y="26" width="118" height="92" rx="7"/>
+          <rect x="24" y="238" width="118" height="96" rx="7"/>
+          <rect x="396" y="26" width="100" height="104" rx="7"/>
+          <rect x="396" y="236" width="100" height="98" rx="7"/>
+          <rect x="222" y="26" width="140" height="62" rx="7"/>
+        </g>
+
+        <!-- calles -->
+        <g stroke="#ffffff" stroke-linecap="round">
+          <path d="M0 176h520" stroke-width="30"/>
+          <path d="M184 0v360" stroke-width="24"/>
+          <path d="M378 0v360" stroke-width="18"/>
+          <path d="M0 300h520" stroke-width="16"/>
+        </g>
+        <g stroke="rgba(21,48,31,.22)" stroke-width="1.2" stroke-dasharray="9 9">
+          <path d="M0 176h520"/><path d="M184 0v360"/>
+        </g>
+
+        <!-- zona verde -->
+        <g>
+          <rect x="222" y="246" width="140" height="88" rx="9" fill="#dfe9d9" stroke="rgba(21,48,31,.12)"/>
+          <g fill="#4b8158" opacity=".65">
+            <circle cx="252" cy="282" r="11"/><circle cx="292" cy="300" r="14"/><circle cx="332" cy="276" r="10"/>
+          </g>
+        </g>
+
+        <!-- edificio del mercado -->
+        <g>
+          <rect x="214" y="104" width="156" height="118" rx="10" fill="#1d4029"/>
+          <g stroke="rgba(255,255,255,.26)" stroke-width="1.2">
+            <path d="M214 140h156M214 176h156M254 104v118M294 104v118M334 104v118"/>
+          </g>
+          <!-- parada marcada -->
+          <rect x="296" y="180" width="36" height="34" rx="5" fill="#c9657a"/>
+          <text x="314" y="202" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial,sans-serif" font-size="15" font-weight="700" fill="#fff">42</text>
+        </g>
+
+        <!-- chincheta -->
+        <g transform="translate(314,96)">
+          <path d="M0 26c0 0 15-13.6 15-24A15 15 0 1 0-15 2c0 10.4 15 24 15 24Z" fill="#15301f"/>
+          <circle cx="0" cy="2" r="5.4" fill="#f0cfd6"/>
+        </g>
+
+        <!-- etiquetas -->
+        <g font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial,sans-serif" fill="#5c6459" font-size="13">
+          <text x="40" y="206" letter-spacing="1.4">CALLE</text>
+          <text x="238" y="68" letter-spacing="1.4">PLAZA</text>
+          <text x="238" y="330" letter-spacing="1.4">ZONA VERDE</text>
+        </g>
+        <g font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial,sans-serif" font-size="11" font-weight="700" fill="#fff">
+          <text x="292" y="127" text-anchor="middle" letter-spacing=".8">MERCAT MUNICIPAL</text>
+        </g>
+      </svg>
+      <p class="mapa__cap"><i aria-hidden="true"></i>Esquema orientativo dibujado para la maqueta: no es un mapa real ni está geolocalizado.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== pie ===== -->
+<footer>
+  <div class="foot">
+    <div>
+      <div class="foot__name">Floristeria Piliflor</div>
+      <p class="foot__mail"><a href="mailto:piliperaire@gmail.com">piliperaire@gmail.com</a></p>
+      <p class="foot__meta">Plaza Mercat Municipal, parada 42 · 12580 Benicarló (Castellón) · 96 447 08 74</p>
+    </div>
+    <div class="foot__studio">
+      <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true">
+        <rect width="34" height="34" rx="9" fill="rgba(255,255,255,.1)" stroke="rgba(255,255,255,.26)"/>
+        <path d="M11 24V10h12M11 17h9" stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none"/>
+      </svg>
+      <b>FFFFFFstudio</b>
+    </div>
+  </div>
+  <div class="foot__bottom">
+    <p class="firma">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+</body>
+</html>
