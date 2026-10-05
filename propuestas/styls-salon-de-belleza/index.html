@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Styl's Salón de Belleza · Novelda — Propuesta de rediseño</title>
+<meta name="description" content="Maqueta de propuesta de rediseño web para Styl's Salón de Belleza, peluquería y estética en Novelda (Alicante). Presentada por FFFFFFstudio.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  :root{
+    --ink:#241c22;
+    --ink-soft:#5d5159;
+    --cream:#fbf7f4;
+    --cream-2:#f4ece7;
+    --plum:#5a2a44;
+    --plum-deep:#3b1b2d;
+    --rose:#c98a84;
+    --gold:#b0854b;
+    --line:rgba(36,28,34,.13);
+    --bar-h:44px;
+    --r:18px;
+    --shadow:0 18px 50px -24px rgba(59,27,45,.38);
+    --maxw:1140px;
+  }
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+  :target{scroll-margin-top:calc(var(--bar-h) + 70px)}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    overflow-x:hidden;
+    padding-top:var(--bar-h);
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%;display:block}
+  a{color:inherit}
+  h1,h2,h3{
+    font-family:ui-serif,Georgia,"Times New Roman",Times,serif;
+    font-weight:600;
+    line-height:1.12;
+    letter-spacing:-.01em;
+    margin:0;
+  }
+  p{margin:0}
+
+  /* ---------- Barra fija ---------- */
+  .propbar{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    min-height:var(--bar-h);
+    display:flex;align-items:center;justify-content:center;
+    gap:.5rem;
+    padding:.5rem 1rem;
+    background:var(--plum-deep);
+    color:#f6e9e2;
+    font-size:.8rem;
+    letter-spacing:.045em;
+    text-align:center;
+    border-bottom:1px solid rgba(255,255,255,.14);
+  }
+  .propbar span{display:inline-block}
+  .propbar::before{
+    content:"";flex:0 0 auto;width:7px;height:7px;border-radius:50%;
+    background:var(--rose);box-shadow:0 0 0 4px rgba(201,138,132,.22);
+  }
+
+  .wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:clamp(18px,5vw,40px)}
+  .eyebrow{
+    font-size:.72rem;text-transform:uppercase;letter-spacing:.2em;
+    color:var(--gold);font-weight:600;
+  }
+  section{position:relative}
+
+  /* ---------- Nav ---------- */
+  .nav{
+    position:sticky;top:var(--bar-h);z-index:90;
+    background:rgba(251,247,244,.9);
+    backdrop-filter:saturate(1.3) blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav .wrap{display:flex;align-items:center;gap:1rem;min-height:62px;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:.6rem;margin-right:auto}
+  .brand-mark{flex:0 0 auto}
+  .brand-txt{display:flex;flex-direction:column;line-height:1.1}
+  .brand-txt b{font-family:ui-serif,Georgia,serif;font-size:1.06rem;letter-spacing:.01em;font-weight:600}
+  .brand-txt small{font-size:.63rem;letter-spacing:.17em;text-transform:uppercase;color:var(--ink-soft)}
+  .nav-links{display:flex;gap:1.35rem;font-size:.86rem}
+  .nav-links a{text-decoration:none;color:var(--ink-soft)}
+  .nav-links a:hover{color:var(--plum)}
+  .nav-cta{
+    text-decoration:none;font-size:.85rem;font-weight:600;
+    padding:.55rem 1.05rem;border-radius:999px;
+    background:var(--plum);color:#fdf6f2;white-space:nowrap;
+  }
+  .nav-cta:hover{background:var(--plum-deep)}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:clamp(3.2rem,7vw,5.6rem) 0 clamp(3rem,6vw,5rem);
+    background:
+      radial-gradient(1100px 520px at 82% -10%,rgba(201,138,132,.34),transparent 62%),
+      radial-gradient(760px 480px at 6% 102%,rgba(176,133,75,.2),transparent 60%),
+      linear-gradient(170deg,var(--cream) 0%,var(--cream-2) 100%);
+    overflow:hidden;
+  }
+  .hero .wrap{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:clamp(2rem,5vw,4rem);align-items:center}
+  .hero h1{font-size:clamp(2.3rem,5.4vw,4rem);max-width:15ch}
+  .hero h1 em{font-style:italic;color:var(--plum)}
+  .hero .lead{margin-top:1.2rem;font-size:clamp(1rem,1.4vw,1.14rem);color:var(--ink-soft);max-width:42ch}
+  .hero-actions{margin-top:2rem;display:flex;flex-wrap:wrap;gap:.75rem;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:.6rem;
+    text-decoration:none;font-weight:600;font-size:1rem;
+    padding:.95rem 1.6rem;border-radius:999px;
+    transition:transform .15s ease;
+  }
+  .btn:hover{transform:translateY(-2px)}
+  .btn-primary{background:var(--plum);color:#fdf6f2;box-shadow:var(--shadow)}
+  .btn-ghost{border:1px solid rgba(36,28,34,.22);color:var(--ink)}
+  .hero-note{margin-top:1.4rem;font-size:.85rem;color:var(--ink-soft)}
+  .tags{margin-top:2.2rem;display:flex;flex-wrap:wrap;gap:.5rem;list-style:none;padding:0}
+  .tags li{
+    font-size:.78rem;letter-spacing:.04em;
+    padding:.4rem .85rem;border-radius:999px;
+    background:rgba(255,255,255,.72);border:1px solid var(--line);color:var(--ink-soft);
+  }
+  .hero-art{position:relative;isolation:isolate}
+  .hero-card{
+    position:relative;z-index:2;
+    border-radius:26px;padding:clamp(1.3rem,2.4vw,1.9rem);
+    background:linear-gradient(155deg,var(--plum) 0%,var(--plum-deep) 72%);
+    color:#f8ece6;box-shadow:var(--shadow);
+  }
+  .hero-card .hc-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;font-size:.7rem;letter-spacing:.17em;text-transform:uppercase;color:rgba(248,236,230,.66)}
+  .hero-card h2{font-size:1.5rem;margin-top:.9rem;color:#fff}
+  .hero-card p{margin-top:.6rem;font-size:.92rem;color:rgba(248,236,230,.82)}
+  .hc-list{margin:1.3rem 0 0;padding:0;list-style:none;display:grid;gap:.55rem;font-size:.9rem}
+  .hc-list li{display:flex;gap:.6rem;align-items:flex-start;color:rgba(248,236,230,.9)}
+  .hc-list svg{flex:0 0 auto;margin-top:.28rem}
+  .hero-arc{position:absolute;z-index:1;inset:auto -14% -18% auto;width:52%;opacity:.45;pointer-events:none}
+
+  /* ---------- Servicios ---------- */
+  .band{padding:clamp(3.4rem,7vw,5.6rem) 0}
+  .sec-head{max-width:54ch}
+  .sec-head h2{margin-top:.7rem;font-size:clamp(1.8rem,3.4vw,2.6rem)}
+  .sec-head p{margin-top:.9rem;color:var(--ink-soft)}
+  .grid-serv{margin-top:2.6rem;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.1rem}
+  .card{
+    background:#fff;border:1px solid var(--line);border-radius:var(--r);
+    padding:1.5rem 1.4rem;display:flex;flex-direction:column;gap:.7rem;
+    box-shadow:0 10px 30px -26px rgba(59,27,45,.4);
+  }
+  .card .ic{
+    width:44px;height:44px;border-radius:13px;display:grid;place-items:center;
+    background:linear-gradient(145deg,var(--cream-2),#fff);border:1px solid var(--line);
+  }
+  .card h3{font-size:1.15rem}
+  .card p{font-size:.92rem;color:var(--ink-soft)}
+  .card.feature{
+    grid-column:span 3;flex-direction:row;align-items:flex-start;gap:1.4rem;flex-wrap:wrap;
+    background:linear-gradient(120deg,#fff 0%,var(--cream-2) 100%);
+    border-color:rgba(176,133,75,.35);
+  }
+  .card.feature .ic{background:linear-gradient(145deg,rgba(201,138,132,.3),rgba(176,133,75,.2))}
+  .card.feature .ft-body{flex:1 1 320px;min-width:0}
+  .card.feature h3{font-size:1.3rem}
+  .mini{margin:.9rem 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:.45rem}
+  .mini li{font-size:.8rem;padding:.35rem .75rem;border-radius:999px;background:rgba(255,255,255,.8);border:1px solid var(--line);color:var(--ink-soft)}
+
+  /* ---------- Pasos ---------- */
+  .steps-band{background:linear-gradient(180deg,var(--cream-2),var(--cream))}
+  .steps{margin-top:2.6rem;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.1rem;counter-reset:s}
+  .step{
+    position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--r);
+    padding:2.4rem 1.4rem 1.5rem;
+  }
+  .step::before{
+    counter-increment:s;content:"0" counter(s);
+    position:absolute;top:1.1rem;left:1.4rem;
+    font-family:ui-serif,Georgia,serif;font-size:1.5rem;color:var(--rose);
+  }
+  .step h3{font-size:1.1rem;margin-top:.5rem}
+  .step p{margin-top:.55rem;font-size:.92rem;color:var(--ink-soft)}
+
+  /* ---------- Contacto ---------- */
+  .contact{background:linear-gradient(165deg,var(--plum-deep),#2a1320);color:#f6e9e2}
+  .contact .eyebrow{color:var(--rose)}
+  .contact h2{color:#fff}
+  .contact .sec-head p{color:rgba(246,233,226,.78)}
+  .contact-grid{margin-top:2.6rem;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.12fr);gap:clamp(1.4rem,4vw,2.6rem);align-items:start}
+  .info{display:grid;gap:1rem}
+  .info-item{
+    background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);
+    border-radius:16px;padding:1.1rem 1.2rem;display:flex;gap:.9rem;align-items:flex-start;
+  }
+  .info-item .ic{flex:0 0 auto;width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:rgba(201,138,132,.22)}
+  .info-item .k{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(246,233,226,.6)}
+  .info-item .v{margin-top:.2rem;font-size:1.04rem;color:#fff;word-break:break-word}
+  .info-item a.v{text-decoration:none;border-bottom:1px solid rgba(255,255,255,.3)}
+  .info-item .v small{display:block;font-size:.85rem;color:rgba(246,233,226,.72);border:0}
+  .map{
+    border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.16);
+    background:#f3ece8;box-shadow:var(--shadow);
+  }
+  .map svg{width:100%;height:auto}
+  .map-cap{
+    padding:.85rem 1.1rem;font-size:.8rem;line-height:1.45;color:rgba(246,233,226,.88);
+    background:#2a1320;border-top:1px solid rgba(255,255,255,.12);
+  }
+  .contact-cta{margin-top:1.4rem;display:flex;flex-wrap:wrap;gap:.7rem}
+  .btn-light{background:#fdf6f2;color:var(--plum-deep)}
+  .btn-outline{border:1px solid rgba(255,255,255,.3);color:#f6e9e2}
+
+  /* ---------- Pie ---------- */
+  footer{background:var(--cream);padding:clamp(2.4rem,5vw,3.4rem) 0 2.6rem;border-top:1px solid var(--line)}
+  .foot-top{display:flex;flex-wrap:wrap;gap:1.6rem;justify-content:space-between;align-items:flex-start}
+  .foot-col{min-width:0}
+  .foot-col h4{margin:0 0 .5rem;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);font-weight:600}
+  .foot-col p,.foot-col a{font-size:.95rem;color:var(--ink);text-decoration:none;word-break:break-word}
+  .foot-col a:hover{color:var(--plum)}
+  .foot-col ul{margin:0;padding:0;list-style:none;display:grid;gap:.3rem}
+  .foot-rule{margin:2rem 0 1.2rem;border:0;border-top:1px solid var(--line)}
+  .credit{
+    font-size:.85rem;color:var(--ink-soft);
+    display:flex;flex-wrap:wrap;gap:.5rem 1rem;align-items:center;justify-content:space-between;
+  }
+  .credit strong{color:var(--ink);font-weight:600}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:900px){
+    .hero .wrap{grid-template-columns:minmax(0,1fr)}
+    .hero h1{max-width:20ch}
+    .grid-serv,.steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .card.feature{grid-column:span 2}
+    .contact-grid{grid-template-columns:minmax(0,1fr)}
+  }
+  @media (max-width:640px){
+    :root{--bar-h:64px}
+    .propbar::before{display:none}
+    body{font-size:16px}
+    .propbar{font-size:.72rem;letter-spacing:.01em;line-height:1.4;padding:.55rem .9rem}
+    .nav .wrap{min-height:58px;padding-block:.6rem}
+    .nav-links{display:none}
+    .brand-txt b{font-size:.98rem}
+    .grid-serv,.steps{grid-template-columns:minmax(0,1fr)}
+    .card.feature{grid-column:span 1;flex-direction:column;gap:.8rem}
+    .hero-actions .btn{width:100%;justify-content:center}
+    .contact-cta .btn{width:100%;justify-content:center}
+    .hero-arc{display:none}
+    .credit{flex-direction:column;align-items:flex-start;gap:.35rem}
+  }
+</style>
+</head>
+<body>
+
+<div class="propbar" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<header class="nav">
+  <div class="wrap">
+    <div class="brand">
+      <svg class="brand-mark" width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
+        <defs>
+          <linearGradient id="bm" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#5a2a44"/><stop offset="1" stop-color="#c98a84"/>
+          </linearGradient>
+        </defs>
+        <rect x="0" y="0" width="40" height="40" rx="12" fill="url(#bm)"/>
+        <path d="M12 26c3.6 1.8 7.2 1.9 10.8.3 2.6-1.2 3.4-3.4 1.8-4.7-1.5-1.2-4.4-.7-7.9.4-3.4 1.1-5.6 1-6.6-.5-1.1-1.8.4-4.3 3.5-5.6 2.9-1.2 6.4-1.2 9.4-.1" fill="none" stroke="#fdf6f2" stroke-width="2.1" stroke-linecap="round"/>
+        <circle cx="28.6" cy="13.4" r="2" fill="#f0c48a"/>
+      </svg>
+      <span class="brand-txt">
+        <b>Styl's</b>
+        <small>Salón de Belleza</small>
+      </span>
+    </div>
+    <nav class="nav-links" aria-label="Secciones">
+      <a href="#servicios">Servicios</a>
+      <a href="#primera-visita">Tu primera visita</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="nav-cta" href="tel:+34966390022">Llamar</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- 1. HERO -->
+  <section class="hero" id="inicio">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Peluquería y estética · Novelda</p>
+        <h1>Tu pelo y tu piel, <em>bien cuidados</em>.</h1>
+        <p class="lead">Styl's es un salón de peluquería y estética en el centro de Novelda. Trabajamos también oncoestética y alopecia, con el tiempo y la calma que cada caso necesita.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="tel:+34966390022">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <path d="M6.5 3.5h3l1.5 4-2 1.5a11 11 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.5 5.7 2 2 0 0 1 6.5 3.5z"/>
+            </svg>
+            Pedir cita: 96 639 00 22
+          </a>
+          <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
+        </div>
+        <p class="hero-note">C/ Maestro Ramis 21, Novelda (Alicante) · Consultar horario</p>
+        <ul class="tags">
+          <li>Peluquería</li>
+          <li>Estética</li>
+          <li>Oncoestética</li>
+          <li>Alopecia</li>
+        </ul>
+      </div>
+
+      <div class="hero-art">
+        <div class="hero-card">
+          <div class="hc-top"><span>Atención personal</span><span>Novelda</span></div>
+          <h2>Un salón donde se te escucha antes de empezar</h2>
+          <p>Cada visita arranca con una conversación: qué te apetece, qué te preocupa y qué es realista para tu pelo o tu piel.</p>
+          <ul class="hc-list">
+            <li>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#f0c48a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>
+              Diagnóstico y recomendación sin compromiso
+            </li>
+            <li>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#f0c48a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>
+              Acompañamiento en oncoestética y alopecia
+            </li>
+            <li>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#f0c48a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>
+              Cita previa por teléfono
+            </li>
+          </ul>
+        </div>
+        <svg class="hero-arc" viewBox="0 0 200 200" aria-hidden="true">
+          <circle cx="100" cy="100" r="92" fill="none" stroke="#c98a84" stroke-width="1.4"/>
+          <circle cx="100" cy="100" r="68" fill="none" stroke="#b0854b" stroke-width="1.4"/>
+          <circle cx="100" cy="100" r="44" fill="none" stroke="#5a2a44" stroke-width="1.4"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. SERVICIOS -->
+  <section class="band" id="servicios">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Servicios</p>
+        <h2>Peluquería y estética, bajo un mismo techo</h2>
+        <p>Una selección de lo que se puede trabajar en el salón. Lo concreto se decide contigo en la visita, según tu pelo, tu piel y lo que busques.</p>
+      </div>
+
+      <div class="grid-serv">
+        <article class="card">
+          <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5a2a44" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="18" r="2.6"/><circle cx="18" cy="18" r="2.6"/><path d="M7.8 16.2 19 4M16.2 16.2 5 4"/></svg></span>
+          <h3>Corte y peinado</h3>
+          <p>Corte de cabello para mujer, hombre e infantil, acabados y peinado para el día a día o para una ocasión.</p>
+        </article>
+
+        <article class="card">
+          <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5a2a44" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3s6 6.2 6 10a6 6 0 0 1-12 0c0-3.8 6-10 6-10z"/><path d="M12 17a3 3 0 0 0 3-3"/></svg></span>
+          <h3>Color y mechas</h3>
+          <p>Coloración, cobertura de canas, mechas y matices, con una pauta de mantenimiento realista para cada pelo.</p>
+        </article>
+
+        <article class="card">
+          <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5a2a44" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15c0-4.4 3.6-8 8-8s8 3.6 8 8"/><path d="M4 15h16"/><path d="M8 19h8"/></svg></span>
+          <h3>Tratamientos capilares</h3>
+          <p>Cuidado del cabello y del cuero cabelludo: hidratación, nutrición y tratamientos de refuerzo.</p>
+        </article>
+
+        <article class="card">
+          <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5a2a44" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.2"/><path d="M9 10.5h.01M15 10.5h.01M9.3 15a3.6 3.6 0 0 0 5.4 0"/></svg></span>
+          <h3>Estética facial</h3>
+          <p>Limpieza e higiene facial, tratamientos de hidratación y cuidado de la piel según su estado.</p>
+        </article>
+
+        <article class="card">
+          <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5a2a44" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c2-5 5-8 9-9"/><path d="M14 10c2.6-.6 4.4-.2 5.6 1.1"/><path d="M6.5 7.5c1.6-1.4 3.5-2 5.6-1.8"/></svg></span>
+          <h3>Depilación y cejas</h3>
+          <p>Depilación corporal y facial, diseño y arreglo de cejas, y tinte de cejas y pestañas.</p>
+        </article>
+
+        <article class="card">
+          <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5a2a44" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 13c0-3.3 1.8-6 4-6s4 2.7 4 6v4a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2z"/><path d="M8 15h8"/></svg></span>
+          <h3>Manos y pies</h3>
+          <p>Manicura y pedicura, con esmaltado tradicional o de larga duración y cuidado de uñas.</p>
+        </article>
+
+        <article class="card feature">
+          <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5a2a44" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.1-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.9-7 9-7 9z"/></svg></span>
+          <div class="ft-body">
+            <h3>Oncoestética y alopecia</h3>
+            <p>En Styl's se trabaja también el cuidado de la piel y el cabello durante y después de un tratamiento oncológico, y el acompañamiento en casos de alopecia. Son visitas que se preparan con calma, hablando antes de lo que necesitas y de cómo prefieres que se haga.</p>
+            <ul class="mini">
+              <li>Visita previa para hablarlo</li>
+              <li>Cuidado de piel sensible</li>
+              <li>Pelo y cuero cabelludo</li>
+              <li>Ritmo adaptado a ti</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. PRIMERA VISITA -->
+  <section class="band steps-band" id="primera-visita">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Tu primera visita</p>
+        <h2>Así funciona, en tres pasos</h2>
+        <p>Sin complicaciones: una llamada, una conversación y el servicio. Si no sabes bien qué pedir, lo vemos juntas en el salón.</p>
+      </div>
+      <div class="steps">
+        <article class="step">
+          <h3>Llamas y reservas</h3>
+          <p>Nos cuentas por teléfono qué necesitas y buscamos un hueco que te encaje. Si es tu primera vez, dilo: reservamos algo más de tiempo.</p>
+        </article>
+        <article class="step">
+          <h3>Hablamos antes de empezar</h3>
+          <p>Al llegar, revisamos tu pelo o tu piel y comentamos opciones, cuidados en casa y qué resultado es realista.</p>
+        </article>
+        <article class="step">
+          <h3>Trabajamos y te explicamos</h3>
+          <p>Hacemos el servicio y, al terminar, te dejamos claro cómo mantenerlo y cuándo conviene volver.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. CONTACTO -->
+  <section class="band contact" id="contacto">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Contacto</p>
+        <h2>Estamos en el centro de Novelda</h2>
+        <p>La cita se pide por teléfono. Si llamas y no lo cogemos al momento, es que estamos atendiendo: insiste o prueba en otro rato.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="info">
+          <div class="info-item">
+            <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f6e9e2" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6.5 3.5h3l1.5 4-2 1.5a11 11 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.5 5.7 2 2 0 0 1 6.5 3.5z"/></svg></span>
+            <div>
+              <div class="k">Teléfono</div>
+              <a class="v" href="tel:+34966390022">96 639 00 22</a>
+              <a class="v" href="tel:+34661915939" style="display:block;margin-top:.35rem">661 915 939</a>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f6e9e2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6.5-5.5-6.5-10.2A6.5 6.5 0 0 1 12 4.3a6.5 6.5 0 0 1 6.5 6.5C18.5 15.5 12 21 12 21z"/><circle cx="12" cy="10.6" r="2.4"/></svg></span>
+            <div>
+              <div class="k">Dirección</div>
+              <div class="v">C/ Maestro Ramis 21<small>03660 Novelda (Alicante)</small></div>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f6e9e2" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8.4"/><path d="M12 7.4V12l3 2"/></svg></span>
+            <div>
+              <div class="k">Horario</div>
+              <div class="v">Consultar horario</div>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f6e9e2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4.6"/><circle cx="12" cy="12" r="3.6"/><circle cx="16.9" cy="7.1" r="1.1" fill="#f6e9e2" stroke="none"/></svg></span>
+            <div>
+              <div class="k">Instagram</div>
+              <a class="v" href="https://www.instagram.com/styls_novelda/" rel="noopener">@styls_novelda</a>
+            </div>
+          </div>
+
+          <div class="contact-cta">
+            <a class="btn btn-light" href="tel:+34966390022">Llamar al salón</a>
+            <a class="btn btn-outline" href="mailto:garciadelarco22@gmail.com">Escribir un correo</a>
+          </div>
+        </div>
+
+        <figure class="map" style="margin:0">
+          <svg viewBox="0 0 640 420" role="img" aria-label="Mapa esquemático de situación: el salón está en la calle Maestro Ramis, número 21, en Novelda.">
+            <defs>
+              <linearGradient id="mg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#f7f1ed"/><stop offset="1" stop-color="#eadfd8"/>
+              </linearGradient>
+            </defs>
+            <rect width="640" height="420" fill="url(#mg)"/>
+            <!-- manzanas -->
+            <g fill="#e2d4cc" opacity=".85">
+              <rect x="40" y="40" width="190" height="120" rx="8"/>
+              <rect x="268" y="40" width="150" height="120" rx="8"/>
+              <rect x="456" y="40" width="150" height="120" rx="8"/>
+              <rect x="40" y="206" width="190" height="80" rx="8"/>
+              <rect x="268" y="206" width="150" height="80" rx="8"/>
+              <rect x="456" y="206" width="150" height="80" rx="8"/>
+              <rect x="40" y="332" width="190" height="60" rx="8"/>
+              <rect x="268" y="332" width="338" height="60" rx="8"/>
+            </g>
+            <!-- calles -->
+            <g stroke="#fbf7f4" stroke-width="22" stroke-linecap="square">
+              <path d="M0 183h640"/>
+              <path d="M0 309h640"/>
+              <path d="M249 0v420"/>
+              <path d="M437 0v420"/>
+            </g>
+            <g stroke="#d9c8bf" stroke-width="1.4" stroke-dasharray="7 9">
+              <path d="M0 183h640"/><path d="M0 309h640"/><path d="M249 0v420"/><path d="M437 0v420"/>
+            </g>
+            <!-- rotulos de calle abstractos -->
+            <g fill="#8d7a71" font-family="ui-sans-serif,system-ui,sans-serif" font-size="13" letter-spacing="1.6">
+              <text x="60" y="178">C/ MAESTRO RAMIS</text>
+              <text x="60" y="304">CALLE</text>
+              <text x="243" y="112" transform="rotate(-90 243 112)">CALLE</text>
+            </g>
+            <!-- marcador -->
+            <g transform="translate(300 183)">
+              <circle r="40" fill="#5a2a44" opacity=".13"/>
+              <circle r="24" fill="#5a2a44" opacity=".2"/>
+              <path d="M0 -42c-11.6 0-21 9.4-21 21 0 15.6 21 34 21 34s21-18.4 21-34c0-11.6-9.4-21-21-21z" fill="#5a2a44"/>
+              <circle cy="-21" r="7.4" fill="#fbf7f4"/>
+              <text x="30" y="-24" fill="#3b1b2d" font-family="ui-sans-serif,system-ui,sans-serif" font-size="16" font-weight="700">Styl's</text>
+              <text x="30" y="-6" fill="#6b5a62" font-family="ui-sans-serif,system-ui,sans-serif" font-size="13">nº 21</text>
+            </g>
+            <g fill="#a8938a" font-family="ui-sans-serif,system-ui,sans-serif" font-size="12" letter-spacing="2">
+              <text x="40" y="409">ESQUEMA ORIENTATIVO · NO ES UN MAPA REAL</text>
+            </g>
+          </svg>
+          <figcaption class="map-cap">Esquema de situación dibujado a mano para esta maqueta. En la web final iría un mapa real enlazado a la dirección.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- 5. PIE -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-col">
+        <h4>Styl's Salón de Belleza</h4>
+        <p>Peluquería y estética en Novelda (Alicante).<br>Oncoestética y alopecia.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Dónde</h4>
+        <ul>
+          <li>C/ Maestro Ramis 21</li>
+          <li>03660 Novelda (Alicante)</li>
+          <li>Consultar horario</li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="tel:+34966390022">96 639 00 22</a></li>
+          <li><a href="tel:+34661915939">661 915 939</a></li>
+          <li><a href="mailto:garciadelarco22@gmail.com">garciadelarco22@gmail.com</a></li>
+          <li><a href="https://www.instagram.com/styls_novelda/" rel="noopener">@styls_novelda</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr class="foot-rule">
+    <div class="credit">
+      <span><strong>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</strong></span>
+      <span>Maqueta de trabajo · textos y servicios pendientes de validar con el salón</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

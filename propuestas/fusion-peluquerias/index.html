@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fusión Peluquerías · Guardamar del Segura</title>
+<meta name="description" content="Maqueta de propuesta web para Fusión Peluquerías, peluquería en Guardamar del Segura (Alicante).">
+<style>
+  :root{
+    --tinta:#16120f;
+    --tinta-2:#423a34;
+    --crema:#f7f2ec;
+    --crema-2:#efe6dc;
+    --linea:#ddcfc1;
+    --cobre:#b5704a;
+    --cobre-claro:#d8a183;
+    --rosa:#e8cfc4;
+    --blanco:#fffdfb;
+    --barra:58px;
+    --max:1120px;
+    --serif:Georgia,"Times New Roman",'Noto Serif',serif;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    padding-top:var(--barra);
+    background:var(--crema);
+    color:var(--tinta);
+    font-family:var(--sans);
+    font-size:17px;
+    line-height:1.62;
+    overflow-x:hidden;
+  }
+  img,svg{max-width:100%;display:block}
+  h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:-.01em;margin:0}
+  p{margin:0}
+  a{color:inherit}
+
+  /* ---------- barra fija ---------- */
+  .aviso{
+    position:fixed;inset:0 0 auto 0;z-index:50;
+    min-height:var(--barra);
+    display:flex;align-items:center;justify-content:center;
+    padding:9px 16px;
+    background:var(--tinta);
+    color:#f3e8e0;
+    font-size:12.5px;line-height:1.35;
+    letter-spacing:.055em;text-transform:uppercase;text-align:center;
+    border-bottom:1px solid #2e2621;
+  }
+  .aviso span{display:inline-block;max-width:100%}
+
+  .envoltura{width:100%;max-width:var(--max);margin:0 auto;padding:0 28px}
+
+  /* ---------- cabecera ---------- */
+  .cabecera{
+    position:sticky;top:var(--barra);z-index:40;
+    background:rgba(247,242,236,.94);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--linea);
+  }
+  .cabecera-fila{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
+  .marca{display:flex;align-items:center;gap:11px;min-width:0}
+  .marca-sello{flex:0 0 auto}
+  .marca-txt{min-width:0}
+  .marca-txt strong{display:block;font-family:var(--serif);font-size:17px;font-weight:400;line-height:1.1}
+  .marca-txt small{display:block;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--tinta-2);margin-top:3px}
+  .nav{display:flex;align-items:center;gap:26px}
+  .nav a{font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--tinta-2)}
+  .nav a:hover{color:var(--cobre)}
+  .nav-tel{
+    text-decoration:none;font-size:13.5px;letter-spacing:.04em;
+    border:1px solid var(--tinta);border-radius:999px;padding:8px 16px;white-space:nowrap;
+  }
+  .nav-tel:hover{background:var(--tinta);color:var(--crema)}
+  @media (max-width:860px){.nav a:not(.nav-tel){display:none}}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;overflow:hidden;background:
+      radial-gradient(120% 90% at 85% 8%, #f6ded2 0%, rgba(246,222,210,0) 62%),
+      radial-gradient(90% 80% at 6% 92%, #e6e9e3 0%, rgba(230,233,227,0) 60%),
+      linear-gradient(168deg,#fffdfb 0%,var(--crema) 55%,var(--crema-2) 100%);
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);
+    gap:56px;align-items:center;padding-top:88px;padding-bottom:96px;
+  }
+  .sobretitulo{
+    font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--cobre);
+    display:flex;align-items:center;gap:10px;margin-bottom:22px;
+  }
+  .sobretitulo::after{content:"";flex:1;height:1px;background:var(--linea);max-width:84px}
+  .hero h1{font-size:clamp(2.3rem,5.4vw,4rem);line-height:1.04}
+  .hero h1 em{font-style:italic;color:var(--cobre)}
+  .hero-texto{margin-top:22px;max-width:46ch;color:var(--tinta-2);font-size:17.5px}
+  .acciones{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    text-decoration:none;font-size:15px;letter-spacing:.02em;
+    padding:15px 26px;border-radius:999px;border:1px solid transparent;
+  }
+  .btn-primario{background:var(--tinta);color:var(--crema)}
+  .btn-primario:hover{background:var(--cobre)}
+  .btn-secundario{border-color:var(--linea);color:var(--tinta);background:var(--blanco)}
+  .btn-secundario:hover{border-color:var(--tinta)}
+  .hero-nota{margin-top:18px;font-size:13.5px;color:var(--tinta-2)}
+  .hero-arte{position:relative;min-height:380px}
+  .hero-arte svg{width:100%;height:auto}
+
+  /* ---------- cinta ---------- */
+  .cinta{background:var(--tinta);color:#eadfd7}
+  .cinta-fila{display:flex;flex-wrap:wrap;gap:10px 40px;justify-content:space-between;padding:20px 0;font-size:13px;letter-spacing:.09em;text-transform:uppercase}
+  .cinta-fila span{display:flex;align-items:center;gap:9px}
+  .punto{width:5px;height:5px;border-radius:50%;background:var(--cobre-claro);flex:0 0 auto}
+
+  /* ---------- secciones ---------- */
+  section{padding:88px 0}
+  .cab-seccion{max-width:60ch;margin-bottom:46px}
+  .cab-seccion h2{font-size:clamp(1.8rem,3.4vw,2.6rem);line-height:1.12;margin-top:14px}
+  .cab-seccion p{margin-top:16px;color:var(--tinta-2)}
+
+  #servicios{background:var(--blanco);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+  .tarjetas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+  .tarjeta{
+    background:var(--crema);border:1px solid var(--linea);border-radius:18px;
+    padding:28px 26px 30px;display:flex;flex-direction:column;gap:12px;
+  }
+  .tarjeta h3{font-size:1.25rem}
+  .tarjeta p{font-size:15.2px;color:var(--tinta-2)}
+  .icono{width:46px;height:46px;border-radius:12px;background:linear-gradient(140deg,var(--rosa),#f4e7df);display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+  .nota-servicios{margin-top:26px;font-size:14px;color:var(--tinta-2)}
+
+  .pasos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;counter-reset:p}
+  .paso{position:relative;padding:30px 26px;background:var(--blanco);border:1px solid var(--linea);border-radius:18px}
+  .paso-num{
+    font-family:var(--serif);font-size:2.4rem;line-height:1;color:var(--cobre-claro);
+    display:block;margin-bottom:14px;
+  }
+  .paso h3{font-size:1.18rem;margin-bottom:10px}
+  .paso p{font-size:15.2px;color:var(--tinta-2)}
+
+  /* ---------- contacto ---------- */
+  #contacto{background:linear-gradient(170deg,var(--crema-2),var(--crema));border-top:1px solid var(--linea)}
+  .contacto-grid{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:44px;align-items:start}
+  .datos{display:flex;flex-direction:column;gap:2px;margin-top:8px}
+  .dato{display:flex;gap:16px;padding:20px 0;border-bottom:1px solid var(--linea)}
+  .dato:first-child{border-top:1px solid var(--linea)}
+  .dato-et{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--cobre);margin-bottom:5px}
+  .dato-vl{font-family:var(--serif);font-size:1.18rem;line-height:1.3;word-break:break-word}
+  .dato-vl a{text-decoration:none;border-bottom:1px solid var(--linea)}
+  .dato-vl a:hover{border-color:var(--cobre)}
+  .dato-sub{font-size:14px;color:var(--tinta-2);margin-top:4px}
+  .mapa{background:var(--blanco);border:1px solid var(--linea);border-radius:18px;padding:16px}
+  .mapa svg{width:100%;height:auto;border-radius:10px}
+  .mapa-pie{display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:space-between;padding:14px 6px 4px;font-size:12.5px;color:var(--tinta-2)}
+  .mapa-pie em{font-style:normal;letter-spacing:.1em;text-transform:uppercase;font-size:11px}
+
+  /* ---------- pie ---------- */
+  .pie{background:var(--tinta);color:#e6dad2;padding:62px 0 34px}
+  .pie-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) minmax(0,1fr);gap:34px}
+  .pie h3{font-size:1.5rem;color:#fff8f3}
+  .pie p{font-size:15px;color:#c3b4ab;margin-top:12px;max-width:34ch}
+  .pie-et{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--cobre-claro);margin-bottom:14px}
+  .pie-lista{display:flex;flex-direction:column;gap:9px;font-size:15px}
+  .pie-lista a{text-decoration:none;color:#e6dad2;word-break:break-word}
+  .pie-lista a:hover{color:#fff}
+  .pie-base{
+    margin-top:46px;padding-top:22px;border-top:1px solid #322a25;
+    display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;
+    font-size:12.5px;color:#a2938a;
+  }
+  .firma{letter-spacing:.03em}
+
+  @media (max-width:980px){
+    .hero-grid{grid-template-columns:1fr;gap:40px;padding-top:64px;padding-bottom:72px}
+    .hero-arte{min-height:0;order:2}
+    .tarjetas,.pasos{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .contacto-grid{grid-template-columns:1fr;gap:34px}
+    .pie-grid{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:640px){
+    :root{--barra:66px}
+    body{font-size:16px}
+    .envoltura{padding:0 18px}
+    section{padding:62px 0}
+    .tarjetas,.pasos{grid-template-columns:1fr}
+    .pie-grid{grid-template-columns:1fr;gap:30px}
+    .cinta-fila{flex-direction:column;gap:9px;font-size:12px}
+    .acciones{gap:11px}
+    .btn{width:100%;justify-content:center;padding:15px 20px}
+    .aviso{font-size:11px;letter-spacing:.04em}
+    .cab-seccion{margin-bottom:34px}
+    .mapa{padding:11px}
+    .hero-grid{padding-top:48px;padding-bottom:58px}
+    .marca-txt small{letter-spacing:.1em;font-size:10px}
+    .marca-txt strong{font-size:16px}
+    .marca-sello{width:36px;height:36px}
+    .nav-tel{padding:8px 13px;font-size:13px}
+  }
+</style>
+</head>
+<body>
+
+<div class="aviso" role="note"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<header class="cabecera">
+  <div class="envoltura cabecera-fila">
+    <div class="marca">
+      <svg class="marca-sello" width="42" height="42" viewBox="0 0 42 42" aria-hidden="true">
+        <circle cx="21" cy="21" r="20.25" fill="none" stroke="#ddcfc1"/>
+        <circle cx="21" cy="21" r="15" fill="#f6ded2"/>
+        <path d="M14 27c3-9 7-13 14-15" fill="none" stroke="#b5704a" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M14 21.5c3.5-5.5 8-8 14-9" fill="none" stroke="#b5704a" stroke-width="1.2" stroke-linecap="round" opacity=".6"/>
+        <circle cx="16.5" cy="17" r="2.1" fill="#16120f"/>
+      </svg>
+      <div class="marca-txt">
+        <strong>Fusión Peluquerías</strong>
+        <small>Guardamar del Segura</small>
+      </div>
+    </div>
+    <nav class="nav" aria-label="Navegación principal">
+      <a href="#servicios">Servicios</a>
+      <a href="#primera-cita">Tu primera cita</a>
+      <a href="#contacto">Contacto</a>
+      <a class="nav-tel" href="tel:+34966725119">96 672 51 19</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- 1 · HERO -->
+  <section class="hero" id="inicio" style="padding:0">
+    <div class="envoltura hero-grid">
+      <div>
+        <p class="sobretitulo">Peluquería en Guardamar del Segura</p>
+        <h1>Tu pelo, <em>cuidado</em> cerca de casa.</h1>
+        <p class="hero-texto">Fusión Peluquerías está en la calle Cartagena, en pleno Guardamar. Corte, color y peinado con trato cercano y la cita que mejor te encaje.</p>
+        <div class="acciones">
+          <a class="btn btn-primario" href="tel:+34966725119">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6.5 3.5h3l1.5 4-2 1.5a12 12 0 0 0 6 6l1.5-2 4 1.5v3c0 1.1-.9 2-2 2A16.5 16.5 0 0 1 4.5 5.5c0-1.1.9-2 2-2Z"/></svg>
+            Pedir cita: 96 672 51 19
+          </a>
+          <a class="btn btn-secundario" href="#servicios">Ver servicios</a>
+        </div>
+        <p class="hero-nota">También en el móvil: 695 868 232</p>
+      </div>
+      <div class="hero-arte" aria-hidden="true">
+        <svg viewBox="0 0 420 420" role="presentation">
+          <defs>
+            <linearGradient id="gArco" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#f6e0d4"/><stop offset="1" stop-color="#e0c0ab"/>
+            </linearGradient>
+            <linearGradient id="gPanel" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#f1e8e0"/>
+            </linearGradient>
+            <clipPath id="recorteArco">
+              <path d="M90 300V160a110 110 0 0 1 220 0v140Z"/>
+            </clipPath>
+          </defs>
+
+          <!-- marco tipo espejo -->
+          <path d="M78 312V160a122 122 0 0 1 244 0v152Z" fill="none" stroke="#e2cbb9" stroke-width="1.4"/>
+          <path d="M90 300V160a110 110 0 0 1 220 0v140Z" fill="url(#gArco)"/>
+
+          <!-- melena dentro del arco -->
+          <g clip-path="url(#recorteArco)" fill="none" stroke-linecap="round">
+            <path d="M96 118C146 58 252 66 292 146c26 54 8 110-26 156" stroke="#3a2f29" stroke-width="2.6" opacity=".9"/>
+            <path d="M98 160C144 104 236 110 270 174c22 42 8 90-20 128" stroke="#53443a" stroke-width="2.1" opacity=".78"/>
+            <path d="M102 202C142 156 220 158 248 208c18 34 8 68-14 94" stroke="#75604f" stroke-width="1.8" opacity=".66"/>
+            <path d="M108 244C140 210 202 210 226 244c14 22 10 42-6 58" stroke="#9b7e69" stroke-width="1.5" opacity=".55"/>
+            <path d="M118 282C140 262 180 262 200 282" stroke="#bd9c85" stroke-width="1.3" opacity=".5"/>
+            <path d="M168 76c46 6 82 32 104 70" stroke="#2b231e" stroke-width="2.2" opacity=".5"/>
+          </g>
+          <path d="M90 300V160a110 110 0 0 1 220 0v140Z" fill="none" stroke="#d6b7a2" stroke-width="1.2"/>
+
+          <!-- repisa -->
+          <rect x="60" y="312" width="300" height="7" rx="3.5" fill="#efe1d6"/>
+          <rect x="60" y="319" width="300" height="2" rx="1" fill="#e0cdbe"/>
+
+          <!-- tijeras -->
+          <g transform="translate(96 330)" fill="none" stroke="#16120f" stroke-width="2" stroke-linecap="round">
+            <path d="M4 56 46 8"/><path d="M4 8l42 48"/>
+            <circle cx="2" cy="60" r="6" stroke="#b5704a"/>
+            <circle cx="2" cy="4" r="6" stroke="#b5704a"/>
+            <circle cx="25" cy="32" r="2.4" fill="#b5704a" stroke="none"/>
+          </g>
+
+          <!-- peine -->
+          <g transform="translate(176 336)" stroke="#16120f" stroke-width="2" stroke-linecap="round">
+            <path d="M0 46h58" />
+            <path d="M6 46V22M16 46V22M26 46V22M36 46V22M46 46V22M54 46V14"/>
+          </g>
+
+          <!-- frasco -->
+          <g transform="translate(262 328)">
+            <rect x="12" y="18" width="34" height="46" rx="9" fill="url(#gPanel)" stroke="#ddcfc1"/>
+            <rect x="22" y="6" width="14" height="14" rx="4" fill="#e8cfc4" stroke="#d6b7a2"/>
+            <path d="M20 44h18" stroke="#b5704a" stroke-width="2" stroke-linecap="round"/>
+          </g>
+
+          <!-- muestras de color -->
+          <g>
+            <circle cx="350" cy="120" r="13" fill="#b5704a" opacity=".85"/>
+            <circle cx="350" cy="152" r="13" fill="#d8a183" opacity=".8"/>
+            <circle cx="350" cy="184" r="13" fill="#6b4a38" opacity=".75"/>
+            <circle cx="350" cy="216" r="13" fill="#e8cfc4"/>
+          </g>
+          <circle cx="56" cy="128" r="7" fill="none" stroke="#d8a183" stroke-width="1.4"/>
+          <circle cx="40" cy="176" r="4" fill="#e8cfc4"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="cinta">
+    <div class="envoltura cinta-fila">
+      <span><i class="punto"></i>C/ Cartagena 28 · Guardamar</span>
+      <span><i class="punto"></i>Corte · Color · Peinado</span>
+      <span><i class="punto"></i>Cita previa por teléfono</span>
+    </div>
+  </div>
+
+  <!-- 2 · SERVICIOS -->
+  <section id="servicios">
+    <div class="envoltura">
+      <div class="cab-seccion">
+        <p class="sobretitulo">Servicios</p>
+        <h2>Lo que puedes pedir en el salón</h2>
+        <p>Una selección de los trabajos habituales de peluquería. Lo concretamos contigo en la consulta previa, antes de empezar.</p>
+      </div>
+      <div class="tarjetas">
+        <article class="tarjeta">
+          <span class="icono"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16120f" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="6" cy="18" r="2.6"/><circle cx="6" cy="6" r="2.6"/><path d="M8.2 7.6 19 17M8.2 16.4 19 7"/></svg></span>
+          <h3>Corte y asesoramiento</h3>
+          <p>Corte de pelo para mujer, hombre y niños, con un repaso previo de forma, largo y mantenimiento.</p>
+        </article>
+        <article class="tarjeta">
+          <span class="icono"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16120f" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M12 3c3.6 4.2 5.6 7 5.6 9.5A5.6 5.6 0 0 1 12 18a5.6 5.6 0 0 1-5.6-5.5C6.4 10 8.4 7.2 12 3Z"/><path d="M9.5 21h5"/></svg></span>
+          <h3>Color y mechas</h3>
+          <p>Tinte, retoque de raíz, mechas y matices. Elegimos el tono contigo según tu base y tu rutina.</p>
+        </article>
+        <article class="tarjeta">
+          <span class="icono"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16120f" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M5 10a7 7 0 0 1 14 0v2H5Z"/><path d="M12 12v8"/><path d="M9 20h6"/></svg></span>
+          <h3>Peinado y recogidos</h3>
+          <p>Secado, ondas, plancha y recogidos para un día especial, una celebración o una boda.</p>
+        </article>
+        <article class="tarjeta">
+          <span class="icono"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16120f" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M7 4h10l-1 6H8Z"/><path d="M8 10c-1.6 2-2 4-2 6a6 6 0 0 0 12 0c0-2-.4-4-2-6"/></svg></span>
+          <h3>Tratamientos capilares</h3>
+          <p>Lavado, hidratación y tratamientos de cuidado del cabello y del cuero cabelludo.</p>
+        </article>
+        <article class="tarjeta">
+          <span class="icono"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16120f" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 16c4-1 6-3 7-7"/><path d="M11 9c1 4 3 6 7 7"/><path d="M4 20h16"/></svg></span>
+          <h3>Alisados y ondulados</h3>
+          <p>Trabajos de forma para alisar o dar movimiento, valorando antes el estado de tu pelo.</p>
+        </article>
+        <article class="tarjeta">
+          <span class="icono"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16120f" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M5 18c2-6 5-9 9-10"/><path d="M14 8c2 .6 3.4 2 4 4"/><circle cx="17.5" cy="16.5" r="2.2"/></svg></span>
+          <h3>Barba y arreglo masculino</h3>
+          <p>Arreglo de barba y perfilado, como complemento del corte en la misma visita.</p>
+        </article>
+      </div>
+      <p class="nota-servicios">Los precios y la duración se confirman en el salón, según el servicio y el largo del cabello.</p>
+    </div>
+  </section>
+
+  <!-- 3 · PRIMERA CITA -->
+  <section id="primera-cita">
+    <div class="envoltura">
+      <div class="cab-seccion">
+        <p class="sobretitulo">Tu primera cita</p>
+        <h2>Cómo funciona, en tres pasos</h2>
+        <p>Sin complicaciones: una llamada, una conversación tranquila y manos a la obra.</p>
+      </div>
+      <div class="pasos">
+        <article class="paso">
+          <span class="paso-num">01</span>
+          <h3>Llama y reserva</h3>
+          <p>Marca el 96 672 51 19 o el 695 868 232, di qué te gustaría hacerte y buscamos un hueco que te venga bien.</p>
+        </article>
+        <article class="paso">
+          <span class="paso-num">02</span>
+          <h3>Hablamos de tu pelo</h3>
+          <p>Al llegar al salón revisamos tu cabello, lo que buscas y lo que puedes mantener en casa. De ahí sale la propuesta.</p>
+        </article>
+        <article class="paso">
+          <span class="paso-num">03</span>
+          <h3>Manos a la obra</h3>
+          <p>Hacemos el servicio acordado y te explicamos cómo cuidarlo hasta la próxima visita.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · CONTACTO -->
+  <section id="contacto">
+    <div class="envoltura">
+      <div class="cab-seccion">
+        <p class="sobretitulo">Contacto</p>
+        <h2>Dónde estamos</h2>
+        <p>En el centro de Guardamar del Segura, a un paso del casco urbano.</p>
+      </div>
+      <div class="contacto-grid">
+        <div>
+          <div class="datos">
+            <div class="dato">
+              <div>
+                <p class="dato-et">Teléfono</p>
+                <p class="dato-vl"><a href="tel:+34966725119">96 672 51 19</a></p>
+                <p class="dato-sub">Móvil: <a href="tel:+34695868232" style="color:inherit">695 868 232</a></p>
+              </div>
+            </div>
+            <div class="dato">
+              <div>
+                <p class="dato-et">Dirección</p>
+                <p class="dato-vl">C/ Cartagena 28<br>03140 Guardamar del Segura (Alicante)</p>
+              </div>
+            </div>
+            <div class="dato">
+              <div>
+                <p class="dato-et">Horario</p>
+                <p class="dato-vl">Consultar horario</p>
+                <p class="dato-sub">Por teléfono te confirmamos la disponibilidad del día.</p>
+              </div>
+            </div>
+            <div class="dato">
+              <div>
+                <p class="dato-et">Correo</p>
+                <p class="dato-vl"><a href="mailto:fusionpeluquerias@gmail.com">fusionpeluquerias@gmail.com</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="acciones">
+            <a class="btn btn-primario" href="tel:+34966725119">Llamar al salón</a>
+          </div>
+        </div>
+
+        <div class="mapa">
+          <svg viewBox="0 0 560 400" role="img" aria-label="Plano esquemático de la zona del salón en la calle Cartagena">
+            <rect width="560" height="400" fill="#f7f2ec"/>
+            <g fill="#efe6dc" stroke="#ddcfc1" stroke-width="1">
+              <rect x="20" y="20" width="176" height="122" rx="6"/>
+              <rect x="244" y="20" width="126" height="122" rx="6"/>
+              <rect x="418" y="20" width="122" height="122" rx="6"/>
+              <rect x="20" y="190" width="176" height="98" rx="6"/>
+              <rect x="244" y="190" width="126" height="98" rx="6"/>
+              <rect x="418" y="190" width="122" height="98" rx="6"/>
+              <rect x="20" y="336" width="176" height="44" rx="6"/>
+              <rect x="244" y="336" width="126" height="44" rx="6"/>
+              <rect x="418" y="336" width="122" height="44" rx="6"/>
+            </g>
+            <g stroke="#ffffff" stroke-width="26" stroke-linecap="square">
+              <path d="M0 166h560"/><path d="M0 312h560"/>
+              <path d="M220 0v400"/><path d="M394 0v400"/>
+            </g>
+            <g stroke="#dcc9b8" stroke-width="1.6" stroke-dasharray="10 12" opacity=".9">
+              <path d="M0 166h560"/><path d="M0 312h560"/>
+              <path d="M220 0v400"/><path d="M394 0v400"/>
+            </g>
+            <g font-family="system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif" fill="#8a7a6e" font-size="13" letter-spacing="1.6">
+              <text x="300" y="186">C/ CARTAGENA</text>
+              <text x="40" y="332">CALLE</text>
+              <text x="214" y="56" transform="rotate(-90 214 56)">CALLE</text>
+              <text x="388" y="372" transform="rotate(-90 388 372)">CALLE</text>
+            </g>
+            <!-- marcador sobre C/ Cartagena -->
+            <g>
+              <circle cx="150" cy="166" r="30" fill="#e8cfc4" opacity=".5"/>
+              <circle cx="150" cy="166" r="16" fill="#e8cfc4" opacity=".8"/>
+              <path d="M150 128a15 15 0 0 0-15 15c0 10.5 15 25 15 25s15-14.5 15-25a15 15 0 0 0-15-15Z" fill="#b5704a"/>
+              <circle cx="150" cy="143" r="5.4" fill="#fffdfb"/>
+              <path d="M166 143h44" stroke="#c9ab96" stroke-width="1.4" stroke-dasharray="4 5"/>
+            </g>
+            <g>
+              <rect x="212" y="120" width="226" height="46" rx="12" fill="#fffdfb" stroke="#ddcfc1"/>
+              <text x="230" y="143" font-family="Georgia,'Times New Roman',serif" font-size="19" fill="#16120f">Fusión Peluquerías</text>
+              <text x="230" y="158" font-family="system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="12" fill="#8a7a6e" letter-spacing="1">C/ CARTAGENA 28</text>
+            </g>
+          </svg>
+          <div class="mapa-pie">
+            <em>Plano esquemático · no a escala</em>
+            <span>C/ Cartagena 28 · 03140 Guardamar del Segura</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- 5 · PIE -->
+<footer class="pie">
+  <div class="envoltura">
+    <div class="pie-grid">
+      <div>
+        <h3>Fusión Peluquerías</h3>
+        <p>Peluquería en Guardamar del Segura. Pide tu cita por teléfono y te atendemos en la calle Cartagena.</p>
+      </div>
+      <div>
+        <p class="pie-et">Contacto</p>
+        <div class="pie-lista">
+          <a href="tel:+34966725119">96 672 51 19</a>
+          <a href="tel:+34695868232">695 868 232</a>
+          <a href="mailto:fusionpeluquerias@gmail.com">fusionpeluquerias@gmail.com</a>
+          <span>C/ Cartagena 28, 03140 Guardamar del Segura (Alicante)</span>
+        </div>
+      </div>
+      <div>
+        <p class="pie-et">Redes</p>
+        <div class="pie-lista">
+          <a href="https://www.instagram.com/fusionpeluquerias/" target="_blank" rel="noopener">Instagram @fusionpeluquerias</a>
+          <a href="https://www.facebook.com/fusionpeluqueriaguardamar" target="_blank" rel="noopener">Facebook /fusionpeluqueriaguardamar</a>
+          <span>Horario: consultar horario</span>
+        </div>
+      </div>
+    </div>
+    <div class="pie-base">
+      <span class="firma">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</span>
+      <span>Maqueta de demostración · textos e imágenes orientativos</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

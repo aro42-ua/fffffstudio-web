@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Carreras · Decoración e interiorismo · Vinaròs</title>
+<style>
+  :root{
+    --bg:#faf8f5;
+    --bg-alt:#f2ede6;
+    --ink:#1d1b19;
+    --ink-soft:#5c554e;
+    --line:#ddd4c9;
+    --accent:#8a6a4f;
+    --accent-dark:#6b5139;
+    --white:#fffdfb;
+    --bar:#1d1b19;
+    --maxw:1180px;
+    --bar-h:44px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;max-width:100%;overflow-x:hidden}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+    font-size:17px;line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%}
+  a{color:inherit}
+
+  /* ---------- barra fija ---------- */
+  .topbar{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    min-height:var(--bar-h);
+    display:flex;align-items:center;justify-content:center;
+    background:var(--bar);color:#f3ece3;
+    padding:9px 16px;
+    font-size:12.5px;letter-spacing:.04em;line-height:1.35;
+    text-align:center;
+    border-bottom:1px solid rgba(255,255,255,.12);
+  }
+  .topbar span{display:block;max-width:900px}
+  .page{padding-top:var(--bar-h)}
+
+  /* ---------- utilidades ---------- */
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
+  section{padding:104px 0}
+  .eyebrow{
+    font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--accent);margin:0 0 20px;font-weight:600;
+  }
+  h1,h2,h3{font-weight:400;letter-spacing:-.015em;margin:0}
+  h1{font-size:clamp(2.3rem,6vw,4.1rem);line-height:1.06}
+  h2{font-size:clamp(1.75rem,3.6vw,2.6rem);line-height:1.15}
+  h3{font-size:1.12rem;letter-spacing:0;font-weight:600}
+  p{margin:0 0 1em}
+  .lead{font-size:clamp(1rem,1.5vw,1.18rem);color:var(--ink-soft);max-width:54ch}
+  .rule{height:1px;background:var(--line);border:0;margin:0}
+
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:15px 28px;border-radius:999px;
+    background:var(--accent);color:#fff;text-decoration:none;
+    font-size:15.5px;font-weight:600;letter-spacing:.01em;
+    transition:background .2s ease;
+  }
+  .btn:hover{background:var(--accent-dark)}
+  .btn--ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+  .btn--ghost:hover{background:var(--bg-alt)}
+  .btn svg{flex:0 0 auto}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    padding:96px 0 104px;
+    background:
+      radial-gradient(1100px 620px at 86% -8%, rgba(190,160,128,.40), transparent 62%),
+      radial-gradient(760px 520px at -8% 108%, rgba(142,160,150,.30), transparent 60%),
+      linear-gradient(170deg,#fdfbf8 0%,#f4efe8 100%);
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.08fr .92fr;
+    gap:56px;align-items:center;
+  }
+  .hero h1{margin-bottom:24px}
+  .hero .lead{margin-bottom:34px}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .hero-note{margin:26px 0 0;font-size:13.5px;color:var(--ink-soft)}
+  .hero-art{
+    border-radius:4px;overflow:hidden;
+    box-shadow:0 26px 60px -30px rgba(60,45,30,.45);
+    background:#efe8df;
+  }
+  .hero-art svg{display:block;width:100%;height:auto}
+
+  /* ---------- servicios ---------- */
+  .svc-head{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;margin-bottom:56px}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .card{background:var(--white);padding:38px 32px 42px}
+  .card .ico{
+    width:46px;height:46px;margin-bottom:22px;color:var(--accent);
+  }
+  .card h3{margin-bottom:10px}
+  .card p{color:var(--ink-soft);font-size:15.5px;margin:0}
+
+  /* ---------- proceso ---------- */
+  .proceso{background:var(--bg-alt)}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:56px}
+  .step{position:relative;padding-top:28px;border-top:2px solid var(--accent)}
+  .step .num{
+    font-size:13px;letter-spacing:.18em;color:var(--accent);
+    font-weight:700;display:block;margin-bottom:14px;
+  }
+  .step h3{margin-bottom:10px}
+  .step p{color:var(--ink-soft);font-size:15.5px;margin:0}
+
+  /* ---------- contacto ---------- */
+  .contacto-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:56px;align-items:start;margin-top:48px}
+  .datos{border:1px solid var(--line);background:var(--white);padding:36px 32px}
+  .dato{display:flex;gap:16px;padding:20px 0;border-bottom:1px solid var(--line)}
+  .dato:first-of-type{padding-top:0}
+  .dato:last-child{border-bottom:0;padding-bottom:0}
+  .dato .ico{width:22px;height:22px;flex:0 0 22px;color:var(--accent);margin-top:4px}
+  .dato .k{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 4px}
+  .dato .v{margin:0;font-size:17px;line-height:1.45}
+  .dato .v a{text-decoration:none;border-bottom:1px solid var(--line)}
+  .dato .v a:hover{border-color:var(--accent)}
+  .mapa{border:1px solid var(--line);background:var(--white);padding:12px}
+  .mapa svg{display:block;width:100%;height:auto}
+  .mapa-pie{
+    margin:12px 4px 2px;font-size:12.5px;color:var(--ink-soft);
+  }
+
+  /* ---------- pie ---------- */
+  footer{background:var(--bar);color:#ebe3d8;padding:64px 0 48px}
+  footer a{color:#ebe3d8}
+  .foot-grid{display:grid;grid-template-columns:1fr auto;gap:36px;align-items:start}
+  .foot-brand{font-size:1.35rem;letter-spacing:.02em;margin:0 0 8px}
+  .foot-sub{margin:0;color:#b9ae9f;font-size:14.5px}
+  .foot-mail{margin:0;font-size:15.5px}
+  .foot-mail a{text-decoration:none;border-bottom:1px solid rgba(255,255,255,.3)}
+  .foot-rule{height:1px;background:rgba(255,255,255,.14);border:0;margin:40px 0 24px}
+  .foot-credit{margin:0;font-size:13px;color:#a79c8c;line-height:1.6}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:900px){
+    .hero-grid,.svc-head,.contacto-grid{grid-template-columns:1fr}
+    .cards,.steps{grid-template-columns:1fr}
+    .steps{gap:32px}
+    .foot-grid{grid-template-columns:1fr}
+  }
+  @media (max-width:560px){
+    :root{--bar-h:56px}
+    body{font-size:16px}
+    .wrap{padding:0 20px}
+    section{padding:64px 0}
+    .hero{padding:56px 0 68px}
+    .hero-grid{gap:40px}
+    .card{padding:30px 24px 34px}
+    .datos{padding:28px 22px}
+    .btn{padding:14px 22px;font-size:15px}
+    .hero-cta .btn{width:100%;justify-content:center}
+    .topbar{font-size:11.5px;letter-spacing:.02em}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<div class="page">
+
+  <!-- 1. HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Decoración e interiorismo · Vinaròs</p>
+        <h1>Carreras</h1>
+        <p class="lead">Decoración e interiorismo en Vinaròs. Acompañamos cada espacio desde la primera idea hasta el último detalle, con criterio y cercanía.</p>
+        <div class="hero-cta">
+          <a class="btn" href="tel:+34964454308">
+            <svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2.1z"/></svg>
+            Llamar al 964 454 308
+          </a>
+          <a class="btn btn--ghost" href="#contacto">Ver contacto</a>
+        </div>
+        <p class="hero-note">C/ Sant Tomàs 37 · 12500 Vinaròs (Castellón)</p>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 640 520" role="presentation">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#efe6da"/><stop offset="1" stop-color="#d8c9b6"/>
+            </linearGradient>
+            <linearGradient id="g2" x1="0" y1="1" x2="0" y2="0">
+              <stop offset="0" stop-color="#8a6a4f"/><stop offset="1" stop-color="#bda184"/>
+            </linearGradient>
+            <linearGradient id="g3" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#fdfbf8"/><stop offset="1" stop-color="#e8e0d4"/>
+            </linearGradient>
+            <linearGradient id="g4" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#9eb0a6"/><stop offset="1" stop-color="#c3cfc6"/>
+            </linearGradient>
+          </defs>
+          <rect width="640" height="520" fill="url(#g1)"/>
+          <!-- ventana / luz -->
+          <rect x="60" y="54" width="208" height="250" rx="2" fill="url(#g3)" opacity=".95"/>
+          <line x1="164" y1="54" x2="164" y2="304" stroke="#cbbda9" stroke-width="3"/>
+          <line x1="60" y1="179" x2="268" y2="179" stroke="#cbbda9" stroke-width="3"/>
+          <rect x="60" y="54" width="208" height="250" rx="2" fill="none" stroke="#b8a68f" stroke-width="4"/>
+          <!-- cortina -->
+          <path d="M296 40 q22 130 0 268 l44 0 q-20 -138 0 -268 z" fill="url(#g4)" opacity=".75"/>
+          <!-- suelo -->
+          <rect x="0" y="392" width="640" height="128" fill="#cbb9a2" opacity=".55"/>
+          <!-- sofa -->
+          <rect x="72" y="320" width="260" height="56" rx="12" fill="url(#g2)"/>
+          <rect x="88" y="296" width="228" height="38" rx="10" fill="#9c7a5c"/>
+          <rect x="96" y="376" width="14" height="24" rx="4" fill="#6b5139"/>
+          <rect x="294" y="376" width="14" height="24" rx="4" fill="#6b5139"/>
+          <!-- cojines -->
+          <rect x="112" y="300" width="46" height="34" rx="8" fill="#dcd0bd"/>
+          <rect x="246" y="300" width="46" height="34" rx="8" fill="#a8b8ad"/>
+          <!-- lampara -->
+          <line x1="470" y1="40" x2="470" y2="150" stroke="#8a6a4f" stroke-width="3"/>
+          <path d="M430 150 h80 l-18 54 h-44 z" fill="#e4d7c3" stroke="#b8a68f" stroke-width="2"/>
+          <!-- mesa auxiliar + jarron -->
+          <rect x="412" y="330" width="140" height="8" rx="3" fill="#6b5139"/>
+          <rect x="424" y="338" width="8" height="54" fill="#6b5139"/>
+          <rect x="532" y="338" width="8" height="54" fill="#6b5139"/>
+          <path d="M466 330 q-14 -40 14 -58 q28 18 14 58 z" fill="#9eb0a6"/>
+          <path d="M480 272 q-4 -34 -22 -50" stroke="#7d9185" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M480 272 q10 -30 30 -42" stroke="#7d9185" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <!-- alfombra -->
+          <ellipse cx="320" cy="438" rx="226" ry="42" fill="#e0d2bd" opacity=".85"/>
+          <ellipse cx="320" cy="438" rx="178" ry="30" fill="none" stroke="#c6b49c" stroke-width="2"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- 2. SERVICIOS -->
+  <section id="servicios">
+    <div class="wrap">
+      <div class="svc-head">
+        <div>
+          <p class="eyebrow">Servicios</p>
+          <h2>Lo que podemos hacer por tu espacio</h2>
+        </div>
+        <p class="lead" style="margin:0">Trabajamos vivienda y espacios comerciales, en proyectos completos o en intervenciones puntuales.</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21V9l9-6 9 6v12"/><path d="M9 21v-7h6v7"/></svg>
+          <h3>Proyecto de interiorismo</h3>
+          <p>Distribución, materiales y luz pensados en conjunto, con planos y propuesta visual antes de empezar la obra.</p>
+        </article>
+        <article class="card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 10h18"/><path d="M7 18v2"/><path d="M17 18v2"/></svg>
+          <h3>Cortinas y textiles</h3>
+          <p>Cortinas, estores, tapizados y textiles a medida, elegidos y confeccionados según cada ventana y cada estancia.</p>
+        </article>
+        <article class="card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16"/><path d="M6 20v-8h12v8"/><path d="M9 12V7a3 3 0 0 1 6 0v5"/></svg>
+          <h3>Mobiliario y descanso</h3>
+          <p>Selección de muebles, asesoramiento en descanso y piezas de apoyo que encajan con el resto del conjunto.</p>
+        </article>
+        <article class="card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v6"/><path d="M7 9h10l2 5a7 7 0 0 1-14 0z"/><path d="M12 19v2"/></svg>
+          <h3>Iluminación</h3>
+          <p>Puntos de luz, lámparas y ambientes: cómo se ve el espacio de día y cómo se vive por la noche.</p>
+        </article>
+        <article class="card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V5h16v14z"/><path d="M4 12h16"/><path d="M10 5v7"/></svg>
+          <h3>Revestimientos y paredes</h3>
+          <p>Papel pintado, pintura y acabados de pared y suelo combinados para dar carácter sin romper la armonía.</p>
+        </article>
+        <article class="card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l4 2"/></svg>
+          <h3>Asesoramiento y seguimiento</h3>
+          <p>Te acompañamos en las decisiones y coordinamos medidas, plazos e instalación hasta dejarlo terminado.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. CÓMO TRABAJAMOS -->
+  <section class="proceso" id="proceso">
+    <div class="wrap">
+      <p class="eyebrow">Cómo trabajamos</p>
+      <h2>Tres pasos, sin sorpresas</h2>
+      <div class="steps">
+        <div class="step">
+          <span class="num">PASO 01</span>
+          <h3>Nos lo cuentas</h3>
+          <p>Hablamos del espacio, de cómo lo usas y de qué te gustaría cambiar. Tomamos medidas y vemos el estado real de la estancia.</p>
+        </div>
+        <div class="step">
+          <span class="num">PASO 02</span>
+          <h3>Te proponemos</h3>
+          <p>Preparamos una propuesta con materiales, textiles y combinaciones concretas, para que puedas verla antes de decidir.</p>
+        </div>
+        <div class="step">
+          <span class="num">PASO 03</span>
+          <h3>Lo ponemos en marcha</h3>
+          <p>Coordinamos confección, suministro e instalación, y revisamos el resultado contigo cuando todo está colocado.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. CONTACTO -->
+  <section id="contacto">
+    <div class="wrap">
+      <p class="eyebrow">Contacto</p>
+      <h2>Estamos en el centro de Vinaròs</h2>
+      <div class="contacto-grid">
+        <div class="datos">
+          <div class="dato">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2.1z"/></svg>
+            <div>
+              <p class="k">Teléfono</p>
+              <p class="v"><a href="tel:+34964454308">964 454 308</a></p>
+            </div>
+          </div>
+          <div class="dato">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div>
+              <p class="k">Dirección</p>
+              <p class="v">C/ Sant Tomàs 37<br>12500 Vinaròs (Castellón)</p>
+            </div>
+          </div>
+          <div class="dato">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l4 2"/></svg>
+            <div>
+              <p class="k">Horario</p>
+              <p class="v">Consultar horario</p>
+            </div>
+          </div>
+          <div class="dato">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+            <div>
+              <p class="k">Email</p>
+              <p class="v"><a href="mailto:carrerasdeco@hotmail.com">carrerasdeco@hotmail.com</a></p>
+            </div>
+          </div>
+          <div class="dato" style="border-bottom:0">
+            <div style="width:100%">
+              <a class="btn" href="tel:+34964454308" style="width:100%;justify-content:center">Llamar al 964 454 308</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="mapa">
+          <svg viewBox="0 0 640 420" role="img" aria-label="Mapa esquemático orientativo de la zona">
+            <defs>
+              <linearGradient id="mg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#f6f1ea"/><stop offset="1" stop-color="#ebe3d7"/>
+              </linearGradient>
+            </defs>
+            <rect width="640" height="420" fill="#fdfbf8"/>
+            <!-- manzanas (bloques abstractos) -->
+            <g fill="url(#mg)">
+              <rect x="0" y="0" width="221" height="166"/>
+              <rect x="243" y="0" width="164" height="166"/>
+              <rect x="429" y="0" width="211" height="166"/>
+              <rect x="0" y="188" width="221" height="113"/>
+              <rect x="243" y="188" width="164" height="113"/>
+              <rect x="429" y="188" width="211" height="113"/>
+              <rect x="0" y="323" width="221" height="97"/>
+              <rect x="243" y="323" width="164" height="97"/>
+              <rect x="429" y="323" width="211" height="97"/>
+            </g>
+            <!-- parcelas interiores -->
+            <g stroke="#ddd2c1" stroke-width="2">
+              <line x1="92" y1="0" x2="92" y2="166"/>
+              <line x1="0" y1="86" x2="221" y2="86"/>
+              <line x1="326" y1="0" x2="326" y2="166"/>
+              <line x1="520" y1="0" x2="520" y2="166"/>
+              <line x1="429" y1="92" x2="640" y2="92"/>
+              <line x1="118" y1="188" x2="118" y2="301"/>
+              <line x1="0" y1="252" x2="221" y2="252"/>
+              <line x1="540" y1="188" x2="540" y2="301"/>
+              <line x1="80" y1="323" x2="80" y2="420"/>
+              <line x1="156" y1="323" x2="156" y2="420"/>
+              <line x1="326" y1="323" x2="326" y2="420"/>
+              <line x1="500" y1="323" x2="500" y2="420"/>
+            </g>
+            <!-- zona verde abstracta -->
+            <rect x="429" y="188" width="211" height="113" fill="#cdd8cf" opacity=".65"/>
+            <!-- calles -->
+            <g stroke="#fdfbf8" stroke-width="22" stroke-linecap="butt">
+              <line x1="232" y1="0" x2="232" y2="420"/>
+              <line x1="418" y1="0" x2="418" y2="420"/>
+              <line x1="0" y1="177" x2="640" y2="177"/>
+              <line x1="0" y1="312" x2="640" y2="312"/>
+            </g>
+            <g stroke="#cfc3b0" stroke-width="1.6" stroke-dasharray="8 10">
+              <line x1="232" y1="0" x2="232" y2="420"/>
+              <line x1="418" y1="0" x2="418" y2="420"/>
+              <line x1="0" y1="177" x2="640" y2="177"/>
+              <line x1="0" y1="312" x2="640" y2="312"/>
+            </g>
+            <!-- marcador -->
+            <g transform="translate(325,196)">
+              <ellipse cx="0" cy="66" rx="24" ry="7" fill="#6b5139" opacity=".22"/>
+              <path d="M0 62 C0 62 -28 30 -28 15 A28 28 0 0 1 28 15 C28 30 0 62 0 62 Z" fill="#8a6a4f"/>
+              <circle cx="0" cy="16" r="10" fill="#fdfbf8"/>
+            </g>
+            <!-- etiqueta -->
+            <g>
+              <rect x="20" y="20" width="236" height="46" rx="23" fill="#fdfbf8" stroke="#ddd2c1" stroke-width="1.6"/>
+              <circle cx="46" cy="43" r="7" fill="#8a6a4f"/>
+              <text x="64" y="50" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="21" fill="#3a352f">C/ Sant Tomàs 37</text>
+            </g>
+          </svg>
+          <p class="mapa-pie">Mapa esquemático orientativo. No representa el trazado real de las calles.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. PIE -->
+  <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <p class="foot-brand">Carreras</p>
+          <p class="foot-sub">Decoración e interiorismo · C/ Sant Tomàs 37, 12500 Vinaròs (Castellón)</p>
+        </div>
+        <div>
+          <p class="foot-mail"><a href="mailto:carrerasdeco@hotmail.com">carrerasdeco@hotmail.com</a></p>
+          <p class="foot-sub" style="margin-top:6px"><a href="tel:+34964454308" style="text-decoration:none">964 454 308</a> · Consultar horario</p>
+        </div>
+      </div>
+      <hr class="foot-rule">
+      <p class="foot-credit">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

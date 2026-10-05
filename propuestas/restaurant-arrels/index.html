@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Restaurant Arrels · Alcoi — Propuesta de diseño</title>
+<meta name="description" content="Maqueta de propuesta de web para Restaurant Arrels (Alcoi, Alicante). Diseño de FFFFFFstudio — Ángel Rubio.">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  :root{
+    --bg:#f7f2e9;
+    --bg-2:#fffdf8;
+    --ink:#241c16;
+    --ink-2:#4e4238;
+    --ink-3:#6d6054;
+    --line:#e0d5c4;
+    --terra:#9c3f22;
+    --terra-dark:#7d2f17;
+    --olive:#55602f;
+    --gold:#c08a2e;
+    --bar:#1d1814;
+    --radius:16px;
+    --maxw:1140px;
+    --bar-h:42px;
+  }
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size:17px;
+    line-height:1.65;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.serif{
+    font-family:ui-serif,Georgia,"Times New Roman",Times,serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    line-height:1.12;
+    margin:0;
+  }
+  p{margin:0}
+  a{color:inherit}
+  img,svg{max-width:100%}
+
+  /* ---------- Barra fija ---------- */
+  .topbar{
+    position:fixed;inset:0 0 auto 0;z-index:100;
+    min-height:var(--bar-h);
+    display:flex;align-items:center;justify-content:center;
+    background:var(--bar);color:#f0e7d8;
+    padding:7px 16px;
+    font-size:12px;line-height:1.35;letter-spacing:.04em;
+    text-align:center;
+    border-bottom:1px solid rgba(255,255,255,.1);
+  }
+  .topbar span{max-width:100%;overflow-wrap:break-word}
+  .topbar b{font-weight:600;color:#fff}
+
+  .page{padding-top:var(--bar-h)}
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  section{scroll-margin-top:calc(var(--bar-h) + 70px)}
+
+  /* ---------- Nav ---------- */
+  .nav{
+    position:sticky;top:var(--bar-h);z-index:90;
+    background:rgba(247,242,233,.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-in{display:flex;align-items:center;gap:16px;min-height:66px;flex-wrap:wrap;padding:10px 24px}
+  .brand{display:flex;align-items:center;gap:11px;margin-right:auto;text-decoration:none}
+  .brand .mark{flex:none}
+  .brand-txt{display:flex;flex-direction:column;line-height:1.1}
+  .brand-txt strong{font-family:ui-serif,Georgia,serif;font-size:19px;font-weight:600;letter-spacing:.01em}
+  .brand-txt small{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3)}
+  .nav-links{display:flex;gap:22px;list-style:none;margin:0;padding:0}
+  .nav-links a{text-decoration:none;font-size:14px;color:var(--ink-2);padding:4px 0;border-bottom:1px solid transparent}
+  .nav-links a:hover{color:var(--terra);border-bottom-color:var(--terra)}
+
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    padding:13px 22px;border-radius:999px;
+    font-size:15px;font-weight:600;text-decoration:none;
+    border:1px solid transparent;transition:transform .15s ease,background .15s ease;
+  }
+  .btn-pri{background:var(--terra);color:#fff5ec;box-shadow:0 6px 18px rgba(156,63,34,.26)}
+  .btn-pri:hover{background:var(--terra-dark);transform:translateY(-1px)}
+  .btn-sec{background:transparent;color:var(--ink);border-color:var(--ink);}
+  .btn-sec:hover{background:var(--ink);color:var(--bg)}
+  .btn-ghost{background:var(--bg-2);color:var(--ink);border-color:var(--line)}
+  .btn-ghost:hover{border-color:var(--ink-3)}
+  .btn-sm{padding:10px 17px;font-size:14px}
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative;overflow:hidden;padding:84px 0 92px}
+  .hero::before{
+    content:"";position:absolute;inset:0;z-index:0;
+    background:
+      radial-gradient(90% 120% at 88% 8%, rgba(192,138,46,.30) 0%, rgba(192,138,46,0) 58%),
+      radial-gradient(80% 110% at 4% 92%, rgba(85,96,47,.26) 0%, rgba(85,96,47,0) 60%),
+      linear-gradient(168deg,#fffdf8 0%,#f7f0e3 52%,#efe4d2 100%);
+  }
+  .hero .wrap{position:relative;z-index:1}
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:52px;align-items:center}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--terra);font-weight:600;margin-bottom:22px}
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--terra);display:block}
+  .hero h1{font-size:clamp(2.35rem,5.4vw,4rem)}
+  .hero h1 em{font-style:italic;color:var(--terra)}
+  .lede{margin-top:22px;font-size:clamp(1.02rem,1.5vw,1.18rem);color:var(--ink-2);max-width:52ch}
+  .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px}
+  .cta-note{margin-top:16px;font-size:13.5px;color:var(--ink-3)}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:12px 30px;margin-top:38px;padding-top:26px;border-top:1px solid var(--line)}
+  .hero-meta div{min-width:140px}
+  .hero-meta dt{font-size:10.5px;letter-spacing:.17em;text-transform:uppercase;color:var(--ink-3);margin-bottom:4px}
+  .hero-meta dd{margin:0;font-size:15px;font-weight:500}
+
+  /* plato ilustrado SVG */
+  .hero-art{position:relative}
+  .plate-card{
+    background:var(--bg-2);border:1px solid var(--line);border-radius:24px;
+    padding:26px;box-shadow:0 26px 60px -32px rgba(36,28,22,.45);
+  }
+  .plate-card figcaption{margin-top:18px;font-size:13px;color:var(--ink-3);text-align:center}
+
+  /* ---------- Secciones ---------- */
+  .sec{padding:80px 0}
+  .sec-alt{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .sec-head{max-width:62ch;margin-bottom:46px}
+  .sec-head h2{font-size:clamp(1.75rem,3.1vw,2.5rem)}
+  .sec-head p{margin-top:16px;color:var(--ink-2)}
+  .kicker{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--olive);font-weight:600;margin-bottom:14px}
+
+  .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+  .card{
+    background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);
+    padding:28px 26px;display:flex;flex-direction:column;gap:12px;
+  }
+  .sec-alt .card{background:var(--bg)}
+  .card .ico{width:42px;height:42px;border-radius:11px;background:rgba(156,63,34,.1);display:flex;align-items:center;justify-content:center;color:var(--terra)}
+  .card h3{font-size:1.2rem}
+  .card p{color:var(--ink-2);font-size:15.5px}
+  .tag{align-self:flex-start;margin-top:4px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);border:1px solid var(--line);border-radius:999px;padding:4px 11px}
+
+  /* pasos */
+  .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;counter-reset:s}
+  .step{
+    position:relative;background:var(--bg-2);border:1px solid var(--line);
+    border-radius:var(--radius);padding:30px 26px 28px;
+  }
+  .sec-alt .step{background:var(--bg)}
+  .step-n{
+    font-family:ui-serif,Georgia,serif;font-size:36px;line-height:1;color:var(--terra);
+    opacity:.9;display:block;margin-bottom:14px
+  }
+  .step h3{font-size:1.15rem;margin-bottom:10px}
+  .step p{color:var(--ink-2);font-size:15.5px}
+  .step-cta{margin-top:16px;display:inline-flex;font-size:14.5px;font-weight:600;color:var(--terra);text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:1px}
+
+  /* contacto */
+  .contact-grid{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:34px;align-items:start}
+  .info-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+  .info-list li{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid var(--line)}
+  .info-list li:last-child{border-bottom:0}
+  .info-list .ico{flex:none;width:38px;height:38px;border-radius:10px;background:rgba(85,96,47,.12);color:var(--olive);display:flex;align-items:center;justify-content:center}
+  .info-list dt{font-size:10.5px;letter-spacing:.17em;text-transform:uppercase;color:var(--ink-3);margin-bottom:3px}
+  .info-list dd{margin:0;font-size:16.5px;font-weight:500;overflow-wrap:anywhere}
+  .info-list dd a{text-decoration:none;border-bottom:1px solid var(--line)}
+  .info-list dd a:hover{color:var(--terra);border-bottom-color:var(--terra)}
+  .info-list small{display:block;font-size:13.5px;font-weight:400;color:var(--ink-3);margin-top:3px}
+
+  .map-card{background:var(--bg-2);border:1px solid var(--line);border-radius:var(--radius);padding:16px;overflow:hidden}
+  .sec-alt .map-card{background:var(--bg)}
+  .map-card svg{display:block;width:100%;height:auto;border-radius:10px}
+  .map-legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:14px;font-size:12.5px;color:var(--ink-3)}
+  .map-legend span{display:inline-flex;align-items:center;gap:7px}
+  .dot{width:9px;height:9px;border-radius:50%;background:var(--terra);flex:none}
+  .dot.street{border-radius:2px;width:14px;height:4px;background:var(--line)}
+
+  /* banda CTA */
+  .band{background:var(--bar);color:#f3ebdd;border-radius:22px;padding:44px 40px;display:flex;flex-wrap:wrap;gap:26px;align-items:center;justify-content:space-between}
+  .band h2{font-size:clamp(1.5rem,2.6vw,2.1rem);color:#fff}
+  .band p{margin-top:10px;color:#cdbfab;max-width:46ch;font-size:15.5px}
+  .band .btn-pri{box-shadow:none}
+
+  /* footer */
+  footer{background:#17120f;color:#c6b9a7;padding:56px 0 34px;font-size:14.5px}
+  .foot-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px}
+  footer h4{margin:0 0 12px;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:#8d8073;font-weight:600}
+  footer a{color:#efe5d6;text-decoration:none;border-bottom:1px solid rgba(239,229,214,.26);overflow-wrap:anywhere}
+  footer a:hover{color:#fff;border-bottom-color:#fff}
+  .foot-brand strong{font-family:ui-serif,Georgia,serif;font-size:20px;color:#fff;display:block;margin-bottom:8px}
+  .foot-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
+  .foot-note{margin-top:38px;padding-top:22px;border-top:1px solid rgba(255,255,255,.12);font-size:13px;color:#9a8c7d;display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between}
+  .foot-note .credit{color:#e6dccd}
+  .topbar span{font-weight:500}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:900px){
+    .hero-grid,.contact-grid{grid-template-columns:minmax(0,1fr);gap:40px}
+    .cards,.steps,.foot-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .nav-links{display:none}
+  }
+  @media (max-width:640px){
+    body{font-size:16px}
+    :root{--bar-h:54px}
+    .wrap{padding:0 16px}
+    .nav-in{padding:10px 16px;min-height:60px;gap:10px}
+    .brand-txt strong{font-size:17px}
+    .hero{padding:52px 0 60px}
+    .sec{padding:56px 0}
+    .sec-head{margin-bottom:32px}
+    .cards,.steps,.foot-grid{grid-template-columns:minmax(0,1fr)}
+    .cta-row{gap:10px}
+    .cta-row .btn{width:100%}
+    .band{padding:32px 22px;border-radius:18px}
+    .band .btn{width:100%}
+    .plate-card{padding:18px}
+    .hero-meta{gap:18px}
+    .foot-note{flex-direction:column;gap:10px}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="topbar" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<div class="page">
+
+  <header class="nav">
+    <div class="nav-in">
+      <a class="brand" href="#inicio">
+        <svg class="mark" width="38" height="38" viewBox="0 0 38 38" aria-hidden="true">
+          <circle cx="19" cy="19" r="18" fill="#9c3f22"/>
+          <path d="M19 9.5v19M19 16.5c0-3.2 2.4-5.6 5.6-5.6M19 21.5c0-3.2-2.4-5.6-5.6-5.6M19 27c0-2.6 1.9-4.6 4.6-4.6" stroke="#f7f2e9" stroke-width="1.7" stroke-linecap="round" fill="none"/>
+        </svg>
+        <span class="brand-txt">
+          <strong>Restaurant Arrels</strong>
+          <small>Alcoi · Alicante</small>
+        </span>
+      </a>
+      <nav aria-label="Secciones">
+        <ul class="nav-links">
+          <li><a href="#casa">La casa</a></li>
+          <li><a href="#reservar">Cómo reservar</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn-pri btn-sm" href="tel:+34648784557">648 784 557</a>
+    </div>
+  </header>
+
+  <!-- 1. HERO -->
+  <section class="hero" id="inicio">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow">Restaurante en Alcoi</span>
+          <h1>Cocina con <em>arrels</em>, en el centro de Alcoi.</h1>
+          <p class="lede">
+            Una casa de comidas donde la carta se escribe según lo que da la temporada.
+            Reserva mesa por teléfono y te contamos qué hay hoy.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-pri" href="tel:+34648784557">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+              Reservar: 648 784 557
+            </a>
+            <a class="btn btn-sec" href="#reservar">Cómo reservar</a>
+          </div>
+          <p class="cta-note">Llamada directa al restaurante. Consultar horario antes de venir.</p>
+          <dl class="hero-meta">
+            <div><dt>Dónde</dt><dd>C/ Agres 6 bajo, Alcoi</dd></div>
+            <div><dt>Carta</dt><dd>Cambia según temporada</dd></div>
+            <div><dt>Reservas</dt><dd>Por teléfono</dd></div>
+          </dl>
+        </div>
+
+        <figure class="plate-card">
+          <svg viewBox="0 0 400 320" role="img" aria-label="Ilustración abstracta de un plato servido">
+            <defs>
+              <linearGradient id="gTable" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#f3e7d4"/><stop offset="1" stop-color="#e5d4bb"/>
+              </linearGradient>
+              <radialGradient id="gPlate" cx="42%" cy="34%" r="72%">
+                <stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#ece2d3"/>
+              </radialGradient>
+              <linearGradient id="gFood" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#6f7a37"/><stop offset="1" stop-color="#48521f"/>
+              </linearGradient>
+              <linearGradient id="gFood2" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#c96a2c"/><stop offset="1" stop-color="#9c3f22"/>
+              </linearGradient>
+            </defs>
+            <rect width="400" height="320" rx="12" fill="url(#gTable)"/>
+            <g opacity=".22" stroke="#b9a685" stroke-width="1">
+              <path d="M0 232h400M0 266h400M0 300h400"/>
+            </g>
+            <ellipse cx="200" cy="178" rx="128" ry="34" fill="#241c16" opacity=".1"/>
+            <circle cx="200" cy="158" r="112" fill="url(#gPlate)" stroke="#dbcdb7" stroke-width="2"/>
+            <circle cx="200" cy="158" r="86" fill="none" stroke="#e2d6c2" stroke-width="2"/>
+            <circle cx="200" cy="158" r="62" fill="#f6efe3"/>
+            <path d="M200 112c26 10 40 30 36 54-24 7-45-6-52-28-2-10 3-20 16-26z" fill="url(#gFood)"/>
+            <path d="M176 186c-18-6-28-20-26-36 17-5 32 4 37 20 1 7-3 13-11 16z" fill="url(#gFood2)" opacity=".92"/>
+            <g stroke="#55602f" stroke-width="2.4" stroke-linecap="round" fill="none" opacity=".85">
+              <path d="M214 176c8-6 18-7 27-4"/><path d="M186 142c-7-7-16-10-26-9"/>
+            </g>
+            <circle cx="232" cy="196" r="4.5" fill="#c08a2e"/>
+            <circle cx="168" cy="126" r="3.5" fill="#c08a2e"/>
+            <circle cx="214" cy="118" r="3" fill="#9c3f22" opacity=".7"/>
+            <g stroke="#9a8a72" stroke-width="3.4" stroke-linecap="round">
+              <path d="M44 104v108"/><path d="M356 104v108"/>
+            </g>
+            <path d="M38 104c0-14 12-22 12-22s12 8 12 22-5 20-12 20-12-6-12-20z" fill="#b5a287" opacity=".75"/>
+            <path d="M350 104c0-16 6-24 6-24s6 8 6 24c0 10-3 16-6 16s-6-6-6-16z" fill="#b5a287" opacity=".75"/>
+          </svg>
+          <figcaption>Imagen de muestra ilustrada. En la web final iría fotografía propia del restaurante.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. APARTADOS DEL SECTOR -->
+  <section class="sec sec-alt" id="casa">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">La casa</p>
+        <h2>Una casa de comidas en el centro de Alcoi</h2>
+        <p>
+          Lo que conviene saber antes de venir: qué se cocina, cómo es la sala y cómo se reserva.
+          Todo en una página, y a un toque desde el móvil.
+        </p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <span class="ico" aria-hidden="true">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v7a4 4 0 0 0 8 0V3"/><path d="M7 3v18"/><path d="M17 3c2 2 3 4 3 7s-1 4-3 4v7"/></svg>
+          </span>
+          <h3>La carta</h3>
+          <p>
+            La carta cambia según la temporada y según el mercado, así que no la dejamos fija aquí.
+            Pregunta por teléfono qué hay estos días y te lo contamos.
+          </p>
+          <span class="tag">Consultar</span>
+        </article>
+        <article class="card">
+          <span class="ico" aria-hidden="true">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><path d="M9 21v-7h6v7"/></svg>
+          </span>
+          <h3>El espacio</h3>
+          <p>
+            Una sala para comer con calma. Para grupos o celebraciones, mejor hablarlo antes por
+            teléfono y lo organizamos contigo.
+          </p>
+          <span class="tag">Grupos: preguntar</span>
+        </article>
+        <article class="card">
+          <span class="ico" aria-hidden="true">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg>
+          </span>
+          <h3>Reservas</h3>
+          <p>
+            Se reserva por teléfono, sin formularios ni aplicaciones. Una llamada y queda apuntado.
+          </p>
+          <span class="tag">Por teléfono</span>
+        </article>
+        <article class="card">
+          <span class="ico" aria-hidden="true">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+          </span>
+          <h3>Horario</h3>
+          <p>
+            Los días y turnos de apertura se consultan por teléfono antes de venir, para que nadie
+            se presente un día que no abrimos.
+          </p>
+          <span class="tag">Consultar horario</span>
+        </article>
+        <article class="card">
+          <span class="ico" aria-hidden="true">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 6-9 12-9 12S3 16 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </span>
+          <h3>Cómo llegar</h3>
+          <p>
+            Estamos en la calle Agres, número 6 bajo, en Alcoi. Abajo tienes la dirección completa y
+            un plano de situación.
+          </p>
+          <span class="tag">C/ Agres 6 bajo</span>
+        </article>
+        <article class="card">
+          <span class="ico" aria-hidden="true">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor" stroke="none"/></svg>
+          </span>
+          <h3>Redes</h3>
+          <p>
+            En Instagram y Facebook publicamos el día a día de la casa. Aquí tienes lo que allí se
+            pierde entre publicaciones.
+          </p>
+          <span class="tag">@restaurantarrels</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. CÓMO RESERVAR -->
+  <section class="sec" id="reservar">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">Reservas</p>
+        <h2>Cómo reservar, en tres pasos</h2>
+        <p>Sin complicaciones: una llamada y la mesa queda apuntada.</p>
+      </div>
+      <div class="steps">
+        <article class="step">
+          <span class="step-n">01</span>
+          <h3>Llama al restaurante</h3>
+          <p>Marca el 648 784 557. Desde el móvil basta con tocar el número.</p>
+          <a class="step-cta" href="tel:+34648784557">Llamar ahora</a>
+        </article>
+        <article class="step">
+          <span class="step-n">02</span>
+          <h3>Di día, hora y personas</h3>
+          <p>Indica cuántos sois y cuándo queréis venir. Si es un grupo o una celebración, cuéntalo en la llamada.</p>
+        </article>
+        <article class="step">
+          <span class="step-n">03</span>
+          <h3>Pregunta por la carta del día</h3>
+          <p>La carta cambia según temporada: en la misma llamada se consulta qué hay y se comentan alergias o preferencias.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. CONTACTO -->
+  <section class="sec sec-alt" id="contacto">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">Contacto</p>
+        <h2>Dónde estamos</h2>
+        <p>En el centro de Alcoi, en la calle Agres. El plano es un esquema de situación, no un mapa a escala.</p>
+      </div>
+      <div class="contact-grid">
+        <div>
+          <ul class="info-list">
+            <li>
+              <span class="ico" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span>
+              <div><dt>Teléfono y reservas</dt><dd><a href="tel:+34648784557">648 784 557</a></dd></div>
+            </li>
+            <li>
+              <span class="ico" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 6-9 12-9 12S3 16 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+              <div><dt>Dirección</dt><dd>C/ Agres 6 bajo<br>03802 Alcoi (Alicante)</dd></div>
+            </li>
+            <li>
+              <span class="ico" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span>
+              <div><dt>Horario</dt><dd>Consultar horario<small>Pendiente de confirmar con el restaurante.</small></dd></div>
+            </li>
+            <li>
+              <span class="ico" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3 7l9 6 9-6"/></svg></span>
+              <div><dt>Correo</dt><dd><a href="mailto:restaurantarrels@gmail.com">restaurantarrels@gmail.com</a></dd></div>
+            </li>
+            <li>
+              <span class="ico" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor" stroke="none"/></svg></span>
+              <div><dt>Redes</dt><dd>@restaurantarrels<small>Instagram y Facebook.</small></dd></div>
+            </li>
+          </ul>
+          <div class="cta-row">
+            <a class="btn btn-pri" href="tel:+34648784557">Llamar para reservar</a>
+            <a class="btn btn-ghost" href="mailto:restaurantarrels@gmail.com">Escribir un correo</a>
+          </div>
+        </div>
+
+        <div class="map-card">
+          <svg viewBox="0 0 520 440" role="img" aria-label="Plano esquemático de situación: calles abstractas con un marcador en la ubicación del restaurante">
+            <defs>
+              <linearGradient id="gMap" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#f4eee2"/><stop offset="1" stop-color="#e8dfcd"/>
+              </linearGradient>
+            </defs>
+            <rect width="520" height="440" fill="url(#gMap)"/>
+            <g fill="#ded2bc" opacity=".85">
+              <rect x="30" y="30" width="152" height="92" rx="7"/>
+              <rect x="214" y="30" width="116" height="92" rx="7"/>
+              <rect x="362" y="30" width="128" height="92" rx="7"/>
+              <rect x="30" y="156" width="152" height="104" rx="7"/>
+              <rect x="362" y="156" width="128" height="104" rx="7"/>
+              <rect x="30" y="296" width="152" height="86" rx="7"/>
+              <rect x="214" y="296" width="116" height="86" rx="7"/>
+              <rect x="362" y="296" width="128" height="86" rx="7"/>
+            </g>
+            <rect x="214" y="156" width="116" height="104" rx="10" fill="#cdd6b4" opacity=".92"/>
+            <circle cx="238" cy="246" r="13" fill="#aebf8c"/>
+            <circle cx="308" cy="174" r="11" fill="#aebf8c"/>
+            <g stroke="#fbf7ef" stroke-width="18" stroke-linecap="round" opacity=".97">
+              <path d="M16 139h488"/>
+              <path d="M16 278h488"/>
+              <path d="M198 16v408"/>
+              <path d="M346 16v408"/>
+            </g>
+            <g stroke="#e3d7c1" stroke-width="1.8" stroke-dasharray="8 10">
+              <path d="M16 139h488"/><path d="M16 278h488"/>
+              <path d="M198 16v408"/><path d="M346 16v408"/>
+            </g>
+            <g font-family="Georgia, serif" font-size="17" fill="#8a7b67">
+              <text x="40" y="133">Calle</text>
+              <text x="40" y="272">Calle</text>
+              <text x="356" y="420">Calle</text>
+              <text x="222" y="152" font-size="16" fill="#6f7a4e">Plaza</text>
+            </g>
+            <g>
+              <ellipse cx="272" cy="258" rx="22" ry="7" fill="#241c16" opacity=".2"/>
+              <circle cx="272" cy="196" r="46" fill="#9c3f22" opacity=".09"/>
+              <path d="M272 148c-20 0-36 16-36 36 0 24 36 72 36 72s36-48 36-72c0-20-16-36-36-36z" fill="#9c3f22"/>
+              <circle cx="272" cy="184" r="13.5" fill="#f7f2e9"/>
+              <path d="M272 176.5v15M272 181.5c0-2.6 2-4.6 4.6-4.6M272 185.8c0-2.6-2-4.6-4.6-4.6" stroke="#9c3f22" stroke-width="1.7" stroke-linecap="round" fill="none"/>
+            </g>
+            <g>
+              <rect x="120" y="330" width="304" height="72" rx="14" fill="#fffdf8" stroke="#ddd0b9" stroke-width="1.5"/>
+              <text x="272" y="360" font-family="Georgia, serif" font-size="25" text-anchor="middle" fill="#241c16" font-weight="bold">Restaurant Arrels</text>
+              <text x="272" y="386" font-family="Georgia, serif" font-size="19" text-anchor="middle" fill="#6d6054">C/ Agres 6 bajo · Alcoi</text>
+            </g>
+          </svg>
+          <p class="map-legend">
+            <span><i class="dot" aria-hidden="true"></i> Restaurant Arrels</span>
+            <span><i class="dot street" aria-hidden="true"></i> Calles (esquema)</span>
+            <span>Plano orientativo, no a escala</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BANDA CTA -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="band">
+        <div>
+          <h2>¿Reservamos mesa?</h2>
+          <p>Una llamada y te decimos qué hay hoy en la carta y qué horario tenemos esta semana.</p>
+        </div>
+        <a class="btn btn-pri" href="tel:+34648784557">Llamar al 648 784 557</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. PIE -->
+  <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <strong>Restaurant Arrels</strong>
+          <p>C/ Agres 6 bajo<br>03802 Alcoi (Alicante)</p>
+        </div>
+        <div>
+          <h4>Contacto</h4>
+          <ul class="foot-list">
+            <li><a href="tel:+34648784557">648 784 557</a></li>
+            <li><a href="mailto:restaurantarrels@gmail.com">restaurantarrels@gmail.com</a></li>
+            <li>Consultar horario</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Secciones</h4>
+          <ul class="foot-list">
+            <li><a href="#casa">La casa</a></li>
+            <li><a href="#reservar">Cómo reservar</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+            <li>Redes: @restaurantarrels</li>
+          </ul>
+        </div>
+      </div>
+      <p class="foot-note">
+        <span class="credit">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</span>
+        <span>Maqueta de demostración · sin datos inventados</span>
+      </p>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
