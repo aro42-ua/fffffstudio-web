@@ -1,0 +1,787 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CELASA, S.L. — Cerrajería de hierro y aluminio</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+:root{
+  --ink:#0f1113;
+  --steel-900:#15181c;
+  --steel-800:#1c2026;
+  --steel-700:#262b33;
+  --steel-600:#333a44;
+  --line:rgba(255,255,255,.10);
+  --line-strong:rgba(255,255,255,.18);
+  --paper:#f4f3f1;
+  --paper-2:#e9e7e3;
+  --txt:#15181c;
+  --txt-soft:#4c525b;
+  --txt-inv:#f2f3f5;
+  --txt-inv-soft:#a9b0ba;
+  --amber:#d98323;
+  --amber-soft:#f0a94b;
+  --bar-h:40px;
+  --maxw:1120px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;max-width:100%;overflow-x:hidden}
+body{
+  background:var(--paper);
+  color:var(--txt);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:16px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  padding-top:var(--bar-h);
+}
+img,svg{max-width:100%}
+a{color:inherit}
+
+/* ---------- barra fija de propuesta ---------- */
+.proposal-bar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  min-height:var(--bar-h);
+  display:flex;align-items:center;justify-content:center;
+  gap:10px;
+  padding:7px 14px;
+  background:linear-gradient(90deg,#101215 0%,#1d2228 50%,#101215 100%);
+  border-bottom:1px solid var(--line-strong);
+  color:#f6f7f8;
+  font-size:12.5px;letter-spacing:.02em;line-height:1.3;
+  text-align:center;
+}
+.proposal-bar .dot{
+  width:7px;height:7px;border-radius:50%;flex:0 0 auto;
+  background:linear-gradient(135deg,var(--amber-soft),var(--amber));
+  box-shadow:0 0 0 3px rgba(217,131,35,.18);
+}
+.proposal-bar span{display:block}
+
+/* ---------- utilidades ---------- */
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--amber-soft);margin:0 0 18px
+}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--amber);display:block}
+.eyebrow.dark{color:#9a6310}
+.eyebrow.dark::before{background:#9a6310}
+h1,h2,h3{margin:0;letter-spacing:-.02em;line-height:1.1;font-weight:650}
+.lead{color:var(--txt-soft);font-size:17px;max-width:62ch}
+
+/* ---------- cabecera de sitio ---------- */
+.site-head{
+  background:var(--steel-900);
+  border-bottom:1px solid var(--line);
+}
+.site-head .wrap{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:16px;padding-top:16px;padding-bottom:16px;flex-wrap:wrap
+}
+.brand{display:flex;align-items:center;gap:12px;color:var(--txt-inv);text-decoration:none}
+.brand .mark{flex:0 0 auto}
+.brand b{display:block;font-size:17px;letter-spacing:.06em;font-weight:700}
+.brand small{display:block;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--txt-inv-soft)}
+.head-nav{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.head-nav a{
+  color:var(--txt-inv-soft);text-decoration:none;font-size:13.5px;letter-spacing:.03em;
+  padding:4px 0;border-bottom:1px solid transparent
+}
+.head-nav a:hover{color:#fff;border-bottom-color:var(--amber)}
+.head-tel{
+  display:inline-flex;align-items:center;gap:8px;
+  color:#fff;text-decoration:none;font-weight:700;font-size:14px;letter-spacing:.02em;
+  border:1px solid var(--line-strong);border-radius:2px;padding:9px 14px;
+  background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,0))
+}
+.head-tel:hover{border-color:var(--amber);color:var(--amber-soft)}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(900px 480px at 78% 14%,rgba(217,131,35,.20),transparent 62%),
+    radial-gradient(700px 420px at 8% 92%,rgba(90,120,160,.16),transparent 60%),
+    linear-gradient(165deg,#14171b 0%,#1b1f25 46%,#0f1113 100%);
+  color:var(--txt-inv);
+  border-bottom:1px solid var(--line);
+}
+.hero-grid-bg{position:absolute;inset:0;opacity:.5;pointer-events:none}
+.hero .wrap{position:relative;padding-top:84px;padding-bottom:84px}
+.hero-cols{display:grid;grid-template-columns:1.08fr .92fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(34px,4.4vw,56px);color:#fff;max-width:17ch}
+.hero h1 em{font-style:normal;color:var(--amber-soft)}
+.hero p.lead{color:var(--txt-inv-soft);margin:22px 0 0;font-size:17.5px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  text-decoration:none;font-weight:700;font-size:15px;letter-spacing:.01em;
+  padding:15px 22px;border-radius:2px;border:1px solid transparent
+}
+.btn-primary{
+  background:linear-gradient(180deg,var(--amber-soft),var(--amber));
+  color:#19120a;border-color:#b86f16;
+  box-shadow:0 10px 26px -14px rgba(217,131,35,.85)
+}
+.btn-primary:hover{filter:brightness(1.07)}
+.btn-ghost{border-color:var(--line-strong);color:#eef0f3}
+.btn-ghost:hover{border-color:#8d959f;background:rgba(255,255,255,.04)}
+.hero-note{margin-top:20px;font-size:13px;color:#8e959f;letter-spacing:.02em}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px;padding:0;list-style:none}
+.hero-tags li{
+  font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#b9c0c9;
+  border:1px solid var(--line);border-radius:999px;padding:6px 13px;
+  background:rgba(255,255,255,.03)
+}
+.hero-art{position:relative}
+.hero-art svg{display:block;width:100%;height:auto;
+  filter:drop-shadow(0 26px 44px rgba(0,0,0,.45))}
+
+/* ---------- servicios ---------- */
+.section{padding:84px 0}
+.section-head{max-width:var(--maxw);margin-bottom:44px}
+.section-head h2{font-size:clamp(26px,3vw,38px)}
+.section-head p{margin:16px 0 0}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(15,17,19,.14)}
+.svc{
+  background:linear-gradient(180deg,#fbfaf9,#f1efec);
+  padding:30px 26px 32px;
+  position:relative;min-width:0
+}
+.svc .ic{display:block;margin-bottom:18px}
+.svc h3{font-size:18.5px;margin-bottom:10px}
+.svc p{margin:0;color:var(--txt-soft);font-size:14.5px}
+.svc::after{
+  content:"";position:absolute;left:0;top:0;width:0;height:3px;
+  background:var(--amber);transition:width .25s ease
+}
+.svc:hover::after{width:100%}
+.svc-note{
+  margin-top:26px;font-size:13px;color:#6b727c;
+  border-left:2px solid #cfcbc5;padding-left:14px;max-width:70ch
+}
+
+/* ---------- proceso ---------- */
+.process{
+  background:
+    radial-gradient(700px 360px at 85% 0%,rgba(217,131,35,.14),transparent 60%),
+    linear-gradient(180deg,#191d22,#111418);
+  color:var(--txt-inv)
+}
+.process .section-head h2{color:#fff}
+.process .section-head p{color:var(--txt-inv-soft)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.step{
+  border:1px solid var(--line);border-radius:3px;
+  background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.015));
+  padding:28px 24px 30px;min-width:0
+}
+.step .num{
+  font-size:13px;font-weight:800;letter-spacing:.14em;color:var(--amber-soft);
+  display:flex;align-items:center;gap:10px;margin-bottom:16px
+}
+.step .num i{display:block;height:1px;flex:1;background:var(--line-strong)}
+.step h3{font-size:19px;color:#fff;margin-bottom:10px}
+.step p{margin:0;color:var(--txt-inv-soft);font-size:14.5px}
+
+/* ---------- contacto ---------- */
+.contact{background:linear-gradient(180deg,#f4f3f1,#e7e5e1)}
+.contact-cols{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start}
+.info-list{list-style:none;margin:28px 0 0;padding:0;border-top:1px solid #d6d2cc}
+.info-list li{
+  display:flex;gap:16px;align-items:flex-start;
+  padding:18px 0;border-bottom:1px solid #d6d2cc
+}
+.info-list .ic{flex:0 0 auto;margin-top:2px}
+.info-list .k{
+  display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:#7a8088;margin-bottom:3px
+}
+.info-list .v{display:block;font-size:17px;font-weight:650;letter-spacing:-.01em;word-break:break-word}
+.info-list a.v{text-decoration:none;border-bottom:1px solid rgba(21,24,28,.25)}
+.info-list a.v:hover{color:#9a6310;border-bottom-color:#9a6310}
+.contact-cta{margin-top:28px}
+.btn-dark{background:var(--steel-900);color:#fff;border-color:var(--steel-900)}
+.btn-dark:hover{background:#000}
+
+.map-card{
+  border:1px solid #d2cec8;border-radius:3px;overflow:hidden;
+  background:linear-gradient(180deg,#fcfbfa,#f0eeea);
+  box-shadow:0 18px 40px -28px rgba(15,17,19,.45)
+}
+.map-card figcaption{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;
+  padding:14px 18px;border-bottom:1px solid #e2ded8;
+  font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;color:#7a8088
+}
+.map-card figcaption b{color:var(--txt);letter-spacing:.04em;text-transform:none;font-size:13.5px}
+.map-card .map-body{padding:0}
+.map-card svg{display:block;width:100%;height:auto}
+.map-foot{padding:13px 18px;border-top:1px solid #e2ded8;font-size:12.5px;color:#6b727c}
+
+/* ---------- pie ---------- */
+.site-foot{background:var(--steel-900);color:var(--txt-inv);border-top:3px solid var(--amber)}
+.foot-top{display:grid;grid-template-columns:1.2fr .8fr;gap:36px;padding:56px 0 34px}
+.foot-top h3{font-size:19px;color:#fff;margin-bottom:12px}
+.foot-top p{margin:0;color:var(--txt-inv-soft);font-size:14.5px;max-width:52ch}
+.foot-contact{list-style:none;margin:0;padding:0}
+.foot-contact li{padding:7px 0;font-size:14.5px;color:#d6dae0;word-break:break-word}
+.foot-contact a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.3)}
+.foot-contact a:hover{color:var(--amber-soft);border-bottom-color:var(--amber-soft)}
+.foot-contact .k{color:#8b929b;font-size:11px;letter-spacing:.14em;text-transform:uppercase;display:block}
+.foot-bar{
+  border-top:1px solid var(--line);padding:22px 0 32px;
+  display:flex;gap:14px;justify-content:space-between;align-items:center;flex-wrap:wrap
+}
+.foot-bar p{margin:0;font-size:13px;color:#9aa1aa;line-height:1.5}
+.foot-bar .sig{color:#d9dde2}
+.foot-bar .sig b{color:#fff}
+
+/* ---------- responsive ---------- */
+@media (max-width:980px){
+  .hero-cols{grid-template-columns:1fr;gap:40px}
+  .hero h1{max-width:22ch}
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:1fr}
+  .contact-cols{grid-template-columns:1fr;gap:34px}
+  .foot-top{grid-template-columns:1fr;gap:28px}
+}
+@media (max-width:640px){
+  :root{--bar-h:52px}
+  body{font-size:15.5px}
+  .wrap{padding:0 18px}
+  .proposal-bar{font-size:11.5px;padding:8px 14px;gap:8px}
+  .site-head .wrap{justify-content:center;text-align:center}
+  .head-nav{display:none}
+  .head-tel{width:100%;justify-content:center}
+  .brand{justify-content:center}
+  .hero .wrap{padding-top:52px;padding-bottom:56px}
+  .hero h1{max-width:100%}
+  .hero p.lead{font-size:16px}
+  .hero-actions{gap:10px}
+  .btn{width:100%;justify-content:center;padding:14px 18px}
+  .section{padding:56px 0}
+  .section-head{margin-bottom:30px}
+  .svc-grid{grid-template-columns:1fr}
+  .svc{padding:24px 20px 26px}
+  .info-list .v{font-size:16px}
+  .foot-top{padding:40px 0 26px}
+  .foot-bar{padding:18px 0 28px}
+  .map-card figcaption{font-size:11px}
+}
+</style>
+</head>
+<body>
+
+<!-- ====== BARRA FIJA DE PROPUESTA ====== -->
+<div class="proposal-bar" role="note">
+  <i class="dot" aria-hidden="true"></i>
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<!-- ====== CABECERA ====== -->
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="#inicio">
+      <svg class="mark" width="38" height="38" viewBox="0 0 38 38" aria-hidden="true">
+        <defs>
+          <linearGradient id="gMark" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#f0a94b"/><stop offset="1" stop-color="#b86f16"/>
+          </linearGradient>
+        </defs>
+        <rect x="1.5" y="1.5" width="35" height="35" rx="2" fill="none" stroke="url(#gMark)" stroke-width="1.6"/>
+        <path d="M9 29V9h8.5a5.5 5.5 0 0 1 0 11H9" fill="none" stroke="#f3f4f6" stroke-width="2.1" stroke-linecap="square"/>
+        <path d="M18 20l6.5 9" fill="none" stroke="url(#gMark)" stroke-width="2.1" stroke-linecap="square"/>
+        <path d="M24.5 9v6.5" fill="none" stroke="#f3f4f6" stroke-width="2.1" stroke-linecap="square"/>
+      </svg>
+      <span>
+        <b>CELASA, S.L.</b>
+        <small>Cerrajería de hierro y aluminio</small>
+      </span>
+    </a>
+    <nav class="head-nav" aria-label="Navegación principal">
+      <a href="#servicios">Servicios</a>
+      <a href="#proceso">Cómo trabajamos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="head-tel" href="tel:927275314">
+      <svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true">
+        <path d="M3 2h3l1.4 3.3-2 1.4a9 9 0 0 0 4 4l1.4-2L14 10v3a1 1 0 0 1-1 1A11 11 0 0 1 2 3a1 1 0 0 1 1-1z"
+              fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+      </svg>
+      927 275 314
+    </a>
+  </div>
+</header>
+
+<!-- ====== HERO ====== -->
+<main id="inicio">
+<section class="hero">
+  <svg class="hero-grid-bg" aria-hidden="true" preserveAspectRatio="none" viewBox="0 0 1200 600">
+    <defs>
+      <pattern id="pGrid" width="48" height="48" patternUnits="userSpaceOnUse">
+        <path d="M48 0H0V48" fill="none" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
+      </pattern>
+      <linearGradient id="gFade" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#fff" stop-opacity=".9"/>
+        <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+      </linearGradient>
+      <mask id="mFade"><rect width="1200" height="600" fill="url(#gFade)"/></mask>
+    </defs>
+    <rect width="1200" height="600" fill="url(#pGrid)" mask="url(#mFade)"/>
+  </svg>
+
+  <div class="wrap">
+    <div class="hero-cols">
+      <div>
+        <p class="eyebrow">Malpartida de Cáceres · Cáceres</p>
+        <h1>Trabajos en <em>hierro</em> y <em>aluminio</em> hechos a medida</h1>
+        <p class="lead">Taller de cerrajería y carpintería metálica. Fabricamos, instalamos y reparamos
+          puertas, cerramientos, barandillas y ventanas adaptadas a cada hueco y a cada uso.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="tel:927275314">
+            <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M3 2h3l1.4 3.3-2 1.4a9 9 0 0 0 4 4l1.4-2L14 10v3a1 1 0 0 1-1 1A11 11 0 0 1 2 3a1 1 0 0 1 1-1z"
+                    fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            </svg>
+            Llamar al 927 275 314
+          </a>
+          <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
+        </div>
+        <p class="hero-note">Atendemos por teléfono para tomar medidas y preparar presupuesto.</p>
+        <ul class="hero-tags">
+          <li>Hierro</li><li>Aluminio</li><li>Fabricación propia</li><li>Instalación</li><li>Reparación</li>
+        </ul>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <!-- composición abstracta: portón de hierro + perfil de aluminio -->
+        <svg viewBox="0 0 520 440" role="img">
+          <defs>
+            <linearGradient id="gSteel" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#3a424d"/>
+              <stop offset=".5" stop-color="#5a6473"/>
+              <stop offset="1" stop-color="#262c34"/>
+            </linearGradient>
+            <linearGradient id="gAlu" x1="0" y1="1" x2="1" y2="0">
+              <stop offset="0" stop-color="#8d97a4"/>
+              <stop offset=".45" stop-color="#d7dde4"/>
+              <stop offset="1" stop-color="#7d8794"/>
+            </linearGradient>
+            <linearGradient id="gGlow" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#f0a94b" stop-opacity=".85"/>
+              <stop offset="1" stop-color="#d98323" stop-opacity=".15"/>
+            </linearGradient>
+          </defs>
+
+          <!-- marco exterior -->
+          <rect x="54" y="34" width="412" height="372" rx="3" fill="url(#gSteel)"/>
+          <rect x="68" y="48" width="384" height="344" rx="2" fill="#13161a"/>
+
+          <!-- barrotes verticales -->
+          <g fill="url(#gSteel)">
+            <rect x="92" y="70" width="11" height="300" rx="1"/>
+            <rect x="136" y="70" width="11" height="300" rx="1"/>
+            <rect x="180" y="70" width="11" height="300" rx="1"/>
+            <rect x="224" y="70" width="11" height="300" rx="1"/>
+            <rect x="268" y="70" width="11" height="300" rx="1"/>
+            <rect x="312" y="70" width="11" height="300" rx="1"/>
+            <rect x="356" y="70" width="11" height="300" rx="1"/>
+            <rect x="400" y="70" width="11" height="300" rx="1"/>
+          </g>
+          <!-- travesaños -->
+          <g fill="url(#gSteel)">
+            <rect x="80" y="120" width="344" height="13" rx="1"/>
+            <rect x="80" y="300" width="344" height="13" rx="1"/>
+          </g>
+          <!-- forja central -->
+          <g fill="none" stroke="url(#gGlow)" stroke-width="5" stroke-linecap="round">
+            <path d="M152 216c22-44 66-44 100 0s78 44 100 0"/>
+            <path d="M152 216c22 44 66 44 100 0s78-44 100 0"/>
+          </g>
+          <circle cx="252" cy="216" r="13" fill="none" stroke="#f0a94b" stroke-width="4"/>
+
+          <!-- perfil de aluminio en primer plano -->
+          <g>
+            <rect x="330" y="236" width="168" height="168" rx="2" fill="#0f1215" opacity=".55"/>
+            <rect x="318" y="224" width="168" height="168" rx="2" fill="url(#gAlu)"/>
+            <rect x="334" y="240" width="136" height="136" rx="1" fill="#1a1f25"/>
+            <rect x="334" y="240" width="136" height="136" rx="1" fill="url(#gGlow)" opacity=".16"/>
+            <rect x="396" y="240" width="8" height="136" fill="url(#gAlu)"/>
+            <rect x="334" y="302" width="136" height="8" fill="url(#gAlu)"/>
+          </g>
+
+          <!-- cotas -->
+          <g stroke="#8e97a3" stroke-width="1.2" fill="none">
+            <path d="M24 34v372M18 34h12M18 406h12"/>
+          </g>
+          <g stroke="#8e97a3" stroke-width="1.2" fill="none">
+            <path d="M54 424h412M54 418v12M466 418v12"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== SERVICIOS ====== -->
+<section class="section" id="servicios">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow dark">Servicios</p>
+      <h2>Lo que se hace en el taller</h2>
+      <p class="lead">Fabricación y montaje de elementos metálicos para vivienda, finca y local.
+        Cada trabajo se mide y se ajusta al hueco existente.</p>
+    </div>
+
+    <div class="svc-grid">
+      <article class="svc">
+        <svg class="ic" width="34" height="34" viewBox="0 0 34 34" aria-hidden="true">
+          <rect x="3" y="4" width="28" height="26" fill="none" stroke="#9a6310" stroke-width="1.8"/>
+          <path d="M17 4v26M3 13h28M3 21h28" stroke="#33383f" stroke-width="1.5"/>
+          <circle cx="13.5" cy="17" r="1.6" fill="#9a6310"/>
+        </svg>
+        <h3>Puertas y portones de hierro</h3>
+        <p>Puertas de paso, de finca y portones de acceso en hierro, con apertura batiente o
+          corredera según el espacio disponible.</p>
+      </article>
+
+      <article class="svc">
+        <svg class="ic" width="34" height="34" viewBox="0 0 34 34" aria-hidden="true">
+          <rect x="4" y="5" width="26" height="24" fill="none" stroke="#9a6310" stroke-width="1.8"/>
+          <rect x="9" y="10" width="7" height="14" fill="none" stroke="#33383f" stroke-width="1.5"/>
+          <rect x="18" y="10" width="7" height="14" fill="none" stroke="#33383f" stroke-width="1.5"/>
+          <path d="M4 29h26" stroke="#9a6310" stroke-width="1.8"/>
+        </svg>
+        <h3>Carpintería de aluminio</h3>
+        <p>Ventanas, puertas y mamparas en perfilería de aluminio, con hojas practicables,
+          correderas u oscilobatientes.</p>
+      </article>
+
+      <article class="svc">
+        <svg class="ic" width="34" height="34" viewBox="0 0 34 34" aria-hidden="true">
+          <path d="M3 27V11l14-6 14 6v16" fill="none" stroke="#9a6310" stroke-width="1.8"/>
+          <path d="M3 27h28" stroke="#33383f" stroke-width="1.8"/>
+          <path d="M10 27v-9h14v9" fill="none" stroke="#33383f" stroke-width="1.5"/>
+        </svg>
+        <h3>Cerramientos</h3>
+        <p>Cierre de porches, terrazas, patios y parcelas combinando estructura metálica,
+          paneles y vidrio según el uso previsto.</p>
+      </article>
+
+      <article class="svc">
+        <svg class="ic" width="34" height="34" viewBox="0 0 34 34" aria-hidden="true">
+          <path d="M3 9h28M3 13h28" stroke="#9a6310" stroke-width="1.8"/>
+          <path d="M7 13v16M13 13v16M19 13v16M25 13v16M31 13v16M3 13v16" stroke="#33383f" stroke-width="1.5"/>
+          <path d="M3 29h28" stroke="#33383f" stroke-width="1.8"/>
+        </svg>
+        <h3>Barandillas y rejas</h3>
+        <p>Barandillas de escalera, balcón y rampa, y rejas para ventanas y huecos,
+          con despiece adaptado a cada medida.</p>
+      </article>
+
+      <article class="svc">
+        <svg class="ic" width="34" height="34" viewBox="0 0 34 34" aria-hidden="true">
+          <circle cx="17" cy="17" r="7" fill="none" stroke="#9a6310" stroke-width="1.8"/>
+          <circle cx="17" cy="17" r="2.2" fill="#33383f"/>
+          <path d="M17 3v5M17 26v5M3 17h5M26 17h5M7 7l3.5 3.5M23.5 23.5L27 27M27 7l-3.5 3.5M10.5 23.5L7 27"
+                stroke="#33383f" stroke-width="1.5"/>
+        </svg>
+        <h3>Automatismos</h3>
+        <p>Motorización de puertas y portones, con sus mandos y elementos de seguridad,
+          tanto en instalaciones nuevas como existentes.</p>
+      </article>
+
+      <article class="svc">
+        <svg class="ic" width="34" height="34" viewBox="0 0 34 34" aria-hidden="true">
+          <path d="M20 5l9 9-4 4-9-9z" fill="none" stroke="#9a6310" stroke-width="1.8"/>
+          <path d="M15 10L5 20v9h9l10-10" fill="none" stroke="#33383f" stroke-width="1.6"/>
+          <path d="M5 29l7-7" stroke="#33383f" stroke-width="1.5"/>
+        </svg>
+        <h3>Reparaciones</h3>
+        <p>Ajuste de hojas y bisagras, cambio de cerraduras y herrajes, soldadura y refuerzo
+          de elementos deteriorados.</p>
+      </article>
+    </div>
+
+    <p class="svc-note">Descripción genérica de los trabajos propios del sector de la cerrajería
+      metálica. El alcance exacto de cada servicio se confirma con el taller.</p>
+  </div>
+</section>
+
+<!-- ====== PROCESO ====== -->
+<section class="section process" id="proceso">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Cómo trabajamos</p>
+      <h2>Tres pasos, de la medida al montaje</h2>
+      <p class="lead">Un recorrido sencillo para que sepas qué esperar desde la primera llamada.</p>
+    </div>
+
+    <div class="steps">
+      <article class="step">
+        <p class="num">Paso 01 <i></i></p>
+        <h3>Llamada y visita</h3>
+        <p>Nos cuentas qué necesitas por teléfono y concertamos la visita para ver el hueco,
+          tomar medidas y revisar los accesos.</p>
+      </article>
+      <article class="step">
+        <p class="num">Paso 02 <i></i></p>
+        <h3>Propuesta y fabricación</h3>
+        <p>Definimos materiales, acabado y tipo de apertura, y preparamos el presupuesto.
+          Con tu conformidad, se fabrica en el taller.</p>
+      </article>
+      <article class="step">
+        <p class="num">Paso 03 <i></i></p>
+        <h3>Montaje y repaso</h3>
+        <p>Instalamos en obra, ajustamos el funcionamiento y repasamos el acabado
+          antes de dar el trabajo por terminado.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ====== CONTACTO ====== -->
+<section class="section contact" id="contacto">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow dark">Contacto</p>
+      <h2>Hablamos del trabajo que necesitas</h2>
+      <p class="lead">La forma más directa de empezar es una llamada: así podemos preguntar
+        medidas, material y plazos desde el primer momento.</p>
+    </div>
+
+    <div class="contact-cols">
+      <div>
+        <ul class="info-list">
+          <li>
+            <svg class="ic" width="20" height="20" viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M3 2h3l1.4 3.3-2 1.4a9 9 0 0 0 4 4l1.4-2L14 10v3a1 1 0 0 1-1 1A11 11 0 0 1 2 3a1 1 0 0 1 1-1z"
+                    fill="none" stroke="#9a6310" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+            <span>
+              <span class="k">Teléfono</span>
+              <a class="v" href="tel:927275314">927 275 314</a>
+            </span>
+          </li>
+          <li>
+            <svg class="ic" width="20" height="20" viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M8 15s5.5-5 5.5-9A5.5 5.5 0 0 0 2.5 6c0 4 5.5 9 5.5 9z"
+                    fill="none" stroke="#9a6310" stroke-width="1.5"/>
+              <circle cx="8" cy="6" r="2" fill="none" stroke="#9a6310" stroke-width="1.5"/>
+            </svg>
+            <span>
+              <span class="k">Zona</span>
+              <span class="v">Malpartida de Cáceres (Cáceres)</span>
+            </span>
+          </li>
+          <li>
+            <svg class="ic" width="20" height="20" viewBox="0 0 16 16" aria-hidden="true">
+              <circle cx="8" cy="8" r="6.3" fill="none" stroke="#9a6310" stroke-width="1.5"/>
+              <path d="M8 4.2V8l2.8 1.8" fill="none" stroke="#9a6310" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <span>
+              <span class="k">Horario</span>
+              <span class="v">Consultar horario</span>
+            </span>
+          </li>
+          <li>
+            <svg class="ic" width="20" height="20" viewBox="0 0 16 16" aria-hidden="true">
+              <rect x="1.7" y="3.3" width="12.6" height="9.4" fill="none" stroke="#9a6310" stroke-width="1.5"/>
+              <path d="M2 4l6 4.6L14 4" fill="none" stroke="#9a6310" stroke-width="1.5"/>
+            </svg>
+            <span>
+              <span class="k">Correo</span>
+              <a class="v" href="mailto:celasa@celasa.es">celasa@celasa.es</a>
+            </span>
+          </li>
+        </ul>
+
+        <div class="contact-cta">
+          <a class="btn btn-dark" href="tel:927275314">
+            <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M3 2h3l1.4 3.3-2 1.4a9 9 0 0 0 4 4l1.4-2L14 10v3a1 1 0 0 1-1 1A11 11 0 0 1 2 3a1 1 0 0 1 1-1z"
+                    fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            </svg>
+            Llamar ahora
+          </a>
+        </div>
+      </div>
+
+      <figure class="map-card">
+        <figcaption>
+          <b>Malpartida de Cáceres (Cáceres)</b>
+          <span>Mapa esquemático</span>
+        </figcaption>
+        <div class="map-body">
+          <svg viewBox="0 0 560 400" role="img"
+               aria-label="Mapa esquemático y orientativo de la zona, con calles genéricas sin nombre y la posición aproximada del taller.">
+            <defs>
+              <linearGradient id="gMapBg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#f7f6f4"/>
+                <stop offset="1" stop-color="#e8e5e0"/>
+              </linearGradient>
+              <linearGradient id="gPin" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#f0a94b"/>
+                <stop offset="1" stop-color="#c0761a"/>
+              </linearGradient>
+              <pattern id="pHatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                <path d="M0 0v8" stroke="#c9c4bc" stroke-width="1.1"/>
+              </pattern>
+            </defs>
+
+            <rect width="560" height="400" fill="url(#gMapBg)"/>
+
+            <!-- manzanas -->
+            <g fill="#ded9d2" stroke="#cdc7bf" stroke-width="1.2">
+              <rect x="40" y="46" width="128" height="86" rx="2"/>
+              <rect x="214" y="46" width="104" height="86" rx="2"/>
+              <rect x="364" y="60" width="150" height="72" rx="2"/>
+              <rect x="40" y="186" width="128" height="74" rx="2"/>
+              <rect x="214" y="186" width="104" height="74" rx="2"/>
+              <rect x="40" y="306" width="190" height="62" rx="2"/>
+              <rect x="276" y="306" width="140" height="62" rx="2"/>
+            </g>
+
+            <!-- zona verde / descampado -->
+            <rect x="462" y="306" width="62" height="62" rx="2" fill="url(#pHatch)" stroke="#cdc7bf" stroke-width="1.2"/>
+
+            <!-- vía principal (horizontal gruesa) -->
+            <g>
+              <rect x="0" y="146" width="560" height="28" fill="#fdfdfc" stroke="#cdc7bf" stroke-width="1.2"/>
+              <path d="M0 160h560" stroke="#d3cdc4" stroke-width="2" stroke-dasharray="14 12"/>
+            </g>
+            <!-- calles secundarias -->
+            <g fill="#fdfdfc" stroke="#d6d1c9" stroke-width="1.2">
+              <rect x="180" y="0" width="22" height="400"/>
+              <rect x="330" y="0" width="22" height="400"/>
+              <rect x="0" y="272" width="560" height="22"/>
+              <rect x="0" y="22" width="560" height="16"/>
+            </g>
+
+            <!-- rotonda -->
+            <g>
+              <circle cx="341" cy="160" r="22" fill="#fdfdfc" stroke="#cdc7bf" stroke-width="1.2"/>
+              <circle cx="341" cy="160" r="9" fill="#ded9d2" stroke="#cdc7bf" stroke-width="1.2"/>
+            </g>
+
+            <!-- posición aproximada del taller -->
+            <g>
+              <rect x="214" y="186" width="104" height="74" rx="2" fill="#15181c"/>
+              <text x="266" y="228" text-anchor="middle" fill="#ffffff"
+                    font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="bold"
+                    letter-spacing="1.6">CELASA</text>
+              <text x="266" y="246" text-anchor="middle" fill="#f0a94b"
+                    font-family="Helvetica, Arial, sans-serif" font-size="12"
+                    letter-spacing="1.4">TALLER</text>
+              <path d="M266 150l-9 20h18z" fill="url(#gPin)"/>
+              <circle cx="266" cy="160" r="26" fill="none" stroke="#d98323" stroke-width="1.4" opacity=".55"/>
+            </g>
+
+            <!-- etiquetas genéricas, sin nombres reales -->
+            <g font-family="Helvetica, Arial, sans-serif" fill="#6f757d" font-size="15" letter-spacing="1.6">
+              <text x="18" y="139">VÍA PRINCIPAL</text>
+              <text x="18" y="265">CALLE</text>
+              <text x="191" y="118" transform="rotate(-90 191 118)">CALLE</text>
+              <text x="341" y="118" transform="rotate(-90 341 118)">CALLE</text>
+              <text x="524" y="388" text-anchor="end">SIN EDIFICAR</text>
+            </g>
+
+            <!-- rosa de los vientos -->
+            <g transform="translate(508 46)">
+              <circle r="20" fill="#fdfdfc" stroke="#cdc7bf" stroke-width="1.2"/>
+              <path d="M0 -14l5 11h-10z" fill="#15181c"/>
+              <path d="M0 14l5 -11h-10z" fill="#c9c4bc"/>
+              <text y="-24" text-anchor="middle" fill="#6f757d"
+                    font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="bold">N</text>
+            </g>
+
+            <!-- escala indicativa -->
+            <g transform="translate(40 382)">
+              <path d="M0 0h48" stroke="#7d8289" stroke-width="1.6"/>
+              <path d="M0 -4v8M48 -4v8" stroke="#7d8289" stroke-width="1.6"/>
+              <text x="56" y="5" fill="#6f757d" font-family="Helvetica, Arial, sans-serif" font-size="12">no a escala</text>
+            </g>
+          </svg>
+        </div>
+        <p class="map-foot">Esquema orientativo dibujado para la maqueta: las calles son genéricas y
+          no reproducen el trazado real ni una dirección postal.</p>
+      </figure>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ====== PIE ====== -->
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <h3>CELASA, S.L.</h3>
+        <p>Cerrajería de hierro y aluminio en Malpartida de Cáceres (Cáceres).
+          Fabricación, instalación y reparación de elementos metálicos.</p>
+      </div>
+      <ul class="foot-contact">
+        <li><span class="k">Teléfono</span><a href="tel:927275314">927 275 314</a></li>
+        <li><span class="k">Correo</span><a href="mailto:celasa@celasa.es">celasa@celasa.es</a></li>
+        <li><span class="k">Zona</span>Malpartida de Cáceres (Cáceres)</li>
+        <li><span class="k">Horario</span>Consultar horario</li>
+      </ul>
+    </div>
+    <div class="foot-bar">
+      <p>Maqueta de demostración sin carácter oficial. Los contenidos no proceden de
+        CELASA, S.L. y no sustituyen a su comunicación propia.</p>
+      <p class="sig"><b>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</b></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  // Desplazamiento suave con compensación de la barra fija
+  var bar = document.querySelector('.proposal-bar');
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(ev){
+      var id = a.getAttribute('href');
+      if(!id || id === '#') return;
+      var target = document.querySelector(id);
+      if(!target) return;
+      ev.preventDefault();
+      var offset = (bar ? bar.offsetHeight : 0) + 8;
+      var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({top: top < 0 ? 0 : top, behavior: 'smooth'});
+    });
+  });
+  // Aparición progresiva de bloques
+  if('IntersectionObserver' in window){
+    var items = document.querySelectorAll('.svc, .step, .map-card, .info-list');
+    items.forEach(function(el){
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(14px)';
+      el.style.transition = 'opacity .5s ease, transform .5s ease';
+    });
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'none';
+          io.unobserve(e.target);
+        }
+      });
+    }, {threshold: .12});
+    items.forEach(function(el){ io.observe(el); });
+    // Red de seguridad: si algo no llega a observarse, se muestra igualmente
+    window.setTimeout(function(){
+      items.forEach(function(el){
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      });
+    }, 1400);
+  }
+})();
+</script>
+</body>
+</html>

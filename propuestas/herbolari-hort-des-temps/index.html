@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Herbolari S'Hort des Temps — Herbolario y dietética · Alaior</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+:root{
+  --green-900:#16251c;
+  --green-800:#1e3326;
+  --green-700:#2b4733;
+  --green-600:#3c6044;
+  --green-500:#527f58;
+  --sage:#8fae8b;
+  --sage-soft:#b7cdb0;
+  --clay:#b08455;
+  --clay-soft:#d6b089;
+  --paper:#f7f5ef;
+  --paper-2:#efece3;
+  --paper-3:#e5e1d5;
+  --txt:#1d2a20;
+  --txt-soft:#556155;
+  --txt-mute:#79836f;
+  --txt-inv:#f3f2ea;
+  --txt-inv-soft:#bdc8b6;
+  --line:rgba(29,42,32,.12);
+  --line-2:rgba(29,42,32,.07);
+  --line-inv:rgba(255,255,255,.13);
+  --bar-h:40px;
+  --maxw:1120px;
+  --r:14px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;max-width:100%;overflow-x:hidden}
+body{
+  background:var(--paper);
+  color:var(--txt);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:16px;line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+  padding-top:var(--bar-h);
+}
+img,svg{max-width:100%}
+a{color:inherit}
+h1,h2,h3,h4{margin:0;line-height:1.14;letter-spacing:-.02em;font-weight:650}
+
+/* ---------- barra fija de propuesta ---------- */
+.proposal-bar{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  min-height:var(--bar-h);
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  padding:7px 14px;
+  background:linear-gradient(90deg,#12201a 0%,#22392a 50%,#12201a 100%);
+  border-bottom:1px solid rgba(255,255,255,.18);
+  color:#f4f6f1;
+  font-size:12.5px;letter-spacing:.015em;line-height:1.32;text-align:center;
+}
+.proposal-bar .dot{
+  width:7px;height:7px;border-radius:50%;flex:0 0 auto;
+  background:linear-gradient(135deg,var(--sage-soft),var(--sage));
+  box-shadow:0 0 0 3px rgba(143,174,139,.2);
+}
+
+/* ---------- utilidades ---------- */
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--green-600);margin:0 0 16px;
+}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--sage);display:block;flex:0 0 auto}
+.eyebrow.inv{color:var(--sage-soft)}
+.eyebrow.inv::before{background:var(--sage)}
+.lead{color:var(--txt-soft);font-size:17px;max-width:60ch;margin:14px 0 0}
+section{padding:78px 0}
+.sec-head{max-width:66ch;margin-bottom:40px}
+.sec-head h2{font-size:clamp(26px,3.4vw,38px)}
+
+/* ---------- botones ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:14px 22px;border-radius:999px;text-decoration:none;
+  font-size:15px;font-weight:650;letter-spacing:.01em;
+  border:1px solid transparent;transition:transform .15s ease;
+}
+.btn:hover{transform:translateY(-1px)}
+.btn-pri{background:linear-gradient(135deg,var(--green-500),var(--green-700));color:#f6f8f3;box-shadow:0 10px 24px -14px rgba(22,37,28,.7)}
+.btn-gho{border-color:rgba(255,255,255,.3);color:var(--txt-inv)}
+.btn-gho.on-paper{border-color:var(--line);color:var(--green-700)}
+
+/* ---------- cabecera de sitio ---------- */
+.site-head{background:var(--green-900);border-bottom:1px solid var(--line-inv)}
+.site-head .wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;padding-top:16px;padding-bottom:16px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;color:var(--txt-inv);text-decoration:none;min-width:0}
+.brand b{display:block;font-size:16.5px;font-weight:700;letter-spacing:.02em}
+.brand small{display:block;font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--txt-inv-soft)}
+.head-nav{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.head-nav a{color:var(--txt-inv-soft);text-decoration:none;font-size:14px}
+.head-nav a:hover{color:var(--txt-inv)}
+.head-tel{
+  display:inline-flex;align-items:center;gap:8px;text-decoration:none;
+  color:#f6f8f3;background:rgba(255,255,255,.07);
+  border:1px solid var(--line-inv);border-radius:999px;
+  padding:8px 15px;font-size:14px;font-weight:600;white-space:nowrap;
+}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(900px 500px at 82% 12%,rgba(143,174,139,.22),transparent 68%),
+    radial-gradient(700px 480px at 6% 92%,rgba(176,132,85,.16),transparent 70%),
+    linear-gradient(165deg,var(--green-900) 0%,var(--green-800) 52%,#1a2c21 100%);
+  color:var(--txt-inv);
+  padding:84px 0 90px;
+}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center}
+.hero h1{font-size:clamp(32px,5vw,54px);letter-spacing:-.03em}
+.hero p.lead{color:var(--txt-inv-soft);font-size:17.5px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.hero-meta{
+  display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:34px;
+  padding-top:22px;border-top:1px solid var(--line-inv);
+  font-size:13.5px;color:var(--txt-inv-soft);
+}
+.hero-meta span{display:inline-flex;align-items:center;gap:8px}
+.hero-art{display:flex;justify-content:center}
+.hero-art svg{width:100%;max-width:400px;height:auto;display:block}
+
+/* ---------- aviso de estado ---------- */
+.notice{background:var(--paper-2);border-bottom:1px solid var(--line-2);padding:26px 0}
+.notice .wrap{display:flex;gap:16px;align-items:flex-start}
+.notice .ic{flex:0 0 auto;margin-top:2px}
+.notice p{margin:0;font-size:14.5px;color:var(--txt-soft);max-width:78ch}
+.notice b{color:var(--txt)}
+
+/* ---------- apartados / tarjetas ---------- */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{
+  background:#fff;border:1px solid var(--line-2);border-radius:var(--r);
+  padding:26px 24px 28px;display:flex;flex-direction:column;gap:12px;
+  box-shadow:0 1px 2px rgba(29,42,32,.04);
+}
+.card .ico{
+  width:46px;height:46px;border-radius:12px;flex:0 0 auto;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(140deg,var(--paper-2),var(--paper-3));
+  border:1px solid var(--line-2);
+}
+.card h3{font-size:18.5px}
+.card p{margin:0;font-size:14.8px;color:var(--txt-soft)}
+
+/* ---------- primera visita ---------- */
+.visit{background:var(--green-900);color:var(--txt-inv)}
+.visit .sec-head h2{color:var(--txt-inv)}
+.visit .sec-head .lead{color:var(--txt-inv-soft)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.step{
+  background:rgba(255,255,255,.045);border:1px solid var(--line-inv);
+  border-radius:var(--r);padding:26px 24px 28px;
+}
+.step .num{
+  display:flex;align-items:center;justify-content:center;
+  width:40px;height:40px;border-radius:50%;margin-bottom:16px;
+  background:linear-gradient(135deg,var(--sage),var(--green-600));
+  color:#10201a;font-weight:800;font-size:16px;
+}
+.step h3{font-size:18px;color:var(--txt-inv)}
+.step p{margin:10px 0 0;font-size:14.8px;color:var(--txt-inv-soft)}
+
+/* ---------- contacto ---------- */
+.contact-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:34px;align-items:start}
+.info-card{
+  background:#fff;border:1px solid var(--line-2);border-radius:var(--r);
+  padding:28px 26px;box-shadow:0 1px 2px rgba(29,42,32,.04);
+}
+.info-row{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--line-2)}
+.info-row:last-of-type{border-bottom:0}
+.info-row .ic{flex:0 0 auto;margin-top:3px}
+.info-row .k{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--txt-mute);margin:0 0 3px}
+.info-row .v{margin:0;font-size:16px;font-weight:600;word-break:break-word}
+.info-row .v a{text-decoration:none;color:var(--green-700)}
+.info-row .v small{display:block;font-weight:400;font-size:13.5px;color:var(--txt-soft);letter-spacing:0;margin-top:2px}
+.map-card{
+  background:linear-gradient(170deg,#fbfaf6,var(--paper-2));
+  border:1px solid var(--line-2);border-radius:var(--r);
+  padding:20px 20px 16px;
+}
+.map-card .cap{
+  display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+  flex-wrap:wrap;margin-bottom:14px;
+}
+.map-card .cap h3{font-size:16.5px}
+.map-card .cap span{font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--txt-mute);font-weight:700}
+.map-card svg{width:100%;height:auto;display:block;border-radius:10px}
+.map-note{margin:12px 0 0;font-size:12.8px;color:var(--txt-mute);line-height:1.5}
+
+/* ---------- pie ---------- */
+footer{background:#111d16;color:var(--txt-inv);padding:58px 0 34px;border-top:1px solid var(--line-inv)}
+.foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:34px}
+.foot-grid h4{font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--sage-soft);margin-bottom:14px;font-weight:700}
+.foot-grid p,.foot-grid a{font-size:14.5px;color:var(--txt-inv-soft);margin:0 0 7px;text-decoration:none;display:block;word-break:break-word}
+.foot-grid a:hover{color:var(--txt-inv)}
+.foot-brand b{font-size:17px;color:var(--txt-inv);display:block;margin-bottom:8px}
+.foot-bottom{
+  margin-top:40px;padding-top:22px;border-top:1px solid var(--line-inv);
+  display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  font-size:13px;color:var(--txt-inv-soft);
+}
+.foot-bottom .sig{color:#dfe6da}
+.foot-bottom .dis{color:#8d9a88;font-size:12.3px;max-width:60ch}
+
+/* ---------- responsive ---------- */
+@media (max-width:980px){
+  .hero-grid{grid-template-columns:1fr;gap:40px}
+  .hero-art{order:-1}
+  .hero-art svg{max-width:330px}
+  .cards,.steps{grid-template-columns:repeat(2,1fr)}
+  .contact-grid{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:700px){
+  :root{--bar-h:52px}
+  section{padding:58px 0}
+  .wrap{padding:0 18px}
+  .proposal-bar{font-size:11.6px;padding:8px 12px}
+  .head-nav{display:none}
+  .site-head .wrap{justify-content:space-between}
+  .hero{padding:58px 0 64px}
+  .hero-cta .btn{width:100%}
+  .cards,.steps{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr;gap:26px}
+  .foot-bottom{flex-direction:column}
+  .notice .wrap{flex-direction:column;gap:12px}
+}
+@media (max-width:420px){
+  .brand small{letter-spacing:.11em;font-size:10px}
+}
+</style>
+</head>
+<body>
+
+<div class="proposal-bar" role="note">
+  <span class="dot" aria-hidden="true"></span>
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="#inicio">
+      <svg width="34" height="34" viewBox="0 0 34 34" fill="none" aria-hidden="true">
+        <circle cx="17" cy="17" r="16" stroke="#8fae8b" stroke-width="1.2" opacity=".65"/>
+        <path d="M17 26V13" stroke="#b7cdb0" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M17 17c-4.2 0-6.6-2.2-6.8-5.8 3.8-.4 6.6 1.8 6.8 5.8Z" fill="#527f58"/>
+        <path d="M17 20c4.2 0 6.6-2.2 6.8-5.8-3.8-.4-6.6 1.8-6.8 5.8Z" fill="#8fae8b"/>
+        <circle cx="17" cy="9.4" r="2" fill="#d6b089"/>
+      </svg>
+      <span>
+        <b>S'Hort des Temps</b>
+        <small>Herbolari · Alaior</small>
+      </span>
+    </a>
+    <nav class="head-nav" aria-label="Navegación principal">
+      <a href="#apartados">Qué encontrarás</a>
+      <a href="#visita">Tu primera visita</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="head-tel" href="tel:971378886">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+        <path d="M2 3.2c0-.7.5-1.2 1.2-1.2h1.1c.5 0 1 .4 1.1.9l.4 1.7c.1.4-.1.9-.5 1.1l-.8.5a7.6 7.6 0 0 0 3.3 3.3l.5-.8c.2-.4.7-.6 1.1-.5l1.7.4c.5.1.9.6.9 1.1v1.1c0 .7-.5 1.2-1.2 1.2C6.2 13 1 7.8 2 3.2Z" stroke="#f6f8f3" stroke-width="1.2" stroke-linejoin="round"/>
+      </svg>
+      971 378 886
+    </a>
+  </div>
+</header>
+
+<main id="inicio">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow inv">Herbolario y dietética · Alaior, Menorca</p>
+        <h1>El herbolario de siempre,<br>a un paso de casa</h1>
+        <p class="lead">Herbolari S'Hort des Temps es un comercio de barrio dedicado a las plantas, la dietética y la alimentación natural. Atención directa, sin prisa y en mostrador: nos cuentas qué buscas y te acompañamos a encontrarlo.</p>
+        <div class="hero-cta">
+          <a class="btn btn-pri" href="tel:971378886">
+            <svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M2 3.2c0-.7.5-1.2 1.2-1.2h1.1c.5 0 1 .4 1.1.9l.4 1.7c.1.4-.1.9-.5 1.1l-.8.5a7.6 7.6 0 0 0 3.3 3.3l.5-.8c.2-.4.7-.6 1.1-.5l1.7.4c.5.1.9.6.9 1.1v1.1c0 .7-.5 1.2-1.2 1.2C6.2 13 1 7.8 2 3.2Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
+            </svg>
+            Llamar al 971 378 886
+          </a>
+          <a class="btn btn-gho" href="#contacto">Cómo llegar</a>
+        </div>
+        <div class="hero-meta">
+          <span>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 12.5S2.6 9 2.6 5.8A4.4 4.4 0 0 1 7 1.5a4.4 4.4 0 0 1 4.4 4.3C11.4 9 7 12.5 7 12.5Z" stroke="#b7cdb0" stroke-width="1.1"/><circle cx="7" cy="5.8" r="1.5" stroke="#b7cdb0" stroke-width="1.1"/></svg>
+            C/ des Ramal, 8-B — Alaior
+          </span>
+          <span>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="5.3" stroke="#b7cdb0" stroke-width="1.1"/><path d="M7 4.3V7l2 1.3" stroke="#b7cdb0" stroke-width="1.1" stroke-linecap="round"/></svg>
+            Consultar horario
+          </span>
+          <span>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 3.5h10v7H2z" stroke="#b7cdb0" stroke-width="1.1"/><path d="m2.4 4 4.6 3.4L11.6 4" stroke="#b7cdb0" stroke-width="1.1"/></svg>
+            hortdestemps@gmail.com
+          </span>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 400 400" fill="none" role="presentation">
+          <defs>
+            <linearGradient id="gJar" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#8fae8b" stop-opacity=".30"/>
+              <stop offset="1" stop-color="#527f58" stop-opacity=".10"/>
+            </linearGradient>
+            <linearGradient id="gLeafA" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#b7cdb0"/><stop offset="1" stop-color="#527f58"/>
+            </linearGradient>
+            <linearGradient id="gLeafB" x1="1" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#d6b089"/><stop offset="1" stop-color="#b08455"/>
+            </linearGradient>
+            <radialGradient id="gHalo" cx=".5" cy=".42" r=".55">
+              <stop offset="0" stop-color="#8fae8b" stop-opacity=".32"/>
+              <stop offset="1" stop-color="#8fae8b" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <circle cx="200" cy="175" r="155" fill="url(#gHalo)"/>
+          <circle cx="200" cy="175" r="132" stroke="#8fae8b" stroke-opacity=".30" stroke-width="1"/>
+          <circle cx="200" cy="175" r="104" stroke="#8fae8b" stroke-opacity=".18" stroke-width="1" stroke-dasharray="3 6"/>
+          <!-- tarro -->
+          <path d="M152 206h96v120a16 16 0 0 1-16 16h-64a16 16 0 0 1-16-16V206Z" fill="url(#gJar)" stroke="#b7cdb0" stroke-opacity=".55" stroke-width="1.6"/>
+          <path d="M146 196h108v14H146z" fill="#b7cdb0" fill-opacity=".30" stroke="#b7cdb0" stroke-opacity=".55" stroke-width="1.4"/>
+          <path d="M168 252h64M168 274h48" stroke="#b7cdb0" stroke-opacity=".40" stroke-width="2" stroke-linecap="round"/>
+          <!-- tallo -->
+          <path d="M200 196V74" stroke="#8fae8b" stroke-width="2.4" stroke-linecap="round"/>
+          <!-- hojas -->
+          <path d="M200 160c-30 0-48-16-50-44 28-3 48 13 50 44Z" fill="url(#gLeafA)" fill-opacity=".9"/>
+          <path d="M200 134c30 0 48-16 50-44-28-3-48 13-50 44Z" fill="url(#gLeafA)" fill-opacity=".62"/>
+          <path d="M200 112c-24 0-38-13-40-35 22-2 38 10 40 35Z" fill="url(#gLeafB)" fill-opacity=".58"/>
+          <circle cx="200" cy="68" r="9" fill="#d6b089" fill-opacity=".85"/>
+          <circle cx="200" cy="68" r="15" stroke="#d6b089" stroke-opacity=".40" stroke-width="1.2"/>
+          <!-- ramitas laterales -->
+          <path d="M96 300c22-10 36-28 40-54" stroke="#8fae8b" stroke-opacity=".45" stroke-width="1.6" stroke-linecap="round"/>
+          <path d="M304 300c-22-10-36-28-40-54" stroke="#8fae8b" stroke-opacity=".45" stroke-width="1.6" stroke-linecap="round"/>
+          <circle cx="96" cy="300" r="4" fill="#8fae8b" fill-opacity=".55"/>
+          <circle cx="304" cy="300" r="4" fill="#8fae8b" fill-opacity=".55"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- AVISO -->
+  <div class="notice">
+    <div class="wrap">
+      <span class="ic" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8.4" stroke="#b08455" stroke-width="1.3"/><path d="M10 6.2v5.1M10 13.6v.6" stroke="#b08455" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </span>
+      <p><b>Por qué existe esta maqueta.</b> El dominio anterior del negocio, herbolarihortdestemps.com, ya no está activo, y su blog no publica contenido nuevo desde julio de 2019. Esta página es una propuesta de rediseño elaborada por iniciativa propia para mostrar cómo podría presentarse hoy el herbolario en internet. No sustituye ninguna web oficial ni ha sido encargada por el negocio.</p>
+    </div>
+  </div>
+
+  <!-- APARTADOS -->
+  <section id="apartados">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Qué encontrarás en la tienda</p>
+        <h2>Cinco apartados, un mismo mostrador</h2>
+        <p class="lead">Un recorrido general por las secciones habituales de un herbolario de barrio. Los apartados se describen de forma orientativa: lo concreto se ve en tienda, con la pieza delante y preguntando lo que haga falta.</p>
+      </div>
+      <div class="cards">
+
+        <article class="card">
+          <span class="ico" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 21V9" stroke="#527f58" stroke-width="1.5" stroke-linecap="round"/><path d="M12 14c-5 0-8-3-8.3-8 4.8-.5 8 2.6 8.3 8Z" fill="#8fae8b" fill-opacity=".85"/><path d="M12 17c5 0 8-3 8.3-8-4.8-.5-8 2.6-8.3 8Z" fill="#527f58" fill-opacity=".55"/></svg>
+          </span>
+          <h3>Plantas medicinales y fitoterapia</h3>
+          <p>Plantas a granel, bolsitas y preparados de herboristería. Te explicamos qué es cada planta, cómo se prepara una infusión y qué dice su etiqueta, para que elijas con criterio.</p>
+        </article>
+
+        <article class="card">
+          <span class="ico" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="5" y="3.5" width="14" height="17" rx="3.5" stroke="#527f58" stroke-width="1.5"/><path d="M5 12h14" stroke="#527f58" stroke-width="1.3"/><circle cx="12" cy="7.8" r="1.5" fill="#8fae8b"/><circle cx="12" cy="16.2" r="1.5" fill="#b08455" fill-opacity=".8"/></svg>
+          </span>
+          <h3>Dietética y complementos</h3>
+          <p>Sección de dietética y complementos alimenticios de uso general. Repasamos juntos la composición, el formato y las indicaciones del fabricante antes de que decidas.</p>
+        </article>
+
+        <article class="card">
+          <span class="ico" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 18c0-5 3.6-9 8-9s8 4 8 9H4Z" stroke="#527f58" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 9V4.5" stroke="#527f58" stroke-width="1.4" stroke-linecap="round"/><path d="M12 6.5c-2.4 0-3.7-1.3-3.9-3.9 2.3-.2 3.7 1.3 3.9 3.9Z" fill="#8fae8b"/><path d="M8 18c.5-3 2-5 4-5" stroke="#b7cdb0" stroke-width="1.2" stroke-linecap="round"/></svg>
+          </span>
+          <h3>Alimentación ecológica</h3>
+          <p>Despensa de productos de alimentación ecológica y a granel: legumbres, cereales, semillas, infusiones y básicos de cocina diaria. Las cantidades, a tu medida.</p>
+        </article>
+
+        <article class="card">
+          <span class="ico" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M8.5 9h7l1 10.5a1.5 1.5 0 0 1-1.5 1.5h-6A1.5 1.5 0 0 1 7.5 19.5L8.5 9Z" stroke="#527f58" stroke-width="1.4" stroke-linejoin="round"/><path d="M10 9V5.4a2 2 0 0 1 4 0V9" stroke="#527f58" stroke-width="1.4"/><path d="M8.2 14h7.6" stroke="#8fae8b" stroke-width="1.6"/></svg>
+          </span>
+          <h3>Cosmética natural</h3>
+          <p>Cuidado de la piel y del cabello con cosmética de ingredientes naturales. Te orientamos por tipo de piel, textura y formato, leyendo la etiqueta contigo.</p>
+        </article>
+
+        <article class="card">
+          <span class="ico" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 5.5h16v10.5H13l-3.5 3.5V16H4z" stroke="#527f58" stroke-width="1.4" stroke-linejoin="round"/><path d="M8 9.5h8M8 12.3h5" stroke="#8fae8b" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </span>
+          <h3>Asesoramiento personalizado</h3>
+          <p>Asesoramiento en nutrición y fitoterapia en el propio mostrador: escuchamos qué buscas, te damos información general sobre los productos y te orientamos en la elección.</p>
+        </article>
+
+        <article class="card">
+          <span class="ico" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.3" stroke="#527f58" stroke-width="1.4"/><path d="M12 7.4v5.1l3 2" stroke="#527f58" stroke-width="1.4" stroke-linecap="round"/><circle cx="12" cy="12" r="1.3" fill="#b08455" fill-opacity=".8"/></svg>
+          </span>
+          <h3>Tienda de barrio, trato de siempre</h3>
+          <p>Un comercio local en Alaior donde se entra a preguntar sin compromiso. Si algo no está en la estantería, lo consultamos y te decimos qué se puede hacer.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PRIMERA VISITA -->
+  <section class="visit" id="visita">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow inv">Tu primera visita</p>
+        <h2>Tres pasos, sin complicaciones</h2>
+        <p class="lead">Si nunca has entrado a un herbolario, así es una visita cualquiera en S'Hort des Temps.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <span class="num">1</span>
+          <h3>Nos cuentas qué buscas</h3>
+          <p>Llegas con tu pregunta o con una idea aproximada. No hace falta traerla ordenada: la vamos concretando hablando, en el mostrador y con calma.</p>
+        </div>
+        <div class="step">
+          <span class="num">2</span>
+          <h3>Vemos las opciones juntos</h3>
+          <p>Te mostramos los apartados que encajan con lo que planteas y repasamos formatos, composición y etiquetado. Información general, nunca indicaciones médicas.</p>
+        </div>
+        <div class="step">
+          <span class="num">3</span>
+          <h3>Decides tú, y vuelves cuando quieras</h3>
+          <p>Te llevas lo que hayas elegido y, si lo necesitas, pasas otro día a comentar cómo te ha ido. Para cualquier cuestión de salud, consulta a tu profesional sanitario.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Contacto y ubicación</p>
+        <h2>Estamos en el centro de Alaior</h2>
+        <p class="lead">En la calle des Ramal. Lo más rápido es una llamada: te decimos si tenemos lo que buscas antes de que te desplaces.</p>
+      </div>
+      <div class="contact-grid">
+
+        <div class="info-card">
+          <div class="info-row">
+            <span class="ic" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 4.8c0-1 .8-1.8 1.8-1.8h1.5c.8 0 1.4.5 1.6 1.3l.6 2.4c.2.7-.1 1.4-.7 1.7l-1.2.7a11 11 0 0 0 4.9 4.9l.7-1.2c.4-.6 1-.9 1.7-.7l2.4.6c.8.2 1.3.8 1.3 1.6v1.5c0 1-.8 1.8-1.8 1.8C8.5 18.6 1.4 11.5 3 4.8Z" stroke="#527f58" stroke-width="1.3" stroke-linejoin="round"/></svg>
+            </span>
+            <div>
+              <p class="k">Teléfono</p>
+              <p class="v"><a href="tel:971378886">971 378 886</a></p>
+            </div>
+          </div>
+          <div class="info-row">
+            <span class="ic" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 18s-6.3-5-6.3-9.5A6.3 6.3 0 0 1 10 2.2a6.3 6.3 0 0 1 6.3 6.3C16.3 13 10 18 10 18Z" stroke="#527f58" stroke-width="1.3"/><circle cx="10" cy="8.4" r="2.2" stroke="#527f58" stroke-width="1.3"/></svg>
+            </span>
+            <div>
+              <p class="k">Dirección</p>
+              <p class="v">C/ des Ramal, 8-B<small>07730 Alaior — Menorca, Illes Balears</small></p>
+            </div>
+          </div>
+          <div class="info-row">
+            <span class="ic" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7.6" stroke="#527f58" stroke-width="1.3"/><path d="M10 5.8V10l3 2" stroke="#527f58" stroke-width="1.3" stroke-linecap="round"/></svg>
+            </span>
+            <div>
+              <p class="k">Horario</p>
+              <p class="v">Consultar horario<small>Llama al 971 378 886 y te lo confirmamos.</small></p>
+            </div>
+          </div>
+          <div class="info-row">
+            <span class="ic" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2.4" y="4.6" width="15.2" height="10.8" rx="1.6" stroke="#527f58" stroke-width="1.3"/><path d="m3 5.4 7 5.1 7-5.1" stroke="#527f58" stroke-width="1.3"/></svg>
+            </span>
+            <div>
+              <p class="k">Correo</p>
+              <p class="v"><a href="mailto:hortdestemps@gmail.com">hortdestemps@gmail.com</a></p>
+            </div>
+          </div>
+          <div style="margin-top:20px">
+            <a class="btn btn-pri" href="tel:971378886" style="width:100%">Llamar al 971 378 886</a>
+          </div>
+        </div>
+
+        <div class="map-card">
+          <div class="cap">
+            <h3>Plano esquemático</h3>
+            <span>Dibujo orientativo</span>
+          </div>
+          <svg viewBox="0 0 640 400" role="img" aria-label="Plano esquemático dibujado a mano que sitúa el herbolario en la calle des Ramal, en Alaior.">
+            <defs>
+              <linearGradient id="gMap" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#f3f1e8"/><stop offset="1" stop-color="#e7e3d6"/>
+              </linearGradient>
+              <linearGradient id="gPin" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#5f8f66"/><stop offset="1" stop-color="#2b4733"/>
+              </linearGradient>
+            </defs>
+
+            <rect x="0" y="0" width="640" height="400" rx="10" fill="url(#gMap)"/>
+
+            <!-- manzanas -->
+            <g fill="#dcd7c6" stroke="#c9c3ae" stroke-width="1.4">
+              <path d="M44 48h150v108H48z"/>
+              <path d="M232 40h160v112H230z"/>
+              <path d="M430 52h166v100H428z"/>
+              <path d="M40 310h120v50H44z"/>
+              <path d="M300 258h150v102H298z"/>
+              <path d="M490 246h108v114H492z"/>
+            </g>
+
+            <!-- plaza -->
+            <g>
+              <path d="M74 252c40-9 70 4 74 46-36 13-70 2-74-46Z" fill="#cfdcc6" stroke="#aec0a4" stroke-width="1.4"/>
+              <circle cx="108" cy="283" r="7" fill="#8fae8b" opacity=".75"/>
+              <text x="78" y="242" font-family="-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="13.5" fill="#6b7563">Plaza</text>
+            </g>
+
+            <!-- calle principal: C/ des Ramal -->
+            <path d="M24 208C150 196 300 214 616 202" stroke="#fbfaf4" stroke-width="30" stroke-linecap="round" fill="none"/>
+            <path d="M24 208C150 196 300 214 616 202" stroke="#c6bfa8" stroke-width="1.6" stroke-linecap="round" fill="none" stroke-dasharray="1 0"/>
+            <path d="M60 206c130-9 300 9 540-4" stroke="#d8d2bd" stroke-width="2" stroke-dasharray="12 12" fill="none"/>
+
+            <!-- calles secundarias -->
+            <path d="M208 34c6 60 2 120 6 170" stroke="#fbfaf4" stroke-width="20" stroke-linecap="round" fill="none"/>
+            <path d="M412 36c-4 56-2 116-4 168" stroke="#fbfaf4" stroke-width="18" stroke-linecap="round" fill="none"/>
+            <path d="M196 222c8 54 4 108 6 160" stroke="#fbfaf4" stroke-width="20" stroke-linecap="round" fill="none"/>
+            <path d="M466 220c6 52 2 106 4 162" stroke="#fbfaf4" stroke-width="18" stroke-linecap="round" fill="none"/>
+
+            <!-- rotulos -->
+            <text x="300" y="186" font-family="-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="17" font-weight="700" fill="#3c6044" letter-spacing=".4">C/ des Ramal</text>
+            <text x="196" y="248" font-family="-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="13.5" fill="#737c6a">calle secundaria</text>
+            <text x="488" y="196" font-family="-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="13.5" fill="#737c6a">hacia la salida</text>
+
+            <!-- marcador del herbolario -->
+            <g>
+              <circle cx="330" cy="212" r="26" fill="#8fae8b" opacity=".22"/>
+              <path d="M330 248c0 0-17-14.5-17-25.5A17 17 0 0 1 330 205a17 17 0 0 1 17 17.5c0 11-17 25.5-17 25.5Z" fill="url(#gPin)"/>
+              <circle cx="330" cy="221" r="6.2" fill="#f3f1e8"/>
+              <path d="M330 262v18" stroke="#2b4733" stroke-width="1.4" stroke-dasharray="4 4"/>
+              <rect x="246" y="282" width="168" height="40" rx="9" fill="#1e3326"/>
+              <text x="330" y="300" text-anchor="middle" font-family="-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="13" font-weight="700" fill="#f3f2ea">S'Hort des Temps</text>
+              <text x="330" y="314" text-anchor="middle" font-family="-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="11.5" fill="#c6d8bf">C/ des Ramal, 8-B</text>
+            </g>
+
+            <!-- rosa de los vientos -->
+            <g transform="translate(588,340)">
+              <circle r="22" fill="#fbfaf4" stroke="#c9c3ae" stroke-width="1.2"/>
+              <path d="M0-15 4-2 0 2-4-2Z" fill="#3c6044"/>
+              <path d="M0 15 4 2 0-2-4 2Z" fill="#c9c3ae"/>
+              <text x="0" y="-24" text-anchor="middle" font-family="-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="10" font-weight="700" fill="#6f7a66">N</text>
+            </g>
+          </svg>
+          <p class="map-note">Dibujo esquemático a mano, no a escala y sin valor cartográfico. Solo el rótulo «C/ des Ramal» corresponde a la dirección real; el resto del trazado es genérico y únicamente ayuda a situar el local.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <b>Herbolari S'Hort des Temps</b>
+        <p>Herbolario y dietética en Alaior. Asesoramiento en nutrición y fitoterapia, atención en mostrador.</p>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <a href="tel:971378886">971 378 886</a>
+        <a href="mailto:hortdestemps@gmail.com">hortdestemps@gmail.com</a>
+        <p>Consultar horario</p>
+      </div>
+      <div>
+        <h4>Dónde estamos</h4>
+        <p>C/ des Ramal, 8-B</p>
+        <p>07730 Alaior</p>
+        <p>Menorca — Illes Balears</p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span class="sig">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</span>
+      <span class="dis">Maqueta de demostración no oficial, sin relación contractual con el negocio. Los datos de contacto son públicos y se muestran tal cual. Esta página no ofrece información sanitaria: para cualquier cuestión de salud, consulta a un profesional.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var links = document.querySelectorAll('a[href^="#"]');
+  for (var i=0;i<links.length;i++){
+    links[i].addEventListener('click', function(e){
+      var id = this.getAttribute('href');
+      if (id.length < 2) return;
+      var t = document.querySelector(id);
+      if (!t) return;
+      e.preventDefault();
+      var bar = document.querySelector('.proposal-bar');
+      var off = bar ? bar.offsetHeight + 10 : 10;
+      var y = t.getBoundingClientRect().top + window.pageYOffset - off;
+      window.scrollTo({top: y < 0 ? 0 : y, behavior: 'smooth'});
+    });
+  }
+})();
+</script>
+
+</body>
+</html>

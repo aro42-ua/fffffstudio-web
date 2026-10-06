@@ -1,0 +1,624 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hotel Peñacruz — Propuesta de diseño (maqueta no oficial)</title>
+<style>
+:root{
+  --cream:#faf5ed;
+  --cream-2:#f3ebdf;
+  --paper:#fffdf9;
+  --ink:#24271f;
+  --ink-soft:#4d5247;
+  --terra:#a9512f;
+  --terra-dark:#7f3a21;
+  --olive:#5c6b4a;
+  --olive-dark:#3b462f;
+  --stone:#cfc4b4;
+  --gold:#b08a3c;
+  --line:rgba(36,39,31,.14);
+  --shadow:0 18px 40px -24px rgba(36,39,31,.45);
+  --bar:44px;
+  --maxw:1120px;
+  --r:18px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+html,body{max-width:100%;overflow-x:hidden}
+body{
+  margin:0;
+  padding-top:var(--bar);
+  background:var(--cream);
+  color:var(--ink);
+  font-family:ui-serif,Georgia,"Times New Roman",serif;
+  font-size:17px;
+  line-height:1.65;
+}
+img,svg{max-width:100%}
+h1,h2,h3,.kicker,.btn,.navlink,.stepn,.topbar{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+h1,h2,h3{line-height:1.12;margin:0;letter-spacing:-.01em}
+p{margin:0}
+a{color:inherit}
+
+/* ---------- barra fija ---------- */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  height:var(--bar);
+  display:flex;align-items:center;justify-content:center;
+  gap:.5rem;
+  background:linear-gradient(90deg,#1d201a,#2f342b 55%,#1d201a);
+  color:#f7f1e6;
+  font-size:12.5px;letter-spacing:.055em;text-transform:uppercase;
+  font-weight:600;
+  padding:0 12px;
+  text-align:center;
+  border-bottom:1px solid rgba(255,255,255,.14);
+}
+.topbar span{
+  display:block;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  max-width:100%;
+}
+.topbar .dotmark{
+  width:7px;height:7px;border-radius:50%;flex:0 0 auto;
+  background:var(--terra);box-shadow:0 0 0 3px rgba(169,81,47,.25);
+}
+
+/* ---------- layout ---------- */
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+section{position:relative}
+.kicker{
+  font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;
+  font-weight:700;color:var(--terra);margin-bottom:14px;
+}
+.lead{color:var(--ink-soft);font-size:18px}
+.rule{height:1px;background:var(--line);border:0;margin:0}
+
+/* ---------- cabecera de sitio (maqueta) ---------- */
+.sitehead{
+  position:relative;z-index:3;
+  padding:22px 0 6px;
+}
+.sitehead .inner{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
+.brand .mark{flex:0 0 auto}
+.brand b{font-family:ui-serif,Georgia,serif;font-size:20px;font-weight:600;letter-spacing:.01em;display:block;line-height:1.1}
+.brand small{display:block;font-family:ui-sans-serif,system-ui,sans-serif;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft)}
+.nav{display:flex;gap:22px;flex-wrap:wrap}
+.navlink{font-size:13px;letter-spacing:.04em;text-decoration:none;color:var(--ink-soft);padding:4px 0;border-bottom:1px solid transparent}
+.navlink:hover,.navlink:focus-visible{color:var(--terra);border-bottom-color:var(--terra)}
+
+/* ---------- hero ---------- */
+.hero{overflow:hidden;padding:34px 0 0}
+.hero-bg{position:absolute;inset:0;z-index:0;
+  background:
+    radial-gradient(1200px 520px at 78% -8%,rgba(176,138,60,.20),transparent 62%),
+    radial-gradient(900px 480px at 8% 10%,rgba(92,107,74,.16),transparent 60%),
+    linear-gradient(180deg,var(--cream-2),var(--cream) 62%);
+}
+.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;gap:46px;align-items:center;padding:30px 0 56px}
+.hero h1{font-size:clamp(34px,5.1vw,60px);font-weight:600}
+.hero h1 em{font-style:italic;color:var(--terra)}
+.hero p.lead{margin-top:20px;max-width:30em}
+.facts{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;padding:0;list-style:none}
+.facts li{
+  font-family:ui-sans-serif,system-ui,sans-serif;font-size:12.5px;letter-spacing:.03em;
+  background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:7px 14px;color:var(--ink-soft);
+}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:30px}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  text-decoration:none;font-size:15px;font-weight:600;letter-spacing:.01em;
+  padding:15px 24px;border-radius:999px;border:1px solid transparent;
+  transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+}
+.btn-primary{background:linear-gradient(180deg,var(--terra),var(--terra-dark));color:#fff8f2;box-shadow:0 14px 26px -16px rgba(127,58,33,.85)}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-ghost{background:transparent;border-color:rgba(36,39,31,.3);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--terra);color:var(--terra)}
+.btn svg{flex:0 0 auto}
+
+/* arte hero */
+.hero-art{position:relative;border-radius:22px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line);background:var(--paper)}
+.hero-art svg{display:block;width:100%;height:auto}
+
+/* ---------- tira de valores ---------- */
+.strip{background:var(--olive-dark);color:#eef0e6}
+.strip .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;padding:30px 24px}
+.strip h3{font-size:15px;letter-spacing:.02em;font-weight:600;color:#fff}
+.strip p{font-size:14.5px;color:rgba(238,240,230,.82);margin-top:6px}
+
+/* ---------- secciones de contenido ---------- */
+.sec{padding:84px 0}
+.sec-head{max-width:40em;margin-bottom:44px}
+.sec-head h2{font-size:clamp(26px,3.3vw,40px);font-weight:600}
+.sec-head p{margin-top:16px}
+
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
+.card{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--r);
+  padding:0 0 28px;overflow:hidden;display:flex;flex-direction:column;
+  box-shadow:0 10px 30px -26px rgba(36,39,31,.6);
+}
+.card .art{height:168px;position:relative;overflow:hidden}
+.card .art svg{position:absolute;inset:0;width:100%;height:100%}
+.card .body{padding:26px 28px 0}
+.card h3{font-size:22px;font-weight:600}
+.card p{margin-top:12px;color:var(--ink-soft);font-size:16px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0;padding:0;list-style:none}
+.tags li{font-family:ui-sans-serif,system-ui,sans-serif;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--olive-dark);background:rgba(92,107,74,.12);border-radius:6px;padding:5px 9px}
+
+/* ---------- pasos ---------- */
+.steps-sec{background:linear-gradient(180deg,var(--cream),var(--cream-2))}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;counter-reset:s}
+.step{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:30px 28px;position:relative}
+.stepn{
+  width:42px;height:42px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(180deg,var(--terra),var(--terra-dark));color:#fff;
+  font-size:16px;font-weight:700;margin-bottom:18px;
+}
+.step h3{font-size:19px;font-weight:600}
+.step p{margin-top:10px;color:var(--ink-soft);font-size:15.5px}
+
+/* ---------- contacto ---------- */
+.contact{display:grid;grid-template-columns:1fr 1.05fr;gap:40px;align-items:start}
+.infobox{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:30px 28px}
+.dl{margin:0;display:grid;grid-template-columns:1fr;gap:18px}
+.dl .row{display:grid;gap:3px}
+.dl dt{font-family:ui-sans-serif,system-ui,sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft)}
+.dl dd{margin:0;font-size:17.5px}
+.dl dd a{text-decoration:none;color:var(--terra);font-weight:600}
+.dl dd a:hover{text-decoration:underline}
+.mapcard{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:14px;box-shadow:0 10px 30px -26px rgba(36,39,31,.6)}
+.mapcard svg{display:block;width:100%;height:auto;border-radius:10px}
+.mapnote{font-family:ui-sans-serif,system-ui,sans-serif;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);padding:12px 6px 4px;text-align:center}
+
+/* ---------- pie ---------- */
+footer{background:#1d201a;color:#e9e3d6;padding:52px 0 40px;margin-top:0}
+.foot-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:34px;align-items:start}
+footer h3{font-size:19px;font-weight:600;color:#fff}
+footer p{font-size:15px;color:rgba(233,227,214,.78);margin-top:10px}
+footer a{color:#e8c387;text-decoration:none}
+footer a:hover{text-decoration:underline}
+.foot-rule{height:1px;background:rgba(255,255,255,.14);margin:34px 0 22px}
+.credit{font-family:ui-sans-serif,system-ui,sans-serif;font-size:13px;letter-spacing:.03em;color:rgba(233,227,214,.9)}
+.disclaimer{font-family:ui-sans-serif,system-ui,sans-serif;font-size:12px;color:rgba(233,227,214,.6);margin-top:10px;max-width:46em}
+
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:34px;padding:22px 0 44px}
+  .strip .wrap{grid-template-columns:1fr;gap:20px}
+  .cards{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .contact{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+  .sec{padding:62px 0}
+}
+@media (max-width:560px){
+  :root{--bar:56px}
+  body{font-size:16.5px}
+  .wrap{padding:0 18px}
+  .topbar{font-size:10.5px;letter-spacing:.04em;line-height:1.3}
+  .topbar span{white-space:normal;text-overflow:clip}
+  .nav{display:none}
+  .sitehead{padding:18px 0 0}
+  .hero{padding:22px 0 0}
+  .hero h1{font-size:33px}
+  .lead{font-size:16.5px}
+  .btn{width:100%;justify-content:center;padding:15px 18px}
+  .cta-row{gap:10px}
+  .sec{padding:52px 0}
+  .sec-head{margin-bottom:30px}
+  .card .body{padding:22px 20px 0}
+  .step{padding:24px 20px}
+  .infobox,.mapcard{padding:22px 18px}
+  .mapcard{padding:12px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar" role="note">
+  <i class="dotmark" aria-hidden="true"></i>
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<header class="sitehead">
+  <div class="wrap inner">
+    <div class="brand">
+      <svg class="mark" width="42" height="42" viewBox="0 0 42 42" aria-hidden="true">
+        <defs>
+          <linearGradient id="mg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#a9512f"/><stop offset="1" stop-color="#5c6b4a"/>
+          </linearGradient>
+        </defs>
+        <circle cx="21" cy="21" r="20" fill="none" stroke="url(#mg)" stroke-width="1.4"/>
+        <path d="M11 27c3-1 4.5-4 7-4s3 2.4 5.6 2.4S27 22 31 24" fill="none" stroke="#5c6b4a" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M21 9v9M17 13h8" stroke="#a9512f" stroke-width="1.6" stroke-linecap="round"/>
+        <ellipse cx="15" cy="21" rx="3.2" ry="2.4" fill="#cfc4b4" opacity=".85"/>
+        <ellipse cx="27" cy="20.4" rx="2.4" ry="1.9" fill="#cfc4b4" opacity=".6"/>
+      </svg>
+      <span><b>Hotel Peñacruz</b><small>Malpartida de Cáceres</small></span>
+    </div>
+    <nav class="nav" aria-label="Secciones de la maqueta">
+      <a class="navlink" href="#habitaciones">Habitaciones</a>
+      <a class="navlink" href="#restaurante">Restaurante</a>
+      <a class="navlink" href="#celebraciones">Celebraciones</a>
+      <a class="navlink" href="#entorno">Entorno</a>
+      <a class="navlink" href="#contacto">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="wrap hero-grid">
+    <div class="reveal">
+      <p class="kicker">Hotel · Restaurante · Celebraciones</p>
+      <h1>Dormir junto a <em>Los Barruecos</em>, en el corazón de la dehesa</h1>
+      <p class="lead">Un hotel de 32 habitaciones con restaurante, cafetería y salón de celebraciones en Malpartida de Cáceres, a un paso del paraje natural de Los Barruecos y del Museo Vostell.</p>
+      <ul class="facts">
+        <li>32 habitaciones</li>
+        <li>Restaurante y cafetería</li>
+        <li>Salón de celebraciones</li>
+        <li>Malpartida de Cáceres</li>
+      </ul>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="tel:927276292">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 3.5h3l1.5 4-2 1.4a12 12 0 0 0 5.9 5.9l1.4-2 4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.6 5.7 2 2 0 0 1 6.6 3.5Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Reservar por teléfono · 927 27 62 92
+        </a>
+        <a class="btn btn-ghost" href="#contacto">Cómo llegar</a>
+      </div>
+    </div>
+
+    <div class="hero-art reveal" aria-hidden="true">
+      <svg viewBox="0 0 560 420" role="presentation">
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#f6e3c8"/><stop offset="0.5" stop-color="#eccfae"/><stop offset="1" stop-color="#e3c9a8"/>
+          </linearGradient>
+          <linearGradient id="hill1" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#7f8d68"/><stop offset="1" stop-color="#5c6b4a"/>
+          </linearGradient>
+          <linearGradient id="hill2" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#4e5b3f"/><stop offset="1" stop-color="#3b462f"/>
+          </linearGradient>
+          <linearGradient id="rock" x1="0" y1="0" x2="0.4" y2="1">
+            <stop offset="0" stop-color="#e2d8c9"/><stop offset="1" stop-color="#b6a897"/>
+          </linearGradient>
+          <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#c9ccb6"/><stop offset="1" stop-color="#9ea888"/>
+          </linearGradient>
+        </defs>
+        <rect width="560" height="420" fill="url(#sky)"/>
+        <circle cx="430" cy="104" r="46" fill="#f7efdd" opacity=".75"/>
+        <circle cx="430" cy="104" r="30" fill="#fdf7ea" opacity=".9"/>
+        <path d="M0 236 C90 198 150 232 226 214 C300 196 356 226 430 210 C486 198 528 212 560 204 V420 H0 Z" fill="url(#hill1)"/>
+        <path d="M0 292 C86 268 160 300 244 286 C330 272 404 300 484 288 C520 282 544 288 560 284 V420 H0 Z" fill="url(#hill2)"/>
+        <path d="M0 344 C120 332 250 352 340 344 C430 336 500 350 560 344 V420 H0 Z" fill="url(#water)" opacity=".9"/>
+        <!-- bolos graniticos -->
+        <ellipse cx="128" cy="320" rx="62" ry="42" fill="url(#rock)"/>
+        <ellipse cx="128" cy="286" rx="40" ry="28" fill="url(#rock)" opacity=".95"/>
+        <ellipse cx="128" cy="262" rx="22" ry="16" fill="#eee5d7" opacity=".9"/>
+        <ellipse cx="300" cy="332" rx="46" ry="30" fill="url(#rock)" opacity=".92"/>
+        <ellipse cx="300" cy="308" rx="27" ry="18" fill="#e9dfd0" opacity=".9"/>
+        <ellipse cx="452" cy="326" rx="54" ry="33" fill="url(#rock)" opacity=".85"/>
+        <ellipse cx="452" cy="304" rx="30" ry="18" fill="#e5dbcb" opacity=".8"/>
+        <!-- encinas -->
+        <g stroke="#3b462f" stroke-width="3" stroke-linecap="round" fill="none">
+          <path d="M60 268v-20M200 252v-18M372 246v-18"/>
+        </g>
+        <g fill="#47543a" opacity=".9">
+          <ellipse cx="60" cy="240" rx="26" ry="16"/>
+          <ellipse cx="200" cy="226" rx="22" ry="14"/>
+          <ellipse cx="372" cy="220" rx="24" ry="15"/>
+        </g>
+        <!-- vuelo de grullas, trazo simple -->
+        <g stroke="#6b5a45" stroke-width="2" fill="none" stroke-linecap="round" opacity=".7">
+          <path d="M108 120l10-8 10 8"/><path d="M150 96l9-7 9 7"/><path d="M186 132l8-6 8 6"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="wrap">
+    <div><h3>Alojamiento</h3><p>32 habitaciones para estancias de descanso, de paso o de trabajo en la comarca.</p></div>
+    <div><h3>Mesa y cafetería</h3><p>Restaurante y cafetería en el propio hotel, para comer sin tener que desplazarse.</p></div>
+    <div><h3>Celebraciones</h3><p>Salón para bodas, comuniones, bautizos y reuniones de empresa o de familia.</p></div>
+  </div>
+</div>
+
+<!-- ================= HABITACIONES ================= -->
+<section class="sec" id="habitaciones">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="kicker">El hotel</p>
+      <h2>32 habitaciones, a un paso del paraje natural</h2>
+      <p class="lead">Un alojamiento pensado tanto para quien viene a conocer la zona como para quien pasa unos días por trabajo o se queda con motivo de una celebración. Para conocer la disponibilidad y las características de cada habitación, lo más directo es una llamada.</p>
+    </div>
+    <div class="cards">
+      <article class="card reveal">
+        <div class="art" aria-hidden="true">
+          <svg viewBox="0 0 400 170" preserveAspectRatio="xMidYMid slice">
+            <defs><linearGradient id="r1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f3e6d2"/><stop offset="1" stop-color="#ddc8ab"/></linearGradient></defs>
+            <rect width="400" height="170" fill="url(#r1)"/>
+            <rect x="48" y="96" width="150" height="46" rx="6" fill="#fffdf9" stroke="#b6a897"/>
+            <rect x="48" y="80" width="54" height="22" rx="6" fill="#e6dbc9" stroke="#b6a897"/>
+            <rect x="206" y="60" width="56" height="82" rx="5" fill="#fffdf9" stroke="#b6a897"/>
+            <path d="M234 60v82" stroke="#cfc4b4"/>
+            <circle cx="300" cy="62" r="20" fill="#a9512f" opacity=".18"/>
+            <rect x="284" y="92" width="32" height="50" rx="4" fill="#5c6b4a" opacity=".22"/>
+            <path d="M0 142h400" stroke="#b6a897" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="body">
+          <h3>Habitaciones</h3>
+          <p>Estancias tranquilas en un edificio de pueblo, con la comodidad de tener recepción, restaurante y cafetería en la misma casa.</p>
+          <ul class="tags"><li>32 habitaciones</li><li>Estancias cortas y largas</li></ul>
+        </div>
+      </article>
+
+      <article class="card reveal" id="restaurante">
+        <div class="art" aria-hidden="true">
+          <svg viewBox="0 0 400 170" preserveAspectRatio="xMidYMid slice">
+            <defs><linearGradient id="r2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f1e7d6"/><stop offset="1" stop-color="#d7bfa4"/></linearGradient></defs>
+            <rect width="400" height="170" fill="url(#r2)"/>
+            <circle cx="150" cy="96" r="42" fill="#fffdf9" stroke="#b6a897"/>
+            <circle cx="150" cy="96" r="26" fill="#efe4d2"/>
+            <g stroke="#7f3a21" stroke-width="3" stroke-linecap="round" fill="none">
+              <path d="M228 62v68M244 62v68M236 62v26"/>
+              <path d="M268 62c10 0 14 10 10 20-3 8-10 8-10 18v30"/>
+            </g>
+            <rect x="52" y="52" width="26" height="36" rx="12" fill="#5c6b4a" opacity=".28"/>
+            <path d="M0 138h400" stroke="#b6a897" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="body">
+          <h3>Restaurante y cafetería</h3>
+          <p>El hotel cuenta con restaurante y cafetería propios. La carta y los horarios se consultan directamente en el establecimiento o por teléfono.</p>
+          <ul class="tags"><li>Restaurante</li><li>Cafetería</li></ul>
+        </div>
+      </article>
+
+      <article class="card reveal" id="celebraciones">
+        <div class="art" aria-hidden="true">
+          <svg viewBox="0 0 400 170" preserveAspectRatio="xMidYMid slice">
+            <defs><linearGradient id="r3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f4ead9"/><stop offset="1" stop-color="#dcc7ab"/></linearGradient></defs>
+            <rect width="400" height="170" fill="url(#r3)"/>
+            <g fill="#fffdf9" stroke="#b6a897">
+              <ellipse cx="110" cy="104" rx="46" ry="18"/>
+              <ellipse cx="250" cy="118" rx="54" ry="20"/>
+              <ellipse cx="320" cy="78" rx="34" ry="13"/>
+            </g>
+            <g stroke="#a9512f" stroke-width="2.4" stroke-linecap="round" fill="none" opacity=".75">
+              <path d="M110 86v-22M250 98v-24M320 65v-18"/>
+            </g>
+            <g fill="#b08a3c" opacity=".55">
+              <circle cx="110" cy="60" r="6"/><circle cx="250" cy="70" r="6"/><circle cx="320" cy="43" r="5"/>
+            </g>
+            <path d="M0 146h400" stroke="#b6a897" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="body">
+          <h3>Salón de celebraciones</h3>
+          <p>Un salón para bodas, comuniones, bautizos, comidas de empresa y reuniones familiares, con la posibilidad de alojar a los invitados en el mismo hotel.</p>
+          <ul class="tags"><li>Bodas y comuniones</li><li>Eventos de empresa</li></ul>
+        </div>
+      </article>
+
+      <article class="card reveal" id="entorno">
+        <div class="art" aria-hidden="true">
+          <svg viewBox="0 0 400 170" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <linearGradient id="r4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e9dcc4"/><stop offset="1" stop-color="#c8bfa5"/></linearGradient>
+              <linearGradient id="r4b" x1="0" y1="0" x2="0.3" y2="1"><stop offset="0" stop-color="#e4dacb"/><stop offset="1" stop-color="#a99a88"/></linearGradient>
+            </defs>
+            <rect width="400" height="170" fill="url(#r4)"/>
+            <path d="M0 118c70-14 130 10 200 2s130-16 200-6v56H0Z" fill="#5c6b4a" opacity=".55"/>
+            <ellipse cx="96" cy="112" rx="52" ry="34" fill="url(#r4b)"/>
+            <ellipse cx="96" cy="84" rx="32" ry="20" fill="#efe6d8"/>
+            <ellipse cx="268" cy="122" rx="44" ry="26" fill="url(#r4b)" opacity=".9"/>
+            <ellipse cx="268" cy="102" rx="24" ry="14" fill="#eae0d1" opacity=".9"/>
+            <rect x="330" y="78" width="54" height="42" rx="3" fill="#fffdf9" stroke="#b6a897"/>
+            <path d="M330 78l27-16 27 16" fill="#a9512f" opacity=".6"/>
+            <path d="M0 150h400" stroke="#a99a88" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="body">
+          <h3>El entorno: Los Barruecos y el Museo Vostell</h3>
+          <p>El hotel está junto al paraje de Los Barruecos y al Museo Vostell Malpartida, en Malpartida de Cáceres: un paisaje de bolos de granito y charcas al lado mismo del pueblo.</p>
+          <ul class="tags"><li>Los Barruecos</li><li>Museo Vostell</li></ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ================= PASOS ================= -->
+<section class="sec steps-sec">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="kicker">Cómo trabajamos</p>
+      <h2>Vuestra reserva en 3 pasos</h2>
+      <p class="lead">Sin formularios largos ni intermediarios: una llamada, una conversación y la reserva confirmada.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="stepn">1</div>
+        <h3>Llamáis al hotel</h3>
+        <p>Nos contáis las fechas, cuántas personas sois y si venís por descanso, por trabajo o por una celebración.</p>
+      </div>
+      <div class="step reveal">
+        <div class="stepn">2</div>
+        <h3>Vemos la disponibilidad</h3>
+        <p>Revisamos las habitaciones libres en esas fechas y, si hace falta, la disponibilidad del restaurante o del salón.</p>
+      </div>
+      <div class="step reveal">
+        <div class="stepn">3</div>
+        <h3>Confirmamos y os esperamos</h3>
+        <p>Dejamos la reserva anotada a vuestro nombre y os indicamos cómo llegar hasta la Ronda de Muñoz Torrero.</p>
+      </div>
+    </div>
+    <div class="cta-row reveal">
+      <a class="btn btn-primary" href="tel:927276292">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 3.5h3l1.5 4-2 1.4a12 12 0 0 0 5.9 5.9l1.4-2 4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.6 5.7 2 2 0 0 1 6.6 3.5Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Llamar al 927 27 62 92
+      </a>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ================= CONTACTO ================= -->
+<section class="sec" id="contacto">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="kicker">Contacto</p>
+      <h2>Dónde estamos</h2>
+      <p class="lead">En el centro de Malpartida de Cáceres, con el paraje de Los Barruecos a las afueras del pueblo.</p>
+    </div>
+    <div class="contact">
+      <div class="infobox reveal">
+        <dl class="dl">
+          <div class="row">
+            <dt>Teléfono</dt>
+            <dd><a href="tel:927276292">927 27 62 92</a></dd>
+          </div>
+          <div class="row">
+            <dt>Dirección</dt>
+            <dd>Ronda de Muñoz Torrero, 0<br>10910 Malpartida de Cáceres (Cáceres)</dd>
+          </div>
+          <div class="row">
+            <dt>Correo electrónico</dt>
+            <dd><a href="mailto:info@hotelpenacruz.com">info@hotelpenacruz.com</a></dd>
+          </div>
+          <div class="row">
+            <dt>Horario</dt>
+            <dd>Consultar horario</dd>
+          </div>
+          <div class="row">
+            <dt>Razón social</dt>
+            <dd>Restaurante Hermanos Román, S.L.</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="mapcard reveal">
+        <svg viewBox="0 0 620 420" role="img" aria-label="Mapa esquemático dibujado a mano con la Ronda de Muñoz Torrero y la ubicación del hotel">
+          <defs>
+            <linearGradient id="mapbg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#f7f0e2"/><stop offset="1" stop-color="#eee4d2"/>
+            </linearGradient>
+          </defs>
+          <rect width="620" height="420" fill="url(#mapbg)"/>
+          <!-- manzanas -->
+          <g fill="#e3d8c4" stroke="#cfc0a6" stroke-width="2">
+            <path d="M58 70h150v96H58z"/>
+            <path d="M242 54h130v70H242z"/>
+            <path d="M408 86h150v84H408z"/>
+            <path d="M60 246h128v104H60z"/>
+            <path d="M420 262h140v96H420z"/>
+          </g>
+          <!-- zona verde / paraje -->
+          <path d="M232 198c40-26 108-16 134 14 24 28 8 72-34 84-50 14-112-4-122-44-7-28 4-44 22-54Z" fill="#cdd6b8" stroke="#aab694" stroke-width="2"/>
+          <text x="300" y="268" text-anchor="middle" font-family="ui-sans-serif,system-ui,sans-serif" font-size="13" fill="#59664a">Zona verde</text>
+          <!-- calles secundarias -->
+          <g stroke="#fffdf9" stroke-width="14" stroke-linecap="round">
+            <path d="M222 36v146"/>
+            <path d="M392 40v154"/>
+            <path d="M40 206h540"/>
+            <path d="M40 372h540"/>
+            <path d="M206 300v96"/>
+            <path d="M402 290v106"/>
+          </g>
+          <g stroke="#d8c9ae" stroke-width="1.6" stroke-dasharray="7 9">
+            <path d="M222 36v146"/><path d="M392 40v154"/><path d="M40 206h540"/><path d="M40 372h540"/>
+          </g>
+          <!-- ronda principal, trazo a mano -->
+          <path d="M26 128C96 118 150 136 214 128c66-8 118-30 186-24 62 6 112 32 190 22" fill="none" stroke="#a9512f" stroke-width="20" stroke-linecap="round" opacity=".16"/>
+          <path d="M26 128C96 118 150 136 214 128c66-8 118-30 186-24 62 6 112 32 190 22" fill="none" stroke="#a9512f" stroke-width="7" stroke-linecap="round"/>
+          <text x="56" y="100" font-family="ui-sans-serif,system-ui,sans-serif" font-size="14" font-weight="700" fill="#7f3a21" stroke="#f7f0e2" stroke-width="4" paint-order="stroke">Ronda de Muñoz Torrero</text>
+          <!-- marcador del hotel -->
+          <g>
+            <ellipse cx="300" cy="166" rx="22" ry="7" fill="#24271f" opacity=".16"/>
+            <path d="M300 160c-16 0-29-13-29-29a29 29 0 0 1 58 0c0 16-13 29-29 29Z" fill="#a9512f"/>
+            <path d="M300 160l-9-14h18Z" fill="#a9512f"/>
+            <path d="M291 138v-12l9-7 9 7v12Z" fill="#fff8f2"/>
+            <rect x="297" y="140" width="6" height="8" fill="#a9512f"/>
+          </g>
+          <text x="300" y="196" text-anchor="middle" font-family="ui-sans-serif,system-ui,sans-serif" font-size="14" font-weight="700" fill="#24271f" stroke="#f7f0e2" stroke-width="4" paint-order="stroke">Hotel Peñacruz</text>
+          <!-- rosa de los vientos -->
+          <g transform="translate(556,374)">
+            <circle r="26" fill="#fffdf9" stroke="#cfc0a6" stroke-width="2"/>
+            <path d="M0-18 5-2 0 4-5-2Z" fill="#a9512f"/>
+            <path d="M0 18-5 2 0-4 5 2Z" fill="#8e8775" opacity=".6"/>
+            <text y="-30" text-anchor="middle" font-family="ui-sans-serif,system-ui,sans-serif" font-size="11" font-weight="700" fill="#7f3a21">N</text>
+          </g>
+        </svg>
+        <p class="mapnote">Mapa esquemático orientativo · no está a escala</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PIE ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h3>Hotel Peñacruz</h3>
+        <p>Ronda de Muñoz Torrero, 0 · 10910 Malpartida de Cáceres (Cáceres)<br>
+        Restaurante Hermanos Román, S.L.</p>
+      </div>
+      <div>
+        <h3>Contacto</h3>
+        <p>Teléfono: <a href="tel:927276292">927 27 62 92</a><br>
+        Correo: <a href="mailto:info@hotelpenacruz.com">info@hotelpenacruz.com</a><br>
+        Horario: consultar horario</p>
+      </div>
+    </div>
+    <div class="foot-rule"></div>
+    <p class="credit">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+    <p class="disclaimer">Documento de trabajo con fines de presentación. No es la web oficial del establecimiento ni está publicado por él; los textos son orientativos y pendientes de validación.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){
+    els.forEach(function(e){e.classList.add('in');});
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+    });
+  },{rootMargin:'0px 0px -8% 0px',threshold:0.08});
+  els.forEach(function(e){io.observe(e);});
+
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(ev){
+      var t = document.querySelector(a.getAttribute('href'));
+      if(!t) return;
+      ev.preventDefault();
+      var bar = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--bar'))||44;
+      window.scrollTo({top: t.getBoundingClientRect().top + window.pageYOffset - bar - 12, behavior:'smooth'});
+    });
+  });
+})();
+</script>
+</body>
+</html>
