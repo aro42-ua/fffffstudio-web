@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Taller Cutillas — Propuesta de rediseño | FFFFFFstudio</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+:root{
+  --negro:#0c0d0f;
+  --carbon:#15171b;
+  --grafito:#1e2128;
+  --borde:#2c3039;
+  --humo:#9aa3b2;
+  --claro:#eef1f5;
+  --blanco:#ffffff;
+  --ambar:#ffb100;
+  --ambar-osc:#d99400;
+  --rojo:#e23b2e;
+  --barra:46px;
+  --maxw:1160px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--negro);
+  color:var(--claro);
+  font-family:"Helvetica Neue",Helvetica,Arial,"Liberation Sans",sans-serif;
+  font-size:17px;
+  line-height:1.6;
+  overflow-x:hidden;
+  padding-top:var(--barra);
+}
+img,svg{max-width:100%;display:block}
+a{color:inherit}
+
+/* ---------- BARRA FIJA ---------- */
+.aviso{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  min-height:var(--barra);
+  display:flex;align-items:center;justify-content:center;
+  background:var(--ambar);
+  color:#1a1200;
+  border-bottom:2px solid #0c0d0f;
+  padding:7px 14px;
+  text-align:center;
+}
+.aviso span{
+  font-size:12px;font-weight:700;letter-spacing:.055em;
+  text-transform:uppercase;line-height:1.35;
+}
+
+/* ---------- UTILIDADES ---------- */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;width:100%}
+.eyebrow{
+  display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--ambar);
+  border-left:3px solid var(--ambar);padding-left:10px;margin-bottom:18px;
+}
+h1,h2,h3{line-height:1.08;letter-spacing:-.02em;text-transform:uppercase;font-weight:800}
+h2{font-size:clamp(28px,4.4vw,46px);margin-bottom:14px}
+h3{font-size:18px;letter-spacing:.01em;margin-bottom:8px}
+.lead{color:var(--humo);font-size:17px;max-width:62ch}
+section{padding:78px 0;border-top:1px solid var(--borde)}
+
+/* ---------- NAV ---------- */
+.nav{
+  position:sticky;top:var(--barra);z-index:900;
+  background:rgba(12,13,15,.94);
+  border-bottom:1px solid var(--borde);
+  backdrop-filter:blur(6px);
+}
+.nav-in{
+  max-width:var(--maxw);margin:0 auto;padding:12px 28px;
+  display:flex;align-items:center;gap:18px;flex-wrap:wrap;
+}
+.logo{display:flex;align-items:center;gap:11px;min-width:0}
+.logo-mark{width:34px;height:34px;flex:0 0 34px}
+.logo-txt{font-weight:800;text-transform:uppercase;letter-spacing:.04em;font-size:15.5px;line-height:1.15}
+.logo-txt small{display:block;font-size:9.5px;letter-spacing:.17em;color:var(--humo);font-weight:600}
+.nav-links{display:flex;gap:22px;margin-left:auto;list-style:none;flex-wrap:wrap}
+.nav-links a{
+  text-decoration:none;font-size:12.5px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--humo);padding:4px 0;border-bottom:2px solid transparent;
+}
+.nav-links a:hover{color:var(--blanco);border-color:var(--ambar)}
+.nav-tel{
+  margin-left:4px;text-decoration:none;background:var(--ambar);color:#1a1200;
+  font-weight:800;font-size:13px;letter-spacing:.04em;padding:9px 15px;
+  border-radius:3px;white-space:nowrap;
+}
+
+/* ---------- HERO ---------- */
+.hero{
+  position:relative;overflow:hidden;border-top:none;
+  padding:86px 0 78px;
+  background:
+    radial-gradient(900px 420px at 88% 8%, rgba(255,177,0,.16), transparent 62%),
+    radial-gradient(700px 500px at 6% 92%, rgba(226,59,46,.12), transparent 60%),
+    linear-gradient(170deg,#15171b 0%,#0c0d0f 72%);
+}
+.hero::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.028) 0 2px,transparent 2px 11px);
+}
+.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;gap:52px;align-items:center}
+.hero h1{font-size:clamp(34px,5.6vw,66px);margin-bottom:20px}
+.hero h1 em{font-style:normal;color:var(--ambar);display:block}
+.hero p{color:#c6ccd6;font-size:clamp(16px,1.5vw,19px);max-width:52ch;margin-bottom:30px}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;text-decoration:none;
+  font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:14px;
+  padding:16px 24px;border-radius:4px;border:2px solid transparent;
+}
+.btn-main{background:var(--ambar);color:#1a1200;border-color:var(--ambar)}
+.btn-main:hover{background:var(--ambar-osc)}
+.btn-ghost{border-color:var(--borde);color:var(--claro)}
+.btn-ghost:hover{border-color:var(--humo)}
+.hero-tags{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px;list-style:none}
+.hero-tags li{
+  font-size:11.5px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--humo);border:1px solid var(--borde);padding:7px 11px;border-radius:999px;
+}
+.hero-art{
+  border:1px solid var(--borde);border-radius:8px;background:linear-gradient(160deg,#1b1e24,#101216);
+  padding:22px;
+}
+
+/* ---------- SERVICIOS ---------- */
+.grid-serv{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px}
+.card{
+  background:linear-gradient(170deg,#181b21,#111317);
+  border:1px solid var(--borde);border-radius:7px;padding:24px 22px;
+  display:flex;flex-direction:column;gap:12px;
+}
+.card:hover{border-color:#3d434f}
+.card .ic{width:44px;height:44px;flex:0 0 44px}
+.card p{color:var(--humo);font-size:15px;line-height:1.55}
+.card-venta{
+  grid-column:1/-1;
+  display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center;
+  background:linear-gradient(110deg,#1d1a12,#121317 65%);
+  border-color:#4a3c14;
+}
+.card-venta .ic{width:68px;height:68px;flex:0 0 68px}
+.card-venta h3{font-size:22px}
+
+/* ---------- PASOS ---------- */
+.pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px;counter-reset:p}
+.paso{
+  position:relative;border:1px solid var(--borde);border-radius:7px;
+  background:#13151a;padding:28px 22px 24px;
+}
+.paso-n{
+  display:flex;align-items:center;justify-content:center;
+  width:42px;height:42px;border-radius:50%;
+  background:var(--ambar);color:#1a1200;font-weight:800;font-size:18px;margin-bottom:16px;
+}
+.paso p{color:var(--humo);font-size:15px}
+
+/* ---------- CONTACTO ---------- */
+.cont-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:34px;margin-top:38px;align-items:start}
+.datos{list-style:none;display:grid;gap:16px}
+.datos li{
+  display:grid;grid-template-columns:38px 1fr;gap:14px;align-items:start;
+  border:1px solid var(--borde);border-radius:7px;background:#13151a;padding:17px 18px;
+}
+.datos .ic{width:26px;height:26px;margin-top:3px}
+.datos strong{
+  display:block;font-size:10.5px;letter-spacing:.17em;text-transform:uppercase;
+  color:var(--ambar);font-weight:800;margin-bottom:3px;
+}
+.datos a{text-decoration:none;font-weight:700;word-break:break-word}
+.datos a:hover{text-decoration:underline}
+.datos span.val{font-weight:700;word-break:break-word}
+.datos small{display:block;color:var(--humo);font-weight:400;font-size:13.5px}
+.mapa{border:1px solid var(--borde);border-radius:7px;background:#0f1115;padding:16px;overflow:hidden}
+.mapa figcaption{
+  margin-top:12px;font-size:12px;color:var(--humo);letter-spacing:.04em;line-height:1.5;
+}
+
+/* ---------- FOOTER ---------- */
+footer{border-top:1px solid var(--borde);background:#0a0b0d;padding:52px 0 40px}
+.foot-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:30px}
+.foot-grid h4{
+  font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ambar);
+  margin-bottom:12px;font-weight:800;
+}
+.foot-grid p,.foot-grid a{color:var(--humo);font-size:14.5px;text-decoration:none;word-break:break-word}
+.foot-grid a:hover{color:var(--blanco)}
+.foot-list{list-style:none;display:grid;gap:7px}
+.foot-muted{color:var(--humo);font-size:14.5px}
+.firma{
+  margin-top:40px;padding-top:22px;border-top:1px solid var(--borde);
+  font-size:13px;color:var(--humo);line-height:1.6;
+}
+.firma b{color:var(--claro)}
+
+@media (max-width:900px){
+  .hero-grid,.cont-grid{grid-template-columns:1fr;gap:34px}
+  .grid-serv{grid-template-columns:repeat(2,1fr)}
+  .pasos{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:620px){
+  :root{--barra:58px}
+  body{font-size:16px}
+  .wrap,.nav-in{padding-left:16px;padding-right:16px}
+  section{padding:54px 0}
+  .hero{padding:52px 0 54px}
+  .nav-links{display:none}
+  .nav-tel{margin-left:auto}
+  .grid-serv{grid-template-columns:1fr}
+  .card-venta{grid-template-columns:1fr;gap:14px}
+  .foot-grid{grid-template-columns:1fr;gap:26px}
+  .btn{width:100%;justify-content:center}
+  .aviso span{font-size:10.5px;letter-spacing:.03em}
+}
+</style>
+</head>
+<body>
+
+<!-- BARRA FIJA -->
+<div class="aviso" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<!-- NAV -->
+<div class="nav">
+  <div class="nav-in">
+    <div class="logo">
+      <svg class="logo-mark" viewBox="0 0 48 48" aria-hidden="true">
+        <rect x="1.5" y="1.5" width="45" height="45" rx="7" fill="#ffb100"/>
+        <circle cx="24" cy="24" r="13.5" fill="none" stroke="#0c0d0f" stroke-width="3.2"/>
+        <circle cx="24" cy="24" r="4.2" fill="#0c0d0f"/>
+        <g fill="#0c0d0f">
+          <rect x="22.2" y="5.5" width="3.6" height="6.5" rx="1"/>
+          <rect x="22.2" y="36" width="3.6" height="6.5" rx="1"/>
+          <rect x="5.5" y="22.2" width="6.5" height="3.6" rx="1"/>
+          <rect x="36" y="22.2" width="6.5" height="3.6" rx="1"/>
+        </g>
+      </svg>
+      <span class="logo-txt">Taller Cutillas<small>Los Llanos de Aridane</small></span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#vehiculos">Vehículos</a></li>
+      <li><a href="#proceso">Cómo trabajamos</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a class="nav-tel" href="tel:+34922460088">922 460 088</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">Taller multimarca · La Palma</span>
+        <h1>Mecánica de confianza <em>en Los Llanos</em></h1>
+        <p>Taller mecánico multimarca y venta de vehículos en Los Llanos de Aridane. Mantenimiento, diagnosis y reparación con un trato directo: te explicamos qué tiene el coche antes de tocarlo.</p>
+        <div class="cta-row">
+          <a class="btn btn-main" href="tel:+34922460088">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16.9v2.6a1.8 1.8 0 0 1-2 1.8 18 18 0 0 1-7.8-2.8 17.6 17.6 0 0 1-5.4-5.4A18 18 0 0 1 3 5.2a1.8 1.8 0 0 1 1.8-2h2.6a1.8 1.8 0 0 1 1.8 1.6c.1 1 .35 1.9.7 2.8a1.8 1.8 0 0 1-.4 1.9l-1.1 1.1a14.4 14.4 0 0 0 5.4 5.4l1.1-1.1a1.8 1.8 0 0 1 1.9-.4c.9.35 1.8.6 2.8.7A1.8 1.8 0 0 1 21 16.9z"/></svg>
+            Llamar 922 460 088
+          </a>
+          <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
+        </div>
+        <ul class="hero-tags">
+          <li>Multimarca</li>
+          <li>Diagnosis electrónica</li>
+          <li>Pre-ITV</li>
+          <li>Venta de vehículos</li>
+        </ul>
+      </div>
+      <div class="hero-art">
+        <svg viewBox="0 0 400 300" role="img" aria-label="Ilustración esquemática de un vehículo sobre elevador de taller">
+          <defs>
+            <linearGradient id="gCar" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#4a525f"/><stop offset="1" stop-color="#23272f"/>
+            </linearGradient>
+            <linearGradient id="gAmb" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#ffb100"/><stop offset="1" stop-color="#d99400"/>
+            </linearGradient>
+          </defs>
+          <!-- rejilla -->
+          <g stroke="#242831" stroke-width="1">
+            <path d="M0 40H400M0 80H400M0 120H400M0 160H400M0 200H400M0 240H400"/>
+            <path d="M40 0V300M80 0V300M120 0V300M160 0V300M200 0V300M240 0V300M280 0V300M320 0V300M360 0V300"/>
+          </g>
+          <!-- carroceria -->
+          <g>
+            <path d="M58 182c4-26 12-44 22-50 14-9 44-13 70-13s52 5 66 14c10 6 18 24 22 49 1 8-3 12-11 12H69c-8 0-12-4-11-12z" fill="url(#gCar)" stroke="#5b6573" stroke-width="2"/>
+            <path d="M104 134c8-5 28-8 46-8s38 3 46 8l12 24H92z" fill="#0f1116" stroke="#5b6573" stroke-width="2"/>
+            <path d="M150 126v32" stroke="#5b6573" stroke-width="2"/>
+            <rect x="60" y="160" width="26" height="9" rx="4" fill="url(#gAmb)"/>
+            <rect x="214" y="160" width="26" height="9" rx="4" fill="#e23b2e"/>
+            <circle cx="104" cy="194" r="21" fill="#0c0d0f" stroke="#6b7482" stroke-width="3"/>
+            <circle cx="104" cy="194" r="8" fill="#39404b"/>
+            <circle cx="196" cy="194" r="21" fill="#0c0d0f" stroke="#6b7482" stroke-width="3"/>
+            <circle cx="196" cy="194" r="8" fill="#39404b"/>
+          </g>
+          <!-- elevador -->
+          <g fill="#ffb100">
+            <rect x="46" y="222" width="208" height="10" rx="3"/>
+            <rect x="140" y="232" width="20" height="46" rx="3"/>
+            <rect x="104" y="274" width="92" height="12" rx="4"/>
+          </g>
+          <!-- llave inglesa decorativa -->
+          <g transform="translate(296 48) rotate(35)">
+            <path d="M14 4a15 15 0 0 0-3.6 29.6V72a5.4 5.4 0 0 0 10.8 0V33.6A15 15 0 0 0 17.6 4l0 11.3-3.6 0z" fill="#ffb100"/>
+          </g>
+          <!-- engranaje decorativo -->
+          <g transform="translate(316 196)">
+            <circle r="30" fill="none" stroke="#333a45" stroke-width="9" stroke-dasharray="9 9"/>
+            <circle r="13" fill="none" stroke="#4b5462" stroke-width="6"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="wrap">
+    <span class="eyebrow">Servicios</span>
+    <h2>Lo que hacemos en el taller</h2>
+    <p class="lead">Trabajo de taller multimarca para turismos y vehículos ligeros. Si tu avería no aparece aquí, llámanos y la vemos.</p>
+
+    <div class="grid-serv">
+      <article class="card">
+        <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="#ffb100" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M30 6a10 10 0 0 0-8.6 15.1L8.2 34.3a4 4 0 0 0 5.6 5.6l13.2-13.2A10 10 0 1 0 30 6z"/>
+          <path d="M11 37h.02"/>
+        </svg>
+        <h3>Mecánica general</h3>
+        <p>Reparación de motor, embrague, transmisión, suspensión, dirección y escape. Diagnóstico de la avería y presupuesto antes de intervenir.</p>
+      </article>
+
+      <article class="card">
+        <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="#ffb100" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 16h24a4 4 0 0 1 4 4v14H8V20a4 4 0 0 1 4-4z"/>
+          <path d="M14 16l3-6h14l3 6"/>
+          <circle cx="16" cy="27" r="3"/><circle cx="32" cy="27" r="3"/>
+          <path d="M8 34v5M40 34v5"/>
+        </svg>
+        <h3>Mantenimiento y revisiones</h3>
+        <p>Cambio de aceite y filtros, revisión de niveles, correas, batería, luces y puntos de desgaste según el plan de mantenimiento del vehículo.</p>
+      </article>
+
+      <article class="card">
+        <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="#ffb100" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="6" y="10" width="36" height="24" rx="4"/>
+          <path d="M10 26l6-8 5 6 4-5 5 7h8"/>
+          <path d="M18 40h12"/>
+        </svg>
+        <h3>Diagnosis electrónica</h3>
+        <p>Lectura de centralitas y códigos de avería, comprobación de sensores y testigos encendidos en el cuadro, y verificación tras la reparación.</p>
+      </article>
+
+      <article class="card">
+        <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="#ffb100" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="24" cy="24" r="17"/>
+          <circle cx="24" cy="24" r="7"/>
+          <path d="M24 7v10M24 31v10M7 24h10M31 24h10"/>
+        </svg>
+        <h3>Neumáticos</h3>
+        <p>Sustitución, equilibrado, rotación y reparación de pinchazos. Revisión de presiones y del estado del dibujo antes de salir del taller.</p>
+      </article>
+
+      <article class="card">
+        <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="#ffb100" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="24" cy="24" r="16"/>
+          <circle cx="24" cy="24" r="9" stroke-dasharray="4 4"/>
+          <path d="M24 8v8M35 13l-6 6M40 24h-8"/>
+        </svg>
+        <h3>Frenos</h3>
+        <p>Pastillas, discos, tambores, líquido de frenos y freno de mano. Comprobación de holguras y de la frenada antes de entregar el coche.</p>
+      </article>
+
+      <article class="card">
+        <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="#ffb100" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 6h18l8 8v28a2 2 0 0 1-2 2H12a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z"/>
+          <path d="M29 6v9h9"/>
+          <path d="M17 29l4 4 9-10"/>
+        </svg>
+        <h3>Revisión pre-ITV</h3>
+        <p>Repaso de los puntos que se revisan en la inspección — luces, frenos, emisiones, holguras, neumáticos — para que pases con el coche a punto.</p>
+      </article>
+
+      <article class="card card-venta" id="vehiculos">
+        <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="#ffb100" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M8 30h32a2 2 0 0 0 2-2.4l-1.6-7.6a4 4 0 0 0-3.9-3.2H13.5a4 4 0 0 0-3.9 3.2L8 27.6A2 2 0 0 0 8 30z"/>
+          <path d="M14 16.8L16 9h16l2 7.8"/>
+          <circle cx="15" cy="34" r="4"/><circle cx="33" cy="34" r="4"/>
+          <path d="M24 9v7.8"/>
+        </svg>
+        <div>
+          <h3>Venta de vehículos</h3>
+          <p>Además del taller, nos dedicamos a la venta de vehículos. Si estás buscando coche o quieres valorar el tuyo, llámanos y te contamos qué hay disponible en ese momento y cómo funciona la gestión del cambio.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section id="proceso">
+  <div class="wrap">
+    <span class="eyebrow">Cómo trabajamos</span>
+    <h2>Tres pasos, sin sorpresas</h2>
+    <p class="lead">Un recorrido claro desde que llamas hasta que recoges el vehículo.</p>
+    <div class="pasos">
+      <div class="paso">
+        <div class="paso-n">1</div>
+        <h3>Nos llamas y lo revisamos</h3>
+        <p>Cuéntanos qué le pasa al coche por teléfono. Acordamos cuándo traerlo al taller y lo revisamos para localizar el origen real de la avería.</p>
+      </div>
+      <div class="paso">
+        <div class="paso-n">2</div>
+        <h3>Te explicamos y presupuestamos</h3>
+        <p>Antes de reparar te contamos qué hemos encontrado, qué es urgente y qué puede esperar, con el presupuesto del trabajo. Decides tú.</p>
+      </div>
+      <div class="paso">
+        <div class="paso-n">3</div>
+        <h3>Reparamos y comprobamos</h3>
+        <p>Hacemos el trabajo aprobado, verificamos el resultado y te avisamos cuando el vehículo está listo para recoger.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="wrap">
+    <span class="eyebrow">Contacto</span>
+    <h2>Dónde estamos</h2>
+    <p class="lead">Estamos en Los Llanos de Aridane, en la isla de La Palma. La forma más rápida de localizarnos es el teléfono.</p>
+
+    <div class="cont-grid">
+      <ul class="datos">
+        <li>
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#ffb100" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16.9v2.6a1.8 1.8 0 0 1-2 1.8 18 18 0 0 1-7.8-2.8 17.6 17.6 0 0 1-5.4-5.4A18 18 0 0 1 3 5.2a1.8 1.8 0 0 1 1.8-2h2.6a1.8 1.8 0 0 1 1.8 1.6c.1 1 .35 1.9.7 2.8a1.8 1.8 0 0 1-.4 1.9l-1.1 1.1a14.4 14.4 0 0 0 5.4 5.4l1.1-1.1a1.8 1.8 0 0 1 1.9-.4c.9.35 1.8.6 2.8.7A1.8 1.8 0 0 1 21 16.9z"/></svg>
+          <div><strong>Teléfono</strong><a href="tel:+34922460088">922 460 088</a></div>
+        </li>
+        <li>
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#ffb100" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div><strong>Dirección</strong><span class="val">Calle La Carrilla, 17</span><small>38760 Los Llanos de Aridane<br>La Palma · Santa Cruz de Tenerife</small></div>
+        </li>
+        <li>
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#ffb100" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l4 2"/></svg>
+          <div><strong>Horario</strong><span class="val">Consultar horario</span><small>Llámanos al 922 460 088 para confirmar disponibilidad.</small></div>
+        </li>
+        <li>
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#ffb100" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5 12 13l8.5-6.5"/></svg>
+          <div><strong>Email</strong><a href="mailto:tallercutillas@tallercutillas.com">tallercutillas@tallercutillas.com</a></div>
+        </li>
+      </ul>
+
+      <figure class="mapa">
+        <svg viewBox="0 0 420 300" role="img" aria-label="Mapa esquemático de la zona de Calle La Carrilla, Los Llanos de Aridane">
+          <rect width="420" height="300" fill="#0f1115"/>
+          <!-- manzanas -->
+          <g fill="#171a20" stroke="#22262e" stroke-width="1.5">
+            <rect x="18" y="18" width="118" height="78" rx="4"/>
+            <rect x="18" y="130" width="118" height="64" rx="4"/>
+            <rect x="18" y="228" width="118" height="54" rx="4"/>
+            <rect x="172" y="18" width="104" height="78" rx="4"/>
+            <rect x="172" y="228" width="104" height="54" rx="4"/>
+            <rect x="312" y="18" width="90" height="78" rx="4"/>
+            <rect x="312" y="130" width="90" height="64" rx="4"/>
+            <rect x="312" y="228" width="90" height="54" rx="4"/>
+          </g>
+          <!-- viales secundarios -->
+          <g stroke="#2b3039" stroke-width="13" stroke-linecap="square">
+            <path d="M154 0V300"/>
+            <path d="M294 0V300"/>
+            <path d="M0 112H420"/>
+            <path d="M0 210H420"/>
+          </g>
+          <g stroke="#3a414c" stroke-width="1.4" stroke-dasharray="7 9">
+            <path d="M154 0V300"/><path d="M294 0V300"/><path d="M0 112H420"/>
+          </g>
+          <!-- calle principal: La Carrilla -->
+          <path d="M0 210H420" stroke="#ffb100" stroke-width="15" stroke-linecap="square" opacity=".92"/>
+          <path d="M0 210H420" stroke="#1a1200" stroke-width="2" stroke-dasharray="14 12"/>
+          <text x="20" y="200" fill="#ffb100" font-family="Helvetica,Arial,sans-serif" font-size="13" font-weight="bold" letter-spacing="1.2">CALLE LA CARRILLA</text>
+          <!-- marcador -->
+          <g transform="translate(300 210)">
+            <circle r="30" fill="#e23b2e" opacity=".14"/>
+            <circle r="18" fill="#e23b2e" opacity=".22"/>
+            <path d="M0 -34c-9.4 0-17 7.6-17 17C-17 -5 0 14 0 14s17-19 17-31c0-9.4-7.6-17-17-17z" fill="#e23b2e" stroke="#0f1115" stroke-width="2.5"/>
+            <circle cy="-17" r="6" fill="#0f1115"/>
+          </g>
+          <text x="300" y="252" fill="#eef1f5" font-family="Helvetica,Arial,sans-serif" font-size="13" font-weight="bold" text-anchor="middle">TALLER CUTILLAS</text>
+          <text x="300" y="270" fill="#9aa3b2" font-family="Helvetica,Arial,sans-serif" font-size="11" text-anchor="middle">Nº 17</text>
+          <!-- brujula -->
+          <g transform="translate(34 268)">
+            <circle r="15" fill="#13161b" stroke="#2c3039" stroke-width="1.5"/>
+            <path d="M0 -10 4 2 0 -1 -4 2z" fill="#ffb100"/>
+            <text y="12" fill="#9aa3b2" font-family="Helvetica,Arial,sans-serif" font-size="8" text-anchor="middle">N</text>
+          </g>
+        </svg>
+        <figcaption>Plano esquemático orientativo de la zona de Calle La Carrilla, Los Llanos de Aridane (La Palma). No es un mapa a escala.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="logo" style="margin-bottom:14px">
+          <svg class="logo-mark" viewBox="0 0 48 48" aria-hidden="true">
+            <rect x="1.5" y="1.5" width="45" height="45" rx="7" fill="#ffb100"/>
+            <circle cx="24" cy="24" r="13.5" fill="none" stroke="#0c0d0f" stroke-width="3.2"/>
+            <circle cx="24" cy="24" r="4.2" fill="#0c0d0f"/>
+            <g fill="#0c0d0f">
+              <rect x="22.2" y="5.5" width="3.6" height="6.5" rx="1"/>
+              <rect x="22.2" y="36" width="3.6" height="6.5" rx="1"/>
+              <rect x="5.5" y="22.2" width="6.5" height="3.6" rx="1"/>
+              <rect x="36" y="22.2" width="6.5" height="3.6" rx="1"/>
+            </g>
+          </svg>
+          <span class="logo-txt">Taller Cutillas<small>Taller multimarca · Venta de vehículos</small></span>
+        </div>
+        <p>Calle La Carrilla, 17 — 38760 Los Llanos de Aridane, La Palma (Santa Cruz de Tenerife).</p>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul class="foot-list">
+          <li><a href="tel:+34922460088">922 460 088</a></li>
+          <li><a href="mailto:tallercutillas@tallercutillas.com">tallercutillas@tallercutillas.com</a></li>
+          <li><span class="foot-muted">Consultar horario</span></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Redes</h4>
+        <ul class="foot-list">
+          <li><a href="https://facebook.com/TallerCutillas/" rel="noopener">Facebook · /TallerCutillas</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="firma"><b>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</b></p>
+  </div>
+</footer>
+
+</body>
+</html>

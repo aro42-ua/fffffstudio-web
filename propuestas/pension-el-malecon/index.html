@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pensión El Malecón · Sarria</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --crema:#f7f1e6;
+  --crema2:#efe5d4;
+  --tinta:#2a241d;
+  --tinta-sv:#5c5245;
+  --amarillo:#e8a81c;
+  --amarillo-osc:#b57c06;
+  --terra:#9b5b3c;
+  --verde:#4c5f46;
+  --linea:rgba(42,36,29,.14);
+  --barra:46px;
+  --max:1120px;
+  --r:18px;
+}
+html,body{margin:0;padding:0;max-width:100%;overflow-x:hidden}
+body{
+  background:var(--crema);
+  color:var(--tinta);
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;line-height:1.65;
+  -webkit-text-size-adjust:100%;
+}
+img,svg{max-width:100%;display:block}
+h1,h2,h3{font-weight:600;line-height:1.14;letter-spacing:-.015em;margin:0}
+p{margin:0}
+a{color:inherit}
+.wrap{width:100%;max-width:var(--max);margin:0 auto;padding:0 24px}
+
+/* BARRA FIJA */
+.aviso{
+  position:fixed;inset:0 0 auto 0;z-index:100;
+  min-height:var(--barra);
+  display:flex;align-items:center;justify-content:center;
+  background:var(--tinta);color:#f4ecdd;
+  padding:8px 16px;text-align:center;
+  font-family:ui-sans-serif,system-ui,"Helvetica Neue",Arial,sans-serif;
+  font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;
+  line-height:1.4;
+  box-shadow:0 1px 0 rgba(0,0,0,.2);
+}
+.page{padding-top:var(--barra)}
+
+/* HERO */
+.hero{position:relative;overflow:hidden;
+  background:
+    radial-gradient(120% 90% at 85% 0%,rgba(232,168,28,.30) 0%,rgba(232,168,28,0) 58%),
+    radial-gradient(100% 80% at 0% 100%,rgba(76,95,70,.22) 0%,rgba(76,95,70,0) 60%),
+    linear-gradient(170deg,#fbf6ec 0%,var(--crema) 45%,var(--crema2) 100%);
+  border-bottom:1px solid var(--linea);
+}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;
+  padding:76px 0 84px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;
+  font-family:ui-sans-serif,system-ui,Arial,sans-serif;
+  font-size:11.5px;letter-spacing:.17em;text-transform:uppercase;
+  color:var(--terra);margin-bottom:22px}
+.eyebrow .dot{width:5px;height:5px;border-radius:50%;background:var(--terra);flex:none}
+h1{font-size:clamp(2.35rem,5.4vw,4.1rem)}
+h1 em{font-style:italic;color:var(--terra)}
+.lede{margin-top:22px;font-size:1.13rem;color:var(--tinta-sv);max-width:46ch}
+.stars{display:flex;align-items:center;gap:8px;margin-top:26px;
+  font-family:ui-sans-serif,system-ui,Arial,sans-serif;font-size:13px;
+  letter-spacing:.04em;color:var(--tinta-sv)}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:11px;
+  padding:15px 24px;border-radius:999px;text-decoration:none;
+  font-family:ui-sans-serif,system-ui,Arial,sans-serif;
+  font-size:15px;font-weight:600;letter-spacing:.01em;
+  border:1px solid transparent;transition:transform .15s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn-main{background:var(--tinta);color:#fdf8ee;box-shadow:0 10px 24px -14px rgba(42,36,29,.8)}
+.btn-ghost{border-color:rgba(42,36,29,.28);color:var(--tinta)}
+.btn svg{flex:none}
+.hero-art{display:flex;justify-content:center}
+
+/* SECCIONES */
+section{padding:78px 0}
+.sec-head{max-width:60ch;margin-bottom:42px}
+.sec-kicker{font-family:ui-sans-serif,system-ui,Arial,sans-serif;font-size:11.5px;
+  letter-spacing:.17em;text-transform:uppercase;color:var(--amarillo-osc);margin-bottom:14px}
+h2{font-size:clamp(1.75rem,3.4vw,2.5rem)}
+.sec-head p{margin-top:16px;color:var(--tinta-sv)}
+
+.alojamiento{background:#fffdf8;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:var(--crema);border:1px solid var(--linea);border-radius:var(--r);
+  padding:28px 26px 30px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.card .num{font-size:3rem;line-height:1;color:var(--terra);font-weight:600}
+.card h3{font-size:1.22rem}
+.card p{color:var(--tinta-sv);font-size:.97rem}
+.card .ico{margin-bottom:2px}
+.nota{margin-top:26px;font-size:.92rem;color:var(--tinta-sv);
+  font-family:ui-sans-serif,system-ui,Arial,sans-serif;
+  border-left:3px solid var(--amarillo);padding-left:14px}
+
+/* PASOS */
+.pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.paso{position:relative;padding:30px 26px;border-radius:var(--r);min-width:0;
+  background:linear-gradient(165deg,#fffdf8,#f3ebdc);border:1px solid var(--linea)}
+.paso .idx{display:flex;align-items:center;justify-content:center;
+  width:38px;height:38px;border-radius:50%;background:var(--amarillo);color:#2a241d;
+  font-family:ui-sans-serif,system-ui,Arial,sans-serif;font-weight:700;font-size:15px;
+  margin-bottom:18px}
+.paso h3{font-size:1.1rem;margin-bottom:10px}
+.paso p{color:var(--tinta-sv);font-size:.97rem}
+
+/* CONTACTO */
+.contacto{background:#fffdf8;border-top:1px solid var(--linea)}
+.cont-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:44px;align-items:start}
+.datos{display:flex;flex-direction:column;gap:22px}
+.dato{display:flex;gap:16px;align-items:flex-start}
+.dato .bd{min-width:0}
+.dato .lbl{font-family:ui-sans-serif,system-ui,Arial,sans-serif;font-size:11px;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--amarillo-osc);margin-bottom:5px}
+.dato .val{font-size:1.07rem}
+.dato .val a{text-decoration:none;border-bottom:1px solid rgba(42,36,29,.25)}
+.dato .sub{font-size:.93rem;color:var(--tinta-sv);margin-top:4px}
+.badge-ico{width:40px;height:40px;flex:none;border-radius:11px;
+  background:var(--crema2);border:1px solid var(--linea);
+  display:flex;align-items:center;justify-content:center}
+.mapa{background:var(--crema);border:1px solid var(--linea);border-radius:var(--r);
+  padding:18px;min-width:0}
+.mapa svg{width:100%;height:auto}
+.mapa figcaption{margin-top:12px;font-family:ui-sans-serif,system-ui,Arial,sans-serif;
+  font-size:11.5px;letter-spacing:.06em;color:var(--tinta-sv);text-transform:uppercase}
+
+/* PIE */
+footer{background:var(--tinta);color:#e9e0ce;padding:58px 0 40px}
+.foot-grid{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:end}
+footer .nombre{font-size:1.5rem;color:#fdf8ee}
+footer .mail{margin-top:12px;font-family:ui-sans-serif,system-ui,Arial,sans-serif;font-size:.95rem;
+  word-break:break-word}
+footer .mail a{color:#f4d98a;text-decoration:none;border-bottom:1px solid rgba(244,217,138,.4)}
+footer .tel{margin-top:6px;font-family:ui-sans-serif,system-ui,Arial,sans-serif;font-size:.95rem;color:#c8bca6}
+.firma{border-top:1px solid rgba(255,255,255,.14);margin-top:38px;padding-top:22px;
+  font-family:ui-sans-serif,system-ui,Arial,sans-serif;font-size:12.5px;
+  letter-spacing:.03em;color:#bdb19c;line-height:1.6}
+
+@media (max-width:980px){
+  .hero-grid{grid-template-columns:1fr;gap:34px;padding:56px 0 64px}
+  .hero-art{order:-1;max-width:300px;margin:0 auto}
+  .cont-grid{grid-template-columns:1fr;gap:34px}
+  .cards,.pasos{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  :root{--barra:58px}
+  body{font-size:16px}
+  .wrap{padding:0 16px}
+  section{padding:56px 0}
+  .cards,.pasos{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr;align-items:start}
+  .btn{width:100%;justify-content:center}
+  .aviso{font-size:10.5px;letter-spacing:.05em}
+}
+</style>
+</head>
+<body>
+
+<div class="aviso">Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</div>
+
+<div class="page">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow"><span class="dot"></span>Sarria (Lugo) · Camino Francés</div>
+        <h1>Pensión<br><em>El Malecón</em></h1>
+        <p class="lede">Alojamiento en el Paseo do Malecón, en Sarria, una de las etapas del Camino Francés. Habitaciones dobles, individuales y un apartamento.</p>
+        <div class="stars" aria-label="Pensión de dos estrellas">
+          <svg width="46" height="18" viewBox="0 0 46 18" aria-hidden="true">
+            <g fill="#e8a81c">
+              <path d="M9 1.2l2.1 4.6 5 .6-3.7 3.4 1 4.9L9 12.3l-4.4 2.4 1-4.9L1.9 6.4l5-.6z"/>
+              <path d="M28 1.2l2.1 4.6 5 .6-3.7 3.4 1 4.9L28 12.3l-4.4 2.4 1-4.9-3.7-3.4 5-.6z"/>
+            </g>
+          </svg>
+          <span>Pensión de 2 estrellas</span>
+        </div>
+        <div class="cta-row">
+          <a class="btn btn-main" href="tel:+34982530273">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h3.5l1.8 4.4-2.2 1.6a12.5 12.5 0 006.9 6.9l1.6-2.2L21 15.5V19a2 2 0 01-2.2 2A17 17 0 013 5.2A2 2 0 015 3z"/></svg>
+            Llamar al 982 530 273
+          </a>
+          <a class="btn btn-ghost" href="#alojamiento">Ver alojamiento</a>
+        </div>
+      </div>
+      <div class="hero-art">
+        <!-- concha + flecha -->
+        <svg viewBox="0 0 320 320" width="320" height="320" role="img" aria-label="Ilustración de concha del Camino y flecha amarilla">
+          <defs>
+            <radialGradient id="g1" cx="50%" cy="38%" r="68%">
+              <stop offset="0%" stop-color="#fffdf7"/>
+              <stop offset="60%" stop-color="#f3e7d1"/>
+              <stop offset="100%" stop-color="#e2cfb0"/>
+            </radialGradient>
+            <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#e8a81c"/>
+              <stop offset="100%" stop-color="#b57c06"/>
+            </linearGradient>
+          </defs>
+          <circle cx="160" cy="160" r="148" fill="url(#g1)" stroke="rgba(42,36,29,.14)"/>
+          <circle cx="160" cy="160" r="121" fill="none" stroke="rgba(42,36,29,.10)" stroke-dasharray="2 7"/>
+          <g transform="translate(160,196)">
+            <path d="M0 0 C-72 0 -104 -44 -104 -78 C-104 -104 -84 -118 -70 -110 C-72 -134 -40 -150 -22 -136 C-12 -156 12 -156 22 -136 C40 -150 72 -134 70 -110 C84 -118 104 -104 104 -78 C104 -44 72 0 0 0 Z"
+                  fill="#fffdf8" stroke="#9b5b3c" stroke-width="2.4" stroke-linejoin="round"/>
+            <g stroke="#9b5b3c" stroke-width="1.7" stroke-linecap="round" opacity=".62" fill="none">
+              <path d="M0 -4 L0 -150"/>
+              <path d="M0 -4 C-18 -52 -30 -94 -40 -132"/>
+              <path d="M0 -4 C18 -52 30 -94 40 -132"/>
+              <path d="M0 -4 C-38 -44 -62 -76 -82 -104"/>
+              <path d="M0 -4 C38 -44 62 -76 82 -104"/>
+            </g>
+            <path d="M-96 -4 C-50 -22 50 -22 96 -4" fill="none" stroke="#9b5b3c" stroke-width="2.2" opacity=".5"/>
+          </g>
+          <g transform="translate(160,252)">
+            <path d="M-34 0 H18 M4 -14 L20 0 L4 14" fill="none" stroke="url(#g2)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <!-- ALOJAMIENTO -->
+  <section class="alojamiento" id="alojamiento">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-kicker">Alojamiento</div>
+        <h2>Once alojamientos para descansar en Sarria</h2>
+        <p>La pensión dispone de once unidades de alojamiento registradas: habitaciones dobles, habitaciones individuales y un apartamento.</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="ico"><svg width="40" height="28" viewBox="0 0 48 32" fill="none" stroke="#9b5b3c" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="12" width="18" height="12" rx="3"/><rect x="28" y="12" width="18" height="12" rx="3"/><path d="M2 28h44"/><path d="M5 12V8h12v4M31 12V8h12v4"/></svg></div>
+          <div class="num">7</div>
+          <h3>Habitaciones dobles</h3>
+          <p>Siete habitaciones dobles, pensadas para dos personas que comparten etapa.</p>
+        </article>
+        <article class="card">
+          <div class="ico"><svg width="40" height="28" viewBox="0 0 48 32" fill="none" stroke="#9b5b3c" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><rect x="12" y="12" width="24" height="12" rx="3"/><path d="M4 28h40"/><path d="M15 12V8h18v4"/></svg></div>
+          <div class="num">3</div>
+          <h3>Habitaciones individuales</h3>
+          <p>Tres habitaciones individuales para quien camina en solitario.</p>
+        </article>
+        <article class="card">
+          <div class="ico"><svg width="40" height="28" viewBox="0 0 48 32" fill="none" stroke="#9b5b3c" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M4 28V14L24 4l20 10v14"/><path d="M18 28v-9h12v9"/></svg></div>
+          <div class="num">1</div>
+          <h3>Apartamento</h3>
+          <p>Un apartamento como alternativa a la habitación, para estancias con más espacio.</p>
+        </article>
+      </div>
+      <p class="nota">Datos de capacidad según el registro de empresas y actividades turísticas de la Xunta de Galicia. Para conocer la disponibilidad y las condiciones de cada alojamiento, lo mejor es llamar.</p>
+    </div>
+  </section>
+
+  <!-- TU LLEGADA -->
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-kicker">Tu llegada</div>
+        <h2>Tres pasos y la etapa queda cerrada</h2>
+      </div>
+      <div class="pasos">
+        <div class="paso">
+          <div class="idx">1</div>
+          <h3>Llama por teléfono</h3>
+          <p>Marca el 982 530 273 (o el 722 316 611) e indica la fecha, las personas y si prefieres habitación doble, individual o apartamento.</p>
+        </div>
+        <div class="paso">
+          <div class="idx">2</div>
+          <h3>Confirma tu reserva</h3>
+          <p>En la misma llamada se confirma la disponibilidad y lo que necesitas saber antes de venir. También puedes escribir por correo.</p>
+        </div>
+        <div class="paso">
+          <div class="idx">3</div>
+          <h3>Llega al Malecón</h3>
+          <p>La pensión está en el Paseo do Malecón, 15, en Sarria. Al llegar, pregunta en recepción para la entrada y las llaves.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="contacto" id="contacto">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-kicker">Contacto</div>
+        <h2>Dónde estamos y cómo reservar</h2>
+      </div>
+      <div class="cont-grid">
+        <div class="datos">
+          <div class="dato">
+            <div class="badge-ico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#9b5b3c" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h3.5l1.8 4.4-2.2 1.6a12.5 12.5 0 006.9 6.9l1.6-2.2L21 15.5V19a2 2 0 01-2.2 2A17 17 0 013 5.2A2 2 0 015 3z"/></svg></div>
+            <div class="bd">
+              <div class="lbl">Teléfono</div>
+              <div class="val"><a href="tel:+34982530273">982 530 273</a></div>
+              <div class="sub">También <a href="tel:+34722316611" style="color:inherit">722 316 611</a></div>
+            </div>
+          </div>
+          <div class="dato">
+            <div class="badge-ico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#9b5b3c" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.3 7-11a7 7 0 10-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg></div>
+            <div class="bd">
+              <div class="lbl">Dirección</div>
+              <div class="val">Paseo do Malecón, 15</div>
+              <div class="sub">27600 Sarria (Lugo)</div>
+            </div>
+          </div>
+          <div class="dato">
+            <div class="badge-ico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#9b5b3c" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.2V12l3.2 2"/></svg></div>
+            <div class="bd">
+              <div class="lbl">Recepción</div>
+              <div class="val">Consultar horario de recepción</div>
+            </div>
+          </div>
+          <div class="dato">
+            <div class="badge-ico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#9b5b3c" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.4"/><path d="M3.6 6.5L12 13l8.4-6.5"/></svg></div>
+            <div class="bd">
+              <div class="lbl">Correo</div>
+              <div class="val" style="font-size:1rem"><a href="mailto:alberguedascomadres@gmail.com">alberguedascomadres@gmail.com</a></div>
+            </div>
+          </div>
+          <div style="margin-top:4px">
+            <a class="btn btn-main" href="tel:+34982530273">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h3.5l1.8 4.4-2.2 1.6a12.5 12.5 0 006.9 6.9l1.6-2.2L21 15.5V19a2 2 0 01-2.2 2A17 17 0 013 5.2A2 2 0 015 3z"/></svg>
+              Llamar ahora
+            </a>
+          </div>
+        </div>
+
+        <figure class="mapa" style="margin:0">
+          <svg viewBox="0 0 520 330" role="img" aria-label="Mapa esquemático del Paseo do Malecón en Sarria">
+            <rect x="0" y="0" width="520" height="330" rx="12" fill="#f7f1e6"/>
+            <g stroke="rgba(42,36,29,.07)" stroke-width="1">
+              <path d="M0 55H520M0 110H520M0 165H520M0 220H520M0 275H520"/>
+              <path d="M65 0V330M130 0V330M195 0V330M260 0V330M325 0V330M390 0V330M455 0V330"/>
+            </g>
+            <!-- río -->
+            <path d="M-10 250 C90 232 150 268 240 250 C330 232 410 266 530 244 L530 340 L-10 340 Z" fill="#cdd9d2"/>
+            <path d="M-10 250 C90 232 150 268 240 250 C330 232 410 266 530 244" fill="none" stroke="#8fa89b" stroke-width="2.4"/>
+            <text x="30" y="302" font-family="ui-sans-serif,system-ui,Arial" font-size="12.5" fill="#5c7065" letter-spacing="1.6">RÍO</text>
+            <!-- paseo principal -->
+            <path d="M-10 196 C100 182 180 206 270 192 C360 178 440 198 530 186" fill="none" stroke="#e5d7bd" stroke-width="22" stroke-linecap="round"/>
+            <path d="M-10 196 C100 182 180 206 270 192 C360 178 440 198 530 186" fill="none" stroke="#c9b48e" stroke-width="1.6" stroke-dasharray="9 9"/>
+            <text x="26" y="228" font-family="ui-sans-serif,system-ui,Arial" font-size="13.5" fill="#6b5c45" letter-spacing="1.2">PASEO DO MALECÓN</text>
+            <!-- calles secundarias -->
+            <g stroke="#e8ddc6" stroke-width="13" stroke-linecap="round">
+              <path d="M120 190 L96 70"/>
+              <path d="M300 186 L318 64"/>
+              <path d="M430 190 L452 92"/>
+            </g>
+            <!-- manzanas -->
+            <g fill="#ece0c9" stroke="rgba(42,36,29,.13)" stroke-width="1.2">
+              <rect x="30" y="86" width="52" height="60" rx="6"/>
+              <rect x="150" y="70" width="80" height="78" rx="6"/>
+              <rect x="348" y="78" width="62" height="70" rx="6"/>
+              <rect x="462" y="110" width="46" height="46" rx="6"/>
+            </g>
+            <!-- flecha del camino -->
+            <g transform="translate(360,240)">
+              <path d="M0 0 H34 M24 -10 L36 0 L24 10" fill="none" stroke="#e8a81c" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="0" y="28" font-family="ui-sans-serif,system-ui,Arial" font-size="11.5" fill="#8a7a5e" letter-spacing="1.1">CAMINO</text>
+            </g>
+            <!-- marcador pensión -->
+            <g transform="translate(252,126)">
+              <ellipse cx="0" cy="68" rx="15" ry="5" fill="rgba(42,36,29,.14)"/>
+              <path d="M0 66 C0 66 -22 34 -22 20 A22 22 0 0122 20 C22 34 0 66 0 66Z" fill="#9b5b3c"/>
+              <circle cx="0" cy="21" r="7.5" fill="#fff8ea"/>
+              <g font-family="ui-sans-serif,system-ui,Arial" text-anchor="middle">
+                <text x="0" y="-16" font-size="16" font-weight="700" fill="#2a241d">Pensión El Malecón</text>
+                <text x="0" y="2" font-size="13" fill="#6b5c45">Paseo do Malecón, 15</text>
+              </g>
+            </g>
+            <text x="494" y="316" font-family="ui-sans-serif,system-ui,Arial" font-size="11" fill="#9c8e76" text-anchor="end" letter-spacing="1">SARRIA · ESQUEMA NO A ESCALA</text>
+          </svg>
+          <figcaption>Dibujo orientativo · no es un mapa a escala</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- PIE -->
+  <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <div class="nombre">Pensión El Malecón</div>
+          <div class="mail"><a href="mailto:alberguedascomadres@gmail.com">alberguedascomadres@gmail.com</a></div>
+          <div class="tel">982 530 273 · 722 316 611 — Paseo do Malecón, 15 · 27600 Sarria (Lugo)</div>
+        </div>
+        <div>
+          <svg width="64" height="64" viewBox="0 0 64 64" aria-hidden="true">
+            <circle cx="32" cy="32" r="30" fill="none" stroke="rgba(255,255,255,.18)"/>
+            <g transform="translate(32,44) scale(.3)">
+              <path d="M0 0 C-72 0 -104 -44 -104 -78 C-104 -104 -84 -118 -70 -110 C-72 -134 -40 -150 -22 -136 C-12 -156 12 -156 22 -136 C40 -150 72 -134 70 -110 C84 -118 104 -104 104 -78 C104 -44 72 0 0 0 Z"
+                    fill="none" stroke="#f4d98a" stroke-width="7" stroke-linejoin="round"/>
+              <g stroke="#f4d98a" stroke-width="5" opacity=".65" fill="none" stroke-linecap="round">
+                <path d="M0 -6 L0 -148"/><path d="M0 -6 C-36 -46 -60 -78 -80 -104"/><path d="M0 -6 C36 -46 60 -78 80 -104"/>
+              </g>
+            </g>
+          </svg>
+        </div>
+      </div>
+      <div class="firma">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</div>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

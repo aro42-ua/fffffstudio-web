@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Casa dos Ulloa — Propuesta</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0;max-width:100%;overflow-x:hidden}
+:root{
+  --piedra:#2b2724;
+  --piedra-2:#3d372f;
+  --pergamino:#f2ede3;
+  --pergamino-2:#e6ddcd;
+  --vino:#6d2130;
+  --vino-claro:#8d3c48;
+  --musgo:#5a6b4e;
+  --oro:#b08d4f;
+  --tinta:#17150f;
+  --barra:56px;
+  --maxw:1180px;
+}
+body{
+  background:var(--pergamino);
+  color:var(--tinta);
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,"Times New Roman",serif;
+  font-size:17px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+img,svg{max-width:100%;display:block}
+a{color:inherit}
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 32px}
+@media (max-width:640px){.wrap{padding:0 20px}}
+
+/* ---------- barra fija ---------- */
+.barra{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  min-height:var(--barra);
+  display:flex;align-items:center;justify-content:center;
+  background:var(--tinta);
+  color:#efe7d7;
+  border-bottom:1px solid rgba(176,141,79,.55);
+  padding:9px 18px;
+  text-align:center;
+}
+.barra span{
+  font-family:ui-sans-serif,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;
+  line-height:1.5;
+  word-break:break-word;
+}
+.barra span b{color:var(--oro);font-weight:600}
+body{padding-top:var(--barra)}
+@media (max-width:640px){:root{--barra:62px}.barra span{font-size:10.5px;letter-spacing:.07em}}
+
+/* ---------- tipografía ---------- */
+h1,h2,h3{font-weight:400;margin:0;letter-spacing:-.01em}
+.sup{
+  font-family:ui-sans-serif,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-size:11px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--vino);margin:0 0 18px;
+}
+.sup.claro{color:var(--oro)}
+h2{font-size:clamp(28px,4.4vw,46px);line-height:1.1}
+p{margin:0 0 1em}
+.lead{font-size:clamp(17px,1.5vw,20px);line-height:1.6;color:#413a31}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(120% 90% at 85% 10%, rgba(176,141,79,.22) 0%, rgba(176,141,79,0) 55%),
+    radial-gradient(100% 80% at 10% 95%, rgba(109,33,48,.35) 0%, rgba(109,33,48,0) 60%),
+    linear-gradient(160deg,#30292a 0%,#241f1c 45%,#1b1714 100%);
+  color:var(--pergamino);
+}
+.hero-svg{position:absolute;inset:0;width:100%;height:100%;opacity:.5;pointer-events:none}
+.hero-inner{position:relative;z-index:2;padding-top:96px;padding-bottom:104px}
+@media (max-width:640px){.hero-inner{padding-top:58px;padding-bottom:64px}}
+.hero h1{
+  font-size:clamp(40px,8.4vw,86px);
+  line-height:.98;
+  margin:0 0 6px;
+}
+.hero h1 em{display:block;font-style:italic;color:var(--oro);font-size:.44em;line-height:1.2;margin-top:14px;letter-spacing:.01em}
+.hero .rule{width:76px;height:1px;background:var(--oro);margin:30px 0 26px}
+.hero p{max-width:50ch;color:#ded3c2;font-size:clamp(16px,1.6vw,20px)}
+.hero-meta{
+  font-family:ui-sans-serif,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:#a79b88;
+  margin:0 0 34px;
+}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.btn{
+  display:inline-flex;align-items:center;gap:11px;
+  text-decoration:none;
+  padding:15px 26px;
+  font-family:ui-sans-serif,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-size:13px;letter-spacing:.1em;text-transform:uppercase;
+  border:1px solid var(--oro);
+  transition:background .2s,color .2s;
+}
+.btn-pri{background:var(--oro);color:#1b1714;font-weight:600;border-color:var(--oro)}
+.btn-pri:hover{background:#c69f5c}
+.btn-sec{color:var(--oro);background:transparent}
+.btn-sec:hover{background:rgba(176,141,79,.14)}
+.btn svg{flex:none}
+
+/* ---------- franja ---------- */
+.franja{
+  background:var(--vino);color:#f6ece2;
+  font-family:ui-sans-serif,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;
+  padding:16px 0;
+}
+.franja .wrap{display:flex;flex-wrap:wrap;gap:10px 34px;justify-content:center;text-align:center}
+
+/* ---------- secciones ---------- */
+section{padding:86px 0}
+@media (max-width:640px){section{padding:56px 0}}
+.linea{border-top:1px solid rgba(43,39,36,.16)}
+.grid2{display:grid;grid-template-columns:1.05fr .95fr;gap:58px;align-items:start}
+@media (max-width:860px){.grid2{grid-template-columns:1fr;gap:38px}}
+
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:34px}
+@media (max-width:640px){.cards{grid-template-columns:1fr}}
+.card{
+  background:linear-gradient(180deg,#fbf8f1,#efe8db);
+  border:1px solid rgba(43,39,36,.14);
+  padding:26px 24px;
+}
+.card h3{font-size:21px;margin:0 0 8px}
+.card p{margin:0;font-size:15.5px;color:#4a4238;line-height:1.6}
+.card .ico{color:var(--vino);margin-bottom:14px}
+
+/* pasos */
+.pasos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:40px}
+@media (max-width:860px){.pasos{grid-template-columns:1fr}}
+.paso{border-top:2px solid var(--vino);padding-top:20px}
+.paso .n{
+  font-family:ui-sans-serif,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-size:11px;letter-spacing:.2em;color:var(--vino);display:block;margin-bottom:10px;
+}
+.paso h3{font-size:23px;margin:0 0 8px}
+.paso p{font-size:15.5px;color:#4a4238;margin:0}
+
+/* contacto */
+.contacto{background:var(--piedra);color:var(--pergamino)}
+.contacto h2{color:#f4ece0}
+.contacto .grid2{align-items:center}
+.datos{list-style:none;margin:26px 0 0;padding:0}
+.datos li{padding:17px 0;border-top:1px solid rgba(242,237,227,.16)}
+.datos li:last-child{border-bottom:1px solid rgba(242,237,227,.16)}
+.datos .et{
+  display:block;
+  font-family:ui-sans-serif,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#a79b88;margin-bottom:5px;
+}
+.datos .vl{font-size:19px;line-height:1.45;color:#f4ece0;text-decoration:none;word-break:break-word}
+.datos a.vl:hover{color:var(--oro)}
+.nota{
+  margin-top:24px;padding:15px 18px;
+  border-left:2px solid var(--oro);
+  background:rgba(176,141,79,.1);
+  font-size:15.5px;color:#e4dacb;
+}
+.mapa-box{border:1px solid rgba(242,237,227,.2);background:#211d1a;padding:14px}
+.mapa-pie{
+  font-family:ui-sans-serif,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#9a8e7c;
+  margin:12px 2px 2px;text-align:center;line-height:1.6;
+}
+
+/* pie */
+footer{background:var(--tinta);color:#cdc3b2;padding:52px 0 44px}
+footer .marca{font-size:24px;color:#f2ede3;margin:0 0 6px}
+footer .fgrid{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:end}
+@media (max-width:760px){footer .fgrid{grid-template-columns:1fr;align-items:start}}
+footer a{color:var(--oro);text-decoration:none;word-break:break-word}
+footer .sub{font-size:15px;margin:0}
+.firma{
+  margin-top:36px;padding-top:22px;border-top:1px solid rgba(242,237,227,.16);
+  font-family:ui-sans-serif,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:#8e8373;line-height:1.7;
+}
+.aviso{font-size:14px;color:#8e8373;margin:14px 0 0;line-height:1.6;font-family:ui-sans-serif,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;letter-spacing:.01em}
+</style>
+</head>
+<body>
+
+<div class="barra" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · <b>FFFFFFstudio</b> · Ángel Rubio</span>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <svg class="hero-svg" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="gpiedra" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#b08d4f" stop-opacity=".30"/>
+        <stop offset="1" stop-color="#b08d4f" stop-opacity="0"/>
+      </linearGradient>
+      <pattern id="sillares" width="150" height="76" patternUnits="userSpaceOnUse">
+        <rect width="150" height="76" fill="none"/>
+        <g stroke="#cbb183" stroke-opacity=".20" stroke-width="1" fill="none">
+          <path d="M0 38 H150 M0 76 H150"/>
+          <path d="M38 0 V38 M112 0 V38 M0 38 V76 M75 38 V76 M150 38 V76"/>
+        </g>
+      </pattern>
+    </defs>
+    <rect x="0" y="0" width="1200" height="700" fill="url(#sillares)"/>
+    <!-- arco de pazo -->
+    <g stroke="#d7bd8e" stroke-opacity=".40" stroke-width="2" fill="none">
+      <path d="M840 660 V330 A120 120 0 0 1 1080 330 V660"/>
+      <path d="M876 660 V336 A84 84 0 0 1 1044 336 V660"/>
+      <path d="M960 250 V660"/>
+      <path d="M828 322 H1092"/>
+    </g>
+    <rect x="840" y="200" width="240" height="120" fill="url(#gpiedra)"/>
+    <!-- vid -->
+    <g stroke="#9fb08c" stroke-opacity=".38" stroke-width="2" fill="none">
+      <path d="M-20 612 C 120 568, 200 648, 340 596 S 560 540, 700 600"/>
+      <path d="M40 606 C 60 566, 92 560, 104 586"/>
+      <path d="M210 622 C 232 586, 266 582, 278 608"/>
+      <path d="M396 586 C 418 548, 452 544, 464 572"/>
+    </g>
+    <g fill="#8d3c48" fill-opacity=".40">
+      <circle cx="120" cy="634" r="7"/><circle cx="134" cy="648" r="7"/><circle cx="106" cy="648" r="7"/><circle cx="120" cy="661" r="7"/>
+      <circle cx="300" cy="620" r="6"/><circle cx="313" cy="632" r="6"/><circle cx="287" cy="632" r="6"/>
+      <circle cx="486" cy="596" r="6"/><circle cx="499" cy="608" r="6"/><circle cx="473" cy="608" r="6"/><circle cx="486" cy="620" r="6"/>
+    </g>
+  </svg>
+  <div class="wrap hero-inner">
+    <p class="hero-meta">Ribadavia · O Ribeiro · Ourense</p>
+    <h1>Casa dos Ulloa<em>Pazo del siglo&nbsp;XV</em></h1>
+    <div class="rule"></div>
+    <p>Turismo rural en un pazo gallego: habitaciones dobles, salón con lareira y un salón para eventos y bodas, en Esposende.</p>
+    <div class="cta-row" style="margin-top:34px">
+      <a class="btn btn-pri" href="tel:+34988491893">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+        Llamar 988 491 893
+      </a>
+      <a class="btn btn-sec" href="#contacto">Cómo llegar y contacto</a>
+    </div>
+  </div>
+</header>
+
+<div class="franja">
+  <div class="wrap">
+    <span>Habitaciones dobles</span>
+    <span>Salón con lareira</span>
+    <span>Salón de eventos y bodas</span>
+  </div>
+</div>
+
+<!-- EL PAZO -->
+<section id="pazo">
+  <div class="wrap">
+    <div class="grid2">
+      <div>
+        <p class="sup">El pazo</p>
+        <h2>Piedra del siglo XV,<br>a orillas del Ribeiro</h2>
+        <p class="lead" style="margin-top:22px">Casa dos Ulloa —también conocida como Pazo dos Ulloa— es un pazo del siglo XV en Esposende, Ribadavia, dedicado al turismo rural. Un edificio histórico que se recorre sin prisa.</p>
+        <p style="color:#4a4238">Para conocer la disponibilidad, las condiciones de la estancia o los detalles del salón de eventos, lo más directo es una llamada.</p>
+      </div>
+      <div>
+        <svg viewBox="0 0 520 380" role="img" aria-label="Dibujo esquemático de la fachada del pazo" style="width:100%;height:auto;border:1px solid rgba(43,39,36,.16);background:linear-gradient(180deg,#fbf8f1,#e8e0d1)">
+          <g stroke="#2b2724" stroke-opacity=".55" stroke-width="1.6" fill="none" stroke-linejoin="round">
+            <path d="M60 330 H460"/>
+            <path d="M92 330 V150 H428 V330"/>
+            <path d="M80 152 L260 72 L440 152"/>
+            <path d="M92 330 V150 M428 330 V150"/>
+            <!-- puerta arco -->
+            <path d="M232 330 V236 A28 28 0 0 1 288 236 V330"/>
+            <!-- ventanas -->
+            <rect x="130" y="196" width="48" height="62"/><path d="M154 196 V258 M130 227 H178"/>
+            <rect x="342" y="196" width="48" height="62"/><path d="M366 196 V258 M342 227 H390"/>
+            <!-- lareira / chimenea -->
+            <path d="M356 112 V66 H394 V134"/>
+          </g>
+          <g stroke="#2b2724" stroke-opacity=".18" stroke-width="1" fill="none">
+            <path d="M92 190 H428 M92 230 H428 M92 270 H428 M92 310 H428"/>
+            <path d="M160 150 V190 M228 150 V190 M292 150 V190 M360 150 V190"/>
+          </g>
+          <g stroke="#5a6b4e" stroke-opacity=".45" stroke-width="1.6" fill="none">
+            <path d="M60 330 C 92 304, 120 326, 150 306"/>
+            <path d="M370 330 C 404 306, 432 326, 462 304"/>
+          </g>
+          <g fill="#6d2130" fill-opacity=".35">
+            <circle cx="104" cy="318" r="5"/><circle cx="114" cy="327" r="5"/><circle cx="94" cy="327" r="5"/>
+            <circle cx="430" cy="316" r="5"/><circle cx="440" cy="325" r="5"/><circle cx="420" cy="325" r="5"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <div class="cards">
+      <article class="card">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 18v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5"/><path d="M4 11V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3"/><path d="M2 18h20"/><path d="M9 11V8M15 11V8"/></svg></div>
+        <h3>Habitaciones dobles</h3>
+        <p>Alojamiento en habitaciones dobles dentro del pazo. Consultar disponibilidad por teléfono.</p>
+      </article>
+      <article class="card">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 21V6a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v15"/><path d="M7 21v-6h10v6"/><path d="M12 15c1.6-1.4 1.1-2.9.4-3.8 1.9.3 3 1.7 3 3.1"/><path d="M3 9h18"/></svg></div>
+        <h3>Salón con lareira</h3>
+        <p>Un salón con lareira, el hogar tradicional gallego, como espacio común de la casa.</p>
+      </article>
+      <article class="card">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 20h18"/><path d="M5 20V9l7-5 7 5v11"/><path d="M10 20v-5h4v5"/><path d="M9 11h6"/></svg></div>
+        <h3>Salón de eventos</h3>
+        <p>El pazo cuenta con salón de eventos. Las condiciones se tratan directamente con la casa.</p>
+      </article>
+      <article class="card">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21s-7-4.6-7-10a7 7 0 0 1 14 0c0 5.4-7 10-7 10Z"/><path d="M12 14a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/></svg></div>
+        <h3>Bodas</h3>
+        <p>Celebración de bodas en un marco histórico del siglo XV, en plena comarca de O Ribeiro.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- VUESTRA BODA -->
+<section class="linea" id="boda">
+  <div class="wrap">
+    <p class="sup">Vuestra boda · Cómo reservar</p>
+    <h2>Tres pasos, una llamada</h2>
+    <div class="pasos">
+      <div class="paso">
+        <span class="n">PASO 01</span>
+        <h3>Llamad al pazo</h3>
+        <p>Marcad el 988 491 893 o el 629 873 840 y contadnos la fecha que tenéis en mente.</p>
+      </div>
+      <div class="paso">
+        <span class="n">PASO 02</span>
+        <h3>Visitad la casa</h3>
+        <p>Acordamos una visita a Esposende para ver el pazo, el salón con lareira y el salón de eventos.</p>
+      </div>
+      <div class="paso">
+        <span class="n">PASO 03</span>
+        <h3>Cerramos la fecha</h3>
+        <p>Con la visita hecha, confirmamos por teléfono o por correo los detalles de vuestra celebración.</p>
+      </div>
+    </div>
+    <div class="cta-row" style="margin-top:40px">
+      <a class="btn btn-pri" href="tel:+34988491893" style="border-color:var(--vino);background:var(--vino);color:#f6ece2">Llamar al 988 491 893</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contacto" id="contacto">
+  <div class="wrap">
+    <div class="grid2">
+      <div>
+        <p class="sup claro">Contacto</p>
+        <h2>Esposende, Ribadavia</h2>
+        <ul class="datos">
+          <li>
+            <span class="et">Teléfono principal</span>
+            <a class="vl" href="tel:+34988491893">988 491 893</a>
+          </li>
+          <li>
+            <span class="et">Móvil</span>
+            <a class="vl" href="tel:+34629873840">629 873 840</a>
+          </li>
+          <li>
+            <span class="et">Dirección</span>
+            <span class="vl">Lugar Esposende, s/n — Esposende<br>32415 Ribadavia (Ourense)</span>
+          </li>
+          <li>
+            <span class="et">Correo</span>
+            <a class="vl" href="mailto:pazodosulloa@hotmail.com">pazodosulloa@hotmail.com</a>
+          </li>
+        </ul>
+        <p class="nota">Consultar disponibilidad y horario</p>
+      </div>
+      <div>
+        <div class="mapa-box">
+          <svg viewBox="0 0 520 400" role="img" aria-label="Mapa esquemático de Esposende y Ribadavia" style="width:100%;height:auto">
+            <rect x="0" y="0" width="520" height="400" fill="#1b1714"/>
+            <g stroke="#3a332c" stroke-width="1">
+              <path d="M0 80 H520 M0 160 H520 M0 240 H520 M0 320 H520"/>
+              <path d="M80 0 V400 M180 0 V400 M280 0 V400 M380 0 V400 M480 0 V400"/>
+            </g>
+            <!-- río Avia / Miño abstracto -->
+            <path d="M-10 330 C 90 300, 140 230, 250 215 S 400 180, 540 110" fill="none" stroke="#4a6274" stroke-width="12" stroke-opacity=".55" stroke-linecap="round"/>
+            <path d="M-10 330 C 90 300, 140 230, 250 215 S 400 180, 540 110" fill="none" stroke="#7fa3bb" stroke-width="2" stroke-opacity=".5"/>
+            <!-- viñedos en terraza -->
+            <g stroke="#5a6b4e" stroke-width="2" stroke-opacity=".6" fill="none">
+              <path d="M40 120 H150 M40 136 H150 M40 152 H150"/>
+              <path d="M330 290 H450 M330 306 H450 M330 322 H450"/>
+            </g>
+            <!-- carretera -->
+            <path d="M120 388 C 190 330, 230 300, 300 270 S 390 196, 420 120" fill="none" stroke="#b08d4f" stroke-width="2.4" stroke-opacity=".75" stroke-dasharray="10 7"/>
+            <!-- Ribadavia -->
+            <g>
+              <circle cx="418" cy="118" r="6" fill="none" stroke="#d2c6b2" stroke-width="2"/>
+              <text x="434" y="114" fill="#d2c6b2" font-family="Helvetica,Arial,sans-serif" font-size="15" letter-spacing="1.2">Ribadavia</text>
+              <text x="434" y="134" fill="#8e8373" font-family="Helvetica,Arial,sans-serif" font-size="11" letter-spacing="1.6">OURENSE</text>
+            </g>
+            <!-- Esposende -->
+            <g>
+              <circle cx="178" cy="262" r="19" fill="none" stroke="#b08d4f" stroke-width="1.2" stroke-opacity=".6"/>
+              <circle cx="178" cy="262" r="9" fill="#b08d4f"/>
+              <path d="M178 262 L178 234" stroke="#b08d4f" stroke-width="1.2"/>
+              <text x="178" y="226" fill="#f2ede3" font-family="Helvetica,Arial,sans-serif" font-size="17" letter-spacing="1" text-anchor="middle">Esposende</text>
+              <text x="178" y="300" fill="#b08d4f" font-family="Helvetica,Arial,sans-serif" font-size="11.5" letter-spacing="1.8" text-anchor="middle">CASA DOS ULLOA</text>
+            </g>
+            <!-- rosa de los vientos -->
+            <g transform="translate(466,356)" stroke="#8e8373" stroke-width="1.4" fill="none">
+              <path d="M0 -20 L0 20 M-20 0 L20 0"/>
+              <path d="M0 -20 L5 -9 L-5 -9 Z" fill="#8e8373" stroke="none"/>
+              <text x="0" y="-26" fill="#8e8373" font-family="Helvetica,Arial,sans-serif" font-size="11" text-anchor="middle" stroke="none">N</text>
+            </g>
+          </svg>
+          <p class="mapa-pie">Dibujo esquemático · no es un mapa a escala</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PIE -->
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <p class="marca">Casa dos Ulloa</p>
+        <p class="sub">Lugar Esposende, s/n — 32415 Ribadavia (Ourense)<br>
+          <a href="tel:+34988491893">988 491 893</a> · <a href="tel:+34629873840">629 873 840</a><br>
+          <a href="mailto:pazodosulloa@hotmail.com">pazodosulloa@hotmail.com</a></p>
+      </div>
+      <div>
+        <p class="sub"><a class="btn btn-sec" href="tel:+34988491893" style="padding:13px 22px">Llamar ahora</a></p>
+      </div>
+    </div>
+    <p class="aviso">Maqueta de demostración sin vínculo oficial con el establecimiento. Los datos de contacto y la dirección son públicos; no se incluyen precios, horarios ni servicios no verificados.</p>
+    <p class="firma">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+</body>
+</html>
