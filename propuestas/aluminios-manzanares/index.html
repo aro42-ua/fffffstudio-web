@@ -1,0 +1,749 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aluminios Manzanares · Carpintería de aluminio y PVC — propuesta de diseño</title>
+<meta name="description" content="Propuesta de rediseño web (maqueta no oficial) para Aluminios Manzanares: carpintería de aluminio y PVC, cerramientos. Manzanares, Ciudad Real.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  :root{
+    --ink:#0d1317;
+    --ink-2:#1a2329;
+    --slate:#5b6a73;
+    --alu:#c3ccd2;
+    --alu-2:#e4e9ec;
+    --paper:#f6f8f9;
+    --white:#fff;
+    --glass:#2d7f99;
+    --glass-dk:#1c5c72;
+    --line:rgba(13,19,23,.12);
+    --line-soft:rgba(13,19,23,.07);
+    --bar-h:44px;
+    --maxw:1180px;
+    --r:14px;
+    --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  }
+  html{-webkit-text-size-adjust:100%}
+  html,body{max-width:100%;overflow-x:hidden}
+  body{
+    margin:0;
+    padding-top:var(--bar-h);
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--white);
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  img,svg{max-width:100%}
+  h1,h2,h3,h4{margin:0;font-weight:650;letter-spacing:-.022em;line-height:1.08;text-wrap:balance}
+  p{margin:0}
+  a{color:inherit}
+  ul{margin:0;padding:0;list-style:none}
+
+  /* ---------- barra fija de maqueta ---------- */
+  .mockbar{
+    position:fixed;top:0;left:0;right:0;z-index:999;
+    background:#0d1317;
+    color:#eef2f4;
+    border-bottom:1px solid rgba(255,255,255,.14);
+    padding:11px 16px;
+    text-align:center;
+    font-size:12.5px;
+    line-height:1.35;
+    letter-spacing:.055em;
+    text-transform:uppercase;
+    font-weight:600;
+  }
+  .mockbar span{display:inline-block;max-width:900px}
+
+  /* ---------- layout ---------- */
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  section{position:relative}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--slate);margin:0 0 18px;align-items:flex-start
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;flex:0 0 auto;margin-top:.62em;background:var(--glass);opacity:.8}
+
+  /* ---------- cabecera de marca ---------- */
+  .brandrow{
+    display:flex;align-items:center;justify-content:space-between;gap:20px;
+    padding:20px 0 18px;border-bottom:1px solid var(--line-soft)
+  }
+  .brand{display:flex;align-items:center;gap:13px;min-width:0}
+  .brand .mark{flex:0 0 auto}
+  .brand b{display:block;font-size:16.5px;font-weight:680;letter-spacing:-.015em;line-height:1.15}
+  .brand small{display:block;font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--slate);margin-top:3px}
+  .toplink{
+    display:inline-flex;align-items:center;gap:9px;flex:0 0 auto;
+    font-size:15px;font-weight:620;text-decoration:none;letter-spacing:-.01em;
+    padding:9px 15px;border:1px solid var(--line);border-radius:999px;
+    transition:border-color .2s,background .2s
+  }
+  .toplink:hover{border-color:var(--ink);background:var(--paper)}
+
+  /* ---------- hero ---------- */
+  .hero{padding:58px 0 72px}
+  .hero-grid{display:grid;grid-template-columns:1.04fr .96fr;gap:56px;align-items:center}
+  .hero h1{font-size:clamp(2.45rem,4.6vw,4.05rem);letter-spacing:-.035em;font-weight:660}
+  .hero h1 em{font-style:normal;color:var(--glass)}
+  .hero .lead{margin-top:22px;font-size:clamp(1.02rem,1.25vw,1.17rem);color:var(--slate);max-width:33em;line-height:1.62}
+  .cta-row{display:flex;flex-wrap:wrap;gap:13px;margin-top:34px;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:11px;
+    text-decoration:none;font-weight:640;font-size:16px;letter-spacing:-.012em;
+    padding:15px 24px;border-radius:999px;border:1px solid transparent;
+    transition:transform .18s,box-shadow .2s,background .2s,border-color .2s
+  }
+  .btn-main{background:var(--ink);color:#fff;box-shadow:0 10px 26px -14px rgba(13,19,23,.75)}
+  .btn-main:hover{transform:translateY(-2px);box-shadow:0 16px 32px -14px rgba(13,19,23,.7)}
+  .btn-ghost{border-color:var(--line);color:var(--ink)}
+  .btn-ghost:hover{border-color:var(--ink);background:var(--paper)}
+  .hero-meta{margin-top:30px;display:flex;flex-wrap:wrap;gap:10px 26px;font-size:14px;color:var(--slate)}
+  .hero-meta span{display:inline-flex;align-items:center;gap:8px}
+  .dot{width:5px;height:5px;border-radius:50%;background:var(--glass);flex:0 0 auto}
+  .hero-art{position:relative}
+  .hero-art svg{display:block;width:100%;height:auto;border-radius:var(--r)}
+
+  /* ---------- banda de materiales ---------- */
+  .strip{border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);background:var(--paper)}
+  .strip ul{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line-soft)}
+  .strip li{background:var(--paper);padding:26px 24px}
+  .strip h4{font-size:14.5px;letter-spacing:.02em}
+  .strip p{margin-top:7px;font-size:13.8px;color:var(--slate);line-height:1.5}
+
+  /* ---------- servicios ---------- */
+  .services{padding:82px 0 86px}
+  .sec-head{display:grid;grid-template-columns:1fr .86fr;gap:48px;align-items:end;margin-bottom:44px}
+  .sec-head h2{font-size:clamp(1.85rem,3.1vw,2.7rem)}
+  .sec-head p{color:var(--slate);font-size:16.5px;line-height:1.62}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .card{
+    border:1px solid var(--line-soft);border-radius:var(--r);
+    padding:26px 24px 28px;background:var(--white);
+    display:flex;flex-direction:column;gap:14px;
+    transition:border-color .22s,transform .22s,box-shadow .22s
+  }
+  .card:hover{border-color:var(--alu);transform:translateY(-3px);box-shadow:0 18px 36px -26px rgba(13,19,23,.5)}
+  .card .ico{
+    width:54px;height:54px;border-radius:11px;flex:0 0 auto;
+    background:linear-gradient(145deg,#eef3f5,#dde6ea);
+    display:flex;align-items:center;justify-content:center
+  }
+  .card .ico svg{width:30px;height:30px;display:block}
+  .card h3{font-size:17.5px;letter-spacing:-.015em}
+  .card p{font-size:14.8px;color:var(--slate);line-height:1.58}
+  .card.wide{grid-column:span 2;flex-direction:row;align-items:center;gap:24px;background:linear-gradient(120deg,#0d1317,#1d2b32);border-color:transparent;color:#eef2f4}
+  .card.wide .ico{background:rgba(255,255,255,.1)}
+  .card.wide h3{color:#fff;font-size:19px}
+  .card.wide p{color:#b8c4cb;max-width:52em}
+  .card.wide .txt{display:flex;flex-direction:column;gap:9px}
+
+  /* ---------- proceso ---------- */
+  .process{padding:84px 0 88px;background:var(--ink);color:#e9eef1}
+  .process .eyebrow{color:#94a4ad}
+  .process .eyebrow::before{background:var(--glass);opacity:1}
+  .process h2{color:#fff;font-size:clamp(1.85rem,3.1vw,2.7rem)}
+  .process .sec-head p{color:#9fb0b9}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:46px}
+  .step{
+    border:1px solid rgba(255,255,255,.13);border-radius:var(--r);
+    padding:28px 26px 30px;background:rgba(255,255,255,.035);
+    display:flex;flex-direction:column;gap:16px
+  }
+  .step .num{
+    font-size:12px;font-weight:700;letter-spacing:.17em;color:var(--alu);
+    display:flex;align-items:center;gap:11px
+  }
+  .step .num i{height:1px;flex:1;background:rgba(255,255,255,.17);display:block}
+  .step svg{width:100%;height:auto;display:block;border-radius:9px}
+  .step h3{font-size:19px;color:#fff}
+  .step p{font-size:14.8px;color:#9fb0b9;line-height:1.58}
+
+  /* ---------- contacto ---------- */
+  .contact{padding:84px 0 88px}
+  .c-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:52px;align-items:start}
+  .c-list{margin-top:30px;border-top:1px solid var(--line-soft)}
+  .c-list li{padding:20px 0;border-bottom:1px solid var(--line-soft);display:flex;gap:18px;align-items:flex-start}
+  .c-list .k{
+    flex:0 0 118px;font-size:11.5px;font-weight:700;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--slate);padding-top:4px
+  }
+  .c-list .v{font-size:17px;line-height:1.5;min-width:0;word-break:break-word}
+  .c-list .v a{text-decoration:none;font-weight:620;border-bottom:1.5px solid var(--glass);padding-bottom:1px}
+  .c-list .v a:hover{color:var(--glass)}
+  .c-list .v small{display:block;font-size:13.5px;color:var(--slate);margin-top:5px;font-weight:400}
+  .map{border:1px solid var(--line-soft);border-radius:var(--r);overflow:hidden;background:var(--paper)}
+  .map svg{display:block;width:100%;height:auto}
+  .map figcaption{padding:14px 20px;border-top:1px solid var(--line-soft);font-size:13px;color:var(--slate);line-height:1.5}
+
+  /* ---------- pie ---------- */
+  footer{background:var(--paper);border-top:1px solid var(--line);padding:52px 0 44px}
+  .f-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:34px;align-items:start}
+  .f-grid .big{font-size:clamp(1.15rem,1.9vw,1.5rem);letter-spacing:-.022em;font-weight:640}
+  .f-grid .big a{text-decoration:none;border-bottom:2px solid var(--glass);padding-bottom:3px;display:inline-block}
+  .f-data{font-size:14.6px;color:var(--slate);line-height:1.72}
+  .f-note{
+    margin-top:40px;padding-top:22px;border-top:1px solid var(--line);
+    font-size:13.4px;color:var(--slate);line-height:1.6
+  }
+  .f-note strong{color:var(--ink);font-weight:640}
+
+  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  a:focus-visible,.btn:focus-visible{outline:2px solid var(--glass);outline-offset:3px;border-radius:6px}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:1040px){
+    .hero-grid,.c-grid{grid-template-columns:1fr;gap:42px}
+    .sec-head{grid-template-columns:1fr;gap:18px;align-items:start}
+    .cards,.steps{grid-template-columns:repeat(2,1fr)}
+    .card.wide{grid-column:span 2}
+    .strip ul{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (max-width:720px){
+    :root{--bar-h:62px}
+    body{font-size:16.5px}
+    .wrap{padding:0 18px}
+    .hero{padding:40px 0 52px}
+    .hero h1{font-size:clamp(2.05rem,8.6vw,2.7rem);letter-spacing:-.03em}
+    .cards,.steps,.strip ul{grid-template-columns:1fr}
+    .strip li{padding:24px 18px}
+    .card.wide{grid-column:span 1;flex-direction:column;align-items:flex-start}
+    .services,.process,.contact{padding:56px 0 60px}
+    .f-grid{grid-template-columns:1fr;gap:26px}
+    .brandrow{flex-wrap:wrap;gap:14px}
+    .toplink{width:100%;justify-content:center}
+    .c-list li{flex-direction:column;gap:6px}
+    .c-list .k{flex:none;padding-top:0}
+    .mockbar{font-size:11px;letter-spacing:.04em;padding:9px 14px}
+  }
+  @media (max-width:380px){
+    .hero h1{font-size:1.92rem}
+    .btn{width:100%;justify-content:center}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none!important;animation:none!important}
+  }
+</style>
+</head>
+<body>
+
+<div class="mockbar" id="mockbar" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<header class="wrap">
+  <div class="brandrow">
+    <div class="brand">
+      <svg class="mark" width="42" height="42" viewBox="0 0 42 42" aria-hidden="true">
+        <rect x="1.1" y="1.1" width="39.8" height="39.8" rx="7" fill="none" stroke="#0d1317" stroke-width="2.2"/>
+        <line x1="21" y1="4.5" x2="21" y2="37.5" stroke="#0d1317" stroke-width="2.2"/>
+        <rect x="6" y="9" width="11" height="24" fill="#2d7f99" opacity=".16"/>
+        <rect x="25" y="9" width="11" height="24" fill="#2d7f99" opacity=".32"/>
+        <line x1="6.5" y1="31" x2="16.5" y2="11" stroke="#2d7f99" stroke-width="1.3" opacity=".65"/>
+        <line x1="25.5" y1="31" x2="35.5" y2="11" stroke="#2d7f99" stroke-width="1.3" opacity=".65"/>
+      </svg>
+      <div>
+        <b>Aluminios Manzanares</b>
+        <small>Aluminio · PVC · Cerramientos</small>
+      </div>
+    </div>
+    <a class="toplink" href="tel:+34926610854">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M5 3h3.2l1.6 4.2-2.1 1.5a12.5 12.5 0 0 0 5.6 5.6l1.5-2.1 4.2 1.6V17a2 2 0 0 1-2.2 2A15.8 15.8 0 0 1 3 5.2 2 2 0 0 1 5 3z"/>
+      </svg>
+      926 610 854
+    </a>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero wrap" aria-labelledby="h-hero">
+  <div class="hero-grid">
+    <div>
+      <p class="eyebrow">Carpintería de aluminio y PVC · Manzanares</p>
+      <h1 id="h-hero">Cerramientos que ordenan la luz de <em>cada estancia</em>.</h1>
+      <p class="lead">
+        Ventanas, correderas y cerramientos de aluminio y PVC medidos, fabricados y
+        montados para el hueco que ya existe. Trabajo a medida en Manzanares y comarca.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-main" href="tel:+34926610854">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 3h3.2l1.6 4.2-2.1 1.5a12.5 12.5 0 0 0 5.6 5.6l1.5-2.1 4.2 1.6V17a2 2 0 0 1-2.2 2A15.8 15.8 0 0 1 3 5.2 2 2 0 0 1 5 3z"/>
+          </svg>
+          Llamar al 926 610 854
+        </a>
+        <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
+      </div>
+      <div class="hero-meta">
+        <span><i class="dot" aria-hidden="true"></i> Aluminio y PVC</span>
+        <span><i class="dot" aria-hidden="true"></i> Medición en obra</span>
+        <span><i class="dot" aria-hidden="true"></i> Trabajos a medida</span>
+      </div>
+    </div>
+
+    <figure class="hero-art" aria-hidden="true" style="margin:0">
+      <svg viewBox="0 0 620 520" role="presentation">
+        <defs>
+          <linearGradient id="bgw" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#eef3f5"/><stop offset="1" stop-color="#d6e0e5"/>
+          </linearGradient>
+          <linearGradient id="gl1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#9fc6d3" stop-opacity=".85"/>
+            <stop offset="55%" stop-color="#cfe2e8" stop-opacity=".7"/>
+            <stop offset="1" stop-color="#7fb0c1" stop-opacity=".9"/>
+          </linearGradient>
+          <linearGradient id="gl2" x1="1" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#bcd8e1" stop-opacity=".9"/>
+            <stop offset="1" stop-color="#5f93a6" stop-opacity=".92"/>
+          </linearGradient>
+          <linearGradient id="ray" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#ffffff" stop-opacity=".85"/>
+            <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+          </linearGradient>
+          <linearGradient id="alu" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#3a4a52"/><stop offset=".5" stop-color="#202c33"/><stop offset="1" stop-color="#44555e"/>
+          </linearGradient>
+          <clipPath id="cw"><rect x="36" y="36" width="548" height="448" rx="12"/></clipPath>
+        </defs>
+
+        <rect x="0" y="0" width="620" height="520" rx="16" fill="url(#bgw)"/>
+
+        <!-- rayos de luz -->
+        <g clip-path="url(#cw)" opacity=".55">
+          <polygon points="60,520 300,60 380,60 140,520" fill="url(#ray)"/>
+          <polygon points="250,520 470,70 510,70 290,520" fill="url(#ray)" opacity=".6"/>
+        </g>
+
+        <!-- marco exterior -->
+        <rect x="36" y="36" width="548" height="448" rx="12" fill="none" stroke="url(#alu)" stroke-width="11"/>
+
+        <!-- hoja fija izquierda -->
+        <g>
+          <rect x="58" y="58" width="236" height="404" rx="5" fill="url(#gl1)"/>
+          <rect x="58" y="58" width="236" height="404" rx="5" fill="none" stroke="#202c33" stroke-width="5"/>
+          <line x1="58" y1="260" x2="294" y2="260" stroke="#202c33" stroke-width="4"/>
+          <g stroke="#ffffff" stroke-opacity=".5" stroke-width="2">
+            <line x1="74" y1="246" x2="200" y2="74"/>
+            <line x1="110" y1="246" x2="236" y2="74"/>
+            <line x1="74" y1="448" x2="200" y2="276"/>
+          </g>
+        </g>
+
+        <!-- hoja corredera derecha, ligeramente adelantada -->
+        <g>
+          <rect x="300" y="46" width="268" height="428" rx="5" fill="url(#gl2)"/>
+          <rect x="300" y="46" width="268" height="428" rx="5" fill="none" stroke="#161f24" stroke-width="6"/>
+          <line x1="300" y1="260" x2="568" y2="260" stroke="#161f24" stroke-width="4"/>
+          <line x1="434" y1="46" x2="434" y2="474" stroke="#161f24" stroke-width="3" opacity=".75"/>
+          <g stroke="#ffffff" stroke-opacity=".42" stroke-width="2">
+            <line x1="320" y1="244" x2="430" y2="64"/>
+            <line x1="452" y1="452" x2="556" y2="282"/>
+          </g>
+          <!-- tirador -->
+          <rect x="310" y="226" width="7" height="72" rx="3.5" fill="#e7eef1"/>
+        </g>
+
+        <!-- guía / carril inferior -->
+        <g>
+          <rect x="36" y="478" width="548" height="14" rx="4" fill="url(#alu)"/>
+          <line x1="52" y1="485" x2="568" y2="485" stroke="#8fa2ac" stroke-width="2" opacity=".7"/>
+        </g>
+
+        <!-- cotas abstractas -->
+        <g stroke="#5b6a73" stroke-width="1.6" opacity=".7">
+          <line x1="36" y1="22" x2="584" y2="22"/>
+          <line x1="36" y1="14" x2="36" y2="30"/>
+          <line x1="584" y1="14" x2="584" y2="30"/>
+          <line x1="602" y1="36" x2="602" y2="484"/>
+          <line x1="594" y1="36" x2="610" y2="36"/>
+          <line x1="594" y1="484" x2="610" y2="484"/>
+        </g>
+      </svg>
+    </figure>
+  </div>
+</section>
+
+<!-- ===================== BANDA ===================== -->
+<section class="strip" aria-label="Materiales y enfoque">
+  <div class="wrap" style="padding-left:0;padding-right:0">
+    <ul>
+      <li>
+        <h4>Aluminio</h4>
+        <p>Perfiles de líneas finas para huecos amplios y más superficie de vidrio.</p>
+      </li>
+      <li>
+        <h4>PVC</h4>
+        <p>Perfilería para cerramientos con buen comportamiento térmico y acústico.</p>
+      </li>
+      <li>
+        <h4>A medida</h4>
+        <p>Cada hueco se mide en obra: nada de medidas estándar forzadas.</p>
+      </li>
+      <li>
+        <h4>Taller propio</h4>
+        <p>Del plano al montaje, con el mismo equipo de principio a fin.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===================== SERVICIOS ===================== -->
+<section class="services wrap" id="servicios" aria-labelledby="h-serv">
+  <div class="sec-head">
+    <div>
+      <p class="eyebrow">Servicios</p>
+      <h2 id="h-serv">Lo que hacemos, hueco por hueco.</h2>
+    </div>
+    <p>
+      Carpintería de aluminio y PVC para vivienda y local: desde sustituir una
+      ventana hasta cerrar una terraza completa. Si no encaja en ninguna de estas
+      categorías, se estudia a medida.
+    </p>
+  </div>
+
+  <div class="cards">
+
+    <article class="card">
+      <div class="ico">
+        <svg viewBox="0 0 32 32" fill="none" stroke="#1a2329" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3.5" y="3.5" width="25" height="25" rx="2"/>
+          <line x1="16" y1="3.5" x2="16" y2="28.5"/>
+          <line x1="3.5" y1="16" x2="28.5" y2="16"/>
+          <line x1="6.5" y1="13" x2="13" y2="6.5" stroke="#2d7f99" stroke-width="1.4"/>
+          <line x1="19" y1="25.5" x2="25.5" y2="19" stroke="#2d7f99" stroke-width="1.4"/>
+        </svg>
+      </div>
+      <h3>Ventanas de aluminio y PVC</h3>
+      <p>Practicables, oscilobatientes o fijas, ajustadas al hueco existente y al uso de la estancia.</p>
+    </article>
+
+    <article class="card">
+      <div class="ico">
+        <svg viewBox="0 0 32 32" fill="none" stroke="#1a2329" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true">
+          <rect x="2.5" y="5" width="13" height="22" rx="1.6"/>
+          <rect x="15" y="3.5" width="14.5" height="23.5" rx="1.6" stroke="#2d7f99"/>
+          <line x1="2.5" y1="29" x2="29.5" y2="29" stroke-width="1.6"/>
+          <line x1="18" y1="13" x2="18" y2="18" stroke="#2d7f99" stroke-width="2.4" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h3>Correderas</h3>
+      <p>Hojas que corren sobre guía para ganar paso y aprovechar el ancho completo del hueco.</p>
+    </article>
+
+    <article class="card">
+      <div class="ico">
+        <svg viewBox="0 0 32 32" fill="none" stroke="#1a2329" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 27V11l13-7 13 7v16"/>
+          <rect x="8.5" y="15" width="15" height="12" stroke="#2d7f99"/>
+          <line x1="16" y1="15" x2="16" y2="27" stroke="#2d7f99" stroke-width="1.4"/>
+        </svg>
+      </div>
+      <h3>Cerramientos de terraza</h3>
+      <p>Soluciones para cerrar terrazas, porches y galerías, resueltas sobre la estructura que hay.</p>
+    </article>
+
+    <article class="card">
+      <div class="ico">
+        <svg viewBox="0 0 32 32" fill="none" stroke="#1a2329" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true">
+          <rect x="4" y="4" width="24" height="24" rx="2"/>
+          <path d="M8 24 24 8" stroke="#2d7f99" stroke-width="1.4"/>
+          <path d="M8 17 17 8M15 24l9-9" stroke="#2d7f99" stroke-width="1.2" opacity=".7"/>
+        </svg>
+      </div>
+      <h3>Acristalamientos</h3>
+      <p>Montaje y sustitución de vidrio en carpintería nueva o ya instalada.</p>
+    </article>
+
+    <article class="card">
+      <div class="ico">
+        <svg viewBox="0 0 32 32" fill="none" stroke="#1a2329" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true">
+          <rect x="4" y="4" width="24" height="24" rx="2"/>
+          <g stroke="#2d7f99" stroke-width=".9" opacity=".85">
+            <line x1="8" y1="4" x2="8" y2="28"/><line x1="12" y1="4" x2="12" y2="28"/>
+            <line x1="16" y1="4" x2="16" y2="28"/><line x1="20" y1="4" x2="20" y2="28"/>
+            <line x1="24" y1="4" x2="24" y2="28"/>
+            <line x1="4" y1="8" x2="28" y2="8"/><line x1="4" y1="12" x2="28" y2="12"/>
+            <line x1="4" y1="16" x2="28" y2="16"/><line x1="4" y1="20" x2="28" y2="20"/>
+            <line x1="4" y1="24" x2="28" y2="24"/>
+          </g>
+        </svg>
+      </div>
+      <h3>Mosquiteras</h3>
+      <p>Fijas, enrollables o correderas, adaptadas al tipo de ventana o puerta.</p>
+    </article>
+
+    <article class="card">
+      <div class="ico">
+        <svg viewBox="0 0 32 32" fill="none" stroke="#1a2329" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true">
+          <rect x="4" y="4" width="24" height="7" rx="1.6"/>
+          <g stroke="#2d7f99" stroke-width="1.5">
+            <line x1="5.5" y1="14.5" x2="26.5" y2="14.5"/>
+            <line x1="5.5" y1="18.5" x2="26.5" y2="18.5"/>
+            <line x1="5.5" y1="22.5" x2="26.5" y2="22.5"/>
+            <line x1="5.5" y1="26.5" x2="26.5" y2="26.5"/>
+          </g>
+        </svg>
+      </div>
+      <h3>Persianas</h3>
+      <p>Instalación y reparación de persianas y sus cajones, manuales o motorizadas.</p>
+    </article>
+
+    <article class="card">
+      <div class="ico">
+        <svg viewBox="0 0 32 32" fill="none" stroke="#1a2329" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="3" width="12" height="26" rx="1.6"/>
+          <rect x="17" y="3" width="12" height="26" rx="1.6" stroke="#2d7f99"/>
+          <line x1="9" y1="14" x2="9" y2="18" stroke-width="2.4" stroke-linecap="round"/>
+          <line x1="23" y1="14" x2="23" y2="18" stroke="#2d7f99" stroke-width="2.4" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h3>Mamparas</h3>
+      <p>Mamparas de baño y separaciones acristaladas, medidas sobre el espacio real.</p>
+    </article>
+
+    <article class="card wide">
+      <div class="ico">
+        <svg viewBox="0 0 32 32" fill="none" stroke="#e9eef1" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 5v22h22"/>
+          <path d="M5 27 27 5" stroke-opacity=".45"/>
+          <path d="M11 24.5 23 12.5l3.5 3.5-12 12-5 1.5z" stroke="#9fc6d3"/>
+          <line x1="21" y1="14.5" x2="24.5" y2="18" stroke="#9fc6d3" stroke-width="1.3"/>
+        </svg>
+      </div>
+      <div class="txt">
+        <h3>Trabajos a medida</h3>
+        <p>
+          Huecos irregulares, rehabilitaciones, remates y piezas especiales en aluminio
+          o PVC. Si lo que necesita no es un producto de catálogo, se dibuja, se fabrica
+          y se monta igual: a partir de la medida tomada en su obra.
+        </p>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ===================== PROCESO ===================== -->
+<section class="process" aria-labelledby="h-proc">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <p class="eyebrow">Cómo trabajamos</p>
+        <h2 id="h-proc">Tres pasos, sin sorpresas por el camino.</h2>
+      </div>
+      <p>Un método corto y claro: primero se mide, después se propone y por último se monta. Nada se fabrica sobre una medida supuesta.</p>
+    </div>
+
+    <ol class="steps">
+      <li class="step">
+        <p class="num">01 <i></i></p>
+        <svg viewBox="0 0 320 150" aria-hidden="true">
+          <rect width="320" height="150" fill="rgba(255,255,255,.04)"/>
+          <rect x="70" y="26" width="180" height="98" fill="none" stroke="#9fc6d3" stroke-width="2.2"/>
+          <line x1="160" y1="26" x2="160" y2="124" stroke="#9fc6d3" stroke-width="1.6" opacity=".6"/>
+          <g stroke="#e9eef1" stroke-width="1.6">
+            <line x1="70" y1="14" x2="250" y2="14"/>
+            <line x1="70" y1="8" x2="70" y2="20"/>
+            <line x1="250" y1="8" x2="250" y2="20"/>
+            <line x1="46" y1="26" x2="46" y2="124"/>
+            <line x1="40" y1="26" x2="52" y2="26"/>
+            <line x1="40" y1="124" x2="52" y2="124"/>
+          </g>
+          <g stroke="#2d7f99" stroke-width="2" opacity=".9">
+            <line x1="84" y1="110" x2="146" y2="40"/>
+            <line x1="176" y1="110" x2="238" y2="40"/>
+          </g>
+          <circle cx="285" cy="110" r="13" fill="none" stroke="#e9eef1" stroke-width="1.8"/>
+          <line x1="278" y1="110" x2="292" y2="110" stroke="#e9eef1" stroke-width="1.8"/>
+        </svg>
+        <h3>Medición</h3>
+        <p>Visitamos el hueco, tomamos medidas reales y vemos cómo se resuelven los remates y el apoyo.</p>
+      </li>
+
+      <li class="step">
+        <p class="num">02 <i></i></p>
+        <svg viewBox="0 0 320 150" aria-hidden="true">
+          <rect width="320" height="150" fill="rgba(255,255,255,.04)"/>
+          <rect x="44" y="18" width="150" height="114" rx="4" fill="rgba(255,255,255,.07)" stroke="#e9eef1" stroke-width="1.8"/>
+          <g stroke="#9fb0b9" stroke-width="2" stroke-linecap="round">
+            <line x1="62" y1="40" x2="150" y2="40"/>
+            <line x1="62" y1="54" x2="176" y2="54"/>
+            <line x1="62" y1="68" x2="132" y2="68"/>
+          </g>
+          <rect x="62" y="86" width="60" height="30" fill="none" stroke="#2d7f99" stroke-width="2"/>
+          <line x1="92" y1="86" x2="92" y2="116" stroke="#2d7f99" stroke-width="1.4"/>
+          <rect x="206" y="44" width="76" height="62" rx="4" fill="none" stroke="#9fc6d3" stroke-width="2"/>
+          <line x1="206" y1="62" x2="282" y2="62" stroke="#9fc6d3" stroke-width="1.4"/>
+          <line x1="244" y1="62" x2="244" y2="106" stroke="#9fc6d3" stroke-width="1.4"/>
+        </svg>
+        <h3>Propuesta</h3>
+        <p>Le explicamos la solución: material, tipo de apertura y vidrio, con el presupuesto por escrito.</p>
+      </li>
+
+      <li class="step">
+        <p class="num">03 <i></i></p>
+        <svg viewBox="0 0 320 150" aria-hidden="true">
+          <rect width="320" height="150" fill="rgba(255,255,255,.04)"/>
+          <rect x="60" y="20" width="200" height="110" fill="none" stroke="#e9eef1" stroke-width="2.4"/>
+          <rect x="72" y="32" width="84" height="86" fill="#2d7f99" opacity=".22"/>
+          <rect x="164" y="32" width="84" height="86" fill="#9fc6d3" opacity=".3"/>
+          <line x1="160" y1="20" x2="160" y2="130" stroke="#e9eef1" stroke-width="2"/>
+          <rect x="52" y="130" width="216" height="8" rx="3" fill="#9fb0b9" opacity=".65"/>
+          <g stroke="#9fc6d3" stroke-width="2" opacity=".85">
+            <line x1="82" y1="104" x2="144" y2="42"/>
+            <line x1="176" y1="104" x2="238" y2="42"/>
+          </g>
+          <path d="M34 108l10 10 18-22" fill="none" stroke="#2d7f99" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h3>Instalación</h3>
+        <p>Montamos en obra, ajustamos la carpintería y dejamos el hueco terminado y limpio.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===================== CONTACTO ===================== -->
+<section class="contact wrap" id="contacto" aria-labelledby="h-cont">
+  <div class="c-grid">
+    <div>
+      <p class="eyebrow">Contacto</p>
+      <h2 id="h-cont">Hablamos del hueco que tiene en mente.</h2>
+      <ul class="c-list">
+        <li>
+          <span class="k">Teléfono</span>
+          <span class="v"><a href="tel:+34926610854">926 610 854</a></span>
+        </li>
+        <li>
+          <span class="k">Dirección</span>
+          <span class="v">C/ Lanza, 18<br>13200 Manzanares (Ciudad Real)</span>
+        </li>
+        <li>
+          <span class="k">Email</span>
+          <span class="v"><a href="mailto:info@aluminiosmanzanares.com">info@aluminiosmanzanares.com</a></span>
+        </li>
+        <li>
+          <span class="k">Horario</span>
+          <span class="v">Consultar horario<small>Llame al 926 610 854 y le indicamos la disponibilidad.</small></span>
+        </li>
+      </ul>
+      <div class="cta-row">
+        <a class="btn btn-main" href="tel:+34926610854">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 3h3.2l1.6 4.2-2.1 1.5a12.5 12.5 0 0 0 5.6 5.6l1.5-2.1 4.2 1.6V17a2 2 0 0 1-2.2 2A15.8 15.8 0 0 1 3 5.2 2 2 0 0 1 5 3z"/>
+          </svg>
+          Llamar ahora
+        </a>
+      </div>
+    </div>
+
+    <figure class="map" style="margin:0">
+      <svg viewBox="0 0 640 430" role="img" aria-label="Mapa esquemático, sin exactitud cartográfica, que sitúa el taller en la calle Lanza número 18 de Manzanares.">
+        <defs>
+          <linearGradient id="mapbg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#f2f6f7"/><stop offset="1" stop-color="#e2eaee"/>
+          </linearGradient>
+        </defs>
+        <rect width="640" height="430" fill="url(#mapbg)"/>
+
+        <!-- manzanas -->
+        <g fill="#d7e1e6" opacity=".9">
+          <rect x="44" y="40" width="150" height="104" rx="4"/>
+          <rect x="226" y="40" width="186" height="104" rx="4"/>
+          <rect x="446" y="40" width="152" height="140" rx="4"/>
+          <rect x="44" y="178" width="150" height="128" rx="4"/>
+          <rect x="446" y="214" width="152" height="92" rx="4"/>
+          <rect x="44" y="340" width="186" height="56" rx="4"/>
+          <rect x="262" y="340" width="150" height="56" rx="4"/>
+          <rect x="446" y="340" width="152" height="56" rx="4"/>
+        </g>
+        <g fill="#cbd8de" opacity=".95">
+          <rect x="226" y="178" width="186" height="128" rx="4"/>
+        </g>
+
+        <!-- calles -->
+        <g stroke="#ffffff" stroke-width="18" stroke-linecap="square">
+          <line x1="0" y1="161" x2="640" y2="161"/>
+          <line x1="0" y1="323" x2="640" y2="323"/>
+          <line x1="210" y1="0" x2="210" y2="430"/>
+          <line x1="429" y1="0" x2="429" y2="430"/>
+        </g>
+        <g stroke="#b9c7ce" stroke-width="1.4" stroke-dasharray="9 11" opacity=".9">
+          <line x1="0" y1="161" x2="640" y2="161"/>
+          <line x1="0" y1="323" x2="640" y2="323"/>
+          <line x1="210" y1="0" x2="210" y2="430"/>
+          <line x1="429" y1="0" x2="429" y2="430"/>
+        </g>
+
+        <!-- calle destacada -->
+        <line x1="0" y1="161" x2="640" y2="161" stroke="#2d7f99" stroke-width="3" opacity=".3"/>
+        <text x="26" y="150" font-family="ui-sans-serif,system-ui,sans-serif" font-size="14" font-weight="700" fill="#2d7f99" letter-spacing="1.6">C/ LANZA</text>
+
+        <!-- marcador -->
+        <g>
+          <ellipse cx="310" cy="206" rx="22" ry="7" fill="#0d1317" opacity=".16"/>
+          <path d="M310 128c-19 0-34 15-34 34 0 25 34 44 34 44s34-19 34-44c0-19-15-34-34-34z" fill="#0d1317"/>
+          <circle cx="310" cy="161" r="12" fill="#f6f8f9"/>
+          <circle cx="310" cy="161" r="5" fill="#2d7f99"/>
+        </g>
+        <g font-family="ui-sans-serif,system-ui,sans-serif">
+          <rect x="356" y="222" width="212" height="56" rx="9" fill="#ffffff" opacity=".96" stroke="#cbd8de"/>
+          <text x="372" y="246" font-size="15" font-weight="700" fill="#0d1317">C/ Lanza, 18</text>
+          <text x="372" y="266" font-size="13" fill="#5b6a73">13200 Manzanares</text>
+        </g>
+
+        <!-- norte -->
+        <g transform="translate(596,398)">
+          <circle r="21" fill="#ffffff" opacity=".92" stroke="#cbd8de"/>
+          <path d="M0 -12 4 2 0 -1 -4 2z" fill="#0d1317"/>
+          <text x="0" y="14" text-anchor="middle" font-family="ui-sans-serif,system-ui,sans-serif" font-size="9.5" font-weight="700" fill="#5b6a73">N</text>
+        </g>
+      </svg>
+      <figcaption>Esquema orientativo dibujado a mano para esta maqueta: representa la ubicación de forma abstracta y no pretende exactitud cartográfica.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ===================== PIE ===================== -->
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <p class="eyebrow">Escríbanos</p>
+        <p class="big"><a href="mailto:info@aluminiosmanzanares.com">info@aluminiosmanzanares.com</a></p>
+      </div>
+      <div class="f-data">
+        <strong style="color:var(--ink);font-weight:640">Aluminios Manzanares</strong><br>
+        Carpintería de aluminio y PVC, cerramientos<br>
+        C/ Lanza, 18 — 13200 Manzanares (Ciudad Real)<br>
+        <a href="tel:+34926610854" style="text-decoration:none;border-bottom:1px solid var(--alu)">926 610 854</a> · Consultar horario
+      </div>
+    </div>
+    <p class="f-note">
+      <strong>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</strong><br>
+      Maqueta de demostración sin vínculo oficial con el negocio. Los datos de contacto son públicos y verificados;
+      el resto de contenidos son textos de muestra del sector.
+    </p>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var bar=document.getElementById('mockbar');
+    function fit(){
+      if(!bar) return;
+      document.body.style.paddingTop=bar.offsetHeight+'px';
+    }
+    fit();
+    window.addEventListener('resize',fit,{passive:true});
+    window.addEventListener('load',fit);
+  })();
+</script>
+</body>
+</html>

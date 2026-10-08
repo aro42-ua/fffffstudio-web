@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oltecar Comunicacions · Telefonía y telecomunicaciones en Torredembarra — maqueta FFFFFFstudio</title>
+<meta name="description" content="Propuesta de rediseño no oficial para Oltecar Comunicacions, tienda de telefonía y telecomunicaciones en Torredembarra (Tarragona).">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  :root{
+    --ink:#0b1118;
+    --ink-2:#17202b;
+    --mut:#5b6775;
+    --line:#e3e8ee;
+    --paper:#ffffff;
+    --soft:#f5f7f9;
+    --accent:#0f8f86;
+    --accent-dk:#0a6c65;
+    --accent-sf:#e6f4f2;
+    --amber:#e8a33d;
+    --r:16px;
+    --maxw:1120px;
+    --bar-h:40px;
+    --fs: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  html,body{max-width:100%;overflow-x:hidden}
+  body{
+    margin:0;
+    padding-top:var(--bar-h);
+    font-family:var(--fs);
+    color:var(--ink);
+    background:var(--paper);
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    letter-spacing:-0.005em;
+  }
+  img,svg{max-width:100%}
+  h1,h2,h3,p,ul,ol{margin:0}
+  ul{padding:0;list-style:none}
+  a{color:inherit}
+
+  /* ---------- barra fija maqueta ---------- */
+  .flag{
+    position:fixed;inset:0 0 auto 0;z-index:100;
+    background:#0b1118;
+    color:#f2f5f8;
+    border-bottom:1px solid rgba(255,255,255,.14);
+    display:flex;align-items:center;justify-content:center;
+    min-height:var(--bar-h);
+    padding:7px 14px;
+    text-align:center;
+    font-size:12.5px;line-height:1.3;
+    letter-spacing:.02em;
+  }
+  .flag span{display:inline-block;max-width:100%}
+  .flag b{font-weight:650;color:#fff}
+
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 32px}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12.5px;font-weight:650;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent-dk);
+  }
+  .eyebrow::before{content:"";width:22px;height:2px;background:var(--accent);border-radius:2px;flex:none}
+
+  /* ---------- cabecera del sitio ---------- */
+  .top{position:relative;z-index:3}
+  .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:26px;padding-bottom:6px}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0}
+  .brand .mark{flex:none}
+  .brand .nm{min-width:0}
+  .brand .nm strong{display:block;font-size:17.5px;font-weight:700;letter-spacing:-.02em;color:#fff;line-height:1.15;white-space:nowrap}
+  .brand .nm small{display:block;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.62)}
+  .topcall{
+    display:inline-flex;align-items:center;gap:9px;flex:none;
+    text-decoration:none;font-size:15px;font-weight:650;color:#fff;
+    border:1px solid rgba(255,255,255,.28);border-radius:999px;
+    padding:9px 17px;white-space:nowrap;
+    background:rgba(255,255,255,.05);
+  }
+  .topcall:hover{background:rgba(255,255,255,.14)}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;color:#fff;
+    background:
+      radial-gradient(900px 520px at 88% -8%, rgba(15,143,134,.55), transparent 62%),
+      radial-gradient(700px 480px at 6% 108%, rgba(232,163,61,.20), transparent 60%),
+      linear-gradient(170deg,#0d1621 0%,#0b1118 58%,#0a1016 100%);
+  }
+  .hero .deco{position:absolute;inset:0;width:100%;height:100%;opacity:.55;pointer-events:none}
+  .hero .inner{position:relative;z-index:2;display:grid;grid-template-columns:1.08fr .92fr;gap:56px;align-items:center;padding:74px 0 86px}
+  h1{
+    font-size:clamp(34px,4.6vw,58px);line-height:1.04;letter-spacing:-.035em;font-weight:730;
+    margin:22px 0 0;
+  }
+  h1 em{font-style:normal;color:#7fd8d0}
+  .lede{margin-top:20px;font-size:clamp(16.5px,1.4vw,19.5px);line-height:1.58;color:rgba(255,255,255,.76);max-width:40ch}
+  .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;text-decoration:none;
+    font-size:16.5px;font-weight:680;letter-spacing:-.01em;
+    padding:15px 24px;border-radius:12px;border:1px solid transparent;
+  }
+  .btn-main{background:#13a89d;color:#04221f;box-shadow:0 10px 26px rgba(19,168,157,.3)}
+  .btn-main:hover{background:#17bdb0}
+  .btn-ghost{border-color:rgba(255,255,255,.26);color:#fff}
+  .btn-ghost:hover{background:rgba(255,255,255,.08)}
+  .hero-foot{margin-top:26px;font-size:14px;color:rgba(255,255,255,.5)}
+  .hero-foot strong{color:rgba(255,255,255,.8);font-weight:600}
+
+  .card-glass{
+    background:linear-gradient(160deg,rgba(255,255,255,.1),rgba(255,255,255,.03));
+    border:1px solid rgba(255,255,255,.16);
+    border-radius:22px;padding:26px;
+    backdrop-filter:blur(2px);
+  }
+  .card-glass h2{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.6);font-weight:650}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+  .chip{font-size:14px;padding:7px 13px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.88)}
+  .glass-split{margin-top:22px;padding-top:20px;border-top:1px solid rgba(255,255,255,.14);display:flex;gap:14px;align-items:flex-start}
+  .glass-split p{font-size:14.5px;line-height:1.55;color:rgba(255,255,255,.72)}
+
+  /* ---------- secciones ---------- */
+  section{padding:84px 0}
+  section,[id]{scroll-margin-top:calc(var(--bar-h) + 18px)}
+  .sec-head{max-width:62ch}
+  .sec-head h2{font-size:clamp(26px,3vw,38px);line-height:1.12;letter-spacing:-.03em;font-weight:720;margin-top:18px}
+  .sec-head p{margin-top:16px;color:var(--mut);font-size:17.5px}
+
+  #servicios{background:var(--soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .grid{display:grid;gap:18px;margin-top:44px;grid-template-columns:repeat(3,minmax(0,1fr))}
+  .svc{
+    background:var(--paper);border:1px solid var(--line);border-radius:var(--r);
+    padding:26px 24px 28px;display:flex;flex-direction:column;gap:14px;
+  }
+  .svc .ico{width:46px;height:46px;flex:none;border-radius:12px;background:var(--accent-sf);display:flex;align-items:center;justify-content:center}
+  .svc h3{font-size:19px;letter-spacing:-.02em;font-weight:680;line-height:1.25}
+  .svc p{font-size:15.5px;line-height:1.56;color:var(--mut)}
+  .svc.wide{grid-column:span 2;flex-direction:row;align-items:flex-start;gap:20px}
+  .svc.wide .bd{min-width:0}
+
+  /* pasos */
+  .steps{display:grid;gap:18px;margin-top:46px;grid-template-columns:repeat(3,minmax(0,1fr));counter-reset:s}
+  .step{position:relative;border:1px solid var(--line);border-radius:var(--r);padding:28px 24px 26px;background:var(--paper)}
+  .step::before{
+    counter-increment:s;content:counter(s,decimal-leading-zero);
+    display:block;font-size:13px;font-weight:700;letter-spacing:.1em;color:var(--accent-dk);
+  }
+  .step h3{margin-top:12px;font-size:20px;letter-spacing:-.02em;font-weight:690}
+  .step p{margin-top:10px;font-size:15.5px;color:var(--mut);line-height:1.56}
+  .step .bar{position:absolute;left:24px;right:24px;top:0;height:3px;border-radius:0 0 3px 3px;background:linear-gradient(90deg,var(--accent),rgba(15,143,134,.15))}
+
+  /* contacto */
+  #contacto{background:var(--soft);border-top:1px solid var(--line)}
+  .contact{display:grid;grid-template-columns:.95fr 1.05fr;gap:28px;margin-top:44px;align-items:start}
+  .panel{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:28px}
+  .dl{display:grid;gap:22px;margin-top:4px}
+  .dl .row{display:flex;gap:14px;align-items:flex-start}
+  .dl .k{font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);font-weight:650}
+  .dl .v{font-size:18px;font-weight:620;letter-spacing:-.015em;margin-top:3px;line-height:1.4}
+  .dl .v a{text-decoration:none;color:var(--ink);border-bottom:2px solid var(--accent-sf)}
+  .dl .v a:hover{border-bottom-color:var(--accent)}
+  .dl .v.plain{font-weight:560;font-size:16.5px}
+  .badge{display:inline-block;margin-top:6px;font-size:13.5px;font-weight:620;color:var(--accent-dk);background:var(--accent-sf);border-radius:999px;padding:5px 12px}
+  .panel .btn{margin-top:26px;width:100%;justify-content:center}
+  .mapwrap{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+  .mapwrap svg{display:block;width:100%;height:auto}
+  .mapnote{padding:14px 20px;border-top:1px solid var(--line);font-size:13.5px;color:var(--mut)}
+
+  /* pie */
+  footer{background:var(--ink);color:rgba(255,255,255,.72);padding:60px 0 34px}
+  .fgrid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:34px}
+  footer h3{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.45);font-weight:650;margin-bottom:14px}
+  footer .fb strong{display:block;color:#fff;font-size:19px;font-weight:700;letter-spacing:-.02em;margin-top:14px}
+  footer .fb p{margin-top:10px;font-size:15px;line-height:1.6;max-width:34ch}
+  footer li{font-size:15.5px;line-height:1.75}
+  footer a{text-decoration:none;border-bottom:1px solid rgba(255,255,255,.22)}
+  footer a:hover{color:#fff;border-bottom-color:rgba(255,255,255,.6)}
+  .studio{
+    margin-top:46px;padding-top:22px;border-top:1px solid rgba(255,255,255,.14);
+    display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;justify-content:space-between;
+    font-size:13.5px;color:rgba(255,255,255,.58);
+  }
+  .studio .sig{color:rgba(255,255,255,.8)}
+
+  @media (max-width:980px){
+    .hero .inner{grid-template-columns:1fr;gap:34px;padding:52px 0 60px}
+    .grid,.steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .svc.wide{grid-column:span 2}
+    .contact{grid-template-columns:1fr}
+    .fgrid{grid-template-columns:1fr 1fr}
+    footer .fb{grid-column:1 / -1}
+  }
+  @media (max-width:640px){
+    body{font-size:16.5px}
+    .wrap{padding:0 20px}
+    section{padding:58px 0}
+    .flag{font-size:11.5px;letter-spacing:0}
+    .top .wrap{padding-top:20px;flex-wrap:wrap;gap:12px}
+    .brand .nm strong{font-size:16px;white-space:normal}
+    .topcall{font-size:14px;padding:8px 14px}
+    h1{font-size:clamp(30px,8.6vw,38px)}
+    .lede{max-width:none}
+    .cta-row{gap:10px}
+    .btn{width:100%;justify-content:center;font-size:16px;padding:14px 18px}
+    .card-glass{padding:20px;border-radius:18px}
+    .grid,.steps{grid-template-columns:1fr;margin-top:30px}
+    .svc.wide{grid-column:auto;flex-direction:column;gap:14px}
+    .contact{margin-top:30px;gap:20px}
+    .panel{padding:22px}
+    .fgrid{grid-template-columns:1fr;gap:28px}
+    .studio{flex-direction:column;align-items:flex-start}
+  }
+</style>
+</head>
+<body>
+
+<div class="flag" id="flag" role="note" aria-label="Aviso de maqueta">
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<header class="hero">
+  <svg class="deco" viewBox="0 0 1200 760" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="gArc" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#4fd8cb" stop-opacity=".85"/>
+        <stop offset="1" stop-color="#4fd8cb" stop-opacity="0"/>
+      </linearGradient>
+      <linearGradient id="gWarm" x1="0" y1="1" x2="1" y2="0">
+        <stop offset="0" stop-color="#e8a33d" stop-opacity=".5"/>
+        <stop offset="1" stop-color="#e8a33d" stop-opacity="0"/>
+      </linearGradient>
+      <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+        <path d="M48 0H0v48" fill="none" stroke="#ffffff" stroke-opacity=".05" stroke-width="1"/>
+      </pattern>
+    </defs>
+    <rect width="1200" height="760" fill="url(#grid)"/>
+    <g fill="none" stroke="url(#gArc)" stroke-width="1.6">
+      <circle cx="1065" cy="150" r="90"/><circle cx="1065" cy="150" r="160"/>
+      <circle cx="1065" cy="150" r="235"/><circle cx="1065" cy="150" r="320"/>
+      <circle cx="1065" cy="150" r="410"/>
+    </g>
+    <g fill="none" stroke="url(#gWarm)" stroke-width="1.4">
+      <circle cx="90" cy="690" r="70"/><circle cx="90" cy="690" r="135"/><circle cx="90" cy="690" r="205"/>
+    </g>
+    <g stroke="#4fd8cb" stroke-opacity=".35" stroke-width="1.2" fill="none">
+      <path d="M0 520 H300 L360 460 H700 L760 520 H1200"/>
+      <path d="M0 596 H240 L300 656 H640"/>
+    </g>
+    <g fill="#4fd8cb" fill-opacity=".55">
+      <circle cx="300" cy="520" r="4"/><circle cx="760" cy="520" r="4"/><circle cx="300" cy="656" r="4"/>
+    </g>
+  </svg>
+
+  <div class="top">
+    <div class="wrap">
+      <a class="brand" href="#top" aria-label="Oltecar Comunicacions, inicio">
+        <svg class="mark" width="42" height="42" viewBox="0 0 42 42" aria-hidden="true" focusable="false">
+          <rect x="1" y="1" width="40" height="40" rx="12" fill="#13a89d" fill-opacity=".16" stroke="#2ec3b6" stroke-opacity=".55"/>
+          <g fill="none" stroke="#5fd9cd" stroke-width="2.3" stroke-linecap="round">
+            <path d="M12 26a12.5 12.5 0 0 1 18 0"/>
+            <path d="M16 30a7 7 0 0 1 10 0"/>
+          </g>
+          <circle cx="21" cy="33.4" r="2.1" fill="#5fd9cd"/>
+        </svg>
+        <span class="nm">
+          <strong>Oltecar</strong>
+          <small>Comunicacions</small>
+        </span>
+      </a>
+      <a class="topcall" href="tel:+34977641545">
+        <svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 1.8h2.4l1.1 2.9-1.6 1.1a7.6 7.6 0 0 0 3.9 3.9l1.1-1.6 2.9 1.1V12a2.2 2.2 0 0 1-2.4 2.2A11 11 0 0 1 .8 4.2 2.2 2.2 0 0 1 3 1.8Z" fill="currentColor"/></svg>
+        977 641 545
+      </a>
+    </div>
+  </div>
+
+  <div class="wrap" id="top">
+    <div class="inner">
+      <div>
+        <span class="eyebrow">Torredembarra · Tarragona</span>
+        <h1>Tu tienda de telefonía y telecomunicaciones, <em>a pie de calle</em>.</h1>
+        <p class="lede">Asesoramiento de persona a persona para tu fibra, tu móvil y la telefonía de tu negocio. Vienes, lo miramos juntos y te lo dejamos funcionando.</p>
+        <div class="cta-row">
+          <a class="btn btn-main" href="tel:+34977641545">
+            <svg width="17" height="17" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 1.8h2.4l1.1 2.9-1.6 1.1a7.6 7.6 0 0 0 3.9 3.9l1.1-1.6 2.9 1.1V12a2.2 2.2 0 0 1-2.4 2.2A11 11 0 0 1 .8 4.2 2.2 2.2 0 0 1 3 1.8Z" fill="currentColor"/></svg>
+            Llamar al 977 641 545
+          </a>
+          <a class="btn btn-ghost" href="#contacto">Cómo llegar</a>
+        </div>
+        <p class="hero-foot"><strong>Pg. de la Sort, 27, local 3</strong> · 43830 Torredembarra</p>
+      </div>
+
+      <aside class="card-glass">
+        <h2>Qué puedes resolver aquí</h2>
+        <ul class="chips">
+          <li class="chip">Fibra</li>
+          <li class="chip">Móvil</li>
+          <li class="chip">Portabilidades</li>
+          <li class="chip">Empresas y autónomos</li>
+          <li class="chip">Centralita</li>
+          <li class="chip">Terminales</li>
+          <li class="chip">Accesorios</li>
+          <li class="chip">Configuración</li>
+        </ul>
+        <div class="glass-split">
+          <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true" focusable="false" style="flex:none">
+            <circle cx="12" cy="12" r="11" fill="none" stroke="#e8a33d" stroke-opacity=".6" stroke-width="1.4"/>
+            <path d="M12 7.5v6.2M12 16.6h.01" stroke="#e8a33d" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <p>Trato directo en tienda: te explicamos las opciones sin tecnicismos y decides tú, sin prisa.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="servicios">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Servicios</span>
+        <h2>Lo que hacemos en la tienda</h2>
+        <p>Servicios de telefonía y telecomunicaciones para casa y para negocio, explicados en un lenguaje que se entiende.</p>
+      </div>
+
+      <div class="grid">
+        <article class="svc">
+          <span class="ico" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0a6c65" stroke-width="1.8" stroke-linecap="round">
+              <path d="M3 15a12.7 12.7 0 0 1 18 0"/><path d="M7 19a7 7 0 0 1 10 0"/><circle cx="12" cy="21.4" r="1.3" fill="#0a6c65" stroke="none"/>
+            </svg>
+          </span>
+          <div class="bd">
+            <h3>Fibra para casa</h3>
+            <p>Miramos qué conexión encaja con tu vivienda y con el uso que le das, y nos encargamos de la contratación de principio a fin.</p>
+          </div>
+        </article>
+
+        <article class="svc">
+          <span class="ico" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0a6c65" stroke-width="1.8" stroke-linejoin="round">
+              <rect x="6.5" y="2.5" width="11" height="19" rx="2.6"/><path d="M10.4 5.6h3.2" stroke-linecap="round"/><circle cx="12" cy="18" r="1.1" fill="#0a6c65" stroke="none"/>
+            </svg>
+          </span>
+          <div class="bd">
+            <h3>Móvil y portabilidades</h3>
+            <p>Tramitamos el cambio de compañía conservando tu número y te acompañamos en cada paso del proceso.</p>
+          </div>
+        </article>
+
+        <article class="svc">
+          <span class="ico" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0a6c65" stroke-width="1.8" stroke-linejoin="round">
+              <path d="M3 20.5V9.5l7-4 7 4v11"/><path d="M17 13.5h4v7" /><path d="M7 20.5v-4h4v4" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <div class="bd">
+            <h3>Empresas y autónomos</h3>
+            <p>Líneas de voz y datos, centralita y conectividad para tu local u oficina, dimensionadas a lo que de verdad necesitas.</p>
+          </div>
+        </article>
+
+        <article class="svc">
+          <span class="ico" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0a6c65" stroke-width="1.8" stroke-linejoin="round">
+              <path d="M3.5 6.5h17v10h-17z"/><path d="M7 20.5h10" stroke-linecap="round"/><path d="M9 10.5h6M9 13h3" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <div class="bd">
+            <h3>Terminales y accesorios</h3>
+            <p>Venta de terminales y accesorios, con el consejo de alguien que te escucha antes de recomendarte nada.</p>
+          </div>
+        </article>
+
+        <article class="svc wide">
+          <span class="ico" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0a6c65" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14.3 3.4a4.6 4.6 0 0 0 5.9 5.9L21 10.6 13.4 18l-1.3-1.3"/><path d="M10.6 12.4 3.6 19.4a1.8 1.8 0 0 0 2.6 2.5l6.9-6.9"/>
+            </svg>
+          </span>
+          <div class="bd">
+            <h3>Servicio técnico y configuración</h3>
+            <p>Servicio de reparación y de configuración de equipos y conexiones: revisamos el caso contigo en el mostrador, te decimos con claridad qué se puede hacer y tú decides. Sin promesas en el aire.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="como">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Cómo trabajamos</span>
+        <h2>Tres pasos y lo tienes resuelto</h2>
+        <p>Nada de laberintos telefónicos: una conversación, una propuesta y el seguimiento hasta que funciona.</p>
+      </div>
+
+      <div class="steps">
+        <article class="step"><span class="bar" aria-hidden="true"></span>
+          <h3>Nos lo cuentas</h3>
+          <p>Vienes a la tienda o llamas y nos explicas qué tienes ahora y qué te gustaría mejorar, en casa o en el negocio.</p>
+        </article>
+        <article class="step"><span class="bar" aria-hidden="true"></span>
+          <h3>Te lo planteamos claro</h3>
+          <p>Repasamos juntos las opciones que encajan, con sus condiciones sobre la mesa, y tú decides sin que nadie te meta prisa.</p>
+        </article>
+        <article class="step"><span class="bar" aria-hidden="true"></span>
+          <h3>Lo dejamos en marcha</h3>
+          <p>Nos ocupamos del trámite y de la configuración, y seguimos siendo tu punto de contacto cuando surja cualquier duda.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Contacto</span>
+        <h2>Estamos en el Pg. de la Sort</h2>
+        <p>Pásate por la tienda o llámanos: te atendemos nosotros, no un contestador.</p>
+      </div>
+
+      <div class="contact">
+        <div class="panel">
+          <div class="dl">
+            <div class="row">
+              <svg width="20" height="20" viewBox="0 0 16 16" aria-hidden="true" focusable="false" style="flex:none;margin-top:16px"><path d="M3 1.8h2.4l1.1 2.9-1.6 1.1a7.6 7.6 0 0 0 3.9 3.9l1.1-1.6 2.9 1.1V12a2.2 2.2 0 0 1-2.4 2.2A11 11 0 0 1 .8 4.2 2.2 2.2 0 0 1 3 1.8Z" fill="#0f8f86"/></svg>
+              <div>
+                <div class="k">Teléfono</div>
+                <div class="v"><a href="tel:+34977641545">977 641 545</a></div>
+              </div>
+            </div>
+            <div class="row">
+              <svg width="20" height="20" viewBox="0 0 16 16" aria-hidden="true" focusable="false" style="flex:none;margin-top:16px"><path d="M8 .9c-2.8 0-5 2.2-5 5 0 3.7 5 9.2 5 9.2s5-5.5 5-9.2c0-2.8-2.2-5-5-5Zm0 7a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z" fill="#0f8f86"/></svg>
+              <div>
+                <div class="k">Dirección</div>
+                <div class="v plain">Pg. de la Sort, 27, local 3<br>43830 Torredembarra (Tarragona)</div>
+              </div>
+            </div>
+            <div class="row">
+              <svg width="20" height="20" viewBox="0 0 16 16" aria-hidden="true" focusable="false" style="flex:none;margin-top:16px"><circle cx="8" cy="8" r="6.6" fill="none" stroke="#0f8f86" stroke-width="1.6"/><path d="M8 4.4V8l2.6 1.7" fill="none" stroke="#0f8f86" stroke-width="1.6" stroke-linecap="round"/></svg>
+              <div>
+                <div class="k">Horario</div>
+                <div class="v"><span class="badge">Consultar horario</span></div>
+              </div>
+            </div>
+            <div class="row">
+              <svg width="20" height="20" viewBox="0 0 16 16" aria-hidden="true" focusable="false" style="flex:none;margin-top:16px"><rect x="1.2" y="3" width="13.6" height="10" rx="1.8" fill="none" stroke="#0f8f86" stroke-width="1.6"/><path d="M2 4.3 8 8.6l6-4.3" fill="none" stroke="#0f8f86" stroke-width="1.6"/></svg>
+              <div>
+                <div class="k">Email</div>
+                <div class="v"><a href="mailto:oltecar@oltecar.com">oltecar@oltecar.com</a></div>
+              </div>
+            </div>
+          </div>
+          <a class="btn btn-main" href="tel:+34977641545">Llamar ahora</a>
+        </div>
+
+        <div class="mapwrap">
+          <svg viewBox="0 0 600 420" role="img" aria-label="Mapa esquemático de situación de la tienda en el Pg. de la Sort, 27, local 3, Torredembarra. Dibujo orientativo, no cartográfico.">
+            <defs>
+              <linearGradient id="mapbg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#f7f9fa"/><stop offset="1" stop-color="#eaf1f1"/>
+              </linearGradient>
+            </defs>
+            <rect width="600" height="420" fill="url(#mapbg)"/>
+            <!-- manzanas -->
+            <g fill="#dfe7e9">
+              <rect x="34" y="40" width="150" height="104" rx="7"/>
+              <rect x="222" y="40" width="128" height="104" rx="7"/>
+              <rect x="388" y="40" width="176" height="104" rx="7"/>
+              <rect x="34" y="196" width="150" height="88" rx="7"/>
+              <rect x="388" y="196" width="176" height="88" rx="7"/>
+              <rect x="34" y="330" width="230" height="62" rx="7"/>
+              <rect x="306" y="330" width="258" height="62" rx="7"/>
+            </g>
+            <!-- calles -->
+            <g stroke="#ffffff" stroke-width="22" stroke-linecap="square">
+              <path d="M0 170 H600"/>
+              <path d="M0 308 H600"/>
+              <path d="M200 0 V420"/>
+              <path d="M368 0 V420"/>
+            </g>
+            <g stroke="#c3d0d3" stroke-width="1.2" stroke-dasharray="7 9">
+              <path d="M0 170 H600"/><path d="M0 308 H600"/><path d="M200 0 V420"/><path d="M368 0 V420"/>
+            </g>
+            <!-- via destacada -->
+            <path d="M0 240 H600" stroke="#cfe8e5" stroke-width="26" stroke-linecap="square"/>
+            <path d="M0 240 H600" stroke="#0f8f86" stroke-width="1.6" stroke-dasharray="9 8" opacity=".5"/>
+            <text x="22" y="233" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif" font-size="18" font-weight="700" fill="#0a6c65" letter-spacing="1.4">PG. DE LA SORT</text>
+            <!-- zona verde -->
+            <circle cx="283" cy="375" r="26" fill="#d9e8da"/>
+            <!-- marcador -->
+            <g transform="translate(283 240)">
+              <ellipse cx="0" cy="8" rx="18" ry="6" fill="#0b1118" opacity=".14"/>
+              <path d="M0 6c0 0-17-18-17-29A17 17 0 0 1 17-23C17-12 0 6 0 6Z" fill="#0f8f86"/>
+              <circle cx="0" cy="-23" r="6.2" fill="#ffffff"/>
+            </g>
+            <g font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif">
+              <rect x="312" y="178" width="250" height="56" rx="12" fill="#ffffff" stroke="#dde5e8"/>
+              <text x="328" y="202" font-size="18" font-weight="700" fill="#0b1118">Oltecar Comunicacions</text>
+              <text x="328" y="223" font-size="15.5" fill="#5b6775">Pg. de la Sort, 27 · local 3</text>
+            </g>
+          </svg>
+          <p class="mapnote">Plano esquemático dibujado a mano, solo orientativo: no pretende exactitud cartográfica.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="fb">
+        <h3>Oltecar Comunicacions</h3>
+        <strong>Telefonía y telecomunicaciones</strong>
+        <p>Tienda de barrio en Torredembarra para la fibra, el móvil y la telefonía de tu negocio.</p>
+      </div>
+      <div>
+        <h3>Contacto</h3>
+        <ul>
+          <li><a href="tel:+34977641545">977 641 545</a></li>
+          <li><a href="mailto:oltecar@oltecar.com">oltecar@oltecar.com</a></li>
+          <li>Consultar horario</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Dónde estamos</h3>
+        <ul>
+          <li>Pg. de la Sort, 27, local 3</li>
+          <li>43830 Torredembarra</li>
+          <li>Tarragona</li>
+        </ul>
+      </div>
+    </div>
+    <div class="studio">
+      <span class="sig">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</span>
+      <span>Maqueta de demostración · sin vínculo oficial con el negocio</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var flag = document.getElementById('flag');
+  function fit(){
+    var h = flag.offsetHeight;
+    document.documentElement.style.setProperty('--bar-h', h + 'px');
+  }
+  fit();
+  window.addEventListener('resize', fit);
+  window.addEventListener('orientationchange', fit);
+  if (window.ResizeObserver) { new ResizeObserver(fit).observe(flag); }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var t = document.querySelector(a.getAttribute('href'));
+      if(!t) return;
+      e.preventDefault();
+      var y = t.getBoundingClientRect().top + window.pageYOffset - (flag.offsetHeight + 12);
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    });
+  });
+})();
+</script>
+</body>
+</html>

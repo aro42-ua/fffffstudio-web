@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jesús Fernández Abogado · Manzanares (Ciudad Real) — Propuesta de diseño</title>
+<meta name="description" content="Maqueta de propuesta de rediseño web para Jesús Fernández Abogado, despacho en Manzanares (Ciudad Real). Documento no oficial de FFFFFFstudio.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* ============================================================
+   Maqueta · FFFFFFstudio — Ángel Rubio
+   Paleta contenida: tinta azul profunda, piedra cálida, latón.
+   ============================================================ */
+:root{
+  --ink:#131c26;
+  --ink-2:#1d2a38;
+  --ink-soft:#3d4d5e;
+  --body:#41505f;
+  --line:#dcd6cb;
+  --line-2:#e8e3da;
+  --paper:#f7f4ee;
+  --paper-2:#fffdf9;
+  --brass:#8a6a32;
+  --brass-soft:#b08a44;
+  --bar:#0d141c;
+  --maxw:1180px;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,"Times New Roman",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+
+html{-webkit-text-size-adjust:100%}
+
+body{
+  margin:0;
+  padding-top:46px; /* deja sitio a la barra fija */
+  background:var(--paper);
+  color:var(--body);
+  font-family:var(--serif);
+  font-size:17px;
+  line-height:1.72;
+  overflow-x:hidden;
+}
+
+img,svg{max-width:100%}
+
+h1,h2,h3,h4{
+  font-family:var(--serif);
+  color:var(--ink);
+  line-height:1.16;
+  margin:0;
+  font-weight:600;
+  letter-spacing:-0.012em;
+}
+
+p{margin:0}
+a{color:var(--ink);text-decoration:none}
+
+.wrap{
+  width:100%;
+  max-width:var(--maxw);
+  margin:0 auto;
+  padding:0 32px;
+}
+
+.eyebrow{
+  font-family:var(--sans);
+  font-size:11.5px;
+  letter-spacing:.17em;
+  text-transform:uppercase;
+  color:var(--brass);
+  font-weight:600;
+  margin:0 0 20px;
+}
+.eyebrow.on-dark{color:var(--brass-soft)}
+
+.rule{
+  width:46px;height:2px;
+  background:var(--brass);
+  border:0;margin:0 0 26px;
+}
+
+/* ---------- barra fija de maqueta ---------- */
+.flag{
+  position:fixed;
+  top:0;left:0;right:0;
+  z-index:999;
+  background:var(--bar);
+  color:#efe9dd;
+  border-bottom:1px solid rgba(176,138,68,.5);
+  min-height:46px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.flag span{
+  display:block;
+  font-family:var(--sans);
+  font-size:12px;
+  line-height:1.35;
+  letter-spacing:.06em;
+  text-align:center;
+  padding:7px 16px;
+  color:#efe9dd;
+}
+
+/* ---------- cabecera ---------- */
+.top{
+  background:var(--paper-2);
+  border-bottom:1px solid var(--line);
+}
+.top-in{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  padding:22px 32px;
+  max-width:var(--maxw);
+  margin:0 auto;
+  width:100%;
+}
+.brand{display:flex;align-items:center;gap:13px;min-width:0}
+.brand-mark{flex:0 0 auto}
+.brand-txt{min-width:0}
+.brand-name{
+  font-family:var(--serif);
+  font-size:18px;
+  color:var(--ink);
+  font-weight:600;
+  letter-spacing:.005em;
+  line-height:1.2;
+  white-space:nowrap;
+}
+.brand-sub{
+  font-family:var(--sans);
+  font-size:10.5px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+  margin-top:3px;
+}
+.top-nav{
+  display:flex;
+  align-items:center;
+  gap:30px;
+  font-family:var(--sans);
+  font-size:14px;
+}
+.top-nav a{color:var(--ink-soft);padding:4px 0;border-bottom:1px solid transparent}
+.top-nav a:hover,.top-nav a:focus-visible{color:var(--ink);border-bottom-color:var(--brass)}
+.top-tel{
+  font-family:var(--sans);
+  font-size:14px;
+  font-weight:600;
+  color:var(--ink);
+  border:1px solid var(--ink);
+  border-radius:2px;
+  padding:9px 17px;
+  white-space:nowrap;
+}
+.top-tel:hover,.top-tel:focus-visible{background:var(--ink);color:var(--paper-2)}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;
+  background:
+    radial-gradient(130% 95% at 88% -15%, rgba(176,138,68,.22) 0%, rgba(176,138,68,0) 58%),
+    linear-gradient(168deg, #16202b 0%, #131c26 46%, #0f1720 100%);
+  color:#e9e3d7;
+  overflow:hidden;
+}
+.hero-deco{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:.5;
+}
+.hero-in{
+  position:relative;
+  max-width:var(--maxw);
+  margin:0 auto;
+  padding:96px 32px 92px;
+  display:grid;
+  grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);
+  gap:64px;
+  align-items:center;
+}
+.hero h1{
+  color:#fdfbf7;
+  font-size:clamp(34px,4.4vw,58px);
+  line-height:1.08;
+  letter-spacing:-0.022em;
+  margin:0 0 26px;
+}
+.hero h1 em{
+  font-style:italic;
+  color:var(--brass-soft);
+}
+.hero-lead{
+  font-size:19px;
+  line-height:1.68;
+  color:#c8c2b6;
+  max-width:33em;
+  margin:0 0 20px;
+}
+.hero-note{
+  font-family:var(--sans);
+  font-size:13.5px;
+  line-height:1.6;
+  color:#9a958b;
+  max-width:33em;
+  margin:0 0 36px;
+}
+.cta-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+  align-items:center;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-family:var(--sans);
+  font-size:15px;
+  font-weight:600;
+  letter-spacing:.01em;
+  padding:15px 26px;
+  border-radius:2px;
+  border:1px solid transparent;
+  transition:background .18s,color .18s,border-color .18s;
+}
+.btn-primary{
+  background:var(--brass-soft);
+  color:#161008;
+  border-color:var(--brass-soft);
+}
+.btn-primary:hover,.btn-primary:focus-visible{background:#c79d4f;border-color:#c79d4f}
+.btn-ghost{
+  color:#e9e3d7;
+  border-color:rgba(233,227,215,.42);
+}
+.btn-ghost:hover,.btn-ghost:focus-visible{border-color:#e9e3d7;background:rgba(233,227,215,.08)}
+.btn svg{flex:0 0 auto}
+
+/* tarjeta de datos en el hero */
+.hero-card{
+  background:rgba(247,244,238,.055);
+  border:1px solid rgba(176,138,68,.3);
+  border-radius:3px;
+  padding:34px 32px;
+  backdrop-filter:blur(2px);
+  min-width:0;
+}
+.hero-card h2{
+  color:#fdfbf7;
+  font-size:19px;
+  margin:0 0 22px;
+}
+.dl{margin:0}
+.dl div{
+  padding:14px 0;
+  border-top:1px solid rgba(233,227,215,.16);
+}
+.dl div:first-child{border-top:0;padding-top:0}
+.dl dt{
+  font-family:var(--sans);
+  font-size:10.5px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--brass-soft);
+  margin:0 0 5px;
+}
+.dl dd{
+  margin:0;
+  font-size:16px;
+  line-height:1.55;
+  color:#e9e3d7;
+  overflow-wrap:break-word;
+}
+.dl dd a{color:#e9e3d7;border-bottom:1px solid rgba(176,138,68,.6)}
+.dl dd a:hover{color:#fff}
+
+/* ---------- secciones ---------- */
+section{scroll-margin-top:60px}
+.band{padding:92px 0}
+.band-paper{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.sec-head{max-width:40em;margin:0 0 54px}
+.sec-head h2{
+  font-size:clamp(26px,2.9vw,38px);
+  margin:0 0 18px;
+}
+.sec-head p{font-size:18px;line-height:1.7;color:var(--body)}
+
+/* aviso "a confirmar" */
+.advice{
+  display:flex;
+  gap:14px;
+  align-items:flex-start;
+  background:#f1ece1;
+  border:1px solid var(--line);
+  border-left:3px solid var(--brass);
+  border-radius:2px;
+  padding:18px 20px;
+  margin:0 0 44px;
+  max-width:46em;
+}
+.advice svg{flex:0 0 auto;margin-top:2px}
+.advice p{
+  font-family:var(--sans);
+  font-size:14px;
+  line-height:1.65;
+  color:var(--ink-soft);
+}
+.advice strong{color:var(--ink)}
+
+/* ---------- áreas de práctica ---------- */
+.areas{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:1px;
+  background:var(--line);
+  border:1px solid var(--line);
+  border-radius:2px;
+  overflow:hidden;
+}
+.area{
+  background:var(--paper-2);
+  padding:34px 30px 36px;
+  min-width:0;
+}
+.area-ico{margin:0 0 20px;display:block}
+.area h3{
+  font-size:20px;
+  margin:0 0 11px;
+}
+.area p{
+  font-size:15.5px;
+  line-height:1.68;
+  color:var(--body);
+}
+.area-tag{
+  display:inline-block;
+  margin-top:18px;
+  font-family:var(--sans);
+  font-size:10.5px;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  color:var(--brass);
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:4px 11px;
+}
+
+/* ---------- pasos ---------- */
+.steps{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:40px;
+}
+.step{min-width:0;padding-top:26px;border-top:2px solid var(--ink)}
+.step-n{
+  font-family:var(--sans);
+  font-size:11.5px;
+  letter-spacing:.17em;
+  text-transform:uppercase;
+  color:var(--brass);
+  font-weight:600;
+  margin:0 0 14px;
+}
+.step h3{font-size:21px;margin:0 0 12px}
+.step p{font-size:16px;line-height:1.72}
+
+/* ---------- contacto ---------- */
+.contact-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);
+  gap:56px;
+  align-items:start;
+}
+.contact-list{margin:0}
+.contact-list > div{
+  display:flex;
+  gap:18px;
+  padding:24px 0;
+  border-bottom:1px solid var(--line);
+  align-items:flex-start;
+}
+.contact-list > div:first-child{padding-top:0}
+.ci{
+  flex:0 0 auto;
+  width:38px;height:38px;
+  border:1px solid var(--line);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--paper-2);
+}
+.cb{min-width:0}
+.cb h3{
+  font-family:var(--sans);
+  font-size:10.5px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+  font-weight:600;
+  margin:0 0 6px;
+}
+.cb p,.cb a{
+  font-size:17px;
+  line-height:1.6;
+  color:var(--ink);
+  overflow-wrap:break-word;
+}
+.cb .big{font-size:24px;letter-spacing:.005em;font-weight:600;display:inline-block}
+.cb a{border-bottom:1px solid var(--line)}
+.cb a:hover{border-bottom-color:var(--brass)}
+.cb small{
+  display:block;
+  font-family:var(--sans);
+  font-size:13px;
+  color:var(--ink-soft);
+  margin-top:5px;
+}
+
+.map-card{
+  border:1px solid var(--line);
+  border-radius:3px;
+  background:var(--paper-2);
+  overflow:hidden;
+  min-width:0;
+}
+.map-card svg{display:block;width:100%;height:auto}
+.map-foot{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 18px;
+  align-items:baseline;
+  justify-content:space-between;
+  padding:15px 20px;
+  border-top:1px solid var(--line);
+  font-family:var(--sans);
+  font-size:12.5px;
+  line-height:1.5;
+  color:var(--ink-soft);
+}
+.map-foot b{color:var(--ink);font-weight:600}
+
+/* ---------- pie ---------- */
+.foot{
+  background:var(--ink);
+  color:#b9b3a7;
+  padding:70px 0 0;
+}
+.foot-top{
+  display:grid;
+  grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) minmax(0,1fr);
+  gap:44px;
+  padding-bottom:52px;
+}
+.foot h2{color:#fdfbf7;font-size:22px;margin:0 0 14px}
+.foot h4{
+  font-family:var(--sans);
+  font-size:10.5px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--brass-soft);
+  font-weight:600;
+  margin:0 0 16px;
+}
+.foot p,.foot li{font-size:15.5px;line-height:1.72;color:#b9b3a7;overflow-wrap:break-word}
+.foot ul{list-style:none;margin:0;padding:0}
+.foot li{margin-bottom:9px}
+.foot a{color:#e3ddd1;border-bottom:1px solid rgba(176,138,68,.45)}
+.foot a:hover{color:#fff}
+.foot-legal{
+  border-top:1px solid rgba(233,227,215,.14);
+  padding:26px 0 34px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px 28px;
+  justify-content:space-between;
+  align-items:baseline;
+}
+.foot-legal p{
+  font-family:var(--sans);
+  font-size:13px;
+  line-height:1.6;
+  color:#8f8a80;
+}
+.foot-credit{
+  background:#090f15;
+  border-top:1px solid rgba(176,138,68,.35);
+  padding:20px 0;
+}
+.foot-credit p{
+  font-family:var(--sans);
+  font-size:13px;
+  line-height:1.6;
+  color:#cfc8bb;
+  text-align:center;
+}
+
+/* ---------- reveal suave ---------- */
+.rv{opacity:1;transform:none}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none;transition:none}
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:1080px){
+  .hero-in{grid-template-columns:1fr;gap:46px;padding:76px 32px 72px}
+  .hero-card{max-width:520px}
+  .contact-grid{grid-template-columns:1fr;gap:44px}
+  .foot-top{grid-template-columns:1fr 1fr;gap:36px}
+  .foot-top > div:first-child{grid-column:1 / -1}
+}
+
+@media (max-width:860px){
+  .areas{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .steps{grid-template-columns:1fr;gap:34px}
+  .top-nav{display:none}
+}
+
+@media (max-width:620px){
+  body{font-size:16.5px;padding-top:58px}
+  .wrap{padding:0 16px}
+  .top-in{padding:16px}
+  .hero-in{padding:52px 16px 56px;gap:38px}
+  .band{padding:60px 0}
+  .areas{grid-template-columns:1fr}
+  .area{padding:28px 20px 30px}
+  .hero-card{padding:26px 20px}
+  .sec-head{margin-bottom:38px}
+  .advice{margin-bottom:34px;padding:16px;gap:12px}
+  .brand-name{font-size:16px}
+  .btn{width:100%;justify-content:center;padding:15px 18px}
+  .cta-row{gap:11px}
+  .hero-lead{font-size:17.5px}
+  .foot{padding-top:56px}
+  .foot-top{grid-template-columns:1fr;gap:34px;padding-bottom:40px}
+  .foot-top > div:first-child{grid-column:auto}
+  .cb .big{font-size:21px}
+  .map-foot{padding:14px 16px}
+  .contact-list > div{gap:14px;padding:20px 0}
+}
+
+@media (max-width:400px){
+  .top-tel{padding:8px 13px;font-size:13px}
+  .brand-sub{font-size:9.5px;letter-spacing:.12em}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== barra fija de maqueta ===== -->
+<div class="flag" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<!-- ===== cabecera ===== -->
+<header class="top">
+  <div class="top-in">
+    <div class="brand">
+      <svg class="brand-mark" width="38" height="38" viewBox="0 0 38 38" aria-hidden="true">
+        <rect x="1" y="1" width="36" height="36" rx="2" fill="none" stroke="#131c26" stroke-width="1.2"/>
+        <path d="M12 26.5h14" stroke="#8a6a32" stroke-width="1.4" stroke-linecap="round"/>
+        <path d="M19 10.5v14" stroke="#131c26" stroke-width="1.4" stroke-linecap="round"/>
+        <path d="M11 14.5h16" stroke="#131c26" stroke-width="1.4" stroke-linecap="round"/>
+        <path d="M11 14.5 8 21h6z" fill="none" stroke="#131c26" stroke-width="1.1" stroke-linejoin="round"/>
+        <path d="M27 14.5 24 21h6z" fill="none" stroke="#131c26" stroke-width="1.1" stroke-linejoin="round"/>
+        <circle cx="19" cy="10.5" r="1.6" fill="#8a6a32"/>
+      </svg>
+      <div class="brand-txt">
+        <div class="brand-name">Jesús Fernández</div>
+        <div class="brand-sub">Abogado · Manzanares</div>
+      </div>
+    </div>
+    <nav class="top-nav" aria-label="Navegación principal">
+      <a href="#areas">Áreas</a>
+      <a href="#consulta">Primera consulta</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="top-tel" href="tel:+34926098986">926 098 986</a>
+  </div>
+</header>
+
+<!-- ===== hero ===== -->
+<section class="hero" aria-labelledby="h-hero">
+  <svg class="hero-deco" width="100%" height="100%" viewBox="0 0 1200 560" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="hl" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#b08a44" stop-opacity=".30"/>
+        <stop offset="1" stop-color="#b08a44" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <g stroke="url(#hl)" stroke-width="1" fill="none">
+      <path d="M700 -40 L1240 500"/>
+      <path d="M760 -40 L1300 500"/>
+      <path d="M820 -40 L1360 500"/>
+      <path d="M880 -40 L1420 500"/>
+    </g>
+    <g fill="none" stroke="#b08a44" stroke-opacity=".16">
+      <circle cx="1040" cy="150" r="118"/>
+      <circle cx="1040" cy="150" r="172"/>
+    </g>
+    <g stroke="#b08a44" stroke-opacity=".10" stroke-width="1">
+      <path d="M0 470h1200"/>
+      <path d="M0 510h1200"/>
+    </g>
+  </svg>
+
+  <div class="hero-in">
+    <div>
+      <p class="eyebrow on-dark">Despacho de abogado · Manzanares (Ciudad Real)</p>
+      <h1 id="h-hero">Asesoramiento jurídico <em>cercano</em>, explicado en un lenguaje que se entiende.</h1>
+      <p class="hero-lead">Un despacho individual en Manzanares para atender asuntos del día a día: lo que ocurre en una familia, en un contrato, en un alquiler o en el trabajo. Trato directo con el abogado que lleva el asunto, de principio a fin.</p>
+      <p class="hero-note">Lo más rápido para saber si su caso encaja en el despacho es una llamada: se plantea la situación y se acuerda cómo continuar.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="tel:+34926098986">
+          <svg width="17" height="17" viewBox="0 0 17 17" aria-hidden="true">
+            <path d="M3.3 2.2h3L7.5 5.4 5.9 6.7c.7 1.8 2.2 3.3 4 4l1.3-1.6 3.2 1.2v3c0 .7-.6 1.3-1.3 1.3C7.1 14.6 2.4 9.9 2 3.5c0-.7.6-1.3 1.3-1.3z" fill="none" stroke="#161008" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/>
+          </svg>
+          Llamar al 926 098 986
+        </a>
+        <a class="btn btn-ghost" href="#consulta">Cómo es la primera consulta</a>
+      </div>
+    </div>
+
+    <aside class="hero-card" aria-label="Datos del despacho">
+      <h2>El despacho</h2>
+      <dl class="dl">
+        <div>
+          <dt>Dirección</dt>
+          <dd>C/ Toledo, 93, Bloque 6, Bajo B<br>13200 Manzanares (Ciudad Real)</dd>
+        </div>
+        <div>
+          <dt>Teléfono</dt>
+          <dd><a href="tel:+34926098986">926 098 986</a></dd>
+        </div>
+        <div>
+          <dt>Correo electrónico</dt>
+          <dd><a href="mailto:jesusfernandez@icacr.es">jesusfernandez@icacr.es</a></dd>
+        </div>
+        <div>
+          <dt>Atención</dt>
+          <dd>Consultar horario</dd>
+        </div>
+      </dl>
+    </aside>
+  </div>
+</section>
+
+<!-- ===== áreas ===== -->
+<section class="band band-paper" id="areas" aria-labelledby="h-areas">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Áreas de práctica</p>
+      <hr class="rule">
+      <h2 id="h-areas">Los asuntos habituales de un despacho generalista</h2>
+      <p>Materias propias de un despacho de abogado generalista, planteadas aquí como punto de partida del diseño.</p>
+    </div>
+
+    <div class="advice rv">
+      <svg width="19" height="19" viewBox="0 0 19 19" aria-hidden="true">
+        <circle cx="9.5" cy="9.5" r="8" fill="none" stroke="#8a6a32" stroke-width="1.3"/>
+        <path d="M9.5 8.3v5" stroke="#8a6a32" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="9.5" cy="5.6" r="1" fill="#8a6a32"/>
+      </svg>
+      <p><strong>Contenido de ejemplo, a confirmar.</strong> Este listado es una propuesta genérica de maqueta: las áreas definitivas, su orden y su redacción las decide el despacho. Nada de lo que aparece aquí describe una especialización comprobada.</p>
+    </div>
+
+    <div class="areas rv">
+      <article class="area">
+        <svg class="area-ico" width="30" height="30" viewBox="0 0 30 30" aria-hidden="true">
+          <rect x="4" y="4" width="22" height="22" rx="1.5" fill="none" stroke="#131c26" stroke-width="1.3"/>
+          <path d="M8.5 11h13M8.5 15h13M8.5 19h8" stroke="#8a6a32" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+        <h3>Derecho civil</h3>
+        <p>Cuestiones generales entre particulares: responsabilidad, propiedad, obligaciones y los conflictos que surgen de la convivencia y de los acuerdos privados.</p>
+        <span class="area-tag">A confirmar</span>
+      </article>
+
+      <article class="area">
+        <svg class="area-ico" width="30" height="30" viewBox="0 0 30 30" aria-hidden="true">
+          <circle cx="11" cy="10" r="3.6" fill="none" stroke="#131c26" stroke-width="1.3"/>
+          <circle cx="20.5" cy="12" r="2.8" fill="none" stroke="#8a6a32" stroke-width="1.2"/>
+          <path d="M4.5 24c0-3.9 2.9-6.6 6.5-6.6s6.5 2.7 6.5 6.6" fill="none" stroke="#131c26" stroke-width="1.3" stroke-linecap="round"/>
+          <path d="M19.5 17.8c3 .3 5.3 2.6 5.3 6.2" fill="none" stroke="#8a6a32" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+        <h3>Familia</h3>
+        <p>Situaciones familiares que necesitan orden jurídico: separaciones, medidas sobre los hijos, convenios y su modificación cuando cambian las circunstancias.</p>
+        <span class="area-tag">A confirmar</span>
+      </article>
+
+      <article class="area">
+        <svg class="area-ico" width="30" height="30" viewBox="0 0 30 30" aria-hidden="true">
+          <rect x="4" y="9.5" width="22" height="15" rx="1.5" fill="none" stroke="#131c26" stroke-width="1.3"/>
+          <path d="M11 9.5V7a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2.5" fill="none" stroke="#131c26" stroke-width="1.3"/>
+          <path d="M4 15.5h22" stroke="#8a6a32" stroke-width="1.2"/>
+          <path d="M13.5 15.5h3v2.5h-3z" fill="none" stroke="#8a6a32" stroke-width="1.2"/>
+        </svg>
+        <h3>Laboral</h3>
+        <p>Relaciones de trabajo vistas desde la persona o desde la empresa: despidos, reclamaciones de cantidad, modificaciones de condiciones y trámites previos.</p>
+        <span class="area-tag">A confirmar</span>
+      </article>
+
+      <article class="area">
+        <svg class="area-ico" width="30" height="30" viewBox="0 0 30 30" aria-hidden="true">
+          <path d="M4 14 15 5.5 26 14" fill="none" stroke="#131c26" stroke-width="1.3" stroke-linejoin="round"/>
+          <path d="M7 14v10.5h16V14" fill="none" stroke="#131c26" stroke-width="1.3" stroke-linejoin="round"/>
+          <path d="M12.5 24.5V18h5v6.5" fill="none" stroke="#8a6a32" stroke-width="1.2" stroke-linejoin="round"/>
+        </svg>
+        <h3>Arrendamientos</h3>
+        <p>Alquiler de vivienda y de local: redacción y revisión de contratos, impagos de renta, fianzas, obras, prórrogas y finalización del arrendamiento.</p>
+        <span class="area-tag">A confirmar</span>
+      </article>
+
+      <article class="area">
+        <svg class="area-ico" width="30" height="30" viewBox="0 0 30 30" aria-hidden="true">
+          <path d="M8 4.5h10l5 5v16H8z" fill="none" stroke="#131c26" stroke-width="1.3" stroke-linejoin="round"/>
+          <path d="M18 4.5v5h5" fill="none" stroke="#131c26" stroke-width="1.3" stroke-linejoin="round"/>
+          <path d="M11.5 15h8M11.5 19h8" stroke="#8a6a32" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+        <h3>Reclamaciones y contratos</h3>
+        <p>Revisión y redacción de contratos antes de firmar, y reclamaciones cuando lo pactado no se cumple: requerimientos, negociación y vía judicial si procede.</p>
+        <span class="area-tag">A confirmar</span>
+      </article>
+
+      <article class="area">
+        <svg class="area-ico" width="30" height="30" viewBox="0 0 30 30" aria-hidden="true">
+          <path d="M15 4.5 24.5 9v8c0 4.6-3.9 7.6-9.5 9.1C9.4 24.6 5.5 21.6 5.5 17V9z" fill="none" stroke="#131c26" stroke-width="1.3" stroke-linejoin="round"/>
+          <path d="M11 15.5h8M15 11.5v8" stroke="#8a6a32" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+        <h3>Herencias</h3>
+        <p>Sucesiones y reparto de bienes: aceptación de herencia, cuadernos particionales, desacuerdos entre herederos y los trámites que acompañan al proceso.</p>
+        <span class="area-tag">A confirmar</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== primera consulta ===== -->
+<section class="band" id="consulta" aria-labelledby="h-consulta">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Tu primera consulta</p>
+      <hr class="rule">
+      <h2 id="h-consulta">Tres pasos, sin compromisos escritos en piedra</h2>
+      <p>La idea de esta sección es que quien entra en la web sepa qué va a pasar antes de llamar. El detalle de cada paso lo ajusta el despacho.</p>
+    </div>
+    <div class="steps rv">
+      <article class="step">
+        <p class="step-n">Paso 01</p>
+        <h3>Llamada inicial</h3>
+        <p>Se llama al despacho y se explica la situación con lo que se tenga a mano. En esa conversación se aclara si el asunto corresponde a este despacho y qué documentación conviene reunir.</p>
+      </article>
+      <article class="step">
+        <p class="step-n">Paso 02</p>
+        <h3>Revisión del asunto</h3>
+        <p>Con los documentos sobre la mesa se estudia el caso y se identifican las opciones reales, con sus ventajas y sus inconvenientes, sin anticipar cómo terminará.</p>
+      </article>
+      <article class="step">
+        <p class="step-n">Paso 03</p>
+        <h3>Decisión y seguimiento</h3>
+        <p>Se decide conjuntamente el camino a seguir y se acuerda la forma de mantener el contacto durante la tramitación, de modo que siempre se sepa en qué punto está el asunto.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== contacto ===== -->
+<section class="band band-paper" id="contacto" aria-labelledby="h-contacto">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Contacto</p>
+      <hr class="rule">
+      <h2 id="h-contacto">Dónde está el despacho y cómo llamar</h2>
+      <p>El teléfono es la vía más directa. También puede escribir al correo del despacho para plantear su consulta por escrito.</p>
+    </div>
+
+    <div class="contact-grid rv">
+      <div class="contact-list">
+        <div>
+          <span class="ci" aria-hidden="true">
+            <svg width="17" height="17" viewBox="0 0 17 17">
+              <path d="M3.3 2.2h3L7.5 5.4 5.9 6.7c.7 1.8 2.2 3.3 4 4l1.3-1.6 3.2 1.2v3c0 .7-.6 1.3-1.3 1.3C7.1 14.6 2.4 9.9 2 3.5c0-.7.6-1.3 1.3-1.3z" fill="none" stroke="#8a6a32" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <div class="cb">
+            <h3>Teléfono</h3>
+            <a class="big" href="tel:+34926098986">926 098 986</a>
+            <small>Pulse el número para llamar desde el móvil.</small>
+          </div>
+        </div>
+
+        <div>
+          <span class="ci" aria-hidden="true">
+            <svg width="17" height="17" viewBox="0 0 17 17">
+              <path d="M8.5 1.6c2.7 0 4.9 2.2 4.9 4.9 0 3.5-4.9 8.9-4.9 8.9S3.6 10 3.6 6.5c0-2.7 2.2-4.9 4.9-4.9z" fill="none" stroke="#8a6a32" stroke-width="1.3" stroke-linejoin="round"/>
+              <circle cx="8.5" cy="6.5" r="1.9" fill="none" stroke="#8a6a32" stroke-width="1.2"/>
+            </svg>
+          </span>
+          <div class="cb">
+            <h3>Dirección</h3>
+            <p>C/ Toledo, 93, Bloque 6, Bajo B<br>13200 Manzanares (Ciudad Real)</p>
+          </div>
+        </div>
+
+        <div>
+          <span class="ci" aria-hidden="true">
+            <svg width="17" height="17" viewBox="0 0 17 17">
+              <rect x="1.8" y="3.6" width="13.4" height="9.8" rx="1.2" fill="none" stroke="#8a6a32" stroke-width="1.3"/>
+              <path d="m2.4 4.6 6.1 4.6 6.1-4.6" fill="none" stroke="#8a6a32" stroke-width="1.3" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <div class="cb">
+            <h3>Correo electrónico</h3>
+            <a href="mailto:jesusfernandez@icacr.es">jesusfernandez@icacr.es</a>
+          </div>
+        </div>
+
+        <div>
+          <span class="ci" aria-hidden="true">
+            <svg width="17" height="17" viewBox="0 0 17 17">
+              <circle cx="8.5" cy="8.5" r="6.7" fill="none" stroke="#8a6a32" stroke-width="1.3"/>
+              <path d="M8.5 4.6v4.2l3 1.8" fill="none" stroke="#8a6a32" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <div class="cb">
+            <h3>Horario de atención</h3>
+            <p>Consultar horario</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- mapa esquemático dibujado a mano, sin pretensión cartográfica -->
+      <figure class="map-card" style="margin:0">
+        <svg viewBox="0 0 560 400" role="img" aria-label="Plano esquemático y abstracto de la zona del despacho, con un marcador sobre la calle Toledo. No es un mapa a escala.">
+          <defs>
+            <linearGradient id="mg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#f3efe6"/>
+              <stop offset="1" stop-color="#eae5d9"/>
+            </linearGradient>
+          </defs>
+          <rect width="560" height="400" fill="url(#mg)"/>
+
+          <!-- manzanas -->
+          <g fill="#e2dccd" stroke="#d3ccba" stroke-width="1">
+            <rect x="34" y="34" width="150" height="104" rx="2"/>
+            <rect x="214" y="34" width="118" height="104" rx="2"/>
+            <rect x="362" y="34" width="164" height="104" rx="2"/>
+            <rect x="34" y="188" width="150" height="80" rx="2"/>
+            <rect x="214" y="188" width="118" height="80" rx="2"/>
+            <rect x="362" y="188" width="164" height="80" rx="2"/>
+            <rect x="34" y="306" width="206" height="62" rx="2"/>
+            <rect x="272" y="306" width="254" height="62" rx="2"/>
+          </g>
+
+          <!-- calles secundarias -->
+          <g stroke="#ffffff" stroke-width="14" stroke-linecap="square">
+            <path d="M199 20v360"/>
+            <path d="M347 20v360"/>
+            <path d="M20 153h520"/>
+            <path d="M20 287h520"/>
+          </g>
+          <g stroke="#ded7c6" stroke-width="1" stroke-dasharray="7 9">
+            <path d="M199 20v360"/>
+            <path d="M347 20v360"/>
+            <path d="M20 287h520"/>
+          </g>
+
+          <!-- calle principal (Toledo) -->
+          <g>
+            <path d="M-10 153h580" stroke="#ffffff" stroke-width="26" stroke-linecap="square"/>
+            <path d="M-10 153h580" stroke="#cfc6b1" stroke-width="26" stroke-opacity=".25" stroke-linecap="square"/>
+            <path d="M-10 153h580" stroke="#b08a44" stroke-width="1.6" stroke-dasharray="16 12" stroke-opacity=".75"/>
+          </g>
+          <text x="46" y="146" font-family="-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="12.5" letter-spacing="1.6" fill="#6f6758">C /   T O L E D O</text>
+
+          <!-- edificio del despacho -->
+          <rect x="214" y="188" width="56" height="44" rx="2" fill="#131c26" opacity=".1"/>
+          <rect x="214" y="188" width="56" height="44" rx="2" fill="none" stroke="#131c26" stroke-width="1.4"/>
+          <path d="M222 232v-26h8v26M240 232v-26h8v26M258 232v-26h4v26" stroke="#131c26" stroke-width="1" stroke-opacity=".5" fill="none"/>
+
+          <!-- marcador -->
+          <g>
+            <ellipse cx="242" cy="178" rx="15" ry="4.5" fill="#131c26" opacity=".16"/>
+            <path d="M242 118c13.8 0 25 11.2 25 25 0 17.8-25 35-25 35s-25-17.2-25-35c0-13.8 11.2-25 25-25z" fill="#8a6a32"/>
+            <circle cx="242" cy="143" r="9" fill="#f7f4ee"/>
+            <path d="M237.5 143h9M242 138.5v9" stroke="#8a6a32" stroke-width="1.8" stroke-linecap="round"/>
+          </g>
+
+          <!-- etiqueta -->
+          <g>
+            <rect x="296" y="106" width="212" height="56" rx="3" fill="#fffdf9" stroke="#d3ccba" stroke-width="1"/>
+            <text x="312" y="130" font-family="-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="14" font-weight="600" fill="#131c26">C/ Toledo, 93</text>
+            <text x="312" y="149" font-family="-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="12.5" fill="#5d6675">Bloque 6, Bajo B · Manzanares</text>
+          </g>
+
+          <!-- rosa de los vientos -->
+          <g transform="translate(508 340)">
+            <circle r="21" fill="#fffdf9" stroke="#d3ccba" stroke-width="1"/>
+            <path d="M0 -14 4 0 0 4 -4 0z" fill="#8a6a32"/>
+            <path d="M0 14 4 0 0 -4 -4 0z" fill="#131c26" opacity=".35"/>
+            <text x="0" y="-24.5" text-anchor="middle" font-family="-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="10" fill="#6f6758">N</text>
+          </g>
+        </svg>
+        <figcaption class="map-foot">
+          <span><b>Plano esquemático</b> · dibujo orientativo, no a escala</span>
+          <span>Horario: Consultar horario</span>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== pie ===== -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <h2>Jesús Fernández Abogado</h2>
+        <p>Despacho de abogado en Manzanares (Ciudad Real). Para plantear un asunto, lo más directo es llamar por teléfono o escribir al correo del despacho.</p>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="tel:+34926098986">926 098 986</a></li>
+          <li><a href="mailto:jesusfernandez@icacr.es">jesusfernandez@icacr.es</a></li>
+          <li>Consultar horario</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Dirección</h4>
+        <ul>
+          <li>C/ Toledo, 93</li>
+          <li>Bloque 6, Bajo B</li>
+          <li>13200 Manzanares (Ciudad Real)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-legal">
+      <p>Maqueta de demostración. Los textos de áreas de práctica y de la primera consulta son contenido de ejemplo pendiente de revisión por el despacho.</p>
+      <p>Jesús Fernández Abogado · Manzanares</p>
+    </div>
+  </div>
+  <div class="foot-credit">
+    <div class="wrap">
+      <p>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // La barra fija puede ocupar una o dos líneas según el ancho:
+  // ajustamos el hueco superior del body a su altura real.
+  var bar = document.querySelector('.flag');
+  function fitBar(){
+    if(bar){ document.body.style.paddingTop = bar.offsetHeight + 'px'; }
+  }
+  fitBar();
+  window.addEventListener('resize', fitBar);
+
+  var items = [].slice.call(document.querySelectorAll('.rv'));
+
+  // Revela todo lo que ya ha quedado por encima del borde inferior de la
+  // ventana. Así, aunque se salte de golpe a otra parte de la página,
+  // nunca queda una sección en blanco.
+  function reveal(){
+    var limit = window.innerHeight * 0.94;
+    items = items.filter(function(el){
+      if(el.getBoundingClientRect().top < limit){
+        el.classList.add('in');
+        return false;
+      }
+      return true;
+    });
+    if(!items.length){
+      window.removeEventListener('scroll', reveal);
+      window.removeEventListener('resize', reveal);
+    }
+  }
+  window.addEventListener('scroll', reveal, {passive:true});
+  window.addEventListener('resize', reveal);
+  reveal();
+
+  // desplazamiento suave teniendo en cuenta la barra fija
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(ev){
+      var id = a.getAttribute('href');
+      if(id.length < 2) return;
+      var t = document.querySelector(id);
+      if(!t) return;
+      ev.preventDefault();
+      var off = (bar ? bar.offsetHeight : 0) + 12;
+      var y = t.getBoundingClientRect().top + window.pageYOffset - off;
+      window.scrollTo({top:y, behavior:'smooth'});
+    });
+  });
+})();
+</script>
+</body>
+</html>
