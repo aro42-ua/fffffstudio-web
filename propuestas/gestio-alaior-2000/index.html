@@ -1,0 +1,665 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gestió Alaior 2000, S.L. — Gestoría y asesoría de empresas en Alaior</title>
+<meta name="description" content="Gestió Alaior 2000, S.L. Asesoría laboral, fiscal y contable en Alaior, Menorca. Maqueta de propuesta de diseño web.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  :root{
+    --ink:#0d1726;
+    --navy:#14314f;
+    --navy-2:#1d4570;
+    --slate:#4b5b6e;
+    --line:#dfe3e8;
+    --line-soft:#eceef1;
+    --paper:#f6f7f8;
+    --white:#ffffff;
+    --gold:#9a7430;
+    --gold-soft:#f2ead9;
+    --bar-h:40px;
+    --maxw:1140px;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    padding-top:var(--bar-h);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    font-size:17px;
+    line-height:1.65;
+    overflow-x:hidden;
+  }
+  img,svg{max-width:100%}
+  h1,h2,h3,h4{margin:0;line-height:1.18;letter-spacing:-.015em;font-weight:650}
+  p{margin:0}
+  a{color:inherit}
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  .eyebrow{
+    font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+    font-weight:700;color:var(--gold);margin-bottom:18px
+  }
+  .eyebrow.on-dark{color:#d9bd86}
+
+  /* ---------- barra fija ---------- */
+  .notice{
+    position:fixed;top:0;left:0;right:0;height:var(--bar-h);
+    display:flex;align-items:center;justify-content:center;
+    background:#0d1726;color:#e8eaee;
+    font-size:12.5px;letter-spacing:.02em;
+    text-align:center;padding:0 12px;
+    border-bottom:1px solid rgba(255,255,255,.14);
+    z-index:100;
+  }
+  .notice span{
+    display:block;max-width:100%;
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  }
+
+  /* ---------- cabecera ---------- */
+  .site-head{
+    border-bottom:1px solid var(--line-soft);
+    background:var(--white);
+  }
+  .site-head .inner{
+    display:flex;align-items:center;justify-content:space-between;gap:20px;
+    min-height:82px;
+  }
+  .brand{display:flex;align-items:center;gap:13px;text-decoration:none}
+  .mark{
+    width:42px;height:42px;flex:0 0 42px;border-radius:9px;
+    background:linear-gradient(145deg,#1d4570,#0d1726);
+    color:#fff;display:flex;align-items:center;justify-content:center;
+    font-size:13px;font-weight:700;letter-spacing:.04em;
+  }
+  .brand-name{font-size:16.5px;font-weight:680;letter-spacing:-.01em}
+  .brand-sub{font-size:12.5px;color:var(--slate);letter-spacing:.01em}
+  .nav{display:flex;align-items:center;gap:28px}
+  .nav a{font-size:14.5px;color:var(--slate);text-decoration:none;font-weight:550}
+  .nav a:hover{color:var(--navy)}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    padding:13px 22px;border-radius:7px;text-decoration:none;
+    font-size:15px;font-weight:620;letter-spacing:-.005em;
+    border:1px solid transparent;cursor:pointer;
+  }
+  .btn-primary{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .btn-primary:hover{background:#0d2742}
+  .btn-ghost{background:transparent;color:var(--navy);border-color:var(--line)}
+  .btn-ghost:hover{border-color:var(--navy)}
+  .btn-light{background:#fff;color:var(--navy)}
+  .btn-outline-light{background:transparent;color:#fff;border-color:rgba(255,255,255,.4)}
+  .btn-outline-light:hover{border-color:#fff}
+  .btn svg{flex:0 0 auto}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;color:#fff;
+    background:
+      radial-gradient(1000px 520px at 88% -12%,rgba(154,116,48,.30),transparent 62%),
+      radial-gradient(760px 480px at 8% 108%,rgba(42,96,150,.48),transparent 65%),
+      linear-gradient(160deg,#14314f 0%,#0d1726 100%);
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),
+                     linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+    background-size:64px 64px;
+    mask-image:linear-gradient(to bottom,rgba(0,0,0,.9),transparent 78%);
+    -webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,.9),transparent 78%);
+  }
+  .hero .inner{
+    position:relative;z-index:1;
+    display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
+    gap:56px;align-items:center;
+    padding:88px 0 96px;
+  }
+  .hero h1{font-size:clamp(2rem,4.4vw,3.35rem);font-weight:660;letter-spacing:-.028em}
+  .hero .lead{
+    margin-top:22px;font-size:clamp(1rem,1.3vw,1.16rem);
+    color:#c9d3de;max-width:36em;
+  }
+  .hero-actions{display:flex;flex-wrap:wrap;gap:13px;margin-top:34px}
+  .hero-meta{
+    display:flex;flex-wrap:wrap;gap:10px 30px;margin-top:38px;
+    padding-top:26px;border-top:1px solid rgba(255,255,255,.16);
+    font-size:14px;color:#aebccb;
+  }
+  .hero-meta b{color:#fff;font-weight:600}
+  .hero-card{
+    background:rgba(255,255,255,.055);
+    border:1px solid rgba(255,255,255,.17);
+    border-radius:14px;padding:30px 28px;
+    backdrop-filter:blur(2px);
+  }
+  .hero-card h2{font-size:15px;letter-spacing:.1em;text-transform:uppercase;color:#d9bd86;font-weight:700}
+  .dl{margin:22px 0 0;display:grid;gap:18px}
+  .dl .k{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#9fb0c1;font-weight:650}
+  .dl .v{font-size:16.5px;color:#fff;margin-top:4px;font-weight:560}
+  .dl .v a{text-decoration:none;border-bottom:1px solid rgba(255,255,255,.35)}
+  .tag{
+    display:inline-block;margin-top:4px;
+    font-size:13px;font-weight:600;color:#0d1726;
+    background:#e5d8bd;border-radius:999px;padding:4px 13px;
+  }
+
+  /* ---------- secciones ---------- */
+  section{scroll-margin-top:calc(var(--bar-h) + 16px)}
+  .band{padding:92px 0}
+  .band.alt{background:var(--paper);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
+  .sec-head{max-width:46em}
+  .sec-head h2{font-size:clamp(1.55rem,2.8vw,2.2rem);letter-spacing:-.022em}
+  .sec-head p{margin-top:16px;color:var(--slate);font-size:17px}
+
+  .grid-srv{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-top:46px}
+  .card{
+    background:var(--white);border:1px solid var(--line);border-radius:13px;
+    padding:30px 28px;
+  }
+  .card .ico{
+    width:46px;height:46px;border-radius:10px;background:var(--gold-soft);
+    display:flex;align-items:center;justify-content:center;color:var(--gold);
+    margin-bottom:20px;
+  }
+  .card h3{font-size:19.5px;letter-spacing:-.015em}
+  .card .kicker{
+    font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--gold);font-weight:700;margin-bottom:9px;
+  }
+  .card ul{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:9px}
+  .card li{position:relative;padding-left:22px;color:var(--slate);font-size:15.5px;line-height:1.55}
+  .card li::before{
+    content:"";position:absolute;left:3px;top:.62em;
+    width:7px;height:7px;border-radius:2px;background:var(--navy-2);
+  }
+  .note{
+    margin-top:30px;font-size:14px;color:var(--slate);
+    border-left:3px solid var(--line);padding:4px 0 4px 16px;
+  }
+
+  /* ---------- pasos ---------- */
+  .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:46px}
+  .step{background:#fff;border:1px solid var(--line);border-radius:13px;padding:30px 26px}
+  .step .num{
+    width:38px;height:38px;border-radius:50%;
+    border:1px solid var(--navy);color:var(--navy);
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;font-size:15px;margin-bottom:20px;
+  }
+  .step h3{font-size:18px}
+  .step p{margin-top:11px;color:var(--slate);font-size:15.5px}
+
+  /* ---------- contacto ---------- */
+  .contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;margin-top:46px;align-items:start}
+  .panel{background:#fff;border:1px solid var(--line);border-radius:13px;padding:32px 30px}
+  .panel.dark{
+    background:linear-gradient(165deg,#14314f,#0d1726);
+    color:#fff;border-color:#14314f;
+  }
+  .panel.dark h3{color:#fff}
+  .row{display:flex;gap:15px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.14)}
+  .row:last-of-type{border-bottom:0;padding-bottom:4px}
+  .row .ric{
+    width:36px;height:36px;flex:0 0 36px;border-radius:8px;
+    background:rgba(255,255,255,.1);color:#d9bd86;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .row .lbl{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#9fb0c1;font-weight:650}
+  .row .val{font-size:16.5px;margin-top:3px;font-weight:555;overflow-wrap:anywhere}
+  .row .val a{text-decoration:none;border-bottom:1px solid rgba(255,255,255,.35)}
+  .row .sub{font-size:13.5px;color:#9fb0c1;margin-top:3px}
+
+  .map{
+    margin-top:24px;border-radius:11px;overflow:hidden;
+    border:1px solid rgba(255,255,255,.18);background:#0a1420;
+  }
+  .map svg{display:block;width:100%;height:auto}
+  .map-cap{font-size:12.5px;color:#8fa0b2;margin-top:10px}
+
+  /* ---------- formulario ---------- */
+  form{margin-top:24px}
+  .fgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+  .field{display:flex;flex-direction:column;gap:7px;min-width:0}
+  .field.full{grid-column:1 / -1}
+  label{font-size:13px;font-weight:620;color:var(--ink);letter-spacing:.01em}
+  input,select,textarea{
+    font-family:inherit;font-size:15.5px;color:var(--ink);
+    width:100%;max-width:100%;padding:12px 14px;
+    border:1px solid var(--line);border-radius:7px;background:#fff;
+  }
+  textarea{min-height:112px;resize:vertical}
+  input:focus,select:focus,textarea:focus{outline:2px solid #1d4570;outline-offset:1px;border-color:#1d4570}
+  .check{display:flex;gap:11px;align-items:flex-start;margin-top:20px}
+  .check input{width:17px;height:17px;flex:0 0 17px;margin-top:3px;padding:0}
+  .check span{font-size:13.5px;color:var(--slate);line-height:1.5}
+  .form-foot{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:24px}
+  .form-foot .hint{font-size:13px;color:var(--slate)}
+
+  /* ---------- cta ---------- */
+  .cta{
+    text-align:center;padding:76px 0;
+    background:var(--paper);border-top:1px solid var(--line-soft);
+  }
+  .cta h2{font-size:clamp(1.45rem,2.6vw,2rem);letter-spacing:-.022em}
+  .cta p{margin:14px auto 0;max-width:40em;color:var(--slate)}
+  .cta .btn{margin-top:28px}
+
+  /* ---------- pie ---------- */
+  footer{background:#0d1726;color:#b9c4d0;padding:58px 0 40px;font-size:14.5px}
+  .foot-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr);gap:34px}
+  footer h4{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#7f91a4;margin-bottom:14px;font-weight:700}
+  footer a{color:#e6eaef;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.22);overflow-wrap:anywhere}
+  footer .fname{color:#fff;font-size:17px;font-weight:620;letter-spacing:-.01em}
+  footer ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+  .studio{
+    margin-top:44px;padding-top:24px;border-top:1px solid rgba(255,255,255,.14);
+    display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;justify-content:space-between;
+    font-size:13.5px;color:#8c9cad;
+  }
+  .studio strong{color:#dbe2e9;font-weight:600}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:980px){
+    .hero .inner{grid-template-columns:minmax(0,1fr);gap:40px;padding:66px 0 72px}
+    .contact-grid{grid-template-columns:minmax(0,1fr)}
+    .foot-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+    .nav{display:none}
+  }
+  @media (max-width:760px){
+    .steps{grid-template-columns:minmax(0,1fr)}
+    .grid-srv{grid-template-columns:minmax(0,1fr)}
+  }
+  @media (max-width:620px){
+    :root{--bar-h:52px}
+    body{font-size:16.5px}
+    .wrap{padding:0 18px}
+    .notice{font-size:11.5px;line-height:1.35;padding:0 14px}
+    .notice span{white-space:normal;overflow:visible}
+    .site-head .inner{min-height:72px}
+    .site-head .btn{display:none}
+    .band{padding:60px 0}
+    .cta{padding:56px 0}
+    .hero .inner{padding:52px 0 60px}
+    .hero-actions .btn{width:100%}
+    .hero-card{padding:24px 20px}
+    .panel{padding:26px 20px}
+    .card{padding:26px 22px}
+    .fgrid{grid-template-columns:minmax(0,1fr)}
+    .foot-grid{grid-template-columns:minmax(0,1fr);gap:28px}
+    .hero-meta{gap:10px 18px}
+  }
+</style>
+</head>
+<body>
+
+<div class="notice" role="note"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<header class="site-head">
+  <div class="wrap inner">
+    <a class="brand" href="#inicio">
+      <span class="mark" aria-hidden="true">G2</span>
+      <span>
+        <span class="brand-name">Gestió Alaior 2000, S.L.</span><br>
+        <span class="brand-sub">Gestoría y asesoría de empresas · Alaior</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Secciones">
+      <a href="#servicios">Servicios</a>
+      <a href="#proceso">Tu primera consulta</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="btn btn-primary" href="tel:971372795">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.4 2.1L8.1 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.4c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2Z"/></svg>
+      971 372 795
+    </a>
+  </div>
+</header>
+
+<main id="inicio">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap inner">
+      <div>
+        <p class="eyebrow on-dark">Alaior · Menorca · Illes Balears</p>
+        <h1>Asesoría laboral, fiscal y contable para empresas y autónomos de Menorca.</h1>
+        <p class="lead">Gestió Alaior 2000, S.L. acompaña a empresas, autónomos y particulares en la gestión de sus obligaciones laborales, fiscales y contables, con atención directa en nuestra oficina de Alaior.</p>
+        <div class="hero-actions">
+          <a class="btn btn-light" href="tel:971372795">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.4 2.1L8.1 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.4c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2Z"/></svg>
+            Llamar al 971 372 795
+          </a>
+          <a class="btn btn-outline-light" href="#contacto">Dejar mis datos</a>
+        </div>
+        <div class="hero-meta">
+          <span><b>Laboral</b> · nóminas, contratos y seguros sociales</span>
+          <span><b>Fiscal</b> · impuestos y rentas</span>
+          <span><b>Contable</b> · contabilidad y cuentas anuales</span>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <h2>Oficina en Alaior</h2>
+        <div class="dl">
+          <div>
+            <div class="k">Teléfono</div>
+            <div class="v"><a href="tel:971372795">971 372 795</a></div>
+          </div>
+          <div>
+            <div class="k">Dirección</div>
+            <div class="v">Avda. Verge del Toro, 71<br>07730 Alaior (Menorca)</div>
+          </div>
+          <div>
+            <div class="k">Correo</div>
+            <div class="v"><a href="mailto:info@gestio2000.net">info@gestio2000.net</a></div>
+          </div>
+          <div>
+            <div class="k">Horario de atención</div>
+            <div><span class="tag">Consultar horario</span></div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section class="band" id="servicios">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Servicios</p>
+        <h2>Las áreas de las que nos ocupamos</h2>
+        <p>Gestión integral de las obligaciones periódicas de su empresa o actividad, desde la constitución hasta el día a día laboral, fiscal y contable.</p>
+      </div>
+
+      <div class="grid-srv">
+        <article class="card">
+          <div class="ico" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></svg>
+          </div>
+          <p class="kicker">Área laboral</p>
+          <h3>Nóminas, contratos y Seguridad Social</h3>
+          <ul>
+            <li>Elaboración de nóminas y finiquitos</li>
+            <li>Contratos de trabajo: alta, prórroga y extinción</li>
+            <li>Altas, bajas y variaciones en Seguridad Social</li>
+            <li>Seguros sociales y partes de incapacidad temporal</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="ico" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h5"/></svg>
+          </div>
+          <p class="kicker">Área fiscal</p>
+          <h3>Impuestos y declaraciones de renta</h3>
+          <ul>
+            <li>Declaraciones periódicas de IVA e IRPF</li>
+            <li>Declaración de la renta y patrimonio</li>
+            <li>Impuesto sobre sociedades</li>
+            <li>Altas, modificaciones y bajas censales</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="ico" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="6"/><rect x="12" y="8" width="3" height="10"/><rect x="17" y="5" width="3" height="13"/></svg>
+          </div>
+          <p class="kicker">Área contable</p>
+          <h3>Contabilidad y cuentas anuales</h3>
+          <ul>
+            <li>Contabilidad de empresas y autónomos</li>
+            <li>Libros registro obligatorios</li>
+            <li>Cuentas anuales y su depósito</li>
+            <li>Seguimiento periódico de resultados</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="ico" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V8l7-5 7 5v13"/><path d="M10 21v-6h4v6"/></svg>
+          </div>
+          <p class="kicker">Constitución</p>
+          <h3>Creación de empresas y sociedades</h3>
+          <ul>
+            <li>Constitución de sociedades</li>
+            <li>Alta de autónomos y nuevas actividades</li>
+            <li>Trámites ante administraciones y registros</li>
+            <li>Modificaciones societarias</li>
+          </ul>
+        </article>
+      </div>
+
+      <p class="note">Esta maqueta no incluye tarifas, plazos ni condiciones: cada caso se presupuesta tras una primera conversación. Los textos finales los revisaría y aprobaría la gestoría antes de publicar.</p>
+    </div>
+  </section>
+
+  <!-- PROCESO -->
+  <section class="band alt" id="proceso">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Tu primera consulta</p>
+        <h2>Cómo trabajamos, en tres pasos</h2>
+        <p>Un recorrido sencillo para que sepa qué esperar antes de ponerse en contacto con la gestoría.</p>
+      </div>
+
+      <div class="steps">
+        <article class="step">
+          <div class="num">1</div>
+          <h3>Nos cuenta su situación</h3>
+          <p>Por teléfono o dejando sus datos en el formulario. Nos explica si es empresa, autónomo o particular y qué necesita resolver.</p>
+        </article>
+        <article class="step">
+          <div class="num">2</div>
+          <h3>Revisamos su caso</h3>
+          <p>Analizamos la documentación y las obligaciones que le afectan, y le indicamos qué áreas conviene cubrir y qué información hace falta.</p>
+        </article>
+        <article class="step">
+          <div class="num">3</div>
+          <h3>Nos encargamos de la gestión</h3>
+          <p>Asumimos los trámites y las presentaciones que acordemos, y mantenemos el seguimiento periódico de sus obligaciones.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="band" id="contacto">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Contacto</p>
+        <h2>Hablemos de su caso</h2>
+        <p>Puede llamarnos directamente, pasar por la oficina de Alaior o dejarnos sus datos y le devolvemos el contacto.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="panel dark">
+          <h3>Datos de la gestoría</h3>
+
+          <div class="row">
+            <div class="ric" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.4 2.1L8.1 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.4c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2Z"/></svg>
+            </div>
+            <div>
+              <div class="lbl">Teléfono</div>
+              <div class="val"><a href="tel:971372795">971 372 795</a></div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="ric" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="lbl">Dirección</div>
+              <div class="val">Avda. Verge del Toro, 71</div>
+              <div class="sub">07730 Alaior · Menorca · Illes Balears</div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="ric" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2.5 6 9.5 7 9.5-7"/></svg>
+            </div>
+            <div>
+              <div class="lbl">Correo electrónico</div>
+              <div class="val"><a href="mailto:info@gestio2000.net">info@gestio2000.net</a></div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="ric" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+            </div>
+            <div>
+              <div class="lbl">Horario de atención</div>
+              <div class="val">Consultar horario</div>
+              <div class="sub">Llame al 971 372 795 y le indicamos la franja de atención.</div>
+            </div>
+          </div>
+
+          <div class="map">
+            <svg viewBox="0 0 600 340" role="img" aria-label="Mapa esquemático de situación de la oficina en Alaior, sin pretensión de exactitud geográfica">
+              <defs>
+                <linearGradient id="mapbg" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#132a43"/>
+                  <stop offset="1" stop-color="#0a1420"/>
+                </linearGradient>
+              </defs>
+              <rect width="600" height="340" fill="url(#mapbg)"/>
+              <g fill="#17334f" opacity=".75">
+                <rect x="34" y="34" width="136" height="80" rx="4"/>
+                <rect x="196" y="24" width="112" height="90" rx="4"/>
+                <rect x="404" y="40" width="150" height="74" rx="4"/>
+                <rect x="40" y="206" width="120" height="100" rx="4"/>
+                <rect x="372" y="200" width="104" height="66" rx="4"/>
+                <rect x="498" y="196" width="66" height="112" rx="4"/>
+                <rect x="206" y="226" width="124" height="82" rx="4"/>
+              </g>
+              <g stroke="#2a4b6d" stroke-width="2" opacity=".6">
+                <path d="M0 160h600"/><path d="M0 182h600"/>
+              </g>
+              <g stroke="#1f3f5e" stroke-width="16" stroke-linecap="square">
+                <path d="M0 171h600"/>
+                <path d="M184 0v340"/>
+                <path d="M352 114v226"/>
+                <path d="M34 262h540"/>
+              </g>
+              <g stroke="#30567a" stroke-width="3" stroke-dasharray="10 9" opacity=".8">
+                <path d="M0 171h600"/>
+              </g>
+              <text x="26" y="150" fill="#86a3c0" font-family="system-ui,sans-serif" font-size="14" letter-spacing="1.4">AVDA. VERGE DEL TORO</text>
+              <text x="196" y="330" fill="#5f7d9b" font-family="system-ui,sans-serif" font-size="12.5" letter-spacing="1.2">ALAIOR · MENORCA</text>
+              <g transform="translate(286 171)">
+                <circle r="44" fill="#9a7430" opacity=".14"/>
+                <circle r="26" fill="#9a7430" opacity=".22"/>
+                <path d="M0 -34c-9.3 0-17 7.6-17 17 0 12.4 17 29 17 29s17-16.6 17-29c0-9.4-7.7-17-17-17Z" fill="#d9a84a" stroke="#0a1420" stroke-width="2"/>
+                <circle cy="-17" r="6" fill="#0a1420"/>
+              </g>
+              <text x="286" y="232" text-anchor="middle" fill="#e8eaee" font-family="system-ui,sans-serif" font-size="15" font-weight="600">Núm. 71</text>
+            </svg>
+          </div>
+          <p class="map-cap">Mapa esquemático: orientación aproximada de la oficina, sin exactitud geográfica.</p>
+        </div>
+
+        <div class="panel">
+          <h3>Déjenos sus datos</h3>
+          <p style="margin-top:12px;color:var(--slate);font-size:15.5px">Formulario de la maqueta, sin envío real. En la web definitiva las solicitudes llegarían a <a href="mailto:info@gestio2000.net" style="color:var(--navy)">info@gestio2000.net</a>.</p>
+
+          <form onsubmit="return false" novalidate>
+            <div class="fgrid">
+              <div class="field">
+                <label for="nombre">Nombre y apellidos</label>
+                <input id="nombre" name="nombre" type="text" placeholder="Su nombre" autocomplete="name">
+              </div>
+              <div class="field">
+                <label for="empresa">Empresa (si procede)</label>
+                <input id="empresa" name="empresa" type="text" placeholder="Nombre de la empresa" autocomplete="organization">
+              </div>
+              <div class="field">
+                <label for="tel">Teléfono</label>
+                <input id="tel" name="tel" type="tel" placeholder="Para devolverle la llamada" autocomplete="tel">
+              </div>
+              <div class="field">
+                <label for="correo">Correo electrónico</label>
+                <input id="correo" name="correo" type="email" placeholder="nombre@correo.com" autocomplete="email">
+              </div>
+              <div class="field full">
+                <label for="area">Área sobre la que consulta</label>
+                <select id="area" name="area">
+                  <option>Laboral (nóminas, contratos, seguros sociales)</option>
+                  <option>Fiscal (impuestos, rentas)</option>
+                  <option>Contable</option>
+                  <option>Constitución de sociedades o alta de autónomo</option>
+                  <option>Otra consulta</option>
+                </select>
+              </div>
+              <div class="field full">
+                <label for="msg">Cuéntenos brevemente su caso</label>
+                <textarea id="msg" name="msg" placeholder="Situación actual, qué necesita y desde cuándo."></textarea>
+              </div>
+            </div>
+
+            <label class="check" for="rgpd">
+              <input id="rgpd" name="rgpd" type="checkbox">
+              <span>Acepto que Gestió Alaior 2000, S.L. utilice mis datos para responder a esta solicitud. (Texto legal pendiente de redactar con la gestoría.)</span>
+            </label>
+
+            <div class="form-foot">
+              <button class="btn btn-primary" type="submit">Enviar solicitud</button>
+              <span class="hint">Maqueta: el botón no envía nada.</span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="wrap">
+      <h2>¿Prefiere hablarlo por teléfono?</h2>
+      <p>Le atendemos directamente desde la oficina de Alaior y le indicamos los siguientes pasos para su caso.</p>
+      <a class="btn btn-primary" href="tel:971372795">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.4 2.1L8.1 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.4c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2Z"/></svg>
+        Llamar al 971 372 795
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <p class="fname">Gestió Alaior 2000, S.L.</p>
+        <p style="margin-top:10px">Gestoría y asesoría de empresas:<br>laboral, fiscal y contable.</p>
+      </div>
+      <div>
+        <h4>Oficina</h4>
+        <ul>
+          <li>Avda. Verge del Toro, 71</li>
+          <li>07730 Alaior (Menorca)</li>
+          <li>Illes Balears</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="tel:971372795">971 372 795</a></li>
+          <li><a href="mailto:info@gestio2000.net">info@gestio2000.net</a></li>
+          <li>Consultar horario</li>
+        </ul>
+      </div>
+    </div>
+    <div class="studio">
+      <span>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</span>
+      <span><strong>Maqueta de trabajo</strong> · sin vinculación con la empresa</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

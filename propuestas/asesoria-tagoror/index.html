@@ -1,0 +1,690 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Asesoría Tagoror · Laboral, fiscal y contable en Tinajo</title>
+<meta name="description" content="Maqueta de propuesta de web para Asesoría Tagoror, asesoría de empresas en Tinajo (Lanzarote): laboral, fiscal y contable.">
+<style>
+  :root{
+    --cal:#F6F4EF;
+    --cal-2:#EDE9E1;
+    --papel:#FFFFFF;
+    --basalto:#1B1917;
+    --basalto-2:#2A2724;
+    --piedra:#5E584F;
+    --piedra-2:#857E73;
+    --verde:#2F5D46;
+    --verde-claro:#4C8064;
+    --lava:#9C4A2C;
+    --linea:rgba(27,25,23,.12);
+    --linea-oscura:rgba(246,244,239,.16);
+    --radio:14px;
+    --max:1120px;
+    --barra:46px;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  html{max-width:100%;overflow-x:hidden}
+  body{max-width:100%}
+  body{
+    margin:0;
+    font-family:var(--sans);
+    background:var(--cal);
+    color:var(--basalto);
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%;display:block}
+  h1,h2,h3,h4{margin:0;line-height:1.18;letter-spacing:-.022em;font-weight:650}
+  p{margin:0}
+  a{color:inherit}
+  .wrap{width:100%;max-width:var(--max);margin:0 auto;padding:0 24px}
+  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+  /* ---------- barra fija ---------- */
+  .aviso{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    min-height:var(--barra);
+    display:flex;align-items:center;justify-content:center;
+    background:var(--basalto);
+    color:#F6F4EF;
+    border-bottom:1px solid rgba(156,74,44,.55);
+    padding:7px 16px;
+    text-align:center;
+  }
+  .aviso span{
+    font-size:11.5px;line-height:1.35;letter-spacing:.07em;text-transform:uppercase;
+    font-weight:600;color:#EDE9E1;
+  }
+  .aviso span b{color:#E0A383;font-weight:700}
+  body{padding-top:var(--barra)}
+
+  /* ---------- cabecera del sitio ---------- */
+  .nav{
+    position:sticky;top:var(--barra);z-index:90;
+    background:rgba(246,244,239,.92);
+    backdrop-filter:saturate(140%) blur(10px);
+    -webkit-backdrop-filter:saturate(140%) blur(10px);
+    border-bottom:1px solid var(--linea);
+  }
+  .nav-in{display:flex;align-items:center;gap:16px;min-height:66px;flex-wrap:wrap;padding:10px 24px}
+  .marca{display:flex;align-items:center;gap:11px;text-decoration:none;margin-right:auto}
+  .marca .glifo{flex:0 0 auto}
+  .marca-txt{display:flex;flex-direction:column;line-height:1.1}
+  .marca-txt strong{font-size:16.5px;letter-spacing:-.01em}
+  .marca-txt small{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--piedra-2);margin-top:3px}
+  .nav-links{display:flex;gap:22px;align-items:center}
+  .nav-links a{font-size:14.5px;color:var(--piedra);text-decoration:none;font-weight:550}
+  .nav-links a:hover{color:var(--verde)}
+
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    padding:13px 22px;border-radius:999px;text-decoration:none;
+    font-size:15px;font-weight:650;letter-spacing:-.005em;
+    border:1px solid transparent;white-space:nowrap;
+  }
+  .btn-p{background:var(--verde);color:#F6F4EF}
+  .btn-p:hover{background:#264c39}
+  .btn-s{background:transparent;color:var(--basalto);border-color:rgba(27,25,23,.26)}
+  .btn-s:hover{border-color:var(--basalto);background:rgba(27,25,23,.04)}
+  .btn-cal{background:var(--cal);color:var(--basalto)}
+  .btn-ghost-o{background:transparent;color:var(--cal);border-color:var(--linea-oscura)}
+  .btn-sm{padding:10px 17px;font-size:14px}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(900px 460px at 88% -10%, rgba(156,74,44,.16), transparent 70%),
+      radial-gradient(760px 420px at 6% 104%, rgba(47,93,70,.17), transparent 72%),
+      linear-gradient(176deg,#FBFAF7 0%, var(--cal) 48%, var(--cal-2) 100%);
+    border-bottom:1px solid var(--linea);
+  }
+  .hero-grid{
+    position:relative;z-index:2;
+    display:grid;grid-template-columns:1.08fr .92fr;gap:56px;align-items:center;
+    padding:88px 24px 92px;
+  }
+  .pill{
+    display:inline-flex;align-items:center;gap:9px;
+    padding:7px 15px 7px 11px;border-radius:999px;
+    background:rgba(47,93,70,.09);border:1px solid rgba(47,93,70,.22);
+    font-size:12.5px;font-weight:650;letter-spacing:.055em;text-transform:uppercase;color:var(--verde);
+  }
+  .pill i{width:7px;height:7px;border-radius:50%;background:var(--verde-claro);flex:0 0 auto}
+  h1{font-size:clamp(2.1rem,4.6vw,3.5rem);margin:26px 0 0;font-weight:680}
+  h1 em{font-style:normal;color:var(--verde);display:block}
+  .lead{margin-top:22px;font-size:clamp(1.02rem,1.5vw,1.2rem);color:var(--piedra);max-width:35ch}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+  .hero-nota{margin-top:20px;font-size:13.5px;color:var(--piedra-2)}
+  .hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:34px;padding-top:26px;border-top:1px solid var(--linea)}
+  .tag{
+    font-size:12.5px;font-weight:600;letter-spacing:.03em;
+    padding:6px 13px;border-radius:999px;background:rgba(27,25,23,.055);color:var(--piedra);
+  }
+
+  /* tarjeta hero */
+  .ficha{
+    background:var(--papel);border:1px solid var(--linea);border-radius:20px;
+    padding:28px;box-shadow:0 1px 2px rgba(27,25,23,.04),0 22px 44px -26px rgba(27,25,23,.26);
+  }
+  .ficha h3{font-size:13px;letter-spacing:.13em;text-transform:uppercase;color:var(--piedra-2);font-weight:700}
+  .fila{display:flex;gap:14px;align-items:flex-start;padding:17px 0;border-bottom:1px solid var(--linea)}
+  .fila:last-of-type{border-bottom:0;padding-bottom:4px}
+  .fila .ic{flex:0 0 36px;width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(47,93,70,.1)}
+  .fila .k{display:block;font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--piedra-2);font-weight:700}
+  .fila .v{font-size:16px;font-weight:600;margin-top:3px;word-break:break-word;overflow-wrap:anywhere}
+  .fila .v a{text-decoration:none}
+  .fila .v a:hover{color:var(--verde)}
+  .fila .v small{display:block;font-size:13.5px;font-weight:450;color:var(--piedra);margin-top:2px}
+  .ficha-pie{margin-top:18px;padding-top:18px;border-top:1px solid var(--linea)}
+
+  /* franja */
+  .franja{background:var(--basalto);color:var(--cal);padding:26px 0}
+  .franja-in{display:flex;flex-wrap:wrap;gap:14px 36px;align-items:center;justify-content:space-between;padding:0 24px}
+  .franja p{font-size:15.5px;color:#D9D4CB;max-width:58ch}
+  .franja p b{color:#F6F4EF;font-weight:650}
+
+  /* ---------- secciones ---------- */
+  section{scroll-margin-top:calc(var(--barra) + 76px)}
+  .sec{padding:84px 0}
+  .sec-cal{background:var(--cal)}
+  .sec-papel{background:var(--papel);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+  .eyebrow{display:flex;align-items:center;gap:11px;font-size:11.5px;letter-spacing:.17em;text-transform:uppercase;color:var(--lava);font-weight:700}
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--lava);flex:0 0 auto}
+  h2{font-size:clamp(1.65rem,3.1vw,2.35rem);margin:18px 0 0}
+  .sec-lead{margin-top:16px;color:var(--piedra);max-width:62ch;font-size:16.5px}
+
+  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:44px}
+  .card{
+    background:var(--papel);border:1px solid var(--linea);border-radius:var(--radio);
+    padding:28px 26px 26px;display:flex;flex-direction:column;
+    border-top:3px solid var(--verde);
+  }
+  .sec-papel .card{background:var(--cal)}
+  .card:nth-child(2){border-top-color:var(--lava)}
+  .card:nth-child(3){border-top-color:var(--basalto-2)}
+  .card:nth-child(4){border-top-color:var(--verde-claro)}
+  .card .ic-g{width:42px;height:42px;margin-bottom:18px}
+  .card h3{font-size:19.5px}
+  .card p{margin-top:11px;color:var(--piedra);font-size:15.5px}
+  .lista{list-style:none;margin:20px 0 0;padding:0;display:flex;flex-direction:column;gap:10px}
+  .lista li{position:relative;padding-left:24px;font-size:15.5px;color:var(--basalto-2)}
+  .lista li::before{
+    content:"";position:absolute;left:3px;top:.62em;width:8px;height:8px;border-radius:2px;
+    background:var(--verde);opacity:.55;
+  }
+
+  /* pasos */
+  .pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:46px;counter-reset:p}
+  .paso{
+    position:relative;background:var(--papel);border:1px solid var(--linea);border-radius:var(--radio);
+    padding:30px 26px 26px;
+  }
+  .paso .num{
+    width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    background:var(--basalto);color:var(--cal);font-size:15px;font-weight:700;letter-spacing:.02em;
+  }
+  .paso h3{font-size:18.5px;margin-top:18px}
+  .paso p{margin-top:10px;color:var(--piedra);font-size:15.5px}
+
+  /* contacto */
+  .cont{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:44px;align-items:start}
+  .panel{background:var(--papel);border:1px solid var(--linea);border-radius:var(--radio);padding:28px}
+  .mapa-caja{margin-top:22px;border:1px solid var(--linea);border-radius:12px;overflow:hidden;background:var(--cal-2)}
+  .mapa-pie{padding:11px 14px;font-size:12.5px;color:var(--piedra-2);border-top:1px solid var(--linea);background:var(--papel)}
+
+  form{margin-top:4px}
+  .campo{margin-top:16px}
+  label{display:block;font-size:12.5px;letter-spacing:.07em;text-transform:uppercase;font-weight:700;color:var(--piedra);margin-bottom:7px}
+  input,select,textarea{
+    width:100%;font:inherit;font-size:15.5px;color:var(--basalto);
+    background:var(--cal);border:1px solid rgba(27,25,23,.2);border-radius:10px;
+    padding:12px 14px;appearance:none;
+  }
+  .panel input,.panel select,.panel textarea{background:#FBFAF7}
+  textarea{min-height:118px;resize:vertical}
+  input:focus,select:focus,textarea:focus{outline:2px solid rgba(47,93,70,.45);outline-offset:1px;border-color:var(--verde)}
+  select{background-image:linear-gradient(45deg,transparent 50%,var(--piedra) 50%),linear-gradient(135deg,var(--piedra) 50%,transparent 50%);background-position:calc(100% - 19px) 51%,calc(100% - 13px) 51%;background-size:6px 6px,6px 6px;background-repeat:no-repeat;padding-right:42px}
+  .dos{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .check{display:flex;gap:11px;align-items:flex-start;margin-top:20px;text-transform:none;letter-spacing:normal;font-weight:400;color:inherit}
+  .check input{width:17px;height:17px;flex:0 0 auto;margin-top:3px;border-radius:4px;accent-color:var(--verde)}
+  .check span{font-size:13.5px;color:var(--piedra);line-height:1.5}
+  .form-act{margin-top:22px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .form-nota{font-size:12.5px;color:var(--piedra-2)}
+  .maqueta-sello{
+    display:inline-flex;align-items:center;gap:7px;margin-top:4px;
+    font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;font-weight:700;
+    color:var(--lava);background:rgba(156,74,44,.09);border:1px solid rgba(156,74,44,.24);
+    padding:5px 11px;border-radius:999px;
+  }
+
+  /* pie */
+  footer{background:var(--basalto);color:#D9D4CB;padding:62px 0 0}
+  .f-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:34px;padding:0 24px 30px}
+  footer h4{font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;color:#9C958A;font-weight:700;margin-bottom:14px}
+  footer p,footer li{font-size:15px;color:#D9D4CB}
+  footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
+  footer a{text-decoration:none;word-break:break-word;overflow-wrap:anywhere}
+  footer a:hover{color:#fff}
+  .f-marca strong{display:block;color:#F6F4EF;font-size:19px;font-weight:650;letter-spacing:-.015em}
+  .f-marca p{margin-top:12px;max-width:40ch;color:#ADA69A;font-size:14.5px}
+  .f-base{
+    margin-top:34px;border-top:1px solid var(--linea-oscura);
+    padding:22px 24px 30px;
+    display:flex;flex-wrap:wrap;gap:10px 24px;align-items:center;justify-content:space-between;
+  }
+  .f-base p{font-size:13px;color:#9C958A}
+  .f-base .cred{color:#CFC8BC}
+  .f-base .cred b{color:#E0A383;font-weight:650}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:1000px){
+    .hero-grid{grid-template-columns:1fr;gap:40px;padding:64px 24px 70px}
+    .lead{max-width:56ch}
+    .pasos{grid-template-columns:1fr}
+    .cont{grid-template-columns:1fr}
+    .f-grid{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:720px){
+    :root{--barra:58px}
+    body{font-size:16.5px}
+    .nav-links{display:none}
+    .nav-in{min-height:60px;gap:12px;padding:10px 20px}
+    .wrap,.hero-grid,.franja-in,.f-grid,.f-base{padding-left:20px;padding-right:20px}
+    .sec{padding:60px 0}
+    .hero-grid{padding-top:48px;padding-bottom:56px}
+    .cards{grid-template-columns:1fr;gap:16px;margin-top:34px}
+    .dos{grid-template-columns:1fr}
+    .f-grid{grid-template-columns:1fr;gap:30px}
+    .ficha,.panel,.card,.paso{padding:22px 20px}
+    .hero-ctas .btn{flex:1 1 100%}
+    .f-base{flex-direction:column;align-items:flex-start}
+    .franja-in .btn{flex:0 0 auto}
+  }
+  @media (max-width:400px){
+    .marca-txt strong{font-size:15px}
+  }
+  @media (prefers-reduced-motion:no-preference){
+    html{scroll-behavior:smooth}
+  }
+</style>
+</head>
+<body>
+
+<div class="aviso" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<header class="nav">
+  <div class="nav-in" style="max-width:var(--max);margin:0 auto">
+    <a class="marca" href="#inicio">
+      <svg class="glifo" width="38" height="38" viewBox="0 0 38 38" aria-hidden="true">
+        <rect width="38" height="38" rx="10" fill="#1B1917"/>
+        <path d="M8 27 L19 11 L30 27 Z" fill="none" stroke="#9C4A2C" stroke-width="2.1"/>
+        <path d="M13 27 L19 18.5 L25 27 Z" fill="#2F5D46"/>
+        <circle cx="19" cy="11" r="1.9" fill="#E0A383"/>
+      </svg>
+      <span class="marca-txt">
+        <strong>Asesoría Tagoror</strong>
+        <small>Tinajo · Lanzarote</small>
+      </span>
+    </a>
+    <nav class="nav-links" aria-label="Secciones">
+      <a href="#servicios">Servicios</a>
+      <a href="#proceso">Primera consulta</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="btn btn-p btn-sm" href="tel:660384004">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M21 16.9v2.6a2 2 0 0 1-2.2 2 19.6 19.6 0 0 1-8.5-3 19.3 19.3 0 0 1-6-6 19.6 19.6 0 0 1-3-8.6A2 2 0 0 1 3.3 1.7H6a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L7 9.4a15.4 15.4 0 0 0 6 6l1.1-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2z"/></svg>
+      660 384 004
+    </a>
+  </div>
+</header>
+
+<main id="inicio">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid" style="max-width:var(--max);margin:0 auto">
+      <div>
+        <span class="pill"><i></i>Asesoría de empresas en Tinajo</span>
+        <h1>Laboral, fiscal y contable.<em>Al lado, en La Vegueta.</em></h1>
+        <p class="lead">Llevamos las nóminas, los impuestos y la contabilidad de autónomos y pymes del norte de Lanzarote. Con trato directo y a pie de calle.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-p" href="tel:660384004">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M21 16.9v2.6a2 2 0 0 1-2.2 2 19.6 19.6 0 0 1-8.5-3 19.3 19.3 0 0 1-6-6 19.6 19.6 0 0 1-3-8.6A2 2 0 0 1 3.3 1.7H6a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L7 9.4a15.4 15.4 0 0 0 6 6l1.1-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2z"/></svg>
+            Llamar al 660 384 004
+          </a>
+          <a class="btn btn-s" href="#consulta">Dejar mi consulta por escrito</a>
+        </div>
+        <p class="hero-nota">¿Nos llamas fuera del horario de atención? Deja la consulta en el formulario y te respondemos.</p>
+        <div class="hero-tags">
+          <span class="tag">Nóminas y contratos</span>
+          <span class="tag">Seguros sociales</span>
+          <span class="tag">Impuestos y rentas</span>
+          <span class="tag">Contabilidad</span>
+          <span class="tag">Autónomos y pymes</span>
+        </div>
+      </div>
+
+      <aside class="ficha">
+        <h3>Datos de contacto</h3>
+        <div class="fila">
+          <span class="ic" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2F5D46" stroke-width="2.1" stroke-linecap="round"><path d="M21 16.9v2.6a2 2 0 0 1-2.2 2 19.6 19.6 0 0 1-8.5-3 19.3 19.3 0 0 1-6-6 19.6 19.6 0 0 1-3-8.6A2 2 0 0 1 3.3 1.7H6a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L7 9.4a15.4 15.4 0 0 0 6 6l1.1-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2z"/></svg>
+          </span>
+          <span>
+            <span class="k">Teléfono</span>
+            <span class="v"><a href="tel:660384004">660 384 004</a></span>
+          </span>
+        </div>
+        <div class="fila">
+          <span class="ic" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2F5D46" stroke-width="2.1" stroke-linecap="round"><path d="M12 21s-7-5.7-7-11a7 7 0 0 1 14 0c0 5.3-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+          </span>
+          <span>
+            <span class="k">Oficina</span>
+            <span class="v">C/ Tagoror nº 21 A, La Vegueta<small>35560 Tinajo · Lanzarote (Las Palmas)</small></span>
+          </span>
+        </div>
+        <div class="fila">
+          <span class="ic" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2F5D46" stroke-width="2.1" stroke-linecap="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3.5 6.5 8.5 6.4 8.5-6.4"/></svg>
+          </span>
+          <span>
+            <span class="k">Correo</span>
+            <span class="v"><a href="mailto:tagoror@asyc.net">tagoror@asyc.net</a></span>
+          </span>
+        </div>
+        <div class="fila">
+          <span class="ic" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2F5D46" stroke-width="2.1" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.2V12l3.4 2.1"/></svg>
+          </span>
+          <span>
+            <span class="k">Atención</span>
+            <span class="v">Consultar horario<small>Llámanos y te confirmamos cuándo pasarte.</small></span>
+          </span>
+        </div>
+        <div class="ficha-pie">
+          <a class="btn btn-p btn-sm" href="#consulta" style="width:100%">Escribir una consulta</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- FRANJA -->
+  <div class="franja">
+    <div class="franja-in" style="max-width:var(--max);margin:0 auto">
+      <p><b>Una duda laboral o fiscal no espera a mañana.</b> Cuéntanosla por escrito a cualquier hora y la revisamos en cuanto abrimos la oficina.</p>
+      <a class="btn btn-cal btn-sm" href="#consulta">Ir al formulario</a>
+    </div>
+  </div>
+
+  <!-- SERVICIOS -->
+  <section class="sec sec-cal" id="servicios">
+    <div class="wrap">
+      <span class="eyebrow">Servicios</span>
+      <h2>Tres áreas, una misma oficina</h2>
+      <p class="sec-lead">Gestionamos el día a día administrativo de empresas, autónomos y pymes: lo laboral, lo fiscal y lo contable, sin tener que ir de una ventanilla a otra.</p>
+
+      <div class="cards">
+        <article class="card">
+          <svg class="ic-g" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+            <rect width="44" height="44" rx="12" fill="#2F5D46" opacity=".1"/>
+            <circle cx="17" cy="18" r="4.3" stroke="#2F5D46" stroke-width="2"/>
+            <path d="M10 32c0-3.9 3.1-6.5 7-6.5s7 2.6 7 6.5" stroke="#2F5D46" stroke-width="2" stroke-linecap="round"/>
+            <path d="M27.5 15.5h7M27.5 20h7M27.5 24.5h4.5" stroke="#2F5D46" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <h3>Laboral</h3>
+          <p>La gestión de tu plantilla al día, desde la alta del primer trabajador hasta el cierre de nómina de cada mes.</p>
+          <ul class="lista">
+            <li>Elaboración de nóminas</li>
+            <li>Contratos de trabajo y sus modificaciones</li>
+            <li>Altas, bajas y variaciones de trabajadores</li>
+            <li>Seguros sociales y cotizaciones</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <svg class="ic-g" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+            <rect width="44" height="44" rx="12" fill="#9C4A2C" opacity=".1"/>
+            <path d="M14 11h11l5.5 5.5V33H14z" stroke="#9C4A2C" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M25 11v6h5.5" stroke="#9C4A2C" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M18 23h8M18 27.5h5.5" stroke="#9C4A2C" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <h3>Fiscal</h3>
+          <p>Tus obligaciones con Hacienda presentadas en plazo y revisadas antes de enviarse, con los datos de tu actividad.</p>
+          <ul class="lista">
+            <li>Declaraciones de impuestos periódicas</li>
+            <li>Declaración de la renta</li>
+            <li>Altas y modificaciones censales</li>
+            <li>Atención a requerimientos y notificaciones</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <svg class="ic-g" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+            <rect width="44" height="44" rx="12" fill="#1B1917" opacity=".08"/>
+            <path d="M12 32V22M20 32V14M28 32v-7M34 32h-24" stroke="#2A2724" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="28" cy="18.5" r="2.4" stroke="#9C4A2C" stroke-width="2"/>
+          </svg>
+          <h3>Contable</h3>
+          <p>La contabilidad ordenada durante todo el ejercicio, para que sepas cómo va el negocio y no solo cómo acabó.</p>
+          <ul class="lista">
+            <li>Contabilidad de empresas y profesionales</li>
+            <li>Libros y registros obligatorios</li>
+            <li>Cierre del ejercicio y cuentas anuales</li>
+            <li>Revisión de facturación emitida y recibida</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <svg class="ic-g" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+            <rect width="44" height="44" rx="12" fill="#4C8064" opacity=".14"/>
+            <path d="M12 31V18l10-6 10 6v13" stroke="#2F5D46" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M18.5 31v-7h7v7" stroke="#2F5D46" stroke-width="2" stroke-linejoin="round"/>
+          </svg>
+          <h3>Autónomos y pymes</h3>
+          <p>Si estás empezando o te planteas dar el paso, te acompañamos en los trámites y en las decisiones del principio.</p>
+          <ul class="lista">
+            <li>Alta de autónomo y trámites de inicio</li>
+            <li>Constitución y puesta en marcha de sociedades</li>
+            <li>Obligaciones periódicas según tu actividad</li>
+            <li>Consultas puntuales sobre tu situación</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESO -->
+  <section class="sec sec-papel" id="proceso">
+    <div class="wrap">
+      <span class="eyebrow">Cómo trabajamos</span>
+      <h2>Tu primera consulta, en tres pasos</h2>
+      <p class="sec-lead">Sin rodeos: primero escuchamos tu caso, después te decimos qué hace falta y, si encaja, nos ponemos con ello.</p>
+
+      <div class="pasos">
+        <article class="paso">
+          <span class="num">01</span>
+          <h3>Cuéntanos tu caso</h3>
+          <p>Llámanos al 660 384 004 o déjanos la consulta por escrito a cualquier hora. Con saber tu actividad y qué necesitas, nos basta para empezar.</p>
+        </article>
+        <article class="paso">
+          <span class="num">02</span>
+          <h3>Revisamos tu situación</h3>
+          <p>Vemos en qué punto estás en lo laboral, lo fiscal y lo contable, y te explicamos sin tecnicismos qué obligaciones te afectan y qué documentación hay que reunir.</p>
+        </article>
+        <article class="paso">
+          <span class="num">03</span>
+          <h3>Nos ocupamos del día a día</h3>
+          <p>Asumimos las gestiones acordadas y te avisamos de lo que vaya venciendo, para que no tengas que ir detrás de cada plazo.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="sec sec-cal" id="contacto">
+    <div class="wrap">
+      <span class="eyebrow">Contacto</span>
+      <h2>Estamos en La Vegueta, Tinajo</h2>
+      <p class="sec-lead">Pásate por la oficina, llámanos o escríbenos. Si prefieres dejarlo por escrito, el formulario está abierto las 24 horas.</p>
+
+      <div class="cont">
+        <div class="panel">
+          <h3 style="font-size:19px">Dónde encontrarnos</h3>
+          <div class="fila" style="margin-top:6px">
+            <span class="ic" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2F5D46" stroke-width="2.1" stroke-linecap="round"><path d="M12 21s-7-5.7-7-11a7 7 0 0 1 14 0c0 5.3-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+            </span>
+            <span>
+              <span class="k">Dirección</span>
+              <span class="v">C/ Tagoror nº 21 A, La Vegueta<small>35560 Tinajo · Lanzarote (Las Palmas)</small></span>
+            </span>
+          </div>
+          <div class="fila">
+            <span class="ic" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2F5D46" stroke-width="2.1" stroke-linecap="round"><path d="M21 16.9v2.6a2 2 0 0 1-2.2 2 19.6 19.6 0 0 1-8.5-3 19.3 19.3 0 0 1-6-6 19.6 19.6 0 0 1-3-8.6A2 2 0 0 1 3.3 1.7H6a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L7 9.4a15.4 15.4 0 0 0 6 6l1.1-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2z"/></svg>
+            </span>
+            <span>
+              <span class="k">Teléfono</span>
+              <span class="v"><a href="tel:660384004">660 384 004</a></span>
+            </span>
+          </div>
+          <div class="fila">
+            <span class="ic" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2F5D46" stroke-width="2.1" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.2V12l3.4 2.1"/></svg>
+            </span>
+            <span>
+              <span class="k">Horario de atención</span>
+              <span class="v">Consultar horario</span>
+            </span>
+          </div>
+
+          <div class="mapa-caja">
+            <svg viewBox="0 0 520 300" width="100%" role="img" aria-label="Mapa esquemático con un marcador que señala la oficina en la calle Tagoror, La Vegueta, Tinajo.">
+              <defs>
+                <linearGradient id="g-suelo" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#EFEBE3"/>
+                  <stop offset="1" stop-color="#E2DCD1"/>
+                </linearGradient>
+                <pattern id="p-lava" width="16" height="16" patternUnits="userSpaceOnUse" patternTransform="rotate(28)">
+                  <rect width="16" height="16" fill="#D9CFC1"/>
+                  <circle cx="4" cy="4" r="1.5" fill="#C2B4A2"/>
+                  <circle cx="11" cy="10" r="1.1" fill="#C7BAA8"/>
+                </pattern>
+              </defs>
+              <rect width="520" height="300" fill="url(#g-suelo)"/>
+              <rect x="316" y="0" width="204" height="300" fill="url(#p-lava)" opacity=".85"/>
+              <path d="M316 0 L316 300" stroke="#C8BCA9" stroke-width="2"/>
+              <text x="412" y="30" text-anchor="middle" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="12" letter-spacing="1.6" fill="#8D8275">MALPAÍS</text>
+
+              <!-- calles -->
+              <g stroke="#FFFFFF" stroke-width="20" stroke-linecap="round" opacity=".95">
+                <path d="M-10 196 H530"/>
+                <path d="M120 -10 V310"/>
+                <path d="M258 40 V300"/>
+                <path d="M30 96 H300"/>
+              </g>
+              <g stroke="#DCD4C7" stroke-width="20" fill="none" stroke-linecap="round" opacity=".5">
+                <path d="M300 96 C340 96 356 130 356 160"/>
+              </g>
+              <g stroke="#CFC6B6" stroke-width="1.4" stroke-dasharray="5 6" opacity=".9">
+                <path d="M-10 196 H530"/><path d="M120 -10 V310"/><path d="M258 40 V300"/><path d="M30 96 H300"/>
+              </g>
+
+              <!-- manzanas -->
+              <g fill="#E6E0D4" stroke="#D3CABA" stroke-width="1.2">
+                <rect x="20" y="118" width="78" height="56" rx="4"/>
+                <rect x="142" y="118" width="94" height="56" rx="4"/>
+                <rect x="20" y="216" width="78" height="60" rx="4"/>
+                <rect x="142" y="216" width="94" height="60" rx="4"/>
+                <rect x="282" y="216" width="70" height="60" rx="4"/>
+                <rect x="142" y="26" width="94" height="48" rx="4"/>
+              </g>
+
+              <!-- etiquetas de calle -->
+              <text x="36" y="190" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="11.5" fill="#8D8275" letter-spacing=".4">C/ Tagoror</text>
+              <text x="128" y="292" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="11.5" fill="#8D8275" letter-spacing=".4" transform="rotate(-90 128 292)">La Vegueta</text>
+              <text x="36" y="90" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="11.5" fill="#9C958A" letter-spacing=".4">hacia Tinajo</text>
+
+              <!-- marcador -->
+              <g transform="translate(196,196)">
+                <ellipse cx="0" cy="4" rx="17" ry="5.5" fill="#1B1917" opacity=".15"/>
+                <path d="M0 0 C-13 -17 -17 -23 -17 -31 A17 17 0 0 1 17 -31 C17 -23 13 -17 0 0 Z" fill="#9C4A2C"/>
+                <circle cx="0" cy="-31" r="6.4" fill="#F6F4EF"/>
+              </g>
+              <g transform="translate(196,142)">
+                <rect x="-86" y="-34" width="172" height="30" rx="8" fill="#1B1917"/>
+                <text x="0" y="-14" text-anchor="middle" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="13" font-weight="600" fill="#F6F4EF">Asesoría Tagoror · 21 A</text>
+              </g>
+            </svg>
+            <p class="mapa-pie">Mapa esquemático orientativo; no refleja el trazado real de las calles.</p>
+          </div>
+        </div>
+
+        <!-- FORMULARIO -->
+        <div class="panel" id="consulta">
+          <span class="maqueta-sello">Formulario de ejemplo · sin enviar</span>
+          <h3 style="font-size:19px;margin-top:14px">Deja tu consulta a cualquier hora</h3>
+          <p style="color:var(--piedra);font-size:15.5px;margin-top:10px">Cuéntanos brevemente tu caso y te damos respuesta. Así no dependes de llamar dentro del horario de oficina.</p>
+
+          <form onsubmit="return false;">
+            <div class="dos">
+              <div class="campo">
+                <label for="nombre">Nombre y apellidos</label>
+                <input id="nombre" name="nombre" type="text" placeholder="Tu nombre">
+              </div>
+              <div class="campo">
+                <label for="tel">Teléfono</label>
+                <input id="tel" name="tel" type="tel" placeholder="Para devolverte la llamada">
+              </div>
+            </div>
+            <div class="campo">
+              <label for="email">Correo electrónico</label>
+              <input id="email" name="email" type="email" placeholder="nombre@correo.com">
+            </div>
+            <div class="dos">
+              <div class="campo">
+                <label for="area">Área de la consulta</label>
+                <select id="area" name="area">
+                  <option>Laboral</option>
+                  <option>Fiscal</option>
+                  <option>Contable</option>
+                  <option>Alta de autónomo</option>
+                  <option>Otra cuestión</option>
+                </select>
+              </div>
+              <div class="campo">
+                <label for="perfil">¿Quién consulta?</label>
+                <select id="perfil" name="perfil">
+                  <option>Autónomo</option>
+                  <option>Pyme o sociedad</option>
+                  <option>Particular</option>
+                  <option>Aún no tengo actividad</option>
+                </select>
+              </div>
+            </div>
+            <div class="campo">
+              <label for="msg">Tu consulta</label>
+              <textarea id="msg" name="msg" placeholder="Explícanos tu situación con el detalle que puedas: actividad, si tienes trabajadores, qué necesitas resolver…"></textarea>
+            </div>
+            <label class="check" for="ok">
+              <input id="ok" type="checkbox">
+              <span>Acepto que Asesoría Tagoror use mis datos para responder a esta consulta.</span>
+            </label>
+            <div class="form-act">
+              <button class="btn btn-p" type="submit">Enviar consulta</button>
+              <span class="form-nota">Maqueta de demostración: el formulario no envía datos.</span>
+            </div>
+          </form>
+
+          <div style="margin-top:24px;padding-top:22px;border-top:1px solid var(--linea)">
+            <p style="font-size:15px;color:var(--piedra)">¿Prefieres hablarlo directamente?</p>
+            <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:14px">
+              <a class="btn btn-p btn-sm" href="tel:660384004">Llamar al 660 384 004</a>
+              <a class="btn btn-s btn-sm" href="mailto:tagoror@asyc.net">tagoror@asyc.net</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="f-grid" style="max-width:var(--max);margin:0 auto">
+    <div class="f-marca">
+      <strong>Asesoría Tagoror</strong>
+      <p>Asesoría de empresas en Tinajo: laboral, fiscal y contable para autónomos y pymes del norte de Lanzarote.</p>
+    </div>
+    <div>
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="tel:660384004">660 384 004</a></li>
+        <li><a href="mailto:tagoror@asyc.net">tagoror@asyc.net</a></li>
+        <li>Consultar horario</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Oficina</h4>
+      <ul>
+        <li>C/ Tagoror nº 21 A</li>
+        <li>La Vegueta</li>
+        <li>35560 Tinajo · Lanzarote (Las Palmas)</li>
+      </ul>
+    </div>
+  </div>
+  <div class="f-base" style="max-width:var(--max);margin:0 auto">
+    <p class="cred">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+    <p>Maqueta sin carácter contractual. Contenidos pendientes de validación por el negocio.</p>
+  </div>
+</footer>
+
+</body>
+</html>
