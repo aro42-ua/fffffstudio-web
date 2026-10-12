@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Restaurante Riviera · Béjar</title>
+<style>
+  :root{
+    --cream:#FBF6EC;
+    --cream-2:#F3E9D8;
+    --ink:#241C16;
+    --ink-soft:#4E423A;
+    --terra:#B4532A;
+    --terra-dark:#8C3C1C;
+    --olive:#5C6B45;
+    --olive-dark:#3F4B2F;
+    --sea:#1F5B63;
+    --gold:#D89B3C;
+    --line:rgba(36,28,22,.12);
+    --shadow:0 18px 50px -24px rgba(36,28,22,.45);
+    --bar-h:44px;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua","Times New Roman",Georgia,serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    padding-top:var(--bar-h);
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.65;
+    overflow-x:hidden;
+  }
+  img,svg{max-width:100%}
+  h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.12;margin:0;letter-spacing:-.01em}
+  p{margin:0}
+  a{color:inherit}
+
+  /* ---------- barra fija ---------- */
+  .studiobar{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    min-height:var(--bar-h);
+    display:flex;align-items:center;justify-content:center;
+    background:#1A1511;
+    color:#EADFCB;
+    font-size:11.5px;
+    letter-spacing:.055em;
+    text-transform:uppercase;
+    padding:9px 14px;
+    text-align:center;
+    border-bottom:1px solid rgba(216,155,60,.35);
+  }
+  .studiobar span{display:inline-block;max-width:100%}
+
+  .wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 22px}
+  section{position:relative}
+
+  .eyebrow{
+    font-family:var(--sans);
+    font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;
+    font-weight:700;color:var(--terra);margin-bottom:14px;
+  }
+  .eyebrow.on-dark{color:var(--gold)}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(900px 520px at 88% -10%, rgba(216,155,60,.30), transparent 62%),
+      radial-gradient(760px 540px at 8% 104%, rgba(92,107,69,.34), transparent 66%),
+      linear-gradient(168deg,#2A211A 0%,#38291F 46%,#1F2A24 100%);
+    color:#F6EEDF;
+    padding:clamp(54px,9vw,104px) 0 clamp(60px,8vw,96px);
+  }
+  .hero::after{
+    content:"";position:absolute;left:0;right:0;bottom:0;height:70px;
+    background:linear-gradient(to bottom,transparent,rgba(251,246,236,.14));
+    pointer-events:none;
+  }
+  .hero-grid{display:grid;gap:clamp(34px,5vw,56px);grid-template-columns:1fr;align-items:center}
+  @media(min-width:900px){.hero-grid{grid-template-columns:1.08fr .92fr}}
+
+  .hero h1{
+    font-size:clamp(40px,8.6vw,74px);
+    margin:0 0 18px;
+    color:#FFF8EA;
+  }
+  .hero h1 em{font-style:italic;color:var(--gold);display:block}
+  .hero-lead{
+    font-size:clamp(16.5px,2.1vw,20px);
+    color:#E2D6C2;max-width:40ch;margin-bottom:12px;
+  }
+  .hero-place{
+    font-size:14px;letter-spacing:.11em;text-transform:uppercase;
+    color:#BFB29D;margin-bottom:30px;
+  }
+  .cta-row{display:flex;flex-wrap:wrap;gap:12px}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:15px 26px;border-radius:999px;
+    font-size:15.5px;font-weight:650;text-decoration:none;
+    transition:transform .22s ease,box-shadow .22s ease,background .22s ease,color .22s ease;
+    border:1px solid transparent;
+  }
+  .btn svg{flex:0 0 auto}
+  .btn-primary{background:var(--terra);color:#FFF6EA;box-shadow:0 14px 30px -14px rgba(180,83,42,.95)}
+  .btn-primary:hover{background:#C75E32;transform:translateY(-2px);box-shadow:0 20px 38px -16px rgba(180,83,42,1)}
+  .btn-ghost{border-color:rgba(246,238,223,.4);color:#F6EEDF}
+  .btn-ghost:hover{background:rgba(246,238,223,.12);transform:translateY(-2px)}
+
+  /* plato decorativo SVG */
+  .hero-art{display:flex;justify-content:center}
+  .hero-art svg{width:100%;max-width:400px;height:auto;filter:drop-shadow(0 24px 44px rgba(0,0,0,.42))}
+
+  /* ---------- tira de rasgos ---------- */
+  .strip{background:var(--ink);color:#E6DAC6;padding:0}
+  .strip ul{
+    list-style:none;margin:0;padding:20px 0;
+    display:grid;gap:10px 30px;grid-template-columns:1fr;
+    font-size:13.5px;letter-spacing:.13em;text-transform:uppercase;
+  }
+  @media(min-width:760px){.strip ul{grid-template-columns:repeat(3,1fr);text-align:center}}
+  .strip li{display:flex;align-items:center;gap:10px;justify-content:flex-start}
+  @media(min-width:760px){.strip li{justify-content:center}}
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex:0 0 auto}
+
+  /* ---------- bloques genéricos ---------- */
+  .pad{padding:clamp(58px,8vw,104px) 0}
+  .sec-head{max-width:58ch;margin-bottom:clamp(32px,4.5vw,52px)}
+  .sec-head h2{font-size:clamp(28px,4.6vw,44px);margin-bottom:14px}
+  .sec-head p{color:var(--ink-soft);font-size:clamp(15.5px,1.8vw,17.5px)}
+
+  .cards{display:grid;gap:18px;grid-template-columns:1fr}
+  @media(min-width:680px){.cards{grid-template-columns:repeat(2,1fr)}}
+  @media(min-width:1000px){.cards{grid-template-columns:repeat(3,1fr)}}
+  .card{
+    background:#fff;border:1px solid var(--line);border-radius:20px;
+    padding:28px 24px 26px;
+    transition:transform .24s ease,box-shadow .24s ease,border-color .24s ease;
+  }
+  .card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:rgba(180,83,42,.4)}
+  .ico{
+    width:50px;height:50px;border-radius:14px;
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(145deg,#F6E7D3,#EFD9BC);
+    margin-bottom:18px;
+  }
+  .ico svg{width:26px;height:26px;display:block}
+  .card h3{font-size:21px;margin-bottom:9px}
+  .card p{color:var(--ink-soft);font-size:15.3px}
+
+  /* ---------- carta / menú (espacios a rellenar) ---------- */
+  .menu-sec{background:var(--cream-2)}
+  .slots{display:grid;gap:18px;grid-template-columns:1fr}
+  @media(min-width:780px){.slots{grid-template-columns:repeat(2,1fr)}}
+  .slot{
+    border:1.5px dashed rgba(180,83,42,.5);
+    border-radius:20px;padding:26px 24px;
+    background:rgba(255,255,255,.62);
+  }
+  .slot h3{font-size:22px;margin-bottom:8px}
+  .slot .hint{font-size:13.5px;color:var(--ink-soft);margin-bottom:16px}
+  .lines{display:grid;gap:11px}
+  .lines i{display:block;height:11px;border-radius:6px;background:rgba(36,28,22,.1)}
+  .lines i:nth-child(2){width:86%}
+  .lines i:nth-child(3){width:70%}
+  .lines i:nth-child(4){width:78%}
+  .tag{
+    display:inline-block;margin-top:18px;font-size:11.5px;font-weight:700;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--terra-dark);
+  }
+
+  /* ---------- pasos ---------- */
+  .steps-sec{
+    background:linear-gradient(160deg,#20302C 0%,#2B3A2B 100%);
+    color:#F2EADC;
+  }
+  .steps-sec .sec-head h2{color:#FFF7E9}
+  .steps-sec .sec-head p{color:#CBBFAC}
+  .steps{display:grid;gap:18px;grid-template-columns:1fr;counter-reset:s}
+  @media(min-width:860px){.steps{grid-template-columns:repeat(3,1fr)}}
+  .step{
+    border:1px solid rgba(242,234,220,.2);border-radius:20px;
+    padding:28px 24px;background:rgba(255,255,255,.055);
+    transition:background .24s ease,transform .24s ease;
+  }
+  .step:hover{background:rgba(255,255,255,.1);transform:translateY(-4px)}
+  .num{
+    font-family:var(--serif);font-size:34px;line-height:1;color:var(--gold);
+    display:block;margin-bottom:14px;
+  }
+  .step h3{font-size:20px;margin-bottom:9px;color:#FFF7E9}
+  .step p{color:#CDC1AE;font-size:15.2px}
+
+  /* ---------- contacto ---------- */
+  .contact-grid{display:grid;gap:clamp(26px,4vw,44px);grid-template-columns:1fr;align-items:start}
+  @media(min-width:900px){.contact-grid{grid-template-columns:.95fr 1.05fr}}
+  .info{display:grid;gap:14px;margin-bottom:26px}
+  .row{
+    display:flex;gap:14px;align-items:flex-start;
+    background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 18px;
+  }
+  .row .ico{width:40px;height:40px;border-radius:11px;margin:0;flex:0 0 auto}
+  .row .ico svg{width:20px;height:20px}
+  .row .k{font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-soft);font-weight:700;margin-bottom:3px}
+  .row .v{font-size:17px;font-weight:600;word-break:break-word;overflow-wrap:anywhere}
+  .row a.v{text-decoration:none;color:var(--terra-dark)}
+  .row a.v:hover{text-decoration:underline}
+  .row .v small{display:block;font-size:13.5px;font-weight:500;color:var(--ink-soft);letter-spacing:0;margin-top:2px}
+
+  .mapcard{
+    border:1px solid var(--line);border-radius:22px;overflow:hidden;
+    background:#EFE6D5;box-shadow:var(--shadow);
+  }
+  .mapcard svg{display:block;width:100%;height:auto}
+  .mapcap{
+    padding:14px 18px;font-size:12.5px;color:var(--ink-soft);
+    background:#fff;border-top:1px solid var(--line);
+  }
+
+  /* ---------- acordeón ---------- */
+  .acc{border-top:1px solid var(--line);margin-top:8px}
+  .acc button{
+    all:unset;display:flex;width:100%;box-sizing:border-box;
+    align-items:center;justify-content:space-between;gap:14px;
+    padding:18px 2px;cursor:pointer;font-family:var(--sans);
+    font-size:16.5px;font-weight:600;color:var(--ink);
+    border-bottom:1px solid var(--line);
+  }
+  .acc button:hover{color:var(--terra-dark)}
+  .acc button .chev{flex:0 0 auto;transition:transform .25s ease}
+  .acc button[aria-expanded="true"] .chev{transform:rotate(180deg)}
+  .acc .panel{
+    display:none;padding:4px 2px 20px;color:var(--ink-soft);
+    font-size:15.3px;border-bottom:1px solid var(--line);
+  }
+  .acc .panel.open{display:block}
+
+  /* ---------- cierre CTA ---------- */
+  .closing{
+    background:linear-gradient(150deg,var(--terra-dark),#A8471F 55%,#8A3A28 100%);
+    color:#FFF4E4;text-align:center;
+  }
+  .closing h2{font-size:clamp(27px,4.6vw,42px);margin-bottom:14px;color:#FFF8EB}
+  .closing p{color:#F2DDC9;max-width:48ch;margin:0 auto 28px;font-size:clamp(15.5px,1.9vw,17.5px)}
+  .closing .btn-primary{background:#FFF4E4;color:var(--terra-dark);box-shadow:0 14px 30px -14px rgba(0,0,0,.5)}
+  .closing .btn-primary:hover{background:#fff;color:#7A3317}
+
+  /* ---------- pie ---------- */
+  footer{background:#1A1511;color:#D8CCB7;padding:52px 0 40px}
+  .foot-grid{display:grid;gap:26px;grid-template-columns:1fr}
+  @media(min-width:800px){.foot-grid{grid-template-columns:1.2fr 1fr 1fr}}
+  footer h3{font-size:22px;color:#FFF6E6;margin-bottom:8px}
+  footer p,footer a{font-size:14.6px;color:#C4B7A1;text-decoration:none;word-break:break-word;overflow-wrap:anywhere}
+  footer a:hover{color:var(--gold)}
+  .foot-k{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:#8E8272;font-weight:700;margin-bottom:7px}
+  .foot-list{display:grid;gap:6px}
+  .foot-bottom{
+    margin-top:38px;padding-top:22px;border-top:1px solid rgba(216,155,60,.25);
+    display:grid;gap:8px;font-size:13px;color:#9D9080;
+  }
+  .foot-bottom .studio{color:#C4B7A1}
+
+  @media(max-width:420px){
+    :root{--bar-h:52px}
+    .studiobar{font-size:10.5px;letter-spacing:.04em;line-height:1.4}
+  }
+</style>
+</head>
+<body>
+
+<div class="studiobar"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow on-dark">Bar · Restaurante · Billar</div>
+      <h1>Restaurante <em>Riviera</em></h1>
+      <p class="hero-lead">Cocina mediterránea y española, tapas para compartir y una sala de billar para quedarse un rato más.</p>
+      <p class="hero-place">Béjar · Salamanca</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="tel:655913737">
+          <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+          Reservar: 655 91 37 37
+        </a>
+        <a class="btn btn-ghost" href="#carta">Ver la carta</a>
+      </div>
+    </div>
+
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 400 340" role="presentation">
+        <defs>
+          <linearGradient id="plate" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#FDF7EC"/><stop offset="1" stop-color="#E6D7BE"/>
+          </linearGradient>
+          <linearGradient id="tom" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#D9643A"/><stop offset="1" stop-color="#A8381B"/>
+          </linearGradient>
+          <linearGradient id="feltg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#4C6B4A"/><stop offset="1" stop-color="#2E4430"/>
+          </linearGradient>
+        </defs>
+
+        <!-- plato -->
+        <circle cx="196" cy="150" r="124" fill="url(#plate)"/>
+        <circle cx="196" cy="150" r="124" fill="none" stroke="#C9B493" stroke-width="2"/>
+        <circle cx="196" cy="150" r="96" fill="none" stroke="#D8C6A6" stroke-width="1.5"/>
+        <!-- aceite / salsa -->
+        <path d="M130 170c16-30 52-44 86-36 30 7 48 28 44 48-4 22-36 34-72 29-32-4-62-20-58-41z" fill="#E8C878" opacity=".55"/>
+        <!-- tomates -->
+        <circle cx="166" cy="134" r="23" fill="url(#tom)"/>
+        <path d="M166 111c-5-6-12-7-16-4 3 6 9 9 16 8z" fill="#5C6B45"/>
+        <circle cx="214" cy="164" r="17" fill="url(#tom)"/>
+        <!-- aceitunas -->
+        <ellipse cx="236" cy="124" rx="14" ry="11" fill="#5C6B45"/>
+        <ellipse cx="236" cy="124" rx="5" ry="4" fill="#E8C878"/>
+        <ellipse cx="146" cy="186" rx="12" ry="9.5" fill="#3F4B2F"/>
+        <!-- rama -->
+        <path d="M250 186c18-10 32-28 36-48" stroke="#5C6B45" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <ellipse cx="274" cy="166" rx="11" ry="6" fill="#6C7D51" transform="rotate(-32 274 166)"/>
+        <ellipse cx="286" cy="146" rx="11" ry="6" fill="#7E8F5E" transform="rotate(-32 286 146)"/>
+        <!-- pan -->
+        <ellipse cx="192" cy="200" rx="34" ry="14" fill="#D7A867"/>
+        <path d="M172 196h40" stroke="#B88A4C" stroke-width="2.5" stroke-linecap="round"/>
+
+        <!-- paño de billar con bolas -->
+        <rect x="56" y="258" width="288" height="60" rx="16" fill="url(#feltg)"/>
+        <rect x="56" y="258" width="288" height="60" rx="16" fill="none" stroke="#6B4A2C" stroke-width="4"/>
+        <circle cx="116" cy="288" r="15" fill="#FAF3E4"/>
+        <circle cx="156" cy="288" r="15" fill="#D89B3C"/><text x="156" y="293" font-size="13" text-anchor="middle" fill="#3A2A14" font-family="Arial">1</text>
+        <circle cx="196" cy="288" r="15" fill="#1F5B63"/><text x="196" y="293" font-size="13" text-anchor="middle" fill="#EAF4F5" font-family="Arial">2</text>
+        <circle cx="236" cy="288" r="15" fill="#B4532A"/><text x="236" y="293" font-size="13" text-anchor="middle" fill="#FFF0E0" font-family="Arial">3</text>
+        <circle cx="276" cy="288" r="15" fill="#241C16"/><text x="276" y="293" font-size="13" text-anchor="middle" fill="#F0E6D4" font-family="Arial">8</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TIRA ================= -->
+<div class="strip">
+  <div class="wrap">
+    <ul>
+      <li><span class="dot"></span>Cocina mediterránea y española</li>
+      <li><span class="dot"></span>Tapas para compartir</li>
+      <li><span class="dot"></span>Sala de billar</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ================= LA CASA ================= -->
+<section class="pad">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">La casa</div>
+      <h2>Mesa, barra y taco de billar bajo el mismo techo</h2>
+      <p>El Riviera es bar y restaurante en el centro de Béjar: cocina mediterránea y española para sentarse a comer, tapas en la barra cuando el tiempo aprieta, y una sala de billar para alargar la tarde. Se reserva por teléfono, directamente con la casa.</p>
+    </div>
+
+    <div class="cards">
+      <article class="card">
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#B4532A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 3v7a3 3 0 0 0 3 3h0a3 3 0 0 0 3-3V3"/><path d="M7 13v8"/><path d="M17 3c-1.7 1.3-2.5 3.3-2.5 5.5S15.3 13 17 14"/><path d="M17 14v7"/></svg>
+        </div>
+        <h3>Cocina mediterránea</h3>
+        <p>Platos de temporada en clave mediterránea: verdura, aceite de oliva, pescado y guisos hechos con tiempo.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#B4532A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h18"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/><path d="M8 21h8"/><path d="M9 7c0-1.5 1.3-2 1.3-3.2"/><path d="M14 7c0-1.5 1.3-2 1.3-3.2"/></svg>
+        </div>
+        <h3>Cocina española</h3>
+        <p>Recetario de siempre, del clásico de cuchara al asado, servido en mesa y pensado para comer sin prisa.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#B4532A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7.5" cy="8" r="4"/><circle cx="16.5" cy="13" r="4"/><path d="M4 20h16"/></svg>
+        </div>
+        <h3>Tapas para compartir</h3>
+        <p>Raciones y tapas en barra o en mesa, para picar entre varios o para una comida ligera a media tarde.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#B4532A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="6" width="19" height="12" rx="2.5"/><circle cx="8" cy="12" r="2"/><circle cx="14.5" cy="10" r="2"/><path d="M17 16.5l4.5-9"/></svg>
+        </div>
+        <h3>Sala de billar</h3>
+        <p>Mesa de billar en sala propia: la sobremesa, la partida de después y los planes de grupo, en el mismo sitio.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#B4532A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"/><path d="M9 7h6"/><path d="M9 11h6"/><path d="M9 15h4"/><path d="M3 21h18"/></svg>
+        </div>
+        <h3>Carta y menú del día</h3>
+        <p>La carta y el menú del día se consultan en el local o por teléfono; la casa los actualiza según la temporada.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#B4532A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+        </div>
+        <h3>Reserva por teléfono</h3>
+        <p>Una llamada y listo: mesa para comer, una ración en barra o la sala de billar para un grupo.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CARTA (espacios a rellenar) ================= -->
+<section class="pad menu-sec" id="carta">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">La carta</div>
+      <h2>Aquí va vuestra carta</h2>
+      <p>Estos dos bloques están preparados para que el Riviera los rellene con sus propios platos y su menú del día. Nosotros no inventamos nada: la casa escribe, la web lo muestra bien en el móvil y se actualiza cuando haga falta.</p>
+    </div>
+
+    <div class="slots">
+      <div class="slot">
+        <h3>Carta</h3>
+        <p class="hint">Espacio reservado para los apartados y platos que decida el restaurante.</p>
+        <div class="lines" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        <span class="tag">Contenido a facilitar por el negocio</span>
+      </div>
+      <div class="slot">
+        <h3>Menú del día</h3>
+        <p class="hint">Espacio reservado para el menú que la casa ofrezca cada jornada.</p>
+        <div class="lines" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        <span class="tag">Contenido a facilitar por el negocio</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PASOS ================= -->
+<section class="pad steps-sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow on-dark">Tu primera visita</div>
+      <h2>Tres pasos y a la mesa</h2>
+      <p>Sin formularios, sin intermediarios y sin apps de terceros: se habla directamente con el restaurante.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <span class="num">01</span>
+        <h3>Llama y reserva</h3>
+        <p>Una llamada al <a href="tel:655913737" style="color:#FFE7C4">655 91 37 37</a> para decir cuántos sois y qué día. Si queréis billar, se comenta en la misma llamada.</p>
+      </div>
+      <div class="step">
+        <span class="num">02</span>
+        <h3>Llega a la calle Zúñiga Rodríguez</h3>
+        <p>Estamos en el número 13, en Béjar. Al llegar, la casa os sitúa en mesa o en barra según lo que busquéis ese día.</p>
+      </div>
+      <div class="step">
+        <span class="num">03</span>
+        <h3>Comed y quedaos</h3>
+        <p>Carta o menú del día, tapas para compartir y, si apetece, una partida de billar después del café.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACTO ================= -->
+<section class="pad" id="contacto">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Contacto</div>
+      <h2>Dónde estamos</h2>
+      <p>En el centro de Béjar. Para reservar o preguntar por la carta, lo más rápido es el teléfono.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div>
+        <div class="info">
+          <div class="row">
+            <div class="ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#B4532A" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+            </div>
+            <div>
+              <div class="k">Teléfono · reservas</div>
+              <a class="v" href="tel:655913737">655 91 37 37</a>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#B4532A" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="k">Dirección</div>
+              <div class="v">Calle Zúñiga Rodríguez, 13<small>37700 Béjar · Salamanca</small></div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#B4532A" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3.2 2"/></svg>
+            </div>
+            <div>
+              <div class="k">Horario</div>
+              <div class="v">Consultar horario<small>Lo más fiable es preguntar por teléfono.</small></div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#B4532A" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3 7l9 6 9-6"/></svg>
+            </div>
+            <div>
+              <div class="k">Email</div>
+              <a class="v" href="mailto:rivierarestaurante@gmail.com">rivierarestaurante@gmail.com</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="acc">
+          <button type="button" aria-expanded="false">
+            ¿Se puede reservar la sala de billar?
+            <svg class="chev" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="panel">Pregúntalo en la misma llamada de reserva y la casa te dirá cómo lo tiene organizado ese día.</div>
+
+          <button type="button" aria-expanded="false">
+            ¿Dónde veo la carta y el menú del día?
+            <svg class="chev" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="panel">En el propio local, o llamando al restaurante. En esta maqueta hay un apartado preparado para publicarlos aquí.</div>
+
+          <button type="button" aria-expanded="false">
+            ¿Se puede ir solo a tapear o a tomar algo?
+            <svg class="chev" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="panel">Sí: el Riviera es bar y restaurante, así que funciona igual para una tapa en barra que para comer en mesa.</div>
+        </div>
+      </div>
+
+      <!-- mapa esquemático SVG -->
+      <div class="mapcard">
+        <svg viewBox="0 0 520 400" role="img" aria-label="Mapa esquemático de la zona con un marcador en la calle Zúñiga Rodríguez">
+          <rect width="520" height="400" fill="#EDE3D1"/>
+          <!-- manzanas -->
+          <g fill="#E2D5BE">
+            <rect x="24" y="24" width="150" height="104" rx="7"/>
+            <rect x="206" y="24" width="124" height="104" rx="7"/>
+            <rect x="362" y="24" width="134" height="104" rx="7"/>
+            <rect x="24" y="172" width="150" height="88" rx="7"/>
+            <rect x="362" y="172" width="134" height="88" rx="7"/>
+            <rect x="24" y="300" width="150" height="76" rx="7"/>
+            <rect x="206" y="300" width="124" height="76" rx="7"/>
+            <rect x="362" y="300" width="134" height="76" rx="7"/>
+          </g>
+          <!-- zona verde -->
+          <rect x="206" y="172" width="124" height="88" rx="10" fill="#CBD8B6"/>
+          <circle cx="238" cy="206" r="13" fill="#9FB686"/>
+          <circle cx="296" cy="232" r="10" fill="#9FB686"/>
+          <!-- calles -->
+          <g stroke="#FBF6EC" stroke-linecap="round">
+            <path d="M0 150h520" stroke-width="22"/>
+            <path d="M0 280h520" stroke-width="18"/>
+            <path d="M190 0v400" stroke-width="20"/>
+            <path d="M346 0v400" stroke-width="16"/>
+          </g>
+          <g stroke="#D7C8AD" stroke-width="2" stroke-dasharray="9 11">
+            <path d="M0 150h520"/><path d="M190 0v400"/>
+          </g>
+          <!-- etiquetas de calle -->
+          <text x="32" y="192" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#6B5D4A" letter-spacing="1.2">C. ZÚÑIGA RODRÍGUEZ</text>
+          <text x="200" y="372" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#8C7E69" letter-spacing="1.1">CENTRO DE BÉJAR</text>
+          <!-- marcador -->
+          <g transform="translate(190 150)">
+            <ellipse cx="0" cy="8" rx="23" ry="7" fill="rgba(36,28,22,.2)"/>
+            <circle cx="0" cy="-34" r="34" fill="rgba(180,83,42,.16)"/>
+            <path d="M0 4c0 0-17-19-17-31A17 17 0 0 1 17-27C17-15 0 4 0 4z" fill="#B4532A"/>
+            <circle cx="0" cy="-27" r="6.5" fill="#FFF4E4"/>
+          </g>
+          <text x="214" y="118" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#8C3C1C">Restaurante Riviera</text>
+          <text x="214" y="136" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#6E6052">Zúñiga Rodríguez, 13</text>
+        </svg>
+        <div class="mapcap">Plano esquemático orientativo, dibujado para esta maqueta. No sustituye a un mapa real.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CIERRE ================= -->
+<section class="pad closing">
+  <div class="wrap">
+    <h2>¿Reservamos mesa?</h2>
+    <p>Llama al restaurante y dinos cuántos sois. Si además queréis la partida de billar, lo apuntamos en la misma llamada.</p>
+    <a class="btn btn-primary" href="tel:655913737">
+      <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+      655 91 37 37
+    </a>
+  </div>
+</section>
+
+<!-- ================= PIE ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h3>Restaurante Riviera</h3>
+        <p>Bar-restaurante de cocina mediterránea y española, tapas y sala de billar en Béjar.</p>
+      </div>
+      <div>
+        <div class="foot-k">Contacto</div>
+        <div class="foot-list">
+          <a href="tel:655913737">655 91 37 37</a>
+          <a href="mailto:rivierarestaurante@gmail.com">rivierarestaurante@gmail.com</a>
+          <p>Consultar horario</p>
+        </div>
+      </div>
+      <div>
+        <div class="foot-k">Dirección</div>
+        <div class="foot-list">
+          <p>Calle Zúñiga Rodríguez, 13</p>
+          <p>37700 Béjar · Salamanca</p>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>Maqueta de demostración. Los contenidos de carta y menú los facilita el negocio.</p>
+      <p class="studio">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var btns = document.querySelectorAll('.acc button');
+  btns.forEach(function(b){
+    b.addEventListener('click', function(){
+      var panel = b.nextElementSibling;
+      var open = b.getAttribute('aria-expanded') === 'true';
+      btns.forEach(function(o){
+        o.setAttribute('aria-expanded','false');
+        if(o.nextElementSibling) o.nextElementSibling.classList.remove('open');
+      });
+      if(!open){
+        b.setAttribute('aria-expanded','true');
+        panel.classList.add('open');
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>

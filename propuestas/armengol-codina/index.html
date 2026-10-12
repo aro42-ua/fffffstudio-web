@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Armengol Codina, S.L. — Asesoría, gestoría y correduría de seguros en Solsona</title>
+<style>
+:root{
+  --navy:#101c2b;
+  --navy-2:#17293d;
+  --slate:#3c4e63;
+  --ink:#1b2430;
+  --body:#44525f;
+  --line:#dfe3e8;
+  --paper:#ffffff;
+  --cream:#f6f4ef;
+  --cream-2:#efece4;
+  --gold:#a9823c;
+  --gold-light:#e8dcc4;
+  --maxw:1120px;
+  --bar:40px;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:Georgia,"Times New Roman",Times,serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;padding-top:var(--bar);
+  font-family:var(--sans);
+  font-size:17px;line-height:1.65;
+  color:var(--body);background:var(--paper);
+  overflow-x:hidden;
+}
+img,svg{max-width:100%}
+h1,h2,h3{color:var(--ink);line-height:1.2;margin:0 0 .5em;font-weight:600;letter-spacing:-.015em}
+p{margin:0 0 1em}
+a{color:inherit}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;width:100%}
+
+/* ---------- barra fija ---------- */
+.bar{
+  position:fixed;top:0;left:0;right:0;height:var(--bar);z-index:100;
+  display:flex;align-items:center;justify-content:center;
+  background:#0b1420;color:#c3cbd6;
+  font-size:11.5px;letter-spacing:.055em;text-transform:uppercase;
+  border-bottom:1px solid rgba(169,130,60,.4);
+  padding:0 12px;text-align:center;
+}
+.bar span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%;display:block}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;overflow:hidden;color:#eef1f5;
+  background:
+    radial-gradient(1100px 520px at 88% -8%, rgba(169,130,60,.26), transparent 62%),
+    radial-gradient(760px 420px at 4% 108%, rgba(76,112,150,.32), transparent 66%),
+    linear-gradient(165deg,#0f1b29 0%,#152638 52%,#101d2c 100%);
+  padding:76px 0 84px;
+}
+.hero::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:72px 100%;
+}
+.hero .wrap{position:relative;z-index:1}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:#d6b980;margin-bottom:26px;font-weight:600;
+}
+.eyebrow::before{content:"";width:28px;height:1px;background:#a9823c;display:block}
+.hero h1{
+  font-family:var(--serif);font-weight:400;color:#fff;
+  font-size:clamp(2.1rem,5.6vw,3.6rem);letter-spacing:-.02em;
+  margin:0 0 20px;max-width:16em;
+}
+.hero h1 em{font-style:normal;display:block;font-size:.5em;letter-spacing:.02em;color:#9fb0c4;margin-top:14px;font-family:var(--sans)}
+.lead{font-size:clamp(1.02rem,2.2vw,1.2rem);color:#c3cfdb;max-width:34em;margin:0 0 34px}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:15px 26px;border-radius:3px;text-decoration:none;
+  font-weight:600;font-size:16px;letter-spacing:.01em;
+  transition:transform .18s ease,background .18s ease,border-color .18s ease,box-shadow .18s ease;
+}
+.btn-primary{background:#a9823c;color:#fff;box-shadow:0 10px 26px -12px rgba(169,130,60,.85)}
+.btn-primary:hover{background:#bc9449;transform:translateY(-2px)}
+.btn-ghost{border:1px solid rgba(255,255,255,.3);color:#e6ebf1}
+.btn-ghost:hover{border-color:#d6b980;color:#fff;transform:translateY(-2px)}
+.btn svg{flex:0 0 auto}
+.hero-meta{
+  margin-top:40px;padding-top:26px;border-top:1px solid rgba(255,255,255,.12);
+  display:flex;flex-wrap:wrap;gap:14px 40px;font-size:14.5px;color:#9fb0c4;
+}
+.hero-meta div{display:flex;align-items:center;gap:9px;min-width:0}
+.hero-meta strong{color:#e6ebf1;font-weight:600}
+
+/* ---------- secciones ---------- */
+section{padding:78px 0}
+.alt{background:var(--cream);border-top:1px solid var(--cream-2);border-bottom:1px solid var(--cream-2)}
+.head{max-width:40em;margin-bottom:46px}
+.head .kicker{
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold);font-weight:700;margin-bottom:14px;
+}
+.head h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.6rem,3.6vw,2.3rem)}
+.head p{margin:0;font-size:1.02rem}
+
+/* servicios */
+.grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(252px,1fr))}
+.card{
+  background:#fff;border:1px solid var(--line);border-radius:4px;
+  padding:30px 26px 28px;position:relative;
+  transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;
+}
+.card::before{
+  content:"";position:absolute;left:0;top:0;width:100%;height:2px;
+  background:linear-gradient(90deg,var(--gold),rgba(169,130,60,0));
+  opacity:0;transition:opacity .2s ease;
+}
+.card:hover{transform:translateY(-3px);box-shadow:0 18px 40px -22px rgba(16,28,43,.45);border-color:#cfd6de}
+.card:hover::before{opacity:1}
+.ico{
+  width:44px;height:44px;border-radius:3px;margin-bottom:18px;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(145deg,#f3eee3,#e7dfcd);color:#8d6c2f;
+}
+.card h3{font-size:1.1rem;margin-bottom:8px}
+.card p{margin:0;font-size:.96rem;line-height:1.6}
+.tags{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:7px}
+.tags li{
+  font-size:12.5px;padding:4px 10px;border-radius:2px;
+  background:var(--cream);color:var(--slate);border:1px solid var(--cream-2);
+}
+
+/* pasos */
+.steps{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));counter-reset:s}
+.step{position:relative;padding:32px 26px 28px;background:#fff;border:1px solid var(--line);border-radius:4px}
+.step .n{
+  font-family:var(--serif);font-size:2.2rem;line-height:1;color:var(--gold);
+  display:block;margin-bottom:14px;
+}
+.step h3{font-size:1.06rem;margin-bottom:7px}
+.step p{margin:0;font-size:.96rem}
+
+/* contacto */
+.contact-grid{display:grid;gap:34px;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);align-items:start}
+.info{list-style:none;margin:0 0 30px;padding:0}
+.info li{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+.info li:first-child{padding-top:0}
+.info .ic{
+  flex:0 0 38px;width:38px;height:38px;border-radius:50%;
+  background:#fff;border:1px solid var(--line);color:var(--gold);
+  display:flex;align-items:center;justify-content:center;
+}
+.info .lb{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:#7c8a98;font-weight:700;margin-bottom:3px}
+.info .vl{font-size:1.04rem;color:var(--ink);font-weight:600;line-height:1.45;word-break:break-word}
+.info a.vl{text-decoration:none;border-bottom:1px solid var(--gold-light);transition:border-color .18s ease,color .18s ease}
+.info a.vl:hover{color:var(--gold);border-color:var(--gold)}
+.info .sub{font-size:.9rem;color:#7c8a98;margin-top:2px}
+.map{
+  background:#fff;border:1px solid var(--line);border-radius:4px;overflow:hidden;
+}
+.map svg{display:block;width:100%;height:auto}
+.map .cap{
+  padding:14px 18px;border-top:1px solid var(--line);
+  font-size:12.5px;color:#7c8a98;background:var(--cream);
+}
+
+/* faq */
+.faq{border-top:1px solid var(--line);max-width:46em}
+.q{border-bottom:1px solid var(--line)}
+.q button{
+  width:100%;background:none;border:0;padding:20px 40px 20px 0;
+  font:inherit;font-weight:600;color:var(--ink);font-size:1.01rem;
+  text-align:left;cursor:pointer;position:relative;line-height:1.45;
+}
+.q button::after{
+  content:"";position:absolute;right:6px;top:50%;width:10px;height:10px;
+  border-right:2px solid var(--gold);border-bottom:2px solid var(--gold);
+  transform:translateY(-70%) rotate(45deg);transition:transform .22s ease;
+}
+.q.open button::after{transform:translateY(-30%) rotate(-135deg)}
+.q .a{max-height:0;overflow:hidden;transition:max-height .28s ease}
+.q .a p{padding:0 0 20px;margin:0;font-size:.97rem;max-width:40em}
+.q.open .a{max-height:380px}
+
+/* cierre */
+.closing{
+  background:linear-gradient(160deg,#101d2c,#1a2e42);color:#e6ebf1;text-align:center;
+}
+.closing h2{color:#fff;font-family:var(--serif);font-weight:400;font-size:clamp(1.5rem,3.4vw,2.1rem)}
+.closing p{color:#a9b8c8;max-width:30em;margin:0 auto 30px}
+
+/* pie */
+footer{background:#0b1420;color:#8e9dad;padding:52px 0 44px;font-size:14.5px}
+.f-top{display:flex;flex-wrap:wrap;gap:24px 40px;justify-content:space-between;align-items:flex-start}
+.f-name{font-family:var(--serif);font-size:1.22rem;color:#fff;margin:0 0 6px}
+.f-sub{margin:0;font-size:14px;color:#8e9dad}
+.f-links{display:flex;flex-direction:column;gap:7px;min-width:0}
+.f-links a{color:#cfd8e2;text-decoration:none;word-break:break-word;border-bottom:1px solid transparent;transition:color .18s,border-color .18s}
+.f-links a:hover{color:#d6b980;border-color:#a9823c}
+.f-rule{height:1px;background:rgba(255,255,255,.1);margin:34px 0 22px}
+.f-note{font-size:13.5px;color:#8291a1;margin:0}
+.f-sig{font-size:13.5px;color:#d6b980;margin:10px 0 0;line-height:1.55}
+
+@media (min-width:980px){
+  .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (max-width:900px){
+  .contact-grid{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  :root{--bar:54px}
+  body{font-size:16.5px}
+  .bar{font-size:10px;letter-spacing:.02em;padding:7px 14px;line-height:1.4;height:var(--bar)}
+  .bar span{white-space:normal;overflow:visible;text-overflow:clip}
+  .wrap{padding:0 18px}
+  .hero{padding:52px 0 60px}
+  section{padding:56px 0}
+  .head{margin-bottom:34px}
+  .cta-row{flex-direction:column;align-items:stretch}
+  .btn{justify-content:center}
+  .hero-meta{gap:12px 0;flex-direction:column}
+  .f-top{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<div class="bar" role="note"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Solsona · Lleida</p>
+    <h1>Armengol Codina, S.L.<em>Asesoría, gestoría y correduría de seguros</em></h1>
+    <p class="lead">Acompañamos a autónomos, empresas y particulares en su fiscalidad, su contabilidad, sus obligaciones laborales y sus seguros. Un mismo despacho para todo lo que la administración le pide.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="tel:973481926">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.6a2 2 0 0 1-.5 2.1L8.1 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.6 2.6.7a2 2 0 0 1 1.7 2Z"/></svg>
+        Llamar al 973 48 19 26
+      </a>
+      <a class="btn btn-ghost" href="#contacto">Dónde estamos</a>
+    </div>
+    <div class="hero-meta">
+      <div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#d6b980" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span><strong>Pl. del Camp, 6</strong> · 25280 Solsona</span>
+      </div>
+      <div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#d6b980" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <span>Atención presencial · <strong>Consultar horario</strong></span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="wrap">
+    <div class="head">
+      <p class="kicker">Áreas de trabajo</p>
+      <h2>Todo el despacho en un único interlocutor</h2>
+      <p>Fiscal, contable, laboral y seguros bajo el mismo techo: su documentación no va de un sitio a otro y usted habla siempre con la misma gente.</p>
+    </div>
+    <div class="grid">
+
+      <article class="card">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5"/></svg></div>
+        <h3>Asesoría fiscal</h3>
+        <p>Preparación y presentación de las declaraciones periódicas y anuales, planificación de impuestos y atención a requerimientos de la Agencia Tributaria.</p>
+        <ul class="tags"><li>IVA</li><li>IRPF</li><li>Impuesto de Sociedades</li><li>Renta</li></ul>
+      </article>
+
+      <article class="card">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 7h8M8 11h4M8 15h8"/><path d="M16 11v8"/></svg></div>
+        <h3>Contabilidad</h3>
+        <p>Llevanza contable al día, libros oficiales, cierres de ejercicio y cuentas anuales, con la información ordenada para tomar decisiones.</p>
+        <ul class="tags"><li>Libros oficiales</li><li>Cierre de ejercicio</li><li>Cuentas anuales</li></ul>
+      </article>
+
+      <article class="card">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></svg></div>
+        <h3>Laboral</h3>
+        <p>Altas y bajas, contratos, nóminas y seguros sociales, además de la gestión de incidencias con la Seguridad Social y la Tesorería.</p>
+        <ul class="tags"><li>Nóminas</li><li>Contratos</li><li>Seguridad Social</li></ul>
+      </article>
+
+      <article class="card">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21V9l9-6 9 6v12"/><path d="M9 21v-7h6v7"/></svg></div>
+        <h3>Autónomos y sociedades</h3>
+        <p>Trámites de alta de actividad, constitución y mantenimiento de sociedades, cambios de titularidad y obligaciones registrales.</p>
+        <ul class="tags"><li>Alta de actividad</li><li>Constitución</li><li>Trámites</li></ul>
+      </article>
+
+      <article class="card">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>Correduría de seguros</h3>
+        <p>Como corredores analizamos la cobertura que necesita, comparamos opciones del mercado y le acompañamos también cuando hay que dar un parte.</p>
+        <ul class="tags"><li>Particulares</li><li>Empresa</li><li>Siniestros</li></ul>
+      </article>
+
+      <article class="card">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v.01M11 12h1v5h1"/></svg></div>
+        <h3>Consultas y seguimiento</h3>
+        <p>Resolvemos las dudas del día a día y avisamos de los plazos que le afectan, para que las decisiones se tomen con tiempo y no a última hora.</p>
+        <ul class="tags"><li>Plazos</li><li>Requerimientos</li><li>Dudas puntuales</li></ul>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- PASOS -->
+<section class="alt" id="como-trabajamos">
+  <div class="wrap">
+    <div class="head">
+      <p class="kicker">Tu primera visita</p>
+      <h2>Cómo trabajamos</h2>
+      <p>Tres pasos sencillos para empezar. Sin compromiso en la primera conversación.</p>
+    </div>
+    <div class="steps">
+      <article class="step">
+        <span class="n">01</span>
+        <h3>Nos llama o se pasa por el despacho</h3>
+        <p>Nos cuenta su situación: si es autónomo, si tiene sociedad, si quiere revisar sus seguros o si viene de otro asesor. Escuchamos primero.</p>
+      </article>
+      <article class="step">
+        <span class="n">02</span>
+        <h3>Revisamos su documentación</h3>
+        <p>Vemos qué hay al día, qué falta y qué plazos le afectan. Le explicamos en lenguaje claro cuál es su punto de partida y qué conviene hacer.</p>
+      </article>
+      <article class="step">
+        <span class="n">03</span>
+        <h3>Nos ocupamos del seguimiento</h3>
+        <p>Asumimos las presentaciones y los trámites que acordemos y le avisamos de cada vencimiento. Usted se centra en su actividad.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="wrap">
+    <div class="head">
+      <p class="kicker">Contacto</p>
+      <h2>Estamos en el centro de Solsona</h2>
+      <p>En la Plaça del Camp. Puede llamarnos, escribirnos o venir a vernos.</p>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <ul class="info">
+          <li>
+            <span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.6a2 2 0 0 1-.5 2.1L8.1 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.6 2.6.7a2 2 0 0 1 1.7 2Z"/></svg></span>
+            <span>
+              <span class="lb">Teléfono</span>
+              <a class="vl" href="tel:973481926">973 48 19 26</a>
+            </span>
+          </li>
+          <li>
+            <span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m3 6 9 7 9-7"/></svg></span>
+            <span>
+              <span class="lb">Correo electrónico</span>
+              <a class="vl" href="mailto:ac@armengolcodina.com">ac@armengolcodina.com</a>
+            </span>
+          </li>
+          <li>
+            <span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span>
+              <span class="lb">Dirección</span>
+              <span class="vl">Pl. del Camp, 6<br>25280 Solsona (Lleida)</span>
+            </span>
+          </li>
+          <li>
+            <span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+            <span>
+              <span class="lb">Horario</span>
+              <span class="vl">Consultar horario</span>
+              <span class="sub">Le confirmamos la franja de atención por teléfono.</span>
+            </span>
+          </li>
+        </ul>
+        <a class="btn btn-primary" href="tel:973481926">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.6a2 2 0 0 1-.5 2.1L8.1 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.6 2.6.7a2 2 0 0 1 1.7 2Z"/></svg>
+          Llamar ahora
+        </a>
+      </div>
+
+      <div class="map">
+        <svg viewBox="0 0 560 400" role="img" aria-label="Plano esquemático de la ubicación del despacho en la Plaça del Camp, Solsona">
+          <defs>
+            <linearGradient id="mg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#f7f5f0"/><stop offset="1" stop-color="#eceade"/>
+            </linearGradient>
+          </defs>
+          <rect width="560" height="400" fill="url(#mg)"/>
+          <!-- manzanas -->
+          <g fill="#e3dfd2">
+            <rect x="34" y="34" width="150" height="104" rx="4"/>
+            <rect x="222" y="34" width="120" height="104" rx="4"/>
+            <rect x="380" y="34" width="146" height="104" rx="4"/>
+            <rect x="34" y="178" width="150" height="88" rx="4"/>
+            <rect x="380" y="178" width="146" height="88" rx="4"/>
+            <rect x="34" y="306" width="150" height="62" rx="4"/>
+            <rect x="222" y="306" width="120" height="62" rx="4"/>
+            <rect x="380" y="306" width="146" height="62" rx="4"/>
+          </g>
+          <!-- plaza -->
+          <rect x="214" y="170" width="136" height="104" rx="6" fill="#dfe6da" stroke="#c9d2c2" stroke-width="2"/>
+          <g fill="#cdd7c6">
+            <circle cx="238" cy="196" r="7"/><circle cx="326" cy="196" r="7"/>
+            <circle cx="238" cy="250" r="7"/><circle cx="326" cy="250" r="7"/>
+          </g>
+          <!-- calles -->
+          <g stroke="#ffffff" stroke-width="22" stroke-linecap="square">
+            <line x1="0" y1="158" x2="560" y2="158"/>
+            <line x1="0" y1="286" x2="560" y2="286"/>
+            <line x1="203" y1="0" x2="203" y2="400"/>
+            <line x1="361" y1="0" x2="361" y2="400"/>
+          </g>
+          <g stroke="#d9d3c4" stroke-width="1.5" stroke-dasharray="9 11">
+            <line x1="0" y1="158" x2="560" y2="158"/>
+            <line x1="0" y1="286" x2="560" y2="286"/>
+            <line x1="203" y1="0" x2="203" y2="400"/>
+            <line x1="361" y1="0" x2="361" y2="400"/>
+          </g>
+          <!-- etiquetas de calle abstractas -->
+          <g font-family="-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="11" fill="#9aa0a8" letter-spacing="1.2">
+            <text x="44" y="152">CARRER</text>
+            <text x="44" y="280">CARRER</text>
+            <text x="212" y="26" transform="rotate(90 212 26)">CARRER</text>
+          </g>
+          <!-- marcador -->
+          <g transform="translate(282 222)">
+            <ellipse cx="0" cy="34" rx="17" ry="5.5" fill="#101c2b" opacity=".16"/>
+            <path d="M0 32C0 32 19 15.5 19 -0.5A19 19 0 1 0 -19 -0.5C-19 15.5 0 32 0 32Z" fill="#a9823c"/>
+            <circle cx="0" cy="-1" r="7" fill="#fff"/>
+          </g>
+          <g font-family="-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif">
+            <rect x="330" y="212" width="196" height="54" rx="4" fill="#ffffff" stroke="#e1e4e8"/>
+            <text x="346" y="234" font-size="14" font-weight="600" fill="#1b2430">Pl. del Camp, 6</text>
+            <text x="346" y="253" font-size="12.5" fill="#6d7a87">25280 Solsona</text>
+          </g>
+          <!-- norte -->
+          <g transform="translate(508 60)">
+            <circle r="18" fill="#ffffff" stroke="#e1e4e8"/>
+            <path d="M0 -11 L5 4 L0 0.5 L-5 4 Z" fill="#a9823c"/>
+            <text y="14" text-anchor="middle" font-size="8.5" font-family="-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif" fill="#8a929b" letter-spacing="1">N</text>
+          </g>
+        </svg>
+        <p class="cap">Plano esquemático, sin escala. Orientativo para localizar el despacho dentro del casco de Solsona.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="alt">
+  <div class="wrap">
+    <div class="head">
+      <p class="kicker">Antes de venir</p>
+      <h2>Preguntas habituales</h2>
+    </div>
+    <div class="faq" id="faq">
+      <div class="q">
+        <button type="button">¿Puedo llevar la asesoría y los seguros en el mismo sitio?</button>
+        <div class="a"><p>Sí. Somos asesoría, gestoría y correduría de seguros, de modo que la parte fiscal, contable y laboral y la de seguros se tratan en el mismo despacho y con la misma información de su negocio.</p></div>
+      </div>
+      <div class="q">
+        <button type="button">¿Qué documentación debería traer a la primera visita?</button>
+        <div class="a"><p>Lo que tenga a mano: últimas declaraciones presentadas, documentación de alta de la actividad o de la sociedad y, si quiere revisar coberturas, las pólizas vigentes. Si falta algo, lo vemos después.</p></div>
+      </div>
+      <div class="q">
+        <button type="button">Vengo de otro asesor, ¿pueden ocuparse del traspaso?</button>
+        <div class="a"><p>Sí. Revisamos la situación en la que está, identificamos lo que queda pendiente y nos encargamos de continuar con las presentaciones y los trámites a partir del momento que acordemos.</p></div>
+      </div>
+      <div class="q">
+        <button type="button">¿Atienden a particulares o solo a empresas?</button>
+        <div class="a"><p>Atendemos a autónomos, sociedades y también a particulares, tanto en temas de renta y trámites como en la revisión de sus seguros.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CIERRE -->
+<section class="closing">
+  <div class="wrap">
+    <h2>Hablemos de su caso</h2>
+    <p>Una llamada es suficiente para saber cómo podemos ayudarle.</p>
+    <a class="btn btn-primary" href="tel:973481926">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.6a2 2 0 0 1-.5 2.1L8.1 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.6 2.6.7a2 2 0 0 1 1.7 2Z"/></svg>
+      973 48 19 26
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="f-top">
+      <div>
+        <p class="f-name">Armengol Codina, S.L.</p>
+        <p class="f-sub">Asesoría, gestoría y correduría de seguros<br>Pl. del Camp, 6 · 25280 Solsona (Lleida)</p>
+      </div>
+      <div class="f-links">
+        <a href="tel:973481926">973 48 19 26</a>
+        <a href="mailto:ac@armengolcodina.com">ac@armengolcodina.com</a>
+        <span style="color:#8e9dad">Consultar horario</span>
+      </div>
+    </div>
+    <div class="f-rule"></div>
+    <p class="f-note">Maqueta de demostración sin carácter contractual. Los contenidos son orientativos y pendientes de revisión por el negocio.</p>
+    <p class="f-sig">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var qs = document.querySelectorAll('#faq .q');
+  qs.forEach(function(q){
+    q.querySelector('button').addEventListener('click', function(){
+      var open = q.classList.contains('open');
+      qs.forEach(function(o){ o.classList.remove('open'); });
+      if(!open) q.classList.add('open');
+    });
+  });
+})();
+</script>
+</body>
+</html>
