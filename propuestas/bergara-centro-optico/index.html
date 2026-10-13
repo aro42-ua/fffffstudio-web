@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bergara Centro Óptico — Agurain/Salvatierra</title>
+<style>
+:root{
+  --ink:#10242F;
+  --ink-soft:#43606D;
+  --paper:#F6F8F8;
+  --white:#FFFFFF;
+  --optic:#0F6E7A;
+  --optic-dk:#0A4E57;
+  --audio:#B5651D;
+  --audio-dk:#8A4A12;
+  --line:#DCE5E6;
+  --bar:#10242F;
+  --radius:18px;
+  --shadow:0 1px 2px rgba(16,36,47,.06),0 8px 24px rgba(16,36,47,.07);
+  --shadow-sm:0 1px 2px rgba(16,36,47,.05),0 3px 10px rgba(16,36,47,.05);
+}
+*{box-sizing:border-box}
+html,body{max-width:100%;overflow-x:hidden}
+body{
+  margin:0;
+  padding-top:52px;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+  font-size:17px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img,svg{max-width:100%}
+h1,h2,h3{line-height:1.15;margin:0;letter-spacing:-.02em;font-weight:650}
+p{margin:0}
+a{color:inherit}
+
+/* ---------- barra fija ---------- */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  background:var(--bar);
+  color:#EAF2F3;
+  min-height:52px;
+  display:flex;align-items:center;justify-content:center;
+  padding:8px 14px;
+  text-align:center;
+  font-size:12.5px;
+  line-height:1.35;
+  letter-spacing:.01em;
+  border-bottom:1px solid rgba(255,255,255,.12);
+}
+.topbar span{display:inline-block;max-width:100%}
+
+/* ---------- layout ---------- */
+.wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 24px}
+section{padding:76px 0}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--optic-dk);
+  background:#E3F0F1;border:1px solid #C8E2E4;
+  padding:6px 12px;border-radius:999px;
+}
+.eyebrow.audio{color:var(--audio-dk);background:#F8EDE1;border-color:#EDD9C2}
+h2{font-size:clamp(26px,4vw,38px);margin:16px 0 12px}
+.lead{color:var(--ink-soft);max-width:62ch}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(900px 480px at 82% -10%,rgba(15,110,122,.22),transparent 62%),
+    radial-gradient(620px 420px at 6% 110%,rgba(181,101,29,.16),transparent 60%),
+    linear-gradient(170deg,#FFFFFF 0%,#F2F7F7 100%);
+  border-bottom:1px solid var(--line);
+  padding:66px 0 72px;
+}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.bil{
+  font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--optic-dk);margin-bottom:18px;
+}
+.bil b{color:var(--ink);font-weight:700}
+h1{font-size:clamp(34px,5.6vw,56px);margin-bottom:18px}
+.hero p.claim{font-size:clamp(17px,2.1vw,20px);color:var(--ink-soft);max-width:34ch}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:14px 22px;border-radius:12px;
+  font-weight:650;font-size:16px;text-decoration:none;
+  border:1px solid transparent;transition:transform .15s ease,box-shadow .15s ease;
+}
+.btn svg{flex:0 0 auto}
+.btn-primary{background:var(--optic-dk);color:#fff;box-shadow:var(--shadow-sm)}
+.btn-primary:hover{transform:translateY(-1px)}
+.btn-ghost{background:#fff;color:var(--ink);border-color:var(--line);box-shadow:var(--shadow-sm)}
+.btn-ghost:hover{transform:translateY(-1px)}
+.hero-note{margin-top:16px;font-size:14px;color:var(--ink-soft)}
+
+.hero-art{
+  background:#fff;border:1px solid var(--line);border-radius:24px;
+  padding:22px;box-shadow:var(--shadow);
+}
+.hero-art svg{display:block;width:100%;height:auto}
+
+/* ---------- dos áreas ---------- */
+.areas{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:34px}
+.area{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:30px;box-shadow:var(--shadow-sm);
+  border-top:4px solid var(--optic);
+}
+.area.audio{border-top-color:var(--audio)}
+.area h3{font-size:22px;margin-bottom:6px}
+.area .sub{font-size:14px;color:var(--ink-soft);margin-bottom:18px}
+.area ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.area li{display:flex;gap:12px;align-items:flex-start;font-size:15.5px}
+.tick{
+  flex:0 0 auto;width:22px;height:22px;border-radius:7px;
+  background:#E3F0F1;color:var(--optic-dk);
+  display:flex;align-items:center;justify-content:center;margin-top:2px;
+}
+.area.audio .tick{background:#F8EDE1;color:var(--audio-dk)}
+.area li b{font-weight:650}
+.area li span.d{display:block;color:var(--ink-soft);font-size:14px;font-weight:400}
+
+/* ---------- pasos ---------- */
+.steps-sec{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:34px}
+.step{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+  padding:28px 24px;
+}
+.num{
+  width:40px;height:40px;border-radius:12px;background:var(--optic-dk);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-weight:700;font-size:17px;
+  margin-bottom:16px;
+}
+.step h3{font-size:18px;margin-bottom:8px}
+.step p{font-size:15px;color:var(--ink-soft)}
+
+/* ---------- contacto ---------- */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:34px;align-items:start}
+.card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:30px;box-shadow:var(--shadow-sm);
+}
+.dl{display:grid;gap:18px;margin-top:4px}
+.row{display:flex;gap:14px;align-items:flex-start}
+.ico{
+  flex:0 0 auto;width:38px;height:38px;border-radius:11px;background:#EDF4F4;
+  color:var(--optic-dk);display:flex;align-items:center;justify-content:center;
+}
+.row .k{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);font-weight:700}
+.row .v{font-size:16.5px;font-weight:600;word-break:break-word}
+.row .v a{text-decoration:none;border-bottom:1px solid rgba(15,110,122,.35)}
+.row .v small{display:block;font-weight:400;font-size:14px;color:var(--ink-soft);border:0}
+.map{
+  border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#fff;
+  box-shadow:var(--shadow-sm);
+}
+.map svg{display:block;width:100%;height:auto}
+.map .cap{padding:12px 16px;font-size:12.5px;color:var(--ink-soft);border-top:1px solid var(--line)}
+
+/* ---------- pie ---------- */
+footer{background:var(--ink);color:#C8D8DC;padding:52px 0 40px}
+footer .fgrid{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:flex-start}
+footer .bn{color:#fff;font-size:19px;font-weight:650;letter-spacing:-.01em}
+footer .fs{font-size:14.5px;margin-top:6px}
+footer a{color:#9FD5DB}
+footer .legal{
+  margin-top:34px;padding-top:20px;border-top:1px solid rgba(255,255,255,.14);
+  font-size:13px;color:#9FB3B9;line-height:1.5;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width:900px){
+  .hero-grid,.areas,.contact-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .hero p.claim{max-width:none}
+}
+@media (max-width:520px){
+  body{padding-top:62px;font-size:16px}
+  .topbar{min-height:62px;font-size:11.5px;padding:8px 10px}
+  .wrap{padding:0 18px}
+  section{padding:54px 0}
+  .hero{padding:44px 0 52px}
+  .area,.card,.step{padding:22px 18px}
+  .btn{width:100%;justify-content:center}
+  .cta-row{gap:10px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="bil">Agurain <b>/</b> Salvatierra · Araba</div>
+        <h1>Bergara Centro Óptico</h1>
+        <p class="claim">Óptica, optometría y contactología, con un centro auditivo propio para la revisión de la audición y la adaptación de audífonos.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="tel:+34945302978">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+            Pedir cita · 945 302 978
+          </a>
+          <a class="btn btn-ghost" href="#contacto">Cómo llegar</a>
+        </div>
+        <p class="hero-note">Cita previa también por WhatsApp en el 640 126 604.</p>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 420 300" role="img">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#0F6E7A"/><stop offset="1" stop-color="#0A4E57"/>
+            </linearGradient>
+            <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#C9792B"/><stop offset="1" stop-color="#8A4A12"/>
+            </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="420" height="300" rx="16" fill="#F4F9F9"/>
+          <!-- gafas -->
+          <g transform="translate(28,60)">
+            <circle cx="78" cy="62" r="46" fill="none" stroke="url(#g1)" stroke-width="7"/>
+            <circle cx="196" cy="62" r="46" fill="none" stroke="url(#g1)" stroke-width="7"/>
+            <path d="M124 58c8-7 36-7 44 0" fill="none" stroke="url(#g1)" stroke-width="7" stroke-linecap="round"/>
+            <path d="M32 50 4 36M242 50l28-14" fill="none" stroke="#0A4E57" stroke-width="6" stroke-linecap="round"/>
+            <circle cx="78" cy="62" r="26" fill="#0F6E7A" opacity=".10"/>
+            <circle cx="196" cy="62" r="26" fill="#0F6E7A" opacity=".10"/>
+          </g>
+          <!-- onda sonora -->
+          <g transform="translate(298,196)">
+            <path d="M0 24a26 26 0 0 1 26-26" fill="none" stroke="url(#g2)" stroke-width="6" stroke-linecap="round"/>
+            <path d="M-16 24A42 42 0 0 1 26-18" fill="none" stroke="url(#g2)" stroke-width="6" stroke-linecap="round" opacity=".65"/>
+            <path d="M-32 24A58 58 0 0 1 26-34" fill="none" stroke="url(#g2)" stroke-width="6" stroke-linecap="round" opacity=".35"/>
+            <circle cx="30" cy="24" r="7" fill="#8A4A12"/>
+          </g>
+          <rect x="28" y="206" width="150" height="10" rx="5" fill="#0A4E57" opacity=".16"/>
+          <rect x="28" y="228" width="104" height="10" rx="5" fill="#0A4E57" opacity=".10"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="servicios">
+  <div class="wrap">
+    <span class="eyebrow">Dos áreas, un mismo centro</span>
+    <h2>Lo que hacemos</h2>
+    <p class="lead">La vista y la audición se atienden por separado, cada una con su espacio, su revisión y su seguimiento.</p>
+
+    <div class="areas">
+      <div class="area">
+        <h3>Óptica y optometría</h3>
+        <p class="sub">Begiak · Visión</p>
+        <ul>
+          <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span><b>Revisión visual completa</b><span class="d">Medida de la graduación y estudio de cómo trabaja cada ojo.</span></span></li>
+          <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span><b>Gafas graduadas y de sol</b><span class="d">Elección de montura, lentes y ajuste final en el centro.</span></span></li>
+          <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span><b>Contactología</b><span class="d">Adaptación de lentes de contacto, enseñanza de manejo y revisiones.</span></span></li>
+          <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span><b>Control de la visión infantil</b><span class="d">Seguimiento de la graduación en edad escolar.</span></span></li>
+          <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span><b>Ajustes y reparaciones</b><span class="d">Puesta a punto de monturas y cambio de lentes.</span></span></li>
+        </ul>
+      </div>
+
+      <div class="area audio">
+        <h3>Centro auditivo</h3>
+        <p class="sub">Belarriak · Audición</p>
+        <ul>
+          <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span><b>Revisión auditiva</b><span class="d">Prueba de audición en cabina y explicación del resultado.</span></span></li>
+          <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span><b>Adaptación de audífonos</b><span class="d">Selección del tipo de audífono según la pérdida y el día a día.</span></span></li>
+          <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span><b>Prueba antes de decidir</b><span class="d">Periodo de adaptación con ajustes hasta dar con el punto.</span></span></li>
+          <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span><b>Mantenimiento y revisiones</b><span class="d">Limpieza, recambios y reprogramación del audífono.</span></span></li>
+          <li><span class="tick"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span><b>Protección auditiva</b><span class="d">Tapones a medida para trabajo, descanso o agua.</span></span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="steps-sec">
+  <div class="wrap">
+    <span class="eyebrow">Tu primera visita</span>
+    <h2>Cómo trabajamos</h2>
+    <p class="lead">Tres pasos sencillos, tanto si vienes por la vista como por la audición.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h3>Pides cita</h3>
+        <p>Por teléfono o por WhatsApp. Nos dices si vienes por óptica o por audición y reservamos el tiempo necesario.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3>Te revisamos</h3>
+        <p>Revisión visual o auditiva sin prisas, y te explicamos el resultado en palabras claras antes de decidir nada.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3>Ajustamos y seguimos</h3>
+        <p>Preparamos tus gafas, lentillas o audífonos y te citamos para comprobar que todo va como debe.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap">
+    <span class="eyebrow audio">Contacto</span>
+    <h2>Dónde estamos</h2>
+    <p class="lead">En el centro de Agurain/Salvatierra. Atendemos con cita previa.</p>
+
+    <div class="contact-grid">
+      <div class="card">
+        <div class="dl">
+          <div class="row">
+            <span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span>
+            <div><div class="k">Teléfono</div><div class="v"><a href="tel:+34945302978">945 302 978</a></div></div>
+          </div>
+          <div class="row">
+            <span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.5 8.5 0 0 1-3.9-.9L3 20.5l1.6-4.9A8.4 8.4 0 0 1 3.6 11 8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5z"/></svg></span>
+            <div><div class="k">WhatsApp</div><div class="v"><a href="tel:+34640126604">640 126 604</a><small>Cita previa también por WhatsApp.</small></div></div>
+          </div>
+          <div class="row">
+            <span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <div><div class="k">Dirección</div><div class="v">Calle San Martín nº 6 bajo<small>01200 Agurain/Salvatierra · Araba/Álava</small></div></div>
+          </div>
+          <div class="row">
+            <span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+            <div><div class="k">Horario</div><div class="v">Consultar horario</div></div>
+          </div>
+          <div class="row">
+            <span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+            <div><div class="k">Email</div><div class="v"><a href="mailto:bergaraco@yahoo.es">bergaraco@yahoo.es</a></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="map">
+        <svg viewBox="0 0 520 380" role="img" aria-label="Plano esquemático de situación en Agurain/Salvatierra">
+          <rect width="520" height="380" fill="#EDF3F3"/>
+          <g fill="#E1EBEB">
+            <rect x="24" y="24" width="120" height="86" rx="6"/>
+            <rect x="188" y="24" width="150" height="86" rx="6"/>
+            <rect x="382" y="24" width="114" height="130" rx="6"/>
+            <rect x="24" y="152" width="120" height="110" rx="6"/>
+            <rect x="188" y="152" width="150" height="110" rx="6"/>
+            <rect x="382" y="196" width="114" height="160" rx="6"/>
+            <rect x="24" y="304" width="120" height="52" rx="6"/>
+            <rect x="188" y="304" width="150" height="52" rx="6"/>
+          </g>
+          <g stroke="#FFFFFF" stroke-width="22" stroke-linecap="square">
+            <path d="M166 0v380"/>
+            <path d="M360 0v380"/>
+            <path d="M0 131h520"/>
+            <path d="M0 283h520"/>
+          </g>
+          <g stroke="#C7D8D9" stroke-width="2" stroke-dasharray="7 9">
+            <path d="M166 0v380"/><path d="M360 0v380"/>
+            <path d="M0 131h520"/><path d="M0 283h520"/>
+          </g>
+          <text x="176" y="368" font-family="sans-serif" font-size="13" fill="#5E7A82">Calle San Martín</text>
+          <g transform="translate(166,131)">
+            <circle r="34" fill="#0F6E7A" opacity=".14"/>
+            <circle r="20" fill="#0F6E7A" opacity=".20"/>
+            <path d="M0-26c-7.7 0-14 6.3-14 14 0 10.5 14 26 14 26s14-15.5 14-26c0-7.7-6.3-14-14-14z" fill="#0A4E57"/>
+            <circle cy="-12" r="5.2" fill="#FFFFFF"/>
+          </g>
+        </svg>
+        <div class="cap">Plano esquemático, orientativo. No pretende ser cartografía real.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <div class="bn">Bergara Centro Óptico</div>
+        <div class="fs">Calle San Martín nº 6 bajo · 01200 Agurain/Salvatierra</div>
+        <div class="fs">Consultar horario</div>
+      </div>
+      <div>
+        <div class="fs"><a href="tel:+34945302978">945 302 978</a> · WhatsApp <a href="tel:+34640126604">640 126 604</a></div>
+        <div class="fs"><a href="mailto:bergaraco@yahoo.es">bergaraco@yahoo.es</a></div>
+      </div>
+    </div>
+    <div class="legal">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Artes Gráficas Ripoll · Imprenta en Villena</title>
+<style>
+  :root{
+    --tinta:#171a21;
+    --tinta-80:#3b4150;
+    --tinta-60:#5d6473;
+    --papel:#f7f4ed;
+    --papel-2:#efeade;
+    --blanco:#ffffff;
+    --rojo:#b8372a;
+    --rojo-osc:#8f2a20;
+    --cian:#1f6f8b;
+    --linea:#ddd6c6;
+    --radio:14px;
+    --sombra:0 1px 2px rgba(23,26,33,.05), 0 10px 30px -18px rgba(23,26,33,.35);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    padding-top:52px;
+    background:var(--papel);
+    color:var(--tinta);
+    font-family:var(--sans);
+    font-size:17px;
+    line-height:1.65;
+    overflow-x:hidden;
+    font-kerning:normal;
+    font-variant-ligatures:common-ligatures;
+    text-rendering:optimizeLegibility;
+  }
+  img,svg{max-width:100%}
+  a{color:inherit}
+
+  /* ---------- barra fija ---------- */
+  .barra{
+    position:fixed; inset:0 0 auto 0; z-index:100;
+    background:var(--tinta);
+    color:#f1ede3;
+    font-family:var(--sans);
+    font-size:12.5px;
+    line-height:1.3;
+    letter-spacing:.02em;
+    padding:9px 16px;
+    text-align:center;
+    border-bottom:1px solid rgba(255,255,255,.12);
+  }
+  .barra b{font-weight:600;color:#fff}
+
+  .wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+  .eyebrow{
+    font-family:var(--sans);
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--rojo);
+    margin:0 0 14px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::after{content:"";flex:1;height:1px;background:var(--linea);max-width:140px}
+  h1,h2,h3{font-family:var(--serif);font-weight:600;letter-spacing:-.015em;margin:0}
+  h1{font-size:clamp(2.5rem,7.2vw,4.35rem);line-height:1.02}
+  h2{font-size:clamp(1.85rem,4vw,2.65rem);line-height:1.12}
+  h3{font-size:1.18rem;line-height:1.3;letter-spacing:-.005em}
+  p{margin:0 0 1em}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    overflow:hidden;
+    background:
+      radial-gradient(900px 480px at 88% -8%, rgba(184,55,42,.10), transparent 60%),
+      radial-gradient(700px 420px at 2% 110%, rgba(31,111,139,.10), transparent 62%),
+      linear-gradient(180deg,#fbf9f4 0%,var(--papel) 100%);
+    border-bottom:1px solid var(--linea);
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
+    gap:56px; align-items:center;
+    padding:84px 0 92px;
+  }
+  .hero h1 .ink{color:var(--rojo)}
+  .lede{
+    font-family:var(--serif);
+    font-size:clamp(1.12rem,2.1vw,1.4rem);
+    line-height:1.55;
+    color:var(--tinta-80);
+    max-width:35ch;
+    margin:22px 0 0;
+  }
+  .meta-hero{
+    margin:26px 0 0; padding:0; list-style:none;
+    display:flex; flex-wrap:wrap; gap:8px 10px;
+    font-size:13.5px; color:var(--tinta-60);
+  }
+  .meta-hero li{
+    background:var(--blanco);
+    border:1px solid var(--linea);
+    border-radius:999px;
+    padding:5px 13px;
+    white-space:nowrap;
+  }
+  .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:var(--sans);font-size:15.5px;font-weight:600;letter-spacing:.01em;
+    text-decoration:none;border-radius:999px;padding:14px 24px;
+    border:1px solid transparent;transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn svg{flex:none}
+  .btn-p{background:var(--rojo);color:#fff;box-shadow:var(--sombra)}
+  .btn-p:hover{background:var(--rojo-osc);transform:translateY(-1px)}
+  .btn-s{background:var(--blanco);color:var(--tinta);border-color:var(--linea)}
+  .btn-s:hover{border-color:var(--tinta-60);transform:translateY(-1px)}
+
+  /* bloque tipográfico decorativo */
+  .specimen{
+    background:var(--blanco);
+    border:1px solid var(--linea);
+    border-radius:var(--radio);
+    box-shadow:var(--sombra);
+    padding:26px 28px 24px;
+    position:relative;
+  }
+  .specimen .sp-top{
+    display:flex;justify-content:space-between;align-items:baseline;
+    font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--tinta-60);
+    border-bottom:1px solid var(--linea);padding-bottom:10px;margin-bottom:18px;
+  }
+  .glifo{
+    font-family:var(--serif);
+    font-size:clamp(5rem,13vw,8.5rem);
+    line-height:.9;
+    letter-spacing:-.04em;
+    color:var(--tinta);
+    display:block;
+  }
+  .glifo em{color:var(--rojo);font-style:normal}
+  .sp-escala{margin-top:18px;border-top:1px solid var(--linea);padding-top:14px}
+  .sp-escala span{display:block;font-family:var(--serif);color:var(--tinta-80);line-height:1.25}
+  .sp-escala span:nth-child(1){font-size:1.6rem}
+  .sp-escala span:nth-child(2){font-size:1.15rem}
+  .sp-escala span:nth-child(3){font-size:.92rem;color:var(--tinta-60)}
+  .cmyk{display:flex;gap:6px;margin-top:18px}
+  .cmyk i{flex:1;height:8px;border-radius:999px;display:block}
+
+  /* ---------- secciones ---------- */
+  section{padding:84px 0}
+  .sec-head{max-width:62ch;margin-bottom:46px}
+  .sec-head p{color:var(--tinta-60);margin:14px 0 0;font-size:1.04rem}
+
+  .alt{background:var(--papel-2);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+
+  .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+  .card{
+    background:var(--blanco);
+    border:1px solid var(--linea);
+    border-radius:var(--radio);
+    padding:28px 26px 26px;
+    box-shadow:var(--sombra);
+    position:relative;
+    transition:transform .15s ease, border-color .15s ease;
+  }
+  .card:hover{transform:translateY(-2px);border-color:#c9c0ac}
+  .card .ico{
+    width:42px;height:42px;border-radius:10px;
+    background:rgba(184,55,42,.08);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:16px;
+  }
+  .card h3{margin-bottom:8px}
+  .card p{margin:0;color:var(--tinta-60);font-size:15.3px;line-height:1.6}
+  .card .num{
+    position:absolute;top:22px;right:24px;
+    font-family:var(--serif);font-size:13px;color:var(--linea);letter-spacing:.1em;
+  }
+
+  /* pasos */
+  .pasos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;counter-reset:p}
+  .paso{position:relative;padding-top:30px}
+  .paso::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:3px;
+    background:linear-gradient(90deg,var(--rojo),rgba(184,55,42,.15));
+    border-radius:2px;
+  }
+  .paso .n{
+    font-family:var(--serif);font-size:2.6rem;line-height:1;color:var(--rojo);
+    display:block;margin-bottom:10px;letter-spacing:-.03em;
+  }
+  .paso h3{margin-bottom:8px}
+  .paso p{color:var(--tinta-60);font-size:15.3px;margin:0}
+
+  /* contacto */
+  .contacto-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:40px;align-items:start}
+  .datos{
+    background:var(--blanco);border:1px solid var(--linea);border-radius:var(--radio);
+    box-shadow:var(--sombra);overflow:hidden;
+  }
+  .dato{display:flex;gap:16px;padding:20px 24px;border-bottom:1px solid var(--linea);align-items:flex-start}
+  .dato:last-child{border-bottom:0}
+  .dato .ico{flex:none;width:34px;height:34px;border-radius:9px;background:rgba(31,111,139,.09);display:flex;align-items:center;justify-content:center}
+  .dato .k{font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--tinta-60);display:block;margin-bottom:3px}
+  .dato .v{font-family:var(--serif);font-size:1.12rem;line-height:1.35;color:var(--tinta);text-decoration:none;word-break:break-word}
+  a.v:hover{color:var(--rojo)}
+  .mapa{
+    background:var(--blanco);border:1px solid var(--linea);border-radius:var(--radio);
+    box-shadow:var(--sombra);padding:14px;
+  }
+  .mapa svg{display:block;width:100%;height:auto;border-radius:8px}
+  .mapa .pie{font-size:12.5px;color:var(--tinta-60);padding:10px 4px 2px;margin:0;line-height:1.45}
+
+  /* pie */
+  footer{background:var(--tinta);color:#ded8cb;padding:56px 0 40px}
+  footer a{color:#fff}
+  .f-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:34px;align-items:start}
+  .f-marca{font-family:var(--serif);font-size:1.5rem;color:#fff;margin:0 0 8px;letter-spacing:-.01em}
+  .f-grid p{margin:0 0 6px;font-size:15px;color:#b9b2a4}
+  .f-mail{font-family:var(--serif);font-size:1.2rem;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.3);padding-bottom:2px}
+  .f-mail:hover{border-color:var(--rojo)}
+  .f-legal{
+    margin-top:38px;padding-top:20px;border-top:1px solid rgba(255,255,255,.14);
+    font-size:13px;color:#a79f90;line-height:1.55;
+  }
+
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;gap:40px;padding:60px 0 68px}
+    .cards,.pasos{grid-template-columns:1fr}
+    .contacto-grid,.f-grid{grid-template-columns:1fr}
+  }
+  @media (max-width:430px){
+    body{padding-top:64px;font-size:16px}
+    .barra{font-size:11.5px;padding:8px 12px;letter-spacing:0}
+    .wrap{padding:0 18px}
+    section{padding:58px 0}
+    .hero-grid{padding:46px 0 56px}
+    .btn{width:100%;justify-content:center}
+    .specimen{padding:20px 18px}
+    .dato{padding:16px 18px}
+  }
+</style>
+</head>
+<body>
+
+<div class="barra">Propuesta de diseño · maqueta no oficial · <b>FFFFFFstudio</b> · Ángel Rubio</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow">Imprenta y artes gráficas · Villena</p>
+        <h1>Artes Gráficas<br><span class="ink">Ripoll</span></h1>
+        <p class="lede">Imprenta y artes gráficas en Villena: diseño, impresión digital y offset para empresas, comercios y particulares.</p>
+        <ul class="meta-hero">
+          <li>Impresión digital y offset</li>
+          <li>Diseño gráfico</li>
+          <li>Gran formato</li>
+        </ul>
+        <div class="cta-row">
+          <a class="btn btn-p" href="tel:+34965814541">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+            965 814 541
+          </a>
+          <a class="btn btn-s" href="mailto:info@graficasripoll.com">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 7 9 6 9-6"/></svg>
+            Pedir presupuesto
+          </a>
+        </div>
+      </div>
+
+      <div class="specimen" aria-hidden="true">
+        <div class="sp-top"><span>Tipografía</span><span>Ripoll</span></div>
+        <span class="glifo">Aa<em>&amp;</em></span>
+        <div class="sp-escala">
+          <span>Papelería corporativa</span>
+          <span>Catálogos, revistas y folletos</span>
+          <span>Cartelería, etiquetas y packaging</span>
+        </div>
+        <div class="cmyk">
+          <i style="background:#1f6f8b"></i>
+          <i style="background:#b8372a"></i>
+          <i style="background:#d9a62b"></i>
+          <i style="background:#171a21"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="servicios">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Servicios</p>
+      <h2>Del archivo a la tirada, en un solo taller</h2>
+      <p>Trabajos de imprenta y artes gráficas para empresas, comercios, asociaciones y particulares de Villena y comarca.</p>
+    </div>
+    <div class="cards">
+      <article class="card">
+        <span class="num">01</span>
+        <div class="ico"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#b8372a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M7 17h10v4H7z"/></svg></div>
+        <h3>Impresión digital y offset</h3>
+        <p>Tiradas cortas con entrega ágil en digital y tiradas largas en offset, eligiendo el sistema que mejor se ajusta a cada encargo.</p>
+      </article>
+      <article class="card">
+        <span class="num">02</span>
+        <div class="ico"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#b8372a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3h11l5 5v13H4z"/><path d="M15 3v5h5"/><path d="M8 13h8M8 17h5"/></svg></div>
+        <h3>Papelería corporativa</h3>
+        <p>Tarjetas de visita, hojas con membrete, sobres, carpetas, talonarios y albaranes con una imagen uniforme en todos los soportes.</p>
+      </article>
+      <article class="card">
+        <span class="num">03</span>
+        <div class="ico"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#b8372a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h7v16H4zM13 4h7v16h-7z"/><path d="M6.5 8h2M15.5 8h2"/></svg></div>
+        <h3>Catálogos y revistas</h3>
+        <p>Folletos, dípticos, memorias y publicaciones encuadernadas, con la maquetación cuidada y el acabado que pida el trabajo.</p>
+      </article>
+      <article class="card">
+        <span class="num">04</span>
+        <div class="ico"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#b8372a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1.6"/><path d="M12 16v4M8 20h8"/></svg></div>
+        <h3>Cartelería y gran formato</h3>
+        <p>Carteles, lonas, vinilos y rótulos impresos en gran formato para escaparates, ferias, obras y señalización.</p>
+      </article>
+      <article class="card">
+        <span class="num">05</span>
+        <div class="ico"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#b8372a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 12.5 12.5 20.5a2 2 0 0 1-2.8 0L3 13.8V4h9.8l7.7 7.7a1.9 1.9 0 0 1 0 .8z"/><circle cx="7.6" cy="8.6" r="1.4"/></svg></div>
+        <h3>Etiquetas y packaging</h3>
+        <p>Etiquetas adhesivas, estuches y cajas impresas, troqueladas a medida del producto y del formato de cada envase.</p>
+      </article>
+      <article class="card">
+        <span class="num">06</span>
+        <div class="ico"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#b8372a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m14.5 3.5 6 6L8 22H2v-6z"/><path d="m11.5 6.5 6 6"/></svg></div>
+        <h3>Diseño gráfico</h3>
+        <p>Creación y adaptación de originales, logotipos y maquetación, o preparación de los archivos que ya tengas para que entren bien en máquina.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="proceso">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Cómo trabajamos</p>
+      <h2>Tres pasos, sin sorpresas</h2>
+      <p>Cuéntanos qué necesitas imprimir y nos encargamos del resto, desde el presupuesto hasta la entrega de la tirada.</p>
+    </div>
+    <div class="pasos">
+      <div class="paso">
+        <span class="n">1</span>
+        <h3>Presupuesto</h3>
+        <p>Nos llamas o nos escribes con el trabajo que tienes en mente: formato, cantidad, papel y acabado. Te preparamos un presupuesto a medida.</p>
+      </div>
+      <div class="paso">
+        <span class="n">2</span>
+        <h3>Prueba</h3>
+        <p>Preparamos el archivo para impresión y te enseñamos una prueba. Revisas textos, colores y medidas, y se corrige lo que haga falta antes de imprimir.</p>
+      </div>
+      <div class="paso">
+        <span class="n">3</span>
+        <h3>Tirada</h3>
+        <p>Con tu visto bueno pasamos a máquina, hacemos los acabados y te avisamos para recoger el trabajo en el taller.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Contacto</p>
+      <h2>Pide presupuesto sin compromiso</h2>
+      <p>Por teléfono o por correo electrónico. Estamos en el centro de Villena.</p>
+    </div>
+    <div class="contacto-grid">
+      <div class="datos">
+        <div class="dato">
+          <div class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1f6f8b" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></div>
+          <div><span class="k">Teléfono</span><a class="v" href="tel:+34965814541">965 814 541</a></div>
+        </div>
+        <div class="dato">
+          <div class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1f6f8b" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 7 9 6 9-6"/></svg></div>
+          <div><span class="k">Correo</span><a class="v" href="mailto:info@graficasripoll.com">info@graficasripoll.com</a></div>
+        </div>
+        <div class="dato">
+          <div class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1f6f8b" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1 1 16 0z"/><circle cx="12" cy="10" r="2.8"/></svg></div>
+          <div><span class="k">Dirección</span><span class="v">C/ Sancho Medina, 47<br>03400 Villena (Alicante)</span></div>
+        </div>
+        <div class="dato">
+          <div class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1f6f8b" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg></div>
+          <div><span class="k">Horario</span><span class="v">Consultar horario</span></div>
+        </div>
+      </div>
+
+      <div class="mapa">
+        <svg viewBox="0 0 560 360" role="img" aria-label="Mapa esquemático de la ubicación del taller en Villena">
+          <rect width="560" height="360" fill="#f7f4ed"/>
+          <g stroke="#e4ddcc" stroke-width="1">
+            <path d="M0 60h560M0 130h560M0 215h560M0 295h560"/>
+            <path d="M85 0v360M190 0v360M320 0v360M450 0v360"/>
+          </g>
+          <g fill="#eee8da">
+            <rect x="96" y="72" width="82" height="46" rx="3"/>
+            <rect x="200" y="72" width="108" height="46" rx="3"/>
+            <rect x="332" y="72" width="106" height="46" rx="3"/>
+            <rect x="96" y="142" width="82" height="62" rx="3"/>
+            <rect x="332" y="142" width="106" height="62" rx="3"/>
+            <rect x="462" y="142" width="86" height="62" rx="3"/>
+            <rect x="96" y="227" width="82" height="56" rx="3"/>
+            <rect x="200" y="227" width="108" height="56" rx="3"/>
+            <rect x="332" y="227" width="106" height="56" rx="3"/>
+          </g>
+          <path d="M190 0v360" stroke="#d6cdb8" stroke-width="12" opacity=".55"/>
+          <path d="M0 130h560" stroke="#d6cdb8" stroke-width="14" opacity=".55"/>
+          <path d="M0 130h560" stroke="#fff" stroke-width="2" stroke-dasharray="14 12" opacity=".9"/>
+          <rect x="200" y="142" width="108" height="62" rx="3" fill="rgba(184,55,42,.10)" stroke="#b8372a" stroke-width="1.4" stroke-dasharray="5 4"/>
+          <g transform="translate(254 164)">
+            <path d="M0 34c0 0-13-15-13-22a13 13 0 1 1 26 0c0 7-13 22-13 22z" fill="#b8372a"/>
+            <circle cx="0" cy="12" r="4.6" fill="#fff"/>
+          </g>
+          <g font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="12" fill="#5d6473">
+            <text x="196" y="124" letter-spacing="1.2">C/ SANCHO MEDINA</text>
+            <text x="14" y="122" letter-spacing="1.2">VILLENA</text>
+          </g>
+          <g font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="12.5" font-weight="700" fill="#171a21">
+            <text x="206" y="222">Artes Gráficas Ripoll</text>
+          </g>
+        </svg>
+        <p class="pie">Plano esquemático orientativo: no es cartografía real ni refleja el trazado exacto de las calles.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <p class="f-marca">Artes Gráficas Ripoll</p>
+        <p>Imprenta y artes gráficas</p>
+        <p>C/ Sancho Medina, 47 · 03400 Villena (Alicante)</p>
+        <p>Consultar horario</p>
+      </div>
+      <div>
+        <p style="margin-bottom:12px">Escríbenos para pedir presupuesto:</p>
+        <a class="f-mail" href="mailto:info@graficasripoll.com">info@graficasripoll.com</a>
+        <p style="margin-top:14px"><a href="tel:+34965814541" style="text-decoration:none;border-bottom:1px solid rgba(255,255,255,.3)">965 814 541</a></p>
+      </div>
+    </div>
+    <p class="f-legal">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+</body>
+</html>
