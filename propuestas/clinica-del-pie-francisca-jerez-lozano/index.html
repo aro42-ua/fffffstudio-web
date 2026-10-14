@@ -1,0 +1,986 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clínica del Pie Francisca Jerez Lozano · Podología en Villarrobledo</title>
+<meta name="description" content="Propuesta de rediseño web para la Clínica del Pie Francisca Jerez Lozano, podología en Villarrobledo (Albacete). Maqueta no oficial de FFFFFFstudio.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  :root{
+    --ink:#0d211d;
+    --ink-soft:#3c5a54;
+    --petrol:#0e4a43;
+    --petrol-deep:#072e29;
+    --teal:#15887a;
+    --teal-light:#2fa795;
+    --mint:#d7ece6;
+    --mint-deep:#b4dbd1;
+    --sand:#f4efe6;
+    --cream:#fffdf8;
+    --paper:#ffffff;
+    --clay:#c9733c;
+    --clay-soft:#f0dccb;
+    --line:#dfe7e4;
+    --bar-bg:#0a1f1c;
+    --radius:20px;
+    --radius-s:12px;
+    --shadow-s:0 1px 2px rgba(10,40,36,.06), 0 6px 18px rgba(10,40,36,.06);
+    --shadow-m:0 2px 4px rgba(10,40,36,.05), 0 18px 44px rgba(10,40,36,.10);
+    --font:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    --serif: Georgia, "Times New Roman", "Iowan Old Style", serif;
+    --maxw:1120px;
+  }
+
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:var(--font);
+    font-size:17px;
+    line-height:1.62;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%}
+  a{color:inherit}
+  h1,h2,h3,h4{margin:0;line-height:1.15;letter-spacing:-.015em;font-weight:650}
+  p{margin:0}
+  ul{margin:0;padding:0;list-style:none}
+
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  /* ---------- Barra fija ---------- */
+  .topbar{
+    position:sticky;
+    top:0;
+    z-index:999;
+    background:var(--bar-bg);
+    color:#e4f0ec;
+    border-bottom:1px solid rgba(255,255,255,.10);
+  }
+  .topbar__inner{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:8px 24px;
+    font-size:12.5px;
+    letter-spacing:.055em;
+    text-transform:uppercase;
+    text-align:center;
+    line-height:1.45;
+    word-break:break-word;
+  }
+
+  /* ---------- Cabecera del sitio ---------- */
+  .siteheader{
+    background:var(--paper);
+    border-bottom:1px solid var(--line);
+  }
+  .siteheader__inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    flex-wrap:wrap;
+    padding:16px 24px;
+    max-width:var(--maxw);
+    margin:0 auto;
+  }
+  .brand{display:flex;align-items:center;gap:12px;min-width:0}
+  .brand__mark{flex:0 0 auto}
+  .brand__text{min-width:0}
+  .brand__name{
+    font-family:var(--serif);
+    font-size:17px;
+    font-weight:600;
+    letter-spacing:-.01em;
+    line-height:1.2;
+    color:var(--petrol-deep);
+  }
+  .brand__sub{
+    font-size:11.5px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-top:3px;
+  }
+  .headnav{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+  .headnav a{
+    text-decoration:none;
+    font-size:14.5px;
+    color:var(--ink-soft);
+    border-bottom:1px solid transparent;
+    padding-bottom:2px;
+  }
+  .headnav a:hover{color:var(--petrol);border-bottom-color:var(--mint-deep)}
+
+  /* ---------- Botones ---------- */
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    text-decoration:none;
+    font-weight:600;
+    font-size:16px;
+    line-height:1.2;
+    padding:15px 24px;
+    border-radius:999px;
+    border:1.5px solid transparent;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+    max-width:100%;
+  }
+  .btn svg{flex:0 0 auto}
+  .btn--phone{
+    background:var(--clay);
+    color:#fff;
+    box-shadow:0 10px 26px rgba(201,115,60,.30);
+  }
+  .btn--phone:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(201,115,60,.36)}
+  .btn--ghost{
+    background:rgba(255,255,255,.10);
+    color:#eaf5f1;
+    border-color:rgba(234,245,241,.42);
+  }
+  .btn--ghost:hover{background:rgba(255,255,255,.18)}
+  .btn--outline{
+    background:var(--paper);
+    color:var(--petrol);
+    border-color:var(--mint-deep);
+  }
+  .btn--outline:hover{background:var(--mint);transform:translateY(-2px)}
+  .btn--sm{padding:11px 18px;font-size:14.5px}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    overflow:hidden;
+    background:
+      radial-gradient(1000px 520px at 88% -8%, rgba(47,167,149,.55), transparent 62%),
+      radial-gradient(760px 480px at 4% 108%, rgba(14,74,67,.92), transparent 68%),
+      linear-gradient(158deg, #0e4a43 0%, #0a3a34 48%, #072e29 100%);
+    color:#eaf5f1;
+    isolation:isolate;
+  }
+  .hero__glow{
+    position:absolute;
+    inset:auto -18% -42% auto;
+    width:min(70vw,620px);
+    aspect-ratio:1;
+    background:radial-gradient(circle at 50% 50%, rgba(215,236,230,.22), transparent 66%);
+    border-radius:50%;
+    z-index:-1;
+    pointer-events:none;
+  }
+  .hero__grid{
+    display:grid;
+    grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);
+    gap:clamp(28px,4vw,64px);
+    align-items:center;
+    padding:clamp(48px,6vw,86px) 0 clamp(52px,6vw,90px);
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    font-size:12px;
+    letter-spacing:.17em;
+    text-transform:uppercase;
+    color:#9fd3c7;
+    margin-bottom:20px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:26px;
+    height:1px;
+    background:#5ea99b;
+    display:block;
+  }
+  .hero h1{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:clamp(2rem,5.4vw,3.5rem);
+    letter-spacing:-.025em;
+    line-height:1.06;
+    margin-bottom:20px;
+  }
+  .hero h1 em{font-style:italic;color:#9fd3c7}
+  .hero__lead{
+    font-size:clamp(1rem,1.5vw,1.16rem);
+    color:#c9e3dc;
+    max-width:46ch;
+    margin-bottom:14px;
+  }
+  .hero__place{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:14px;
+    color:#9fd3c7;
+    margin-bottom:30px;
+  }
+  .hero__cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .hero__note{
+    margin-top:22px;
+    font-size:13.5px;
+    color:#8fc4b7;
+    max-width:40ch;
+  }
+
+  /* tarjeta decorativa del hero */
+  .heroart{
+    background:rgba(255,255,255,.055);
+    border:1px solid rgba(234,245,241,.16);
+    border-radius:26px;
+    padding:clamp(18px,2.4vw,26px);
+    backdrop-filter:blur(2px);
+  }
+  .heroart__svg{display:block;width:100%;height:auto}
+  .heroart__cap{
+    margin-top:14px;
+    font-size:12.5px;
+    letter-spacing:.07em;
+    text-transform:uppercase;
+    color:#8fc4b7;
+    text-align:center;
+  }
+
+  /* ---------- Secciones ---------- */
+  .section{padding:clamp(56px,7vw,100px) 0}
+  .section--sand{background:var(--sand)}
+  .section--paper{background:var(--paper)}
+  .sechead{max-width:62ch;margin-bottom:clamp(30px,4vw,48px)}
+  .sechead .eyebrow{color:var(--teal);margin-bottom:16px}
+  .sechead .eyebrow::before{background:var(--mint-deep)}
+  .sechead h2{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:clamp(1.6rem,3.5vw,2.4rem);
+    letter-spacing:-.022em;
+    line-height:1.12;
+    color:var(--petrol-deep);
+    margin-bottom:14px;
+  }
+  .sechead p{color:var(--ink-soft);font-size:clamp(1rem,1.3vw,1.08rem)}
+
+  /* ---------- Servicios ---------- */
+  .cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));
+    gap:clamp(14px,1.6vw,20px);
+  }
+  .card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:clamp(22px,2.4vw,28px);
+    box-shadow:var(--shadow-s);
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  }
+  .card:hover{transform:translateY(-3px);box-shadow:var(--shadow-m);border-color:var(--mint-deep)}
+  .card__icon{
+    width:52px;height:52px;
+    border-radius:14px;
+    background:linear-gradient(140deg,var(--mint),#eaf6f2);
+    border:1px solid var(--mint-deep);
+    display:flex;align-items:center;justify-content:center;
+    flex:0 0 auto;
+  }
+  .card h3{
+    font-size:1.1rem;
+    font-weight:650;
+    color:var(--petrol-deep);
+    letter-spacing:-.01em;
+  }
+  .card p{color:var(--ink-soft);font-size:15.2px;line-height:1.6}
+  .cards__foot{
+    margin-top:clamp(24px,3vw,34px);
+    display:flex;
+    gap:16px;
+    align-items:center;
+    flex-wrap:wrap;
+    padding:20px 24px;
+    background:var(--paper);
+    border:1px dashed var(--mint-deep);
+    border-radius:var(--radius);
+  }
+  .cards__foot p{color:var(--ink-soft);font-size:15px;flex:1 1 280px;min-width:0}
+
+  /* ---------- Pasos ---------- */
+  .steps{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));
+    gap:clamp(16px,2vw,24px);
+    counter-reset:paso;
+  }
+  .step{
+    position:relative;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:clamp(24px,2.6vw,30px);
+    box-shadow:var(--shadow-s);
+  }
+  .step__num{
+    width:46px;height:46px;
+    border-radius:50%;
+    background:var(--petrol);
+    color:#eaf5f1;
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--serif);
+    font-size:19px;
+    font-weight:600;
+    margin-bottom:16px;
+  }
+  .step h3{
+    font-size:1.12rem;
+    color:var(--petrol-deep);
+    margin-bottom:9px;
+  }
+  .step p{color:var(--ink-soft);font-size:15.2px}
+  .step__tag{
+    display:inline-block;
+    margin-top:14px;
+    font-size:12px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--clay);
+    background:var(--clay-soft);
+    border-radius:999px;
+    padding:5px 12px;
+  }
+
+  /* ---------- Contacto ---------- */
+  .contact{
+    background:
+      radial-gradient(720px 420px at 96% 0%, rgba(47,167,149,.40), transparent 64%),
+      linear-gradient(162deg,#0e4a43,#072e29);
+    color:#eaf5f1;
+  }
+  .contact .sechead .eyebrow{color:#9fd3c7}
+  .contact .sechead .eyebrow::before{background:#5ea99b}
+  .contact .sechead h2{color:#f2faf7}
+  .contact .sechead p{color:#c9e3dc}
+  .contact__grid{
+    display:grid;
+    grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);
+    gap:clamp(24px,3.2vw,44px);
+    align-items:start;
+  }
+  .panel{
+    background:rgba(255,255,255,.065);
+    border:1px solid rgba(234,245,241,.18);
+    border-radius:24px;
+    padding:clamp(22px,2.6vw,30px);
+  }
+  .panel h3{
+    font-size:1.08rem;
+    color:#f2faf7;
+    margin-bottom:6px;
+  }
+  .infolist{display:flex;flex-direction:column;gap:18px}
+  .info{display:flex;gap:14px;align-items:flex-start}
+  .info__ico{
+    width:40px;height:40px;flex:0 0 auto;
+    border-radius:11px;
+    background:rgba(159,211,199,.16);
+    border:1px solid rgba(159,211,199,.34);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .info__k{
+    font-size:11.5px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:#8fc4b7;
+    margin-bottom:3px;
+  }
+  .info__v{font-size:1.06rem;font-weight:600;color:#f2faf7;word-break:break-word}
+  .info__v a{text-decoration:none;border-bottom:1px solid rgba(159,211,199,.5)}
+  .info__v a:hover{border-bottom-color:#9fd3c7}
+  .info__note{font-size:13.6px;color:#a9cfc6;margin-top:4px}
+  .panel__cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+  .divider{height:1px;background:rgba(234,245,241,.16);margin:22px 0}
+
+  /* mapa */
+  .mapcard{
+    background:#fbf7ef;
+    border:1px solid rgba(234,245,241,.22);
+    border-radius:24px;
+    padding:clamp(14px,1.8vw,20px);
+    box-shadow:var(--shadow-m);
+  }
+  .mapcard__svg{display:block;width:100%;height:auto;border-radius:14px}
+  .mapcard__cap{
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    margin-top:12px;
+    padding:0 4px 2px;
+    font-size:13px;
+    line-height:1.5;
+    color:#5c6f66;
+  }
+  .mapcard__cap strong{color:var(--petrol-deep);font-weight:650}
+
+  /* ---------- Pie ---------- */
+  .footer{background:var(--bar-bg);color:#b9cfc9;padding:clamp(40px,5vw,60px) 0 0}
+  .footer__grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));
+    gap:clamp(22px,3vw,40px);
+    padding-bottom:clamp(30px,4vw,44px);
+  }
+  .footer h4{
+    font-size:11.5px;
+    letter-spacing:.15em;
+    text-transform:uppercase;
+    color:#7fa49b;
+    margin-bottom:14px;
+    font-weight:600;
+  }
+  .footer__name{
+    font-family:var(--serif);
+    font-size:1.12rem;
+    color:#eaf5f1;
+    line-height:1.3;
+    margin-bottom:8px;
+  }
+  .footer p, .footer li{font-size:15px;line-height:1.7}
+  .footer a{text-decoration:none;border-bottom:1px solid rgba(185,207,201,.3);word-break:break-word}
+  .footer a:hover{color:#eaf5f1;border-bottom-color:#9fd3c7}
+  .footer__legal{
+    border-top:1px solid rgba(255,255,255,.10);
+    padding:18px 0 26px;
+    display:flex;
+    gap:10px 22px;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:space-between;
+    font-size:13px;
+    color:#8fa8a1;
+  }
+  .footer__sig{
+    background:#071715;
+    border-top:1px solid rgba(255,255,255,.08);
+  }
+  .footer__sig .wrap{
+    padding:16px 24px;
+    text-align:center;
+    font-size:13px;
+    letter-spacing:.03em;
+    color:#9fb8b1;
+    line-height:1.6;
+    word-break:break-word;
+  }
+
+
+  .maplegend{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));
+    gap:8px 18px;
+    margin:14px 4px 0;
+    padding-top:14px;
+    border-top:1px solid #e4dccc;
+  }
+  .maplegend li{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    font-size:13.5px;
+    line-height:1.4;
+    color:#43584f;
+  }
+  .maplegend em{font-style:normal;color:#7b8a82}
+  .sw{width:16px;height:16px;flex:0 0 auto;border-radius:4px;display:block}
+  .sw--pin{background:#c9733c;border-radius:50% 50% 50% 2px;transform:rotate(-45deg)}
+  .sw--road{background:#efe6d4;border:1px solid #c7bca4;height:9px;border-radius:5px}
+  .sw--green{background:#cfe0cf;border:1px solid #a9bda9}
+  .sw--block{background:#e0d9ca;border:1px solid #bdb49f}
+  .info__v--mail{font-size:clamp(.86rem,3.2vw,1.02rem);word-break:break-all}
+  .panel__cta .btn{flex:1 1 100%;white-space:nowrap}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:900px){
+    .hero__grid{grid-template-columns:1fr;gap:34px}
+    .contact__grid{grid-template-columns:1fr}
+    .heroart{order:2}
+  }
+  @media (max-width:620px){
+    body{font-size:16.5px}
+    .wrap{padding:0 18px}
+    .topbar__inner{padding:7px 18px;font-size:10.8px;letter-spacing:.04em}
+    .siteheader__inner{padding:14px 18px;gap:12px}
+    .headnav a:not(.btn){display:none}
+    .headnav .btn{white-space:nowrap;font-size:13.5px;padding:11px 15px;gap:7px}
+    .brand{gap:10px}
+    .brand__mark{width:36px;height:36px}
+    .brand__name{font-size:14.3px}
+    .brand__sub{font-size:10.4px;letter-spacing:.1em;margin-top:2px}
+    .brand__city{display:none}
+    .headnav{gap:0}
+    .siteheader__inner{flex-wrap:nowrap}
+    .brand__name{line-height:1.25}
+    .brand__name{font-size:15.5px}
+    .btn{width:100%;font-size:15.5px;padding:14px 20px}
+    .btn--sm{width:auto}
+    .hero__cta{flex-direction:column;align-items:stretch}
+    .hero__cta .btn{width:100%;flex:0 0 auto}
+    .hero__lead,.hero__note{max-width:none}
+    .panel__cta{flex-direction:column;align-items:stretch}
+    .panel__cta .btn{width:100%;flex:0 0 auto}
+    .cards__foot{flex-direction:column;align-items:stretch;padding:18px}
+    .cards__foot .btn{width:100%}
+    .footer__legal{justify-content:flex-start}
+    .footer__sig .wrap{padding:14px 18px;font-size:12.2px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none!important}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== Barra fija ===== -->
+<div class="topbar" role="note">
+  <div class="topbar__inner">Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</div>
+</div>
+
+<!-- ===== Cabecera ===== -->
+<header class="siteheader">
+  <div class="siteheader__inner">
+    <div class="brand">
+      <svg class="brand__mark" width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
+        <defs>
+          <linearGradient id="gBrand" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#15887a"/><stop offset="1" stop-color="#0e4a43"/>
+          </linearGradient>
+        </defs>
+        <rect x="1" y="1" width="38" height="38" rx="12" fill="url(#gBrand)"/>
+        <path d="M14.5 27.5c-1.6-2.1-2.1-4.6-1.7-7.4.4-3 1.9-5.3 4.3-5.9 2.2-.6 3.9.6 4.6 2.6.5 1.5.4 3.1-.1 4.9-.5 1.9-.6 3.3-.1 4.4.5 1.2.4 2.2-.4 2.8-1.3 1-2.9.6-4.1-.2-.9-.6-1.7-1-2.5-1.2z" fill="none" stroke="#d7ece6" stroke-width="1.6" stroke-linejoin="round"/>
+        <circle cx="25.6" cy="13.2" r="1.9" fill="#d7ece6"/>
+        <circle cx="28.4" cy="17.4" r="1.5" fill="#9fd3c7"/>
+      </svg>
+      <div class="brand__text">
+        <div class="brand__name">Clínica del Pie<br>Francisca Jerez Lozano</div>
+        <div class="brand__sub">Podología<span class="brand__city"> · Villarrobledo</span></div>
+      </div>
+    </div>
+    <nav class="headnav" aria-label="Secciones">
+      <a href="#servicios">Tratamientos</a>
+      <a href="#primera-visita">Tu primera visita</a>
+      <a href="#contacto">Contacto</a>
+      <a class="btn btn--phone btn--sm" href="tel:+34967145708">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16.9v2.6a2 2 0 0 1-2.2 2 19 19 0 0 1-8.3-2.9 18.6 18.6 0 0 1-5.7-5.7A19 19 0 0 1 1.9 4.6 2 2 0 0 1 3.9 2.4h2.6a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1l-1.1 1.1a15 15 0 0 0 5.7 5.7l1.1-1.1a2 2 0 0 1 2.1-.5c.9.4 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+        967 145 708
+      </a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== Hero ===== -->
+<main>
+<section class="hero">
+  <div class="hero__glow" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="hero__grid">
+      <div>
+        <span class="eyebrow">Clínica de podología</span>
+        <h1>Cuidamos tus pies<br>para que <em>andar</em><br>no te cueste.</h1>
+        <p class="hero__lead">Clínica del Pie Francisca Jerez Lozano. Tratamos el dolor y las molestias del pie con un diagnóstico claro y un plan de tratamiento explicado paso a paso.</p>
+        <p class="hero__place">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Villarrobledo (Albacete)
+        </p>
+        <div class="hero__cta">
+          <a class="btn btn--phone" href="tel:+34967145708">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16.9v2.6a2 2 0 0 1-2.2 2 19 19 0 0 1-8.3-2.9 18.6 18.6 0 0 1-5.7-5.7A19 19 0 0 1 1.9 4.6 2 2 0 0 1 3.9 2.4h2.6a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1l-1.1 1.1a15 15 0 0 0 5.7 5.7l1.1-1.1a2 2 0 0 1 2.1-.5c.9.4 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+            Pedir cita: 967 145 708
+          </a>
+          <a class="btn btn--ghost" href="#servicios">Ver tratamientos</a>
+        </div>
+        <p class="hero__note">Las citas se piden por teléfono. Si llamas, te indicamos el horario disponible y qué conviene traer.</p>
+      </div>
+
+      <aside class="heroart" aria-label="Ilustración de la zona del pie">
+        <svg class="heroart__svg" viewBox="0 0 420 330" role="img" aria-label="Esquema ilustrativo del pie con las zonas que se tratan en consulta">
+          <defs>
+            <linearGradient id="gFoot" x1="0" y1="0" x2="0.6" y2="1">
+              <stop offset="0" stop-color="#2fa795" stop-opacity=".30"/>
+              <stop offset="1" stop-color="#0a3a34" stop-opacity=".55"/>
+            </linearGradient>
+            <linearGradient id="gArch" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#9fd3c7"/><stop offset="1" stop-color="#d7ece6"/>
+            </linearGradient>
+          </defs>
+
+          <!-- retícula suave -->
+          <g stroke="#9fd3c7" stroke-opacity=".16" stroke-width="1">
+            <path d="M0 60H420M0 120H420M0 180H420M0 240H420M0 300H420"/>
+            <path d="M70 0V330M140 0V330M210 0V330M280 0V330M350 0V330"/>
+          </g>
+
+          <!-- silueta del pie -->
+          <path d="M168 300c-20-16-28-40-26-66 2-24 10-44 12-66 2-18-2-33 4-46 7-16 24-23 40-18 15 5 23 19 23 36 0 16-5 31-9 47-5 20-6 36-2 50 4 15 2 27-7 35-10 9-24 11-35 28z"
+                fill="url(#gFoot)" stroke="#9fd3c7" stroke-opacity=".75" stroke-width="2" stroke-linejoin="round"/>
+          <!-- dedos -->
+          <ellipse cx="236" cy="86" rx="14" ry="18" transform="rotate(14 236 86)" fill="url(#gFoot)" stroke="#9fd3c7" stroke-opacity=".7" stroke-width="2"/>
+          <ellipse cx="258" cy="106" rx="11" ry="14" transform="rotate(20 258 106)" fill="url(#gFoot)" stroke="#9fd3c7" stroke-opacity=".7" stroke-width="2"/>
+          <ellipse cx="274" cy="128" rx="9" ry="12" transform="rotate(26 274 128)" fill="url(#gFoot)" stroke="#9fd3c7" stroke-opacity=".7" stroke-width="2"/>
+          <ellipse cx="286" cy="150" rx="8" ry="10" transform="rotate(30 286 150)" fill="url(#gFoot)" stroke="#9fd3c7" stroke-opacity=".7" stroke-width="2"/>
+
+          <!-- arco / línea de la pisada -->
+          <path d="M176 272c20-10 26-32 22-56-4-22-6-40 2-58" fill="none" stroke="url(#gArch)" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="7 7"/>
+
+          <!-- puntos de referencia -->
+          <g>
+            <circle cx="176" cy="272" r="5.5" fill="#d7ece6"/>
+            <circle cx="198" cy="216" r="5.5" fill="#d7ece6"/>
+            <circle cx="200" cy="158" r="5.5" fill="#d7ece6"/>
+            <circle cx="236" cy="86" r="5.5" fill="#d7ece6"/>
+          </g>
+          <g font-family="-apple-system, Segoe UI, Roboto, sans-serif" font-size="12.5" fill="#bfe0d7">
+            <text x="20" y="276">Talón</text>
+            <text x="20" y="220">Arco plantar</text>
+            <text x="20" y="162">Antepié</text>
+            <text x="300" y="70">Uñas</text>
+          </g>
+          <g stroke="#9fd3c7" stroke-opacity=".55" stroke-width="1.3" stroke-dasharray="3 5">
+            <path d="M66 272H170"/><path d="M96 216H192"/><path d="M78 158H194"/><path d="M296 76 244 84"/>
+          </g>
+        </svg>
+        <p class="heroart__cap">Zonas que valoramos en consulta</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Servicios ===== -->
+<section class="section section--sand" id="servicios">
+  <div class="wrap">
+    <div class="sechead">
+      <span class="eyebrow">Tratamientos</span>
+      <h2>Qué tratamos en la clínica</h2>
+      <p>Estos son los tratamientos habituales de una clínica del pie. Si no sabes en qué grupo encaja lo que te pasa, llámanos y lo valoramos en consulta.</p>
+    </div>
+
+    <div class="cards">
+      <article class="card">
+        <div class="card__icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0e4a43" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 3.5c1.9 1 2.6 3.1 2 5.6-.5 2.3-.4 3.9.3 5.2.9 1.7.5 3.3-1 4.3-1.7 1.1-3.7.7-5.3-.6-1.9-1.6-2.6-4-2.2-7 .3-2.6 1.3-4.7 2.9-6 .9-.8 2.1-1.1 3.3-1.5z"/><path d="M7 20.5h10"/></svg>
+        </div>
+        <h3>Quiropodia</h3>
+        <p>Tratamiento de durezas, callosidades, hiperqueratosis y corte de uñas. El cuidado básico y periódico del pie, en consulta y con material estéril.</p>
+      </article>
+
+      <article class="card">
+        <div class="card__icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0e4a43" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 15c0-4.5 2.5-8 6.5-9.5 2.4-.9 4.6-.3 6.2 1.3 1.9 1.9 2.6 4.6 1.8 7.1-.6 2-2.1 3.3-4.2 3.8-1.6.4-3 .2-4.4-.3-1.6-.6-3-.7-4.2 0A1.3 1.3 0 0 1 3 16.1z"/><path d="M5.2 18.8c3.6 1.6 7.6 1.9 11.8.8"/></svg>
+        </div>
+        <h3>Plantillas personalizadas</h3>
+        <p>Soportes plantares hechos a medida a partir de la valoración de tu pie y tu forma de caminar, para repartir mejor los apoyos y aliviar la sobrecarga.</p>
+      </article>
+
+      <article class="card">
+        <div class="card__icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0e4a43" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="7" width="14" height="12" rx="6"/><path d="M5 12h14"/><path d="M12 3.5v2.8"/><path d="M9 4.6l1.2 1.9"/><path d="M15 4.6l-1.2 1.9"/></svg>
+        </div>
+        <h3>Uña encarnada</h3>
+        <p>Onicocriptosis: la uña que se clava y duele al roce con el calzado. Se trata en consulta y se explica cómo cortar y cuidar la uña para que no reaparezca.</p>
+      </article>
+
+      <article class="card">
+        <div class="card__icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0e4a43" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.2"/><circle cx="12" cy="12" r="4.2"/><circle cx="12" cy="12" r="1.2" fill="#0e4a43" stroke="none"/></svg>
+        </div>
+        <h3>Papilomas</h3>
+        <p>Verrugas plantares, que suelen doler al pisar y confundirse con una dureza. Se identifican en consulta y se tratan con seguimiento hasta su resolución.</p>
+      </article>
+
+      <article class="card">
+        <div class="card__icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0e4a43" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5s-7-4.6-7-9.6a4.1 4.1 0 0 1 7-2.9 4.1 4.1 0 0 1 7 2.9c0 5-7 9.6-7 9.6z"/><path d="M8.6 12.3h2l1.1-2.1 1.2 3.4 1-1.3h2"/></svg>
+        </div>
+        <h3>Pie diabético</h3>
+        <p>Revisión y cuidado preventivo del pie en personas con diabetes: estado de la piel y las uñas, puntos de presión y pautas de autocuidado en casa.</p>
+      </article>
+
+      <article class="card">
+        <div class="card__icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0e4a43" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 18.5h17"/><path d="M6 18.5c0-3 1.2-5 1.6-7.4.3-1.9-.3-3.4.6-4.6.9-1.3 3-1.4 4 0 .8 1.2.4 2.7.1 4.3-.4 2.2.2 4.4 1.3 5.9"/><path d="M15.5 9.2l2.6-2"/><path d="M17.2 12.4h3"/></svg>
+        </div>
+        <h3>Estudio de la pisada</h3>
+        <p>Análisis de cómo apoyas y caminas para entender de dónde viene el dolor. Es la base para decidir si necesitas plantillas o otro tratamiento.</p>
+      </article>
+    </div>
+
+    <div class="cards__foot">
+      <p><strong>¿No sabes qué necesitas?</strong> No hace falta que lo sepas antes de venir. Cuéntanos qué te molesta y desde cuándo, y lo valoramos en la consulta.</p>
+      <a class="btn btn--outline" href="tel:+34967145708">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16.9v2.6a2 2 0 0 1-2.2 2 19 19 0 0 1-8.3-2.9 18.6 18.6 0 0 1-5.7-5.7A19 19 0 0 1 1.9 4.6 2 2 0 0 1 3.9 2.4h2.6a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1l-1.1 1.1a15 15 0 0 0 5.7 5.7l1.1-1.1a2 2 0 0 1 2.1-.5c.9.4 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+        Llamar y preguntar
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Primera visita ===== -->
+<section class="section section--paper" id="primera-visita">
+  <div class="wrap">
+    <div class="sechead">
+      <span class="eyebrow">Tu primera visita</span>
+      <h2>Cómo funciona, en tres pasos</h2>
+      <p>Para que sepas qué esperar antes de coger el teléfono.</p>
+    </div>
+
+    <div class="steps">
+      <article class="step">
+        <div class="step__num">1</div>
+        <h3>Llamas y pides cita</h3>
+        <p>Nos cuentas brevemente qué te molesta. Te damos día y hora, y te decimos si conviene traer algo: tu calzado habitual, plantillas anteriores o informes que tengas.</p>
+        <span class="step__tag">Por teléfono</span>
+      </article>
+
+      <article class="step">
+        <div class="step__num">2</div>
+        <h3>Valoramos el pie en consulta</h3>
+        <p>Revisamos la piel, las uñas y los apoyos, y hablamos de tu día a día: cuánto andas, con qué calzado y en qué momento aparece el dolor.</p>
+        <span class="step__tag">En la clínica</span>
+      </article>
+
+      <article class="step">
+        <div class="step__num">3</div>
+        <h3>Te explicamos el tratamiento</h3>
+        <p>Te decimos qué tienes, qué se puede hacer y en cuántas sesiones. Si hace falta seguimiento o revisión, lo dejamos claro antes de empezar.</p>
+        <span class="step__tag">Sin sorpresas</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Contacto ===== -->
+<section class="section contact" id="contacto">
+  <div class="wrap">
+    <div class="sechead">
+      <span class="eyebrow">Contacto y cita</span>
+      <h2>Pedir cita es una llamada</h2>
+      <p>No hay formularios ni esperas: las citas se gestionan por teléfono, y así podemos preguntarte lo necesario antes de la visita.</p>
+    </div>
+
+    <div class="contact__grid">
+      <div class="panel">
+        <div class="infolist">
+          <div class="info">
+            <div class="info__ico">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9fd3c7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16.9v2.6a2 2 0 0 1-2.2 2 19 19 0 0 1-8.3-2.9 18.6 18.6 0 0 1-5.7-5.7A19 19 0 0 1 1.9 4.6 2 2 0 0 1 3.9 2.4h2.6a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1l-1.1 1.1a15 15 0 0 0 5.7 5.7l1.1-1.1a2 2 0 0 1 2.1-.5c.9.4 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+            </div>
+            <div>
+              <div class="info__k">Teléfono</div>
+              <div class="info__v"><a href="tel:+34967145708">967 145 708</a></div>
+              <p class="info__note">Es la vía para pedir, cambiar o confirmar una cita.</p>
+            </div>
+          </div>
+
+          <div class="info">
+            <div class="info__ico">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9fd3c7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3.2 2"/></svg>
+            </div>
+            <div>
+              <div class="info__k">Horario</div>
+              <div class="info__v">Consultar horario</div>
+              <p class="info__note">El horario de consulta se confirma al llamar.</p>
+            </div>
+          </div>
+
+          <div class="info">
+            <div class="info__ico">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9fd3c7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="info__k">Dónde estamos</div>
+              <div class="info__v">Villarrobledo (Albacete)</div>
+              <p class="info__note">Te indicamos cómo llegar y dónde aparcar en la misma llamada.</p>
+            </div>
+          </div>
+
+          <div class="info">
+            <div class="info__ico">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9fd3c7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg>
+            </div>
+            <div>
+              <div class="info__k">Correo</div>
+              <div class="info__v info__v--mail"><a href="mailto:clinicajerezlozano@hotmail.com">clinicajerezlozano@hotmail.com</a></div>
+              <p class="info__note">Para consultas que no sean urgentes.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider" role="presentation"></div>
+
+        <div class="panel__cta">
+          <a class="btn btn--phone" href="tel:+34967145708">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16.9v2.6a2 2 0 0 1-2.2 2 19 19 0 0 1-8.3-2.9 18.6 18.6 0 0 1-5.7-5.7A19 19 0 0 1 1.9 4.6 2 2 0 0 1 3.9 2.4h2.6a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1l-1.1 1.1a15 15 0 0 0 5.7 5.7l1.1-1.1a2 2 0 0 1 2.1-.5c.9.4 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+            Llamar al 967 145 708
+          </a>
+          <a class="btn btn--ghost" href="tel:+34967145708">Consultar horario</a>
+        </div>
+      </div>
+
+      <div class="mapcard">
+        <svg class="mapcard__svg" viewBox="0 0 620 430" role="img" aria-label="Mapa esquemático dibujado a mano del casco urbano de Villarrobledo, con la plaza, el eje principal y la zona de la clínica señalada de forma orientativa">
+          <defs>
+            <filter id="rough" x="-12%" y="-12%" width="124%" height="124%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.016" numOctaves="3" seed="7" result="n"/>
+              <feDisplacementMap in="SourceGraphic" in2="n" scale="4.2" xChannelSelector="R" yChannelSelector="G"/>
+            </filter>
+            <linearGradient id="gPaper" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#fdfaf3"/><stop offset="1" stop-color="#f2ece0"/>
+            </linearGradient>
+            <linearGradient id="gBlock" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#e3ddcf"/><stop offset="1" stop-color="#d8d1c0"/>
+            </linearGradient>
+            <radialGradient id="gZone" cx="50%" cy="50%" r="50%">
+              <stop offset="0" stop-color="#c9733c" stop-opacity=".34"/>
+              <stop offset="1" stop-color="#c9733c" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+
+          <rect x="0" y="0" width="620" height="430" rx="14" fill="url(#gPaper)"/>
+
+          <g filter="url(#rough)">
+            <!-- manzanas -->
+            <g fill="url(#gBlock)" stroke="#bdb49f" stroke-width="1.6">
+              <path d="M54 66h120v88H54z"/>
+              <path d="M200 60h108v94H200z"/>
+              <path d="M336 70h104v84H336z"/>
+              <path d="M470 86h94v70h-94z"/>
+              <path d="M58 214h116v80H58z"/>
+              <path d="M202 212h104v84H202z"/>
+              <path d="M470 206h96v86h-96z"/>
+              <path d="M62 336h132v56H62z"/>
+              <path d="M226 338h118v54H226z"/>
+              <path d="M382 334h116v58H382z"/>
+            </g>
+
+            <!-- plaza / zona verde -->
+            <path d="M338 192h108v104H338z" fill="#cfe0cf" stroke="#a9bda9" stroke-width="1.6"/>
+            <g stroke="#8fae92" stroke-width="1.4" fill="none">
+              <path d="M348 288 436 200"/><path d="M348 200 436 288"/>
+            </g>
+            <circle cx="392" cy="244" r="16" fill="#bcd3bd" stroke="#8fae92" stroke-width="1.5"/>
+
+            <!-- eje principal (avenida) -->
+            <path d="M24 184H596" stroke="#efe6d4" stroke-width="30" stroke-linecap="round" fill="none"/>
+            <path d="M24 184H596" stroke="#c7bca4" stroke-width="2" fill="none"/>
+            <path d="M24 184H596" stroke="#fff" stroke-width="2.4" stroke-dasharray="16 16" fill="none"/>
+
+            <!-- calle vertical -->
+            <path d="M322 24V406" stroke="#efe6d4" stroke-width="22" stroke-linecap="round" fill="none"/>
+            <path d="M322 24V406" stroke="#c7bca4" stroke-width="1.8" fill="none"/>
+
+            <!-- calles secundarias -->
+            <g stroke="#e7ddca" stroke-width="13" stroke-linecap="round" fill="none">
+              <path d="M40 314H592"/>
+              <path d="M188 30V404"/>
+              <path d="M456 30V404"/>
+            </g>
+            <g stroke="#cbc0a8" stroke-width="1.3" fill="none">
+              <path d="M40 314H592"/><path d="M188 30V404"/><path d="M456 30V404"/>
+            </g>
+
+            <!-- salida / carretera -->
+            <path d="M560 184c22 36 26 74 20 112" stroke="#e7ddca" stroke-width="12" fill="none" stroke-linecap="round"/>
+          </g>
+
+          <!-- zona orientativa de la clínica -->
+          <circle cx="252" cy="236" r="62" fill="url(#gZone)"/>
+          <circle cx="252" cy="236" r="40" fill="none" stroke="#c9733c" stroke-width="2.2" stroke-dasharray="7 7"/>
+          <g>
+            <path d="M252 212a13 13 0 0 0-13 13c0 9.5 13 22 13 22s13-12.5 13-22a13 13 0 0 0-13-13z" fill="#c9733c"/>
+            <circle cx="252" cy="225" r="4.6" fill="#fdfaf3"/>
+          </g>
+
+          <!-- rotulo del municipio -->
+          <g font-family="-apple-system, Segoe UI, Roboto, sans-serif">
+            <rect x="14" y="14" width="300" height="32" rx="8" fill="#fdfaf3" fill-opacity=".88"/>
+            <text x="24" y="36" font-size="17" letter-spacing="1.8" fill="#0e4a43" font-weight="700">VILLARROBLEDO (ALBACETE)</text>
+          </g>
+
+          <!-- norte -->
+          <g transform="translate(570,46)">
+            <circle cx="0" cy="0" r="20" fill="#fdfaf3" stroke="#c7bca4" stroke-width="1.4"/>
+            <path d="M0 -12 5.2 4 0 0.6 -5.2 4z" fill="#0e4a43"/>
+            <text x="0" y="-25" font-size="11" text-anchor="middle" font-family="-apple-system, Segoe UI, Roboto, sans-serif" fill="#5c6f66">N</text>
+          </g>
+        </svg>
+        <ul class="maplegend">
+          <li><span class="sw sw--pin" aria-hidden="true"></span>Zona de la clínica <em>(orientativa)</em></li>
+          <li><span class="sw sw--road" aria-hidden="true"></span>Eje principal del casco urbano</li>
+          <li><span class="sw sw--green" aria-hidden="true"></span>Plaza / zona abierta</li>
+          <li><span class="sw sw--block" aria-hidden="true"></span>Manzanas del centro</li>
+        </ul>
+        <p class="mapcard__cap">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#c9733c" stroke-width="2" stroke-linecap="round" aria-hidden="true" style="flex:0 0 auto;margin-top:3px"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M12 11.5v5"/></svg>
+          <span><strong>Mapa esquemático dibujado a mano, no a escala.</strong> Sirve para situar la zona dentro de Villarrobledo. La dirección exacta se confirma por teléfono.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ===== Pie ===== -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <h4>La clínica</h4>
+        <p class="footer__name">Clínica del Pie<br>Francisca Jerez Lozano</p>
+        <p>Podología · Villarrobledo (Albacete)</p>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li>Teléfono: <a href="tel:+34967145708">967 145 708</a></li>
+          <li>Correo: <a href="mailto:clinicajerezlozano@hotmail.com">clinicajerezlozano@hotmail.com</a></li>
+          <li>Horario: consultar por teléfono</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Tratamientos</h4>
+        <ul>
+          <li>Quiropodia</li>
+          <li>Plantillas personalizadas</li>
+          <li>Uña encarnada</li>
+          <li>Papilomas</li>
+          <li>Pie diabético</li>
+          <li>Estudio de la pisada</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Secciones</h4>
+        <ul>
+          <li><a href="#servicios">Tratamientos</a></li>
+          <li><a href="#primera-visita">Tu primera visita</a></li>
+          <li><a href="#contacto">Contacto y cita</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__legal">
+      <span>Maqueta de demostración sin datos reales de actividad. Los contenidos deben revisarse antes de publicar.</span>
+      <a href="tel:+34967145708">967 145 708</a>
+    </div>
+  </div>
+
+  <div class="footer__sig">
+    <div class="wrap">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</div>
+  </div>
+</footer>
+
+</body>
+</html>

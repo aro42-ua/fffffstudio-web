@@ -1,0 +1,664 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Salón Beauty Secret · Melilla</title>
+<meta name="description" content="Propuesta de rediseño web para Salón Beauty Secret, salón de belleza en Melilla. Maqueta no oficial de FFFFFFstudio.">
+<style>
+  :root{
+    --tinta:#231820;
+    --tinta-2:#4a3942;
+    --crema:#fbf7f4;
+    --crema-2:#f3e9e4;
+    --rosa:#c9798c;
+    --rosa-claro:#e8b9c3;
+    --oro:#b08d57;
+    --linea:rgba(35,24,32,.14);
+    --radio:18px;
+    --max:1120px;
+    --barra:46px;
+    --sans:"Helvetica Neue",Helvetica,Arial,"Segoe UI",system-ui,sans-serif;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;padding-top:var(--barra);
+    font-family:var(--sans);
+    color:var(--tinta);
+    background:var(--crema);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  img,svg{max-width:100%}
+  a{color:inherit}
+  h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.12;letter-spacing:-.015em;margin:0}
+  p{margin:0}
+  .env{width:100%;max-width:var(--max);margin:0 auto;padding:0 24px}
+
+  /* ---------- barra fija ---------- */
+  .aviso{
+    position:fixed;inset:0 0 auto 0;z-index:100;
+    height:var(--barra);display:flex;align-items:center;justify-content:center;
+    background:var(--tinta);color:#f6ecef;
+    font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;
+    text-align:center;padding:0 12px;
+    border-bottom:1px solid rgba(255,255,255,.12);
+  }
+  .aviso span{display:block;max-width:100%;overflow-wrap:break-word}
+
+  /* ---------- cabecera ---------- */
+  .nav{
+    position:relative;z-index:5;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+    padding-top:22px;padding-bottom:22px;
+  }
+  .marca{display:flex;align-items:center;gap:11px;text-decoration:none}
+  .marca .sello{width:38px;height:38px;flex:0 0 38px}
+  .marca b{font-family:var(--serif);font-weight:400;font-size:19px;letter-spacing:.01em;display:block;line-height:1.1}
+  .marca small{display:block;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--tinta-2)}
+  .nav-links{display:flex;align-items:center;gap:26px}
+  .nav-links a{font-size:13.5px;text-decoration:none;color:var(--tinta-2);letter-spacing:.03em}
+  .nav-links a:hover{color:var(--rosa)}
+  @media (max-width:900px){.nav-links{display:none}}
+
+  /* ---------- botones ---------- */
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;
+    padding:14px 24px;border-radius:999px;text-decoration:none;
+    font-size:14.5px;letter-spacing:.02em;font-weight:600;
+    border:1px solid transparent;transition:transform .15s ease,box-shadow .15s ease;
+  }
+  .btn svg{flex:0 0 16px}
+  .btn-p{background:var(--tinta);color:var(--crema);box-shadow:0 10px 26px -14px rgba(35,24,32,.8)}
+  .btn-p:hover{transform:translateY(-1px)}
+  .btn-s{background:rgba(255,255,255,.72);color:var(--tinta);border-color:var(--linea)}
+  .btn-s:hover{border-color:var(--rosa);color:var(--rosa)}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;overflow:hidden;padding-bottom:66px}
+  .hero::before{
+    content:"";position:absolute;inset:0;z-index:0;
+    background:
+      radial-gradient(70% 90% at 88% 6%,rgba(232,185,195,.85) 0%,rgba(232,185,195,0) 62%),
+      radial-gradient(60% 80% at 4% 92%,rgba(176,141,87,.26) 0%,rgba(176,141,87,0) 64%),
+      linear-gradient(170deg,#fffdfc 0%,var(--crema-2) 100%);
+  }
+  .hero-in{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center;padding-top:34px}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--tinta-2);
+    background:rgba(255,255,255,.7);border:1px solid var(--linea);
+    padding:7px 14px;border-radius:999px;margin-bottom:22px;
+  }
+  .eyebrow i{width:5px;height:5px;border-radius:50%;background:var(--rosa);display:block}
+  .hero h1{font-size:clamp(34px,5.2vw,60px)}
+  .hero h1 em{font-style:italic;color:var(--rosa)}
+  .hero .lead{margin-top:20px;font-size:17px;color:var(--tinta-2);max-width:46ch}
+  .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+  .tel-nota{margin-top:14px;font-size:12.5px;color:var(--tinta-2)}
+  .hero-art{position:relative}
+  .hero-art svg{display:block;width:100%;height:auto}
+
+  /* tiras de servicios bajo el hero */
+  .tira{position:relative;z-index:2;display:flex;flex-wrap:wrap;gap:8px;margin-top:40px}
+  .tira span{
+    font-size:12.5px;letter-spacing:.04em;color:var(--tinta-2);
+    background:rgba(255,255,255,.68);border:1px solid var(--linea);
+    padding:8px 15px;border-radius:999px;
+  }
+
+  /* ---------- secciones ---------- */
+  section{padding:74px 0}
+  .cab{max-width:62ch;margin-bottom:40px}
+  .cab .kicker{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--rosa);margin-bottom:12px}
+  .cab h2{font-size:clamp(26px,3.6vw,38px)}
+  .cab p{margin-top:16px;color:var(--tinta-2);font-size:16px}
+
+  /* servicios */
+  #servicios{background:var(--crema)}
+  .grid-s{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .card{
+    background:#fff;border:1px solid var(--linea);border-radius:var(--radio);
+    padding:26px 24px 22px;display:flex;flex-direction:column;gap:14px;
+    box-shadow:0 1px 0 rgba(35,24,32,.03);
+  }
+  .card .ico{width:44px;height:44px;flex:0 0 44px}
+  .card h3{font-size:21px}
+  .card p{font-size:14.5px;color:var(--tinta-2)}
+  .card ul{margin:0;padding-left:18px;font-size:14px;color:var(--tinta-2)}
+  .card ul li{margin-bottom:4px}
+  .tarifa{
+    margin-top:auto;padding-top:16px;border-top:1px dashed var(--linea);
+    display:flex;align-items:baseline;justify-content:space-between;gap:10px;
+  }
+  .tarifa b{font-family:var(--serif);font-size:19px;font-weight:400;color:var(--rosa)}
+  .tarifa span{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--tinta-2)}
+  .nota{
+    margin-top:22px;font-size:13px;color:var(--tinta-2);
+    background:rgba(255,255,255,.7);border:1px solid var(--linea);border-left:3px solid var(--oro);
+    border-radius:10px;padding:14px 16px;
+  }
+
+  /* primera visita */
+  #visita{background:linear-gradient(180deg,#fff 0%,var(--crema-2) 100%)}
+  .pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .paso{position:relative;background:rgba(255,255,255,.78);border:1px solid var(--linea);border-radius:var(--radio);padding:28px 24px}
+  .paso .num{
+    font-family:var(--serif);font-size:46px;line-height:1;color:var(--rosa-claro);
+    display:block;margin-bottom:10px;
+  }
+  .paso h3{font-size:20px;margin-bottom:10px}
+  .paso p{font-size:14.5px;color:var(--tinta-2)}
+
+  /* galeria / instagram */
+  #galeria{background:var(--tinta);color:var(--crema)}
+  #galeria .cab h2{color:#fff}
+  #galeria .cab p{color:rgba(246,236,239,.72)}
+  #galeria .cab .kicker{color:var(--rosa-claro)}
+  .mosaico{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .hueco{
+    position:relative;border-radius:14px;overflow:hidden;
+    border:1px dashed rgba(246,236,239,.3);
+    min-height:170px;display:flex;align-items:flex-end;
+  }
+  .hueco svg{position:absolute;inset:0;width:100%;height:100%}
+  .hueco span{
+    position:relative;z-index:2;margin:12px;max-width:calc(100% - 24px);
+    font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;line-height:1.5;
+    background:rgba(35,24,32,.66);padding:6px 11px;border-radius:12px;color:#f6ecef;
+    overflow-wrap:break-word;
+  }
+  .hueco.alto{grid-row:span 2;min-height:356px}
+  .hueco.ancho{grid-column:span 2}
+  .ig-pie{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:26px}
+  .ig-pie a{
+    display:inline-flex;align-items:center;gap:9px;text-decoration:none;
+    font-size:14px;border:1px solid rgba(246,236,239,.34);border-radius:999px;padding:12px 20px;color:#f6ecef;
+  }
+  .ig-pie a:hover{border-color:var(--rosa-claro);color:var(--rosa-claro)}
+  .ig-pie small{font-size:12.5px;color:rgba(246,236,239,.6)}
+
+  /* contacto */
+  #contacto{background:var(--crema)}
+  .contacto-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:34px;align-items:start}
+  .datos{background:#fff;border:1px solid var(--linea);border-radius:var(--radio);padding:30px 28px}
+  .dato{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--linea)}
+  .dato:last-of-type{border-bottom:0}
+  .dato svg{flex:0 0 20px;margin-top:3px}
+  .dato .k{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--tinta-2);margin-bottom:4px}
+  .dato .v{font-size:16.5px;font-family:var(--serif);overflow-wrap:break-word}
+  .dato .v a{text-decoration:none;border-bottom:1px solid var(--rosa-claro)}
+  .dato .v a:hover{color:var(--rosa)}
+  .mapa{background:#fff;border:1px solid var(--linea);border-radius:var(--radio);padding:20px;overflow:hidden}
+  .mapa svg{display:block;width:100%;height:auto}
+  .mapa .pie{margin-top:12px;font-size:12px;color:var(--tinta-2)}
+
+  /* footer */
+  footer{background:var(--tinta);color:rgba(246,236,239,.82);padding:52px 0 0}
+  .f-top{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:28px;padding-bottom:36px}
+  footer h3{font-size:20px;color:#fff;margin-bottom:12px}
+  footer p,footer li{font-size:14px}
+  footer ul{list-style:none;margin:0;padding:0}
+  footer li{margin-bottom:8px}
+  footer a{text-decoration:none;overflow-wrap:break-word}
+  footer a:hover{color:var(--rosa-claro)}
+  .f-ttl{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,236,239,.55);margin-bottom:14px}
+  .credito{
+    border-top:1px solid rgba(246,236,239,.16);
+    padding:20px 0 28px;font-size:12.5px;color:rgba(246,236,239,.62);
+    text-align:center;line-height:1.7;
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:980px){
+    .hero-in{grid-template-columns:1fr;gap:34px;padding-top:12px}
+    .hero-art{order:-1;max-width:460px}
+    .grid-s{grid-template-columns:repeat(2,1fr)}
+    .pasos{grid-template-columns:1fr}
+    .contacto-grid{grid-template-columns:1fr}
+    .mosaico{grid-template-columns:repeat(2,1fr)}
+    .hueco.alto{grid-row:auto;min-height:200px}
+    .f-top{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:640px){
+    :root{--barra:58px}
+    .env{padding:0 16px}
+    section{padding:52px 0}
+    .hero{padding-bottom:48px}
+    .grid-s{grid-template-columns:1fr}
+    .mosaico{grid-template-columns:1fr 1fr;gap:10px}
+    .hueco{min-height:138px}
+    .hueco.alto{grid-column:span 2;min-height:150px}
+    .hueco.ancho{grid-column:span 2;min-height:150px}
+    .hueco span{font-size:9.5px;letter-spacing:.08em;margin:9px;max-width:calc(100% - 18px)}
+    .f-top{grid-template-columns:1fr;gap:22px}
+    .btn{padding:13px 20px;font-size:14px}
+    .cta .btn{flex:1 1 100%;justify-content:center}
+    .aviso{font-size:10px;letter-spacing:.05em;line-height:1.35}
+    .datos,.mapa{padding:20px 16px}
+    .card{padding:22px 18px}
+  }
+</style>
+</head>
+<body>
+
+<div class="aviso" role="note"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<header class="hero">
+  <div class="env">
+    <nav class="nav">
+      <a class="marca" href="#">
+        <svg class="sello" viewBox="0 0 48 48" aria-hidden="true">
+          <defs><linearGradient id="g-sello" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#c9798c"/><stop offset="1" stop-color="#b08d57"/>
+          </linearGradient></defs>
+          <circle cx="24" cy="24" r="23" fill="url(#g-sello)"/>
+          <path d="M24 12c3.4 4.2 7.6 6.2 7.6 11.1 0 4.6-3.4 8.1-7.6 8.1s-7.6-3.5-7.6-8.1C16.4 18.2 20.6 16.2 24 12Z" fill="#fff" opacity=".92"/>
+          <path d="M24 31.2V37" stroke="#fff" stroke-width="1.6" stroke-linecap="round" opacity=".9"/>
+        </svg>
+        <span>
+          <b>Salón Beauty Secret</b>
+          <small>Melilla</small>
+        </span>
+      </a>
+      <div class="nav-links">
+        <a href="#servicios">Servicios</a>
+        <a href="#visita">Tu primera visita</a>
+        <a href="#galeria">Nuestro trabajo</a>
+        <a href="#contacto">Contacto</a>
+        <a href="tel:+34638344257"><strong>638 344 257</strong></a>
+      </div>
+    </nav>
+
+    <div class="hero-in">
+      <div>
+        <div class="eyebrow"><i></i> Salón de belleza · Melilla</div>
+        <h1>Tu belleza, <em>al detalle</em>, en el centro de Melilla.</h1>
+        <p class="lead">Peluquería, uñas, facial, depilación y maquillaje en un mismo salón. Mira los tratamientos por bloques y pide tu cita con una sola llamada.</p>
+        <div class="cta">
+          <a class="btn btn-p" href="tel:+34638344257">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 3h3l1.5 4-2.1 1.5a12 12 0 0 0 6.5 6.5L17 12.9l4 1.5v3A2.5 2.5 0 0 1 18.3 20C10.4 19.4 4.6 13.6 4 5.7A2.5 2.5 0 0 1 6.6 3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+            Pedir cita · 638 344 257
+          </a>
+          <a class="btn btn-s" href="#servicios">Ver tratamientos</a>
+        </div>
+        <p class="tel-nota">Las citas se confirman por teléfono. Horario: consultar en el salón.</p>
+        <div class="tira">
+          <span>Peluquería</span><span>Manicura y pedicura</span><span>Tratamientos faciales</span><span>Depilación</span><span>Maquillaje</span>
+        </div>
+      </div>
+
+      <div class="hero-art">
+        <svg viewBox="0 0 440 400" role="img" aria-label="Composición decorativa de formas y pétalos">
+          <defs>
+            <linearGradient id="h1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#f0d9df"/>
+            </linearGradient>
+            <linearGradient id="h2" x1="0" y1="1" x2="1" y2="0">
+              <stop offset="0" stop-color="#c9798c"/><stop offset="1" stop-color="#e8b9c3"/>
+            </linearGradient>
+            <linearGradient id="h3" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#b08d57"/><stop offset="1" stop-color="#e3cba4"/>
+            </linearGradient>
+          </defs>
+          <circle cx="232" cy="196" r="166" fill="url(#h1)"/>
+          <circle cx="232" cy="196" r="166" fill="none" stroke="#231820" stroke-opacity=".08"/>
+          <g transform="translate(232 196)">
+            <g fill="url(#h2)" opacity=".92">
+              <ellipse rx="34" ry="104" cy="-34"/>
+              <ellipse rx="34" ry="104" cy="-34" transform="rotate(72)"/>
+              <ellipse rx="34" ry="104" cy="-34" transform="rotate(144)"/>
+              <ellipse rx="34" ry="104" cy="-34" transform="rotate(216)"/>
+              <ellipse rx="34" ry="104" cy="-34" transform="rotate(288)"/>
+            </g>
+            <circle r="30" fill="url(#h3)"/>
+            <circle r="30" fill="none" stroke="#fff" stroke-opacity=".6"/>
+          </g>
+          <g fill="none" stroke="#b08d57" stroke-opacity=".45" stroke-width="1.4">
+            <circle cx="232" cy="196" r="192"/>
+            <circle cx="232" cy="196" r="128" stroke-dasharray="3 7"/>
+          </g>
+          <g stroke="#231820" stroke-opacity=".5" stroke-width="1.6" fill="none" stroke-linecap="round">
+            <path d="M44 318c22-16 44-16 66 0"/>
+            <path d="M52 336c20-14 40-14 58 0"/>
+          </g>
+          <circle cx="70" cy="86" r="10" fill="#c9798c" opacity=".55"/>
+          <circle cx="396" cy="330" r="16" fill="#b08d57" opacity=".4"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="servicios">
+  <div class="env">
+    <div class="cab">
+      <div class="kicker">Tratamientos</div>
+      <h2>Todo lo que hacemos, ordenado por bloques</h2>
+      <p>Cada bloque reúne los servicios del salón para que se vean de un vistazo, algo que una cuenta de Instagram no permite mostrar como lista.</p>
+    </div>
+
+    <div class="grid-s">
+      <article class="card">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <circle cx="24" cy="24" r="23" fill="#f3e9e4"/>
+          <path d="M15 14c6 5 12 10 18 20" stroke="#c9798c" stroke-width="2" stroke-linecap="round"/>
+          <path d="M33 14c-6 5-12 10-18 20" stroke="#231820" stroke-width="2" stroke-linecap="round" stroke-opacity=".55"/>
+          <circle cx="16" cy="35" r="4.4" fill="none" stroke="#b08d57" stroke-width="2"/>
+          <circle cx="32" cy="35" r="4.4" fill="none" stroke="#b08d57" stroke-width="2"/>
+        </svg>
+        <h3>Peluquería</h3>
+        <p>Trabajo de corte, color y peinado para el día a día o para una ocasión.</p>
+        <ul><li>Corte y acabado</li><li>Color y mechas</li><li>Peinado y recogido</li></ul>
+        <div class="tarifa"><span>Precio</span><b>Consultar</b></div>
+      </article>
+
+      <article class="card">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <circle cx="24" cy="24" r="23" fill="#f3e9e4"/>
+          <rect x="18" y="12" width="12" height="18" rx="6" fill="#c9798c"/>
+          <path d="M18 30h12v4a6 6 0 0 1-12 0v-4Z" fill="#231820" fill-opacity=".5"/>
+          <path d="M14 38h20" stroke="#b08d57" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <h3>Manicura y pedicura</h3>
+        <p>Cuidado de manos y pies con acabado limpio y duradero.</p>
+        <ul><li>Manicura</li><li>Pedicura</li><li>Esmaltado</li></ul>
+        <div class="tarifa"><span>Precio</span><b>Consultar</b></div>
+      </article>
+
+      <article class="card">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <circle cx="24" cy="24" r="23" fill="#f3e9e4"/>
+          <path d="M24 11c7 0 12 5.4 12 12.4C36 31.4 30.6 37 24 37s-12-5.6-12-13.6C12 16.4 17 11 24 11Z" fill="none" stroke="#231820" stroke-opacity=".5" stroke-width="2"/>
+          <circle cx="19" cy="23" r="2" fill="#c9798c"/>
+          <circle cx="29" cy="23" r="2" fill="#c9798c"/>
+          <path d="M19.5 30c2.8 2 5.2 2 9 0" stroke="#b08d57" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <h3>Tratamientos faciales</h3>
+        <p>Limpieza e hidratación adaptadas a cada tipo de piel.</p>
+        <ul><li>Limpieza facial</li><li>Hidratación</li><li>Cuidado de cejas y pestañas</li></ul>
+        <div class="tarifa"><span>Precio</span><b>Consultar</b></div>
+      </article>
+
+      <article class="card">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <circle cx="24" cy="24" r="23" fill="#f3e9e4"/>
+          <path d="M13 32c6-4 10-10 12-20" stroke="#c9798c" stroke-width="2.2" stroke-linecap="round"/>
+          <path d="M19 34c6-3 10-8 13-16" stroke="#231820" stroke-opacity=".45" stroke-width="2.2" stroke-linecap="round"/>
+          <circle cx="34" cy="31" r="4" fill="#b08d57" opacity=".65"/>
+        </svg>
+        <h3>Depilación</h3>
+        <p>Depilación por zonas, con la técnica que mejor va a cada una.</p>
+        <ul><li>Rostro</li><li>Piernas y brazos</li><li>Zonas pequeñas</li></ul>
+        <div class="tarifa"><span>Precio</span><b>Consultar</b></div>
+      </article>
+
+      <article class="card">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <circle cx="24" cy="24" r="23" fill="#f3e9e4"/>
+          <path d="M22 10h4l1 18h-6l1-18Z" fill="#c9798c"/>
+          <path d="M21 28h6l-3 10-3-10Z" fill="#231820" fill-opacity=".5"/>
+          <path d="M31 16c3 1.6 5 4 5 7" stroke="#b08d57" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <h3>Maquillaje</h3>
+        <p>Maquillaje de día o para un evento, con prueba previa si hace falta.</p>
+        <ul><li>Maquillaje de día</li><li>Maquillaje de evento</li><li>Asesoramiento</li></ul>
+        <div class="tarifa"><span>Precio</span><b>Consultar</b></div>
+      </article>
+
+      <article class="card" style="background:linear-gradient(160deg,#fff 0%,#f3e9e4 100%)">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <circle cx="24" cy="24" r="23" fill="#fff"/>
+          <path d="M24 13v22M13 24h22" stroke="#c9798c" stroke-width="2.4" stroke-linecap="round"/>
+        </svg>
+        <h3>¿Buscas otra cosa?</h3>
+        <p>Si el tratamiento que necesitas no aparece en la lista, pregúntanos por teléfono y te decimos si lo hacemos.</p>
+        <div class="tarifa"><span>Teléfono</span><b><a href="tel:+34638344257" style="color:inherit;text-decoration:none">638 344 257</a></b></div>
+      </article>
+    </div>
+
+    <p class="nota"><strong>Nota de la maqueta:</strong> los importes aparecen como «Consultar» a propósito. Las tarifas y los tiempos de cada tratamiento los decidiría y publicaría el propio salón; esta propuesta solo deja el sitio preparado para colocarlos.</p>
+  </div>
+</section>
+
+<section id="visita">
+  <div class="env">
+    <div class="cab">
+      <div class="kicker">Cómo funciona</div>
+      <h2>Tu primera visita, en tres pasos</h2>
+      <p>Si nunca has venido, esto es todo lo que tienes que hacer.</p>
+    </div>
+    <div class="pasos">
+      <article class="paso">
+        <span class="num">01</span>
+        <h3>Llama y reserva</h3>
+        <p>Nos cuentas qué tratamiento te interesa y buscamos un hueco. Marcando el <a href="tel:+34638344257" style="color:var(--rosa)">638 344 257</a> hablas directamente con el salón.</p>
+      </article>
+      <article class="paso">
+        <span class="num">02</span>
+        <h3>Hablamos antes de empezar</h3>
+        <p>Al llegar vemos juntas qué quieres conseguir, revisamos tu pelo, tus uñas o tu piel y acordamos el tratamiento y lo que cuesta.</p>
+      </article>
+      <article class="paso">
+        <span class="num">03</span>
+        <h3>Te atendemos y te vas lista</h3>
+        <p>Hacemos el trabajo con calma y te explicamos cómo mantenerlo en casa hasta la siguiente cita.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="galeria">
+  <div class="env">
+    <div class="cab">
+      <div class="kicker">Nuestro trabajo</div>
+      <h2>El sitio donde vuestro Instagram tendría sentido</h2>
+      <p>Estos bloques son huecos reservados: aquí entrarían las fotos reales del salón y de los trabajos que ya publicáis en Instagram. En la maqueta se dejan dibujados para no usar imágenes que no son vuestras.</p>
+    </div>
+
+    <div class="mosaico">
+      <div class="hueco alto">
+        <svg viewBox="0 0 200 420" preserveAspectRatio="none" aria-hidden="true">
+          <defs><linearGradient id="m1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3a2a33"/><stop offset="1" stop-color="#7d4f5d"/></linearGradient></defs>
+          <rect width="200" height="420" fill="url(#m1)"/>
+          <g stroke="#e8b9c3" stroke-opacity=".5" fill="none" stroke-width="1.3">
+            <circle cx="100" cy="150" r="58"/><circle cx="100" cy="150" r="88" stroke-dasharray="4 8"/>
+            <path d="M100 208v120"/>
+          </g>
+        </svg>
+        <span>Hueco de foto · salón</span>
+      </div>
+      <div class="hueco">
+        <svg viewBox="0 0 200 200" preserveAspectRatio="none" aria-hidden="true">
+          <defs><linearGradient id="m2" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#2d2029"/><stop offset="1" stop-color="#a06d50"/></linearGradient></defs>
+          <rect width="200" height="200" fill="url(#m2)"/>
+          <g fill="#f3e9e4" fill-opacity=".35"><circle cx="66" cy="78" r="26"/><circle cx="128" cy="124" r="38"/></g>
+        </svg>
+        <span>Hueco de foto · color</span>
+      </div>
+      <div class="hueco">
+        <svg viewBox="0 0 200 200" preserveAspectRatio="none" aria-hidden="true">
+          <defs><linearGradient id="m3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5c3a46"/><stop offset="1" stop-color="#231820"/></linearGradient></defs>
+          <rect width="200" height="200" fill="url(#m3)"/>
+          <g stroke="#e8b9c3" stroke-opacity=".55" stroke-width="2" fill="none" stroke-linecap="round">
+            <path d="M40 150c30-20 50-50 60-100"/><path d="M80 158c28-16 46-40 56-78"/>
+          </g>
+        </svg>
+        <span>Hueco de foto · uñas</span>
+      </div>
+      <div class="hueco">
+        <svg viewBox="0 0 200 200" preserveAspectRatio="none" aria-hidden="true">
+          <defs><radialGradient id="m4" cx=".3" cy=".3" r=".9"><stop offset="0" stop-color="#c9798c"/><stop offset="1" stop-color="#2b1f27"/></radialGradient></defs>
+          <rect width="200" height="200" fill="url(#m4)"/>
+          <g stroke="#fbf7f4" stroke-opacity=".4" fill="none"><rect x="36" y="36" width="128" height="128" rx="64"/></g>
+        </svg>
+        <span>Hueco de foto · facial</span>
+      </div>
+      <div class="hueco">
+        <svg viewBox="0 0 200 200" preserveAspectRatio="none" aria-hidden="true">
+          <defs><linearGradient id="m5" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8a5a68"/><stop offset="1" stop-color="#2b1f27"/></linearGradient></defs>
+          <rect width="200" height="200" fill="url(#m5)"/>
+          <g stroke="#e3cba4" stroke-opacity=".5" stroke-width="1.4" fill="none">
+            <path d="M0 140h200M0 160h200M0 120h200" stroke-dasharray="6 10"/>
+          </g>
+        </svg>
+        <span>Hueco de foto · maquillaje</span>
+      </div>
+      <div class="hueco ancho">
+        <svg viewBox="0 0 400 200" preserveAspectRatio="none" aria-hidden="true">
+          <defs><linearGradient id="m6" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#372632"/><stop offset="1" stop-color="#b08d57"/></linearGradient></defs>
+          <rect width="400" height="200" fill="url(#m6)"/>
+          <g fill="none" stroke="#fbf7f4" stroke-opacity=".38" stroke-width="1.4">
+            <circle cx="200" cy="100" r="34"/><circle cx="200" cy="100" r="62"/><circle cx="200" cy="100" r="92"/>
+          </g>
+        </svg>
+        <span>Hueco de foto · equipo</span>
+      </div>
+    </div>
+
+    <div class="ig-pie">
+      <a href="https://www.instagram.com/salonbeautyssecret/" target="_blank" rel="noopener">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="3" y="3" width="18" height="18" rx="5.4" stroke="currentColor" stroke-width="1.7"/>
+          <circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.7"/>
+          <circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/>
+        </svg>
+        Ver el Instagram del salón
+      </a>
+      <small>@salonbeautyssecret</small>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="env">
+    <div class="cab">
+      <div class="kicker">Contacto</div>
+      <h2>Dónde estamos y cómo pedir cita</h2>
+      <p>Estamos en la Avda. de la Democracia. Para reservar o preguntar por un tratamiento, lo más rápido es una llamada.</p>
+    </div>
+
+    <div class="contacto-grid">
+      <div class="datos">
+        <div class="dato">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 3h3l1.5 4-2.1 1.5a12 12 0 0 0 6.5 6.5L17 12.9l4 1.5v3A2.5 2.5 0 0 1 18.3 20C10.4 19.4 4.6 13.6 4 5.7A2.5 2.5 0 0 1 6.6 3Z" stroke="#c9798c" stroke-width="1.7" stroke-linejoin="round"/></svg>
+          <div><div class="k">Teléfono</div><div class="v"><a href="tel:+34638344257">638 344 257</a></div></div>
+        </div>
+        <div class="dato">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="#c9798c" stroke-width="1.7"/><circle cx="12" cy="10" r="2.6" stroke="#c9798c" stroke-width="1.7"/></svg>
+          <div><div class="k">Dirección</div><div class="v">Avda. de la Democracia, 10, local 2<br>Melilla</div></div>
+        </div>
+        <div class="dato">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.4" stroke="#c9798c" stroke-width="1.7"/><path d="M12 7.6V12l3.2 2" stroke="#c9798c" stroke-width="1.7" stroke-linecap="round"/></svg>
+          <div><div class="k">Horario</div><div class="v">Consultar horario</div></div>
+        </div>
+        <div class="dato">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2.4" stroke="#c9798c" stroke-width="1.7"/><path d="M3.8 6.6 12 13l8.2-6.4" stroke="#c9798c" stroke-width="1.7"/></svg>
+          <div><div class="k">Email</div><div class="v"><a href="mailto:salonbeautysecretmelilla@gmail.com">salonbeautysecretmelilla@gmail.com</a></div></div>
+        </div>
+        <div style="margin-top:20px">
+          <a class="btn btn-p" href="tel:+34638344257" style="width:100%;justify-content:center">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 3h3l1.5 4-2.1 1.5a12 12 0 0 0 6.5 6.5L17 12.9l4 1.5v3A2.5 2.5 0 0 1 18.3 20C10.4 19.4 4.6 13.6 4 5.7A2.5 2.5 0 0 1 6.6 3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+            Llamar y pedir cita
+          </a>
+        </div>
+      </div>
+
+      <div class="mapa">
+        <svg viewBox="0 0 640 430" role="img" aria-label="Mapa esquemático dibujado a mano con la Avenida de la Democracia y el local del salón">
+          <defs>
+            <linearGradient id="mapbg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#fdfbfa"/><stop offset="1" stop-color="#f3e9e4"/>
+            </linearGradient>
+          </defs>
+          <rect width="640" height="430" rx="12" fill="url(#mapbg)"/>
+          <!-- manzanas -->
+          <g fill="#231820" fill-opacity=".055" stroke="#231820" stroke-opacity=".14" stroke-width="1.4">
+            <path d="M44 56c70-5 128-4 182 2 4 36 3 70-2 104-62 4-120 3-176-2-5-34-6-68-4-104Z"/>
+            <path d="M300 58c66-4 180-3 290 2-3 36-4 70-2 104-104 4-212 4-290 0-4-34-4-70 2-106Z"/>
+            <path d="M46 252c72-5 128-4 180 2 4 38 4 76 0 118-60 4-118 4-176-2-6-38-7-78-4-118Z"/>
+            <path d="M302 254c70-4 182-3 288 2-2 40-2 78 0 118-102 4-210 4-288 0-4-40-4-80 0-120Z"/>
+          </g>
+          <!-- avenida principal -->
+          <path d="M20 212c130-14 262-16 390-10 72 4 140 10 212 18" stroke="#c9798c" stroke-opacity=".9" stroke-width="22" fill="none" stroke-linecap="round"/>
+          <path d="M20 212c130-14 262-16 390-10 72 4 140 10 212 18" stroke="#fff" stroke-opacity=".85" stroke-width="2" fill="none" stroke-dasharray="14 16"/>
+          <!-- calles transversales sin nombre -->
+          <g stroke="#231820" stroke-opacity=".3" stroke-width="11" fill="none" stroke-linecap="round">
+            <path d="M258 34c6 120 8 240 4 362"/>
+            <path d="M470 40c-4 118-4 238 0 356"/>
+            <path d="M96 30c-4 56-4 112 0 168"/>
+          </g>
+          <!-- rotulo avenida -->
+          <g transform="translate(60 176) rotate(-3)">
+            <text font-family="Georgia,serif" font-size="21" fill="#231820" fill-opacity=".8">Avda. de la Democracia</text>
+          </g>
+          <!-- marcador del local -->
+          <g transform="translate(330 128)">
+            <path d="M0 78c-20-26-32-42-32-55A32 32 0 0 1 32 23c0 13-12 29-32 55Z" fill="#231820"/>
+            <circle cx="0" cy="22" r="18" fill="#fbf7f4"/>
+            <path d="M-7 20c4 6 10 6 14 0" stroke="#c9798c" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+            <circle cx="-6" cy="13" r="2.2" fill="#c9798c"/><circle cx="6" cy="13" r="2.2" fill="#c9798c"/>
+            <g transform="translate(44 -4)">
+              <rect x="0" y="-22" width="248" height="52" rx="14" fill="#fff" stroke="#231820" stroke-opacity=".16"/>
+              <text x="18" y="0" font-family="Georgia,serif" font-size="19" fill="#231820">Salón Beauty Secret</text>
+              <text x="18" y="20" font-family="Helvetica,Arial,sans-serif" font-size="14" fill="#4a3942">Nº 10, local 2</text>
+            </g>
+          </g>
+          <!-- detalles dibujados a mano -->
+          <g stroke="#b08d57" stroke-opacity=".55" stroke-width="1.6" fill="none" stroke-linecap="round">
+            <path d="M560 334c8-10 18-10 26 0"/><path d="M566 348c6-8 14-8 20 0"/>
+            <path d="M118 338c8-10 18-10 26 0"/>
+          </g>
+          <g fill="#231820" fill-opacity=".35">
+            <circle cx="214" cy="300" r="4"/><circle cx="520" cy="110" r="4"/><circle cx="150" cy="104" r="4"/>
+          </g>
+          <!-- norte -->
+          <g transform="translate(596 54)">
+            <circle r="22" fill="#fff" stroke="#231820" stroke-opacity=".16"/>
+            <path d="M0 -13 5 4 0 1 -5 4Z" fill="#c9798c"/>
+            <text y="18" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#4a3942">N</text>
+          </g>
+        </svg>
+        <p class="pie">Croquis orientativo dibujado a mano para la maqueta: solo señala el tramo de la Avda. de la Democracia donde está el local. No sustituye a un mapa real.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="env">
+    <div class="f-top">
+      <div>
+        <h3>Salón Beauty Secret</h3>
+        <p style="color:rgba(246,236,239,.72);max-width:38ch">Salón de belleza en Melilla. Peluquería, manicura y pedicura, tratamientos faciales, depilación y maquillaje.</p>
+      </div>
+      <div>
+        <div class="f-ttl">Contacto</div>
+        <ul>
+          <li><a href="tel:+34638344257">638 344 257</a></li>
+          <li><a href="mailto:salonbeautysecretmelilla@gmail.com">salonbeautysecretmelilla@gmail.com</a></li>
+          <li>Avda. de la Democracia, 10, local 2, Melilla</li>
+          <li>Horario: consultar</li>
+        </ul>
+      </div>
+      <div>
+        <div class="f-ttl">Secciones</div>
+        <ul>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#visita">Tu primera visita</a></li>
+          <li><a href="#galeria">Nuestro trabajo</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="https://www.instagram.com/salonbeautyssecret/" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="credito">
+    <div class="env">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</div>
+  </div>
+</footer>
+
+</body>
+</html>

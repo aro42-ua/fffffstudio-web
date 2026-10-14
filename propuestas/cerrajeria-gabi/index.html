@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cerrajería Gabi · Navalcarnero</title>
+<meta name="description" content="Cerrajería Gabi en Navalcarnero (Madrid). Apertura de puertas, cambio y reparación de cerraduras, bombines de seguridad, copias de llaves, puertas y rejas metálicas.">
+<style>
+  :root{
+    --ink:#0e1116;
+    --ink-2:#161b23;
+    --ink-3:#1f2630;
+    --line:rgba(255,255,255,.12);
+    --paper:#f4f1ec;
+    --paper-2:#e8e3da;
+    --text:#10141a;
+    --muted:#5b6472;
+    --muted-d:rgba(236,240,247,.72);
+    --brass:#d9a13b;
+    --brass-2:#f2c76b;
+    --steel:#8fa3bd;
+    --radius:18px;
+    --bar-h:38px;
+    --maxw:1180px;
+    --ff:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:calc(var(--bar-h) + 18px)}
+  body{
+    margin:0;font-family:var(--ff);color:var(--text);background:var(--paper);
+    line-height:1.55;overflow-x:hidden;
+    padding-top:var(--bar-h);
+  }
+  img,svg{max-width:100%}
+  h1,h2,h3{margin:0;line-height:1.1;letter-spacing:-.02em;font-weight:800}
+  p{margin:0}
+  a{color:inherit}
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 20px}
+
+  /* ---------- barra fija ---------- */
+  .studiobar{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    min-height:var(--bar-h);display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(90deg,#0a0d12,#1b222c 50%,#0a0d12);
+    border-bottom:1px solid rgba(217,161,59,.38);
+    color:#e9edf4;
+  }
+  .studiobar span{
+    display:block;padding:8px 14px;text-align:center;
+    font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;
+    font-weight:600;line-height:1.35;
+  }
+  .studiobar b{color:var(--brass-2);font-weight:700}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;color:#eef1f6;
+    background:
+      radial-gradient(1100px 620px at 78% -10%,rgba(217,161,59,.26),transparent 60%),
+      radial-gradient(760px 520px at 8% 108%,rgba(143,163,189,.20),transparent 62%),
+      linear-gradient(165deg,#0b0e13 0%,#141a23 48%,#0d1218 100%);
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+    background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),
+                     linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+    background-size:44px 44px;
+    mask-image:radial-gradient(70% 70% at 50% 40%,#000 25%,transparent 100%);
+    -webkit-mask-image:radial-gradient(70% 70% at 50% 40%,#000 25%,transparent 100%);
+  }
+  .hero .wrap{position:relative;z-index:1;padding-top:58px;padding-bottom:58px}
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:46px;align-items:center}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;
+    color:var(--brass-2);border:1px solid rgba(217,161,59,.40);
+    background:rgba(217,161,59,.09);border-radius:999px;padding:7px 14px;margin-bottom:22px;
+  }
+  .eyebrow i{width:6px;height:6px;border-radius:50%;background:var(--brass-2);flex:none}
+  h1{font-size:clamp(2.05rem,5vw,3.35rem);max-width:17ch}
+  h1 em{font-style:normal;display:block;color:var(--brass-2)}
+  .lead{margin-top:18px;font-size:clamp(1rem,1.25vw,1.12rem);color:var(--muted-d);max-width:46ch}
+
+  /* ---------- CTA teléfono ---------- */
+  .callbox{margin-top:30px}
+  .call-label{
+    font-size:12px;letter-spacing:.15em;text-transform:uppercase;font-weight:700;
+    color:rgba(236,240,247,.62);margin-bottom:10px;
+  }
+  .call{
+    display:flex;align-items:center;justify-content:center;gap:16px;
+    width:100%;max-width:520px;text-decoration:none;
+    background:linear-gradient(135deg,var(--brass-2),var(--brass) 55%,#b9842a);
+    color:#19120a;border-radius:16px;padding:18px 22px;
+    box-shadow:0 16px 36px rgba(217,161,59,.30),inset 0 1px 0 rgba(255,255,255,.5);
+    border:1px solid rgba(255,255,255,.28);
+  }
+  .call:hover{filter:brightness(1.05)}
+  .call svg{width:30px;height:30px;flex:none}
+  .call-txt{display:block;min-width:0}
+  .call-txt small{display:block;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;opacity:.72}
+  .call-num{
+    display:block;font-weight:800;letter-spacing:-.02em;
+    font-size:clamp(1.7rem,6.4vw,2.35rem);line-height:1.08;white-space:nowrap;
+  }
+  .hero-note{margin-top:14px;font-size:13.5px;color:rgba(236,240,247,.56)}
+
+  /* ---------- tarjeta llave (SVG) ---------- */
+  .keycard{
+    border:1px solid var(--line);border-radius:24px;padding:22px;
+    background:linear-gradient(150deg,rgba(255,255,255,.07),rgba(255,255,255,.02));
+    backdrop-filter:blur(2px);
+  }
+  .keycard svg{display:block;width:100%;height:auto}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .chip{
+    font-size:12.5px;font-weight:600;color:#e7ebf2;
+    border:1px solid var(--line);border-radius:999px;padding:6px 12px;
+    background:rgba(255,255,255,.05);
+  }
+
+  /* ---------- secciones ---------- */
+  section{scroll-margin-top:calc(var(--bar-h) + 14px)}
+  .sec{padding:68px 0}
+  .sec-head{max-width:62ch;margin-bottom:34px}
+  .kicker{
+    font-size:12px;letter-spacing:.17em;text-transform:uppercase;font-weight:800;
+    color:#9a6c16;margin-bottom:12px;
+  }
+  .sec h2{font-size:clamp(1.55rem,3.3vw,2.4rem)}
+  .sec p.sub{margin-top:14px;color:var(--muted);font-size:1.02rem}
+
+  /* servicios */
+  .grid-serv{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+  .card{
+    background:#fff;border:1px solid rgba(16,20,26,.10);border-radius:var(--radius);
+    padding:24px;box-shadow:0 1px 2px rgba(16,20,26,.05);
+    display:flex;flex-direction:column;gap:12px;min-width:0;
+  }
+  .ico{
+    width:48px;height:48px;border-radius:13px;flex:none;
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(140deg,#1b2230,#2b3443);
+    border:1px solid rgba(217,161,59,.35);
+  }
+  .ico svg{width:26px;height:26px}
+  .card h3{font-size:1.09rem}
+  .card p{color:var(--muted);font-size:.95rem}
+
+  /* pasos */
+  .pasos{background:linear-gradient(180deg,var(--paper-2),var(--paper))}
+  .grid-pasos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+  .paso{
+    position:relative;background:#fff;border:1px solid rgba(16,20,26,.10);
+    border-radius:var(--radius);padding:26px 24px 24px;min-width:0;
+  }
+  .paso .n{
+    display:flex;align-items:center;justify-content:center;
+    width:42px;height:42px;border-radius:50%;margin-bottom:14px;
+    background:linear-gradient(140deg,#141a23,#2a3442);color:var(--brass-2);
+    font-weight:800;font-size:1.05rem;border:1px solid rgba(217,161,59,.4);
+  }
+  .paso h3{font-size:1.1rem;margin-bottom:8px}
+  .paso p{color:var(--muted);font-size:.95rem}
+
+  /* contacto */
+  .contacto{
+    color:#eef1f6;
+    background:
+      radial-gradient(900px 520px at 90% 0%,rgba(143,163,189,.18),transparent 60%),
+      linear-gradient(170deg,#0c1016,#161d26 60%,#0d1218);
+  }
+  .contacto .kicker{color:var(--brass-2)}
+  .contacto .sub{color:var(--muted-d)}
+  .grid-cont{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:28px;align-items:start}
+  .infobox{
+    border:1px solid var(--line);border-radius:20px;padding:24px;
+    background:linear-gradient(150deg,rgba(255,255,255,.07),rgba(255,255,255,.02));
+  }
+  .row{display:flex;gap:14px;padding:16px 0;border-top:1px solid var(--line)}
+  .row:first-of-type{border-top:0;padding-top:4px}
+  .row .ico{width:40px;height:40px;border-radius:11px}
+  .row .ico svg{width:21px;height:21px}
+  .row .t{min-width:0}
+  .row .t span{
+    display:block;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;
+    font-weight:800;color:rgba(236,240,247,.55);margin-bottom:3px;
+  }
+  .row .t strong{display:block;font-size:1.02rem;font-weight:700;overflow-wrap:anywhere}
+  .row .t a{text-decoration:none;overflow-wrap:anywhere}
+  .row .t a:hover{color:var(--brass-2)}
+  .horario{
+    margin-top:18px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;
+  }
+  .btn-ghost{
+    display:inline-flex;align-items:center;gap:9px;text-decoration:none;
+    border:1px solid rgba(217,161,59,.55);color:var(--brass-2);
+    border-radius:12px;padding:12px 16px;font-weight:700;font-size:.95rem;
+    background:rgba(217,161,59,.08);
+  }
+  .btn-ghost:hover{background:rgba(217,161,59,.16)}
+  .btn-ghost svg{width:18px;height:18px;flex:none}
+  .mapbox{
+    border:1px solid var(--line);border-radius:20px;padding:16px;
+    background:linear-gradient(150deg,rgba(255,255,255,.06),rgba(255,255,255,.015));
+  }
+  .mapbox h3{font-size:1rem;margin-bottom:4px}
+  .mapbox .mn{font-size:12.5px;color:rgba(236,240,247,.55);margin-bottom:12px}
+  .mapsvg{display:block;width:100%;height:auto;border-radius:14px;background:#0a0e13}
+
+  /* pie */
+  footer{background:#080b0f;color:#cfd6e0;padding:44px 0 30px}
+  .f-top{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:flex-start}
+  .f-brand{font-weight:800;font-size:1.15rem;color:#fff;letter-spacing:-.01em}
+  .f-brand small{display:block;font-weight:500;font-size:12.5px;color:rgba(207,214,224,.6);letter-spacing:.06em;text-transform:uppercase;margin-top:5px}
+  .f-list{display:grid;gap:7px;font-size:.95rem}
+  .f-list a{text-decoration:none;overflow-wrap:anywhere}
+  .f-list a:hover{color:var(--brass-2)}
+  .f-note{
+    margin-top:30px;padding-top:18px;border-top:1px solid rgba(255,255,255,.1);
+    font-size:12.5px;color:rgba(207,214,224,.62);line-height:1.6;
+  }
+  .f-note strong{color:var(--brass-2);font-weight:700}
+
+  /* barra inferior móvil */
+  .mobilecall{display:none}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:980px){
+    .hero-grid{grid-template-columns:1fr;gap:34px}
+    .grid-serv{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .grid-cont{grid-template-columns:1fr}
+    .grid-pasos{grid-template-columns:1fr}
+  }
+  @media (max-width:720px){
+    :root{--bar-h:52px}
+    .wrap{padding:0 16px}
+    .hero .wrap{padding-top:34px;padding-bottom:40px}
+    .sec{padding:48px 0}
+    .grid-serv{grid-template-columns:1fr}
+    .call{max-width:none;padding:20px 18px;gap:14px}
+    .call-num{font-size:clamp(1.9rem,8.6vw,2.6rem)}
+    .keycard{padding:16px}
+    .infobox,.mapbox{padding:18px 16px}
+    .row .t strong{font-size:.95rem}
+    body{padding-bottom:86px}
+    .mobilecall{
+      display:block;position:fixed;left:0;right:0;bottom:0;z-index:99;
+      padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+      background:linear-gradient(180deg,rgba(10,13,18,.86),#0a0d12 55%);
+      border-top:1px solid rgba(217,161,59,.4);
+      backdrop-filter:blur(8px);
+    }
+    .mobilecall a{
+      display:flex;align-items:center;justify-content:center;gap:12px;
+      text-decoration:none;border-radius:14px;padding:14px 16px;
+      background:linear-gradient(135deg,var(--brass-2),var(--brass));
+      color:#19120a;font-weight:800;font-size:1.3rem;letter-spacing:-.01em;
+      box-shadow:0 10px 26px rgba(217,161,59,.28);
+    }
+    .mobilecall a svg{width:24px;height:24px;flex:none}
+    .f-top{flex-direction:column;gap:20px}
+  }
+  @media (max-width:380px){
+    .call-num{font-size:1.75rem}
+    .mobilecall a{font-size:1.16rem}
+  }
+</style>
+</head>
+<body>
+
+<div class="studiobar" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · <b>FFFFFFstudio</b> · Ángel Rubio</span>
+</div>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow"><i></i>Cerrajería en Navalcarnero</div>
+        <h1>Cerrajería Gabi<em>Cerraduras, llaves y metal</em></h1>
+        <p class="lead">Apertura de puertas, cambio y reparación de cerraduras, bombines de seguridad, copias de llaves y trabajos de puertas y rejas metálicas en Navalcarnero y alrededores.</p>
+
+        <div class="callbox">
+          <div class="call-label">Llama ahora</div>
+          <a class="call" href="tel:+34642362977">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21.5 16.9v2.8a1.9 1.9 0 0 1-2.1 1.9 18.7 18.7 0 0 1-8.2-2.9 18.4 18.4 0 0 1-5.7-5.7A18.7 18.7 0 0 1 2.6 4.7 1.9 1.9 0 0 1 4.5 2.6h2.8a1.9 1.9 0 0 1 1.9 1.6c.1 1 .4 1.9.7 2.8a1.9 1.9 0 0 1-.4 2L8.3 10.2a15 15 0 0 0 5.5 5.5l1.2-1.2a1.9 1.9 0 0 1 2-.4c.9.3 1.8.6 2.8.7a1.9 1.9 0 0 1 1.7 2.1z"/>
+            </svg>
+            <span class="call-txt">
+              <small>Teléfono</small>
+              <span class="call-num">642 362 977</span>
+            </span>
+          </a>
+          <p class="hero-note">Un toque y hablas directamente con la cerrajería.</p>
+        </div>
+      </div>
+
+      <div class="keycard">
+        <svg viewBox="0 0 420 300" role="img" aria-label="Ilustración de una llave y un bombín de seguridad">
+          <defs>
+            <linearGradient id="gKey" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#f2c76b"/><stop offset=".55" stop-color="#d9a13b"/><stop offset="1" stop-color="#9c6f22"/>
+            </linearGradient>
+            <linearGradient id="gSteel" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#b8c6d8"/><stop offset="1" stop-color="#6e7f95"/>
+            </linearGradient>
+            <linearGradient id="gPlate" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#28313f"/><stop offset="1" stop-color="#121821"/>
+            </linearGradient>
+          </defs>
+
+          <rect x="18" y="26" width="384" height="248" rx="20" fill="url(#gPlate)" stroke="rgba(217,161,59,.28)"/>
+          <g stroke="rgba(255,255,255,.07)" stroke-width="1">
+            <path d="M18 100h384M18 174h384M140 26v248M280 26v248"/>
+          </g>
+
+          <!-- bombin -->
+          <g transform="translate(60,96)">
+            <rect x="0" y="0" width="128" height="108" rx="16" fill="url(#gSteel)" opacity=".92"/>
+            <circle cx="64" cy="54" r="34" fill="#101620"/>
+            <circle cx="64" cy="54" r="26" fill="url(#gSteel)"/>
+            <rect x="56" y="34" width="16" height="40" rx="7" fill="#0c1118"/>
+            <g fill="#0c1118" opacity=".55">
+              <circle cx="30" cy="22" r="4"/><circle cx="98" cy="22" r="4"/>
+              <circle cx="30" cy="86" r="4"/><circle cx="98" cy="86" r="4"/>
+            </g>
+          </g>
+
+          <!-- llave -->
+          <g transform="translate(206,86) rotate(12)">
+            <circle cx="42" cy="42" r="40" fill="none" stroke="url(#gKey)" stroke-width="15"/>
+            <circle cx="42" cy="42" r="15" fill="none" stroke="url(#gKey)" stroke-width="9"/>
+            <rect x="74" y="34" width="118" height="17" rx="6" fill="url(#gKey)"/>
+            <rect x="150" y="51" width="13" height="24" rx="3" fill="url(#gKey)"/>
+            <rect x="172" y="51" width="11" height="17" rx="3" fill="url(#gKey)"/>
+          </g>
+        </svg>
+
+        <div class="chips">
+          <span class="chip">Apertura de puertas</span>
+          <span class="chip">Bombines de seguridad</span>
+          <span class="chip">Copias de llaves</span>
+          <span class="chip">Rejas metálicas</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ SERVICIOS ============ -->
+<section class="sec" id="servicios">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Servicios</div>
+      <h2>Lo que hacemos en cerrajería</h2>
+      <p class="sub">Trabajos habituales de cerrajería para viviendas, comunidades y locales. Si tu caso no aparece aquí, llama y lo vemos.</p>
+    </div>
+
+    <div class="grid-serv">
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#f2c76b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8"/><path d="M11 12h.01"/><path d="M17 8l4 4-4 4"/><path d="M21 12h-7"/></svg></div>
+        <h3>Apertura de puertas</h3>
+        <p>Puertas de vivienda, trastero o local que se han quedado cerradas o con la llave bloqueada.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#f2c76b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="10" width="18" height="11" rx="2"/><path d="M7 10V7a5 5 0 0 1 10 0v3"/><path d="M12 14v3"/></svg></div>
+        <h3>Cambio y reparación de cerraduras</h3>
+        <p>Sustitución de cerraduras desgastadas, forzadas o que han dejado de funcionar bien.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#f2c76b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.2"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></div>
+        <h3>Bombines de seguridad</h3>
+        <p>Instalación de bombines y cilindros de seguridad para reforzar la puerta de entrada.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#f2c76b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7.5" cy="7.5" r="4.5"/><circle cx="7.5" cy="7.5" r="1.4"/><path d="M11 11l9 9"/><path d="M16.5 15l-2 2"/><path d="M19 17.5l-1.6 1.6"/></svg></div>
+        <h3>Copias de llaves</h3>
+        <p>Duplicados de llaves de casa, portal, buzón, candado y mobiliario.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#f2c76b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 3v18M16 3v18"/><path d="M4 9h16M4 15h16"/></svg></div>
+        <h3>Puertas y rejas metálicas</h3>
+        <p>Fabricación, ajuste y reparación de puertas metálicas, rejas y cierres.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#f2c76b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7.5 3.5v5c0 4.4-3.1 8.1-7.5 9.5-4.4-1.4-7.5-5.1-7.5-9.5v-5z"/><path d="M9.3 12.2l1.9 1.9 3.6-3.8"/></svg></div>
+        <h3>Revisión de la puerta</h3>
+        <p>Comprobación del estado de cerradura, bombín y herrajes, y qué conviene cambiar.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CÓMO TRABAJAMOS ============ -->
+<section class="sec pasos" id="como-trabajamos">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Cómo trabajamos</div>
+      <h2>Tres pasos, sin vueltas</h2>
+      <p class="sub">Del teléfono al trabajo terminado, explicado antes de empezar.</p>
+    </div>
+
+    <div class="grid-pasos">
+      <article class="paso">
+        <div class="n">1</div>
+        <h3>Llamas y cuentas el caso</h3>
+        <p>Nos dices qué puerta es, qué le pasa y dónde está. Con eso sabemos qué herramienta y qué material hace falta.</p>
+      </article>
+      <article class="paso">
+        <div class="n">2</div>
+        <h3>Vemos la puerta y te decimos qué necesita</h3>
+        <p>Antes de tocar nada te explicamos la solución y las opciones: reparar, cambiar la cerradura o reforzar el bombín.</p>
+      </article>
+      <article class="paso">
+        <div class="n">3</div>
+        <h3>Hacemos el trabajo y lo dejamos probado</h3>
+        <p>Terminamos el trabajo, comprobamos que la puerta abre y cierra bien y te entregamos las llaves.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section class="sec contacto" id="contacto">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Contacto</div>
+      <h2>Dónde estamos y cómo localizarnos</h2>
+      <p class="sub">Taller en Navalcarnero. La vía más rápida es el teléfono.</p>
+    </div>
+
+    <div class="grid-cont">
+      <div class="infobox">
+        <div class="row">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#f2c76b" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.5 16.9v2.8a1.9 1.9 0 0 1-2.1 1.9 18.7 18.7 0 0 1-8.2-2.9 18.4 18.4 0 0 1-5.7-5.7A18.7 18.7 0 0 1 2.6 4.7 1.9 1.9 0 0 1 4.5 2.6h2.8a1.9 1.9 0 0 1 1.9 1.6c.1 1 .4 1.9.7 2.8a1.9 1.9 0 0 1-.4 2L8.3 10.2a15 15 0 0 0 5.5 5.5l1.2-1.2a1.9 1.9 0 0 1 2-.4c.9.3 1.8.6 2.8.7a1.9 1.9 0 0 1 1.7 2.1z"/></svg></div>
+          <div class="t"><span>Teléfono</span><strong><a href="tel:+34642362977">642 362 977</a></strong></div>
+        </div>
+        <div class="row">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#f2c76b" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div class="t"><span>Dirección</span><strong>Camino de Villaviciosa, 11<br>28600 Navalcarnero (Madrid)</strong></div>
+        </div>
+        <div class="row">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#f2c76b" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div>
+          <div class="t"><span>Email</span><strong><a href="mailto:cerrajeriagabinavalcarnero@gmail.com">cerrajeriagabinavalcarnero@gmail.com</a></strong></div>
+        </div>
+        <div class="row">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#f2c76b" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div>
+          <div class="t"><span>Horario</span><strong>Consultar horario</strong></div>
+        </div>
+
+        <div class="horario">
+          <a class="btn-ghost" href="tel:+34642362977">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.5 16.9v2.8a1.9 1.9 0 0 1-2.1 1.9 18.7 18.7 0 0 1-8.2-2.9 18.4 18.4 0 0 1-5.7-5.7A18.7 18.7 0 0 1 2.6 4.7 1.9 1.9 0 0 1 4.5 2.6h2.8a1.9 1.9 0 0 1 1.9 1.6c.1 1 .4 1.9.7 2.8a1.9 1.9 0 0 1-.4 2L8.3 10.2a15 15 0 0 0 5.5 5.5l1.2-1.2a1.9 1.9 0 0 1 2-.4c.9.3 1.8.6 2.8.7a1.9 1.9 0 0 1 1.7 2.1z"/></svg>
+            Consultar horario por teléfono
+          </a>
+          <a class="btn-ghost" href="mailto:cerrajeriagabinavalcarnero@gmail.com">Escribir un email</a>
+        </div>
+      </div>
+
+      <div class="mapbox">
+        <h3>Cómo llegar al taller</h3>
+        <p class="mn">Esquema dibujado a mano, orientativo y no a escala.</p>
+        <svg class="mapsvg" viewBox="0 0 640 400" role="img" aria-label="Mapa esquemático dibujado a mano con la situación del taller en Camino de Villaviciosa, 11, Navalcarnero">
+          <defs>
+            <linearGradient id="gMap" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#101822"/><stop offset="1" stop-color="#0a0e14"/>
+            </linearGradient>
+          </defs>
+          <rect width="640" height="400" fill="url(#gMap)"/>
+
+          <!-- manzanas -->
+          <g fill="rgba(143,163,189,.08)" stroke="rgba(143,163,189,.16)" stroke-width="1.5">
+            <path d="M44 56 q130 -6 196 4 q6 70 -2 118 q-120 8 -196 -2 z"/>
+            <path d="M300 62 q140 -4 282 6 q-4 60 2 112 q-150 8 -284 -2 z"/>
+            <path d="M46 250 q120 -8 198 2 q4 50 -2 94 q-118 6 -198 -4 z"/>
+            <path d="M306 252 q150 -6 280 4 q-6 48 0 92 q-148 8 -282 -2 z"/>
+          </g>
+
+          <!-- calles (trazo a mano) -->
+          <g stroke="#8fa3bd" stroke-width="7" stroke-linecap="round" fill="none" opacity=".55">
+            <path d="M18 222 q160 -14 300 -6 q170 10 306 -2"/>
+            <path d="M272 18 q10 150 4 220 q-6 90 2 150"/>
+          </g>
+          <g stroke="#cfdbe9" stroke-width="2" stroke-linecap="round" fill="none" stroke-dasharray="14 13" opacity=".5">
+            <path d="M18 222 q160 -14 300 -6 q170 10 306 -2"/>
+            <path d="M272 18 q10 150 4 220 q-6 90 2 150"/>
+          </g>
+          <g stroke="#7a8da6" stroke-width="4" stroke-linecap="round" fill="none" opacity=".42">
+            <path d="M18 42 q150 -10 300 -4 q160 8 306 -4"/>
+            <path d="M22 366 q150 10 300 2 q160 -8 300 4"/>
+            <path d="M494 16 q8 120 2 190 q-6 110 4 188"/>
+            <path d="M126 20 q-8 90 -2 160"/>
+          </g>
+
+          <!-- taller -->
+          <g transform="translate(272,222)">
+            <circle r="46" fill="rgba(217,161,59,.12)" stroke="rgba(217,161,59,.45)" stroke-width="2" stroke-dasharray="7 7"/>
+            <circle r="17" fill="#d9a13b" stroke="#fff6e3" stroke-width="3.5"/>
+            <path d="M-6 0 l4 5 l9 -11" stroke="#15202c" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+
+          <!-- etiquetas -->
+          <g>
+            <rect x="296" y="118" width="286" height="62" rx="12" fill="rgba(10,14,20,.88)" stroke="rgba(217,161,59,.42)"/>
+            <text x="312" y="144" font-family="Segoe UI,system-ui,sans-serif" font-size="21" font-weight="700" fill="#f2c76b">Cerrajería Gabi</text>
+            <text x="312" y="168" font-family="Segoe UI,system-ui,sans-serif" font-size="17" font-weight="600" fill="rgba(236,240,247,.82)">Camino de Villaviciosa, 11</text>
+            <path d="M300 176 L286 208" stroke="rgba(217,161,59,.55)" stroke-width="2" stroke-dasharray="5 5" fill="none"/>
+          </g>
+          <g font-family="Segoe UI,system-ui,sans-serif" font-size="17" font-weight="600" fill="rgba(207,219,233,.68)">
+            <text x="30" y="258">Camino de Villaviciosa</text>
+            <text x="252" y="38" transform="rotate(90 252 38)">calle de la zona</text>
+            <text x="34" y="34">calle de la zona</text>
+            <text x="400" y="390">calle de la zona</text>
+          </g>
+          <g font-family="Segoe UI,system-ui,sans-serif" font-size="17" font-weight="700" fill="rgba(143,163,189,.85)">
+            <text x="438" y="258">&#8594; Navalcarnero</text>
+            <text x="30" y="300">&#8592; salida</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PIE ============ -->
+<footer>
+  <div class="wrap">
+    <div class="f-top">
+      <div>
+        <div class="f-brand">Cerrajería Gabi<small>Navalcarnero · Madrid</small></div>
+      </div>
+      <div class="f-list">
+        <a href="tel:+34642362977"><strong>642 362 977</strong></a>
+        <a href="mailto:cerrajeriagabinavalcarnero@gmail.com">cerrajeriagabinavalcarnero@gmail.com</a>
+        <span>Camino de Villaviciosa, 11 · 28600 Navalcarnero (Madrid)</span>
+        <span>Horario: consultar por teléfono</span>
+      </div>
+      <div class="f-list">
+        <a href="#servicios">Servicios</a>
+        <a href="#como-trabajamos">Cómo trabajamos</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+    </div>
+    <p class="f-note"><strong>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</strong></p>
+  </div>
+</footer>
+
+<div class="mobilecall">
+  <a href="tel:+34642362977">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.5 16.9v2.8a1.9 1.9 0 0 1-2.1 1.9 18.7 18.7 0 0 1-8.2-2.9 18.4 18.4 0 0 1-5.7-5.7A18.7 18.7 0 0 1 2.6 4.7 1.9 1.9 0 0 1 4.5 2.6h2.8a1.9 1.9 0 0 1 1.9 1.6c.1 1 .4 1.9.7 2.8a1.9 1.9 0 0 1-.4 2L8.3 10.2a15 15 0 0 0 5.5 5.5l1.2-1.2a1.9 1.9 0 0 1 2-.4c.9.3 1.8.6 2.8.7a1.9 1.9 0 0 1 1.7 2.1z"/></svg>
+    Llamar 642 362 977
+  </a>
+</div>
+
+</body>
+</html>

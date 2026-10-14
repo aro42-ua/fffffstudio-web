@@ -1,0 +1,617 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Restaurante Noble Villa · Villarrobledo</title>
+<style>
+  :root{
+    --tinta:#1b1512;
+    --tinta-70:rgba(27,21,18,.70);
+    --tinta-50:rgba(27,21,18,.52);
+    --crema:#f6efe4;
+    --crema-2:#efe5d6;
+    --vino:#6d1f2b;
+    --vino-claro:#8c2e3b;
+    --verde:#1f3b32;
+    --oro:#b2884a;
+    --oro-claro:#d8b878;
+    --linea:rgba(27,21,18,.14);
+    --barra:46px;
+    --max:1180px;
+    --r:18px;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--crema);
+    color:var(--tinta);
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+    font-size:17px;
+    line-height:1.62;
+    overflow-x:hidden;
+  }
+  img,svg{max-width:100%}
+  h1,h2,h3{line-height:1.12;margin:0;font-weight:600;letter-spacing:-.012em}
+  p{margin:0}
+  a{color:inherit}
+
+  /* ---------- barra fija ---------- */
+  .aviso{
+    position:fixed;inset:0 0 auto 0;z-index:100;
+    min-height:var(--barra);
+    display:flex;align-items:center;justify-content:center;
+    padding:7px 14px;
+    background:#17110f;
+    color:#efe2cd;
+    border-bottom:1px solid rgba(216,184,120,.32);
+    font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:11.5px;line-height:1.35;letter-spacing:.055em;text-transform:uppercase;
+    text-align:center;text-wrap:balance;
+  }
+  .aviso span{display:inline-block;max-width:100%}
+  body{padding-top:var(--barra)}
+
+  .env{width:100%;max-width:var(--max);margin:0 auto;padding:0 28px}
+  .cinta{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:600}
+
+  /* ---------- cabecera ---------- */
+  .nav{
+    position:relative;z-index:5;
+    display:flex;align-items:center;justify-content:space-between;gap:18px;
+    padding:20px 0 6px;
+  }
+  .marca{display:flex;align-items:center;gap:12px;min-width:0}
+  .marca .sello{flex:0 0 auto}
+  .marca b{display:block;font-size:17px;font-weight:600;letter-spacing:.01em;white-space:nowrap}
+  .marca small{display:block;font-family:ui-sans-serif,system-ui,sans-serif;font-size:10.5px;
+    letter-spacing:.17em;text-transform:uppercase;color:var(--tinta-50)}
+  .nav-enl{display:flex;gap:26px;align-items:center;
+    font-family:ui-sans-serif,system-ui,sans-serif;font-size:12.5px;letter-spacing:.09em;
+    text-transform:uppercase;font-weight:500}
+  .nav-enl a{text-decoration:none;color:var(--tinta-70);padding-bottom:2px;border-bottom:1px solid transparent}
+  .nav-enl a:hover{color:var(--vino);border-bottom-color:var(--oro)}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;overflow:hidden;padding:0 0 64px}
+  .hero-fondo{
+    position:absolute;inset:0;z-index:0;
+    background:
+      radial-gradient(120% 85% at 88% 6%, rgba(216,184,120,.30) 0%, rgba(216,184,120,0) 58%),
+      radial-gradient(95% 70% at 6% 94%, rgba(109,31,43,.22) 0%, rgba(109,31,43,0) 60%),
+      linear-gradient(168deg,#f8f2e8 0%, #efe4d3 55%, #e7dac6 100%);
+  }
+  .hero-fondo::after{
+    content:"";position:absolute;inset:0;
+    background-image:linear-gradient(rgba(27,21,18,.045) 1px, transparent 1px);
+    background-size:100% 7px;opacity:.5;
+  }
+  .hero-in{position:relative;z-index:1;display:grid;grid-template-columns:1.08fr .92fr;
+    gap:48px;align-items:center;padding-top:40px}
+  .kicker{color:var(--vino);display:flex;align-items:center;gap:10px;margin-bottom:20px}
+  .kicker::before{content:"";width:34px;height:1px;background:var(--oro);flex:0 0 auto}
+  .hero h1{font-size:clamp(2.3rem,5.1vw,4.05rem);letter-spacing:-.025em}
+  .hero h1 em{font-style:italic;color:var(--vino);display:block}
+  .hero .lead{margin-top:22px;font-size:clamp(1rem,1.25vw,1.16rem);color:var(--tinta-70);max-width:33ch}
+  .acciones{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:14px 24px;border-radius:999px;text-decoration:none;
+    font-family:ui-sans-serif,system-ui,sans-serif;font-size:14px;font-weight:600;letter-spacing:.015em;
+    border:1px solid transparent;transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px)}
+  .btn-ppal{background:linear-gradient(160deg,var(--vino-claro),var(--vino));color:#fdf6ea;
+    box-shadow:0 10px 24px -12px rgba(109,31,43,.75)}
+  .btn-sec{background:transparent;color:var(--tinta);border-color:var(--linea)}
+  .btn-sec:hover{border-color:var(--oro);color:var(--vino)}
+  .btn svg{flex:0 0 auto}
+  .hero-nota{margin-top:18px;font-family:ui-sans-serif,system-ui,sans-serif;font-size:12.5px;
+    color:var(--tinta-50);letter-spacing:.02em}
+
+  /* placa decorativa del hero */
+  .placa{position:relative;border-radius:var(--r);overflow:hidden;
+    background:linear-gradient(150deg,#224036 0%, #16302a 58%, #10231f 100%);
+    box-shadow:0 26px 60px -34px rgba(16,35,31,.85);
+    border:1px solid rgba(216,184,120,.26)}
+  .placa svg{display:block;width:100%;height:auto}
+
+  /* ---------- secciones ---------- */
+  section{position:relative}
+  .sec{padding:76px 0}
+  .sec-cab{max-width:62ch;margin-bottom:38px}
+  .sec-cab .cinta{color:var(--vino);display:flex;align-items:center;gap:10px;margin-bottom:14px}
+  .sec-cab .cinta::before{content:"";width:28px;height:1px;background:var(--oro)}
+  .sec-cab h2{font-size:clamp(1.7rem,3vw,2.5rem)}
+  .sec-cab p{margin-top:14px;color:var(--tinta-70)}
+
+  .nota{
+    display:flex;gap:11px;align-items:flex-start;
+    margin-top:26px;padding:13px 16px;border-radius:12px;
+    background:rgba(178,136,74,.12);border:1px dashed rgba(178,136,74,.5);
+    font-family:ui-sans-serif,system-ui,sans-serif;font-size:13px;line-height:1.5;color:var(--tinta-70)
+  }
+  .nota svg{flex:0 0 auto;margin-top:2px}
+
+  .rejilla{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .tarj{
+    position:relative;display:flex;flex-direction:column;
+    padding:26px 24px 24px;border-radius:var(--r);
+    background:linear-gradient(170deg,#fffaf1,#f3ead9);
+    border:1px solid var(--linea);min-width:0;
+  }
+  .tarj::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;border-radius:var(--r) var(--r) 0 0;
+    background:linear-gradient(90deg,var(--oro),rgba(178,136,74,0))}
+  .tarj .ic{width:42px;height:42px;border-radius:11px;display:grid;place-items:center;
+    background:linear-gradient(160deg,#27463b,#17302a);margin-bottom:16px;flex:0 0 auto}
+  .tarj h3{font-size:1.2rem}
+  .tarj p{margin-top:9px;font-family:ui-sans-serif,system-ui,sans-serif;font-size:13.5px;
+    line-height:1.55;color:var(--tinta-50)}
+  .tarj .hueco{margin-top:16px;padding-top:14px;border-top:1px solid var(--linea);
+    display:flex;flex-direction:column;gap:7px}
+  .tarj .hueco i{display:block;height:7px;border-radius:4px;background:rgba(27,21,18,.1)}
+  .tarj .hueco i:nth-child(2){width:86%}
+  .tarj .hueco i:nth-child(3){width:64%}
+  .tarj .pend{margin-top:12px;font-family:ui-sans-serif,system-ui,sans-serif;font-size:11px;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--oro);font-weight:600}
+
+  /* pasos */
+  .pasos-sec{background:linear-gradient(170deg,#17302a,#101f1c);color:#efe4d2}
+  .pasos-sec .sec-cab .cinta{color:var(--oro-claro)}
+  .pasos-sec .sec-cab .cinta::before{background:var(--oro-claro)}
+  .pasos-sec .sec-cab p{color:rgba(239,228,210,.72)}
+  .pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;counter-reset:p}
+  .paso{position:relative;padding:28px 24px;border-radius:var(--r);
+    background:rgba(255,255,255,.045);border:1px solid rgba(216,184,120,.26);min-width:0}
+  .paso .num{font-size:2.5rem;line-height:1;color:var(--oro-claro);opacity:.85;display:block;margin-bottom:12px}
+  .paso h3{font-size:1.12rem}
+  .paso p{margin-top:9px;font-family:ui-sans-serif,system-ui,sans-serif;font-size:13.5px;
+    line-height:1.55;color:rgba(239,228,210,.74)}
+  .paso-tel{margin-top:16px;display:inline-flex;align-items:center;gap:8px;text-decoration:none;
+    font-family:ui-sans-serif,system-ui,sans-serif;font-size:13.5px;font-weight:600;color:var(--oro-claro);
+    border-bottom:1px solid rgba(216,184,120,.45);padding-bottom:2px}
+
+  /* contacto */
+  .cont{display:grid;grid-template-columns:.92fr 1.08fr;gap:36px;align-items:start}
+  .ficha{padding:30px 28px;border-radius:var(--r);background:linear-gradient(170deg,#fffaf1,#f2e8d7);
+    border:1px solid var(--linea)}
+  .ficha h3{font-size:1.32rem}
+  .fila{display:flex;gap:14px;align-items:flex-start;padding:17px 0;border-bottom:1px solid var(--linea)}
+  .fila:last-of-type{border-bottom:0;padding-bottom:4px}
+  .fila .ic2{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;flex:0 0 auto;
+    background:rgba(109,31,43,.09);border:1px solid rgba(109,31,43,.18)}
+  .fila .et{font-family:ui-sans-serif,system-ui,sans-serif;font-size:10.5px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--tinta-50);font-weight:600}
+  .fila .vl{display:block;margin-top:3px;font-size:1.06rem;text-decoration:none;word-break:break-word}
+  .fila .vl:hover{color:var(--vino)}
+  .fila .vl + .vl{margin-top:2px}
+  .mapa-caja{border-radius:var(--r);overflow:hidden;border:1px solid var(--linea);
+    background:linear-gradient(165deg,#fdf8ee,#f0e6d4)}
+  .mapa-caja svg{display:block;width:100%;height:auto}
+  .mapa-pie{padding:14px 18px;border-top:1px solid var(--linea);
+    font-family:ui-sans-serif,system-ui,sans-serif;font-size:12px;color:var(--tinta-50);line-height:1.5}
+
+  /* pie */
+  footer{background:#17110f;color:#e6d8c2;padding:56px 0 0}
+  .pie-top{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:34px;padding-bottom:40px;
+    border-bottom:1px solid rgba(216,184,120,.2)}
+  .pie-top h4{margin:0 0 14px;font-family:ui-sans-serif,system-ui,sans-serif;font-size:10.5px;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--oro-claro);font-weight:700}
+  .pie-top a{display:inline-block;text-decoration:none;color:#e6d8c2;font-size:1rem;word-break:break-word}
+  .pie-top a:hover{color:var(--oro-claro)}
+  .pie-top ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+  .pie-marca b{display:block;font-size:1.45rem;font-weight:600}
+  .pie-marca p{margin-top:10px;color:rgba(230,216,194,.6);
+    font-family:ui-sans-serif,system-ui,sans-serif;font-size:13px;max-width:34ch}
+  .pie-firma{padding:20px 0 26px;text-align:center;
+    font-family:ui-sans-serif,system-ui,sans-serif;font-size:12.5px;line-height:1.55;
+    color:rgba(230,216,194,.72);text-wrap:balance}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:980px){
+    .hero-in{grid-template-columns:1fr;gap:34px;padding-top:28px}
+    .hero .lead{max-width:46ch}
+    .rejilla,.pasos{grid-template-columns:repeat(2,1fr)}
+    .cont{grid-template-columns:1fr;gap:26px}
+    .pie-top{grid-template-columns:1fr 1fr;gap:28px}
+    .pie-marca{grid-column:1/-1}
+  }
+  @media (max-width:640px){
+    :root{--barra:62px}
+    body{font-size:16px}
+    .env{padding:0 20px}
+    .nav{padding:16px 0 4px;flex-wrap:wrap;gap:12px}
+    .nav-enl{display:none}
+    .sec{padding:54px 0}
+    .hero{padding-bottom:48px}
+    .hero h1{font-size:clamp(2.05rem,10vw,2.7rem)}
+    .acciones{gap:10px}
+    .btn{padding:14px 20px;font-size:13.5px;width:100%;justify-content:center}
+    .rejilla,.pasos{grid-template-columns:1fr}
+    .ficha{padding:24px 20px}
+    .pie-top{grid-template-columns:1fr;gap:26px}
+    footer{padding-top:44px}
+  }
+  @media (max-width:380px){
+    .env{padding:0 16px}
+  }
+</style>
+</head>
+<body>
+
+<div class="aviso"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<header class="hero">
+  <div class="hero-fondo" aria-hidden="true"></div>
+  <div class="env">
+    <nav class="nav">
+      <div class="marca">
+        <svg class="sello" width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
+          <defs><linearGradient id="g-sello" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#8c2e3b"/><stop offset="1" stop-color="#5a1824"/>
+          </linearGradient></defs>
+          <rect x="1" y="1" width="38" height="38" rx="11" fill="url(#g-sello)"/>
+          <rect x="4.5" y="4.5" width="31" height="31" rx="8.5" fill="none" stroke="#d8b878" stroke-width="1" opacity=".65"/>
+          <path d="M14 11v9.5a2.6 2.6 0 0 0 2.6 2.6h0V29" stroke="#f3e6d2" stroke-width="1.7" fill="none" stroke-linecap="round"/>
+          <path d="M14 11v6M16.6 11v6" stroke="#f3e6d2" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <path d="M25.6 11c1.6 1.4 2.4 3.3 2.4 5.3 0 2.1-.9 3.4-2.4 4.1V29" stroke="#d8b878" stroke-width="1.7" fill="none" stroke-linecap="round"/>
+        </svg>
+        <div>
+          <b>Noble Villa</b>
+          <small>Restaurante · Villarrobledo</small>
+        </div>
+      </div>
+      <div class="nav-enl">
+        <a href="#carta">La carta</a>
+        <a href="#reservar">Cómo reservar</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+    </nav>
+
+    <div class="hero-in">
+      <div>
+        <div class="kicker cinta">Villarrobledo · Albacete</div>
+        <h1>Restaurante<br>Noble Villa<em>reservar es una llamada</em></h1>
+        <p class="lead">Una página propia para la casa: la carta y el menú del día en su sitio, y el teléfono siempre a un toque.</p>
+        <div class="acciones">
+          <a class="btn btn-ppal" href="tel:+34967140237">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/>
+            </svg>
+            Llamar al 967 140 237
+          </a>
+          <a class="btn btn-sec" href="tel:+34630169348">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18.5h2"/>
+            </svg>
+            Móvil 630 169 348
+          </a>
+        </div>
+        <p class="hero-nota">Los textos de la carta y los horarios los pondría el restaurante.</p>
+      </div>
+
+      <div class="placa">
+        <svg viewBox="0 0 440 360" role="img" aria-label="Ilustración decorativa de mesa puesta, dibujada con líneas">
+          <defs>
+            <linearGradient id="g-plato" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#f3e8d4" stop-opacity=".22"/>
+              <stop offset="1" stop-color="#f3e8d4" stop-opacity=".05"/>
+            </linearGradient>
+            <linearGradient id="g-copa" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#d8b878" stop-opacity=".55"/>
+              <stop offset="1" stop-color="#d8b878" stop-opacity=".12"/>
+            </linearGradient>
+          </defs>
+          <g opacity=".16" stroke="#d8b878" stroke-width="1">
+            <path d="M0 300h440M0 318h440M0 336h440"/>
+          </g>
+          <circle cx="220" cy="172" r="112" fill="url(#g-plato)" stroke="#d8b878" stroke-opacity=".5" stroke-width="1.4"/>
+          <circle cx="220" cy="172" r="88" fill="none" stroke="#d8b878" stroke-opacity=".32" stroke-width="1"/>
+          <circle cx="220" cy="172" r="58" fill="none" stroke="#f3e8d4" stroke-opacity=".2" stroke-width="1"/>
+          <g stroke="#f3e8d4" stroke-opacity=".62" stroke-width="2" fill="none" stroke-linecap="round">
+            <path d="M74 98v58a8 8 0 0 0 8 8v82"/>
+            <path d="M74 98v34M82 98v34M90 98v34"/>
+          </g>
+          <g stroke="#d8b878" stroke-opacity=".75" stroke-width="2" fill="none" stroke-linecap="round">
+            <path d="M366 98c7 8 10 18 10 28s-4 18-10 22v98"/>
+          </g>
+          <g transform="translate(220 172)">
+            <path d="M-34-66h68l-7 34a27 27 0 0 1-54 0Z" fill="url(#g-copa)" stroke="#d8b878" stroke-opacity=".75" stroke-width="1.6"/>
+            <path d="M0 2v44" stroke="#d8b878" stroke-opacity=".7" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M-20 48h40" stroke="#d8b878" stroke-opacity=".7" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M-29-48h58" stroke="#8c2e3b" stroke-opacity=".9" stroke-width="7" stroke-linecap="round"/>
+          </g>
+          <g opacity=".5" stroke="#f3e8d4" stroke-width="1" fill="none">
+            <path d="M40 40c18-10 42-12 62-4M338 40c18-10 42-12 62-4"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="sec" id="carta">
+  <div class="env">
+    <div class="sec-cab">
+      <div class="cinta">La casa</div>
+      <h2>Los apartados de la página</h2>
+      <p>Hoy el único resultado al buscar el restaurante es una ficha en un portal de reseñas de terceros, donde no se pueden publicar ni la carta, ni los menús del día, ni las fotos propias. Esta es la estructura que ocuparía ese hueco.</p>
+    </div>
+
+    <div class="rejilla">
+      <article class="tarj">
+        <div class="ic" aria-hidden="true">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#d8b878" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Z"/><path d="M12 2v2M12 20v2M3.5 12h-2M22.5 12h-2M5.6 5.6 4.2 4.2M19.8 19.8l-1.4-1.4M18.4 5.6l1.4-1.4M4.2 19.8l1.4-1.4"/>
+          </svg>
+        </div>
+        <h3>Menú del día</h3>
+        <p>Un apartado fijo donde publicar el menú de cada jornada sin depender de nadie.</p>
+        <div class="hueco" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="pend">Contenido a facilitar</div>
+      </article>
+
+      <article class="tarj">
+        <div class="ic" aria-hidden="true">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#d8b878" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H19v18H6.5A2.5 2.5 0 0 0 4 22Z"/><path d="M8 7h7M8 11h7"/>
+          </svg>
+        </div>
+        <h3>Carta</h3>
+        <p>Las secciones de la carta, escritas y actualizadas por el restaurante.</p>
+        <div class="hueco" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="pend">Contenido a facilitar</div>
+      </article>
+
+      <article class="tarj">
+        <div class="ic" aria-hidden="true">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#d8b878" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 21h10M12 17v4"/><path d="M5 4h14l-1.4 7a5.7 5.7 0 0 1-11.2 0Z"/><path d="M19 5.5h2a2.5 2.5 0 0 1-2.5 4"/>
+          </svg>
+        </div>
+        <h3>Celebraciones</h3>
+        <p>Un espacio para explicar las opciones de grupos y celebraciones y cómo consultarlas.</p>
+        <div class="hueco" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="pend">Contenido a facilitar</div>
+      </article>
+
+      <article class="tarj">
+        <div class="ic" aria-hidden="true">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#d8b878" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="7" width="16" height="13" rx="2.5"/><path d="M9 7V5a3 3 0 0 1 6 0v2M9 12h6"/>
+          </svg>
+        </div>
+        <h3>Para llevar</h3>
+        <p>Rótulo previsto por si la casa quiere ofrecer recogida; el detalle lo decide el restaurante.</p>
+        <div class="hueco" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="pend">Contenido a facilitar</div>
+      </article>
+
+      <article class="tarj">
+        <div class="ic" aria-hidden="true">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#d8b878" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="14" rx="2.5"/><path d="M7 18v2M17 18v2M8 9h8M8 13h5"/>
+          </svg>
+        </div>
+        <h3>Galería del local</h3>
+        <p>Las fotos propias del comedor y de la cocina, que hoy no tienen dónde ir.</p>
+        <div class="hueco" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="pend">Fotos a facilitar</div>
+      </article>
+
+      <article class="tarj">
+        <div class="ic" aria-hidden="true">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#d8b878" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3.2 2"/>
+          </svg>
+        </div>
+        <h3>Horario y avisos</h3>
+        <p>Un sitio donde dejar claro el horario y los días de cierre, en palabras de la casa.</p>
+        <div class="hueco" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="pend">Contenido a facilitar</div>
+      </article>
+    </div>
+
+    <div class="nota">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b2884a" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11.5 11.5h1V16h-1z" fill="#b2884a" stroke="none"/>
+      </svg>
+      <span>Todos los apartados se muestran vacíos a propósito: son rótulos de estructura. Los platos, los precios, los textos, los horarios y las fotos los pondría el restaurante; en esta maqueta no se inventa ningún contenido.</span>
+    </div>
+  </div>
+</section>
+
+<section class="sec pasos-sec" id="reservar">
+  <div class="env">
+    <div class="sec-cab">
+      <div class="cinta">Reservas</div>
+      <h2>Cómo reservar</h2>
+      <p>Sin formularios, sin registros y sin intermediarios: tres pasos y una llamada.</p>
+    </div>
+    <div class="pasos">
+      <article class="paso">
+        <span class="num">1</span>
+        <h3>Mira la carta</h3>
+        <p>Consulta en la propia página los apartados de la carta y el menú del día, tal y como los publique el restaurante.</p>
+      </article>
+      <article class="paso">
+        <span class="num">2</span>
+        <h3>Llama al restaurante</h3>
+        <p>Un toque al teléfono de la casa, desde el móvil o desde el ordenador. Dos números disponibles.</p>
+        <a class="paso-tel" href="tel:+34967140237">967 140 237</a>
+      </article>
+      <article class="paso">
+        <span class="num">3</span>
+        <h3>Confirma los detalles</h3>
+        <p>Día, hora y número de personas se acuerdan en la misma llamada con el restaurante.</p>
+        <a class="paso-tel" href="tel:+34630169348">630 169 348</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="contacto">
+  <div class="env">
+    <div class="sec-cab">
+      <div class="cinta">Contacto</div>
+      <h2>Dónde y cómo encontrarnos</h2>
+      <p>Villarrobledo, provincia de Albacete.</p>
+    </div>
+
+    <div class="cont">
+      <div class="ficha">
+        <h3>Restaurante Noble Villa</h3>
+        <div class="fila">
+          <div class="ic2" aria-hidden="true">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#6d1f2b" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/>
+            </svg>
+          </div>
+          <div>
+            <span class="et">Teléfonos</span>
+            <a class="vl" href="tel:+34967140237">967 140 237</a>
+            <a class="vl" href="tel:+34630169348">630 169 348</a>
+          </div>
+        </div>
+        <div class="fila">
+          <div class="ic2" aria-hidden="true">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#6d1f2b" stroke-width="1.9" stroke-linecap="round">
+              <circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3.2 2"/>
+            </svg>
+          </div>
+          <div>
+            <span class="et">Horario</span>
+            <a class="vl" href="tel:+34967140237">Consultar horario</a>
+          </div>
+        </div>
+        <div class="fila">
+          <div class="ic2" aria-hidden="true">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#6d1f2b" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7 12 13l8.5-6"/>
+            </svg>
+          </div>
+          <div>
+            <span class="et">Correo</span>
+            <a class="vl" href="mailto:rtenoblevilla@gmail.com">rtenoblevilla@gmail.com</a>
+          </div>
+        </div>
+        <div class="fila">
+          <div class="ic2" aria-hidden="true">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#6d1f2b" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 21s7-6.1 7-11a7 7 0 0 0-14 0c0 4.9 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/>
+            </svg>
+          </div>
+          <div>
+            <span class="et">Localidad</span>
+            <span class="vl">Villarrobledo (Albacete)</span>
+          </div>
+        </div>
+        <div class="nota" style="margin-top:20px">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b2884a" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11.5 11.5h1V16h-1z" fill="#b2884a" stroke="none"/>
+          </svg>
+          <span>La dirección exacta no está verificada, así que no se muestra: la pondría el restaurante antes de publicar.</span>
+        </div>
+      </div>
+
+      <div class="mapa-caja">
+        <svg viewBox="0 0 620 420" role="img" aria-label="Mapa esquemático dibujado a mano de la zona urbana de Villarrobledo, sin direcciones concretas">
+          <defs>
+            <linearGradient id="g-mapa" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#fdf8ee"/><stop offset="1" stop-color="#eee3d0"/>
+            </linearGradient>
+            <linearGradient id="g-zona" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#1f3b32" stop-opacity=".11"/>
+              <stop offset="1" stop-color="#1f3b32" stop-opacity=".04"/>
+            </linearGradient>
+          </defs>
+          <rect width="620" height="420" fill="url(#g-mapa)"/>
+
+          <!-- zona urbana, trazo a mano -->
+          <path d="M96 128c54-38 150-54 236-44 74 9 150 36 176 86 22 42 2 100-44 136-54 42-158 60-246 46-74-12-136-46-146-94-8-42 4-96 24-130Z"
+                fill="url(#g-zona)" stroke="#1f3b32" stroke-opacity=".32" stroke-width="2" stroke-linejoin="round"/>
+
+          <!-- calles principales -->
+          <g fill="none" stroke="#6d1f2b" stroke-opacity=".5" stroke-width="5.5" stroke-linecap="round">
+            <path d="M28 236c70-14 128 4 188-6 64-11 120-44 186-40 52 3 128 18 190 10"/>
+            <path d="M294 96c-8 58 6 114-4 172-9 56-32 108-24 126"/>
+          </g>
+          <!-- calles secundarias -->
+          <g fill="none" stroke="#1b1512" stroke-opacity=".3" stroke-width="2.4" stroke-linecap="round">
+            <path d="M118 102c16 62 10 136 4 206"/>
+            <path d="M430 76c14 70 6 148-2 222"/>
+            <path d="M68 168c92-16 196-26 300-16 84 8 148 18 214 8"/>
+            <path d="M74 320c86 12 194 16 294 4 76-10 146-26 216-18"/>
+            <path d="M196 88c6 78 0 156-8 232"/>
+            <path d="M540 120c-10 72-6 148 2 214"/>
+          </g>
+          <!-- manzanas -->
+          <g fill="#1f3b32" fill-opacity=".09" stroke="#1f3b32" stroke-opacity=".22" stroke-width="1.4">
+            <path d="M136 184h46v44h-46z"/><path d="M212 182h62v46h-62z"/>
+            <path d="M322 178h58v44h-58z"/><path d="M452 186h62v40h-62z"/>
+            <path d="M140 254h50v50h-50z"/><path d="M220 252h58v52h-58z"/>
+            <path d="M320 248h62v54h-62z"/><path d="M452 256h66v48h-66z"/>
+            <path d="M138 114h48v38h-48z"/><path d="M226 112h56v40h-56z"/>
+            <path d="M332 108h56v42h-56z"/><path d="M454 120h62v36h-62z"/>
+          </g>
+          <!-- plaza -->
+          <circle cx="296" cy="236" r="26" fill="#b2884a" fill-opacity=".16" stroke="#b2884a" stroke-opacity=".55" stroke-width="1.8"/>
+          <circle cx="296" cy="236" r="9" fill="none" stroke="#b2884a" stroke-opacity=".5" stroke-width="1.4"/>
+
+          <!-- marcador orientativo -->
+          <g transform="translate(296 236)">
+            <path d="M0-74c-16 0-29 13-29 29 0 21 29 45 29 45s29-24 29-45c0-16-13-29-29-29Z"
+                  fill="#6d1f2b" stroke="#fdf8ee" stroke-width="3"/>
+            <circle cx="0" cy="-45" r="9" fill="#f3e8d4"/>
+          </g>
+
+          <!-- rótulos genéricos -->
+          <g font-family="ui-sans-serif, system-ui, sans-serif" fill="#1b1512" fill-opacity=".72" font-size="19">
+            <text x="30" y="44" font-size="23" fill-opacity=".8" letter-spacing="3">VILLARROBLEDO</text>
+            <text x="30" y="70" font-size="16" fill-opacity=".55" letter-spacing="1.6">ESQUEMA ORIENTATIVO · NO A ESCALA</text>
+            <text x="296" y="300" text-anchor="middle">zona centro</text>
+            <text x="578" y="372" text-anchor="end">salida del municipio</text>
+            <text x="40" y="214">casco urbano</text>
+          </g>
+          <!-- norte -->
+          <g transform="translate(572 54)" stroke="#1b1512" stroke-opacity=".45" fill="none" stroke-width="1.8">
+            <path d="M0 22V-2"/><path d="M-6 4 0-4l6 8"/>
+            <text x="-4" y="-10" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12" fill="#1b1512" fill-opacity=".5" stroke="none">N</text>
+          </g>
+        </svg>
+        <div class="mapa-pie">Esquema dibujado a mano, sin mapas externos ni servicios de terceros. Es orientativo: el punto exacto se marcaría cuando el restaurante confirme la dirección.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="env">
+    <div class="pie-top">
+      <div class="pie-marca">
+        <b>Restaurante Noble Villa</b>
+        <p>Villarrobledo (Albacete). Página propia con la carta, el menú del día y el teléfono a un toque.</p>
+      </div>
+      <div>
+        <h4>Teléfonos</h4>
+        <ul>
+          <li><a href="tel:+34967140237">967 140 237</a></li>
+          <li><a href="tel:+34630169348">630 169 348</a></li>
+          <li><a href="tel:+34967140237">Consultar horario</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Correo</h4>
+        <ul>
+          <li><a href="mailto:rtenoblevilla@gmail.com">rtenoblevilla@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="pie-firma">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+</body>
+</html>

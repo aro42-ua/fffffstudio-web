@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sol y Vello — Centro de estética y depilación · Villarrobledo</title>
+<style>
+  :root{
+    --ink:#2b2127;
+    --ink-soft:#5f5159;
+    --plum:#5a2f46;
+    --plum-deep:#3a1c2c;
+    --sand:#f8f2ec;
+    --sand-2:#efe3d8;
+    --gold:#bf9158;
+    --gold-soft:#e4c79b;
+    --rose:#e9b9b5;
+    --white:#fffdfb;
+    --line:#e3d5c9;
+    --bar-h:40px;
+    --radius:20px;
+    --font:"Helvetica Neue",Helvetica,Arial,"Segoe UI",system-ui,sans-serif;
+    --serif:Georgia,"Times New Roman",Times,serif;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    padding-top:var(--bar-h);
+    font-family:var(--font);
+    color:var(--ink);
+    background:var(--white);
+    font-size:17px;
+    line-height:1.65;
+    overflow-x:hidden;
+  }
+  img,svg{max-width:100%;}
+  h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:-.01em;margin:0;}
+  p{margin:0;}
+  a{color:inherit;}
+
+  /* ---------- barra fija ---------- */
+  .studiobar{
+    position:fixed;top:0;left:0;right:0;z-index:999;
+    height:var(--bar-h);
+    display:flex;align-items:center;justify-content:center;
+    background:#1d1419;
+    color:#f0e4d8;
+    font-size:11.5px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    text-align:center;
+    padding:0 12px;
+    border-bottom:1px solid rgba(191,145,88,.4);
+  }
+  .studiobar span{
+    display:block;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    max-width:100%;
+  }
+
+  .wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 32px;}
+
+  /* ---------- nav ---------- */
+  .topnav{
+    border-bottom:1px solid var(--line);
+    background:var(--white);
+  }
+  .topnav .inner{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:18px;padding:18px 0;flex-wrap:wrap;
+  }
+  .brand{display:flex;align-items:center;gap:12px;min-width:0;}
+  .brand .mark{flex:0 0 auto;}
+  .brand .txt{min-width:0;}
+  .brand .name{
+    font-family:var(--serif);font-size:21px;line-height:1.1;display:block;
+    letter-spacing:.01em;
+  }
+  .brand .sub{
+    display:block;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--ink-soft);margin-top:3px;
+  }
+  .navlinks{display:flex;gap:26px;list-style:none;margin:0;padding:0;font-size:13.5px;letter-spacing:.04em;}
+  .navlinks a{text-decoration:none;color:var(--ink-soft);padding-bottom:2px;border-bottom:1px solid transparent;}
+  .navlinks a:hover{color:var(--plum);border-bottom-color:var(--gold);}
+
+  /* ---------- botones ---------- */
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:14px 24px;border-radius:999px;
+    font-size:15px;text-decoration:none;font-weight:600;
+    letter-spacing:.01em;border:1px solid transparent;
+    line-height:1.2;
+  }
+  .btn-main{background:var(--plum);color:#fff6ef;}
+  .btn-main:hover{background:var(--plum-deep);}
+  .btn-ghost{border-color:var(--plum);color:var(--plum);background:transparent;}
+  .btn-ghost:hover{background:rgba(90,47,70,.07);}
+  .btn-light{background:var(--white);color:var(--plum);}
+  .btn-outline-light{border-color:rgba(255,253,251,.55);color:#fff6ef;}
+  .btn-outline-light:hover{background:rgba(255,255,255,.12);}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(120% 90% at 88% 8%, rgba(233,185,181,.55) 0%, rgba(233,185,181,0) 58%),
+      radial-gradient(100% 80% at 6% 92%, rgba(228,199,155,.5) 0%, rgba(228,199,155,0) 60%),
+      linear-gradient(165deg, var(--sand) 0%, var(--sand-2) 100%);
+  }
+  .hero .deco{
+    position:absolute;right:-90px;top:-60px;width:620px;max-width:none;
+    opacity:.5;pointer-events:none;
+  }
+  .hero .inner{
+    position:relative;z-index:1;
+    display:grid;grid-template-columns:1.08fr .92fr;gap:56px;align-items:center;
+    padding:88px 0 92px;
+  }
+  .eyebrow{
+    font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--plum);display:flex;align-items:center;gap:10px;margin-bottom:22px;
+  }
+  .eyebrow::before{content:"";width:34px;height:1px;background:var(--gold);flex:0 0 auto;}
+  .hero h1{font-size:clamp(34px,5.2vw,58px);line-height:1.06;color:var(--plum-deep);}
+  .hero h1 em{font-style:italic;color:var(--plum);}
+  .hero .lead{
+    margin-top:22px;font-size:18px;color:var(--ink-soft);max-width:30em;
+  }
+  .hero .actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;}
+  .hero .meta{
+    margin-top:30px;display:flex;flex-wrap:wrap;gap:10px 28px;
+    font-size:13px;color:var(--ink-soft);
+  }
+  .hero .meta b{color:var(--plum);font-weight:600;}
+
+  /* tarjeta visual del hero */
+  .herocard{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:26px;
+    padding:28px;
+    box-shadow:0 26px 60px -36px rgba(58,28,44,.45);
+  }
+  .herocard .art{
+    border-radius:18px;overflow:hidden;display:block;line-height:0;
+    background:linear-gradient(150deg,#f3dcd4,#e7c9a8 55%,#d8b4b6);
+  }
+  .herocard .art svg{display:block;width:100%;height:auto;}
+  .phoneblock{margin-top:24px;}
+  .phoneblock .label{
+    font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);
+  }
+  .phoneblock .nums{display:flex;flex-direction:column;gap:6px;margin-top:10px;}
+  .phoneblock a{
+    font-family:var(--serif);font-size:25px;text-decoration:none;color:var(--plum-deep);
+    letter-spacing:.01em;
+  }
+  .phoneblock a:hover{color:var(--gold);}
+  .phoneblock .hint{font-size:12.5px;color:var(--ink-soft);margin-top:12px;}
+
+  /* ---------- secciones ---------- */
+  section{padding:84px 0;}
+  .sechead{max-width:34em;margin-bottom:46px;}
+  .sechead h2{font-size:clamp(27px,3.4vw,40px);line-height:1.12;color:var(--plum-deep);}
+  .sechead p{margin-top:16px;color:var(--ink-soft);font-size:17px;}
+
+  /* servicios */
+  #servicios{background:var(--white);}
+  .grid-serv{
+    display:grid;gap:20px;
+    grid-template-columns:repeat(auto-fit,minmax(292px,1fr));
+  }
+  .card{
+    border:1px solid var(--line);border-radius:var(--radius);
+    padding:28px 26px 26px;background:var(--white);
+    display:flex;flex-direction:column;
+    transition:border-color .2s;
+  }
+  .card:hover{border-color:var(--gold-soft);}
+  .card .ico{
+    width:52px;height:52px;border-radius:14px;
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(145deg,#f7e6dd,#eed3bd);
+    margin-bottom:20px;flex:0 0 auto;
+  }
+  .card h3{font-size:21px;color:var(--plum-deep);}
+  .card p{margin-top:10px;font-size:15px;color:var(--ink-soft);}
+  .card .tarifa{
+    margin-top:auto;padding-top:16px;border-top:1px solid var(--line);
+    display:flex;align-items:baseline;justify-content:space-between;gap:10px;
+    font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);
+  }
+  .card .tarifa b{
+    font-family:var(--serif);font-size:18px;letter-spacing:0;text-transform:none;
+    color:var(--plum);font-weight:400;
+  }
+  .nota{
+    margin-top:26px;padding:16px 20px;border-left:3px solid var(--gold-soft);
+    background:var(--sand);border-radius:0 12px 12px 0;
+    font-size:14px;color:var(--ink-soft);
+  }
+
+  /* primera visita */
+  #visita{
+    background:
+      radial-gradient(90% 120% at 100% 0%, rgba(228,199,155,.35) 0%, rgba(228,199,155,0) 60%),
+      var(--sand);
+  }
+  .grid-pasos{display:grid;gap:20px;grid-template-columns:repeat(3,1fr);}
+  .paso{
+    background:var(--white);border-radius:var(--radius);
+    padding:30px 26px;border:1px solid var(--line);
+    display:flex;flex-direction:column;
+  }
+  .paso .num{
+    font-family:var(--serif);font-size:15px;color:var(--plum);
+    width:42px;height:42px;border-radius:50%;
+    border:1px solid var(--gold-soft);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:18px;flex:0 0 auto;
+    letter-spacing:.06em;
+  }
+  .paso h3{font-size:20px;color:var(--plum-deep);}
+  .paso p{margin-top:10px;font-size:15px;color:var(--ink-soft);}
+
+  /* contacto */
+  #contacto{background:var(--plum-deep);color:#f6ece4;}
+  #contacto .sechead h2{color:#fff6ef;}
+  #contacto .sechead p{color:rgba(246,236,228,.75);}
+  .grid-cont{display:grid;grid-template-columns:.85fr 1.15fr;gap:40px;align-items:start;}
+  .contbox{
+    background:rgba(255,253,251,.06);
+    border:1px solid rgba(228,199,155,.28);
+    border-radius:var(--radius);padding:30px 28px;
+  }
+  .contbox .label{
+    font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--gold-soft);
+  }
+  .contbox .tel{
+    display:block;font-family:var(--serif);font-size:27px;text-decoration:none;
+    color:#fff6ef;margin-top:8px;letter-spacing:.01em;
+  }
+  .contbox .tel:hover{color:var(--gold-soft);}
+  .contbox .sep{height:1px;background:rgba(228,199,155,.25);margin:24px 0;}
+  .contbox .dato{font-size:15px;color:rgba(246,236,228,.8);}
+  .contbox .dato strong{color:#fff6ef;font-weight:600;}
+  .contbox .actions{margin-top:24px;display:flex;flex-wrap:wrap;gap:12px;}
+  .contbox .micro{font-size:12.5px;color:rgba(246,236,228,.78);margin-top:14px;}
+
+  .mapbox{
+    background:#fffdfb;border-radius:var(--radius);
+    border:1px solid rgba(228,199,155,.3);
+    padding:22px 22px 18px;
+  }
+  .mapbox .maphead{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:12px;flex-wrap:wrap;margin-bottom:14px;
+  }
+  .mapbox .maphead h3{font-size:19px;color:var(--plum-deep);}
+  .mapbox .maphead span{
+    font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);
+  }
+  .mapbox svg{display:block;width:100%;height:auto;border-radius:12px;}
+  .mapbox .pie{font-size:12.5px;color:var(--ink-soft);margin-top:14px;}
+
+  /* footer */
+  footer{background:#1d1419;color:#e9dcd0;padding:54px 0 0;}
+  .footgrid{
+    display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:34px;
+    padding-bottom:40px;border-bottom:1px solid rgba(233,220,208,.16);
+  }
+  footer .fname{font-family:var(--serif);font-size:24px;color:#fff6ef;}
+  footer .fsub{font-size:13px;color:rgba(233,220,208,.65);margin-top:8px;max-width:26em;}
+  footer h4{
+    font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--gold-soft);margin:0 0 14px;font-weight:600;
+  }
+  footer ul{list-style:none;margin:0;padding:0;font-size:14.5px;}
+  footer li{margin-bottom:9px;}
+  footer a{color:#e9dcd0;text-decoration:none;word-break:break-word;}
+  footer a:hover{color:var(--gold-soft);}
+  .credit{
+    padding:22px 0 30px;font-size:12.5px;color:rgba(233,220,208,.72);
+    display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between;
+    line-height:1.6;
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:900px){
+    .hero .inner{grid-template-columns:1fr;gap:40px;padding:60px 0 68px;}
+    .hero .deco{right:-180px;top:-120px;opacity:.35;}
+    .grid-pasos{grid-template-columns:1fr;}
+    .grid-cont{grid-template-columns:1fr;gap:26px;}
+    .footgrid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:640px){
+    :root{--bar-h:52px;}
+    body{font-size:16px;}
+    .wrap{padding:0 20px;}
+    .studiobar{font-size:10px;letter-spacing:.05em;line-height:1.3;}
+    .studiobar span{white-space:normal;}
+    .topnav .inner{padding:14px 0;gap:12px;}
+    .navlinks{gap:18px;font-size:12.5px;flex-wrap:wrap;}
+    section{padding:58px 0;}
+    .sechead{margin-bottom:32px;}
+    .hero .inner{padding:46px 0 56px;}
+    .hero .lead{font-size:16.5px;}
+    .hero .actions{gap:10px;}
+    .btn{width:100%;justify-content:center;padding:15px 20px;}
+    .hero .meta{gap:6px 16px;font-size:12px;}
+    .herocard{padding:20px;border-radius:20px;}
+    .phoneblock a{font-size:22px;}
+    .grid-serv{grid-template-columns:1fr;}
+    .card{padding:24px 22px;}
+    .contbox,.mapbox{padding:22px 18px;}
+    .contbox .tel{font-size:23px;}
+    .footgrid{grid-template-columns:1fr;gap:28px;}
+    .credit{flex-direction:column;gap:8px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- BARRA FIJA -->
+<div class="studiobar" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<header class="topnav">
+  <div class="wrap inner">
+    <div class="brand">
+      <svg class="mark" width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
+        <circle cx="20" cy="20" r="19" fill="none" stroke="#bf9158" stroke-width="1"/>
+        <circle cx="20" cy="20" r="7.5" fill="#5a2f46"/>
+        <g stroke="#bf9158" stroke-width="1.2" stroke-linecap="round">
+          <path d="M20 3.5v5"/><path d="M20 31.5v5"/>
+          <path d="M3.5 20h5"/><path d="M31.5 20h5"/>
+          <path d="M8.3 8.3l3.6 3.6"/><path d="M28.1 28.1l3.6 3.6"/>
+          <path d="M31.7 8.3l-3.6 3.6"/><path d="M11.9 28.1l-3.6 3.6"/>
+        </g>
+      </svg>
+      <span class="txt">
+        <span class="name">Sol y Vello</span>
+        <span class="sub">Estética y depilación · Villarrobledo</span>
+      </span>
+    </div>
+    <nav>
+      <ul class="navlinks">
+        <li><a href="#servicios">Tratamientos</a></li>
+        <li><a href="#visita">Primera visita</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <svg class="deco" viewBox="0 0 600 600" aria-hidden="true">
+    <g fill="none" stroke="#bf9158" stroke-width="1" opacity=".55">
+      <circle cx="300" cy="300" r="120"/>
+      <circle cx="300" cy="300" r="175"/>
+      <circle cx="300" cy="300" r="230"/>
+      <circle cx="300" cy="300" r="285"/>
+    </g>
+    <path d="M300 60 C390 160 390 440 300 540 C210 440 210 160 300 60 Z" fill="none" stroke="#5a2f46" stroke-width="1" opacity=".35"/>
+    <path d="M60 300 C160 210 440 210 540 300 C440 390 160 390 60 300 Z" fill="none" stroke="#5a2f46" stroke-width="1" opacity=".25"/>
+  </svg>
+
+  <div class="wrap inner">
+    <div>
+      <p class="eyebrow">Centro de estética y depilación</p>
+      <h1>Tus tratamientos, claros.<br>Tu cita, <em>a un toque</em>.</h1>
+      <p class="lead">
+        Depilación, facial, corporal, manicura y pedicura o bronceado: todo en un
+        mismo sitio y explicado antes de venir. Para reservar no hace falta
+        formulario ni esperar respuesta — basta una llamada.
+      </p>
+      <div class="actions">
+        <a class="btn btn-main" href="tel:+34967144540">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+          Pedir cita: 967 144 540
+        </a>
+        <a class="btn btn-ghost" href="#servicios">Ver tratamientos</a>
+      </div>
+      <div class="meta">
+        <span><b>Villarrobledo</b> · Albacete</span>
+        <span>Fijo <b>967 144 540</b></span>
+        <span>Móvil <b>615 689 093</b></span>
+      </div>
+    </div>
+
+    <div class="herocard">
+      <span class="art">
+        <svg viewBox="0 0 420 300" aria-hidden="true">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#fbeee6"/>
+              <stop offset="1" stop-color="#eccfae"/>
+            </linearGradient>
+            <linearGradient id="g2" x1="0" y1="1" x2="1" y2="0">
+              <stop offset="0" stop-color="#d9a9ab"/>
+              <stop offset="1" stop-color="#f0cfc2"/>
+            </linearGradient>
+            <linearGradient id="g3" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#5a2f46"/>
+              <stop offset="1" stop-color="#8b5570"/>
+            </linearGradient>
+          </defs>
+          <rect width="420" height="300" fill="url(#g1)"/>
+          <path d="M0 300 C90 215 150 240 215 185 C275 135 340 150 420 95 V300 Z" fill="url(#g2)" opacity=".85"/>
+          <path d="M0 300 C110 255 160 275 240 230 C310 190 360 205 420 170 V300 Z" fill="url(#g3)" opacity=".3"/>
+          <circle cx="325" cy="78" r="44" fill="#fff" opacity=".45"/>
+          <circle cx="325" cy="78" r="26" fill="#bf9158" opacity=".55"/>
+          <g fill="none" stroke="#5a2f46" stroke-width="1.1" opacity=".5" stroke-linecap="round">
+            <path d="M40 70 C80 40 120 100 160 70"/>
+            <path d="M40 92 C80 62 120 122 160 92"/>
+            <path d="M40 114 C80 84 120 144 160 114"/>
+          </g>
+          <g stroke="#fffdfb" stroke-width="1.4" opacity=".7" fill="none">
+            <circle cx="92" cy="210" r="17"/>
+            <circle cx="132" cy="228" r="11"/>
+          </g>
+        </svg>
+      </span>
+      <div class="phoneblock">
+        <p class="label">Reservas por teléfono</p>
+        <span class="nums">
+          <a href="tel:+34967144540">967 144 540</a>
+          <a href="tel:+34615689093">615 689 093</a>
+        </span>
+        <p class="hint">Pulsa el número para llamar desde el móvil.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="wrap">
+    <div class="sechead">
+      <p class="eyebrow">Tratamientos</p>
+      <h2>Los bloques de trabajo del centro</h2>
+      <p>
+        Cada apartado agrupa los tratamientos de su familia. La idea es que quien
+        entra en la web sepa de antemano a qué viene y pueda preguntar por lo que
+        le interesa en la misma llamada.
+      </p>
+    </div>
+
+    <div class="grid-serv">
+
+      <article class="card">
+        <span class="ico">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#5a2f46" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+            <path d="M4 20c4-2 7-6 9-11"/><path d="M8 20c3-1.5 5.5-4.5 7-8"/>
+            <path d="M13 9c2-3 5-4 7-4-1 2.5-2.5 4.5-5 5.5"/>
+            <circle cx="6" cy="17" r="1.3"/>
+          </svg>
+        </span>
+        <h3>Depilación</h3>
+        <p>
+          Depilación por zonas, con la técnica que corresponda a cada caso y
+          preparación de la piel antes y después.
+        </p>
+        <p class="tarifa">Tarifa por zona <b>Consultar</b></p>
+      </article>
+
+      <article class="card">
+        <span class="ico">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#5a2f46" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+            <path d="M12 3c4.5 0 8 3.4 8 7.8 0 4.8-3.6 10.2-8 10.2S4 15.6 4 10.8C4 6.4 7.5 3 12 3Z"/>
+            <path d="M9 11c.6-.7 1.4-1 2.2-1"/><path d="M15 11c-.6-.7-1.4-1-2.2-1"/>
+            <path d="M10 16c1.3.8 2.7.8 4 0"/>
+          </svg>
+        </span>
+        <h3>Tratamientos faciales</h3>
+        <p>
+          Limpieza e higiene del rostro, hidratación y cuidados específicos
+          según el tipo de piel.
+        </p>
+        <p class="tarifa">Sesión <b>Consultar</b></p>
+      </article>
+
+      <article class="card">
+        <span class="ico">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#5a2f46" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+            <path d="M5 8c3.5-2.5 10.5-2.5 14 0"/>
+            <path d="M4 13c4-3 12-3 16 0"/>
+            <path d="M6 18c3-2 9-2 12 0"/>
+            <circle cx="12" cy="4" r="1.4"/>
+          </svg>
+        </span>
+        <h3>Tratamientos corporales</h3>
+        <p>
+          Trabajo por zonas del cuerpo, con sesiones que se plantean según
+          el objetivo de cada persona.
+        </p>
+        <p class="tarifa">Sesión o pack <b>Consultar</b></p>
+      </article>
+
+      <article class="card">
+        <span class="ico">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#5a2f46" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+            <path d="M8 21V9.5C8 6.5 9.8 4 12 4s4 2.5 4 5.5V21"/>
+            <path d="M8 21h8"/>
+            <path d="M9.5 9.5c.8-1.2 4.2-1.2 5 0"/>
+            <path d="M5 17.5c1-.8 1.6-2 1.8-3.5"/>
+          </svg>
+        </span>
+        <h3>Manicura y pedicura</h3>
+        <p>
+          Cuidado de manos y pies, acabado de uñas y mantenimiento de la
+          sesión anterior.
+        </p>
+        <p class="tarifa">Servicio <b>Consultar</b></p>
+      </article>
+
+      <article class="card">
+        <span class="ico">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#5a2f46" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4.2"/>
+            <path d="M12 2v2.6"/><path d="M12 19.4V22"/>
+            <path d="M2 12h2.6"/><path d="M19.4 12H22"/>
+            <path d="M5 5l1.8 1.8"/><path d="M17.2 17.2L19 19"/>
+            <path d="M19 5l-1.8 1.8"/><path d="M6.8 17.2L5 19"/>
+          </svg>
+        </span>
+        <h3>Bronceado</h3>
+        <p>
+          Sesiones de bronceado con la pauta de uso y los cuidados de piel
+          que indica el centro.
+        </p>
+        <p class="tarifa">Sesión <b>Consultar</b></p>
+      </article>
+
+    </div>
+
+    <p class="nota">
+      En esta maqueta las tarifas aparecen como <strong>«Consultar»</strong> a
+      propósito: los precios y las duraciones los pondría el propio centro, y
+      son el bloque que la web debería mostrar siempre actualizado.
+    </p>
+  </div>
+</section>
+
+<!-- PRIMERA VISITA -->
+<section id="visita">
+  <div class="wrap">
+    <div class="sechead">
+      <p class="eyebrow">Tu primera visita</p>
+      <h2>Tres pasos, sin sorpresas</h2>
+      <p>
+        Lo que pasa desde que coges el teléfono hasta que sales del centro,
+        contado antes de venir.
+      </p>
+    </div>
+
+    <div class="grid-pasos">
+      <article class="paso">
+        <span class="num">01</span>
+        <h3>Llamas y pides cita</h3>
+        <p>
+          Dices qué tratamiento te interesa y se busca un hueco. En la misma
+          llamada puedes preguntar por el horario y por la tarifa del servicio.
+        </p>
+      </article>
+      <article class="paso">
+        <span class="num">02</span>
+        <h3>Valoración al llegar</h3>
+        <p>
+          Antes de empezar se revisa la zona a tratar y se te explica qué técnica
+          es la adecuada, cuánto dura la sesión y qué conviene tener en cuenta.
+        </p>
+      </article>
+      <article class="paso">
+        <span class="num">03</span>
+        <h3>Sesión y cuidados</h3>
+        <p>
+          Se hace el tratamiento y te vas con las indicaciones de cuidado
+          posterior y, si procede, con la siguiente cita ya fijada.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="wrap">
+    <div class="sechead">
+      <p class="eyebrow" style="color:#e4c79b">Contacto</p>
+      <h2>Pedir cita o preguntar</h2>
+      <p>
+        El teléfono es la vía directa: se reserva, se consulta el horario y se
+        pregunta por cualquier tratamiento en la misma llamada.
+      </p>
+    </div>
+
+    <div class="grid-cont">
+      <div class="contbox">
+        <p class="label">Teléfono fijo</p>
+        <a class="tel" href="tel:+34967144540">967 144 540</a>
+        <div class="sep"></div>
+        <p class="label">Teléfono móvil</p>
+        <a class="tel" href="tel:+34615689093">615 689 093</a>
+        <div class="sep"></div>
+        <p class="dato"><strong>Villarrobledo</strong> (Albacete)</p>
+        <p class="dato" style="margin-top:6px;font-size:13.5px">
+          La dirección exacta la confirmaría el centro antes de publicar la web.
+        </p>
+        <div class="actions">
+          <a class="btn btn-light" href="tel:+34967144540">Llamar al centro</a>
+          <a class="btn btn-outline-light" href="tel:+34615689093">Consultar horario</a>
+        </div>
+        <p class="micro">
+          «Consultar horario» llama al centro: el horario real no se publica en
+          esta maqueta porque lo facilitaría el negocio.
+        </p>
+      </div>
+
+      <div class="mapbox">
+        <div class="maphead">
+          <h3>Dónde está Villarrobledo</h3>
+          <span>Esquema orientativo</span>
+        </div>
+        <svg viewBox="0 0 620 400" role="img" aria-label="Esquema dibujado a mano del casco urbano de Villarrobledo, con calles y la zona céntrica señalada.">
+          <defs>
+            <linearGradient id="mapbg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#faf4ee"/>
+              <stop offset="1" stop-color="#f1e4d6"/>
+            </linearGradient>
+            <radialGradient id="zona" cx="50%" cy="50%" r="50%">
+              <stop offset="0" stop-color="#d9a9ab" stop-opacity=".55"/>
+              <stop offset="1" stop-color="#d9a9ab" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+
+          <rect width="620" height="400" fill="url(#mapbg)"/>
+
+          <!-- manchas de zona verde / parcelas -->
+          <path d="M28 300 C70 280 120 296 150 322 C120 358 58 362 26 338 Z" fill="#cdd9bd" opacity=".55"/>
+          <path d="M470 42 C520 30 576 48 592 84 C556 112 498 110 464 84 Z" fill="#cdd9bd" opacity=".5"/>
+
+          <!-- zona centro -->
+          <circle cx="312" cy="196" r="108" fill="url(#zona)"/>
+
+          <!-- calles secundarias (trazo a mano) -->
+          <g stroke="#c9b7a6" stroke-width="3" fill="none" stroke-linecap="round">
+            <path d="M118 96 C210 86 300 92 392 82"/>
+            <path d="M104 150 C200 142 296 148 404 138"/>
+            <path d="M96 258 C196 252 300 258 410 248"/>
+            <path d="M88 312 C190 306 298 312 404 302"/>
+            <path d="M176 60 C168 160 172 262 164 356"/>
+            <path d="M246 54 C240 158 244 260 238 352"/>
+            <path d="M386 58 C380 158 384 260 378 350"/>
+            <path d="M446 70 C440 164 444 254 438 338"/>
+          </g>
+
+          <!-- avenidas principales -->
+          <g stroke="#9c8574" stroke-width="7" fill="none" stroke-linecap="round">
+            <path d="M34 204 C150 192 300 212 596 188"/>
+            <path d="M312 32 C302 150 318 262 306 374"/>
+          </g>
+          <g stroke="#bf9158" stroke-width="5" fill="none" stroke-linecap="round" stroke-dasharray="1 0">
+            <path d="M60 358 C180 300 260 250 330 150 C380 80 450 54 548 46"/>
+          </g>
+
+          <!-- plaza central -->
+          <g>
+            <path d="M286 176 C304 168 330 170 342 184 C352 198 344 216 326 222 C306 228 286 218 282 202 C279 190 280 181 286 176 Z"
+                  fill="#efe0cf" stroke="#9c8574" stroke-width="2.5"/>
+            <circle cx="313" cy="197" r="7" fill="#5a2f46"/>
+          </g>
+
+          <!-- edificios esquemáticos -->
+          <g fill="#e3d2c0" stroke="#b7a393" stroke-width="1.6">
+            <rect x="196" y="112" width="34" height="26" rx="3"/>
+            <rect x="262" y="104" width="40" height="30" rx="3"/>
+            <rect x="348" y="116" width="28" height="24" rx="3"/>
+            <rect x="200" y="226" width="30" height="28" rx="3"/>
+            <rect x="270" y="238" width="38" height="24" rx="3"/>
+            <rect x="346" y="228" width="32" height="30" rx="3"/>
+          </g>
+
+          <!-- salidas / carreteras rotuladas de forma genérica -->
+          <g stroke="#9c8574" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="10 9">
+            <path d="M596 188 L610 186"/>
+            <path d="M306 374 L304 392"/>
+          </g>
+
+          <!-- etiquetas -->
+          <g font-family="Georgia, serif">
+            <rect x="188" y="300" width="252" height="62" rx="14" fill="#fffdfb" opacity=".92" stroke="#e0cdba"/>
+            <text x="314" y="324" font-size="18" text-anchor="middle" fill="#5a2f46">Casco urbano</text>
+            <text x="314" y="347" font-size="15" text-anchor="middle" fill="#5f5159">Villarrobledo (Albacete)</text>
+          </g>
+          <g font-family="Georgia, serif" fill="#5f5159" font-size="14"
+             stroke="#faf4ee" stroke-width="4" paint-order="stroke" stroke-linejoin="round">
+            <text x="36" y="180">Salida</text>
+            <text x="584" y="166" text-anchor="end">Salida</text>
+            <text x="40" y="282">Zona verde</text>
+          </g>
+
+          <!-- rosa de los vientos -->
+          <g transform="translate(566,336)">
+            <circle r="26" fill="#fffdfb" opacity=".85" stroke="#d8c6b4"/>
+            <path d="M0 -17 L5 0 L0 15 L-5 0 Z" fill="#5a2f46"/>
+            <text x="0" y="-19" font-size="10" text-anchor="middle" font-family="Georgia, serif" fill="#5f5159">N</text>
+          </g>
+        </svg>
+        <p class="pie">
+          Mapa esquemático dibujado a mano para la maqueta: sitúa el municipio,
+          no una dirección concreta. El plano definitivo se haría con la
+          ubicación que facilite el centro.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footgrid">
+      <div>
+        <p class="fname">Sol y Vello</p>
+        <p class="fsub">
+          Centro de estética y depilación en Villarrobledo (Albacete).
+          Tratamientos por bloques y cita por teléfono.
+        </p>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="tel:+34967144540">967 144 540</a></li>
+          <li><a href="tel:+34615689093">615 689 093</a></li>
+          <li><a href="mailto:vidasolyvello@hotmail.es">vidasolyvello@hotmail.es</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Secciones</h4>
+        <ul>
+          <li><a href="#servicios">Tratamientos</a></li>
+          <li><a href="#visita">Tu primera visita</a></li>
+          <li><a href="#contacto">Contacto y mapa</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="credit">
+      <span>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</span>
+      <span>Maqueta sin datos inventados: precios y horarios los aportaría el centro.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

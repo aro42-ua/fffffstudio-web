@@ -1,0 +1,815 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Carpintería Prieto y Losa · Armarios, cocinas y puertas a medida en Villarrobledo</title>
+<meta name="description" content="Carpintería de madera en Villarrobledo (Albacete): armarios, cocinas y puertas a medida. Presupuesto por teléfono.">
+<style>
+  :root{
+    --nogal:#2e2017;
+    --nogal-2:#3f2d20;
+    --roble:#b07c45;
+    --roble-cl:#d9a469;
+    --crema:#f6f0e6;
+    --crema-2:#ece2d2;
+    --papel:#fffdf9;
+    --tinta:#241a13;
+    --tinta-2:#5a4a3c;
+    --gris:#6f6358;
+    --borde:rgba(46,32,23,.14);
+    --barra:42px;
+    --radio:14px;
+    --sombra:0 1px 2px rgba(46,32,23,.06),0 10px 30px -12px rgba(46,32,23,.18);
+    --fuente:ui-serif,Georgia,"Times New Roman",serif;
+    --fuente-ui:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    padding-top:var(--barra);
+    font-family:var(--fuente-ui);
+    color:var(--tinta);
+    background:var(--papel);
+    line-height:1.6;
+    font-size:16px;
+    overflow-x:hidden;
+  }
+  img,svg{max-width:100%;display:block}
+  h1,h2,h3{font-family:var(--fuente);font-weight:600;line-height:1.14;letter-spacing:-.015em;margin:0}
+  p{margin:0}
+  a{color:inherit}
+
+  /* ---------- barra fija ---------- */
+  .aviso{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    min-height:var(--barra);
+    display:flex;align-items:center;justify-content:center;
+    gap:.5em;
+    padding:7px 14px;
+    background:#1b120c;
+    color:#e7dbcb;
+    font-size:12.5px;
+    letter-spacing:.02em;
+    text-align:center;
+    border-bottom:1px solid rgba(217,164,105,.3);
+  }
+  .aviso span{display:inline-block}
+
+  .envoltura{width:100%;max-width:1160px;margin:0 auto;padding:0 28px}
+
+  /* ---------- cabecera ---------- */
+  .cabecera{
+    position:sticky;top:var(--barra);z-index:90;
+    background:rgba(255,253,249,.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--borde);
+  }
+  .cabecera__fila{display:flex;align-items:center;gap:18px;min-height:70px;padding:10px 0}
+  .marca{display:flex;align-items:center;gap:11px;text-decoration:none;min-width:0}
+  .marca__icono{flex:0 0 auto}
+  .marca__txt{min-width:0}
+  .marca__nombre{font-family:var(--fuente);font-size:17px;font-weight:600;line-height:1.1;white-space:nowrap}
+  .marca__sub{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gris);line-height:1.3}
+  .nav{margin-left:auto;display:flex;align-items:center;gap:26px}
+  .nav a{font-size:14.5px;text-decoration:none;color:var(--nogal-2);opacity:.85}
+  .nav a:hover{opacity:1;text-decoration:underline;text-underline-offset:4px}
+  .nav .nav__tel,.nav__tel{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--nogal);color:#fdf7ee;
+    padding:11px 17px;border-radius:999px;
+    font-size:14.5px;font-weight:600;text-decoration:none;white-space:nowrap;
+  }
+  .nav .nav__tel:hover,.nav__tel:hover{background:#40291b;opacity:1}
+  .nav__movil{margin-left:auto;display:none}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;overflow:hidden;background:
+      radial-gradient(120% 90% at 82% 8%,rgba(217,164,105,.4) 0%,rgba(217,164,105,0) 55%),
+      linear-gradient(168deg,#f8f3ea 0%,#efe4d2 48%,#e6d7c0 100%);
+    border-bottom:1px solid var(--borde)}
+  .hero__veta{position:absolute;inset:0;opacity:.3;pointer-events:none;
+    background:repeating-linear-gradient(97deg,rgba(120,80,45,.11) 0 2px,rgba(120,80,45,0) 2px 13px)}
+  .hero__fila{position:relative;display:grid;grid-template-columns:1.08fr .92fr;gap:54px;align-items:center;padding:76px 0 84px}
+  .etiqueta{
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:#6c4a28;
+    background:rgba(255,253,249,.75);border:1px solid rgba(176,124,69,.4);
+    padding:7px 14px;border-radius:999px;margin-bottom:22px;
+  }
+  .punto{width:6px;height:6px;border-radius:50%;background:var(--roble);flex:0 0 auto}
+  .hero h1{font-size:clamp(2.1rem,4.6vw,3.5rem)}
+  .hero h1 em{font-style:normal;color:#8c5c2c;display:block}
+  .hero__texto{margin-top:22px;font-size:17.5px;color:#4a3a2d;max-width:33em}
+  .acciones{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:15px 25px;border-radius:999px;text-decoration:none;
+    font-size:16px;font-weight:600;border:1.5px solid transparent;
+    transition:transform .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px)}
+  .btn--solido{background:var(--nogal);color:#fdf7ee;box-shadow:var(--sombra)}
+  .btn--hueco{border-color:rgba(46,32,23,.3);color:var(--nogal)}
+  .btn small{display:block;font-weight:400;font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;opacity:.72;margin-bottom:-2px}
+  .btn b{font-size:17px;letter-spacing:.01em}
+  .hero__pie{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:34px;font-size:14px;color:#5e4a3a}
+  .hero__pie span{display:inline-flex;align-items:center;gap:8px}
+
+  /* composición hero */
+  .pieza{position:relative;border-radius:18px;overflow:hidden;box-shadow:0 24px 60px -24px rgba(46,32,23,.5);background:#2e2017}
+
+  /* ---------- secciones ---------- */
+  section{scroll-margin-top:calc(var(--barra) + 80px)}
+  .bloque{padding:84px 0}
+  .bloque--crema{background:var(--crema);border-top:1px solid var(--borde);border-bottom:1px solid var(--borde)}
+  .bloque--oscuro{background:linear-gradient(165deg,#2b1d14,#3d2a1d 70%,#33241a);color:#f0e6d8}
+  .encabezado{max-width:40em;margin-bottom:46px}
+  .encabezado__eti{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#8c5c2c;margin-bottom:14px}
+  .bloque--oscuro .encabezado__eti{color:var(--roble-cl)}
+  .encabezado h2{font-size:clamp(1.7rem,3.1vw,2.4rem)}
+  .encabezado p{margin-top:16px;font-size:17px;color:#55463a}
+  .bloque--oscuro .encabezado p{color:#d8c9b6}
+
+  /* servicios */
+  .rejilla-serv{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .tarjeta{
+    background:var(--papel);border:1px solid var(--borde);border-radius:var(--radio);
+    padding:28px 26px 30px;box-shadow:var(--sombra);
+    display:flex;flex-direction:column;gap:14px;
+  }
+  .tarjeta__ico{width:46px;height:46px;border-radius:12px;background:linear-gradient(145deg,#f1e3cd,#e0c79f);
+    display:flex;align-items:center;justify-content:center;border:1px solid rgba(176,124,69,.35);flex:0 0 auto}
+  .tarjeta h3{font-size:19.5px}
+  .tarjeta p{font-size:15.2px;color:#5b4c40}
+
+  /* galería */
+  .rejilla-gal{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .gal{border-radius:var(--radio);overflow:hidden;background:#241a13;border:1px solid rgba(217,164,105,.22);position:relative}
+  .gal svg{width:100%;height:auto;display:block}
+  .gal__pie{padding:15px 18px 17px;background:#201610}
+  .gal__pie strong{display:block;font-size:15px;font-weight:600;color:#f2e7d8}
+  .gal__pie span{font-size:12.6px;color:#b9a48c}
+  .nota{
+    margin-top:26px;padding:17px 20px;border-radius:12px;
+    border:1px dashed rgba(217,164,105,.5);background:rgba(217,164,105,.09);
+    font-size:14.4px;color:#e2d3bf;display:flex;gap:12px;align-items:flex-start;
+  }
+  .nota svg{flex:0 0 auto;margin-top:2px}
+
+  /* pasos */
+  .pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;counter-reset:p}
+  .paso{position:relative;background:var(--papel);border:1px solid var(--borde);border-radius:var(--radio);padding:30px 26px 32px;box-shadow:var(--sombra)}
+  .paso__num{
+    font-family:var(--fuente);font-size:15px;font-weight:600;
+    width:40px;height:40px;border-radius:50%;
+    background:var(--nogal);color:#f8ecd9;
+    display:flex;align-items:center;justify-content:center;margin-bottom:18px;
+  }
+  .paso h3{font-size:19.5px;margin-bottom:10px}
+  .paso p{font-size:15.2px;color:#5b4c40}
+  .paso__linea{position:absolute;top:50px;right:-13px;width:26px;height:1px;background:var(--borde);display:block}
+  .paso:last-child .paso__linea{display:none}
+
+  /* contacto */
+  .contacto{display:grid;grid-template-columns:.95fr 1.05fr;gap:40px;align-items:start}
+  .ficha{background:var(--papel);border:1px solid var(--borde);border-radius:var(--radio);padding:30px 28px;box-shadow:var(--sombra)}
+  .ficha h3{font-size:21px;margin-bottom:6px}
+  .ficha__intro{font-size:15.2px;color:#5b4c40;margin-bottom:24px}
+  .tel-lista{display:flex;flex-direction:column;gap:12px;margin-bottom:22px}
+  .tel{
+    display:flex;align-items:center;gap:14px;text-decoration:none;
+    padding:15px 17px;border-radius:12px;
+    background:linear-gradient(145deg,#f7efe2,#efe2cd);
+    border:1px solid rgba(176,124,69,.34);
+  }
+  .tel:hover{border-color:rgba(176,124,69,.7)}
+  .tel__ico{width:38px;height:38px;border-radius:10px;background:var(--nogal);display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+  .tel__txt{min-width:0}
+  .tel__txt small{display:block;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:#7a6453}
+  .tel__txt b{font-family:var(--fuente);font-size:21px;font-weight:600;letter-spacing:.01em;white-space:nowrap}
+  .fila-datos{border-top:1px solid var(--borde);padding-top:20px;display:flex;flex-direction:column;gap:16px}
+  .dato{display:flex;gap:13px;align-items:flex-start;font-size:15px;color:#4e4035}
+  .dato svg{flex:0 0 auto;margin-top:3px}
+  .dato b{display:block;font-size:13px;letter-spacing:.07em;text-transform:uppercase;color:#7a6453;font-weight:600;margin-bottom:1px}
+  .dato a{text-decoration:none;border-bottom:1px solid rgba(140,92,44,.45)}
+  .mapa-caja{background:var(--papel);border:1px solid var(--borde);border-radius:var(--radio);padding:22px 22px 18px;box-shadow:var(--sombra)}
+  .mapa-caja__sup{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:baseline;justify-content:space-between;margin-bottom:16px}
+  .mapa-caja h3{font-size:18.5px}
+  .mapa-caja__eti{font-size:11.6px;letter-spacing:.11em;text-transform:uppercase;color:#7a6453}
+  .mapa-svg{width:100%;height:auto;border-radius:10px;background:#f4ecdd;border:1px solid var(--borde)}
+  .mapa-leyenda{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:14px;font-size:13.2px;color:#6b5a4b}
+  .mapa-leyenda span{display:inline-flex;align-items:center;gap:7px}
+  .llave{width:14px;height:4px;border-radius:2px;flex:0 0 auto}
+
+  /* cinta */
+  .cinta{background:linear-gradient(100deg,#b07c45,#8c5c2c);color:#fff8ec;padding:40px 0}
+  .cinta__fila{display:flex;flex-wrap:wrap;gap:22px;align-items:center;justify-content:space-between}
+  .cinta p{font-family:var(--fuente);font-size:clamp(1.25rem,2.4vw,1.7rem);line-height:1.22;max-width:24em}
+  .cinta .btn--solido{background:#fff8ec;color:#5b3a18}
+
+  /* pie */
+  .pie{background:#1b120c;color:#cdbda9;padding:54px 0 0}
+  .pie__fila{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:36px;padding-bottom:40px}
+  .pie__nombre{font-family:var(--fuente);font-size:19px;color:#f3e8d8;margin-bottom:10px}
+  .pie p,.pie li{font-size:14.4px}
+  .pie h4{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#a38a6d;margin:0 0 14px;font-weight:600}
+  .pie ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
+  .pie a{text-decoration:none;color:#e0d1bd;overflow-wrap:anywhere}
+  .pie a:hover{text-decoration:underline;text-underline-offset:3px}
+  .pie__credito{
+    border-top:1px solid rgba(217,164,105,.22);
+    padding:18px 0 26px;font-size:13px;color:#a79376;text-align:center;
+  }
+  .pie__credito strong{color:#d9c6ab;font-weight:600}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:1000px){
+    .hero__fila{grid-template-columns:1fr;gap:40px;padding:56px 0 64px}
+    .rejilla-serv,.rejilla-gal,.pasos{grid-template-columns:repeat(2,1fr)}
+    .contacto{grid-template-columns:1fr;gap:28px}
+    .paso__linea{display:none}
+    .pie__fila{grid-template-columns:1fr 1fr;gap:30px}
+  }
+  @media (max-width:760px){
+    .nav{display:none}
+    .nav__movil{display:inline-flex}
+    .cabecera__fila{min-height:62px}
+  }
+  @media (max-width:620px){
+    :root{--barra:58px}
+    .aviso{font-size:11px;line-height:1.35;flex-wrap:wrap;gap:0 .45em;padding:8px 12px}
+    .envoltura{padding:0 18px}
+    .bloque{padding:58px 0}
+    .encabezado{margin-bottom:32px}
+    .rejilla-serv,.rejilla-gal,.pasos{grid-template-columns:1fr;gap:16px}
+    .pie__fila{grid-template-columns:1fr;gap:28px}
+    .hero__texto{font-size:16.5px}
+    .acciones{gap:11px}
+    .btn{width:100%;justify-content:center;padding:14px 20px}
+    .marca__nombre{font-size:15.5px;white-space:normal}
+    .marca__sub{font-size:10px;letter-spacing:.1em}
+    .nav__tel{padding:10px 14px;font-size:13.5px}
+    .tel__txt b{font-size:19px}
+    .cinta__fila{gap:18px}
+    .cinta .btn{width:100%}
+  }
+  @media (max-width:380px){
+    .marca__sub{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<!-- ============ BARRA FIJA ============ -->
+<div class="aviso" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<!-- ============ CABECERA ============ -->
+<header class="cabecera">
+  <div class="envoltura cabecera__fila">
+    <a class="marca" href="#inicio">
+      <svg class="marca__icono" width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
+        <rect x="1" y="1" width="38" height="38" rx="10" fill="#2e2017"/>
+        <path d="M8 14h24M8 20h24M8 26h24" stroke="#b07c45" stroke-width="1.5" opacity=".55"/>
+        <path d="M12 9.5 20 30.5 28 9.5" stroke="#d9a469" stroke-width="2.2" fill="none" stroke-linejoin="round"/>
+        <circle cx="20" cy="30.5" r="1.9" fill="#f6f0e6"/>
+      </svg>
+      <span class="marca__txt">
+        <span class="marca__nombre">Carpintería Prieto y Losa</span>
+        <span class="marca__sub">Villarrobledo · Albacete</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Navegación principal">
+      <a href="#servicios">Servicios</a>
+      <a href="#trabajos">Trabajos</a>
+      <a href="#proceso">Cómo trabajamos</a>
+      <a href="#contacto">Contacto</a>
+      <a class="nav__tel" href="tel:+34967146138">
+        <svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 1.5h2.2l1.2 3-1.5 1.1a8.5 8.5 0 0 0 4.5 4.5l1.1-1.5 3 1.2V13a1.5 1.5 0 0 1-1.6 1.5A11.5 11.5 0 0 1 1.5 3.1A1.5 1.5 0 0 1 3 1.5Z" fill="currentColor"/></svg>
+        967 146 138
+      </a>
+    </nav>
+    <a class="nav__tel nav__movil" href="tel:+34967146138">
+      <svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 1.5h2.2l1.2 3-1.5 1.1a8.5 8.5 0 0 0 4.5 4.5l1.1-1.5 3 1.2V13a1.5 1.5 0 0 1-1.6 1.5A11.5 11.5 0 0 1 1.5 3.1A1.5 1.5 0 0 1 3 1.5Z" fill="currentColor"/></svg>
+      Llamar
+    </a>
+  </div>
+</header>
+
+<main id="inicio">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero__veta" aria-hidden="true"></div>
+  <div class="envoltura hero__fila">
+    <div>
+      <span class="etiqueta"><i class="punto"></i>Carpintería de madera en Villarrobledo</span>
+      <h1>Armarios, cocinas y puertas<em>hechos a tu medida.</em></h1>
+      <p class="hero__texto">Trabajamos la madera a medida para cada hueco: armarios y vestidores, cocinas y puertas de paso. Cuéntanos qué necesitas por teléfono y lo vemos.</p>
+      <div class="acciones">
+        <a class="btn btn--solido" href="tel:+34967146138">
+          <svg width="18" height="18" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 1.5h2.2l1.2 3-1.5 1.1a8.5 8.5 0 0 0 4.5 4.5l1.1-1.5 3 1.2V13a1.5 1.5 0 0 1-1.6 1.5A11.5 11.5 0 0 1 1.5 3.1A1.5 1.5 0 0 1 3 1.5Z" fill="currentColor"/></svg>
+          <span><small>Pide presupuesto</small><b>967 146 138</b></span>
+        </a>
+        <a class="btn btn--hueco" href="tel:+34627923916">
+          <span><small>También por móvil</small><b>627 923 916</b></span>
+        </a>
+      </div>
+      <div class="hero__pie">
+        <span><svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6 14 5v6L8 14.4 2 11V5l6-3.4Z" fill="none" stroke="#8c5c2c" stroke-width="1.4"/></svg>Madera a medida</span>
+        <span><svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8.5 6 12l7.5-8" fill="none" stroke="#8c5c2c" stroke-width="1.7" stroke-linecap="round"/></svg>Medición y montaje</span>
+        <span><svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.3" fill="none" stroke="#8c5c2c" stroke-width="1.4"/><path d="M8 4.6V8l2.4 1.6" stroke="#8c5c2c" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg>Villarrobledo y comarca</span>
+      </div>
+    </div>
+
+    <!-- composición abstracta: frente de armario + cocina -->
+    <div class="pieza" aria-hidden="true">
+      <svg viewBox="0 0 520 460" role="presentation">
+        <defs>
+          <linearGradient id="g-mad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#8a5c33"/><stop offset=".5" stop-color="#6d4525"/><stop offset="1" stop-color="#4a2e18"/>
+          </linearGradient>
+          <linearGradient id="g-mad2" x1="0" y1="1" x2="1" y2="0">
+            <stop offset="0" stop-color="#b07c45"/><stop offset="1" stop-color="#d9a469"/>
+          </linearGradient>
+          <linearGradient id="g-mad3" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#e8d2b2"/><stop offset="1" stop-color="#c8a06e"/>
+          </linearGradient>
+          <linearGradient id="g-cl" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#efdcc0"/><stop offset="1" stop-color="#cfae86"/>
+          </linearGradient>
+          <pattern id="veta" width="9" height="9" patternTransform="rotate(12)" patternUnits="userSpaceOnUse">
+            <rect width="9" height="9" fill="none"/>
+            <path d="M0 0v9" stroke="rgba(255,240,215,.14)" stroke-width="1.6"/>
+          </pattern>
+        </defs>
+        <rect width="520" height="460" fill="#2e2017"/>
+        <rect width="520" height="460" fill="url(#veta)"/>
+        <!-- frente de armario, 4 puertas -->
+        <g>
+          <rect x="34" y="40" width="250" height="330" rx="6" fill="url(#g-mad)"/>
+          <rect x="34" y="40" width="250" height="330" rx="6" fill="url(#veta)"/>
+          <g stroke="rgba(27,18,12,.55)" stroke-width="2">
+            <path d="M159 40v330M34 205h250"/>
+          </g>
+          <g fill="rgba(246,240,230,.82)">
+            <rect x="140" y="110" width="7" height="46" rx="3.5"/>
+            <rect x="171" y="110" width="7" height="46" rx="3.5"/>
+            <rect x="140" y="252" width="7" height="46" rx="3.5"/>
+            <rect x="171" y="252" width="7" height="46" rx="3.5"/>
+          </g>
+        </g>
+        <!-- módulos de cocina / estanterías -->
+        <g>
+          <rect x="310" y="40" width="176" height="104" rx="6" fill="url(#g-mad2)" opacity=".92"/>
+          <rect x="310" y="40" width="176" height="104" rx="6" fill="url(#veta)"/>
+          <rect x="356" y="124" width="84" height="6" rx="3" fill="rgba(27,18,12,.35)"/>
+          <rect x="310" y="162" width="176" height="14" rx="4" fill="url(#g-cl)"/>
+          <rect x="310" y="196" width="176" height="174" rx="6" fill="#59391f"/>
+          <rect x="310" y="196" width="176" height="174" rx="6" fill="url(#veta)"/>
+          <g stroke="rgba(27,18,12,.5)" stroke-width="2"><path d="M310 254h176M310 312h176M398 196v174"/></g>
+          <g fill="rgba(246,240,230,.7)">
+            <rect x="334" y="222" width="42" height="5" rx="2.5"/>
+            <rect x="422" y="222" width="42" height="5" rx="2.5"/>
+            <rect x="334" y="280" width="42" height="5" rx="2.5"/>
+            <rect x="422" y="280" width="42" height="5" rx="2.5"/>
+            <rect x="334" y="338" width="42" height="5" rx="2.5"/>
+            <rect x="422" y="338" width="42" height="5" rx="2.5"/>
+          </g>
+        </g>
+        <!-- zócalo / suelo -->
+        <rect x="34" y="378" width="452" height="18" rx="4" fill="#3f2a18"/>
+        <rect x="0" y="404" width="520" height="56" fill="#241a13"/>
+        <g stroke="rgba(217,164,105,.3)" stroke-width="1.4">
+          <path d="M0 418h520M0 436h520"/>
+        </g>
+        <!-- escuadra y lápiz, guiño al oficio -->
+        <g transform="translate(60 392)">
+          <path d="M0 0h120v10H0z" fill="#d9a469" opacity=".85"/>
+          <path d="M0 0v-44h10V0z" fill="#d9a469" opacity=".85"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICIOS ============ -->
+<section class="bloque bloque--crema" id="servicios">
+  <div class="envoltura">
+    <div class="encabezado">
+      <p class="encabezado__eti">Qué hacemos</p>
+      <h2>Carpintería de madera a medida</h2>
+      <p>Cada encargo se mide en casa y se fabrica para ese hueco concreto. Estos son los trabajos que podemos preparar para ti.</p>
+    </div>
+    <div class="rejilla-serv">
+
+      <article class="tarjeta">
+        <span class="tarjeta__ico" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24"><rect x="3" y="2.5" width="18" height="19" rx="2" fill="none" stroke="#5b3a18" stroke-width="1.6"/><path d="M12 2.5v19" stroke="#5b3a18" stroke-width="1.6"/><path d="M10 10v4M14 10v4" stroke="#8c5c2c" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </span>
+        <h3>Armarios y vestidores</h3>
+        <p>Armarios empotrados y de pared, con el interior distribuido en baldas, cajones y barras según lo que necesites guardar.</p>
+      </article>
+
+      <article class="tarjeta">
+        <span class="tarjeta__ico" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="7" rx="1.6" fill="none" stroke="#5b3a18" stroke-width="1.6"/><rect x="2.5" y="13" width="19" height="7" rx="1.6" fill="none" stroke="#5b3a18" stroke-width="1.6"/><path d="M12 4v7M12 13v7" stroke="#8c5c2c" stroke-width="1.5"/></svg>
+        </span>
+        <h3>Cocinas a medida</h3>
+        <p>Muebles altos y bajos aprovechando las esquinas y los huecos difíciles, con los frentes y los tiradores que elijas.</p>
+      </article>
+
+      <article class="tarjeta">
+        <span class="tarjeta__ico" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24"><rect x="5" y="2.5" width="14" height="19" rx="1.6" fill="none" stroke="#5b3a18" stroke-width="1.6"/><rect x="8" y="6" width="8" height="7" rx="1" fill="none" stroke="#8c5c2c" stroke-width="1.3"/><circle cx="16" cy="16.5" r="1.3" fill="#8c5c2c"/></svg>
+        </span>
+        <h3>Puertas de paso</h3>
+        <p>Puertas de interior, correderas y frentes de armario, con su marco, herrajes y ajuste al hueco existente.</p>
+      </article>
+
+      <article class="tarjeta">
+        <span class="tarjeta__ico" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24"><path d="M3 20.5 20.5 3" stroke="#5b3a18" stroke-width="1.6"/><path d="M4 13h7v7H4z" fill="none" stroke="#8c5c2c" stroke-width="1.5"/><path d="M13 4h7v7h-7z" fill="none" stroke="#8c5c2c" stroke-width="1.5"/></svg>
+        </span>
+        <h3>Muebles y estanterías</h3>
+        <p>Librerías, bancadas, mesas y mobiliario auxiliar en madera, pensados para la medida exacta de la estancia.</p>
+      </article>
+
+      <article class="tarjeta">
+        <span class="tarjeta__ico" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 2.8 21 7v10l-9 4.2L3 17V7Z" fill="none" stroke="#5b3a18" stroke-width="1.6"/><path d="M12 2.8V12l9-5M12 12 3 7M12 12v9.2" stroke="#8c5c2c" stroke-width="1.3"/></svg>
+        </span>
+        <h3>Revestimientos en madera</h3>
+        <p>Forrado de paredes, techos y huecos, remates y rodapiés para cerrar la obra con el mismo acabado del resto.</p>
+      </article>
+
+      <article class="tarjeta">
+        <span class="tarjeta__ico" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24"><path d="M4 18.5 14 8.5" stroke="#5b3a18" stroke-width="1.8" stroke-linecap="round"/><path d="M13 7.5l3.5-3.5 4 4L17 11.5Z" fill="none" stroke="#8c5c2c" stroke-width="1.5"/><circle cx="5" cy="19.5" r="1.6" fill="#8c5c2c"/></svg>
+        </span>
+        <h3>Arreglos y ajustes</h3>
+        <p>Reparación y puesta a punto de puertas, armarios y muebles de madera: holguras, bisagras, cajones y acabados.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALERÍA / TRABAJOS ============ -->
+<section class="bloque bloque--oscuro" id="trabajos">
+  <div class="envoltura">
+    <div class="encabezado">
+      <p class="encabezado__eti">Galería de trabajos</p>
+      <h2>El sitio donde enseñar lo que sale del taller</h2>
+      <p>Quien busca «armarios a medida en Villarrobledo» quiere ver madera antes de llamar. Esta es la sección pensada para eso: las fotos de vuestros propios trabajos irían aquí, en este orden y con este tamaño.</p>
+    </div>
+
+    <div class="rejilla-gal">
+
+      <figure class="gal" style="margin:0">
+        <svg viewBox="0 0 400 300" aria-label="Composición abstracta de un frente de armario">
+          <rect width="400" height="300" fill="#6d4525"/>
+          <rect width="400" height="300" fill="url(#veta)"/>
+          <g stroke="rgba(27,18,12,.5)" stroke-width="3" fill="none"><path d="M100 0v300M200 0v300M300 0v300"/></g>
+          <g fill="rgba(246,240,230,.8)">
+            <rect x="86" y="130" width="6" height="42" rx="3"/>
+            <rect x="108" y="130" width="6" height="42" rx="3"/>
+            <rect x="286" y="130" width="6" height="42" rx="3"/>
+            <rect x="308" y="130" width="6" height="42" rx="3"/>
+          </g>
+          <rect x="0" y="272" width="400" height="28" fill="#3f2a18"/>
+        </svg>
+        <figcaption class="gal__pie"><strong>Frentes de armario</strong><span>Composición ilustrativa · hueco para vuestra foto</span></figcaption>
+      </figure>
+
+      <figure class="gal" style="margin:0">
+        <svg viewBox="0 0 400 300" aria-label="Composición abstracta de módulos de cocina">
+          <rect width="400" height="300" fill="#8a5c33"/>
+          <rect width="400" height="300" fill="url(#veta)"/>
+          <rect x="24" y="24" width="150" height="86" rx="5" fill="#b07c45"/>
+          <rect x="190" y="24" width="186" height="86" rx="5" fill="#5e3d21"/>
+          <rect x="24" y="132" width="352" height="14" rx="5" fill="#efdcc0"/>
+          <rect x="24" y="166" width="352" height="110" rx="5" fill="#59391f"/>
+          <g stroke="rgba(27,18,12,.45)" stroke-width="2.5"><path d="M142 166v110M260 166v110M24 222h352"/></g>
+          <g fill="rgba(246,240,230,.65)">
+            <rect x="60" y="190" width="46" height="5" rx="2.5"/>
+            <rect x="178" y="190" width="46" height="5" rx="2.5"/>
+            <rect x="296" y="190" width="46" height="5" rx="2.5"/>
+            <rect x="60" y="246" width="46" height="5" rx="2.5"/>
+            <rect x="178" y="246" width="46" height="5" rx="2.5"/>
+            <rect x="296" y="246" width="46" height="5" rx="2.5"/>
+          </g>
+        </svg>
+        <figcaption class="gal__pie"><strong>Módulos de cocina</strong><span>Composición ilustrativa · hueco para vuestra foto</span></figcaption>
+      </figure>
+
+      <figure class="gal" style="margin:0">
+        <svg viewBox="0 0 400 300" aria-label="Composición abstracta de una puerta de paso">
+          <rect width="400" height="300" fill="#4a2e18"/>
+          <rect width="400" height="300" fill="url(#veta)"/>
+          <rect x="120" y="20" width="160" height="260" rx="4" fill="#8a5c33"/>
+          <rect x="120" y="20" width="160" height="260" rx="4" fill="url(#veta)"/>
+          <rect x="140" y="44" width="120" height="92" rx="3" fill="none" stroke="rgba(27,18,12,.5)" stroke-width="3"/>
+          <rect x="140" y="156" width="120" height="100" rx="3" fill="none" stroke="rgba(27,18,12,.5)" stroke-width="3"/>
+          <circle cx="262" cy="152" r="7" fill="rgba(246,240,230,.85)"/>
+          <g stroke="rgba(217,164,105,.3)" stroke-width="2"><path d="M110 20v260M290 20v260"/></g>
+        </svg>
+        <figcaption class="gal__pie"><strong>Puertas y herrajes</strong><span>Composición ilustrativa · hueco para vuestra foto</span></figcaption>
+      </figure>
+
+      <figure class="gal" style="margin:0">
+        <svg viewBox="0 0 400 300" aria-label="Composición abstracta de una estantería a medida">
+          <rect width="400" height="300" fill="#5e3d21"/>
+          <rect width="400" height="300" fill="url(#veta)"/>
+          <g fill="#8a5c33">
+            <rect x="30" y="30" width="340" height="12" rx="4"/>
+            <rect x="30" y="94" width="340" height="12" rx="4"/>
+            <rect x="30" y="158" width="340" height="12" rx="4"/>
+            <rect x="30" y="222" width="340" height="12" rx="4"/>
+          </g>
+          <g fill="#3f2a18">
+            <rect x="30" y="30" width="12" height="240" rx="4"/>
+            <rect x="194" y="30" width="12" height="240" rx="4"/>
+            <rect x="358" y="30" width="12" height="240" rx="4"/>
+          </g>
+          <g fill="#d9a469" opacity=".75">
+            <rect x="56" y="54" width="18" height="40" rx="2"/>
+            <rect x="80" y="62" width="14" height="32" rx="2"/>
+            <rect x="222" y="118" width="16" height="40" rx="2"/>
+            <rect x="244" y="128" width="20" height="30" rx="2"/>
+            <rect x="62" y="186" width="22" height="36" rx="2"/>
+          </g>
+        </svg>
+        <figcaption class="gal__pie"><strong>Estanterías y librerías</strong><span>Composición ilustrativa · hueco para vuestra foto</span></figcaption>
+      </figure>
+
+      <figure class="gal" style="margin:0">
+        <svg viewBox="0 0 400 300" aria-label="Composición abstracta del interior de un vestidor">
+          <rect width="400" height="300" fill="#6d4525"/>
+          <rect width="400" height="300" fill="url(#veta)"/>
+          <rect x="26" y="26" width="348" height="248" rx="5" fill="none" stroke="#3f2a18" stroke-width="8"/>
+          <g stroke="#d9a469" stroke-width="5" opacity=".6"><path d="M44 96h150M210 96h150"/></g>
+          <g fill="#8a5c33">
+            <rect x="44" y="124" width="150" height="10" rx="3"/>
+            <rect x="44" y="166" width="150" height="10" rx="3"/>
+            <rect x="210" y="186" width="150" height="10" rx="3"/>
+          </g>
+          <g fill="#59391f" stroke="rgba(246,240,230,.5)" stroke-width="2">
+            <rect x="212" y="120" width="146" height="26" rx="3"/>
+            <rect x="212" y="152" width="146" height="26" rx="3"/>
+            <rect x="46" y="206" width="146" height="26" rx="3"/>
+          </g>
+        </svg>
+        <figcaption class="gal__pie"><strong>Interiores de vestidor</strong><span>Composición ilustrativa · hueco para vuestra foto</span></figcaption>
+      </figure>
+
+      <figure class="gal" style="margin:0">
+        <svg viewBox="0 0 400 300" aria-label="Composición abstracta de vetas y acabados de la madera">
+          <rect width="400" height="300" fill="#3f2a18"/>
+          <g fill="none" stroke="#b07c45" stroke-width="3" opacity=".75">
+            <path d="M-10 60C70 30 140 92 210 62s120-30 200-4"/>
+            <path d="M-10 108C70 78 140 140 210 110s120-30 200-4"/>
+            <path d="M-10 156C70 126 140 188 210 158s120-30 200-4"/>
+            <path d="M-10 204C70 174 140 236 210 206s120-30 200-4"/>
+            <path d="M-10 252C70 222 140 284 210 254s120-30 200-4"/>
+          </g>
+          <g fill="#d9a469" opacity=".9">
+            <circle cx="92" cy="150" r="13"/><circle cx="92" cy="150" r="6" fill="#3f2a18"/>
+            <circle cx="300" cy="198" r="9"/><circle cx="300" cy="198" r="4" fill="#3f2a18"/>
+          </g>
+        </svg>
+        <figcaption class="gal__pie"><strong>Vetas y acabados</strong><span>Composición ilustrativa · hueco para vuestra foto</span></figcaption>
+      </figure>
+
+    </div>
+
+    <p class="nota">
+      <svg width="17" height="17" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="#d9a469" stroke-width="1.4"/><path d="M8 7.2v4.2" stroke="#d9a469" stroke-width="1.6" stroke-linecap="round"/><circle cx="8" cy="4.8" r="1" fill="#d9a469"/></svg>
+      <span>Las imágenes de esta sección son composiciones dibujadas en código para la maqueta, no trabajos del taller. En la web real irían vuestras propias fotos.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============ CÓMO TRABAJAMOS ============ -->
+<section class="bloque" id="proceso">
+  <div class="envoltura">
+    <div class="encabezado">
+      <p class="encabezado__eti">Cómo trabajamos</p>
+      <h2>De la llamada al montaje, en tres pasos</h2>
+      <p>Un recorrido sencillo para que sepas qué esperar desde el primer momento.</p>
+    </div>
+    <div class="pasos">
+
+      <article class="paso">
+        <span class="paso__linea" aria-hidden="true"></span>
+        <span class="paso__num">01</span>
+        <h3>Llamas y nos lo cuentas</h3>
+        <p>Nos dices qué tienes pensado —un armario, una cocina, cambiar las puertas— y en qué estancia. Resolvemos las primeras dudas por teléfono.</p>
+      </article>
+
+      <article class="paso">
+        <span class="paso__linea" aria-hidden="true"></span>
+        <span class="paso__num">02</span>
+        <h3>Medimos y presupuestamos</h3>
+        <p>Tomamos medidas del hueco, vemos materiales y acabados contigo y te pasamos el presupuesto con el trabajo detallado.</p>
+      </article>
+
+      <article class="paso">
+        <span class="paso__num">03</span>
+        <h3>Fabricamos y montamos</h3>
+        <p>Preparamos la pieza en el taller y la instalamos en casa, con los remates y el ajuste final hechos en el sitio.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section class="bloque bloque--crema" id="contacto">
+  <div class="envoltura">
+    <div class="encabezado">
+      <p class="encabezado__eti">Contacto</p>
+      <h2>Pide presupuesto por teléfono</h2>
+      <p>La forma más rápida de empezar es una llamada: así podemos preguntarte lo necesario sobre el hueco y el acabado.</p>
+    </div>
+
+    <div class="contacto">
+
+      <div class="ficha">
+        <h3>Carpintería Prieto y Losa</h3>
+        <p class="ficha__intro">Carpintería de madera: armarios, cocinas y puertas a medida.</p>
+
+        <div class="tel-lista">
+          <a class="tel" href="tel:+34967146138">
+            <span class="tel__ico" aria-hidden="true">
+              <svg width="17" height="17" viewBox="0 0 16 16"><path d="M3 1.5h2.2l1.2 3-1.5 1.1a8.5 8.5 0 0 0 4.5 4.5l1.1-1.5 3 1.2V13a1.5 1.5 0 0 1-1.6 1.5A11.5 11.5 0 0 1 1.5 3.1A1.5 1.5 0 0 1 3 1.5Z" fill="#f6f0e6"/></svg>
+            </span>
+            <span class="tel__txt"><small>Taller</small><b>967 146 138</b></span>
+          </a>
+          <a class="tel" href="tel:+34627923916">
+            <span class="tel__ico" aria-hidden="true">
+              <svg width="17" height="17" viewBox="0 0 16 16"><rect x="4" y="1.2" width="8" height="13.6" rx="1.8" fill="none" stroke="#f6f0e6" stroke-width="1.4"/><circle cx="8" cy="12" r=".9" fill="#f6f0e6"/></svg>
+            </span>
+            <span class="tel__txt"><small>Móvil</small><b>627 923 916</b></span>
+          </a>
+        </div>
+
+        <div class="fila-datos">
+          <p class="dato">
+            <svg width="17" height="17" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="#8c5c2c" stroke-width="1.4"/><path d="M8 4.4V8l2.6 1.7" stroke="#8c5c2c" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg>
+            <span><b>Horario</b>Consultar horario por teléfono: <a href="tel:+34967146138">967 146 138</a></span>
+          </p>
+          <p class="dato">
+            <svg width="17" height="17" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6c2.4 0 4.3 1.9 4.3 4.3 0 3.2-4.3 8.5-4.3 8.5S3.7 9.1 3.7 5.9C3.7 3.5 5.6 1.6 8 1.6Z" fill="none" stroke="#8c5c2c" stroke-width="1.4"/><circle cx="8" cy="5.9" r="1.6" fill="#8c5c2c"/></svg>
+            <span><b>Zona</b>Villarrobledo (Albacete)</span>
+          </p>
+          <p class="dato">
+            <svg width="17" height="17" viewBox="0 0 16 16" aria-hidden="true"><rect x="1.6" y="3.4" width="12.8" height="9.2" rx="1.6" fill="none" stroke="#8c5c2c" stroke-width="1.4"/><path d="m2.4 4.6 5.6 4 5.6-4" fill="none" stroke="#8c5c2c" stroke-width="1.4"/></svg>
+            <span><b>Correo</b><a href="mailto:prietoylosa2015@gmail.com">prietoylosa2015@gmail.com</a></span>
+          </p>
+        </div>
+      </div>
+
+      <!-- MAPA ESQUEMÁTICO DIBUJADO A MANO -->
+      <div class="mapa-caja">
+        <div class="mapa-caja__sup">
+          <h3>Dónde trabajamos</h3>
+          <span class="mapa-caja__eti">Croquis orientativo · no a escala</span>
+        </div>
+
+        <svg class="mapa-svg" viewBox="0 0 640 440" role="img" aria-label="Croquis esquemático de la trama de calles de Villarrobledo con la zona de trabajo señalada">
+          <defs>
+            <linearGradient id="g-zona" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#b07c45" stop-opacity=".3"/>
+              <stop offset="1" stop-color="#d9a469" stop-opacity=".14"/>
+            </linearGradient>
+            <linearGradient id="g-campo" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#f6eedf"/><stop offset="1" stop-color="#eee2cd"/>
+            </linearGradient>
+          </defs>
+
+          <rect width="640" height="440" fill="url(#g-campo)"/>
+
+          <!-- banda de título -->
+          <rect x="0" y="0" width="640" height="58" fill="#efe3cd"/>
+          <path d="M0 58h640" stroke="#cdb795" stroke-width="1.6"/>
+          <g font-family="ui-sans-serif,system-ui,sans-serif">
+            <text x="24" y="28" font-size="20" font-weight="600" fill="#4a3a2d" letter-spacing=".03em">VILLARROBLEDO</text>
+            <text x="24" y="47" font-size="13" fill="#7a6453" letter-spacing=".17em">ALBACETE</text>
+            <text x="616" y="41" font-size="13.5" fill="#7a6453" text-anchor="end">Trama urbana esquemática</text>
+          </g>
+
+          <g transform="translate(0 58)">
+            <!-- parcelas del entorno, trazo irregular -->
+            <g stroke="#cdb795" stroke-width="1.2" fill="none" opacity=".7" stroke-linecap="round">
+              <path d="M18 14c56-4 110 2 164-2M466 12c54 5 106-2 156 2"/>
+              <path d="M22 292c56 5 112-3 166 2M26 326c54-4 108 4 160-1M466 298c54-5 106 3 156-2M470 330c52 4 104-4 152 1"/>
+            </g>
+
+            <!-- zona de trabajo -->
+            <path d="M150 64c66-26 182-32 262-4 74 26 92 106 58 158-36 54-168 76-256 54-86-22-120-78-102-130 10-30 22-62 38-78Z"
+                  fill="url(#g-zona)" stroke="#b07c45" stroke-width="2.4" stroke-dasharray="9 7"/>
+
+            <!-- trama de calles, trazo a mano -->
+            <g stroke="#a8906f" stroke-width="2.2" fill="none" stroke-linecap="round" opacity=".95">
+              <path d="M96 128c80-10 162-6 244 2 58 6 116 4 174-4"/>
+              <path d="M88 184c84-8 168-2 252 6 56 5 112 3 168-5"/>
+              <path d="M94 240c82-6 164 0 246 8 56 6 112 4 168-4"/>
+              <path d="M104 296c78-6 156-2 234 6 54 5 108 3 162-5"/>
+              <path d="M176 76c-6 80-4 158 4 236 2 18 2 36 0 54"/>
+              <path d="M268 72c-8 82-6 162 2 240 2 18 2 36 0 52"/>
+              <path d="M362 74c-6 82-4 162 4 240 2 18 2 36 0 52"/>
+              <path d="M456 78c-8 80-6 158 2 236 2 18 2 36 0 52"/>
+            </g>
+
+            <!-- vía principal -->
+            <g>
+              <path d="M18 218c90-26 180-36 272-30 96 6 190 30 292 20" stroke="#8c5c2c" stroke-width="8" fill="none" stroke-linecap="round" opacity=".85"/>
+              <path d="M18 218c90-26 180-36 272-30 96 6 190 30 292 20" stroke="#f6eedf" stroke-width="1.8" fill="none" stroke-dasharray="12 12" stroke-linecap="round"/>
+            </g>
+
+            <!-- plaza central -->
+            <g>
+              <path d="M292 150c26-8 52-6 70 10 16 16 10 44-12 54-24 12-56 8-70-10-14-20-8-46 12-54Z" fill="#e6d3b4" stroke="#a8906f" stroke-width="2"/>
+              <circle cx="322" cy="184" r="9" fill="none" stroke="#8c5c2c" stroke-width="2"/>
+              <circle cx="322" cy="184" r="2.6" fill="#8c5c2c"/>
+            </g>
+
+            <!-- etiquetas -->
+            <g font-family="ui-sans-serif,system-ui,sans-serif" fill="#6b5a4b" stroke="#f2e8d7" stroke-width="4.5" paint-order="stroke" stroke-linejoin="round">
+              <text x="322" y="66" font-size="15.5" text-anchor="middle" fill="#8c5c2c" letter-spacing=".06em">Zona de trabajo</text>
+              <text x="322" y="232" font-size="15" text-anchor="middle" letter-spacing=".04em">Casco urbano</text>
+              <text x="40" y="270" font-size="14" letter-spacing=".04em">Comarca</text>
+              <text x="600" y="270" font-size="14" text-anchor="end" letter-spacing=".04em">Comarca</text>
+            </g>
+          </g>
+
+          <!-- norte -->
+          <g transform="translate(600 406)" stroke="#8c5c2c" fill="#8c5c2c">
+            <path d="M0 0v-24" stroke-width="2"/>
+            <path d="M0-29 5-19H-5Z" stroke="none"/>
+            <text x="0" y="14" font-family="ui-sans-serif,system-ui,sans-serif" font-size="11.5" text-anchor="middle" stroke="none">N</text>
+          </g>
+        </svg>
+
+        <div class="mapa-leyenda">
+          <span><i class="llave" style="background:#8c5c2c"></i>Vía principal</span>
+          <span><i class="llave" style="background:#a8906f"></i>Calles del casco</span>
+          <span><i class="llave" style="background:#d9a469"></i>Zona de trabajo</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ CINTA CTA ============ -->
+<section class="cinta">
+  <div class="envoltura cinta__fila">
+    <p>¿Tienes un hueco que no encaja con nada de lo que venden hecho?</p>
+    <a class="btn btn--solido" href="tel:+34967146138">
+      <svg width="18" height="18" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 1.5h2.2l1.2 3-1.5 1.1a8.5 8.5 0 0 0 4.5 4.5l1.1-1.5 3 1.2V13a1.5 1.5 0 0 1-1.6 1.5A11.5 11.5 0 0 1 1.5 3.1A1.5 1.5 0 0 1 3 1.5Z" fill="currentColor"/></svg>
+      <span><small>Llámanos</small><b>967 146 138</b></span>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ PIE ============ -->
+<footer class="pie">
+  <div class="envoltura pie__fila">
+    <div>
+      <p class="pie__nombre">Carpintería Prieto y Losa</p>
+      <p>Carpintería de madera en Villarrobledo (Albacete). Armarios, cocinas y puertas a medida.</p>
+    </div>
+    <div>
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="tel:+34967146138">967 146 138</a></li>
+        <li><a href="tel:+34627923916">627 923 916</a></li>
+        <li><a href="mailto:prietoylosa2015@gmail.com">prietoylosa2015@gmail.com</a></li>
+        <li>Horario: consultar por teléfono</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Secciones</h4>
+      <ul>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#trabajos">Trabajos</a></li>
+        <li><a href="#proceso">Cómo trabajamos</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="pie__credito">
+    <strong>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</strong>
+  </div>
+</footer>
+
+</body>
+</html>
