@@ -1,0 +1,771 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tejidos y Mercería la Aguja y el Dedal · Peñafiel</title>
+<meta name="description" content="Maqueta de propuesta de diseño web para Tejidos y Mercería la Aguja y el Dedal, Peñafiel (Valladolid). Mercería, tejidos, lencería y cortinaje.">
+<style>
+  :root{
+    --crudo:#f6f1e7;
+    --crudo-2:#efe6d6;
+    --lino:#e4d7c1;
+    --tinta:#231c17;
+    --tinta-2:#4a3d33;
+    --tinta-3:#6d5c4e;
+    --granate:#8c2f39;
+    --granate-osc:#6d222b;
+    --indigo:#2f4156;
+    --oro:#b8893b;
+    --verde:#51614a;
+    --blanco:#fffdf8;
+    --borde:#d8c8ae;
+    --radio:14px;
+    --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --serif: ui-serif, Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif;
+    --barra:46px;
+    --sombra:0 1px 2px rgba(35,28,23,.05), 0 10px 30px -12px rgba(35,28,23,.18);
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background-color:var(--crudo);
+    background-image:
+      linear-gradient(0deg, rgba(255,255,255,.35) 1px, rgba(255,255,255,0) 1px),
+      linear-gradient(90deg, rgba(141,113,80,.07) 1px, rgba(141,113,80,0) 1px),
+      radial-gradient(1200px 600px at 85% -10%, rgba(184,137,59,.14), transparent 60%),
+      radial-gradient(900px 500px at -10% 10%, rgba(140,47,57,.10), transparent 60%);
+    background-size:4px 4px, 4px 4px, auto, auto;
+    color:var(--tinta);
+    font-family:var(--sans);
+    font-size:17px;
+    line-height:1.65;
+    overflow-x:hidden;
+  }
+  img,svg{max-width:100%}
+  a{color:inherit}
+  h1,h2,h3{font-family:var(--serif); font-weight:600; letter-spacing:-.015em; margin:0}
+  p{margin:0}
+
+  /* ---------- barra fija ---------- */
+  .aviso{
+    position:fixed; inset:0 0 auto 0; z-index:100;
+    min-height:var(--barra);
+    display:flex; align-items:center; justify-content:center;
+    gap:.6rem; padding:.45rem 1rem;
+    background:var(--tinta);
+    color:#f3e8d8;
+    font-size:.74rem; letter-spacing:.055em; text-transform:uppercase;
+    text-align:center; line-height:1.35;
+    border-bottom:1px solid rgba(255,255,255,.12);
+    box-shadow:0 2px 14px rgba(35,28,23,.25);
+  }
+  .aviso span{display:block}
+  .aviso::after{
+    content:""; position:absolute; left:0; right:0; bottom:-1px; height:2px;
+    background-image:repeating-linear-gradient(90deg, var(--oro) 0 8px, transparent 8px 16px);
+    opacity:.75;
+  }
+
+  /* ---------- layout ---------- */
+  .wrap{width:100%; max-width:1120px; margin:0 auto; padding:0 24px}
+  main{padding-top:var(--barra)}
+  section{padding:clamp(3.2rem, 6vw, 5.6rem) 0; position:relative}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:.55rem;
+    font-size:.72rem; letter-spacing:.17em; text-transform:uppercase;
+    color:var(--granate); font-weight:700;
+  }
+  .eyebrow::before{
+    content:""; width:28px; height:1px; background:var(--granate); opacity:.55; flex:0 0 auto;
+  }
+  .h2{font-size:clamp(1.65rem, 3.4vw, 2.5rem); line-height:1.15; margin:.7rem 0 0}
+  .lead{color:var(--tinta-2); margin-top:.9rem; max-width:62ch}
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding-top:clamp(2.4rem, 5vw, 4.2rem);
+    padding-bottom:clamp(2.6rem, 5vw, 4.4rem);
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.08fr .92fr; gap:clamp(1.5rem,4vw,3.5rem); align-items:center;
+  }
+  .marca{display:flex; align-items:center; gap:.75rem; margin-bottom:1.5rem}
+  .marca-ico{
+    width:46px; height:46px; flex:0 0 auto; border-radius:50%;
+    background:linear-gradient(145deg,var(--granate),var(--granate-osc));
+    display:grid; place-items:center; box-shadow:var(--sombra);
+  }
+  .marca-txt{font-family:var(--serif); font-size:.95rem; line-height:1.25}
+  .marca-txt b{display:block; font-weight:600}
+  .marca-txt small{color:var(--tinta-3); font-family:var(--sans); font-size:.72rem; letter-spacing:.12em; text-transform:uppercase}
+  h1.titulo{font-size:clamp(2.1rem, 5.6vw, 3.9rem); line-height:1.04}
+  h1.titulo em{font-style:italic; color:var(--granate)}
+  .hero .lead{font-size:clamp(1rem,1.6vw,1.12rem)}
+  .ctas{display:flex; flex-wrap:wrap; gap:.8rem; margin-top:1.9rem}
+  .btn{
+    display:inline-flex; align-items:center; gap:.6rem;
+    padding:.85rem 1.45rem; border-radius:999px;
+    font-weight:650; font-size:.98rem; text-decoration:none;
+    border:1px solid transparent; transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+    max-width:100%;
+  }
+  .btn svg{flex:0 0 auto}
+  .btn-pri{background:var(--granate); color:#fff; box-shadow:0 8px 22px -10px rgba(140,47,57,.75)}
+  .btn-pri:hover{background:var(--granate-osc); transform:translateY(-2px)}
+  .btn-sec{background:rgba(255,253,248,.75); color:var(--tinta); border-color:var(--borde)}
+  .btn-sec:hover{background:var(--blanco); transform:translateY(-2px)}
+  .hero-nota{margin-top:1.1rem; font-size:.84rem; color:var(--tinta-3)}
+
+  .bobinas{
+    position:relative; border-radius:var(--radio);
+    background:linear-gradient(160deg, var(--blanco), var(--crudo-2));
+    border:1px solid var(--borde);
+    box-shadow:var(--sombra);
+    padding:14px;
+  }
+  .bobinas::before{
+    content:""; position:absolute; inset:7px; border:1px dashed rgba(140,47,57,.35); border-radius:9px; pointer-events:none;
+  }
+  .bobinas svg{display:block; width:100%; height:auto; border-radius:8px}
+
+  /* ---------- cinta de rotulos ---------- */
+  .cinta{
+    background:var(--indigo); color:#e8e0d2; overflow:hidden;
+    border-top:1px solid rgba(255,255,255,.1); border-bottom:1px solid rgba(255,255,255,.1);
+    padding:.7rem 0;
+  }
+  .cinta-in{
+    display:flex; flex-wrap:wrap; justify-content:center; gap:.5rem 1.6rem;
+    font-size:.74rem; letter-spacing:.16em; text-transform:uppercase; text-align:center;
+  }
+  .cinta-in span{display:inline-flex; align-items:center; gap:.7rem}
+  .cinta-in span::after{content:"✛"; color:var(--oro); font-size:.8em}
+  .cinta-in span:last-child::after{content:none}
+
+  /* ---------- familias ---------- */
+  .familias{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1.1rem; margin-top:2.6rem;
+  }
+  .fam{
+    position:relative; display:flex; flex-direction:column;
+    background:linear-gradient(170deg, var(--blanco), var(--crudo-2));
+    border:1px solid var(--borde); border-radius:var(--radio);
+    padding:1.35rem 1.25rem 1.45rem;
+    box-shadow:var(--sombra);
+    transition:transform .2s ease, box-shadow .2s ease;
+    min-width:0;
+  }
+  .fam:hover{transform:translateY(-4px); box-shadow:0 1px 2px rgba(35,28,23,.05), 0 20px 36px -16px rgba(35,28,23,.3)}
+  .fam::after{
+    content:""; position:absolute; left:1.25rem; right:1.25rem; top:0; height:3px; border-radius:0 0 3px 3px;
+    background:var(--c, var(--granate));
+  }
+  .fam-ico{
+    width:52px; height:52px; border-radius:12px; display:grid; place-items:center; margin-bottom:1rem;
+    background:color-mix(in srgb, var(--c, var(--granate)) 12%, transparent);
+    border:1px dashed color-mix(in srgb, var(--c, var(--granate)) 45%, transparent);
+  }
+  @supports not (background: color-mix(in srgb, red 10%, transparent)){
+    .fam-ico{background:rgba(140,47,57,.1); border-color:rgba(140,47,57,.4)}
+  }
+  .fam h3{font-size:1.2rem}
+  .fam p{margin-top:.5rem; font-size:.93rem; color:var(--tinta-2)}
+  .fam ul{margin:.9rem 0 0; padding:0; list-style:none; font-size:.86rem; color:var(--tinta-3)}
+  .fam li{position:relative; padding-left:1.05rem; margin-top:.3rem}
+  .fam li::before{
+    content:""; position:absolute; left:0; top:.62em; width:7px; height:1px;
+    background:var(--c, var(--granate)); opacity:.8;
+  }
+
+  /* ---------- pasos ---------- */
+  .pasos-sec{background:rgba(255,253,248,.55); border-top:1px solid var(--borde); border-bottom:1px solid var(--borde)}
+  .pasos{display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; margin-top:2.6rem; position:relative}
+  .paso{
+    position:relative; background:var(--blanco); border:1px solid var(--borde);
+    border-radius:var(--radio); padding:1.6rem 1.4rem; box-shadow:var(--sombra); min-width:0;
+  }
+  .paso-num{
+    position:absolute; top:-18px; left:1.4rem;
+    width:38px; height:38px; border-radius:50%;
+    background:var(--tinta); color:var(--crudo);
+    display:grid; place-items:center;
+    font-family:var(--serif); font-size:1.05rem; font-weight:600;
+    box-shadow:0 6px 14px -6px rgba(35,28,23,.6);
+  }
+  .paso h3{font-size:1.15rem; margin-top:1rem}
+  .paso p{margin-top:.5rem; font-size:.93rem; color:var(--tinta-2)}
+  .paso-ico{margin-top:1.1rem; opacity:.9}
+  .pasos-pie{
+    margin-top:1.8rem; font-size:.88rem; color:var(--tinta-3);
+    border-left:3px solid var(--oro); padding-left:.9rem;
+  }
+
+  /* ---------- contacto ---------- */
+  .cont-grid{display:grid; grid-template-columns:1fr 1fr; gap:clamp(1.4rem,3.5vw,2.6rem); margin-top:2.4rem; align-items:start}
+  .fichas{display:grid; gap:.9rem}
+  .ficha{
+    display:flex; gap:.95rem; align-items:flex-start;
+    background:var(--blanco); border:1px solid var(--borde); border-radius:var(--radio);
+    padding:1.1rem 1.2rem; box-shadow:var(--sombra); min-width:0;
+  }
+  .ficha-ico{
+    width:40px; height:40px; flex:0 0 auto; border-radius:10px; display:grid; place-items:center;
+    background:var(--crudo-2); border:1px solid var(--borde);
+  }
+  .ficha b{display:block; font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--tinta-3); font-weight:700}
+  .ficha .val{font-family:var(--serif); font-size:1.08rem; margin-top:.15rem; word-break:break-word; overflow-wrap:anywhere}
+  .ficha .val a{text-decoration:none; border-bottom:1px solid rgba(140,47,57,.4)}
+  .ficha .val a:hover{color:var(--granate)}
+  .ficha small{display:block; color:var(--tinta-3); font-size:.82rem; margin-top:.2rem}
+  .mapa{
+    background:linear-gradient(170deg,var(--blanco),var(--crudo-2));
+    border:1px solid var(--borde); border-radius:var(--radio); padding:12px; box-shadow:var(--sombra);
+  }
+  .mapa svg{display:block; width:100%; height:auto; border-radius:8px}
+  .mapa-pie{
+    font-size:.78rem; color:var(--tinta-3); padding:.7rem .3rem 0; line-height:1.5;
+  }
+
+  /* ---------- pie ---------- */
+  footer{
+    background:var(--tinta); color:#e9ded0;
+    padding:clamp(2.6rem,5vw,3.6rem) 0 2rem; position:relative;
+  }
+  footer::before{
+    content:""; position:absolute; inset:0 0 auto 0; height:3px;
+    background-image:repeating-linear-gradient(90deg, var(--oro) 0 10px, transparent 10px 20px);
+  }
+  .foot-grid{display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:2rem}
+  footer h3{font-size:1.25rem; color:#fdf6ea}
+  footer p, footer li{font-size:.9rem; color:#c9bdac}
+  footer ul{margin:.6rem 0 0; padding:0; list-style:none}
+  footer li{margin-top:.35rem}
+  footer a{color:#f0e4d2; text-decoration:none; border-bottom:1px solid rgba(240,228,210,.3); word-break:break-word; overflow-wrap:anywhere}
+  footer a:hover{color:#fff}
+  .foot-tit{font-size:.72rem; letter-spacing:.15em; text-transform:uppercase; color:var(--oro); font-weight:700}
+  .credito{
+    margin-top:2.4rem; padding-top:1.3rem; border-top:1px dashed rgba(240,228,210,.28);
+    display:flex; flex-wrap:wrap; gap:.6rem 1.4rem; align-items:center; justify-content:space-between;
+    font-size:.82rem; color:#bcae9c;
+  }
+  .credito strong{color:#f4e9d8; font-weight:600}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:980px){
+    .familias{grid-template-columns:repeat(2,1fr)}
+    .foot-grid{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:860px){
+    :root{--barra:58px}
+    .hero-grid{grid-template-columns:1fr}
+    .bobinas{order:-1}
+    .pasos{grid-template-columns:1fr}
+    .cont-grid{grid-template-columns:1fr}
+  }
+  @media (max-width:560px){
+    body{font-size:16px}
+    .wrap{padding:0 16px}
+    .aviso{font-size:.64rem; letter-spacing:.04em; padding:.4rem .7rem}
+    .familias{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr; gap:1.6rem}
+    .ctas{flex-direction:column; align-items:stretch}
+    .btn{justify-content:center}
+    .credito{flex-direction:column; align-items:flex-start}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none !important; animation:none !important}
+  }
+</style>
+</head>
+<body>
+
+<div class="aviso" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <div class="marca">
+            <div class="marca-ico" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+                <path d="M6 20c5-1.5 7-5 7-9 0-2.6 1.4-4.4 3.6-4.4 1.9 0 3.4 1.4 3.4 3.3 0 1.7-1.2 2.9-2.7 2.9-1.2 0-2-.7-2-1.7" stroke="#f7e9d6" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="6" cy="20" r="2" fill="#f7e9d6"/>
+                <path d="M17.2 6.6l2.6-2.6" stroke="#f7e9d6" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="marca-txt">
+              <b>la Aguja y el Dedal</b>
+              <small>Peñafiel · Valladolid</small>
+            </div>
+          </div>
+
+          <span class="eyebrow">Mercería y tejidos</span>
+          <h1 class="titulo">Tejidos y Mercería<br><em>la Aguja y el Dedal</em></h1>
+          <p class="lead">Mercería, tejidos, lencería y cortinaje en el centro de Peñafiel. Una tienda de barrio para resolver desde el botón que falta hasta las cortinas de toda la casa, con atención directa y sin prisas.</p>
+
+          <div class="ctas">
+            <a class="btn btn-pri" href="tel:+34983881822">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6.6 3h3l1.5 4-2 1.4a12 12 0 0 0 5.5 5.5l1.4-2 4 1.5v3c0 1.1-.9 2-2 2A15.5 15.5 0 0 1 4.6 5c0-1.1.9-2 2-2Z" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Llamar al 983 88 18 22
+            </a>
+            <a class="btn btn-sec" href="#contacto">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 21s7-5.4 7-11a7 7 0 1 0-14 0c0 5.6 7 11 7 11Z" stroke="#231c17" stroke-width="1.6" stroke-linejoin="round"/>
+                <circle cx="12" cy="10" r="2.4" stroke="#231c17" stroke-width="1.6"/>
+              </svg>
+              Cómo llegar
+            </a>
+          </div>
+
+          <p class="hero-nota">C/ Calvario, 6 · 47300 Peñafiel (Valladolid) · Consultar horario por teléfono.</p>
+        </div>
+
+        <!-- Ilustración SVG: bobinas de hilo y costura -->
+        <div class="bobinas">
+          <svg viewBox="0 0 520 400" role="img" aria-label="Ilustración de bobinas de hilo, cinta métrica y puntadas de costura">
+            <defs>
+              <linearGradient id="g-fondo" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#fffdf8"/>
+                <stop offset="100%" stop-color="#eadfca"/>
+              </linearGradient>
+              <linearGradient id="g-b1" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#a8373f"/><stop offset="55%" stop-color="#8c2f39"/><stop offset="100%" stop-color="#5e1d25"/>
+              </linearGradient>
+              <linearGradient id="g-b2" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#3d5570"/><stop offset="55%" stop-color="#2f4156"/><stop offset="100%" stop-color="#1e2b3a"/>
+              </linearGradient>
+              <linearGradient id="g-b3" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#cf9f4d"/><stop offset="55%" stop-color="#b8893b"/><stop offset="100%" stop-color="#8a6526"/>
+              </linearGradient>
+              <linearGradient id="g-b4" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#6a7d62"/><stop offset="55%" stop-color="#51614a"/><stop offset="100%" stop-color="#36412f"/>
+              </linearGradient>
+              <pattern id="p-trama" width="8" height="8" patternUnits="userSpaceOnUse">
+                <path d="M0 2h8" stroke="rgba(109,92,78,.18)" stroke-width="1"/>
+                <path d="M2 0v8" stroke="rgba(109,92,78,.12)" stroke-width="1"/>
+              </pattern>
+            </defs>
+
+            <rect width="520" height="400" rx="8" fill="url(#g-fondo)"/>
+            <rect width="520" height="400" rx="8" fill="url(#p-trama)"/>
+
+            <!-- tela ondulada al fondo -->
+            <path d="M0 268c70-34 120 22 190-6s130 28 200 0 90 8 130-6v144H0Z" fill="rgba(140,47,57,.10)"/>
+            <path d="M0 300c80-30 128 24 196-4s128 26 196-2 68 6 128-8v114H0Z" fill="rgba(47,65,86,.10)"/>
+
+            <!-- hilo suelto -->
+            <path d="M18 84c70 56 118-30 182 8s94 92 160 44 78-70 142-42" stroke="#8c2f39" stroke-width="2.4" fill="none" stroke-linecap="round" opacity=".55"/>
+            <path d="M18 108c74 52 112-26 178 12s98 88 164 40 76-66 142-40" stroke="#2f4156" stroke-width="2" fill="none" stroke-linecap="round" opacity=".4"/>
+
+            <!-- bobinas -->
+            <g>
+              <!-- bobina 1 -->
+              <g>
+                <rect x="58" y="150" width="62" height="118" rx="7" fill="url(#g-b1)"/>
+                <rect x="48" y="142" width="82" height="14" rx="5" fill="#e3d4bb"/>
+                <rect x="48" y="262" width="82" height="14" rx="5" fill="#e3d4bb"/>
+                <g stroke="rgba(255,255,255,.18)" stroke-width="1.5">
+                  <path d="M58 170h62M58 188h62M58 206h62M58 224h62M58 242h62"/>
+                </g>
+              </g>
+              <!-- bobina 2 -->
+              <g>
+                <rect x="150" y="172" width="58" height="96" rx="7" fill="url(#g-b2)"/>
+                <rect x="141" y="164" width="76" height="13" rx="5" fill="#e3d4bb"/>
+                <rect x="141" y="262" width="76" height="14" rx="5" fill="#e3d4bb"/>
+                <g stroke="rgba(255,255,255,.18)" stroke-width="1.5">
+                  <path d="M150 190h58M150 208h58M150 226h58M150 244h58"/>
+                </g>
+              </g>
+              <!-- bobina 3 -->
+              <g>
+                <rect x="238" y="136" width="60" height="132" rx="7" fill="url(#g-b3)"/>
+                <rect x="228" y="128" width="80" height="14" rx="5" fill="#e3d4bb"/>
+                <rect x="228" y="262" width="80" height="14" rx="5" fill="#e3d4bb"/>
+                <g stroke="rgba(255,255,255,.2)" stroke-width="1.5">
+                  <path d="M238 156h60M238 174h60M238 192h60M238 210h60M238 228h60M238 246h60"/>
+                </g>
+              </g>
+              <!-- bobina 4 -->
+              <g>
+                <rect x="328" y="186" width="54" height="82" rx="7" fill="url(#g-b4)"/>
+                <rect x="319" y="178" width="72" height="13" rx="5" fill="#e3d4bb"/>
+                <rect x="319" y="262" width="72" height="14" rx="5" fill="#e3d4bb"/>
+                <g stroke="rgba(255,255,255,.18)" stroke-width="1.5">
+                  <path d="M328 204h54M328 222h54M328 240h54"/>
+                </g>
+              </g>
+            </g>
+
+            <!-- botones -->
+            <g>
+              <circle cx="432" cy="196" r="26" fill="#efe3cd" stroke="#c8b393" stroke-width="2"/>
+              <circle cx="432" cy="196" r="17" fill="none" stroke="#c8b393" stroke-width="1.4"/>
+              <g fill="#8c6f4e"><circle cx="425" cy="190" r="2.6"/><circle cx="439" cy="190" r="2.6"/><circle cx="425" cy="202" r="2.6"/><circle cx="439" cy="202" r="2.6"/></g>
+              <circle cx="462" cy="243" r="18" fill="#e6d7bd" stroke="#c8b393" stroke-width="2"/>
+              <circle cx="462" cy="243" r="11" fill="none" stroke="#c8b393" stroke-width="1.2"/>
+              <g fill="#8c6f4e"><circle cx="457" cy="239" r="2"/><circle cx="467" cy="239" r="2"/><circle cx="457" cy="248" r="2"/><circle cx="467" cy="248" r="2"/></g>
+            </g>
+
+            <!-- cinta metrica -->
+            <g>
+              <path d="M8 342h504" stroke="#d9c7a6" stroke-width="26" stroke-linecap="round"/>
+              <path d="M8 342h504" stroke="#e8dac0" stroke-width="22" stroke-linecap="round"/>
+              <g stroke="#7a6248" stroke-width="1.6">
+                <path d="M40 332v12M70 334v8M100 334v8M130 334v8M160 332v12M190 334v8M220 334v8M250 334v8M280 332v12M310 334v8M340 334v8M370 334v8M400 332v12M430 334v8M460 334v8M490 334v8"/>
+              </g>
+            </g>
+
+            <!-- aguja con puntada -->
+            <g>
+              <path d="M396 108l64-46" stroke="#9aa0a6" stroke-width="5" stroke-linecap="round"/>
+              <path d="M396 108l64-46" stroke="#d6dade" stroke-width="2.4" stroke-linecap="round"/>
+              <circle cx="455" cy="66" r="4.4" fill="none" stroke="#8a9096" stroke-width="2"/>
+              <path d="M300 136c28-6 48-16 62-30 10-10 24-16 38-24" stroke="#8c2f39" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-dasharray="12 9"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CINTA ============ -->
+  <div class="cinta">
+    <div class="wrap">
+      <div class="cinta-in">
+        <span>Tejidos</span><span>Mercería</span><span>Lencería</span><span>Cortinaje</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ FAMILIAS ============ -->
+  <section id="productos">
+    <div class="wrap">
+      <span class="eyebrow">Qué encontrarás en la tienda</span>
+      <h2 class="h2">Cuatro familias, una sola puerta</h2>
+      <p class="lead">Lo que se trabaja en el mostrador, explicado en términos generales. Para disponibilidad, medidas concretas o encargos, lo mejor es una llamada.</p>
+
+      <div class="familias">
+        <article class="fam" style="--c:var(--granate)">
+          <div class="fam-ico" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <path d="M3 9c4-3 7 3 11 0s7 3 11 0v13c-4 3-7-3-11 0S7 19 3 22Z" stroke="#8c2f39" stroke-width="1.6" stroke-linejoin="round"/>
+              <path d="M3 15.5c4-3 7 3 11 0s7 3 11 0" stroke="#8c2f39" stroke-width="1.2" opacity=".6"/>
+            </svg>
+          </div>
+          <h3>Tejidos</h3>
+          <p>Telas por metros para confección y para el hogar, cortadas a la medida que necesites.</p>
+          <ul>
+            <li>Corte por metros</li>
+            <li>Tejidos de vestir y de hogar</li>
+            <li>Asesoramiento sobre el tejido</li>
+          </ul>
+        </article>
+
+        <article class="fam" style="--c:var(--indigo)">
+          <div class="fam-ico" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <circle cx="14" cy="14" r="9" stroke="#2f4156" stroke-width="1.6"/>
+              <circle cx="14" cy="14" r="5" stroke="#2f4156" stroke-width="1.1" opacity=".6"/>
+              <g fill="#2f4156"><circle cx="11.6" cy="11.6" r="1.5"/><circle cx="16.4" cy="11.6" r="1.5"/><circle cx="11.6" cy="16.4" r="1.5"/><circle cx="16.4" cy="16.4" r="1.5"/></g>
+            </svg>
+          </div>
+          <h3>Mercería</h3>
+          <p>El surtido pequeño que todo arreglo necesita: hilos, botones, cremalleras, cintas y avíos de costura.</p>
+          <ul>
+            <li>Hilos y agujas</li>
+            <li>Botones y cremalleras</li>
+            <li>Cintas, gomas y avíos</li>
+          </ul>
+        </article>
+
+        <article class="fam" style="--c:var(--oro)">
+          <div class="fam-ico" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <path d="M6 7h16v6a8 8 0 0 1-8 8 8 8 0 0 1-8-8Z" stroke="#b8893b" stroke-width="1.6" stroke-linejoin="round"/>
+              <path d="M6 7c3 2.5 5 3.5 8 3.5S19 9.5 22 7" stroke="#b8893b" stroke-width="1.2" opacity=".7"/>
+              <path d="M14 21v3" stroke="#b8893b" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Lencería</h3>
+          <p>Lencería y ropa interior de tienda tradicional, con la talla y el consejo que se dan en persona.</p>
+          <ul>
+            <li>Ropa interior</li>
+            <li>Prenda de dormir y de casa</li>
+            <li>Atención por tallas</li>
+          </ul>
+        </article>
+
+        <article class="fam" style="--c:var(--verde)">
+          <div class="fam-ico" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <path d="M4 6h20" stroke="#51614a" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M8 6c0 7-2 9-2 16M14 6c0 7 2 9 2 16M20 6c0 7-2 9-2 16" stroke="#51614a" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M5 22h18" stroke="#51614a" stroke-width="1.2" opacity=".5" stroke-dasharray="3 3"/>
+            </svg>
+          </div>
+          <h3>Cortinaje</h3>
+          <p>Cortinas y textil de ventana tomando las medidas de cada hueco antes de encargar nada.</p>
+          <ul>
+            <li>Cortinas a medida</li>
+            <li>Visillos y rieles</li>
+            <li>Consulta de medidas</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CÓMO TRABAJAMOS ============ -->
+  <section class="pasos-sec" id="como">
+    <div class="wrap">
+      <span class="eyebrow">Cómo trabajamos</span>
+      <h2 class="h2">Tres pasos, de la idea a la prenda</h2>
+      <p class="lead">Un encargo de cortinaje o de confección sigue siempre el mismo orden. Sin sorpresas y hablando contigo en cada paso.</p>
+
+      <div class="pasos">
+        <article class="paso">
+          <div class="paso-num" aria-hidden="true">1</div>
+          <h3>Medir</h3>
+          <p>Primero se toman las medidas del hueco o de la prenda. De ahí sale la cantidad de tejido y lo que hace falta comprar, sin pedir de más.</p>
+          <div class="paso-ico" aria-hidden="true">
+            <svg width="100%" height="30" viewBox="0 0 220 30" preserveAspectRatio="xMinYMid meet" fill="none">
+              <path d="M4 15h212" stroke="#d9c7a6" stroke-width="16" stroke-linecap="round"/>
+              <g stroke="#6d5c4e" stroke-width="1.5">
+                <path d="M24 9v12M48 11v8M72 11v8M96 9v12M120 11v8M144 11v8M168 9v12M192 11v8"/>
+              </g>
+            </svg>
+          </div>
+        </article>
+
+        <article class="paso">
+          <div class="paso-num" aria-hidden="true">2</div>
+          <h3>Elegir tejido</h3>
+          <p>Se ven las opciones de tela sobre el mostrador: caída, grosor, color y uso. Y los avíos que van con ella, del hilo al riel.</p>
+          <div class="paso-ico" aria-hidden="true">
+            <svg width="100%" height="30" viewBox="0 0 220 30" preserveAspectRatio="xMinYMid meet" fill="none">
+              <path d="M4 10c26-8 44 10 70 2s44 10 70 2 44 8 72 2" stroke="#8c2f39" stroke-width="3" stroke-linecap="round" opacity=".75"/>
+              <path d="M4 20c26-8 44 10 70 2s44 10 70 2 44 8 72 2" stroke="#2f4156" stroke-width="3" stroke-linecap="round" opacity=".5"/>
+            </svg>
+          </div>
+        </article>
+
+        <article class="paso">
+          <div class="paso-num" aria-hidden="true">3</div>
+          <h3>Confección o encargo</h3>
+          <p>Con las medidas y el tejido decididos, se corta y se prepara el trabajo o se cursa el encargo. El plazo se confirma contigo en tienda.</p>
+          <div class="paso-ico" aria-hidden="true">
+            <svg width="100%" height="30" viewBox="0 0 220 30" preserveAspectRatio="xMinYMid meet" fill="none">
+              <path d="M4 15h212" stroke="#51614a" stroke-width="2.4" stroke-dasharray="14 10" stroke-linecap="round"/>
+              <circle cx="4" cy="15" r="3.5" fill="#51614a"/>
+              <circle cx="216" cy="15" r="3.5" fill="#51614a"/>
+            </svg>
+          </div>
+        </article>
+      </div>
+
+      <p class="pasos-pie">Para saber qué hay disponible, qué medidas hacen falta o cuánto puede tardar un encargo concreto, lo más rápido es llamar al <a href="tel:+34983881822">983 88 18 22</a>.</p>
+    </div>
+  </section>
+
+  <!-- ============ CONTACTO ============ -->
+  <section id="contacto">
+    <div class="wrap">
+      <span class="eyebrow">Contacto y visita</span>
+      <h2 class="h2">En la calle Calvario, Peñafiel</h2>
+      <p class="lead">La tienda está en el casco urbano de Peñafiel. Puedes pasarte o llamar antes para preguntar por algo concreto.</p>
+
+      <div class="cont-grid">
+        <div class="fichas">
+          <div class="ficha">
+            <div class="ficha-ico" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M6.6 3h3l1.5 4-2 1.4a12 12 0 0 0 5.5 5.5l1.4-2 4 1.5v3c0 1.1-.9 2-2 2A15.5 15.5 0 0 1 4.6 5c0-1.1.9-2 2-2Z" stroke="#8c2f39" stroke-width="1.6" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div>
+              <b>Teléfono</b>
+              <div class="val"><a href="tel:+34983881822">983 88 18 22</a></div>
+              <small>Llamada directa a la tienda.</small>
+            </div>
+          </div>
+
+          <div class="ficha">
+            <div class="ficha-ico" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M12 21s7-5.4 7-11a7 7 0 1 0-14 0c0 5.6 7 11 7 11Z" stroke="#2f4156" stroke-width="1.6" stroke-linejoin="round"/>
+                <circle cx="12" cy="10" r="2.4" stroke="#2f4156" stroke-width="1.6"/>
+              </svg>
+            </div>
+            <div>
+              <b>Dirección</b>
+              <div class="val">C/ Calvario, 6</div>
+              <small>47300 Peñafiel (Valladolid)</small>
+            </div>
+          </div>
+
+          <div class="ficha">
+            <div class="ficha-ico" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="8.5" stroke="#b8893b" stroke-width="1.6"/>
+                <path d="M12 7.5V12l3 2" stroke="#b8893b" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <b>Horario</b>
+              <div class="val">Consultar horario</div>
+              <small>Esta maqueta no publica horarios: conviene confirmarlos por teléfono.</small>
+            </div>
+          </div>
+
+          <div class="ficha">
+            <div class="ficha-ico" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <rect x="3.5" y="5.5" width="17" height="13" rx="2.5" stroke="#51614a" stroke-width="1.6"/>
+                <path d="M4 7l8 6 8-6" stroke="#51614a" stroke-width="1.6" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div>
+              <b>Correo</b>
+              <div class="val"><a href="mailto:aguja_dedal@hotmail.com">aguja_dedal@hotmail.com</a></div>
+              <small>Para consultas que no corran prisa.</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mapa esquemático -->
+        <div class="mapa">
+          <svg viewBox="0 0 520 400" role="img" aria-label="Mapa esquemático de la ubicación: la tienda está en la calle Calvario, número 6, en el casco urbano de Peñafiel">
+            <defs>
+              <linearGradient id="g-mapa" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#f7f2e7"/><stop offset="100%" stop-color="#e9ddc6"/>
+              </linearGradient>
+            </defs>
+            <rect width="520" height="400" rx="8" fill="url(#g-mapa)"/>
+
+            <!-- manzanas -->
+            <g fill="rgba(109,92,78,.11)" stroke="rgba(109,92,78,.22)" stroke-width="1.5">
+              <rect x="34" y="40" width="150" height="104" rx="6"/>
+              <rect x="212" y="40" width="118" height="104" rx="6"/>
+              <rect x="358" y="40" width="128" height="104" rx="6"/>
+              <rect x="34" y="236" width="150" height="124" rx="6"/>
+              <rect x="212" y="236" width="118" height="124" rx="6"/>
+              <rect x="358" y="236" width="128" height="124" rx="6"/>
+            </g>
+
+            <!-- calles secundarias -->
+            <g stroke="#ffffff" stroke-width="16" stroke-linecap="round">
+              <path d="M198 24v352M344 24v352"/>
+              <path d="M24 26h472"/>
+            </g>
+            <g stroke="rgba(109,92,78,.3)" stroke-width="1" stroke-dasharray="6 7">
+              <path d="M198 24v352M344 24v352M24 26h472"/>
+            </g>
+
+            <!-- calle principal: Calvario -->
+            <path d="M24 190h472" stroke="#dcc9a6" stroke-width="30" stroke-linecap="round"/>
+            <path d="M24 190h472" stroke="#efe3cc" stroke-width="24" stroke-linecap="round"/>
+            <path d="M40 190h440" stroke="#b8893b" stroke-width="2" stroke-dasharray="16 12" stroke-linecap="round" opacity=".8"/>
+            <text x="44" y="226" font-family="Georgia, serif" font-size="17" fill="#6d5c4e" font-style="italic">Calle Calvario</text>
+
+            <!-- marcador -->
+            <g>
+              <path d="M284 150c0 22-22 40-22 40s-22-18-22-40a22 22 0 0 1 44 0Z" fill="#8c2f39"/>
+              <circle cx="262" cy="150" r="8.5" fill="#f7eee1"/>
+              <ellipse cx="262" cy="196" rx="20" ry="5" fill="rgba(35,28,23,.16)"/>
+            </g>
+
+            <!-- etiqueta tienda -->
+            <g>
+              <rect x="150" y="72" width="226" height="58" rx="10" fill="#fffdf8" stroke="#d8c8ae" stroke-width="1.5"/>
+              <text x="166" y="96" font-family="Georgia, serif" font-size="17" fill="#231c17" font-weight="600">la Aguja y el Dedal</text>
+              <text x="166" y="117" font-family="system-ui, sans-serif" font-size="13" fill="#6d5c4e">C/ Calvario, 6 · Peñafiel</text>
+            </g>
+
+            <!-- rosa de los vientos -->
+            <g transform="translate(452,330)">
+              <circle r="26" fill="#fffdf8" stroke="#d8c8ae" stroke-width="1.5"/>
+              <path d="M0-18 4-3 0 2-4-3Z" fill="#8c2f39"/>
+              <path d="M0 18 4 3 0-2-4 3Z" fill="#b1a08c"/>
+              <text y="-30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#6d5c4e">N</text>
+            </g>
+          </svg>
+          <p class="mapa-pie">Mapa esquemático dibujado para esta maqueta: sirve para orientar, no es cartografía a escala. La dirección correcta es C/ Calvario, 6, 47300 Peñafiel (Valladolid).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ PIE ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h3>Tejidos y Mercería la Aguja y el Dedal</h3>
+        <p style="margin-top:.6rem">Mercería, tejidos, lencería y cortinaje en Peñafiel (Valladolid).</p>
+      </div>
+      <div>
+        <p class="foot-tit">Contacto</p>
+        <ul>
+          <li>Tel. <a href="tel:+34983881822">983 88 18 22</a></li>
+          <li><a href="mailto:aguja_dedal@hotmail.com">aguja_dedal@hotmail.com</a></li>
+          <li>Consultar horario</li>
+        </ul>
+      </div>
+      <div>
+        <p class="foot-tit">Dónde estamos</p>
+        <ul>
+          <li>C/ Calvario, 6</li>
+          <li>47300 Peñafiel</li>
+          <li>Valladolid</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="credito">
+      <p><strong>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</strong></p>
+      <p>Maqueta no oficial, sin vínculo comercial con el negocio. Datos de contacto tomados de su ficha pública.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Desplazamiento suave compensando la barra fija
+  var barra = document.querySelector('.aviso');
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var id = a.getAttribute('href');
+      if(id.length < 2) return;
+      var t = document.querySelector(id);
+      if(!t) return;
+      e.preventDefault();
+      var off = (barra ? barra.offsetHeight : 0) + 12;
+      var y = t.getBoundingClientRect().top + window.pageYOffset - off;
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({top:y, behavior: reduce ? 'auto' : 'smooth'});
+    });
+  });
+  // La altura real de la barra alimenta el padding superior
+  function ajusta(){
+    if(!barra) return;
+    document.documentElement.style.setProperty('--barra', barra.offsetHeight + 'px');
+  }
+  window.addEventListener('resize', ajusta);
+  ajusta();
+})();
+</script>
+</body>
+</html>

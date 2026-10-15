@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Peluquería Sonia Misiego · Peñafiel</title>
+<meta name="description" content="Peluquería y salón de imagen personal en Peñafiel, Valladolid. Maqueta de propuesta de diseño.">
+<style>
+:root{
+  --ink:#1b1613;
+  --ink-soft:#4b423c;
+  --paper:#f7f3ee;
+  --paper-2:#efe7dd;
+  --line:rgba(27,22,19,.12);
+  --gold:#a8814f;
+  --gold-soft:#c9a673;
+  --plum:#3b2230;
+  --rose:#d8b9a8;
+  --max:1180px;
+  --sans:"Helvetica Neue",Helvetica,Arial,"Segoe UI",system-ui,sans-serif;
+  --flagh:38px;
+  --serif:"Hoefler Text","Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  padding-top:var(--flagh);
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.65;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img,svg{max-width:100%;display:block}
+a{color:inherit}
+
+/* ---------- barra fija ---------- */
+.flag{
+  position:fixed;inset:0 0 auto 0;z-index:100;
+  background:var(--plum);
+  color:#f3e7dc;
+  font-size:12px;
+  letter-spacing:.07em;
+  text-align:center;
+  padding:9px 16px;
+  line-height:1.4;
+  border-bottom:1px solid rgba(201,166,115,.35);
+}
+.flag b{font-weight:600;color:var(--gold-soft)}
+@media (max-width:520px){:root{--flagh:52px}.flag{font-size:10.5px;letter-spacing:.06em}}
+
+.wrap{width:100%;max-width:var(--max);margin:0 auto;padding:0 28px}
+@media (max-width:520px){.wrap{padding:0 16px}}
+
+/* ---------- nav ---------- */
+.nav{
+  position:sticky;top:var(--flagh);z-index:90;
+  background:rgba(247,243,238,.92);
+  backdrop-filter:saturate(1.3) blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:66px;flex-wrap:wrap;padding-top:10px;padding-bottom:10px}
+.brand{display:flex;align-items:center;gap:11px;min-width:0}
+.mono{
+  width:38px;height:38px;flex:0 0 38px;border-radius:50%;
+  background:radial-gradient(120% 120% at 30% 20%,#4d2f3f,#231520 60%);
+  color:var(--gold-soft);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-size:15px;letter-spacing:.04em;
+  border:1px solid rgba(201,166,115,.5);
+}
+.brand-txt{min-width:0}
+.brand-txt strong{display:block;font-family:var(--serif);font-size:16px;font-weight:500;letter-spacing:.02em;line-height:1.2}
+.brand-txt span{display:block;font-size:10.5px;letter-spacing:.17em;text-transform:uppercase;color:var(--ink-soft)}
+.navlinks{display:flex;align-items:center;gap:26px;font-size:12.5px;letter-spacing:.11em;text-transform:uppercase}
+.navlinks a{text-decoration:none;color:var(--ink-soft);padding:4px 0;border-bottom:1px solid transparent}
+.navlinks a:hover{color:var(--ink);border-bottom-color:var(--gold)}
+@media (max-width:860px){.navlinks{display:none}}
+@media (max-width:560px){
+  .nav .wrap{flex-wrap:nowrap;min-height:58px;gap:10px}
+  .brand{gap:9px}
+  .mono{width:34px;height:34px;flex:0 0 34px;font-size:13px}
+  .brand-txt strong{font-size:14.5px}
+  .brand-txt span{font-size:9px;letter-spacing:.12em}
+  .nav .btn{padding:9px 14px;font-size:11.5px;letter-spacing:.03em;gap:7px}
+  .nav .btn svg{width:13px;height:13px;flex:0 0 13px}
+}
+
+.btn{
+  display:inline-flex;align-items:center;gap:9px;
+  background:var(--plum);color:#f6ece2;text-decoration:none;
+  font-size:13px;letter-spacing:.07em;text-transform:uppercase;
+  padding:13px 22px;border-radius:999px;
+  border:1px solid rgba(201,166,115,.45);
+  transition:background .25s,color .25s,transform .25s;
+  white-space:nowrap;
+}
+.btn:hover{background:var(--gold);border-color:var(--gold);color:#1b1613;transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:rgba(27,22,19,.3)}
+.btn.ghost:hover{background:rgba(168,129,79,.14);color:var(--ink);border-color:var(--gold)}
+.btn svg{width:15px;height:15px;flex:0 0 15px}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;padding:84px 0 92px;
+  background:
+    radial-gradient(900px 520px at 88% -10%,rgba(216,185,168,.55),transparent 62%),
+    radial-gradient(700px 480px at 4% 108%,rgba(168,129,79,.22),transparent 60%),
+    linear-gradient(180deg,#f9f6f2,#efe7dd);
+}
+.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:54px;align-items:center}
+@media (max-width:900px){.hero{padding:56px 0 64px}.hero-grid{grid-template-columns:1fr;gap:38px}}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin:0 0 20px}
+.eyebrow::before{content:"";width:34px;height:1px;background:var(--gold);display:block}
+h1{
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(34px,5.6vw,62px);line-height:1.05;
+  letter-spacing:-.015em;margin:0 0 20px;
+}
+h1 em{font-style:italic;color:var(--gold)}
+.lead{font-size:clamp(15.5px,1.4vw,18.5px);color:var(--ink-soft);max-width:34em;margin:0 0 30px}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.tel-note{font-size:12.5px;letter-spacing:.04em;color:var(--ink-soft);margin-top:16px}
+.loreal{margin-top:28px;padding-top:20px;border-top:1px solid var(--line);font-family:var(--serif);font-size:15px;font-style:italic;color:var(--ink-soft);max-width:30em}
+
+/* hero art */
+.art{position:relative;aspect-ratio:4/4.6;border-radius:220px 220px 18px 18px;overflow:hidden;
+  background:linear-gradient(165deg,#3b2230,#6a4254 45%,#c9a673);
+  box-shadow:0 30px 70px -32px rgba(59,34,48,.6)}
+@media (max-width:900px){.art{aspect-ratio:4/3.4;border-radius:180px 180px 16px 16px;max-width:460px;margin:0 auto}}
+
+/* ---------- section shell ---------- */
+section{padding:92px 0}
+@media (max-width:900px){section{padding:62px 0}}
+.shead{max-width:46em;margin:0 0 46px}
+.shead .k{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin:0 0 12px}
+.shead h2{font-family:var(--serif);font-weight:400;font-size:clamp(27px,3.6vw,42px);line-height:1.12;margin:0 0 14px;letter-spacing:-.01em}
+.shead p{margin:0;color:var(--ink-soft);font-size:16.5px}
+
+/* ---------- servicios ---------- */
+#servicios{background:var(--paper)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+@media (max-width:980px){.cards{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:620px){.cards{grid-template-columns:1fr}}
+.card{background:var(--paper);padding:34px 28px;display:flex;flex-direction:column;gap:14px;transition:background .3s}
+.card:hover{background:#fffdfa}
+.card .ic{width:46px;height:46px}
+.card h3{font-family:var(--serif);font-weight:500;font-size:20px;margin:0;letter-spacing:.01em}
+.card p{margin:0;color:var(--ink-soft);font-size:15px}
+.card .n{font-size:11px;letter-spacing:.2em;color:var(--gold);margin-top:auto;padding-top:10px}
+
+/* ---------- pasos ---------- */
+#visita{background:linear-gradient(180deg,#efe7dd,#f7f3ee)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;counter-reset:s}
+@media (max-width:860px){.steps{grid-template-columns:1fr;gap:18px}}
+.step{position:relative;background:rgba(255,253,250,.78);border:1px solid var(--line);border-radius:4px;padding:32px 28px 28px}
+.step .num{font-family:var(--serif);font-size:44px;line-height:1;color:var(--gold-soft);margin:0 0 14px}
+.step h3{font-family:var(--serif);font-weight:500;font-size:20px;margin:0 0 10px}
+.step p{margin:0;color:var(--ink-soft);font-size:15px}
+
+/* ---------- contacto ---------- */
+#contacto{background:var(--plum);color:#f1e5da}
+#contacto .shead h2{color:#fdf6ef}
+#contacto .shead .k{color:var(--gold-soft)}
+#contacto .shead p{color:rgba(241,229,218,.74)}
+.cgrid{display:grid;grid-template-columns:.95fr 1.05fr;gap:46px;align-items:start}
+@media (max-width:900px){.cgrid{grid-template-columns:1fr;gap:34px}}
+.dl{margin:0;display:grid;gap:22px}
+.dl .row{border-top:1px solid rgba(201,166,115,.3);padding-top:16px}
+.dl dt{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-soft);margin:0 0 7px}
+.dl dd{margin:0;font-family:var(--serif);font-size:19px;line-height:1.45;word-break:break-word}
+.dl dd a{text-decoration:none;border-bottom:1px solid rgba(201,166,115,.5)}
+.dl dd a:hover{color:var(--gold-soft)}
+.dl dd small{display:block;font-family:var(--sans);font-size:13px;letter-spacing:.03em;color:rgba(241,229,218,.62);margin-top:5px}
+.mapcard{border:1px solid rgba(201,166,115,.3);border-radius:4px;overflow:hidden;background:rgba(255,255,255,.04)}
+.mapcard .cap{padding:12px 16px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(241,229,218,.66);border-top:1px solid rgba(201,166,115,.25)}
+.mapcard svg{width:100%;height:auto}
+.contact-cta{margin-top:30px;display:flex;flex-wrap:wrap;gap:12px}
+#contacto .btn{background:var(--gold);color:#1b1613;border-color:var(--gold)}
+#contacto .btn:hover{background:#f1e5da;border-color:#f1e5da}
+#contacto .btn.ghost{background:transparent;color:#f1e5da;border-color:rgba(241,229,218,.35)}
+#contacto .btn.ghost:hover{background:rgba(241,229,218,.12);color:#fff}
+
+/* ---------- footer ---------- */
+footer{background:#140d12;color:rgba(241,229,218,.74);padding:50px 0 40px;font-size:14px}
+.fgrid{display:flex;flex-wrap:wrap;gap:26px;justify-content:space-between;align-items:flex-start}
+footer strong{display:block;font-family:var(--serif);font-weight:500;font-size:17px;color:#f6ece2;margin-bottom:6px;letter-spacing:.02em}
+footer a{color:var(--gold-soft);text-decoration:none;border-bottom:1px solid rgba(201,166,115,.4);word-break:break-word}
+footer a:hover{color:#fff}
+.credit{margin-top:34px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);font-size:12.5px;letter-spacing:.05em;color:rgba(241,229,218,.6);line-height:1.6}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<div class="flag">Propuesta de diseño · maqueta no oficial · <b>FFFFFFstudio</b> · Ángel Rubio</div>
+
+<header class="nav">
+  <div class="wrap">
+    <div class="brand">
+      <span class="mono" aria-hidden="true">SM</span>
+      <span class="brand-txt">
+        <strong>Sonia Misiego</strong>
+        <span>Peluquería · Peñafiel</span>
+      </span>
+    </div>
+    <nav class="navlinks" aria-label="Secciones">
+      <a href="#servicios">Servicios</a>
+      <a href="#visita">Primera visita</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="btn" href="tel:+34983103561">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6.6 3.5 9 8l-2.2 1.7a12 12 0 0 0 7.5 7.5L16 15l4.5 2.4v3.1a1 1 0 0 1-1.1 1C10.8 20.8 3.2 13.2 2.5 4.6a1 1 0 0 1 1-1.1h3.1Z"/></svg>
+      983 10 35 61
+    </a>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div class="wrap hero-grid">
+      <div class="rv">
+        <p class="eyebrow">Peluquería y salón de imagen personal</p>
+        <h1>El cuidado del cabello,<br><em>con criterio</em> y sin prisa.</h1>
+        <p class="lead">Peluquería Sonia Misiego es un salón de peluquería e imagen personal en Peñafiel, Valladolid. Corte, color, tratamientos y peinado con asesoramiento personalizado en cada visita.</p>
+        <div class="cta-row">
+          <a class="btn" href="tel:+34983103561">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6.6 3.5 9 8l-2.2 1.7a12 12 0 0 0 7.5 7.5L16 15l4.5 2.4v3.1a1 1 0 0 1-1.1 1C10.8 20.8 3.2 13.2 2.5 4.6a1 1 0 0 1 1-1.1h3.1Z"/></svg>
+            Llamar y pedir cita
+          </a>
+          <a class="btn ghost" href="#servicios">Ver servicios</a>
+        </div>
+        <p class="tel-note">Teléfono 983 10 35 61 · Calle el Almendro, 3 · 47300 Peñafiel (Valladolid)</p>
+        <p class="loreal">Salón icónico L'Oréal Professionnel.</p>
+      </div>
+
+      <div class="rv">
+        <div class="art" role="img" aria-label="Ilustración decorativa de un mechón de cabello con tijeras, en tonos ciruela y dorado">
+          <svg viewBox="0 0 400 460" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <defs>
+              <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#5c3548"/><stop offset="1" stop-color="#2a1824"/>
+              </linearGradient>
+              <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#e9cfa6" stop-opacity=".95"/><stop offset="1" stop-color="#c9a673" stop-opacity=".35"/>
+              </linearGradient>
+              <linearGradient id="g3" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#d8b9a8" stop-opacity=".0"/><stop offset=".5" stop-color="#f2ded0" stop-opacity=".85"/><stop offset="1" stop-color="#d8b9a8" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <rect width="400" height="460" fill="url(#g1)"/>
+            <circle cx="300" cy="96" r="150" fill="#6b4154" opacity=".45"/>
+            <circle cx="92" cy="400" r="130" fill="#c9a673" opacity=".16"/>
+            <!-- mechones -->
+            <g fill="none" stroke="url(#g2)" stroke-width="2.1" stroke-linecap="round" opacity=".9">
+              <path d="M120 24c-34 76-40 150-16 224 20 62 16 118-20 174"/>
+              <path d="M152 18c-30 80-32 156-6 232 22 64 16 118-22 172"/>
+              <path d="M184 22c-26 82-24 158 4 234 24 64 14 116-24 168"/>
+              <path d="M216 18c-22 84-16 160 14 236 24 62 10 114-28 166"/>
+              <path d="M248 24c-18 84-8 160 24 234 24 60 6 112-32 164"/>
+              <path d="M280 20c-14 86 0 162 32 236 22 58 2 110-36 160"/>
+            </g>
+            <!-- brillo -->
+            <ellipse cx="200" cy="196" rx="150" ry="26" fill="url(#g3)" opacity=".5"/>
+            <!-- tijeras -->
+            <g transform="translate(200 330)" fill="none" stroke="#f3e3d2" stroke-width="3.4" stroke-linecap="round" opacity=".92">
+              <path d="M-44-54 20 24"/><path d="M44-54-20 24"/>
+              <circle cx="-30" cy="46" r="20"/><circle cx="30" cy="46" r="20"/>
+            </g>
+            <circle cx="200" cy="330" r="3.6" fill="#f3e3d2" opacity=".95"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section id="servicios">
+    <div class="wrap">
+      <div class="shead rv">
+        <p class="k">Servicios</p>
+        <h2>Lo que hacemos en el salón</h2>
+        <p>Servicios de peluquería e imagen personal. Para conocer el detalle de cada servicio y la disponibilidad, lo mejor es una llamada.</p>
+      </div>
+      <div class="cards rv">
+
+        <article class="card">
+          <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="#a8814f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 7 30 29"/><path d="M36 7 18 29"/>
+            <circle cx="15" cy="37" r="6"/><circle cx="33" cy="37" r="6"/>
+          </svg>
+          <h3>Corte</h3>
+          <p>Corte de cabello estudiado según la forma del rostro, la textura y el tiempo real de peinado de cada día.</p>
+          <p class="n">01</p>
+        </article>
+
+        <article class="card">
+          <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="#a8814f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M24 5c7 8 11 14 11 20a11 11 0 0 1-22 0c0-6 4-12 11-20Z"/>
+            <path d="M18 28a6 6 0 0 0 6 6"/>
+          </svg>
+          <h3>Color</h3>
+          <p>Coloración, matices y aclarados con una propuesta de tono razonada y mantenimiento explicado antes de empezar.</p>
+          <p class="n">02</p>
+        </article>
+
+        <article class="card">
+          <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="#a8814f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M18 6h12l-1.5 8h-9Z"/><path d="M17 14h14v22a6 6 0 0 1-6 6h-2a6 6 0 0 1-6-6Z"/>
+            <path d="M17 26h14"/>
+          </svg>
+          <h3>Tratamientos</h3>
+          <p>Tratamientos de cuidado del cabello y del cuero cabelludo, elegidos tras valorar el estado del pelo en cabina.</p>
+          <p class="n">03</p>
+        </article>
+
+        <article class="card">
+          <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="#a8814f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M31 9a9 9 0 0 1 0 18H20"/>
+            <path d="M14 27 7 34l7 7"/>
+            <path d="M20 27v14"/>
+          </svg>
+          <h3>Peinado</h3>
+          <p>Peinado y acabado para el día a día o para una ocasión especial, con recogidos y ondas trabajados al detalle.</p>
+          <p class="n">04</p>
+        </article>
+
+        <article class="card">
+          <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="#a8814f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="8" y="7" width="32" height="26" rx="4"/>
+            <path d="M24 33v8"/><path d="M16 41h16"/>
+            <path d="M17 20h14M20 15h8"/>
+          </svg>
+          <h3>Asesoramiento de imagen</h3>
+          <p>Asesoramiento de imagen personal: qué corte, qué color y qué rutina encajan con tu cabello y con tu ritmo.</p>
+          <p class="n">05</p>
+        </article>
+
+        <article class="card">
+          <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="#a8814f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M8 40c0-9 7-16 16-16s16 7 16 16"/>
+            <circle cx="24" cy="14" r="7"/>
+          </svg>
+          <h3>Tu cita, a tu medida</h3>
+          <p>Cuéntanos qué buscas al llamar y reservamos el tiempo necesario para hacerlo con calma.</p>
+          <p class="n">06</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PRIMERA VISITA -->
+  <section id="visita">
+    <div class="wrap">
+      <div class="shead rv">
+        <p class="k">Tu primera visita</p>
+        <h2>Tres pasos, ninguna sorpresa</h2>
+        <p>Así funciona si vienes al salón por primera vez.</p>
+      </div>
+      <div class="steps rv">
+        <article class="step">
+          <p class="num">1</p>
+          <h3>Llama y pide cita</h3>
+          <p>Marca el <a href="tel:+34983103561" style="color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold-soft)">983 10 35 61</a>, cuenta qué te gustaría hacerte y buscamos juntos el hueco que mejor te venga.</p>
+        </article>
+        <article class="step">
+          <p class="num">2</p>
+          <h3>Hablamos antes de tocar</h3>
+          <p>En el salón valoramos tu cabello y repasamos la propuesta: qué se puede hacer hoy, qué conviene dejar para otra visita y cómo quedará.</p>
+        </article>
+        <article class="step">
+          <p class="num">3</p>
+          <h3>Sales con un plan</h3>
+          <p>Además del resultado, te llevas las indicaciones de cuidado en casa y una idea clara de cuándo volver para mantenerlo.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <div class="wrap">
+      <div class="shead rv">
+        <p class="k">Contacto</p>
+        <h2>Estamos en el centro de Peñafiel</h2>
+        <p>La forma más rápida de reservar es por teléfono.</p>
+      </div>
+      <div class="cgrid">
+        <div class="rv">
+          <dl class="dl">
+            <div class="row">
+              <dt>Teléfono</dt>
+              <dd><a href="tel:+34983103561">983 10 35 61</a></dd>
+            </div>
+            <div class="row">
+              <dt>Dirección</dt>
+              <dd>Calle el Almendro, 3<br>47300 Peñafiel (Valladolid)</dd>
+            </div>
+            <div class="row">
+              <dt>Horario</dt>
+              <dd>Consultar horario<small>Confírmalo por teléfono antes de venir.</small></dd>
+            </div>
+            <div class="row">
+              <dt>Email</dt>
+              <dd><a href="mailto:soniamisiego@hotmail.es">soniamisiego@hotmail.es</a></dd>
+            </div>
+          </dl>
+          <div class="contact-cta">
+            <a class="btn" href="tel:+34983103561">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6.6 3.5 9 8l-2.2 1.7a12 12 0 0 0 7.5 7.5L16 15l4.5 2.4v3.1a1 1 0 0 1-1.1 1C10.8 20.8 3.2 13.2 2.5 4.6a1 1 0 0 1 1-1.1h3.1Z"/></svg>
+              Llamar al salón
+            </a>
+            <a class="btn ghost" href="mailto:soniamisiego@hotmail.es">Escribir un email</a>
+          </div>
+        </div>
+
+        <div class="rv">
+          <div class="mapcard">
+            <svg viewBox="0 0 640 420" role="img" aria-label="Mapa esquemático: Calle el Almendro, 3, en Peñafiel">
+              <defs>
+                <linearGradient id="mg" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#2d1b26"/><stop offset="1" stop-color="#1c111a"/>
+                </linearGradient>
+              </defs>
+              <rect width="640" height="420" fill="url(#mg)"/>
+              <g stroke="rgba(201,166,115,.14)" stroke-width="1">
+                <path d="M0 60h640M0 140h640M0 220h640M0 300h640M0 380h640"/>
+                <path d="M80 0v420M180 0v420M300 0v420M420 0v420M540 0v420"/>
+              </g>
+              <!-- manzanas -->
+              <g fill="rgba(241,229,218,.05)">
+                <rect x="96" y="76" width="68" height="48" rx="3"/>
+                <rect x="196" y="76" width="88" height="48" rx="3"/>
+                <rect x="436" y="156" width="88" height="48" rx="3"/>
+                <rect x="96" y="236" width="68" height="48" rx="3"/>
+                <rect x="196" y="316" width="88" height="48" rx="3"/>
+                <rect x="436" y="316" width="88" height="48" rx="3"/>
+              </g>
+              <!-- vias -->
+              <g stroke="rgba(241,229,218,.2)" stroke-width="12" stroke-linecap="round" fill="none">
+                <path d="M-10 200h660"/>
+                <path d="M300 -10v440"/>
+              </g>
+              <!-- calle el almendro destacada -->
+              <path d="M110 300 300 300 420 240 600 240" fill="none" stroke="#c9a673" stroke-width="7" stroke-linecap="round" opacity=".95"/>
+              <!-- pin -->
+              <g transform="translate(300 300)">
+                <circle r="30" fill="#c9a673" opacity=".16"/>
+                <circle r="17" fill="#c9a673" opacity=".3"/>
+                <path d="M0-30c-10.5 0-19 8.5-19 19 0 13.5 19 31 19 31s19-17.5 19-31c0-10.5-8.5-19-19-19Z" fill="#f1e5da"/>
+                <circle cy="-11" r="6.5" fill="#3b2230"/>
+              </g>
+              <!-- etiquetas -->
+              <g font-family="Helvetica,Arial,sans-serif" fill="rgba(241,229,218,.82)">
+                <text x="318" y="356" font-size="19" font-weight="bold" fill="#e9cfa6">Calle el Almendro, 3</text>
+                <text x="318" y="380" font-size="15">Peluquería Sonia Misiego</text>
+                <text x="24" y="190" font-size="13" fill="rgba(241,229,218,.5)">47300 Peñafiel</text>
+                <text x="312" y="36" font-size="13" fill="rgba(241,229,218,.5)">Valladolid</text>
+              </g>
+              <rect x="0.5" y="0.5" width="639" height="419" fill="none" stroke="rgba(201,166,115,.3)"/>
+            </svg>
+            <p class="cap">Mapa esquemático · no a escala</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <strong>Peluquería Sonia Misiego</strong>
+        Calle el Almendro, 3 · 47300 Peñafiel (Valladolid)<br>
+        Teléfono <a href="tel:+34983103561">983 10 35 61</a> · Consultar horario
+      </div>
+      <div>
+        <strong>Escríbenos</strong>
+        <a href="mailto:soniamisiego@hotmail.es">soniamisiego@hotmail.es</a>
+      </div>
+    </div>
+    <p class="credit">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)){
+    els.forEach(function(e){e.classList.add('in')});
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+    });
+  },{threshold:.12, rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(e){io.observe(e)});
+
+  // scroll suave con compensación de barras fijas
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(ev){
+      var t = document.querySelector(a.getAttribute('href'));
+      if(!t) return;
+      ev.preventDefault();
+      var flag = document.querySelector('.flag');
+      var nav = document.querySelector('.nav');
+      var off = (flag?flag.offsetHeight:0) + (nav?nav.offsetHeight:0);
+      window.scrollTo({top: t.getBoundingClientRect().top + window.pageYOffset - off + 1, behavior:'smooth'});
+    });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clínica Veterinaria Bilyana · Villena</title>
+<meta name="description" content="Maqueta de propuesta de rediseño para Clínica Veterinaria Bilyana, Villena (Alicante).">
+<style>
+  :root{
+    --ink:#10261f;
+    --ink-soft:#3f5a51;
+    --paper:#f6f8f5;
+    --paper-2:#ffffff;
+    --line:#dfe7e0;
+    --teal:#0f6b5c;
+    --teal-d:#0a4e43;
+    --teal-l:#e3f1ec;
+    --sand:#f3e7d6;
+    --coral:#d9654f;
+    --focus:#0f6b5c;
+    --r:18px;
+    --maxw:1140px;
+    --bar:40px;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --serif: ui-serif, Georgia, "Times New Roman", serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--sans);font-size:17px;line-height:1.6;
+    overflow-x:hidden;padding-top:var(--bar);
+  }
+  img,svg{max-width:100%}
+  a{color:var(--teal-d)}
+  h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.14;letter-spacing:-.015em;margin:0}
+  p{margin:0}
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  /* ---- barra fija de propuesta ---- */
+  .propbar{
+    position:fixed;inset:0 0 auto 0;z-index:100;min-height:var(--bar);
+    background:#0b1f1a;color:#dff0e9;
+    font-size:12.5px;letter-spacing:.04em;text-align:center;
+    padding:9px 16px;line-height:1.45;
+  }
+  .propbar b{font-weight:600;color:#fff}
+  .propbar span{white-space:nowrap}
+
+  /* ---- cabecera ---- */
+  .top{background:var(--paper-2);border-bottom:1px solid var(--line)}
+  .top-in{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:16px 24px}
+  .brand{display:flex;align-items:center;gap:12px;margin-right:auto;min-width:0}
+  .mark{width:42px;height:42px;flex:0 0 42px}
+  .brand-tx strong{display:block;font-family:var(--serif);font-size:19px;letter-spacing:-.01em;line-height:1.1}
+  .brand-tx span{display:block;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin-top:3px}
+  .top-contact{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:14.5px}
+  .top-contact a{text-decoration:none;color:var(--ink-soft);display:inline-flex;align-items:center;gap:7px;
+    border:1px solid var(--line);border-radius:999px;padding:7px 14px;background:#fff;word-break:break-word}
+  .top-contact a:hover{border-color:var(--teal);color:var(--teal-d)}
+  .top-contact a.call{background:var(--teal);border-color:var(--teal);color:#fff;font-weight:600}
+  .top-contact a.call:hover{background:var(--teal-d)}
+  .ic{width:16px;height:16px;flex:0 0 16px}
+
+  /* ---- hero ---- */
+  .hero{position:relative;overflow:hidden;background:
+      radial-gradient(900px 480px at 86% -10%, #cfe8de 0%, rgba(207,232,222,0) 62%),
+      radial-gradient(700px 420px at 2% 110%, var(--sand) 0%, rgba(243,231,214,0) 60%),
+      linear-gradient(170deg,#ffffff 0%, #f2f7f3 100%);
+    border-bottom:1px solid var(--line)}
+  .hero-in{display:grid;grid-template-columns:1.08fr .92fr;gap:48px;align-items:center;padding:72px 24px 78px}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--teal-d);background:var(--teal-l);border-radius:999px;padding:7px 14px;font-weight:600}
+  h1{font-size:clamp(34px,5.2vw,56px);margin:20px 0 0}
+  h1 em{font-style:normal;color:var(--teal);display:block}
+  .lead{margin-top:20px;font-size:clamp(16px,1.6vw,19px);color:var(--ink-soft);max-width:34em}
+  .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+  .btn{display:inline-flex;align-items:center;gap:10px;border-radius:999px;padding:15px 24px;
+    font-size:16px;font-weight:600;text-decoration:none;border:1px solid transparent;transition:.18s}
+  .btn-pri{background:var(--teal);color:#fff;box-shadow:0 10px 24px -14px rgba(15,107,92,.9)}
+  .btn-pri:hover{background:var(--teal-d)}
+  .btn-sec{background:#fff;border-color:var(--line);color:var(--ink)}
+  .btn-sec:hover{border-color:var(--teal);color:var(--teal-d)}
+  .hero-meta{margin-top:26px;display:flex;flex-wrap:wrap;gap:8px 22px;font-size:14px;color:var(--ink-soft)}
+  .hero-meta span{display:inline-flex;align-items:center;gap:8px}
+  .hero-art{width:100%;height:auto;display:block;filter:drop-shadow(0 26px 40px rgba(16,38,31,.12))}
+
+  /* ---- secciones ---- */
+  section{padding:76px 0}
+  .sec-head{max-width:62ch}
+  .kicker{font-size:12px;letter-spacing:.17em;text-transform:uppercase;color:var(--teal);font-weight:700}
+  h2{font-size:clamp(27px,3.4vw,38px);margin:12px 0 0}
+  .sec-head p{margin-top:14px;color:var(--ink-soft)}
+
+  .grid{display:grid;gap:18px;margin-top:38px;grid-template-columns:repeat(3,minmax(0,1fr))}
+  .card{background:var(--paper-2);border:1px solid var(--line);border-radius:var(--r);padding:26px 24px;
+    display:flex;flex-direction:column;gap:12px;transition:.18s}
+  .card:hover{border-color:#bcd6c9;transform:translateY(-2px);box-shadow:0 18px 34px -26px rgba(16,38,31,.5)}
+  .card .bub{width:48px;height:48px;border-radius:14px;background:var(--teal-l);display:flex;align-items:center;justify-content:center;flex:0 0 48px}
+  .card h3{font-size:20px}
+  .card p{font-size:15.5px;color:var(--ink-soft)}
+  .svc-note{margin-top:22px;font-size:14px;color:var(--ink-soft)}
+
+  .steps{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .steps .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .step{position:relative;border:1px solid var(--line);border-radius:var(--r);padding:28px 24px;background:
+      linear-gradient(180deg,#fbfdfb,#f4f8f5)}
+  .num{font-family:var(--serif);font-size:15px;font-weight:700;color:var(--teal);background:#fff;border:1px solid var(--line);
+    width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+  .step h3{font-size:19px}
+  .step p{font-size:15.5px;color:var(--ink-soft);margin-top:10px}
+
+  /* ---- contacto ---- */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:38px;align-items:start}
+  .info{background:var(--paper-2);border:1px solid var(--line);border-radius:var(--r);padding:28px 26px}
+  .row{display:flex;gap:14px;padding:16px 0;border-bottom:1px dashed var(--line)}
+  .row:last-of-type{border-bottom:0;padding-bottom:4px}
+  .row .bub{width:38px;height:38px;border-radius:11px;background:var(--teal-l);display:flex;align-items:center;justify-content:center;flex:0 0 38px}
+  .row dt{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);font-weight:700}
+  .row dd{margin:4px 0 0;font-size:17px;word-break:break-word;overflow-wrap:anywhere}
+  .row dd a{text-decoration:none;font-weight:600}
+  .row dd a:hover{text-decoration:underline}
+  .row small{display:block;color:var(--ink-soft);font-size:13.5px;margin-top:3px}
+  dl{margin:0}
+  .map{background:var(--paper-2);border:1px solid var(--line);border-radius:var(--r);padding:14px;overflow:hidden}
+  .map svg{display:block;width:100%;height:auto;border-radius:12px}
+  .map figcaption{font-size:13px;color:var(--ink-soft);padding:12px 6px 4px}
+  figure{margin:0}
+
+  /* ---- pie ---- */
+  footer{background:#0b1f1a;color:#cfe3db;padding:56px 0 40px}
+  .f-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:30px}
+  footer h3{color:#fff;font-size:18px}
+  footer p,footer li{font-size:14.5px;color:#a9c6bc}
+  footer ul{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:8px}
+  footer a{color:#e8f5f0;text-decoration:none;word-break:break-word;overflow-wrap:anywhere}
+  footer a:hover{text-decoration:underline}
+  .f-brand{display:flex;gap:12px;align-items:center}
+  .f-note{margin-top:38px;padding-top:20px;border-top:1px solid rgba(255,255,255,.14);
+    display:flex;flex-wrap:wrap;gap:10px 20px;justify-content:space-between;font-size:13.5px;color:#9dbcb1}
+  .f-note strong{color:#fff;font-weight:600}
+
+  a:focus-visible,.btn:focus-visible{outline:3px solid #8fd3c1;outline-offset:3px;border-radius:999px}
+
+  @media (max-width:900px){
+    .hero-in{grid-template-columns:1fr;gap:34px;padding:52px 24px 58px}
+    .hero-art{max-width:460px;margin:0 auto}
+    .grid,.steps .grid{grid-template-columns:1fr 1fr}
+    .contact-grid{grid-template-columns:1fr}
+    .f-grid{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:620px){
+    :root{--bar:56px}
+    .propbar{font-size:11.5px;letter-spacing:.02em;padding:8px 14px}
+    body{font-size:16px}
+    .wrap{padding:0 18px}
+    .top-in{padding:14px 18px;gap:14px}
+    .brand{margin-right:0;width:100%}
+    .top-contact{width:100%;gap:8px}
+    .top-contact a{flex:1 1 100%;justify-content:center;font-size:14px}
+    section{padding:54px 0}
+    .hero-in{padding:40px 18px 48px}
+    .grid,.steps .grid,.f-grid{grid-template-columns:1fr}
+    .cta-row .btn{flex:1 1 100%;justify-content:center}
+    .info,.card,.step{padding:22px 20px}
+    .f-note{flex-direction:column}
+  }
+</style>
+</head>
+<body>
+
+<div class="propbar"><span>Propuesta de diseño · maqueta no oficial ·</span> <span><b>FFFFFFstudio</b> · Ángel Rubio</span></div>
+
+<header class="top">
+  <div class="top-in">
+    <div class="brand">
+      <svg class="mark" viewBox="0 0 48 48" aria-hidden="true">
+        <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#139c84"/><stop offset="1" stop-color="#0a4e43"/></linearGradient></defs>
+        <rect x="1" y="1" width="46" height="46" rx="14" fill="url(#g1)"/>
+        <circle cx="16.5" cy="17" r="3.6" fill="#fff" opacity=".92"/>
+        <circle cx="24" cy="13.6" r="3.6" fill="#fff" opacity=".92"/>
+        <circle cx="31.5" cy="17" r="3.6" fill="#fff" opacity=".92"/>
+        <path d="M24 38c-5.6-3.6-9-6.4-9-10.2 0-3 2.3-5.1 5.1-5.1 1.7 0 3.1.8 3.9 2.1.8-1.3 2.2-2.1 3.9-2.1 2.8 0 5.1 2.1 5.1 5.1 0 3.8-3.4 6.6-9 10.2z" fill="#fff"/>
+      </svg>
+      <div class="brand-tx">
+        <strong>Clínica Veterinaria Bilyana</strong>
+        <span>Villena · Alicante</span>
+      </div>
+    </div>
+    <div class="top-contact">
+      <a href="mailto:info@veterinariabilyana.com">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3 6.5l9 6 9-6"/></svg>
+        info@veterinariabilyana.com
+      </a>
+      <a class="call" href="tel:+34965807374">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true">
+          <path d="M5 3.5h3.2l1.6 4-2 1.5a11.5 11.5 0 006.7 6.7l1.5-2 4 1.6V19a1.6 1.6 0 01-1.8 1.6A16.6 16.6 0 013.4 5.3 1.6 1.6 0 015 3.5z"/></svg>
+        965 807 374
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="inicio" style="padding:0">
+    <div class="wrap hero-in">
+      <div>
+        <span class="eyebrow">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M12 20s-7-4.3-7-9.2A4.3 4.3 0 0112 8a4.3 4.3 0 017 2.8c0 4.9-7 9.2-7 9.2z"/></svg>
+          Clínica veterinaria en Villena
+        </span>
+        <h1>Cuidamos de tu animal<em>con calma y criterio clínico.</em></h1>
+        <p class="lead">Consulta general, prevención, diagnóstico y cirugía en un mismo centro. Te explicamos cada paso en lenguaje claro, para que decidas con tranquilidad.</p>
+        <div class="cta-row">
+          <a class="btn btn-pri" href="tel:+34965807374">
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true">
+              <path d="M5 3.5h3.2l1.6 4-2 1.5a11.5 11.5 0 006.7 6.7l1.5-2 4 1.6V19a1.6 1.6 0 01-1.8 1.6A16.6 16.6 0 013.4 5.3 1.6 1.6 0 015 3.5z"/></svg>
+            Llamar: 965 807 374
+          </a>
+          <a class="btn btn-sec" href="#contacto">Cómo llegar</a>
+        </div>
+        <div class="hero-meta">
+          <span>
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path d="M12 21s-6.5-5.4-6.5-10A6.5 6.5 0 0112 4.5 6.5 6.5 0 0118.5 11c0 4.6-6.5 10-6.5 10z"/><circle cx="12" cy="10.8" r="2.4"/></svg>
+            C/ San Juan Bosco, Villena
+          </span>
+          <span>
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3.2 2"/></svg>
+            Consultar horario
+          </span>
+        </div>
+      </div>
+      <svg class="hero-art" viewBox="0 0 520 440" role="img" aria-label="Ilustración: perro y gato junto a una cruz veterinaria">
+        <defs>
+          <linearGradient id="hg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#e9f3ee"/></linearGradient>
+          <linearGradient id="hc" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#149a82"/><stop offset="1" stop-color="#0c5649"/></linearGradient>
+          <linearGradient id="hs" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#f6e6d1"/><stop offset="1" stop-color="#e7cfb0"/></linearGradient>
+        </defs>
+        <rect x="18" y="18" width="484" height="404" rx="40" fill="url(#hg)" stroke="#d7e6de"/>
+        <circle cx="400" cy="128" r="86" fill="#e3f1ec"/>
+        <path d="M400 86h20v26h26v20h-26v26h-20v-26h-26v-20h26z" fill="url(#hc)"/>
+        <ellipse cx="260" cy="372" rx="196" ry="20" fill="#dcebe3"/>
+        <!-- perro -->
+        <g>
+          <ellipse cx="206" cy="300" rx="94" ry="62" fill="url(#hs)"/>
+          <path d="M132 306c-14 10-20 30-12 44h34z" fill="#e7cfb0"/>
+          <circle cx="288" cy="236" r="62" fill="#f6e6d1"/>
+          <path d="M240 190c-24-14-44-6-46 16-2 20 14 32 30 30z" fill="#dcbf9c"/>
+          <path d="M336 190c24-14 44-6 46 16 2 20-14 32-30 30z" fill="#dcbf9c"/>
+          <ellipse cx="300" cy="262" rx="34" ry="26" fill="#fff8ef"/>
+          <ellipse cx="306" cy="252" rx="10" ry="8" fill="#2b3a35"/>
+          <path d="M296 262c0 8 10 8 10 0" stroke="#2b3a35" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <circle cx="268" cy="224" r="6.5" fill="#2b3a35"/>
+          <circle cx="314" cy="222" r="6.5" fill="#2b3a35"/>
+          <circle cx="270" cy="222" r="2.2" fill="#fff"/>
+          <circle cx="316" cy="220" r="2.2" fill="#fff"/>
+          <path d="M150 360h36M200 360h36" stroke="#dcbf9c" stroke-width="16" stroke-linecap="round"/>
+        </g>
+        <!-- gato -->
+        <g>
+          <path d="M96 356c-16-24-10-58 16-72 10-6 22-6 32-2l10-26 18 24 20-22 8 28c24 8 34 36 24 60z" fill="#b9d6cb"/>
+          <circle cx="132" cy="312" r="4.6" fill="#17322b"/>
+          <circle cx="164" cy="312" r="4.6" fill="#17322b"/>
+          <path d="M142 326h12l-6 7z" fill="#17322b"/>
+          <path d="M106 326h22M168 326h22" stroke="#9cc4b6" stroke-width="3" stroke-linecap="round"/>
+        </g>
+        <!-- latido -->
+        <path d="M58 150h40l14-26 18 52 16-32 14 6h38" fill="none" stroke="#0f6b5c" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity=".55"/>
+      </svg>
+    </div>
+  </section>
+
+  <section id="servicios">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Servicios</span>
+        <h2>Lo que podemos atender en la clínica</h2>
+        <p>Un recorrido completo por el cuidado habitual de perros y gatos: prevención, diagnóstico y tratamiento, coordinados por el mismo equipo.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <div class="bub"><svg class="ic" style="width:24px;height:24px" viewBox="0 0 24 24" fill="none" stroke="#0a4e43" stroke-width="1.7" aria-hidden="true">
+            <path d="M5 4.5h7l7 7v8a1.5 1.5 0 01-1.5 1.5h-11A1.5 1.5 0 015 19.5z"/><path d="M12 4.5v7h7"/><path d="M8.5 15.5h7M8.5 18h4.5"/></svg></div>
+          <h3>Consulta general</h3>
+          <p>Revisión clínica, valoración del motivo de visita y plan de actuación explicado paso a paso.</p>
+        </article>
+        <article class="card">
+          <div class="bub"><svg class="ic" style="width:24px;height:24px" viewBox="0 0 24 24" fill="none" stroke="#0a4e43" stroke-width="1.7" aria-hidden="true">
+            <path d="M14.5 3.5l6 6M17.5 6.5l-10 10-4 1 1-4 10-10z"/><path d="M11 9l4 4"/></svg></div>
+          <h3>Vacunación y desparasitación</h3>
+          <p>Calendario preventivo adaptado a la edad, el entorno y los hábitos de cada animal.</p>
+        </article>
+        <article class="card">
+          <div class="bub"><svg class="ic" style="width:24px;height:24px" viewBox="0 0 24 24" fill="none" stroke="#0a4e43" stroke-width="1.7" aria-hidden="true">
+            <path d="M6 3.5v7a4 4 0 008 0v-7"/><path d="M4 3.5h4M12 3.5h4"/><path d="M10 14.5v3a3 3 0 006 0v-3"/><circle cx="19" cy="19.5" r="1.6"/></svg></div>
+          <h3>Cirugía</h3>
+          <p>Intervenciones programadas con preparación previa, control durante y seguimiento posterior.</p>
+        </article>
+        <article class="card">
+          <div class="bub"><svg class="ic" style="width:24px;height:24px" viewBox="0 0 24 24" fill="none" stroke="#0a4e43" stroke-width="1.7" aria-hidden="true">
+            <circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/><path d="M7.5 10.5h6M10.5 7.5v6"/></svg></div>
+          <h3>Pruebas diagnósticas</h3>
+          <p>Apoyo al diagnóstico para confirmar lo que se sospecha en consulta antes de tratar.</p>
+        </article>
+        <article class="card">
+          <div class="bub"><svg class="ic" style="width:24px;height:24px" viewBox="0 0 24 24" fill="none" stroke="#0a4e43" stroke-width="1.7" aria-hidden="true">
+            <rect x="3" y="6.5" width="18" height="11" rx="2.5"/><path d="M7 10.5h4M7 13.5h6"/><circle cx="17" cy="12" r="2"/></svg></div>
+          <h3>Identificación</h3>
+          <p>Identificación y registro del animal, y comprobación de los datos cuando ya lo está.</p>
+        </article>
+        <article class="card">
+          <div class="bub"><svg class="ic" style="width:24px;height:24px" viewBox="0 0 24 24" fill="none" stroke="#0a4e43" stroke-width="1.7" aria-hidden="true">
+            <path d="M12 20.5s-7.5-4.6-7.5-10A4.6 4.6 0 0112 8a4.6 4.6 0 017.5 2.5c0 5.4-7.5 10-7.5 10z"/></svg></div>
+          <h3>Seguimiento del tratamiento</h3>
+          <p>Revisiones de control y ajuste del tratamiento mientras tu animal se recupera.</p>
+        </article>
+      </div>
+      <p class="svc-note">Si tu caso no aparece en esta lista, llámanos y te orientamos: <a href="tel:+34965807374">965 807 374</a>.</p>
+    </div>
+  </section>
+
+  <section class="steps" id="primera-visita">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Tu primera visita</span>
+        <h2>Tres pasos y ya está</h2>
+        <p>Así funciona una primera visita, para que llegues sabiendo qué esperar.</p>
+      </div>
+      <div class="grid">
+        <article class="step">
+          <div class="num">1</div>
+          <h3>Nos llamas</h3>
+          <p>Cuéntanos por teléfono qué le ocurre a tu animal y buscamos un momento para atenderte.</p>
+        </article>
+        <article class="step">
+          <div class="num">2</div>
+          <h3>Revisión en consulta</h3>
+          <p>Hacemos la exploración, repasamos su historial si lo tiene y te comentamos lo que vemos.</p>
+        </article>
+        <article class="step">
+          <div class="num">3</div>
+          <h3>Plan y seguimiento</h3>
+          <p>Te proponemos el plan de cuidado, lo acordamos contigo y organizamos las revisiones necesarias.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Contacto</span>
+        <h2>Dónde estamos y cómo localizarnos</h2>
+        <p>Estamos en Villena. Para cita, dudas o cualquier gestión, el teléfono es la vía más rápida.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="info">
+          <dl>
+            <div class="row">
+              <div class="bub"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#0a4e43" stroke-width="1.8" aria-hidden="true">
+                <path d="M5 3.5h3.2l1.6 4-2 1.5a11.5 11.5 0 006.7 6.7l1.5-2 4 1.6V19a1.6 1.6 0 01-1.8 1.6A16.6 16.6 0 013.4 5.3 1.6 1.6 0 015 3.5z"/></svg></div>
+              <div>
+                <dt>Teléfono</dt>
+                <dd><a href="tel:+34965807374">965 807 374</a></dd>
+              </div>
+            </div>
+            <div class="row">
+              <div class="bub"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#0a4e43" stroke-width="1.8" aria-hidden="true">
+                <rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3 6.5l9 6 9-6"/></svg></div>
+              <div>
+                <dt>Email</dt>
+                <dd><a href="mailto:info@veterinariabilyana.com">info@veterinariabilyana.com</a></dd>
+              </div>
+            </div>
+            <div class="row">
+              <div class="bub"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#0a4e43" stroke-width="1.8" aria-hidden="true">
+                <path d="M12 21s-6.5-5.4-6.5-10A6.5 6.5 0 0112 4.5 6.5 6.5 0 0118.5 11c0 4.6-6.5 10-6.5 10z"/><circle cx="12" cy="10.8" r="2.4"/></svg></div>
+              <div>
+                <dt>Dirección</dt>
+                <dd>C/ San Juan Bosco, 03400 Villena (Alicante)</dd>
+              </div>
+            </div>
+            <div class="row">
+              <div class="bub"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#0a4e43" stroke-width="1.8" aria-hidden="true">
+                <circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3.2 2"/></svg></div>
+              <div>
+                <dt>Horario</dt>
+                <dd>Consultar horario</dd>
+                <small>Llámanos y te confirmamos la disponibilidad.</small>
+              </div>
+            </div>
+          </dl>
+          <div class="cta-row">
+            <a class="btn btn-pri" href="tel:+34965807374">
+              <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true">
+                <path d="M5 3.5h3.2l1.6 4-2 1.5a11.5 11.5 0 006.7 6.7l1.5-2 4 1.6V19a1.6 1.6 0 01-1.8 1.6A16.6 16.6 0 013.4 5.3 1.6 1.6 0 015 3.5z"/></svg>
+              Llamar ahora
+            </a>
+          </div>
+        </div>
+        <figure class="map">
+          <svg viewBox="0 0 560 400" role="img" aria-label="Mapa esquemático de la zona: calle San Juan Bosco en Villena">
+            <rect width="560" height="400" fill="#eef4f0"/>
+            <g stroke="#dfe9e3" stroke-width="1">
+              <path d="M0 40h560M0 120h560M0 200h560M0 280h560M0 360h560"/>
+              <path d="M70 0v400M170 0v400M290 0v400M400 0v400M500 0v400"/>
+            </g>
+            <g fill="#e2ece6">
+              <rect x="80" y="50" width="78" height="56" rx="6"/>
+              <rect x="182" y="50" width="96" height="56" rx="6"/>
+              <rect x="412" y="50" width="76" height="56" rx="6"/>
+              <rect x="80" y="214" width="78" height="52" rx="6"/>
+              <rect x="412" y="214" width="76" height="52" rx="6"/>
+              <rect x="80" y="296" width="196" height="52" rx="6"/>
+              <rect x="412" y="296" width="76" height="52" rx="6"/>
+            </g>
+            <rect x="182" y="296" width="96" height="52" rx="6" fill="#dbe9df"/>
+            <circle cx="470" cy="150" r="34" fill="#dfeede"/>
+            <path d="M0 160h560" stroke="#ffffff" stroke-width="30"/>
+            <path d="M0 160h560" stroke="#cfe0d7" stroke-width="30" stroke-dasharray="0" opacity=".35"/>
+            <path d="M0 160h560" stroke="#ffffff" stroke-width="26"/>
+            <path d="M0 160h560" stroke="#b9cfc4" stroke-width="2" stroke-dasharray="14 12"/>
+            <path d="M300 0v400" stroke="#ffffff" stroke-width="24"/>
+            <path d="M300 0v400" stroke="#b9cfc4" stroke-width="2" stroke-dasharray="12 10"/>
+            <text x="18" y="152" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif" font-size="15" font-weight="600" fill="#5a7268">C/ San Juan Bosco</text>
+            <text x="310" y="382" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif" font-size="13" fill="#7d928a">Villena (Alicante)</text>
+            <g>
+              <path d="M300 160c0 0 0 0 0 0" fill="none"/>
+              <circle cx="300" cy="160" r="26" fill="rgba(15,107,92,.14)"/>
+              <path d="M300 118c-13 0-24 10.5-24 23.5 0 16.5 24 36.5 24 36.5s24-20 24-36.5c0-13-11-23.5-24-23.5z" fill="#0f6b5c"/>
+              <circle cx="300" cy="141" r="8.5" fill="#fff"/>
+            </g>
+            <g transform="translate(330,118)">
+              <rect x="0" y="0" width="186" height="46" rx="10" fill="#ffffff" stroke="#d3e2da"/>
+              <text x="14" y="20" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif" font-size="13" font-weight="700" fill="#10261f">Clínica Veterinaria Bilyana</text>
+              <text x="14" y="36" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif" font-size="12" fill="#5a7268">C/ San Juan Bosco · 03400</text>
+            </g>
+          </svg>
+          <figcaption>Mapa esquemático, no a escala: sirve para situar la calle. Llámanos si necesitas indicaciones.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <div class="f-brand">
+          <svg class="mark" viewBox="0 0 48 48" aria-hidden="true">
+            <rect x="1" y="1" width="46" height="46" rx="14" fill="#11564a"/>
+            <circle cx="16.5" cy="17" r="3.6" fill="#fff" opacity=".9"/>
+            <circle cx="24" cy="13.6" r="3.6" fill="#fff" opacity=".9"/>
+            <circle cx="31.5" cy="17" r="3.6" fill="#fff" opacity=".9"/>
+            <path d="M24 38c-5.6-3.6-9-6.4-9-10.2 0-3 2.3-5.1 5.1-5.1 1.7 0 3.1.8 3.9 2.1.8-1.3 2.2-2.1 3.9-2.1 2.8 0 5.1 2.1 5.1 5.1 0 3.8-3.4 6.6-9 10.2z" fill="#fff"/>
+          </svg>
+          <h3>Clínica Veterinaria Bilyana</h3>
+        </div>
+        <p style="margin-top:14px">Clínica veterinaria en Villena (Alicante). Consulta, prevención, diagnóstico y cirugía.</p>
+      </div>
+      <div>
+        <h3>Contacto</h3>
+        <ul>
+          <li><a href="tel:+34965807374">965 807 374</a></li>
+          <li><a href="mailto:info@veterinariabilyana.com">info@veterinariabilyana.com</a></li>
+          <li>C/ San Juan Bosco, 03400 Villena (Alicante)</li>
+          <li>Consultar horario</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Secciones</h3>
+        <ul>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#primera-visita">Tu primera visita</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="f-note">
+      <span><strong>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</strong></span>
+      <span>Maqueta no oficial, sin vinculación comercial.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var t = document.querySelector(a.getAttribute('href'));
+      if(!t) return;
+      e.preventDefault();
+      var off = document.querySelector('.propbar').offsetHeight + 12;
+      window.scrollTo({top: t.getBoundingClientRect().top + window.pageYOffset - off, behavior:'smooth'});
+    });
+  });
+</script>
+</body>
+</html>

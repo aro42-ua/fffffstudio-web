@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Restaurante Viky · Salón Pedernal — Tordesillas</title>
+<meta name="description" content="Maqueta de propuesta de diseño web para Restaurante Viky / Salón Pedernal, Tordesillas (Valladolid).">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --ink:#1a1512;
+  --ink-soft:#4b4039;
+  --paper:#fbf7f1;
+  --paper-2:#f3ece1;
+  --line:rgba(26,21,18,.14);
+  --gold:#a8762f;
+  --gold-soft:#c9a05a;
+  --wine:#5b2130;
+  --wine-deep:#3a1620;
+  --bar-bg:#241a16;
+  --bar-ink:#f4e9d8;
+  --shadow:0 18px 50px -24px rgba(26,21,18,.45);
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua","Hoefler Text",Georgia,"Times New Roman",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --bar-h:46px;
+}
+html,body{margin:0;padding:0;max-width:100%;overflow-x:hidden}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:17px;
+  line-height:1.65;
+  -webkit-text-size-adjust:100%;
+  -webkit-font-smoothing:antialiased;
+}
+img,svg{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--serif);font-weight:600;letter-spacing:-.015em;margin:0}
+p{margin:0}
+.wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 28px}
+
+/* ---------- barra fija ---------- */
+.mockbar{
+  position:fixed;inset:0 0 auto 0;z-index:100;
+  min-height:var(--bar-h);
+  display:flex;align-items:center;justify-content:center;
+  background:var(--bar-bg);
+  color:var(--bar-ink);
+  border-bottom:1px solid rgba(201,160,90,.38);
+  padding:8px 16px;
+}
+.mockbar span{
+  font-size:12.5px;line-height:1.35;letter-spacing:.07em;text-transform:uppercase;
+  text-align:center;max-width:100%;
+}
+.mockbar b{color:var(--gold-soft);font-weight:600}
+
+/* ---------- nav ---------- */
+.topnav{
+  position:relative;z-index:5;
+  display:flex;align-items:center;justify-content:space-between;gap:18px;
+  padding:22px 0 10px;flex-wrap:wrap;
+}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
+.brand .mark{flex:0 0 auto}
+.brand-txt{min-width:0}
+.brand-txt .n1{font-family:var(--serif);font-size:19px;line-height:1.15;display:block;color:#fff}
+.brand-txt .n2{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.navlinks{display:flex;gap:22px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+.navlinks a{
+  text-decoration:none;font-size:13px;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.72);padding:4px 0;border-bottom:1px solid transparent;
+}
+.navlinks a:hover,.navlinks a:focus-visible{color:#fff;border-bottom-color:var(--gold-soft)}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;
+  padding-top:var(--bar-h);
+  color:#fff;
+  background:
+    radial-gradient(120% 90% at 85% 8%, rgba(201,160,90,.30) 0%, rgba(201,160,90,0) 55%),
+    radial-gradient(90% 70% at 8% 95%, rgba(168,118,47,.22) 0%, rgba(168,118,47,0) 60%),
+    linear-gradient(168deg,#2a1116 0%,var(--wine-deep) 38%,#1b1013 100%);
+  overflow:hidden;
+}
+.hero::after{
+  content:"";position:absolute;inset:auto 0 0 0;height:92px;
+  background:linear-gradient(to top,rgba(251,247,241,1),rgba(251,247,241,0));
+  pointer-events:none;
+}
+.hero-deco{position:absolute;right:-90px;top:60px;width:560px;opacity:.5;pointer-events:none}
+.hero-inner{position:relative;z-index:3;padding:52px 0 140px;max-width:760px}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--gold-soft);margin-bottom:22px;
+}
+.eyebrow::before{content:"";width:34px;height:1px;background:var(--gold-soft);display:block}
+.hero h1{
+  font-size:clamp(2.1rem,6.2vw,4rem);
+  line-height:1.05;
+  margin-bottom:22px;
+}
+.hero h1 em{font-style:italic;color:var(--gold-soft)}
+.hero .lead{
+  font-size:clamp(1rem,2.4vw,1.2rem);
+  color:rgba(255,255,255,.82);
+  max-width:48ch;margin-bottom:34px;
+}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-family:var(--sans);font-size:15px;font-weight:600;letter-spacing:.02em;
+  text-decoration:none;padding:15px 26px;border-radius:999px;border:1px solid transparent;
+  transition:transform .18s ease,background .18s ease,color .18s ease;
+  max-width:100%;
+}
+.btn-primary{background:linear-gradient(180deg,var(--gold-soft),var(--gold));color:#231509;box-shadow:0 14px 30px -14px rgba(0,0,0,.6)}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-ghost{border-color:rgba(255,255,255,.34);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.1)}
+.hero-facts{
+  display:flex;flex-wrap:wrap;gap:12px 34px;margin-top:40px;
+  padding-top:26px;border-top:1px solid rgba(255,255,255,.16);
+}
+.fact{min-width:0}
+.fact .k{font-family:var(--serif);font-size:26px;line-height:1.1;color:#fff;display:block}
+.fact .v{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+
+/* ---------- secciones ---------- */
+section{position:relative;scroll-margin-top:calc(var(--bar-h) + 18px)}
+.sec{padding:76px 0}
+.sec-head{max-width:62ch;margin-bottom:44px}
+.sec-tag{
+  display:block;font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:14px;
+}
+.sec h2{font-size:clamp(1.65rem,4vw,2.5rem);line-height:1.12;margin-bottom:16px}
+.sec-head p{color:var(--ink-soft)}
+
+.cards{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(238px,1fr))}
+.card{
+  background:#fff;border:1px solid var(--line);border-radius:18px;
+  padding:30px 26px 32px;box-shadow:0 10px 26px -22px rgba(26,21,18,.5);
+  display:flex;flex-direction:column;gap:12px;min-width:0;
+}
+.card .ic{width:44px;height:44px;margin-bottom:6px}
+.card h3{font-size:21px;line-height:1.25}
+.card p{color:var(--ink-soft);font-size:15.5px}
+
+/* pasos */
+.steps-sec{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.steps{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));counter-reset:s}
+.step{position:relative;padding:30px 24px;background:#fff;border:1px solid var(--line);border-radius:18px;min-width:0}
+.step .num{
+  font-family:var(--serif);font-size:15px;font-weight:600;
+  width:40px;height:40px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--wine);color:var(--gold-soft);margin-bottom:16px;
+  letter-spacing:.02em;
+}
+.step h3{font-size:19px;margin-bottom:10px}
+.step p{color:var(--ink-soft);font-size:15.5px}
+
+/* contacto */
+.contact-grid{display:grid;gap:34px;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);align-items:start}
+.dl{margin:0;display:grid;gap:22px}
+.dl .row{display:flex;gap:16px;align-items:flex-start;min-width:0}
+.dl .row svg{flex:0 0 auto;margin-top:2px}
+.dl dt{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+.dl dd{margin:0;font-size:17px;line-height:1.5;overflow-wrap:anywhere}
+.dl dd a{text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+.dl dd a:hover{color:var(--gold)}
+.dl .note{font-size:14.5px;color:var(--ink-soft)}
+.map{
+  background:#fff;border:1px solid var(--line);border-radius:18px;
+  padding:16px;box-shadow:var(--shadow);
+}
+.map svg{width:100%;height:auto}
+.map .cap{
+  font-size:13px;color:var(--ink-soft);text-align:center;
+  padding:12px 4px 2px;border-top:1px solid var(--line);margin-top:12px;
+}
+.contact-cta{margin-top:30px}
+.btn-dark{background:var(--wine);color:#fff}
+.btn-dark:hover{background:var(--wine-deep);transform:translateY(-2px)}
+
+/* footer */
+footer{background:var(--bar-bg);color:rgba(244,233,216,.82);padding:56px 0 34px;margin-top:0}
+.foot-grid{display:flex;flex-wrap:wrap;gap:30px;justify-content:space-between;align-items:flex-start}
+.foot-col{min-width:0;max-width:44ch}
+footer h3{font-size:20px;color:#fff;margin-bottom:10px}
+footer p{font-size:14.5px;line-height:1.7}
+footer a{color:var(--gold-soft);text-decoration:none;border-bottom:1px solid rgba(201,160,90,.4);overflow-wrap:anywhere}
+footer a:hover{color:#fff}
+.foot-rule{height:1px;background:rgba(244,233,216,.16);margin:34px 0 20px}
+.credit{font-size:13px;letter-spacing:.03em;color:rgba(244,233,216,.72);line-height:1.6}
+.credit b{color:var(--gold-soft);font-weight:600}
+.disclaimer{font-size:12.5px;color:rgba(244,233,216,.5);margin-top:10px;line-height:1.6}
+
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+:focus-visible{outline:2px solid var(--gold-soft);outline-offset:3px;border-radius:4px}
+
+@media (max-width:900px){
+  .contact-grid{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  :root{--bar-h:58px}
+  body{font-size:16px}
+  .wrap{padding:0 18px}
+  .mockbar span{font-size:11px;letter-spacing:.05em}
+  .topnav{padding:16px 0 6px;gap:12px}
+  .navlinks{gap:16px}
+  .navlinks a{font-size:11.5px;letter-spacing:.09em}
+  .hero-inner{padding:34px 0 112px}
+  .hero-deco{right:-150px;top:120px;width:420px;opacity:.32}
+  .btn{width:100%;padding:16px 20px;font-size:15px}
+  .cta-row{gap:10px}
+  .hero-facts{gap:18px 26px;margin-top:32px}
+  .sec{padding:56px 0}
+  .sec-head{margin-bottom:30px}
+  .card{padding:26px 22px}
+  .step{padding:26px 22px}
+  footer{padding:46px 0 30px}
+}
+</style>
+</head>
+<body>
+
+<div class="mockbar" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · <b>FFFFFFstudio</b> · Ángel Rubio</span>
+</div>
+
+<header class="hero">
+  <svg class="hero-deco" viewBox="0 0 400 400" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="dg" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#c9a05a" stop-opacity=".9"/>
+        <stop offset="1" stop-color="#c9a05a" stop-opacity=".05"/>
+      </linearGradient>
+    </defs>
+    <circle cx="200" cy="200" r="150" fill="none" stroke="url(#dg)" stroke-width="1.2"/>
+    <circle cx="200" cy="200" r="118" fill="none" stroke="url(#dg)" stroke-width=".8"/>
+    <circle cx="200" cy="200" r="186" fill="none" stroke="url(#dg)" stroke-width=".6"/>
+    <g stroke="url(#dg)" stroke-width="1" fill="none">
+      <path d="M200 50v300M50 200h300"/>
+      <path d="M94 94l212 212M306 94L94 306"/>
+    </g>
+    <circle cx="200" cy="200" r="52" fill="none" stroke="#c9a05a" stroke-opacity=".55" stroke-width="1"/>
+    <circle cx="200" cy="200" r="4" fill="#c9a05a" fill-opacity=".7"/>
+  </svg>
+
+  <div class="wrap">
+    <nav class="topnav" aria-label="Navegación principal">
+      <div class="brand">
+        <svg class="mark" width="40" height="40" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+          <rect x=".7" y=".7" width="38.6" height="38.6" rx="10" fill="none" stroke="rgba(201,160,90,.6)"/>
+          <path d="M12 11v9a3.2 3.2 0 006.4 0v-9M15.2 23v7" stroke="#c9a05a" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+          <path d="M25.6 11c2.4 1.4 3.4 4 3 6.6-.3 1.9-1.3 3-3 3.6V30" stroke="#c9a05a" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+        </svg>
+        <span class="brand-txt">
+          <span class="n1">Restaurante Viky</span>
+          <span class="n2">Salón Pedernal</span>
+        </span>
+      </div>
+      <ul class="navlinks">
+        <li><a href="#oferta">Qué ofrecemos</a></li>
+        <li><a href="#celebraciones">Celebraciones</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <div class="hero-inner reveal">
+      <span class="eyebrow">Tordesillas · Valladolid</span>
+      <h1>Restaurante y <em>salón de celebraciones</em> en la Plaza Mayor</h1>
+      <p class="lead">Comer a diario, reunir a la familia o celebrar una fecha importante en un salón preparado para grupos. Reservas y consultas por teléfono.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="tel:+34608364889">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+            <path d="M6.6 3h2.2l1.5 4-2 1.4a11.5 11.5 0 005.3 5.3l1.4-2 4 1.5v2.2A2.6 2.6 0 0116.4 18 13.4 13.4 0 014 5.6 2.6 2.6 0 016.6 3z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+          </svg>
+          Llamar al 608 36 48 89
+        </a>
+        <a class="btn btn-ghost" href="#celebraciones">Organizar una celebración</a>
+      </div>
+      <div class="hero-facts">
+        <div class="fact"><span class="k">108</span><span class="v">plazas</span></div>
+        <div class="fact"><span class="k">1 tenedor</span><span class="v">categoría oficial</span></div>
+        <div class="fact"><span class="k">Plaza Mayor, 14</span><span class="v">Tordesillas</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="sec" id="oferta" aria-labelledby="t-oferta">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-tag">Qué ofrecemos</span>
+        <h2 id="t-oferta">Una casa para el día a día y para las fechas que se recuerdan</h2>
+        <p>Dos espacios con el mismo trato: el restaurante, para comidas y cenas; y el salón, pensado para celebraciones y grupos. La carta y las opciones se concretan por teléfono según la ocasión.</p>
+      </div>
+      <div class="cards">
+        <article class="card reveal">
+          <svg class="ic" viewBox="0 0 48 48" fill="none" aria-hidden="true" focusable="false">
+            <circle cx="24" cy="24" r="22" stroke="#c9a05a" stroke-width="1.2"/>
+            <path d="M17 13v9a3.6 3.6 0 007.2 0v-9M20.6 25.6V35" stroke="#5b2130" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M31 13c2.6 1.6 3.7 4.4 3.2 7.2-.3 2-1.4 3.2-3.2 3.9V35" stroke="#5b2130" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          <h3>Restaurante</h3>
+          <p>Servicio de mesa en un comedor tranquilo, en plena Plaza Mayor. Para comer o cenar, solo o acompañado, sin prisas.</p>
+        </article>
+        <article class="card reveal">
+          <svg class="ic" viewBox="0 0 48 48" fill="none" aria-hidden="true" focusable="false">
+            <circle cx="24" cy="24" r="22" stroke="#c9a05a" stroke-width="1.2"/>
+            <path d="M12 32h24M14 32V22l10-7 10 7v10" stroke="#5b2130" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M20 32v-6h8v6" stroke="#5b2130" stroke-width="1.6" stroke-linejoin="round"/>
+          </svg>
+          <h3>Salón de celebraciones</h3>
+          <p>Salón Pedernal, con capacidad para 108 plazas: bodas, comuniones, bautizos y cualquier reunión que pida un espacio propio.</p>
+        </article>
+        <article class="card reveal">
+          <svg class="ic" viewBox="0 0 48 48" fill="none" aria-hidden="true" focusable="false">
+            <circle cx="24" cy="24" r="22" stroke="#c9a05a" stroke-width="1.2"/>
+            <circle cx="18" cy="20" r="4" stroke="#5b2130" stroke-width="1.7"/>
+            <circle cx="29" cy="19" r="3.4" stroke="#5b2130" stroke-width="1.7"/>
+            <path d="M11 33c.8-4 3.6-6 7-6s6.2 2 7 6M26 27.5c2.8-.4 5.4 1.3 6.4 5" stroke="#5b2130" stroke-width="1.7" stroke-linecap="round"/>
+          </svg>
+          <h3>Comidas de grupo</h3>
+          <p>Familias, cuadrillas, empresas y asociaciones. Se organiza la mesa y el servicio según el número de personas.</p>
+        </article>
+        <article class="card reveal">
+          <svg class="ic" viewBox="0 0 48 48" fill="none" aria-hidden="true" focusable="false">
+            <circle cx="24" cy="24" r="22" stroke="#c9a05a" stroke-width="1.2"/>
+            <path d="M24 12l3.2 6.6 7.3 1-5.3 5.1 1.3 7.2-6.5-3.5-6.5 3.5 1.3-7.2L13.5 19.6l7.3-1z" stroke="#5b2130" stroke-width="1.7" stroke-linejoin="round"/>
+          </svg>
+          <h3>Trato directo</h3>
+          <p>Un teléfono y una conversación. Se hablan las necesidades, el número de comensales y la fecha, y se confirma todo contigo.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec steps-sec" id="celebraciones" aria-labelledby="t-pasos">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-tag">Cómo organizamos tu celebración</span>
+        <h2 id="t-pasos">Tres pasos, una sola conversación</h2>
+        <p>Sin formularios ni intermediarios. Lo que se acuerda por teléfono es lo que se prepara.</p>
+      </div>
+      <div class="steps">
+        <article class="step reveal">
+          <span class="num" aria-hidden="true">01</span>
+          <h3>Nos cuentas la idea</h3>
+          <p>Tipo de celebración, número aproximado de personas y fecha que tienes en mente. Con eso vemos si el salón encaja.</p>
+        </article>
+        <article class="step reveal">
+          <span class="num" aria-hidden="true">02</span>
+          <h3>Ajustamos la propuesta</h3>
+          <p>Hablamos de la disposición del salón, el servicio y las necesidades concretas del grupo hasta dejarlo todo claro.</p>
+        </article>
+        <article class="step reveal">
+          <span class="num" aria-hidden="true">03</span>
+          <h3>Confirmamos y preparamos</h3>
+          <p>Queda fijada la reserva y nos encargamos de tenerlo listo el día acordado, para que tú solo tengas que llegar.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="contacto" aria-labelledby="t-contacto">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-tag">Contacto</span>
+        <h2 id="t-contacto">Estamos en la Plaza Mayor de Tordesillas</h2>
+        <p>La forma más rápida de reservar o preguntar cualquier detalle es una llamada.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="reveal">
+          <dl class="dl">
+            <div class="row">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                <path d="M6.6 3h2.2l1.5 4-2 1.4a11.5 11.5 0 005.3 5.3l1.4-2 4 1.5v2.2A2.6 2.6 0 0116.4 18 13.4 13.4 0 014 5.6 2.6 2.6 0 016.6 3z" stroke="#a8762f" stroke-width="1.6" stroke-linejoin="round"/>
+              </svg>
+              <div>
+                <dt>Teléfono</dt>
+                <dd><a href="tel:+34608364889">608 36 48 89</a></dd>
+              </div>
+            </div>
+            <div class="row">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                <path d="M12 21s7-6 7-11a7 7 0 10-14 0c0 5 7 11 7 11z" stroke="#a8762f" stroke-width="1.6" stroke-linejoin="round"/>
+                <circle cx="12" cy="10" r="2.6" stroke="#a8762f" stroke-width="1.6"/>
+              </svg>
+              <div>
+                <dt>Dirección</dt>
+                <dd>Plaza Mayor, 14<br>47100 Tordesillas (Valladolid)</dd>
+              </div>
+            </div>
+            <div class="row">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                <circle cx="12" cy="12" r="9" stroke="#a8762f" stroke-width="1.6"/>
+                <path d="M12 7v5.4l3.4 2" stroke="#a8762f" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+              <div>
+                <dt>Horario</dt>
+                <dd>Consultar horario</dd>
+                <dd class="note">Confirmamos horarios y disponibilidad por teléfono.</dd>
+              </div>
+            </div>
+            <div class="row">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                <rect x="3" y="5.5" width="18" height="13" rx="2.4" stroke="#a8762f" stroke-width="1.6"/>
+                <path d="M4 7l8 6 8-6" stroke="#a8762f" stroke-width="1.6" stroke-linejoin="round"/>
+              </svg>
+              <div>
+                <dt>Correo</dt>
+                <dd><a href="mailto:escudo13@hotmail.es">escudo13@hotmail.es</a></dd>
+              </div>
+            </div>
+          </dl>
+          <div class="cta-row contact-cta">
+            <a class="btn btn-dark" href="tel:+34608364889">Llamar ahora</a>
+          </div>
+        </div>
+
+        <figure class="map reveal" style="margin:0">
+          <svg viewBox="0 0 420 300" role="img" aria-label="Mapa esquemático: Plaza Mayor, 14, en el centro de Tordesillas.">
+            <defs>
+              <linearGradient id="mg" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#f6f1e7"/>
+                <stop offset="1" stop-color="#ece3d3"/>
+              </linearGradient>
+            </defs>
+            <rect width="420" height="300" rx="10" fill="url(#mg)"/>
+            <g stroke="#dcd0ba" stroke-width="12" stroke-linecap="round">
+              <path d="M-10 70H430M-10 240H430M70 -10V310M330 -10V310"/>
+            </g>
+            <g stroke="#e4dac6" stroke-width="7" stroke-linecap="round">
+              <path d="M-10 155H430M200 -10V310"/>
+            </g>
+            <rect x="140" y="105" width="140" height="100" rx="6" fill="#e9e0cd" stroke="#cfc0a4" stroke-width="1.5"/>
+            <text x="210" y="150" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#8a7a62">Plaza</text>
+            <text x="210" y="169" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#8a7a62">Mayor</text>
+            <g>
+              <circle cx="276" cy="104" r="17" fill="#5b2130" opacity=".14"/>
+              <circle cx="276" cy="104" r="8.5" fill="#5b2130"/>
+              <circle cx="276" cy="104" r="3" fill="#c9a05a"/>
+            </g>
+            <g font-family="-apple-system,Segoe UI,Arial,sans-serif" font-size="12.5" fill="#4b4039">
+              <rect x="252" y="46" width="152" height="42" rx="8" fill="#fff" stroke="#d8cbb3"/>
+              <text x="266" y="63" font-weight="600" fill="#1a1512">Plaza Mayor, 14</text>
+              <text x="266" y="79" fill="#6b5f52">Restaurante Viky</text>
+            </g>
+            <text x="22" y="284" font-family="-apple-system,Segoe UI,Arial,sans-serif" font-size="11.5" fill="#9b8c76" letter-spacing="1.4">TORDESILLAS · VALLADOLID</text>
+            <g transform="translate(378,252)">
+              <circle r="16" fill="#fff" stroke="#d8cbb3"/>
+              <path d="M0 -10L4 2H-4z" fill="#5b2130"/>
+              <text y="12" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#8a7a62">N</text>
+            </g>
+          </svg>
+          <figcaption class="cap">Plano esquemático orientativo, no a escala.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <h3>Restaurante Viky · Salón Pedernal</h3>
+        <p>Plaza Mayor, 14 · 47100 Tordesillas (Valladolid)<br>
+        Teléfono <a href="tel:+34608364889">608 36 48 89</a><br>
+        Correo <a href="mailto:escudo13@hotmail.es">escudo13@hotmail.es</a></p>
+      </div>
+      <div class="foot-col">
+        <h3>Reservas</h3>
+        <p>Consultar horario y disponibilidad por teléfono. Para celebraciones y grupos, indícanos la fecha y el número de personas.</p>
+      </div>
+    </div>
+    <div class="foot-rule"></div>
+    <p class="credit">Propuesta de rediseño presentada por <b>FFFFFFstudio</b> — Ángel Rubio, diseñador web · Alicante</p>
+    <p class="disclaimer">Maqueta no oficial, creada como ejemplo de propuesta. Los datos de contacto y la capacidad del salón proceden de fuentes públicas oficiales. No sustituye a ninguna comunicación del establecimiento.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){
+    for(var i=0;i<els.length;i++){els[i].classList.add('in');}
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  },{threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(el){ io.observe(el); });
+  setTimeout(function(){ els.forEach(function(el){ el.classList.add('in'); }); }, 2600);
+
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(ev){
+      var t = document.querySelector(a.getAttribute('href'));
+      if(!t) return;
+      ev.preventDefault();
+      var bar = document.querySelector('.mockbar');
+      var off = (bar ? bar.offsetHeight : 0) + 14;
+      var y = t.getBoundingClientRect().top + window.pageYOffset - off;
+      window.scrollTo({top:y, behavior:'smooth'});
+    });
+  });
+})();
+</script>
+</body>
+</html>

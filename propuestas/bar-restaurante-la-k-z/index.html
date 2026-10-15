@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bar Restaurante La K-Z · Xàtiva</title>
+<meta name="description" content="Maqueta de propuesta de diseño web para Bar Restaurante La K-Z, bar-cafetería en Xàtiva (Valencia).">
+<style>
+  :root{
+    --espresso:#1c1512;
+    --espresso-2:#271d18;
+    --crema:#f3e7d6;
+    --crema-2:#e4d2bb;
+    --papel:#fbf7f1;
+    --tostado:#b3703a;
+    --tostado-cl:#d99a5c;
+    --oliva:#6f7a52;
+    --borde:rgba(28,21,18,.12);
+    --borde-d:rgba(243,231,214,.16);
+    --maxw:1180px;
+    --bar-h:42px;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    --serif:ui-serif,Georgia,"Iowan Old Style","Palatino Linotype","Times New Roman",serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;padding-top:var(--bar-h);
+    font-family:var(--sans);
+    color:var(--espresso);
+    background:var(--papel);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  img,svg{max-width:100%}
+  a{color:inherit}
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  /* ---------- barra fija de propuesta ---------- */
+  .propbar{
+    position:fixed;inset:0 0 auto 0;z-index:100;height:var(--bar-h);
+    display:flex;align-items:center;justify-content:center;
+    background:#141010;color:var(--crema);
+    border-bottom:1px solid rgba(243,231,214,.14);
+  }
+  .propbar p{
+    margin:0;padding:0 14px;text-align:center;
+    font-size:11.5px;letter-spacing:.10em;text-transform:uppercase;
+    line-height:1.25;
+    overflow-wrap:break-word;
+  }
+  .propbar strong{font-weight:600;color:#fff}
+
+  /* ---------- cabecera del sitio ---------- */
+  .site-head{
+    position:relative;z-index:20;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+    padding:20px 0 14px;
+  }
+  .brand{display:flex;align-items:center;gap:12px;min-width:0}
+  .mark{flex:0 0 auto;width:42px;height:42px}
+  .brand-txt{min-width:0}
+  .brand-txt b{
+    display:block;font-family:var(--serif);font-weight:600;
+    font-size:17px;letter-spacing:.01em;line-height:1.15;
+  }
+  .brand-txt span{
+    display:block;font-size:10.5px;letter-spacing:.20em;text-transform:uppercase;
+    opacity:.62;margin-top:3px;
+  }
+  .nav{display:flex;align-items:center;gap:26px}
+  .nav a{
+    text-decoration:none;font-size:13px;letter-spacing:.04em;
+    padding:6px 0;border-bottom:1px solid transparent;
+  }
+  .nav a:hover{border-bottom-color:var(--tostado)}
+  @media (max-width:860px){.nav{display:none}}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;color:var(--crema);overflow:hidden;border-radius:0}
+  .hero-bg{
+    position:absolute;inset:0;
+    background:
+      radial-gradient(120% 90% at 85% 8%,rgba(217,154,92,.34) 0%,rgba(217,154,92,0) 58%),
+      radial-gradient(90% 70% at 6% 94%,rgba(111,122,82,.30) 0%,rgba(111,122,82,0) 60%),
+      linear-gradient(165deg,#2b201a 0%,#1c1512 48%,#140f0d 100%);
+  }
+  .hero-bg::after{
+    content:"";position:absolute;inset:0;opacity:.35;
+    background-image:
+      repeating-linear-gradient(90deg,rgba(243,231,214,.055) 0 1px,transparent 1px 64px),
+      repeating-linear-gradient(0deg,rgba(243,231,214,.04) 0 1px,transparent 1px 64px);
+  }
+  .hero-in{position:relative;padding:76px 0 84px;display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--tostado-cl);margin:0 0 20px;
+  }
+  .eyebrow::before{content:"";width:34px;height:1px;background:var(--tostado-cl);display:block}
+  h1{
+    font-family:var(--serif);font-weight:500;
+    font-size:clamp(34px,5.4vw,60px);line-height:1.04;letter-spacing:-.015em;
+    margin:0 0 20px;color:#fff;
+  }
+  h1 em{font-style:italic;color:var(--tostado-cl)}
+  .lede{font-size:clamp(15px,1.5vw,18px);max-width:52ch;color:var(--crema-2);margin:0 0 32px}
+  .cta-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:14px 24px;border-radius:999px;text-decoration:none;
+    font-size:14px;font-weight:600;letter-spacing:.01em;
+    border:1px solid transparent;transition:transform .18s ease,background .18s ease,border-color .18s ease;
+    max-width:100%;
+  }
+  .btn span{overflow-wrap:anywhere}
+  .btn-main{background:var(--tostado);color:#fff;box-shadow:0 10px 26px rgba(179,112,58,.28)}
+  .btn-main:hover{background:var(--tostado-cl);transform:translateY(-1px)}
+  .btn-ghost{border-color:rgba(243,231,214,.34);color:var(--crema)}
+  .btn-ghost:hover{border-color:var(--crema);transform:translateY(-1px)}
+  .hero-note{margin:22px 0 0;font-size:12.5px;color:rgba(243,231,214,.60)}
+  .hero-art{display:flex;justify-content:center}
+  .hero-art svg{width:100%;max-width:340px;height:auto}
+  @media (max-width:900px){
+    .hero-in{grid-template-columns:1fr;gap:34px;padding:52px 0 60px}
+    .hero-art{order:-1}
+    .hero-art svg{max-width:220px}
+  }
+
+  /* ---------- tira de atributos ---------- */
+  .strip{background:var(--espresso-2);color:var(--crema-2);border-top:1px solid var(--borde-d)}
+  .strip ul{
+    list-style:none;margin:0;padding:16px 0;display:flex;flex-wrap:wrap;gap:10px 34px;justify-content:center;
+    font-size:11.5px;letter-spacing:.17em;text-transform:uppercase;
+  }
+  .strip li{display:flex;align-items:center;gap:9px}
+  .dot{width:5px;height:5px;border-radius:50%;background:var(--tostado-cl);flex:0 0 auto}
+
+  /* ---------- secciones ---------- */
+  section{scroll-margin-top:calc(var(--bar-h) + 16px)}
+  .sec{padding:84px 0}
+  .sec-head{max-width:62ch;margin:0 0 44px}
+  .kicker{
+    font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--tostado);margin:0 0 14px;
+  }
+  h2{
+    font-family:var(--serif);font-weight:500;
+    font-size:clamp(26px,3.4vw,40px);line-height:1.12;letter-spacing:-.01em;margin:0 0 16px;
+  }
+  .sec-head p{margin:0;font-size:16px;color:rgba(28,21,18,.72)}
+
+  .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .card{
+    background:#fff;border:1px solid var(--borde);border-radius:18px;
+    padding:26px 22px 28px;position:relative;overflow:hidden;
+    transition:transform .2s ease,box-shadow .2s ease;
+  }
+  .card:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(28,21,18,.08)}
+  .card svg{width:38px;height:38px;display:block;margin-bottom:18px}
+  .card h3{font-family:var(--serif);font-weight:600;font-size:19px;margin:0 0 8px}
+  .card p{margin:0;font-size:14.5px;color:rgba(28,21,18,.70)}
+  @media (max-width:1000px){.cards{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:560px){.cards{grid-template-columns:1fr}}
+
+  /* ---------- pasos ---------- */
+  .steps-sec{background:var(--espresso);color:var(--crema)}
+  .steps-sec .kicker{color:var(--tostado-cl)}
+  .steps-sec h2{color:#fff}
+  .steps-sec .sec-head p{color:var(--crema-2)}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--borde-d)}
+  .step{padding:34px 28px 36px;border-right:1px solid var(--borde-d);position:relative}
+  .step:last-child{border-right:0}
+  .step .num{
+    font-family:var(--serif);font-size:40px;line-height:1;
+    color:var(--tostado-cl);opacity:.9;margin:0 0 16px;
+  }
+  .step h3{font-family:var(--serif);font-weight:600;font-size:20px;margin:0 0 10px;color:#fff}
+  .step p{margin:0;font-size:14.5px;color:var(--crema-2)}
+  @media (max-width:860px){
+    .steps{grid-template-columns:1fr}
+    .step{border-right:0;border-bottom:1px solid var(--borde-d)}
+    .step:last-child{border-bottom:0}
+  }
+
+  /* ---------- contacto ---------- */
+  .contact-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:40px;align-items:start}
+  @media (max-width:900px){.contact-grid{grid-template-columns:1fr;gap:30px}}
+  .dl{margin:0;border-top:1px solid var(--borde)}
+  .dl .row{display:grid;grid-template-columns:120px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid var(--borde)}
+  .dl dt{
+    margin:0;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+    color:rgba(28,21,18,.55);padding-top:3px;
+  }
+  .dl dd{margin:0;font-size:15.5px;overflow-wrap:anywhere}
+  .dl dd a{text-decoration:none;border-bottom:1px solid var(--tostado);padding-bottom:1px}
+  .dl dd a:hover{color:var(--tostado)}
+  .pend{
+    display:inline-block;font-size:12px;letter-spacing:.06em;
+    background:var(--crema);border:1px dashed rgba(28,21,18,.26);
+    border-radius:999px;padding:4px 12px;color:rgba(28,21,18,.70);
+  }
+  .map{
+    border:1px solid var(--borde);border-radius:20px;overflow:hidden;background:#fff;
+  }
+  .map svg{display:block;width:100%;height:auto}
+  .map-cap{
+    padding:12px 18px 14px;font-size:12px;color:rgba(28,21,18,.60);
+    border-top:1px solid var(--borde);
+  }
+
+  /* ---------- pie ---------- */
+  footer{background:#141010;color:var(--crema-2);padding:56px 0 34px}
+  .foot-top{display:grid;grid-template-columns:1.2fr 1fr;gap:34px;align-items:start}
+  @media (max-width:760px){.foot-top{grid-template-columns:1fr;gap:26px}}
+  .foot-top h3{font-family:var(--serif);font-weight:500;font-size:24px;color:#fff;margin:0 0 10px}
+  .foot-top p{margin:0;font-size:14.5px}
+  .foot-links{display:flex;flex-direction:column;gap:9px;font-size:14.5px}
+  .foot-links a{text-decoration:none;overflow-wrap:anywhere}
+  .foot-links a:hover{color:var(--tostado-cl)}
+  .foot-rule{height:1px;background:rgba(243,231,214,.16);margin:38px 0 20px}
+  .foot-sig{
+    font-size:12.5px;color:rgba(243,231,214,.66);
+    display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-between;
+  }
+  .foot-sig p{margin:0}
+  .foot-sig p:first-child{flex:1 1 420px;max-width:62ch}
+  .foot-sig p:last-child{flex:0 1 auto}
+
+  /* ---------- ajustes móvil ---------- */
+  @media (max-width:640px){
+    :root{--bar-h:56px}
+    .propbar p{font-size:10px;letter-spacing:.07em;line-height:1.35}
+    .wrap{padding:0 20px}
+    .sec{padding:60px 0}
+    .sec-head{margin-bottom:32px}
+    .strip ul{gap:9px 20px;font-size:10.5px}
+    .dl .row{grid-template-columns:1fr;gap:6px;padding:16px 0}
+    .dl dt{padding-top:0}
+    .dl dd{font-size:16px}
+    .step{padding:28px 0 30px}
+    .foot-sig{gap:10px}
+  }
+</style>
+</head>
+<body>
+
+<div class="propbar" role="note">
+  <p>Propuesta de diseño · maqueta no oficial · <strong>FFFFFFstudio</strong> · Ángel Rubio</p>
+</div>
+
+<header class="wrap site-head">
+  <div class="brand">
+    <svg class="mark" viewBox="0 0 48 48" aria-hidden="true">
+      <defs>
+        <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#d99a5c"/><stop offset="1" stop-color="#b3703a"/>
+        </linearGradient>
+      </defs>
+      <rect x="1" y="1" width="46" height="46" rx="13" fill="#1c1512"/>
+      <rect x="1" y="1" width="46" height="46" rx="13" fill="none" stroke="url(#g1)" stroke-width="1.4"/>
+      <path d="M14 15h12a5 5 0 0 1 0 10h-1v3a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5z" fill="none" stroke="#f3e7d6" stroke-width="1.8" stroke-linejoin="round"/>
+      <path d="M26 18h1a2.5 2.5 0 0 1 0 5h-1" fill="none" stroke="#d99a5c" stroke-width="1.6"/>
+      <path d="M12 36h20" stroke="#d99a5c" stroke-width="1.8" stroke-linecap="round"/>
+    </svg>
+    <div class="brand-txt">
+      <b>Bar Restaurante La K-Z</b>
+      <span>Xàtiva · Valencia</span>
+    </div>
+  </div>
+  <nav class="nav" aria-label="Secciones">
+    <a href="#casa">La casa</a>
+    <a href="#pasos">Cómo trabajamos</a>
+    <a href="#contacto">Contacto</a>
+    <a href="mailto:pejjames@hotmail.com">Escríbenos</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="h1">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="wrap hero-in">
+      <div>
+        <p class="eyebrow">Bar · Cafetería · Xàtiva</p>
+        <h1 id="h1">El bar de siempre,<br><em>a un paso del camino</em></h1>
+        <p class="lede">Café de barra, desayunos sin prisa y una terraza para quedarse. Un bar-cafetería de Xàtiva donde el día empieza temprano y se alarga sin darse cuenta.</p>
+        <div class="cta-row">
+          <a class="btn btn-main" href="mailto:pejjames@hotmail.com">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 7 8.5 6 8.5-6"/>
+            </svg>
+            <span>Escríbenos por correo</span>
+          </a>
+          <a class="btn btn-ghost" href="#contacto"><span>Ver dónde estamos</span></a>
+        </div>
+        <p class="hero-note">Teléfono por confirmar · Consultar horario</p>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 320 320">
+          <defs>
+            <linearGradient id="cup" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#f3e7d6"/><stop offset="1" stop-color="#cfbb9f"/>
+            </linearGradient>
+            <linearGradient id="liq" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#d99a5c"/><stop offset="1" stop-color="#8a4f23"/>
+            </linearGradient>
+          </defs>
+          <circle cx="160" cy="160" r="128" fill="none" stroke="rgba(243,231,214,.20)" stroke-width="1"/>
+          <circle cx="160" cy="160" r="104" fill="rgba(217,154,92,.10)"/>
+          <path d="M104 134h108v44a54 54 0 0 1-54 54h0a54 54 0 0 1-54-54z" fill="url(#cup)"/>
+          <path d="M116 146h84v30a42 42 0 0 1-42 42h0a42 42 0 0 1-42-42z" fill="url(#liq)" opacity=".92"/>
+          <path d="M212 146h14a24 24 0 0 1 0 48h-6" fill="none" stroke="#f3e7d6" stroke-width="9" stroke-linecap="round"/>
+          <rect x="88" y="238" width="144" height="11" rx="5.5" fill="#f3e7d6" opacity=".9"/>
+          <g stroke="rgba(243,231,214,.55)" stroke-width="4" stroke-linecap="round" fill="none">
+            <path d="M138 112c10-9-10-16 0-26"/>
+            <path d="M160 106c11-10-11-18 0-29"/>
+            <path d="M182 112c10-9-10-16 0-26"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="strip">
+    <div class="wrap">
+      <ul>
+        <li><span class="dot" aria-hidden="true"></span>Desayunos</li>
+        <li><span class="dot" aria-hidden="true"></span>Café de barra</li>
+        <li><span class="dot" aria-hidden="true"></span>Tapas</li>
+        <li><span class="dot" aria-hidden="true"></span>Terraza</li>
+        <li><span class="dot" aria-hidden="true"></span>Xàtiva</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- QUÉ OFRECE -->
+  <section class="sec" id="casa">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">La casa</p>
+        <h2>Un bar-cafetería con las cosas en su sitio</h2>
+        <p>Lo de un bar de barrio bien llevado: atender rápido, servir caliente lo que tiene que ir caliente y dejar que cada uno se tome su tiempo. Nada más y nada menos.</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <svg viewBox="0 0 48 48" fill="none" stroke="#b3703a" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M8 36V20h22v16z"/><path d="M30 24h4a5 5 0 0 1 0 10h-4"/><path d="M12 14v2M19 12v4M26 14v2"/>
+          </svg>
+          <h3>Desayunos</h3>
+          <p>La primera hora del día, con el café recién hecho y sitio en la barra para leer el periódico.</p>
+        </article>
+        <article class="card">
+          <svg viewBox="0 0 48 48" fill="none" stroke="#b3703a" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M14 10h20l-2 8H16z"/><path d="M24 18v14"/><path d="M16 36h16"/><circle cx="24" cy="24" r="1.2" fill="#b3703a" stroke="none"/>
+          </svg>
+          <h3>Cafés y bebidas</h3>
+          <p>Cafetería de todo el día: del cortado de media mañana a la caña de la tarde, sin prisas.</p>
+        </article>
+        <article class="card">
+          <svg viewBox="0 0 48 48" fill="none" stroke="#b3703a" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="24" cy="26" r="12"/><path d="M24 26h12"/><path d="M18 14c0-3 2-4 2-6M24 13c0-3 2-4 2-6M30 14c0-3 2-4 2-6"/>
+          </svg>
+          <h3>Tapas para compartir</h3>
+          <p>Cosas de picar para acompañar la conversación. Lo que haya ese día se consulta en la barra.</p>
+        </article>
+        <article class="card">
+          <svg viewBox="0 0 48 48" fill="none" stroke="#b3703a" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 22h36L24 8z"/><path d="M24 22v18"/><path d="M14 40h20"/>
+          </svg>
+          <h3>Terraza</h3>
+          <p>Mesas al aire para cuando el tiempo acompaña, que en Xàtiva es casi todo el año.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CÓMO TRABAJAMOS -->
+  <section class="sec steps-sec" id="pasos">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">Cómo trabajamos</p>
+        <h2>Tres pasos y poco más</h2>
+        <p>Sin reservas complicadas ni intermediarios. Se viene, se pregunta y se sirve.</p>
+      </div>
+      <div class="steps">
+        <article class="step">
+          <p class="num">01</p>
+          <h3>Te acercas o escribes</h3>
+          <p>Puedes pasarte directamente por la barra o escribirnos un correo si prefieres preguntar antes de venir.</p>
+        </article>
+        <article class="step">
+          <p class="num">02</p>
+          <h3>Nos cuentas qué necesitas</h3>
+          <p>Un desayuno rápido, una mesa en la terraza o algo para un grupo. Lo vemos y te decimos qué podemos hacer.</p>
+        </article>
+        <article class="step">
+          <p class="num">03</p>
+          <h3>Te sentamos y te servimos</h3>
+          <p>Dentro o fuera, según el día. A partir de ahí el tiempo es tuyo.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="sec" id="contacto">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">Contacto</p>
+        <h2>Dónde encontrarnos</h2>
+        <p>Estamos en Xàtiva, en la zona del Braçal del Roncador.</p>
+      </div>
+      <div class="contact-grid">
+        <dl class="dl">
+          <div class="row">
+            <dt>Dirección</dt>
+            <dd>Parcela Braçal del Roncador, 22<br>46800 Xàtiva (Valencia)</dd>
+          </div>
+          <div class="row">
+            <dt>Teléfono</dt>
+            <dd><span class="pend">Teléfono por confirmar</span></dd>
+          </div>
+          <div class="row">
+            <dt>Correo</dt>
+            <dd><a href="mailto:pejjames@hotmail.com">pejjames@hotmail.com</a></dd>
+          </div>
+          <div class="row">
+            <dt>Horario</dt>
+            <dd><span class="pend">Consultar horario</span></dd>
+          </div>
+          <div class="row">
+            <dt>Actividad</dt>
+            <dd>Bar-cafetería</dd>
+          </div>
+        </dl>
+
+        <div class="map">
+          <svg viewBox="0 0 640 420" role="img" aria-label="Mapa esquemático de la zona del Braçal del Roncador, en Xàtiva, con la situación aproximada del bar.">
+            <defs>
+              <linearGradient id="mapbg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#f7f1e7"/><stop offset="1" stop-color="#ece1cf"/>
+              </linearGradient>
+            </defs>
+            <rect width="640" height="420" fill="url(#mapbg)"/>
+            <g fill="rgba(111,122,82,.18)">
+              <path d="M0 0h190v120H0z"/>
+              <path d="M470 300h170v120H470z"/>
+            </g>
+            <g stroke="rgba(28,21,18,.10)" stroke-width="1">
+              <path d="M0 60h640M0 180h640M0 300h640M120 0v420M300 0v420M480 0v420"/>
+            </g>
+            <path d="M-20 250 C 140 236, 300 268, 660 230" fill="none" stroke="#cfbb9f" stroke-width="26" stroke-linecap="round"/>
+            <path d="M-20 250 C 140 236, 300 268, 660 230" fill="none" stroke="#fbf7f1" stroke-width="3" stroke-dasharray="14 12"/>
+            <path d="M330 440 C 318 320, 352 236, 342 -20" fill="none" stroke="#dccbb2" stroke-width="16" stroke-linecap="round"/>
+            <g fill="rgba(28,21,18,.08)">
+              <rect x="40" y="290" width="86" height="56" rx="4"/>
+              <rect x="150" y="312" width="64" height="48" rx="4"/>
+              <rect x="430" y="110" width="92" height="52" rx="4"/>
+              <rect x="540" y="140" width="58" height="44" rx="4"/>
+              <rect x="60" y="130" width="70" height="40" rx="4"/>
+            </g>
+            <g font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" fill="rgba(28,21,18,.52)" font-size="13" letter-spacing="1.4">
+              <text x="26" y="232">BRAÇAL DEL RONCADOR</text>
+              <text x="352" y="92" transform="rotate(-6 352 92)">XÀTIVA</text>
+              <text x="470" y="392" fill="rgba(111,122,82,.85)">ZONA DE HUERTA</text>
+            </g>
+            <g>
+              <circle cx="342" cy="252" r="30" fill="rgba(179,112,58,.16)"/>
+              <circle cx="342" cy="252" r="30" fill="none" stroke="rgba(179,112,58,.40)" stroke-width="1"/>
+              <path d="M342 222a15 15 0 0 0-15 15c0 11 15 27 15 27s15-16 15-27a15 15 0 0 0-15-15z" fill="#b3703a"/>
+              <circle cx="342" cy="237" r="5.4" fill="#fbf7f1"/>
+            </g>
+            <g font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif">
+              <rect x="372" y="222" width="212" height="52" rx="10" fill="#1c1512"/>
+              <text x="388" y="245" fill="#f3e7d6" font-size="14" font-weight="600">Bar Restaurante La K-Z</text>
+              <text x="388" y="263" fill="rgba(243,231,214,.66)" font-size="12">Parcela Braçal del Roncador, 22</text>
+            </g>
+            <g>
+              <circle cx="596" cy="48" r="22" fill="#fbf7f1" stroke="rgba(28,21,18,.14)"/>
+              <path d="M596 32v26" stroke="rgba(28,21,18,.30)" stroke-width="1"/>
+              <path d="M596 30l6 12h-12z" fill="#b3703a"/>
+              <text x="596" y="66" text-anchor="middle" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="9" fill="rgba(28,21,18,.55)" letter-spacing="1">N</text>
+            </g>
+          </svg>
+          <p class="map-cap">Mapa esquemático, no a escala. Situación aproximada sobre la dirección del directorio municipal.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <h3>Bar Restaurante La K-Z</h3>
+        <p>Bar-cafetería en Xàtiva (Valencia). Parcela Braçal del Roncador, 22 · 46800 Xàtiva.</p>
+      </div>
+      <div class="foot-links">
+        <a href="mailto:pejjames@hotmail.com">pejjames@hotmail.com</a>
+        <span>Teléfono por confirmar</span>
+        <span>Consultar horario</span>
+      </div>
+    </div>
+    <div class="foot-rule" aria-hidden="true"></div>
+    <div class="foot-sig">
+      <p>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+      <p>Maqueta no oficial, sin vínculo con el negocio.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.querySelector(a.getAttribute('href'));
+      if(!t)return;
+      e.preventDefault();
+      t.scrollIntoView({behavior:'smooth',block:'start'});
+    });
+  });
+</script>
+</body>
+</html>
