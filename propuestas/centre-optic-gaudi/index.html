@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Centre Òptic Gaudí · Manresa</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0;max-width:100%;overflow-x:hidden}
+:root{
+  --ink:#0d1b2a;
+  --ink-soft:#44566b;
+  --line:#dfe6ee;
+  --bg:#ffffff;
+  --bg-soft:#f4f7fb;
+  --teal:#0f6e78;
+  --teal-dark:#0a4d55;
+  --teal-light:#e2f1f2;
+  --amber:#e0a33a;
+  --bar-h:40px;
+  --radius:16px;
+  --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+}
+body{
+  font-family:var(--font);
+  color:var(--ink);
+  background:var(--bg);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  font-size:17px;
+}
+img,svg{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{line-height:1.15;margin:0;letter-spacing:-0.02em;font-weight:700}
+
+/* ---- barra fija ---- */
+.disclaimer{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  min-height:var(--bar-h);
+  display:flex;align-items:center;justify-content:center;
+  background:#0d1b2a;color:#dbe6f0;
+  font-size:12.5px;letter-spacing:.04em;
+  padding:8px 16px;text-align:center;
+  border-bottom:1px solid rgba(255,255,255,.12);
+}
+.page{padding-top:var(--bar-h)}
+
+.wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 24px}
+
+/* ---- nav ---- */
+.nav{
+  border-bottom:1px solid var(--line);background:#fff;
+}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
+.brand .mark{flex:0 0 auto}
+.brand-txt{min-width:0}
+.brand-name{font-weight:700;font-size:17px;letter-spacing:-0.01em;white-space:nowrap}
+.brand-sub{font-size:12px;color:var(--ink-soft);letter-spacing:.08em;text-transform:uppercase}
+.nav-links{display:flex;gap:26px;font-size:15px;color:var(--ink-soft)}
+.nav-links a{text-decoration:none}
+.nav-links a:hover{color:var(--teal)}
+.nav-tel{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--teal);color:#fff;text-decoration:none;
+  padding:10px 18px;border-radius:999px;font-weight:600;font-size:15px;white-space:nowrap;
+}
+@media(max-width:860px){.nav-links{display:none}}
+
+/* ---- hero ---- */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(900px 520px at 15% -10%, #e4f3f4 0%, rgba(228,243,244,0) 60%),
+    radial-gradient(700px 500px at 95% 10%, #eef2fb 0%, rgba(238,242,251,0) 65%),
+    linear-gradient(180deg,#fbfdfe 0%, #ffffff 100%);
+  border-bottom:1px solid var(--line);
+}
+.hero-in{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding:72px 0 76px}
+.eyebrow{
+  display:inline-block;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--teal-dark);background:var(--teal-light);
+  padding:7px 14px;border-radius:999px;font-weight:600;margin-bottom:22px;
+}
+.hero h1{font-size:clamp(34px,4.6vw,56px)}
+.hero p.lead{font-size:clamp(16px,1.5vw,19px);color:var(--ink-soft);margin:20px 0 0;max-width:34em}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;text-decoration:none;
+  padding:15px 26px;border-radius:999px;font-weight:650;font-size:16px;border:1px solid transparent;
+}
+.btn-primary{background:var(--teal);color:#fff}
+.btn-primary:hover{background:var(--teal-dark)}
+.btn-ghost{background:#fff;color:var(--ink);border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--teal);color:var(--teal-dark)}
+.hero-note{margin-top:18px;font-size:14px;color:var(--ink-soft)}
+
+.hero-art{position:relative}
+.art-card{
+  background:#fff;border:1px solid var(--line);border-radius:24px;
+  padding:26px;box-shadow:0 24px 60px -32px rgba(13,27,42,.35);
+}
+
+/* ---- cita destacada ---- */
+.cita{padding:0 0 0}
+.cita-box{
+  margin-top:-34px;position:relative;z-index:2;
+  background:linear-gradient(135deg,var(--teal-dark) 0%, var(--teal) 55%, #17909b 100%);
+  color:#fff;border-radius:var(--radius);
+  padding:30px 34px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;
+  box-shadow:0 26px 50px -30px rgba(10,77,85,.8);
+}
+.cita-box h2{font-size:clamp(20px,2.2vw,26px)}
+.cita-box p{margin:8px 0 0;color:#d3ecee;font-size:15.5px;max-width:48em}
+.cita-actions{display:flex;flex-wrap:wrap;gap:12px}
+.btn-white{background:#fff;color:var(--teal-dark)}
+.btn-outline-w{background:transparent;color:#fff;border-color:rgba(255,255,255,.55)}
+
+/* ---- secciones ---- */
+section{scroll-margin-top:calc(var(--bar-h) + 16px)}
+.sec{padding:76px 0}
+.sec-soft{background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.sec-head{max-width:46em;margin-bottom:40px}
+.sec-head h2{font-size:clamp(26px,3.1vw,38px)}
+.sec-head p{color:var(--ink-soft);margin:14px 0 0;font-size:17px}
+.kicker{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);font-weight:650;margin-bottom:12px}
+
+/* ---- servicios ---- */
+.grid-serv{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:28px 26px;display:flex;flex-direction:column;gap:14px;
+}
+.card .ico{
+  width:52px;height:52px;border-radius:14px;
+  background:linear-gradient(140deg,var(--teal-light),#f3f8fb);
+  display:flex;align-items:center;justify-content:center;flex:0 0 auto;
+}
+.card h3{font-size:19px}
+.card p{margin:0;color:var(--ink-soft);font-size:15.5px}
+.card .num{font-size:12px;letter-spacing:.12em;color:#9bacbe;font-weight:650}
+
+/* ---- pasos ---- */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;counter-reset:s}
+.step{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px 26px;position:relative;
+}
+.step .badge{
+  width:42px;height:42px;border-radius:50%;background:var(--teal);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-weight:700;font-size:17px;margin-bottom:16px;
+}
+.step h3{font-size:18px;margin-bottom:8px}
+.step p{margin:0;color:var(--ink-soft);font-size:15.5px}
+
+/* ---- contacto ---- */
+.contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:28px;align-items:stretch}
+.contact-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:32px}
+.info-list{list-style:none;margin:0;padding:0;display:grid;gap:20px}
+.info-list li{display:flex;gap:14px;align-items:flex-start}
+.info-list .ico-s{
+  width:40px;height:40px;border-radius:11px;background:var(--teal-light);
+  display:flex;align-items:center;justify-content:center;flex:0 0 auto;
+}
+.info-label{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);font-weight:650}
+.info-val{font-size:17px;font-weight:600;word-break:break-word}
+.info-val a{text-decoration:none;color:var(--teal-dark)}
+.map-card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px;display:flex;flex-direction:column;gap:12px;
+}
+.map-card .cap{font-size:13px;color:var(--ink-soft);text-align:center}
+.map-svg{width:100%;height:auto;border-radius:10px;overflow:hidden;display:block}
+
+/* ---- footer ---- */
+.foot{background:#0d1b2a;color:#c3d1de;padding:54px 0 34px;font-size:15px}
+.foot a{color:#9fe0e6;text-decoration:none;word-break:break-word}
+.foot-top{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:32px;padding-bottom:30px;border-bottom:1px solid rgba(255,255,255,.12)}
+.foot h4{margin:0 0 12px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#7f94a8;font-weight:650}
+.foot .fname{color:#fff;font-weight:700;font-size:18px;margin-bottom:8px}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.foot-sig{padding-top:24px;font-size:13.5px;color:#8ea2b5;text-align:center;line-height:1.7}
+
+@media(max-width:980px){
+  .hero-in{grid-template-columns:1fr;gap:40px;padding:52px 0 60px}
+  .grid-serv{grid-template-columns:repeat(2,1fr)}
+  .contact-grid{grid-template-columns:1fr}
+  .foot-top{grid-template-columns:1fr 1fr}
+}
+@media(max-width:720px){
+  body{font-size:16px}
+  .wrap{padding:0 18px}
+  .sec{padding:54px 0}
+  .cita-box{grid-template-columns:1fr;padding:26px 22px;margin-top:-26px}
+  .grid-serv,.steps{grid-template-columns:1fr}
+  .foot-top{grid-template-columns:1fr;gap:26px}
+  .nav-in{padding:14px 0}
+  .brand-name{font-size:15.5px;white-space:normal}
+  .nav-tel{padding:9px 14px;font-size:14px}
+  .btn{width:100%;justify-content:center}
+  .cta-row{gap:10px}
+  .cita-actions{width:100%}
+  .disclaimer{font-size:11.5px;letter-spacing:.02em}
+  :root{--bar-h:52px}
+}
+</style>
+</head>
+<body>
+
+<div class="disclaimer">Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</div>
+
+<div class="page">
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <div class="brand">
+      <svg class="mark" width="42" height="42" viewBox="0 0 42 42" aria-hidden="true">
+        <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#17909b"/><stop offset="1" stop-color="#0a4d55"/></linearGradient></defs>
+        <rect width="42" height="42" rx="12" fill="url(#g1)"/>
+        <ellipse cx="21" cy="21" rx="13" ry="8.5" fill="none" stroke="#ffffff" stroke-width="2"/>
+        <circle cx="21" cy="21" r="4.4" fill="#ffffff"/>
+        <circle cx="19.4" cy="19.4" r="1.5" fill="#0a4d55"/>
+      </svg>
+      <div class="brand-txt">
+        <div class="brand-name">Centre Òptic Gaudí</div>
+        <div class="brand-sub">Manresa</div>
+      </div>
+    </div>
+    <nav class="nav-links">
+      <a href="#servicios">Servicios</a>
+      <a href="#visita">Tu primera visita</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="nav-tel" href="tel:+34938772119">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2.1z"/></svg>
+      938 772 119
+    </a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-in">
+    <div>
+      <span class="eyebrow">Óptica y optometría clínica</span>
+      <h1>Cuidamos tu visión con criterio clínico, en el centro de Manresa.</h1>
+      <p class="lead">Optometría infantil, terapia visual, lentes de contacto, control de miopía y cribado de retina por telemedicina. Una atención cercana y un seguimiento que no termina al salir por la puerta.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="tel:+34938772119">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2.1z"/></svg>
+          Llamar al 938 772 119
+        </a>
+        <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
+      </div>
+      <p class="hero-note">C/ Viladordis, 98 — 08241 Manresa (Barcelona)</p>
+    </div>
+
+    <div class="hero-art">
+      <div class="art-card">
+        <svg viewBox="0 0 420 320" role="img" aria-label="Ilustración de un examen visual" style="width:100%;height:auto">
+          <defs>
+            <linearGradient id="hg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#eaf5f6"/><stop offset="1" stop-color="#f2f6fc"/>
+            </linearGradient>
+            <linearGradient id="hl" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#17909b"/><stop offset="1" stop-color="#0a4d55"/>
+            </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="420" height="320" rx="18" fill="url(#hg)"/>
+          <!-- gafas -->
+          <g stroke="url(#hl)" stroke-width="5" fill="none" stroke-linecap="round">
+            <circle cx="140" cy="128" r="54"/>
+            <circle cx="280" cy="128" r="54"/>
+            <path d="M194 124c10-8 22-8 32 0"/>
+            <path d="M86 112 56 96"/>
+            <path d="M334 112l30-16"/>
+          </g>
+          <circle cx="140" cy="128" r="54" fill="#ffffff" opacity=".55"/>
+          <circle cx="280" cy="128" r="54" fill="#ffffff" opacity=".55"/>
+          <!-- optotipos -->
+          <g fill="#0a4d55" opacity=".85" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-weight="700" text-anchor="middle">
+            <text x="210" y="238" font-size="34">E  F  P</text>
+            <text x="210" y="268" font-size="22" opacity=".7">T  O  Z  L  D</text>
+            <text x="210" y="290" font-size="14" opacity=".5">P E C F D  ·  E D F C Z P</text>
+          </g>
+          <g opacity=".45" stroke="#0f6e78" stroke-width="2" fill="none">
+            <path d="M30 200h70M320 200h70"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap cita">
+  <div class="cita-box" id="cita">
+    <div>
+      <h2>Pedir cita</h2>
+      <p>La visita se concierta por teléfono. Te atendemos, escuchamos el motivo de consulta y reservamos el tiempo necesario según lo que necesites revisar.</p>
+    </div>
+    <div class="cita-actions">
+      <a class="btn btn-white" href="tel:+34938772119">938 772 119</a>
+      <a class="btn btn-outline-w" href="mailto:cogaudi@gmail.com">Escribir un correo</a>
+    </div>
+  </div>
+</div>
+
+<section class="sec" id="servicios">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Servicios</div>
+      <h2>Qué hacemos en el centro</h2>
+      <p>Cada servicio con su propio espacio, su propio tiempo de visita y su propio seguimiento.</p>
+    </div>
+    <div class="grid-serv">
+
+      <article class="card">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0a4d55" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.2"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></div>
+        <div class="num">01</div>
+        <h3>Optometría</h3>
+        <p>Examen visual completo para valorar cómo ves y cómo trabajan tus ojos, y determinar la corrección óptica que te corresponde.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0a4d55" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.4-7-10a4.6 4.6 0 0 1 8.2-2.9A4.6 4.6 0 0 1 21 11c0 5.6-7 10-9 10z" opacity=".35"/><circle cx="9" cy="9" r="2.2"/><circle cx="16" cy="12" r="2.2"/></svg></div>
+        <div class="num">02</div>
+        <h3>Optometría infantil</h3>
+        <p>Revisiones pensadas para niñas y niños, con pruebas adaptadas a su edad y un lenguaje que entienden. Detectar a tiempo cambia el resultado.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0a4d55" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12c3-5 15-5 18 0"/><path d="M3 12c3 5 15 5 18 0"/><circle cx="12" cy="12" r="3"/><path d="M6 4l1.6 2.4M18 4l-1.6 2.4"/></svg></div>
+        <div class="num">03</div>
+        <h3>Terapia visual</h3>
+        <p>Programa de entrenamiento visual para trabajar habilidades como el enfoque, la coordinación entre ambos ojos o el seguimiento en lectura.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0a4d55" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8c2.5-1.2 5-1.2 7.5 0-.3 5-2 7.5-3.8 7.5S4.3 13 4 8z"/><path d="M12.5 8c2.5-1.2 5-1.2 7.5 0-.3 5-2 7.5-3.8 7.5S12.8 13 12.5 8z" opacity=".4"/></svg></div>
+        <div class="num">04</div>
+        <h3>Lentes de contacto</h3>
+        <p>Adaptación personalizada: medidas, prueba, enseñanza de manipulación e higiene, y revisiones para comprobar que la lente sigue siendo la adecuada.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0a4d55" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-5 3.5 3.5L21 6"/><path d="M15 6h6v6"/><circle cx="8" cy="12" r="1.4" fill="#0a4d55"/></svg></div>
+        <div class="num">05</div>
+        <h3>Control de miopía</h3>
+        <p>Seguimiento de la evolución de la miopía a lo largo del tiempo, con estrategias orientadas a frenar su progresión y controles periódicos.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0a4d55" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 12S5 5.5 12 5.5 22.5 12 22.5 12 19 18.5 12 18.5 1.5 12 1.5 12z"/><circle cx="12" cy="12" r="3.3"/><path d="M19 19.5l2.5 2.5" opacity=".6"/></svg></div>
+        <div class="num">06</div>
+        <h3>Cribado de retina por telemedicina</h3>
+        <p>Captura de imagen del fondo de ojo en el centro y valoración a distancia, para revisar el estado de la retina sin desplazamientos añadidos.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-soft" id="visita">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Tu primera visita</div>
+      <h2>Cómo será, en tres pasos</h2>
+      <p>Para que sepas qué esperar antes de venir.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="badge">1</div>
+        <h3>Llamas y concertamos la cita</h3>
+        <p>Nos cuentas el motivo de la consulta por teléfono y reservamos el tiempo que ese tipo de visita necesita.</p>
+      </div>
+      <div class="step">
+        <div class="badge">2</div>
+        <h3>Exploración en el centro</h3>
+        <p>Realizamos las pruebas que correspondan a tu caso y te explicamos, paso a paso, qué estamos midiendo y por qué.</p>
+      </div>
+      <div class="step">
+        <div class="badge">3</div>
+        <h3>Resultados y plan de seguimiento</h3>
+        <p>Repasamos contigo los resultados en palabras claras y acordamos los siguientes pasos y las revisiones que convenga hacer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="contacto">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Contacto</div>
+      <h2>Dónde estamos</h2>
+      <p>En el barrio de Viladordis, en Manresa.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <ul class="info-list">
+          <li>
+            <span class="ico-s"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0a4d55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2.1z"/></svg></span>
+            <div><div class="info-label">Teléfono</div><div class="info-val"><a href="tel:+34938772119">938 772 119</a></div></div>
+          </li>
+          <li>
+            <span class="ico-s"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0a4d55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.8"/></svg></span>
+            <div><div class="info-label">Dirección</div><div class="info-val">C/ Viladordis, 98<br>08241 Manresa (Barcelona)</div></div>
+          </li>
+          <li>
+            <span class="ico-s"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0a4d55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.3l3.4 2"/></svg></span>
+            <div><div class="info-label">Horario</div><div class="info-val">Consultar horario</div></div>
+          </li>
+          <li>
+            <span class="ico-s"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0a4d55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 7 9 6 9-6"/></svg></span>
+            <div><div class="info-label">Correo</div><div class="info-val"><a href="mailto:cogaudi@gmail.com">cogaudi@gmail.com</a></div></div>
+          </li>
+        </ul>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="tel:+34938772119">Llamar para pedir cita</a>
+        </div>
+      </div>
+
+      <div class="map-card">
+        <svg class="map-svg" viewBox="0 0 560 400" role="img" aria-label="Plano esquemático de la ubicación en la calle Viladordis, Manresa">
+          <defs>
+            <linearGradient id="mapbg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#f1f6fa"/><stop offset="1" stop-color="#e8f1f2"/>
+            </linearGradient>
+          </defs>
+          <rect width="560" height="400" fill="url(#mapbg)"/>
+          <!-- manzanas -->
+          <g fill="#dbe6ec">
+            <rect x="34" y="30" width="170" height="110" rx="8"/>
+            <rect x="248" y="30" width="130" height="110" rx="8"/>
+            <rect x="420" y="30" width="110" height="160" rx="8"/>
+            <rect x="34" y="188" width="170" height="88" rx="8"/>
+            <rect x="248" y="188" width="130" height="88" rx="8"/>
+            <rect x="34" y="320" width="220" height="56" rx="8"/>
+            <rect x="300" y="320" width="230" height="56" rx="8"/>
+            <rect x="420" y="236" width="110" height="40" rx="8"/>
+          </g>
+          <!-- zona verde -->
+          <rect x="248" y="236" width="130" height="40" rx="8" fill="#cfe4d3"/>
+          <!-- calle principal (Viladordis) -->
+          <rect x="0" y="150" width="560" height="28" fill="#ffffff"/>
+          <line x1="0" y1="164" x2="392" y2="164" stroke="#c6d3dd" stroke-width="2" stroke-dasharray="14 12"/>
+          <!-- calles secundarias -->
+          <rect x="212" y="0" width="28" height="400" fill="#ffffff"/>
+          <rect x="386" y="0" width="26" height="400" fill="#ffffff"/>
+          <rect x="0" y="286" width="560" height="26" fill="#ffffff"/>
+          <!-- etiquetas -->
+          <text x="544" y="170" text-anchor="end" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="15" font-weight="700" fill="#5d7183" letter-spacing="1">C/ VILADORDIS</text>
+          <!-- marcador -->
+          <g transform="translate(150,104)">
+            <ellipse cx="0" cy="62" rx="20" ry="6" fill="#0a4d55" opacity=".18"/>
+            <path d="M0 60C0 60-24 34-24 20A24 24 0 0 1 24 20c0 14-24 40-24 40z" fill="#0f6e78"/>
+            <circle cx="0" cy="20" r="8.5" fill="#ffffff"/>
+          </g>
+          <g transform="translate(150,104)">
+            <rect x="34" y="-6" width="186" height="48" rx="10" fill="#ffffff" stroke="#dfe6ee"/>
+            <text x="48" y="14" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="14" font-weight="700" fill="#0d1b2a">Centre Òptic Gaudí</text>
+            <text x="48" y="32" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="13" fill="#5d7183">C/ Viladordis, 98</text>
+          </g>
+          <!-- rosa de los vientos -->
+          <g transform="translate(508,352)" opacity=".65">
+            <circle r="20" fill="#ffffff" stroke="#dfe6ee"/>
+            <path d="M0 -13 L5 2 L0 -2 L-5 2 Z" fill="#0f6e78"/>
+            <text x="0" y="-15" text-anchor="middle" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="9" font-weight="700" fill="#5d7183">N</text>
+          </g>
+        </svg>
+        <div class="cap">Plano esquemático orientativo, no es un mapa real a escala.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <div class="fname">Centre Òptic Gaudí</div>
+        <p style="margin:0;max-width:30em">Óptica y optometría en Manresa. Optometría infantil, terapia visual, lentes de contacto, control de miopía y cribado de retina por telemedicina.</p>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="tel:+34938772119">938 772 119</a></li>
+          <li><a href="mailto:cogaudi@gmail.com">cogaudi@gmail.com</a></li>
+          <li>C/ Viladordis, 98 — 08241 Manresa</li>
+          <li>Consultar horario</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Secciones</h4>
+        <ul>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#visita">Tu primera visita</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="#cita">Pedir cita</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-sig">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</div>
+  </div>
+</footer>
+
+</div>
+</body>
+</html>

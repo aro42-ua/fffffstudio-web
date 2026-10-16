@@ -1,0 +1,624 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Casa La Vega y La Cabaña · Finca de celebraciones y restaurante en Aranjuez</title>
+<style>
+:root{
+  --verde-900:#1d2a21;
+  --verde-800:#24362b;
+  --verde-700:#2f4636;
+  --verde-600:#3d5a45;
+  --salvia:#8aa08b;
+  --oro:#b99657;
+  --oro-claro:#d8bd8a;
+  --crema:#f7f3ec;
+  --crema-2:#efe8dc;
+  --papel:#fffdf9;
+  --tinta:#23241f;
+  --tinta-2:#55584f;
+  --linea:rgba(35,36,31,.14);
+  --radio:18px;
+  --barra:46px;
+  --max:1160px;
+}
+*{box-sizing:border-box}
+html,body{max-width:100%;overflow-x:hidden}
+html{scroll-behavior:smooth}
+section[id],main[id]{scroll-margin-top:calc(var(--barra) + 20px)}
+body{
+  margin:0;
+  background:var(--papel);
+  color:var(--tinta);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  padding-top:var(--barra);
+}
+img,svg{max-width:100%;display:block}
+h1,h2,h3{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;font-weight:600;line-height:1.14;letter-spacing:-.015em;margin:0}
+p{margin:0}
+a{color:inherit}
+
+/* ---------- barra fija de propuesta ---------- */
+.aviso{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  height:var(--barra);
+  display:flex;align-items:center;justify-content:center;
+  background:var(--verde-900);
+  color:#e8e2d5;
+  font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;
+  text-align:center;padding:0 14px;
+  border-bottom:1px solid rgba(217,189,138,.35);
+}
+.aviso span{display:block;max-width:100%;overflow-wrap:anywhere}
+
+/* ---------- utilidades ---------- */
+.wrap{width:100%;max-width:var(--max);margin:0 auto;padding-left:24px;padding-right:24px}
+.eyebrow{
+  font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--oro);font-weight:600;margin-bottom:18px;
+  display:flex;align-items:center;gap:12px;
+}
+.eyebrow::after{content:"";height:1px;flex:1;max-width:70px;background:linear-gradient(90deg,var(--oro-claro),transparent)}
+.seccion{padding:92px 0}
+.seccion h2{font-size:clamp(28px,4.2vw,44px);margin-bottom:18px}
+.lede{color:var(--tinta-2);max-width:62ch;font-size:clamp(16px,1.6vw,18.5px)}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:15px 26px;border-radius:999px;border:1px solid transparent;
+  font-size:15.5px;font-weight:600;letter-spacing:.01em;text-decoration:none;
+  cursor:pointer;transition:transform .18s ease,background .18s ease,color .18s ease;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn-oro{background:linear-gradient(135deg,var(--oro),#a87f44);color:#1b1a16;box-shadow:0 10px 24px rgba(185,150,87,.28)}
+.btn-linea{border-color:rgba(247,243,236,.45);color:var(--crema)}
+.btn-linea:hover{background:rgba(247,243,236,.12)}
+.btn-verde{background:var(--verde-700);color:var(--crema)}
+
+/* ---------- navegación ---------- */
+.nav{
+  position:relative;z-index:900;
+  background:rgba(255,253,249,.93);
+  backdrop-filter:saturate(1.4) blur(10px);
+  border-bottom:1px solid var(--linea);
+}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px;padding-top:12px;padding-bottom:12px;flex-wrap:wrap}
+.marca{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0}
+.marca-txt{display:flex;flex-direction:column;line-height:1.15;min-width:0}
+.marca-txt b{font-family:"Iowan Old Style",Georgia,serif;font-size:17.5px;font-weight:600;letter-spacing:.01em}
+.marca-txt small{font-size:10.5px;letter-spacing:.17em;text-transform:uppercase;color:var(--tinta-2)}
+.nav-links{display:flex;align-items:center;gap:26px;flex-wrap:wrap}
+.nav-links a{font-size:14.5px;text-decoration:none;color:var(--tinta-2);font-weight:500}
+.nav-links a:hover{color:var(--verde-700)}
+.nav-tel{
+  display:inline-flex;align-items:center;gap:9px;text-decoration:none;
+  background:var(--verde-800);color:var(--crema);
+  padding:11px 20px;border-radius:999px;font-size:14.5px;font-weight:600;white-space:nowrap;
+}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;background:var(--verde-900);color:var(--crema)}
+.hero::before{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(900px 520px at 78% 12%,rgba(185,150,87,.30),transparent 62%),
+    radial-gradient(760px 600px at 8% 88%,rgba(138,160,139,.26),transparent 60%),
+    linear-gradient(165deg,#1b2720 0%,#24362b 46%,#1a241d 100%);
+}
+.hero::after{
+  content:"";position:absolute;left:0;right:0;bottom:-1px;height:120px;
+  background:linear-gradient(to top,var(--papel),transparent);
+  opacity:.14;pointer-events:none;
+}
+.hero-in{position:relative;z-index:2;display:grid;grid-template-columns:1.08fr .92fr;gap:56px;align-items:center;padding-top:104px;padding-bottom:112px}
+.hero h1{font-size:clamp(38px,5.6vw,66px);letter-spacing:-.02em}
+.hero h1 em{font-style:italic;color:var(--oro-claro)}
+.hero p.lede{color:rgba(247,243,236,.82);margin-top:24px;max-width:50ch}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px}
+.hero-meta{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:40px;padding-top:26px;border-top:1px solid rgba(247,243,236,.18);font-size:13.5px;color:rgba(247,243,236,.72)}
+.hero-meta span{display:inline-flex;align-items:center;gap:9px}
+
+.arco{position:relative;width:100%;max-width:420px;margin-left:auto}
+.arco-marco{
+  border:1px solid rgba(216,189,138,.42);
+  border-radius:230px 230px 22px 22px;
+  padding:16px;
+  background:rgba(255,253,249,.05);
+}
+.arco svg{width:100%;height:auto;border-radius:214px 214px 12px 12px}
+
+/* ---------- franja ---------- */
+.franja{background:var(--crema);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+.franja-in{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;padding-top:46px;padding-bottom:46px}
+.franja h3{font-size:17px;margin-bottom:7px}
+.franja p{font-size:15px;color:var(--tinta-2)}
+
+/* ---------- espacios ---------- */
+.grid-espacios{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:48px}
+.card{
+  border:1px solid var(--linea);border-radius:var(--radio);overflow:hidden;
+  background:var(--papel);display:flex;flex-direction:column;
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+.card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(29,42,33,.10)}
+.card-img{height:172px;position:relative}
+.card-body{padding:24px 24px 28px}
+.card h3{font-size:21px;margin-bottom:9px}
+.card p{font-size:15.2px;color:var(--tinta-2)}
+
+.g1{background:linear-gradient(140deg,#2f4636,#5e7a5f 55%,#8aa08b)}
+.g2{background:linear-gradient(140deg,#3b3326,#8a7247 55%,#d8bd8a)}
+.g3{background:linear-gradient(140deg,#24362b,#45604a 50%,#b99657)}
+.g4{background:linear-gradient(140deg,#5e7a5f,#cdd8c6)}
+.g5{background:linear-gradient(140deg,#8a7247,#efe8dc)}
+.g6{background:linear-gradient(140deg,#1d2a21,#6b8a6d)}
+
+/* ---------- celebraciones ---------- */
+.celebra{background:var(--crema)}
+.chips{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:46px}
+.chip{
+  background:var(--papel);border:1px solid var(--linea);border-radius:var(--radio);
+  padding:26px 22px;display:flex;flex-direction:column;gap:12px;min-width:0;
+}
+.chip svg{width:34px;height:34px}
+.chip b{font-family:"Iowan Old Style",Georgia,serif;font-size:19px;font-weight:600}
+.chip span{font-size:14.6px;color:var(--tinta-2);line-height:1.6}
+
+/* ---------- pasos ---------- */
+.pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:52px;counter-reset:p}
+.paso{position:relative;padding:30px 26px 32px;border:1px solid var(--linea);border-radius:var(--radio);background:var(--papel)}
+.paso-num{
+  width:46px;height:46px;border-radius:50%;
+  background:var(--verde-800);color:var(--oro-claro);
+  display:flex;align-items:center;justify-content:center;
+  font-family:"Iowan Old Style",Georgia,serif;font-size:19px;margin-bottom:18px;
+}
+.paso h3{font-size:20px;margin-bottom:9px}
+.paso p{font-size:15.2px;color:var(--tinta-2)}
+
+/* ---------- formulario ---------- */
+.presupuesto{background:var(--verde-900);color:var(--crema);position:relative;overflow:hidden}
+.presupuesto::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(700px 480px at 85% 0%,rgba(185,150,87,.22),transparent 60%),
+             radial-gradient(640px 520px at 0% 100%,rgba(138,160,139,.18),transparent 62%);
+}
+.presupuesto-in{position:relative;z-index:2;display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:start}
+.presupuesto .lede{color:rgba(247,243,236,.8)}
+.nota-form{margin-top:28px;padding:20px 22px;border:1px solid rgba(216,189,138,.35);border-radius:14px;background:rgba(255,253,249,.05);font-size:14.5px;color:rgba(247,243,236,.78)}
+form{background:var(--papel);color:var(--tinta);border-radius:22px;padding:34px;border:1px solid rgba(216,189,138,.3);box-shadow:0 24px 60px rgba(10,16,12,.3)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.campo{display:flex;flex-direction:column;gap:8px;min-width:0}
+.campo.ancho{grid-column:1 / -1}
+label{font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--tinta-2)}
+input,select,textarea{
+  width:100%;max-width:100%;font:inherit;font-size:15.5px;color:var(--tinta);
+  background:#fff;border:1px solid var(--linea);border-radius:11px;
+  padding:13px 14px;outline:none;transition:border-color .16s ease,box-shadow .16s ease;
+}
+select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--tinta-2) 50%),linear-gradient(135deg,var(--tinta-2) 50%,transparent 50%);background-position:calc(100% - 20px) 21px,calc(100% - 14px) 21px;background-size:6px 6px,6px 6px;background-repeat:no-repeat;padding-right:42px}
+textarea{resize:vertical;min-height:122px}
+input:focus,select:focus,textarea:focus{border-color:var(--oro);box-shadow:0 0 0 3px rgba(185,150,87,.18)}
+.form-pie{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:24px}
+.form-pie small{font-size:12.8px;color:var(--tinta-2);flex:1;min-width:200px;line-height:1.5}
+form .btn{width:auto}
+
+/* ---------- contacto ---------- */
+.contacto-in{display:grid;grid-template-columns:1fr 1.1fr;gap:52px;align-items:start}
+.datos{display:flex;flex-direction:column;gap:4px;margin-top:34px}
+.dato{display:flex;gap:16px;padding:20px 0;border-top:1px solid var(--linea)}
+.dato:last-child{border-bottom:1px solid var(--linea)}
+.dato-ico{width:40px;height:40px;flex:0 0 40px;border-radius:11px;background:var(--crema-2);display:flex;align-items:center;justify-content:center}
+.dato b{display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--tinta-2);font-weight:600;margin-bottom:4px}
+.dato p,.dato a{font-size:16.5px;text-decoration:none;color:var(--tinta);overflow-wrap:anywhere}
+.dato a:hover{color:var(--oro)}
+.mapa{border:1px solid var(--linea);border-radius:var(--radio);overflow:hidden;background:var(--crema)}
+.mapa svg{width:100%;height:auto}
+.mapa-pie{padding:14px 20px;font-size:13px;color:var(--tinta-2);border-top:1px solid var(--linea);background:var(--papel)}
+
+/* ---------- pie ---------- */
+footer{background:var(--verde-900);color:rgba(247,243,236,.78);padding:68px 0 34px;margin-top:0}
+.pie-top{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:38px;padding-bottom:36px;border-bottom:1px solid rgba(247,243,236,.16)}
+.pie-top h4{font-family:"Iowan Old Style",Georgia,serif;font-size:19px;color:var(--crema);margin:0 0 14px;font-weight:600}
+.pie-top a{color:rgba(247,243,236,.78);text-decoration:none;display:block;margin-bottom:9px;font-size:15px;overflow-wrap:anywhere}
+.pie-top a:hover{color:var(--oro-claro)}
+.pie-top p{font-size:15px;line-height:1.7}
+.pie-bottom{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;padding-top:26px;font-size:13.4px;color:rgba(247,243,236,.62)}
+.firma{color:var(--oro-claro)}
+
+/* ---------- responsive ---------- */
+@media (max-width:1000px){
+  .hero-in{grid-template-columns:1fr;gap:46px;padding-top:72px;padding-bottom:84px}
+  .arco{margin:0 auto}
+  .grid-espacios{grid-template-columns:repeat(2,1fr)}
+  .chips{grid-template-columns:repeat(2,1fr)}
+  .presupuesto-in{grid-template-columns:1fr;gap:38px}
+  .contacto-in{grid-template-columns:1fr;gap:38px}
+  .pie-top{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+}
+@media (max-width:720px){
+  :root{--barra:58px}
+  body{font-size:16px}
+  .wrap{padding-left:18px;padding-right:18px}
+  .seccion{padding:62px 0}
+  .franja-in{grid-template-columns:1fr;gap:22px;padding-top:34px;padding-bottom:34px}
+  .grid-espacios{grid-template-columns:1fr}
+  .chips{grid-template-columns:1fr}
+  .pasos{grid-template-columns:1fr;gap:18px}
+  .form-grid{grid-template-columns:1fr}
+  form{padding:24px 20px}
+  .pie-top{grid-template-columns:1fr;gap:28px}
+  .hero-cta .btn{width:100%}
+  .nav-in{min-height:60px;flex-wrap:nowrap;gap:10px}
+  .marca svg{width:34px;height:34px}
+  .marca-txt b{font-size:15px}
+  .marca-txt small{font-size:9.5px;letter-spacing:.14em}
+  .nav-tel{font-size:13px;padding:9px 14px;gap:7px}
+  .aviso{font-size:11px;letter-spacing:.04em;line-height:1.35}
+}
+</style>
+</head>
+<body>
+
+<div class="aviso"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="marca" href="#inicio">
+      <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
+        <rect width="40" height="40" rx="10" fill="#24362b"/>
+        <path d="M20 9l9 7v15h-6v-8h-6v8h-6V16z" fill="none" stroke="#d8bd8a" stroke-width="1.6" stroke-linejoin="round"/>
+        <path d="M14 22c-2.2-1.6-2.4-4.4-.4-6 1.6 2 1.8 4.2.4 6z" fill="#8aa08b"/>
+      </svg>
+      <span class="marca-txt">
+        <b>Casa La Vega y La Cabaña</b>
+        <small>Aranjuez · Madrid</small>
+      </span>
+    </a>
+    <nav class="nav-links">
+      <a href="#espacios">Espacios</a>
+      <a href="#celebraciones">Celebraciones</a>
+      <a href="#proceso">Cómo lo organizamos</a>
+      <a href="#presupuesto">Presupuesto</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="nav-tel" href="tel:+34636963747">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 3h3l2 5-2.5 1.5a12 12 0 006 6L16 13l5 2v3a2 2 0 01-2.2 2A17 17 0 014 5.2 2 2 0 016 3z"/></svg>
+      636 96 37 47
+    </a>
+  </div>
+</header>
+
+<main id="inicio">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-in">
+      <div>
+        <div class="eyebrow">Finca de celebraciones y restaurante</div>
+        <h1>Celebrar en Aranjuez,<br><em>entre la vega y la huerta</em></h1>
+        <p class="lede">Casa La Vega y La Cabaña es una finca de celebraciones con restaurante a la entrada de Aranjuez. Bodas, comuniones, bautizos y eventos de empresa en un entorno abierto, con cocina propia y espacios para interior y exterior.</p>
+        <div class="hero-cta">
+          <a class="btn btn-oro" href="tel:+34636963747">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 3h3l2 5-2.5 1.5a12 12 0 006 6L16 13l5 2v3a2 2 0 01-2.2 2A17 17 0 014 5.2 2 2 0 016 3z"/></svg>
+            Llamar al 636 96 37 47
+          </a>
+          <a class="btn btn-linea" href="#presupuesto">Pedir presupuesto</a>
+        </div>
+        <div class="hero-meta">
+          <span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#d8bd8a" stroke-width="1.8" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 10-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            M-318, Km 1,3 · Aranjuez
+          </span>
+          <span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#d8bd8a" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+            Celebraciones con fecha reservada
+          </span>
+          <span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#d8bd8a" stroke-width="1.8" aria-hidden="true"><path d="M5 20h14M7 20V9l5-4 5 4v11"/></svg>
+            Finca y restaurante
+          </span>
+        </div>
+      </div>
+      <div class="arco">
+        <div class="arco-marco">
+          <svg viewBox="0 0 400 480" role="img" aria-label="Ilustración de la finca entre arboleda y huerta">
+            <defs>
+              <linearGradient id="cielo" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#2e4335"/>
+                <stop offset="52%" stop-color="#6d8a6b"/>
+                <stop offset="100%" stop-color="#d8bd8a"/>
+              </linearGradient>
+              <linearGradient id="suelo" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#41593f"/>
+                <stop offset="100%" stop-color="#1e2b20"/>
+              </linearGradient>
+              <clipPath id="arco"><path d="M0 200a200 200 0 01400 0v280H0z"/></clipPath>
+            </defs>
+            <g clip-path="url(#arco)">
+              <rect width="400" height="480" fill="url(#cielo)"/>
+              <circle cx="286" cy="150" r="46" fill="#f3e2bd" opacity=".5"/>
+              <path d="M0 330q70-34 120-8t120-16 160 6v168H0z" fill="url(#suelo)"/>
+              <g fill="#20301f" opacity=".82">
+                <path d="M54 334c-20-14-22-44-2-62 18 18 20 46 2 62z"/>
+                <rect x="51" y="330" width="5" height="34"/>
+                <path d="M344 342c-22-16-24-48-2-68 20 20 22 50 2 68z"/>
+                <rect x="341" y="338" width="6" height="38"/>
+              </g>
+              <g>
+                <path d="M140 352V258l60-42 60 42v94z" fill="#17211a"/>
+                <path d="M132 262l68-50 68 50" fill="none" stroke="#d8bd8a" stroke-width="5" stroke-linejoin="round"/>
+                <rect x="186" y="300" width="28" height="52" fill="#d8bd8a" opacity=".85"/>
+                <rect x="156" y="282" width="20" height="20" fill="#e8d6ac" opacity=".6"/>
+                <rect x="224" y="282" width="20" height="20" fill="#e8d6ac" opacity=".6"/>
+              </g>
+              <g stroke="#f3e2bd" stroke-width="1.4" opacity=".55">
+                <path d="M96 300h44M260 300h44"/>
+                <circle cx="104" cy="294" r="4" fill="#f3e2bd" stroke="none"/>
+                <circle cx="132" cy="294" r="4" fill="#f3e2bd" stroke="none"/>
+                <circle cx="268" cy="294" r="4" fill="#f3e2bd" stroke="none"/>
+                <circle cx="296" cy="294" r="4" fill="#f3e2bd" stroke="none"/>
+              </g>
+              <g opacity=".5" stroke="#2a3b28" stroke-width="2">
+                <path d="M0 400q100 16 200 0t200 0"/>
+                <path d="M0 432q100 16 200 0t200 0"/>
+                <path d="M0 464q100 16 200 0t200 0"/>
+              </g>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FRANJA -->
+  <section class="franja">
+    <div class="wrap franja-in">
+      <div><h3>Finca con restaurante</h3><p>Un mismo equipo se ocupa del espacio y de la cocina, sin coordinar proveedores por separado.</p></div>
+      <div><h3>Interior y exterior</h3><p>Zonas cubiertas y zonas al aire libre para adaptar la celebración al momento del año.</p></div>
+      <div><h3>A la entrada de Aranjuez</h3><p>En la M-318, con acceso directo en coche desde la carretera.</p></div>
+    </div>
+  </section>
+
+  <!-- ESPACIOS -->
+  <section class="seccion" id="espacios">
+    <div class="wrap">
+      <div class="eyebrow">Los espacios</div>
+      <h2>Una finca pensada por momentos</h2>
+      <p class="lede">Cada celebración se mueve por varias zonas a lo largo del día. Estos son los ambientes que componen Casa La Vega y La Cabaña.</p>
+      <div class="grid-espacios">
+        <article class="card"><div class="card-img g1"></div><div class="card-body"><h3>Jardín y exteriores</h3><p>Zona abierta para la recepción, el aperitivo y los momentos de encuentro antes de pasar a la mesa.</p></div></article>
+        <article class="card"><div class="card-img g2"></div><div class="card-body"><h3>Salón de banquete</h3><p>Espacio cubierto para la comida principal, montado según el tipo de celebración.</p></div></article>
+        <article class="card"><div class="card-img g3"></div><div class="card-body"><h3>La Cabaña</h3><p>Un ambiente propio dentro de la finca, con carácter diferenciado respecto al salón principal.</p></div></article>
+        <article class="card"><div class="card-img g4"></div><div class="card-body"><h3>Restaurante</h3><p>El restaurante de la casa, también abierto al margen de las celebraciones privadas.</p></div></article>
+        <article class="card"><div class="card-img g5"></div><div class="card-body"><h3>Zona de cóctel</h3><p>Un espacio de transición para el aperitivo y la barra, con la cocina trabajando a la vista del servicio.</p></div></article>
+        <article class="card"><div class="card-img g6"></div><div class="card-body"><h3>Aparcamiento y accesos</h3><p>Llegada en coche desde la M-318, con la entrada a la finca señalizada.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CELEBRACIONES -->
+  <section class="seccion celebra" id="celebraciones">
+    <div class="wrap">
+      <div class="eyebrow">Tipos de celebración</div>
+      <h2>Lo que se celebra aquí</h2>
+      <p class="lede">Organizamos celebraciones privadas y eventos. Cuéntanos cuál es el tuyo y preparamos una propuesta a medida.</p>
+      <div class="chips">
+        <div class="chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#b99657" stroke-width="1.6" aria-hidden="true"><path d="M12 21s-7-4.6-7-10a4 4 0 017-2.6A4 4 0 0119 11c0 5.4-7 10-7 10z"/></svg>
+          <b>Bodas</b><span>La celebración completa, desde la recepción hasta el final de la fiesta.</span>
+        </div>
+        <div class="chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#b99657" stroke-width="1.6" aria-hidden="true"><path d="M12 3v18M5 9h14M7 21h10"/><circle cx="12" cy="6" r="2.4"/></svg>
+          <b>Comuniones</b><span>Comidas familiares con espacio exterior para los más pequeños.</span>
+        </div>
+        <div class="chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#b99657" stroke-width="1.6" aria-hidden="true"><path d="M4 20c2-5 5-7 8-7s6 2 8 7"/><circle cx="12" cy="7" r="3.4"/></svg>
+          <b>Bautizos</b><span>Celebraciones tranquilas, con un montaje sencillo y cercano.</span>
+        </div>
+        <div class="chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#b99657" stroke-width="1.6" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2"/></svg>
+          <b>Eventos de empresa</b><span>Comidas de trabajo, presentaciones y encuentros corporativos.</span>
+        </div>
+        <div class="chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#b99657" stroke-width="1.6" aria-hidden="true"><path d="M5 11h14l-1.2 9H6.2z"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>
+          <b>Aniversarios</b><span>Fechas señaladas que se celebran en familia o entre amigos.</span>
+        </div>
+        <div class="chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#b99657" stroke-width="1.6" aria-hidden="true"><path d="M4 19V5h16v14z"/><path d="M4 10h16M10 10v9"/></svg>
+          <b>Reuniones familiares</b><span>Celebraciones sin etiqueta concreta, con mesa larga y sobremesa.</span>
+        </div>
+        <div class="chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#b99657" stroke-width="1.6" aria-hidden="true"><path d="M7 3h10v5a5 5 0 01-10 0z"/><path d="M12 13v5M8 21h8"/><path d="M17 5h3a3 3 0 01-3 3M7 5H4a3 3 0 003 3"/></svg>
+          <b>Pedidas y preboda</b><span>Encuentros previos a la boda, con un formato más reducido.</span>
+        </div>
+        <div class="chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#b99657" stroke-width="1.6" aria-hidden="true"><path d="M3 12h18M12 3v18"/><circle cx="12" cy="12" r="9"/></svg>
+          <b>Otras celebraciones</b><span>Si lo tuyo no encaja en ninguna, escríbenos y lo valoramos.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESO -->
+  <section class="seccion" id="proceso">
+    <div class="wrap">
+      <div class="eyebrow">Cómo organizamos tu celebración</div>
+      <h2>Tres pasos, sin vueltas</h2>
+      <p class="lede">Desde el primer contacto hasta el día de la celebración, el proceso es siempre el mismo.</p>
+      <div class="pasos">
+        <div class="paso">
+          <div class="paso-num">1</div>
+          <h3>Nos cuentas la idea</h3>
+          <p>Nos llamas o rellenas el formulario con el tipo de celebración y la fecha aproximada. Te respondemos para concretar lo que necesitas.</p>
+        </div>
+        <div class="paso">
+          <div class="paso-num">2</div>
+          <h3>Visitas la finca</h3>
+          <p>Concertamos una visita para ver los espacios y repasar juntos el montaje, la cocina y el recorrido del día.</p>
+        </div>
+        <div class="paso">
+          <div class="paso-num">3</div>
+          <h3>Cerramos la propuesta</h3>
+          <p>Preparamos una propuesta personalizada y, cuando la confirmas, reservamos la fecha y nos encargamos del resto.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRESUPUESTO -->
+  <section class="seccion presupuesto" id="presupuesto">
+    <div class="wrap presupuesto-in">
+      <div>
+        <div class="eyebrow">Petición de presupuesto</div>
+        <h2>Cuéntanos tu celebración</h2>
+        <p class="lede">Rellena el formulario con los datos básicos y te preparamos una propuesta a medida. Si lo prefieres, puedes llamarnos directamente al <a href="tel:+34636963747" style="color:var(--oro-claro)">636 96 37 47</a>.</p>
+        <div class="nota-form">Maqueta de demostración: el formulario está maquetado con todos sus campos visibles, pero no envía datos porque no tiene servidor conectado.</div>
+      </div>
+
+      <form onsubmit="event.preventDefault();" novalidate>
+        <div class="form-grid">
+          <div class="campo">
+            <label for="nombre">Nombre y apellidos</label>
+            <input id="nombre" name="nombre" type="text" placeholder="Tu nombre" autocomplete="name">
+          </div>
+          <div class="campo">
+            <label for="telefono">Teléfono</label>
+            <input id="telefono" name="telefono" type="tel" placeholder="600 00 00 00" autocomplete="tel">
+          </div>
+          <div class="campo ancho">
+            <label for="email">Correo electrónico</label>
+            <input id="email" name="email" type="email" placeholder="nombre@correo.com" autocomplete="email">
+          </div>
+          <div class="campo">
+            <label for="tipo">Tipo de celebración</label>
+            <select id="tipo" name="tipo">
+              <option>Selecciona una opción</option>
+              <option>Boda</option>
+              <option>Comunión</option>
+              <option>Bautizo</option>
+              <option>Evento de empresa</option>
+              <option>Aniversario</option>
+              <option>Reunión familiar</option>
+              <option>Pedida o preboda</option>
+              <option>Otra celebración</option>
+            </select>
+          </div>
+          <div class="campo">
+            <label for="fecha">Fecha aproximada</label>
+            <input id="fecha" name="fecha" type="date">
+          </div>
+          <div class="campo ancho">
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos cómo imaginas la celebración y cualquier detalle que debamos tener en cuenta."></textarea>
+          </div>
+        </div>
+        <div class="form-pie">
+          <button class="btn btn-verde" type="submit">Enviar petición</button>
+          <small>Te responderemos al teléfono o al correo que nos indiques para concretar la propuesta.</small>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="seccion" id="contacto">
+    <div class="wrap contacto-in">
+      <div>
+        <div class="eyebrow">Contacto</div>
+        <h2>Dónde estamos</h2>
+        <p class="lede">A la entrada de Aranjuez, en la carretera M-318. Para visitar la finca, concierta la visita por teléfono.</p>
+        <div class="datos">
+          <div class="dato">
+            <span class="dato-ico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#2f4636" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 3h3l2 5-2.5 1.5a12 12 0 006 6L16 13l5 2v3a2 2 0 01-2.2 2A17 17 0 014 5.2 2 2 0 016 3z"/></svg></span>
+            <span><b>Teléfono</b><a href="tel:+34636963747">636 96 37 47</a></span>
+          </div>
+          <div class="dato">
+            <span class="dato-ico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#2f4636" stroke-width="1.8" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 10-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+            <span><b>Dirección</b><p>M-318, Km 1,3, 28300 Aranjuez</p></span>
+          </div>
+          <div class="dato">
+            <span class="dato-ico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#2f4636" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span>
+            <span><b>Horario</b><p>Consultar horario</p></span>
+          </div>
+          <div class="dato">
+            <span class="dato-ico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#2f4636" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
+            <span><b>Correo</b><a href="mailto:reservas@casalavega.com">reservas@casalavega.com</a></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mapa">
+        <svg viewBox="0 0 560 400" role="img" aria-label="Mapa esquemático de la ubicación de la finca junto a la M-318 en Aranjuez">
+          <rect width="560" height="400" fill="#efe8dc"/>
+          <g opacity=".5">
+            <path d="M0 60h560M0 140h560M0 220h560M0 300h560M0 380h560M70 0v400M170 0v400M300 0v400M420 0v400M510 0v400" stroke="#ded3bf" stroke-width="1"/>
+          </g>
+          <path d="M-20 300q140-40 250-110T600 70" fill="none" stroke="#cfd9c6" stroke-width="40" opacity=".75"/>
+          <path d="M0 360q120 10 220-40t340-80" fill="none" stroke="#ffffff" stroke-width="22"/>
+          <path d="M0 360q120 10 220-40t340-80" fill="none" stroke="#b99657" stroke-width="3" stroke-dasharray="12 10"/>
+          <path d="M120 400q30-130 150-170T560 170" fill="none" stroke="#ffffff" stroke-width="14"/>
+          <g>
+            <rect x="286" y="150" width="20" height="36" rx="5" fill="#2f4636"/>
+            <text x="296" y="175" text-anchor="middle" font-family="Georgia,serif" font-size="15" fill="#d8bd8a">M</text>
+          </g>
+          <text x="318" y="168" font-family="-apple-system,Segoe UI,Arial,sans-serif" font-size="15" fill="#55584f">M-318</text>
+          <g>
+            <circle cx="214" cy="252" r="26" fill="#b99657" opacity=".22"/>
+            <path d="M214 276c0 0-15-14-15-24a15 15 0 1130 0c0 10-15 24-15 24z" fill="#24362b"/>
+            <circle cx="214" cy="251" r="5.5" fill="#d8bd8a"/>
+          </g>
+          <text x="214" y="302" text-anchor="middle" font-family="Georgia,serif" font-size="17" fill="#23241f">Casa La Vega y La Cabaña</text>
+          <text x="214" y="324" text-anchor="middle" font-family="-apple-system,Segoe UI,Arial,sans-serif" font-size="13.5" fill="#55584f">M-318, Km 1,3 · 28300 Aranjuez</text>
+          <g opacity=".85">
+            <circle cx="452" cy="316" r="5" fill="#8aa08b"/>
+            <text x="466" y="321" font-family="-apple-system,Segoe UI,Arial,sans-serif" font-size="13.5" fill="#55584f">Aranjuez</text>
+          </g>
+          <g opacity=".7" fill="#8aa08b">
+            <circle cx="70" cy="120" r="14"/><circle cx="104" cy="104" r="19"/><circle cx="136" cy="126" r="12"/>
+            <circle cx="470" cy="86" r="16"/><circle cx="504" cy="104" r="12"/>
+          </g>
+        </svg>
+        <div class="mapa-pie">Mapa esquemático orientativo. No sustituye a la localización exacta.</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="pie-top">
+      <div>
+        <h4>Casa La Vega y La Cabaña</h4>
+        <p>Finca de celebraciones y restaurante en Aranjuez, Madrid. Bodas, comuniones, bautizos y eventos.</p>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <a href="tel:+34636963747">636 96 37 47</a>
+        <a href="mailto:reservas@casalavega.com">reservas@casalavega.com</a>
+        <a href="#contacto">M-318, Km 1,3, 28300 Aranjuez</a>
+        <a href="#contacto">Consultar horario</a>
+      </div>
+      <div>
+        <h4>Secciones</h4>
+        <a href="#espacios">Espacios</a>
+        <a href="#celebraciones">Celebraciones</a>
+        <a href="#proceso">Cómo lo organizamos</a>
+        <a href="#presupuesto">Pedir presupuesto</a>
+      </div>
+    </div>
+    <div class="pie-bottom">
+      <span>© Casa La Vega y La Cabaña · Aranjuez (Madrid)</span>
+      <span class="firma">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

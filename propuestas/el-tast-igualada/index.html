@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>El Tast Igualada — Propuesta de rediseño</title>
+<style>
+  :root{
+    --masa:#f6efe4;
+    --masa-2:#efe4d3;
+    --carbon:#17120f;
+    --carbon-2:#2a211b;
+    --tomate:#b3321f;
+    --tomate-claro:#d94f2b;
+    --albahaca:#3c5e3a;
+    --oro:#c9922f;
+    --texto:#241c17;
+    --texto-sut:#5d5048;
+    --linea:rgba(36,28,23,.14);
+    --barra:46px;
+    --radio:18px;
+    --max:1120px;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{margin:0;padding:0;max-width:100%}
+  html{overflow-x:hidden}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    background:var(--masa);
+    color:var(--texto);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size:17px;line-height:1.6;
+    padding-top:var(--barra);
+  }
+  img,svg{max-width:100%;display:block}
+  h1,h2,h3{line-height:1.12;margin:0;letter-spacing:-.02em;font-weight:800}
+  p{margin:0}
+  a{color:inherit}
+
+  /* ---------- barra fija ---------- */
+  .aviso{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    min-height:var(--barra);display:flex;align-items:center;justify-content:center;
+    background:var(--carbon);color:#f3e8d8;
+    font-size:12px;letter-spacing:.06em;text-transform:uppercase;
+    padding:8px 14px;text-align:center;line-height:1.35;
+    border-bottom:1px solid rgba(201,146,47,.45);
+  }
+
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px;width:100%}
+  section{scroll-margin-top:calc(var(--barra) + 68px)}
+
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;
+    color:var(--tomate);
+  }
+  .eyebrow::before{content:"";width:22px;height:2px;background:var(--tomate);display:block}
+  .eyebrow.claro{color:var(--oro)}
+  .eyebrow.claro::before{background:var(--oro)}
+
+  /* ---------- nav ---------- */
+  .nav{
+    position:sticky;top:var(--barra);z-index:90;
+    background:rgba(246,239,228,.94);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--linea);
+  }
+  .nav-in{display:flex;align-items:center;gap:16px;justify-content:space-between;padding:12px 24px;max-width:var(--max);margin:0 auto}
+  .marca{display:flex;align-items:center;gap:10px;min-width:0}
+  .marca .logo{width:36px;height:36px;flex:0 0 36px}
+  .marca b{font-size:16px;letter-spacing:-.01em;display:block;line-height:1.1}
+  .marca span{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--texto-sut)}
+  .enlaces{display:flex;gap:22px;font-size:14px;font-weight:600}
+  .enlaces a{text-decoration:none;color:var(--texto-sut)}
+  .enlaces a:hover{color:var(--tomate)}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    padding:13px 22px;border-radius:999px;font-weight:700;font-size:15px;
+    text-decoration:none;border:2px solid transparent;white-space:nowrap;
+  }
+  .btn-rojo{background:var(--tomate);color:#fff}
+  .btn-rojo:hover{background:var(--tomate-claro)}
+  .btn-linea{border-color:rgba(243,232,216,.5);color:#f3e8d8}
+  .btn-linea:hover{border-color:var(--oro);color:#fff}
+  .btn-oscuro{border-color:var(--carbon);color:var(--carbon)}
+  .btn-oscuro:hover{background:var(--carbon);color:var(--masa)}
+  .nav .btn{padding:10px 18px;font-size:14px}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;overflow:hidden;background:
+      radial-gradient(900px 540px at 78% 12%, rgba(217,79,43,.38), transparent 62%),
+      radial-gradient(700px 480px at 8% 92%, rgba(60,94,58,.42), transparent 60%),
+      linear-gradient(160deg,#241a14 0%,#17120f 52%,#1d1512 100%);
+    color:#f6efe4;}
+  .hero::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background:repeating-linear-gradient(135deg,rgba(255,255,255,.028) 0 2px,transparent 2px 7px)}
+  .hero-in{position:relative;z-index:2;display:grid;grid-template-columns:1.08fr .92fr;gap:54px;align-items:center;
+    padding:88px 24px 96px;max-width:var(--max);margin:0 auto}
+  .hero h1{font-size:clamp(38px,5.6vw,66px);margin:18px 0 20px;color:#fff}
+  .hero h1 em{font-style:normal;color:var(--oro)}
+  .hero p.lead{font-size:clamp(16px,1.5vw,19px);color:rgba(246,239,228,.82);max-width:46ch}
+  .acciones{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+  .hero-datos{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:34px;padding-top:24px;
+    border-top:1px solid rgba(246,239,228,.18);font-size:14px;color:rgba(246,239,228,.72)}
+  .hero-datos b{color:#fff;display:block;font-size:15px}
+
+  .plato{width:100%;max-width:420px;margin-left:auto;filter:drop-shadow(0 30px 50px rgba(0,0,0,.45))}
+
+  /* ---------- tiras ---------- */
+  .tira{background:var(--carbon-2);color:#e9dcc9;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+  .tira-in{display:flex;flex-wrap:wrap;gap:12px 34px;justify-content:center;padding:14px 24px;max-width:var(--max);margin:0 auto}
+  .tira span{display:inline-flex;align-items:center;gap:9px}
+  .punto{width:6px;height:6px;border-radius:50%;background:var(--oro);flex:0 0 6px}
+
+  /* ---------- bloques ---------- */
+  .bloque{padding:84px 0}
+  .bloque.suave{background:var(--masa-2)}
+  .cab{max-width:62ch;margin-bottom:40px}
+  .cab h2{font-size:clamp(28px,3.4vw,42px);margin:14px 0 14px}
+  .cab p{color:var(--texto-sut)}
+
+  /* ---------- carta ---------- */
+  .carta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start}
+  .cat{
+    background:#fffaf2;border:1px solid var(--linea);border-radius:var(--radio);
+    padding:24px;display:flex;flex-direction:column;gap:14px;
+  }
+  .cat h3{font-size:19px;display:flex;align-items:center;gap:10px}
+  .cat h3 .ico{width:30px;height:30px;flex:0 0 30px}
+  .hueco{
+    border:2px dashed rgba(179,50,31,.42);border-radius:12px;background:rgba(179,50,31,.045);
+    padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  }
+  .hueco .txt{font-size:13.5px;color:var(--tomate);font-weight:600;line-height:1.4}
+  .hueco .precio{
+    font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--tomate);border:1px dashed rgba(179,50,31,.45);border-radius:999px;padding:5px 11px;white-space:nowrap;
+  }
+  .nota{
+    margin-top:24px;display:flex;gap:14px;align-items:flex-start;
+    background:#fffaf2;border:1px solid var(--linea);border-left:4px solid var(--oro);
+    border-radius:12px;padding:18px 20px;font-size:14.5px;color:var(--texto-sut);
+  }
+  .nota svg{flex:0 0 22px}
+
+  /* ---------- sala ---------- */
+  .sala{background:
+      linear-gradient(165deg,#1d2a1c 0%,#17120f 60%,#201712 100%);
+    color:#f3e8d8}
+  .sala .cab p{color:rgba(243,232,216,.75)}
+  .sala-grid{display:grid;grid-template-columns:1fr 1fr;gap:38px;align-items:start}
+  .sala-card{background:rgba(246,239,228,.06);border:1px solid rgba(246,239,228,.16);border-radius:var(--radio);padding:26px}
+  .sala-card h3{font-size:19px;margin-bottom:12px}
+  .lista{list-style:none;padding:0;margin:0;display:grid;gap:11px;font-size:15px;color:rgba(243,232,216,.85)}
+  .lista li{display:flex;gap:11px;align-items:flex-start}
+  .lista li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--oro);margin-top:8px;flex:0 0 7px}
+  .hueco.oscuro{border-color:rgba(201,146,47,.5);background:rgba(201,146,47,.08);flex-direction:column;align-items:flex-start;gap:9px}
+  .hueco.oscuro .txt{color:#f0d9a8}
+  .hueco.oscuro .precio{color:#f0d9a8;border-color:rgba(201,146,47,.55)}
+  .sala-huecos{display:grid;gap:12px;margin-top:16px}
+
+  /* ---------- pasos ---------- */
+  .pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;counter-reset:p}
+  .paso{background:#fffaf2;border:1px solid var(--linea);border-radius:var(--radio);padding:26px;position:relative}
+  .paso .num{
+    width:42px;height:42px;border-radius:50%;background:var(--tomate);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;margin-bottom:16px;
+  }
+  .paso h3{font-size:18px;margin-bottom:9px}
+  .paso p{font-size:15px;color:var(--texto-sut)}
+  .paso .tel{display:inline-block;margin-top:14px;font-weight:700;color:var(--tomate);text-decoration:none;border-bottom:2px solid rgba(179,50,31,.3)}
+
+  /* ---------- contacto ---------- */
+  .cont-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:38px;align-items:start}
+  .ficha{display:grid;gap:16px}
+  .fila{display:flex;gap:14px;align-items:flex-start;background:#fffaf2;border:1px solid var(--linea);border-radius:14px;padding:18px 20px}
+  .fila .ico{width:26px;height:26px;flex:0 0 26px;margin-top:2px}
+  .fila .k{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--texto-sut);font-weight:700}
+  .fila .v{font-size:17px;font-weight:700;word-break:break-word}
+  .fila .v a{text-decoration:none}
+  .fila .v a:hover{color:var(--tomate)}
+  .mapa{background:#fffaf2;border:1px solid var(--linea);border-radius:var(--radio);padding:16px}
+  .mapa figcaption{font-size:12.5px;color:var(--texto-sut);margin-top:10px;text-align:center}
+
+  /* ---------- pie ---------- */
+  .pie{background:var(--carbon);color:#cdbda9;padding:54px 0 34px}
+  .pie-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:34px}
+  .pie h4{color:#fff;font-size:13px;letter-spacing:.14em;text-transform:uppercase;margin:0 0 14px}
+  .pie a{color:#e9dcc9;text-decoration:none}
+  .pie a:hover{color:var(--oro)}
+  .pie ul{list-style:none;margin:0;padding:0;display:grid;gap:9px;font-size:15px}
+  .firma{
+    margin-top:38px;padding-top:22px;border-top:1px solid rgba(246,239,228,.16);
+    font-size:13.5px;color:#a89786;text-align:center;line-height:1.6;
+  }
+  .firma b{color:var(--oro);font-weight:700}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:1000px){
+    .hero-in{grid-template-columns:1fr;gap:40px;padding:62px 24px 70px}
+    .plato{margin:0 auto;max-width:340px}
+    .carta-grid,.pasos{grid-template-columns:1fr 1fr}
+    .sala-grid,.cont-grid{grid-template-columns:1fr}
+    .pie-grid{grid-template-columns:1fr 1fr}
+    .enlaces{display:none}
+  }
+  @media (max-width:640px){
+    :root{--barra:56px}
+    body{font-size:16px}
+    .wrap,.nav-in,.hero-in,.tira-in{padding-left:18px;padding-right:18px}
+    .aviso{font-size:10.5px;letter-spacing:.04em;padding:8px 12px}
+    .bloque{padding:58px 0}
+    .carta-grid,.pasos,.pie-grid{grid-template-columns:1fr}
+    .hero-in{padding:52px 18px 60px}
+    .acciones{gap:10px}
+    .acciones .btn{flex:1 1 100%}
+    .nav-in{gap:10px}
+    .marca span{display:none}
+    .hueco{flex-direction:column;align-items:flex-start;gap:9px}
+    .tira-in{gap:8px 18px;font-size:11px}
+  }
+</style>
+</head>
+<body>
+
+<div class="aviso">Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</div>
+
+<header class="nav">
+  <div class="nav-in">
+    <div class="marca">
+      <svg class="logo" viewBox="0 0 48 48" aria-hidden="true">
+        <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#d94f2b"/><stop offset="1" stop-color="#b3321f"/></linearGradient></defs>
+        <circle cx="24" cy="24" r="22" fill="url(#g1)"/>
+        <circle cx="24" cy="24" r="16" fill="none" stroke="#f6efe4" stroke-width="2" stroke-dasharray="3 4"/>
+        <path d="M24 13 L31 31 H17 Z" fill="#f6efe4"/>
+        <circle cx="24" cy="26" r="2.4" fill="#b3321f"/>
+      </svg>
+      <div><b>El Tast</b><span>Igualada</span></div>
+    </div>
+    <nav class="enlaces">
+      <a href="#carta">Carta</a>
+      <a href="#sala">Sala de celebraciones</a>
+      <a href="#reservar">Cómo reservar</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="btn btn-rojo" href="tel:+34938054785">938 054 785</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-in">
+      <div>
+        <span class="eyebrow claro">Restaurante · Pizzería · Igualada</span>
+        <h1>Cocina de barrio y <em>pizza</em> en la Plaça del Pilar</h1>
+        <p class="lead">El Tast es restaurante y pizzería en el centro de Igualada, con sala propia para celebraciones. Reserva mesa o consulta disponibilidad para tu grupo por teléfono.</p>
+        <div class="acciones">
+          <a class="btn btn-rojo" href="tel:+34938054785">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+            Llamar 938 054 785
+          </a>
+          <a class="btn btn-linea" href="#sala">Sala de celebraciones</a>
+        </div>
+        <div class="hero-datos">
+          <div><b>Plaça del Pilar, 7</b>08700 Igualada</div>
+          <div><b>Consultar horario</b>Por teléfono</div>
+          <div><b>Sala para grupos</b>Celebraciones y eventos</div>
+        </div>
+      </div>
+      <div>
+        <svg class="plato" viewBox="0 0 400 400" role="img" aria-label="Ilustración de pizza">
+          <defs>
+            <radialGradient id="masa" cx="50%" cy="42%" r="60%">
+              <stop offset="0" stop-color="#f3d9a6"/><stop offset="1" stop-color="#d8a964"/>
+            </radialGradient>
+            <radialGradient id="salsa" cx="50%" cy="45%" r="58%">
+              <stop offset="0" stop-color="#e05c33"/><stop offset="1" stop-color="#a82c1b"/>
+            </radialGradient>
+            <linearGradient id="aro" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#3b332c"/><stop offset="1" stop-color="#1b1613"/>
+            </linearGradient>
+          </defs>
+          <circle cx="200" cy="200" r="178" fill="url(#aro)"/>
+          <circle cx="200" cy="200" r="166" fill="none" stroke="#c9922f" stroke-width="1.5" opacity=".55"/>
+          <circle cx="200" cy="200" r="150" fill="url(#masa)"/>
+          <circle cx="200" cy="200" r="126" fill="url(#salsa)"/>
+          <g fill="#f7eacb" opacity=".92">
+            <ellipse cx="160" cy="150" rx="30" ry="22" transform="rotate(-18 160 150)"/>
+            <ellipse cx="248" cy="178" rx="26" ry="19" transform="rotate(14 248 178)"/>
+            <ellipse cx="176" cy="246" rx="28" ry="20" transform="rotate(26 176 246)"/>
+            <ellipse cx="244" cy="258" rx="20" ry="15" transform="rotate(-10 244 258)"/>
+            <ellipse cx="206" cy="120" rx="17" ry="12"/>
+          </g>
+          <g fill="#3c5e3a">
+            <path d="M138 196c10-14 26-16 34-6-9 12-25 15-34 6Z"/>
+            <path d="M262 214c-11-13-27-13-34-2 10 11 26 13 34 2Z"/>
+            <path d="M206 290c-13-6-18-21-11-30 12 6 18 21 11 30Z"/>
+          </g>
+          <g fill="#b3321f" stroke="#8d2415" stroke-width="2">
+            <circle cx="152" cy="212" r="15"/><circle cx="232" cy="142" r="13"/>
+            <circle cx="212" cy="232" r="14"/><circle cx="268" cy="226" r="11"/>
+            <circle cx="178" cy="282" r="12"/>
+          </g>
+          <g stroke="#b88a3d" stroke-width="2" opacity=".5" fill="none">
+            <circle cx="200" cy="200" r="138" stroke-dasharray="2 10"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="tira">
+    <div class="tira-in">
+      <span><i class="punto"></i>Restaurante</span>
+      <span><i class="punto"></i>Pizzería</span>
+      <span><i class="punto"></i>Sala de celebraciones</span>
+      <span><i class="punto"></i>Plaça del Pilar, 7 · Igualada</span>
+    </div>
+  </div>
+
+  <!-- CARTA -->
+  <section class="bloque" id="carta">
+    <div class="wrap">
+      <div class="cab">
+        <span class="eyebrow">La carta</span>
+        <h2>Una carta clara, con precios y con fecha de actualización</h2>
+        <p>Estructura lista para que El Tast complete cada apartado con sus propios platos y sus precios. Los espacios marcados en rojo son huecos reservados: aquí no hay nada inventado.</p>
+      </div>
+
+      <div class="carta-grid">
+        <article class="cat">
+          <h3>
+            <svg class="ico" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="#f0dcc0"/><path d="M9 20c3-5 11-5 14 0" stroke="#b3321f" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="12" cy="13" r="2" fill="#3c5e3a"/><circle cx="20" cy="13" r="2" fill="#b3321f"/></svg>
+            Para empezar
+          </h3>
+          <div class="hueco"><span class="txt">Espacio reservado para el restaurante</span><span class="precio">Precio</span></div>
+          <div class="hueco"><span class="txt">Espacio reservado para el restaurante</span><span class="precio">Precio</span></div>
+          <div class="hueco"><span class="txt">Espacio reservado para el restaurante</span><span class="precio">Precio</span></div>
+        </article>
+
+        <article class="cat">
+          <h3>
+            <svg class="ico" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4 29 27H3Z" fill="#e2b872"/><path d="M16 9 25 25H7Z" fill="#c9452a"/><circle cx="16" cy="20" r="2.2" fill="#f7eacb"/><circle cx="13" cy="15" r="1.7" fill="#f7eacb"/><circle cx="19" cy="15" r="1.7" fill="#3c5e3a"/></svg>
+            Pizzas
+          </h3>
+          <div class="hueco"><span class="txt">Espacio reservado para el restaurante</span><span class="precio">Precio</span></div>
+          <div class="hueco"><span class="txt">Espacio reservado para el restaurante</span><span class="precio">Precio</span></div>
+          <div class="hueco"><span class="txt">Espacio reservado para el restaurante</span><span class="precio">Precio</span></div>
+        </article>
+
+        <article class="cat">
+          <h3>
+            <svg class="ico" viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="6" width="24" height="20" rx="4" fill="#f0dcc0"/><path d="M8 18c4-6 12-6 16 0" stroke="#3c5e3a" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="16" cy="12" r="2.4" fill="#b3321f"/></svg>
+            Platos principales
+          </h3>
+          <div class="hueco"><span class="txt">Espacio reservado para el restaurante</span><span class="precio">Precio</span></div>
+          <div class="hueco"><span class="txt">Espacio reservado para el restaurante</span><span class="precio">Precio</span></div>
+          <div class="hueco"><span class="txt">Espacio reservado para el restaurante</span><span class="precio">Precio</span></div>
+        </article>
+
+        <article class="cat">
+          <h3>
+            <svg class="ico" viewBox="0 0 32 32" aria-hidden="true"><path d="M6 14h20a10 10 0 0 1-20 0Z" fill="#c9922f"/><rect x="13" y="24" width="6" height="4" rx="1.5" fill="#3b332c"/><path d="M16 4v7" stroke="#3c5e3a" stroke-width="2.4" stroke-linecap="round"/></svg>
+            Postres
+          </h3>
+          <div class="hueco"><span class="txt">Espacio reservado para el restaurante</span><span class="precio">Precio</span></div>
+          <div class="hueco"><span class="txt">Espacio reservado para el restaurante</span><span class="precio">Precio</span></div>
+        </article>
+
+        <article class="cat">
+          <h3>
+            <svg class="ico" viewBox="0 0 32 32" aria-hidden="true"><path d="M8 5h16l-2 9a6 6 0 0 1-12 0Z" fill="#b3321f"/><path d="M16 20v6" stroke="#3b332c" stroke-width="2.4" stroke-linecap="round"/><path d="M11 27h10" stroke="#3b332c" stroke-width="2.4" stroke-linecap="round"/></svg>
+            Bebidas
+          </h3>
+          <div class="hueco"><span class="txt">Espacio reservado para el restaurante</span><span class="precio">Precio</span></div>
+          <div class="hueco"><span class="txt">Espacio reservado para el restaurante</span><span class="precio">Precio</span></div>
+        </article>
+
+        <article class="cat">
+          <h3>
+            <svg class="ico" viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="5" width="22" height="22" rx="4" fill="#f0dcc0"/><path d="M10 12h12M10 17h12M10 22h7" stroke="#b3321f" stroke-width="2.2" stroke-linecap="round"/></svg>
+            Menú del día
+          </h3>
+          <div class="hueco"><span class="txt">Espacio reservado para el restaurante</span><span class="precio">Precio</span></div>
+          <div class="hueco"><span class="txt">Espacio reservado para el restaurante</span><span class="precio">Precio</span></div>
+          <div class="hueco"><span class="txt">Espacio reservado: fecha de actualización de la carta</span><span class="precio">Fecha</span></div>
+        </article>
+      </div>
+
+      <div class="nota">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c9922f" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
+        <span>Esta maqueta no incluye ningún plato ni precio: todos los contenidos de la carta los aporta El Tast. La plantilla reserva además un lugar fijo para la fecha de actualización, de modo que el cliente siempre vea una carta vigente.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SALA -->
+  <section class="bloque sala" id="sala">
+    <div class="wrap">
+      <div class="cab">
+        <span class="eyebrow claro">Sala de celebraciones</span>
+        <h2>La sala, explicada y reservable desde la web</h2>
+        <p>Hoy la sala para celebraciones no se explota online. Esta sección le da su propio espacio: qué tipo de evento acoge, qué datos necesita el cliente y una llamada directa para consultar fechas.</p>
+      </div>
+
+      <div class="sala-grid">
+        <div class="sala-card">
+          <h3>Qué resuelve esta sección</h3>
+          <ul class="lista">
+            <li>Presenta la sala como un servicio propio, no como una nota perdida dentro de la web.</li>
+            <li>Agrupa en un solo sitio lo que el cliente pregunta siempre por teléfono.</li>
+            <li>Lleva directamente a la llamada, sin formularios que nadie revisa.</li>
+            <li>Se completa con la información real de El Tast, sin cifras ni condiciones inventadas.</li>
+          </ul>
+          <div style="margin-top:24px">
+            <a class="btn btn-rojo" href="tel:+34938054785">Consultar por teléfono</a>
+          </div>
+        </div>
+
+        <div class="sala-card">
+          <h3>Datos que completará el restaurante</h3>
+          <div class="sala-huecos">
+            <div class="hueco oscuro"><span class="txt">Espacio reservado: capacidad de la sala</span><span class="precio">A completar</span></div>
+            <div class="hueco oscuro"><span class="txt">Espacio reservado: tipos de celebración que acoge</span><span class="precio">A completar</span></div>
+            <div class="hueco oscuro"><span class="txt">Espacio reservado: menús de grupo y sus precios</span><span class="precio">Precio</span></div>
+            <div class="hueco oscuro"><span class="txt">Espacio reservado: condiciones de reserva de la sala</span><span class="precio">A completar</span></div>
+            <div class="hueco oscuro"><span class="txt">Espacio reservado: fotografías de la sala</span><span class="precio">Imagen</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESERVAR -->
+  <section class="bloque" id="reservar">
+    <div class="wrap">
+      <div class="cab">
+        <span class="eyebrow">Cómo reservar</span>
+        <h2>Tres pasos, sin intermediarios</h2>
+        <p>Reservar mesa o la sala de celebraciones directamente con el restaurante, por teléfono.</p>
+      </div>
+      <div class="pasos">
+        <article class="paso">
+          <div class="num">1</div>
+          <h3>Llama al restaurante</h3>
+          <p>Una sola llamada al número de El Tast, sin plataformas ni comisiones de terceros.</p>
+          <a class="tel" href="tel:+34938054785">938 054 785</a>
+        </article>
+        <article class="paso">
+          <div class="num">2</div>
+          <h3>Indica día, hora y personas</h3>
+          <p>Di si es mesa en el restaurante o si necesitas la sala para una celebración, y cuántos sois.</p>
+        </article>
+        <article class="paso">
+          <div class="num">3</div>
+          <h3>Confirma los detalles</h3>
+          <p>El restaurante te confirma la disponibilidad y cierra contigo lo que haga falta para ese día.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="bloque suave" id="contacto">
+    <div class="wrap">
+      <div class="cab">
+        <span class="eyebrow">Contacto</span>
+        <h2>En la Plaça del Pilar, en el centro de Igualada</h2>
+      </div>
+
+      <div class="cont-grid">
+        <div class="ficha">
+          <div class="fila">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#b3321f" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+            <div><div class="k">Teléfono</div><div class="v"><a href="tel:+34938054785">938 054 785</a></div></div>
+          </div>
+          <div class="fila">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#b3321f" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div><div class="k">Dirección</div><div class="v">Plaça del Pilar, 7<br>08700 Igualada</div></div>
+          </div>
+          <div class="fila">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#b3321f" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            <div><div class="k">Horario</div><div class="v">Consultar horario</div></div>
+          </div>
+          <div class="fila">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#b3321f" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 7 8.5 6 8.5-6"/></svg>
+            <div><div class="k">Email</div><div class="v"><a href="mailto:eltastigualada@gmail.com">eltastigualada@gmail.com</a></div></div>
+          </div>
+          <a class="btn btn-oscuro" href="tel:+34938054785" style="justify-self:start">Llamar ahora</a>
+        </div>
+
+        <figure class="mapa" style="margin:0">
+          <svg viewBox="0 0 520 360" role="img" aria-label="Mapa esquemático de la ubicación en la Plaça del Pilar">
+            <rect width="520" height="360" rx="12" fill="#f2e7d6"/>
+            <g fill="#e6d8c2">
+              <rect x="24" y="24" width="150" height="92" rx="6"/>
+              <rect x="206" y="24" width="120" height="70" rx="6"/>
+              <rect x="358" y="24" width="138" height="104" rx="6"/>
+              <rect x="24" y="166" width="118" height="80" rx="6"/>
+              <rect x="24" y="276" width="170" height="62" rx="6"/>
+              <rect x="226" y="286" width="118" height="52" rx="6"/>
+              <rect x="382" y="250" width="114" height="88" rx="6"/>
+            </g>
+            <g stroke="#dccdb4" stroke-width="22" stroke-linecap="round">
+              <path d="M0 140h520"/><path d="M190 0v360"/><path d="M360 140v220"/>
+            </g>
+            <g stroke="#f7efe2" stroke-width="2" stroke-dasharray="10 12">
+              <path d="M0 140h520"/><path d="M190 0v360"/><path d="M360 140v220"/>
+            </g>
+            <circle cx="270" cy="206" r="56" fill="#dfe9d8"/>
+            <circle cx="270" cy="206" r="56" fill="none" stroke="#3c5e3a" stroke-width="2" stroke-dasharray="5 7"/>
+            <text x="270" y="202" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="13" font-weight="700" fill="#3c5e3a">Plaça</text>
+            <text x="270" y="220" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="13" font-weight="700" fill="#3c5e3a">del Pilar</text>
+            <g transform="translate(316 150)">
+              <path d="M0 48c0 0-20-22-20-34a20 20 0 0 1 40 0C20 26 0 48 0 48Z" fill="#b3321f"/>
+              <circle cx="0" cy="13" r="7.5" fill="#f6efe4"/>
+            </g>
+            <rect x="330" y="166" width="162" height="46" rx="10" fill="#17120f"/>
+            <text x="411" y="186" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="13" font-weight="700" fill="#f6efe4">El Tast</text>
+            <text x="411" y="202" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="11" fill="#c9922f">Plaça del Pilar, 7</text>
+          </svg>
+          <figcaption>Mapa esquemático orientativo, no es un mapa real a escala.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="pie">
+  <div class="wrap">
+    <div class="pie-grid">
+      <div>
+        <h4>El Tast Igualada</h4>
+        <ul>
+          <li>Restaurante · Pizzería</li>
+          <li>Sala para celebraciones</li>
+          <li>Plaça del Pilar, 7 — 08700 Igualada</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="tel:+34938054785">938 054 785</a></li>
+          <li><a href="mailto:eltastigualada@gmail.com">eltastigualada@gmail.com</a></li>
+          <li>Consultar horario</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Secciones</h4>
+        <ul>
+          <li><a href="#carta">Carta</a></li>
+          <li><a href="#sala">Sala de celebraciones</a></li>
+          <li><a href="#reservar">Cómo reservar</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="firma"><b>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</b></p>
+  </div>
+</footer>
+
+</body>
+</html>

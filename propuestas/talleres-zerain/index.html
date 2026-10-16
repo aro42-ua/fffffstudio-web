@@ -1,0 +1,673 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Talleres Zerain S.L. — Carpintería metálica y forja · Agurain</title>
+<style>
+  :root{
+    --negro:#0e1114;
+    --grafito:#171b20;
+    --acero:#242a31;
+    --humo:#3a434d;
+    --niebla:#9aa5b1;
+    --claro:#e9edf1;
+    --blanco:#ffffff;
+    --forja:#d8761f;
+    --brasa:#ff9d3d;
+    --linea:rgba(255,255,255,.10);
+    --linea-fuerte:rgba(255,255,255,.18);
+    --max:1180px;
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+  html,body{margin:0;padding:0;max-width:100%;overflow-x:clip;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--negro);
+    color:var(--claro);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%;height:auto;display:block;}
+  a{color:inherit;}
+
+  /* ---------- Barra fija de aviso ---------- */
+  .aviso{
+    position:fixed;
+    top:0;left:0;right:0;
+    z-index:1000;
+    background:linear-gradient(90deg,#1b1f25 0%,#2a3038 50%,#1b1f25 100%);
+    border-bottom:1px solid var(--linea-fuerte);
+    color:#cfd7df;
+    font-size:12.5px;
+    letter-spacing:.05em;
+    text-align:center;
+    padding:9px 14px;
+    line-height:1.4;
+  }
+  .aviso b{color:var(--brasa);font-weight:600;}
+  body{padding-top:var(--barra,46px);}
+
+  .wrap{width:100%;max-width:var(--max);margin:0 auto;padding:0 24px;}
+  section{padding:84px 0;}
+  .eyebrow{
+    font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--forja);font-weight:700;margin:0 0 14px;
+  }
+  h1,h2,h3{line-height:1.12;letter-spacing:-.02em;margin:0;}
+  h1{font-size:clamp(34px,6.2vw,62px);font-weight:800;}
+  h2{font-size:clamp(27px,4vw,40px);font-weight:800;}
+  h3{font-size:19px;font-weight:700;letter-spacing:-.01em;}
+  p{margin:0 0 16px;}
+  .lead{color:#b9c3cd;font-size:clamp(16px,2.2vw,19px);}
+  .muted{color:var(--niebla);}
+
+  /* ---------- Cabecera ---------- */
+  .nav{
+    position:sticky;top:var(--barra,46px);z-index:900;
+    background:rgba(14,17,20,.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--linea);
+  }
+  .nav-in{display:flex;align-items:center;gap:16px;justify-content:space-between;padding:14px 24px;max-width:var(--max);margin:0 auto;}
+  .marca{display:flex;align-items:center;gap:11px;min-width:0;}
+  .marca .logo{flex:0 0 auto;}
+  .marca-txt{min-width:0;}
+  .marca-txt strong{display:block;font-size:15px;letter-spacing:.02em;white-space:nowrap;}
+  .marca-txt span{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--niebla);}
+  .nav-links{display:flex;gap:26px;font-size:14px;color:#c3ccd5;}
+  .nav-links a{text-decoration:none;}
+  .nav-links a:hover{color:var(--brasa);}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    padding:13px 22px;border-radius:3px;text-decoration:none;
+    font-weight:700;font-size:15px;letter-spacing:.01em;white-space:nowrap;
+    border:1px solid transparent;transition:transform .15s ease,background .2s ease;
+  }
+  .btn:active{transform:translateY(1px);}
+  .btn-forja{background:linear-gradient(180deg,#e8842a,#c9650f);color:#1a0f03;box-shadow:0 10px 26px rgba(216,118,31,.22);}
+  .btn-forja:hover{background:linear-gradient(180deg,#f29640,#d87119);}
+  .btn-ghost{border-color:var(--linea-fuerte);color:var(--claro);background:rgba(255,255,255,.03);}
+  .btn-ghost:hover{border-color:var(--forja);color:var(--brasa);}
+  .nav .btn{padding:10px 16px;font-size:14px;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(900px 480px at 78% 18%, rgba(216,118,31,.20), transparent 62%),
+      radial-gradient(700px 520px at 10% 95%, rgba(58,67,77,.55), transparent 65%),
+      linear-gradient(165deg,#12161a 0%,#0e1114 55%,#0b0d10 100%);
+    border-bottom:1px solid var(--linea);
+    padding:92px 0 96px;
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px);
+    background-size:46px 46px;
+    mask-image:radial-gradient(70% 70% at 50% 40%,#000 25%,transparent 100%);
+    -webkit-mask-image:radial-gradient(70% 70% at 50% 40%,#000 25%,transparent 100%);
+  }
+  .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.08fr .92fr;gap:54px;align-items:center;}
+  .pill{
+    display:inline-flex;align-items:center;gap:9px;
+    border:1px solid var(--linea-fuerte);border-radius:999px;
+    padding:7px 15px;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;
+    color:#c9d2db;margin-bottom:22px;background:rgba(255,255,255,.03);
+  }
+  .pill i{width:7px;height:7px;border-radius:50%;background:var(--brasa);display:block;box-shadow:0 0 0 4px rgba(255,157,61,.16);}
+  .hero h1 span{
+    background:linear-gradient(90deg,#ff9d3d,#e07d1d);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero p.lead{max-width:48ch;margin-top:20px;}
+  .acciones{display:flex;flex-wrap:wrap;gap:13px;margin-top:30px;}
+  .hero-datos{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px;}
+  .chip{
+    border:1px solid var(--linea);background:rgba(255,255,255,.025);
+    border-radius:3px;padding:10px 14px;font-size:13.5px;color:#c3ccd5;
+  }
+  .chip b{color:var(--blanco);font-weight:700;}
+
+  .hero-art{
+    position:relative;border:1px solid var(--linea-fuerte);border-radius:5px;
+    background:linear-gradient(150deg,#1a1f25,#111418);
+    padding:22px;box-shadow:0 30px 70px rgba(0,0,0,.55);
+  }
+  .hero-art figcaption{margin-top:14px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--niebla);text-align:center;}
+
+  /* ---------- Trabajos ---------- */
+  .sec-head{max-width:62ch;margin-bottom:44px;}
+  .grid-trab{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .card{
+    position:relative;border:1px solid var(--linea);border-radius:4px;
+    background:linear-gradient(170deg,rgba(255,255,255,.045),rgba(255,255,255,.012));
+    padding:26px 24px 28px;overflow:hidden;
+    transition:border-color .2s ease,transform .2s ease;
+  }
+  .card:hover{border-color:rgba(216,118,31,.5);transform:translateY(-3px);}
+  .card::before{
+    content:"";position:absolute;left:0;top:0;height:3px;width:100%;
+    background:linear-gradient(90deg,var(--forja),transparent);
+    opacity:.75;
+  }
+  .card .ico{margin-bottom:16px;}
+  .card h3{margin-bottom:9px;}
+  .card p{margin:0;font-size:15px;color:#aeb8c2;line-height:1.6;}
+  .card .num{
+    position:absolute;right:16px;top:14px;font-size:12px;letter-spacing:.12em;
+    color:var(--humo);font-weight:700;
+  }
+
+  /* ---------- Proceso ---------- */
+  .proceso{background:linear-gradient(180deg,#0b0d10,#12161a);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);}
+  .pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .paso{
+    border:1px solid var(--linea);border-radius:4px;padding:28px 24px;
+    background:rgba(255,255,255,.022);position:relative;
+  }
+  .paso .n{
+    width:46px;height:46px;border-radius:3px;display:flex;align-items:center;justify-content:center;
+    font-weight:800;font-size:18px;color:#1a0f03;
+    background:linear-gradient(180deg,#e8842a,#c9650f);margin-bottom:18px;
+  }
+  .paso p{margin:0;font-size:15px;color:#aeb8c2;}
+  .paso h3{margin-bottom:9px;}
+
+  /* ---------- Contacto ---------- */
+  .cont-grid{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:start;}
+  .datos{border:1px solid var(--linea);border-radius:4px;background:rgba(255,255,255,.022);padding:8px 24px;}
+  .dato{display:flex;gap:16px;padding:20px 0;border-bottom:1px solid var(--linea);align-items:flex-start;}
+  .dato:last-child{border-bottom:0;}
+  .dato .ico{flex:0 0 auto;margin-top:2px;}
+  .dato .k{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--niebla);margin-bottom:4px;}
+  .dato .v{font-size:17px;font-weight:600;color:var(--blanco);word-break:break-word;}
+  .dato .v a{text-decoration:none;}
+  .dato .v a:hover{color:var(--brasa);}
+  .mapa{
+    border:1px solid var(--linea);border-radius:4px;overflow:hidden;
+    background:#10141a;
+  }
+  .mapa figcaption{padding:13px 18px;border-top:1px solid var(--linea);font-size:12.5px;color:var(--niebla);letter-spacing:.04em;}
+  .cta-tel{
+    margin-top:26px;border:1px solid rgba(216,118,31,.42);border-radius:4px;
+    background:linear-gradient(135deg,rgba(216,118,31,.16),rgba(216,118,31,.04));
+    padding:26px 24px;
+  }
+  .cta-tel h3{margin-bottom:8px;}
+  .cta-tel p{font-size:15px;color:#c3ccd5;}
+
+  /* ---------- Pie ---------- */
+  footer{background:#090b0d;border-top:1px solid var(--linea);padding:52px 0 40px;}
+  .pie-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:34px;}
+  .pie-grid h4{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--niebla);margin:0 0 14px;font-weight:700;}
+  .pie-grid ul{list-style:none;margin:0;padding:0;font-size:15px;color:#b4bec8;}
+  .pie-grid li{margin-bottom:9px;word-break:break-word;}
+  .pie-grid a{text-decoration:none;}
+  .pie-grid a:hover{color:var(--brasa);}
+  .pie-bar{
+    margin-top:42px;padding-top:22px;border-top:1px solid var(--linea);
+    display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
+    font-size:13.5px;color:var(--niebla);
+  }
+  .firma{color:#cdd6df;}
+  .firma b{color:var(--brasa);font-weight:700;}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:980px){
+    .hero-grid{grid-template-columns:1fr;gap:40px;}
+    .grid-trab{grid-template-columns:repeat(2,1fr);}
+    .pasos{grid-template-columns:1fr;}
+    .cont-grid{grid-template-columns:1fr;}
+    .pie-grid{grid-template-columns:1fr 1fr;}
+    .nav-links{display:none;}
+  }
+  @media (max-width:640px){
+    body{font-size:16px;padding-top:var(--barra,62px);}
+    .nav{top:var(--barra,62px);}
+    .wrap{padding:0 18px;}
+    .nav-in{padding:12px 18px;}
+    section{padding:58px 0;}
+    .hero{padding:58px 0 62px;}
+    .grid-trab{grid-template-columns:1fr;}
+    .pie-grid{grid-template-columns:1fr;gap:26px;}
+    .acciones{flex-direction:column;align-items:stretch;}
+    .acciones .btn{width:100%;}
+    .marca-txt strong{font-size:14px;}
+    .nav .btn{padding:9px 13px;font-size:13px;}
+    .hero-art{padding:14px;}
+    .datos{padding:4px 18px;}
+    .pie-bar{flex-direction:column;gap:8px;}
+  }
+  @media (max-width:360px){
+    .marca-txt span{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="aviso" id="aviso">Propuesta de diseño · maqueta no oficial · <b>FFFFFFstudio</b> · Ángel Rubio</div>
+
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <div class="marca">
+      <svg class="logo" width="34" height="34" viewBox="0 0 34 34" aria-hidden="true">
+        <rect x="1" y="1" width="32" height="32" rx="3" fill="#15191e" stroke="#3a434d"/>
+        <path d="M8 25 L17 8 L26 25" fill="none" stroke="#e8842a" stroke-width="2.4" stroke-linejoin="round"/>
+        <path d="M11.5 19.5 H22.5" stroke="#9aa5b1" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <div class="marca-txt">
+        <strong>Talleres Zerain S.L.</strong>
+        <span>Agurain · Araba</span>
+      </div>
+    </div>
+    <nav class="nav-links" aria-label="Principal">
+      <a href="#trabajos">Trabajos</a>
+      <a href="#proceso">Cómo trabajamos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="btn btn-forja" href="tel:+34689587128">689 587 128</a>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="pill"><i></i> Carpintería metálica de hierro y forja</span>
+        <h1>Hierro y forja<br><span>hechos a medida</span></h1>
+        <p class="lead">Taller de carpintería metálica en Agurain/Salvatierra. Barandillas, rejas, puertas de garaje automatizadas, estructuras metálicas, barbacoas, invernaderos y remolques, fabricados en nuestro taller de Alangua.</p>
+        <div class="acciones">
+          <a class="btn btn-forja" href="tel:+34689587128">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+            Llamar al 689 587 128
+          </a>
+          <a class="btn btn-ghost" href="#trabajos">Ver qué fabricamos</a>
+        </div>
+        <div class="hero-datos">
+          <div class="chip"><b>Taller propio</b> · Alangua nº 2</div>
+          <div class="chip"><b>Agurain/Salvatierra</b> · 01200</div>
+          <div class="chip"><b>Hierro y forja</b> · a medida</div>
+        </div>
+      </div>
+
+      <figure class="hero-art" style="margin:0">
+        <svg viewBox="0 0 440 340" role="img" aria-label="Ilustración esquemática de una barandilla de forja y un portón metálico">
+          <defs>
+            <linearGradient id="gAcero" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#2b323a"/><stop offset="1" stop-color="#171c21"/>
+            </linearGradient>
+            <linearGradient id="gBrasa" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#ffb05c"/><stop offset="1" stop-color="#c9650f"/>
+            </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="440" height="340" fill="url(#gAcero)" rx="3"/>
+          <g stroke="#333c45" stroke-width="1">
+            <path d="M0 60H440M0 120H440M0 180H440M0 240H440M0 300H440"/>
+            <path d="M60 0V340M120 0V340M180 0V340M240 0V340M300 0V340M380 0V340"/>
+          </g>
+          <!-- portón -->
+          <g>
+            <rect x="34" y="78" width="168" height="206" fill="#12161a" stroke="#4a545e" stroke-width="3"/>
+            <g stroke="#5d6975" stroke-width="2.5">
+              <path d="M34 120H202M34 162H202M34 204H202M34 246H202"/>
+              <path d="M90 78V284M146 78V284"/>
+            </g>
+            <rect x="34" y="78" width="168" height="206" fill="none" stroke="url(#gBrasa)" stroke-width="2" opacity=".6"/>
+            <circle cx="186" cy="188" r="5" fill="#ff9d3d"/>
+          </g>
+          <!-- barandilla de forja -->
+          <g transform="translate(236,96)">
+            <rect x="0" y="0" width="172" height="10" fill="#5d6975"/>
+            <rect x="0" y="178" width="172" height="10" fill="#5d6975"/>
+            <g stroke="#8e99a4" stroke-width="4" stroke-linecap="round">
+              <path d="M14 10V178M158 10V178"/>
+            </g>
+            <g fill="none" stroke="#aab4be" stroke-width="3.4">
+              <path d="M44 10c0 42-22 42-22 84s22 42 22 84"/>
+              <path d="M86 10c0 42-22 42-22 84s22 42 22 84"/>
+              <path d="M128 10c0 42-22 42-22 84s22 42 22 84"/>
+            </g>
+            <g fill="none" stroke="url(#gBrasa)" stroke-width="3">
+              <path d="M58 94c10-16 26-16 36 0s26 16 36 0"/>
+            </g>
+            <rect x="0" y="86" width="172" height="6" fill="#48525c"/>
+          </g>
+          <!-- chispas -->
+          <g fill="#ff9d3d" opacity=".85">
+            <circle cx="214" cy="300" r="2.6"/><circle cx="232" cy="312" r="1.8"/>
+            <circle cx="196" cy="316" r="1.6"/><circle cx="252" cy="302" r="2.2"/>
+            <circle cx="276" cy="314" r="1.5"/>
+          </g>
+        </svg>
+        <figcaption>Ilustración esquemática · sin fotografías</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- TRABAJOS -->
+  <section id="trabajos">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Lo que fabricamos</p>
+        <h2>Trabajos de carpintería metálica, uno a uno</h2>
+        <p class="lead" style="margin-top:14px">Todo lo que hacemos parte del mismo oficio: cortar, soldar y montar hierro a medida de cada encargo.</p>
+      </div>
+
+      <div class="grid-trab">
+        <article class="card">
+          <span class="num">01</span>
+          <div class="ico">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+              <rect x="4" y="9" width="32" height="3.4" rx="1" fill="#e8842a"/>
+              <rect x="4" y="28" width="32" height="3.4" rx="1" fill="#6b7682"/>
+              <g stroke="#9aa5b1" stroke-width="2.4" stroke-linecap="round"><path d="M11 12v16M20 12v16M29 12v16"/></g>
+              <path d="M4 20h32" stroke="#4a545e" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3>Barandillas</h3>
+          <p>Barandillas de hierro y forja para escaleras, balcones y terrazas, tomando medidas en obra.</p>
+        </article>
+
+        <article class="card">
+          <span class="num">02</span>
+          <div class="ico">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+              <rect x="6" y="6" width="28" height="28" rx="2" stroke="#6b7682" stroke-width="2.6"/>
+              <g stroke="#e8842a" stroke-width="2.4" stroke-linecap="round"><path d="M14 6v28M26 6v28"/></g>
+              <g stroke="#9aa5b1" stroke-width="2.2" stroke-linecap="round"><path d="M6 15h28M6 25h28"/></g>
+            </svg>
+          </div>
+          <h3>Rejas</h3>
+          <p>Rejas para ventanas y huecos, con diseño liso o trabajado en forja según el encargo.</p>
+        </article>
+
+        <article class="card">
+          <span class="num">03</span>
+          <div class="ico">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+              <rect x="5" y="11" width="30" height="22" rx="1.6" stroke="#6b7682" stroke-width="2.6"/>
+              <g stroke="#9aa5b1" stroke-width="2"><path d="M5 18h30M5 25h30"/></g>
+              <path d="M5 11l15-6 15 6" stroke="#e8842a" stroke-width="2.6" stroke-linejoin="round" fill="none"/>
+              <circle cx="31" cy="29" r="2.4" fill="#e8842a"/>
+            </svg>
+          </div>
+          <h3>Puertas de garaje automatizadas</h3>
+          <p>Fabricación y montaje de puertas de garaje metálicas con apertura automatizada.</p>
+        </article>
+
+        <article class="card">
+          <span class="num">04</span>
+          <div class="ico">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+              <path d="M6 33V11l14-5 14 5v22" stroke="#6b7682" stroke-width="2.6" stroke-linejoin="round" fill="none"/>
+              <path d="M6 11l28 22M34 11L6 33" stroke="#e8842a" stroke-width="2.2"/>
+              <path d="M6 33h28" stroke="#9aa5b1" stroke-width="2.4" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Estructuras metálicas</h3>
+          <p>Estructuras de hierro para naves, cubiertas, entreplantas y refuerzos, calculadas para cada obra.</p>
+        </article>
+
+        <article class="card">
+          <span class="num">05</span>
+          <div class="ico">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+              <rect x="7" y="16" width="26" height="12" rx="1.6" stroke="#6b7682" stroke-width="2.6"/>
+              <path d="M11 28v7M29 28v7" stroke="#9aa5b1" stroke-width="2.4" stroke-linecap="round"/>
+              <path d="M14 12c0-3 3-3 3-6M20 12c0-3 3-3 3-6M26 12c0-3 3-3 3-6" stroke="#e8842a" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+            </svg>
+          </div>
+          <h3>Barbacoas</h3>
+          <p>Barbacoas metálicas fabricadas en el taller, adaptadas al espacio donde van a ir instaladas.</p>
+        </article>
+
+        <article class="card">
+          <span class="num">06</span>
+          <div class="ico">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+              <path d="M6 33V17l14-10 14 10v16z" stroke="#6b7682" stroke-width="2.6" stroke-linejoin="round" fill="none"/>
+              <path d="M20 7v26" stroke="#e8842a" stroke-width="2.4"/>
+              <g stroke="#9aa5b1" stroke-width="2"><path d="M6 23h28M13 13v20M27 13v20"/></g>
+            </svg>
+          </div>
+          <h3>Invernaderos</h3>
+          <p>Estructuras de invernadero en metal, montadas a medida de la parcela y del uso previsto.</p>
+        </article>
+
+        <article class="card">
+          <span class="num">07</span>
+          <div class="ico">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+              <rect x="5" y="14" width="26" height="11" rx="1.6" stroke="#6b7682" stroke-width="2.6"/>
+              <path d="M31 20h5" stroke="#e8842a" stroke-width="2.6" stroke-linecap="round"/>
+              <circle cx="13" cy="29" r="4" stroke="#9aa5b1" stroke-width="2.4"/>
+              <circle cx="24" cy="29" r="4" stroke="#9aa5b1" stroke-width="2.4"/>
+              <path d="M5 19h26" stroke="#4a545e" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3>Remolques</h3>
+          <p>Remolques metálicos construidos en taller, además de reparaciones y refuerzos sobre el chasis.</p>
+        </article>
+
+        <article class="card">
+          <span class="num">08</span>
+          <div class="ico">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+              <path d="M9 31l12-12" stroke="#9aa5b1" stroke-width="3" stroke-linecap="round"/>
+              <path d="M21 19l6-6a6 6 0 0 1 8 8l-6 6" stroke="#6b7682" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+              <path d="M7 33l3-8 5 5z" fill="#e8842a"/>
+            </svg>
+          </div>
+          <h3>Trabajos en forja a medida</h3>
+          <p>Piezas de hierro forjado y elementos metálicos singulares, partiendo de la idea o el plano del cliente.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESO -->
+  <section class="proceso" id="proceso">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Cómo trabajamos</p>
+        <h2>Tres pasos, del encargo al montaje</h2>
+      </div>
+      <div class="pasos">
+        <div class="paso">
+          <div class="n">1</div>
+          <h3>Hablamos y tomamos medidas</h3>
+          <p>Nos cuenta qué necesita, por teléfono o en el taller de Alangua. Vemos el hueco o la obra y tomamos las medidas reales antes de nada.</p>
+        </div>
+        <div class="paso">
+          <div class="n">2</div>
+          <h3>Fabricamos en el taller</h3>
+          <p>Cortamos, soldamos y montamos la pieza en hierro o forja en nuestras propias instalaciones, con el acabado acordado.</p>
+        </div>
+        <div class="paso">
+          <div class="n">3</div>
+          <h3>Montamos y ajustamos</h3>
+          <p>Llevamos la pieza, la instalamos en su sitio y la dejamos ajustada y funcionando, automatismos incluidos cuando los lleva.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Contacto</p>
+        <h2>Estamos en Agurain/Salvatierra</h2>
+      </div>
+
+      <div class="cont-grid">
+        <div>
+          <div class="datos">
+            <div class="dato">
+              <span class="ico">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8842a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+              </span>
+              <div>
+                <div class="k">Teléfono</div>
+                <div class="v"><a href="tel:+34689587128">689 587 128</a></div>
+              </div>
+            </div>
+            <div class="dato">
+              <span class="ico">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8842a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </span>
+              <div>
+                <div class="k">Dirección</div>
+                <div class="v">Alangua nº 2, 01200 Agurain/Salvatierra (Araba/Álava)</div>
+              </div>
+            </div>
+            <div class="dato">
+              <span class="ico">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8842a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+              </span>
+              <div>
+                <div class="k">Horario</div>
+                <div class="v">Consultar horario</div>
+              </div>
+            </div>
+            <div class="dato">
+              <span class="ico">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8842a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+              </span>
+              <div>
+                <div class="k">Email</div>
+                <div class="v"><a href="mailto:tallereszerain@gmail.com">tallereszerain@gmail.com</a></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cta-tel">
+            <h3>¿Tiene un trabajo en mente?</h3>
+            <p>Cuéntenos la medida y el tipo de pieza y lo vemos.</p>
+            <a class="btn btn-forja" href="tel:+34689587128">Llamar al 689 587 128</a>
+          </div>
+        </div>
+
+        <figure class="mapa" style="margin:0">
+          <svg viewBox="0 0 520 480" role="img" aria-label="Mapa esquemático de la ubicación del taller en Alangua nº 2, Agurain/Salvatierra">
+            <defs>
+              <linearGradient id="gMapa" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#141a20"/><stop offset="1" stop-color="#0d1115"/>
+              </linearGradient>
+            </defs>
+            <rect width="520" height="480" fill="url(#gMapa)"/>
+            <!-- manzanas -->
+            <g fill="#192027" stroke="#232c35" stroke-width="1.5">
+              <rect x="34" y="40" width="130" height="92" rx="2"/>
+              <rect x="200" y="40" width="120" height="92" rx="2"/>
+              <rect x="356" y="40" width="130" height="130" rx="2"/>
+              <rect x="34" y="170" width="130" height="110" rx="2"/>
+              <rect x="200" y="170" width="120" height="110" rx="2"/>
+              <rect x="34" y="318" width="166" height="70" rx="2"/>
+              <rect x="238" y="318" width="120" height="70" rx="2"/>
+              <rect x="394" y="318" width="92" height="70" rx="2"/>
+            </g>
+            <!-- viales -->
+            <g stroke="#2f3943" stroke-width="16" stroke-linecap="square">
+              <path d="M182 20V400"/>
+              <path d="M20 150H500"/>
+              <path d="M338 20V400"/>
+              <path d="M20 299H500"/>
+            </g>
+            <g stroke="#3d4853" stroke-width="2" stroke-dasharray="10 10">
+              <path d="M182 20V400"/><path d="M20 150H500"/>
+              <path d="M338 20V400"/><path d="M20 299H500"/>
+            </g>
+            <!-- etiquetas de vial -->
+            <g fill="#8d98a3" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="12" letter-spacing="1">
+              <text x="36" y="143">VIAL</text>
+              <text x="36" y="292">VIAL</text>
+              <text x="192" y="38">VIAL</text>
+              <text x="348" y="38">VIAL</text>
+            </g>
+            <!-- zona taller -->
+            <rect x="200" y="170" width="120" height="110" fill="rgba(216,118,31,.14)" stroke="#e8842a" stroke-width="2"/>
+            <!-- marcador -->
+            <g transform="translate(260,225)">
+              <circle r="30" fill="rgba(232,132,42,.14)"/>
+              <circle r="17" fill="rgba(232,132,42,.28)"/>
+              <path d="M0 -22c-7.2 0-13 5.8-13 13 0 9.8 13 23 13 23s13-13.2 13-23c0-7.2-5.8-13-13-13z" fill="#e8842a"/>
+              <circle cx="0" cy="-9" r="4.6" fill="#0e1114"/>
+            </g>
+            <text x="260" y="444" text-anchor="middle" fill="#ffffff" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="16" font-weight="700">Alangua nº 2</text>
+            <text x="260" y="466" text-anchor="middle" fill="#9aa5b1" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="13">01200 Agurain/Salvatierra</text>
+            <!-- rosa de los vientos -->
+            <g transform="translate(470,432)">
+              <circle r="20" fill="#121820" stroke="#2f3943" stroke-width="1.5"/>
+              <path d="M0 -13L4.5 1H-4.5z" fill="#e8842a"/>
+              <path d="M0 13L4.5 1H-4.5z" fill="#4a545e"/>
+              <text x="0" y="-22" text-anchor="middle" fill="#8d98a3" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="10">N</text>
+            </g>
+          </svg>
+          <figcaption>Mapa esquemático orientativo, no es un mapa real.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="pie-grid">
+      <div>
+        <div class="marca" style="margin-bottom:14px">
+          <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true">
+            <rect x="1" y="1" width="32" height="32" rx="3" fill="#15191e" stroke="#3a434d"/>
+            <path d="M8 25 L17 8 L26 25" fill="none" stroke="#e8842a" stroke-width="2.4" stroke-linejoin="round"/>
+            <path d="M11.5 19.5 H22.5" stroke="#9aa5b1" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <div class="marca-txt">
+            <strong>Talleres Zerain S.L.</strong>
+            <span>Carpintería metálica</span>
+          </div>
+        </div>
+        <p class="muted" style="font-size:15px;max-width:38ch">Carpintería metálica de hierro y forja en Agurain/Salvatierra, Araba/Álava.</p>
+      </div>
+      <div>
+        <h4>Trabajos</h4>
+        <ul>
+          <li>Barandillas y rejas</li>
+          <li>Puertas de garaje automatizadas</li>
+          <li>Estructuras metálicas</li>
+          <li>Barbacoas e invernaderos</li>
+          <li>Remolques</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="tel:+34689587128">689 587 128</a></li>
+          <li><a href="mailto:tallereszerain@gmail.com">tallereszerain@gmail.com</a></li>
+          <li>Alangua nº 2, 01200 Agurain/Salvatierra</li>
+          <li>Consultar horario</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pie-bar">
+      <span>© Talleres Zerain S.L. · Agurain/Salvatierra (Araba/Álava)</span>
+      <span class="firma">Propuesta de rediseño presentada por <b>FFFFFFstudio</b> — Ángel Rubio, diseñador web · Alicante</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    function ajusta(){
+      var h = document.getElementById('aviso').offsetHeight;
+      document.documentElement.style.setProperty('--barra', h + 'px');
+    }
+    ajusta();
+    window.addEventListener('resize', ajusta);
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,770 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ventanas ONA · Ona Leihoak — Propuesta de rediseño</title>
+<meta name="description" content="Propuesta de rediseño no oficial para Ventanas ONA (Ona Leihoak), Eibar. Maqueta de FFFFFFstudio.">
+<style>
+  :root{
+    --ink:#10151a;
+    --ink-2:#1d262f;
+    --steel:#55636f;
+    --line:#dfe4e9;
+    --line-2:#eef1f4;
+    --paper:#ffffff;
+    --paper-2:#f5f7f9;
+    --glass-1:#a8c6d6;
+    --glass-2:#d8e6ee;
+    --accent:#1f6b8c;
+    --accent-2:#2f90b8;
+    --amber:#c9892f;
+    --bar-h:40px;
+    --r:14px;
+    --maxw:1180px;
+    --fs:clamp(15px,0.6vw + 13.2px,17px);
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+    font-size:var(--fs);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  img,svg{max-width:100%;display:block}
+  h1,h2,h3,h4{line-height:1.12;margin:0;letter-spacing:-0.022em;font-weight:650}
+  p{margin:0}
+  a{color:inherit}
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .eyebrow{
+    font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
+    font-weight:700;color:var(--accent);margin-bottom:14px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:"";width:22px;height:2px;background:var(--accent);flex:none;border-radius:2px}
+
+  /* ---------- barra fija ---------- */
+  .studiobar{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    height:var(--bar-h);
+    display:flex;align-items:center;justify-content:center;
+    background:#0c1116;
+    color:#e8edf2;
+    border-bottom:1px solid rgba(255,255,255,.1);
+    font-size:.74rem;letter-spacing:.045em;
+    padding:0 14px;text-align:center;
+  }
+  .studiobar span{
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;
+  }
+  .page{padding-top:var(--bar-h)}
+
+  /* ---------- nav ---------- */
+  .nav{
+    position:sticky;top:var(--bar-h);z-index:90;
+    background:rgba(255,255,255,.92);
+    backdrop-filter:saturate(1.3) blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-in{display:flex;align-items:center;gap:18px;min-height:68px;flex-wrap:wrap;padding-top:10px;padding-bottom:10px}
+  .brand{display:flex;align-items:center;gap:11px;margin-right:auto;text-decoration:none}
+  .brand .mark{width:34px;height:34px;flex:none}
+  .brand b{display:block;font-size:1.02rem;letter-spacing:-.02em;font-weight:700}
+  .brand small{display:block;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);font-weight:600}
+  .nav-links{display:flex;gap:22px;font-size:.88rem;font-weight:550}
+  .nav-links a{text-decoration:none;color:var(--ink-2);padding:4px 0;border-bottom:2px solid transparent}
+  .nav-links a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    padding:13px 22px;border-radius:999px;text-decoration:none;
+    font-weight:650;font-size:.92rem;border:1px solid transparent;
+    transition:transform .15s ease, background .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px)}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:hover{background:var(--accent-2)}
+  .btn-ghost{border-color:var(--line);background:#fff;color:var(--ink)}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+  .btn-light{background:#fff;color:var(--ink)}
+  .btn-outline-light{border-color:rgba(255,255,255,.4);color:#fff}
+  .btn-outline-light:hover{background:rgba(255,255,255,.12)}
+  .btn svg{flex:none}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;overflow:hidden;background:
+    radial-gradient(900px 520px at 78% 8%, #244b60 0%, rgba(36,75,96,0) 62%),
+    linear-gradient(160deg,#0f1b23 0%,#162b38 48%,#1d3b4c 100%);
+    color:#eaf1f5;}
+  .hero::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(to top, rgba(10,16,20,.55), rgba(10,16,20,0) 45%);
+  }
+  .hero-in{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center;padding:86px 24px 92px}
+  .hero h1{font-size:clamp(2.1rem,4.3vw,3.5rem);font-weight:680;letter-spacing:-.03em}
+  .hero h1 em{font-style:normal;color:var(--glass-1)}
+  .hero p.lead{margin-top:22px;font-size:clamp(1rem,1.1vw,1.12rem);color:#c3d2db;max-width:52ch}
+  .hero .eyebrow{color:var(--glass-1)}
+  .hero .eyebrow::before{background:var(--glass-1)}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:34px;padding-top:24px;border-top:1px solid rgba(255,255,255,.14);font-size:.84rem;color:#b2c3cd}
+  .hero-meta span{display:flex;align-items:center;gap:8px}
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--glass-1);flex:none}
+  .hero-art{position:relative}
+  .hero-art svg{width:100%;height:auto;filter:drop-shadow(0 26px 50px rgba(0,0,0,.42))}
+
+  /* ---------- secciones ---------- */
+  section{scroll-margin-top:calc(var(--bar-h) + 76px)}
+  .sec{padding:84px 0}
+  .sec-alt{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .sec-head{max-width:66ch;margin-bottom:44px}
+  .sec-head h2{font-size:clamp(1.65rem,2.6vw,2.3rem)}
+  .sec-head p{margin-top:16px;color:var(--steel);font-size:1.02rem}
+
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+
+  .card{
+    background:#fff;border:1px solid var(--line);border-radius:var(--r);
+    padding:28px;position:relative;overflow:hidden;
+  }
+  .card h3{font-size:1.12rem;margin-bottom:10px}
+  .card p{color:var(--steel);font-size:.95rem}
+  .card .ico{width:44px;height:44px;border-radius:11px;display:grid;place-items:center;background:#e9f1f6;margin-bottom:18px}
+  .card ul{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:9px}
+  .card li{position:relative;padding-left:20px;font-size:.9rem;color:var(--ink-2)}
+  .card li::before{content:"";position:absolute;left:0;top:.56em;width:8px;height:8px;border-radius:2px;background:var(--accent);opacity:.75}
+
+  /* materiales */
+  .mat{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
+  .mat .top{height:132px;position:relative}
+  .mat .top svg{position:absolute;inset:0;width:100%;height:100%}
+  .mat .body{padding:24px}
+  .mat h3{font-size:1.08rem}
+  .mat p{margin-top:9px;color:var(--steel);font-size:.93rem}
+  .tag{display:inline-block;margin-top:16px;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--accent);background:#e9f1f6;padding:5px 11px;border-radius:999px}
+
+  /* pasos */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;counter-reset:s}
+  .step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:30px 26px;position:relative}
+  .step .n{
+    width:40px;height:40px;border-radius:50%;display:grid;place-items:center;
+    background:var(--ink);color:#fff;font-weight:700;font-size:.95rem;margin-bottom:18px;
+  }
+  .step h3{font-size:1.08rem}
+  .step p{margin-top:9px;color:var(--steel);font-size:.94rem}
+
+  /* galería vacía */
+  .gal{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .slot{
+    border:2px dashed #c6d0d9;border-radius:var(--r);
+    background:repeating-linear-gradient(135deg,#f7f9fb 0 12px,#f1f5f8 12px 24px);
+    min-height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:24px;gap:10px;color:var(--steel);
+  }
+  .slot .ph{width:40px;height:40px;opacity:.5}
+  .slot b{font-size:.9rem;color:var(--ink-2);font-weight:650}
+  .slot small{font-size:.78rem;max-width:24ch;line-height:1.5}
+  .gal-note{
+    margin-top:22px;border-left:3px solid var(--amber);background:#fdf6ea;
+    padding:16px 20px;border-radius:0 10px 10px 0;font-size:.9rem;color:#6b4f21;
+  }
+
+  /* formulario */
+  .form-wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:40px;align-items:start}
+  .form-side h2{font-size:clamp(1.6rem,2.4vw,2.1rem)}
+  .form-side p{margin-top:16px;color:var(--steel)}
+  .form-side ul{margin:24px 0 0;padding:0;list-style:none;display:grid;gap:12px}
+  .form-side li{display:flex;gap:11px;align-items:flex-start;font-size:.93rem;color:var(--ink-2)}
+  .check{width:19px;height:19px;flex:none;margin-top:2px}
+  form{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:30px}
+  .f-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .field{display:flex;flex-direction:column;gap:7px;margin-bottom:16px;min-width:0}
+  label{font-size:.8rem;font-weight:650;letter-spacing:.01em;color:var(--ink-2)}
+  input,select,textarea{
+    width:100%;max-width:100%;font:inherit;font-size:.93rem;color:var(--ink);
+    padding:12px 14px;border:1px solid #d5dce2;border-radius:9px;background:#fcfdfe;
+  }
+  textarea{resize:vertical;min-height:104px}
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--accent-2);outline-offset:1px;border-color:var(--accent-2)}
+  .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:2px}
+  .chip{display:inline-flex;align-items:center;gap:8px;border:1px solid #d5dce2;border-radius:999px;padding:8px 14px;font-size:.85rem;background:#fcfdfe;cursor:pointer}
+  .chip input{width:auto;padding:0;margin:0;accent-color:var(--accent)}
+  .consent{display:flex;gap:10px;align-items:flex-start;font-size:.8rem;color:var(--steel);margin:4px 0 18px}
+  .consent input{width:auto;margin-top:3px;accent-color:var(--accent)}
+  .form-note{font-size:.76rem;color:var(--steel);margin-top:14px}
+
+  /* contacto */
+  .contact{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:stretch}
+  .cbox{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:30px}
+  .cline{display:flex;gap:14px;align-items:flex-start;padding:16px 0;border-bottom:1px solid var(--line-2)}
+  .cline:last-child{border-bottom:0;padding-bottom:0}
+  .cline:first-of-type{padding-top:0}
+  .cline .ci{width:38px;height:38px;border-radius:10px;background:#e9f1f6;display:grid;place-items:center;flex:none}
+  .cline .lbl{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);font-weight:700}
+  .cline .val{font-size:1.02rem;font-weight:620;margin-top:3px;word-break:break-word}
+  .cline a{text-decoration:none}
+  .cline a:hover{color:var(--accent)}
+  .map{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
+  .map svg{width:100%;height:auto;display:block}
+  .map .cap{padding:14px 20px;border-top:1px solid var(--line);font-size:.78rem;color:var(--steel)}
+
+  /* footer */
+  footer{background:#0c1116;color:#c3cfd8;padding:58px 0 34px}
+  .f-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:34px;padding-bottom:34px;border-bottom:1px solid rgba(255,255,255,.12)}
+  footer h4{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:#8ba3b2;margin-bottom:14px;font-weight:700}
+  footer a{color:#dce6ec;text-decoration:none}
+  footer a:hover{color:#fff;text-decoration:underline}
+  .f-list{display:grid;gap:9px;font-size:.92rem}
+  .f-brand b{color:#fff;font-size:1.1rem;display:block}
+  .f-brand p{margin-top:12px;font-size:.9rem;max-width:40ch;color:#9fb2bf}
+  .f-bottom{padding-top:26px;display:flex;flex-wrap:wrap;gap:12px 26px;justify-content:space-between;font-size:.82rem;color:#8ba3b2}
+  .f-credit{color:#e3edf3;font-weight:600}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:1000px){
+    .hero-in{grid-template-columns:1fr;gap:42px;padding:66px 24px 72px}
+    .form-wrap{grid-template-columns:1fr;gap:30px}
+    .contact{grid-template-columns:1fr}
+    .grid-3,.steps,.gal{grid-template-columns:repeat(2,1fr)}
+    .f-grid{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:720px){
+    :root{--bar-h:52px}
+    .wrap{padding:0 18px}
+    .hero-in{padding:52px 18px 58px}
+    .sec{padding:60px 0}
+    .nav-links{display:none}
+    .nav-in{min-height:62px;gap:10px;flex-wrap:nowrap}
+    .brand .mark{width:30px;height:30px}
+    .brand b{font-size:.95rem}
+    .brand small{font-size:.6rem;letter-spacing:.1em}
+    .nav-in .btn{padding:10px 15px;font-size:.84rem;flex:none;white-space:nowrap}
+    .grid-3,.grid-2,.steps,.gal,.f-grid,.f-row{grid-template-columns:1fr}
+    .studiobar{font-size:.7rem;line-height:1.25;padding:0 12px}
+    .studiobar span{white-space:normal}
+    .hero-cta .btn{flex:1 1 100%}
+    .card,form,.cbox,.step{padding:22px}
+    .f-bottom{flex-direction:column;gap:10px}
+  }
+</style>
+</head>
+<body>
+
+<div class="studiobar"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<div class="page">
+
+  <header class="nav">
+    <div class="wrap nav-in">
+      <a class="brand" href="#inicio">
+        <svg class="mark" viewBox="0 0 40 40" aria-hidden="true">
+          <rect x="1.5" y="1.5" width="37" height="37" rx="8" fill="#15323f"/>
+          <rect x="8" y="8" width="24" height="24" rx="3" fill="none" stroke="#a8c6d6" stroke-width="2"/>
+          <path d="M20 8v24M8 20h24" stroke="#a8c6d6" stroke-width="2"/>
+          <path d="M10 30 L18 10" stroke="#ffffff" stroke-opacity=".35" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <span>
+          <b>Ventanas ONA</b>
+          <small>Ona Leihoak · Eibar</small>
+        </span>
+      </a>
+      <nav class="nav-links" aria-label="Principal">
+        <a href="#servicios">Servicios</a>
+        <a href="#materiales">Materiales</a>
+        <a href="#proceso">Cómo trabajamos</a>
+        <a href="#trabajos">Trabajos</a>
+        <a href="#presupuesto">Presupuesto</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <a class="btn btn-primary" href="tel:+34943202828">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.2-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.8 2.1Z"/></svg>
+        943 202 828
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div class="wrap hero-in">
+      <div>
+        <div class="eyebrow">Carpintería de ventanas y cerramientos · Eibar</div>
+        <h1>Ventanas y cerramientos<br><em>bien instalados</em>, bien rematados.</h1>
+        <p class="lead">Somos Ventanas ONA (Ona Leihoak), en Bidebarrieta 28 de Eibar. Instalamos, mantenemos y reparamos ventanas y cerramientos en carpintería metálica, de PVC y mixta, para viviendas, comunidades y obra dirigida por arquitectos y aparejadores.</p>
+        <div class="hero-cta">
+          <a class="btn btn-light" href="tel:+34943202828">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.2-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.8 2.1Z"/></svg>
+            Llamar al 943 202 828
+          </a>
+          <a class="btn btn-outline-light" href="#presupuesto">Pedir presupuesto</a>
+        </div>
+        <div class="hero-meta">
+          <span><i class="dot"></i>Carpintería metálica, PVC y mixta</span>
+          <span><i class="dot"></i>Instalación · mantenimiento · reparación</span>
+          <span><i class="dot"></i>Bidebarrieta, 28 — Eibar</span>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 520 430" role="img">
+          <defs>
+            <linearGradient id="gGlass" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#cfe4ef" stop-opacity=".92"/>
+              <stop offset="55%" stop-color="#7fa7bd" stop-opacity=".72"/>
+              <stop offset="100%" stop-color="#3d6c87" stop-opacity=".85"/>
+            </linearGradient>
+            <linearGradient id="gGlass2" x1="1" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#e8f3f8" stop-opacity=".85"/>
+              <stop offset="100%" stop-color="#5c87a1" stop-opacity=".8"/>
+            </linearGradient>
+            <linearGradient id="gFrame" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#f2f6f8"/>
+              <stop offset="100%" stop-color="#b9c6ce"/>
+            </linearGradient>
+            <linearGradient id="gFrame2" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#8d9ba6"/>
+              <stop offset="100%" stop-color="#5d6b76"/>
+            </linearGradient>
+          </defs>
+
+          <rect x="34" y="22" width="452" height="386" rx="14" fill="url(#gFrame2)"/>
+          <rect x="44" y="32" width="432" height="366" rx="10" fill="url(#gFrame)"/>
+          <rect x="60" y="48" width="400" height="334" rx="6" fill="#16303d"/>
+
+          <!-- hoja izquierda -->
+          <rect x="72" y="60" width="180" height="310" rx="4" fill="url(#gGlass)"/>
+          <rect x="72" y="60" width="180" height="310" rx="4" fill="none" stroke="#e7eff4" stroke-opacity=".55" stroke-width="3"/>
+          <path d="M86 360 L200 72" stroke="#ffffff" stroke-opacity=".3" stroke-width="22" stroke-linecap="round"/>
+          <path d="M140 362 L238 110" stroke="#ffffff" stroke-opacity=".16" stroke-width="12" stroke-linecap="round"/>
+
+          <!-- hoja derecha -->
+          <rect x="268" y="60" width="180" height="310" rx="4" fill="url(#gGlass2)"/>
+          <rect x="268" y="60" width="180" height="310" rx="4" fill="none" stroke="#e7eff4" stroke-opacity=".55" stroke-width="3"/>
+          <path d="M296 364 L410 78" stroke="#ffffff" stroke-opacity=".26" stroke-width="18" stroke-linecap="round"/>
+
+          <!-- junquillo central y manilla -->
+          <rect x="252" y="48" width="16" height="334" fill="url(#gFrame2)"/>
+          <rect x="246" y="196" width="12" height="46" rx="6" fill="#28333c"/>
+          <rect x="226" y="212" width="26" height="9" rx="4.5" fill="#28333c"/>
+
+          <!-- cotas técnicas -->
+          <g stroke="#a8c6d6" stroke-opacity=".85" stroke-width="1.5" fill="none">
+            <path d="M34 418 H486"/>
+            <path d="M34 412 V424 M486 412 V424"/>
+            <path d="M504 22 V408"/>
+            <path d="M498 22 H510 M498 408 H510"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section class="sec" id="servicios">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Servicios</div>
+        <h2>Instalación, mantenimiento y reparación</h2>
+        <p>Tres formas de trabajar sobre la misma carpintería: montarla nueva, conservarla en buen estado o devolverle el funcionamiento cuando algo falla.</p>
+      </div>
+      <div class="grid-3">
+
+        <article class="card">
+          <div class="ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1f6b8c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 3v18M3 12h18"/></svg>
+          </div>
+          <h3>Instalación</h3>
+          <p>Montaje de ventanas y cerramientos nuevos, con medición previa en obra y remates de albañilería y sellado.</p>
+          <ul>
+            <li>Toma de medidas en el hueco real</li>
+            <li>Sustitución de carpintería existente</li>
+            <li>Cerramientos completos</li>
+            <li>Remates y sellado perimetral</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1f6b8c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 7.5a5 5 0 0 1-6.6 6.6L6 22l-4-4 7.9-7.9A5 5 0 0 1 16.5 3.5l-3 3 2 2 3-3c.6.6 1.3 1.3 2 2Z"/></svg>
+          </div>
+          <h3>Mantenimiento</h3>
+          <p>Revisión periódica de hojas, herrajes y juntas para que la carpintería siga cerrando y aislando como el primer día.</p>
+          <ul>
+            <li>Ajuste de hojas y regulación de herrajes</li>
+            <li>Revisión de juntas y gomas</li>
+            <li>Engrase y limpieza de mecanismos</li>
+            <li>Repaso de sellados</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1f6b8c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M6 21V9l6-5 6 5v12"/><path d="M10 21v-6h4v6"/></svg>
+          </div>
+          <h3>Reparación</h3>
+          <p>Arreglo de ventanas y cerramientos que no cierran bien, se han desajustado o han sufrido un golpe o una rotura.</p>
+          <ul>
+            <li>Ventanas que no cierran o rozan</li>
+            <li>Cambio de herrajes y manillas</li>
+            <li>Sustitución de elementos dañados</li>
+            <li>Corrección de filtraciones de aire y agua</li>
+          </ul>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- MATERIALES -->
+  <section class="sec sec-alt" id="materiales">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Materiales</div>
+        <h2>Carpintería metálica, de PVC y mixta</h2>
+        <p>Trabajamos los tres sistemas. La elección depende del hueco, de la orientación de la fachada y de lo que pida el proyecto.</p>
+      </div>
+      <div class="grid-3">
+
+        <article class="mat">
+          <div class="top">
+            <svg viewBox="0 0 320 132" preserveAspectRatio="none" aria-hidden="true">
+              <defs><linearGradient id="m1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5d6b76"/><stop offset="55%" stop-color="#97a5af"/><stop offset="100%" stop-color="#44525c"/></linearGradient></defs>
+              <rect width="320" height="132" fill="url(#m1)"/>
+              <g stroke="#ffffff" stroke-opacity=".3" stroke-width="2" fill="none">
+                <rect x="36" y="22" width="108" height="88"/><rect x="176" y="22" width="108" height="88"/>
+                <path d="M90 22v88M230 22v88"/>
+              </g>
+              <path d="M-10 132 L120 0" stroke="#fff" stroke-opacity=".16" stroke-width="30"/>
+            </svg>
+          </div>
+          <div class="body">
+            <h3>Carpintería metálica</h3>
+            <p>Perfilería metálica para ventanas y cerramientos, con secciones estrechas y buen comportamiento en huecos grandes o de forma complicada.</p>
+            <span class="tag">Metal</span>
+          </div>
+        </article>
+
+        <article class="mat">
+          <div class="top">
+            <svg viewBox="0 0 320 132" preserveAspectRatio="none" aria-hidden="true">
+              <defs><linearGradient id="m2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eef3f6"/><stop offset="60%" stop-color="#cfd9e0"/><stop offset="100%" stop-color="#aab8c2"/></linearGradient></defs>
+              <rect width="320" height="132" fill="url(#m2)"/>
+              <g stroke="#55636f" stroke-opacity=".45" stroke-width="3" fill="none">
+                <rect x="40" y="20" width="100" height="92" rx="3"/><rect x="180" y="20" width="100" height="92" rx="3"/>
+                <rect x="54" y="34" width="72" height="64" rx="2"/><rect x="194" y="34" width="72" height="64" rx="2"/>
+              </g>
+              <path d="M200 132 L300 10" stroke="#fff" stroke-opacity=".55" stroke-width="22"/>
+            </svg>
+          </div>
+          <div class="body">
+            <h3>Carpintería de PVC</h3>
+            <p>Perfiles de PVC con cámaras interiores, pensados para aislamiento térmico y acústico y con un mantenimiento muy sencillo.</p>
+            <span class="tag">PVC</span>
+          </div>
+        </article>
+
+        <article class="mat">
+          <div class="top">
+            <svg viewBox="0 0 320 132" preserveAspectRatio="none" aria-hidden="true">
+              <defs>
+                <linearGradient id="m3a" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#6c7a85"/><stop offset="100%" stop-color="#8e9ca6"/></linearGradient>
+                <linearGradient id="m3b" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#c9a271"/><stop offset="100%" stop-color="#9d7845"/></linearGradient>
+              </defs>
+              <rect width="160" height="132" fill="url(#m3a)"/>
+              <rect x="160" width="160" height="132" fill="url(#m3b)"/>
+              <g stroke="#ffffff" stroke-opacity=".38" stroke-width="2.5" fill="none">
+                <rect x="34" y="22" width="104" height="88"/><rect x="182" y="22" width="104" height="88"/>
+              </g>
+              <path d="M160 0 V132" stroke="#2b3540" stroke-opacity=".4" stroke-width="4"/>
+            </svg>
+          </div>
+          <div class="body">
+            <h3>Carpintería mixta</h3>
+            <p>Sistemas que combinan dos materiales en un mismo perfil: una cara al exterior y otra al interior, según lo que necesite cada fachada.</p>
+            <span class="tag">Mixta</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESO -->
+  <section class="sec" id="proceso">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Cómo trabajamos</div>
+        <h2>Tres pasos, sin sorpresas</h2>
+        <p>El mismo recorrido tanto si nos llama un particular como si el encargo llega desde un estudio de arquitectura o una dirección de obra.</p>
+      </div>
+      <div class="steps">
+        <article class="step">
+          <div class="n">1</div>
+          <h3>Visita y medición</h3>
+          <p>Vemos el hueco, medimos sobre obra y hablamos del uso, la orientación y el estado de la carpintería que ya hay.</p>
+        </article>
+        <article class="step">
+          <div class="n">2</div>
+          <h3>Propuesta y presupuesto</h3>
+          <p>Proponemos material y sistema para ese caso concreto y lo pasamos por escrito, con el alcance del trabajo detallado.</p>
+        </article>
+        <article class="step">
+          <div class="n">3</div>
+          <h3>Montaje y remates</h3>
+          <p>Instalamos, sellamos y dejamos la zona recogida. Repasamos el cierre y el funcionamiento antes de dar el trabajo por terminado.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERÍA (VACÍA) -->
+  <section class="sec sec-alt" id="trabajos">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Galería de trabajos</div>
+        <h2>Espacio reservado para vuestras fotos</h2>
+        <p>Esta sección está vacía a propósito. Es el lugar donde Ventanas ONA irá subiendo fotografías de sus propias instalaciones y reparaciones. La maqueta no incluye ninguna imagen de obra.</p>
+      </div>
+      <div class="gal">
+        <div class="slot">
+          <svg class="ph" viewBox="0 0 24 24" fill="none" stroke="#55636f" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="m21 15-5-5L5 21"/></svg>
+          <b>Hueco de foto 1</b>
+          <small>Espacio reservado: foto de un trabajo real del negocio</small>
+        </div>
+        <div class="slot">
+          <svg class="ph" viewBox="0 0 24 24" fill="none" stroke="#55636f" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="m21 15-5-5L5 21"/></svg>
+          <b>Hueco de foto 2</b>
+          <small>Espacio reservado: foto de un trabajo real del negocio</small>
+        </div>
+        <div class="slot">
+          <svg class="ph" viewBox="0 0 24 24" fill="none" stroke="#55636f" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="m21 15-5-5L5 21"/></svg>
+          <b>Hueco de foto 3</b>
+          <small>Espacio reservado: foto de un trabajo real del negocio</small>
+        </div>
+        <div class="slot">
+          <svg class="ph" viewBox="0 0 24 24" fill="none" stroke="#55636f" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="m21 15-5-5L5 21"/></svg>
+          <b>Hueco de foto 4</b>
+          <small>Espacio reservado: foto de un trabajo real del negocio</small>
+        </div>
+        <div class="slot">
+          <svg class="ph" viewBox="0 0 24 24" fill="none" stroke="#55636f" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="m21 15-5-5L5 21"/></svg>
+          <b>Hueco de foto 5</b>
+          <small>Espacio reservado: foto de un trabajo real del negocio</small>
+        </div>
+        <div class="slot">
+          <svg class="ph" viewBox="0 0 24 24" fill="none" stroke="#55636f" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="m21 15-5-5L5 21"/></svg>
+          <b>Hueco de foto 6</b>
+          <small>Espacio reservado: foto de un trabajo real del negocio</small>
+        </div>
+      </div>
+      <p class="gal-note"><strong>Nota de la maqueta:</strong> no se ha colocado ninguna fotografía porque no disponemos de imágenes del negocio. Los seis huecos quedan preparados para que Ventanas ONA los rellene con trabajos propios.</p>
+    </div>
+  </section>
+
+  <!-- PRESUPUESTO -->
+  <section class="sec" id="presupuesto">
+    <div class="wrap form-wrap">
+      <div class="form-side">
+        <div class="eyebrow">Presupuesto</div>
+        <h2>Cuéntanos el hueco y te damos precio</h2>
+        <p>Rellena el formulario y nos pondremos en contacto. Si lo prefieres, puedes llamar directamente al <a href="tel:+34943202828"><strong>943 202 828</strong></a>.</p>
+        <ul>
+          <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="#1f6b8c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m20 6-11 11-5-5"/></svg>Vale para una ventana suelta o para una vivienda entera</li>
+          <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="#1f6b8c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m20 6-11 11-5-5"/></svg>Si eres arquitecto o aparejador, indícalo y adjuntamos el detalle técnico</li>
+          <li><svg class="check" viewBox="0 0 24 24" fill="none" stroke="#1f6b8c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m20 6-11 11-5-5"/></svg>Si no sabes qué material te conviene, lo vemos juntos</li>
+        </ul>
+      </div>
+
+      <form onsubmit="event.preventDefault();" novalidate>
+        <div class="f-row">
+          <div class="field">
+            <label for="nombre">Nombre y apellidos</label>
+            <input id="nombre" name="nombre" type="text" placeholder="Tu nombre" autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="tel">Teléfono</label>
+            <input id="tel" name="tel" type="tel" placeholder="Para poder llamarte" autocomplete="tel">
+          </div>
+        </div>
+        <div class="f-row">
+          <div class="field">
+            <label for="email">Correo electrónico</label>
+            <input id="email" name="email" type="email" placeholder="nombre@correo.com" autocomplete="email">
+          </div>
+          <div class="field">
+            <label for="loc">Localidad del trabajo</label>
+            <input id="loc" name="loc" type="text" placeholder="Municipio y zona">
+          </div>
+        </div>
+        <div class="f-row">
+          <div class="field">
+            <label for="perfil">Quién solicita</label>
+            <select id="perfil" name="perfil">
+              <option>Particular</option>
+              <option>Comunidad de propietarios</option>
+              <option>Arquitecto / aparejador</option>
+              <option>Empresa o local</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="tipo">Tipo de trabajo</label>
+            <select id="tipo" name="tipo">
+              <option>Instalación de carpintería nueva</option>
+              <option>Sustitución de ventanas existentes</option>
+              <option>Mantenimiento y ajuste</option>
+              <option>Reparación de una avería</option>
+              <option>Todavía no lo sé</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Material que te interesa</label>
+          <div class="chips">
+            <label class="chip"><input type="checkbox" name="material" value="metalica"> Metálica</label>
+            <label class="chip"><input type="checkbox" name="material" value="pvc"> PVC</label>
+            <label class="chip"><input type="checkbox" name="material" value="mixta"> Mixta</label>
+            <label class="chip"><input type="checkbox" name="material" value="asesor"> Que me asesoréis</label>
+          </div>
+        </div>
+
+        <div class="f-row">
+          <div class="field">
+            <label for="huecos">Número de huecos</label>
+            <input id="huecos" name="huecos" type="text" placeholder="Ej.: 1, 4, toda la vivienda">
+          </div>
+          <div class="field">
+            <label for="medidas">Medidas aproximadas</label>
+            <input id="medidas" name="medidas" type="text" placeholder="Ancho x alto, si las tienes">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="msg">Cuéntanos el caso</label>
+          <textarea id="msg" name="msg" placeholder="Qué ventana o cerramiento es, qué le pasa o qué quieres cambiar, planta del edificio, acceso..."></textarea>
+        </div>
+
+        <label class="consent"><input type="checkbox"> He leído y acepto que se utilicen mis datos para responder a esta petición de presupuesto.</label>
+
+        <button class="btn btn-primary" type="submit" style="width:100%">Enviar petición de presupuesto</button>
+        <p class="form-note">Formulario maquetado como demostración: en esta propuesta todavía no envía datos a ningún servidor.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="sec sec-alt" id="contacto">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Contacto</div>
+        <h2>Dónde estamos</h2>
+        <p>Taller y atención en Bidebarrieta, en pleno centro de Eibar.</p>
+      </div>
+      <div class="contact">
+        <div class="cbox">
+          <div class="cline">
+            <div class="ci"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1f6b8c" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.2-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.8 2.1Z"/></svg></div>
+            <div><div class="lbl">Teléfono</div><div class="val"><a href="tel:+34943202828">943 202 828</a></div></div>
+          </div>
+          <div class="cline">
+            <div class="ci"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1f6b8c" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div><div class="lbl">Dirección</div><div class="val">Bidebarrieta, 28<br>20600 Eibar (Gipuzkoa)</div></div>
+          </div>
+          <div class="cline">
+            <div class="ci"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1f6b8c" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></div>
+            <div><div class="lbl">Correo</div><div class="val"><a href="mailto:info@ventanasona.com">info@ventanasona.com</a></div></div>
+          </div>
+          <div class="cline">
+            <div class="ci"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1f6b8c" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg></div>
+            <div><div class="lbl">Horario</div><div class="val">Consultar horario</div></div>
+          </div>
+        </div>
+
+        <div class="map">
+          <svg viewBox="0 0 560 330" role="img" aria-label="Mapa esquemático de la zona de Bidebarrieta, 28, en Eibar">
+            <defs>
+              <linearGradient id="mapbg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#eef3f6"/><stop offset="100%" stop-color="#e1e9ee"/>
+              </linearGradient>
+            </defs>
+            <rect width="560" height="330" fill="url(#mapbg)"/>
+            <!-- manzanas -->
+            <g fill="#d5dee4">
+              <rect x="34" y="34" width="150" height="86" rx="5"/>
+              <rect x="212" y="34" width="118" height="86" rx="5"/>
+              <rect x="358" y="34" width="168" height="120" rx="5"/>
+              <rect x="34" y="150" width="150" height="76" rx="5"/>
+              <rect x="212" y="186" width="118" height="110" rx="5"/>
+              <rect x="358" y="186" width="168" height="110" rx="5"/>
+              <rect x="34" y="256" width="150" height="40" rx="5"/>
+            </g>
+            <!-- río / cauce -->
+            <path d="M0 266 C110 250 180 300 300 288 C400 278 470 316 560 304" stroke="#b9d3e2" stroke-width="16" fill="none" stroke-linecap="round"/>
+            <!-- calles -->
+            <g stroke="#ffffff" stroke-width="12" stroke-linecap="round">
+              <path d="M0 136 H560"/>
+              <path d="M198 0 V330"/>
+              <path d="M344 0 V330"/>
+              <path d="M0 170 H560"/>
+            </g>
+            <g stroke="#c3ced6" stroke-width="1.5" stroke-dasharray="5 6">
+              <path d="M0 153 H560"/>
+            </g>
+            <!-- etiqueta calle -->
+            <text x="24" y="128" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="13" font-weight="700" fill="#55636f">BIDEBARRIETA</text>
+            <!-- marcador -->
+            <g transform="translate(252,112)">
+              <circle cx="0" cy="40" r="13" fill="#10151a" opacity=".12"/>
+              <path d="M0 42 C0 42 -17 22 -17 11 A17 17 0 1 1 17 11 C17 22 0 42 0 42Z" fill="#1f6b8c"/>
+              <circle cx="0" cy="11" r="6.4" fill="#ffffff"/>
+            </g>
+            <rect x="286" y="96" width="196" height="46" rx="9" fill="#10151a" opacity=".92"/>
+            <text x="300" y="115" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="13" font-weight="700" fill="#ffffff">Ventanas ONA</text>
+            <text x="300" y="132" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="11.5" fill="#b2c3cd">Bidebarrieta, 28 · 20600 Eibar</text>
+          </svg>
+          <div class="cap">Mapa esquemático orientativo, dibujado para esta maqueta. No es un mapa real ni está a escala.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="f-grid">
+        <div class="f-brand">
+          <b>Ventanas ONA · Ona Leihoak</b>
+          <p>Instalación, mantenimiento y reparación de ventanas y cerramientos en carpintería metálica, de PVC y mixta. Eibar, Gipuzkoa.</p>
+        </div>
+        <div>
+          <h4>Secciones</h4>
+          <div class="f-list">
+            <a href="#servicios">Servicios</a>
+            <a href="#materiales">Materiales</a>
+            <a href="#proceso">Cómo trabajamos</a>
+            <a href="#trabajos">Trabajos</a>
+            <a href="#presupuesto">Presupuesto</a>
+          </div>
+        </div>
+        <div>
+          <h4>Contacto</h4>
+          <div class="f-list">
+            <a href="tel:+34943202828">943 202 828</a>
+            <a href="mailto:info@ventanasona.com">info@ventanasona.com</a>
+            <span>Bidebarrieta, 28<br>20600 Eibar (Gipuzkoa)</span>
+            <span>Consultar horario</span>
+          </div>
+        </div>
+      </div>
+      <div class="f-bottom">
+        <span>© Ventanas ONA · Ona Leihoak</span>
+        <span class="f-credit">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
