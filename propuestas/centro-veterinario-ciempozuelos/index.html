@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Centro Veterinario Ciempozuelos — Propuesta de diseño</title>
+<meta name="description" content="Maqueta no oficial de propuesta de rediseño web para Centro Veterinario Ciempozuelos, por FFFFFFstudio (Ángel Rubio, Alicante).">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  :root{
+    --bar-h: 44px;
+    --ink: #17211f;
+    --ink-soft: #4a5a56;
+    --ink-faint: #6b7b77;
+    --paper: #fbf8f3;
+    --paper-2: #ffffff;
+    --line: #e2dcd1;
+    --teal-900: #103230;
+    --teal-700: #1c514c;
+    --teal-500: #2f7d74;
+    --teal-100: #dff0ec;
+    --amber-500: #c6762c;
+    --amber-100: #fbeedd;
+    --radius: 18px;
+    --shadow-sm: 0 1px 2px rgba(16,50,48,.06), 0 4px 14px rgba(16,50,48,.05);
+    --shadow-md: 0 2px 6px rgba(16,50,48,.07), 0 18px 40px rgba(16,50,48,.09);
+    --sans: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  }
+  *, *::before, *::after{ box-sizing: border-box; }
+  html{ -webkit-text-size-adjust: 100%; }
+  body{
+    margin:0;
+    font-family: var(--sans);
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.6;
+    font-size: 17px;
+    overflow-x: hidden;
+  }
+  img, svg{ max-width:100%; }
+  h1,h2,h3,h4{ line-height:1.15; margin:0 0 .5em; letter-spacing:-.02em; font-weight:700; }
+  p{ margin:0 0 1em; }
+  a{ color: var(--teal-700); }
+
+  /* ---------- Barra fija de propuesta ---------- */
+  .proposal-bar{
+    position: fixed; inset: 0 0 auto 0; z-index: 100;
+    min-height: var(--bar-h);
+    display:flex; align-items:center; justify-content:center;
+    gap:.5rem; padding:.45rem 16px;
+    background: linear-gradient(90deg, #0e2b29, #1c514c 55%, #2f7d74);
+    color:#eaf5f2;
+    font-size: 12.5px; line-height:1.35; letter-spacing:.03em;
+    text-align:center;
+    box-shadow: 0 1px 0 rgba(255,255,255,.08), 0 6px 18px rgba(10,30,28,.22);
+  }
+  .proposal-bar span{ max-width: 100%; }
+
+  /* ---------- Layout ---------- */
+  .wrap{ width:100%; max-width: 1140px; margin:0 auto; padding:0 24px; }
+  section{ padding: 84px 0; }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:.5rem;
+    font-size:12.5px; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+    color: var(--teal-700); background: var(--teal-100);
+    border:1px solid #c7e3dd; border-radius:999px; padding:.4rem .85rem;
+    margin-bottom:1.1rem;
+  }
+  .lead{ font-size:1.075rem; color: var(--ink-soft); max-width: 62ch; }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative; overflow:hidden;
+    padding-top: calc(var(--bar-h) + 72px);
+    padding-bottom: 86px;
+    background:
+      radial-gradient(1100px 520px at 88% -8%, rgba(47,125,116,.20), transparent 62%),
+      radial-gradient(760px 420px at 4% 108%, rgba(198,118,44,.16), transparent 60%),
+      linear-gradient(180deg, #ffffff 0%, var(--paper) 100%);
+    border-bottom:1px solid var(--line);
+  }
+  .hero-grid{ display:grid; grid-template-columns: 1.15fr .85fr; gap:56px; align-items:center; }
+  .brandline{ display:flex; align-items:center; gap:.7rem; margin-bottom:1.5rem; }
+  .brandmark{
+    width:46px; height:46px; flex:0 0 46px; border-radius:13px;
+    background: linear-gradient(145deg, var(--teal-700), var(--teal-500));
+    display:grid; place-items:center; box-shadow: var(--shadow-sm);
+  }
+  .brandname{ font-weight:700; font-size:15px; letter-spacing:.02em; line-height:1.25; }
+  .brandname small{ display:block; font-weight:500; color:var(--ink-faint); font-size:12.5px; letter-spacing:.07em; text-transform:uppercase; }
+  .hero h1{ font-size: clamp(2.05rem, 4.4vw, 3.3rem); color: var(--teal-900); }
+  .hero h1 em{ font-style:normal; color: var(--teal-500); }
+
+  .cta-row{ display:flex; flex-wrap:wrap; gap:14px; margin-top:1.9rem; }
+  .btn{
+    display:inline-flex; align-items:center; gap:.65rem;
+    padding:.95rem 1.4rem; border-radius:14px;
+    font-weight:700; font-size:1rem; text-decoration:none;
+    border:1.5px solid transparent; transition: transform .16s ease, box-shadow .16s ease, background .16s ease;
+    min-height:54px;
+  }
+  .btn svg{ flex:0 0 auto; }
+  .btn-primary{ background: var(--teal-700); color:#fff; box-shadow: var(--shadow-md); }
+  .btn-primary:hover{ background: var(--teal-900); transform: translateY(-2px); }
+  .btn-ghost{ background: #fff; color: var(--teal-900); border-color:#cfe1dd; box-shadow: var(--shadow-sm); }
+  .btn-ghost:hover{ border-color: var(--teal-500); transform: translateY(-2px); }
+  .btn-sub{ display:block; font-weight:500; font-size:12px; letter-spacing:.07em; text-transform:uppercase; opacity:.78; }
+  .btn-stack{ display:flex; flex-direction:column; align-items:flex-start; line-height:1.25; }
+
+  .hero-note{ margin-top:1.5rem; font-size:14.5px; color: var(--ink-faint); display:flex; align-items:flex-start; gap:.5rem; }
+
+  /* Tarjeta ilustrada del hero */
+  .hero-card{
+    background: var(--paper-2); border:1px solid var(--line); border-radius: 26px;
+    padding: 26px; box-shadow: var(--shadow-md);
+  }
+  .hero-card .illus{
+    border-radius:18px; overflow:hidden; display:block; width:100%; height:auto;
+    background: linear-gradient(160deg, #e9f3f0, #f7efe4);
+  }
+  .fact-list{ list-style:none; margin:20px 0 0; padding:0; display:grid; gap:12px; }
+  .fact-list li{ display:flex; gap:.7rem; align-items:flex-start; font-size:15px; color: var(--ink-soft); }
+  .fact-list strong{ color: var(--ink); display:block; font-size:15px; }
+  .ic{
+    width:30px; height:30px; flex:0 0 30px; border-radius:9px; display:grid; place-items:center;
+    background: var(--teal-100); color: var(--teal-700);
+  }
+
+  /* ---------- Servicios ---------- */
+  .svc-head{ display:flex; flex-wrap:wrap; gap:28px; justify-content:space-between; align-items:flex-end; margin-bottom:40px; }
+  .svc-head h2{ font-size: clamp(1.65rem, 2.8vw, 2.3rem); color: var(--teal-900); max-width: 22ch; margin:0; }
+  .grid-svc{ display:grid; grid-template-columns: repeat(3, 1fr); gap:20px; }
+  .card{
+    background: var(--paper-2); border:1px solid var(--line); border-radius: var(--radius);
+    padding: 26px 24px 24px; box-shadow: var(--shadow-sm);
+    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  }
+  .card:hover{ transform: translateY(-3px); box-shadow: var(--shadow-md); border-color:#cfe1dd; }
+  .card .ic-lg{
+    width:48px; height:48px; border-radius:14px; display:grid; place-items:center;
+    background: linear-gradient(145deg, var(--teal-100), #eef7f4); color: var(--teal-700);
+    border:1px solid #d3e8e3; margin-bottom:16px;
+  }
+  .card h3{ font-size:1.12rem; color: var(--teal-900); margin-bottom:.45rem; }
+  .card p{ margin:0; font-size:15px; color: var(--ink-soft); }
+  .card.highlight{ border-color:#d8c3a4; background: linear-gradient(170deg, #fffaf2, #fff); }
+  .card.highlight .ic-lg{ background: linear-gradient(145deg, var(--amber-100), #fff6ea); color: var(--amber-500); border-color:#eed9bd; }
+  .tag-web{
+    display:inline-block; margin-top:14px; font-size:11.5px; font-weight:700;
+    letter-spacing:.1em; text-transform:uppercase; color:#8a5618;
+    background: var(--amber-100); border:1px solid #eed9bd; border-radius:999px; padding:.3rem .6rem;
+  }
+
+  /* ---------- Primera visita ---------- */
+  .visita{ background: linear-gradient(180deg, #ffffff, #f4f7f5); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .grid-steps{ display:grid; grid-template-columns: repeat(3, 1fr); gap:22px; margin-top:38px; }
+  .step{
+    background: var(--paper-2); border:1px solid var(--line); border-radius: var(--radius);
+    padding: 28px 24px; box-shadow: var(--shadow-sm); position:relative;
+  }
+  .step-num{
+    width:42px; height:42px; border-radius:12px; display:grid; place-items:center;
+    background: var(--teal-900); color:#fff; font-weight:700; font-size:1.05rem;
+    margin-bottom:16px; box-shadow: var(--shadow-sm);
+  }
+  .step h3{ font-size:1.08rem; color: var(--teal-900); }
+  .step p{ margin:0; font-size:15px; color: var(--ink-soft); }
+
+  /* ---------- Contacto ---------- */
+  .grid-contact{ display:grid; grid-template-columns: 1fr 1fr; gap:34px; align-items:start; margin-top:38px; }
+  .panel{
+    background: var(--paper-2); border:1px solid var(--line); border-radius: 22px;
+    padding: 30px 28px; box-shadow: var(--shadow-sm);
+  }
+  .panel h3{ font-size:1.1rem; color:var(--teal-900); }
+  .tel-stack{ display:grid; gap:12px; margin: 4px 0 24px; }
+  .tel-stack .btn{ width:100%; justify-content:flex-start; }
+  .dl{ margin:0; display:grid; gap:18px; }
+  .dl .row{ display:flex; gap:.85rem; align-items:flex-start; }
+  .dl dt{ font-size:11.5px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color: var(--ink-faint); margin-bottom:.15rem; }
+  .dl dd{ margin:0; font-size:15.5px; color: var(--ink); }
+  .dl dd a{ font-weight:600; text-decoration:none; }
+  .dl dd a:hover{ text-decoration:underline; }
+  .map-frame{
+    background: var(--paper-2); border:1px solid var(--line); border-radius:22px;
+    padding:14px; box-shadow: var(--shadow-sm);
+  }
+  .map-frame svg{ display:block; width:100%; height:auto; border-radius:14px; }
+  .map-cap{ font-size:12.5px; color: var(--ink-faint); margin:12px 4px 2px; }
+
+  /* ---------- Pie ---------- */
+  footer{
+    background: var(--teal-900); color:#d9e8e5; padding: 54px 0 40px;
+  }
+  footer h3{ color:#fff; font-size:1.15rem; margin-bottom:.35rem; }
+  .foot-grid{ display:grid; grid-template-columns: 1.3fr 1fr; gap:34px; align-items:start; }
+  footer a{ color:#9fe0d4; }
+  footer a:hover{ color:#fff; }
+  .foot-mail{
+    display:inline-flex; align-items:center; gap:.6rem; margin-top:.4rem;
+    font-weight:700; font-size:1.02rem; text-decoration:none; word-break:break-word;
+  }
+  .foot-sig{
+    margin-top:34px; padding-top:22px; border-top:1px solid rgba(255,255,255,.16);
+    font-size:13.5px; color:#b9d2ce;
+  }
+  .foot-list{ list-style:none; margin:0; padding:0; display:grid; gap:10px; font-size:14.5px; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 1000px){
+    .hero-grid{ grid-template-columns: 1fr; gap:42px; }
+    .grid-svc{ grid-template-columns: repeat(2, 1fr); }
+    .grid-steps{ grid-template-columns: 1fr; }
+    .grid-contact{ grid-template-columns: 1fr; }
+    .foot-grid{ grid-template-columns: 1fr; }
+  }
+  @media (max-width: 680px){
+    :root{ --bar-h: 58px; }
+    body{ font-size: 16.5px; }
+    .wrap{ padding:0 16px; }
+    section{ padding: 56px 0; }
+    .hero{ padding-top: calc(var(--bar-h) + 40px); padding-bottom: 54px; }
+    .grid-svc{ grid-template-columns: 1fr; }
+    .proposal-bar{ font-size: 11.5px; padding:.5rem 14px; letter-spacing:.01em; }
+    .hero h1{ font-size: 1.95rem; }
+    .btn{ width:100%; justify-content:flex-start; }
+    .cta-row{ gap:12px; }
+    .panel, .map-frame{ padding:20px 18px; }
+    .hero-card{ padding:18px; border-radius:20px; }
+    .svc-head{ margin-bottom:28px; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{ transition:none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="proposal-bar" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="brandline">
+        <div class="brandmark" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 20.5s-6.6-4.1-8.3-8A4.8 4.8 0 0 1 12 7.2a4.8 4.8 0 0 1 8.3 5.3c-1.7 3.9-8.3 8-8.3 8Z" stroke="#ffffff" stroke-width="1.7" stroke-linejoin="round"/>
+            <circle cx="8.6" cy="5.1" r="1.6" fill="#ffffff"/>
+            <circle cx="15.4" cy="5.1" r="1.6" fill="#ffffff"/>
+          </svg>
+        </div>
+        <div class="brandname">Centro Veterinario Ciempozuelos
+          <small>Clínica veterinaria · Ciempozuelos, Madrid</small>
+        </div>
+      </div>
+
+      <h1>Atención veterinaria <em>cercana</em> para tu animal de compañía</h1>
+      <p class="lead">Clínica veterinaria en Ciempozuelos. Si tienes una duda sobre la salud de tu perro, gato u otro animal de compañía, lo más rápido es llamar y contarlo por teléfono.</p>
+
+      <div class="cta-row">
+        <a class="btn btn-primary" href="tel:+34918930408">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6.3 3.5h3l1.5 3.8-2 1.4a10.7 10.7 0 0 0 6.5 6.5l1.4-2 3.8 1.5v3c0 1-.8 1.8-1.8 1.8A16.4 16.4 0 0 1 4.5 5.3c0-1 .8-1.8 1.8-1.8Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+          </svg>
+          <span class="btn-stack"><span class="btn-sub">Llamar a la clínica</span>918 930 408</span>
+        </a>
+        <a class="btn btn-ghost" href="tel:+34649437392">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="6.5" y="2.8" width="11" height="18.4" rx="2.6" stroke="currentColor" stroke-width="1.7"/>
+            <path d="M10.6 18.4h2.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          </svg>
+          <span class="btn-stack"><span class="btn-sub">Móvil</span>649 43 73 92</span>
+        </a>
+      </div>
+
+      <p class="hero-note">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="flex:0 0 18px;margin-top:3px">
+          <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M12 7.6v.1M12 11v5.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        Consultar horario por teléfono antes de acudir a la clínica.
+      </p>
+    </div>
+
+    <div class="hero-card">
+      <svg class="illus" viewBox="0 0 440 300" role="img" aria-label="Ilustración: silueta de un perro y un gato sobre fondo con gradiente">
+        <defs>
+          <linearGradient id="gSky" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#e6f2ef"/>
+            <stop offset="1" stop-color="#f9f0e3"/>
+          </linearGradient>
+          <linearGradient id="gDog" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#2f7d74"/>
+            <stop offset="1" stop-color="#15433f"/>
+          </linearGradient>
+          <linearGradient id="gCat" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#c6762c"/>
+            <stop offset="1" stop-color="#8e4f18"/>
+          </linearGradient>
+        </defs>
+        <rect width="440" height="300" fill="url(#gSky)"/>
+        <circle cx="356" cy="64" r="46" fill="#ffffff" opacity=".55"/>
+        <circle cx="62" cy="236" r="70" fill="#ffffff" opacity=".4"/>
+        <path d="M0 252c58-26 96 6 150-12s96-30 150-10 104 14 140-6v76H0Z" fill="#ffffff" opacity=".55"/>
+
+        <!-- Perro -->
+        <g transform="translate(96 108)">
+          <path d="M28 96V58c0-20 16-36 36-36h40c20 0 36 16 36 36v38" fill="url(#gDog)"/>
+          <circle cx="84" cy="34" r="32" fill="url(#gDog)"/>
+          <path d="M56 10c-12-8-24-6-26 6-2 11 6 20 16 22Z" fill="url(#gDog)"/>
+          <path d="M112 10c12-8 24-6 26 6 2 11-6 20-16 22Z" fill="url(#gDog)"/>
+          <circle cx="73" cy="32" r="4" fill="#ffffff"/>
+          <circle cx="95" cy="32" r="4" fill="#ffffff"/>
+          <ellipse cx="84" cy="46" rx="7" ry="5" fill="#ffffff" opacity=".9"/>
+        </g>
+
+        <!-- Gato -->
+        <g transform="translate(248 140)">
+          <path d="M20 64V40c0-14 12-26 26-26h30c14 0 26 12 26 26v24" fill="url(#gCat)"/>
+          <circle cx="61" cy="26" r="24" fill="url(#gCat)"/>
+          <path d="M43 6 38-8l16 8Z" fill="url(#gCat)"/>
+          <path d="M79 6 84-8l-16 8Z" fill="url(#gCat)"/>
+          <circle cx="53" cy="24" r="3.2" fill="#ffffff"/>
+          <circle cx="69" cy="24" r="3.2" fill="#ffffff"/>
+          <path d="M61 32v4M61 36l-7 3M61 36l7 3" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+          <path d="M102 60c22-4 30-20 28-34" stroke="url(#gCat)" stroke-width="9" stroke-linecap="round" fill="none"/>
+        </g>
+      </svg>
+
+      <ul class="fact-list">
+        <li><span class="ic" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.6-7-10a7 7 0 0 1 14 0c0 5.4-7 10-7 10Z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10.6" r="2.4" stroke="currentColor" stroke-width="1.8"/></svg></span>
+          <span><strong>Avenida Reverenda Madre María Antonia, 9, Local C</strong>28350 Ciempozuelos (Madrid)</span></li>
+        <li><span class="ic" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3.2 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+          <span><strong>Consultar horario</strong>Te lo confirmamos por teléfono</span></li>
+        <li><span class="ic" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 7.5h16v10H4z" stroke="currentColor" stroke-width="1.8"/><path d="m4.6 8 7.4 5.4L19.4 8" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
+          <span><strong>cvetciem@gmail.com</strong>Para consultas que no sean urgentes</span></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<!-- ============ SERVICIOS ============ -->
+<section id="servicios">
+  <div class="wrap">
+    <div class="svc-head">
+      <div>
+        <span class="eyebrow">Servicios</span>
+        <h2>Servicios habituales de una clínica veterinaria</h2>
+      </div>
+      <p class="lead" style="margin:0;max-width:38ch;font-size:15.5px">Relación orientativa de servicios propios del sector veterinario. Para confirmar disponibilidad y detalles de cada uno, lo mejor es llamar.</p>
+    </div>
+
+    <div class="grid-svc">
+      <article class="card">
+        <div class="ic-lg" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5.5 4.5h8l5 5v10h-13z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M13 4.5v5h5.5" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 14.5h6M12 11.5v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Consulta general</h3>
+        <p>Visita de valoración para revisar el estado del animal, comentar los síntomas que hayas observado y orientar los siguientes pasos.</p>
+      </article>
+
+      <article class="card">
+        <div class="ic-lg" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="m13.5 4 6.5 6.5-7.5 7.5-6.5-6.5z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="m4 20 2.5-2.5M11 6.5l6.5 6.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Vacunación y desparasitación</h3>
+        <p>Pautas preventivas habituales en animales de compañía, adaptadas a cada caso tras la valoración en consulta.</p>
+      </article>
+
+      <article class="card highlight">
+        <div class="ic-lg" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 3.5v7.2L5.8 16A3.6 3.6 0 0 0 8.9 21.5h6.2A3.6 3.6 0 0 0 18.2 16L15 10.7V3.5z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M8 3.5h8M7.2 14.5h9.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Análisis clínicos</h3>
+        <p>Pruebas de laboratorio como apoyo al diagnóstico, para completar la información obtenida en la consulta.</p>
+        <span class="tag-web">Servicio recogido en su web actual</span>
+      </article>
+
+      <article class="card">
+        <div class="ic-lg" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M6 3.5v8.6c0 1.6 1.3 2.9 2.9 2.9h1.6v5.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M4.3 3.5h3.4M16 3.5v6.2a2.5 2.5 0 0 1-5 0V3.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="10.5" cy="19.5" r="1.8" stroke="currentColor" stroke-width="1.7"/></svg>
+        </div>
+        <h3>Cirugía</h3>
+        <p>Intervenciones quirúrgicas valoradas previamente en consulta, con explicación del procedimiento y de los cuidados posteriores.</p>
+      </article>
+
+      <article class="card">
+        <div class="ic-lg" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3.5" y="8" width="17" height="8" rx="4" stroke="currentColor" stroke-width="1.7"/><path d="M8 12h8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M6.2 5.5 7.4 8M17.8 5.5 16.6 8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Identificación con microchip</h3>
+        <p>Colocación del microchip de identificación, un trámite habitual y necesario en la tenencia de animales de compañía.</p>
+      </article>
+
+      <article class="card">
+        <div class="ic-lg" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3.5 13h3.2l2-4.2 2.6 7 2.3-5 1.7 2.2h5.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M4.5 18.5h15" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" opacity=".45"/></svg>
+        </div>
+        <h3>Seguimiento de animales mayores</h3>
+        <p>Revisiones periódicas para acompañar a los animales de edad avanzada y detectar a tiempo cambios en su estado de salud.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRIMERA VISITA ============ -->
+<section class="visita" id="primera-visita">
+  <div class="wrap">
+    <span class="eyebrow">Tu primera visita</span>
+    <h2 style="font-size:clamp(1.65rem,2.8vw,2.3rem);color:var(--teal-900);max-width:24ch">Así de sencillo es venir por primera vez</h2>
+    <p class="lead">Tres pasos para que sepas qué esperar antes de traer a tu animal a la clínica.</p>
+
+    <div class="grid-steps">
+      <article class="step">
+        <div class="step-num" aria-hidden="true">1</div>
+        <h3>Llama y cuéntanos el caso</h3>
+        <p>Marca el <a href="tel:+34918930408">918 930 408</a> o el móvil <a href="tel:+34649437392">649 43 73 92</a>, explica qué le ocurre a tu animal y acordamos cuándo venir. También puedes consultar el horario en esa misma llamada.</p>
+      </article>
+      <article class="step">
+        <div class="step-num" aria-hidden="true">2</div>
+        <h3>Ven a la clínica con su documentación</h3>
+        <p>Estamos en Avenida Reverenda Madre María Antonia, 9, Local C, en Ciempozuelos. Si tienes su cartilla, el número de microchip o informes anteriores, tráelos: ayudan a entender el historial.</p>
+      </article>
+      <article class="step">
+        <div class="step-num" aria-hidden="true">3</div>
+        <h3>Valoración y pasos siguientes</h3>
+        <p>En consulta se revisa al animal y se te explica la situación. Si hace falta completar el diagnóstico, se te indican las pruebas o el seguimiento que correspondan.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section id="contacto">
+  <div class="wrap">
+    <span class="eyebrow">Contacto</span>
+    <h2 style="font-size:clamp(1.65rem,2.8vw,2.3rem);color:var(--teal-900);max-width:26ch">Cómo llamarnos y cómo llegar</h2>
+    <p class="lead">La forma más directa de resolver una duda es el teléfono.</p>
+
+    <div class="grid-contact">
+      <div class="panel">
+        <h3>Llamar ahora</h3>
+        <div class="tel-stack">
+          <a class="btn btn-primary" href="tel:+34918930408">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.3 3.5h3l1.5 3.8-2 1.4a10.7 10.7 0 0 0 6.5 6.5l1.4-2 3.8 1.5v3c0 1-.8 1.8-1.8 1.8A16.4 16.4 0 0 1 4.5 5.3c0-1 .8-1.8 1.8-1.8Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+            <span class="btn-stack"><span class="btn-sub">Teléfono fijo</span>918 930 408</span>
+          </a>
+          <a class="btn btn-ghost" href="tel:+34649437392">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="6.5" y="2.8" width="11" height="18.4" rx="2.6" stroke="currentColor" stroke-width="1.7"/><path d="M10.6 18.4h2.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+            <span class="btn-stack"><span class="btn-sub">Teléfono móvil</span>649 43 73 92</span>
+          </a>
+        </div>
+
+        <dl class="dl">
+          <div class="row">
+            <span class="ic" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.6-7-10a7 7 0 0 1 14 0c0 5.4-7 10-7 10Z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10.6" r="2.4" stroke="currentColor" stroke-width="1.8"/></svg></span>
+            <div><dt>Dirección</dt><dd>Avenida Reverenda Madre María Antonia, 9, Local C<br>28350 Ciempozuelos (Madrid)</dd></div>
+          </div>
+          <div class="row">
+            <span class="ic" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3.2 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+            <div><dt>Horario</dt><dd>Consultar horario</dd></div>
+          </div>
+          <div class="row">
+            <span class="ic" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 7.5h16v10H4z" stroke="currentColor" stroke-width="1.8"/><path d="m4.6 8 7.4 5.4L19.4 8" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
+            <div><dt>Correo electrónico</dt><dd><a href="mailto:cvetciem@gmail.com">cvetciem@gmail.com</a></dd></div>
+          </div>
+        </dl>
+      </div>
+
+      <div class="map-frame">
+        <svg viewBox="0 0 520 390" role="img" aria-label="Mapa esquemático, sin exactitud cartográfica: calles representadas con líneas y un marcador en la ubicación de la clínica, en Avenida Reverenda Madre María Antonia, 9, Local C">
+          <defs>
+            <linearGradient id="gMap" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#eef5f2"/>
+              <stop offset="1" stop-color="#f7f1e7"/>
+            </linearGradient>
+          </defs>
+          <rect width="520" height="390" fill="url(#gMap)"/>
+
+          <!-- manzanas -->
+          <g fill="#ffffff" opacity=".85">
+            <rect x="34" y="40" width="150" height="104" rx="8"/>
+            <rect x="222" y="40" width="118" height="104" rx="8"/>
+            <rect x="378" y="40" width="112" height="104" rx="8"/>
+            <rect x="34" y="236" width="150" height="118" rx="8"/>
+            <rect x="222" y="236" width="118" height="118" rx="8"/>
+            <rect x="378" y="236" width="112" height="118" rx="8"/>
+          </g>
+          <g fill="#dff0ec" opacity=".9">
+            <rect x="46" y="54" width="54" height="34" rx="5"/>
+            <rect x="238" y="266" width="48" height="30" rx="5"/>
+            <rect x="398" y="62" width="60" height="28" rx="5"/>
+          </g>
+
+          <!-- avenida principal -->
+          <rect x="0" y="164" width="520" height="52" fill="#e5ded2"/>
+          <line x1="0" y1="190" x2="520" y2="190" stroke="#ffffff" stroke-width="3" stroke-dasharray="20 16"/>
+          <!-- calles verticales -->
+          <rect x="190" y="0" width="28" height="390" fill="#e9e3d8"/>
+          <rect x="346" y="0" width="28" height="390" fill="#e9e3d8"/>
+
+          <!-- etiquetas de calle -->
+          <text x="22" y="246" font-family="Segoe UI, system-ui, sans-serif" font-size="14" font-weight="700" fill="#4a5a56">Avda. Reverenda Madre María Antonia</text>
+          <text x="0" y="0" font-family="Segoe UI, system-ui, sans-serif" font-size="13" fill="#6b7b77" transform="translate(210 358) rotate(-90)">Calle</text>
+          <text x="0" y="0" font-family="Segoe UI, system-ui, sans-serif" font-size="13" fill="#6b7b77" transform="translate(366 358) rotate(-90)">Calle</text>
+
+          <!-- cartel de la clínica -->
+          <g transform="translate(228 30)">
+            <rect x="0" y="0" width="212" height="58" rx="11" fill="#ffffff" stroke="#e2dcd1"/>
+            <text x="16" y="25" font-family="Segoe UI, system-ui, sans-serif" font-size="14" font-weight="700" fill="#103230">Centro Veterinario</text>
+            <text x="16" y="44" font-family="Segoe UI, system-ui, sans-serif" font-size="13" fill="#4a5a56">N.º 9, Local C</text>
+            <path d="M72 58v20" stroke="#1c514c" stroke-width="2" stroke-dasharray="5 5"/>
+          </g>
+
+          <!-- marcador -->
+          <g transform="translate(300 122)">
+            <ellipse cx="0" cy="40" rx="16" ry="6" fill="#103230" opacity=".2"/>
+            <path d="M0 38s-19-20-19-33A19 19 0 0 1 19 5c0 13-19 33-19 33Z" fill="#1c514c"/>
+            <circle cx="0" cy="4" r="7.2" fill="#ffffff"/>
+          </g>
+        </svg>
+        <p class="map-cap">Mapa esquemático orientativo, sin exactitud cartográfica. Dirección real: Avenida Reverenda Madre María Antonia, 9, Local C, 28350 Ciempozuelos (Madrid).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PIE ============ -->
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h3>Centro Veterinario Ciempozuelos</h3>
+      <p style="margin:0;color:#b9d2ce;font-size:15px">Avenida Reverenda Madre María Antonia, 9, Local C<br>28350 Ciempozuelos (Madrid)</p>
+      <a class="foot-mail" href="mailto:cvetciem@gmail.com">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7.5h16v10H4z" stroke="currentColor" stroke-width="1.8"/><path d="m4.6 8 7.4 5.4L19.4 8" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        cvetciem@gmail.com
+      </a>
+    </div>
+    <div>
+      <ul class="foot-list">
+        <li><a href="tel:+34918930408">918 930 408</a> · Teléfono fijo</li>
+        <li><a href="tel:+34649437392">649 43 73 92</a> · Teléfono móvil</li>
+        <li>Consultar horario</li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap">
+    <p class="foot-sig">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Desplazamiento suave en anclas internas, compensando la barra fija.
+  var bar = document.querySelector('.proposal-bar');
+  document.addEventListener('click', function(e){
+    var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+    if(!a) return;
+    var id = a.getAttribute('href').slice(1);
+    if(!id) return;
+    var t = document.getElementById(id);
+    if(!t) return;
+    e.preventDefault();
+    var off = (bar ? bar.offsetHeight : 0) + 16;
+    var y = t.getBoundingClientRect().top + window.pageYOffset - off;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  });
+})();
+</script>
+</body>
+</html>

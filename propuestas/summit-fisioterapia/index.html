@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Summit Fisioterapia · Propuesta de diseño — FFFFFFstudio</title>
+<meta name="description" content="Maqueta no oficial de rediseño para Summit Fisioterapia (Colmenar Viejo, Madrid). Propuesta de FFFFFFstudio — Ángel Rubio.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --ink:#0d1b24;
+  --ink-soft:#3d5663;
+  --paper:#ffffff;
+  --mist:#f2f6f8;
+  --line:#d9e3e8;
+  --teal:#0b6e73;
+  --teal-dk:#07484c;
+  --teal-lt:#e4f2f2;
+  --lime:#b9e34b;
+  --focus:#0b6e73;
+  --bar-h:44px;
+  --nav-h:66px;
+  --radius:16px;
+  --maxw:1120px;
+}
+html{-webkit-text-size-adjust:100%}
+html,body{max-width:100%;overflow-x:hidden}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.6;
+  font-size:17px;
+}
+img,svg{max-width:100%}
+h1,h2,h3{line-height:1.15;margin:0 0 .5em;letter-spacing:-.02em;font-weight:800}
+h1{font-size:clamp(2rem,5.2vw,3.5rem)}
+h2{font-size:clamp(1.55rem,3.4vw,2.35rem)}
+h3{font-size:1.1rem;font-weight:700;letter-spacing:-.01em}
+p{margin:0 0 1rem}
+a{color:var(--teal-dk)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:6px}
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 20px}
+
+/* ---------- Barra fija de propuesta ---------- */
+.proposal-bar{
+  position:fixed;top:0;left:0;right:0;z-index:60;
+  min-height:var(--bar-h);
+  display:flex;align-items:center;justify-content:center;
+  background:var(--ink);color:#eaf4f6;
+  font-size:.74rem;letter-spacing:.05em;text-transform:uppercase;
+  text-align:center;padding:7px 14px;
+  border-bottom:1px solid rgba(255,255,255,.14);
+}
+.proposal-bar span{display:block;max-width:100%}
+
+/* ---------- Navegación ---------- */
+.nav{
+  position:fixed;top:var(--bar-h);left:0;right:0;z-index:50;
+  background:rgba(255,255,255,.94);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  display:flex;align-items:center;gap:16px;
+  min-height:var(--nav-h);
+}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);flex:0 0 auto}
+.brand .mk{flex:0 0 auto}
+.brand b{font-size:1.02rem;font-weight:800;letter-spacing:-.02em;line-height:1.1;display:block}
+.brand small{display:block;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);font-weight:600}
+.nav-links{display:flex;align-items:center;gap:4px;margin-left:auto;flex-wrap:wrap;justify-content:flex-end}
+.nav-cta-wrap{flex:0 0 auto}
+.nav-links a{
+  text-decoration:none;color:var(--ink-soft);font-size:.92rem;font-weight:600;
+  padding:9px 11px;border-radius:9px;white-space:nowrap;
+}
+.nav-links a:hover{color:var(--teal-dk);background:var(--teal-lt)}
+.nav-cta{
+  flex:0 0 auto;margin-left:6px;background:var(--teal);color:#fff;text-decoration:none;
+  padding:11px 16px;border-radius:999px;font-weight:700;font-size:.92rem;white-space:nowrap;
+}
+.nav-cta:hover{background:var(--teal-dk)}
+
+main{padding-top:var(--offset,calc(var(--bar-h) + var(--nav-h)))}
+section{scroll-margin-top:calc(var(--offset,calc(var(--bar-h) + var(--nav-h))) + 14px)}
+
+/* ---------- Hero ---------- */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(900px 500px at 88% -12%,rgba(185,227,75,.30),transparent 62%),
+    radial-gradient(700px 520px at 6% 108%,rgba(11,110,115,.16),transparent 60%),
+    linear-gradient(170deg,#f7fbfc 0%,#eaf3f5 100%);
+  border-bottom:1px solid var(--line);
+}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding-top:72px;padding-bottom:72px}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  background:#fff;border:1px solid var(--line);color:var(--teal-dk);
+  font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  padding:7px 14px;border-radius:999px;margin-bottom:22px;
+}
+.eyebrow i{width:7px;height:7px;border-radius:50%;background:var(--teal);display:block}
+.hero p.lead{font-size:1.12rem;color:var(--ink-soft);max-width:34em}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  text-decoration:none;font-weight:700;font-size:1rem;
+  padding:15px 24px;border-radius:999px;border:2px solid transparent;
+  transition:background .15s,color .15s,border-color .15s;
+}
+.btn-primary{background:var(--teal);color:#fff;border-color:var(--teal)}
+.btn-primary:hover{background:var(--teal-dk);border-color:var(--teal-dk)}
+.btn-ghost{background:#fff;color:var(--teal-dk);border-color:#c3d7da}
+.btn-ghost:hover{border-color:var(--teal);background:var(--teal-lt)}
+.hero-note{margin-top:18px;font-size:.88rem;color:var(--ink-soft)}
+.hero-art{display:flex;justify-content:center}
+.hero-card{
+  width:100%;max-width:400px;background:#fff;border:1px solid var(--line);
+  border-radius:24px;padding:26px;box-shadow:0 24px 50px -28px rgba(13,27,36,.28);
+}
+.hero-card h3{margin-bottom:16px}
+.pill-list{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.pill-list li{
+  display:flex;align-items:center;gap:12px;
+  background:var(--mist);border-radius:12px;padding:12px 14px;
+  font-weight:600;font-size:.95rem;
+}
+.pill-list svg{flex:0 0 auto}
+.hero-card .mini{margin:18px 0 0;font-size:.85rem;color:var(--ink-soft)}
+
+/* ---------- Secciones ---------- */
+.sec{padding:76px 0}
+.sec--mist{background:var(--mist);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.sec-head{max-width:46em;margin-bottom:40px}
+.sec-head p{color:var(--ink-soft);font-size:1.05rem;margin:0}
+.kicker{
+  font-size:.74rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--teal);margin:0 0 12px;
+}
+
+/* ---------- Servicios ---------- */
+.grid-svc{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:26px;display:flex;flex-direction:column;gap:12px;
+}
+.card .ico{
+  width:46px;height:46px;border-radius:13px;background:var(--teal-lt);
+  display:flex;align-items:center;justify-content:center;flex:0 0 auto;
+}
+.card p{margin:0;color:var(--ink-soft);font-size:.97rem}
+.card h3{margin:0}
+.tag{
+  align-self:flex-start;margin-top:4px;font-size:.72rem;font-weight:700;
+  letter-spacing:.09em;text-transform:uppercase;color:var(--teal-dk);
+  background:var(--teal-lt);padding:5px 10px;border-radius:999px;
+}
+
+/* ---------- Pasos ---------- */
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;counter-reset:s}
+.step{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:26px;position:relative;
+}
+.step .num{
+  width:42px;height:42px;border-radius:50%;background:var(--ink);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.05rem;
+  margin-bottom:14px;
+}
+.step h3{margin-bottom:8px}
+.step p{margin:0;color:var(--ink-soft);font-size:.97rem}
+.steps-cta{margin-top:30px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.steps-cta .small{font-size:.9rem;color:var(--ink-soft);margin:0}
+
+/* ---------- Contacto ---------- */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+.contact-panel{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px;
+}
+.dl{margin:0;display:grid;gap:18px}
+.dl .row{display:flex;gap:14px;align-items:flex-start}
+.dl .ico{
+  width:40px;height:40px;border-radius:11px;background:var(--teal-lt);
+  display:flex;align-items:center;justify-content:center;flex:0 0 auto;
+}
+.dl dt{font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 3px}
+.dl dd{margin:0;font-weight:600;overflow-wrap:anywhere}
+.dl dd a{color:var(--teal-dk);text-decoration:none;border-bottom:1px solid #b6d2d4}
+.dl dd a:hover{color:var(--teal)}
+.contact-panel .btn{width:100%;margin-top:24px}
+.map-panel{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px;overflow:hidden;
+}
+.map-panel h3{padding:4px 6px 0;margin-bottom:12px}
+.map-frame{border-radius:12px;overflow:hidden;background:#eef4f6;line-height:0}
+.map-frame svg{display:block;width:100%;height:auto}
+.map-legend{
+  display:flex;flex-wrap:wrap;gap:8px 18px;margin:14px 6px 2px;
+  font-size:.82rem;color:var(--ink-soft);
+}
+.map-legend span{display:inline-flex;align-items:center;gap:7px}
+.map-legend i{width:11px;height:11px;border-radius:3px;display:block;flex:0 0 auto}
+.map-note{margin:10px 6px 0;font-size:.8rem;color:var(--ink-soft)}
+
+/* ---------- Pie ---------- */
+.foot{background:var(--ink);color:#d7e6ea;padding:52px 0 36px}
+.foot a{color:#fff}
+.foot-top{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:start}
+.foot h3{color:#fff;margin-bottom:10px}
+.foot p{color:#aec6cd;font-size:.95rem}
+.foot .mail{
+  display:inline-flex;align-items:center;gap:9px;font-weight:700;
+  color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.35);
+  overflow-wrap:anywhere;
+}
+.foot-links{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.foot-links a{color:#c9dde2;text-decoration:none;font-size:.95rem}
+.foot-links a:hover{color:#fff}
+.foot-rule{height:1px;background:rgba(255,255,255,.16);margin:34px 0 20px}
+.studio{font-size:.9rem;color:#9fbac2;margin:0}
+
+@media (max-width:980px){
+  .hero .wrap{grid-template-columns:1fr;gap:36px;padding-top:52px;padding-bottom:56px}
+  .hero-art{justify-content:flex-start}
+  .contact-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .foot-top{grid-template-columns:1fr}
+}
+@media (max-width:760px){
+  :root{--bar-h:52px;--nav-h:60px}
+  body{font-size:16px}
+  .nav-inner{flex-wrap:wrap;gap:6px;padding:10px 0 11px;min-height:0}
+  .nav-links{order:2;margin-left:0;width:100%;flex-wrap:wrap;justify-content:flex-start;gap:2px}
+  .nav-links a{font-size:.85rem;padding:7px 9px}
+  .nav-cta{order:1;margin-left:auto;padding:9px 14px;font-size:.88rem}
+  .brand{order:0}
+  main{padding-top:var(--offset,calc(var(--bar-h) + 118px))}
+  .proposal-bar{font-size:.66rem;letter-spacing:.03em;line-height:1.35}
+  .sec{padding:56px 0}
+  .grid-svc{grid-template-columns:1fr}
+  .btns .btn{width:100%}
+  .map-legend{font-size:.78rem;gap:6px 14px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none !important;scroll-behavior:auto !important}}
+html{scroll-behavior:smooth}
+</style>
+</head>
+<body>
+
+<div class="proposal-bar" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#inicio">
+      <span class="mk" aria-hidden="true">
+        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" role="img">
+          <rect width="34" height="34" rx="10" fill="#0b6e73"/>
+          <path d="M7 24.5L14 12.5l4.2 7 2.6-4.2L27 24.5H7z" fill="#b9e34b"/>
+          <circle cx="23.2" cy="10.4" r="2.6" fill="#ffffff"/>
+        </svg>
+      </span>
+      <span>
+        <b>Summit Fisioterapia</b>
+        <small>Colmenar Viejo</small>
+      </span>
+    </a>
+    <nav class="nav-links" aria-label="Navegación principal">
+      <a href="#servicios">Servicios</a>
+      <a href="#primera-sesion">Tu primera sesión</a>
+      <a href="#quienes-somos">¿Quiénes somos?</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="nav-cta" href="tel:+34623066522" aria-label="Llamar al 623 066 522">623 066 522</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- 1. HERO -->
+  <section class="hero" id="inicio">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow"><i aria-hidden="true"></i> Fisioterapia · Pilates · Hipopresivos</span>
+        <h1>Movimiento que vuelve a su sitio.</h1>
+        <p class="lead">Clínica de fisioterapia, pilates e hipopresivos en Colmenar Viejo. Trabajo individualizado en consulta y asistencia fisioterapéutica en carreras y eventos deportivos.</p>
+        <div class="btns">
+          <a class="btn btn-primary" href="tel:+34623066522">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+            Llamar al 623 066 522
+          </a>
+          <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
+        </div>
+        <p class="hero-note">C/ Alto de la Camorcha, 2 · 28770 Colmenar Viejo (Madrid) · Consultar horario</p>
+      </div>
+      <div class="hero-art">
+        <div class="hero-card">
+          <h3>En qué trabajamos</h3>
+          <ul class="pill-list">
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0b6e73" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 6.6a5 5 0 0 0-7.1 0L12 8.3l-1.7-1.7a5 5 0 1 0-7.1 7.1L12 22.5l8.8-8.8a5 5 0 0 0 0-7.1z"/></svg>
+              Fisioterapia
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0b6e73" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="5" r="2.6"/><path d="M12 7.6v5.2M12 12.8l-3.3 7M12 12.8l3.3 7M6 10.2h12"/></svg>
+              Pilates
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0b6e73" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h3l2-4 3 8 3-10 2.5 6H21"/></svg>
+              Hipopresivos
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0b6e73" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20V5a1 1 0 0 1 1-1h9l-1.4 3.2L15 10H6"/><path d="M5 20h6"/></svg>
+              Carreras y eventos deportivos
+            </li>
+          </ul>
+          <p class="mini">Atención en consulta con cita previa. Consultar horario por teléfono.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. SERVICIOS -->
+  <section class="sec" id="servicios">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">Servicios</p>
+        <h2>Fisioterapia, movimiento y deporte</h2>
+        <p>Cuatro líneas de trabajo dentro de la clínica, descritas en términos generales del sector. El abordaje concreto se define siempre en la valoración inicial.</p>
+      </div>
+      <div class="grid-svc">
+
+        <article class="card">
+          <span class="ico" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0b6e73" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 6.6a5 5 0 0 0-7.1 0L12 8.3l-1.7-1.7a5 5 0 1 0-7.1 7.1L12 22.5l8.8-8.8a5 5 0 0 0 0-7.1z"/></svg>
+          </span>
+          <h3>Fisioterapia</h3>
+          <p>Valoración y tratamiento fisioterapéutico individualizado de molestias y limitaciones del aparato locomotor, con técnicas manuales y pautas de ejercicio terapéutico adaptadas a cada persona.</p>
+          <span class="tag">En consulta</span>
+        </article>
+
+        <article class="card">
+          <span class="ico" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0b6e73" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.6"/><path d="M12 7.6v5.2M12 12.8l-3.3 7M12 12.8l3.3 7M6 10.2h12"/></svg>
+          </span>
+          <h3>Pilates</h3>
+          <p>Trabajo de control motor, fuerza y movilidad basado en el método Pilates, planteado como ejercicio guiado por fisioterapeuta y progresado según el punto de partida de cada alumno.</p>
+          <span class="tag">Sesiones guiadas</span>
+        </article>
+
+        <article class="card">
+          <span class="ico" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0b6e73" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h3l2-4 3 8 3-10 2.5 6H21"/></svg>
+          </span>
+          <h3>Hipopresivos</h3>
+          <p>Ejercicio hipopresivo enfocado al trabajo de la faja abdominal y el suelo pélvico, con aprendizaje de la técnica postural y respiratoria paso a paso antes de progresar.</p>
+          <span class="tag">Técnica guiada</span>
+        </article>
+
+        <article class="card">
+          <span class="ico" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0b6e73" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20V5a1 1 0 0 1 1-1h9l-1.4 3.2L15 10H6"/><path d="M5 20h6"/></svg>
+          </span>
+          <h3>Asistencia en carreras y eventos</h3>
+          <p>Cobertura fisioterapéutica en carreras y eventos deportivos: atención a participantes antes y después de la prueba desde un puesto de fisioterapia montado en la propia organización.</p>
+          <span class="tag">A domicilio del evento</span>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. TU PRIMERA SESIÓN -->
+  <section class="sec sec--mist" id="primera-sesion">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">Tu primera sesión</p>
+        <h2>Cómo empezamos, en tres pasos</h2>
+        <p>Sin trámites raros: una llamada, una valoración y un plan de trabajo que entiendas.</p>
+      </div>
+      <div class="steps">
+        <article class="step">
+          <div class="num" aria-hidden="true">1</div>
+          <h3>Llamas y reservas</h3>
+          <p>Una llamada al 623 066 522 para contar qué te pasa y reservar hueco. Ahí mismo se confirma el día y se te indica el horario disponible.</p>
+        </article>
+        <article class="step">
+          <div class="num" aria-hidden="true">2</div>
+          <h3>Valoración inicial</h3>
+          <p>En la primera cita se revisa tu historia, cómo te mueves y qué te limita. De ahí sale el objetivo de trabajo, explicado en palabras claras.</p>
+        </article>
+        <article class="step">
+          <div class="num" aria-hidden="true">3</div>
+          <h3>Plan y seguimiento</h3>
+          <p>Se acuerda el plan: sesiones en consulta, pauta de ejercicios para casa o incorporación a pilates o hipopresivos, con revisión de la evolución.</p>
+        </article>
+      </div>
+      <div class="steps-cta">
+        <a class="btn btn-primary" href="tel:+34623066522">Llamar y reservar</a>
+        <p class="small">Atención con cita previa · Consultar horario</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ¿QUIÉNES SOMOS? -->
+  <section class="sec" id="quienes-somos">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">¿Quiénes somos?</p>
+        <h2>Una clínica de barrio en Colmenar Viejo</h2>
+      </div>
+      <div class="grid-svc">
+        <article class="card">
+          <span class="ico" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0b6e73" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3.5l9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>
+          </span>
+          <h3>Dónde estamos</h3>
+          <p>Summit Fisioterapia está en la C/ Alto de la Camorcha, 2, 28770 Colmenar Viejo (Madrid). La atención se organiza con cita previa; el horario se confirma por teléfono.</p>
+        </article>
+        <article class="card">
+          <span class="ico" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0b6e73" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20v-1.5A4.5 4.5 0 0 1 8.5 14h3A4.5 4.5 0 0 1 16 18.5V20"/><circle cx="10" cy="8" r="3.4"/><path d="M17.5 20v-1.2a3.8 3.8 0 0 0-2.6-3.6"/><path d="M15.4 5.2a3.2 3.2 0 0 1 0 6"/></svg>
+          </span>
+          <h3>Cómo trabajamos</h3>
+          <p>Fisioterapia, pilates e hipopresivos bajo un mismo techo, de forma individualizada, más asistencia en carreras y eventos deportivos fuera de la clínica. Lo que no sabemos de tu caso, se valora antes de proponer nada.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. CONTACTO -->
+  <section class="sec sec--mist" id="contacto">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">Contacto</p>
+        <h2>Pide cita o pregúntanos</h2>
+        <p>La vía más rápida es el teléfono. También puedes escribir por correo electrónico.</p>
+      </div>
+      <div class="contact-grid">
+
+        <div class="contact-panel">
+          <dl class="dl">
+            <div class="row">
+              <span class="ico" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0b6e73" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+              </span>
+              <div><dt>Teléfono</dt><dd><a href="tel:+34623066522">623 066 522</a></dd></div>
+            </div>
+            <div class="row">
+              <span class="ico" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0b6e73" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2.4"/><path d="m3 6.2 9 6.3 9-6.3"/></svg>
+              </span>
+              <div><dt>Correo electrónico</dt><dd><a href="mailto:susana@summitfisioterapia.com">susana@summitfisioterapia.com</a></dd></div>
+            </div>
+            <div class="row">
+              <span class="ico" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0b6e73" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10.4c0 5.6-8 11.6-8 11.6s-8-6-8-11.6a8 8 0 0 1 16 0z"/><circle cx="12" cy="10.2" r="2.8"/></svg>
+              </span>
+              <div><dt>Dirección</dt><dd>C/ Alto de la Camorcha, 2<br>28770 Colmenar Viejo (Madrid)</dd></div>
+            </div>
+            <div class="row">
+              <span class="ico" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0b6e73" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.2V12l3.4 2.1"/></svg>
+              </span>
+              <div><dt>Horario</dt><dd>Consultar horario</dd></div>
+            </div>
+          </dl>
+          <a class="btn btn-primary" href="tel:+34623066522">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+            Llamar al 623 066 522
+          </a>
+        </div>
+
+        <div class="map-panel">
+          <h3>Cómo llegar</h3>
+          <div class="map-frame">
+            <svg viewBox="0 0 520 380" role="img" aria-label="Plano esquemático: la clínica Summit Fisioterapia se sitúa en la calle Alto de la Camorcha, número 2, en Colmenar Viejo.">
+              <defs>
+                <linearGradient id="mapbg" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#f3f8f9"/>
+                  <stop offset="1" stop-color="#e3eff1"/>
+                </linearGradient>
+                <linearGradient id="green" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#dcefc6"/>
+                  <stop offset="1" stop-color="#cbe5ad"/>
+                </linearGradient>
+              </defs>
+
+              <rect width="520" height="380" fill="url(#mapbg)"/>
+
+              <!-- manzanas -->
+              <g fill="#ffffff" stroke="#dbe6ea" stroke-width="2">
+                <rect x="34" y="40" width="150" height="104" rx="7"/>
+                <rect x="214" y="40" width="118" height="104" rx="7"/>
+                <rect x="362" y="40" width="124" height="104" rx="7"/>
+                <rect x="34" y="236" width="150" height="108" rx="7"/>
+                <rect x="362" y="236" width="124" height="108" rx="7"/>
+              </g>
+              <!-- zona verde -->
+              <rect x="214" y="236" width="118" height="108" rx="10" fill="url(#green)" stroke="#bcdc9c" stroke-width="2"/>
+              <text x="273" y="296" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#3f5c2d" font-weight="700">Zona verde</text>
+
+              <!-- calles -->
+              <g stroke="#ffffff" stroke-width="30" stroke-linecap="square">
+                <line x1="0" y1="190" x2="520" y2="190"/>
+                <line x1="198" y1="0" x2="198" y2="380"/>
+                <line x1="347" y1="0" x2="347" y2="380"/>
+              </g>
+              <g stroke="#c6d6db" stroke-width="30" fill="none" stroke-linecap="square" opacity=".0"></g>
+              <g stroke="#b8cbd1" stroke-width="2" stroke-dasharray="9 9">
+                <line x1="0" y1="190" x2="520" y2="190"/>
+                <line x1="198" y1="0" x2="198" y2="380"/>
+                <line x1="347" y1="0" x2="347" y2="380"/>
+              </g>
+
+              <!-- rótulos de calle -->
+              <text x="22" y="184" font-family="sans-serif" font-size="17" font-weight="700" fill="#44616c">C/ Alto de la Camorcha</text>
+              <text x="206" y="28" font-family="sans-serif" font-size="15" font-weight="600" fill="#5f7b84">Calle transversal</text>
+              <text x="355" y="28" font-family="sans-serif" font-size="15" font-weight="600" fill="#5f7b84">Calle transversal</text>
+
+              <!-- edificio clínica -->
+              <rect x="222" y="138" width="102" height="36" rx="6" fill="#0b6e73"/>
+              <text x="273" y="163" text-anchor="middle" font-family="sans-serif" font-size="17" font-weight="700" fill="#ffffff">Nº 2</text>
+
+              <!-- marcador -->
+              <g transform="translate(273,104)">
+                <ellipse cx="0" cy="32" rx="16" ry="5" fill="#0d1b24" opacity=".16"/>
+                <path d="M0 30C0 30 20 11.5 20 -2a20 20 0 1 0-40 0C-20 11.5 0 30 0 30z" fill="#0b6e73" stroke="#ffffff" stroke-width="3"/>
+                <circle cx="0" cy="-2.5" r="7.2" fill="#b9e34b"/>
+              </g>
+              <rect x="168" y="38" width="210" height="32" rx="16" fill="#0d1b24"/>
+              <text x="273" y="59" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="700" fill="#ffffff">Summit Fisioterapia</text>
+            </svg>
+          </div>
+          <div class="map-legend">
+            <span><i style="background:#0b6e73" aria-hidden="true"></i> Summit Fisioterapia (nº 2)</span>
+            <span><i style="background:#ffffff;border:1px solid #c6d6db" aria-hidden="true"></i> Manzanas</span>
+            <span><i style="background:#cbe5ad" aria-hidden="true"></i> Zona verde</span>
+          </div>
+          <p class="map-note">Plano esquemático orientativo, sin exactitud cartográfica. Dirección exacta: C/ Alto de la Camorcha, 2, 28770 Colmenar Viejo (Madrid).</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- 7. PIE -->
+<footer class="foot" id="pie">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <h3>Summit Fisioterapia</h3>
+        <p>Fisioterapia, pilates e hipopresivos en Colmenar Viejo (Madrid), y asistencia fisioterapéutica en carreras y eventos deportivos.</p>
+        <p style="margin-bottom:6px">
+          <a class="mail" href="mailto:susana@summitfisioterapia.com">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.4"/><path d="m3 6.2 9 6.3 9-6.3"/></svg>
+            susana@summitfisioterapia.com
+          </a>
+        </p>
+        <p>C/ Alto de la Camorcha, 2 · 28770 Colmenar Viejo (Madrid)<br>Tel. <a href="tel:+34623066522">623 066 522</a> · Consultar horario</p>
+      </div>
+      <div>
+        <h3>Secciones</h3>
+        <ul class="foot-links">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#primera-sesion">Tu primera sesión</a></li>
+          <li><a href="#quienes-somos">¿Quiénes somos?</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-rule" role="presentation"></div>
+    <p class="studio">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Resalta en el menú la sección visible, usando solo anclas que existen en la página.
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav-links a[href^="#"]'));
+  var targets = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function onScroll(){
+    var y = window.scrollY + 160, best = -1;
+    targets.forEach(function(t,i){ if(t && t.offsetTop <= y){ best = i; } });
+    links.forEach(function(a,i){ a.style.color = (i===best) ? '#07484c' : ''; });
+  }
+  function setOffset(){
+    var bar = document.querySelector('.proposal-bar');
+    var nav = document.querySelector('.nav');
+    if(!bar || !nav) return;
+    var h = Math.ceil(bar.getBoundingClientRect().height + nav.getBoundingClientRect().height);
+    document.documentElement.style.setProperty('--offset', h + 'px');
+  }
+  window.addEventListener('resize', setOffset, {passive:true});
+  window.addEventListener('scroll', onScroll, {passive:true});
+  setOffset();
+  onScroll();
+})();
+</script>
+</body>
+</html>
