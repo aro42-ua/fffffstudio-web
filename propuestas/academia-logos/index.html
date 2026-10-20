@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Academia Logos · Ponferrada — Propuesta de diseño</title>
+<meta name="description" content="Maqueta no oficial de propuesta de rediseño web para Academia Logos, academia de formación e informática en Ponferrada.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html,body{max-width:100%;overflow-x:hidden}
+:root{
+  --ink:#121826;
+  --ink-soft:#44506b;
+  --ink-faint:#6d7893;
+  --paper:#f7f6f3;
+  --paper-2:#ffffff;
+  --line:#e2dfd8;
+  --navy:#101a33;
+  --navy-2:#1c2b50;
+  --accent:#c8783c;
+  --accent-soft:#f0e3d6;
+  --radius:18px;
+  --maxw:1180px;
+  --bar:44px;
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.6;
+  font-size:17px;
+  padding-top:var(--bar);
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{line-height:1.15;margin:0;letter-spacing:-0.02em;font-weight:650}
+p{margin:0}
+a{color:inherit}
+img,svg{max-width:100%}
+
+/* ---------- Barra fija ---------- */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  min-height:var(--bar);
+  display:flex;align-items:center;justify-content:center;
+  background:#0c1424;
+  color:#e7e3db;
+  border-bottom:1px solid rgba(255,255,255,.10);
+  padding:7px 16px;
+}
+.topbar span{
+  font-size:12.5px;line-height:1.35;letter-spacing:.02em;
+  text-align:center;max-width:100%;
+}
+.topbar b{font-weight:600;color:#fff}
+
+/* ---------- Layout ---------- */
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+section{position:relative}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:12px;font-weight:650;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-faint);margin:0 0 18px;
+}
+.eyebrow::before{content:"";width:26px;height:2px;background:var(--accent);border-radius:2px;flex:none}
+.eyebrow.on-dark{color:rgba(255,255,255,.72)}
+
+/* ---------- Hero ---------- */
+.hero{
+  background:
+    radial-gradient(900px 520px at 12% -10%, rgba(200,120,60,.30), transparent 62%),
+    radial-gradient(760px 520px at 92% 8%, rgba(70,120,190,.34), transparent 60%),
+    linear-gradient(160deg,#101a33 0%,#16233f 52%,#0d1527 100%);
+  color:#fff;overflow:hidden;
+}
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.055) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px);
+  background-size:68px 68px;
+  mask-image:radial-gradient(70% 70% at 50% 25%,#000,transparent);
+  -webkit-mask-image:radial-gradient(70% 70% at 50% 25%,#000,transparent);
+  pointer-events:none;
+}
+.hero-inner{
+  position:relative;
+  display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);
+  gap:54px;align-items:center;
+  padding:84px 0 92px;
+}
+.badge{
+  display:inline-flex;align-items:center;gap:10px;
+  border:1px solid rgba(255,255,255,.22);
+  background:rgba(255,255,255,.07);
+  padding:7px 14px;border-radius:999px;
+  font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;
+  color:rgba(255,255,255,.88);margin-bottom:24px;
+}
+.badge .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);flex:none}
+.hero h1{font-size:clamp(34px,5.1vw,62px);font-weight:680}
+.hero h1 .thin{display:block;font-weight:350;color:rgba(255,255,255,.78);font-size:.56em;letter-spacing:0;margin-top:14px}
+.hero-lead{margin-top:24px;font-size:clamp(16.5px,1.5vw,19.5px);color:rgba(255,255,255,.82);max-width:46ch}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px;align-items:center}
+.btn{
+  display:inline-flex;align-items:center;gap:11px;
+  padding:15px 24px;border-radius:999px;
+  font-weight:650;font-size:16px;text-decoration:none;
+  border:1px solid transparent;transition:transform .18s ease,background .18s ease,border-color .18s ease;
+}
+.btn-primary{background:#fff;color:#101a33;box-shadow:0 10px 26px rgba(0,0,0,.26)}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-ghost{border-color:rgba(255,255,255,.30);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.10)}
+.btn svg{flex:none}
+.hero-note{margin-top:20px;font-size:13.5px;color:rgba(255,255,255,.60)}
+
+.hero-art{position:relative;display:flex;justify-content:center}
+.card-art{
+  width:100%;max-width:400px;
+  background:linear-gradient(170deg,rgba(255,255,255,.14),rgba(255,255,255,.05));
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:24px;padding:26px;
+  backdrop-filter:blur(2px);
+}
+.card-art .glyph{display:block;width:100%;height:auto}
+.art-list{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:11px}
+.art-list li{
+  display:flex;align-items:center;gap:11px;
+  font-size:14.5px;color:rgba(255,255,255,.86);
+}
+.art-list .tick{
+  width:20px;height:20px;border-radius:50%;flex:none;
+  background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.26);
+  display:grid;place-items:center;
+}
+
+/* ---------- Servicios ---------- */
+.band{padding:88px 0}
+.band-head{max-width:62ch;margin-bottom:44px}
+.band-head h2{font-size:clamp(27px,3.3vw,40px)}
+.band-head p{margin-top:16px;color:var(--ink-soft);font-size:17px}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.card{
+  background:var(--paper-2);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:28px 26px 30px;
+  display:flex;flex-direction:column;gap:14px;
+  transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;
+}
+.card:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(18,24,38,.09);border-color:#d3cec3}
+.ico{
+  width:46px;height:46px;border-radius:13px;flex:none;
+  display:grid;place-items:center;
+  background:linear-gradient(145deg,var(--accent-soft),#fbf6f1);
+  border:1px solid #ecdccb;
+}
+.card h3{font-size:18.5px}
+.card p{color:var(--ink-soft);font-size:15.5px}
+
+/* ---------- Pasos ---------- */
+.steps-band{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;counter-reset:s}
+.step{position:relative;padding:30px 26px;border-radius:var(--radius);background:var(--paper);border:1px solid var(--line)}
+.step .num{
+  display:grid;place-items:center;
+  width:42px;height:42px;border-radius:50%;
+  background:var(--navy);color:#fff;
+  font-weight:680;font-size:17px;font-variant-numeric:tabular-nums;
+  margin-bottom:18px;
+}
+.step h3{font-size:18px}
+.step p{margin-top:11px;color:var(--ink-soft);font-size:15.5px}
+
+/* ---------- Contacto ---------- */
+.contact{
+  background:linear-gradient(165deg,#0f1930 0%,#16243f 60%,#101b33 100%);
+  color:#fff;
+}
+.contact-grid{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:46px;align-items:start}
+.contact h2{font-size:clamp(26px,3.1vw,38px)}
+.contact .lead{margin-top:16px;color:rgba(255,255,255,.78);max-width:42ch}
+.dl{list-style:none;margin:32px 0 0;padding:0;display:grid;gap:18px}
+.dl li{display:flex;gap:15px;align-items:flex-start}
+.dl .pin{
+  width:40px;height:40px;border-radius:12px;flex:none;
+  background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.20);
+  display:grid;place-items:center;
+}
+.dl .k{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.60);font-weight:650}
+.dl .v{font-size:17px;margin-top:3px;color:#fff;text-decoration:none;display:block;word-break:break-word}
+.dl a.v:hover{text-decoration:underline}
+.dl .v.phone{font-size:21px;font-weight:650;letter-spacing:.01em}
+.map-card{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.17);
+  border-radius:20px;padding:16px;
+}
+.map-card svg{display:block;width:100%;height:auto;border-radius:12px}
+.map-legend{
+  margin:13px 4px 2px;font-size:12.5px;color:rgba(255,255,255,.72);line-height:1.5;
+}
+
+/* ---------- Pie ---------- */
+.foot{background:#0c1424;color:rgba(255,255,255,.72);padding:44px 0 50px}
+.foot-in{display:flex;flex-wrap:wrap;gap:22px;justify-content:space-between;align-items:flex-start}
+.foot .name{color:#fff;font-weight:650;font-size:17px;letter-spacing:-.01em}
+.foot a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.35)}
+.foot a:hover{border-bottom-color:#fff}
+.foot .mail{font-size:16px;margin-top:8px;display:inline-block}
+.foot .sig{font-size:13.5px;max-width:46ch;line-height:1.6}
+.foot .rule{height:1px;background:rgba(255,255,255,.12);margin:30px 0 22px}
+.disclaimer{font-size:12.5px;color:rgba(255,255,255,.64);line-height:1.6}
+
+/* ---------- Responsive ---------- */
+@media (max-width:980px){
+  .hero-inner{grid-template-columns:1fr;gap:42px;padding:64px 0 72px}
+  .hero-art{order:2}
+  .cards,.steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .contact-grid{grid-template-columns:1fr;gap:34px}
+}
+@media (max-width:640px){
+  :root{--bar:56px}
+  body{font-size:16px}
+  .wrap{padding:0 18px}
+  .topbar span{font-size:11.5px}
+  .hero-inner{padding:48px 0 58px;gap:34px}
+  .band{padding:60px 0}
+  .cards,.steps{grid-template-columns:1fr;gap:14px}
+  .card{padding:24px 22px}
+  .step{padding:26px 22px}
+  .btn{width:100%;justify-content:center}
+  .cta-row{gap:11px}
+  .hero-lead{max-width:none}
+  .dl .v.phone{font-size:20px}
+  .foot-in{flex-direction:column;gap:18px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar" role="banner">
+  <span>Propuesta de diseño · maqueta no oficial · <b>FFFFFFstudio</b> · Ángel Rubio</span>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="wrap hero-inner">
+    <div>
+      <p class="badge"><span class="dot"></span>Ponferrada · León</p>
+      <h1>Academia Logos<span class="thin">Formación e informática, con cursos subvencionados.</span></h1>
+      <p class="hero-lead">Academia de formación e informática en Ponferrada. Si quieres saber qué cursos hay disponibles en este momento, lo más rápido es llamarnos.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="tel:+34987426688">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 3.5h2.2l1.5 3.8-1.9 1.3a10.8 10.8 0 0 0 5 5l1.3-1.9 3.8 1.5v2.2a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Llamar al 987 426 688
+        </a>
+        <a class="btn btn-ghost" href="#contacto">Ver cómo llegar</a>
+      </div>
+      <p class="hero-note">Avda. Compostilla, 28, bajo · 24400 Ponferrada</p>
+    </div>
+
+    <div class="hero-art">
+      <div class="card-art">
+        <svg class="glyph" viewBox="0 0 320 190" role="img" aria-label="Ilustración abstracta de un aula de informática">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#ffffff" stop-opacity=".92"/>
+              <stop offset="1" stop-color="#ffffff" stop-opacity=".45"/>
+            </linearGradient>
+            <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#e2a470"/>
+              <stop offset="1" stop-color="#c8783c"/>
+            </linearGradient>
+          </defs>
+          <!-- pantalla / pizarra -->
+          <rect x="28" y="20" width="200" height="118" rx="10" fill="none" stroke="url(#g1)" stroke-width="2"/>
+          <rect x="44" y="38" width="96" height="7" rx="3.5" fill="#ffffff" opacity=".80"/>
+          <rect x="44" y="55" width="150" height="6" rx="3" fill="#ffffff" opacity=".42"/>
+          <rect x="44" y="70" width="124" height="6" rx="3" fill="#ffffff" opacity=".42"/>
+          <rect x="44" y="85" width="64" height="6" rx="3" fill="url(#g2)"/>
+          <!-- cursor / codigo -->
+          <path d="M44 106 l14 12 -14 12" fill="none" stroke="#ffffff" stroke-opacity=".7" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="66" y="114" width="40" height="6" rx="3" fill="#ffffff" opacity=".35"/>
+          <!-- pie de pantalla -->
+          <path d="M112 138 v14 M92 158 h72" stroke="url(#g1)" stroke-width="2" stroke-linecap="round"/>
+          <!-- tarjeta flotante -->
+          <rect x="196" y="78" width="100" height="78" rx="12" fill="#101a33" stroke="url(#g1)" stroke-width="2"/>
+          <circle cx="224" cy="104" r="12" fill="none" stroke="url(#g2)" stroke-width="2.6"/>
+          <path d="M219 104 l4 4 7.5 -8.5" fill="none" stroke="#e2a470" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="212" y="126" width="68" height="6" rx="3" fill="#ffffff" opacity=".55"/>
+          <rect x="212" y="139" width="44" height="6" rx="3" fill="#ffffff" opacity=".3"/>
+          <!-- acentos -->
+          <circle cx="268" cy="34" r="16" fill="none" stroke="#ffffff" stroke-opacity=".28" stroke-width="2"/>
+          <circle cx="268" cy="34" r="5" fill="url(#g2)"/>
+        </svg>
+        <ul class="art-list">
+          <li><span class="tick"><svg width="11" height="11" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6.4 4.4 8.8 10 3.2" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Formación e informática</li>
+          <li><span class="tick"><svg width="11" height="11" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6.4 4.4 8.8 10 3.2" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Cursos subvencionados</li>
+          <li><span class="tick"><svg width="11" height="11" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6.4 4.4 8.8 10 3.2" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Atención en Ponferrada</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICIOS ============ -->
+<section class="band" id="servicios">
+  <div class="wrap">
+    <div class="band-head">
+      <p class="eyebrow">Qué hacemos</p>
+      <h2>Formación e informática, en un mismo sitio</h2>
+      <p>Estas son las áreas en las que trabaja la academia, descritas en términos generales. Para conocer la oferta concreta disponible en cada momento, lo mejor es consultarnos por teléfono.</p>
+    </div>
+
+    <div class="cards">
+      <article class="card">
+        <span class="ico" aria-hidden="true">
+          <svg width="23" height="23" viewBox="0 0 24 24" fill="none"><path d="M4 7.5 12 4l8 3.5-8 3.5-8-3.5Z" stroke="#9a5a2a" stroke-width="1.6" stroke-linejoin="round"/><path d="M7 10.2v4.4c0 1.4 2.2 2.6 5 2.6s5-1.2 5-2.6v-4.4M20 8v5" stroke="#9a5a2a" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </span>
+        <h3>Formación presencial</h3>
+        <p>Clases en aula, con grupos reducidos y seguimiento del profesor, en las materias que la academia tenga en marcha.</p>
+      </article>
+
+      <article class="card">
+        <span class="ico" aria-hidden="true">
+          <svg width="23" height="23" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="12" rx="2" stroke="#9a5a2a" stroke-width="1.6"/><path d="M8 20h8M12 17v3" stroke="#9a5a2a" stroke-width="1.6" stroke-linecap="round"/><path d="M7 12.5h4M7 9.5h8" stroke="#9a5a2a" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </span>
+        <h3>Informática y ofimática</h3>
+        <p>Manejo del ordenador y de las herramientas de uso habitual en el trabajo y en el día a día, desde el nivel inicial.</p>
+      </article>
+
+      <article class="card">
+        <span class="ico" aria-hidden="true">
+          <svg width="23" height="23" viewBox="0 0 24 24" fill="none"><path d="M12 3.5 14.6 9l6 .8-4.3 4.2 1 6-5.3-2.9-5.3 2.9 1-6L4.4 9.8 10.4 9 12 3.5Z" stroke="#9a5a2a" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </span>
+        <h3>Cursos subvencionados</h3>
+        <p>Información y gestión de la matrícula en los cursos subvencionados que estén abiertos, según las condiciones de cada convocatoria.</p>
+      </article>
+
+      <article class="card">
+        <span class="ico" aria-hidden="true">
+          <svg width="23" height="23" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3.2" stroke="#9a5a2a" stroke-width="1.6"/><path d="M3.5 19c.6-3 2.9-4.6 5.5-4.6S14 16 14.6 19" stroke="#9a5a2a" stroke-width="1.6" stroke-linecap="round"/><path d="M16.5 7.5h4M16.5 11h4M16.5 14.5h3" stroke="#9a5a2a" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </span>
+        <h3>Orientación formativa</h3>
+        <p>Te escuchamos, vemos tu punto de partida y te decimos con claridad qué opciones de la academia encajan con lo que buscas.</p>
+      </article>
+
+      <article class="card">
+        <span class="ico" aria-hidden="true">
+          <svg width="23" height="23" viewBox="0 0 24 24" fill="none"><path d="M4 20V9l6-4.5V20M10 20h10V12l-6-3" stroke="#9a5a2a" stroke-width="1.6" stroke-linejoin="round"/><path d="M14.5 15.5h2M14.5 18h2M6.5 12h1.5M6.5 15.5h1.5" stroke="#9a5a2a" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </span>
+        <h3>Formación para empresas</h3>
+        <p>Posibilidad de organizar formación para equipos de trabajo, adaptando contenidos y calendario a lo que necesite la empresa.</p>
+      </article>
+
+      <article class="card">
+        <span class="ico" aria-hidden="true">
+          <svg width="23" height="23" viewBox="0 0 24 24" fill="none"><rect x="3.5" y="4.5" width="17" height="15" rx="2" stroke="#9a5a2a" stroke-width="1.6"/><path d="M3.5 9h17" stroke="#9a5a2a" stroke-width="1.6"/><path d="M7.5 13h4M7.5 16h9" stroke="#9a5a2a" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </span>
+        <h3>Aula y equipamiento</h3>
+        <p>Instalaciones con puestos informáticos para practicar durante las clases, en el local de la academia en Ponferrada.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRIMERA VISITA ============ -->
+<section class="band steps-band" id="primera-visita">
+  <div class="wrap">
+    <div class="band-head">
+      <p class="eyebrow">Tu primera visita</p>
+      <h2>Tres pasos y sales sabiendo a qué atenerte</h2>
+      <p>Sin trámites raros y sin compromiso: primero hablamos, luego decides.</p>
+    </div>
+
+    <div class="steps">
+      <article class="step">
+        <span class="num" aria-hidden="true">1</span>
+        <h3>Nos llamas o te pasas</h3>
+        <p>Nos cuentas qué quieres aprender o para qué necesitas la formación. Puedes llamar al <a href="tel:+34987426688" style="color:var(--accent);text-decoration:none;font-weight:600;">987 426 688</a> o venir a la academia.</p>
+      </article>
+      <article class="step">
+        <span class="num" aria-hidden="true">2</span>
+        <h3>Vemos qué encaja</h3>
+        <p>Repasamos contigo las opciones disponibles en ese momento, lo que incluye cada una y qué requisitos tiene, si los tiene.</p>
+      </article>
+      <article class="step">
+        <span class="num" aria-hidden="true">3</span>
+        <h3>Te matriculas y empiezas</h3>
+        <p>Si te convence, resolvemos la matrícula en la propia academia y te indicamos cuándo y cómo empiezas.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section class="band contact" id="contacto">
+  <div class="wrap contact-grid">
+    <div>
+      <p class="eyebrow on-dark">Contacto</p>
+      <h2>Estamos en Avda. Compostilla</h2>
+      <p class="lead">La forma más directa de resolver cualquier duda sobre los cursos es una llamada.</p>
+
+      <ul class="dl">
+        <li>
+          <span class="pin" aria-hidden="true">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M6.6 3.5h2.2l1.5 3.8-1.9 1.3a10.8 10.8 0 0 0 5 5l1.3-1.9 3.8 1.5v2.2a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span>
+            <span class="k">Teléfono</span>
+            <a class="v phone" href="tel:+34987426688">987 426 688</a>
+          </span>
+        </li>
+        <li>
+          <span class="pin" aria-hidden="true">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="#fff" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.6" stroke="#fff" stroke-width="1.7"/></svg>
+          </span>
+          <span>
+            <span class="k">Dirección</span>
+            <span class="v">Avda. Compostilla, 28, bajo, 24400 Ponferrada</span>
+          </span>
+        </li>
+        <li>
+          <span class="pin" aria-hidden="true">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.4" stroke="#fff" stroke-width="1.7"/><path d="M12 7.4V12l3.2 2" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span>
+            <span class="k">Horario</span>
+            <span class="v">Consultar horario</span>
+          </span>
+        </li>
+        <li>
+          <span class="pin" aria-hidden="true">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><rect x="3.4" y="5.4" width="17.2" height="13.2" rx="2.2" stroke="#fff" stroke-width="1.7"/><path d="m4.2 7.4 7.8 5.6 7.8-5.6" stroke="#fff" stroke-width="1.7" stroke-linejoin="round"/></svg>
+          </span>
+          <span>
+            <span class="k">Email</span>
+            <a class="v" href="mailto:logos@logosponferrada.com">logos@logosponferrada.com</a>
+          </span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="map-card">
+      <svg viewBox="0 0 520 360" role="img" aria-label="Mapa esquemático orientativo de la zona de la academia">
+        <defs>
+          <linearGradient id="mapbg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#16233d"/>
+            <stop offset="1" stop-color="#0d1527"/>
+          </linearGradient>
+        </defs>
+        <rect width="520" height="360" fill="url(#mapbg)"/>
+        <!-- manzanas -->
+        <g fill="#ffffff" opacity=".055">
+          <rect x="34" y="34" width="150" height="92" rx="6"/>
+          <rect x="212" y="34" width="118" height="92" rx="6"/>
+          <rect x="358" y="34" width="128" height="140" rx="6"/>
+          <rect x="34" y="158" width="150" height="76" rx="6"/>
+          <rect x="34" y="266" width="196" height="60" rx="6"/>
+          <rect x="300" y="240" width="186" height="86" rx="6"/>
+        </g>
+        <!-- avenida principal -->
+        <path d="M0 210 H520" stroke="#2f4472" stroke-width="30" stroke-linecap="round"/>
+        <path d="M0 210 H520" stroke="#c8783c" stroke-width="2" stroke-dasharray="16 14" opacity=".75"/>
+        <!-- calles secundarias -->
+        <g stroke="#243758" stroke-width="16" stroke-linecap="round">
+          <path d="M198 0 V360"/>
+          <path d="M344 0 V240"/>
+          <path d="M0 142 H198"/>
+          <path d="M408 300 H520"/>
+        </g>
+        <!-- parcela destacada -->
+        <rect x="212" y="226" width="78" height="54" rx="7" fill="#c8783c" opacity=".20" stroke="#c8783c" stroke-width="1.6"/>
+        <!-- marcador -->
+        <g transform="translate(251 226)">
+          <path d="M0 14 C-15 -6 -22 -14 -22 -24 A22 22 0 0 1 22 -24 C22 -14 15 -6 0 14Z" fill="#c8783c" stroke="#ffe6d2" stroke-width="2.2"/>
+          <circle cx="0" cy="-24" r="7.4" fill="#0f1930"/>
+        </g>
+        <!-- etiquetas -->
+        <text x="18" y="200" fill="#ffffff" opacity=".66" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif" font-size="15" font-weight="600">Avda. Compostilla</text>
+        <text x="212" y="302" fill="#f3d9c2" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif" font-size="15" font-weight="700">Academia Logos</text>
+        <text x="212" y="322" fill="#ffffff" opacity=".58" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif" font-size="13.5">n.º 28, bajo</text>
+        <!-- norte -->
+        <g transform="translate(466 56)" opacity=".6">
+          <path d="M0 -20 L7 6 L0 0 L-7 6 Z" fill="#ffffff"/>
+          <text x="0" y="24" fill="#ffffff" text-anchor="middle" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif" font-size="12" font-weight="700">N</text>
+        </g>
+      </svg>
+      <p class="map-legend">Mapa esquemático orientativo. No es cartografía real.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PIE ============ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-in">
+      <div>
+        <p class="name">Academia Logos · Ponferrada</p>
+        <a class="mail" href="mailto:logos@logosponferrada.com">logos@logosponferrada.com</a>
+      </div>
+      <div>
+        <p class="sig">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+      </div>
+    </div>
+    <div class="rule" role="presentation"></div>
+    <p class="disclaimer">Maqueta de demostración sin vínculo oficial con el negocio. Los datos de contacto y la dirección son públicos; el resto del contenido es texto de ejemplo descriptivo y debe revisarse y confirmarse con la academia antes de cualquier publicación.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var links = document.querySelectorAll('a[href^="#"]');
+  for (var i=0;i<links.length;i++){
+    links[i].addEventListener('click', function(e){
+      var t = document.querySelector(this.getAttribute('href'));
+      if(!t) return;
+      e.preventDefault();
+      var bar = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--bar'),10) || 44;
+      window.scrollTo({top: t.getBoundingClientRect().top + window.pageYOffset - bar - 8, behavior:'smooth'});
+    });
+  }
+})();
+</script>
+</body>
+</html>

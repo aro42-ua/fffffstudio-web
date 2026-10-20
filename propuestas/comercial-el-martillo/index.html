@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Comercial El Martillo — Propuesta de diseño</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{max-width:100%;overflow-x:hidden}
+  :root{
+    --ink:#11161c;
+    --ink-2:#1b2430;
+    --paper:#f6f5f2;
+    --paper-2:#ecebe6;
+    --line:#d9d7d0;
+    --muted:#5c6673;
+    --amber:#f0a104;
+    --amber-d:#c07d00;
+    --steel:#3d4b5c;
+    --bar-h:44px;
+    --r:16px;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+  }
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;font-family:var(--sans);color:var(--ink);background:var(--paper);
+    line-height:1.6;font-size:17px;padding-top:var(--bar-h);
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%;display:block}
+  a{color:inherit}
+  h1,h2,h3{line-height:1.12;letter-spacing:-.022em;margin:0;font-weight:700}
+  p{margin:0}
+  .wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 24px}
+
+  /* ---------- Barra fija ---------- */
+  .topbar{
+    position:fixed;top:0;left:0;right:0;z-index:60;height:var(--bar-h);
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(90deg,#11161c 0%,#1d2733 50%,#11161c 100%);
+    color:#f3efe6;border-bottom:1px solid rgba(240,161,4,.45);
+  }
+  .topbar span{
+    font-size:12.5px;letter-spacing:.055em;text-transform:uppercase;font-weight:600;
+    text-align:center;padding:0 14px;line-height:1.25;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative;overflow:hidden;color:#f4f1ea;
+    background:
+      radial-gradient(1100px 520px at 82% -10%,rgba(240,161,4,.30),transparent 62%),
+      radial-gradient(760px 420px at 6% 104%,rgba(61,75,92,.75),transparent 70%),
+      linear-gradient(168deg,#0e1319 0%,#18212c 48%,#101720 100%);
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+    background-image:
+      repeating-linear-gradient(135deg,rgba(255,255,255,.035) 0 2px,transparent 2px 13px);
+  }
+  .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.12fr .88fr;gap:52px;align-items:center;
+    padding:84px 0 92px}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:700;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:22px}
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--amber);display:block}
+  .hero h1{font-size:clamp(2.3rem,5.4vw,4rem);color:#fff}
+  .hero h1 em{font-style:normal;display:block;color:var(--amber);font-size:.44em;letter-spacing:.14em;
+    text-transform:uppercase;font-weight:700;margin-bottom:12px}
+  .hero .lead{margin-top:22px;font-size:clamp(1.02rem,1.5vw,1.22rem);color:#cdd5de;max-width:33em}
+  .hero .meta{margin-top:18px;font-size:14.5px;color:#9aa6b4}
+  .cta-row{display:flex;flex-wrap:wrap;gap:13px;margin-top:34px}
+  .btn{
+    display:inline-flex;align-items:center;gap:11px;text-decoration:none;font-weight:700;
+    padding:16px 26px;border-radius:999px;font-size:16.5px;border:1px solid transparent;
+    transition:transform .16s ease,box-shadow .16s ease,background .16s ease;
+  }
+  .btn-main{background:linear-gradient(180deg,#ffb825,#e49400);color:#1a1205;
+    box-shadow:0 12px 28px -12px rgba(240,161,4,.75)}
+  .btn-main:hover{transform:translateY(-2px)}
+  .btn-ghost{border-color:rgba(255,255,255,.3);color:#eef2f6}
+  .btn-ghost:hover{background:rgba(255,255,255,.08)}
+  .btn svg{flex:0 0 auto}
+
+  /* Composición SVG del hero */
+  .hero-art{position:relative}
+  .hero-art .card{
+    background:linear-gradient(160deg,rgba(255,255,255,.1),rgba(255,255,255,.03));
+    border:1px solid rgba(255,255,255,.16);border-radius:22px;padding:22px;
+    backdrop-filter:blur(2px);
+  }
+  .hero-art .card h3{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#aab6c4;font-weight:700}
+
+  /* ---------- Aviso ---------- */
+  .notice{background:var(--paper-2);border-bottom:1px solid var(--line)}
+  .notice-in{display:flex;gap:16px;align-items:flex-start;padding:22px 0}
+  .notice-in svg{flex:0 0 auto;margin-top:2px}
+  .notice p{font-size:15px;color:var(--muted);max-width:76ch}
+  .notice strong{color:var(--ink-2)}
+
+  /* ---------- Secciones ---------- */
+  section{padding:84px 0}
+  section[id]{scroll-margin-top:calc(var(--bar-h) + 16px)}
+  .sec-head{max-width:46ch;margin-bottom:44px}
+  .tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--amber-d);margin-bottom:14px}
+  .sec-head h2{font-size:clamp(1.65rem,3.2vw,2.5rem)}
+  .sec-head p{margin-top:14px;color:var(--muted);font-size:16.5px}
+
+  .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+  .card-s{
+    background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:26px 24px 28px;
+    position:relative;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
+  }
+  .card-s:hover{transform:translateY(-3px);box-shadow:0 18px 40px -26px rgba(17,22,28,.45);border-color:#c3c0b7}
+  .ico{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;margin-bottom:18px;
+    background:linear-gradient(150deg,#fff3d8,#ffe0a3);border:1px solid #f0d49a}
+  .card-s h3{font-size:18px;margin-bottom:9px}
+  .card-s p{color:var(--muted);font-size:15.3px}
+  .cards-note{margin-top:22px;font-size:14px;color:var(--muted)}
+
+  /* ---------- Pasos ---------- */
+  .steps-sec{background:linear-gradient(180deg,#eceae4,#f6f5f2);border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line)}
+  .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;counter-reset:s}
+  .step{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:28px 24px;position:relative}
+  .step .num{
+    width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:17px;
+    background:var(--ink);color:var(--amber);margin-bottom:18px;letter-spacing:0;
+  }
+  .step h3{font-size:18px;margin-bottom:9px}
+  .step p{color:var(--muted);font-size:15.3px}
+
+  /* ---------- Contacto ---------- */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+  .panel{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:30px 28px}
+  .rows{list-style:none;margin:0;padding:0}
+  .rows li{display:flex;gap:15px;padding:16px 0;border-bottom:1px solid var(--paper-2)}
+  .rows li:last-child{border-bottom:0;padding-bottom:0}
+  .rows li:first-child{padding-top:0}
+  .rows .k{display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;
+    margin-bottom:4px}
+  .rows .v{display:block;font-size:17.5px;font-weight:650;word-break:break-word}
+  .rows a{text-decoration:none;border-bottom:2px solid rgba(240,161,4,.6)}
+  .rows a:hover{border-bottom-color:var(--amber-d)}
+  .pin{width:38px;height:38px;flex:0 0 auto;border-radius:10px;display:grid;place-items:center;
+    background:var(--paper-2);border:1px solid var(--line)}
+  .map-wrap{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:16px}
+  .map-wrap svg{width:100%;height:auto;border-radius:10px}
+  .map-legend{font-size:13px;color:var(--muted);margin-top:12px;padding:0 4px 2px}
+
+  /* ---------- Pie ---------- */
+  footer{background:#0f141a;color:#c6cfd9;padding:54px 0 44px;border-top:3px solid var(--amber)}
+  .foot-grid{display:flex;flex-wrap:wrap;gap:26px;justify-content:space-between;align-items:flex-start}
+  .foot-grid .bn{font-weight:800;color:#fff;font-size:19px;letter-spacing:-.01em}
+  .foot-grid p{font-size:15px;margin-top:8px}
+  footer a{color:var(--amber);text-decoration:none;word-break:break-word}
+  footer a:hover{text-decoration:underline}
+  .credit{margin-top:36px;padding-top:22px;border-top:1px solid rgba(255,255,255,.12);
+    font-size:13.5px;color:#8c98a6;line-height:1.6}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;gap:38px;padding:58px 0 66px}
+    .cards,.steps{grid-template-columns:1fr 1fr}
+    .contact-grid{grid-template-columns:1fr}
+  }
+  @media (max-width:620px){
+    :root{--bar-h:58px}
+    body{font-size:16.5px}
+    .wrap{padding:0 18px}
+    section{padding:58px 0}
+    .cards,.steps{grid-template-columns:1fr}
+    .sec-head{margin-bottom:30px}
+    .btn{width:100%;justify-content:center;padding:15px 20px}
+    .panel,.step,.card-s{padding:22px 19px}
+    .hero .lead{max-width:none}
+    .topbar span{font-size:11.5px;letter-spacing:.03em}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Antequera · Málaga</span>
+      <h1><em>Ferretería</em>Comercial El Martillo</h1>
+      <p class="lead">Ferretería en Antequera: venta de herramientas y material de construcción para profesionales y particulares.</p>
+      <p class="meta">Avenida del Romeral, 14 · 29200 Antequera</p>
+      <div class="cta-row">
+        <a class="btn btn-main" href="tel:+34610478202">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h4l2 5-2.5 1.5a12 12 0 0 0 6 6L15 14l5 2v4a16 16 0 0 1-16-16Z"/></svg>
+          Llamar 610 478 202
+        </a>
+        <a class="btn btn-ghost" href="#contacto">Ver cómo llegar</a>
+      </div>
+    </div>
+
+    <div class="hero-art">
+      <div class="card">
+        <h3>Herramienta y construcción</h3>
+        <svg viewBox="0 0 320 230" role="img" aria-label="Ilustración geométrica de herramientas y material de obra">
+          <defs>
+            <linearGradient id="gA" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#ffcb57"/><stop offset="1" stop-color="#e08f00"/>
+            </linearGradient>
+            <linearGradient id="gS" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#9fb0c2"/><stop offset="1" stop-color="#5b6c7e"/>
+            </linearGradient>
+          </defs>
+          <!-- retícula -->
+          <g stroke="rgba(255,255,255,.12)" stroke-width="1">
+            <path d="M0 40h320M0 80h320M0 120h320M0 160h320M0 200h320"/>
+            <path d="M40 0v230M80 0v230M120 0v230M160 0v230M200 0v230M240 0v230M280 0v230"/>
+          </g>
+          <!-- ladrillos -->
+          <g fill="rgba(255,255,255,.09)" stroke="rgba(255,255,255,.3)">
+            <rect x="18" y="176" width="64" height="24" rx="3"/>
+            <rect x="88" y="176" width="64" height="24" rx="3"/>
+            <rect x="53" y="148" width="64" height="24" rx="3"/>
+            <rect x="123" y="148" width="64" height="24" rx="3"/>
+          </g>
+          <!-- martillo -->
+          <g transform="rotate(-18 150 90)">
+            <rect x="142" y="88" width="14" height="96" rx="6" fill="url(#gA)"/>
+            <rect x="106" y="60" width="86" height="30" rx="7" fill="url(#gS)"/>
+            <rect x="106" y="60" width="26" height="30" rx="7" fill="#49596b"/>
+            <path d="M184 60h10l6 15-6 15h-10z" fill="url(#gS)"/>
+          </g>
+          <!-- tornillo -->
+          <g transform="translate(236 46)">
+            <path d="M0 0h30l-4 16H4z" fill="url(#gS)"/>
+            <path d="M8 16h14l-2 46-5 12-5-12z" fill="url(#gS)"/>
+            <g stroke="rgba(14,19,25,.55)" stroke-width="2.4">
+              <path d="M8 26h14M8 36h14M9 46h12M10 56h10"/>
+            </g>
+          </g>
+          <!-- llave -->
+          <g transform="translate(30 36) rotate(12)">
+            <path d="M0 14a14 14 0 1 1 20 12.6L52 58l-9 9L11 35A14 14 0 0 1 0 14Z" fill="none" stroke="#b9c6d4" stroke-width="7" stroke-linejoin="round"/>
+          </g>
+          <circle cx="282" cy="186" r="16" fill="none" stroke="url(#gA)" stroke-width="5"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="notice">
+  <div class="wrap notice-in">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c07d00" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v4.5M12 16h.01"/></svg>
+    <p><strong>Por qué esta propuesta.</strong> Actualmente <strong>comercialelmartillo.es</strong> solo muestra una pantalla de «Página en mantenimiento» y está marcada como <em>noindex</em>, por lo que Google no la enseña en sus resultados. Esta maqueta plantea una página operativa, indexable y con la información de contacto visible desde el primer segundo.</p>
+  </div>
+</div>
+
+<section id="servicios">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag">Qué encontrarás</span>
+      <h2>Familias de producto y atención en tienda</h2>
+      <p>Ferretería, herramientas y material de construcción, con atención tanto a profesionales como a particulares.</p>
+    </div>
+    <div class="cards">
+
+      <article class="card-s">
+        <div class="ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8a5c00" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8l5-5 3 3-5 5z"/><path d="M6 11l9 9 4-4-9-9"/><path d="M14 4l6 6"/></svg>
+        </div>
+        <h3>Herramienta manual</h3>
+        <p>Martillos, destornilladores, alicates, llaves, medición y utillaje general de taller y obra.</p>
+      </article>
+
+      <article class="card-s">
+        <div class="ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8a5c00" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h7V5H4zM13 9h7V5h-7z"/><path d="M4 19h7v-4H4zM13 19h7v-4h-7z"/><path d="M8.5 15v-6M15.5 15v-6"/></svg>
+        </div>
+        <h3>Material de construcción</h3>
+        <p>Material para obra y reforma: áridos, conglomerantes, morteros y elementos de albañilería.</p>
+      </article>
+
+      <article class="card-s">
+        <div class="ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8a5c00" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3h8l-2 4h-4z"/><path d="M11 7h2v9l-1 4-1-4z"/><path d="M10 10h4M10 13h4"/></svg>
+        </div>
+        <h3>Fijación y tornillería</h3>
+        <p>Tornillos, tacos, anclajes, clavos, tuercas y arandelas, por unidad o en formato caja.</p>
+      </article>
+
+      <article class="card-s">
+        <div class="ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8a5c00" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="13" height="6" rx="1.6"/><path d="M16 7h3a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-7"/><path d="M12 13v3"/><rect x="9.5" y="16" width="5" height="5" rx="1.2"/></svg>
+        </div>
+        <h3>Pintura y tratamientos</h3>
+        <p>Pinturas, barnices, imprimaciones y accesorios de aplicación: rodillos, brochas y cintas.</p>
+      </article>
+
+      <article class="card-s">
+        <div class="ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8a5c00" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h5v4H4z"/><path d="M9 9h5a3 3 0 0 1 3 3v5"/><path d="M14 17h6v4h-6z"/><path d="M6 11v3"/></svg>
+        </div>
+        <h3>Fontanería y electricidad</h3>
+        <p>Accesorios y pequeño material para instalaciones, reparaciones y mantenimiento doméstico.</p>
+      </article>
+
+      <article class="card-s">
+        <div class="ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8a5c00" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 15a9 9 0 0 1 18 0"/><path d="M12 6V4"/><path d="M2 15h20v3H2z"/><path d="M8.5 7.5l1.5 7M15.5 7.5l-1.5 7"/></svg>
+        </div>
+        <h3>Atención a profesionales</h3>
+        <p>Trato directo en mostrador para instaladores, albañiles y gremios, y también para particulares.</p>
+      </article>
+
+    </div>
+    <p class="cards-note">Las familias de producto son orientativas y se describen en términos generales. Para disponibilidad concreta, consultar en tienda o por teléfono.</p>
+  </div>
+</section>
+
+<section class="steps-sec" id="como-trabajamos">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag">Cómo trabajamos</span>
+      <h2>Tres pasos, sin vueltas</h2>
+      <p>Del problema que traes a la solución que sale por la puerta.</p>
+    </div>
+    <div class="steps">
+      <article class="step">
+        <div class="num">1</div>
+        <h3>Cuéntanos el trabajo</h3>
+        <p>Nos explicas qué necesitas hacer, en tienda o por teléfono. No hace falta saber la referencia exacta.</p>
+      </article>
+      <article class="step">
+        <div class="num">2</div>
+        <h3>Te orientamos</h3>
+        <p>Buscamos la herramienta o el material adecuado para ese uso y te indicamos las alternativas posibles.</p>
+      </article>
+      <article class="step">
+        <div class="num">3</div>
+        <h3>Lo recoges en tienda</h3>
+        <p>Preparamos el pedido para que lo retires en la Avenida del Romeral, 14.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag">Contacto</span>
+      <h2>Dónde estamos y cómo localizarnos</h2>
+      <p>Avenida del Romeral, 14 — Antequera (Málaga).</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="panel">
+        <ul class="rows">
+          <li>
+            <span class="pin"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#3d4b5c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h4l2 5-2.5 1.5a12 12 0 0 0 6 6L15 14l5 2v4a16 16 0 0 1-16-16Z"/></svg></span>
+            <span><span class="k">Teléfono principal</span><span class="v"><a href="tel:+34610478202">610 478 202</a></span></span>
+          </li>
+          <li>
+            <span class="pin"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#3d4b5c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h4l2 5-2.5 1.5a12 12 0 0 0 6 6L15 14l5 2v4a16 16 0 0 1-16-16Z"/></svg></span>
+            <span><span class="k">Segundo teléfono</span><span class="v"><a href="tel:+34615441507">615 441 507</a></span></span>
+          </li>
+          <li>
+            <span class="pin"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#3d4b5c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg></span>
+            <span><span class="k">Dirección</span><span class="v">Avenida del Romeral, 14, 29200 Antequera</span></span>
+          </li>
+          <li>
+            <span class="pin"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#3d4b5c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg></span>
+            <span><span class="k">Horario</span><span class="v">Consultar horario</span></span>
+          </li>
+          <li>
+            <span class="pin"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#3d4b5c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.4"/><path d="M3.6 6.6 12 13l8.4-6.4"/></svg></span>
+            <span><span class="k">Email</span><span class="v"><a href="mailto:comercialelmartillo@yahoo.es">comercialelmartillo@yahoo.es</a></span></span>
+          </li>
+        </ul>
+        <div class="cta-row" style="margin-top:26px">
+          <a class="btn btn-main" href="tel:+34610478202">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h4l2 5-2.5 1.5a12 12 0 0 0 6 6L15 14l5 2v4a16 16 0 0 1-16-16Z"/></svg>
+            Llamar 610 478 202
+          </a>
+        </div>
+      </div>
+
+      <div class="map-wrap">
+        <svg viewBox="0 0 520 360" role="img" aria-label="Mapa esquemático orientativo de la ubicación en Avenida del Romeral, 14">
+          <rect width="520" height="360" rx="10" fill="#eef0ec"/>
+          <g stroke="#dfe2dc" stroke-width="1">
+            <path d="M0 40h520M0 80h520M0 120h520M0 160h520M0 200h520M0 240h520M0 280h520M0 320h520"/>
+            <path d="M40 0v360M80 0v360M120 0v360M160 0v360M200 0v360M240 0v360M280 0v360M320 0v360M360 0v360M400 0v360M440 0v360M480 0v360"/>
+          </g>
+          <!-- manzanas -->
+          <g fill="#e2e6de" stroke="#d2d7cd">
+            <rect x="34" y="40" width="150" height="104" rx="6"/>
+            <rect x="34" y="236" width="150" height="90" rx="6"/>
+            <rect x="330" y="40" width="156" height="104" rx="6"/>
+            <rect x="330" y="236" width="156" height="90" rx="6"/>
+          </g>
+          <!-- avenida principal -->
+          <path d="M-10 196h540" stroke="#c9cec4" stroke-width="44" stroke-linecap="butt"/>
+          <path d="M-10 196h540" stroke="#f3f4f1" stroke-width="34"/>
+          <path d="M-10 196h540" stroke="#cfa33a" stroke-width="2.4" stroke-dasharray="16 14"/>
+          <!-- calle secundaria -->
+          <path d="M258 -10v380" stroke="#d3d8ce" stroke-width="30"/>
+          <path d="M258 -10v380" stroke="#f6f7f4" stroke-width="22"/>
+          <!-- parcela destacada -->
+          <rect x="160" y="94" width="184" height="78" rx="7" fill="#fff4dd" stroke="#e0a526" stroke-width="2"/>
+          <!-- marcador -->
+          <g transform="translate(252 68)">
+            <path d="M0 34c0 0 15-14.5 15-24a15 15 0 1 0-30 0C-15 19.5 0 34 0 34Z" fill="#11161c"/>
+            <circle cx="0" cy="10" r="5.6" fill="#f0a104"/>
+          </g>
+          <text x="252" y="140" text-anchor="middle" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="15" font-weight="700" fill="#11161c">Avenida del Romeral, 14</text>
+          <text x="252" y="160" text-anchor="middle" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="13" fill="#5c6673">29200 Antequera</text>
+          <text x="22" y="225" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="12.5" font-weight="700" fill="#8a9280" letter-spacing="1.6">AVENIDA</text>
+          <!-- brújula -->
+          <g transform="translate(466 300)">
+            <circle r="22" fill="#fff" stroke="#d6dbd2"/>
+            <path d="M0 -14 5 2 0 -2 -5 2Z" fill="#11161c"/>
+            <text y="16" text-anchor="middle" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="10" font-weight="700" fill="#5c6673">N</text>
+          </g>
+        </svg>
+        <p class="map-legend">Mapa esquemático orientativo. No es cartografía real.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="bn">Comercial El Martillo</div>
+        <p>Avenida del Romeral, 14, 29200 Antequera<br>Ferretería · herramientas · material de construcción</p>
+      </div>
+      <div>
+        <p><a href="tel:+34610478202">610 478 202</a> · <a href="tel:+34615441507">615 441 507</a><br>
+        <a href="mailto:comercialelmartillo@yahoo.es">comercialelmartillo@yahoo.es</a><br>
+        Consultar horario</p>
+      </div>
+    </div>
+    <p class="credit">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var links = document.querySelectorAll('a[href^="#"]');
+  for (var i=0;i<links.length;i++){
+    links[i].addEventListener('click', function(e){
+      var el = document.querySelector(this.getAttribute('href'));
+      if(!el) return;
+      e.preventDefault();
+      var bar = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--bar-h'),10) || 44;
+      var y = el.getBoundingClientRect().top + window.pageYOffset - bar - 12;
+      window.scrollTo({top:y, behavior:'smooth'});
+    });
+  }
+})();
+</script>
+</body>
+</html>

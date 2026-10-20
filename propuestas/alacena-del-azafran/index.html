@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alacena del Azafrán · Propuesta de diseño</title>
+<meta name="description" content="Maqueta no oficial de propuesta de diseño web para Alacena del Azafrán, tienda de productos típicos en Consuegra (Toledo).">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  :root{
+    --cream:#fbf7f0;
+    --cream-2:#f4ece0;
+    --ink:#231a16;
+    --ink-soft:#54453d;
+    --line:#e3d6c4;
+    --saffron:#c9521d;
+    --saffron-deep:#9e3c13;
+    --gold:#d79a2b;
+    --wine:#5a1b32;
+    --wine-soft:#7d2a46;
+    --olive:#6b7244;
+    --bar-h:44px;
+    --r:18px;
+    --shadow:0 18px 40px -24px rgba(35,26,22,.45);
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    --serif:ui-serif,Georgia,"Times New Roman",Times,serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{max-width:100%;overflow-x:hidden}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%;display:block}
+  a{color:inherit}
+  h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.14;letter-spacing:-.01em;margin:0}
+  p{margin:0}
+
+  /* ---------- Barra fija ---------- */
+  .studiobar{
+    position:fixed;inset:0 0 auto 0;z-index:100;
+    height:var(--bar-h);
+    display:flex;align-items:center;justify-content:center;
+    padding:0 14px;
+    background:#1b1310;
+    color:#f0e3d2;
+    border-bottom:1px solid rgba(215,154,43,.38);
+  }
+  .studiobar span{
+    font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;
+    text-align:center;line-height:1.3;
+    max-width:100%;
+  }
+  .page{padding-top:var(--bar-h)}
+  .wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 clamp(16px,4vw,40px)}
+  section{padding:clamp(56px,7vw,104px) 0}
+  .eyebrow{
+    font-size:11.5px;letter-spacing:.17em;text-transform:uppercase;
+    color:var(--saffron-deep);font-weight:700;margin-bottom:14px;
+  }
+  .lede{color:var(--ink-soft);font-size:clamp(15.5px,1.6vw,18px);max-width:56ch}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(90% 120% at 100% 0%,rgba(215,154,43,.30),transparent 62%),
+      radial-gradient(80% 110% at 0% 100%,rgba(90,27,50,.22),transparent 60%),
+      linear-gradient(170deg,#fdfaf4 0%,var(--cream-2) 100%);
+    padding-top:clamp(44px,6vw,76px);
+  }
+  .hero::after{
+    content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--line);
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(28px,5vw,64px);align-items:center;
+  }
+  .hero h1{font-size:clamp(38px,6.4vw,70px)}
+  .hero h1 em{font-style:normal;color:var(--saffron)}
+  .hero .lede{margin-top:20px}
+  .hero-note{
+    margin-top:14px;font-size:14px;color:var(--ink-soft);
+    display:flex;align-items:center;gap:9px;flex-wrap:wrap;
+  }
+  .pin{
+    display:inline-flex;align-items:center;gap:7px;
+    background:#fff;border:1px solid var(--line);border-radius:999px;
+    padding:5px 12px;font-size:13px;color:var(--ink-soft);
+  }
+  .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:11px;
+    padding:15px 24px;border-radius:999px;
+    text-decoration:none;font-weight:650;font-size:16px;
+    border:1px solid transparent;transition:transform .18s ease,box-shadow .18s ease,background .18s ease;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg,var(--saffron) 0%,var(--saffron-deep) 100%);
+    color:#fff;box-shadow:0 14px 28px -14px rgba(158,60,19,.75);
+  }
+  .btn-primary:hover{transform:translateY(-2px)}
+  .btn-ghost{
+    background:#fff;border-color:var(--line);color:var(--ink);
+  }
+  .btn-ghost:hover{background:#fffdf8;transform:translateY(-2px)}
+  .btn svg{flex:0 0 auto}
+
+  /* ilustración hero */
+  .hero-art{
+    position:relative;border-radius:26px;overflow:hidden;
+    background:linear-gradient(160deg,#fff 0%,#f7eedf 55%,#f0e2cd 100%);
+    border:1px solid var(--line);box-shadow:var(--shadow);
+    padding:18px;
+  }
+  .hero-art svg{width:100%;height:auto}
+
+  /* ---------- Productos ---------- */
+  .cards{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:38px;
+  }
+  .card{
+    background:#fff;border:1px solid var(--line);border-radius:var(--r);
+    padding:24px 22px 26px;display:flex;flex-direction:column;gap:14px;
+    transition:transform .2s ease,box-shadow .2s ease;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+  .card h3{font-size:21px}
+  .card p{font-size:14.5px;color:var(--ink-soft)}
+  .ico{
+    width:68px;height:68px;border-radius:16px;display:grid;place-items:center;
+    background:linear-gradient(140deg,var(--cream-2),#fff);
+    border:1px solid var(--line);
+  }
+  .ico svg{width:44px;height:44px}
+  .tag{
+    align-self:flex-start;margin-top:auto;
+    font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:700;
+    color:var(--olive);
+  }
+
+  /* ---------- Pasos ---------- */
+  .steps-sec{background:linear-gradient(180deg,#fff 0%,#fdfaf4 100%);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:38px;counter-reset:s}
+  .step{
+    position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--r);
+    padding:30px 24px 26px;
+  }
+  .step-n{
+    width:46px;height:46px;border-radius:50%;
+    display:grid;place-items:center;margin-bottom:16px;
+    background:linear-gradient(135deg,var(--wine),var(--wine-soft));
+    color:#fff;font-family:var(--serif);font-size:20px;font-weight:600;
+  }
+  .step h3{font-size:19px;margin-bottom:8px}
+  .step p{font-size:14.5px;color:var(--ink-soft)}
+
+  /* ---------- Contacto ---------- */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,48px);margin-top:38px;align-items:start}
+  .infolist{display:grid;gap:14px}
+  .info{
+    display:flex;gap:16px;align-items:flex-start;
+    background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px;
+  }
+  .info .ico-sm{
+    flex:0 0 auto;width:40px;height:40px;border-radius:11px;display:grid;place-items:center;
+    background:var(--cream-2);border:1px solid var(--line);
+  }
+  .info .ico-sm svg{width:21px;height:21px}
+  .info-label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);font-weight:700}
+  .info-value{font-size:17px;font-weight:600;margin-top:3px;word-break:break-word}
+  .info-value a{text-decoration:none;border-bottom:1.5px solid rgba(201,82,29,.4)}
+  .info-value a:hover{color:var(--saffron-deep)}
+  .info-value .sep{color:var(--line);margin:0 6px;font-weight:400}
+  .map-card{
+    background:#fff;border:1px solid var(--line);border-radius:var(--r);
+    padding:18px 18px 14px;box-shadow:var(--shadow);
+  }
+  .map-card svg{width:100%;height:auto;border-radius:12px}
+  .map-legend{font-size:12.5px;color:var(--ink-soft);margin-top:12px;font-style:italic}
+
+  /* ---------- Pie ---------- */
+  footer{background:#1b1310;color:#e9dccb;padding:clamp(44px,6vw,64px) 0 34px}
+  .foot-grid{display:flex;flex-wrap:wrap;gap:26px;justify-content:space-between;align-items:flex-start}
+  footer h3{font-size:24px;color:#fff}
+  footer p{font-size:14.5px;color:#bdab98;margin-top:8px}
+  footer a{color:#f2c877;text-decoration:none;border-bottom:1px solid rgba(242,200,119,.35);word-break:break-word}
+  footer a:hover{color:#fff}
+  .foot-rule{height:1px;background:rgba(242,200,119,.2);margin:30px 0 20px}
+  .foot-credit{font-size:13.5px;color:#c9b7a3;line-height:1.6}
+  .foot-mini{font-size:12px;color:#8e7f70;margin-top:10px}
+
+  @media (max-width:1000px){
+    .cards{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (max-width:860px){
+    :root{--bar-h:56px}
+    .hero-grid{grid-template-columns:1fr}
+    .hero-art{order:-1}
+    .steps{grid-template-columns:1fr}
+    .contact-grid{grid-template-columns:1fr}
+  }
+  @media (max-width:560px){
+    .cards{grid-template-columns:1fr}
+    .btn{width:100%;justify-content:center}
+    .cta-row{gap:10px}
+    .studiobar span{font-size:10.5px;letter-spacing:.03em}
+  }
+</style>
+</head>
+<body>
+
+<div class="studiobar" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<div class="page">
+
+  <!-- ===================== HERO ===================== -->
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">Consuegra · Toledo</p>
+          <h1>Alacena del <em>Azafrán</em></h1>
+          <p class="lede">Tienda de productos típicos en Consuegra: azafrán, queso y vino. Atención directa en la tienda y pedidos por teléfono.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="tel:+34655965330">
+              <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 3.5h3l1.5 4-2 1.4a12 12 0 0 0 6 6l1.4-2 4 1.5v3a2 2 0 0 1-2.2 2A17.5 17.5 0 0 1 4.6 5.7 2 2 0 0 1 6.6 3.5Z"/></svg>
+              Llamar al 655 965 330
+            </a>
+            <a class="btn btn-ghost" href="#productos">Ver productos</a>
+          </div>
+          <div class="hero-note">
+            <span class="pin">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+              C/ Urda, 24 · 45700 Consuegra
+            </span>
+            <span class="pin">Consultar horario</span>
+          </div>
+        </div>
+
+        <div class="hero-art">
+          <!-- Bodegón SVG dibujado a mano: vino, queso y azafrán -->
+          <svg viewBox="0 0 520 400" role="img" aria-label="Ilustración de una botella de vino, una cuña de queso y hebras de azafrán">
+            <defs>
+              <linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#fffdf8"/><stop offset="1" stop-color="#f2e4ce"/>
+              </linearGradient>
+              <linearGradient id="gBottle" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#3d1222"/><stop offset=".45" stop-color="#5a1b32"/><stop offset="1" stop-color="#2d0d19"/>
+              </linearGradient>
+              <linearGradient id="gCheese" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#f7dd9a"/><stop offset="1" stop-color="#e0b55c"/>
+              </linearGradient>
+              <linearGradient id="gRind" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#b9842f"/><stop offset="1" stop-color="#8e601d"/>
+              </linearGradient>
+              <linearGradient id="gSaffron" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#d8601f"/><stop offset="1" stop-color="#9e3c13"/>
+              </linearGradient>
+              <linearGradient id="gPetal" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#b48ccc"/><stop offset="1" stop-color="#7a4f9c"/>
+              </linearGradient>
+            </defs>
+
+            <rect x="0" y="0" width="520" height="400" rx="20" fill="url(#bg1)"/>
+            <circle cx="420" cy="92" r="74" fill="#d79a2b" opacity=".22"/>
+            <circle cx="92" cy="316" r="58" fill="#5a1b32" opacity=".12"/>
+
+            <!-- mesa -->
+            <path d="M40 318 H480" stroke="#d9c6aa" stroke-width="3" stroke-linecap="round"/>
+            <ellipse cx="260" cy="330" rx="200" ry="16" fill="#cbb594" opacity=".28"/>
+
+            <!-- botella de vino -->
+            <g transform="translate(86 72)">
+              <path d="M30 0 h30 v38 c0 14 20 26 20 52 v128 a12 12 0 0 1-12 12 H22 a12 12 0 0 1-12-12 V90 c0-26 20-38 20-52 Z" fill="url(#gBottle)"/>
+              <rect x="28" y="-12" width="34" height="16" rx="4" fill="#d79a2b"/>
+              <rect x="14" y="110" width="62" height="62" rx="5" fill="#f7efe1"/>
+              <path d="M24 126 h42 M24 138 h42 M24 150 h30" stroke="#b79a73" stroke-width="3" stroke-linecap="round"/>
+              <path d="M38 96 q8 -14 16 0" stroke="#e8c98a" stroke-width="3" fill="none" stroke-linecap="round" opacity=".8"/>
+            </g>
+
+            <!-- copa -->
+            <g transform="translate(196 150)">
+              <path d="M0 0 h58 q0 48 -22 60 v46 h14 q6 0 6 6 H2 q0-6 6-6 h14 V60 Q0 48 0 0Z" fill="#efe6d6" stroke="#cbb79a" stroke-width="2"/>
+              <path d="M4 22 h50 q-4 30 -21 38 Q11 52 4 22Z" fill="#7d2a46"/>
+            </g>
+
+            <!-- cuña de queso -->
+            <g transform="translate(290 196)">
+              <path d="M0 96 L96 36 L140 72 L44 122 Z" fill="url(#gRind)"/>
+              <path d="M0 96 L96 36 L96 8 L0 68 Z" fill="url(#gCheese)"/>
+              <path d="M96 36 L140 72 L140 44 L96 8 Z" fill="#cf9f43"/>
+              <circle cx="30" cy="78" r="5" fill="#e6c477" opacity=".9"/>
+              <circle cx="56" cy="62" r="3.4" fill="#e6c477" opacity=".9"/>
+              <circle cx="72" cy="46" r="4.2" fill="#e6c477" opacity=".9"/>
+              <path d="M0 68 L0 96" stroke="#8e601d" stroke-width="2"/>
+            </g>
+
+            <!-- flor y hebras de azafrán -->
+            <g transform="translate(372 96)">
+              <g>
+                <ellipse cx="0" cy="0" rx="17" ry="30" fill="url(#gPetal)"/>
+                <ellipse cx="0" cy="0" rx="17" ry="30" fill="url(#gPetal)" transform="rotate(60)"/>
+                <ellipse cx="0" cy="0" rx="17" ry="30" fill="url(#gPetal)" transform="rotate(120)"/>
+                <path d="M0 2 q-5 -22 -16 -30" stroke="url(#gSaffron)" stroke-width="5" fill="none" stroke-linecap="round"/>
+                <path d="M0 2 q2 -24 14 -31" stroke="url(#gSaffron)" stroke-width="5" fill="none" stroke-linecap="round"/>
+                <path d="M0 2 V-34" stroke="url(#gSaffron)" stroke-width="5" fill="none" stroke-linecap="round"/>
+                <circle cx="0" cy="4" r="6" fill="#f2d79a"/>
+              </g>
+              <path d="M-54 74 q18 -12 34 -4" stroke="url(#gSaffron)" stroke-width="4" fill="none" stroke-linecap="round"/>
+              <path d="M-40 92 q22 -14 40 -6" stroke="url(#gSaffron)" stroke-width="4" fill="none" stroke-linecap="round"/>
+              <path d="M-22 108 q20 -16 38 -8" stroke="url(#gSaffron)" stroke-width="4" fill="none" stroke-linecap="round"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================== PRODUCTOS ===================== -->
+  <section id="productos">
+    <div class="wrap">
+      <p class="eyebrow">Qué encontrarás</p>
+      <h2 style="font-size:clamp(28px,4vw,42px)">Producto típico, de la tienda a tu mesa</h2>
+      <p class="lede" style="margin-top:16px">Estas son las familias de producto que trabaja la tienda. Para conocer la disponibilidad y las opciones concretas de cada día, lo mejor es una llamada.</p>
+
+      <div class="cards">
+        <article class="card">
+          <div class="ico">
+            <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <ellipse cx="24" cy="22" rx="7" ry="12" fill="#9a6cb8"/>
+              <ellipse cx="24" cy="22" rx="7" ry="12" fill="#8457a8" transform="rotate(60 24 22)"/>
+              <ellipse cx="24" cy="22" rx="7" ry="12" fill="#7a4f9c" transform="rotate(120 24 22)"/>
+              <path d="M24 24 V8 M24 24 Q17 14 12 11 M24 24 Q31 14 36 11" stroke="#c9521d" stroke-width="3" stroke-linecap="round"/>
+              <circle cx="24" cy="25" r="3" fill="#f2d79a"/>
+              <path d="M12 38 q10 -6 24 -2" stroke="#9e3c13" stroke-width="3" stroke-linecap="round" fill="none"/>
+            </svg>
+          </div>
+          <h3>Azafrán</h3>
+          <p>El producto que da nombre a la tienda, en hebra, para cocinar en casa.</p>
+          <span class="tag">En tienda</span>
+        </article>
+
+        <article class="card">
+          <div class="ico">
+            <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <path d="M5 34 L33 16 L43 25 L15 43 Z" fill="#b9842f"/>
+              <path d="M5 34 L33 16 L33 6 L5 24 Z" fill="#f0cd7d"/>
+              <path d="M33 16 L43 25 L43 15 L33 6 Z" fill="#cf9f43"/>
+              <circle cx="14" cy="28" r="2.6" fill="#e0b55c"/>
+              <circle cx="24" cy="22" r="2" fill="#e0b55c"/>
+            </svg>
+          </div>
+          <h3>Queso</h3>
+          <p>Queso para llevar o para completar una tabla, cortado como lo necesites.</p>
+          <span class="tag">En tienda</span>
+        </article>
+
+        <article class="card">
+          <div class="ico">
+            <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <path d="M18 5 h12 v9 c0 5 7 8 7 16 v12 a4 4 0 0 1-4 4 H15 a4 4 0 0 1-4-4 V30 c0-8 7-11 7-16 Z" fill="#5a1b32"/>
+              <rect x="17" y="1" width="14" height="6" rx="2" fill="#d79a2b"/>
+              <rect x="13" y="28" width="22" height="13" rx="2" fill="#f7efe1"/>
+              <path d="M18 33 h12 M18 37 h8" stroke="#b79a73" stroke-width="2.4" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Vino</h3>
+          <p>Vino para la comida del día o para acompañar el queso y el azafrán.</p>
+          <span class="tag">En tienda</span>
+        </article>
+
+        <article class="card">
+          <div class="ico">
+            <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <rect x="6" y="19" width="36" height="23" rx="3" fill="#c9521d"/>
+              <rect x="4" y="13" width="40" height="8" rx="3" fill="#9e3c13"/>
+              <rect x="21" y="13" width="6" height="29" fill="#d79a2b"/>
+              <path d="M24 13 q-10 -10 -14 -3 q-2 5 14 3Z" fill="#d79a2b"/>
+              <path d="M24 13 q10 -10 14 -3 q2 5 -14 3Z" fill="#d79a2b"/>
+            </svg>
+          </div>
+          <h3>Lotes y regalo</h3>
+          <p>Posibilidad de preparar lotes y presentaciones para regalar, combinando los productos de la tienda.</p>
+          <span class="tag">A consultar</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PASOS ===================== -->
+  <section class="steps-sec" id="como-comprar">
+    <div class="wrap">
+      <p class="eyebrow">Cómo comprar</p>
+      <h2 style="font-size:clamp(28px,4vw,42px)">Tu pedido en 3 pasos</h2>
+      <p class="lede" style="margin-top:16px">Sin formularios ni registros: el pedido se gestiona por teléfono, hablando directamente con la tienda.</p>
+
+      <div class="steps">
+        <article class="step">
+          <div class="step-n">1</div>
+          <h3>Llama a la tienda</h3>
+          <p>Marca el <a href="tel:+34655965330" style="text-decoration:none;border-bottom:1.5px solid rgba(201,82,29,.45)">655 965 330</a> o el <a href="tel:+34655965372" style="text-decoration:none;border-bottom:1.5px solid rgba(201,82,29,.45)">655 965 372</a> y cuenta qué estás buscando.</p>
+        </article>
+        <article class="step">
+          <div class="step-n">2</div>
+          <h3>Concreta tu pedido</h3>
+          <p>Se te indica la disponibilidad del momento y se confirma contigo qué productos quieres y en qué cantidad.</p>
+        </article>
+        <article class="step">
+          <div class="step-n">3</div>
+          <h3>Recógelo en la tienda</h3>
+          <p>Pasas a recogerlo por C/ Urda, 24, en Consuegra, el día y la hora que acordéis en la llamada.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACTO ===================== -->
+  <section id="contacto">
+    <div class="wrap">
+      <p class="eyebrow">Contacto</p>
+      <h2 style="font-size:clamp(28px,4vw,42px)">Dónde estamos y cómo localizarnos</h2>
+
+      <div class="contact-grid">
+        <div class="infolist">
+          <div class="info">
+            <div class="ico-sm">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#9e3c13" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 3.5h3l1.5 4-2 1.4a12 12 0 0 0 6 6l1.4-2 4 1.5v3a2 2 0 0 1-2.2 2A17.5 17.5 0 0 1 4.6 5.7 2 2 0 0 1 6.6 3.5Z"/></svg>
+            </div>
+            <div>
+              <div class="info-label">Teléfonos</div>
+              <div class="info-value">
+                <a href="tel:+34655965330">655 965 330</a><span class="sep">/</span><a href="tel:+34655965372">655 965 372</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="info">
+            <div class="ico-sm">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#9e3c13" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+            </div>
+            <div>
+              <div class="info-label">Dirección</div>
+              <div class="info-value">C/ Urda, 24, 45700 Consuegra</div>
+            </div>
+          </div>
+
+          <div class="info">
+            <div class="ico-sm">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#9e3c13" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>
+            </div>
+            <div>
+              <div class="info-label">Horario</div>
+              <div class="info-value">Consultar horario</div>
+            </div>
+          </div>
+
+          <div class="info">
+            <div class="ico-sm">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#9e3c13" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.8 6.5 12 13l8.2-6.5"/></svg>
+            </div>
+            <div>
+              <div class="info-label">Email</div>
+              <div class="info-value"><a href="mailto:macu06@hotmail.es">macu06@hotmail.es</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="map-card">
+          <!-- Mapa esquemático dibujado a mano -->
+          <svg viewBox="0 0 560 360" role="img" aria-label="Mapa esquemático orientativo de la ubicación de la tienda en Consuegra">
+            <defs>
+              <linearGradient id="mapbg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#f7f1e4"/><stop offset="1" stop-color="#eee3cf"/>
+              </linearGradient>
+            </defs>
+            <rect x="0" y="0" width="560" height="360" rx="14" fill="url(#mapbg)"/>
+
+            <!-- manzanas -->
+            <g fill="#e2d3ba" opacity=".95">
+              <rect x="28" y="30" width="130" height="86" rx="8"/>
+              <rect x="28" y="152" width="130" height="78" rx="8"/>
+              <rect x="28" y="264" width="130" height="64" rx="8"/>
+              <rect x="206" y="30" width="150" height="86" rx="8"/>
+              <rect x="206" y="264" width="150" height="64" rx="8"/>
+              <rect x="404" y="30" width="128" height="86" rx="8"/>
+              <rect x="404" y="152" width="128" height="78" rx="8"/>
+              <rect x="404" y="264" width="128" height="64" rx="8"/>
+            </g>
+
+            <!-- calles -->
+            <g stroke="#ffffff" stroke-width="22" stroke-linecap="round">
+              <path d="M182 14 V346"/>
+              <path d="M380 14 V346"/>
+              <path d="M14 134 H546"/>
+              <path d="M14 247 H546"/>
+            </g>
+            <g stroke="#d6c4a6" stroke-width="2" stroke-dasharray="7 9">
+              <path d="M182 14 V346"/><path d="M380 14 V346"/>
+              <path d="M14 134 H546"/><path d="M14 247 H546"/>
+            </g>
+
+            <!-- zona verde -->
+            <rect x="206" y="152" width="150" height="78" rx="10" fill="#cdd5ab"/>
+            <circle cx="248" cy="192" r="13" fill="#6b7244" opacity=".55"/>
+            <circle cx="316" cy="196" r="10" fill="#6b7244" opacity=".45"/>
+
+            <!-- chincheta tienda -->
+            <g transform="translate(182 134)">
+              <circle cx="0" cy="0" r="30" fill="#c9521d" opacity=".16"/>
+              <path d="M0 22 C-14 6 -20 0 -20 -9 A20 20 0 1 1 20 -9 C20 0 14 6 0 22Z" fill="#9e3c13"/>
+              <circle cx="0" cy="-9" r="7.5" fill="#fbf7f0"/>
+            </g>
+            <g font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial,sans-serif">
+              <rect x="222" y="112" width="166" height="34" rx="9" fill="#231a16"/>
+              <text x="305" y="135" fill="#f7efe1" font-size="17" font-weight="700" text-anchor="middle">Alacena del Azafrán</text>
+              <text x="60" y="258" fill="#8e7f70" font-size="15" font-weight="700">Consuegra</text>
+              <text x="412" y="150" fill="#9b8a76" font-size="14" font-weight="600">C/ Urda, 24</text>
+            </g>
+
+            <!-- rosa de los vientos -->
+            <g transform="translate(500 316)">
+              <circle cx="0" cy="0" r="22" fill="#fbf7f0" stroke="#d6c4a6" stroke-width="2"/>
+              <path d="M0 -15 L5 0 L0 15 L-5 0 Z" fill="#c9521d"/>
+              <text x="0" y="-18" fill="#8e7f70" font-size="10" font-weight="700" text-anchor="middle" font-family="-apple-system,Segoe UI,Arial,sans-serif">N</text>
+            </g>
+          </svg>
+          <p class="map-legend">Mapa esquemático orientativo. No es cartografía real.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PIE ===================== -->
+  <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <h3>Alacena del Azafrán</h3>
+          <p>Tienda de productos típicos: azafrán, queso y vino.<br>C/ Urda, 24, 45700 Consuegra</p>
+        </div>
+        <div>
+          <p style="color:#f0e3d2;font-weight:600">Contacto</p>
+          <p>
+            <a href="tel:+34655965330">655 965 330</a> · <a href="tel:+34655965372">655 965 372</a><br>
+            <a href="mailto:macu06@hotmail.es">macu06@hotmail.es</a><br>
+            Consultar horario
+          </p>
+        </div>
+      </div>
+      <div class="foot-rule"></div>
+      <p class="foot-credit">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+      <p class="foot-mini">Maqueta no oficial, sin relación contractual con el negocio. Los datos de contacto y la actividad son los públicos del propio negocio; no se incluyen precios, horarios ni valoraciones.</p>
+    </div>
+  </footer>
+
+</div>
+
+
+</body>
+</html>
