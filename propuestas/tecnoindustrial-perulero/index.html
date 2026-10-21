@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tecnoindustrial Perulero — Propuesta de diseño</title>
+<meta name="description" content="Maqueta de propuesta web para Tecnoindustrial Perulero: ferretería, fontanería y climatización en Consuegra (Toledo).">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  :root{
+    --ink:#0f1a24;
+    --ink-2:#1d2d3c;
+    --slate:#44596b;
+    --mist:#eef2f5;
+    --paper:#f7f9fa;
+    --white:#ffffff;
+    --line:#d9e1e7;
+    --flame:#c2521c;
+    --flame-2:#e2762c;
+    --petrol:#15455e;
+    --petrol-2:#0c2a3a;
+    --bar:52px;
+    --maxw:1120px;
+  }
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.6;
+    font-size:17px;
+    overflow-wrap:break-word;
+    word-wrap:break-word;
+  }
+  img,svg{max-width:100%}
+  a{color:inherit}
+  h1,h2,h3,p,ul{margin:0}
+  ul{padding:0;list-style:none}
+
+  /* ---------- barra fija ---------- */
+  .bar{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    min-height:var(--bar);
+    display:flex;align-items:center;justify-content:center;
+    padding:9px 16px;
+    background:linear-gradient(90deg,#0c2a3a 0%,#15455e 55%,#1d4f68 100%);
+    color:#e8eef2;
+    font-size:12.5px;letter-spacing:.055em;text-transform:uppercase;
+    text-align:center;line-height:1.35;
+    border-bottom:1px solid rgba(255,255,255,.14);
+  }
+  .bar span{display:inline-block;max-width:100%}
+  .bar b{font-weight:600;color:#fff}
+
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 32px}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    padding:calc(var(--bar) + 76px) 0 84px;
+    background:
+      radial-gradient(900px 520px at 88% -8%, rgba(226,118,44,.20), rgba(226,118,44,0) 62%),
+      radial-gradient(760px 600px at 4% 10%, rgba(21,69,94,.16), rgba(21,69,94,0) 60%),
+      linear-gradient(170deg,#ffffff 0%,#f1f5f7 60%,#e7edf1 100%);
+  }
+  .hero-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+  .hero .wrap{position:relative;z-index:2}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--petrol);font-weight:600;
+    background:rgba(255,255,255,.72);
+    border:1px solid var(--line);
+    border-radius:999px;padding:7px 15px;
+  }
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--flame);flex:0 0 auto}
+  h1{
+    margin:26px 0 0;
+    font-size:clamp(2.1rem,6.2vw,4rem);
+    line-height:1.04;letter-spacing:-.025em;font-weight:700;
+    color:var(--ink);
+  }
+  h1 .thin{display:block;font-weight:400;color:var(--petrol)}
+  .lead{
+    margin-top:22px;max-width:46ch;
+    font-size:clamp(1.02rem,2.4vw,1.2rem);color:var(--slate);
+  }
+  .cta-row{margin-top:36px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:12px;
+    text-decoration:none;font-weight:650;
+    padding:15px 24px;border-radius:12px;
+    background:linear-gradient(135deg,var(--flame-2),var(--flame));
+    color:#fff;border:1px solid rgba(0,0,0,.08);
+    box-shadow:0 10px 24px -14px rgba(194,82,28,.85);
+    font-size:1.02rem;letter-spacing:.01em;
+  }
+  .btn:hover{background:linear-gradient(135deg,#d2601f,#a84515)}
+  .btn svg{flex:0 0 auto}
+  .btn-note{font-size:14px;color:var(--slate);max-width:28ch}
+  .hero-tags{margin-top:44px;display:flex;flex-wrap:wrap;gap:10px}
+  .tag{
+    font-size:13px;color:var(--ink-2);background:var(--white);
+    border:1px solid var(--line);border-radius:999px;padding:7px 14px;
+  }
+
+  /* ---------- secciones ---------- */
+  section{position:relative}
+  .pad{padding:84px 0}
+  .head{max-width:58ch}
+  .kicker{
+    font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--flame);font-weight:700;
+  }
+  h2{
+    margin-top:14px;
+    font-size:clamp(1.6rem,4vw,2.4rem);
+    line-height:1.14;letter-spacing:-.02em;font-weight:700;
+  }
+  .sub{margin-top:16px;color:var(--slate);max-width:52ch}
+
+  .band-dark{
+    color:#e9eff3;
+    background:
+      radial-gradient(800px 420px at 80% 0%, rgba(226,118,44,.18), rgba(226,118,44,0) 65%),
+      linear-gradient(165deg,#102c3c 0%,#15455e 70%,#113a51 100%);
+  }
+  .band-dark h2,.band-dark h3{color:#fff}
+  .band-dark .sub,.band-dark p{color:#c3d3dd}
+  .band-dark .kicker{color:#f0a469}
+
+  /* servicios */
+  .grid{display:grid;gap:18px;margin-top:44px;grid-template-columns:repeat(auto-fit,minmax(255px,1fr))}
+  .card{
+    background:var(--white);border:1px solid var(--line);border-radius:16px;
+    padding:26px 24px 28px;
+    box-shadow:0 1px 0 rgba(15,26,36,.03), 0 14px 30px -26px rgba(15,26,36,.4);
+  }
+  .ico{
+    width:46px;height:46px;border-radius:12px;
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(140deg,#e9f0f4,#d7e3ea);
+    border:1px solid #cdd9e1;
+    margin-bottom:18px;
+  }
+  .card h3{font-size:1.12rem;letter-spacing:-.01em;font-weight:650}
+  .card p{margin-top:9px;font-size:.955rem;color:var(--slate)}
+
+  /* pasos */
+  .steps{display:grid;gap:20px;margin-top:46px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+  .step{
+    border:1px solid rgba(255,255,255,.17);border-radius:16px;
+    background:linear-gradient(170deg,rgba(255,255,255,.085),rgba(255,255,255,.025));
+    padding:28px 24px 30px;
+  }
+  .num{
+    font-size:13px;font-weight:700;letter-spacing:.1em;
+    color:#f0a469;display:block;margin-bottom:14px;
+  }
+  .step h3{font-size:1.14rem;font-weight:650}
+  .step p{margin-top:10px;font-size:.955rem}
+
+  /* contacto */
+  .contact{display:grid;gap:30px;margin-top:44px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));align-items:start}
+  .panel{
+    background:var(--white);border:1px solid var(--line);border-radius:16px;
+    padding:28px 26px;
+    box-shadow:0 14px 34px -28px rgba(15,26,36,.45);
+  }
+  .rows{margin-top:6px}
+  .row{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--mist)}
+  .row:last-child{border-bottom:0;padding-bottom:0}
+  .row .ri{flex:0 0 auto;margin-top:3px;color:var(--petrol)}
+  .label{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);font-weight:600}
+  .val{font-size:1.1rem;font-weight:650;letter-spacing:-.01em;margin-top:3px;display:block;text-decoration:none}
+  a.val{color:var(--petrol);text-decoration:none;border-bottom:2px solid rgba(21,69,94,.22)}
+  a.val:hover{color:var(--flame)}
+  .val-sm{font-size:1rem;font-weight:500;color:var(--ink-2);margin-top:3px}
+  .map{
+    border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--white);
+    box-shadow:0 14px 34px -28px rgba(15,26,36,.45);
+  }
+  .map svg{display:block;width:100%;height:auto}
+  .map-cap{padding:14px 18px;font-size:13.5px;color:var(--slate);border-top:1px solid var(--line);background:var(--paper)}
+
+  /* pie */
+  footer{
+    background:linear-gradient(180deg,#0c2a3a,#081c28);
+    color:#c3d3dd;padding:60px 0 54px;
+  }
+  footer .fname{color:#fff;font-weight:650;font-size:1.15rem;letter-spacing:-.01em}
+  .fmail{display:inline-block;margin-top:14px;color:#fff;font-size:1.02rem;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.35)}
+  .fmail:hover{color:#f0a469}
+  .fline{margin-top:10px;font-size:.95rem;color:#a9bdc9}
+  .fsep{margin:34px 0 22px;height:1px;background:rgba(255,255,255,.14)}
+  .fcredit{font-size:13.5px;color:#9db2bf;line-height:1.55}
+
+  @media (min-width:860px){
+    .grid{grid-template-columns:repeat(3,1fr)}
+    .grid .card:last-child{grid-column:1 / -1}
+    .grid .card:last-child p{max-width:72ch}
+  }
+  @media (max-width:680px){
+    body{font-size:16px}
+    .wrap{padding:0 18px}
+    .hero{padding:calc(var(--bar) + 54px) 0 60px}
+    .pad{padding:60px 0}
+    .bar{font-size:11px;letter-spacing:.04em}
+    .grid,.steps,.contact{margin-top:32px}
+    .card,.step,.panel{padding:22px 20px 24px}
+    .btn{width:100%;justify-content:center}
+    .btn-note{max-width:100%}
+  }
+</style>
+</head>
+<body>
+
+<div class="bar" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · <b>FFFFFFstudio</b> · Ángel Rubio</span>
+</div>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <svg class="hero-svg" viewBox="0 0 1200 620" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="gPipe" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#15455e" stop-opacity=".30"/>
+        <stop offset="1" stop-color="#15455e" stop-opacity=".06"/>
+      </linearGradient>
+      <linearGradient id="gWarm" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#e2762c" stop-opacity=".55"/>
+        <stop offset="1" stop-color="#c2521c" stop-opacity=".10"/>
+      </linearGradient>
+    </defs>
+    <g fill="none" stroke="url(#gPipe)" stroke-width="2">
+      <path d="M760 620 L760 300 Q760 260 800 260 L1060 260 Q1100 260 1100 220 L1100 40"/>
+      <path d="M860 620 L860 390 Q860 350 900 350 L1200 350"/>
+      <path d="M960 620 L960 470 Q960 440 990 440 L1200 440"/>
+    </g>
+    <g stroke="#15455e" stroke-opacity=".22" stroke-width="2" fill="#f7f9fa">
+      <circle cx="800" cy="260" r="6"/><circle cx="900" cy="350" r="6"/><circle cx="990" cy="440" r="6"/>
+    </g>
+    <circle cx="1105" cy="150" r="118" fill="url(#gWarm)" opacity=".5"/>
+    <g stroke="#15455e" stroke-opacity=".10" stroke-width="1">
+      <path d="M0 540 L1200 540"/><path d="M0 575 L1200 575"/>
+    </g>
+  </svg>
+
+  <div class="wrap">
+    <p class="eyebrow"><span class="dot"></span>Consuegra · Toledo</p>
+    <h1>Tecnoindustrial<br>Perulero<span class="thin">Ferretería, fontanería y climatización</span></h1>
+    <p class="lead">Instalación y mantenimiento de calefacción, gas, biomasa, calderas y pellets en Consuegra, con la ferretería del día a día en el mismo sitio.</p>
+
+    <div class="cta-row">
+      <a class="btn" href="tel:+34655015973">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16.9v2.6a2 2 0 0 1-2.2 2 19.3 19.3 0 0 1-8.4-3 19 19 0 0 1-5.8-5.8 19.3 19.3 0 0 1-3-8.5A2 2 0 0 1 3.6 2h2.6a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.3 9.8a15.5 15.5 0 0 0 5.9 5.9l1.2-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2.1z"/></svg>
+        Llamar al 655 015 973
+      </a>
+      <span class="btn-note">Cuéntanos qué necesitas y concretamos una visita.</span>
+    </div>
+
+    <ul class="hero-tags">
+      <li class="tag">Calefacción</li>
+      <li class="tag">Gas</li>
+      <li class="tag">Biomasa y pellets</li>
+      <li class="tag">Calderas</li>
+      <li class="tag">Climatización</li>
+      <li class="tag">Fontanería</li>
+      <li class="tag">Ferretería</li>
+    </ul>
+  </div>
+</header>
+
+<!-- ============ SERVICIOS ============ -->
+<section class="pad" id="servicios">
+  <div class="wrap">
+    <div class="head">
+      <p class="kicker">Servicios</p>
+      <h2>Lo que hacemos, de la tubería al termostato</h2>
+      <p class="sub">Trabajo de instalación, reparación y mantenimiento, más el material de ferretería que hace falta para resolverlo en el mismo día.</p>
+    </div>
+
+    <div class="grid">
+      <article class="card">
+        <div class="ico">
+          <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="#15455e" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.7c3.2 3.6 5.3 6.6 5.3 9.4a5.3 5.3 0 0 1-10.6 0c0-2.8 2.1-5.8 5.3-9.4z"/><path d="M12 17.6a3 3 0 0 1-2.4-2.6"/></svg>
+        </div>
+        <h3>Fontanería</h3>
+        <p>Redes de agua, desagües, grifería, sanitarios y termos. Localización de fugas, sustituciones y reparaciones puntuales.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico">
+          <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="#15455e" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7v10M12 7v10M15 7v10"/><path d="M3 9h2M3 15h2M19 9h2M19 15h2"/></svg>
+        </div>
+        <h3>Calefacción</h3>
+        <p>Instalaciones de radiadores y suelo radiante, circuitos nuevos y ampliaciones, purgado y equilibrado de sistemas existentes.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico">
+          <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="#15455e" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21c3.3 0 6-2.5 6-5.7 0-4.2-6-11.3-6-11.3S6 11.1 6 15.3C6 18.5 8.7 21 12 21z"/><path d="M12 17.5a2.2 2.2 0 0 0 2.2-2.2c0-1.6-2.2-4.3-2.2-4.3s-2.2 2.7-2.2 4.3A2.2 2.2 0 0 0 12 17.5z"/></svg>
+        </div>
+        <h3>Instalaciones de gas</h3>
+        <p>Montaje y revisión de instalaciones receptoras, acometidas interiores, conexión de aparatos y comprobación de estanqueidad.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico">
+          <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="#15455e" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="4.2"/><path d="M12 8.8V4M12 17.2V21M7.8 13H3.5M20.5 13h-4.3"/><path d="M8.6 9.6 6 7M18 19l-2.6-2.6M8.6 16.4 6 19M18 7l-2.6 2.6"/></svg>
+        </div>
+        <h3>Biomasa y pellets</h3>
+        <p>Calderas y estufas de biomasa: instalación, puesta en marcha, limpieza del intercambiador y suministro de pellets.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico">
+          <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="#15455e" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3.5" width="16" height="13" rx="2"/><path d="M8 7h8M8 10.5h5"/><path d="M8 16.5v4M16 16.5v4"/></svg>
+        </div>
+        <h3>Calderas</h3>
+        <p>Sustitución de calderas, montaje de equipos nuevos, reparación de averías y mantenimiento periódico con revisión de seguridad.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico">
+          <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="#15455e" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="8" rx="2.5"/><path d="M6 9h12"/><path d="M7 16c0 1.6.9 2.4 2.4 2.4M12 16.5c0 1.8 1 2.7 2.6 2.7M17 16c0 1.6.9 2.4 2.3 2.4"/></svg>
+        </div>
+        <h3>Climatización</h3>
+        <p>Equipos de aire acondicionado y bomba de calor: instalación, cargas de gas refrigerante, limpieza de filtros y revisión anual.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico">
+          <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="#15455e" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 6.2a3.8 3.8 0 0 1 5.1 5.1l-8.4 8.4a2.4 2.4 0 0 1-3.4-3.4z"/><path d="M4.3 4.3l2.6 2.6M3 8.4h4.6"/></svg>
+        </div>
+        <h3>Ferretería</h3>
+        <p>Material de fontanería, calefacción y uso general: tubería, accesorios, herramienta, tornillería, fijaciones y consumibles.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PASOS ============ -->
+<section class="pad band-dark" id="como-trabajamos">
+  <div class="wrap">
+    <div class="head">
+      <p class="kicker">Cómo trabajamos</p>
+      <h2>Tu instalación, paso a paso</h2>
+      <p class="sub">Tres etapas claras, para que sepas en todo momento qué se va a hacer y quién lo está haciendo.</p>
+    </div>
+
+    <div class="steps">
+      <article class="step">
+        <span class="num">PASO 01</span>
+        <h3>Visita y presupuesto</h3>
+        <p>Vemos la instalación en persona, tomamos medidas y comprobamos qué hay montado. Después te pasamos un presupuesto por escrito, con el alcance del trabajo detallado antes de empezar.</p>
+      </article>
+      <article class="step">
+        <span class="num">PASO 02</span>
+        <h3>Instalación</h3>
+        <p>Ejecutamos el montaje en las fechas acordadas, con el material preparado de antemano. Al terminar hacemos la puesta en marcha, las pruebas que correspondan y te explicamos cómo manejar el equipo.</p>
+      </article>
+      <article class="step">
+        <span class="num">PASO 03</span>
+        <h3>Mantenimiento</h3>
+        <p>Nos quedamos como tu instalador de referencia: revisiones periódicas, limpieza, ajustes de temporada y atención de averías sobre lo que ya conocemos de tu casa o tu local.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section class="pad" id="contacto">
+  <div class="wrap">
+    <div class="head">
+      <p class="kicker">Contacto</p>
+      <h2>Estamos en Consuegra</h2>
+      <p class="sub">Llámanos y nos cuentas qué necesitas, o pásate por el local a por material.</p>
+    </div>
+
+    <div class="contact">
+      <div class="panel">
+        <div class="rows">
+          <div class="row">
+            <span class="ri" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16.9v2.6a2 2 0 0 1-2.2 2 19.3 19.3 0 0 1-8.4-3 19 19 0 0 1-5.8-5.8 19.3 19.3 0 0 1-3-8.5A2 2 0 0 1 3.6 2h2.6a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.3 9.8a15.5 15.5 0 0 0 5.9 5.9l1.2-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2.1z"/></svg></span>
+            <div>
+              <span class="label">Teléfono</span>
+              <a class="val" href="tel:+34655015973">655 015 973</a>
+            </div>
+          </div>
+
+          <div class="row">
+            <span class="ri" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16.9v2.6a2 2 0 0 1-2.2 2 19.3 19.3 0 0 1-8.4-3 19 19 0 0 1-5.8-5.8 19.3 19.3 0 0 1-3-8.5A2 2 0 0 1 3.6 2h2.6a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.3 9.8a15.5 15.5 0 0 0 5.9 5.9l1.2-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2.1z"/></svg></span>
+            <div>
+              <span class="label">Teléfono alternativo</span>
+              <a class="val" href="tel:+34667666396">667 666 396</a>
+            </div>
+          </div>
+
+          <div class="row">
+            <span class="ri" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10.5c0 5.5-8 12-8 12s-8-6.5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10.3" r="2.8"/></svg></span>
+            <div>
+              <span class="label">Dirección</span>
+              <p class="val-sm">C/ Cardeño, 2, 45700 Consuegra (Toledo)</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <span class="ri" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.3V12l3.2 2"/></svg></span>
+            <div>
+              <span class="label">Horario</span>
+              <p class="val-sm">Consultar horario</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <span class="ri" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.6 6.2 12 12.6l8.4-6.4"/></svg></span>
+            <div>
+              <span class="label">Email</span>
+              <a class="val" href="mailto:tecnoindustrialperulero@gmail.com" style="font-size:.98rem;font-weight:600">tecnoindustrialperulero@gmail.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="map">
+        <svg viewBox="0 0 520 360" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Mapa esquemático de la ubicación en C/ Cardeño, 2, Consuegra">
+          <defs>
+            <linearGradient id="mapBg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#f3f7f9"/>
+              <stop offset="1" stop-color="#e4ecf1"/>
+            </linearGradient>
+            <linearGradient id="pinG" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#e2762c"/>
+              <stop offset="1" stop-color="#c2521c"/>
+            </linearGradient>
+          </defs>
+          <rect width="520" height="360" fill="url(#mapBg)"/>
+          <g fill="#dce6ec">
+            <rect x="28" y="30" width="118" height="78" rx="4"/>
+            <rect x="196" y="24" width="96" height="62" rx="4"/>
+            <rect x="346" y="40" width="140" height="70" rx="4"/>
+            <rect x="34" y="166" width="96" height="66" rx="4"/>
+            <rect x="358" y="160" width="128" height="88" rx="4"/>
+            <rect x="40" y="276" width="130" height="58" rx="4"/>
+            <rect x="238" y="282" width="112" height="52" rx="4"/>
+            <rect x="392" y="290" width="94" height="44" rx="4"/>
+          </g>
+          <g stroke="#ffffff" stroke-width="17" stroke-linecap="square">
+            <path d="M0 136 H520"/>
+            <path d="M0 256 H520"/>
+            <path d="M166 0 V360"/>
+            <path d="M322 0 V360"/>
+          </g>
+          <g stroke="#c3d2db" stroke-width="1.2" fill="none">
+            <path d="M0 127.5 H520 M0 144.5 H520 M0 247.5 H520 M0 264.5 H520"/>
+            <path d="M157.5 0 V360 M174.5 0 V360 M313.5 0 V360 M330.5 0 V360"/>
+          </g>
+          <g stroke="#b6c7d2" stroke-width="2" stroke-dasharray="7 8">
+            <path d="M166 196 H322"/>
+          </g>
+          <circle cx="244" cy="196" r="30" fill="#e2762c" opacity=".13"/>
+          <g transform="translate(244 196)">
+            <path d="M0 22 C0 22 15 4 15 -5 A15 15 0 1 0 -15 -5 C-15 4 0 22 0 22 Z" fill="url(#pinG)"/>
+            <circle cx="0" cy="-5" r="5.4" fill="#fff"/>
+          </g>
+          <text x="262" y="242" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="18" font-weight="600" fill="#15455e">C/ Cardeño, 2</text>
+          <text x="262" y="264" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="15" fill="#5b7488">45700 Consuegra (Toledo)</text>
+        </svg>
+        <p class="map-cap">Plano esquemático, solo orientativo. Llama antes de pasarte si necesitas material concreto.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PIE ============ -->
+<footer>
+  <div class="wrap">
+    <p class="fname">Tecnoindustrial Perulero</p>
+    <p class="fline">Ferretería, fontanería y climatización · C/ Cardeño, 2, 45700 Consuegra (Toledo)</p>
+    <a class="fmail" href="mailto:tecnoindustrialperulero@gmail.com">tecnoindustrialperulero@gmail.com</a>
+    <p class="fline">655 015 973 · 667 666 396</p>
+    <div class="fsep"></div>
+    <p class="fcredit">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+</body>
+</html>

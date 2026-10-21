@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Café Bar Francis — Propuesta de diseño | FFFFFFstudio</title>
+<meta name="description" content="Maqueta de propuesta web para Café Bar Francis (Mengíbar, Jaén). Desayunos, raciones y cenas. Propuesta no oficial de FFFFFFstudio — Ángel Rubio.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --tinta:#17130f;
+  --tinta-2:#3c332b;
+  --tinta-3:#6b5f54;
+  --crema:#f7f2ea;
+  --crema-2:#efe6d9;
+  --papel:#fffdf9;
+  --tostado:#8c4a22;
+  --tostado-cl:#b4652f;
+  --oliva:#4a5340;
+  --linea:#e2d7c6;
+  --barra-h:44px;
+  --max:1120px;
+}
+html,body{margin:0;padding:0;max-width:100%;overflow-x:hidden}
+body{
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  background:var(--crema);
+  color:var(--tinta);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  padding-top:var(--barra-h);
+  font-size:16px;
+}
+h1,h2,h3,h4,p,ul,ol,figure{margin:0}
+ul,ol{padding:0;margin:0;list-style:none}
+a{color:inherit}
+img,svg{max-width:100%}
+.wrap{width:100%;max-width:var(--max);margin:0 auto;padding:0 24px}
+.eyebrow{
+  font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+  font-weight:650;color:var(--tostado);
+}
+.eyebrow--claro{color:#d8a87e}
+
+/* ---------- barra fija ---------- */
+.aviso{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  background:var(--tinta);color:#f0e8dc;
+  border-bottom:1px solid rgba(255,255,255,.10);
+  min-height:var(--barra-h);
+  display:flex;align-items:center;justify-content:center;
+  padding:8px 14px;
+  font-size:.74rem;letter-spacing:.055em;
+  text-align:center;
+  overflow-wrap:break-word;
+}
+.aviso span{display:block;max-width:100%}
+.aviso b{font-weight:650;color:#fff}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(900px 520px at 88% -8%, rgba(180,101,47,.26), rgba(180,101,47,0) 62%),
+    radial-gradient(760px 500px at 4% 108%, rgba(74,83,64,.22), rgba(74,83,64,0) 60%),
+    linear-gradient(170deg,#fffdf9 0%,#f7f0e4 56%,#efe4d3 100%);
+  border-bottom:1px solid var(--linea);
+}
+.hero__deco{position:absolute;inset:0;pointer-events:none;opacity:.5}
+.hero__in{position:relative;padding:clamp(52px,8vw,104px) 0 clamp(56px,8vw,104px)}
+.hero h1{
+  font-size:clamp(2.45rem,9vw,4.6rem);
+  line-height:1.03;letter-spacing:-.025em;font-weight:720;
+  margin:18px 0 0;
+}
+.hero h1 em{display:block;font-style:normal;color:var(--tostado)}
+.hero__lead{
+  margin-top:22px;max-width:40ch;
+  font-size:clamp(1.03rem,2.3vw,1.3rem);
+  color:var(--tinta-2);
+}
+.hero__meta{
+  margin-top:26px;display:flex;flex-wrap:wrap;gap:8px 10px;
+  font-size:.82rem;color:var(--tinta-3);
+}
+.chip{
+  background:rgba(255,255,255,.75);border:1px solid var(--linea);
+  padding:5px 13px;border-radius:999px;letter-spacing:.03em;
+}
+.cta-fila{margin-top:34px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.btn{
+  display:inline-flex;align-items:center;gap:11px;
+  background:var(--tinta);color:#fff;text-decoration:none;
+  padding:15px 26px;border-radius:999px;
+  font-weight:650;letter-spacing:.01em;
+  border:1px solid var(--tinta);
+  max-width:100%;
+}
+.btn svg{flex:0 0 auto}
+.btn__num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.btn--linea{background:transparent;color:var(--tinta);border-color:#cdbfa9}
+.cta-nota{font-size:.82rem;color:var(--tinta-3)}
+
+/* ---------- secciones ---------- */
+section{padding:clamp(56px,7vw,92px) 0}
+.sec-head{max-width:54ch}
+.sec-head h2{
+  margin-top:14px;font-size:clamp(1.72rem,4.4vw,2.5rem);
+  line-height:1.14;letter-spacing:-.018em;font-weight:690;
+}
+.sec-head p{margin-top:14px;color:var(--tinta-2);max-width:48ch}
+
+.grid3{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));margin-top:40px}
+.card{
+  background:var(--papel);border:1px solid var(--linea);border-radius:18px;
+  padding:26px 24px 28px;display:flex;flex-direction:column;min-width:0;
+}
+.card__ico{width:46px;height:46px;margin-bottom:18px}
+.card h3{font-size:1.2rem;font-weight:670;letter-spacing:-.01em}
+.card p{margin-top:9px;color:var(--tinta-2);font-size:.95rem}
+.card__nota{
+  margin-top:16px;padding-top:14px;border-top:1px dashed var(--linea);
+  font-size:.8rem;color:var(--tinta-3);
+}
+
+.bloque-oscuro{
+  background:
+    radial-gradient(700px 420px at 92% 0%, rgba(180,101,47,.3), rgba(180,101,47,0) 60%),
+    linear-gradient(165deg,#221c16 0%,#17130f 70%);
+  color:#efe7db;
+}
+.bloque-oscuro .sec-head h2{color:#fff}
+.bloque-oscuro .sec-head p{color:#c9bcab}
+.pasos{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));margin-top:40px}
+.paso{
+  border:1px solid rgba(255,255,255,.14);border-radius:18px;
+  background:rgba(255,255,255,.035);padding:26px 22px;min-width:0;
+}
+.paso__n{
+  font-size:.76rem;letter-spacing:.2em;color:#d8a87e;font-weight:650;
+}
+.paso h3{margin-top:12px;font-size:1.13rem;color:#fff;font-weight:660}
+.paso p{margin-top:8px;color:#c4b7a7;font-size:.94rem}
+
+/* ---------- contacto ---------- */
+.contacto{background:linear-gradient(180deg,#f7f2ea 0%,#f1e9dc 100%);border-top:1px solid var(--linea)}
+.cols{display:grid;gap:26px;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));margin-top:38px;align-items:start}
+.panel{
+  background:var(--papel);border:1px solid var(--linea);border-radius:20px;
+  padding:28px 24px;min-width:0;
+}
+.dato{padding:16px 0;border-bottom:1px solid var(--linea)}
+.dato:first-of-type{padding-top:0}
+.dato:last-of-type{border-bottom:0;padding-bottom:0}
+.dato dt{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--tinta-3);font-weight:650}
+.dato dd{margin:7px 0 0;font-size:1.06rem;overflow-wrap:break-word}
+.dato dd a{text-decoration:none;color:var(--tostado);font-weight:650;border-bottom:1px solid rgba(140,74,34,.3)}
+.badge-horario{
+  display:inline-block;background:var(--crema-2);border:1px solid var(--linea);
+  border-radius:999px;padding:5px 14px;font-size:.92rem;color:var(--tinta-2);font-weight:600;
+}
+.mapa{
+  background:var(--papel);border:1px solid var(--linea);border-radius:20px;
+  padding:16px;min-width:0;
+}
+.mapa svg{display:block;width:100%;height:auto}
+.mapa figcaption{
+  margin-top:12px;font-size:.78rem;color:var(--tinta-3);
+  padding:0 6px 4px;overflow-wrap:break-word;
+}
+
+/* ---------- pie ---------- */
+footer{background:var(--tinta);color:#cdc0b0;padding:46px 0}
+.pie{display:flex;flex-direction:column;gap:14px}
+.pie__marca{font-size:1.18rem;color:#fff;font-weight:670;letter-spacing:-.01em}
+.pie a{color:#e6c3a2;text-decoration:none;border-bottom:1px solid rgba(230,195,162,.35);overflow-wrap:break-word}
+.pie__firma{
+  margin-top:10px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);
+  font-size:.86rem;color:#a89a8a;overflow-wrap:break-word;
+}
+@media (max-width:420px){
+  :root{--barra-h:58px}
+  .wrap{padding:0 18px}
+  .aviso{font-size:.665rem;letter-spacing:.02em;line-height:1.45}
+  .btn{width:100%;justify-content:center;padding:15px 18px}
+  .cta-nota{width:100%}
+}
+</style>
+</head>
+<body>
+
+<div class="aviso" role="note">
+  <span><b>Propuesta de diseño</b> · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<header class="hero">
+  <svg class="hero__deco" viewBox="0 0 1200 620" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#b4652f" stop-opacity=".30"/>
+        <stop offset="1" stop-color="#b4652f" stop-opacity="0"/>
+      </linearGradient>
+      <linearGradient id="g2" x1="0" y1="1" x2="1" y2="0">
+        <stop offset="0" stop-color="#4a5340" stop-opacity=".26"/>
+        <stop offset="1" stop-color="#4a5340" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <circle cx="1045" cy="120" r="210" fill="url(#g1)"/>
+    <circle cx="1045" cy="120" r="138" fill="none" stroke="#b4652f" stroke-opacity=".22" stroke-width="1.5"/>
+    <circle cx="1045" cy="120" r="92" fill="none" stroke="#b4652f" stroke-opacity=".16" stroke-width="1.5"/>
+    <circle cx="90" cy="560" r="190" fill="url(#g2)"/>
+    <path d="M0 492 C 210 452 420 530 640 486 C 860 442 1030 500 1200 466" fill="none" stroke="#8c4a22" stroke-opacity=".14" stroke-width="1.5"/>
+    <path d="M0 528 C 210 488 420 566 640 522 C 860 478 1030 536 1200 502" fill="none" stroke="#4a5340" stroke-opacity=".12" stroke-width="1.5"/>
+  </svg>
+
+  <div class="wrap hero__in">
+    <p class="eyebrow">Café-bar · Mengíbar, Jaén</p>
+    <h1>Café Bar Francis<em>Desayunos, raciones y cenas.</em></h1>
+    <p class="hero__lead">
+      Una web sencilla para que quien te busque encuentre lo esencial antes de venir:
+      dónde estás, qué se sirve y un teléfono al que llamar.
+    </p>
+    <ul class="hero__meta">
+      <li class="chip">Desayunos</li>
+      <li class="chip">Raciones para compartir</li>
+      <li class="chip">Cenas</li>
+    </ul>
+    <div class="cta-fila">
+      <a class="btn" href="tel:+34615131841">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <path d="M5 3h3.2l1.6 4-2 1.4a12 12 0 0 0 5.8 5.8l1.4-2 4 1.6V19a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4 6.2 2 2 0 0 1 5 3z"/>
+        </svg>
+        <span class="btn__num">Llamar · 615 131 841</span>
+      </a>
+      <a class="btn btn--linea" href="#contacto">Ver dónde estamos</a>
+      <span class="cta-nota">C/ Real, 4 · Mengíbar (Jaén)</span>
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="carta">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Qué se ofrece</p>
+      <h2>Tres momentos del día, en la barra o en las mesas</h2>
+      <p>
+        Estos son los apartados que estructurarían la carta. En la web definitiva,
+        cada uno se publicaría con su contenido real, revisado por el negocio y
+        actualizable cuando cambie.
+      </p>
+    </div>
+
+    <div class="grid3">
+      <article class="card">
+        <svg class="card__ico" viewBox="0 0 48 48" fill="none" aria-hidden="true" focusable="false">
+          <rect x="1" y="1" width="46" height="46" rx="14" fill="#f3ebdd"/>
+          <path d="M14 20h16v8a7 7 0 0 1-7 7h-2a7 7 0 0 1-7-7v-8z" stroke="#8c4a22" stroke-width="1.8" stroke-linejoin="round"/>
+          <path d="M30 22h3a3.5 3.5 0 0 1 0 7h-3" stroke="#8c4a22" stroke-width="1.8" stroke-linejoin="round"/>
+          <path d="M19 15c0-2 2-2 2-4M25 15c0-2 2-2 2-4" stroke="#4a5340" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <h3>Desayunos</h3>
+        <p>
+          El servicio de mañana en la barra: café y desayuno antes de empezar el día,
+          con el ritmo tranquilo de un bar de pueblo.
+        </p>
+        <p class="card__nota">La carta de desayunos se publicaría en este apartado.</p>
+      </article>
+
+      <article class="card">
+        <svg class="card__ico" viewBox="0 0 48 48" fill="none" aria-hidden="true" focusable="false">
+          <rect x="1" y="1" width="46" height="46" rx="14" fill="#f3ebdd"/>
+          <circle cx="24" cy="25" r="10" stroke="#8c4a22" stroke-width="1.8"/>
+          <circle cx="24" cy="25" r="4.6" stroke="#4a5340" stroke-width="1.6"/>
+          <path d="M12 14v7M36 14v7" stroke="#4a5340" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <h3>Raciones</h3>
+        <p>
+          Platos para compartir en mesa, pensados para sentarse un rato
+          con la familia o con los amigos.
+        </p>
+        <p class="card__nota">Las raciones se listarían aquí, con sus apartados.</p>
+      </article>
+
+      <article class="card">
+        <svg class="card__ico" viewBox="0 0 48 48" fill="none" aria-hidden="true" focusable="false">
+          <rect x="1" y="1" width="46" height="46" rx="14" fill="#f3ebdd"/>
+          <path d="M16 13v9a3 3 0 0 0 6 0v-9" stroke="#8c4a22" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M19 25v11" stroke="#8c4a22" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M30 36V13c3 1.6 4 4.4 4 8s-1 5.4-4 6" stroke="#4a5340" stroke-width="1.7" stroke-linejoin="round"/>
+        </svg>
+        <h3>Cenas</h3>
+        <p>
+          El servicio de noche, para cenar sin complicaciones a un paso
+          del centro de Mengíbar.
+        </p>
+        <p class="card__nota">El apartado de cenas recogería la oferta de la noche.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="bloque-oscuro" id="como-funciona">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow eyebrow--claro">Tu encargo</p>
+      <h2>Cómo funciona, en tres pasos</h2>
+      <p>Sin formularios ni aplicaciones: una llamada y ya está.</p>
+    </div>
+    <ol class="pasos">
+      <li class="paso">
+        <p class="paso__n">PASO 1</p>
+        <h3>Llama al bar</h3>
+        <p>Un único teléfono para todo: <a href="tel:+34615131841" style="color:#e6c3a2;text-decoration:none;border-bottom:1px solid rgba(230,195,162,.4);white-space:nowrap">615 131 841</a>.</p>
+      </li>
+      <li class="paso">
+        <p class="paso__n">PASO 2</p>
+        <h3>Di qué y cuándo</h3>
+        <p>Qué quieres, para cuántas personas y a qué hora. Te confirman en la misma llamada.</p>
+      </li>
+      <li class="paso">
+        <p class="paso__n">PASO 3</p>
+        <h3>Recógelo o siéntate</h3>
+        <p>Pasas a recogerlo por la barra o te sientas en la mesa que te hayan apartado.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="contacto" id="contacto">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Contacto</p>
+      <h2>Dónde estamos y cómo llamar</h2>
+      <p>En el centro de Mengíbar. Los datos de abajo son los del negocio, tal cual.</p>
+    </div>
+
+    <div class="cols">
+      <div class="panel">
+        <dl>
+          <div class="dato">
+            <dt>Teléfono</dt>
+            <dd><a href="tel:+34615131841">615 131 841</a></dd>
+          </div>
+          <div class="dato">
+            <dt>Dirección</dt>
+            <dd>C/ Real, 4, 23620 Mengíbar (Jaén)</dd>
+          </div>
+          <div class="dato">
+            <dt>Horario</dt>
+            <dd><span class="badge-horario">Consultar horario</span></dd>
+          </div>
+          <div class="dato">
+            <dt>Correo</dt>
+            <dd><a href="mailto:estherjurado82@gmail.com">estherjurado82@gmail.com</a></dd>
+          </div>
+        </dl>
+      </div>
+
+      <figure class="mapa">
+        <svg viewBox="0 0 440 320" role="img" aria-label="Mapa esquemático de situación: Café Bar Francis en C/ Real, 4, Mengíbar." focusable="false">
+          <defs>
+            <linearGradient id="mg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#f7f2ea"/>
+              <stop offset="1" stop-color="#eee4d4"/>
+            </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="440" height="320" rx="12" fill="url(#mg)"/>
+          <g fill="#e6dac7">
+            <rect x="26" y="26" width="116" height="78" rx="6"/>
+            <rect x="176" y="26" width="92" height="78" rx="6"/>
+            <rect x="302" y="26" width="112" height="78" rx="6"/>
+            <rect x="26" y="206" width="116" height="88" rx="6"/>
+            <rect x="176" y="206" width="92" height="88" rx="6"/>
+            <rect x="302" y="206" width="112" height="88" rx="6"/>
+          </g>
+          <g stroke="#d6c7b0" stroke-width="1.2" fill="none">
+            <rect x="26" y="26" width="116" height="78" rx="6"/>
+            <rect x="176" y="26" width="92" height="78" rx="6"/>
+            <rect x="302" y="26" width="112" height="78" rx="6"/>
+            <rect x="26" y="206" width="116" height="88" rx="6"/>
+            <rect x="176" y="206" width="92" height="88" rx="6"/>
+            <rect x="302" y="206" width="112" height="88" rx="6"/>
+          </g>
+          <path d="M0 136 H440" stroke="#fffdf9" stroke-width="40"/>
+          <path d="M0 136 H440" stroke="#ddd0bb" stroke-width="40" stroke-opacity=".35"/>
+          <path d="M0 136 H440" stroke="#c9b79c" stroke-width="1.4" stroke-dasharray="12 12"/>
+          <path d="M158 0 V320" stroke="#fffdf9" stroke-width="26"/>
+          <path d="M158 0 V320" stroke="#ddd0bb" stroke-width="26" stroke-opacity=".3"/>
+          <path d="M284 0 V320" stroke="#fffdf9" stroke-width="22"/>
+          <path d="M284 0 V320" stroke="#ddd0bb" stroke-width="22" stroke-opacity=".3"/>
+          <text x="22" y="131" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="12" letter-spacing="1.6" fill="#8a7a68">C/ REAL</text>
+          <g>
+            <circle cx="220" cy="136" r="26" fill="#8c4a22" fill-opacity=".12"/>
+            <circle cx="220" cy="136" r="17" fill="#8c4a22" fill-opacity=".2"/>
+            <path d="M220 110a12.5 12.5 0 0 0-12.5 12.5c0 9 12.5 21.5 12.5 21.5s12.5-12.5 12.5-21.5A12.5 12.5 0 0 0 220 110z" fill="#8c4a22"/>
+            <circle cx="220" cy="122.5" r="4.6" fill="#fffdf9"/>
+          </g>
+          <text x="220" y="176" text-anchor="middle" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="14" font-weight="600" fill="#17130f">Café Bar Francis</text>
+          <text x="220" y="195" text-anchor="middle" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="12" fill="#6b5f54">C/ Real, 4 · 23620 Mengíbar</text>
+        </svg>
+        <figcaption>Mapa esquemático, solo orientativo. La dirección exacta es C/ Real, 4, 23620 Mengíbar (Jaén).</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap pie">
+    <p class="pie__marca">Café Bar Francis</p>
+    <p>C/ Real, 4, 23620 Mengíbar (Jaén) · <a href="tel:+34615131841">615 131 841</a></p>
+    <p><a href="mailto:estherjurado82@gmail.com">estherjurado82@gmail.com</a></p>
+    <p class="pie__firma">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Autoescuela Luis Barakaldo · Propuesta de diseño</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  :root{
+    --azul:#0f2740;
+    --azul2:#17395c;
+    --acento:#d8411f;
+    --acento2:#f08a3c;
+    --tinta:#101a24;
+    --gris:#5a6b7c;
+    --linea:#e2e7ec;
+    --papel:#ffffff;
+    --papel2:#f5f7f9;
+    --barra:46px;
+  }
+  html,body{margin:0;padding:0;max-width:100%;overflow-x:hidden}
+  body{
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    color:var(--tinta);
+    background:var(--papel);
+    line-height:1.6;
+    -webkit-text-size-adjust:100%;
+  }
+  img,svg{max-width:100%}
+  h1,h2,h3,p,ul{margin:0}
+  a{color:inherit}
+  .wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 24px}
+
+  /* Barra fija */
+  .aviso{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    min-height:var(--barra);
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(90deg,#0f2740 0%,#17395c 55%,#214f7a 100%);
+    color:#fff;
+    font-size:12.5px;letter-spacing:.04em;
+    padding:8px 16px;text-align:center;
+    overflow-wrap:break-word;
+  }
+  .aviso span{display:inline-block;max-width:100%}
+
+  main{padding-top:var(--barra)}
+
+  /* Hero */
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(900px 480px at 85% -10%,rgba(240,138,60,.22),transparent 65%),
+      linear-gradient(160deg,#0f2740 0%,#143455 48%,#0d2135 100%);
+    color:#fff;
+    padding:72px 0 84px;
+  }
+  .hero .deco{position:absolute;inset:0;pointer-events:none;opacity:.5}
+  .hero .wrap{position:relative;z-index:2}
+  .kicker{
+    display:inline-block;
+    font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+    color:#f3c9a6;border:1px solid rgba(243,201,166,.4);
+    border-radius:999px;padding:6px 14px;margin-bottom:26px;
+  }
+  .hero h1{
+    font-size:clamp(32px,6.2vw,60px);
+    line-height:1.08;letter-spacing:-.02em;font-weight:700;
+    max-width:17ch;overflow-wrap:break-word;
+  }
+  .hero h1 em{font-style:normal;display:block;color:#f6b27f}
+  .hero p.lead{
+    margin-top:22px;max-width:56ch;
+    font-size:clamp(16px,2.2vw,19px);color:#cfdbe6;
+  }
+  .cta-row{margin-top:34px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    background:linear-gradient(135deg,#d8411f,#f08a3c);
+    color:#fff;text-decoration:none;font-weight:650;
+    padding:14px 24px;border-radius:10px;font-size:17px;
+    box-shadow:0 10px 24px rgba(216,65,31,.28);
+  }
+  .btn svg{flex:none}
+  .btn-nota{font-size:13.5px;color:#a9bccd}
+
+  /* Secciones */
+  section{padding:72px 0}
+  .alt{background:var(--papel2);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+  .eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--acento);font-weight:700}
+  h2{font-size:clamp(25px,3.6vw,36px);line-height:1.18;letter-spacing:-.015em;margin-top:10px;max-width:24ch}
+  .sub{margin-top:14px;color:var(--gris);max-width:60ch}
+
+  .grid{display:grid;gap:18px;margin-top:40px;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .card{
+    background:var(--papel);border:1px solid var(--linea);border-radius:14px;
+    padding:26px;min-width:0;
+  }
+  .alt .card{background:#fff}
+  .card .ico{
+    width:46px;height:46px;border-radius:11px;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,#0f2740,#27567f);margin-bottom:16px;
+  }
+  .card h3{font-size:18px;letter-spacing:-.01em}
+  .card p{margin-top:8px;color:var(--gris);font-size:15px}
+  .tag{
+    display:inline-block;margin-top:14px;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--azul2);background:#e8eef4;border-radius:999px;padding:4px 11px;font-weight:650;
+  }
+
+  /* Pasos */
+  .pasos{display:grid;gap:18px;margin-top:40px;grid-template-columns:repeat(3,minmax(0,1fr))}
+  .paso{background:#fff;border:1px solid var(--linea);border-radius:14px;padding:26px;min-width:0;position:relative}
+  .num{
+    font-size:13px;font-weight:700;color:#fff;
+    width:34px;height:34px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,#d8411f,#f08a3c);margin-bottom:16px;
+  }
+  .paso h3{font-size:17px}
+  .paso p{margin-top:8px;color:var(--gris);font-size:15px}
+
+  /* Contacto */
+  .contacto-grid{display:grid;gap:26px;margin-top:40px;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);align-items:start}
+  .datos{background:#fff;border:1px solid var(--linea);border-radius:14px;padding:28px;min-width:0}
+  .dato{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--linea);min-width:0}
+  .dato:last-child{border-bottom:0;padding-bottom:0}
+  .dato:first-child{padding-top:0}
+  .dato .ic{flex:none;width:34px;height:34px;border-radius:9px;background:#eef2f6;display:flex;align-items:center;justify-content:center}
+  .dato .k{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gris);font-weight:700}
+  .dato .v{font-size:16.5px;font-weight:600;margin-top:3px;overflow-wrap:break-word;word-break:break-word}
+  .dato .v a{text-decoration:none;border-bottom:2px solid rgba(216,65,31,.35)}
+  .mapa{background:#fff;border:1px solid var(--linea);border-radius:14px;padding:14px;min-width:0}
+  .mapa svg{display:block;width:100%;height:auto;border-radius:9px}
+  .mapa .pie{font-size:12.5px;color:var(--gris);padding:10px 6px 2px;text-align:center}
+
+  /* Pie */
+  footer{background:var(--azul);color:#cfdbe6;padding:48px 0}
+  footer .n{color:#fff;font-weight:650;font-size:18px}
+  footer .mail{margin-top:10px;font-size:16px}
+  footer .mail a{color:#f6b27f;text-decoration:none;overflow-wrap:break-word;word-break:break-word}
+  footer .firma{margin-top:26px;padding-top:20px;border-top:1px solid rgba(255,255,255,.14);font-size:13.5px;color:#9db0c2;overflow-wrap:break-word}
+
+  @media (max-width:760px){
+    .grid{grid-template-columns:minmax(0,1fr)}
+    .pasos{grid-template-columns:minmax(0,1fr)}
+    .contacto-grid{grid-template-columns:minmax(0,1fr)}
+    .wrap{padding:0 18px}
+    section{padding:52px 0}
+    .hero{padding:52px 0 60px}
+    .aviso{font-size:11px;letter-spacing:.01em}
+  }
+</style>
+</head>
+<body>
+
+<div class="aviso"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <svg class="deco" viewBox="0 0 1200 600" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#ffffff" stop-opacity=".10"/>
+          <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <path d="M0 470 C 260 430 300 300 620 300 C 900 300 1000 200 1200 170 L1200 600 L0 600 Z" fill="url(#g1)"/>
+      <path d="M0 520 C 300 500 360 400 700 390 C 960 382 1060 320 1200 300" fill="none" stroke="#ffffff" stroke-opacity=".16" stroke-width="2"/>
+      <g stroke="#f6b27f" stroke-opacity=".35" stroke-width="3" stroke-dasharray="26 22" fill="none">
+        <path d="M-20 560 C 320 540 380 440 720 430 C 980 422 1080 360 1220 340"/>
+      </g>
+      <circle cx="1060" cy="110" r="150" fill="#f08a3c" fill-opacity=".10"/>
+      <circle cx="1060" cy="110" r="92" fill="#f08a3c" fill-opacity=".10"/>
+    </svg>
+    <div class="wrap">
+      <span class="kicker">Barakaldo · Bizkaia</span>
+      <h1>Autoescuela Luis <em>Barakaldo</em></h1>
+      <p class="lead">Autoescuela en Barakaldo y centro homologado para cursos CAP de mercancías y viajeros. Formación de conductores particulares y profesionales en un mismo centro.</p>
+      <div class="cta-row">
+        <a class="btn" href="tel:+34944378576">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.4 2.1L8.1 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2Z"/></svg>
+          944 378 576
+        </a>
+        <span class="btn-nota">Llama y te informamos sin compromiso</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section>
+    <div class="wrap">
+      <span class="eyebrow">Servicios</span>
+      <h2>Permisos de conducir y formación profesional</h2>
+      <p class="sub">Un centro para quien se saca su primer permiso y para quien necesita mantener al día su formación como conductor profesional.</p>
+
+      <div class="grid">
+        <article class="card">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="3"/><circle cx="8" cy="11" r="2.4"/><path d="M13 10h6M13 14h4M5 17h6"/></svg></div>
+          <h3>Permisos de conducir</h3>
+          <p>Preparación de la parte teórica y de la prueba de circulación para los permisos que tramita el centro. Te explicamos qué permiso necesitas según lo que quieras conducir.</p>
+          <span class="tag">Teórico y práctico</span>
+        </article>
+
+        <article class="card">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 12 8 8"/><path d="M12 3.5v2M20.5 12h-2M12 20.5v-2M3.5 12h2"/></svg></div>
+          <h3>Clases prácticas</h3>
+          <p>Clases al volante con profesor, adaptadas a tu nivel y a tu ritmo, en recorridos de la zona. Puedes consultar la disponibilidad al matricularte.</p>
+          <span class="tag">Al volante</span>
+        </article>
+
+        <article class="card">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 7h11v9H2zM13 10h5l3 3v3h-8z"/><circle cx="6" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/></svg></div>
+          <h3>Curso CAP de mercancías</h3>
+          <p>Centro homologado para la formación CAP de transporte de mercancías, dirigida a conductores profesionales y a empresas que necesitan mantener acreditada a su plantilla.</p>
+          <span class="tag">Centro homologado</span>
+        </article>
+
+        <article class="card">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2.5"/><path d="M3 9h18"/><circle cx="7" cy="19" r="1.8"/><circle cx="17" cy="19" r="1.8"/></svg></div>
+          <h3>Curso CAP de viajeros</h3>
+          <p>Formación CAP para el transporte de viajeros en centro homologado, para quien conduce autobús o autocar y necesita la formación continua al día.</p>
+          <span class="tag">Centro homologado</span>
+        </article>
+
+        <article class="card">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.2-3.2 7.4-8 9-4.8-1.6-8-4.8-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <h3>Formación para empresas</h3>
+          <p>Atendemos consultas de empresas de transporte que necesitan formar o renovar la acreditación de sus conductores. Llámanos y lo vemos según vuestro caso.</p>
+          <span class="tag">Conductores profesionales</span>
+        </article>
+
+        <article class="card">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H4z"/><path d="M9 20h6M12 16v4"/><path d="M8 10h8M8 7h5"/></svg></div>
+          <h3>Asesoramiento y trámites</h3>
+          <p>Te orientamos sobre la documentación y los pasos del proceso, para que sepas en qué punto estás en cada momento. Consúltanos tu caso por teléfono.</p>
+          <span class="tag">Te acompañamos</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PASOS -->
+  <section class="alt">
+    <div class="wrap">
+      <span class="eyebrow">Cómo trabajamos</span>
+      <h2>Tu matrícula, paso a paso</h2>
+      <p class="sub">Tres pasos sencillos, desde la primera llamada hasta que empiezas la formación.</p>
+
+      <div class="pasos">
+        <article class="paso">
+          <div class="num">1</div>
+          <h3>Nos llamas y lo valoramos</h3>
+          <p>Cuéntanos qué permiso o qué curso CAP necesitas. Te decimos qué requisitos hacen falta y qué documentación tienes que reunir.</p>
+        </article>
+        <article class="paso">
+          <div class="num">2</div>
+          <h3>Formalizamos la matrícula</h3>
+          <p>Te atendemos en el centro, revisamos tu documentación y te damos de alta en el grupo o en la formación que te corresponde.</p>
+        </article>
+        <article class="paso">
+          <div class="num">3</div>
+          <h3>Te formamos hasta el final</h3>
+          <p>Preparación teórica y práctica, o el curso CAP completo, con seguimiento del profesor hasta que afrontas la prueba o terminas la formación.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section>
+    <div class="wrap">
+      <span class="eyebrow">Contacto</span>
+      <h2>Estamos en Barakaldo</h2>
+      <p class="sub">La forma más rápida de resolver tu duda es una llamada. Te atendemos directamente desde el centro.</p>
+
+      <div class="contacto-grid">
+        <div class="datos">
+          <div class="dato">
+            <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0f2740" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.4 2.1L8.1 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2Z"/></svg></div>
+            <div>
+              <div class="k">Teléfono</div>
+              <div class="v"><a href="tel:+34944378576">944 378 576</a></div>
+            </div>
+          </div>
+          <div class="dato">
+            <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0f2740" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.8"/></svg></div>
+            <div>
+              <div class="k">Dirección</div>
+              <div class="v">Landaburu, 2, 48902 Barakaldo (Bizkaia)</div>
+            </div>
+          </div>
+          <div class="dato">
+            <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0f2740" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2.2"/></svg></div>
+            <div>
+              <div class="k">Horario</div>
+              <div class="v">Consultar horario</div>
+            </div>
+          </div>
+          <div class="dato">
+            <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0f2740" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg></div>
+            <div>
+              <div class="k">Email</div>
+              <div class="v"><a href="mailto:luisautoescuela@hotmail.com">luisautoescuela@hotmail.com</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mapa">
+          <svg viewBox="0 0 640 400" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Mapa esquemático de la ubicación en Landaburu, 2, Barakaldo">
+            <defs>
+              <linearGradient id="mg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#eef3f7"/>
+                <stop offset="1" stop-color="#e2eaf1"/>
+              </linearGradient>
+              <linearGradient id="pin" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#f08a3c"/>
+                <stop offset="1" stop-color="#d8411f"/>
+              </linearGradient>
+            </defs>
+            <rect width="640" height="400" fill="url(#mg)"/>
+            <!-- manzanas -->
+            <g fill="#ffffff" fill-opacity=".72">
+              <rect x="34" y="34" width="190" height="112" rx="6"/>
+              <rect x="252" y="34" width="150" height="112" rx="6"/>
+              <rect x="430" y="34" width="176" height="112" rx="6"/>
+              <rect x="34" y="176" width="190" height="86" rx="6"/>
+              <rect x="430" y="176" width="176" height="86" rx="6"/>
+              <rect x="34" y="292" width="190" height="74" rx="6"/>
+              <rect x="252" y="292" width="150" height="74" rx="6"/>
+              <rect x="430" y="292" width="176" height="74" rx="6"/>
+            </g>
+            <!-- calles -->
+            <g stroke="#c3d1de" stroke-width="2" fill="none">
+              <path d="M238 10V161M416 10V161M238 292V390M416 292V390M10 161H630M10 292H630"/>
+            </g>
+            <!-- via principal -->
+            <path d="M10 219H630" stroke="#b7c7d6" stroke-width="22" fill="none" stroke-linecap="round"/>
+            <path d="M10 219H630" stroke="#ffffff" stroke-width="2.5" stroke-dasharray="18 16" fill="none"/>
+            <!-- parcela destino -->
+            <rect x="252" y="176" width="150" height="86" rx="6" fill="#fdece2" stroke="#e8b394" stroke-width="2"/>
+            <!-- marcador -->
+            <g>
+              <ellipse cx="327" cy="214" rx="26" ry="9" fill="#d8411f" fill-opacity=".16"/>
+              <path d="M327 148c-16.6 0-30 13.4-30 30 0 21 30 42 30 42s30-21 30-42c0-16.6-13.4-30-30-30Z" fill="url(#pin)"/>
+              <circle cx="327" cy="178" r="10.5" fill="#fff"/>
+            </g>
+            <text x="327" y="262" text-anchor="middle" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="17" font-weight="600" fill="#0f2740">Landaburu, 2</text>
+            <text x="327" y="284" text-anchor="middle" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="14" fill="#5a6b7c">48902 Barakaldo (Bizkaia)</text>
+          </svg>
+          <p class="pie">Plano esquemático orientativo, no a escala.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="n">Autoescuela Luis Barakaldo</div>
+    <div class="mail"><a href="mailto:luisautoescuela@hotmail.com">luisautoescuela@hotmail.com</a></div>
+    <div class="firma">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</div>
+  </div>
+</footer>
+
+</body>
+</html>
