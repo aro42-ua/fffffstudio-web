@@ -1,0 +1,699 @@
+<!doctype html>
+<html lang="es-ES">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ekos Estilistas — Propuesta de diseño</title>
+<meta name="description" content="Maqueta de propuesta web para Ekos Estilistas, peluquería, estética y formación en Ponferrada. Diseño no oficial de FFFFFFstudio.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  :root{
+    --ink:#241D1A;
+    --ink-soft:#5B4F49;
+    --paper:#F8F4EF;
+    --paper-2:#FFFCF8;
+    --line:#E2D7CC;
+    --accent:#9A5F45;
+    --accent-2:#C98B6B;
+    --deep:#2B211D;
+    --gold:#B89470;
+    --maxw:1180px;
+    --bar-h:40px;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+    font-size:17px;
+    line-height:1.65;
+    overflow-x:hidden;
+    padding-top:var(--bar-h);
+  }
+  img,svg{max-width:100%;display:block}
+  h1,h2,h3{margin:0;font-weight:400;letter-spacing:-.015em;line-height:1.08}
+  p{margin:0}
+  a{color:inherit}
+
+  /* ---------- utilidades ---------- */
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  .eyebrow{
+    font-family:ui-sans-serif,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--accent);margin:0 0 18px;font-weight:600;
+  }
+  .lead{font-size:19px;color:var(--ink-soft);max-width:60ch}
+  .rule{height:1px;background:var(--line);border:0;margin:0}
+  .sans{font-family:ui-sans-serif,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+
+  /* ---------- barra fija ---------- */
+  .notice{
+    position:fixed;top:0;left:0;right:0;z-index:60;
+    background:var(--deep);color:#F1E6DC;
+    font-family:ui-sans-serif,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:11.5px;letter-spacing:.07em;
+    display:flex;align-items:center;justify-content:center;
+    text-align:center;min-height:var(--bar-h);
+    padding:9px 14px;
+  }
+  .notice span{display:block;max-width:100%;text-wrap:balance}
+
+  /* ---------- cabecera ---------- */
+  .top{
+    border-bottom:1px solid var(--line);
+    background:rgba(248,244,239,.92);
+  }
+  .top-in{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:20px 28px;max-width:var(--maxw);margin:0 auto}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+  .brand-mark{flex:0 0 auto}
+  .brand-txt{line-height:1.05}
+  .brand-name{font-size:21px;letter-spacing:.04em}
+  .brand-sub{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-soft);font-family:ui-sans-serif,system-ui,sans-serif}
+  .nav{display:flex;align-items:center;gap:26px}
+  .call-m{display:none}
+  .nav a{
+    font-family:ui-sans-serif,system-ui,sans-serif;font-size:13px;
+    letter-spacing:.06em;text-decoration:none;color:var(--ink-soft);
+  }
+  .nav a:hover{color:var(--accent)}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;
+    font-family:ui-sans-serif,system-ui,sans-serif;font-size:13.5px;font-weight:600;
+    letter-spacing:.04em;text-decoration:none;
+    padding:13px 22px;border-radius:999px;
+    background:var(--deep);color:#FBF6F1;border:1px solid var(--deep);
+    transition:background .2s,color .2s;
+  }
+  .btn:hover{background:var(--accent);border-color:var(--accent)}
+  .btn--ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+  .btn--ghost:hover{background:#fff;color:var(--accent);border-color:var(--accent-2)}
+  .btn svg{flex:0 0 auto}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;overflow:hidden}
+  .hero-in{
+    display:grid;grid-template-columns:1.08fr .92fr;gap:56px;align-items:center;
+    padding:84px 28px 92px;max-width:var(--maxw);margin:0 auto;
+  }
+  .hero h1{font-size:clamp(40px,5.3vw,70px)}
+  .hero h1 em{font-style:italic;color:var(--accent)}
+  .hero .lead{margin-top:26px}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+  .hero-note{
+    margin-top:22px;font-size:13px;color:var(--ink-soft);
+    font-family:ui-sans-serif,system-ui,sans-serif;letter-spacing:.02em;
+  }
+  .hero-art{position:relative;min-width:0}
+  .hero-art svg{width:100%;height:auto}
+  .tagstrip{
+    display:flex;flex-wrap:wrap;gap:8px;margin-top:30px;
+  }
+  .tag{
+    font-family:ui-sans-serif,system-ui,sans-serif;font-size:11.5px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--ink-soft);
+    border:1px solid var(--line);background:var(--paper-2);
+    padding:7px 13px;border-radius:999px;
+  }
+
+  /* ---------- secciones ---------- */
+  section{scroll-margin-top:calc(var(--bar-h) + 20px)}
+  .band{padding:88px 0}
+  .band--paper2{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .band--deep{background:var(--deep);color:#F0E5DB}
+  .band--deep .eyebrow{color:var(--gold)}
+  .band--deep .lead{color:#CDBCAF}
+  .sec-head{max-width:62ch;margin-bottom:52px}
+  .sec-head h2{font-size:clamp(29px,3.4vw,44px)}
+  .sec-head p{margin-top:18px}
+
+  /* servicios */
+  .svc{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .card{
+    background:var(--paper-2);border:1px solid var(--line);border-radius:4px;
+    padding:30px 28px 32px;display:flex;flex-direction:column;
+  }
+  .band--paper2 .card{background:var(--paper)}
+  .card-icon{margin-bottom:22px}
+  .card h3{font-size:25px;margin-bottom:6px}
+  .card .kicker{
+    font-family:ui-sans-serif,system-ui,sans-serif;font-size:10.5px;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--accent);margin-bottom:14px;font-weight:600;
+  }
+  .card p{color:var(--ink-soft);font-size:16px}
+  .card ul{
+    list-style:none;margin:20px 0 0;padding:0;border-top:1px solid var(--line);
+  }
+  .card>p:last-of-type{margin-top:auto}
+  .card li{
+    padding:11px 0 11px 20px;border-bottom:1px solid var(--line);
+    font-size:15.5px;color:var(--ink);position:relative;
+  }
+  .card li::before{
+    content:"";position:absolute;left:0;top:19px;
+    width:7px;height:7px;border-radius:50%;
+    background:var(--accent-2);
+  }
+  .card-foot{
+    margin-top:22px;padding-top:22px;font-family:ui-sans-serif,system-ui,sans-serif;
+    font-size:12.5px;color:var(--ink-soft);letter-spacing:.02em;
+  }
+
+  /* pasos */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+  .step{border-top:2px solid var(--gold);padding-top:24px}
+  .band--deep .step h3{color:#FBF4ED}
+  .step-n{
+    font-size:13px;letter-spacing:.2em;font-family:ui-sans-serif,system-ui,sans-serif;
+    color:var(--gold);margin-bottom:14px;
+  }
+  .step h3{font-size:24px;margin-bottom:12px}
+  .step p{color:#C8B7AA;font-size:16px}
+
+  /* galería */
+  .gal{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .ph{
+    border:1px dashed var(--accent-2);border-radius:4px;background:var(--paper-2);
+    padding:14px;position:relative;
+  }
+  .ph-frame{position:relative;border-radius:2px;overflow:hidden}
+  .ph-frame svg{width:100%;height:auto}
+  .ph-cap{
+    display:flex;align-items:baseline;justify-content:space-between;gap:12px;
+    margin-top:13px;font-family:ui-sans-serif,system-ui,sans-serif;
+  }
+  .ph-cap b{font-size:13px;font-weight:600;letter-spacing:.03em}
+  .ph-cap span{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);white-space:nowrap}
+  .gal-note{
+    margin-top:28px;padding:18px 20px;border-left:3px solid var(--accent-2);
+    background:var(--paper-2);font-size:15px;color:var(--ink-soft);
+  }
+
+  /* contacto */
+  .contact{display:grid;grid-template-columns:.95fr 1.05fr;gap:44px;align-items:start}
+  .dl{margin:0;border-top:1px solid var(--line)}
+  .dl-row{display:grid;grid-template-columns:118px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid var(--line)}
+  .dl dt{
+    font-family:ui-sans-serif,system-ui,sans-serif;font-size:10.5px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--ink-soft);padding-top:5px;
+  }
+  .dl dd{margin:0;font-size:18px;line-height:1.5}
+  .dl dd a{text-decoration:none;border-bottom:1px solid var(--accent-2)}
+  .dl dd a:hover{color:var(--accent)}
+  .dl dd small{display:block;font-size:13px;color:var(--ink-soft);margin-top:4px;font-family:ui-sans-serif,system-ui,sans-serif}
+  .contact-cta{display:flex;flex-wrap:wrap;gap:13px;margin-top:30px}
+  .map{
+    border:1px solid var(--line);border-radius:4px;overflow:hidden;background:#F2EAE1;
+  }
+  .map svg{width:100%;height:auto;display:block}
+  .map-foot{
+    padding:13px 18px;border-top:1px solid var(--line);background:var(--paper-2);
+    font-family:ui-sans-serif,system-ui,sans-serif;font-size:11.5px;color:var(--ink-soft);
+    letter-spacing:.03em;
+  }
+
+  /* pie */
+  footer{background:var(--deep);color:#DFD0C4;padding:64px 0 40px}
+  .foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:36px;align-items:start}
+  footer h3{font-size:22px;color:#FBF4ED;margin-bottom:12px}
+  footer p,footer li{font-size:15px;color:#C4B3A6}
+  footer ul{list-style:none;margin:0;padding:0}
+  footer li{padding:5px 0}
+  footer a{text-decoration:none;border-bottom:1px solid rgba(184,148,112,.5)}
+  footer a:hover{color:#F3E7DB}
+  .foot-h{
+    font-family:ui-sans-serif,system-ui,sans-serif;font-size:10.5px;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--gold);margin-bottom:14px;
+  }
+  .foot-bar{
+    margin-top:46px;padding-top:24px;border-top:1px solid rgba(240,229,219,.16);
+    display:flex;flex-wrap:wrap;gap:12px 24px;align-items:baseline;justify-content:space-between;
+  }
+  .foot-bar p{font-family:ui-sans-serif,system-ui,sans-serif;font-size:12.5px;letter-spacing:.03em}
+  .credit{color:#E7D8C9}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:980px){
+    .hero-in{grid-template-columns:1fr;gap:44px;padding:60px 28px 70px}
+    .hero-art{order:-1;max-width:460px}
+    .svc,.steps,.gal{grid-template-columns:1fr 1fr}
+    .contact{grid-template-columns:1fr;gap:34px}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .nav{display:none}
+    .call-m{display:inline-flex;flex:0 0 auto;padding:11px 17px;font-size:13px}
+  }
+  @media (max-width:640px){
+    :root{--bar-h:58px}
+    body{font-size:16.5px}
+    .wrap,.top-in,.hero-in{padding-left:18px;padding-right:18px}
+    .notice{font-size:10.5px;letter-spacing:.04em;line-height:1.45;padding:8px 12px}
+    .band{padding:60px 0}
+    .sec-head{margin-bottom:34px}
+    .svc,.steps,.gal,.foot-grid{grid-template-columns:1fr}
+    .gal{gap:16px}
+    .hero-in{padding-top:40px;padding-bottom:52px;gap:34px}
+    .hero-art{max-width:286px;margin:0 auto}
+    .top-in{padding-top:14px;padding-bottom:14px;gap:10px}
+    .call-m{padding:10px 14px;font-size:12.5px;letter-spacing:0}
+    .brand-mark{width:34px;height:34px}
+    .hero-cta .btn,.contact-cta .btn{width:100%;justify-content:center}
+    .dl-row{grid-template-columns:1fr;gap:4px}
+    .dl dt{padding-top:0}
+    .dl dd{font-size:17px}
+    .lead{font-size:17.5px}
+    .brand-name{font-size:19px}
+    .foot-bar{display:block}
+    .foot-bar p+p{margin-top:10px}
+  }
+</style>
+</head>
+<body>
+
+<div class="notice" role="note"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="#inicio">
+      <svg class="brand-mark" width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
+        <defs>
+          <linearGradient id="gm" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#9A5F45"/><stop offset="1" stop-color="#C98B6B"/>
+          </linearGradient>
+        </defs>
+        <circle cx="20" cy="20" r="19" fill="none" stroke="#E2D7CC"/>
+        <path d="M20 6c-7 4-10 8-10 14s4 9 10 14" fill="none" stroke="url(#gm)" stroke-width="1.6"/>
+        <path d="M20 6c7 4 10 8 10 14s-4 9-10 14" fill="none" stroke="url(#gm)" stroke-width="1.6" opacity=".55"/>
+        <circle cx="20" cy="20" r="2.6" fill="url(#gm)"/>
+      </svg>
+      <span class="brand-txt">
+        <span class="brand-name">Ekos Estilistas</span><br>
+        <span class="brand-sub">Ponferrada</span>
+      </span>
+    </a>
+    <a class="btn call-m" href="tel:+34987405027" aria-label="Llamar al 987 405 027">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 3h3l2 5-2.5 1.5a11 11 0 0 0 5 5L15 12l5 2v3a2 2 0 0 1-2.2 2A16 16 0 0 1 4 5.2 2 2 0 0 1 6 3z"/></svg>
+      987 405 027
+    </a>
+    <nav class="nav" aria-label="Navegación principal">
+      <a href="#servicios">Servicios</a>
+      <a href="#visita">Tu primera visita</a>
+      <a href="#galeria">Galería</a>
+      <a href="#contacto">Contacto</a>
+      <a class="btn" href="tel:+34987405027">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 3h3l2 5-2.5 1.5a11 11 0 0 0 5 5L15 12l5 2v3a2 2 0 0 1-2.2 2A16 16 0 0 1 4 5.2 2 2 0 0 1 6 3z"/></svg>
+        987 405 027
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-in">
+      <div>
+        <p class="eyebrow">Peluquería · Estética · Formación</p>
+        <h1>El cuidado que ya das en tu salón,<br><em>por fin en una web</em>.</h1>
+        <p class="lead">Ekos Estilistas trabaja en el centro de Ponferrada como peluquería y centro de estética, y además imparte formación. Esta maqueta propone un espacio propio donde cualquiera pueda ver qué se hace en el salón y pedir cita sin depender de una red social.</p>
+        <div class="hero-cta">
+          <a class="btn" href="tel:+34987405027">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 3h3l2 5-2.5 1.5a11 11 0 0 0 5 5L15 12l5 2v3a2 2 0 0 1-2.2 2A16 16 0 0 1 4 5.2 2 2 0 0 1 6 3z"/></svg>
+            Pedir cita · 987 405 027
+          </a>
+          <a class="btn btn--ghost" href="#servicios">Ver servicios</a>
+        </div>
+        <p class="hero-note">Calle Mateo Garza, 20 · 24400 Ponferrada (León)</p>
+        <div class="tagstrip">
+          <span class="tag">Peluquería</span>
+          <span class="tag">Estética</span>
+          <span class="tag">Formación</span>
+        </div>
+      </div>
+      <div class="hero-art">
+        <svg viewBox="0 0 520 560" role="img" aria-label="Composición abstracta de líneas y formas que evoca mechones de cabello">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#F3E3D6"/><stop offset=".55" stop-color="#DFBFA8"/><stop offset="1" stop-color="#9A5F45"/>
+            </linearGradient>
+            <linearGradient id="g2" x1="0" y1="1" x2="1" y2="0">
+              <stop offset="0" stop-color="#2B211D"/><stop offset="1" stop-color="#6B4A3B"/>
+            </linearGradient>
+            <linearGradient id="g3" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#C98B6B" stop-opacity=".85"/><stop offset="1" stop-color="#C98B6B" stop-opacity="0"/>
+            </linearGradient>
+            <clipPath id="arch"><path d="M60 540V230a200 200 0 0 1 400 0v310z"/></clipPath>
+          </defs>
+          <rect x="0" y="0" width="520" height="560" fill="none"/>
+          <circle cx="396" cy="118" r="96" fill="url(#g3)"/>
+          <g clip-path="url(#arch)">
+            <rect x="60" y="30" width="400" height="510" fill="url(#g1)"/>
+            <g fill="none" stroke="#2B211D" stroke-opacity=".28" stroke-width="1.6">
+              <path d="M110 540C110 380 150 300 230 230"/>
+              <path d="M140 540C140 390 176 306 250 240"/>
+              <path d="M170 540C170 400 202 312 270 250"/>
+              <path d="M410 540C410 380 370 300 290 230"/>
+              <path d="M380 540C380 390 344 306 270 240"/>
+              <path d="M350 540C350 400 318 312 250 250"/>
+            </g>
+            <path d="M60 470c90-46 160-20 230 4s130 36 170 6v60H60z" fill="url(#g2)" opacity=".92"/>
+            <circle cx="260" cy="214" r="46" fill="#FFFCF8" opacity=".5"/>
+          </g>
+          <path d="M60 540V230a200 200 0 0 1 400 0v310" fill="none" stroke="#9A5F45" stroke-width="1.4"/>
+          <g stroke="#9A5F45" stroke-width="1.2" opacity=".6">
+            <line x1="20" y1="540" x2="500" y2="540"/>
+            <line x1="20" y1="548" x2="500" y2="548"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- SERVICIOS -->
+  <section class="band" id="servicios">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Qué se hace en el salón</p>
+        <h2>Tres bloques de trabajo, explicados sin letra pequeña.</h2>
+        <p class="lead">Propuesta de estructura para la futura web. Los servicios se agrupan por áreas genéricas del sector; el detalle concreto, las técnicas y las tarifas los define Ekos Estilistas y se publicarían tal y como ellas indiquen.</p>
+      </div>
+      <div class="svc">
+
+        <article class="card">
+          <svg class="card-icon" width="42" height="42" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <circle cx="24" cy="24" r="23" stroke="#E2D7CC"/>
+            <path d="M14 34c0-10 4-16 10-20M24 34c0-10 4-16 10-20" stroke="#9A5F45" stroke-width="1.6" stroke-linecap="round"/>
+            <circle cx="24" cy="14" r="3" stroke="#C98B6B" stroke-width="1.6"/>
+          </svg>
+          <p class="kicker">Bloque 01</p>
+          <h3>Peluquería</h3>
+          <p>El trabajo de salón de siempre: diagnóstico del cabello, corte, color y acabado.</p>
+          <ul>
+            <li>Asesoramiento y diagnóstico capilar</li>
+            <li>Corte de señora, caballero e infantil</li>
+            <li>Color, mechas y matices</li>
+            <li>Peinado, recogidos y ocasiones especiales</li>
+            <li>Tratamientos de cuidado del cabello</li>
+          </ul>
+          <p class="card-foot">Contenido orientativo para la maqueta, pendiente de revisión por el salón.</p>
+        </article>
+
+        <article class="card">
+          <svg class="card-icon" width="42" height="42" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <circle cx="24" cy="24" r="23" stroke="#E2D7CC"/>
+            <path d="M24 12c6 5 9 9 9 13a9 9 0 0 1-18 0c0-4 3-8 9-13z" stroke="#9A5F45" stroke-width="1.6"/>
+            <path d="M24 30c-2.4 0-4-1.6-4-4" stroke="#C98B6B" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+          <p class="kicker">Bloque 02</p>
+          <h3>Estética</h3>
+          <p>Cuidado facial y corporal, y los servicios de cabina habituales en un centro de estética.</p>
+          <ul>
+            <li>Cuidado facial</li>
+            <li>Cuidado corporal</li>
+            <li>Depilación</li>
+            <li>Manicura y pedicura</li>
+            <li>Cejas y pestañas</li>
+          </ul>
+          <p class="card-foot">Contenido orientativo para la maqueta, pendiente de revisión por el salón.</p>
+        </article>
+
+        <article class="card">
+          <svg class="card-icon" width="42" height="42" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <circle cx="24" cy="24" r="23" stroke="#E2D7CC"/>
+            <path d="M12 20l12-6 12 6-12 6-12-6z" stroke="#9A5F45" stroke-width="1.6"/>
+            <path d="M17 22.5V29c0 2 3.1 3.5 7 3.5s7-1.5 7-3.5v-6.5" stroke="#C98B6B" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+          <p class="kicker">Bloque 03</p>
+          <h3>Formación</h3>
+          <p>Ekos Estilistas también imparte formación. Un apartado propio permite explicarla y recoger solicitudes de información.</p>
+          <ul>
+            <li>Formación en peluquería</li>
+            <li>Formación en estética</li>
+            <li>Sesiones prácticas en el salón</li>
+            <li>Información de plazas y fechas a consultar</li>
+          </ul>
+          <p class="card-foot">Programa, duración y condiciones los facilita el centro.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PASOS -->
+  <section class="band band--deep" id="visita">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Cómo trabajamos</p>
+        <h2>Tu primera visita, en tres pasos.</h2>
+        <p class="lead">La web no sustituye al trato en el salón: lo prepara. Así quedaría explicado el recorrido de quien llega por primera vez.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <p class="step-n">PASO 01</p>
+          <h3>Pides cita</h3>
+          <p>Por teléfono, en el 987 405 027, o dejando tus datos en el formulario de la web para que el salón te devuelva la llamada cuando pueda atenderte.</p>
+        </div>
+        <div class="step">
+          <p class="step-n">PASO 02</p>
+          <h3>Hablamos antes de empezar</h3>
+          <p>Unos minutos para ver tu cabello o tu piel, entender qué buscas y acordar juntas qué tiene sentido hacer hoy y qué conviene dejar para más adelante.</p>
+        </div>
+        <div class="step">
+          <p class="step-n">PASO 03</p>
+          <h3>Trabajamos y te explicamos el cuidado</h3>
+          <p>Al terminar, te contamos cómo mantener el resultado en casa y cuándo conviene volver, sin prisas y sin compromisos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERÍA -->
+  <section class="band band--paper2" id="galeria">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Galería · espacio reservado</p>
+        <h2>Aquí irían vuestras fotos reales.</h2>
+        <p class="lead">Esta galería está maquetada con marcos vacíos a propósito. No hay ninguna imagen de archivo ni de otro salón: cada hueco indica el formato y queda a la espera de las fotografías de Ekos Estilistas.</p>
+      </div>
+      <div class="gal">
+
+        <figure class="ph">
+          <div class="ph-frame">
+            <svg viewBox="0 0 400 300" role="img" aria-label="Marco vacío reservado para una fotografía del salón">
+              <rect width="400" height="300" fill="#F3EBE3"/>
+              <g stroke="#C98B6B" stroke-opacity=".55" stroke-width="1.2">
+                <line x1="0" y1="0" x2="400" y2="300"/><line x1="400" y1="0" x2="0" y2="300"/>
+              </g>
+              <rect x="18" y="18" width="364" height="264" fill="none" stroke="#9A5F45" stroke-opacity=".5" stroke-width="1.2" stroke-dasharray="7 6"/>
+              <circle cx="200" cy="150" r="30" fill="#F8F4EF" stroke="#9A5F45" stroke-opacity=".6"/>
+              <g stroke="#9A5F45" stroke-width="1.4" stroke-linecap="round"><line x1="200" y1="136" x2="200" y2="164"/><line x1="186" y1="150" x2="214" y2="150"/></g>
+              <text x="200" y="214" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" letter-spacing="2" fill="#5B4F49">ESPACIO RESERVADO</text>
+              <text x="200" y="234" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#8A7A70">formato horizontal</text>
+            </svg>
+          </div>
+          <figcaption class="ph-cap"><b>El salón</b><span>Sin foto</span></figcaption>
+        </figure>
+
+        <figure class="ph">
+          <div class="ph-frame">
+            <svg viewBox="0 0 400 300" role="img" aria-label="Marco vacío reservado para una fotografía de trabajo de color">
+              <rect width="400" height="300" fill="#EFE4DC"/>
+              <g stroke="#C98B6B" stroke-opacity=".55" stroke-width="1.2">
+                <line x1="0" y1="0" x2="400" y2="300"/><line x1="400" y1="0" x2="0" y2="300"/>
+              </g>
+              <rect x="18" y="18" width="364" height="264" fill="none" stroke="#9A5F45" stroke-opacity=".5" stroke-width="1.2" stroke-dasharray="7 6"/>
+              <circle cx="200" cy="150" r="30" fill="#F8F4EF" stroke="#9A5F45" stroke-opacity=".6"/>
+              <g stroke="#9A5F45" stroke-width="1.4" stroke-linecap="round"><line x1="200" y1="136" x2="200" y2="164"/><line x1="186" y1="150" x2="214" y2="150"/></g>
+              <text x="200" y="214" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" letter-spacing="2" fill="#5B4F49">ESPACIO RESERVADO</text>
+              <text x="200" y="234" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#8A7A70">formato horizontal</text>
+            </svg>
+          </div>
+          <figcaption class="ph-cap"><b>Trabajo de color</b><span>Sin foto</span></figcaption>
+        </figure>
+
+        <figure class="ph">
+          <div class="ph-frame">
+            <svg viewBox="0 0 400 300" role="img" aria-label="Marco vacío reservado para una fotografía de un corte">
+              <rect width="400" height="300" fill="#F3EBE3"/>
+              <g stroke="#C98B6B" stroke-opacity=".55" stroke-width="1.2">
+                <line x1="0" y1="0" x2="400" y2="300"/><line x1="400" y1="0" x2="0" y2="300"/>
+              </g>
+              <rect x="18" y="18" width="364" height="264" fill="none" stroke="#9A5F45" stroke-opacity=".5" stroke-width="1.2" stroke-dasharray="7 6"/>
+              <circle cx="200" cy="150" r="30" fill="#F8F4EF" stroke="#9A5F45" stroke-opacity=".6"/>
+              <g stroke="#9A5F45" stroke-width="1.4" stroke-linecap="round"><line x1="200" y1="136" x2="200" y2="164"/><line x1="186" y1="150" x2="214" y2="150"/></g>
+              <text x="200" y="214" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" letter-spacing="2" fill="#5B4F49">ESPACIO RESERVADO</text>
+              <text x="200" y="234" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#8A7A70">formato horizontal</text>
+            </svg>
+          </div>
+          <figcaption class="ph-cap"><b>Corte y acabado</b><span>Sin foto</span></figcaption>
+        </figure>
+
+        <figure class="ph">
+          <div class="ph-frame">
+            <svg viewBox="0 0 400 300" role="img" aria-label="Marco vacío reservado para una fotografía de la cabina de estética">
+              <rect width="400" height="300" fill="#EFE4DC"/>
+              <g stroke="#C98B6B" stroke-opacity=".55" stroke-width="1.2">
+                <line x1="0" y1="0" x2="400" y2="300"/><line x1="400" y1="0" x2="0" y2="300"/>
+              </g>
+              <rect x="18" y="18" width="364" height="264" fill="none" stroke="#9A5F45" stroke-opacity=".5" stroke-width="1.2" stroke-dasharray="7 6"/>
+              <circle cx="200" cy="150" r="30" fill="#F8F4EF" stroke="#9A5F45" stroke-opacity=".6"/>
+              <g stroke="#9A5F45" stroke-width="1.4" stroke-linecap="round"><line x1="200" y1="136" x2="200" y2="164"/><line x1="186" y1="150" x2="214" y2="150"/></g>
+              <text x="200" y="214" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" letter-spacing="2" fill="#5B4F49">ESPACIO RESERVADO</text>
+              <text x="200" y="234" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#8A7A70">formato horizontal</text>
+            </svg>
+          </div>
+          <figcaption class="ph-cap"><b>Cabina de estética</b><span>Sin foto</span></figcaption>
+        </figure>
+
+        <figure class="ph">
+          <div class="ph-frame">
+            <svg viewBox="0 0 400 300" role="img" aria-label="Marco vacío reservado para una fotografía del equipo">
+              <rect width="400" height="300" fill="#F3EBE3"/>
+              <g stroke="#C98B6B" stroke-opacity=".55" stroke-width="1.2">
+                <line x1="0" y1="0" x2="400" y2="300"/><line x1="400" y1="0" x2="0" y2="300"/>
+              </g>
+              <rect x="18" y="18" width="364" height="264" fill="none" stroke="#9A5F45" stroke-opacity=".5" stroke-width="1.2" stroke-dasharray="7 6"/>
+              <circle cx="200" cy="150" r="30" fill="#F8F4EF" stroke="#9A5F45" stroke-opacity=".6"/>
+              <g stroke="#9A5F45" stroke-width="1.4" stroke-linecap="round"><line x1="200" y1="136" x2="200" y2="164"/><line x1="186" y1="150" x2="214" y2="150"/></g>
+              <text x="200" y="214" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" letter-spacing="2" fill="#5B4F49">ESPACIO RESERVADO</text>
+              <text x="200" y="234" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#8A7A70">formato horizontal</text>
+            </svg>
+          </div>
+          <figcaption class="ph-cap"><b>El equipo</b><span>Sin foto</span></figcaption>
+        </figure>
+
+        <figure class="ph">
+          <div class="ph-frame">
+            <svg viewBox="0 0 400 300" role="img" aria-label="Marco vacío reservado para una fotografía de una sesión de formación">
+              <rect width="400" height="300" fill="#EFE4DC"/>
+              <g stroke="#C98B6B" stroke-opacity=".55" stroke-width="1.2">
+                <line x1="0" y1="0" x2="400" y2="300"/><line x1="400" y1="0" x2="0" y2="300"/>
+              </g>
+              <rect x="18" y="18" width="364" height="264" fill="none" stroke="#9A5F45" stroke-opacity=".5" stroke-width="1.2" stroke-dasharray="7 6"/>
+              <circle cx="200" cy="150" r="30" fill="#F8F4EF" stroke="#9A5F45" stroke-opacity=".6"/>
+              <g stroke="#9A5F45" stroke-width="1.4" stroke-linecap="round"><line x1="200" y1="136" x2="200" y2="164"/><line x1="186" y1="150" x2="214" y2="150"/></g>
+              <text x="200" y="214" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" letter-spacing="2" fill="#5B4F49">ESPACIO RESERVADO</text>
+              <text x="200" y="234" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#8A7A70">formato horizontal</text>
+            </svg>
+          </div>
+          <figcaption class="ph-cap"><b>Formación</b><span>Sin foto</span></figcaption>
+        </figure>
+
+      </div>
+      <p class="gal-note">Los seis marcos de arriba son placeholders dibujados con CSS y SVG. En la web definitiva se sustituirían por fotografías propias del salón, de su trabajo y de su equipo.</p>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="band" id="contacto">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Contacto y visitas</p>
+        <h2>Estamos en el centro de Ponferrada.</h2>
+        <p class="lead">Datos reales del negocio. El horario no se publica en esta maqueta porque no consta de forma fiable: se indica «Consultar horario» hasta que el salón lo facilite.</p>
+      </div>
+      <div class="contact">
+        <div>
+          <dl class="dl">
+            <div class="dl-row">
+              <dt>Teléfono</dt>
+              <dd><a href="tel:+34987405027">987 405 027</a><small>Pedir cita o consultar disponibilidad</small></dd>
+            </div>
+            <div class="dl-row">
+              <dt>Dirección</dt>
+              <dd>Calle Mateo Garza, 20<br>24400 Ponferrada (León)</dd>
+            </div>
+            <div class="dl-row">
+              <dt>Horario</dt>
+              <dd>Consultar horario<small>Dato pendiente de confirmar por el salón</small></dd>
+            </div>
+            <div class="dl-row">
+              <dt>Email</dt>
+              <dd><a href="mailto:elenaekos@hotmail.com">elenaekos@hotmail.com</a></dd>
+            </div>
+          </dl>
+          <div class="contact-cta">
+            <a class="btn" href="tel:+34987405027">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 3h3l2 5-2.5 1.5a11 11 0 0 0 5 5L15 12l5 2v3a2 2 0 0 1-2.2 2A16 16 0 0 1 4 5.2 2 2 0 0 1 6 3z"/></svg>
+              Llamar al 987 405 027
+            </a>
+            <a class="btn btn--ghost" href="mailto:elenaekos@hotmail.com">Escribir un email</a>
+          </div>
+        </div>
+
+        <div class="map">
+          <svg viewBox="0 0 640 420" role="img" aria-label="Mapa esquemático que sitúa el salón en la calle Mateo Garza de Ponferrada">
+            <rect width="640" height="420" fill="#F2EAE1"/>
+            <g stroke="#E2D7CC" stroke-width="1">
+              <path d="M0 60H640M0 130H640M0 200H640M0 270H640M0 340H640"/>
+              <path d="M90 0V420M200 0V420M330 0V420M460 0V420M560 0V420"/>
+            </g>
+            <g fill="#EADFD4">
+              <rect x="100" y="70" width="90" height="50" rx="2"/>
+              <rect x="210" y="70" width="110" height="50" rx="2"/>
+              <rect x="100" y="280" width="90" height="50" rx="2"/>
+              <rect x="470" y="210" width="80" height="50" rx="2"/>
+              <rect x="470" y="70" width="80" height="50" rx="2"/>
+            </g>
+            <path d="M-10 210h660" stroke="#CBB7A4" stroke-width="26" stroke-linecap="butt"/>
+            <path d="M-10 210h660" stroke="#F6EFE7" stroke-width="2" stroke-dasharray="16 14"/>
+            <path d="M330 -10v440" stroke="#DCCBB9" stroke-width="16"/>
+            <path d="M90 -10v440" stroke="#DCCBB9" stroke-width="12"/>
+            <text x="24" y="196" font-family="system-ui,sans-serif" font-size="21" letter-spacing="1.5" fill="#5B4F49">CALLE MATEO GARZA</text>
+            <text x="344" y="48" font-family="system-ui,sans-serif" font-size="16" letter-spacing="1.2" fill="#8A7A70">calle transversal</text>
+            <text x="104" y="404" font-family="system-ui,sans-serif" font-size="16" letter-spacing="1.2" fill="#8A7A70">calle transversal</text>
+            <g>
+              <circle cx="330" cy="210" r="26" fill="#9A5F45" opacity=".16"/>
+              <circle cx="330" cy="210" r="12" fill="#9A5F45" stroke="#F8F4EF" stroke-width="3"/>
+            </g>
+            <g>
+              <rect x="358" y="172" width="250" height="76" rx="3" fill="#FFFCF8" stroke="#E2D7CC"/>
+              <text x="374" y="203.5" font-family="system-ui,sans-serif" font-size="20" fill="#241D1A">Ekos Estilistas</text>
+              <text x="374" y="228" font-family="system-ui,sans-serif" font-size="15.5" fill="#5B4F49">Mateo Garza, 20 · Ponferrada</text>
+            </g>
+          </svg>
+          <p class="map-foot">Mapa esquemático dibujado en SVG, orientativo y sin escala: no pretende precisión cartográfica.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h3>Ekos Estilistas</h3>
+        <p>Peluquería, centro de estética y formación en Calle Mateo Garza, 20 — 24400 Ponferrada (León).</p>
+      </div>
+      <div>
+        <p class="foot-h">Contacto</p>
+        <ul>
+          <li><a href="tel:+34987405027">987 405 027</a></li>
+          <li><a href="mailto:elenaekos@hotmail.com">elenaekos@hotmail.com</a></li>
+          <li>Consultar horario</li>
+        </ul>
+      </div>
+      <div>
+        <p class="foot-h">Secciones</p>
+        <ul>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#visita">Tu primera visita</a></li>
+          <li><a href="#galeria">Galería</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bar">
+      <p class="credit">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+      <p>Maqueta no oficial · sin vínculo comercial · datos de contacto públicos del negocio</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

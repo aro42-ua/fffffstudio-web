@@ -1,0 +1,804 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cristalería Marquetería Órgiva — Propuesta de diseño</title>
+<meta name="description" content="Propuesta de diseño (maqueta no oficial) para Cristalería Marquetería Órgiva: vidrio, mamparas, espejos, marcos y enmarcado e instalación en Órgiva, Granada.">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  :root{
+    --ink:#0d1b22;
+    --ink-2:#17303c;
+    --slate:#4a626e;
+    --mist:#eef4f6;
+    --paper:#f7fafb;
+    --white:#ffffff;
+    --glass:#bfe3e8;
+    --glass-2:#8ec9d4;
+    --aqua:#17818f;
+    --aqua-deep:#0f5b66;
+    --brass:#b88a4a;
+    --line:rgba(13,27,34,.12);
+    --line-soft:rgba(13,27,34,.07);
+    --bar-h:44px;
+    --shadow:0 18px 50px -24px rgba(13,27,34,.35);
+    --r:16px;
+    --maxw:1180px;
+  }
+  html{-webkit-text-size-adjust:100%}
+  html,body{max-width:100%;overflow-x:hidden}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Helvetica Neue",Helvetica,Arial,"Segoe UI",system-ui,sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%;display:block}
+  a{color:inherit}
+  h1,h2,h3,h4{margin:0;line-height:1.08;letter-spacing:-.022em;font-weight:600}
+  p{margin:0}
+  ul{margin:0;padding:0;list-style:none}
+
+  /* ---------- barra fija de propuesta ---------- */
+  .propbar{
+    position:fixed;inset:0 0 auto 0;z-index:100;
+    height:var(--bar-h);
+    display:flex;align-items:center;justify-content:center;
+    gap:.5em;
+    background:var(--ink);
+    color:#dce9ec;
+    font-size:12.5px;letter-spacing:.07em;text-transform:uppercase;
+    padding:0 14px;
+    text-align:center;
+    border-bottom:1px solid rgba(255,255,255,.1);
+  }
+  .propbar span{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%}
+  .propbar .dot{width:6px;height:6px;border-radius:50%;background:var(--glass-2);flex:0 0 auto}
+  body{padding-top:var(--bar-h)}
+
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 32px}
+  section{position:relative}
+  .eyebrow{
+    font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--aqua);font-weight:600;
+  }
+  .lead{color:var(--slate);font-size:1.0625rem}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(120% 90% at 82% 8%, rgba(191,227,232,.85) 0%, rgba(191,227,232,0) 58%),
+      radial-gradient(90% 70% at 4% 96%, rgba(23,129,143,.16) 0%, rgba(23,129,143,0) 60%),
+      linear-gradient(170deg,#ffffff 0%,#eef5f7 55%,#e3eef1 100%);
+    border-bottom:1px solid var(--line);
+  }
+  .hero-shapes{position:absolute;inset:0;pointer-events:none}
+  .hero-grid{
+    position:absolute;inset:0;
+    background-image:linear-gradient(to right,rgba(13,27,34,.05) 1px,transparent 1px);
+    background-size:84px 100%;
+    mask-image:linear-gradient(to bottom,rgba(0,0,0,.9),transparent 85%);
+    -webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,.9),transparent 85%);
+  }
+  .hero-inner{
+    position:relative;
+    display:grid;grid-template-columns:1.08fr .92fr;gap:56px;align-items:center;
+    padding-block:84px 92px;
+  }
+  .hero h1{
+    font-size:clamp(2.1rem,5.2vw,3.85rem);
+    margin:18px 0 20px;
+    font-weight:600;
+  }
+  .hero h1 em{font-style:normal;color:var(--aqua-deep)}
+  .hero-sub{max-width:34em;color:var(--slate);font-size:1.0625rem}
+  .tagline{
+    display:inline-flex;align-items:center;gap:10px;
+    background:rgba(255,255,255,.72);
+    border:1px solid var(--line);
+    border-radius:999px;padding:6px 14px 6px 10px;
+    font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);
+    backdrop-filter:blur(6px);
+  }
+  .tagline .tl-dot{width:7px;height:7px;border-radius:50%;background:var(--aqua)}
+
+  .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:11px;
+    font:inherit;font-weight:600;font-size:1rem;
+    text-decoration:none;border-radius:999px;
+    padding:15px 26px;border:1px solid transparent;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg,var(--aqua) 0%,var(--aqua-deep) 100%);
+    color:#fff;box-shadow:0 14px 30px -14px rgba(15,91,102,.75);
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 20px 38px -16px rgba(15,91,102,.8)}
+  .btn-ghost{
+    background:rgba(255,255,255,.7);color:var(--ink);border-color:var(--line);
+  }
+  .btn-ghost:hover{background:#fff;transform:translateY(-2px)}
+  .btn svg{flex:0 0 auto}
+  .cta-note{font-size:14px;color:var(--slate)}
+
+  .hero-badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:34px}
+  .chip{
+    font-size:13px;color:var(--ink-2);
+    background:rgba(255,255,255,.66);
+    border:1px solid var(--line-soft);
+    border-radius:8px;padding:7px 12px;
+  }
+
+  .hero-art{position:relative;min-width:0}
+  .hero-art svg{width:100%;height:auto;filter:drop-shadow(0 24px 44px rgba(13,27,34,.16))}
+
+  /* ---------- franja de materiales ---------- */
+  .strip{
+    background:var(--ink);color:#cfe2e6;
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .strip ul{
+    display:flex;flex-wrap:wrap;gap:10px 34px;
+    padding:18px 0;align-items:center;justify-content:space-between;
+  }
+  .strip li{
+    font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;
+    display:flex;align-items:center;gap:10px;
+  }
+  .strip li::before{
+    content:"";width:16px;height:1px;background:var(--glass-2);flex:0 0 auto;
+  }
+
+  /* ---------- bloques ---------- */
+  .block{padding:84px 0}
+  .block.alt{background:linear-gradient(180deg,#ffffff 0%,#f4f9fa 100%);border-block:1px solid var(--line-soft)}
+  .head{max-width:640px;margin-bottom:46px}
+  .head h2{font-size:clamp(1.6rem,3.4vw,2.35rem);margin:14px 0 14px}
+
+  .grid{display:grid;gap:20px}
+  .g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+
+  .card{
+    background:var(--white);
+    border:1px solid var(--line-soft);
+    border-radius:var(--r);
+    padding:26px 24px 28px;
+    position:relative;overflow:hidden;
+    min-width:0;
+    transition:border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+  }
+  .card::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(135deg,rgba(191,227,232,.4) 0%,rgba(191,227,232,0) 42%);
+  }
+  .card:hover{transform:translateY(-3px);border-color:var(--glass-2);box-shadow:var(--shadow)}
+  .card .ico{
+    width:46px;height:46px;border-radius:12px;
+    background:linear-gradient(140deg,#e7f3f5,#cfe7eb);
+    border:1px solid rgba(23,129,143,.18);
+    display:flex;align-items:center;justify-content:center;margin-bottom:18px;
+    position:relative;z-index:1;
+  }
+  .card h3{font-size:1.1rem;margin-bottom:9px;position:relative;z-index:1}
+  .card p{color:var(--slate);font-size:.95rem;position:relative;z-index:1}
+
+  /* ---------- pasos ---------- */
+  .steps{counter-reset:s;display:grid;gap:20px;grid-template-columns:repeat(3,minmax(0,1fr))}
+  .step{
+    position:relative;min-width:0;
+    background:var(--white);border:1px solid var(--line-soft);
+    border-radius:var(--r);padding:30px 26px 30px;
+  }
+  .step .n{
+    font-size:13px;font-weight:700;letter-spacing:.12em;
+    color:var(--aqua);margin-bottom:16px;display:flex;align-items:center;gap:12px;
+  }
+  .step .n::after{content:"";height:1px;flex:1;background:linear-gradient(to right,var(--glass-2),transparent)}
+  .step h3{font-size:1.14rem;margin-bottom:10px}
+  .step p{color:var(--slate);font-size:.95rem}
+
+  /* ---------- galería maquetada ---------- */
+  .gal-note{
+    display:flex;gap:14px;align-items:flex-start;
+    background:rgba(184,138,74,.09);
+    border:1px dashed rgba(184,138,74,.5);
+    border-radius:12px;padding:16px 18px;margin-bottom:28px;
+    color:#6b4e22;font-size:.92rem;
+  }
+  .gal-note strong{color:#523a16}
+  .gal{display:grid;gap:18px;grid-template-columns:repeat(3,minmax(0,1fr))}
+  .frame{
+    min-width:0;
+    background:var(--white);
+    border:1px solid var(--line-soft);
+    border-radius:14px;
+    padding:14px 14px 16px;
+  }
+  .frame .ph{
+    position:relative;border-radius:8px;overflow:hidden;
+    background:
+      repeating-linear-gradient(135deg,rgba(13,27,34,.045) 0 10px,rgba(13,27,34,0) 10px 20px),
+      linear-gradient(160deg,#eef6f8 0%,#dfecef 100%);
+    border:1px solid rgba(13,27,34,.1);
+  }
+  .frame .ph svg{width:100%;height:auto;display:block}
+  .frame .tag{
+    position:absolute;left:10px;top:10px;
+    background:rgba(13,27,34,.86);color:#dbe9ec;
+    font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;
+    padding:5px 9px;border-radius:5px;
+    max-width:calc(100% - 20px);
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  }
+  .frame .cap{
+    margin-top:12px;font-size:.86rem;color:var(--slate);
+  }
+  .frame .cap b{display:block;color:var(--ink);font-size:.95rem;font-weight:600;margin-bottom:3px}
+
+  /* ---------- contacto ---------- */
+  .contact{
+    background:
+      radial-gradient(90% 120% at 100% 0%, rgba(23,129,143,.22) 0%, rgba(23,129,143,0) 60%),
+      linear-gradient(165deg,#102730 0%,#0d1b22 100%);
+    color:#e3eef0;
+  }
+  .contact .head h2{color:#fff}
+  .contact .eyebrow{color:var(--glass-2)}
+  .contact .lead{color:#a9c3c9}
+  .c-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+  .c-card{
+    background:rgba(255,255,255,.055);
+    border:1px solid rgba(255,255,255,.14);
+    border-radius:var(--r);
+    padding:28px 26px;
+    backdrop-filter:blur(4px);
+    min-width:0;
+  }
+  .c-list li{
+    display:flex;gap:16px;padding:16px 0;
+    border-bottom:1px solid rgba(255,255,255,.1);
+    align-items:flex-start;
+  }
+  .c-list li:last-child{border-bottom:0;padding-bottom:0}
+  .c-list li:first-child{padding-top:0}
+  .c-ico{
+    width:38px;height:38px;flex:0 0 auto;border-radius:10px;
+    background:rgba(142,201,212,.16);border:1px solid rgba(142,201,212,.3);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .c-k,.c-sub{display:block}
+  .c-k{font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;color:#8fb0b8;margin-bottom:3px}
+  .c-v{display:block;font-size:1.06rem;color:#fff;font-weight:600;word-break:break-word;overflow-wrap:anywhere;text-decoration:none}
+  .c-v.link:hover{color:var(--glass)}
+  .c-v.email{font-size:.98rem;word-break:break-word}
+  .c-sub{font-size:.88rem;color:#9ab6bd;margin-top:3px}
+  .map-card{padding:0;overflow:hidden}
+  .map-card svg{width:100%;height:auto;display:block}
+  .map-foot{
+    padding:14px 20px 16px;font-size:.8rem;color:#90aeb5;
+    border-top:1px solid rgba(255,255,255,.1);
+  }
+  .contact .btn-primary{background:linear-gradient(135deg,#1e9aab 0%,#13717f 100%)}
+  .contact .cta-row{margin-top:26px}
+  .contact .cta-note{color:#9ab6bd}
+
+  /* ---------- pie ---------- */
+  footer{background:#08141a;color:#9fb8bf;padding:54px 0 40px;font-size:.92rem}
+  .f-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:34px;align-items:start}
+  .f-brand{font-size:1.05rem;color:#fff;font-weight:600;letter-spacing:-.01em;margin-bottom:8px}
+  footer h4{font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;color:#6f8d95;margin-bottom:12px}
+  footer li{padding:4px 0;word-break:break-word;overflow-wrap:anywhere}
+  footer a{text-decoration:none}
+  footer a:hover{color:var(--glass)}
+  .f-rule{height:1px;background:rgba(255,255,255,.1);margin:34px 0 22px}
+  .f-sig{
+    display:flex;flex-wrap:wrap;gap:10px 20px;justify-content:space-between;align-items:center;
+    font-size:.84rem;color:#7b979f;
+  }
+  .f-sig .studio{color:#cfe2e6}
+
+  /* ---------- 1024 ---------- */
+  @media (max-width:1000px){
+    .hero-inner{grid-template-columns:1fr;gap:42px;padding-block:62px 70px}
+    .hero-art{order:-1;max-width:520px}
+    .g3,.steps,.gal{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .c-grid{grid-template-columns:1fr}
+    .f-grid{grid-template-columns:1fr 1fr}
+  }
+  /* ---------- móvil ---------- */
+  @media (max-width:720px){
+    :root{--bar-h:54px}
+    body{font-size:16px}
+    .wrap{padding:0 20px}
+    .propbar{font-size:11px;letter-spacing:.04em;line-height:1.3;padding:0 16px}
+    .propbar span{white-space:normal}
+    .propbar .dot{display:none}
+    .hero-inner{padding-block:40px 52px;gap:30px}
+    .hero-art{order:1;max-width:330px;margin:0 auto}
+    .hero h1{font-size:clamp(1.95rem,8.4vw,2.6rem)}
+    .block{padding:58px 0}
+    .head{margin-bottom:32px}
+    .g3,.g2,.steps,.gal{grid-template-columns:1fr}
+    .btn{width:100%;justify-content:center;padding:16px 20px}
+    .cta-row{gap:12px}
+    .cta-note{width:100%;text-align:center}
+    .strip ul{flex-direction:column;align-items:flex-start;gap:9px;padding:20px 0}
+    .f-grid{grid-template-columns:1fr;gap:26px}
+    .card,.step{padding:22px 20px 24px}
+    .c-card{padding:22px 20px}
+    .c-v.email{font-size:.84rem;letter-spacing:-.005em}
+    .c-list li{gap:13px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none!important}
+  }
+</style>
+</head>
+<body>
+
+<div class="propbar" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<!-- ===================== HERO ===================== -->
+<header class="hero">
+  <div class="hero-shapes"><div class="hero-grid"></div></div>
+  <div class="wrap hero-inner">
+    <div>
+      <span class="tagline"><span class="tl-dot"></span>Órgiva · Granada</span>
+      <h1>Cristalería y marquetería<br><em>a medida</em> en Órgiva</h1>
+      <p class="hero-sub">Vidrio, mamparas, espejos, marcos y enmarcado. Tomamos medidas, preparamos la pieza y la instalamos. Cuéntanos qué necesitas y te preparamos un presupuesto.</p>
+
+      <div class="cta-row">
+        <a class="btn btn-primary" href="tel:+34670071199">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 3.5h3.2l1.6 4-2 1.4a12.5 12.5 0 0 0 5.8 5.8l1.4-2 4 1.6v3.2a1.8 1.8 0 0 1-2 1.8A16.5 16.5 0 0 1 2.7 5.5a1.8 1.8 0 0 1 1.8-2Z"/></svg>
+          Llamar al 670 071 199
+        </a>
+        <a class="btn btn-ghost" href="#contacto">
+          Pedir presupuesto
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <p class="cta-note" style="margin-top:14px">Calle Lora Tamayo 3, 18400 Órgiva (Granada) · Consultar horario</p>
+
+      <ul class="hero-badges">
+        <li class="chip">Medidas a medida</li>
+        <li class="chip">Instalación incluida</li>
+        <li class="chip">Presupuesto sin compromiso</li>
+      </ul>
+    </div>
+
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 520 440" role="presentation">
+        <defs>
+          <linearGradient id="gA" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#ffffff" stop-opacity=".95"/>
+            <stop offset=".5" stop-color="#cfe8ec" stop-opacity=".75"/>
+            <stop offset="1" stop-color="#8ec9d4" stop-opacity=".55"/>
+          </linearGradient>
+          <linearGradient id="gB" x1="1" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#ffffff" stop-opacity=".9"/>
+            <stop offset="1" stop-color="#17818f" stop-opacity=".28"/>
+          </linearGradient>
+          <linearGradient id="gC" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#ffffff" stop-opacity=".8"/>
+            <stop offset=".45" stop-color="#ffffff" stop-opacity="0"/>
+            <stop offset="1" stop-color="#bfe3e8" stop-opacity=".6"/>
+          </linearGradient>
+          <linearGradient id="gBrass" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#d9b47c"/>
+            <stop offset="1" stop-color="#9c7138"/>
+          </linearGradient>
+        </defs>
+
+        <!-- marco de marquetería (madera) -->
+        <g>
+          <rect x="34" y="60" width="238" height="300" rx="5" fill="url(#gBrass)"/>
+          <rect x="52" y="78" width="202" height="264" rx="3" fill="#f3f8f9"/>
+          <rect x="52" y="78" width="202" height="264" rx="3" fill="url(#gC)"/>
+          <rect x="68" y="94" width="170" height="232" rx="2" fill="none" stroke="#0d1b22" stroke-opacity=".14" stroke-dasharray="7 6"/>
+          <!-- passe-partout líneas -->
+          <path d="M52 78 L254 342 M254 78 L52 342" stroke="#0d1b22" stroke-opacity=".05"/>
+        </g>
+
+        <!-- hoja de vidrio / mampara -->
+        <g>
+          <rect x="214" y="26" width="268" height="366" rx="8" fill="url(#gA)" stroke="#0d1b22" stroke-opacity=".16"/>
+          <rect x="214" y="26" width="268" height="366" rx="8" fill="url(#gB)" opacity=".55"/>
+          <!-- perfil superior e inferior -->
+          <rect x="206" y="18" width="284" height="14" rx="4" fill="#28414c"/>
+          <rect x="206" y="388" width="284" height="14" rx="4" fill="#28414c"/>
+          <!-- divisiones -->
+          <line x1="348" y1="32" x2="348" y2="388" stroke="#0d1b22" stroke-opacity=".14"/>
+          <!-- reflejos -->
+          <path d="M238 388 L336 32 L380 32 L282 388 Z" fill="#ffffff" opacity=".5"/>
+          <path d="M398 388 L466 140 L482 140 L482 196 L430 388 Z" fill="#ffffff" opacity=".3"/>
+          <!-- tirador -->
+          <rect x="454" y="188" width="8" height="58" rx="4" fill="#28414c"/>
+        </g>
+
+        <!-- espejo redondo -->
+        <g>
+          <circle cx="146" cy="330" r="76" fill="#0d1b22" opacity=".06"/>
+          <circle cx="142" cy="326" r="76" fill="url(#gA)" stroke="url(#gBrass)" stroke-width="5"/>
+          <path d="M96 372 A76 76 0 0 1 176 256" fill="none" stroke="#ffffff" stroke-opacity=".8" stroke-width="10" stroke-linecap="round"/>
+          <path d="M118 378 A76 76 0 0 1 192 290" fill="none" stroke="#ffffff" stroke-opacity=".4" stroke-width="5" stroke-linecap="round"/>
+        </g>
+
+        <!-- líneas de medida -->
+        <g stroke="#17818f" stroke-opacity=".55" stroke-width="1.4">
+          <line x1="206" y1="412" x2="490" y2="412"/>
+          <line x1="206" y1="406" x2="206" y2="418"/>
+          <line x1="490" y1="406" x2="490" y2="418"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== FRANJA ===================== -->
+<div class="strip">
+  <div class="wrap">
+    <ul>
+      <li>Vidrio</li>
+      <li>Mamparas</li>
+      <li>Espejos</li>
+      <li>Marcos y enmarcado</li>
+      <li>Instalación</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ===================== SERVICIOS ===================== -->
+<section class="block" id="servicios">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Servicios</span>
+      <h2>Lo que hacemos en el taller</h2>
+      <p class="lead">Trabajo de cristalería y marquetería para viviendas, locales y obra. Cada pieza se corta a la medida que haga falta.</p>
+    </div>
+
+    <div class="grid g3">
+      <article class="card">
+        <div class="ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0f5b66" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="2"/><path d="M3.5 14 14 3.5M9 20.5 20.5 9"/></svg>
+        </div>
+        <h3>Vidrio a medida</h3>
+        <p>Corte y suministro de vidrio para ventanas, puertas, encimeras, estanterías y mesas, con los cantos trabajados.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0f5b66" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="8" height="18" rx="1.5"/><rect x="13" y="3" width="8" height="18" rx="1.5"/><path d="M9 11v2M15 11v2"/></svg>
+        </div>
+        <h3>Mamparas de baño y ducha</h3>
+        <p>Mamparas fijas, correderas y abatibles. Tomamos medidas en el sitio y ajustamos los perfiles al hueco real.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0f5b66" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="12" rx="6.5" ry="9"/><path d="M8.5 18.5C7 16 7 8 9.5 5"/></svg>
+        </div>
+        <h3>Espejos</h3>
+        <p>Espejos para baño, recibidor, armarios y locales. A la forma y el tamaño que necesites, con o sin marco.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0f5b66" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4" width="19" height="16" rx="1.5"/><rect x="6" y="7.5" width="12" height="9" rx="1"/></svg>
+        </div>
+        <h3>Marcos y enmarcado</h3>
+        <p>Enmarcado de cuadros, láminas, fotografías, títulos y trabajos delicados. Molduras, cristal y montaje.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0f5b66" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20h18M6 20V9l6-5 6 5v11"/><path d="M10 20v-6h4v6"/></svg>
+        </div>
+        <h3>Acristalamiento y cerramientos</h3>
+        <p>Sustitución de vidrios en carpintería existente y acristalamiento de huecos en vivienda y local.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0f5b66" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 3.5a4.5 4.5 0 0 0 6 6L10 20a3 3 0 0 1-4.2 0l-1.8-1.8a3 3 0 0 1 0-4.2Z"/><path d="M7 16.5h.01"/></svg>
+        </div>
+        <h3>Instalación y montaje</h3>
+        <p>Nos encargamos del montaje en casa o en el local: medición, transporte de la pieza y colocación.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CÓMO TRABAJAMOS ===================== -->
+<section class="block alt" id="proceso">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Cómo trabajamos</span>
+      <h2>Tres pasos, sin sorpresas</h2>
+      <p class="lead">Del primer aviso a la pieza colocada. Si algo no cuadra, se dice antes de cortar.</p>
+    </div>
+
+    <div class="steps">
+      <article class="step">
+        <div class="n">Paso 01</div>
+        <h3>Nos cuentas qué necesitas</h3>
+        <p>Por teléfono o pasando por el taller. Con una idea del hueco, del tipo de vidrio o del trabajo a enmarcar ya podemos orientarte.</p>
+      </article>
+      <article class="step">
+        <div class="n">Paso 02</div>
+        <h3>Medimos y te damos presupuesto</h3>
+        <p>Tomamos las medidas exactas, proponemos materiales y acabados y te pasamos el presupuesto antes de empezar.</p>
+      </article>
+      <article class="step">
+        <div class="n">Paso 03</div>
+        <h3>Fabricamos e instalamos</h3>
+        <p>Preparamos la pieza en el taller y la colocamos en su sitio, dejando el remate limpio y revisado.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== GALERÍA MAQUETADA ===================== -->
+<section class="block" id="trabajos">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Trabajos</span>
+      <h2>Galería (espacio reservado)</h2>
+      <p class="lead">Esta sección está pensada para las fotos reales del taller: trabajos terminados, antes y después, detalles de acabado.</p>
+    </div>
+
+    <div class="gal-note">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8a6526" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:0 0 auto;margin-top:2px"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M12 11.5v5"/></svg>
+      <p><strong>Aviso de la maqueta:</strong> los recuadros de abajo son marcos vacíos dibujados en SVG, no fotografías. En la web definitiva irían aquí las imágenes de trabajos reales de Cristalería Marquetería Órgiva. No se muestra ninguna obra concreta porque esta propuesta no incluye fotos del negocio.</p>
+    </div>
+
+    <div class="gal">
+      <figure class="frame" style="margin:0">
+        <div class="ph">
+          <span class="tag">Espacio para foto</span>
+          <svg viewBox="0 0 400 300" aria-label="Marco vacío reservado para una fotografía">
+            <rect x="26" y="26" width="348" height="248" rx="4" fill="none" stroke="#0d1b22" stroke-opacity=".22" stroke-dasharray="9 7"/>
+            <g stroke="#17818f" stroke-opacity=".4" stroke-width="1.4">
+              <line x1="200" y1="112" x2="200" y2="188"/><line x1="162" y1="150" x2="238" y2="150"/>
+            </g>
+            <circle cx="200" cy="150" r="46" fill="none" stroke="#0d1b22" stroke-opacity=".16"/>
+            <path d="M26 274 L374 26" stroke="#ffffff" stroke-opacity=".75" stroke-width="22"/>
+          </svg>
+        </div>
+        <figcaption class="cap"><b>Formato horizontal</b>Pensado para una vista general de un trabajo terminado.</figcaption>
+      </figure>
+
+      <figure class="frame" style="margin:0">
+        <div class="ph">
+          <span class="tag">Espacio para foto</span>
+          <svg viewBox="0 0 400 300" aria-label="Marco vacío reservado para una fotografía de detalle">
+            <rect x="26" y="26" width="348" height="248" rx="4" fill="none" stroke="#0d1b22" stroke-opacity=".22" stroke-dasharray="9 7"/>
+            <rect x="92" y="70" width="216" height="160" rx="3" fill="none" stroke="#0d1b22" stroke-opacity=".18"/>
+            <line x1="200" y1="70" x2="200" y2="230" stroke="#0d1b22" stroke-opacity=".12"/>
+            <path d="M92 230 L250 70" stroke="#ffffff" stroke-opacity=".7" stroke-width="16"/>
+          </svg>
+        </div>
+        <figcaption class="cap"><b>Detalle de acabado</b>Para primeros planos de canto, perfil o moldura.</figcaption>
+      </figure>
+
+      <figure class="frame" style="margin:0">
+        <div class="ph">
+          <span class="tag">Espacio para foto</span>
+          <svg viewBox="0 0 400 300" aria-label="Marco vacío reservado para una comparación antes y después">
+            <rect x="26" y="26" width="348" height="248" rx="4" fill="none" stroke="#0d1b22" stroke-opacity=".22" stroke-dasharray="9 7"/>
+            <line x1="200" y1="26" x2="200" y2="274" stroke="#0d1b22" stroke-opacity=".25"/>
+            <rect x="56" y="62" width="114" height="176" rx="3" fill="#0d1b22" fill-opacity=".05"/>
+            <rect x="230" y="62" width="114" height="176" rx="3" fill="#ffffff" fill-opacity=".6" stroke="#0d1b22" stroke-opacity=".12"/>
+            <circle cx="200" cy="150" r="20" fill="#f7fafb" stroke="#0d1b22" stroke-opacity=".2"/>
+            <path d="M193 143 L207 157 M207 143 L193 157" stroke="#17818f" stroke-width="1.6"/>
+          </svg>
+        </div>
+        <figcaption class="cap"><b>Antes y después</b>Dos imágenes del mismo hueco, una al lado de la otra.</figcaption>
+      </figure>
+
+      <figure class="frame" style="margin:0">
+        <div class="ph">
+          <span class="tag">Espacio para foto</span>
+          <svg viewBox="0 0 400 300" aria-label="Marco vacío reservado para una fotografía vertical">
+            <rect x="26" y="26" width="348" height="248" rx="4" fill="none" stroke="#0d1b22" stroke-opacity=".22" stroke-dasharray="9 7"/>
+            <rect x="140" y="50" width="120" height="200" rx="3" fill="none" stroke="#0d1b22" stroke-opacity=".2"/>
+            <path d="M140 250 L230 50" stroke="#ffffff" stroke-opacity=".7" stroke-width="14"/>
+            <g stroke="#17818f" stroke-opacity=".4" stroke-width="1.3">
+              <line x1="120" y1="50" x2="120" y2="250"/><line x1="114" y1="50" x2="126" y2="50"/><line x1="114" y1="250" x2="126" y2="250"/>
+            </g>
+          </svg>
+        </div>
+        <figcaption class="cap"><b>Formato vertical</b>Para mamparas, espejos de pie o piezas altas.</figcaption>
+      </figure>
+
+      <figure class="frame" style="margin:0">
+        <div class="ph">
+          <span class="tag">Espacio para foto</span>
+          <svg viewBox="0 0 400 300" aria-label="Marco vacío reservado para una fotografía del taller">
+            <rect x="26" y="26" width="348" height="248" rx="4" fill="none" stroke="#0d1b22" stroke-opacity=".22" stroke-dasharray="9 7"/>
+            <rect x="56" y="150" width="288" height="88" rx="3" fill="#0d1b22" fill-opacity=".05" stroke="#0d1b22" stroke-opacity=".12"/>
+            <g stroke="#0d1b22" stroke-opacity=".16">
+              <line x1="100" y1="60" x2="100" y2="150"/><line x1="160" y1="60" x2="160" y2="150"/>
+              <line x1="220" y1="60" x2="220" y2="150"/><line x1="280" y1="60" x2="280" y2="150"/>
+            </g>
+            <path d="M56 238 L200 60" stroke="#ffffff" stroke-opacity=".6" stroke-width="18"/>
+          </svg>
+        </div>
+        <figcaption class="cap"><b>Taller y materiales</b>Para hojas de vidrio, molduras o la zona de corte.</figcaption>
+      </figure>
+
+      <figure class="frame" style="margin:0">
+        <div class="ph">
+          <span class="tag">Espacio para foto</span>
+          <svg viewBox="0 0 400 300" aria-label="Marco vacío reservado para una fotografía del montaje">
+            <rect x="26" y="26" width="348" height="248" rx="4" fill="none" stroke="#0d1b22" stroke-opacity=".22" stroke-dasharray="9 7"/>
+            <rect x="70" y="56" width="260" height="188" rx="4" fill="none" stroke="#0d1b22" stroke-opacity=".2"/>
+            <line x1="70" y1="150" x2="330" y2="150" stroke="#0d1b22" stroke-opacity=".12"/>
+            <line x1="200" y1="56" x2="200" y2="244" stroke="#0d1b22" stroke-opacity=".12"/>
+            <path d="M70 244 L190 56 M210 244 L330 100" stroke="#ffffff" stroke-opacity=".65" stroke-width="12"/>
+          </svg>
+        </div>
+        <figcaption class="cap"><b>Montaje terminado</b>Para la pieza ya colocada en su sitio.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACTO ===================== -->
+<section class="block contact" id="contacto">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Contacto</span>
+      <h2>Pide tu presupuesto</h2>
+      <p class="lead">Lo más rápido es una llamada: nos cuentas la medida o el trabajo y te orientamos al momento.</p>
+    </div>
+
+    <div class="c-grid">
+      <div class="c-card">
+        <ul class="c-list">
+          <li>
+            <span class="c-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#bfe3e8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 3.5h3.2l1.6 4-2 1.4a12.5 12.5 0 0 0 5.8 5.8l1.4-2 4 1.6v3.2a1.8 1.8 0 0 1-2 1.8A16.5 16.5 0 0 1 2.7 5.5a1.8 1.8 0 0 1 1.8-2Z"/></svg></span>
+            <span>
+              <span class="c-k">Teléfono</span>
+              <a class="c-v link" href="tel:+34670071199">670 071 199</a>
+            </span>
+          </li>
+          <li>
+            <span class="c-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#bfe3e8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg></span>
+            <span>
+              <span class="c-k">Dirección</span>
+              <span class="c-v">Calle Lora Tamayo 3</span>
+              <span class="c-sub">18400 Órgiva (Granada)</span>
+            </span>
+          </li>
+          <li>
+            <span class="c-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#bfe3e8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span>
+            <span>
+              <span class="c-k">Horario</span>
+              <span class="c-v">Consultar horario</span>
+            </span>
+          </li>
+          <li>
+            <span class="c-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#bfe3e8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5 12 13l8.5-6.5"/></svg></span>
+            <span>
+              <span class="c-k">Correo</span>
+              <a class="c-v link email" href="mailto:lidiapadialvaldes@hotmail.com">lidiapadialvaldes@hotmail.com</a>
+            </span>
+          </li>
+        </ul>
+
+        <div class="cta-row">
+          <a class="btn btn-primary" href="tel:+34670071199">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 3.5h3.2l1.6 4-2 1.4a12.5 12.5 0 0 0 5.8 5.8l1.4-2 4 1.6v3.2a1.8 1.8 0 0 1-2 1.8A16.5 16.5 0 0 1 2.7 5.5a1.8 1.8 0 0 1 1.8-2Z"/></svg>
+            Llamar ahora
+          </a>
+          <p class="cta-note">Si no te cogemos al momento, te devolvemos la llamada.</p>
+        </div>
+      </div>
+
+      <div class="c-card map-card">
+        <svg viewBox="0 0 560 420" role="img" aria-label="Mapa esquemático de situación: Calle Lora Tamayo, Órgiva">
+          <defs>
+            <linearGradient id="mapBg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#15323d"/>
+              <stop offset="1" stop-color="#0c1a21"/>
+            </linearGradient>
+          </defs>
+          <rect width="560" height="420" fill="url(#mapBg)"/>
+          <!-- retícula -->
+          <g stroke="#ffffff" stroke-opacity=".05">
+            <line x1="0" y1="70" x2="560" y2="70"/><line x1="0" y1="140" x2="560" y2="140"/>
+            <line x1="0" y1="210" x2="560" y2="210"/><line x1="0" y1="280" x2="560" y2="280"/>
+            <line x1="0" y1="350" x2="560" y2="350"/>
+            <line x1="70" y1="0" x2="70" y2="420"/><line x1="140" y1="0" x2="140" y2="420"/>
+            <line x1="210" y1="0" x2="210" y2="420"/><line x1="280" y1="0" x2="280" y2="420"/>
+            <line x1="350" y1="0" x2="350" y2="420"/><line x1="420" y1="0" x2="420" y2="420"/>
+            <line x1="490" y1="0" x2="490" y2="420"/>
+          </g>
+          <!-- manzanas -->
+          <g fill="#ffffff" fill-opacity=".045">
+            <rect x="46" y="48" width="150" height="104" rx="5"/>
+            <rect x="46" y="268" width="150" height="110" rx="5"/>
+            <rect x="372" y="48" width="146" height="104" rx="5"/>
+            <rect x="372" y="268" width="146" height="110" rx="5"/>
+            <rect x="238" y="48" width="92" height="104" rx="5"/>
+          </g>
+          <!-- calles secundarias -->
+          <g stroke="#8fb0b8" stroke-opacity=".3" stroke-width="7" stroke-linecap="round">
+            <line x1="216" y1="0" x2="216" y2="420"/>
+            <line x1="352" y1="0" x2="352" y2="420"/>
+          </g>
+          <!-- calle principal -->
+          <line x1="0" y1="212" x2="560" y2="212" stroke="#bfe3e8" stroke-opacity=".9" stroke-width="16" stroke-linecap="round"/>
+          <line x1="0" y1="212" x2="560" y2="212" stroke="#0c1a21" stroke-opacity=".45" stroke-width="2" stroke-dasharray="16 14"/>
+          <!-- punto -->
+          <circle cx="284" cy="212" r="34" fill="#17818f" fill-opacity=".2"/>
+          <circle cx="284" cy="212" r="21" fill="#17818f" fill-opacity=".35"/>
+          <g transform="translate(284 212)">
+            <path d="M0 -4 c-9 0 -16 7 -16 16 0 12 16 26 16 26s16 -14 16 -26c0 -9 -7 -16 -16 -16Z" fill="#ffffff"/>
+            <circle cx="0" cy="12" r="5.6" fill="#0f5b66"/>
+          </g>
+          <!-- etiquetas -->
+          <text x="24" y="196" fill="#cfe2e6" font-family="Helvetica,Arial,sans-serif" font-size="17" letter-spacing="1.4">Calle Lora Tamayo</text>
+          <text x="300" y="286" fill="#ffffff" font-family="Helvetica,Arial,sans-serif" font-size="18" font-weight="bold">Nº 3</text>
+          <text x="300" y="308" fill="#9ab6bd" font-family="Helvetica,Arial,sans-serif" font-size="16">Cristalería Marquetería Órgiva</text>
+          <text x="28" y="400" fill="#6f8d95" font-family="Helvetica,Arial,sans-serif" font-size="13" letter-spacing="2.4">ÓRGIVA · GRANADA</text>
+          <!-- norte -->
+          <g transform="translate(508 54)">
+            <circle r="20" fill="#ffffff" fill-opacity=".06" stroke="#ffffff" stroke-opacity=".16"/>
+            <path d="M0 -12 L6 8 L0 3 L-6 8 Z" fill="#bfe3e8"/>
+            <text x="0" y="-22" fill="#8fb0b8" font-family="Helvetica,Arial,sans-serif" font-size="11" text-anchor="middle">N</text>
+          </g>
+        </svg>
+        <p class="map-foot">Mapa esquemático orientativo dibujado para esta maqueta. No pretende exactitud cartográfica ni sustituye a un mapa real.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PIE ===================== -->
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <div class="f-brand">Cristalería Marquetería Órgiva</div>
+        <p>Vidrio, mamparas, espejos, marcos y enmarcado e instalación.<br>Calle Lora Tamayo 3, 18400 Órgiva (Granada)</p>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="tel:+34670071199">670 071 199</a></li>
+          <li><a href="mailto:lidiapadialvaldes@hotmail.com">lidiapadialvaldes@hotmail.com</a></li>
+          <li>Consultar horario</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Secciones</h4>
+        <ul>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#proceso">Cómo trabajamos</a></li>
+          <li><a href="#trabajos">Trabajos</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="f-rule"></div>
+
+    <div class="f-sig">
+      <p class="studio">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+      <p>Maqueta no oficial · sin vínculo comercial con el negocio</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

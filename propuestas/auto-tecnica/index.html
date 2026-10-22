@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Auto-técnica · Taller de reparación de automóviles en Dos Hermanas</title>
+<meta name="description" content="Auto-técnica, taller de reparación de automóviles en Dos Hermanas (Sevilla): electromecánica y mantenimiento. Maqueta de propuesta de FFFFFFstudio.">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  :root{
+    --bg:#0d1014;
+    --bg-2:#12161c;
+    --surface:#171d25;
+    --surface-2:#1d242e;
+    --line:#2b343f;
+    --line-soft:#222a34;
+    --text:#eef2f6;
+    --text-soft:#aeb9c6;
+    --text-dim:#8c98a6;
+    --accent:#ffb020;
+    --accent-ink:#1a1204;
+    --accent-soft:#3a2b08;
+    --bar-h:40px;
+    --maxw:1120px;
+    --r:14px;
+  }
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:"Helvetica Neue",Helvetica,Arial,"Segoe UI",system-ui,sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%}
+  a{color:inherit}
+  h1,h2,h3{line-height:1.15;margin:0;letter-spacing:-.015em;font-weight:800}
+  p{margin:0}
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  /* ---------- barra fija de propuesta ---------- */
+  .proposal-bar{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    min-height:var(--bar-h);
+    display:flex;align-items:center;justify-content:center;
+    background:#05070a;
+    border-bottom:1px solid #2a3340;
+    color:#cbd5e1;
+    font-size:12.5px;letter-spacing:.055em;text-transform:uppercase;
+    text-align:center;
+    padding:7px 14px;
+  }
+  .proposal-bar span{display:block;max-width:100%}
+  .page{padding-top:var(--bar-h)}
+
+  /* ---------- cabecera ---------- */
+  .nav{
+    border-bottom:1px solid var(--line-soft);
+    background:rgba(13,16,20,.92);
+  }
+  .nav-in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 24px;max-width:var(--maxw);margin:0 auto}
+  .brand{display:flex;align-items:center;gap:11px;min-width:0}
+  .brand-mark{flex:0 0 auto}
+  .brand-text{min-width:0}
+  .brand-name{font-weight:800;font-size:18px;letter-spacing:-.02em;white-space:nowrap}
+  .brand-sub{font-size:11.5px;color:var(--text-dim);letter-spacing:.09em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .nav-links{display:flex;gap:26px;font-size:14.5px;color:var(--text-soft)}
+  .nav-links a{text-decoration:none}
+  .nav-links a:hover{color:var(--accent)}
+  .nav-tel{
+    display:inline-flex;align-items:center;gap:8px;
+    text-decoration:none;font-weight:700;font-size:15px;
+    border:1px solid var(--line);border-radius:999px;padding:9px 16px;
+    background:var(--surface);white-space:nowrap;
+  }
+  .nav-tel:hover{border-color:var(--accent);color:var(--accent)}
+  @media(max-width:900px){.nav-links{display:none}}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line-soft)}
+  .hero-bg{position:absolute;inset:0;background:
+      radial-gradient(900px 420px at 78% 12%,rgba(255,176,32,.14),transparent 60%),
+      radial-gradient(700px 500px at 8% 85%,rgba(56,109,168,.16),transparent 65%),
+      linear-gradient(180deg,#11161d 0%,#0d1014 100%);
+  }
+  .hero-grid-lines{position:absolute;inset:0;opacity:.5}
+  .hero-in{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:76px 24px 84px;max-width:var(--maxw);margin:0 auto}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);
+    border:1px solid var(--accent-soft);background:rgba(255,176,32,.07);
+    border-radius:999px;padding:6px 13px;margin-bottom:22px;
+  }
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex:0 0 auto}
+  h1{font-size:clamp(2.1rem,4.6vw,3.5rem)}
+  .hero-lead{margin-top:20px;font-size:clamp(1rem,1.25vw,1.12rem);color:var(--text-soft);max-width:33em}
+  .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    text-decoration:none;font-weight:800;font-size:16px;
+    padding:15px 24px;border-radius:12px;border:1px solid transparent;
+  }
+  .btn-main{background:var(--accent);color:var(--accent-ink);box-shadow:0 10px 26px -14px rgba(255,176,32,.8)}
+  .btn-main:hover{background:#ffc04d}
+  .btn-ghost{border-color:var(--line);color:var(--text);background:var(--surface)}
+  .btn-ghost:hover{border-color:#44515f}
+  .hero-note{margin-top:18px;font-size:13.5px;color:var(--text-dim)}
+  .hero-art{position:relative}
+  .hero-card{
+    background:linear-gradient(160deg,var(--surface-2),var(--surface));
+    border:1px solid var(--line);border-radius:18px;padding:22px;
+  }
+  .hero-card-h{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+  .hero-card-h strong{font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-soft);font-weight:700}
+  .chip{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent-soft);border-radius:999px;padding:4px 10px}
+  .hero-list{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:11px}
+  .hero-list li{display:flex;align-items:flex-start;gap:11px;font-size:15px;color:var(--text-soft)}
+  .tick{flex:0 0 auto;margin-top:3px}
+  @media(max-width:900px){
+    .hero-in{grid-template-columns:1fr;gap:36px;padding:52px 24px 60px}
+  }
+
+  /* ---------- secciones ---------- */
+  section{scroll-margin-top:calc(var(--bar-h) + 16px)}
+  .block{padding:76px 0}
+  .block-alt{background:var(--bg-2);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
+  .sec-head{max-width:40em;margin-bottom:40px}
+  .kicker{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:13px}
+  h2{font-size:clamp(1.65rem,3vw,2.3rem)}
+  .sec-head p{margin-top:15px;color:var(--text-soft)}
+
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:18px}
+  .card{
+    background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--r);
+    padding:24px;display:flex;flex-direction:column;gap:12px;
+  }
+  .card:hover{border-color:var(--line)}
+  .ic{
+    width:46px;height:46px;border-radius:11px;flex:0 0 auto;
+    background:linear-gradient(150deg,rgba(255,176,32,.18),rgba(255,176,32,.05));
+    border:1px solid var(--accent-soft);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .card h3{font-size:1.08rem}
+  .card p{color:var(--text-soft);font-size:15px}
+
+  /* ---------- pasos ---------- */
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:18px;counter-reset:s}
+  .step{
+    position:relative;background:var(--surface);border:1px solid var(--line-soft);
+    border-radius:var(--r);padding:26px 24px 24px;
+  }
+  .step-n{
+    font-size:13px;font-weight:800;letter-spacing:.1em;color:var(--accent);
+    display:flex;align-items:center;gap:10px;margin-bottom:14px;
+  }
+  .step-n i{display:block;height:1px;flex:1;background:var(--line);font-style:normal}
+  .step h3{font-size:1.05rem;margin-bottom:9px}
+  .step p{color:var(--text-soft);font-size:15px}
+
+  /* ---------- contacto ---------- */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start}
+  @media(max-width:900px){.contact-grid{grid-template-columns:1fr}}
+  .panel{background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--r);padding:26px}
+  .info{list-style:none;margin:0;padding:0;display:grid;gap:18px}
+  .info li{display:flex;gap:14px;align-items:flex-start}
+  .info .ic{width:40px;height:40px;border-radius:10px}
+  .info-k{font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--text-dim);margin-bottom:3px}
+  .info-v{font-size:16px;font-weight:600;word-break:break-word;overflow-wrap:anywhere}
+  .info-v a{text-decoration:none;border-bottom:1px solid var(--accent-soft)}
+  .info-v a:hover{color:var(--accent)}
+  .info small{display:block;color:var(--text-dim);font-size:13.5px;font-weight:400;margin-top:3px}
+  .cta-inline{margin-top:26px;padding-top:22px;border-top:1px solid var(--line-soft)}
+  .map-cap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+  .map-cap strong{font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-soft);font-weight:700}
+  .map-frame{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#101620}
+  .map-frame svg{display:block;width:100%;height:auto}
+  .map-foot{margin-top:12px;font-size:13px;color:var(--text-dim)}
+
+  /* ---------- pie ---------- */
+  footer{background:#080b0f;border-top:1px solid var(--line-soft);padding:48px 0 40px}
+  .foot-grid{display:flex;flex-wrap:wrap;gap:28px;justify-content:space-between;align-items:flex-start}
+  .foot-col{min-width:0}
+  .foot-col h4{margin:0 0 12px;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim);font-weight:700}
+  .foot-col p,.foot-col a{font-size:15px;color:var(--text-soft);text-decoration:none;word-break:break-word;overflow-wrap:anywhere}
+  .foot-col a:hover{color:var(--accent)}
+  .foot-rule{height:1px;background:var(--line-soft);margin:34px 0 22px}
+  .studio{font-size:13.5px;color:var(--text-dim);text-align:center;line-height:1.7}
+  @media(max-width:620px){
+    :root{--bar-h:58px}
+    .proposal-bar{font-size:11.5px;letter-spacing:.04em;line-height:1.5;padding:8px 14px}
+  }
+  @media(max-width:560px){
+    body{font-size:16px}
+    .wrap{padding:0 18px}
+    .nav-in{padding:14px 18px}
+    .hero-in{padding:44px 18px 52px}
+    .block{padding:56px 0}
+    .panel,.card,.step{padding:20px}
+    .btn{width:100%}
+    .cta-row{gap:11px}
+    .brand-sub{display:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="proposal-bar"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<div class="page">
+
+  <header class="nav">
+    <div class="nav-in">
+      <div class="brand">
+        <svg class="brand-mark" width="38" height="38" viewBox="0 0 38 38" aria-hidden="true">
+          <rect x="1" y="1" width="36" height="36" rx="10" fill="#171d25" stroke="#2b343f"/>
+          <circle cx="19" cy="19" r="8.5" fill="none" stroke="#ffb020" stroke-width="2"/>
+          <circle cx="19" cy="19" r="2.6" fill="#ffb020"/>
+          <g stroke="#ffb020" stroke-width="2" stroke-linecap="round">
+            <path d="M19 6.5v4"/><path d="M19 27.5v4"/><path d="M6.5 19h4"/><path d="M27.5 19h4"/>
+          </g>
+        </svg>
+        <div class="brand-text">
+          <div class="brand-name">Auto-técnica</div>
+          <div class="brand-sub">Taller · Dos Hermanas</div>
+        </div>
+      </div>
+      <nav class="nav-links" aria-label="Secciones">
+        <a href="#servicios">Servicios</a>
+        <a href="#cita">Cómo pedir cita</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <a class="nav-tel" href="tel:+34645939841">
+        <svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.3 1.8a1.4 1.4 0 0 1 2 .2l1.2 1.6a1.4 1.4 0 0 1-.1 1.8l-.6.6a9 9 0 0 0 3.6 3.6l.6-.6a1.4 1.4 0 0 1 1.8-.1l1.6 1.2a1.4 1.4 0 0 1 .2 2l-.8.9c-.7.8-1.9 1-2.9.5A15 15 0 0 1 2.7 5.5c-.5-1-.3-2.2.5-2.9z" fill="#ffb020"/></svg>
+        645 939 841
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="t-hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <svg class="hero-grid-lines" aria-hidden="true" preserveAspectRatio="none" viewBox="0 0 1200 600">
+      <defs>
+        <pattern id="gp" width="60" height="60" patternUnits="userSpaceOnUse">
+          <path d="M60 0H0v60" fill="none" stroke="#2b343f" stroke-width=".7" opacity=".5"/>
+        </pattern>
+        <linearGradient id="gfade" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#fff" stop-opacity=".55"/>
+          <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+        </linearGradient>
+        <mask id="gm"><rect width="1200" height="600" fill="url(#gfade)"/></mask>
+      </defs>
+      <rect width="1200" height="600" fill="url(#gp)" mask="url(#gm)"/>
+    </svg>
+
+    <div class="hero-in">
+      <div>
+        <span class="eyebrow"><span class="dot"></span>Electromecánica y mantenimiento</span>
+        <h1 id="t-hero">Tu taller de confianza en Dos&nbsp;Hermanas</h1>
+        <p class="hero-lead">Auto-técnica es un taller de reparación de automóviles especializado en electromecánica y mantenimiento. Cuéntanos qué le pasa a tu coche y lo revisamos.</p>
+        <div class="cta-row">
+          <a class="btn btn-main" href="tel:+34645939841">
+            <svg width="17" height="17" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.3 1.8a1.4 1.4 0 0 1 2 .2l1.2 1.6a1.4 1.4 0 0 1-.1 1.8l-.6.6a9 9 0 0 0 3.6 3.6l.6-.6a1.4 1.4 0 0 1 1.8-.1l1.6 1.2a1.4 1.4 0 0 1 .2 2l-.8.9c-.7.8-1.9 1-2.9.5A15 15 0 0 1 2.7 5.5c-.5-1-.3-2.2.5-2.9z" fill="#1a1204"/></svg>
+            Llamar: 645 939 841
+          </a>
+          <a class="btn btn-ghost" href="#contacto">Ver dónde estamos</a>
+        </div>
+        <p class="hero-note">Avenida 28 de Febrero, 20, esquina C/ García Ramos, 1 · 41702 Dos Hermanas (Sevilla)</p>
+      </div>
+
+      <div class="hero-art">
+        <div class="hero-card">
+          <div class="hero-card-h">
+            <strong>En el taller</strong>
+            <span class="chip">Automóviles</span>
+          </div>
+          <svg viewBox="0 0 440 190" role="img" aria-label="Ilustración esquemática de un vehículo sobre elevador en el taller">
+            <defs>
+              <linearGradient id="body" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#3b4a5c"/><stop offset="1" stop-color="#232c38"/>
+              </linearGradient>
+              <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#5c7490"/><stop offset="1" stop-color="#36465a"/>
+              </linearGradient>
+              <linearGradient id="floor" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#ffb020" stop-opacity="0"/>
+                <stop offset=".5" stop-color="#ffb020" stop-opacity=".55"/>
+                <stop offset="1" stop-color="#ffb020" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <!-- coche -->
+            <path d="M58 118 V102 C58 94 64 89 73 87 L146 74 L182 58 C189 55 197 53 206 53 H256 C268 53 279 56 288 62 L322 85 L344 90 C354 92 358 97 358 104 V118 Z" fill="url(#body)" stroke="#4d5f74" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M152 83 L186 62 C191 59 198 57 205 57 H214 V83 Z" fill="url(#glass)"/>
+            <path d="M222 57 H254 C263 57 271 59 277 63 L303 83 H222 Z" fill="url(#glass)"/>
+            <path d="M218 58 V83" stroke="#53657a" stroke-width="1.5"/>
+            <rect x="196" y="92" width="20" height="4" rx="2" fill="#53657a"/>
+            <rect x="238" y="92" width="20" height="4" rx="2" fill="#53657a"/>
+            <path d="M60 99 h16 a4 4 0 0 1 4 4 v4 h-20 z" fill="#ffb020" opacity=".75"/>
+            <path d="M352 99 h-12 a4 4 0 0 0 -4 4 v4 h16 z" fill="#c8524a" opacity=".8"/>
+            <path d="M88 110 H330" stroke="#3d4b5c" stroke-width="1.5"/>
+            <circle cx="112" cy="120" r="24" fill="#131920" stroke="#55657a" stroke-width="3.5"/>
+            <circle cx="112" cy="120" r="9.5" fill="#2e3a48"/>
+            <circle cx="300" cy="120" r="24" fill="#131920" stroke="#55657a" stroke-width="3.5"/>
+            <circle cx="300" cy="120" r="9.5" fill="#2e3a48"/>
+            <!-- elevador -->
+            <rect x="148" y="118" width="16" height="32" rx="3" fill="#202834" stroke="#36414f"/>
+            <rect x="250" y="118" width="16" height="32" rx="3" fill="#202834" stroke="#36414f"/>
+            <rect x="60" y="150" width="300" height="10" rx="5" fill="#202834" stroke="#36414f"/>
+            <rect x="96" y="160" width="16" height="16" rx="3" fill="#202834" stroke="#36414f"/>
+            <rect x="306" y="160" width="16" height="16" rx="3" fill="#202834" stroke="#36414f"/>
+            <rect x="34" y="176" width="356" height="3" rx="1.5" fill="url(#floor)"/>
+            <!-- herramienta / diagnosis -->
+            <g transform="translate(336 44)">
+              <rect x="0" y="0" width="76" height="60" rx="8" fill="#171d25" stroke="#3a4552"/>
+              <rect x="9" y="9" width="58" height="30" rx="4" fill="#0f141b" stroke="#2b343f"/>
+              <polyline points="13,30 23,30 28,18 34,34 40,24 46,24 50,30 63,30" fill="none" stroke="#ffb020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="9" y="45" width="24" height="6" rx="3" fill="#2b343f"/>
+              <rect x="38" y="45" width="29" height="6" rx="3" fill="#2b343f"/>
+            </g>
+          </svg>
+          <ul class="hero-list">
+            <li><svg class="tick" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5l3.2 3.2L12 4" fill="none" stroke="#ffb020" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Reparación de automóviles: electromecánica y mantenimiento</li>
+            <li><svg class="tick" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5l3.2 3.2L12 4" fill="none" stroke="#ffb020" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Te explicamos qué tiene el coche antes de intervenir</li>
+            <li><svg class="tick" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 7.5l3.2 3.2L12 4" fill="none" stroke="#ffb020" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Cita por teléfono, sin formularios ni esperas</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section class="block" id="servicios" aria-labelledby="t-serv">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">Servicios</p>
+        <h2 id="t-serv">Lo que hacemos en el taller</h2>
+        <p>Trabajo de taller mecánico sobre tu vehículo. Si tu avería no aparece aquí, llámanos y te decimos si podemos ocuparnos.</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="ic">
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 14h3l2-4 2 7 2.5-10 2 7 1.5-3h3" fill="none" stroke="#ffb020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Electromecánica</h3>
+          <p>Trabajamos la parte eléctrica y mecánica del vehículo: buscamos el origen de la avería y reparamos lo que la provoca.</p>
+        </article>
+        <article class="card">
+          <div class="ic">
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="3.3" fill="none" stroke="#ffb020" stroke-width="2"/>
+              <path d="M12 3.2v3M12 17.8v3M3.2 12h3M17.8 12h3M5.8 5.8l2.1 2.1M16.1 16.1l2.1 2.1M18.2 5.8l-2.1 2.1M7.9 16.1l-2.1 2.1" stroke="#ffb020" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Mantenimiento</h3>
+          <p>El mantenimiento periódico que pide tu coche para seguir funcionando como debe, según lo que corresponda a tu vehículo.</p>
+        </article>
+        <article class="card">
+          <div class="ic">
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="4.5" width="18" height="12.5" rx="2.5" fill="none" stroke="#ffb020" stroke-width="2"/>
+              <path d="M6.5 11.5h2.2L10.5 8l2 6 1.6-2.5h3.4" fill="none" stroke="#ffb020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M9 20h6" stroke="#ffb020" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Diagnosis</h3>
+          <p>Revisamos el vehículo para identificar qué está fallando antes de tocar nada, y te contamos lo que hemos encontrado.</p>
+        </article>
+        <article class="card">
+          <div class="ic">
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M19.5 5.5l-3.3 3.3M14.2 4.3a4.6 4.6 0 0 1 5.7 5.7l-9 9a2.6 2.6 0 1 1-3.7-3.7z" fill="none" stroke="#ffb020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="6.4" cy="17.6" r="1" fill="#ffb020"/>
+            </svg>
+          </div>
+          <h3>Revisiones</h3>
+          <p>Repaso general del estado del coche, útil antes de un viaje largo o cuando notas algo distinto al conducir.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CITA -->
+  <section class="block block-alt" id="cita" aria-labelledby="t-cita">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">Cómo trabajamos</p>
+        <h2 id="t-cita">Pedir cita en tres pasos</h2>
+        <p>Sin formularios ni intermediarios: una llamada, una revisión y una explicación antes de reparar.</p>
+      </div>
+      <div class="steps">
+        <article class="step">
+          <div class="step-n">01<i></i></div>
+          <h3>Llámanos y cuéntanoslo</h3>
+          <p>Nos dices qué coche tienes y qué le notas. Concretamos por teléfono cuándo puedes traerlo al taller.</p>
+        </article>
+        <article class="step">
+          <div class="step-n">02<i></i></div>
+          <h3>Revisamos el vehículo</h3>
+          <p>Lo vemos en el taller, comprobamos el síntoma y buscamos qué lo está provocando.</p>
+        </article>
+        <article class="step">
+          <div class="step-n">03<i></i></div>
+          <h3>Te explicamos y reparamos</h3>
+          <p>Te contamos qué hemos encontrado y qué hay que hacer. Con tu conformidad, hacemos la reparación.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="block" id="contacto" aria-labelledby="t-cont">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">Contacto</p>
+        <h2 id="t-cont">Dónde estamos y cómo localizarnos</h2>
+        <p>Estamos en Dos Hermanas, en la esquina de la Avenida 28 de Febrero con la calle García Ramos.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="panel">
+          <ul class="info">
+            <li>
+              <div class="ic" aria-hidden="true">
+                <svg width="19" height="19" viewBox="0 0 16 16"><path d="M3.3 1.8a1.4 1.4 0 0 1 2 .2l1.2 1.6a1.4 1.4 0 0 1-.1 1.8l-.6.6a9 9 0 0 0 3.6 3.6l.6-.6a1.4 1.4 0 0 1 1.8-.1l1.6 1.2a1.4 1.4 0 0 1 .2 2l-.8.9c-.7.8-1.9 1-2.9.5A15 15 0 0 1 2.7 5.5c-.5-1-.3-2.2.5-2.9z" fill="#ffb020"/></svg>
+              </div>
+              <div>
+                <div class="info-k">Teléfono</div>
+                <div class="info-v"><a href="tel:+34645939841">645 939 841</a></div>
+              </div>
+            </li>
+            <li>
+              <div class="ic" aria-hidden="true">
+                <svg width="19" height="19" viewBox="0 0 20 20"><path d="M10 1.8c-3.3 0-6 2.6-6 5.9 0 4.3 6 10.5 6 10.5s6-6.2 6-10.5c0-3.3-2.7-5.9-6-5.9z" fill="none" stroke="#ffb020" stroke-width="1.8"/><circle cx="10" cy="7.6" r="2.2" fill="#ffb020"/></svg>
+              </div>
+              <div>
+                <div class="info-k">Dirección</div>
+                <div class="info-v">Avenida 28 de Febrero, 20,<br>esquina C/ García Ramos, 1<small>41702 Dos Hermanas (Sevilla)</small></div>
+              </div>
+            </li>
+            <li>
+              <div class="ic" aria-hidden="true">
+                <svg width="19" height="19" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7.6" fill="none" stroke="#ffb020" stroke-width="1.8"/><path d="M10 5.6V10l3 2" fill="none" stroke="#ffb020" stroke-width="1.8" stroke-linecap="round"/></svg>
+              </div>
+              <div>
+                <div class="info-k">Horario</div>
+                <div class="info-v">Consultar horario<small>Llámanos al 645 939 841 y te lo confirmamos.</small></div>
+              </div>
+            </li>
+            <li>
+              <div class="ic" aria-hidden="true">
+                <svg width="19" height="19" viewBox="0 0 20 20"><rect x="2.4" y="4.4" width="15.2" height="11.2" rx="2" fill="none" stroke="#ffb020" stroke-width="1.8"/><path d="M3.2 5.6L10 10.8l6.8-5.2" fill="none" stroke="#ffb020" stroke-width="1.8" stroke-linecap="round"/></svg>
+              </div>
+              <div>
+                <div class="info-k">Email</div>
+                <div class="info-v"><a href="mailto:auto-tecnica@hotmail.es">auto-tecnica@hotmail.es</a></div>
+              </div>
+            </li>
+          </ul>
+          <div class="cta-inline">
+            <a class="btn btn-main" href="tel:+34645939841">
+              <svg width="17" height="17" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.3 1.8a1.4 1.4 0 0 1 2 .2l1.2 1.6a1.4 1.4 0 0 1-.1 1.8l-.6.6a9 9 0 0 0 3.6 3.6l.6-.6a1.4 1.4 0 0 1 1.8-.1l1.6 1.2a1.4 1.4 0 0 1 .2 2l-.8.9c-.7.8-1.9 1-2.9.5A15 15 0 0 1 2.7 5.5c-.5-1-.3-2.2.5-2.9z" fill="#1a1204"/></svg>
+              Llamar y pedir cita
+            </a>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="map-cap">
+            <strong>La esquina</strong>
+            <span class="chip">Esquema</span>
+          </div>
+          <div class="map-frame">
+            <svg viewBox="0 0 460 340" role="img" aria-label="Mapa esquemático de la esquina de Avenida 28 de Febrero con calle García Ramos, en Dos Hermanas">
+              <defs>
+                <pattern id="mg" width="40" height="40" patternUnits="userSpaceOnUse">
+                  <path d="M40 0H0v40" fill="none" stroke="#1b2230" stroke-width="1"/>
+                </pattern>
+              </defs>
+              <rect width="460" height="340" fill="#101620"/>
+              <rect width="460" height="340" fill="url(#mg)"/>
+              <!-- manzanas -->
+              <rect x="22" y="20" width="200" height="140" rx="7" fill="#161d27" stroke="#232c38"/>
+              <rect x="286" y="20" width="152" height="140" rx="7" fill="#161d27" stroke="#232c38"/>
+              <rect x="22" y="222" width="200" height="98" rx="7" fill="#161d27" stroke="#232c38"/>
+              <rect x="286" y="222" width="152" height="98" rx="7" fill="#161d27" stroke="#232c38"/>
+              <!-- Avenida 28 de Febrero (horizontal, mas ancha) -->
+              <rect x="0" y="160" width="460" height="62" fill="#1f2835"/>
+              <line x1="0" y1="207" x2="460" y2="207" stroke="#52627a" stroke-width="2.2" stroke-dasharray="18 16"/>
+              <!-- C/ Garcia Ramos (vertical) -->
+              <rect x="222" y="0" width="64" height="340" fill="#1f2835"/>
+              <line x1="272" y1="0" x2="272" y2="340" stroke="#52627a" stroke-width="2.2" stroke-dasharray="18 16"/>
+              <rect x="222" y="160" width="64" height="62" fill="#242e3c"/>
+              <!-- marcador del taller -->
+              <g transform="translate(178 122)">
+                <circle cx="0" cy="0" r="30" fill="#ffb020" opacity=".12"/>
+                <circle cx="0" cy="0" r="19" fill="#ffb020" opacity=".2"/>
+                <path d="M0 -24c-7.2 0-13 5.7-13 12.8C-13 -2 0 10 0 10s13-12 13-21.2C13 -18.3 7.2 -24 0 -24z" fill="#ffb020" stroke="#1a1204" stroke-width="1.5"/>
+                <circle cx="0" cy="-11.5" r="4.6" fill="#1a1204"/>
+              </g>
+              <!-- etiquetas -->
+              <text x="20" y="186" fill="#c7d2de" font-family="Helvetica,Arial,sans-serif" font-size="17" font-weight="700">Avenida 28 de Febrero</text>
+              <text transform="translate(247 100) rotate(-90)" text-anchor="middle" fill="#c7d2de" font-family="Helvetica,Arial,sans-serif" font-size="14" font-weight="700">C/ García Ramos</text>
+              <g transform="translate(92 84)">
+                <rect x="-6" y="-20" width="134" height="29" rx="6" fill="#0d1014" stroke="#3a4552"/>
+                <text x="6" y="0" fill="#ffb020" font-family="Helvetica,Arial,sans-serif" font-size="15" font-weight="700">Auto-técnica</text>
+              </g>
+              <!-- norte -->
+              <g transform="translate(416 300)" opacity=".85">
+                <circle cx="0" cy="0" r="17" fill="#0d1014" stroke="#2b343f"/>
+                <path d="M0 -10l4.6 12H-4.6z" fill="#ffb020"/>
+                <text x="0" y="12" fill="#8c98a6" font-family="Helvetica,Arial,sans-serif" font-size="9" text-anchor="middle">N</text>
+              </g>
+            </svg>
+          </div>
+          <p class="map-foot">Avenida 28 de Febrero, 20, esquina C/ García Ramos, 1. Esquema orientativo, sin exactitud cartográfica.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-col">
+          <h4>Auto-técnica</h4>
+          <p>Taller de reparación de automóviles.<br>Electromecánica y mantenimiento.</p>
+        </div>
+        <div class="foot-col">
+          <h4>Dirección</h4>
+          <p>Avenida 28 de Febrero, 20,<br>esquina C/ García Ramos, 1<br>41702 Dos Hermanas (Sevilla)</p>
+        </div>
+        <div class="foot-col">
+          <h4>Contacto</h4>
+          <p><a href="tel:+34645939841">645 939 841</a><br><a href="mailto:auto-tecnica@hotmail.es">auto-tecnica@hotmail.es</a><br>Consultar horario</p>
+        </div>
+      </div>
+      <div class="foot-rule"></div>
+      <p class="studio">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,595 @@
+<!doctype html>
+<html lang="es-ES">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La Praillona — Propuesta</title>
+<meta name="description" content="Propuesta de diseño web (maqueta no oficial) para el Restaurante La Praillona, cocina tradicional leonesa en Boñar (León).">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  :root{
+    --masa:#f6efe4;
+    --masa-2:#efe4d4;
+    --tinta:#241a14;
+    --tinta-2:#4a382c;
+    --tinta-3:#7a6555;
+    --brasa:#a6442c;
+    --brasa-osc:#7f3220;
+    --monte:#4b5b43;
+    --dorado:#c08a3e;
+    --linea:rgba(36,26,20,.14);
+    --linea-f:rgba(36,26,20,.28);
+    --papel:#fffaf2;
+    --barra-h:38px;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+    --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  html{-webkit-text-size-adjust:100%}
+  html,body{max-width:100%;overflow-x:hidden}
+  body{
+    margin:0;
+    background:var(--masa);
+    color:var(--tinta);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.65;
+    padding-top:var(--barra-h);
+  }
+  img,svg{max-width:100%}
+  h1,h2,h3,h4{font-family:var(--serif);font-weight:600;line-height:1.1;margin:0;letter-spacing:-.01em}
+  p{margin:0}
+  a{color:inherit}
+
+  /* ---------- barra fija ---------- */
+  .aviso{
+    position:fixed;inset:0 0 auto 0;z-index:100;
+    min-height:var(--barra-h);
+    display:flex;align-items:center;justify-content:center;
+    gap:.5em;
+    background:var(--tinta);
+    color:#f3e7d6;
+    font-size:11.5px;letter-spacing:.055em;text-transform:uppercase;
+    padding:7px 14px;text-align:center;line-height:1.35;
+    border-bottom:1px solid rgba(255,255,255,.12);
+  }
+  .aviso span{display:inline-block}
+
+  .envoltura{width:100%;max-width:1160px;margin:0 auto;padding:0 clamp(18px,5vw,40px)}
+  section{position:relative}
+
+  .rotulo{
+    display:inline-flex;align-items:center;gap:.6em;
+    font-family:var(--sans);font-size:11.5px;font-weight:700;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--brasa-osc);
+    margin-bottom:18px;
+  }
+  .rotulo::before{content:"";width:26px;height:2px;background:var(--brasa);flex:none}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(130% 90% at 12% 0%, #fbf3e6 0%, rgba(251,243,230,0) 58%),
+      linear-gradient(168deg,#f8f0e3 0%,#eadcc6 52%,#dfcdb2 100%);
+    border-bottom:1px solid var(--linea-f);
+  }
+  .hero-fondo{position:absolute;inset:auto 0 0 0;width:100%;height:auto;display:block;pointer-events:none}
+  .hero-rejilla{
+    position:relative;z-index:2;
+    display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);
+    gap:clamp(28px,4vw,56px);align-items:center;
+    padding:clamp(48px,7vw,84px) 0 clamp(150px,19vw,210px);
+  }
+  .hero h1{font-size:clamp(40px,8.2vw,76px);margin:14px 0 0}
+  .hero h1 em{
+    font-style:normal;display:block;color:var(--brasa);
+    font-family:var(--sans);font-size:clamp(13px,1.5vw,15.5px);font-weight:700;
+    letter-spacing:.2em;text-transform:uppercase;margin-top:18px;line-height:1.4;
+  }
+  .hero-sub{
+    font-family:var(--serif);font-size:clamp(17px,2.2vw,21px);
+    color:var(--tinta-2);margin-top:20px;max-width:30em;
+  }
+  .hero-meta{
+    display:flex;flex-wrap:wrap;gap:8px 10px;margin-top:26px;
+    font-size:12.5px;letter-spacing:.04em;color:var(--tinta-2);
+  }
+  .hero-meta span{
+    background:rgba(255,255,255,.62);border:1px solid var(--linea);
+    border-radius:999px;padding:5px 13px;
+  }
+  .acciones{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+  .btn{
+    display:inline-flex;align-items:center;gap:.6em;
+    font-family:var(--sans);font-size:15px;font-weight:650;
+    text-decoration:none;border-radius:4px;
+    padding:15px 24px;border:1.5px solid transparent;
+    transition:transform .15s ease,background .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px)}
+  .btn-ppal{background:var(--brasa);color:#fff5ec;box-shadow:0 10px 22px -14px rgba(127,50,32,.9)}
+  .btn-ppal:hover{background:var(--brasa-osc)}
+  .btn-sec{border-color:var(--linea-f);color:var(--tinta);background:rgba(255,255,255,.5)}
+  .btn-sec:hover{background:#fff}
+  .btn svg{flex:none}
+
+  .sello{
+    position:relative;justify-self:center;width:100%;max-width:330px;
+  }
+  .sello svg{display:block;width:100%;height:auto}
+
+  /* ---------- diagnóstico ---------- */
+  .nota{background:var(--tinta);color:#efe2d1;padding:clamp(34px,5vw,58px) 0}
+  .nota-rejilla{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(22px,4vw,54px);align-items:start}
+  .nota .rotulo{color:var(--dorado)}
+  .nota .rotulo::before{background:var(--dorado)}
+  .nota h2{font-size:clamp(23px,3.4vw,32px);color:#fdf6ea}
+  .nota p{color:#d9c8b4;font-size:15.5px}
+  .nota p + p{margin-top:14px}
+
+  /* ---------- bloques ---------- */
+  .bloque{padding:clamp(52px,7vw,92px) 0}
+  .bloque-cab{max-width:34em;margin-bottom:clamp(30px,4vw,46px)}
+  .bloque-cab h2{font-size:clamp(28px,4.6vw,44px)}
+  .bloque-cab p{margin-top:16px;color:var(--tinta-2);font-size:16.5px}
+
+  .tarjetas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2.2vw,24px)}
+  .tarjeta{
+    background:var(--papel);border:1px solid var(--linea);border-radius:6px;
+    padding:clamp(22px,2.6vw,30px);display:flex;flex-direction:column;gap:16px;
+    position:relative;overflow:hidden;
+  }
+  .tarjeta::after{
+    content:"";position:absolute;inset:0 0 auto 0;height:3px;
+    background:linear-gradient(90deg,var(--brasa),var(--dorado));
+  }
+  .tarjeta h3{font-size:clamp(20px,2.4vw,24px)}
+  .tarjeta p{color:var(--tinta-2);font-size:15px}
+  .chapa{
+    align-self:flex-start;
+    font-size:10.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+    background:var(--masa-2);color:var(--brasa-osc);
+    border:1px dashed var(--linea-f);border-radius:3px;padding:5px 10px;
+  }
+  .hueco{
+    margin-top:auto;border:1.5px dashed var(--linea-f);border-radius:5px;
+    background:
+      repeating-linear-gradient(135deg,rgba(166,68,44,.05) 0 10px,rgba(166,68,44,0) 10px 20px);
+    padding:16px;
+  }
+  .hueco .lineas{display:flex;flex-direction:column;gap:9px}
+  .hueco .lineas i{display:block;height:9px;border-radius:3px;background:var(--masa-2)}
+  .hueco .lineas i:nth-child(1){width:86%}
+  .hueco .lineas i:nth-child(2){width:62%}
+  .hueco .lineas i:nth-child(3){width:74%}
+  .hueco small{display:block;margin-top:14px;font-size:11.5px;color:var(--tinta-3);letter-spacing:.03em}
+
+  /* ---------- pasos ---------- */
+  .pasos-sec{background:var(--masa-2);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+  .pasos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,2.6vw,30px);counter-reset:p}
+  .paso{position:relative;padding-top:22px;border-top:2px solid var(--brasa)}
+  .paso .num{
+    font-family:var(--serif);font-size:13px;font-weight:700;letter-spacing:.12em;
+    color:var(--brasa);text-transform:uppercase;
+  }
+  .paso h3{font-size:clamp(19px,2.3vw,23px);margin:10px 0 10px}
+  .paso p{color:var(--tinta-2);font-size:15px}
+  .paso .tel-en-paso{
+    display:inline-block;margin-top:14px;font-weight:650;color:var(--brasa-osc);
+    text-decoration:none;border-bottom:1.5px solid rgba(166,68,44,.4);
+  }
+
+  /* ---------- galería ---------- */
+  .galeria{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:minmax(0,1fr);gap:clamp(14px,2vw,20px)}
+  .marco{
+    position:relative;border:1px solid var(--linea-f);border-radius:6px;overflow:hidden;
+    background:var(--papel);
+  }
+  .marco.ancho{grid-column:span 2}
+  .marco svg{display:block;width:100%;height:100%;min-height:180px}
+  .marco figcaption{
+    position:absolute;inset:auto 10px 10px 10px;
+    background:rgba(36,26,20,.86);color:#f3e7d6;
+    font-size:10.5px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
+    padding:7px 10px;border-radius:3px;line-height:1.4;
+  }
+  .pie-galeria{
+    margin-top:22px;font-size:14px;color:var(--tinta-3);
+    border-left:3px solid var(--dorado);padding-left:16px;max-width:46em;
+  }
+
+  /* ---------- contacto ---------- */
+  .contacto{background:var(--tinta);color:#efe2d1;padding:clamp(52px,7vw,92px) 0}
+  .contacto .rotulo{color:var(--dorado)}
+  .contacto .rotulo::before{background:var(--dorado)}
+  .contacto h2{font-size:clamp(28px,4.6vw,44px);color:#fdf6ea}
+  .contacto-rejilla{
+    display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);
+    gap:clamp(28px,4vw,56px);align-items:start;margin-top:clamp(28px,4vw,42px);
+  }
+  .datos{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+  .datos li{
+    display:flex;gap:16px;padding:18px 0;border-top:1px solid rgba(255,255,255,.14);
+  }
+  .datos li:last-child{border-bottom:1px solid rgba(255,255,255,.14)}
+  .datos .ico{flex:none;width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.26);display:grid;place-items:center}
+  .datos .et{display:block;font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--dorado)}
+  .datos .val{display:block;font-family:var(--serif);font-size:clamp(17px,2.1vw,20px);color:#fdf6ea;margin-top:3px;overflow-wrap:anywhere}
+  .datos a.val{width:fit-content;text-decoration:none;border-bottom:1px solid rgba(192,138,62,.55)}
+  .datos .apunte{display:block;font-size:13px;color:#bda894;margin-top:5px}
+  .mapa{
+    border:1px solid rgba(255,255,255,.18);border-radius:6px;overflow:hidden;
+    background:#2e221a;
+  }
+  .mapa svg{display:block;width:100%;height:auto}
+  .mapa .mapa-pie{
+    font-size:11.5px;color:#bda894;padding:12px 16px;
+    border-top:1px solid rgba(255,255,255,.14);letter-spacing:.02em;
+  }
+
+  /* ---------- pie ---------- */
+  .pie{background:#1b130e;color:#c7b4a1;padding:clamp(34px,5vw,54px) 0 34px}
+  .pie-top{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:flex-end}
+  .pie-marca{font-family:var(--serif);font-size:clamp(22px,3vw,28px);color:#f3e7d6}
+  .pie-marca span{display:block;font-family:var(--sans);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--dorado);margin-top:8px}
+  .pie-links{display:flex;flex-direction:column;gap:8px;font-size:15px}
+  .pie-links a{text-decoration:none;color:#e4d4c2;border-bottom:1px solid rgba(192,138,62,.4);overflow-wrap:anywhere;align-self:flex-start}
+  .pie-barra{
+    margin-top:clamp(28px,4vw,40px);padding-top:22px;
+    border-top:1px solid rgba(255,255,255,.12);
+    display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;
+    font-size:12.5px;color:#9c8876;
+  }
+  .pie-barra strong{color:#e4d4c2;font-weight:650}
+
+  @media (max-width:900px){
+    .hero-rejilla{grid-template-columns:minmax(0,1fr);gap:34px;padding-bottom:clamp(120px,24vw,170px)}
+    .sello{max-width:280px;order:-1;justify-self:start}
+    .nota-rejilla,.contacto-rejilla{grid-template-columns:minmax(0,1fr)}
+    .tarjetas,.pasos{grid-template-columns:minmax(0,1fr)}
+    .galeria{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:auto}
+    .marco svg{height:auto;min-height:0}
+    .marco.ancho{grid-column:span 2}
+  }
+  @media (max-width:560px){
+    :root{--barra-h:52px}
+    .aviso{font-size:10.5px;letter-spacing:.04em}
+    .galeria{grid-template-columns:minmax(0,1fr)}
+    .marco.ancho{grid-column:span 1}
+    .acciones{flex-direction:column;align-items:stretch}
+    .btn{justify-content:center}
+    .pie-top{flex-direction:column;align-items:flex-start}
+  }
+</style>
+</head>
+<body>
+
+<div class="aviso" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <svg class="hero-fondo" viewBox="0 0 1200 260" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="g-monte-1" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#6d7a60"/><stop offset="1" stop-color="#4b5b43"/>
+      </linearGradient>
+      <linearGradient id="g-monte-2" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#4b5b43"/><stop offset="1" stop-color="#36422f"/>
+      </linearGradient>
+      <linearGradient id="g-suelo" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#2f2318"/><stop offset="1" stop-color="#241a14"/>
+      </linearGradient>
+    </defs>
+    <path d="M0 150 L150 92 L268 136 L392 70 L520 134 L640 96 L760 142 L900 84 L1030 132 L1130 104 L1200 136 L1200 260 L0 260Z" fill="url(#g-monte-1)" opacity=".55"/>
+    <path d="M0 186 L130 140 L250 178 L380 128 L510 180 L650 142 L790 186 L930 136 L1060 180 L1200 150 L1200 260 L0 260Z" fill="url(#g-monte-2)" opacity=".8"/>
+    <path d="M0 224 L1200 206 L1200 260 L0 260Z" fill="url(#g-suelo)"/>
+  </svg>
+
+  <div class="envoltura">
+    <div class="hero-rejilla">
+      <div>
+        <p class="rotulo">Boñar · Montaña de León</p>
+        <h1>Restaurante<br>La Praillona<em>Cocina tradicional leonesa</em></h1>
+        <p class="hero-sub">Una web propia para que quien pasa por Boñar sepa, antes de parar el coche, dónde estáis y cómo reservar.</p>
+        <div class="hero-meta">
+          <span>Av. de la Constitución, 41</span>
+          <span>24850 Boñar (León)</span>
+          <span>Consultar horario</span>
+        </div>
+        <div class="acciones">
+          <a class="btn btn-ppal" href="tel:+34987735810">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+            Llamar al 987 735 810
+          </a>
+          <a class="btn btn-sec" href="#contacto">
+            Ver cómo llegar
+          </a>
+        </div>
+      </div>
+
+      <div class="sello" aria-hidden="true">
+        <svg viewBox="0 0 320 320" role="presentation" focusable="false">
+          <defs>
+            <linearGradient id="g-sello" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#fffaf2"/><stop offset="1" stop-color="#eddfc8"/>
+            </linearGradient>
+          </defs>
+          <circle cx="160" cy="160" r="152" fill="url(#g-sello)" stroke="#241a14" stroke-opacity=".2"/>
+          <circle cx="160" cy="160" r="136" fill="none" stroke="#a6442c" stroke-opacity=".45" stroke-width="1.5"/>
+          <circle cx="160" cy="160" r="128" fill="none" stroke="#241a14" stroke-opacity=".14" stroke-dasharray="2 7" stroke-width="2"/>
+          <path d="M160 64 L196 124 L124 124 Z" fill="#4b5b43" opacity=".9"/>
+          <path d="M196 104 L228 150 L164 150 Z" fill="#6d7a60" opacity=".75"/>
+          <path d="M124 110 L152 150 L96 150 Z" fill="#36422f" opacity=".75"/>
+          <rect x="88" y="150" width="144" height="2.5" fill="#241a14" opacity=".3"/>
+          <g stroke="#a6442c" stroke-width="3.4" stroke-linecap="round" fill="none">
+            <path d="M126 176 v62"/><path d="M126 176 l-9 10 M126 176 l9 10"/>
+            <path d="M194 176 v62"/><path d="M186 176 v18 a8 8 0 0 0 16 0 v-18"/>
+          </g>
+          <text x="160" y="272" text-anchor="middle" font-family="Georgia,serif" font-size="19" letter-spacing="5" fill="#241a14" opacity=".72">LA PRAILLONA</text>
+          <text x="160" y="292" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9.5" letter-spacing="3.4" fill="#7f3220">BOÑAR · LEÓN</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ DIAGNÓSTICO ============ -->
+<section class="nota">
+  <div class="envoltura">
+    <div class="nota-rejilla">
+      <div>
+        <p class="rotulo">Por qué esta propuesta</p>
+        <h2>El visitante de paso decide antes de bajarse del coche</h2>
+      </div>
+      <div>
+        <p>La Praillona aparece hoy en la página de gastronomía del Ayuntamiento de Boñar, pero es el único restaurante de esa lista municipal sin página propia. Quien llega al pueblo no puede ver la carta antes de decidir dónde come.</p>
+        <p>Boñar es un pueblo de montaña con turismo de paso: la decisión se toma en pocos minutos, normalmente desde el móvil. Esta maqueta plantea la estructura mínima para resolverlo —qué ofrecéis, dónde estáis y cómo reservar— con los apartados preparados para que vosotros publiquéis vuestro contenido.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ESPACIOS RESERVADOS ============ -->
+<section class="bloque" id="carta">
+  <div class="envoltura">
+    <div class="bloque-cab">
+      <p class="rotulo">La casa</p>
+      <h2>Tres apartados, listos para vuestro contenido</h2>
+      <p>En esta maqueta no hay platos, menús ni precios inventados: cada apartado es un espacio reservado que se rellena con lo que decidáis publicar y se actualiza cuando queráis.</p>
+    </div>
+
+    <div class="tarjetas">
+      <article class="tarjeta">
+        <span class="chapa">Espacio reservado</span>
+        <h3>La carta</h3>
+        <p>Vuestros platos agrupados por secciones, con el detalle que queráis dar y los alérgenos señalados.</p>
+        <div class="hueco" aria-hidden="true">
+          <div class="lineas"><i></i><i></i><i></i></div>
+          <small>Pendiente de contenido del restaurante</small>
+        </div>
+      </article>
+
+      <article class="tarjeta">
+        <span class="chapa">Espacio reservado</span>
+        <h3>Menú del día</h3>
+        <p>Un bloque editable para publicar el menú vigente, con la fecha visible para que nadie dude de si está al día.</p>
+        <div class="hueco" aria-hidden="true">
+          <div class="lineas"><i></i><i></i><i></i></div>
+          <small>Pendiente de contenido del restaurante</small>
+        </div>
+      </article>
+
+      <article class="tarjeta">
+        <span class="chapa">Espacio reservado</span>
+        <h3>Reservas</h3>
+        <p>Las condiciones que fijéis para reservar mesa: grupos, avisos, plazos y cualquier indicación propia de la casa.</p>
+        <div class="hueco" aria-hidden="true">
+          <div class="lineas"><i></i><i></i><i></i></div>
+          <small>Pendiente de contenido del restaurante</small>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CÓMO RESERVAR ============ -->
+<section class="bloque pasos-sec" id="reservar">
+  <div class="envoltura">
+    <div class="bloque-cab">
+      <p class="rotulo">Cómo reservar</p>
+      <h2>En tres pasos, por teléfono</h2>
+      <p>El camino más corto para quien está de paso. Si más adelante queréis reserva por formulario, la estructura ya lo admite.</p>
+    </div>
+
+    <div class="pasos">
+      <article class="paso">
+        <p class="num">Paso 01</p>
+        <h3>Llamad al restaurante</h3>
+        <p>Una llamada directa al número de la casa, sin intermediarios ni plataformas de terceros.</p>
+        <a class="tel-en-paso" href="tel:+34987735810">987 735 810</a>
+      </article>
+      <article class="paso">
+        <p class="num">Paso 02</p>
+        <h3>Indicad día, hora y personas</h3>
+        <p>Decid cuántos sois y a qué hora queréis la mesa. Si tenéis alguna necesidad en la comida, comentadlo en ese momento.</p>
+      </article>
+      <article class="paso">
+        <p class="num">Paso 03</p>
+        <h3>Confirmad la mesa</h3>
+        <p>El restaurante confirma la reserva en la misma llamada y os indica lo que haga falta saber antes de venir.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALERÍA MAQUETADA ============ -->
+<section class="bloque" id="galeria">
+  <div class="envoltura">
+    <div class="bloque-cab">
+      <p class="rotulo">Galería</p>
+      <h2>Maquetada con huecos, no con fotos</h2>
+      <p>Los cinco marcos de abajo son dibujos hechos con formas y degradados: marcan el tamaño y la posición que tendrán vuestras fotografías reales. No hay ninguna imagen del restaurante en esta maqueta.</p>
+    </div>
+
+    <div class="galeria">
+      <figure class="marco ancho">
+        <svg viewBox="0 0 640 360" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+          <defs><linearGradient id="ph-a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f1e4d0"/><stop offset="1" stop-color="#d9c3a6"/></linearGradient></defs>
+          <rect width="640" height="360" fill="url(#ph-a)"/>
+          <g stroke="#a6442c" stroke-opacity=".28" stroke-width="1.4"><path d="M0 0 L640 360"/><path d="M640 0 L0 360"/></g>
+          <rect x="1" y="1" width="638" height="358" fill="none" stroke="#241a14" stroke-opacity=".18" stroke-dasharray="7 7"/>
+          <circle cx="320" cy="162" r="52" fill="none" stroke="#7f3220" stroke-opacity=".45" stroke-width="2"/>
+          <path d="M296 176 l18-22 14 16 10-11 16 17" fill="none" stroke="#7f3220" stroke-opacity=".5" stroke-width="2.4" stroke-linecap="round"/>
+          <circle cx="302" cy="146" r="6" fill="#7f3220" fill-opacity=".4"/>
+        </svg>
+        <figcaption>Espacio reservado para vuestra foto · comedor</figcaption>
+      </figure>
+
+      <figure class="marco">
+        <svg viewBox="0 0 320 360" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+          <defs><linearGradient id="ph-b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eadbc4"/><stop offset="1" stop-color="#c9ae8d"/></linearGradient></defs>
+          <rect width="320" height="360" fill="url(#ph-b)"/>
+          <g stroke="#4b5b43" stroke-opacity=".3" stroke-width="1.4"><path d="M0 0 L320 360"/><path d="M320 0 L0 360"/></g>
+          <rect x="1" y="1" width="318" height="358" fill="none" stroke="#241a14" stroke-opacity=".18" stroke-dasharray="7 7"/>
+          <circle cx="160" cy="160" r="44" fill="none" stroke="#36422f" stroke-opacity=".45" stroke-width="2"/>
+          <path d="M140 172 l15-18 12 13 9-9 13 14" fill="none" stroke="#36422f" stroke-opacity=".5" stroke-width="2.4" stroke-linecap="round"/>
+        </svg>
+        <figcaption>Espacio reservado · fachada</figcaption>
+      </figure>
+
+
+      <figure class="marco">
+        <svg viewBox="0 0 320 280" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+          <defs><linearGradient id="ph-c" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#e3d0b4"/><stop offset="1" stop-color="#f5ebdb"/></linearGradient></defs>
+          <rect width="320" height="280" fill="url(#ph-c)"/>
+          <g stroke="#a6442c" stroke-opacity=".26" stroke-width="1.4"><path d="M0 0 L320 280"/><path d="M320 0 L0 280"/></g>
+          <rect x="1" y="1" width="318" height="278" fill="none" stroke="#241a14" stroke-opacity=".18" stroke-dasharray="7 7"/>
+          <circle cx="160" cy="140" r="40" fill="none" stroke="#7f3220" stroke-opacity=".4" stroke-width="2"/>
+        </svg>
+        <figcaption>Espacio reservado · mesa</figcaption>
+      </figure>
+
+      <figure class="marco">
+        <svg viewBox="0 0 320 280" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+          <rect width="320" height="280" fill="#ece0cd"/>
+          <g stroke="#4b5b43" stroke-opacity=".28" stroke-width="1.4"><path d="M0 0 L320 280"/><path d="M320 0 L0 280"/></g>
+          <rect x="1" y="1" width="318" height="278" fill="none" stroke="#241a14" stroke-opacity=".18" stroke-dasharray="7 7"/>
+          <path d="M70 180 L120 128 L160 166 L200 120 L250 180 Z" fill="none" stroke="#36422f" stroke-opacity=".45" stroke-width="2"/>
+        </svg>
+        <figcaption>Espacio reservado · entorno</figcaption>
+      </figure>
+
+      <figure class="marco">
+        <svg viewBox="0 0 320 280" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+          <defs><linearGradient id="ph-d" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6efe4"/><stop offset="1" stop-color="#ddc8aa"/></linearGradient></defs>
+          <rect width="320" height="280" fill="url(#ph-d)"/>
+          <g stroke="#c08a3e" stroke-opacity=".38" stroke-width="1.4"><path d="M0 0 L320 280"/><path d="M320 0 L0 280"/></g>
+          <rect x="1" y="1" width="318" height="278" fill="none" stroke="#241a14" stroke-opacity=".18" stroke-dasharray="7 7"/>
+          <g stroke="#7f3220" stroke-opacity=".42" stroke-width="2.6" stroke-linecap="round" fill="none">
+            <path d="M136 108 v76"/><path d="M184 108 v76"/><path d="M176 108 v16 a8 8 0 0 0 16 0 v-16"/>
+          </g>
+        </svg>
+        <figcaption>Espacio reservado · cocina</figcaption>
+      </figure>
+    </div>
+
+    <p class="pie-galeria">Nota de la propuesta: ninguna imagen aquí representa al restaurante. Las fotografías definitivas las aportaría la casa y sustituirían estos huecos manteniendo la misma composición.</p>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section class="contacto" id="contacto">
+  <div class="envoltura">
+    <p class="rotulo">Contacto</p>
+    <h2>Dónde estamos</h2>
+
+    <div class="contacto-rejilla">
+      <ul class="datos">
+        <li>
+          <span class="ico" aria-hidden="true">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#c08a3e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+          </span>
+          <span>
+            <span class="et">Teléfono</span>
+            <a class="val" href="tel:+34987735810">987 735 810</a>
+          </span>
+        </li>
+        <li>
+          <span class="ico" aria-hidden="true">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#c08a3e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          </span>
+          <span>
+            <span class="et">Dirección</span>
+            <span class="val">Av. de la Constitución, 41<br>24850 Boñar (León)</span>
+          </span>
+        </li>
+        <li>
+          <span class="ico" aria-hidden="true">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#c08a3e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+          </span>
+          <span>
+            <span class="et">Horario</span>
+            <span class="val">Consultar horario</span>
+            <span class="apunte">Espacio reservado: el horario se publicaría aquí cuando el restaurante lo facilite.</span>
+          </span>
+        </li>
+        <li>
+          <span class="ico" aria-hidden="true">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#c08a3e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 7 12 13l8.5-6"/></svg>
+          </span>
+          <span>
+            <span class="et">Correo</span>
+            <a class="val" href="mailto:lapraillona@gmail.com">lapraillona@gmail.com</a>
+          </span>
+        </li>
+      </ul>
+
+      <div class="mapa">
+        <svg viewBox="0 0 560 360" aria-label="Mapa esquemático de situación en Boñar: la avenida principal y el punto del restaurante." role="img" focusable="false">
+          <rect width="560" height="360" fill="#2e221a"/>
+          <g stroke="#3d2e23" stroke-width="1">
+            <path d="M0 60 H560"/><path d="M0 300 H560"/><path d="M110 0 V360"/><path d="M430 0 V360"/>
+          </g>
+          <path d="M0 120 L560 120 L560 170 L0 170 Z" fill="#473527"/>
+          <path d="M0 145 H560" stroke="#c08a3e" stroke-width="2" stroke-dasharray="16 14" stroke-opacity=".55"/>
+          <path d="M250 170 L250 360" stroke="#473527" stroke-width="26"/>
+          <path d="M400 0 L400 120" stroke="#473527" stroke-width="20"/>
+          <g fill="#6d7a60" fill-opacity=".5">
+            <path d="M20 232 L72 232 L72 280 L20 280 Z"/><path d="M96 240 L150 240 L150 286 L96 286 Z"/>
+            <path d="M300 230 L358 230 L358 282 L300 282 Z"/><path d="M382 238 L446 238 L446 288 L382 288 Z"/>
+            <path d="M40 46 L104 46 L104 92 L40 92 Z"/><path d="M196 40 L256 40 L256 90 L196 90 Z"/><path d="M440 48 L510 48 L510 96 L440 96 Z"/>
+          </g>
+          <text x="22" y="110" font-family="system-ui,sans-serif" font-size="12" letter-spacing="2.4" fill="#bda894">AV. DE LA CONSTITUCIÓN</text>
+          <circle cx="206" cy="145" r="26" fill="#a6442c" fill-opacity=".2"/>
+          <circle cx="206" cy="145" r="13" fill="#a6442c" stroke="#fdf6ea" stroke-width="2.5"/>
+          <path d="M206 158 V200" stroke="#fdf6ea" stroke-opacity=".5" stroke-width="1.6" stroke-dasharray="4 4"/>
+          <text x="206" y="222" text-anchor="middle" font-family="Georgia,serif" font-size="17" fill="#fdf6ea">La Praillona · nº 41</text>
+          <text x="538" y="334" text-anchor="end" font-family="system-ui,sans-serif" font-size="10.5" letter-spacing="1.6" fill="#b09b86">ESQUEMA ORIENTATIVO · NO ES UN MAPA A ESCALA</text>
+        </svg>
+        <p class="mapa-pie">Dibujo esquemático en SVG: señala la avenida y la posición aproximada del local. No pretende exactitud cartográfica.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PIE ============ -->
+<footer class="pie">
+  <div class="envoltura">
+    <div class="pie-top">
+      <p class="pie-marca">Restaurante La Praillona<span>Cocina tradicional leonesa · Boñar</span></p>
+      <div class="pie-links">
+        <a href="tel:+34987735810">987 735 810</a>
+        <a href="mailto:lapraillona@gmail.com">lapraillona@gmail.com</a>
+      </div>
+    </div>
+    <div class="pie-barra">
+      <p><strong>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</strong></p>
+      <p>Maqueta no oficial, sin vínculo comercial con el establecimiento.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

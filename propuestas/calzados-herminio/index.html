@@ -1,0 +1,948 @@
+<!doctype html>
+<html lang="es-ES">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calzados Herminio · Mengíbar</title>
+<meta name="description" content="Propuesta de diseño web para Calzados Herminio, zapatería en Mengíbar (Jaén). Maqueta no oficial de FFFFFFstudio.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* ===== Reset / tokens ===== */
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+:root{
+  --paper:#F6EFE4;
+  --paper-2:#FFFBF4;
+  --ink:#241711;
+  --ink-soft:#5A4639;
+  --ink-mute:#7D6657;
+  --oxblood:#6B2A22;
+  --oxblood-dk:#4E1C16;
+  --tan:#C2874A;
+  --tan-lt:#E8C79A;
+  --olive:#5C5F3C;
+  --line:rgba(36,23,17,.16);
+  --line-soft:rgba(36,23,17,.09);
+  --bar-h:40px;
+  --serif:"Iowan Old Style","Palatino Linotype","Palatino","Book Antiqua",Georgia,"Times New Roman",serif;
+  --sans:"Helvetica Neue",Helvetica,Arial,"Segoe UI",system-ui,sans-serif;
+  --shadow:0 1px 2px rgba(36,23,17,.05),0 10px 30px -14px rgba(36,23,17,.28);
+  --maxw:1180px;
+}
+html,body{max-width:100%;overflow-x:hidden}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  padding-top:var(--bar-h);
+}
+img,svg{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3,h4,p,ul,ol,figure,blockquote{margin:0}
+ul{padding:0;list-style:none}
+
+/* ===== Layout helpers ===== */
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.section{padding:clamp(56px,7vw,104px) 0}
+.eyebrow{
+  font-family:var(--sans);
+  font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--oxblood);font-weight:700;
+  display:flex;align-items:center;gap:12px;margin-bottom:18px;
+}
+.eyebrow::after{content:"";height:1px;flex:1;background:var(--line);min-width:20px}
+h2.title{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(28px,4.2vw,46px);
+  line-height:1.1;letter-spacing:-.015em;
+  max-width:22ch;
+}
+.lede{
+  margin-top:18px;max-width:58ch;
+  font-size:clamp(15px,1.25vw,17.5px);
+  color:var(--ink-soft);line-height:1.68;
+}
+
+/* ===== Fixed proposal bar ===== */
+.proposalbar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  height:var(--bar-h);
+  display:flex;align-items:center;justify-content:center;
+  background:var(--ink);
+  color:#F0E4D8;
+  border-bottom:1px solid rgba(240,228,216,.18);
+}
+.proposalbar p{
+  font-size:11px;letter-spacing:.11em;text-transform:uppercase;
+  font-weight:600;text-align:center;
+  padding:0 14px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  max-width:100%;
+}
+@media (max-width:620px){
+  :root{--bar-h:46px}
+  .proposalbar p{
+    white-space:normal;overflow:visible;text-overflow:clip;
+    font-size:9.5px;letter-spacing:.06em;line-height:1.35;padding:0 10px;
+  }
+}
+
+/* ===== Header ===== */
+.masthead{
+  border-bottom:1px solid var(--line-soft);
+  background:var(--paper);
+}
+.masthead-in{
+  display:flex;align-items:center;justify-content:space-between;gap:18px;
+  padding:18px 28px;width:100%;max-width:var(--maxw);margin:0 auto;
+}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
+.brand-mark{flex:0 0 auto}
+.brand-txt{min-width:0}
+.brand-name{
+  font-family:var(--serif);font-size:19px;line-height:1.05;letter-spacing:-.01em;
+  white-space:nowrap;
+}
+.brand-sub{
+  font-size:9.5px;letter-spacing:.17em;text-transform:uppercase;
+  color:var(--ink-mute);margin-top:3px;white-space:nowrap;
+}
+.masthead nav{display:flex;align-items:center;gap:26px}
+.masthead nav a{
+  font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;
+  text-decoration:none;color:var(--ink-soft);font-weight:600;
+  padding-bottom:2px;border-bottom:1px solid transparent;
+}
+.masthead nav a:hover{color:var(--oxblood);border-bottom-color:var(--tan)}
+@media (max-width:900px){.masthead nav{display:none}}
+
+/* ===== Buttons ===== */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-family:var(--sans);font-size:14px;font-weight:700;
+  letter-spacing:.04em;text-decoration:none;
+  padding:15px 26px;border-radius:999px;
+  border:1px solid transparent;cursor:pointer;
+  max-width:100%;
+}
+.btn svg{flex:0 0 auto}
+.btn-primary{background:var(--oxblood);color:#FFF6EC;box-shadow:var(--shadow)}
+.btn-primary:hover{background:var(--oxblood-dk)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--ink);background:rgba(36,23,17,.04)}
+.btn-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+
+/* ===== Hero ===== */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(90% 120% at 88% 6%,rgba(232,199,154,.55) 0%,rgba(232,199,154,0) 58%),
+    radial-gradient(70% 90% at 2% 96%,rgba(107,42,34,.14) 0%,rgba(107,42,34,0) 60%),
+    linear-gradient(176deg,#FFFBF4 0%,#F6EFE4 62%,#EFE4D4 100%);
+  border-bottom:1px solid var(--line-soft);
+}
+.hero-grid{
+  display:grid;grid-template-columns:1.08fr .92fr;
+  gap:clamp(28px,4vw,60px);align-items:center;
+  padding:clamp(48px,6vw,88px) 0 clamp(52px,6vw,92px);
+}
+.hero-kicker{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:10.5px;letter-spacing:.19em;text-transform:uppercase;font-weight:700;
+  color:var(--oxblood);
+  border:1px solid rgba(107,42,34,.28);
+  background:rgba(255,255,255,.5);
+  padding:7px 14px;border-radius:999px;margin-bottom:22px;
+}
+.hero-kicker i{width:5px;height:5px;border-radius:50%;background:var(--tan);flex:0 0 auto}
+h1{
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(36px,6.1vw,70px);
+  line-height:1.02;letter-spacing:-.025em;
+}
+h1 em{font-style:italic;color:var(--oxblood)}
+.hero p.sub{
+  margin-top:22px;max-width:46ch;
+  font-size:clamp(15.5px,1.4vw,18.5px);line-height:1.62;color:var(--ink-soft);
+}
+.quote-card{
+  margin-top:32px;max-width:48ch;
+  border-left:3px solid var(--tan);
+  padding:4px 0 4px 18px;
+}
+.quote-card blockquote{
+  font-family:var(--serif);font-size:clamp(15.5px,1.4vw,18px);
+  font-style:italic;line-height:1.5;color:var(--ink);
+}
+.quote-card cite{
+  display:block;margin-top:9px;font-style:normal;
+  font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-mute);
+}
+.hero-art{position:relative}
+.hero-art svg{width:100%;height:auto}
+@media (max-width:880px){
+  .hero-grid{grid-template-columns:1fr;gap:34px;padding-top:40px}
+  .hero-art{order:2;max-width:460px;margin:0 auto;width:100%}
+}
+
+/* ===== Ticker strip ===== */
+.strip{
+  background:var(--ink);color:#E8DAC9;
+  padding:16px 0;
+}
+.strip-in{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:10px 30px;
+  font-size:11px;letter-spacing:.17em;text-transform:uppercase;font-weight:600;
+  text-align:center;
+}
+.strip-in span{display:inline-flex;align-items:center;gap:12px}
+.strip-in span::before{content:"";width:4px;height:4px;border-radius:50%;background:var(--tan)}
+
+/* ===== Categorías ===== */
+.sechead{display:grid;grid-template-columns:1fr 1.02fr;gap:clamp(22px,4vw,66px);align-items:start}
+.sechead .lede{margin-top:0;padding-top:4px}
+@media (max-width:880px){
+  .sechead{grid-template-columns:1fr;gap:20px}
+  .sechead .lede{margin-top:4px}
+}
+.cat-grid{
+  margin-top:clamp(32px,4vw,52px);
+  display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,1.6vw,22px);
+}
+.cat{
+  background:var(--paper-2);
+  border:1px solid var(--line-soft);
+  border-radius:4px;
+  padding:26px 22px 24px;
+  display:flex;flex-direction:column;gap:16px;
+  min-width:0;
+}
+.cat-body{display:flex;flex-direction:column;flex:1 1 auto;gap:10px;min-width:0}
+.cat-ico{width:52px;height:52px;flex:0 0 auto}
+.cat h3{font-family:var(--serif);font-size:21px;font-weight:400;line-height:1.15;letter-spacing:-.01em}
+.cat p{font-size:14px;line-height:1.58;color:var(--ink-mute)}
+.cat-tag{
+  margin-top:auto;padding-top:16px;border-top:1px solid var(--line-soft);
+  font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--oxblood);font-weight:700;
+}
+@media (max-width:960px){.cat-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){
+  .cat-grid{grid-template-columns:1fr}
+  .cat{padding:22px 20px;flex-direction:row;align-items:flex-start;gap:16px}
+  .cat-ico{width:42px;height:42px}
+  .cat-tag{margin-top:14px;padding-top:14px}
+}
+
+/* ===== Escaparate ===== */
+.showcase{background:var(--paper-2);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
+.notice{
+  display:flex;gap:14px;align-items:flex-start;
+  margin-top:22px;padding:16px 18px;
+  background:rgba(194,135,74,.11);
+  border:1px dashed rgba(107,42,34,.38);
+  border-radius:4px;max-width:66ch;
+}
+.notice svg{flex:0 0 auto;margin-top:2px}
+.notice p{font-size:13.5px;line-height:1.55;color:var(--ink-soft)}
+.notice strong{color:var(--oxblood)}
+.shelf{
+  margin-top:clamp(30px,3.6vw,44px);
+  display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,1.8vw,24px);
+}
+.slot{
+  border:1px solid var(--line);
+  border-radius:4px;overflow:hidden;background:var(--paper);
+  display:flex;flex-direction:column;min-width:0;
+}
+.slot-art{position:relative;background:linear-gradient(160deg,#F2E7D6 0%,#E6D6BE 100%)}
+.slot-art svg{width:100%;height:auto;display:block}
+.slot-badge{
+  position:absolute;top:10px;left:10px;
+  font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;font-weight:700;
+  background:rgba(36,23,17,.86);color:#F3E6D7;
+  padding:5px 9px;border-radius:2px;
+}
+.slot-meta{padding:16px 18px 18px;display:flex;flex-direction:column;gap:7px}
+.slot-meta .ph-line{height:9px;border-radius:2px;background:rgba(36,23,17,.11)}
+.slot-meta .ph-line.w70{width:70%}
+.slot-meta .ph-line.w44{width:44%}
+.slot-meta .ph-note{
+  font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--ink-mute);margin-top:4px;
+}
+@media (max-width:880px){.shelf{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:540px){.shelf{grid-template-columns:1fr}}
+
+/* ===== Pasos ===== */
+.steps{
+  margin-top:clamp(34px,4vw,54px);
+  display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2.4vw,34px);
+  counter-reset:paso;
+}
+.step{position:relative;padding-top:26px;border-top:2px solid var(--ink);min-width:0;display:flex;flex-direction:column}
+.step-n{
+  font-family:var(--serif);font-size:13px;letter-spacing:.14em;
+  color:var(--oxblood);font-weight:700;margin-bottom:12px;
+}
+.step h3{font-family:var(--serif);font-weight:400;font-size:clamp(20px,2vw,25px);line-height:1.15;letter-spacing:-.01em}
+.step p{margin-top:12px;font-size:14.5px;line-height:1.62;color:var(--ink-soft)}
+.step-ico{margin-top:auto;padding-top:22px;width:40px;height:40px;box-sizing:content-box}
+@media (max-width:820px){.steps{grid-template-columns:1fr;gap:28px}}
+
+/* ===== Contacto ===== */
+.contact{background:var(--ink);color:#F2E6D8}
+.contact .eyebrow{color:var(--tan-lt)}
+.contact .eyebrow::after{background:rgba(242,230,216,.22)}
+.contact h2.title{color:#FFF8EE}
+.contact .lede{color:rgba(242,230,216,.72)}
+.contact-grid{
+  margin-top:clamp(32px,4vw,52px);
+  display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,3.4vw,50px);align-items:start;
+}
+.dl{display:flex;flex-direction:column;gap:2px}
+.dl-row{
+  display:flex;gap:16px;align-items:flex-start;
+  padding:18px 0;border-top:1px solid rgba(242,230,216,.16);
+  min-width:0;
+}
+.dl-row:last-child{border-bottom:1px solid rgba(242,230,216,.16)}
+.dl-ico{flex:0 0 auto;margin-top:2px}
+.dl-body{min-width:0;flex:1}
+.dl-k{
+  font-size:10px;letter-spacing:.17em;text-transform:uppercase;
+  color:rgba(242,230,216,.55);font-weight:700;margin-bottom:6px;
+}
+.dl-v{font-size:16.5px;line-height:1.45;word-break:break-word;overflow-wrap:anywhere}
+.dl-v a{text-decoration:none;border-bottom:1px solid rgba(194,135,74,.6)}
+.dl-v a:hover{color:var(--tan-lt)}
+.dl-v.big{font-family:var(--serif);font-size:clamp(23px,2.6vw,31px);letter-spacing:-.01em}
+.dl-note{font-size:12.5px;color:rgba(242,230,216,.55);margin-top:5px}
+.contact .btn-primary{background:var(--tan);color:#2A1A11}
+.contact .btn-primary:hover{background:var(--tan-lt)}
+.contact .btn-ghost{color:#F2E6D8;border-color:rgba(242,230,216,.34)}
+.contact .btn-ghost:hover{border-color:#F2E6D8;background:rgba(242,230,216,.07)}
+.mapcard{
+  background:#2F1E16;border:1px solid rgba(242,230,216,.16);
+  border-radius:4px;padding:18px;
+}
+.mapcard svg{width:100%;height:auto;border-radius:2px}
+.mapcap{
+  margin-top:14px;font-size:11.5px;line-height:1.5;
+  color:rgba(242,230,216,.52);
+}
+@media (max-width:880px){.contact-grid{grid-template-columns:1fr}}
+
+/* ===== Footer ===== */
+footer{background:#1A0F0B;color:rgba(242,230,216,.68);padding:48px 0 40px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px}
+.foot-brand .brand-name{color:#F8EEE1}
+.foot-brand p{margin-top:12px;font-size:13.5px;line-height:1.62;max-width:34ch}
+.foot-col h4{
+  font-size:10px;letter-spacing:.17em;text-transform:uppercase;
+  color:rgba(242,230,216,.45);font-weight:700;margin-bottom:14px;
+}
+.foot-col li{margin-bottom:9px;font-size:14px;line-height:1.5;word-break:break-word;overflow-wrap:anywhere}
+.foot-col a{text-decoration:none;border-bottom:1px solid rgba(194,135,74,.45)}
+.foot-col a:hover{color:var(--tan-lt)}
+.foot-rule{height:1px;background:rgba(242,230,216,.14);margin:36px 0 24px}
+.foot-studio{
+  font-size:12.5px;line-height:1.6;color:rgba(242,230,216,.72);
+  letter-spacing:.015em;
+}
+.foot-legal{margin-top:10px;font-size:11.5px;color:rgba(242,230,216,.4);line-height:1.6}
+@media (max-width:820px){.foot-grid{grid-template-columns:1fr;gap:28px}}
+
+@media (max-width:420px){
+  .wrap{padding:0 18px}
+  .masthead-in{padding:14px 18px}
+  .btn{width:100%;padding:16px 20px}
+}
+@media (prefers-reduced-motion:no-preference){
+  a,.btn{transition:color .18s ease,background .18s ease,border-color .18s ease}
+}
+</style>
+</head>
+<body>
+
+<!-- Barra fija de propuesta -->
+<div class="proposalbar" role="note">
+  <p>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</p>
+</div>
+
+<header class="masthead">
+  <div class="masthead-in">
+    <div class="brand">
+      <svg class="brand-mark" width="38" height="38" viewBox="0 0 38 38" aria-hidden="true">
+        <circle cx="19" cy="19" r="18" fill="#6B2A22"/>
+        <circle cx="19" cy="19" r="14.2" fill="none" stroke="#E8C79A" stroke-width=".9" opacity=".65"/>
+        <path d="M9 24.2c-.9 0-1.3-.7-1-1.6l1.9-5.1c.3-.9 1.1-1.5 2-1.5h2.3c.7 0 1.3.3 1.7.9l2 2.7c.6.8 1.5 1.3 2.5 1.5l5.3.9c1.4.2 2.4 1.1 2.4 2.1 0 .1-.5.1-1 .1H9z" fill="#F6EFE4"/>
+        <path d="M13.4 15.9V12c0-.6.5-1.1 1.1-1.1h1.2c.6 0 1.1.5 1.1 1.1v3.9" fill="none" stroke="#F6EFE4" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <div class="brand-txt">
+        <div class="brand-name">Calzados Herminio</div>
+        <div class="brand-sub">Mengíbar · Jaén</div>
+      </div>
+    </div>
+    <nav aria-label="Secciones">
+      <a href="#calzado">Calzado</a>
+      <a href="#escaparate">Escaparate</a>
+      <a href="#visita">Tu visita</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="hero-kicker"><i></i>Zapatería de barrio</span>
+        <h1>Calzado para toda<br>la casa, <em>a pie de calle</em></h1>
+        <p class="sub">Señora, caballero y niño. Calzado de temporada y de todo el año, elegido pieza a pieza y probado con calma en la tienda.</p>
+
+        <div class="quote-card">
+          <blockquote>«zapatería con más de 60 años dando servicio»</blockquote>
+          <cite>Ficha de la tienda — Ayuntamiento de Mengíbar</cite>
+        </div>
+
+        <div class="btn-row">
+          <a class="btn btn-primary" href="tel:+34640207089">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6.6 3h3l1.5 4.1-2.2 1.6a12 12 0 0 0 5.4 5.4l1.6-2.2L20 13.4v3A2.6 2.6 0 0 1 17.4 19C10.6 18.6 5.4 13.4 5 6.6A2.6 2.6 0 0 1 6.6 3z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+            </svg>
+            Llamar: 640 207 089
+          </a>
+          <a class="btn btn-ghost" href="#escaparate">Ver el escaparate</a>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 520 390" role="presentation">
+          <defs>
+            <linearGradient id="hg2" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#E8C79A"/><stop offset="1" stop-color="#C2874A"/>
+            </linearGradient>
+            <linearGradient id="hgGlass" x1="0" y1="0" x2=".7" y2="1">
+              <stop offset="0" stop-color="#FFFDF8"/><stop offset="1" stop-color="#E7D8BF"/>
+            </linearGradient>
+            <clipPath id="hgAwn">
+              <path d="M88 150h344v34q-10.75 12-21.5 0t-21.5 0t-21.5 0t-21.5 0t-21.5 0t-21.5 0t-21.5 0t-21.5 0t-21.5 0t-21.5 0t-21.5 0t-21.5 0t-21.5 0t-21.5 0t-21.5 0t-21.5 0z"/>
+            </clipPath>
+          </defs>
+
+          <!-- Fondo -->
+          <circle cx="260" cy="196" r="178" fill="url(#hg2)" opacity=".2"/>
+          <circle cx="260" cy="196" r="178" fill="none" stroke="#6B2A22" stroke-width="1" opacity=".14"/>
+          <circle cx="260" cy="196" r="148" fill="none" stroke="#6B2A22" stroke-width="1" opacity=".09"/>
+
+          <!-- Fachada -->
+          <rect x="96" y="96" width="328" height="262" rx="3" fill="#FFFCF6" stroke="#241711" stroke-opacity=".16"/>
+
+          <!-- Rótulo con el nombre real -->
+          <rect x="96" y="96" width="328" height="48" rx="3" fill="#241711"/>
+          <text x="260" y="126" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="20" letter-spacing="2.6" fill="#E8C79A">CALZADOS HERMINIO</text>
+
+          <!-- Toldo -->
+          <g clip-path="url(#hgAwn)">
+            <rect x="88" y="150" width="344" height="48" fill="#F6EFE4"/>
+            <g fill="#6B2A22">
+              <rect x="88" y="150" width="21.5" height="48"/>
+              <rect x="131" y="150" width="21.5" height="48"/>
+              <rect x="174" y="150" width="21.5" height="48"/>
+              <rect x="217" y="150" width="21.5" height="48"/>
+              <rect x="260" y="150" width="21.5" height="48"/>
+              <rect x="303" y="150" width="21.5" height="48"/>
+              <rect x="346" y="150" width="21.5" height="48"/>
+              <rect x="389" y="150" width="21.5" height="48"/>
+            </g>
+          </g>
+          <path d="M88 150h344" stroke="#241711" stroke-width="2" opacity=".3"/>
+
+          <!-- Escaparate -->
+          <rect x="118" y="214" width="166" height="132" rx="2" fill="url(#hgGlass)" stroke="#241711" stroke-opacity=".3" stroke-width="1.6"/>
+          <path d="M118 262h166M118 306h166" stroke="#241711" stroke-width="1.2" opacity=".2"/>
+          <path d="M126 222l34 34M126 246l24 24" stroke="#FFFFFF" stroke-width="3" opacity=".55"/>
+
+          <!-- Género en los estantes (ilustración) -->
+          <g fill="#6B2A22" opacity=".52">
+            <path d="M134 260c-2 0-3-1-2-3l3-7c1-2 3-4 6-4h3c2 0 3 .6 4 2l4 5c2 2 4 3 7 4l9 2c3 .6 4 1 4 1z"/>
+            <path d="M196 260c-2 0-3-1-2-3l3-7c1-2 3-4 6-4h3c2 0 3 .6 4 2l4 5c2 2 4 3 7 4l9 2c3 .6 4 1 4 1z"/>
+          </g>
+          <g fill="#C2874A" opacity=".55">
+            <rect x="132" y="282" width="38" height="22" rx="2"/>
+            <rect x="180" y="282" width="38" height="22" rx="2"/>
+            <rect x="228" y="282" width="38" height="22" rx="2"/>
+          </g>
+          <g stroke="#6B2A22" stroke-width="1.2" opacity=".45">
+            <path d="M132 290h38M180 290h38M228 290h38"/>
+          </g>
+          <g fill="#6B2A22" opacity=".45">
+            <path d="M150 344c-2 0-3-1-2.4-2.6l3.6-9c1-2.6 3.4-4.4 6.2-4.6l4-.4c2.2-.2 4 .6 5.2 2.2l4.6 6c2 2.6 5 4.4 8.2 5l10 2c3.4.7 5.2 1.4 5.2 1.4z"/>
+          </g>
+
+          <!-- Puerta -->
+          <rect x="306" y="206" width="92" height="152" rx="2" fill="#C2874A" fill-opacity=".38" stroke="#241711" stroke-opacity=".3" stroke-width="1.6"/>
+          <rect x="318" y="220" width="68" height="62" rx="2" fill="url(#hgGlass)" stroke="#241711" stroke-opacity=".2"/>
+          <path d="M318 296h68M318 318h68" stroke="#241711" stroke-width="1.2" opacity=".22"/>
+          <circle cx="326" cy="290" r="3.4" fill="#241711" opacity=".55"/>
+
+          <!-- Suelo -->
+          <path d="M44 358h432" stroke="#241711" stroke-width="2" opacity=".2"/>
+          <ellipse cx="260" cy="366" rx="188" ry="8" fill="#241711" opacity=".07"/>
+
+          <!-- Detalle: letrero colgante -->
+          <path d="M424 176h30" stroke="#241711" stroke-width="2" opacity=".35"/>
+          <circle cx="454" cy="196" r="22" fill="#6B2A22"/>
+          <circle cx="454" cy="196" r="16.5" fill="none" stroke="#E8C79A" stroke-width=".9" opacity=".6"/>
+          <path d="M443 201c-1.2 0-1.7-.9-1.3-2l2.4-6.4c.4-1.1 1.4-1.9 2.6-1.9h2.9c.9 0 1.7.4 2.2 1.1l2.5 3.4c.8 1 1.9 1.7 3.1 1.9l6.7 1.1c1.3.2 2 .6 2 .9z" fill="#F6EFE4"/>
+          <path d="M448.5 190.9V186c0-.7.6-1.3 1.3-1.3h1.5c.7 0 1.3.6 1.3 1.3v4.9" fill="none" stroke="#F6EFE4" stroke-width="1.3" stroke-linecap="round"/>
+          <path d="M454 174v-8" stroke="#241711" stroke-width="2" opacity=".35"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="wrap">
+    <div class="strip-in">
+      <span>Señora</span><span>Caballero</span><span>Niño</span><span>Calzado de temporada</span>
+    </div>
+  </div>
+</div>
+
+<!-- CATEGORÍAS -->
+<section class="section" id="calzado">
+  <div class="wrap">
+    <div class="sechead">
+      <div>
+        <div class="eyebrow">Qué encontrarás</div>
+        <h2 class="title">Una tienda de calzado, sin más vuelta de hoja</h2>
+      </div>
+      <p class="lede">Comercio de calzado para señora, caballero y niño, con la temporada que toca en cada momento del año. Lo que hay en tienda cambia; esta web está pensada para que puedas verlo antes de venir.</p>
+    </div>
+
+    <div class="cat-grid">
+      <article class="cat">
+        <svg class="cat-ico" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <circle cx="24" cy="24" r="23" fill="#F2E7D6"/>
+          <path d="M13 34c-2 0-3-1.4-2.3-3.2L18 13c.5-1.2 1.6-2 2.9-2h1.6c1.3 0 2.1 1.1 1.9 2.4l-1.7 9.8c-.3 1.9.6 3.7 2.3 4.6l6.4 3.4c1.9 1 3 2.2 3 2.8H13z" fill="#6B2A22"/>
+          <path d="M20.5 11.5l10.8 19.4" stroke="#C2874A" stroke-width="1.6" opacity=".7"/>
+        </svg>
+        <div class="cat-body">
+          <h3>Señora</h3>
+          <p>Calzado de mujer para el día a día y para ocasiones, en las tallas y anchos que entran en tienda.</p>
+          <div class="cat-tag">Consultar tallas</div>
+        </div>
+      </article>
+
+      <article class="cat">
+        <svg class="cat-ico" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <circle cx="24" cy="24" r="23" fill="#F2E7D6"/>
+          <path d="M11 33c-1.6 0-2.3-1.1-2-2.5l1.8-9.6c.4-2.3 2.3-4 4.7-4.2l4.2-.4c1.6-.2 3.1.4 4.1 1.6l3.6 4.2c1.3 1.5 3.1 2.5 5.1 2.8l4.6.7c2.1.3 3.6 1.5 3.9 3.1.2.9-.5 1.3-1.6 1.3H11z" fill="#6B2A22"/>
+          <path d="M12 33.5h25" stroke="#C2874A" stroke-width="1.8" opacity=".75"/>
+          <path d="M17 17.2c.9-2 2.6-3.2 4.9-3.4" stroke="#C2874A" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+        </svg>
+        <div class="cat-body">
+          <h3>Caballero</h3>
+          <p>Zapato de hombre de vestir y de calle, con hormas pensadas para llevarse muchas horas.</p>
+          <div class="cat-tag">Consultar tallas</div>
+        </div>
+      </article>
+
+      <article class="cat">
+        <svg class="cat-ico" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <circle cx="24" cy="24" r="23" fill="#F2E7D6"/>
+          <path d="M14 32c-1.5 0-2.2-1-1.9-2.3l1.3-6.4c.4-1.9 2-3.3 4-3.4l3-.2c1.4-.1 2.7.5 3.5 1.6l2.3 3.1c1 1.3 2.4 2.1 4 2.4l2.6.5c1.7.3 2.9 1.3 3.1 2.6.1.7-.4 1-1.3 1H14z" fill="#6B2A22"/>
+          <path d="M15 32.5h20" stroke="#C2874A" stroke-width="1.7" opacity=".75"/>
+          <path d="M23 15.5l2.2 4.4 4.8.6-3.5 3.3.9 4.7" stroke="#C2874A" stroke-width="1.5" fill="none" stroke-linejoin="round" opacity=".85"/>
+        </svg>
+        <div class="cat-body">
+          <h3>Niño</h3>
+          <p>Calzado infantil para colegio, calle y temporada, con el pie del niño medido en tienda.</p>
+          <div class="cat-tag">Medimos el pie en tienda</div>
+        </div>
+      </article>
+
+      <article class="cat">
+        <svg class="cat-ico" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <circle cx="24" cy="24" r="23" fill="#F2E7D6"/>
+          <path d="M24 9v6M24 33v6M9 24h6M33 24h6M13.4 13.4l4.2 4.2M30.4 30.4l4.2 4.2M34.6 13.4l-4.2 4.2M17.6 30.4l-4.2 4.2" stroke="#C2874A" stroke-width="1.8" stroke-linecap="round"/>
+          <circle cx="24" cy="24" r="7.6" fill="#6B2A22"/>
+          <path d="M20.6 24.4l2.6 2.6 4.4-5" stroke="#F6EFE4" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="cat-body">
+          <h3>Temporada</h3>
+          <p>Lo que pide cada época del año: del calzado cerrado de invierno al abierto de verano.</p>
+          <div class="cat-tag">Cambia a lo largo del año</div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ESCAPARATE MAQUETADO -->
+<section class="section showcase" id="escaparate">
+  <div class="wrap">
+    <div class="sechead">
+      <div>
+        <div class="eyebrow">Escaparate</div>
+        <h2 class="title">El escaparate, también desde el móvil</h2>
+      </div>
+      <div>
+        <p class="lede">Hoy el stock solo se ve en publicaciones de Instagram que caducan y no hay dónde mirar modelos y tallas antes de pasarse por la tienda. Este apartado resuelve eso: una rejilla fija, siempre en el mismo sitio, que se actualiza cuando entra género nuevo.</p>
+
+        <div class="notice">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="3" y="4.5" width="18" height="15" rx="2.2" stroke="#6B2A22" stroke-width="1.6"/>
+        <circle cx="8.6" cy="10" r="1.9" stroke="#6B2A22" stroke-width="1.4"/>
+        <path d="M3.6 17.4l5-4.6 4.2 3.6 3.2-2.8 4.4 3.8" stroke="#6B2A22" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+      </svg>
+      <p><strong>Espacio reservado.</strong> Los seis huecos de abajo son plantillas dibujadas, no producto real: están a la espera de las fotos de la tienda. Nada de lo que se ve aquí representa un modelo, una marca, una talla ni un precio.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="shelf">
+      <!-- Slot 1 -->
+      <article class="slot">
+        <div class="slot-art">
+          <span class="slot-badge">Foto pendiente</span>
+          <svg viewBox="0 0 340 260" aria-label="Espacio reservado para foto de producto" role="img">
+            <rect width="340" height="260" fill="none"/>
+            <g stroke="#6B2A22" stroke-width="1.6" opacity=".34" fill="none">
+              <rect x="22" y="22" width="296" height="216" rx="3" stroke-dasharray="7 7"/>
+            </g>
+            <g transform="translate(96 108)">
+              <path d="M8 60c-5 0-7-3-6-7l6-30c2-8 8-13 16-14l14-2c5-1 10 1 13 4l15 15c6 6 13 9 20 11l24 5c10 2 17 7 18 12 0 2-2 2-5 2H8z" fill="#6B2A22" opacity=".2"/>
+              <path d="M12 61h116" stroke="#6B2A22" stroke-width="2" opacity=".3"/>
+            </g>
+            <text x="170" y="214" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" letter-spacing="2.4" fill="#6B2A22" opacity=".62">ESPACIO RESERVADO</text>
+          </svg>
+        </div>
+        <div class="slot-meta">
+          <div class="ph-line w70"></div>
+          <div class="ph-line w44"></div>
+          <div class="ph-note">Nombre y tallas — los pone la tienda</div>
+        </div>
+      </article>
+
+      <!-- Slot 2 -->
+      <article class="slot">
+        <div class="slot-art">
+          <span class="slot-badge">Foto pendiente</span>
+          <svg viewBox="0 0 340 260" aria-label="Espacio reservado para foto de producto" role="img">
+            <g stroke="#6B2A22" stroke-width="1.6" opacity=".34" fill="none">
+              <rect x="22" y="22" width="296" height="216" rx="3" stroke-dasharray="7 7"/>
+            </g>
+            <circle cx="170" cy="126" r="62" fill="#6B2A22" opacity=".1"/>
+            <circle cx="170" cy="126" r="62" fill="none" stroke="#6B2A22" stroke-width="1" opacity=".25"/>
+            <g transform="translate(118 104)">
+              <rect x="2" y="18" width="100" height="32" rx="2" fill="#6B2A22" opacity=".17"/>
+              <rect x="-5" y="6" width="114" height="15" rx="2" fill="#6B2A22" opacity=".26"/>
+              <path d="M30 34h44" stroke="#6B2A22" stroke-width="1.6" opacity=".26"/>
+              <path d="M-2 50h106" stroke="#6B2A22" stroke-width="2" opacity=".28"/>
+            </g>
+            <text x="170" y="214" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" letter-spacing="2.4" fill="#6B2A22" opacity=".62">ESPACIO RESERVADO</text>
+          </svg>
+        </div>
+        <div class="slot-meta">
+          <div class="ph-line w70"></div>
+          <div class="ph-line w44"></div>
+          <div class="ph-note">Nombre y tallas — los pone la tienda</div>
+        </div>
+      </article>
+
+      <!-- Slot 3 -->
+      <article class="slot">
+        <div class="slot-art">
+          <span class="slot-badge">Foto pendiente</span>
+          <svg viewBox="0 0 340 260" aria-label="Espacio reservado para foto de producto" role="img">
+            <g stroke="#6B2A22" stroke-width="1.6" opacity=".34" fill="none">
+              <rect x="22" y="22" width="296" height="216" rx="3" stroke-dasharray="7 7"/>
+            </g>
+            <g opacity=".16" fill="#6B2A22">
+              <rect x="52" y="52" width="70" height="70" rx="3"/>
+              <rect x="134" y="52" width="70" height="70" rx="3"/>
+              <rect x="216" y="52" width="70" height="70" rx="3"/>
+              <rect x="52" y="134" width="70" height="42" rx="3"/>
+              <rect x="134" y="134" width="70" height="42" rx="3"/>
+              <rect x="216" y="134" width="70" height="42" rx="3"/>
+            </g>
+            <text x="170" y="214" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" letter-spacing="2.4" fill="#6B2A22" opacity=".62">ESPACIO RESERVADO</text>
+          </svg>
+        </div>
+        <div class="slot-meta">
+          <div class="ph-line w70"></div>
+          <div class="ph-line w44"></div>
+          <div class="ph-note">Nombre y tallas — los pone la tienda</div>
+        </div>
+      </article>
+
+      <!-- Slot 4 -->
+      <article class="slot">
+        <div class="slot-art">
+          <span class="slot-badge">Foto pendiente</span>
+          <svg viewBox="0 0 340 260" aria-label="Espacio reservado para foto de producto" role="img">
+            <g stroke="#6B2A22" stroke-width="1.6" opacity=".34" fill="none">
+              <rect x="22" y="22" width="296" height="216" rx="3" stroke-dasharray="7 7"/>
+            </g>
+            <g transform="translate(88 96)">
+              <path d="M14 70c-7 0-10-4-8-9l10-34c3-10 11-17 21-18l10-1c6-1 11 2 14 6l12 16c5 7 12 11 20 13l22 5c9 2 15 7 15 12 0 1-2 1-4 1H14z" fill="#6B2A22" opacity=".18"/>
+              <path d="M18 71h130" stroke="#6B2A22" stroke-width="2" opacity=".3"/>
+              <path d="M40 24c5-9 13-14 23-15" stroke="#6B2A22" stroke-width="2.2" fill="none" opacity=".3" stroke-linecap="round"/>
+            </g>
+            <text x="170" y="214" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" letter-spacing="2.4" fill="#6B2A22" opacity=".62">ESPACIO RESERVADO</text>
+          </svg>
+        </div>
+        <div class="slot-meta">
+          <div class="ph-line w70"></div>
+          <div class="ph-line w44"></div>
+          <div class="ph-note">Nombre y tallas — los pone la tienda</div>
+        </div>
+      </article>
+
+      <!-- Slot 5 -->
+      <article class="slot">
+        <div class="slot-art">
+          <span class="slot-badge">Foto pendiente</span>
+          <svg viewBox="0 0 340 260" aria-label="Espacio reservado para foto de producto" role="img">
+            <g stroke="#6B2A22" stroke-width="1.6" opacity=".34" fill="none">
+              <rect x="22" y="22" width="296" height="216" rx="3" stroke-dasharray="7 7"/>
+            </g>
+            <g opacity=".2" fill="#6B2A22" transform="translate(0 6)">
+              <rect x="112" y="60" width="116" height="26" rx="13"/>
+              <rect x="112" y="98" width="116" height="26" rx="13"/>
+              <rect x="112" y="136" width="116" height="26" rx="13"/>
+            </g>
+            <g stroke="#6B2A22" stroke-width="1.4" opacity=".3" fill="none">
+              <path d="M96 79h-22M96 117h-22M96 155h-22"/>
+            </g>
+            <text x="170" y="214" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" letter-spacing="2.4" fill="#6B2A22" opacity=".62">ESPACIO RESERVADO</text>
+          </svg>
+        </div>
+        <div class="slot-meta">
+          <div class="ph-line w70"></div>
+          <div class="ph-line w44"></div>
+          <div class="ph-note">Nombre y tallas — los pone la tienda</div>
+        </div>
+      </article>
+
+      <!-- Slot 6 -->
+      <article class="slot">
+        <div class="slot-art">
+          <span class="slot-badge">Foto pendiente</span>
+          <svg viewBox="0 0 340 260" aria-label="Espacio reservado para foto de producto" role="img">
+            <g stroke="#6B2A22" stroke-width="1.6" opacity=".34" fill="none">
+              <rect x="22" y="22" width="296" height="216" rx="3" stroke-dasharray="7 7"/>
+            </g>
+            <g fill="none" stroke="#6B2A22" opacity=".26">
+              <circle cx="170" cy="118" r="30" stroke-width="1.6"/>
+              <circle cx="170" cy="118" r="52" stroke-width="1.2"/>
+              <circle cx="170" cy="118" r="74" stroke-width="1"/>
+            </g>
+            <path d="M152 118h36M170 100v36" stroke="#6B2A22" stroke-width="2" opacity=".4" stroke-linecap="round"/>
+            <text x="170" y="214" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11" letter-spacing="2.4" fill="#6B2A22" opacity=".62">ESPACIO RESERVADO</text>
+          </svg>
+        </div>
+        <div class="slot-meta">
+          <div class="ph-line w70"></div>
+          <div class="ph-line w44"></div>
+          <div class="ph-note">Nombre y tallas — los pone la tienda</div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- TU VISITA -->
+<section class="section" id="visita">
+  <div class="wrap">
+    <div class="sechead">
+      <div>
+        <div class="eyebrow">Tu visita a la tienda</div>
+        <h2 class="title">Tres pasos, de la pantalla al probador</h2>
+      </div>
+      <p class="lede">La web no sustituye a la tienda: la prepara. Así quedaría el recorrido de alguien que llega desde el móvil.</p>
+    </div>
+
+    <div class="steps">
+      <article class="step">
+        <div class="step-n">PASO 01</div>
+        <h3>Mira el escaparate</h3>
+        <p>Entras en el apartado de escaparate y ves lo que hay en tienda, por secciones: señora, caballero, niño y temporada. Sin buscar entre publicaciones antiguas.</p>
+        <svg class="step-ico" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+          <rect x="3.5" y="6.5" width="33" height="24" rx="2.6" stroke="#6B2A22" stroke-width="1.8"/>
+          <path d="M3.5 13h33" stroke="#6B2A22" stroke-width="1.6"/>
+          <path d="M11 20h7M11 25h12" stroke="#C2874A" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M14 34h12" stroke="#6B2A22" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </article>
+
+      <article class="step">
+        <div class="step-n">PASO 02</div>
+        <h3>Llamas y preguntas</h3>
+        <p>Un toque de teléfono para confirmar si está tu talla antes de moverte. Si prefieres escribir, el correo está en el pie de página.</p>
+        <svg class="step-ico" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+          <path d="M10.5 5h5l2.5 6.8-3.7 2.7a20 20 0 0 0 9 9l2.7-3.7L33 22.5v5A4.4 4.4 0 0 1 28.6 32C17.3 31.3 8.7 22.7 8 11.4A4.4 4.4 0 0 1 10.5 5z" stroke="#6B2A22" stroke-width="1.8" stroke-linejoin="round"/>
+          <path d="M26 8.5c2.8.8 5 3 5.8 5.8" stroke="#C2874A" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+        </svg>
+      </article>
+
+      <article class="step">
+        <div class="step-n">PASO 03</div>
+        <h3>Te pasas y lo pruebas</h3>
+        <p>Vienes a la tienda en Mengíbar, te lo pruebas con calma y te lo llevas puesto. El pie se mide y el zapato se calza: eso sigue siendo cosa del mostrador.</p>
+        <svg class="step-ico" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+          <path d="M20 35s12-9.6 12-18A12 12 0 0 0 8 17c0 8.4 12 18 12 18z" stroke="#6B2A22" stroke-width="1.8" stroke-linejoin="round"/>
+          <circle cx="20" cy="16.6" r="4.4" stroke="#C2874A" stroke-width="1.8"/>
+        </svg>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="section contact" id="contacto">
+  <div class="wrap">
+    <div class="sechead">
+      <div>
+        <div class="eyebrow">Contacto y tienda</div>
+        <h2 class="title">Estamos en Mengíbar, a pie de calle</h2>
+      </div>
+      <p class="lede">Lo más rápido es una llamada. Para el horario, mejor preguntar: no lo publicamos en esta maqueta para no dar un dato equivocado.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div>
+        <div class="dl">
+          <div class="dl-row">
+            <svg class="dl-ico" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6.6 3h3l1.5 4.1-2.2 1.6a12 12 0 0 0 5.4 5.4l1.6-2.2L20 13.4v3A2.6 2.6 0 0 1 17.4 19C10.6 18.6 5.4 13.4 5 6.6A2.6 2.6 0 0 1 6.6 3z" stroke="#E8C79A" stroke-width="1.6" stroke-linejoin="round"/>
+            </svg>
+            <div class="dl-body">
+              <div class="dl-k">Teléfono</div>
+              <div class="dl-v big"><a href="tel:+34640207089">640 207 089</a></div>
+            </div>
+          </div>
+
+          <div class="dl-row">
+            <svg class="dl-ico" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 21s7-5.7 7-10.6A7 7 0 0 0 5 10.4C5 15.3 12 21 12 21z" stroke="#E8C79A" stroke-width="1.6" stroke-linejoin="round"/>
+              <circle cx="12" cy="10.2" r="2.6" stroke="#E8C79A" stroke-width="1.6"/>
+            </svg>
+            <div class="dl-body">
+              <div class="dl-k">Dirección</div>
+              <div class="dl-v">C/ Príncipe de Vergara, s/n<br>23620 Mengíbar (Jaén)</div>
+            </div>
+          </div>
+
+          <div class="dl-row">
+            <svg class="dl-ico" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="8.6" stroke="#E8C79A" stroke-width="1.6"/>
+              <path d="M12 7.4V12l3.4 2.2" stroke="#E8C79A" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+            <div class="dl-body">
+              <div class="dl-k">Horario</div>
+              <div class="dl-v">Consultar horario</div>
+              <div class="dl-note">El horario real lo facilita la tienda; aquí no se publica ningún dato sin confirmar.</div>
+            </div>
+          </div>
+
+          <div class="dl-row">
+            <svg class="dl-ico" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="3" y="5.5" width="18" height="13" rx="2.2" stroke="#E8C79A" stroke-width="1.6"/>
+              <path d="M3.8 7l8.2 6 8.2-6" stroke="#E8C79A" stroke-width="1.6" fill="none" stroke-linejoin="round"/>
+            </svg>
+            <div class="dl-body">
+              <div class="dl-k">Correo</div>
+              <div class="dl-v"><a href="mailto:calzadosherminio@gmail.com">calzadosherminio@gmail.com</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <a class="btn btn-primary" href="tel:+34640207089">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6.6 3h3l1.5 4.1-2.2 1.6a12 12 0 0 0 5.4 5.4l1.6-2.2L20 13.4v3A2.6 2.6 0 0 1 17.4 19C10.6 18.6 5.4 13.4 5 6.6A2.6 2.6 0 0 1 6.6 3z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+            </svg>
+            Llamar a la tienda
+          </a>
+          <a class="btn btn-ghost" href="mailto:calzadosherminio@gmail.com">Escribir un correo</a>
+        </div>
+      </div>
+
+      <div class="mapcard">
+        <svg viewBox="0 0 520 330" role="img" aria-label="Mapa esquemático: la tienda se sitúa en la calle Príncipe de Vergara, en Mengíbar">
+          <rect width="520" height="330" rx="3" fill="#3A2419"/>
+          <g stroke="#52372A" stroke-width="1">
+            <path d="M0 55h520M0 110h520M0 165h520M0 220h520M0 275h520"/>
+            <path d="M65 0v330M130 0v330M195 0v330M325 0v330M390 0v330M455 0v330"/>
+          </g>
+          <g fill="#4A3023">
+            <rect x="70" y="60" width="55" height="45" rx="2"/>
+            <rect x="200" y="60" width="120" height="45" rx="2"/>
+            <rect x="395" y="60" width="55" height="45" rx="2"/>
+            <rect x="70" y="225" width="55" height="45" rx="2"/>
+            <rect x="395" y="225" width="55" height="45" rx="2"/>
+          </g>
+          <!-- Calle principal -->
+          <path d="M0 165h520" stroke="#C2874A" stroke-width="26" opacity=".32"/>
+          <path d="M0 165h520" stroke="#E8C79A" stroke-width="2" stroke-dasharray="16 14" opacity=".75"/>
+          <!-- Calle secundaria -->
+          <path d="M260 0v330" stroke="#C2874A" stroke-width="16" opacity=".2"/>
+          <text x="22" y="152" font-family="Helvetica,Arial,sans-serif" font-size="12.5" letter-spacing="1.6" fill="#E8C79A" opacity=".85">C/ PRÍNCIPE DE VERGARA</text>
+          <text x="272" y="36" font-family="Helvetica,Arial,sans-serif" font-size="11" letter-spacing="1.4" fill="#E8C79A" opacity=".5">MENGÍBAR (JAÉN)</text>
+          <!-- Punto de la tienda -->
+          <circle cx="260" cy="165" r="30" fill="#6B2A22" opacity=".3"/>
+          <circle cx="260" cy="165" r="19" fill="#6B2A22" opacity=".55"/>
+          <circle cx="260" cy="165" r="9.5" fill="#E8C79A"/>
+          <circle cx="260" cy="165" r="3.4" fill="#3A2419"/>
+          <path d="M260 196v34" stroke="#E8C79A" stroke-width="1.2" stroke-dasharray="4 4" opacity=".6"/>
+          <text x="260" y="248" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="13" letter-spacing="1.2" fill="#FFF8EE">CALZADOS HERMINIO</text>
+          <text x="260" y="266" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10.5" letter-spacing="1.4" fill="#E8C79A" opacity=".6">LA TIENDA</text>
+        </svg>
+        <p class="mapcap">Esquema orientativo dibujado para la maqueta. No es un plano a escala ni pretende exactitud cartográfica: solo sitúa la tienda en su calle.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="brand-name">Calzados Herminio</div>
+        <p>Zapatería y comercio de calzado en Mengíbar (Jaén). Señora, caballero, niño y calzado de temporada.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="tel:+34640207089">640 207 089</a></li>
+          <li><a href="mailto:calzadosherminio@gmail.com">calzadosherminio@gmail.com</a></li>
+          <li>Consultar horario</li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Tienda</h4>
+        <ul>
+          <li>C/ Príncipe de Vergara, s/n</li>
+          <li>23620 Mengíbar (Jaén)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot-rule"></div>
+    <p class="foot-studio">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+    <p class="foot-legal">Maqueta de trabajo sin relación oficial con el negocio. Los textos de producto son genéricos del sector y los huecos de imagen están reservados para fotografías de la tienda. No se muestran modelos, marcas, precios, horarios ni opiniones de clientes.</p>
+  </div>
+</footer>
+
+</body>
+</html>
