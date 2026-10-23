@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clínica Dental Dra. Noelia Acevedo · Talavera de la Reina — Propuesta de diseño FFFFFFstudio</title>
+<meta name="description" content="Propuesta de diseño (maqueta no oficial) para la Clínica Dental Dra. Noelia Acevedo, Talavera de la Reina. FFFFFFstudio — Ángel Rubio.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* ============================================================
+   MAQUETA — Clínica Dental Dra. Noelia Acevedo
+   FFFFFFstudio · Ángel Rubio · Alicante
+   Archivo único autocontenido. Cero recursos externos.
+   ============================================================ */
+
+:root{
+  --ink:#16302c;
+  --ink-2:#2f514c;
+  --ink-3:#5c7a75;
+  --line:#d4e3df;
+  --line-2:#e7f0ed;
+  --cream:#fbf8f3;
+  --cream-2:#f4efe6;
+  --mint:#e3f0ec;
+  --mint-2:#f0f7f5;
+  --accent:#1e7d6e;
+  --accent-dk:#12574c;
+  --clay:#c87a5c;
+  --white:#ffffff;
+  --serif:Georgia,"Iowan Old Style","Times New Roman",Times,serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --bar-h:46px;
+  --maxw:1180px;
+  --pad:clamp(20px,5vw,64px);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+html,body{max-width:100%;overflow-x:hidden}
+body{
+  margin:0;
+  background:var(--cream);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:17px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  padding-top:var(--bar-h);
+}
+img,svg{max-width:100%}
+a{color:inherit}
+h1,h2,h3,h4{margin:0;font-weight:400;line-height:1.1}
+p{margin:0}
+ul{margin:0;padding:0;list-style:none}
+
+/* ---------- utilidades ---------- */
+.wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+.eyebrow{
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--accent);font-weight:600;
+}
+.serif{font-family:var(--serif)}
+.note{
+  font-size:13.5px;line-height:1.55;color:var(--ink-3);
+  border-left:2px solid var(--line);padding-left:14px;
+}
+.rule{height:1px;background:var(--line);border:0;margin:0}
+
+/* ---------- barra fija de propuesta ---------- */
+#topbar{
+  position:fixed;inset:0 0 auto 0;z-index:100;
+  background:var(--ink);color:#e9f3f0;
+  display:flex;align-items:center;justify-content:center;
+  min-height:var(--bar-h);
+  padding:9px 16px;
+  text-align:center;
+  font-size:11.5px;letter-spacing:.04em;
+  box-shadow:0 1px 0 rgba(0,0,0,.08);
+}
+#topbar span{display:inline-block;max-width:100%}
+#topbar b{font-weight:700;color:#fff;letter-spacing:.1em}
+
+/* ---------- cabecera de marca ---------- */
+.brandbar{
+  background:var(--cream);
+  border-bottom:1px solid var(--line-2);
+}
+.brandbar .wrap{
+  display:flex;align-items:center;gap:18px;flex-wrap:wrap;
+  padding-top:18px;padding-bottom:18px;
+}
+.logo{display:flex;align-items:center;gap:12px;margin-right:auto;text-decoration:none;color:inherit}
+.logo .mark{
+  width:38px;height:38px;flex:0 0 38px;border-radius:50%;
+  background:
+    radial-gradient(circle at 32% 28%,#ffffff 0%,rgba(255,255,255,0) 58%),
+    linear-gradient(145deg,var(--accent) 0%,var(--accent-dk) 100%);
+  display:grid;place-items:center;
+}
+.logo .mark svg{width:20px;height:20px;display:block}
+.logo .txt{display:flex;flex-direction:column;line-height:1.15}
+.logo .txt .a{font-family:var(--serif);font-size:17px;letter-spacing:.01em}
+.logo .txt .b{font-size:10.5px;letter-spacing:.17em;text-transform:uppercase;color:var(--ink-3)}
+.navlinks{display:flex;gap:22px;flex-wrap:wrap;font-size:14px}
+.navlinks a{text-decoration:none;color:var(--ink-2);padding-bottom:2px;border-bottom:1px solid transparent}
+.navlinks a:hover,.navlinks a:focus-visible{border-bottom-color:var(--accent);color:var(--accent-dk)}
+
+/* ---------- botones ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:16px;font-weight:600;text-decoration:none;
+  padding:15px 26px;border-radius:999px;
+  transition:transform .15s ease,box-shadow .15s ease,background .15s ease;
+}
+.btn svg{width:18px;height:18px;flex:0 0 18px}
+.btn-main{
+  background:var(--accent);color:#fff;
+  box-shadow:0 10px 24px -12px rgba(18,87,76,.65);
+}
+.btn-main:hover,.btn-main:focus-visible{background:var(--accent-dk);transform:translateY(-2px)}
+.btn-ghost{border:1px solid var(--line);color:var(--ink-2);background:transparent}
+.btn-ghost:hover,.btn-ghost:focus-visible{border-color:var(--accent);color:var(--accent-dk)}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(120% 90% at 88% 6%,var(--mint) 0%,rgba(227,240,236,0) 62%),
+    radial-gradient(90% 70% at 4% 96%,var(--cream-2) 0%,rgba(244,239,230,0) 60%),
+    var(--cream);
+  border-bottom:1px solid var(--line-2);
+}
+.hero-arc{
+  position:absolute;right:-16%;top:-28%;width:min(760px,94vw);
+  opacity:.5;pointer-events:none;
+}
+.hero .wrap{
+  position:relative;z-index:2;
+  padding-top:clamp(48px,7vw,96px);padding-bottom:clamp(48px,7vw,96px);
+  display:grid;grid-template-columns:1.12fr .88fr;gap:clamp(32px,5vw,72px);align-items:center;
+}
+.chip{
+  display:inline-flex;align-items:center;gap:9px;
+  background:var(--white);border:1px solid var(--line);
+  border-radius:999px;padding:7px 15px 7px 11px;
+  font-size:12.5px;letter-spacing:.04em;color:var(--ink-2);
+}
+.chip .dot{
+  width:8px;height:8px;border-radius:50%;background:var(--clay);flex:0 0 8px;
+}
+h1.hero-t{
+  font-family:var(--serif);
+  font-size:clamp(35px,6.4vw,64px);
+  line-height:1.03;letter-spacing:-.018em;
+  margin:22px 0 0;
+}
+h1.hero-t em{font-style:normal;display:block;color:var(--accent-dk)}
+.hero-sub{
+  margin-top:22px;max-width:30em;
+  font-size:clamp(16.5px,1.5vw,19px);color:var(--ink-2);line-height:1.6;
+}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px;align-items:center}
+.hero-tel{
+  display:block;margin-top:14px;
+  font-family:var(--serif);font-size:15px;color:var(--ink-3);
+}
+.hero-meta{
+  margin-top:34px;padding-top:24px;border-top:1px solid var(--line);
+  display:flex;gap:28px;flex-wrap:wrap;
+}
+.hero-meta div{min-width:130px}
+.hero-meta dt{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+.hero-meta dd{margin:5px 0 0;font-size:15px;color:var(--ink)}
+
+/* tarjeta visual del hero */
+.hero-card{
+  position:relative;
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:26px;
+  padding:26px;
+  box-shadow:0 36px 70px -46px rgba(22,48,44,.42);
+}
+.hero-card .frame{
+  border-radius:18px;overflow:hidden;
+  background:linear-gradient(170deg,var(--mint-2) 0%,var(--mint) 100%);
+}
+.hero-card .frame svg{display:block;width:100%;height:auto}
+.hero-card .cap{
+  margin-top:18px;padding-top:16px;border-top:1px solid var(--line-2);
+  font-size:12.5px;color:var(--ink-3);line-height:1.55;
+}
+.hero-card .cap b{font-weight:600;color:var(--ink-2);margin-right:4px}
+
+/* ============================================================
+   TIRA DE VALORES
+   ============================================================ */
+.strip{background:var(--ink);color:#dfece9}
+.strip .wrap{
+  padding-top:28px;padding-bottom:28px;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+}
+.strip .it{display:flex;gap:13px;align-items:flex-start}
+.strip .it svg{width:22px;height:22px;flex:0 0 22px;margin-top:2px;opacity:.9}
+.strip .it b{display:block;font-weight:600;font-size:15px;color:#fff}
+.strip .it span{font-size:13.5px;color:#a9c4bf;line-height:1.5}
+
+/* ============================================================
+   SECCIONES
+   ============================================================ */
+section{scroll-margin-top:calc(var(--bar-h) + 12px)}
+.sec{padding-top:clamp(56px,7vw,104px);padding-bottom:clamp(56px,7vw,104px)}
+.sec-head{max-width:760px}
+.sec-head h2{
+  font-family:var(--serif);
+  font-size:clamp(28px,4vw,44px);line-height:1.08;letter-spacing:-.012em;
+  margin-top:16px;
+}
+.sec-head p{margin-top:18px;color:var(--ink-2);font-size:17px;max-width:58ch}
+
+/* ---------- servicios ---------- */
+.srv-grid{
+  margin-top:48px;
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:22px;overflow:hidden;
+}
+.srv{
+  background:var(--white);padding:30px 26px 32px;
+  display:flex;flex-direction:column;gap:14px;
+  transition:background .18s ease;
+}
+.srv:hover{background:var(--mint-2)}
+.srv .top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.srv .num{
+  font-family:var(--serif);font-size:13px;color:var(--ink-3);letter-spacing:.06em;
+}
+.srv .ico{
+  width:46px;height:46px;border-radius:14px;
+  background:var(--mint);display:grid;place-items:center;flex:0 0 46px;
+}
+.srv .ico svg{width:24px;height:24px;display:block}
+.srv h3{font-family:var(--serif);font-size:21px;letter-spacing:-.005em}
+.srv p{font-size:14.8px;color:var(--ink-2);line-height:1.58}
+.srv-foot{
+  margin-top:28px;display:flex;gap:18px;flex-wrap:wrap;align-items:center;
+  justify-content:space-between;
+}
+
+/* ---------- primera visita ---------- */
+.visit{background:var(--mint-2);border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2)}
+.steps{
+  margin-top:48px;position:relative;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:26px;
+}
+.steps::before{
+  content:"";position:absolute;left:8%;right:8%;top:27px;height:1px;
+  background:repeating-linear-gradient(90deg,var(--line) 0 7px,transparent 7px 14px);
+}
+.step{position:relative;z-index:2}
+.step .bub{
+  width:54px;height:54px;border-radius:50%;
+  background:var(--white);border:1px solid var(--line);
+  display:grid;place-items:center;
+  font-family:var(--serif);font-size:20px;color:var(--accent-dk);
+  box-shadow:0 10px 22px -16px rgba(22,48,44,.5);
+}
+.step h3{font-family:var(--serif);font-size:21px;margin-top:20px}
+.step p{margin-top:11px;font-size:15px;color:var(--ink-2);line-height:1.6}
+.visit-cta{
+  margin-top:48px;background:var(--white);border:1px solid var(--line);
+  border-radius:20px;padding:26px 28px;
+  display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap;
+}
+.visit-cta .t{font-family:var(--serif);font-size:21px;line-height:1.25}
+.visit-cta .s{font-size:14px;color:var(--ink-3);margin-top:6px}
+
+/* ---------- contacto ---------- */
+.ct-grid{
+  margin-top:48px;
+  display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(26px,3.4vw,52px);
+  align-items:start;
+}
+.dl{border-top:1px solid var(--line)}
+.dl .row{
+  display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--line);
+  align-items:flex-start;
+}
+.dl .k{
+  flex:0 0 112px;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-3);padding-top:4px;
+}
+.dl .v{font-size:16.5px;line-height:1.5;min-width:0;overflow-wrap:break-word}
+.dl .v a{text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px}
+.dl .v a:hover,.dl .v a:focus-visible{color:var(--accent-dk);border-bottom-color:var(--accent)}
+.dl .v .sm{display:block;font-size:13.5px;color:var(--ink-3);margin-top:5px}
+.badge-h{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--cream-2);border:1px solid var(--line);border-radius:8px;
+  padding:6px 12px;font-size:14px;color:var(--ink-2);
+}
+.badge-h svg{width:15px;height:15px;flex:0 0 15px}
+
+.mapcard{
+  background:var(--white);border:1px solid var(--line);border-radius:22px;
+  padding:14px;box-shadow:0 30px 62px -46px rgba(22,48,44,.4);
+}
+.mapcard .sv{border-radius:14px;overflow:hidden;background:var(--mint-2);display:block}
+.mapcard .sv svg{display:block;width:100%;height:auto}
+.mapcard .legend{
+  display:flex;gap:16px;flex-wrap:wrap;align-items:center;
+  padding:14px 8px 6px;font-size:12.5px;color:var(--ink-3);
+}
+.mapcard .legend .li{display:flex;align-items:center;gap:7px}
+.mapcard .legend .sw{width:16px;height:4px;border-radius:2px;background:var(--line);flex:0 0 16px}
+.mapcard .legend .sw.main{background:var(--accent);height:6px}
+.mapcard .legend .pin{width:10px;height:10px;border-radius:50%;background:var(--clay);flex:0 0 10px}
+
+/* ---------- bloque reservado ---------- */
+.reserved{
+  margin-top:clamp(40px,5vw,64px);
+  border:1px dashed var(--line);border-radius:20px;
+  background:
+    repeating-linear-gradient(135deg,rgba(227,240,236,.55) 0 10px,rgba(251,248,243,.55) 10px 20px);
+  padding:clamp(24px,3vw,38px);
+}
+.reserved h3{font-family:var(--serif);font-size:22px}
+.reserved p{margin-top:12px;color:var(--ink-2);font-size:15.5px;max-width:62ch}
+.reserved ul{margin-top:18px;display:grid;gap:9px}
+.reserved li{
+  font-size:14.5px;color:var(--ink-2);padding-left:20px;position:relative;
+}
+.reserved li::before{
+  content:"";position:absolute;left:4px;top:9px;width:7px;height:7px;
+  border:1px solid var(--ink-3);border-radius:2px;
+}
+
+/* ---------- pie ---------- */
+footer{background:var(--ink);color:#cfe0dc}
+footer .wrap{padding-top:clamp(44px,5vw,66px);padding-bottom:clamp(34px,4vw,48px)}
+.ft-top{display:grid;grid-template-columns:1.2fr .8fr;gap:34px;align-items:start}
+.ft-name{font-family:var(--serif);font-size:clamp(21px,2.6vw,28px);color:#fff;line-height:1.2}
+.ft-addr{margin-top:14px;font-size:14.5px;line-height:1.6;color:#a9c4bf;max-width:34ch}
+.ft-list{display:grid;gap:12px;font-size:15px}
+.ft-list a{text-decoration:none;border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:2px;overflow-wrap:break-word}
+.ft-list a:hover,.ft-list a:focus-visible{color:#fff;border-bottom-color:var(--clay)}
+.ft-rule{height:1px;background:rgba(255,255,255,.14);margin:32px 0 22px}
+.ft-sign{
+  display:flex;gap:16px;flex-wrap:wrap;align-items:center;justify-content:space-between;
+  font-size:13px;color:#9ab9b4;
+}
+.ft-sign .s1{color:#dcebe8}
+.ft-sign .s2{font-size:12px}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:980px){
+  .hero .wrap{grid-template-columns:1fr;gap:38px}
+  .srv-grid{grid-template-columns:repeat(2,1fr)}
+  .ct-grid{grid-template-columns:1fr}
+  .strip .wrap{grid-template-columns:1fr;gap:18px}
+  .ft-top{grid-template-columns:1fr;gap:26px}
+}
+@media (max-width:760px){
+  .steps{grid-template-columns:1fr;gap:0}
+  .steps::before{
+    left:26px;right:auto;top:10px;bottom:10px;width:1px;height:auto;
+    background:repeating-linear-gradient(180deg,var(--line) 0 7px,transparent 7px 14px);
+  }
+  .step{display:grid;grid-template-columns:54px 1fr;gap:18px;padding:16px 0}
+  .step .bub{grid-row:1/span 3}
+  .step h3{margin-top:10px}
+}
+@media (max-width:620px){
+  body{font-size:16.5px}
+  #topbar{font-size:10px;letter-spacing:.05em;line-height:1.4}
+  .navlinks{display:none}
+  .srv-grid{grid-template-columns:1fr}
+  .hero-card{padding:16px;border-radius:20px}
+  .dl .row{flex-direction:column;gap:6px}
+  .dl .k{flex:none;padding-top:0}
+  .visit-cta{padding:22px}
+  .hero-meta{gap:20px}
+  .hero-arc{right:-34%;top:-14%;opacity:.4}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<!-- ===================== BARRA FIJA DE PROPUESTA ===================== -->
+<div id="topbar" role="note" aria-label="Aviso de propuesta">
+  <span>Propuesta de diseño · maqueta no oficial · <b>FFFFFFstudio</b> · Ángel Rubio</span>
+</div>
+
+<!-- ===================== CABECERA DE MARCA ===================== -->
+<header class="brandbar">
+  <div class="wrap">
+    <a class="logo" href="#inicio" aria-label="Clínica Dental Dra. Noelia Acevedo, inicio">
+      <span class="mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 8.4c0-2.3 1.7-3.9 3.6-3.9 1.3 0 2.2.6 3.4.6s2.1-.6 3.4-.6C17.3 4.5 19 6.1 19 8.4c0 2.6-1 4-1.6 6.2-.5 1.8-.6 4.4-2 4.4-1.2 0-1.3-2.1-1.7-3.9-.3-1.2-.8-1.9-1.7-1.9s-1.4.7-1.7 1.9c-.4 1.8-.5 3.9-1.7 3.9-1.4 0-1.5-2.6-2-4.4C6 12.4 5 11 5 8.4Z"/>
+        </svg>
+      </span>
+      <span class="txt">
+        <span class="a">Dra. Noelia Acevedo</span>
+        <span class="b">Clínica dental · Talavera</span>
+      </span>
+    </a>
+    <nav class="navlinks" aria-label="Secciones">
+      <a href="#servicios">Servicios</a>
+      <a href="#primera-visita">Tu primera visita</a>
+      <a href="#contacto">Contacto y cita</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero" id="inicio">
+  <svg class="hero-arc" viewBox="0 0 760 620" aria-hidden="true" focusable="false">
+    <g fill="none" stroke="#1e7d6e" stroke-width="1" opacity=".45">
+      <circle cx="430" cy="280" r="268"/>
+      <circle cx="430" cy="280" r="214"/>
+      <circle cx="430" cy="280" r="160"/>
+    </g>
+    <path d="M150 300c80 120 230 186 400 150" fill="none" stroke="#c87a5c" stroke-width="1.4" opacity=".5" stroke-linecap="round"/>
+  </svg>
+
+  <div class="wrap">
+    <div>
+      <span class="chip"><span class="dot" aria-hidden="true"></span>Se atiende únicamente con cita previa</span>
+      <h1 class="hero-t">Clínica Dental<em>Dra. Noelia Acevedo</em></h1>
+      <p class="hero-sub">
+        Odontología de trato cercano en Talavera de la Reina, atendida por una sola
+        profesional: la misma persona en la primera consulta y en todo el tratamiento.
+        Pide tu cita por teléfono y reserva tu hora.
+      </p>
+
+      <div class="hero-cta">
+        <a class="btn btn-main" href="tel:+34652421465">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6.2 3.5h3l1.4 3.6-2 1.3a11.6 11.6 0 0 0 5 5l1.3-2 3.6 1.4v3a2 2 0 0 1-2.2 2A16.6 16.6 0 0 1 4.2 5.7a2 2 0 0 1 2-2.2Z"/>
+          </svg>
+          Pedir cita: 652 421 465
+        </a>
+        <a class="btn btn-ghost" href="#contacto">Cómo llegar</a>
+      </div>
+      <span class="hero-tel">Atención telefónica para concertar la visita · Consultar horario</span>
+
+      <dl class="hero-meta">
+        <div>
+          <dt>Dónde</dt>
+          <dd>Av. de Toledo, 31<br>Talavera de la Reina</dd>
+        </div>
+        <div>
+          <dt>Planta y local</dt>
+          <dd>Segunda planta, local 18</dd>
+        </div>
+        <div>
+          <dt>Horario</dt>
+          <dd>Consultar horario</dd>
+        </div>
+      </dl>
+    </div>
+
+    <!-- tarjeta visual: ilustración CSS/SVG, sin fotografías -->
+    <div class="hero-card">
+      <div class="frame">
+        <svg viewBox="0 0 440 340" role="img" aria-label="Ilustración abstracta de una sonrisa trazada con líneas finas">
+          <defs>
+            <linearGradient id="gWash" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#ffffff" stop-opacity=".85"/>
+              <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+            </linearGradient>
+            <linearGradient id="gTooth" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#ffffff"/>
+              <stop offset="1" stop-color="#e8f4f0"/>
+            </linearGradient>
+          </defs>
+          <rect width="440" height="340" fill="url(#gWash)"/>
+          <g fill="none" stroke="#1e7d6e" stroke-width=".9" opacity=".28">
+            <circle cx="220" cy="170" r="140"/>
+            <circle cx="220" cy="170" r="104"/>
+          </g>
+          <!-- arco de dientes esquemático -->
+          <g transform="translate(220 176)">
+            <g stroke="#9cc2bb" stroke-width="1.1" fill="url(#gTooth)">
+              <g transform="rotate(-54) translate(0 -96)"><rect x="-13" y="-16" width="26" height="32" rx="11"/></g>
+              <g transform="rotate(-36) translate(0 -96)"><rect x="-14" y="-17" width="28" height="34" rx="12"/></g>
+              <g transform="rotate(-18) translate(0 -96)"><rect x="-15" y="-18" width="30" height="36" rx="12"/></g>
+              <g transform="rotate(0) translate(0 -96)"><rect x="-16" y="-19" width="32" height="38" rx="13"/></g>
+              <g transform="rotate(18) translate(0 -96)"><rect x="-15" y="-18" width="30" height="36" rx="12"/></g>
+              <g transform="rotate(36) translate(0 -96)"><rect x="-14" y="-17" width="28" height="34" rx="12"/></g>
+              <g transform="rotate(54) translate(0 -96)"><rect x="-13" y="-16" width="26" height="32" rx="11"/></g>
+            </g>
+            <path d="M-118 26c34 54 202 54 236 0" fill="none" stroke="#c87a5c" stroke-width="1.6" stroke-linecap="round" opacity=".75"/>
+            <path d="M-92 54c26 34 158 34 184 0" fill="none" stroke="#1e7d6e" stroke-width="1.2" stroke-linecap="round" opacity=".5"/>
+          </g>
+          <g fill="#1e7d6e" opacity=".5">
+            <circle cx="66" cy="66" r="3"/>
+            <circle cx="380" cy="94" r="2.4"/>
+            <circle cx="352" cy="286" r="3"/>
+          </g>
+        </svg>
+      </div>
+      <p class="cap">
+        <b>Nota de diseño.</b>
+        Maqueta sin fotografías: toda la imagen es gradiente y SVG. En la web definitiva,
+        este espacio iría con fotos reales de la clínica y de la doctora.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TIRA ===================== -->
+<div class="strip">
+  <div class="wrap">
+    <div class="it">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.2 20 6v5.6c0 4.6-3.3 7.6-8 9.2-4.7-1.6-8-4.6-8-9.2V6l8-2.8Z"/><path d="M9.2 12.1l2 2 3.6-3.9"/></svg>
+      <span><b>Una sola profesional</b><span>La misma persona te atiende de principio a fin.</span></span>
+    </div>
+    <div class="it">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.4" y="4.8" width="17.2" height="15.8" rx="2.6"/><path d="M8 3.2v3.2M16 3.2v3.2M3.4 10h17.2"/></svg>
+      <span><b>Solo con cita previa</b><span>Se reserva tu hora: sin esperas de sala llena.</span></span>
+    </div>
+    <div class="it">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7.2-4.6-7.2-10A7.2 7.2 0 0 1 12 3.8 7.2 7.2 0 0 1 19.2 11c0 5.4-7.2 10-7.2 10Z"/><circle cx="12" cy="10.8" r="2.5"/></svg>
+      <span><b>En el centro de Talavera</b><span>Av. de Toledo, 31 · segunda planta, local 18.</span></span>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== SERVICIOS ===================== -->
+<section class="sec" id="servicios">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Servicios</span>
+      <h2>Los tratamientos que una clínica dental suele cubrir</h2>
+      <p>
+        Esta es una <strong>propuesta de contenido</strong> construida con los tratamientos
+        habituales del sector dental, para mostrar cómo quedaría la sección. No afirma qué
+        ofrece la clínica: la lista definitiva la decide y confirma la Dra. Acevedo, y se
+        quitará, añadirá o reescribirá lo que haga falta.
+      </p>
+    </div>
+
+    <div class="srv-grid">
+      <article class="srv">
+        <div class="top">
+          <span class="num">01</span>
+          <span class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#12574c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.6" cy="10.6" r="6.3"/><path d="M15.4 15.4 20.4 20.4"/><path d="M8.2 10.6h4.8"/></svg>
+          </span>
+        </div>
+        <h3>Revisión y diagnóstico</h3>
+        <p>Exploración de la boca y valoración del estado de dientes y encías para saber de qué se parte antes de cualquier tratamiento.</p>
+      </article>
+
+      <article class="srv">
+        <div class="top">
+          <span class="num">02</span>
+          <span class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#12574c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.6l1.5 4 4 1.5-4 1.5-1.5 4-1.5-4-4-1.5 4-1.5 1.5-4Z"/><path d="M18.6 15.4l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8.8-2Z"/></svg>
+          </span>
+        </div>
+        <h3>Higiene y limpieza</h3>
+        <p>Limpieza profesional para retirar sarro y placa, y pautas de cuidado diario adaptadas a cada boca.</p>
+      </article>
+
+      <article class="srv">
+        <div class="top">
+          <span class="num">03</span>
+          <span class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#12574c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5.6 8.4c0-2.2 1.6-3.7 3.4-3.7 1.2 0 2 .6 3 .6s1.8-.6 3-.6c1.8 0 3.4 1.5 3.4 3.7 0 2.5-1 3.8-1.5 5.9-.5 1.7-.6 4.2-1.9 4.2-1.1 0-1.2-2-1.6-3.7-.3-1.1-.7-1.8-1.4-1.8"/><path d="M12 13c-.7 0-1.1.7-1.4 1.8-.4 1.7-.5 3.7-1.6 3.7-1.3 0-1.4-2.5-1.9-4.2"/><path d="M9.4 9.2h5.2"/></svg>
+          </span>
+        </div>
+        <h3>Empastes y endodoncia</h3>
+        <p>Tratamiento de caries y, cuando el nervio está afectado, endodoncia para conservar el diente en lugar de perderlo.</p>
+      </article>
+
+      <article class="srv">
+        <div class="top">
+          <span class="num">04</span>
+          <span class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#12574c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 12h17.2"/><rect x="5" y="8.6" width="4" height="6.8" rx="1.2"/><rect x="15" y="8.6" width="4" height="6.8" rx="1.2"/><path d="M10.6 12h2.8"/></svg>
+          </span>
+        </div>
+        <h3>Ortodoncia</h3>
+        <p>Corrección de la posición de los dientes y de la mordida, con las opciones de aparato que correspondan en cada caso.</p>
+      </article>
+
+      <article class="srv">
+        <div class="top">
+          <span class="num">05</span>
+          <span class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#12574c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7.2 6.6h9.6l-1.4 3.4H8.6L7.2 6.6Z"/><path d="M9.2 10v3.2M14.8 10v3.2"/><path d="M12 13.2v7"/><path d="M9.6 16h4.8M9.8 18.6h4.4"/></svg>
+          </span>
+        </div>
+        <h3>Prótesis e implantes</h3>
+        <p>Reposición de dientes ausentes mediante prótesis o implantes para recuperar la masticación y el aspecto de la sonrisa.</p>
+      </article>
+
+      <article class="srv">
+        <div class="top">
+          <span class="num">06</span>
+          <span class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#12574c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6"/><path d="M5.2 20.4c.6-3.5 3.4-5.6 6.8-5.6s6.2 2.1 6.8 5.6"/><path d="M9.8 8.2h4.4"/></svg>
+          </span>
+        </div>
+        <h3>Odontopediatría</h3>
+        <p>Atención dental infantil, con revisiones de seguimiento del cambio de dientes y prevención desde pequeños.</p>
+      </article>
+    </div>
+
+    <div class="srv-foot">
+      <p class="note">
+        Los textos de cada tratamiento son descripciones genéricas del sector, redactadas
+        como borrador. No se indican precios, duraciones, marcas ni técnicas concretas:
+        esos datos solo pueden venir de la clínica.
+      </p>
+      <a class="btn btn-ghost" href="tel:+34652421465">Preguntar por teléfono</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PRIMERA VISITA ===================== -->
+<section class="sec visit" id="primera-visita">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Tu primera visita</span>
+      <h2>Tres pasos, empezando siempre por la cita</h2>
+      <p>
+        La clínica atiende únicamente con cita previa, así que el recorrido arranca por
+        teléfono. Esquema propuesto para la web: a confirmar con la clínica antes de publicarlo.
+      </p>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="bub" aria-hidden="true">1</div>
+        <h3>Llamas y reservas hora</h3>
+        <p>Se atiende solo con cita previa. En la llamada se acuerda el día y la hora de la visita: no es necesario acudir sin cita.</p>
+      </div>
+      <div class="step">
+        <div class="bub" aria-hidden="true">2</div>
+        <h3>Vienes a la consulta</h3>
+        <p>Av. de Toledo, 31, segunda planta, local 18. Llega a la hora acordada y cuenta qué te trae: molestia concreta, revisión o continuar un tratamiento.</p>
+      </div>
+      <div class="step">
+        <div class="bub" aria-hidden="true">3</div>
+        <h3>Sales sabiendo qué toca</h3>
+        <p>Tras la exploración se te explica qué se ha visto y qué pasos tendría el tratamiento, para que decidas con la información delante.</p>
+      </div>
+    </div>
+
+    <div class="visit-cta">
+      <div>
+        <p class="t">¿Pedimos la cita?</p>
+        <p class="s">Un solo número, atención directa de la clínica.</p>
+      </div>
+      <a class="btn btn-main" href="tel:+34652421465">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M6.2 3.5h3l1.4 3.6-2 1.3a11.6 11.6 0 0 0 5 5l1.3-2 3.6 1.4v3a2 2 0 0 1-2.2 2A16.6 16.6 0 0 1 4.2 5.7a2 2 0 0 1 2-2.2Z"/>
+        </svg>
+        652 421 465
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACTO ===================== -->
+<section class="sec" id="contacto">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Contacto y cita</span>
+      <h2>Dónde estamos y cómo pedir cita</h2>
+      <p>Datos reales de la clínica. El horario de atención no se publica aquí porque debe facilitarlo la propia clínica.</p>
+    </div>
+
+    <div class="ct-grid">
+      <div>
+        <div class="dl">
+          <div class="row">
+            <div class="k">Teléfono</div>
+            <div class="v">
+              <a href="tel:+34652421465">652 421 465</a>
+              <span class="sm">Pulsa para llamar · atención solo con cita previa</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="k">Dirección</div>
+            <div class="v">
+              Av. de Toledo, 31, segunda planta, local 18<br>
+              45600 Talavera de la Reina (Toledo)
+              <span class="sm">El acceso a la consulta está en la segunda planta, local 18.</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="k">Email</div>
+            <div class="v">
+              <a href="mailto:ynaacevedo2642@outlook.com">ynaacevedo2642@outlook.com</a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="k">Horario</div>
+            <div class="v">
+              <span class="badge-h">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.4"/><path d="M12 7.6V12l3 1.8"/></svg>
+                Consultar horario
+              </span>
+              <span class="sm">Espacio reservado: la clínica indicará días y tramos horarios.</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="k">Cita</div>
+            <div class="v">
+              Únicamente con cita previa, por teléfono.
+              <span class="sm">Si la clínica quiere, en la web definitiva puede añadirse un formulario de solicitud de cita.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MAPA ESQUEMÁTICO (SVG inline, no es un mapa real) -->
+      <div class="mapcard">
+        <div class="sv">
+          <svg viewBox="0 0 560 420" role="img" aria-label="Mapa esquemático: la clínica está en la Avenida de Toledo, número 31, segunda planta, local 18">
+            <rect width="560" height="420" fill="#f0f7f5"/>
+            <!-- manzanas -->
+            <g fill="#e2eeea">
+              <rect x="24" y="28" width="170" height="104" rx="7"/>
+              <rect x="24" y="168" width="138" height="96" rx="7"/>
+              <rect x="24" y="300" width="186" height="92" rx="7"/>
+              <rect x="300" y="28" width="150" height="86" rx="7"/>
+              <rect x="470" y="28" width="66" height="86" rx="7"/>
+              <rect x="372" y="152" width="164" height="110" rx="7"/>
+              <rect x="300" y="300" width="236" height="92" rx="7"/>
+            </g>
+            <!-- zona verde -->
+            <g>
+              <rect x="186" y="168" width="110" height="96" rx="9" fill="#d4e8dd"/>
+              <g fill="none" stroke="#9dc6b2" stroke-width="1.2">
+                <path d="M200 254c14-10 22-26 22-44"/>
+                <path d="M258 254c16-8 26-24 28-42"/>
+              </g>
+            </g>
+
+            <!-- calles secundarias -->
+            <g stroke="#ffffff" stroke-width="16" stroke-linecap="round">
+              <path d="M0 150h560"/>
+              <path d="M0 282h560"/>
+              <path d="M214 0v420"/>
+              <path d="M460 0v420"/>
+            </g>
+            <g stroke="#cfe0db" stroke-width="1" stroke-dasharray="5 7">
+              <path d="M0 150h560"/><path d="M0 282h560"/>
+              <path d="M214 0v420"/><path d="M460 0v420"/>
+            </g>
+
+            <!-- avenida principal: Av. de Toledo -->
+            <path d="M-20 400 L580 70" stroke="#ffffff" stroke-width="40" stroke-linecap="round"/>
+            <path d="M-20 400 L580 70" stroke="#d8ebe5" stroke-width="34" stroke-linecap="round"/>
+            <path d="M-20 400 L580 70" stroke="#1e7d6e" stroke-width="2.2" stroke-dasharray="16 14" opacity=".65"/>
+
+            <!-- etiqueta de la avenida -->
+            <g transform="translate(96 352) rotate(-28.8)">
+              <rect x="-6" y="-15" width="196" height="26" rx="13" fill="#ffffff" opacity=".92"/>
+              <text x="92" y="3" text-anchor="middle" font-family="Georgia,serif" font-size="15" fill="#12574c" letter-spacing=".04em">Av. de Toledo</text>
+            </g>
+
+            <!-- rotonda -->
+            <g transform="translate(460 149)">
+              <circle r="21" fill="#ffffff"/>
+              <circle r="12" fill="#d4e8dd"/>
+              <circle r="21" fill="none" stroke="#cfe0db" stroke-width="1"/>
+            </g>
+
+            <!-- marcador: clínica sobre la Av. de Toledo -->
+            <g transform="translate(312 234)">
+              <ellipse cx="0" cy="30" rx="15" ry="5" fill="#16302c" opacity=".16"/>
+              <path d="M0 28c0 0-15-15.5-15-24.8A15 15 0 0 1 15 3.2C15 12.5 0 28 0 28Z" fill="#c87a5c" stroke="#a65c40" stroke-width="1.2"/>
+              <circle cx="0" cy="3" r="5.4" fill="#fff"/>
+              <g transform="translate(26 -40)">
+                <rect x="0" y="0" width="196" height="62" rx="12" fill="#ffffff" stroke="#d4e3df" stroke-width="1"/>
+                <text x="15" y="23" font-family="Georgia,serif" font-size="14.5" fill="#16302c">Clínica Dra. N. Acevedo</text>
+                <text x="15" y="42" font-family="system-ui,sans-serif" font-size="12" fill="#5c7a75">Nº 31 · 2ª planta · local 18</text>
+              </g>
+            </g>
+
+            <!-- norte -->
+            <g transform="translate(40 384)" opacity=".75">
+              <path d="M0 -14 L5 4 L0 0 L-5 4 Z" fill="#5c7a75"/>
+              <text x="0" y="18" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#5c7a75" letter-spacing=".12em">N</text>
+            </g>
+          </svg>
+        </div>
+        <div class="legend">
+          <span class="li"><span class="sw main" aria-hidden="true"></span>Av. de Toledo</span>
+          <span class="li"><span class="sw" aria-hidden="true"></span>Calles del entorno</span>
+          <span class="li"><span class="pin" aria-hidden="true"></span>La clínica (nº 31)</span>
+          <span class="li">Esquema orientativo, no un mapa a escala.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- bloque reservado, sin inventar contenido -->
+    <div class="reserved">
+      <span class="eyebrow">Espacio preparado</span>
+      <h3>Lo que falta por rellenar</h3>
+      <p>
+        Estos bloques están maquetados y vacíos a propósito. FFFFFFstudio no inventa
+        información de la clínica: cada punto se completará con lo que facilite la
+        Dra. Acevedo, o se eliminará si no procede.
+      </p>
+      <ul>
+        <li>Horario de atención y días de consulta.</li>
+        <li>Presentación de la doctora y su formación, en sus propias palabras.</li>
+        <li>Lista definitiva de tratamientos que sí se realizan en la clínica.</li>
+        <li>Fotografías reales de la consulta y del equipo.</li>
+        <li>Opiniones de pacientes, solo si la clínica las aporta y autoriza.</li>
+        <li>Indicaciones de acceso, ascensor y aparcamiento en la zona.</li>
+        <li>Aviso legal, política de privacidad y de cookies.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PIE ===================== -->
+<footer>
+  <div class="wrap">
+    <div class="ft-top">
+      <div>
+        <p class="ft-name">Clínica Dental Dra. Noelia Acevedo</p>
+        <p class="ft-addr">
+          Av. de Toledo, 31, segunda planta, local 18<br>
+          45600 Talavera de la Reina (Toledo)<br>
+          Atención únicamente con cita previa · Consultar horario
+        </p>
+      </div>
+      <div class="ft-list">
+        <a href="tel:+34652421465">652 421 465</a>
+        <a href="mailto:ynaacevedo2642@outlook.com">ynaacevedo2642@outlook.com</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#contacto">Contacto y cita</a>
+      </div>
+    </div>
+    <div class="ft-rule" role="presentation"></div>
+    <div class="ft-sign">
+      <span class="s1">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</span>
+      <span class="s2">Maqueta no oficial · sin vínculo comercial con la clínica</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Ajusta el hueco superior a la altura real de la barra fija,
+   para que ningún contenido quede tapado (también si el texto se parte
+   en dos líneas en pantallas estrechas). */
+(function () {
+  var bar = document.getElementById('topbar');
+  if (!bar) return;
+  function fit() {
+    var h = Math.ceil(bar.getBoundingClientRect().height);
+    document.documentElement.style.setProperty('--bar-h', h + 'px');
+  }
+  fit();
+  window.addEventListener('resize', fit, { passive: true });
+  window.addEventListener('orientationchange', fit);
+  if (document.fonts && document.fonts.ready) { document.fonts.ready.then(fit); }
+})();
+</script>
+</body>
+</html>

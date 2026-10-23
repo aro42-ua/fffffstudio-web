@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Peluquería Zaida · Órgiva — Propuesta de diseño | FFFFFFstudio</title>
+<meta name="description" content="Propuesta de diseño web (maqueta no oficial) para Peluquería Zaida, Órgiva (Granada). FFFFFFstudio — Ángel Rubio, diseñador web, Alicante.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* ===========================================================
+   Peluquería Zaida — maqueta de propuesta
+   FFFFFFstudio · Ángel Rubio · Alicante
+   Un solo archivo. Cero recursos externos.
+   =========================================================== */
+
+:root{
+  --ink:#16110f;
+  --ink-2:#241b18;
+  --plum:#2e1d23;
+  --cream:#f7f2ec;
+  --cream-2:#efe6da;
+  --sand:#e2d5c4;
+  --gold:#b98a4b;
+  --gold-soft:#d8b887;
+  --rose:#c4867f;
+  --line:rgba(22,17,15,.14);
+  --line-l:rgba(247,242,236,.18);
+  --bar-h:44px;
+  --serif:"Iowan Old Style","Palatino Linotype","Palatino","Book Antiqua",Georgia,"Times New Roman",serif;
+  --sans:"Helvetica Neue",Helvetica,Arial,"Segoe UI",Roboto,system-ui,sans-serif;
+  --maxw:1160px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+html,body{max-width:100%;overflow-x:hidden}
+body{
+  margin:0;
+  padding-top:var(--bar-h);
+  background:var(--cream);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+img,svg{max-width:100%}
+a{color:inherit}
+h1,h2,h3,h4{margin:0;font-family:var(--serif);font-weight:400;letter-spacing:-.015em;line-height:1.08}
+p{margin:0}
+ul{margin:0;padding:0;list-style:none}
+
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.eyebrow{
+  font-size:11px;letter-spacing:.26em;text-transform:uppercase;
+  font-weight:700;color:var(--gold);margin:0 0 18px
+}
+.eyebrow.on-dark{color:var(--gold-soft)}
+.lede{font-size:17px;line-height:1.7;color:rgba(22,17,15,.72);max-width:62ch}
+
+/* ---------- Barra fija de propuesta ---------- */
+.proposal-bar{
+  position:fixed;inset:0 0 auto 0;z-index:9999;
+  min-height:var(--bar-h);
+  display:flex;align-items:center;justify-content:center;
+  padding:7px 14px;
+  background:#120d0b;
+  color:#f3ece2;
+  border-bottom:1px solid rgba(185,138,75,.5);
+  box-shadow:0 1px 0 rgba(0,0,0,.25);
+}
+.proposal-bar span{
+  font-size:12px;line-height:1.4;letter-spacing:.055em;
+  text-align:center;font-weight:600;
+}
+.proposal-bar b{color:var(--gold-soft);font-weight:700}
+
+/* ---------- Encabezado ---------- */
+.site-head{
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+  padding:26px 0 0;
+}
+.brand{display:flex;align-items:center;gap:13px;text-decoration:none}
+.brand .mark{flex:0 0 auto}
+.brand .n1{display:block;font-family:var(--serif);font-size:19px;letter-spacing:.02em;line-height:1}
+.brand .n2{display:block;font-size:9.5px;letter-spacing:.3em;text-transform:uppercase;color:rgba(247,242,236,.6);margin-top:5px}
+.nav{display:flex;gap:30px}
+.nav a{
+  text-decoration:none;font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(247,242,236,.72);padding-bottom:3px;border-bottom:1px solid transparent;
+  transition:color .25s,border-color .25s
+}
+.nav a:hover{color:#fff;border-color:var(--gold)}
+
+/* ---------- Hero ---------- */
+.hero{
+  position:relative;overflow:hidden;color:var(--cream);
+  background:
+    radial-gradient(120% 90% at 82% 8%, rgba(196,134,127,.34) 0%, rgba(196,134,127,0) 58%),
+    radial-gradient(100% 80% at 8% 92%, rgba(185,138,75,.3) 0%, rgba(185,138,75,0) 60%),
+    linear-gradient(158deg,#241619 0%,#16110f 46%,#1d1413 100%);
+}
+.hero::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(to bottom,rgba(0,0,0,0) 72%,rgba(0,0,0,.28) 100%);
+}
+.hero-deco{position:absolute;top:-6%;right:-14%;width:min(720px,88%);opacity:.5;pointer-events:none}
+.hero-inner{position:relative;z-index:2;padding:78px 0 92px;max-width:780px}
+.hero h1{
+  font-size:clamp(44px,7.4vw,92px);margin:0 0 6px;
+}
+.hero h1 em{display:block;font-style:italic;color:var(--gold-soft)}
+.hero-sub{
+  margin:22px 0 0;max-width:50ch;font-size:clamp(16px,1.6vw,18.5px);
+  line-height:1.72;color:rgba(247,242,236,.78)
+}
+.rule{display:flex;align-items:center;gap:14px;margin:30px 0 0;color:rgba(247,242,236,.55);font-size:11px;letter-spacing:.24em;text-transform:uppercase}
+.rule::before{content:"";width:52px;height:1px;background:var(--gold);flex:0 0 auto}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;margin:38px 0 0}
+.btn{
+  display:inline-flex;align-items:center;gap:11px;
+  padding:16px 26px;border-radius:999px;text-decoration:none;
+  font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;
+  transition:transform .22s ease, background .22s, color .22s, border-color .22s;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn-gold{background:var(--gold);color:#180f08;box-shadow:0 10px 30px rgba(185,138,75,.28)}
+.btn-gold:hover{background:var(--gold-soft)}
+.btn-ghost{border:1px solid rgba(247,242,236,.4);color:var(--cream)}
+.btn-ghost:hover{border-color:var(--gold-soft);color:var(--gold-soft)}
+.btn-dark{background:var(--ink);color:var(--cream)}
+.btn-dark:hover{background:var(--plum)}
+
+.hero-strip{
+  position:relative;z-index:2;border-top:1px solid var(--line-l);
+  display:grid;grid-template-columns:repeat(3,1fr);
+}
+.hero-strip div{padding:22px 26px 24px;border-left:1px solid var(--line-l)}
+.hero-strip div:first-child{border-left:0;padding-left:0}
+.hero-strip dt{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-soft);margin:0 0 7px}
+.hero-strip dd{margin:0;font-family:var(--serif);font-size:17px;line-height:1.35}
+.hero-strip dd a{text-decoration:none;border-bottom:1px solid rgba(216,184,135,.45)}
+
+/* ---------- Secciones ---------- */
+section{position:relative}
+.sec{padding:84px 0}
+.sec-head{max-width:720px;margin:0 0 46px}
+.sec-head h2{font-size:clamp(30px,4.2vw,46px);margin:0 0 18px}
+.note{
+  margin:26px 0 0;padding:16px 20px;
+  border:1px dashed rgba(185,138,75,.6);border-radius:12px;
+  background:rgba(185,138,75,.07);
+  font-size:13.5px;line-height:1.6;color:rgba(22,17,15,.74);max-width:70ch
+}
+.note b{color:var(--ink)}
+
+/* Servicios */
+.grid-serv{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.card{background:var(--cream);padding:30px 26px 32px;transition:background .3s}
+.card:hover{background:#fffdf9}
+.card .ico{display:block;margin:0 0 20px}
+.card h3{font-size:22px;margin:0 0 10px}
+.card p{font-size:14.5px;line-height:1.66;color:rgba(22,17,15,.68)}
+.card .tag{display:inline-block;margin:14px 0 0;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:700}
+
+/* Galería vacía */
+.sec-gallery{background:var(--cream-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.grid-gal{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.frame{
+  position:relative;aspect-ratio:3/4;border-radius:14px;
+  border:1px dashed rgba(22,17,15,.3);
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.65) 0%,rgba(226,213,196,.5) 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
+  padding:18px;text-align:center;
+}
+.frame:nth-child(2){aspect-ratio:3/4}
+.frame .corner{position:absolute;width:16px;height:16px;border:1px solid var(--gold)}
+.frame .c1{top:9px;left:9px;border-right:0;border-bottom:0}
+.frame .c2{top:9px;right:9px;border-left:0;border-bottom:0}
+.frame .c3{bottom:9px;left:9px;border-right:0;border-top:0}
+.frame .c4{bottom:9px;right:9px;border-left:0;border-top:0}
+.frame .lbl{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(22,17,15,.52);font-weight:700}
+.frame .num{font-family:var(--serif);font-size:30px;color:rgba(22,17,15,.26);line-height:1}
+
+/* Primera visita */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.step{position:relative;padding:32px 26px 30px;border-radius:16px;background:#fffdfa;border:1px solid var(--line)}
+.step .idx{
+  font-family:var(--serif);font-size:13px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);display:block;margin:0 0 16px;font-weight:700
+}
+.step h3{font-size:21px;margin:0 0 10px}
+.step p{font-size:14.5px;color:rgba(22,17,15,.68)}
+
+/* Contacto */
+.sec-contact{background:linear-gradient(170deg,#1b1413 0%,#241619 100%);color:var(--cream)}
+.sec-contact .sec-head h2{color:var(--cream)}
+.sec-contact .lede{color:rgba(247,242,236,.72)}
+.contact-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:start}
+.dl{border-top:1px solid var(--line-l)}
+.dl .row{display:grid;grid-template-columns:118px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid var(--line-l);align-items:baseline}
+.dl dt{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-soft)}
+.dl dd{margin:0;font-family:var(--serif);font-size:18px;line-height:1.45;overflow-wrap:anywhere}
+.dl dd a{text-decoration:none;border-bottom:1px solid rgba(216,184,135,.5)}
+.dl dd small{display:block;font-family:var(--sans);font-size:12px;letter-spacing:.04em;color:rgba(247,242,236,.55);margin-top:5px}
+.map-card{
+  border:1px solid var(--line-l);border-radius:16px;overflow:hidden;
+  background:rgba(247,242,236,.04)
+}
+.map-card .cap{
+  display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between;
+  padding:14px 18px;border-top:1px solid var(--line-l);
+  font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(247,242,236,.6)
+}
+.map-card svg{display:block;width:100%;height:auto}
+
+/* Pie */
+.foot{background:#120d0b;color:rgba(247,242,236,.66);padding:46px 0 52px}
+.foot-top{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:center;padding-bottom:26px;border-bottom:1px solid var(--line-l)}
+.foot a{color:var(--gold-soft);text-decoration:none;border-bottom:1px solid rgba(216,184,135,.4);overflow-wrap:anywhere}
+.foot-sig{margin:24px 0 0;font-size:12.5px;letter-spacing:.06em;line-height:1.7}
+.foot-sig strong{color:#f3ece2;font-weight:600}
+.foot-note{margin:12px 0 0;font-size:11.5px;color:rgba(247,242,236,.42);line-height:1.65}
+
+/* ---------- Responsive ---------- */
+@media (max-width:980px){
+  .grid-serv{grid-template-columns:repeat(2,1fr)}
+  .grid-gal{grid-template-columns:repeat(2,1fr)}
+  .contact-grid{grid-template-columns:1fr;gap:34px}
+  .steps{grid-template-columns:1fr;gap:16px}
+}
+@media (max-width:760px){
+  :root{--bar-h:52px}
+  .wrap{padding:0 20px}
+  .nav{display:none}
+  .site-head{padding-top:22px}
+  .hero-inner{padding:52px 0 64px}
+  .hero-deco{top:auto;bottom:-4%;right:-32%;width:420px;opacity:.38}
+  .hero-sub{font-size:16px}
+  .cta-row{gap:11px}
+  .btn{width:100%;justify-content:center;padding:15px 20px}
+  .rule{align-items:flex-start;line-height:1.5}
+  .rule::before{margin-top:9px;width:34px}
+  .hero-strip{grid-template-columns:1fr}
+  .hero-strip div{border-left:0;border-top:1px solid var(--line-l);padding:16px 0 18px}
+  .hero-strip div:first-child{border-top:0}
+  .sec{padding:60px 0}
+  .sec-head{margin-bottom:32px}
+  .grid-serv{grid-template-columns:1fr}
+  .card{padding:26px 22px}
+  .grid-gal{gap:14px}
+  .dl .row{grid-template-columns:1fr;gap:4px;padding:16px 0}
+  .foot-top{gap:16px}
+}
+@media (max-width:420px){
+  .proposal-bar span{font-size:11px;letter-spacing:.02em}
+  .hero h1{font-size:40px}
+  .grid-gal{grid-template-columns:repeat(2,1fr)}
+  .frame{padding:12px}
+  .frame .num{font-size:24px}
+  .frame .lbl{font-size:9px;letter-spacing:.14em}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ BARRA FIJA DE PROPUESTA ============ -->
+<div class="proposal-bar" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · <b>FFFFFFstudio</b> · Ángel Rubio</span>
+</div>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <svg class="hero-deco" viewBox="0 0 600 600" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="gArc" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#d8b887" stop-opacity=".9"/>
+        <stop offset="1" stop-color="#c4867f" stop-opacity=".15"/>
+      </linearGradient>
+    </defs>
+    <g fill="none" stroke="url(#gArc)" stroke-linecap="round">
+      <path d="M520 40C340 70 250 170 262 300c12 130 130 210 268 198" stroke-width="1.4"/>
+      <path d="M560 96C372 120 286 212 300 330c14 118 132 192 262 180" stroke-width="1"/>
+      <path d="M470 18C300 60 196 158 206 286c10 128 124 224 268 234" stroke-width=".8"/>
+      <path d="M420 10C262 74 146 176 150 300c4 124 110 236 252 262" stroke-width=".6"/>
+    </g>
+    <circle cx="262" cy="300" r="3.5" fill="#d8b887"/>
+    <circle cx="150" cy="300" r="2" fill="#c4867f"/>
+  </svg>
+
+  <div class="wrap">
+    <div class="site-head">
+      <a class="brand" href="#inicio">
+        <svg class="mark" width="44" height="44" viewBox="0 0 44 44" aria-hidden="true" focusable="false">
+          <circle cx="22" cy="22" r="21" fill="none" stroke="#b98a4b" stroke-width="1"/>
+          <path d="M11 33c1.5-8 5-13.5 11-16.5" fill="none" stroke="#c4867f" stroke-width=".9" stroke-linecap="round" opacity=".75"/>
+          <text x="22" y="27.5" text-anchor="middle" font-family="Georgia,serif" font-size="17" fill="#f7f2ec">Z</text>
+        </svg>
+        <span>
+          <span class="n1">Peluquería Zaida</span>
+          <span class="n2">Órgiva · Granada</span>
+        </span>
+      </a>
+      <nav class="nav" aria-label="Navegación de la maqueta">
+        <a href="#servicios">Servicios</a>
+        <a href="#galeria">Trabajos</a>
+        <a href="#primera-visita">Primera visita</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+
+    <div class="hero-inner" id="inicio">
+      <p class="eyebrow on-dark">Peluquería en Órgiva · La Alpujarra</p>
+      <h1>Peluquería <em>Zaida</em></h1>
+      <p class="hero-sub">Una página pensada para que, antes de entrar por la puerta, ya se vea quién eres y cómo trabajas. Hoy la cita solo se pide llamando: esto lo deja a un toque, sin perder el teléfono de siempre.</p>
+      <div class="rule">Calle Estación 2, bajo · 18400 Órgiva</div>
+      <div class="cta-row">
+        <a class="btn btn-gold" href="tel:+34622441070">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 16.5v2.6a2 2 0 0 1-2.2 2 18.5 18.5 0 0 1-8-2.9 18 18 0 0 1-5.6-5.6 18.5 18.5 0 0 1-2.9-8.1A2 2 0 0 1 4.3 2.3H7a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 10a14.5 14.5 0 0 0 5.6 5.6l1.1-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+          Pedir cita · 622 441 070
+        </a>
+        <a class="btn btn-ghost" href="#servicios">Ver la propuesta</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <dl class="hero-strip">
+      <div>
+        <dt>Dónde</dt>
+        <dd>Calle Estación 2, bajo<br>18400 Órgiva (Granada)</dd>
+      </div>
+      <div>
+        <dt>Cita</dt>
+        <dd><a href="tel:+34622441070">622 441 070</a></dd>
+      </div>
+      <div>
+        <dt>Horario</dt>
+        <dd>Consultar horario</dd>
+      </div>
+    </dl>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ SERVICIOS ============ -->
+<section class="sec" id="servicios">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Propuesta de contenido</p>
+      <h2>Los servicios, explicados con calma</h2>
+      <p class="lede">Este bloque es una <strong>propuesta de estructura</strong>: recoge los servicios habituales de una peluquería para enseñar cómo quedarían presentados. No afirma qué ofrece el salón. Tú decides cuáles se quedan, cuáles se van y con qué palabras se cuentan.</p>
+    </div>
+
+    <div class="grid-serv">
+      <article class="card">
+        <svg class="ico" width="34" height="34" viewBox="0 0 32 32" fill="none" stroke="#b98a4b" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <circle cx="7" cy="24" r="4"/><circle cx="25" cy="24" r="4"/>
+          <path d="M10 21 24 5M22 21 8 5"/>
+        </svg>
+        <h3>Corte</h3>
+        <p>Corte de pelo adaptado a la forma de la cara y a cómo se peina cada persona en su casa, no solo a cómo queda el día del salón.</p>
+        <span class="tag">A confirmar</span>
+      </article>
+
+      <article class="card">
+        <svg class="ico" width="34" height="34" viewBox="0 0 32 32" fill="none" stroke="#b98a4b" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <path d="M16 3c4 6 7 9.5 7 14a7 7 0 0 1-14 0c0-4.5 3-8 7-14Z"/>
+          <path d="M13 17.5c0 2 1.4 3.5 3 3.5"/>
+        </svg>
+        <h3>Color y mechas</h3>
+        <p>Desde un color de raíz a raíz hasta aclarados y mechas por zonas. Aquí iría la explicación de cada técnica, en lenguaje claro.</p>
+        <span class="tag">A confirmar</span>
+      </article>
+
+      <article class="card">
+        <svg class="ico" width="34" height="34" viewBox="0 0 32 32" fill="none" stroke="#b98a4b" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <path d="M6 26c0-8 4-14 10-14s10 5 10 11"/>
+          <path d="M11 26c0-5 2.5-9 5-9s5 3 5 7"/>
+          <circle cx="16" cy="7" r="3"/>
+        </svg>
+        <h3>Peinado y recogidos</h3>
+        <p>Peinados de día y recogidos para bodas, comuniones o fiestas del pueblo. Un apartado así ayuda a que se pida con antelación.</p>
+        <span class="tag">A confirmar</span>
+      </article>
+
+      <article class="card">
+        <svg class="ico" width="34" height="34" viewBox="0 0 32 32" fill="none" stroke="#b98a4b" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <path d="M4 20c6-2 9-6 11-14 3 8 7 11 13 12-5 2-9 6-11 12-2-6-6-9-13-10Z"/>
+        </svg>
+        <h3>Tratamientos capilares</h3>
+        <p>Cuidado del cabello y del cuero cabelludo. Sin nombrar marcas ni prometer resultados: solo el tipo de tratamiento y para qué sirve.</p>
+        <span class="tag">A confirmar</span>
+      </article>
+
+      <article class="card">
+        <svg class="ico" width="34" height="34" viewBox="0 0 32 32" fill="none" stroke="#b98a4b" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <path d="M5 12c5-4 17-4 22 0"/>
+          <path d="M8 19c3 3 13 3 16 0"/>
+          <circle cx="16" cy="19" r="2.4"/>
+        </svg>
+        <h3>Estética básica</h3>
+        <p>Depilación, cejas y pestañas, manicura. Un bloque corto que resuelve la duda de «¿esto también lo hacen?» sin tener que llamar.</p>
+        <span class="tag">A confirmar</span>
+      </article>
+
+      <article class="card">
+        <svg class="ico" width="34" height="34" viewBox="0 0 32 32" fill="none" stroke="#c4867f" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <rect x="5" y="5" width="22" height="22" rx="4" stroke-dasharray="4 3"/>
+          <path d="M16 11v10M11 16h10"/>
+        </svg>
+        <h3>Tu servicio estrella</h3>
+        <p>Espacio reservado para aquello en lo que de verdad destacáis. Lo rellenas tú: ni lo invento ni lo doy por hecho.</p>
+        <span class="tag">Pendiente de rellenar</span>
+      </article>
+    </div>
+
+    <p class="note"><b>Nota de la maqueta:</b> los textos de arriba son ejemplos de redacción para ver el diseño funcionando. Ningún precio, duración ni resultado aparece aquí, y no aparecerá hasta que lo facilite el salón.</p>
+  </div>
+</section>
+
+<!-- ============ GALERÍA VACÍA ============ -->
+<section class="sec sec-gallery" id="galeria">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Galería · espacio preparado, todavía vacío</p>
+      <h2>Aquí irían tus trabajos reales</h2>
+      <p class="lede">Hoy los cortes, los colores y los recogidos que salen del salón no se ven en ningún sitio. Este es el hueco que lo arregla: una cuadrícula lista para recibir <strong>fotos reales hechas en el salón</strong>. Los marcos que se ven abajo son dibujos, no imágenes: están vacíos a propósito.</p>
+    </div>
+
+    <div class="grid-gal">
+      <div class="frame"><span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
+        <span class="num">01</span><span class="lbl">Tu foto aquí</span></div>
+      <div class="frame"><span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
+        <span class="num">02</span><span class="lbl">Tu foto aquí</span></div>
+      <div class="frame"><span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
+        <span class="num">03</span><span class="lbl">Tu foto aquí</span></div>
+      <div class="frame"><span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
+        <span class="num">04</span><span class="lbl">Tu foto aquí</span></div>
+      <div class="frame"><span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
+        <span class="num">05</span><span class="lbl">Tu foto aquí</span></div>
+      <div class="frame"><span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
+        <span class="num">06</span><span class="lbl">Tu foto aquí</span></div>
+      <div class="frame"><span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
+        <span class="num">07</span><span class="lbl">Tu foto aquí</span></div>
+      <div class="frame"><span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
+        <span class="num">08</span><span class="lbl">Tu foto aquí</span></div>
+    </div>
+
+    <p class="note"><b>Cómo se llena:</b> con fotos tomadas en el propio salón, con permiso de quien aparezca. En esta maqueta no se incluye ninguna imagen de trabajos, porque no sería tuya.</p>
+  </div>
+</section>
+
+<!-- ============ PRIMERA VISITA ============ -->
+<section class="sec" id="primera-visita">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Tu primera visita</p>
+      <h2>Tres pasos, sin sorpresas</h2>
+      <p class="lede">La parte de la web que responde la pregunta de siempre: «¿y qué tengo que hacer para ir?».</p>
+    </div>
+
+    <div class="steps">
+      <article class="step">
+        <span class="idx">Paso uno</span>
+        <h3>Llamas y pides cita</h3>
+        <p>Un solo número: <a href="tel:+34622441070" style="text-decoration:none;border-bottom:1px solid var(--gold)">622 441 070</a>. Desde el móvil, se marca tocando el botón de la web. Para saber a qué horas atendéis, el texto que verá la clienta es «consultar horario».</p>
+      </article>
+      <article class="step">
+        <span class="idx">Paso dos</span>
+        <h3>Cuentas qué buscas</h3>
+        <p>Al llegar a Calle Estación 2, antes de nada se habla: qué te apetece cambiar, cómo te peinas en casa y cuánto tiempo quieres dedicarle. De ahí sale la propuesta.</p>
+      </article>
+      <article class="step">
+        <span class="idx">Paso tres</span>
+        <h3>Te vas sabiendo repetirlo</h3>
+        <p>El objetivo es que el resultado se sostenga fuera del salón. Aquí iría, cuando lo indiquéis, la explicación de cómo mantenerlo y cada cuánto conviene volver.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section class="sec sec-contact" id="contacto">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow on-dark">Contacto</p>
+      <h2>Dónde estamos y cómo se pide cita</h2>
+      <p class="lede">Los datos reales del salón. Nada más: ni horarios ni precios inventados.</p>
+    </div>
+
+    <div class="contact-grid">
+      <dl class="dl">
+        <div class="row">
+          <dt>Teléfono</dt>
+          <dd><a href="tel:+34622441070">622 441 070</a><small>Pulsa para llamar desde el móvil</small></dd>
+        </div>
+        <div class="row">
+          <dt>Dirección</dt>
+          <dd>Calle Estación 2, bajo<br>18400 Órgiva (Granada)</dd>
+        </div>
+        <div class="row">
+          <dt>Horario</dt>
+          <dd>Consultar horario<small>Se publicará cuando lo facilite el salón</small></dd>
+        </div>
+        <div class="row">
+          <dt>Email</dt>
+          <dd><a href="mailto:Zaidagarciamaya@hotmail.com">Zaidagarciamaya@hotmail.com</a></dd>
+        </div>
+        <div class="row">
+          <dt>Cita</dt>
+          <dd><a class="btn btn-gold" href="tel:+34622441070" style="font-size:12px;padding:13px 20px;margin-top:6px">Llamar ahora</a></dd>
+        </div>
+      </dl>
+
+      <figure class="map-card" style="margin:0">
+        <svg viewBox="0 0 520 380" role="img" aria-label="Plano esquemático dibujado a mano con el salón en la Calle Estación, 2, Órgiva.">
+          <rect width="520" height="380" fill="#1f1716"/>
+          <g stroke="rgba(247,242,236,.07)" stroke-width="1">
+            <path d="M0 60h520M0 130h520M0 200h520M0 270h520M0 340h520"/>
+            <path d="M70 0v380M150 0v380M230 0v380M310 0v380M390 0v380M470 0v380"/>
+          </g>
+          <!-- manzanas -->
+          <g fill="rgba(247,242,236,.05)" stroke="rgba(247,242,236,.1)" stroke-width="1">
+            <rect x="34" y="42" width="150" height="54" rx="5"/>
+            <rect x="224" y="42" width="128" height="54" rx="5"/>
+            <rect x="392" y="42" width="106" height="54" rx="5"/>
+            <rect x="34" y="138" width="150" height="38" rx="5"/>
+            <rect x="224" y="138" width="128" height="38" rx="5"/>
+            <rect x="392" y="138" width="106" height="38" rx="5"/>
+            <rect x="34" y="236" width="138" height="112" rx="5"/>
+            <rect x="212" y="236" width="150" height="112" rx="5"/>
+            <rect x="402" y="236" width="96" height="112" rx="5"/>
+          </g>
+          <!-- calles secundarias -->
+          <g stroke="#4a3b35" stroke-width="13" stroke-linecap="round" fill="none">
+            <path d="M204 20V360"/>
+            <path d="M372 20V360"/>
+            <path d="M20 118H500"/>
+          </g>
+          <!-- Calle Estación (destacada) -->
+          <g fill="none">
+            <path d="M18 200H502" stroke="#b98a4b" stroke-width="19" stroke-linecap="round" opacity=".32"/>
+            <path d="M18 200H502" stroke="#d8b887" stroke-width="7" stroke-linecap="round"/>
+            <path d="M40 200h440" stroke="#1f1716" stroke-width="1.6" stroke-dasharray="12 12"/>
+          </g>
+          <!-- etiquetas -->
+          <g font-family="Helvetica,Arial,sans-serif" fill="rgba(247,242,236,.5)" font-size="11" letter-spacing="1.6">
+            <text x="24" y="226">CALLE ESTACIÓN</text>
+            <text x="24" y="110">CALLE (ESQUEMÁTICA)</text>
+            <text x="214" y="34">TRAVESÍA</text>
+            <text x="382" y="34">TRAVESÍA</text>
+          </g>
+          <g font-family="Helvetica,Arial,sans-serif" fill="rgba(247,242,236,.34)" font-size="10.5" letter-spacing="1.4">
+            <text x="44" y="74">MANZANA</text>
+            <text x="234" y="74">MANZANA</text>
+            <text x="402" y="74">MANZANA</text>
+            <text x="44" y="296">MANZANA</text>
+            <text x="222" y="296">MANZANA</text>
+          </g>
+          <!-- marcador -->
+          <g transform="translate(262 200)">
+            <circle r="30" fill="#b98a4b" opacity=".16"/>
+            <circle r="17" fill="#b98a4b" opacity=".28"/>
+            <path d="M0 -30c-9.4 0-17 7.6-17 17 0 12.4 17 31 17 31s17-18.6 17-31c0-9.4-7.6-17-17-17Z" fill="#d8b887" stroke="#120d0b" stroke-width="1.4"/>
+            <circle cy="-13" r="5.6" fill="#1f1716"/>
+          </g>
+          <g font-family="Georgia,serif" fill="#f7f2ec" font-size="15">
+            <text x="292" y="246">Peluquería Zaida</text>
+          </g>
+          <g font-family="Helvetica,Arial,sans-serif" fill="rgba(247,242,236,.55)" font-size="11" letter-spacing="1.2">
+            <text x="292" y="264">CALLE ESTACIÓN 2, BAJO</text>
+          </g>
+          <!-- rosa de los vientos -->
+          <g transform="translate(470 330)" stroke="rgba(247,242,236,.4)" fill="none" stroke-width="1">
+            <circle r="16"/>
+            <path d="M0 -12V12M-12 0H12"/>
+            <path d="M0 -16l3.5 6h-7Z" fill="rgba(216,184,135,.9)" stroke="none"/>
+          </g>
+        </svg>
+        <figcaption class="cap">
+          <span>Plano esquemático dibujado · no es un mapa real</span>
+          <span>Órgiva · La Alpujarra</span>
+        </figcaption>
+      </figure>
+    </div>
+
+    <p class="note" style="border-color:rgba(216,184,135,.45);background:rgba(216,184,135,.08);color:rgba(247,242,236,.74)"><b style="color:#f3ece2">Sobre este plano:</b> es un dibujo orientativo hecho con trazos, no una cartografía. En la web definitiva iría un mapa real incrustado o un enlace a la ubicación, según prefiráis.</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ PIE ============ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <p style="font-family:var(--serif);font-size:21px;color:#f3ece2;line-height:1.3">Peluquería Zaida</p>
+        <p style="font-size:13px;margin-top:6px">Calle Estación 2, bajo · 18400 Órgiva (Granada) · <a href="tel:+34622441070">622 441 070</a></p>
+      </div>
+      <div style="font-size:13px">
+        <p><a href="mailto:Zaidagarciamaya@hotmail.com">Zaidagarciamaya@hotmail.com</a></p>
+        <p style="margin-top:6px">Consultar horario</p>
+      </div>
+    </div>
+    <p class="foot-sig"><strong>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</strong></p>
+    <p class="foot-note">Maqueta no oficial, sin vínculo comercial previo con el negocio. Ninguna de las doce peluquerías del listado del Ayuntamiento de Órgiva tiene web: esta sería la primera. Documento de trabajo: no contiene reseñas, horarios, precios ni fotografías del salón.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  /* Desplazamiento suave con compensación de la barra fija */
+  var bar = document.querySelector(".proposal-bar");
+  function offset(){ return (bar ? bar.offsetHeight : 44) + 12; }
+  document.addEventListener("click", function(e){
+    var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+    if(!a) return;
+    var id = a.getAttribute("href");
+    if(id.length < 2) return;
+    var t = document.querySelector(id);
+    if(!t) return;
+    e.preventDefault();
+    var y = t.getBoundingClientRect().top + window.pageYOffset - offset();
+    window.scrollTo({ top: y < 0 ? 0 : y, behavior: "smooth" });
+  });
+  /* Altura real de la barra -> padding del body (por si envuelve en 2 líneas) */
+  function sync(){
+    if(!bar) return;
+    document.documentElement.style.setProperty("--bar-h", bar.offsetHeight + "px");
+  }
+  sync();
+  window.addEventListener("resize", sync);
+})();
+</script>
+</body>
+</html>

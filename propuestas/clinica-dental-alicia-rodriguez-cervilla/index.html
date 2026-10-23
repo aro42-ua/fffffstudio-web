@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clínica Dental Alicia Rodríguez Cervilla · Órgiva — Propuesta de diseño</title>
+<meta name="description" content="Maqueta de propuesta de sitio web para Clínica Dental Alicia Rodríguez Cervilla, en Órgiva (Granada). Propuesta no oficial de FFFFFFstudio.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* ===========================================================
+   Maqueta / propuesta de diseño — FFFFFFstudio (Ángel Rubio)
+   Archivo único autocontenido. Cero recursos externos.
+   =========================================================== */
+
+:root{
+  --azul-900:#0b2b3a;
+  --azul-800:#11394d;
+  --azul-700:#17506b;
+  --teal-600:#0f7d8c;
+  --teal-500:#149aa9;
+  --teal-400:#3fb9c4;
+  --teal-100:#dff2f4;
+  --teal-50:#f1f9fa;
+  --menta:#e7f4f1;
+  --gris-900:#152027;
+  --gris-700:#41535d;
+  --gris-500:#6c7d87;
+  --gris-300:#c9d4da;
+  --gris-150:#e6ecef;
+  --gris-50:#f6f9fa;
+  --blanco:#ffffff;
+  --arena:#f7f4ef;
+
+  --barra-h:44px;
+
+  --r-s:10px;
+  --r-m:16px;
+  --r-l:24px;
+  --r-xl:34px;
+
+  --sombra-s:0 1px 2px rgba(11,43,58,.06), 0 2px 8px rgba(11,43,58,.05);
+  --sombra-m:0 2px 4px rgba(11,43,58,.05), 0 10px 28px rgba(11,43,58,.08);
+  --sombra-l:0 4px 10px rgba(11,43,58,.06), 0 24px 60px rgba(11,43,58,.12);
+
+  --fuente:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --fuente-t:Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+
+html{
+  -webkit-text-size-adjust:100%;
+  scroll-behavior:smooth;
+  scroll-padding-top:calc(var(--barra-h) + 18px);
+}
+
+body{
+  margin:0;
+  font-family:var(--fuente);
+  font-size:17px;
+  line-height:1.65;
+  color:var(--gris-900);
+  background:var(--blanco);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+img,svg{max-width:100%}
+a{color:var(--teal-600)}
+
+h1,h2,h3,h4{
+  margin:0;
+  line-height:1.18;
+  letter-spacing:-.015em;
+  color:var(--azul-900);
+  font-weight:600;
+}
+p{margin:0}
+
+/* ---------- utilidades de layout ---------- */
+.contenedor{
+  width:100%;
+  max-width:1120px;
+  margin:0 auto;
+  padding:0 24px;
+}
+.seccion{padding:84px 0}
+.seccion--gris{background:var(--gris-50)}
+.seccion--teal{background:linear-gradient(170deg,var(--teal-50) 0%,#eaf5f7 55%,var(--menta) 100%)}
+
+.etiqueta{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:12.5px;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--teal-600);
+  margin-bottom:16px;
+}
+.etiqueta::before{
+  content:"";
+  width:22px;height:2px;
+  background:var(--teal-400);
+  border-radius:2px;
+  flex:none;
+}
+
+.t2{font-size:clamp(28px,4.2vw,40px)}
+.t3{font-size:20px}
+.plomo{color:var(--gris-700);font-size:18px;max-width:62ch}
+
+.cabecera-seccion{max-width:740px;margin-bottom:48px}
+
+/* ===========================================================
+   1. BARRA FIJA DE AVISO (obligatoria, siempre visible)
+   =========================================================== */
+.aviso{
+  position:fixed;
+  inset:0 0 auto 0;
+  z-index:999;
+  min-height:var(--barra-h);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:8px 16px;
+  background:linear-gradient(90deg,var(--azul-900) 0%,var(--azul-700) 50%,var(--azul-900) 100%);
+  color:#eaf6f8;
+  border-bottom:1px solid rgba(255,255,255,.12);
+  box-shadow:0 2px 14px rgba(11,43,58,.22);
+}
+.aviso p{
+  margin:0;
+  font-size:12.5px;
+  line-height:1.4;
+  font-weight:500;
+  letter-spacing:.015em;
+  text-align:center;
+  text-wrap:balance;
+}
+.aviso strong{color:var(--teal-400);font-weight:700}
+
+/* desplaza TODO el contenido para que la barra no tape nada */
+.pagina{padding-top:var(--barra-h)}
+
+/* ===========================================================
+   2. NAVEGACIÓN
+   =========================================================== */
+.nav{
+  position:sticky;
+  top:var(--barra-h);
+  z-index:50;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--gris-150);
+}
+.nav__fila{
+  display:flex;
+  align-items:center;
+  gap:20px;
+  min-height:70px;
+  padding:10px 24px;
+  max-width:1120px;
+  margin:0 auto;
+}
+.marca{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  text-decoration:none;
+  min-width:0;
+}
+.marca__icono{
+  width:40px;height:40px;
+  flex:none;
+  border-radius:12px;
+  background:linear-gradient(145deg,var(--teal-500),var(--azul-700));
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:var(--sombra-s);
+}
+.marca__txt{min-width:0}
+.marca__n{
+  display:block;
+  font-size:15px;
+  font-weight:700;
+  color:var(--azul-900);
+  line-height:1.25;
+  letter-spacing:-.01em;
+}
+.marca__s{
+  display:block;
+  font-size:11.5px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--gris-500);
+  font-weight:600;
+}
+.nav__enlaces{
+  display:flex;
+  gap:4px;
+  margin-left:auto;
+  align-items:center;
+}
+.nav__enlaces a{
+  padding:9px 14px;
+  border-radius:999px;
+  font-size:15px;
+  font-weight:500;
+  color:var(--gris-700);
+  text-decoration:none;
+  white-space:nowrap;
+  transition:background .18s, color .18s;
+}
+.nav__enlaces a:hover,.nav__enlaces a:focus-visible{
+  background:var(--teal-50);
+  color:var(--azul-800);
+}
+.nav__tel{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:11px 18px;
+  border-radius:999px;
+  background:var(--azul-800);
+  color:#fff !important;
+  font-weight:650;
+  font-size:15px;
+  text-decoration:none;
+  white-space:nowrap;
+  box-shadow:var(--sombra-s);
+  transition:background .18s, transform .18s;
+}
+.nav__tel:hover{background:var(--teal-600);transform:translateY(-1px)}
+
+/* ===========================================================
+   3. HERO
+   =========================================================== */
+.hero{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(900px 520px at 88% -10%, rgba(63,185,196,.30), transparent 65%),
+    radial-gradient(760px 480px at 6% 108%, rgba(23,80,107,.16), transparent 70%),
+    linear-gradient(168deg,#fbfdfd 0%,var(--teal-50) 48%,#e9f4f6 100%);
+}
+.hero__deco{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:.5;
+}
+.hero__rejilla{
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(15,125,140,.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15,125,140,.055) 1px, transparent 1px);
+  background-size:44px 44px;
+  mask-image:radial-gradient(70% 60% at 50% 30%, #000 20%, transparent 80%);
+  -webkit-mask-image:radial-gradient(70% 60% at 50% 30%, #000 20%, transparent 80%);
+}
+.hero__inner{
+  position:relative;
+  display:grid;
+  grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);
+  gap:56px;
+  align-items:center;
+  padding:86px 24px 92px;
+  max-width:1120px;
+  margin:0 auto;
+}
+.hero__pastilla{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  padding:7px 15px 7px 11px;
+  border-radius:999px;
+  background:rgba(255,255,255,.8);
+  border:1px solid var(--teal-100);
+  color:var(--teal-600);
+  font-size:13px;
+  font-weight:650;
+  letter-spacing:.02em;
+  box-shadow:var(--sombra-s);
+  margin-bottom:26px;
+}
+.hero__pastilla svg{flex:none}
+.hero h1{
+  font-family:var(--fuente-t);
+  font-weight:400;
+  font-size:clamp(34px,5.2vw,58px);
+  letter-spacing:-.025em;
+  line-height:1.08;
+  color:var(--azul-900);
+}
+.hero h1 em{
+  font-style:normal;
+  display:block;
+  background:linear-gradient(95deg,var(--teal-600),var(--azul-700));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.hero__sub{
+  margin-top:22px;
+  font-size:19px;
+  line-height:1.6;
+  color:var(--gris-700);
+  max-width:46ch;
+}
+.hero__sitio{
+  margin-top:14px;
+  display:flex;
+  align-items:center;
+  gap:9px;
+  font-size:14.5px;
+  color:var(--gris-500);
+}
+.hero__sitio svg{flex:none}
+
+.acciones{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+  margin-top:34px;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:16px 26px;
+  border-radius:999px;
+  font-size:16.5px;
+  font-weight:650;
+  text-decoration:none;
+  border:1px solid transparent;
+  transition:transform .18s, box-shadow .18s, background .18s;
+}
+.btn svg{flex:none}
+.btn--p{
+  background:linear-gradient(145deg,var(--teal-500),var(--teal-600) 55%,var(--azul-700));
+  color:#fff;
+  box-shadow:0 10px 26px rgba(15,125,140,.32);
+}
+.btn--p:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(15,125,140,.4)}
+.btn--s{
+  background:rgba(255,255,255,.86);
+  color:var(--azul-800);
+  border-color:var(--gris-300);
+  box-shadow:var(--sombra-s);
+}
+.btn--s:hover{transform:translateY(-2px);background:#fff}
+
+.hero__notas{
+  margin-top:30px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px 24px;
+  font-size:14.5px;
+  color:var(--gris-700);
+}
+.hero__notas span{display:inline-flex;align-items:center;gap:8px}
+.hero__notas svg{flex:none;color:var(--teal-600)}
+
+/* tarjeta ilustrada del hero */
+.tarjeta-hero{
+  position:relative;
+  background:#fff;
+  border:1px solid var(--gris-150);
+  border-radius:var(--r-xl);
+  padding:26px;
+  box-shadow:var(--sombra-l);
+}
+.tarjeta-hero__lienzo{
+  border-radius:var(--r-l);
+  overflow:hidden;
+  background:linear-gradient(160deg,var(--azul-800),var(--teal-600) 70%,var(--teal-500));
+}
+.tarjeta-hero__lienzo svg{display:block;width:100%;height:auto}
+.tarjeta-hero__pie{
+  margin-top:20px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+.mini{
+  background:var(--teal-50);
+  border:1px solid var(--teal-100);
+  border-radius:var(--r-s);
+  padding:13px 14px;
+}
+.mini b{
+  display:block;
+  font-size:13.5px;
+  color:var(--azul-800);
+  letter-spacing:-.005em;
+}
+.mini span{
+  display:block;
+  font-size:12.5px;
+  color:var(--gris-500);
+  line-height:1.45;
+}
+
+/* ===========================================================
+   4. BANDA DE VALORES
+   =========================================================== */
+.banda{
+  background:var(--azul-900);
+  color:#dceef1;
+  padding:30px 0;
+}
+.banda__g{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:28px;
+}
+.banda__i{display:flex;gap:14px;align-items:flex-start}
+.banda__i svg{flex:none;color:var(--teal-400);margin-top:2px}
+.banda__i b{display:block;color:#fff;font-size:15.5px;font-weight:650}
+.banda__i span{display:block;font-size:14px;color:#a9c7cf;line-height:1.5}
+
+/* ===========================================================
+   5. SERVICIOS
+   =========================================================== */
+.rejilla-serv{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:22px;
+}
+.serv{
+  position:relative;
+  background:#fff;
+  border:1px solid var(--gris-150);
+  border-radius:var(--r-m);
+  padding:28px 26px 26px;
+  box-shadow:var(--sombra-s);
+  transition:transform .2s, box-shadow .2s, border-color .2s;
+}
+.serv:hover{
+  transform:translateY(-3px);
+  box-shadow:var(--sombra-m);
+  border-color:var(--teal-100);
+}
+.serv__ico{
+  width:50px;height:50px;
+  border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(145deg,var(--teal-100),var(--menta));
+  color:var(--teal-600);
+  margin-bottom:18px;
+}
+.serv h3{font-size:18.5px;margin-bottom:9px}
+.serv p{font-size:15.5px;color:var(--gris-700);line-height:1.6}
+
+.nota{
+  margin-top:30px;
+  display:flex;
+  gap:14px;
+  align-items:flex-start;
+  padding:20px 22px;
+  background:#fff;
+  border:1px dashed var(--gris-300);
+  border-left:4px solid var(--teal-400);
+  border-radius:var(--r-s);
+}
+.nota svg{flex:none;color:var(--teal-600);margin-top:3px}
+.nota p{font-size:15px;color:var(--gris-700);line-height:1.6}
+.nota b{color:var(--azul-800)}
+
+/* ===========================================================
+   6. PRIMERA VISITA (3 pasos)
+   =========================================================== */
+.pasos{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:22px;
+  counter-reset:p;
+}
+.paso{
+  position:relative;
+  background:#fff;
+  border:1px solid var(--gris-150);
+  border-radius:var(--r-m);
+  padding:30px 26px 26px;
+  box-shadow:var(--sombra-s);
+}
+.paso__n{
+  width:46px;height:46px;
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--fuente-t);
+  font-size:21px;
+  color:#fff;
+  background:linear-gradient(145deg,var(--teal-500),var(--azul-700));
+  box-shadow:0 6px 16px rgba(15,125,140,.28);
+  margin-bottom:18px;
+}
+.paso h3{font-size:18.5px;margin-bottom:9px}
+.paso p{font-size:15.5px;color:var(--gris-700)}
+.paso__linea{
+  position:absolute;
+  top:53px;
+  right:-22px;
+  width:22px;
+  height:1px;
+  background:repeating-linear-gradient(90deg,var(--teal-400) 0 5px,transparent 5px 10px);
+}
+.paso:last-child .paso__linea{display:none}
+
+/* ===========================================================
+   7. CONTACTO
+   =========================================================== */
+.contacto__g{
+  display:grid;
+  grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);
+  gap:34px;
+  align-items:start;
+}
+.ficha{
+  background:#fff;
+  border:1px solid var(--gris-150);
+  border-radius:var(--r-l);
+  padding:30px;
+  box-shadow:var(--sombra-m);
+}
+.dato{
+  display:flex;
+  gap:16px;
+  padding:18px 0;
+  border-bottom:1px solid var(--gris-150);
+}
+.dato:first-of-type{padding-top:0}
+.dato:last-of-type{border-bottom:0;padding-bottom:4px}
+.dato__ico{
+  width:42px;height:42px;
+  flex:none;
+  border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--teal-50);
+  color:var(--teal-600);
+  border:1px solid var(--teal-100);
+}
+.dato__c{min-width:0}
+.dato__t{
+  display:block;
+  font-size:11.5px;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--gris-500);
+  margin-bottom:4px;
+}
+.dato__v{
+  display:block;
+  font-size:17px;
+  font-weight:600;
+  color:var(--azul-900);
+  line-height:1.4;
+  text-decoration:none;
+  overflow-wrap:anywhere;
+}
+a.dato__v:hover{color:var(--teal-600)}
+.dato__x{
+  display:block;
+  font-size:14px;
+  color:var(--gris-500);
+  line-height:1.5;
+  margin-top:3px;
+}
+.ficha .btn{width:100%;margin-top:24px}
+
+.horario{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:5px 12px;
+  border-radius:999px;
+  background:var(--arena);
+  border:1px solid #e3dccf;
+  color:#7a6a4e;
+  font-size:13.5px;
+  font-weight:650;
+  margin-top:4px;
+}
+
+/* mapa esquemático */
+.mapa{
+  background:#fff;
+  border:1px solid var(--gris-150);
+  border-radius:var(--r-l);
+  padding:12px;
+  box-shadow:var(--sombra-m);
+  overflow:hidden;
+}
+.mapa__lienzo{
+  border-radius:var(--r-m);
+  overflow:hidden;
+  background:#eef3ef;
+}
+.mapa__lienzo svg{display:block;width:100%;height:auto}
+.mapa__pie{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 18px;
+  padding:14px 12px 8px;
+  font-size:13px;
+  color:var(--gris-500);
+}
+.mapa__pie span{display:inline-flex;align-items:center;gap:7px}
+.punto{width:10px;height:10px;border-radius:50%;flex:none}
+
+/* bloque reservado */
+.reservado{
+  margin-top:34px;
+  background:repeating-linear-gradient(135deg,#fff 0 12px,var(--gris-50) 12px 24px);
+  border:1px dashed var(--gris-300);
+  border-radius:var(--r-m);
+  padding:26px;
+}
+.reservado h3{font-size:17.5px;margin-bottom:10px}
+.reservado p{font-size:15px;color:var(--gris-700)}
+.reservado ul{
+  margin:14px 0 0;
+  padding-left:20px;
+  font-size:14.5px;
+  color:var(--gris-700);
+  line-height:1.7;
+}
+
+/* ===========================================================
+   8. PIE
+   =========================================================== */
+.pie{
+  background:var(--azul-900);
+  color:#c7dde3;
+  padding:60px 0 32px;
+}
+.pie__g{
+  display:grid;
+  grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr);
+  gap:38px;
+  padding-bottom:36px;
+  border-bottom:1px solid rgba(255,255,255,.12);
+}
+.pie h4{
+  color:#fff;
+  font-size:13px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  margin-bottom:14px;
+  font-weight:700;
+}
+.pie__n{
+  font-family:var(--fuente-t);
+  font-size:21px;
+  color:#fff;
+  line-height:1.25;
+  margin-bottom:10px;
+}
+.pie p{font-size:15px;line-height:1.65;color:#a9c7cf}
+.pie ul{list-style:none;margin:0;padding:0}
+.pie li{margin-bottom:9px;font-size:15px}
+.pie a{color:#dceef1;text-decoration:none;overflow-wrap:anywhere}
+.pie a:hover{color:var(--teal-400);text-decoration:underline}
+.pie__firma{
+  padding-top:26px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px 26px;
+  align-items:center;
+  justify-content:space-between;
+  font-size:14px;
+  color:#92b3bd;
+}
+.pie__firma strong{color:#fff;font-weight:650}
+
+/* ===========================================================
+   RESPONSIVE
+   =========================================================== */
+@media (max-width:1020px){
+  .hero__inner{grid-template-columns:1fr;gap:44px;padding:64px 24px 72px}
+  .tarjeta-hero{max-width:560px}
+  .rejilla-serv{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .contacto__g{grid-template-columns:1fr}
+  .pie__g{grid-template-columns:1fr 1fr;gap:30px}
+}
+
+@media (max-width:860px){
+  :root{--barra-h:52px}
+  .nav__enlaces a{display:none}
+  .nav__enlaces a.nav__tel{display:inline-flex}
+  .banda__g{grid-template-columns:1fr;gap:20px}
+  .pasos{grid-template-columns:1fr;gap:16px}
+  .paso__linea{display:none}
+}
+
+@media (max-width:640px){
+  :root{--barra-h:60px}
+  body{font-size:16px}
+  .contenedor{padding:0 18px}
+  .seccion{padding:56px 0}
+  .aviso{padding:8px 14px}
+  .aviso p{font-size:11.5px;line-height:1.35}
+  .nav__fila{padding:10px 18px;min-height:64px;gap:12px}
+  .marca__icono{width:36px;height:36px}
+  .marca__n{font-size:13.5px}
+  .marca__s{font-size:10.5px;letter-spacing:.08em}
+  .nav__tel{padding:10px 14px;font-size:14px}
+  .nav__tel span{display:none}
+  .hero__inner{padding:44px 18px 56px;gap:36px}
+  .hero__sub{font-size:17px;max-width:none}
+  .hero__pastilla{font-size:12px;margin-bottom:20px}
+  .acciones{gap:11px}
+  .btn{width:100%;padding:15px 20px;font-size:16px}
+  .tarjeta-hero{padding:16px;border-radius:var(--r-l);max-width:none}
+  .tarjeta-hero__pie{grid-template-columns:1fr}
+  .rejilla-serv{grid-template-columns:1fr;gap:14px}
+  .serv{padding:24px 20px}
+  .paso{padding:24px 20px}
+  .ficha{padding:22px 18px;border-radius:var(--r-m)}
+  .mapa{padding:8px;border-radius:var(--r-m)}
+  .reservado{padding:20px 18px}
+  .cabecera-seccion{margin-bottom:34px}
+  .plomo{font-size:16.5px}
+  .pie{padding:48px 0 28px}
+  .pie__g{grid-template-columns:1fr;gap:28px;padding-bottom:28px}
+  .pie__firma{flex-direction:column;align-items:flex-start;gap:8px}
+}
+
+@media (max-width:380px){
+  .contenedor{padding:0 14px}
+  .hero__inner{padding:40px 14px 50px}
+  .nav__fila{padding:10px 14px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none !important;animation:none !important}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== BARRA FIJA OBLIGATORIA ===== -->
+<div class="aviso" role="note">
+  <p>Propuesta de diseño · maqueta no oficial · <strong>FFFFFFstudio</strong> · Ángel Rubio</p>
+</div>
+
+<div class="pagina">
+
+  <!-- ===== NAVEGACIÓN ===== -->
+  <header class="nav">
+    <div class="nav__fila">
+      <a class="marca" href="#inicio">
+        <span class="marca__icono" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 21c-1.1 0-1.5-1.4-1.8-3.1-.3-1.6-.6-2.6-1.4-2.6s-1 1-1.4 2.6C7 19.6 6.6 21 5.6 21c-1.6 0-2.3-3.2-2.3-7 0-4.6 2-7.6 5-7.6 1.4 0 2.3.5 3.7.5s2.3-.5 3.7-.5c3 0 5 3 5 7.6 0 3.8-.7 7-2.3 7"/>
+            <path d="M12 6.9V4.2" opacity=".55"/>
+          </svg>
+        </span>
+        <span class="marca__txt">
+          <span class="marca__n">Clínica Dental Alicia Rodríguez Cervilla</span>
+          <span class="marca__s">Órgiva · Granada</span>
+        </span>
+      </a>
+      <nav class="nav__enlaces" aria-label="Navegación principal">
+        <a href="#servicios">Servicios</a>
+        <a href="#primera-visita">Primera visita</a>
+        <a href="#contacto">Contacto</a>
+        <a class="nav__tel" href="tel:+34958785264">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.8 2Z"/>
+          </svg>
+          <span>958 785 264</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <main id="inicio">
+  <section class="hero">
+    <div class="hero__deco" aria-hidden="true"><div class="hero__rejilla"></div></div>
+    <div class="hero__inner">
+      <div>
+        <span class="hero__pastilla">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 10c0 6-8 11-8 11s-8-5-8-11a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="2.6"/>
+          </svg>
+          Órgiva · Alpujarra granadina
+        </span>
+
+        <h1>Clínica Dental<br><em>Alicia Rodríguez Cervilla</em></h1>
+
+        <p class="hero__sub">Atención dental en el centro de Órgiva. Para pedir cita o preguntar cualquier duda, lo más rápido es una llamada.</p>
+
+        <p class="hero__sitio">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 19V7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12"/><path d="M3 19h18"/><path d="M8 9h8M8 13h5"/>
+          </svg>
+          Calle Miguel de Cervantes 2 · 18400 Órgiva
+        </p>
+
+        <div class="acciones">
+          <a class="btn btn--p" href="tel:+34958785264">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.8 2Z"/>
+            </svg>
+            Llamar al 958 785 264
+          </a>
+          <a class="btn btn--s" href="#contacto">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20 10c0 6-8 11-8 11s-8-5-8-11a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="2.6"/>
+            </svg>
+            Cómo llegar
+          </a>
+        </div>
+
+        <p class="hero__notas">
+          <span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            En el centro del pueblo
+          </span>
+          <span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            Cita previa por teléfono
+          </span>
+          <span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            Consultar horario
+          </span>
+        </p>
+      </div>
+
+      <!-- tarjeta ilustrada: solo SVG y gradientes, sin fotografías -->
+      <aside class="tarjeta-hero">
+        <div class="tarjeta-hero__lienzo">
+          <svg viewBox="0 0 440 340" role="img" aria-label="Ilustración esquemática de un gabinete dental, dibujada con líneas.">
+            <defs>
+              <linearGradient id="gFondo" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#0f5a6e"/>
+                <stop offset=".55" stop-color="#0f7d8c"/>
+                <stop offset="1" stop-color="#149aa9"/>
+              </linearGradient>
+              <linearGradient id="gDiente" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#ffffff"/>
+                <stop offset="1" stop-color="#cfeaee"/>
+              </linearGradient>
+              <radialGradient id="gLuz" cx=".5" cy=".5" r=".5">
+                <stop offset="0" stop-color="#ffffff" stop-opacity=".55"/>
+                <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+
+            <rect width="440" height="340" fill="url(#gFondo)"/>
+            <circle cx="348" cy="72" r="118" fill="url(#gLuz)"/>
+
+            <!-- rejilla sutil -->
+            <g stroke="#ffffff" stroke-opacity=".10" stroke-width="1">
+              <path d="M0 60h440M0 120h440M0 180h440M0 240h440M0 300h440"/>
+              <path d="M60 0v340M120 0v340M180 0v340M240 0v340M300 0v340M360 0v340"/>
+            </g>
+
+            <!-- diente central -->
+            <g transform="translate(220 150)">
+              <path d="M0 -74c-16 0-24 7-40 7-30 0-47 29-47 71 0 36 8 66 23 66 10 0 14-13 18-28 4-16 7-25 14-25s10 9 14 25c4 15 8 28 18 28 15 0 23-30 23-66 0-42-17-71-47-71-16 0-24-7-40-7h64Z"
+                    fill="url(#gDiente)" opacity=".97"/>
+              <path d="M-14 -40c-14 6-21 20-22 38" fill="none" stroke="#0f7d8c" stroke-opacity=".45" stroke-width="4" stroke-linecap="round"/>
+            </g>
+
+            <!-- anillo de cuidado -->
+            <circle cx="220" cy="150" r="108" fill="none" stroke="#ffffff" stroke-opacity=".30" stroke-width="2" stroke-dasharray="7 9"/>
+            <circle cx="220" cy="150" r="132" fill="none" stroke="#ffffff" stroke-opacity=".16" stroke-width="2"/>
+
+            <!-- instrumental esquemático -->
+            <g stroke="#dff2f4" stroke-width="3.4" stroke-linecap="round" fill="none" opacity=".9">
+              <path d="M58 258c0-24 10-40 26-48"/>
+              <circle cx="58" cy="268" r="7" fill="#dff2f4" stroke="none"/>
+              <path d="M382 258c0-24-10-40-26-48"/>
+              <circle cx="382" cy="268" r="7" fill="#dff2f4" stroke="none"/>
+            </g>
+
+            <!-- escudo / confianza -->
+            <g transform="translate(76 66)">
+              <path d="M0 0 26 9v19c0 15-11 25-26 30-15-5-26-15-26-30V9L0 0Z" fill="#ffffff" fill-opacity=".16" stroke="#dff2f4" stroke-width="2.4"/>
+              <path d="M-9 26 -2 33 11 19" fill="none" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+          </svg>
+        </div>
+        <div class="tarjeta-hero__pie">
+          <div class="mini"><b>Cita por teléfono</b><span>958 785 264</span></div>
+          <div class="mini"><b>Horario</b><span>Consultar horario</span></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ===== BANDA ===== -->
+  <section class="banda">
+    <div class="contenedor banda__g">
+      <div class="banda__i">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 2 20 5v7c0 5-3.4 8.6-8 10-4.6-1.4-8-5-8-10V5l8-3Z"/><path d="M9 12l2 2 4-4"/>
+        </svg>
+        <div><b>Trato cercano</b><span>Una consulta de pueblo, con el tiempo necesario para explicar cada tratamiento.</span></div>
+      </div>
+      <div class="banda__i">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M20 10c0 6-8 11-8 11s-8-5-8-11a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="2.6"/>
+        </svg>
+        <div><b>En el centro de Órgiva</b><span>Calle Miguel de Cervantes 2, a pie desde cualquier punto del casco urbano.</span></div>
+      </div>
+      <div class="banda__i">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3.2 2"/>
+        </svg>
+        <div><b>Cita previa</b><span>Se atiende con cita. Para conocer el horario y las citas disponibles, llame a la clínica.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICIOS ===== -->
+  <section class="seccion seccion--gris" id="servicios">
+    <div class="contenedor">
+      <div class="cabecera-seccion">
+        <span class="etiqueta">Propuesta de contenido</span>
+        <h2 class="t2">Servicios habituales de una clínica dental</h2>
+        <p class="plomo">Este bloque recoge los tratamientos que se suelen presentar en el sitio web de una clínica dental. Es una propuesta de estructura y de redacción: la clínica decide qué servicios presta realmente y qué se publica.</p>
+      </div>
+
+      <div class="rejilla-serv">
+        <article class="serv">
+          <div class="serv__ico" aria-hidden="true">
+            <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="7"/><path d="M16.2 16.2 21 21"/><path d="M8.6 11h4.8M11 8.6v4.8"/>
+            </svg>
+          </div>
+          <h3>Revisión y diagnóstico</h3>
+          <p>Exploración de la boca, valoración del estado de dientes y encías, y explicación de las opciones de tratamiento.</p>
+        </article>
+
+        <article class="serv">
+          <div class="serv__ico" aria-hidden="true">
+            <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 21c-5 0-6-8-6-11 0-3.3 2.4-6 5.4-6 .9 0 1.4.3 2.1.6"/>
+              <path d="M15 4.6c2.5.4 4.2 2.8 4.2 5.7 0 1.4-.2 3.4-.7 5.2"/>
+              <path d="M4.5 7.5 2.6 6M6 4.4 4.8 2.6M9.2 3 8.7 1"/>
+            </svg>
+          </div>
+          <h3>Higiene y limpieza</h3>
+          <p>Limpieza dental profesional y consejos de cepillado y mantenimiento para cuidar las encías en casa.</p>
+        </article>
+
+        <article class="serv">
+          <div class="serv__ico" aria-hidden="true">
+            <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 21c-1 0-1.4-1.3-1.7-2.9-.3-1.5-.6-2.4-1.3-2.4s-.9.9-1.3 2.4C7.4 19.7 7 21 6.1 21c-1.5 0-2.1-3-2.1-6.6C4 10.1 5.9 7.3 8.6 7.3c1.3 0 2.1.5 3.4.5s2.1-.5 3.4-.5c2.7 0 4.6 2.8 4.6 7.1 0 3.6-.6 6.6-2.1 6.6"/>
+              <path d="M14.4 11.6 17 9l-1.5-1.5"/>
+            </svg>
+          </div>
+          <h3>Empastes y endodoncia</h3>
+          <p>Tratamiento de caries y de los dientes con daño profundo, para conservar la pieza siempre que sea posible.</p>
+        </article>
+
+        <article class="serv">
+          <div class="serv__ico" aria-hidden="true">
+            <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 10h18"/><path d="M3 14h18"/>
+              <rect x="5" y="7.5" width="4" height="9" rx="1.2"/>
+              <rect x="15" y="7.5" width="4" height="9" rx="1.2"/>
+            </svg>
+          </div>
+          <h3>Ortodoncia</h3>
+          <p>Corrección de la posición de los dientes y de la mordida, con el sistema que mejor se ajuste a cada caso.</p>
+        </article>
+
+        <article class="serv">
+          <div class="serv__ico" aria-hidden="true">
+            <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2.8 15.4 6H8.6L12 2.8Z"/><path d="M12 6v5"/>
+              <path d="M9 11h6l-.7 4.5c-.2 1.2-.6 2-1.1 3.6-.3 1-.6 1.6-1.2 1.6s-.9-.6-1.2-1.6c-.5-1.6-.9-2.4-1.1-3.6L9 11Z"/>
+              <path d="M9.4 14.2h5.2M9.8 17h4.4"/>
+            </svg>
+          </div>
+          <h3>Prótesis e implantes</h3>
+          <p>Soluciones para reponer dientes ausentes y recuperar la masticación, fijas o removibles según la indicación.</p>
+        </article>
+
+        <article class="serv">
+          <div class="serv__ico" aria-hidden="true">
+            <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="8.5" r="4.2"/>
+              <path d="M4.6 20.5c.6-3.7 3.7-6.1 7.4-6.1s6.8 2.4 7.4 6.1"/>
+              <path d="M10.4 8.2h3.2"/>
+            </svg>
+          </div>
+          <h3>Odontopediatría</h3>
+          <p>Atención dental infantil: revisiones de la dentición en crecimiento, prevención y hábitos de higiene.</p>
+        </article>
+      </div>
+
+      <div class="nota">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h0"/>
+        </svg>
+        <p><b>Nota de la maqueta:</b> los seis bloques anteriores son descripciones genéricas del sector dental, redactadas por FFFFFFstudio a modo de ejemplo. No afirmamos que la clínica preste todos estos tratamientos. En la web definitiva se publicarían únicamente los servicios que la clínica confirme, con el texto que ella apruebe.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRIMERA VISITA ===== -->
+  <section class="seccion" id="primera-visita">
+    <div class="contenedor">
+      <div class="cabecera-seccion">
+        <span class="etiqueta">Tu primera visita</span>
+        <h2 class="t2">Tres pasos, sin sorpresas</h2>
+        <p class="plomo">Una explicación sencilla de cómo se plantearía la primera cita en la web. El contenido definitivo lo fija la clínica.</p>
+      </div>
+
+      <div class="pasos">
+        <article class="paso">
+          <div class="paso__n" aria-hidden="true">1</div>
+          <div class="paso__linea" aria-hidden="true"></div>
+          <h3>Llamas y pides cita</h3>
+          <p>Marca el <a href="tel:+34958785264">958 785 264</a> y cuenta brevemente qué te ocurre. En esa llamada se acuerda el día y se confirma el horario de atención.</p>
+        </article>
+
+        <article class="paso">
+          <div class="paso__n" aria-hidden="true">2</div>
+          <div class="paso__linea" aria-hidden="true"></div>
+          <h3>Revisión y explicación</h3>
+          <p>En la consulta se revisa tu boca y se te explica con calma qué se ha visto y qué opciones hay, en un lenguaje claro.</p>
+        </article>
+
+        <article class="paso">
+          <div class="paso__n" aria-hidden="true">3</div>
+          <h3>Decides con la información delante</h3>
+          <p>Se te plantea el tratamiento propuesto y sus pasos. Tú decides cuándo empezar; nada se hace sin que lo entiendas y lo aceptes.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACTO ===== -->
+  <section class="seccion seccion--teal" id="contacto">
+    <div class="contenedor">
+      <div class="cabecera-seccion">
+        <span class="etiqueta">Contacto</span>
+        <h2 class="t2">Dónde estamos y cómo pedir cita</h2>
+        <p class="plomo">Los datos de contacto que se muestran a continuación son los datos reales publicados de la clínica.</p>
+      </div>
+
+      <div class="contacto__g">
+        <!-- ficha de datos -->
+        <div class="ficha">
+          <div class="dato">
+            <span class="dato__ico" aria-hidden="true">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.8 2Z"/>
+              </svg>
+            </span>
+            <div class="dato__c">
+              <span class="dato__t">Teléfono</span>
+              <a class="dato__v" href="tel:+34958785264">958 785 264</a>
+              <span class="dato__x">La vía habitual para pedir cita o preguntar una duda.</span>
+            </div>
+          </div>
+
+          <div class="dato">
+            <span class="dato__ico" aria-hidden="true">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 10c0 6-8 11-8 11s-8-5-8-11a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="2.6"/>
+              </svg>
+            </span>
+            <div class="dato__c">
+              <span class="dato__t">Dirección</span>
+              <span class="dato__v">Calle Miguel de Cervantes 2<br>18400 Órgiva (Granada)</span>
+            </div>
+          </div>
+
+          <div class="dato">
+            <span class="dato__ico" aria-hidden="true">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3.2 2"/>
+              </svg>
+            </span>
+            <div class="dato__c">
+              <span class="dato__t">Horario</span>
+              <span class="horario">Consultar horario</span>
+              <span class="dato__x">No publicamos horarios en la maqueta: los facilitará la clínica para la web definitiva.</span>
+            </div>
+          </div>
+
+          <div class="dato">
+            <span class="dato__ico" aria-hidden="true">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3.2 6.5 8.8 6 8.8-6"/>
+              </svg>
+            </span>
+            <div class="dato__c">
+              <span class="dato__t">Correo electrónico</span>
+              <a class="dato__v" href="mailto:arcervilla@hotmail.com">arcervilla@hotmail.com</a>
+            </div>
+          </div>
+
+          <a class="btn btn--p" href="tel:+34958785264">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.8 2Z"/>
+            </svg>
+            Llamar al 958 785 264
+          </a>
+        </div>
+
+        <!-- mapa esquemático en SVG inline -->
+        <div>
+          <div class="mapa">
+            <div class="mapa__lienzo">
+              <svg viewBox="0 0 640 430" role="img" aria-label="Plano esquemático del entorno de la clínica: calles dibujadas de forma simplificada y un marcador sobre Calle Miguel de Cervantes 2.">
+                <defs>
+                  <linearGradient id="gSuelo" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#f2f6f2"/>
+                    <stop offset="1" stop-color="#e4ece7"/>
+                  </linearGradient>
+                  <linearGradient id="gMarca" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#149aa9"/>
+                    <stop offset="1" stop-color="#0f5a6e"/>
+                  </linearGradient>
+                </defs>
+
+                <rect width="640" height="430" fill="url(#gSuelo)"/>
+
+                <!-- manzanas -->
+                <g fill="#dde7e0" stroke="#cfdcd3" stroke-width="2">
+                  <rect x="40" y="46" width="180" height="104" rx="7"/>
+                  <rect x="268" y="46" width="134" height="104" rx="7"/>
+                  <rect x="450" y="46" width="150" height="104" rx="7"/>
+                  <rect x="40" y="206" width="180" height="92" rx="7"/>
+                  <rect x="268" y="206" width="134" height="92" rx="7"/>
+                  <rect x="450" y="206" width="150" height="92" rx="7"/>
+                  <rect x="40" y="348" width="248" height="62" rx="7"/>
+                  <rect x="336" y="348" width="264" height="62" rx="7"/>
+                </g>
+
+                <!-- zona verde -->
+                <g>
+                  <rect x="462" y="216" width="126" height="72" rx="7" fill="#cfe4cf" stroke="#bbd6bb" stroke-width="2"/>
+                  <circle cx="494" cy="246" r="11" fill="#a8cfa8"/>
+                  <circle cx="528" cy="264" r="9" fill="#a8cfa8"/>
+                  <circle cx="556" cy="238" r="12" fill="#a8cfa8"/>
+                  <text x="525" y="212" fill="#6d8a6d" font-family="Arial, Helvetica, sans-serif" font-size="12" text-anchor="middle">Zona verde</text>
+                </g>
+
+                <!-- calzadas -->
+                <g stroke="#ffffff" stroke-width="30" stroke-linecap="square">
+                  <path d="M0 178h640"/>
+                  <path d="M0 323h640"/>
+                  <path d="M244 0v430"/>
+                  <path d="M426 0v430"/>
+                </g>
+                <g stroke="#e8eeea" stroke-width="30" stroke-linecap="square" opacity="0">
+                  <path d="M0 178h640"/>
+                </g>
+                <!-- ejes y marcas viales -->
+                <g stroke="#c9d6cd" stroke-width="2" stroke-dasharray="12 12">
+                  <path d="M0 178h640"/><path d="M0 323h640"/><path d="M244 0v430"/><path d="M426 0v430"/>
+                </g>
+
+                <!-- edificio de la clínica -->
+                <rect x="150" y="206" width="70" height="56" rx="6" fill="#bfe0e4" stroke="#0f7d8c" stroke-width="2.5"/>
+                <path d="M150 206h70" stroke="#0f7d8c" stroke-width="2.5"/>
+
+                <!-- marcador -->
+                <g transform="translate(185 150)">
+                  <ellipse cx="0" cy="52" rx="19" ry="6" fill="#0f5a6e" opacity=".22"/>
+                  <path d="M0 50c0 0-23-24-23-37A23 23 0 0 1 23 13c0 13-23 37-23 37Z" fill="url(#gMarca)"/>
+                  <circle cx="0" cy="12" r="8.4" fill="#ffffff"/>
+                  <circle cx="0" cy="12" r="3.4" fill="#0f7d8c"/>
+                </g>
+
+                <!-- etiqueta del marcador -->
+                <g transform="translate(246 92)">
+                  <rect x="0" y="0" width="236" height="52" rx="10" fill="#ffffff" stroke="#cfdcd3" stroke-width="2"/>
+                  <text x="14" y="22" font-family="Arial, Helvetica, sans-serif" font-size="13.5" font-weight="bold" fill="#11394d">Clínica Dental A. Rodríguez Cervilla</text>
+                  <text x="14" y="39" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#6c7d87">C/ Miguel de Cervantes 2 · Órgiva</text>
+                </g>
+
+                <!-- rótulos de calle (encima de calzadas y marcador) -->
+                <g font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#4f6f60" font-weight="bold">
+                  <text x="452" y="183">Calle Miguel de Cervantes</text>
+                  <text x="24" y="328">Calle transversal</text>
+                  <text transform="translate(252 302) rotate(-90)">Travesía</text>
+                  <text transform="translate(434 414) rotate(-90)">Calle lateral</text>
+                </g>
+
+                <!-- rosa de los vientos -->
+                <g transform="translate(596 384)" opacity=".75">
+                  <circle r="20" fill="#ffffff" stroke="#cfdcd3" stroke-width="2"/>
+                  <path d="M0 -13 4 0 0 4 -4 0Z" fill="#0f7d8c"/>
+                  <text y="-6" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="8" fill="#6c7d87">N</text>
+                </g>
+              </svg>
+            </div>
+            <div class="mapa__pie">
+              <span><i class="punto" style="background:#0f7d8c"></i>Clínica (C/ Miguel de Cervantes 2)</span>
+              <span><i class="punto" style="background:#dde7e0;border:1px solid #cfdcd3"></i>Manzanas</span>
+              <span><i class="punto" style="background:#cfe4cf"></i>Zona verde</span>
+              <span>Plano esquemático, no a escala y sin valor de orientación real.</span>
+            </div>
+          </div>
+
+          <div class="reservado">
+            <h3>Espacio preparado para que lo rellene la clínica</h3>
+            <p>En la maqueta dejamos este bloque deliberadamente vacío. Es el sitio donde irían los datos que solo la clínica puede facilitar, y que FFFFFFstudio no inventa:</p>
+            <ul>
+              <li>Horario de apertura y de atención telefónica.</li>
+              <li>Listado definitivo de servicios y, si procede, sus condiciones.</li>
+              <li>Datos profesionales y colegiales que la clínica quiera publicar.</li>
+              <li>Opiniones de pacientes, solo si la clínica aporta las reales y autorizadas.</li>
+              <li>Textos legales: aviso legal, privacidad y cookies.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </main>
+
+  <!-- ===== PIE ===== -->
+  <footer class="pie">
+    <div class="contenedor">
+      <div class="pie__g">
+        <div>
+          <p class="pie__n">Clínica Dental<br>Alicia Rodríguez Cervilla</p>
+          <p>Calle Miguel de Cervantes 2<br>18400 Órgiva (Granada)</p>
+        </div>
+        <div>
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="tel:+34958785264">958 785 264</a></li>
+            <li><a href="mailto:arcervilla@hotmail.com">arcervilla@hotmail.com</a></li>
+            <li>Consultar horario</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Secciones</h4>
+          <ul>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#primera-visita">Tu primera visita</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="pie__firma">
+        <p><strong>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</strong></p>
+        <p>Maqueta no oficial, sin vínculo con la clínica. Elaborada con datos públicos.</p>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+/* Realce del enlace de navegación según la sección visible.
+   JS mínimo, inline y opcional: la página funciona sin él. */
+(function(){
+  "use strict";
+  var enlaces = Array.prototype.slice.call(
+    document.querySelectorAll('.nav__enlaces a[href^="#"]')
+  ).filter(function(a){ return !a.classList.contains('nav__tel'); });
+
+  if(!enlaces.length || !('IntersectionObserver' in window)) return;
+
+  var mapa = {};
+  enlaces.forEach(function(a){
+    var s = document.querySelector(a.getAttribute('href'));
+    if(s) mapa[s.id] = a;
+  });
+
+  var obs = new IntersectionObserver(function(entradas){
+    entradas.forEach(function(e){
+      var a = mapa[e.target.id];
+      if(!a) return;
+      if(e.isIntersecting){
+        enlaces.forEach(function(x){ x.style.background=''; x.style.color=''; });
+        a.style.background = 'var(--teal-50)';
+        a.style.color = 'var(--azul-800)';
+      }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+
+  Object.keys(mapa).forEach(function(id){
+    var s = document.getElementById(id);
+    if(s) obs.observe(s);
+  });
+})();
+</script>
+</body>
+</html>

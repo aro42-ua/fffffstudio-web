@@ -1,0 +1,896 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hotel Victoria Centro · Almuñécar — Propuesta de diseño</title>
+<meta name="description" content="Maqueta de propuesta de web para el Hotel Victoria Centro, en el casco antiguo de Almuñécar (Granada). Documento no oficial de FFFFFFstudio.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* ===== Tokens ===== */
+:root{
+  --cream:#fdf8f1;
+  --cream-2:#f6ecdf;
+  --sand:#efe0cc;
+  --ink:#2a2420;
+  --ink-soft:#5d524a;
+  --ink-faint:#8a7d72;
+  --terra:#b5542f;
+  --terra-dark:#8e3f21;
+  --sea:#2c6b74;
+  --sea-dark:#1d4c53;
+  --line:rgba(42,36,32,.14);
+  --line-soft:rgba(42,36,32,.08);
+  --white:#fff;
+  --bar-h:46px;
+  --shadow:0 1px 2px rgba(42,36,32,.05),0 10px 30px -12px rgba(42,36,32,.18);
+  --serif:Georgia,"Iowan Old Style","Palatino Linotype",Palatino,"Times New Roman",serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --maxw:1120px;
+}
+
+/* ===== Reset ===== */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+html,body{max-width:100%;overflow-x:hidden}
+body{
+  margin:0;
+  padding-top:var(--bar-h);
+  font-family:var(--sans);
+  font-size:17px;
+  line-height:1.65;
+  color:var(--ink);
+  background:var(--cream);
+}
+img,svg{max-width:100%}
+h1,h2,h3,p,ul,ol{margin:0}
+ul,ol{padding:0;list-style:none}
+a{color:inherit}
+
+/* ===== Barra fija de propuesta ===== */
+.proposalbar{
+  position:fixed;
+  inset:0 0 auto 0;
+  z-index:999;
+  min-height:46px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:8px 14px;
+  background:var(--ink);
+  color:#f3ece4;
+  border-bottom:1px solid rgba(255,255,255,.12);
+}
+.proposalbar p{
+  margin:0;
+  font-size:12.5px;
+  line-height:1.35;
+  letter-spacing:.02em;
+  text-align:center;
+  text-wrap:balance;
+}
+.proposalbar strong{font-weight:600;color:#fff}
+
+/* ===== Utilidades ===== */
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+section{scroll-margin-top:calc(var(--bar-h) + 12px)}
+.eyebrow{
+  font-size:12px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--terra);
+  font-weight:600;
+  margin-bottom:14px;
+}
+.eyebrow.sea{color:var(--sea)}
+h2.title{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(28px,4.4vw,42px);
+  line-height:1.15;
+  letter-spacing:-.015em;
+}
+.lede{
+  margin-top:16px;
+  max-width:62ch;
+  color:var(--ink-soft);
+  font-size:clamp(16px,1.4vw,18px);
+}
+.note{
+  font-size:14px;
+  line-height:1.6;
+  color:var(--ink-faint);
+}
+.pad{padding:clamp(56px,7vw,96px) 0}
+
+/* ===== Cabecera / nav ===== */
+.topnav{
+  border-bottom:1px solid var(--line-soft);
+  background:var(--cream);
+}
+.topnav .wrap{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  min-height:68px;
+  flex-wrap:wrap;
+  padding-top:12px;
+  padding-bottom:12px;
+}
+.brand{display:flex;align-items:center;gap:11px;min-width:0}
+.brand .mark{flex:0 0 auto}
+.brand .txt{min-width:0}
+.brand .name{
+  font-family:var(--serif);
+  font-size:17px;
+  line-height:1.2;
+  letter-spacing:.01em;
+  white-space:nowrap;
+}
+.brand .sub{
+  font-size:10.5px;
+  letter-spacing:.17em;
+  text-transform:uppercase;
+  color:var(--ink-faint);
+  white-space:nowrap;
+}
+.navlinks{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.navlinks a{
+  text-decoration:none;
+  font-size:14.5px;
+  color:var(--ink-soft);
+  padding-bottom:2px;
+  border-bottom:1px solid transparent;
+}
+.navlinks a:hover{color:var(--terra);border-bottom-color:var(--terra)}
+
+/* ===== Botones ===== */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  text-decoration:none;
+  font-weight:600;
+  font-size:16px;
+  padding:15px 26px;
+  border-radius:999px;
+  border:1px solid transparent;
+  transition:transform .15s ease,background-color .15s ease,color .15s ease;
+}
+.btn svg{flex:0 0 auto}
+.btn-primary{background:var(--terra);color:#fff;box-shadow:var(--shadow)}
+.btn-primary:hover{background:var(--terra-dark);transform:translateY(-1px)}
+.btn-ghost{border-color:var(--line);color:var(--ink);background:rgba(255,255,255,.55)}
+.btn-ghost:hover{border-color:var(--ink);transform:translateY(-1px)}
+.btn-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+
+/* ===== Hero ===== */
+.hero{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(120% 90% at 85% 8%,rgba(255,236,205,.95) 0%,rgba(255,236,205,0) 58%),
+    radial-gradient(100% 80% at 8% 100%,rgba(44,107,116,.16) 0%,rgba(44,107,116,0) 60%),
+    linear-gradient(170deg,#fffaf3 0%,var(--cream-2) 55%,#f0e1cd 100%);
+  border-bottom:1px solid var(--line-soft);
+}
+.hero-art{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+}
+.hero .wrap{position:relative;z-index:1}
+.hero-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);
+  gap:clamp(32px,5vw,64px);
+  align-items:center;
+  padding:clamp(52px,8vw,104px) 0 clamp(56px,8vw,104px);
+}
+.kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font-size:12px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--sea-dark);
+  background:rgba(255,255,255,.7);
+  border:1px solid rgba(44,107,116,.22);
+  padding:7px 14px;
+  border-radius:999px;
+  font-weight:600;
+}
+h1{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(38px,7.2vw,70px);
+  line-height:1.04;
+  letter-spacing:-.025em;
+  margin-top:22px;
+}
+h1 em{font-style:normal;display:block;color:var(--terra-dark)}
+.hero p.lede{margin-top:20px;font-size:clamp(16.5px,1.6vw,19.5px);color:var(--ink-soft)}
+.hero-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px 26px;
+  margin-top:30px;
+  padding-top:22px;
+  border-top:1px solid var(--line);
+  font-size:14.5px;
+  color:var(--ink-soft);
+}
+.hero-meta span{display:inline-flex;align-items:center;gap:8px}
+.hero-card{
+  background:rgba(255,255,255,.72);
+  border:1px solid rgba(255,255,255,.9);
+  outline:1px solid var(--line-soft);
+  border-radius:20px;
+  padding:clamp(20px,2.6vw,30px);
+  box-shadow:var(--shadow);
+  backdrop-filter:blur(2px);
+}
+.hero-card h3{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:21px;
+  line-height:1.25;
+}
+.hero-card .note{margin-top:10px}
+.phoneblock{
+  margin-top:20px;
+  padding-top:20px;
+  border-top:1px solid var(--line);
+}
+.phoneblock a{
+  font-family:var(--serif);
+  font-size:clamp(26px,3.4vw,34px);
+  text-decoration:none;
+  letter-spacing:-.01em;
+  color:var(--sea-dark);
+  display:inline-block;
+  word-break:break-word;
+}
+.phoneblock a:hover{color:var(--terra)}
+.phoneblock .lbl{
+  font-size:11.5px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--ink-faint);
+  font-weight:600;
+}
+
+/* ===== Servicios ===== */
+.services{background:var(--white)}
+.svc-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.8fr);gap:clamp(24px,4vw,56px);align-items:end}
+.callout{
+  border-left:3px solid var(--terra);
+  background:var(--cream);
+  padding:16px 18px;
+  border-radius:0 12px 12px 0;
+  font-size:14.5px;
+  line-height:1.6;
+  color:var(--ink-soft);
+}
+.callout b{color:var(--ink)}
+.grid-3{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+  margin-top:44px;
+}
+.card{
+  border:1px solid var(--line-soft);
+  border-radius:16px;
+  padding:26px 24px 28px;
+  background:linear-gradient(180deg,#fffdfa 0%,#fdf8f1 100%);
+  transition:border-color .15s ease,transform .15s ease;
+}
+.card:hover{border-color:rgba(181,84,47,.45);transform:translateY(-2px)}
+.ico{
+  width:44px;height:44px;
+  border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(44,107,116,.1);
+  color:var(--sea-dark);
+  margin-bottom:18px;
+}
+.card:nth-child(even) .ico{background:rgba(181,84,47,.1);color:var(--terra-dark)}
+.card h3{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:20px;
+  line-height:1.3;
+  margin-bottom:8px;
+}
+.card p{font-size:15px;line-height:1.6;color:var(--ink-soft)}
+.tag{
+  display:inline-block;
+  margin-top:14px;
+  font-size:11px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  font-weight:600;
+  color:var(--ink-faint);
+  border:1px dashed var(--line);
+  border-radius:999px;
+  padding:4px 11px;
+}
+
+/* ===== Espacio reservado ===== */
+.reserved{
+  margin-top:26px;
+  border:1px dashed rgba(42,36,32,.3);
+  border-radius:16px;
+  padding:clamp(20px,3vw,30px);
+  background:repeating-linear-gradient(135deg,rgba(42,36,32,.025) 0 10px,transparent 10px 20px);
+}
+.reserved h3{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:21px;
+  line-height:1.3;
+}
+.reserved ul{margin-top:14px;display:grid;gap:9px}
+.reserved li{
+  display:flex;gap:11px;align-items:flex-start;
+  font-size:15px;color:var(--ink-soft);
+}
+.reserved li::before{
+  content:"";
+  flex:0 0 auto;
+  width:7px;height:7px;
+  margin-top:9px;
+  border-radius:2px;
+  border:1px solid var(--ink-faint);
+}
+
+/* ===== Pasos ===== */
+.steps{background:linear-gradient(180deg,var(--cream) 0%,var(--cream-2) 100%);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
+.step-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:clamp(18px,2.5vw,28px);
+  margin-top:44px;
+  counter-reset:s;
+}
+.step{
+  position:relative;
+  background:var(--white);
+  border:1px solid var(--line-soft);
+  border-radius:18px;
+  padding:30px 26px 28px;
+  box-shadow:0 1px 2px rgba(42,36,32,.04);
+}
+.step .num{
+  font-family:var(--serif);
+  font-size:15px;
+  width:38px;height:38px;
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--sea);
+  color:#fff;
+  margin-bottom:18px;
+  letter-spacing:.02em;
+}
+.step:nth-child(2) .num{background:var(--terra)}
+.step:nth-child(3) .num{background:var(--ink)}
+.step h3{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:21px;
+  line-height:1.3;
+  margin-bottom:9px;
+}
+.step p{font-size:15px;color:var(--ink-soft);line-height:1.62}
+
+/* ===== Contacto ===== */
+.contact{background:var(--white)}
+.contact-grid{
+  display:grid;
+  grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);
+  gap:clamp(28px,4.5vw,56px);
+  margin-top:40px;
+  align-items:start;
+}
+.dl{display:grid;gap:4px}
+.dl-row{
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr);
+  gap:16px;
+  align-items:flex-start;
+  padding:18px 0;
+  border-bottom:1px solid var(--line-soft);
+}
+.dl-row:last-child{border-bottom:0}
+.dl-ico{
+  width:38px;height:38px;flex:0 0 auto;
+  border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--cream-2);
+  color:var(--sea-dark);
+}
+.dl dt{
+  font-size:11.5px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--ink-faint);
+  font-weight:600;
+}
+.dl dd{margin:0;font-size:17px;line-height:1.5}
+.dl dd a{text-decoration:none;color:var(--sea-dark);border-bottom:1px solid rgba(44,107,116,.35);word-break:break-word}
+.dl dd a:hover{color:var(--terra);border-bottom-color:var(--terra)}
+.dl dd .pending{
+  display:block;
+  font-size:15px;color:var(--ink-soft);
+}
+.dl dd .pending em{
+  display:block;margin-top:2px;
+  font-style:normal;font-size:12.5px;line-height:1.5;color:var(--ink-faint);
+}
+
+.mapcard{
+  border:1px solid var(--line-soft);
+  border-radius:18px;
+  overflow:hidden;
+  background:var(--cream);
+  box-shadow:var(--shadow);
+}
+.mapcard figure{margin:0}
+.mapcard svg{display:block;width:100%;height:auto}
+.mapcard figcaption{
+  padding:14px 18px 16px;
+  border-top:1px solid var(--line-soft);
+  font-size:13px;
+  line-height:1.55;
+  color:var(--ink-faint);
+  background:var(--white);
+}
+
+/* ===== Pie ===== */
+footer{background:var(--ink);color:#e8dfd5}
+footer .wrap{padding-top:clamp(44px,5.5vw,64px);padding-bottom:clamp(34px,4vw,48px)}
+.foot-top{
+  display:grid;
+  grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);
+  gap:clamp(26px,4vw,48px);
+  padding-bottom:30px;
+  border-bottom:1px solid rgba(255,255,255,.14);
+}
+.foot-name{
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(23px,3vw,30px);
+  line-height:1.2;
+  color:#fff;
+}
+.foot-top p{margin-top:12px;font-size:15px;color:rgba(232,223,213,.72);max-width:48ch}
+.foot-links{display:grid;gap:12px;align-content:start}
+.foot-links .lbl{
+  font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(232,223,213,.5);font-weight:600;
+}
+.foot-links a{
+  text-decoration:none;color:#fff;font-size:16.5px;
+  border-bottom:1px solid rgba(255,255,255,.3);
+  width:fit-content;max-width:100%;word-break:break-word;
+}
+.foot-links a:hover{border-bottom-color:#fff;color:#ffd9a8}
+.signature{
+  margin-top:26px;
+  font-size:13.5px;
+  line-height:1.6;
+  color:rgba(232,223,213,.62);
+}
+.signature strong{color:#fff;font-weight:600}
+.disclaimer{
+  margin-top:10px;
+  font-size:12.5px;
+  line-height:1.6;
+  color:rgba(232,223,213,.6);
+  max-width:72ch;
+}
+
+/* ===== Responsive ===== */
+@media (max-width:980px){
+  .hero-grid{grid-template-columns:minmax(0,1fr)}
+  .svc-head{grid-template-columns:minmax(0,1fr)}
+  .grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .step-grid{grid-template-columns:minmax(0,1fr)}
+  .contact-grid{grid-template-columns:minmax(0,1fr)}
+  .foot-top{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:640px){
+  :root{--bar-h:64px}
+  .proposalbar{min-height:64px}
+  body{font-size:16.5px}
+  .wrap{padding:0 18px}
+  .proposalbar p{font-size:11.5px}
+  .topnav .wrap{min-height:0}
+  .navlinks{gap:16px}
+  .navlinks a{font-size:13.5px}
+  .grid-3{grid-template-columns:minmax(0,1fr)}
+  .btn{width:100%;padding:15px 20px;font-size:15.5px}
+  .btn-row{gap:11px}
+  .brand .name{font-size:16px;white-space:normal}
+  .brand .sub{font-size:9.5px;letter-spacing:.14em}
+  .hero-meta{gap:8px 18px;font-size:13.5px}
+  .dl-row{gap:13px;padding:16px 0}
+}
+@media (max-width:380px){
+  .navlinks{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<!-- Barra fija obligatoria de propuesta -->
+<div class="proposalbar" role="note">
+  <p>Propuesta de diseño · maqueta no oficial · <strong>FFFFFFstudio</strong> · Ángel Rubio</p>
+</div>
+
+<header class="topnav">
+  <div class="wrap">
+    <div class="brand">
+      <svg class="mark" width="34" height="34" viewBox="0 0 34 34" aria-hidden="true">
+        <rect x="1" y="1" width="32" height="32" rx="9" fill="#2c6b74"/>
+        <path d="M11 24V12.5a6 6 0 0 1 12 0V24" stroke="#fdf8f1" stroke-width="1.7" fill="none" stroke-linecap="round"/>
+        <path d="M8.5 24h17" stroke="#fdf8f1" stroke-width="1.7" stroke-linecap="round"/>
+        <circle cx="17" cy="15.6" r="1.9" fill="#f0a866"/>
+      </svg>
+      <div class="txt">
+        <div class="name">Hotel Victoria Centro</div>
+        <div class="sub">Almuñécar · Granada</div>
+      </div>
+    </div>
+    <nav class="navlinks" aria-label="Secciones">
+      <a href="#servicios">El hotel</a>
+      <a href="#reservar">Cómo reservar</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero" aria-labelledby="h1">
+  <svg class="hero-art" viewBox="0 0 1200 620" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="sun" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#ffd9a0" stop-opacity=".95"/>
+        <stop offset="1" stop-color="#ffd9a0" stop-opacity="0"/>
+      </linearGradient>
+      <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#ffffff" stop-opacity=".55"/>
+        <stop offset="1" stop-color="#ffffff" stop-opacity=".1"/>
+      </linearGradient>
+    </defs>
+    <circle cx="1010" cy="130" r="130" fill="url(#sun)"/>
+    <circle cx="1010" cy="130" r="46" fill="#f6b870" opacity=".5"/>
+    <!-- siluetas de casas del casco antiguo -->
+    <g fill="url(#wall)" stroke="rgba(42,36,32,.1)" stroke-width="1.2">
+      <path d="M0 620V470h80v-40h70v60h60V430h90v190z"/>
+      <path d="M1200 620V420h-90v-50h-80v70h-70v180z"/>
+    </g>
+    <!-- arcos -->
+    <g stroke="rgba(44,107,116,.16)" stroke-width="2" fill="none">
+      <path d="M940 620V500a40 40 0 0 1 80 0v120"/>
+      <path d="M1060 620V520a30 30 0 0 1 60 0v100"/>
+    </g>
+    <!-- líneas de mar -->
+    <g stroke="rgba(44,107,116,.14)" stroke-width="2" fill="none" stroke-linecap="round">
+      <path d="M60 560q24-12 48 0t48 0t48 0"/>
+      <path d="M60 588q24-12 48 0t48 0t48 0"/>
+    </g>
+  </svg>
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="kicker">Casco antiguo de Almuñécar</span>
+        <h1 id="h1">Hotel Victoria Centro<em>a un paso de todo</em></h1>
+        <p class="lede">Alojamiento sencillo en pleno casco antiguo, entre calles estrechas, plazas y el centro histórico de Almuñécar. Esta página es una maqueta de propuesta: los textos están redactados como borrador y el hotel decide qué se queda.</p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="tel:+34958631734">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2.1z"/></svg>
+            Llamar al 958 631 734
+          </a>
+          <a class="btn btn-ghost" href="#contacto">Ver dónde estamos</a>
+        </div>
+        <div class="hero-meta">
+          <span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Plaza Damasco, Almuñécar
+          </span>
+          <span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l2.9 6.2 6.6.9-4.8 4.7 1.2 6.7L12 17.3 6.1 20.5l1.2-6.7L2.5 9.1l6.6-.9z"/></svg>
+            Hotel de 1 estrella
+          </span>
+          <span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h18M12 3v18"/><circle cx="12" cy="12" r="9"/></svg>
+            Reservas por teléfono
+          </span>
+        </div>
+      </div>
+      <aside class="hero-card" aria-label="Reservas por teléfono">
+        <h3>Hoy la reserva se hace hablando</h3>
+        <p class="note">Si quieres consultar disponibilidad o resolver una duda, lo más directo es llamar. Te atiende el propio hotel.</p>
+        <div class="phoneblock">
+          <div class="lbl">Teléfono del hotel</div>
+          <a href="tel:+34958631734">958 631 734</a>
+          <p class="note" style="margin-top:8px">Consultar horario de atención.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICIOS ===== -->
+<section class="services pad" id="servicios" aria-labelledby="h-svc">
+  <div class="wrap">
+    <div class="svc-head">
+      <div>
+        <div class="eyebrow">Contenido propuesto</div>
+        <h2 class="title" id="h-svc">Qué podría contar<br>la web del hotel</h2>
+        <p class="lede">Estos son los bloques habituales en la web de un hotel pequeño de casco antiguo. Están planteados como propuesta de estructura y redacción, no como una descripción de los servicios reales.</p>
+      </div>
+      <div class="callout">
+        <b>Importante:</b> ninguno de los apartados de abajo afirma que el Hotel Victoria Centro preste ese servicio. Son apartados genéricos del sector, pendientes de confirmar, ampliar o eliminar según lo que el hotel ofrezca de verdad.
+      </div>
+    </div>
+
+    <div class="grid-3">
+      <article class="card">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6"/><path d="M6 10V7a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v3M13 10V7a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v3"/><path d="M2 18h20"/></svg></div>
+        <h3>Tipos de habitación</h3>
+        <p>Un apartado por cada tipo de habitación, con su descripción y sus características. El hotel indica cuáles existen y qué incluye cada una.</p>
+        <span class="tag">A confirmar</span>
+      </article>
+
+      <article class="card">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h12v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"/><path d="M16 9h2.5a2.5 2.5 0 0 1 0 5H16"/><path d="M3 21h14"/><path d="M8 4.5c0-1 1-1 1-2M12 4.5c0-1 1-1 1-2"/></svg></div>
+        <h3>Desayuno</h3>
+        <p>Bloque para explicar si hay desayuno, en qué consiste y si se contrata aparte. Pendiente de que el hotel confirme el dato.</p>
+        <span class="tag">A confirmar</span>
+      </article>
+
+      <article class="card">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20V9l9-5 9 5v11"/><path d="M3 20h18"/><path d="M8 20v-5h8v5"/><circle cx="12" cy="10" r="1.3"/></svg></div>
+        <h3>Recepción</h3>
+        <p>Cómo funciona la llegada y la salida, dónde recoger la llave y a quién preguntar. Los horarios los facilita el hotel.</p>
+        <span class="tag">A confirmar</span>
+      </article>
+
+      <article class="card">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 9a16 16 0 0 1 19 0"/><path d="M5.5 12.6a11.5 11.5 0 0 1 13 0"/><path d="M8.5 16.2a7 7 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1.3" fill="currentColor" stroke="none"/></svg></div>
+        <h3>Wifi</h3>
+        <p>Apartado para indicar si hay conexión wifi, en qué zonas y si es gratuita. Se publica solo si el hotel lo confirma.</p>
+        <span class="tag">A confirmar</span>
+      </article>
+
+      <article class="card">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7.5" width="18" height="12.5" rx="2.5"/><path d="M9 7.5V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2.5"/><path d="M3 13h18"/></svg></div>
+        <h3>Consigna de equipaje</h3>
+        <p>Muchos viajeros preguntan si pueden dejar las maletas antes de entrar o después de salir. Aquí iría la respuesta del hotel.</p>
+        <span class="tag">A confirmar</span>
+      </article>
+
+      <article class="card">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 10.5v6"/><circle cx="12" cy="7.7" r="1.1" fill="currentColor" stroke="none"/></svg></div>
+        <h3>Información turística</h3>
+        <p>Qué ver andando desde la plaza, cómo llegar a las playas y dónde aparcar. Redactado con el criterio del propio hotel.</p>
+        <span class="tag">A confirmar</span>
+      </article>
+    </div>
+
+    <div class="reserved">
+      <h3>Espacio preparado para que lo rellene el hotel</h3>
+      <p class="note" style="margin-top:8px">Estos datos no se inventan en una maqueta. Los bloques están maquetados y en blanco, listos para que el hotel los facilite:</p>
+      <ul>
+        <li>Número y tipos de habitación.</li>
+        <li>Precios y temporadas, si se quieren publicar.</li>
+        <li>Horarios de recepción, de entrada y de salida.</li>
+        <li>Condiciones de reserva y de cancelación.</li>
+        <li>Fotografías reales del hotel y de las habitaciones.</li>
+        <li>Opiniones de clientes, solo si proceden de una fuente verificable y el hotel autoriza su uso.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PASOS ===== -->
+<section class="steps pad" id="reservar" aria-labelledby="h-steps">
+  <div class="wrap">
+    <div class="eyebrow sea">Tu primera visita</div>
+    <h2 class="title" id="h-steps">Cómo reservar, en tres pasos</h2>
+    <p class="lede">Mientras el hotel no tenga reserva en línea, el camino más corto es el teléfono. Esta sección lo deja claro desde el principio para que el viajero no se quede a medias.</p>
+
+    <div class="step-grid">
+      <article class="step">
+        <div class="num">1</div>
+        <h3>Llama al hotel</h3>
+        <p>Marca el <a href="tel:+34958631734" style="color:var(--sea-dark)">958 631 734</a> y pregunta por las fechas que te interesan. Te responden directamente desde el hotel.</p>
+      </article>
+      <article class="step">
+        <div class="num">2</div>
+        <h3>Confirma los detalles</h3>
+        <p>Comenta cuántas personas sois, cuántas noches y a qué hora pensáis llegar. El hotel te indica qué puede ofrecerte y en qué condiciones.</p>
+      </article>
+      <article class="step">
+        <div class="num">3</div>
+        <h3>Llega a la Plaza Damasco</h3>
+        <p>El hotel está en el casco antiguo. Pregunta por la mejor forma de llegar y por dónde dejar el coche antes de ponerte en camino.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACTO ===== -->
+<section class="contact pad" id="contacto" aria-labelledby="h-contact">
+  <div class="wrap">
+    <div class="eyebrow">Contacto</div>
+    <h2 class="title" id="h-contact">Dónde estamos y cómo localizarnos</h2>
+
+    <div class="contact-grid">
+      <dl class="dl">
+        <div class="dl-row">
+          <div class="dl-ico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2.1z"/></svg></div>
+          <div>
+            <dt>Teléfono</dt>
+            <dd><a href="tel:+34958631734">958 631 734</a></dd>
+          </div>
+        </div>
+
+        <div class="dl-row">
+          <div class="dl-ico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div>
+            <dt>Dirección</dt>
+            <dd>Plaza Damasco, Almuñécar<br><span class="pending"><em>Granada · casco antiguo</em></span></dd>
+          </div>
+        </div>
+
+        <div class="dl-row">
+          <div class="dl-ico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3.2 2"/></svg></div>
+          <div>
+            <dt>Horario</dt>
+            <dd><span class="pending">Consultar horario <em>— dato pendiente de facilitar por el hotel</em></span></dd>
+          </div>
+        </div>
+
+        <div class="dl-row">
+          <div class="dl-ico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M3 7l9 6 9-6"/></svg></div>
+          <div>
+            <dt>Correo electrónico</dt>
+            <dd><a href="mailto:victoriacentrohotel@gmail.com">victoriacentrohotel@gmail.com</a></dd>
+          </div>
+        </div>
+      </dl>
+
+      <div class="mapcard">
+        <figure>
+          <svg viewBox="0 0 620 440" role="img" aria-label="Plano esquemático del casco antiguo de Almuñécar con un marcador en la Plaza Damasco. No es un mapa real ni está a escala.">
+            <defs>
+              <linearGradient id="mapbg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#fdf8f1"/>
+                <stop offset="1" stop-color="#f3e7d6"/>
+              </linearGradient>
+            </defs>
+            <rect width="620" height="440" fill="url(#mapbg)"/>
+
+            <!-- manzanas -->
+            <g fill="rgba(42,36,32,.045)" stroke="rgba(42,36,32,.1)" stroke-width="1.2">
+              <rect x="44" y="48" width="150" height="104" rx="6"/>
+              <rect x="238" y="48" width="118" height="104" rx="6"/>
+              <rect x="400" y="48" width="176" height="78" rx="6"/>
+              <rect x="44" y="196" width="150" height="92" rx="6"/>
+              <rect x="400" y="170" width="176" height="118" rx="6"/>
+              <rect x="44" y="332" width="212" height="72" rx="6"/>
+              <rect x="300" y="332" width="276" height="72" rx="6"/>
+            </g>
+
+            <!-- calles -->
+            <g stroke="#ffffff" stroke-width="20" stroke-linecap="round" fill="none">
+              <path d="M20 174h580"/>
+              <path d="M20 310h580"/>
+              <path d="M214 20v400"/>
+              <path d="M378 20v400"/>
+            </g>
+            <g stroke="rgba(42,36,32,.16)" stroke-width="1.2" stroke-dasharray="7 9" fill="none">
+              <path d="M20 174h580"/>
+              <path d="M20 310h580"/>
+              <path d="M214 20v400"/>
+              <path d="M378 20v400"/>
+            </g>
+
+            <!-- plaza -->
+            <circle cx="296" cy="242" r="58" fill="#fff" stroke="rgba(42,36,32,.14)" stroke-width="1.4"/>
+            <circle cx="296" cy="242" r="40" fill="rgba(44,107,116,.08)"/>
+            <g stroke="rgba(44,107,116,.3)" stroke-width="1.2" fill="none">
+              <circle cx="296" cy="242" r="22"/>
+            </g>
+
+            <!-- marcador -->
+            <g transform="translate(296 242)">
+              <path d="M0 -6c-13 0-23 10-23 23 0 16 23 37 23 37s23-21 23-37c0-13-10-23-23-23z" fill="#b5542f"/>
+              <circle cx="0" cy="17" r="7.5" fill="#fdf8f1"/>
+            </g>
+
+            <!-- etiquetas -->
+            <g font-family="Georgia, serif" fill="#5d524a">
+              <text x="296" y="166" font-size="17" text-anchor="middle" fill="#2a2420">Plaza Damasco</text>
+              <text x="296" y="338" font-size="13" text-anchor="middle" fill="#8a7d72">Hotel Victoria Centro</text>
+            </g>
+            <g font-family="system-ui, sans-serif" font-size="12" fill="#8a7d72" letter-spacing="1.2">
+              <text x="34" y="168">CASCO ANTIGUO</text>
+              <text x="34" y="304">CALLES PEATONALES</text>
+              <text x="408" y="42">HACIA EL CENTRO</text>
+            </g>
+
+            <!-- brújula -->
+            <g transform="translate(566 404)">
+              <circle r="22" fill="#fff" stroke="rgba(42,36,32,.12)"/>
+              <path d="M0 -14l5.5 12h-11z" fill="#b5542f"/>
+              <text y="12" font-family="system-ui, sans-serif" font-size="11" font-weight="600" text-anchor="middle" fill="#8a7d72">N</text>
+            </g>
+          </svg>
+          <figcaption>Plano esquemático, dibujado a mano para esta maqueta. No está a escala, no reproduce el trazado real de las calles y no sustituye a un mapa. Sirve solo para situar la Plaza Damasco dentro del casco antiguo.</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <a class="btn btn-primary" href="tel:+34958631734">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2.1z"/></svg>
+        Llamar al 958 631 734
+      </a>
+      <a class="btn btn-ghost" href="mailto:victoriacentrohotel@gmail.com">Escribir un correo</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PIE ===== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <div class="foot-name">Hotel Victoria Centro</div>
+        <p>Plaza Damasco, Almuñécar (Granada). Hotel de 1 estrella en el casco antiguo. Reservas y consultas por teléfono; consultar horario.</p>
+      </div>
+      <div class="foot-links">
+        <span class="lbl">Contacto</span>
+        <a href="tel:+34958631734">958 631 734</a>
+        <a href="mailto:victoriacentrohotel@gmail.com">victoriacentrohotel@gmail.com</a>
+      </div>
+    </div>
+    <p class="signature">Propuesta de rediseño presentada por <strong>FFFFFFstudio</strong> — Ángel Rubio, diseñador web · Alicante</p>
+    <p class="disclaimer">Maqueta no oficial, sin relación contractual con el Hotel Victoria Centro. Los únicos datos reales utilizados son el nombre, la categoría, la dirección, el teléfono y el correo electrónico publicados. No se incluyen precios, horarios, número de habitaciones, opiniones ni fotografías: esos contenidos quedan como espacio reservado para que los facilite el hotel.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* Desplazamiento suave con compensación de la barra fija */
+  var bar = document.querySelector('.proposalbar');
+  function barH(){ return bar ? bar.getBoundingClientRect().height : 46; }
+  function sync(){ document.documentElement.style.setProperty('--bar-h', barH() + 'px'); }
+  sync();
+  window.addEventListener('resize', sync);
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var t = document.querySelector(a.getAttribute('href'));
+      if(!t) return;
+      e.preventDefault();
+      var y = t.getBoundingClientRect().top + window.pageYOffset - barH() - 14;
+      window.scrollTo({top: y, behavior: 'smooth'});
+    });
+  });
+})();
+</script>
+</body>
+</html>

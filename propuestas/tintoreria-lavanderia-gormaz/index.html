@@ -1,0 +1,928 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tintorería - Lavandería Gormaz, S.L. — Propuesta de diseño</title>
+<meta name="description" content="Maqueta de propuesta de rediseño web para Tintorería - Lavandería Gormaz, S.L., San Esteban de Gormaz (Soria).">
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* ===== Reset y tokens ===== */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;overflow-x:hidden}
+body,h1,h2,h3,h4,p,ul,ol,li,figure,blockquote{margin:0;padding:0}
+ul,ol{list-style:none}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+
+:root{
+  --ink:#0c1a28;
+  --ink-2:#13293d;
+  --steel:#4a6781;
+  --steel-2:#6a839a;
+  --mist:#e9f0f6;
+  --paper:#f6f9fb;
+  --white:#ffffff;
+  --accent:#0d8f85;
+  --accent-d:#0a7470;
+  --accent-l:#5ed3c6;
+  --line:rgba(12,26,40,.11);
+  --line-s:rgba(12,26,40,.07);
+  --bar-h:46px;
+  --shadow-s:0 1px 2px rgba(12,26,40,.05), 0 6px 18px rgba(12,26,40,.06);
+  --shadow-m:0 2px 4px rgba(12,26,40,.06), 0 14px 40px rgba(12,26,40,.10);
+  --r:16px;
+  --r-s:11px;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+}
+
+body{
+  font-family:var(--sans);
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.62;
+  font-size:16px;
+  letter-spacing:-.005em;
+  padding-top:var(--bar-h);
+  overflow-x:hidden;
+}
+
+/* ===== Barra fija de propuesta (obligatoria) ===== */
+.aviso{
+  position:fixed;
+  top:0;left:0;right:0;
+  z-index:999;
+  min-height:var(--bar-h);
+  display:flex;align-items:center;justify-content:center;
+  gap:8px;
+  padding:7px 14px;
+  background:linear-gradient(90deg,#0c1a28 0%,#14314a 50%,#0c1a28 100%);
+  color:#dce8f1;
+  border-bottom:1px solid rgba(94,211,198,.3);
+  text-align:center;
+  font-size:12.5px;
+  line-height:1.4;
+  letter-spacing:.015em;
+  font-weight:600;
+  box-shadow:0 2px 14px rgba(12,26,40,.22);
+}
+.aviso__dot{
+  flex:0 0 auto;
+  width:7px;height:7px;border-radius:50%;
+  background:var(--accent-l);
+  box-shadow:0 0 0 3px rgba(94,211,198,.2);
+}
+.aviso span{min-width:0}
+
+/* ===== Utilidades ===== */
+.wrap{width:100%;max-width:1140px;margin:0 auto;padding:0 28px}
+.sec{padding:92px 0}
+.sec--tight{padding:76px 0}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent-d);margin-bottom:18px;
+}
+.eyebrow::before{content:"";width:22px;height:2px;background:var(--accent);border-radius:2px;flex:0 0 auto}
+h2{
+  font-size:clamp(27px,4vw,41px);
+  line-height:1.14;letter-spacing:-.025em;font-weight:700;
+  color:var(--ink);
+}
+.lead{
+  font-size:clamp(16px,1.5vw,18.5px);
+  color:var(--steel);
+  max-width:62ch;
+  margin-top:18px;
+}
+.sec__head{max-width:760px;margin-bottom:52px}
+
+/* ===== Hero ===== */
+.hero{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(900px 480px at 12% -10%, rgba(94,211,198,.2), transparent 60%),
+    radial-gradient(700px 520px at 92% 8%, rgba(42,120,160,.3), transparent 62%),
+    linear-gradient(158deg,#0b1724 0%,#12293d 48%,#0c3f47 100%);
+  color:#eaf2f8;
+  padding:70px 0 0;
+}
+.hero__bg{position:absolute;inset:0;width:100%;height:100%;opacity:.5;pointer-events:none}
+.hero__inner{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;gap:54px;align-items:center}
+.hero__tags{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:24px}
+.tag{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:6px 13px;border-radius:999px;
+  background:rgba(255,255,255,.085);
+  border:1px solid rgba(255,255,255,.2);
+  font-size:12.5px;font-weight:600;letter-spacing:.02em;
+  color:#dcebf4;
+}
+.tag svg{flex:0 0 auto}
+.hero h1{
+  font-size:clamp(33px,5.6vw,60px);
+  line-height:1.04;letter-spacing:-.035em;font-weight:700;
+  color:#fff;
+  text-wrap:balance;
+}
+.hero h1 .nb{white-space:nowrap}
+.hero h1 em{font-style:normal;display:block;color:var(--accent-l);font-size:.56em;letter-spacing:-.02em;margin-top:12px;font-weight:650}
+.hero__sub{
+  margin-top:22px;
+  font-size:clamp(16px,1.6vw,19px);
+  color:#bed2e0;
+  max-width:52ch;
+}
+
+/* CTA */
+.cta{display:flex;flex-wrap:wrap;gap:13px;margin-top:34px;align-items:stretch}
+.btn{
+  display:inline-flex;align-items:center;gap:12px;
+  padding:15px 24px;border-radius:13px;
+  font-weight:700;font-size:16px;text-decoration:none;
+  border:1px solid transparent;
+  transition:transform .16s ease, box-shadow .16s ease, background .16s ease;
+  max-width:100%;
+}
+.btn svg{flex:0 0 auto}
+.btn--tel{
+  background:linear-gradient(180deg,var(--accent-l) 0%,var(--accent) 100%);
+  color:#04221f;
+  box-shadow:0 10px 26px rgba(13,143,133,.34);
+  letter-spacing:-.01em;
+}
+.btn--tel small{display:block;font-size:10.5px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;opacity:.72}
+.btn--tel b{display:block;font-size:19px;line-height:1.2;letter-spacing:-.015em;white-space:nowrap}
+.btn--ghost{
+  background:rgba(255,255,255,.07);
+  border-color:rgba(255,255,255,.26);
+  color:#eaf2f8;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn--ghost:hover{background:rgba(255,255,255,.13)}
+
+.hero__meta{
+  margin-top:30px;padding-top:24px;
+  border-top:1px solid rgba(255,255,255,.14);
+  display:flex;flex-wrap:wrap;gap:12px 34px;
+  font-size:14px;color:#afc6d6;
+}
+.hero__meta div{display:flex;align-items:flex-start;gap:9px;max-width:100%}
+.hero__meta svg{flex:0 0 auto;margin-top:3px}
+.hero__meta a{color:#eaf2f8;text-decoration:none;font-weight:650;border-bottom:1px solid rgba(94,211,198,.5)}
+
+/* Tarjeta visual del hero */
+.hero__art{position:relative}
+.card-art{
+  background:rgba(255,255,255,.055);
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:22px;
+  padding:26px;
+  backdrop-filter:blur(2px);
+  box-shadow:0 24px 60px rgba(4,14,24,.3);
+}
+.card-art__title{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#8fb0c6;font-weight:700;margin-bottom:16px}
+.card-art svg{width:100%;height:auto}
+
+.hero__strip{
+  position:relative;z-index:2;
+  margin-top:62px;
+  border-top:1px solid rgba(255,255,255,.12);
+  background:rgba(4,14,24,.3);
+}
+.hero__strip ul{
+  display:grid;grid-template-columns:repeat(3,1fr);
+}
+.hero__strip li{
+  padding:20px 26px;
+  font-size:14px;color:#c3d6e3;
+  display:flex;align-items:center;gap:11px;
+  border-left:1px solid rgba(255,255,255,.1);
+}
+.hero__strip li:first-child{border-left:0}
+.hero__strip li svg{flex:0 0 auto}
+
+/* ===== Servicios ===== */
+.audiencia{margin-top:12px}
+.audiencia + .audiencia{margin-top:64px}
+.audiencia__head{
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 16px;
+  padding-bottom:16px;margin-bottom:26px;
+  border-bottom:2px solid var(--line);
+}
+.audiencia__head h3{
+  font-size:clamp(21px,2.4vw,27px);letter-spacing:-.022em;font-weight:700;line-height:1.2;
+}
+.audiencia__kicker{
+  font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--white);background:var(--ink-2);
+  padding:4px 11px;border-radius:999px;
+}
+.audiencia--pro .audiencia__kicker{background:var(--accent-d)}
+.audiencia__note{font-size:14.5px;color:var(--steel);flex:1 1 220px;min-width:0}
+
+.grid{display:grid;gap:18px;grid-template-columns:repeat(4,1fr)}
+.grid--3{grid-template-columns:repeat(3,1fr)}
+.card{
+  background:var(--white);
+  border:1px solid var(--line-s);
+  border-radius:var(--r);
+  padding:26px 24px 24px;
+  box-shadow:var(--shadow-s);
+  display:flex;flex-direction:column;
+  min-width:0;
+}
+.card__ico{
+  width:46px;height:46px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(145deg,var(--mist),#dbe7f0);
+  color:var(--ink-2);
+  margin-bottom:18px;flex:0 0 auto;
+}
+.audiencia--pro .card__ico{background:linear-gradient(145deg,#0f3b43,#0d8f85);color:#eafaf7}
+.card h4{font-size:17.5px;font-weight:700;letter-spacing:-.015em;line-height:1.3;margin-bottom:8px}
+.card p{font-size:14.5px;color:var(--steel);line-height:1.58}
+
+.disclaimer{
+  margin-top:34px;
+  display:flex;gap:14px;align-items:flex-start;
+  padding:19px 21px;
+  background:#fffdf4;
+  border:1px solid #ecdfae;
+  border-left:3px solid #c9a227;
+  border-radius:var(--r-s);
+  font-size:14.5px;color:#5c4a16;
+}
+.disclaimer svg{flex:0 0 auto;margin-top:2px;color:#9c7c12}
+.disclaimer b{color:#3f3310}
+
+/* ===== Cómo trabajamos ===== */
+.proceso{background:var(--ink);color:#e6eff6;position:relative;overflow:hidden}
+.proceso::after{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(760px 420px at 85% 0%, rgba(13,143,133,.26), transparent 65%);
+  pointer-events:none;
+}
+.proceso .wrap{position:relative;z-index:2}
+.proceso h2{color:#fff}
+.proceso .eyebrow{color:var(--accent-l)}
+.proceso .eyebrow::before{background:var(--accent-l)}
+.proceso .lead{color:#a8c0d1}
+.pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.paso{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:var(--r);
+  padding:28px 25px;
+  min-width:0;
+}
+.paso__n{
+  display:flex;align-items:center;gap:12px;margin-bottom:18px;
+}
+.paso__n i{
+  font-style:normal;
+  width:38px;height:38px;border-radius:11px;flex:0 0 auto;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--accent);color:#03201e;
+  font-weight:800;font-size:16px;
+}
+.paso__n span{font-size:11.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#7fa5bd}
+.paso h3{font-size:19px;font-weight:700;letter-spacing:-.018em;margin-bottom:9px;color:#fff;line-height:1.28}
+.paso p{font-size:14.5px;color:#a8c0d1;line-height:1.6}
+
+.reservado{
+  margin-top:40px;
+  border:1px dashed rgba(255,255,255,.3);
+  border-radius:var(--r);
+  padding:26px 25px;
+  background:rgba(255,255,255,.03);
+  display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;
+}
+.reservado svg{flex:0 0 auto;color:var(--accent-l)}
+.reservado h3{font-size:16.5px;font-weight:700;color:#fff;margin-bottom:8px;letter-spacing:-.01em}
+.reservado p{font-size:14.5px;color:#a8c0d1}
+.reservado ul{margin-top:12px;display:flex;flex-wrap:wrap;gap:8px}
+.reservado li{
+  font-size:12.5px;color:#cfe0eb;
+  border:1px solid rgba(255,255,255,.18);
+  background:rgba(255,255,255,.04);
+  padding:4px 11px;border-radius:999px;
+}
+
+/* ===== Contacto ===== */
+.contacto{background:linear-gradient(180deg,#eef4f8 0%,var(--paper) 55%)}
+.contacto__grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:34px;align-items:start}
+.datos{
+  background:var(--white);
+  border:1px solid var(--line-s);
+  border-radius:var(--r);
+  box-shadow:var(--shadow-m);
+  padding:30px 28px;
+  min-width:0;
+}
+.dato{display:grid;grid-template-columns:auto 1fr;gap:15px;padding:17px 0;border-top:1px solid var(--line-s);min-width:0}
+.dato:first-of-type{border-top:0;padding-top:4px}
+.dato__ico{
+  width:40px;height:40px;border-radius:11px;flex:0 0 auto;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--mist);color:var(--ink-2);
+}
+.dato__k{font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--steel-2);margin-bottom:3px}
+.dato__v{font-size:17px;font-weight:650;letter-spacing:-.015em;line-height:1.4;overflow-wrap:break-word}
+.dato__v a{text-decoration:none;color:var(--ink);border-bottom:2px solid rgba(13,143,133,.35)}
+.dato__v a:hover{border-bottom-color:var(--accent)}
+.dato__v small{display:block;font-size:13.5px;font-weight:500;color:var(--steel);letter-spacing:0;margin-top:3px}
+.dato--horario .dato__v{color:var(--steel);font-weight:650}
+.datos .btn{width:100%;justify-content:center;margin-top:24px}
+.datos .btn--tel{box-shadow:0 8px 22px rgba(13,143,133,.26)}
+
+.mapa{
+  background:var(--white);
+  border:1px solid var(--line-s);
+  border-radius:var(--r);
+  box-shadow:var(--shadow-m);
+  padding:12px 12px 0;
+  overflow:hidden;
+  min-width:0;
+}
+.mapa svg{width:100%;height:auto;border-radius:11px;display:block}
+.mapa__pie{
+  display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;
+  padding:14px 10px;font-size:13px;color:var(--steel);
+}
+.mapa__pie span{display:inline-flex;align-items:center;gap:7px}
+.mapa__pie i{width:10px;height:10px;border-radius:50%;background:var(--accent);flex:0 0 auto;font-style:normal}
+.mapa__pie i.via{border-radius:2px;width:16px;height:4px;background:#b9c9d6}
+
+/* ===== Pie ===== */
+.pie{background:var(--ink);color:#b9cedd;padding:56px 0 34px}
+.pie__top{display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:start;padding-bottom:30px;border-bottom:1px solid rgba(255,255,255,.12)}
+.pie__marca{font-size:19px;font-weight:700;color:#fff;letter-spacing:-.02em;line-height:1.3}
+.pie__marca span{display:block;font-size:13.5px;font-weight:500;color:#89a6bb;letter-spacing:0;margin-top:7px}
+.pie__cont{display:flex;flex-direction:column;gap:11px;font-size:15px}
+.pie__cont a{color:#eaf2f8;text-decoration:none;display:inline-flex;align-items:center;gap:10px;font-weight:600;overflow-wrap:anywhere}
+.pie__cont a:hover{color:var(--accent-l)}
+.pie__cont svg{flex:0 0 auto}
+.pie__legal{
+  margin-top:26px;font-size:13px;color:#7e9bb1;line-height:1.6;
+}
+.pie__legal strong{display:block;color:#cfe0eb;font-weight:650;font-size:13.5px;margin-bottom:5px}
+
+/* ===== Responsive ===== */
+@media (max-width:980px){
+  .hero__inner{grid-template-columns:1fr;gap:40px}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .contacto__grid{grid-template-columns:1fr}
+  .pie__top{grid-template-columns:1fr;gap:26px}
+  .pasos{grid-template-columns:1fr}
+  .hero__strip ul{grid-template-columns:1fr}
+  .hero__strip li{border-left:0;border-top:1px solid rgba(255,255,255,.1);padding:16px 26px}
+  .hero__strip li:first-child{border-top:0}
+}
+@media (max-width:640px){
+  :root{--bar-h:52px}
+  .wrap{padding:0 18px}
+  .sec{padding:60px 0}
+  .sec--tight{padding:54px 0}
+  .sec__head{margin-bottom:34px}
+  .hero{padding-top:44px}
+  .hero__strip{margin-top:44px}
+  .grid,.grid--3{grid-template-columns:1fr}
+  .aviso{font-size:11.5px;letter-spacing:0;padding:7px 12px}
+  .card{padding:22px 20px}
+  .card-art{padding:20px 18px}
+  .datos,.paso,.reservado{padding:22px 19px}
+  .reservado{grid-template-columns:1fr}
+  .btn{width:100%;justify-content:center;padding:14px 18px}
+  .btn--tel b{font-size:18px}
+  .cta{gap:11px}
+  .hero__meta{gap:14px;flex-direction:column}
+  .audiencia + .audiencia{margin-top:48px}
+  .dato__v{font-size:16px}
+  .mapa{padding:10px 10px 0}
+  .mapa__pie{padding:12px 4px;font-size:12.5px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none !important;animation:none !important}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== Barra fija obligatoria ===== -->
+<div class="aviso" role="note">
+  <em class="aviso__dot" aria-hidden="true"></em>
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <svg class="hero__bg" viewBox="0 0 1440 720" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="hl1" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#5ed3c6" stop-opacity=".5"/>
+        <stop offset="1" stop-color="#5ed3c6" stop-opacity="0"/>
+      </linearGradient>
+      <linearGradient id="hl2" x1="0" y1="1" x2="1" y2="0">
+        <stop offset="0" stop-color="#ffffff" stop-opacity=".22"/>
+        <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <g fill="none" stroke="url(#hl1)" stroke-width="1.4">
+      <path d="M-40 560 C 240 470 380 620 640 520 C 900 420 1080 540 1480 430"/>
+      <path d="M-40 620 C 260 540 400 680 660 585 C 920 490 1100 600 1480 495"/>
+      <path d="M-40 680 C 280 610 420 740 680 650 C 940 560 1120 660 1480 560"/>
+    </g>
+    <g fill="none" stroke="url(#hl2)" stroke-width="1.1">
+      <circle cx="1210" cy="150" r="118"/>
+      <circle cx="1210" cy="150" r="178"/>
+      <circle cx="1210" cy="150" r="244"/>
+    </g>
+  </svg>
+
+  <div class="wrap">
+    <div class="hero__inner">
+      <div>
+        <div class="hero__tags">
+          <span class="tag">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5ed3c6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            Particulares
+          </span>
+          <span class="tag">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5ed3c6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            Empresas y profesionales
+          </span>
+          <span class="tag">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5ed3c6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.6-7-10a7 7 0 0 1 14 0c0 5.4-7 10-7 10Z"/><circle cx="12" cy="11" r="2.4"/></svg>
+            San Esteban de Gormaz
+          </span>
+        </div>
+
+        <h1>
+          Tintorería <span class="nb">- Lavandería</span> Gormaz, S.L.
+          <em>Limpieza en seco y lavandería industrial en la Ribera del Duero</em>
+        </h1>
+
+        <p class="hero__sub">
+          Tratamos la ropa de casa y el textil de trabajo con el mismo criterio: recogida ordenada, proceso adecuado a cada tejido y entrega lista para usar. Cuéntanos qué necesitas por teléfono.
+        </p>
+
+        <div class="cta">
+          <a class="btn btn--tel" href="tel:+34975350289">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.5 16.9v2.6a2 2 0 0 1-2.2 2 19.4 19.4 0 0 1-8.4-3 19 19 0 0 1-5.9-5.9 19.4 19.4 0 0 1-3-8.5A2 2 0 0 1 4 2h2.6a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L7.6 9.8a15.5 15.5 0 0 0 5.9 5.9l1.2-1.2a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2Z"/></svg>
+            <span>
+              <small>Llámanos ahora</small>
+              <b>975 350 289</b>
+            </span>
+          </a>
+          <a class="btn btn--ghost" href="#servicios">
+            Ver servicios
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
+          </a>
+        </div>
+
+        <div class="hero__meta">
+          <div>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5ed3c6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.6-7-10a7 7 0 0 1 14 0c0 5.4-7 10-7 10Z"/><circle cx="12" cy="11" r="2.4"/></svg>
+            <span>Avda. Valladolid, 103<br>42330 San Esteban de Gormaz (Soria)</span>
+          </div>
+          <div>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5ed3c6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 6.5 9 6 9-6"/></svg>
+            <span><a href="mailto:info@lavanderiagormaz.es">info@lavanderiagormaz.es</a></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__art">
+        <div class="card-art">
+          <p class="card-art__title">Dos líneas de servicio</p>
+          <svg viewBox="0 0 380 292" role="img" aria-label="Ilustración esquemática: prenda de particular y prenda de ropa laboral, con ciclo de proceso.">
+            <defs>
+              <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#ffffff" stop-opacity=".9"/>
+                <stop offset="1" stop-color="#cfe3ef" stop-opacity=".55"/>
+              </linearGradient>
+              <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#5ed3c6" stop-opacity=".95"/>
+                <stop offset="1" stop-color="#0d8f85" stop-opacity=".7"/>
+              </linearGradient>
+            </defs>
+
+            <!-- percha + camisa (particulares) -->
+            <g stroke="#9fc4d8" stroke-width="2" fill="none">
+              <path d="M92 40v10"/>
+              <path d="M62 62 92 50l30 12" stroke-linecap="round"/>
+              <circle cx="92" cy="36" r="5"/>
+            </g>
+            <path d="M92 58 58 76l-8 26 16 7 4-12v88h44V97l4 12 16-7-8-26Z" fill="url(#g1)" stroke="#bcd8e8" stroke-width="1.6"/>
+            <path d="M92 58v42" stroke="#bcd8e8" stroke-width="1.4" fill="none"/>
+
+            <!-- percha + mono de trabajo (empresas) -->
+            <g stroke="#5ed3c6" stroke-width="2" fill="none">
+              <path d="M268 40v10"/>
+              <path d="M238 62l30-12 30 12" stroke-linecap="round"/>
+              <circle cx="268" cy="36" r="5"/>
+            </g>
+            <path d="M268 58 236 76l-7 24 14 6 3-10v30h44v-30l3 10 14-6-7-24Z" fill="url(#g2)" stroke="#8fe4da" stroke-width="1.5"/>
+            <path d="M246 126h44v80h-18v-46h-8v46h-18Z" fill="url(#g2)" stroke="#8fe4da" stroke-width="1.5"/>
+            <rect x="252" y="86" width="14" height="10" rx="2" fill="#06352f" opacity=".45"/>
+
+            <!-- ciclo de proceso -->
+            <g fill="none" stroke="#7fa5bd" stroke-width="1.6" stroke-dasharray="5 6">
+              <path d="M40 250h300"/>
+            </g>
+            <g fill="#5ed3c6">
+              <circle cx="60" cy="250" r="6"/><circle cx="190" cy="250" r="6"/><circle cx="320" cy="250" r="6"/>
+            </g>
+            <g fill="#bed2e0" font-family="sans-serif" font-size="12.5" text-anchor="middle">
+              <text x="60" y="277">Recogida</text>
+              <text x="190" y="277">Proceso</text>
+              <text x="320" y="277">Entrega</text>
+            </g>
+            <g fill="#8fb0c6" font-family="sans-serif" font-size="12" text-anchor="middle">
+              <text x="92" y="226">Particulares</text>
+              <text x="268" y="226">Empresas</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero__strip">
+    <div class="wrap">
+      <ul>
+        <li>
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#5ed3c6" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c3.6 3.4 5.5 6.3 5.5 8.8a5.5 5.5 0 0 1-11 0C6.5 9.3 8.4 6.4 12 3Z"/></svg>
+          Limpieza en seco y lavandería
+        </li>
+        <li>
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#5ed3c6" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20h18"/><path d="M5 20V9.5l7-4.5 7 4.5V20"/><path d="M10 20v-6h4v6"/></svg>
+          Dos líneas: particulares y clientes profesionales
+        </li>
+        <li>
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#5ed3c6" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3h4a1 1 0 0 1 1 1v3H3V4a1 1 0 0 1 1-1h4"/><path d="M3 7v13a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V7"/><path d="M9 3a3 3 0 0 1 6 0"/></svg>
+          Trato directo por teléfono, sin formularios
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ===== SERVICIOS ===== -->
+<section class="sec" id="servicios">
+  <div class="wrap">
+    <div class="sec__head">
+      <p class="eyebrow">Servicios</p>
+      <h2>Una casa, dos formas de trabajar</h2>
+      <p class="lead">
+        El textil doméstico y el textil de trabajo no se tratan igual: cambian los volúmenes, los plazos y la forma de organizar la recogida. Por eso la web los separa desde el primer momento, para que cada visitante encuentre lo suyo sin leer de más.
+      </p>
+    </div>
+
+    <!-- Particulares -->
+    <div class="audiencia">
+      <div class="audiencia__head">
+        <span class="audiencia__kicker">Particulares</span>
+        <h3>Ropa y textil de casa</h3>
+        <p class="audiencia__note">Prendas sueltas, tejidos delicados y textil de hogar.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <div class="card__ico" aria-hidden="true">
+            <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3.6 3.4 5.5 6.3 5.5 8.8a5.5 5.5 0 0 1-11 0C6.5 9.3 8.4 6.4 12 3Z"/><path d="M9.6 13.8a2.6 2.6 0 0 0 2.6 2.4"/></svg>
+          </div>
+          <h4>Limpieza en seco</h4>
+          <p>Trajes, abrigos, vestidos y prendas que no admiten lavado doméstico.</p>
+        </article>
+        <article class="card">
+          <div class="card__ico" aria-hidden="true">
+            <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7c0-2 1.8-3 3.5-3 1.2 0 2.3.5 3.5.5S14.3 4 15.5 4C17.2 4 19 5 19 7v11a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2Z"/><path d="M9 9.5h6"/><path d="M9 13.5h6"/></svg>
+          </div>
+          <h4>Pieles y ante</h4>
+          <p>Tratamiento específico para napa, ante y prendas forradas de piel.</p>
+        </article>
+        <article class="card">
+          <div class="card__ico" aria-hidden="true">
+            <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M3 20h18"/><path d="M7 4v13"/><path d="M12 4v13"/><path d="M17 4v13"/></svg>
+          </div>
+          <h4>Alfombras y cortinas</h4>
+          <p>Piezas grandes de hogar, con el descuelgue y el plegado como parte del servicio.</p>
+        </article>
+        <article class="card">
+          <div class="card__ico" aria-hidden="true">
+            <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20 20 4"/><circle cx="7" cy="17" r="3"/><path d="M14 4h6v6"/><path d="M14.5 9.5 20 4"/></svg>
+          </div>
+          <h4>Arreglos de costura</h4>
+          <p>Bajos, cremalleras y ajustes de talla sobre la prenda que se trae a limpiar.</p>
+        </article>
+      </div>
+    </div>
+
+    <!-- Empresas -->
+    <div class="audiencia audiencia--pro">
+      <div class="audiencia__head">
+        <span class="audiencia__kicker">Empresas</span>
+        <h3>Lavandería para profesionales</h3>
+        <p class="audiencia__note">Volumen recurrente, textil de trabajo y rotación continua.</p>
+      </div>
+      <div class="grid grid--3">
+        <article class="card">
+          <div class="card__ico" aria-hidden="true">
+            <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3 5.5 5 4 10l3 1.2V21h10v-9.8L20 10l-1.5-5L15 3l-3 2.6Z"/><path d="M9 3c0 1.7 1.3 3 3 3s3-1.3 3-3"/></svg>
+          </div>
+          <h4>Ropa laboral</h4>
+          <p>Monos, batas y uniformes de taller, obra, industria agroalimentaria y comercio.</p>
+        </article>
+        <article class="card">
+          <div class="card__ico" aria-hidden="true">
+            <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v3H3Z"/><path d="M2 13h20v5H2Z"/><path d="M6 18v2"/><path d="M18 18v2"/></svg>
+          </div>
+          <h4>Lencería y textil de hostelería</h4>
+          <p>Sábanas, toallas, mantelería y textil de casas rurales, hoteles y restaurantes.</p>
+        </article>
+        <article class="card">
+          <div class="card__ico" aria-hidden="true">
+            <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h11v9H2Z"/><path d="M13 10h4.5l3.5 3.2V16h-8Z"/><circle cx="6.5" cy="18.5" r="2"/><circle cx="17" cy="18.5" r="2"/></svg>
+          </div>
+          <h4>Recogida y entrega</h4>
+          <p>Rutas acordadas con el cliente para retirar el sucio y devolver el limpio clasificado.</p>
+        </article>
+      </div>
+    </div>
+
+    <div class="disclaimer">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.3"/><path d="M12 8.2h.01"/><path d="M12 11.5v5"/></svg>
+      <p>
+        <b>Propuesta de contenido, pendiente de confirmar.</b>
+        Los servicios de estos dos bloques son los habituales del sector de la tintorería y la lavandería industrial y se han puesto como ejemplo de cómo quedaría la estructura. No afirmamos que la empresa preste todos ellos: antes de publicar, Gormaz confirma cuáles sí hace, cuáles no y qué habría que añadir, y se ajusta el texto a su realidad.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CÓMO TRABAJAMOS ===== -->
+<section class="sec proceso" id="como-trabajamos">
+  <div class="wrap">
+    <div class="sec__head">
+      <p class="eyebrow">Cómo trabajamos</p>
+      <h2>Tres pasos, sin sorpresas</h2>
+      <p class="lead">
+        La misma secuencia para una chaqueta y para la ropa de trabajo de una plantilla: lo que cambia es el volumen y la frecuencia, que se acuerdan en la primera llamada.
+      </p>
+    </div>
+
+    <ol class="pasos">
+      <li class="paso">
+        <div class="paso__n"><i>1</i><span>Paso uno</span></div>
+        <h3>Nos cuentas qué traes</h3>
+        <p>Por teléfono o en el mostrador: qué prendas son, de qué tejido y en qué estado llegan. Si es para una empresa, también cada cuánto se repite el ciclo.</p>
+      </li>
+      <li class="paso">
+        <div class="paso__n"><i>2</i><span>Paso dos</span></div>
+        <h3>Elegimos el tratamiento</h3>
+        <p>Cada tejido y cada mancha pide un proceso distinto. Se revisa la prenda, se decide el tratamiento adecuado y se avisa si algo tiene un riesgo que conviene comentar antes.</p>
+      </li>
+      <li class="paso">
+        <div class="paso__n"><i>3</i><span>Paso tres</span></div>
+        <h3>Recoges o te lo llevamos</h3>
+        <p>La prenda se entrega lista para usar. Para clientes profesionales, la entrega se organiza según la ruta y la frecuencia que se hayan acordado.</p>
+      </li>
+    </ol>
+
+    <div class="reservado">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2.5" stroke-dasharray="4 4"/><path d="M12 8.5v7"/><path d="M8.5 12h7"/></svg>
+      <div>
+        <h3>Espacio preparado para que lo rellene la empresa</h3>
+        <p>
+          Esta maqueta no incluye ningún dato que no esté publicado por el propio negocio. El diseño deja estos bloques montados y vacíos, listos para completarse con la información que facilite Gormaz:
+        </p>
+        <ul>
+          <li>Horario de apertura</li>
+          <li>Plazos de entrega</li>
+          <li>Tarifas o presupuesto tipo</li>
+          <li>Zona de recogida</li>
+          <li>Años de actividad</li>
+          <li>Opiniones de clientes reales</li>
+          <li>Certificaciones, si las hubiera</li>
+          <li>Fotografías del local y del proceso</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACTO ===== -->
+<section class="sec sec--tight contacto" id="contacto">
+  <div class="wrap">
+    <div class="sec__head">
+      <p class="eyebrow">Contacto</p>
+      <h2>Dónde estamos y cómo llamarnos</h2>
+      <p class="lead">
+        En la web actual el teléfono y el correo no aparecen en la portada. Aquí van arriba, repetidos en el pie y marcables con un toque desde el móvil.
+      </p>
+    </div>
+
+    <div class="contacto__grid">
+      <div class="datos">
+        <div class="dato">
+          <div class="dato__ico" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 16.9v2.6a2 2 0 0 1-2.2 2 19.4 19.4 0 0 1-8.4-3 19 19 0 0 1-5.9-5.9 19.4 19.4 0 0 1-3-8.5A2 2 0 0 1 4 2h2.6a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L7.6 9.8a15.5 15.5 0 0 0 5.9 5.9l1.2-1.2a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2Z"/></svg>
+          </div>
+          <div>
+            <p class="dato__k">Teléfono</p>
+            <p class="dato__v"><a href="tel:+34975350289">975 350 289</a></p>
+          </div>
+        </div>
+
+        <div class="dato">
+          <div class="dato__ico" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.6-7-10a7 7 0 0 1 14 0c0 5.4-7 10-7 10Z"/><circle cx="12" cy="11" r="2.4"/></svg>
+          </div>
+          <div>
+            <p class="dato__k">Dirección</p>
+            <p class="dato__v">Avda. Valladolid, 103
+              <small>42330 San Esteban de Gormaz (Soria)</small>
+            </p>
+          </div>
+        </div>
+
+        <div class="dato">
+          <div class="dato__ico" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 6.5 9 6 9-6"/></svg>
+          </div>
+          <div>
+            <p class="dato__k">Correo</p>
+            <p class="dato__v"><a href="mailto:info@lavanderiagormaz.es">info@lavanderiagormaz.es</a></p>
+          </div>
+        </div>
+
+        <div class="dato dato--horario">
+          <div class="dato__ico" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.3"/><path d="M12 7.2V12l3.4 2"/></svg>
+          </div>
+          <div>
+            <p class="dato__k">Horario</p>
+            <p class="dato__v">Consultar horario
+              <small>Dato pendiente de facilitar por el negocio: no se publica nada sin confirmarlo.</small>
+            </p>
+          </div>
+        </div>
+
+        <a class="btn btn--tel" href="tel:+34975350289">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.5 16.9v2.6a2 2 0 0 1-2.2 2 19.4 19.4 0 0 1-8.4-3 19 19 0 0 1-5.9-5.9 19.4 19.4 0 0 1-3-8.5A2 2 0 0 1 4 2h2.6a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L7.6 9.8a15.5 15.5 0 0 0 5.9 5.9l1.2-1.2a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2Z"/></svg>
+          <span><small>Llamar al</small><b>975 350 289</b></span>
+        </a>
+      </div>
+
+      <!-- Mapa esquemático SVG -->
+      <div class="mapa">
+        <svg viewBox="0 0 640 430" role="img" aria-label="Plano esquemático de situación: la Avda. Valladolid cruza el plano y el marcador señala el número 103, en San Esteban de Gormaz.">
+          <defs>
+            <linearGradient id="mg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#eef4f8"/>
+              <stop offset="1" stop-color="#dfeaf2"/>
+            </linearGradient>
+          </defs>
+
+          <rect width="640" height="430" fill="url(#mg)"/>
+
+          <!-- manzanas -->
+          <g fill="#ffffff" stroke="#cedbe6" stroke-width="1.4">
+            <rect x="36" y="34" width="150" height="104" rx="6"/>
+            <rect x="214" y="34" width="124" height="104" rx="6"/>
+            <rect x="366" y="34" width="112" height="104" rx="6"/>
+            <rect x="506" y="34" width="98" height="104" rx="6"/>
+            <rect x="36" y="268" width="134" height="128" rx="6"/>
+            <rect x="198" y="268" width="156" height="128" rx="6"/>
+            <rect x="382" y="268" width="110" height="128" rx="6"/>
+            <rect x="520" y="268" width="84" height="128" rx="6"/>
+          </g>
+
+          <!-- zona verde -->
+          <g>
+            <rect x="506" y="34" width="98" height="104" rx="6" fill="#e2f0e4" stroke="#c2ddc8" stroke-width="1.4"/>
+            <circle cx="534" cy="66" r="9" fill="#bcdcc3"/>
+            <circle cx="566" cy="94" r="12" fill="#bcdcc3"/>
+            <circle cx="580" cy="56" r="7" fill="#bcdcc3"/>
+          </g>
+
+          <!-- calles secundarias -->
+          <g stroke="#ffffff" stroke-width="16" stroke-linecap="square">
+            <path d="M200 20v120"/>
+            <path d="M352 20v120"/>
+            <path d="M492 20v120"/>
+            <path d="M184 262v152"/>
+            <path d="M368 262v152"/>
+            <path d="M506 262v152"/>
+          </g>
+          <g stroke="#dbe6ee" stroke-width="1.2">
+            <path d="M192 20v120M208 20v120"/>
+            <path d="M344 20v120M360 20v120"/>
+            <path d="M484 20v120M500 20v120"/>
+            <path d="M176 262v152M192 262v152"/>
+            <path d="M360 262v152M376 262v152"/>
+            <path d="M498 262v152M514 262v152"/>
+          </g>
+
+          <!-- AVENIDA PRINCIPAL -->
+          <rect x="0" y="162" width="640" height="82" fill="#ffffff"/>
+          <line x1="0" y1="162" x2="640" y2="162" stroke="#c6d6e2" stroke-width="2.4"/>
+          <line x1="0" y1="244" x2="640" y2="244" stroke="#c6d6e2" stroke-width="2.4"/>
+          <line x1="0" y1="203" x2="640" y2="203" stroke="#f0b429" stroke-width="2.6" stroke-dasharray="26 20"/>
+          <text x="22" y="192" font-family="sans-serif" font-size="17" font-weight="700" fill="#5b7894" letter-spacing="1.6">AVDA. VALLADOLID</text>
+          <text x="22" y="233" font-family="sans-serif" font-size="13.5" fill="#8aa3b8">Travesía principal · San Esteban de Gormaz</text>
+
+          <!-- numeración orientativa de la avenida -->
+          <g font-family="sans-serif" font-size="12.5" fill="#9fb3c4">
+            <text x="248" y="263" text-anchor="middle">nº 97</text>
+            <text x="432" y="263" text-anchor="middle">nº 109</text>
+          </g>
+
+          <!-- marcador en el 103 -->
+          <g transform="translate(340,150)">
+            <ellipse cx="0" cy="6" rx="17" ry="5" fill="#0c1a28" opacity=".16"/>
+            <path d="M0 2c-9.5-11.5-14-19-14-25.2A14 14 0 0 1 14-23.2C14-17 9.5-9.5 0 2Z" fill="#0d8f85" stroke="#07635c" stroke-width="1.6"/>
+            <circle cx="0" cy="-23.4" r="5.2" fill="#eafaf7"/>
+            <g transform="translate(26,-44)">
+              <rect x="0" y="0" width="202" height="54" rx="9" fill="#0c1a28" opacity=".95"/>
+              <text x="14" y="22" font-family="sans-serif" font-size="14.5" font-weight="700" fill="#ffffff">Avda. Valladolid, 103</text>
+              <text x="14" y="41" font-family="sans-serif" font-size="12.5" fill="#9fc0d4">Tintorería · Lavandería Gormaz</text>
+            </g>
+          </g>
+
+          <!-- rosa de los vientos -->
+          <g transform="translate(594,392)" opacity=".75">
+            <circle r="19" fill="#ffffff" stroke="#cedbe6" stroke-width="1.4"/>
+            <path d="M0-12 4 0h-8Z" fill="#0d8f85"/>
+            <path d="M0 12 4 0h-8Z" fill="#aebfcd"/>
+            <text x="0" y="-21" font-family="sans-serif" font-size="9.5" font-weight="700" fill="#7e97ab" text-anchor="middle">N</text>
+          </g>
+        </svg>
+
+        <div class="mapa__pie">
+          <span><i aria-hidden="true"></i> Avda. Valladolid, 103</span>
+          <span><i class="via" aria-hidden="true"></i> Plano esquemático, no a escala</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== PIE ===== -->
+<footer class="pie">
+  <div class="wrap">
+    <div class="pie__top">
+      <div>
+        <p class="pie__marca">
+          Tintorería - Lavandería Gormaz, S.L.
+          <span>Avda. Valladolid, 103 · 42330 San Esteban de Gormaz (Soria)</span>
+        </p>
+      </div>
+      <div class="pie__cont">
+        <a href="tel:+34975350289">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#5ed3c6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.5 16.9v2.6a2 2 0 0 1-2.2 2 19.4 19.4 0 0 1-8.4-3 19 19 0 0 1-5.9-5.9 19.4 19.4 0 0 1-3-8.5A2 2 0 0 1 4 2h2.6a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L7.6 9.8a15.5 15.5 0 0 0 5.9 5.9l1.2-1.2a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2Z"/></svg>
+          975 350 289
+        </a>
+        <a href="mailto:info@lavanderiagormaz.es">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#5ed3c6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 6.5 9 6 9-6"/></svg>
+          info@lavanderiagormaz.es
+        </a>
+      </div>
+    </div>
+
+    <p class="pie__legal">
+      <strong>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</strong>
+      Maqueta no oficial, sin relación comercial previa con la empresa. Los datos de contacto y la dirección son los publicados por el propio negocio; el resto del contenido es una propuesta editorial pendiente de revisión. No se incluyen horarios, precios, plazos, opiniones ni certificaciones por no disponer de ellos confirmados.
+    </p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  // Desplazamiento suave en anclas internas, descontando la barra fija.
+  var bar = document.querySelector('.aviso');
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest ? ev.target.closest('a[href^="#"]') : null;
+    if(!a) return;
+    var id = a.getAttribute('href');
+    if(!id || id === '#') return;
+    var dest = document.querySelector(id);
+    if(!dest) return;
+    ev.preventDefault();
+    var off = (bar ? bar.offsetHeight : 0) + 12;
+    var y = dest.getBoundingClientRect().top + window.pageYOffset - off;
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: y < 0 ? 0 : y, behavior: reduce ? 'auto' : 'smooth' });
+  }, false);
+})();
+</script>
+
+</body>
+</html>
