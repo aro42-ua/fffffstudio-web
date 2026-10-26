@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Centro de Podología Gallardo · Propuesta de diseño</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* ============ Base ============ */
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --ink:#0f2730;
+  --ink-2:#2d4a55;
+  --body:#41606b;
+  --line:#dfe7e9;
+  --line-2:#eef3f4;
+  --paper:#ffffff;
+  --paper-2:#f6f9f9;
+  --brand:#0d6b74;
+  --brand-d:#07535a;
+  --brand-l:#e3f1f1;
+  --sand:#c98a5e;
+  --sand-l:#fbf2ea;
+  --bar-h:40px;
+  --radius:16px;
+  --maxw:1120px;
+  --shadow:0 1px 2px rgba(15,39,48,.05), 0 10px 30px -12px rgba(15,39,48,.16);
+}
+html{-webkit-text-size-adjust:100%}
+html{max-width:100%}
+body{max-width:100%;overflow-x:clip}
+body{
+  margin:0;
+  padding-top:var(--bar-h);
+  font-family:"Helvetica Neue",Helvetica,Arial,"Segoe UI",system-ui,sans-serif;
+  font-size:17px;
+  line-height:1.65;
+  color:var(--body);
+  background:var(--paper);
+  -webkit-font-smoothing:antialiased;
+}
+img,svg{max-width:100%}
+h1,h2,h3,h4,p,ul,ol,figure{margin:0}
+ul{padding:0;list-style:none}
+a{color:inherit}
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.serif{font-family:Georgia,"Times New Roman",Times,serif}
+
+/* ============ Barra fija ============ */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  height:var(--bar-h);
+  display:flex;align-items:center;justify-content:center;
+  background:#0f2730;
+  color:#e7f0f1;
+  border-bottom:1px solid rgba(255,255,255,.1);
+}
+.topbar p{
+  margin:0;padding:0 14px;
+  font-size:12.5px;letter-spacing:.035em;
+  font-weight:600;line-height:1.35;text-align:center;
+  overflow-wrap:anywhere;
+}
+.topbar b{color:#fff;font-weight:700}
+
+/* ============ Cabecera del sitio ============ */
+.site-head{
+  position:sticky;top:var(--bar-h);z-index:90;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:saturate(140%) blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.site-head .inner{
+  display:flex;align-items:center;gap:18px;
+  min-height:72px;flex-wrap:wrap;padding:12px 28px;
+  width:100%;max-width:var(--maxw);margin:0 auto;
+}
+.logo{display:flex;align-items:center;gap:11px;text-decoration:none;flex:1 1 auto;min-width:0}
+.logo .mark{flex:0 0 auto}
+.logo .txt{min-width:0}
+.logo .n{
+  display:block;font-weight:700;color:var(--ink);
+  font-size:16px;letter-spacing:.005em;line-height:1.2;
+}
+.logo .s{
+  display:block;font-size:11.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--brand);font-weight:600;
+}
+.nav{display:flex;align-items:center;gap:26px}
+.nav a{
+  text-decoration:none;font-size:14.5px;font-weight:600;color:var(--ink-2);
+  padding:6px 0;border-bottom:2px solid transparent;white-space:nowrap;
+}
+.nav a:hover{color:var(--brand);border-bottom-color:var(--brand)}
+@media (max-width:860px){.nav{display:none}}
+
+/* ============ Botones ============ */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  padding:14px 22px;border-radius:999px;
+  font-size:15.5px;font-weight:700;letter-spacing:.01em;
+  text-decoration:none;border:1.5px solid transparent;
+  transition:transform .15s ease, background .15s ease, color .15s ease;
+  line-height:1.2;text-align:center;
+}
+.btn svg{flex:0 0 auto}
+.btn-p{background:var(--brand);color:#fff;box-shadow:0 8px 20px -10px rgba(13,107,116,.7)}
+.btn-p:hover{background:var(--brand-d);transform:translateY(-1px)}
+.btn-g{background:#fff;color:var(--ink);border-color:var(--line)}
+.btn-g:hover{border-color:var(--brand);color:var(--brand)}
+.btn-head{padding:11px 18px;font-size:14.5px}
+@media (max-width:860px){.btn-head{padding:10px 15px;font-size:13.5px}}
+
+/* ============ Hero ============ */
+.hero{position:relative;overflow:hidden;background:var(--paper)}
+.hero::before{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(900px 480px at 88% -10%, #e6f3f3 0%, rgba(230,243,243,0) 62%),
+    radial-gradient(640px 420px at 6% 104%, #fbf3ec 0%, rgba(251,243,236,0) 60%),
+    linear-gradient(180deg,#fcfefe 0%,#f5f9f9 100%);
+}
+.hero .wrap{position:relative}
+.hero-grid{
+  display:grid;grid-template-columns:1.08fr .92fr;
+  gap:56px;align-items:center;
+  padding:84px 0 92px;
+}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--brand-d);background:var(--brand-l);
+  border-radius:999px;padding:7px 15px;margin-bottom:22px;
+  max-width:100%;line-height:1.5;text-align:left;
+}
+.eyebrow i{width:6px;height:6px;border-radius:50%;background:var(--brand);display:block;flex:0 0 auto;align-self:center}
+.hero h1{
+  font-size:clamp(2.1rem,4.6vw,3.5rem);
+  line-height:1.08;color:var(--ink);font-weight:400;
+  letter-spacing:-.018em;margin-bottom:20px;overflow-wrap:break-word;
+}
+.hero h1 em{font-style:normal;color:var(--brand);display:block}
+.hero .lead{font-size:clamp(1.02rem,1.3vw,1.16rem);max-width:33em;margin-bottom:12px}
+.hero .owner{
+  font-size:15px;color:var(--ink-2);font-weight:600;
+  padding-top:14px;margin-bottom:28px;
+}
+.hero-cta{display:flex;flex-wrap:wrap;gap:13px;align-items:center}
+.hero-meta{
+  display:flex;flex-wrap:wrap;gap:10px 30px;
+  margin-top:34px;padding-top:26px;border-top:1px solid var(--line);
+}
+.hero-meta div{display:flex;align-items:flex-start;gap:10px;font-size:14.5px;line-height:1.5}
+.hero-meta strong{display:block;color:var(--ink);font-size:14.5px}
+.hero-meta span{color:var(--body)}
+.hero-meta svg{flex:0 0 auto;margin-top:2px}
+
+/* Tarjeta ilustrada del hero */
+.hero-art{
+  background:#fff;border:1px solid var(--line);border-radius:22px;
+  box-shadow:var(--shadow);padding:26px;
+}
+.hero-art .art-top{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  margin-bottom:18px;
+}
+.hero-art .art-top span{
+  font-size:11.5px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--brand)
+}
+.dots{display:flex;gap:5px}
+.dots i{width:7px;height:7px;border-radius:50%;background:var(--line);display:block}
+.hero-art figure{
+  background:linear-gradient(170deg,#eff7f7 0%,#f9f4ee 100%);
+  border-radius:14px;padding:16px;border:1px solid var(--line-2);
+}
+.hero-art svg{display:block;width:100%;height:auto}
+.art-list{margin-top:18px;display:grid;gap:10px}
+.art-list li{
+  display:flex;gap:10px;align-items:flex-start;
+  font-size:14.5px;color:var(--ink-2);line-height:1.5;
+}
+.art-list i{
+  flex:0 0 auto;width:18px;height:18px;border-radius:50%;
+  background:var(--brand-l);color:var(--brand-d);
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:800;font-style:normal;margin-top:2px;
+}
+
+@media (max-width:980px){
+  .hero-grid{grid-template-columns:1fr;gap:40px;padding:60px 0 68px}
+}
+@media (max-width:560px){
+  .hero-grid{padding:46px 0 54px}
+  .hero-cta .btn{width:100%}
+  .hero-meta{gap:18px;flex-direction:column}
+}
+
+/* ============ Secciones ============ */
+section{scroll-margin-top:calc(var(--bar-h) + 80px)}
+.sec{padding:88px 0}
+.sec-alt{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.sec-head{max-width:40em;margin-bottom:46px}
+.sec-head .kicker{
+  font-size:12px;font-weight:700;letter-spacing:.17em;text-transform:uppercase;
+  color:var(--sand);margin-bottom:14px;display:block;
+}
+.sec-head h2{
+  font-size:clamp(1.65rem,3vw,2.3rem);line-height:1.17;
+  color:var(--ink);font-weight:400;letter-spacing:-.015em;margin-bottom:14px;
+}
+.sec-head p{font-size:1.02rem}
+@media (max-width:560px){.sec{padding:58px 0}.sec-head{margin-bottom:32px}}
+
+/* ============ Servicios ============ */
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:28px 26px 30px;display:flex;flex-direction:column;
+  transition:box-shadow .18s ease, transform .18s ease, border-color .18s ease;
+}
+.card:hover{box-shadow:var(--shadow);transform:translateY(-3px);border-color:#cfe0e2}
+.card .ico{
+  width:50px;height:50px;border-radius:13px;
+  background:var(--brand-l);display:flex;align-items:center;justify-content:center;
+  margin-bottom:18px;flex:0 0 auto;
+}
+.card h3{font-size:1.09rem;color:var(--ink);font-weight:700;margin-bottom:9px;line-height:1.3}
+.card p{font-size:15px;line-height:1.62}
+@media (max-width:900px){.cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}}
+@media (max-width:620px){.cards{grid-template-columns:1fr}.card{padding:24px 22px 26px}}
+
+.note{
+  margin-top:30px;padding:18px 22px;border-left:3px solid var(--sand);
+  background:var(--sand-l);border-radius:0 12px 12px 0;
+  font-size:14.5px;color:#6b4a33;line-height:1.6;
+}
+
+/* ============ Primera visita ============ */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;counter-reset:s}
+.step{
+  position:relative;background:#fff;border:1px solid var(--line);
+  border-radius:var(--radius);padding:32px 26px 30px;
+}
+.step .num{
+  display:flex;align-items:center;justify-content:center;
+  width:44px;height:44px;border-radius:50%;
+  background:var(--ink);color:#fff;
+  font-size:17px;font-weight:700;margin-bottom:18px;
+  font-family:Georgia,serif;
+}
+.step h3{font-size:1.09rem;color:var(--ink);font-weight:700;margin-bottom:9px;line-height:1.3}
+.step p{font-size:15px;line-height:1.62}
+.step::after{
+  content:"";position:absolute;top:54px;right:-15px;
+  width:14px;height:1px;background:var(--line);
+}
+.step:last-child::after{display:none}
+@media (max-width:900px){
+  .steps{grid-template-columns:1fr;gap:16px}
+  .step::after{display:none}
+  .step{display:grid;grid-template-columns:44px 1fr;gap:0 18px;padding:24px 24px}
+  .step .num{margin-bottom:0}
+  .step h3,.step p{grid-column:2}
+}
+
+/* ============ Contacto ============ */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:start}
+.panel{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:34px 32px;box-shadow:var(--shadow);
+}
+.c-block{padding:20px 0;border-top:1px solid var(--line-2)}
+.c-block:first-of-type{padding-top:0;border-top:0}
+.c-block:last-of-type{padding-bottom:0}
+.c-label{
+  font-size:11.5px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--brand);margin-bottom:10px;display:block;
+}
+.phones{display:flex;flex-wrap:wrap;gap:12px}
+.phone{
+  display:inline-flex;align-items:center;gap:10px;
+  text-decoration:none;color:var(--ink);
+  font-size:1.07rem;font-weight:700;letter-spacing:.01em;
+  border:1px solid var(--line);border-radius:12px;padding:12px 17px;
+  background:#fff;transition:border-color .15s ease,color .15s ease,background .15s ease;
+}
+.phone:hover{border-color:var(--brand);color:var(--brand-d);background:var(--brand-l)}
+.c-block address{font-style:normal;font-size:1.02rem;color:var(--ink-2);line-height:1.6}
+.c-block .muted{font-size:14.5px;margin-top:6px}
+.hours{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:1.02rem;font-weight:600;color:var(--ink-2);
+}
+.hours i{
+  width:9px;height:9px;border-radius:50%;background:var(--sand);
+  display:block;flex:0 0 auto;
+}
+
+.map-card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  overflow:hidden;box-shadow:var(--shadow);
+}
+.map-card figure{margin:0;background:#eef4f3;line-height:0}
+.map-card svg{display:block;width:100%;height:auto}
+.map-foot{
+  padding:18px 22px;border-top:1px solid var(--line);
+  display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;
+  font-size:13.5px;
+}
+.map-foot b{color:var(--ink);font-weight:700}
+.map-foot .tag{
+  font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
+  font-weight:700;color:var(--body);background:var(--paper-2);
+  border:1px solid var(--line);border-radius:999px;padding:4px 11px;
+}
+@media (max-width:900px){.contact-grid{grid-template-columns:1fr;gap:22px}}
+@media (max-width:560px){
+  .panel{padding:26px 22px}
+  .phones{flex-direction:column;align-items:stretch}
+  .phone{justify-content:flex-start}
+}
+
+/* ============ Pie ============ */
+.foot{background:var(--ink);color:#b9ccd1;padding:60px 0 34px}
+.foot-grid{
+  display:grid;grid-template-columns:1.3fr 1fr;gap:34px;
+  padding-bottom:34px;border-bottom:1px solid rgba(255,255,255,.12);
+}
+.foot h4{color:#fff;font-size:1.18rem;font-weight:700;margin-bottom:8px}
+.foot p{font-size:14.5px;line-height:1.65}
+.foot .mailto{
+  display:inline-flex;align-items:center;gap:9px;margin-top:14px;
+  color:#fff;text-decoration:none;font-weight:700;font-size:1rem;
+  border-bottom:1px solid rgba(255,255,255,.35);padding-bottom:3px;
+  overflow-wrap:anywhere;
+}
+.foot .mailto:hover{border-bottom-color:#fff}
+.foot-col .c-label{color:#7fc3c8}
+.foot-col a{color:#dbe9eb;text-decoration:none;font-size:14.5px;display:block;padding:3px 0}
+.foot-col a:hover{color:#fff}
+.foot-note{
+  padding-top:26px;font-size:13.5px;line-height:1.6;
+  display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between;
+}
+.foot-note strong{color:#fff;font-weight:700}
+@media (max-width:760px){.foot-grid{grid-template-columns:1fr;gap:26px}}
+
+@media (max-width:620px){
+  :root{--bar-h:50px}
+  .topbar p{font-size:12px;line-height:1.4}
+}
+@media (max-width:360px){:root{--bar-h:58px}}
+
+/* Accesibilidad */
+a:focus-visible,.btn:focus-visible{outline:3px solid var(--sand);outline-offset:3px;border-radius:6px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<!-- ================= BARRA FIJA ================= -->
+<div class="topbar" role="note">
+  <p>Propuesta de diseño · maqueta no oficial · <b>FFFFFFstudio</b> · Ángel Rubio</p>
+</div>
+
+<!-- ================= CABECERA ================= -->
+<header class="site-head">
+  <div class="inner">
+    <a class="logo" href="#inicio">
+      <span class="mark" aria-hidden="true">
+        <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
+          <rect width="38" height="38" rx="11" fill="#0d6b74"/>
+          <path d="M13.2 10.4c1.5 0 2.5 1.5 2.5 3.6 0 2.4-1 4.2-1 6.3 0 2 1.1 3 1.1 4.6 0 2.1-1.5 3.4-3.4 3.4-2 0-3.4-1.4-3.4-3.6 0-2 .9-3.3.9-5.5 0-2.6-1-4.2-1-6.2 0-1.7 1.6-2.6 4.3-2.6Z" fill="#8fd4d6"/>
+          <circle cx="19.6" cy="11.3" r="2.05" fill="#fff"/>
+          <circle cx="24" cy="13" r="1.8" fill="#fff"/>
+          <circle cx="27.3" cy="16.3" r="1.55" fill="#fff"/>
+          <circle cx="29" cy="20.4" r="1.3" fill="#fff"/>
+        </svg>
+      </span>
+      <span class="txt">
+        <span class="n">Centro de Podología Gallardo</span>
+        <span class="s">Antequera</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Secciones">
+      <a href="#servicios">Servicios</a>
+      <a href="#visita">Tu primera visita</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="btn btn-p btn-head" href="tel:952701501">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M6.6 3h3l1.5 4-2 1.4a12 12 0 0 0 6.5 6.5l1.4-2 4 1.5v3a2 2 0 0 1-2.2 2A17.5 17.5 0 0 1 4.6 5.2A2 2 0 0 1 6.6 3Z" fill="#fff"/>
+      </svg>
+      952 701 501
+    </a>
+  </div>
+</header>
+
+<main id="inicio">
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow"><i></i> Consulta de podología · Antequera</span>
+        <h1>Centro de Podología <em>Gallardo</em></h1>
+        <p class="lead">Cuidado de los pies con criterio clínico y trato cercano, en el centro de Antequera. Pide tu cita por teléfono y te atendemos con la calma que necesita una consulta de podología.</p>
+        <p class="owner">Titular: Pablo Gallardo Padilla</p>
+        <div class="hero-cta">
+          <a class="btn btn-p" href="tel:952701501">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6.6 3h3l1.5 4-2 1.4a12 12 0 0 0 6.5 6.5l1.4-2 4 1.5v3a2 2 0 0 1-2.2 2A17.5 17.5 0 0 1 4.6 5.2A2 2 0 0 1 6.6 3Z" fill="#fff"/>
+            </svg>
+            Llamar al 952 701 501
+          </a>
+          <a class="btn btn-g" href="#contacto">Cómo llegar</a>
+        </div>
+        <div class="hero-meta">
+          <div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 2c3.9 0 7 3.1 7 7 0 5-7 13-7 13S5 14 5 9c0-3.9 3.1-7 7-7Z" stroke="#0d6b74" stroke-width="1.7"/>
+              <circle cx="12" cy="9" r="2.4" fill="#0d6b74"/>
+            </svg>
+            <span><strong>Calle Lucena, 18, bajo</strong>29200 Antequera (Málaga)</span>
+          </div>
+          <div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="9" stroke="#0d6b74" stroke-width="1.7"/>
+              <path d="M12 7v5.3l3.4 2" stroke="#0d6b74" stroke-width="1.7" stroke-linecap="round"/>
+            </svg>
+            <span><strong>Consultar horario</strong>Por teléfono o correo</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-art">
+        <div class="art-top">
+          <span>Atención podológica</span>
+          <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        </div>
+        <figure aria-label="Ilustración esquemática de la huella plantar y los puntos de apoyo del pie">
+          <svg viewBox="0 0 320 210" role="img">
+            <title>Esquema de la huella plantar y sus puntos de apoyo</title>
+            <defs>
+              <linearGradient id="gFoot" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#0d6b74" stop-opacity=".16"/>
+                <stop offset="1" stop-color="#c98a5e" stop-opacity=".2"/>
+              </linearGradient>
+              <linearGradient id="gArc" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#0d6b74" stop-opacity=".5"/>
+                <stop offset="1" stop-color="#0d6b74" stop-opacity=".12"/>
+              </linearGradient>
+            </defs>
+            <!-- retícula suave -->
+            <g stroke="#0d6b74" stroke-opacity=".09">
+              <path d="M0 52.5h320M0 105h320M0 157.5h320"/>
+              <path d="M80 0v210M160 0v210M240 0v210"/>
+            </g>
+            <!-- huella izquierda -->
+            <g transform="translate(96 16)">
+              <path d="M34 4c17 0 28 14 28 33 0 14-6 23-6 38 0 12 7 21 7 36 0 23-13 37-30 37-16 0-28-13-28-34 0-16 7-25 7-40 0-18-8-28-8-44C4 15 16 4 34 4Z" fill="url(#gFoot)" stroke="#0d6b74" stroke-opacity=".45" stroke-width="2"/>
+              <path d="M18 62c14 7 26 7 40 0" stroke="url(#gArc)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+              <path d="M16 96c16 10 29 10 44 0" stroke="url(#gArc)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+              <!-- dedos -->
+              <circle cx="20" cy="-2" r="8" fill="#0d6b74" fill-opacity=".2" stroke="#0d6b74" stroke-opacity=".4" stroke-width="1.6"/>
+              <circle cx="36" cy="-7" r="6" fill="#0d6b74" fill-opacity=".2" stroke="#0d6b74" stroke-opacity=".4" stroke-width="1.6"/>
+              <circle cx="49" cy="-4" r="5.2" fill="#0d6b74" fill-opacity=".2" stroke="#0d6b74" stroke-opacity=".4" stroke-width="1.6"/>
+              <circle cx="60" cy="1" r="4.4" fill="#0d6b74" fill-opacity=".2" stroke="#0d6b74" stroke-opacity=".4" stroke-width="1.6"/>
+              <!-- puntos de apoyo -->
+              <circle cx="24" cy="30" r="5.5" fill="#c98a5e"/>
+              <circle cx="54" cy="36" r="4.5" fill="#c98a5e" fill-opacity=".75"/>
+              <circle cx="36" cy="128" r="7" fill="#0d6b74"/>
+            </g>
+            <!-- cotas -->
+            <g stroke="#c98a5e" stroke-width="1.4" stroke-dasharray="4 4" fill="none" stroke-opacity=".8">
+              <path d="M70 46h48M70 144h60"/>
+            </g>
+            <g fill="#0d6b74" fill-opacity=".6" font-family="Helvetica,Arial,sans-serif" font-size="9.5" letter-spacing=".8">
+              <text x="16" y="49">ANTEPIÉ</text>
+              <text x="26" y="147">TALÓN</text>
+            </g>
+            <path d="M232 46c22 10 34 30 34 56s-12 46-34 56" stroke="#c98a5e" stroke-opacity=".55" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <circle cx="266" cy="102" r="3.5" fill="#c98a5e"/>
+          </svg>
+        </figure>
+        <ul class="art-list">
+          <li><i>1</i><span>Valoración del motivo de consulta antes de cualquier tratamiento.</span></li>
+          <li><i>2</i><span>Explicación clara de lo que se ve y de las opciones disponibles.</span></li>
+          <li><i>3</i><span>Pautas de cuidado para casa y seguimiento cuando hace falta.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICIOS ================= -->
+<section class="sec sec-alt" id="servicios">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Servicios</span>
+      <h2 class="serif">Los tratamientos habituales de una consulta de podología</h2>
+      <p>Estos son los motivos de consulta más frecuentes en podología, explicados en lenguaje claro para que sepas de qué se trata antes de llamar.</p>
+    </div>
+
+    <ul class="cards">
+      <li class="card">
+        <span class="ico" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+            <path d="M8 3.5c3 0 4.8 2.2 4.8 5.3 0 2.4-1 3.9-1 6 0 2 1.2 3.2 1.2 5.1 0 1.6-1.3 2.6-3.2 2.6S6.4 21.4 6.4 19.6c0-1.9.9-3 .9-5.1 0-2.4-1.1-3.8-1.1-6C6.2 5.4 5.6 3.5 8 3.5Z" fill="#0d6b74" fill-opacity=".2" stroke="#0d6b74" stroke-width="1.5"/>
+            <path d="M15.5 6.6l3.6 3.6M19.1 6.6l-3.6 3.6" stroke="#c98a5e" stroke-width="1.7" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <h3>Quiropodia</h3>
+        <p>El tratamiento de base: corte y fresado de uñas, retirada de durezas, callos y ojos de gallo, y limpieza de la piel del pie. Alivia molestias al caminar y evita que pequeños problemas se enquisten.</p>
+      </li>
+
+      <li class="card">
+        <span class="ico" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+            <path d="M3 18.5c3.2 0 4.4-3 6.2-6.4C10.8 9 12.4 5.5 15.6 5.5c3 0 5.4 2.6 5.4 6.6" stroke="#0d6b74" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+            <path d="M3 21h18" stroke="#c98a5e" stroke-width="1.7" stroke-linecap="round"/>
+            <circle cx="9.2" cy="12.1" r="1.9" fill="#0d6b74"/>
+          </svg>
+        </span>
+        <h3>Estudio de la pisada</h3>
+        <p>Observación de cómo apoyas el pie de pie y caminando, para entender si la forma de pisar está detrás de dolores en pie, rodilla, cadera o espalda. Es el punto de partida de muchos tratamientos.</p>
+      </li>
+
+      <li class="card">
+        <span class="ico" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+            <circle cx="8.3" cy="6.6" r="3.3" fill="#0d6b74" fill-opacity=".2" stroke="#0d6b74" stroke-width="1.5"/>
+            <path d="M2.8 20.8c0-3.4 2.5-5.9 5.5-5.9s5.5 2.5 5.5 5.9" stroke="#0d6b74" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M17.6 10.6v6.2M14.5 13.7h6.2" stroke="#c98a5e" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <h3>Podología infantil</h3>
+        <p>Revisión del pie en crecimiento: cómo apoya, cómo camina y si conviene hacer seguimiento. En la infancia los hábitos y el calzado influyen mucho, y detectar a tiempo simplifica el tratamiento.</p>
+      </li>
+
+      <li class="card">
+        <span class="ico" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+            <rect x="4.2" y="7.6" width="15.6" height="11.4" rx="5.2" fill="#0d6b74" fill-opacity=".16" stroke="#0d6b74" stroke-width="1.5"/>
+            <path d="M8.4 7.6c0-2.3 1.6-3.8 3.6-3.8s3.6 1.5 3.6 3.8" stroke="#0d6b74" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="15.6" cy="13.3" r="2.4" fill="#c98a5e"/>
+          </svg>
+        </span>
+        <h3>Uña encarnada</h3>
+        <p>Cuando la uña se clava en la piel y aparece dolor, enrojecimiento o inflamación. Se trata la uña para quitar el dolor y se dan pautas de corte y calzado para que no vuelva a repetirse.</p>
+      </li>
+
+      <li class="card">
+        <span class="ico" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+            <circle cx="11.4" cy="11.4" r="6.6" fill="#0d6b74" fill-opacity=".14" stroke="#0d6b74" stroke-width="1.5"/>
+            <circle cx="11.4" cy="11.4" r="2.6" fill="#c98a5e"/>
+            <path d="M16.4 16.4l4.3 4.3" stroke="#0d6b74" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <h3>Papilomas y lesiones de la piel</h3>
+        <p>Verrugas plantares, grietas, hongos o cambios en la piel y las uñas que conviene mirar. Lo primero es identificar bien la lesión, porque no todo lo que parece una dureza lo es.</p>
+      </li>
+
+      <li class="card">
+        <span class="ico" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+            <path d="M3.4 14.4c0-4.4 3.6-8 8-8h4.4c2.9 0 4.8 2 4.8 4.6 0 3-2.4 4.8-5.6 5.4l-7.4 1.4c-2.6.5-4.2-.6-4.2-3.4Z" fill="#0d6b74" fill-opacity=".16" stroke="#0d6b74" stroke-width="1.5"/>
+            <path d="M6.2 16.8c2.4-4 7-6.4 11.6-6.2" stroke="#c98a5e" stroke-width="1.7" fill="none" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <h3>Plantillas personalizadas</h3>
+        <p>Soportes hechos a medida de tu pie a partir del estudio de la pisada, para repartir mejor las cargas, descargar la zona que duele y mejorar la comodidad en el día a día o al hacer deporte.</p>
+      </li>
+    </ul>
+
+    <p class="note">Maqueta de propuesta: los textos de servicios describen tratamientos propios del sector de la podología y deberán revisarse y aprobarse por el centro antes de cualquier publicación.</p>
+  </div>
+</section>
+
+<!-- ================= PRIMERA VISITA ================= -->
+<section class="sec" id="visita">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Tu primera visita</span>
+      <h2 class="serif">Qué ocurre, paso a paso</h2>
+      <p>Si nunca has ido a una consulta de podología, así se desarrolla una primera visita.</p>
+    </div>
+
+    <ol class="steps">
+      <li class="step">
+        <span class="num" aria-hidden="true">1</span>
+        <h3>Pides cita por teléfono</h3>
+        <p>Llamas a cualquiera de los dos números, cuentas brevemente qué te pasa y se te indica el día y la hora. Al llamar puedes consultar el horario de atención.</p>
+      </li>
+      <li class="step">
+        <span class="num" aria-hidden="true">2</span>
+        <h3>Valoración en consulta</h3>
+        <p>Se revisa el motivo que te trae, se observa el estado del pie y de las uñas y cómo apoyas al caminar. Es el momento de preguntar todo lo que quieras.</p>
+      </li>
+      <li class="step">
+        <span class="num" aria-hidden="true">3</span>
+        <h3>Tratamiento y pautas</h3>
+        <p>Se te explica qué se puede hacer y, si procede, se trata en la misma visita. Te vas con pautas de cuidado para casa y, cuando conviene, con una revisión prevista.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ================= CONTACTO ================= -->
+<section class="sec sec-alt" id="contacto">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Contacto</span>
+      <h2 class="serif">Dónde estamos y cómo pedir cita</h2>
+      <p>La forma más rápida de pedir cita es el teléfono. Si lo prefieres, también puedes escribir por correo.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="panel">
+        <div class="c-block">
+          <span class="c-label">Teléfonos</span>
+          <div class="phones">
+            <a class="phone" href="tel:952701501">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6.6 3h3l1.5 4-2 1.4a12 12 0 0 0 6.5 6.5l1.4-2 4 1.5v3a2 2 0 0 1-2.2 2A17.5 17.5 0 0 1 4.6 5.2A2 2 0 0 1 6.6 3Z" fill="#0d6b74"/>
+              </svg>
+              952 701 501
+            </a>
+            <a class="phone" href="tel:655779194">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <rect x="6.5" y="2.5" width="11" height="19" rx="3" stroke="#0d6b74" stroke-width="1.7"/>
+                <path d="M10.4 18.4h3.2" stroke="#0d6b74" stroke-width="1.7" stroke-linecap="round"/>
+              </svg>
+              655 779 194
+            </a>
+          </div>
+        </div>
+
+        <div class="c-block">
+          <span class="c-label">Dirección</span>
+          <address>
+            Centro de Podología Gallardo<br>
+            Calle Lucena, 18, bajo<br>
+            29200 Antequera (Málaga)
+          </address>
+          <p class="muted">Consulta a pie de calle, en bajo.</p>
+        </div>
+
+        <div class="c-block">
+          <span class="c-label">Horario</span>
+          <p class="hours"><i aria-hidden="true"></i> Consultar horario</p>
+          <p class="muted">Te indicamos el horario de atención por teléfono o por correo.</p>
+        </div>
+
+        <div class="c-block">
+          <span class="c-label">Correo</span>
+          <p><a class="phone" href="mailto:info@gallardopodologo.com" style="font-size:.97rem">info@gallardopodologo.com</a></p>
+        </div>
+      </div>
+
+      <div class="map-card">
+        <figure aria-label="Mapa esquemático de la ubicación de la consulta en Antequera">
+          <svg viewBox="0 0 520 420" role="img" preserveAspectRatio="xMidYMid slice">
+            <title>Plano esquemático: la consulta está en Calle Lucena, 18, bajo</title>
+            <defs>
+              <linearGradient id="gMap" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#f3f8f8"/>
+                <stop offset="1" stop-color="#e9f1f0"/>
+              </linearGradient>
+            </defs>
+            <rect width="520" height="420" fill="url(#gMap)"/>
+            <!-- manzanas abstractas -->
+            <g fill="#dde8e8">
+              <rect x="22" y="24" width="150" height="112" rx="7"/>
+              <rect x="206" y="24" width="118" height="112" rx="7"/>
+              <rect x="358" y="24" width="140" height="78" rx="7"/>
+              <rect x="22" y="182" width="150" height="96" rx="7"/>
+              <rect x="358" y="146" width="140" height="132" rx="7"/>
+              <rect x="22" y="320" width="118" height="78" rx="7"/>
+              <rect x="174" y="320" width="150" height="78" rx="7"/>
+              <rect x="358" y="320" width="140" height="78" rx="7"/>
+            </g>
+            <!-- zona verde abstracta -->
+            <path d="M206 182h118v96H206z" fill="#d8e8dd"/>
+            <g stroke="#b9d4c4" stroke-width="2" fill="none">
+              <path d="M226 258c14-16 18-34 12-52M262 262c6-24 2-44-8-58M300 258c-12-14-16-32-10-50"/>
+            </g>
+            <!-- calles -->
+            <g stroke="#ffffff" stroke-width="20" stroke-linecap="square">
+              <path d="M190 0v420"/>
+              <path d="M341 0v420"/>
+              <path d="M0 159h520"/>
+              <path d="M0 299h520"/>
+            </g>
+            <g stroke="#c3d6d6" stroke-width="1.4" stroke-dasharray="7 9">
+              <path d="M190 0v420M341 0v420M0 159h520M0 299h520"/>
+            </g>
+            <!-- rótulos de calle (genéricos / abstractos) -->
+            <g font-family="Helvetica,Arial,sans-serif" font-size="13" font-weight="700" fill="#6f8c8c" letter-spacing="1.2">
+              <text x="30" y="154">CALLE</text>
+              <text x="382" y="294">CALLE</text>
+              <text transform="rotate(-90 210 300)" x="210" y="300">CALLE</text>
+            </g>
+            <text transform="rotate(-90 361 388)" x="361" y="388" font-family="Helvetica,Arial,sans-serif" font-size="14" font-weight="700" fill="#0d6b74" letter-spacing="1.4">CALLE LUCENA</text>
+            <!-- marcador -->
+            <g transform="translate(341 229)">
+              <circle r="38" fill="#0d6b74" fill-opacity=".1"/>
+              <circle r="23" fill="#0d6b74" fill-opacity=".16"/>
+              <g transform="translate(-15 -42)">
+                <path d="M15 0c8.3 0 15 6.7 15 15 0 10.5-15 27-15 27S0 25.5 0 15C0 6.7 6.7 0 15 0Z" fill="#0d6b74"/>
+                <circle cx="15" cy="15" r="5.6" fill="#fff"/>
+              </g>
+            </g>
+            <!-- etiqueta del marcador -->
+            <g transform="translate(366 196)">
+              <rect width="134" height="42" rx="9" fill="#ffffff" stroke="#cfe0e2"/>
+              <text x="13" y="18" font-family="Helvetica,Arial,sans-serif" font-size="11.5" font-weight="700" fill="#0f2730">Nº 18, bajo</text>
+              <text x="13" y="33" font-family="Helvetica,Arial,sans-serif" font-size="10.5" fill="#5d7c85">29200 Antequera</text>
+            </g>
+            <!-- norte -->
+            <g transform="translate(44 372)">
+              <circle r="16" fill="#fff" stroke="#cfe0e2"/>
+              <path d="M0-9l5 12-5-3-5 3Z" fill="#c98a5e"/>
+              <text x="0" y="12" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="8.5" font-weight="700" fill="#6f8c8c">N</text>
+            </g>
+          </svg>
+        </figure>
+        <div class="map-foot">
+          <span class="tag">Plano esquemático</span>
+          <span><b>Calle Lucena, 18, bajo</b> · 29200 Antequera (Málaga)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= PIE ================= -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h4>Centro de Podología Gallardo</h4>
+        <p>Consulta de podología en Antequera (Málaga). Titular: Pablo Gallardo Padilla.<br>Para pedir cita o consultar el horario, llama al 952 701 501 o al 655 779 194.</p>
+        <a class="mailto" href="mailto:info@gallardopodologo.com">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="2.8" y="5" width="18.4" height="14" rx="2.6" stroke="#fff" stroke-width="1.6"/>
+            <path d="M4 7l8 6 8-6" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+          info@gallardopodologo.com
+        </a>
+      </div>
+      <div class="foot-col">
+        <span class="c-label">Secciones</span>
+        <a href="#servicios">Servicios</a>
+        <a href="#visita">Tu primera visita</a>
+        <a href="#contacto">Contacto</a>
+        <a href="tel:952701501">952 701 501</a>
+        <a href="tel:655779194">655 779 194</a>
+      </div>
+    </div>
+    <div class="foot-note">
+      <p><strong>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</strong></p>
+      <p>Maqueta de trabajo, no oficial. Datos de contacto reales; textos pendientes de aprobación.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  /* Desplazamiento suave con compensación de la barra fija y la cabecera */
+  var bar = 40;
+  function headH(){
+    var h = document.querySelector(".site-head");
+    return h ? h.getBoundingClientRect().height : 0;
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener("click", function(e){
+      var id = a.getAttribute("href");
+      if(id === "#" || id.length < 2) return;
+      var t = document.querySelector(id);
+      if(!t) return;
+      e.preventDefault();
+      var y = t.getBoundingClientRect().top + window.pageYOffset - bar - headH() - 12;
+      window.scrollTo({ top: y < 0 ? 0 : y, behavior: "smooth" });
+    });
+  });
+})();
+</script>
+</body>
+</html>

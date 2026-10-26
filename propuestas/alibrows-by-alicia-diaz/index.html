@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alibrows by Alicia Díaz — Estudio de micropigmentación de cejas</title>
+<meta name="description" content="Estudio de micropigmentación de cejas (microblading y shading) y formación en Dos Hermanas, Sevilla.">
+<style>
+  :root{
+    --espresso:#2A1F1C;
+    --espresso-soft:#4A3832;
+    --nude:#F7EFE9;
+    --nude-2:#EFE2D8;
+    --blush:#E3B9A8;
+    --blush-deep:#C98C76;
+    --gold:#A8794F;
+    --line:rgba(42,31,28,.14);
+    --white:#FFFDFB;
+    --bar-h:44px;
+    --maxw:1140px;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    --serif:ui-serif,Georgia,"Iowan Old Style","Times New Roman",serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  html,body{max-width:100%;overflow-x:hidden}
+  body{
+    margin:0;
+    padding-top:var(--bar-h);
+    font-family:var(--sans);
+    color:var(--espresso);
+    background:var(--white);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%;display:block}
+  h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.14;letter-spacing:-.015em;margin:0}
+  p{margin:0}
+  a{color:inherit}
+
+  /* ---------- barra fija de propuesta ---------- */
+  .propbar{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    height:var(--bar-h);
+    display:flex;align-items:center;justify-content:center;
+    background:var(--espresso);
+    color:#F3E7DF;
+    border-bottom:1px solid rgba(255,255,255,.12);
+  }
+  .propbar span{
+    font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;
+    padding:0 14px;text-align:center;line-height:1.3;
+    max-width:100%;
+  }
+
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 32px}
+  .eyebrow{
+    font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--gold);font-weight:600;margin-bottom:18px;
+  }
+  section{position:relative}
+
+  /* ---------- hero ---------- */
+  .hero{
+    background:
+      radial-gradient(120% 90% at 88% 6%, rgba(227,185,168,.55) 0%, rgba(227,185,168,0) 58%),
+      radial-gradient(90% 80% at 4% 92%, rgba(168,121,79,.22) 0%, rgba(168,121,79,0) 60%),
+      linear-gradient(170deg,var(--nude) 0%, var(--nude-2) 100%);
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;
+    padding:86px 0 92px;
+  }
+  .hero h1{font-size:clamp(2.45rem,5.4vw,4.1rem)}
+  .hero h1 em{font-style:normal;display:block;color:var(--gold)}
+  .hero .lead{
+    margin-top:22px;font-size:1.0625rem;max-width:30em;color:var(--espresso-soft);
+  }
+  .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:15px 26px;border-radius:999px;text-decoration:none;
+    font-weight:600;font-size:.96rem;letter-spacing:.01em;
+    border:1px solid transparent;transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+  }
+  .btn-primary{background:var(--espresso);color:var(--nude);box-shadow:0 10px 26px -12px rgba(42,31,28,.7)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 32px -12px rgba(42,31,28,.75)}
+  .btn-ghost{border-color:rgba(42,31,28,.3);color:var(--espresso)}
+  .btn-ghost:hover{background:rgba(255,255,255,.6)}
+  .hero-meta{
+    margin-top:30px;font-size:.875rem;color:var(--espresso-soft);
+    display:flex;flex-wrap:wrap;gap:8px 18px;
+  }
+  .hero-meta span{display:inline-flex;align-items:center;gap:7px}
+  .dot{width:5px;height:5px;border-radius:50%;background:var(--blush-deep);flex:none}
+
+  .hero-art{position:relative}
+  .hero-art .frame{
+    border-radius:260px 260px 24px 24px;
+    background:linear-gradient(165deg,#fff 0%,var(--nude) 45%,var(--nude-2) 100%);
+    border:1px solid rgba(255,255,255,.9);
+    box-shadow:0 40px 80px -46px rgba(42,31,28,.45);
+    padding:34px 28px;
+  }
+
+  /* ---------- servicios ---------- */
+  .services{padding:92px 0 96px}
+  .sec-head{max-width:38em;margin-bottom:48px}
+  .sec-head h2{font-size:clamp(1.9rem,3.4vw,2.7rem)}
+  .sec-head p{margin-top:16px;color:var(--espresso-soft);font-size:1.03rem}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .card{
+    border:1px solid var(--line);border-radius:20px;padding:30px 28px 32px;
+    background:var(--white);
+    display:flex;flex-direction:column;
+    transition:border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+  }
+  .card:hover{border-color:rgba(168,121,79,.5);transform:translateY(-3px);box-shadow:0 26px 48px -34px rgba(42,31,28,.4)}
+  .card .ico{
+    width:60px;height:60px;border-radius:16px;margin-bottom:22px;
+    background:linear-gradient(150deg,var(--nude) 0%,var(--nude-2) 100%);
+    display:flex;align-items:center;justify-content:center;flex:none;
+  }
+  .card h3{font-size:1.28rem}
+  .card p{margin-top:12px;color:var(--espresso-soft);font-size:.955rem}
+  .tags{list-style:none;margin:20px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+  .tags li{
+    font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;font-weight:600;
+    color:var(--gold);border:1px solid rgba(168,121,79,.35);
+    border-radius:999px;padding:5px 11px;background:rgba(168,121,79,.06);
+  }
+
+  /* bloque pendiente convocatorias */
+  .pending{
+    margin-top:30px;border:1.5px dashed rgba(168,121,79,.6);border-radius:20px;
+    background:repeating-linear-gradient(135deg,rgba(247,239,233,.9) 0 14px,rgba(239,226,216,.75) 14px 28px);
+    padding:28px 28px 30px;
+  }
+  .pending-tag{
+    display:inline-block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+    font-weight:700;color:#fff;background:var(--gold);
+    border-radius:999px;padding:5px 12px;margin-bottom:16px;
+  }
+  .pending h3{font-size:1.16rem}
+  .pending p{margin-top:10px;color:var(--espresso-soft);font-size:.94rem;max-width:52em}
+  .slots{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}
+  .slot{
+    border:1px solid rgba(42,31,28,.16);border-radius:14px;background:rgba(255,255,255,.72);
+    padding:16px 16px 18px;
+  }
+  .slot .ph-label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  .ph-line{height:9px;border-radius:999px;background:rgba(42,31,28,.14);margin-top:12px}
+  .ph-line.short{width:52%}
+  .ph-line.mid{width:74%}
+
+  /* ---------- primera cita ---------- */
+  .steps-sec{
+    padding:92px 0 96px;
+    background:linear-gradient(180deg,var(--nude) 0%,#FBF5F1 100%);
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  }
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;counter-reset:s}
+  .step{
+    background:var(--white);border:1px solid var(--line);border-radius:20px;
+    padding:32px 28px 34px;position:relative;
+  }
+  .step .num{
+    font-family:var(--serif);font-size:2.1rem;line-height:1;color:var(--blush-deep);
+    display:block;margin-bottom:16px;
+  }
+  .step h3{font-size:1.18rem}
+  .step p{margin-top:11px;color:var(--espresso-soft);font-size:.955rem}
+  .step-rule{height:1px;background:linear-gradient(90deg,var(--blush) 0%, rgba(227,185,168,0) 100%);margin:18px 0 0}
+
+  /* ---------- contacto ---------- */
+  .contact{padding:92px 0 96px}
+  .contact-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:42px;align-items:start}
+  .info-list{list-style:none;margin:30px 0 0;padding:0;display:grid;gap:4px}
+  .info-list li{
+    display:flex;gap:16px;align-items:flex-start;
+    padding:18px 0;border-top:1px solid var(--line);
+  }
+  .info-list li:last-child{border-bottom:1px solid var(--line)}
+  .info-ico{
+    width:38px;height:38px;border-radius:11px;flex:none;
+    background:linear-gradient(150deg,var(--nude) 0%,var(--nude-2) 100%);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .info-k{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  .info-v{font-size:1.02rem;margin-top:4px;font-weight:500;overflow-wrap:anywhere}
+  .info-v a{text-decoration:none;border-bottom:1px solid rgba(168,121,79,.5)}
+  .info-v a:hover{color:var(--gold)}
+  .info-note{font-size:.88rem;color:var(--espresso-soft);margin-top:3px}
+
+  .map-card{
+    border:1px solid var(--line);border-radius:22px;overflow:hidden;background:var(--nude);
+    box-shadow:0 30px 60px -44px rgba(42,31,28,.45);
+  }
+  .map-card svg{width:100%;height:auto}
+  .map-foot{
+    padding:16px 20px;background:var(--white);border-top:1px solid var(--line);
+    font-size:.84rem;color:var(--espresso-soft);
+    display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  }
+  .map-foot b{color:var(--espresso);font-weight:600}
+
+  /* ---------- pie ---------- */
+  footer{background:var(--espresso);color:#EADCD3;padding:66px 0 40px}
+  .foot-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:36px;align-items:start}
+  .foot-brand{font-family:var(--serif);font-size:1.6rem;color:#FBF2EC}
+  .foot-sub{margin-top:10px;font-size:.93rem;color:rgba(234,220,211,.76);max-width:30em}
+  .foot-links{display:grid;gap:10px;font-size:.96rem}
+  .foot-links a{text-decoration:none;border-bottom:1px solid rgba(234,220,211,.3);overflow-wrap:anywhere}
+  .foot-links a:hover{color:#fff}
+  .foot-rule{height:1px;background:rgba(234,220,211,.18);margin:40px 0 22px}
+  .foot-credit{font-size:.84rem;color:rgba(234,220,211,.72);line-height:1.7}
+  .foot-credit .mark{color:#FBF2EC;font-weight:600}
+
+  /* ---------- 390px ---------- */
+  @media (max-width:980px){
+    .hero-grid{grid-template-columns:1fr;gap:40px;padding:60px 0 68px}
+    .hero-art{max-width:460px;width:100%;margin:0 auto}
+    .cards,.steps,.slots{grid-template-columns:1fr}
+    .contact-grid,.foot-grid{grid-template-columns:1fr;gap:34px}
+  }
+  @media (max-width:640px){
+    :root{--bar-h:56px}
+    .wrap{padding:0 20px}
+    .propbar span{font-size:10.5px;letter-spacing:.05em}
+    .hero-grid{padding:46px 0 56px}
+    .hero .lead{font-size:1rem}
+    .btn{width:100%;justify-content:center}
+    .services,.steps-sec,.contact{padding:64px 0 68px}
+    .sec-head{margin-bottom:34px}
+    .card,.step,.pending{padding:26px 22px 28px}
+    .hero-art .frame{border-radius:180px 180px 20px 20px;padding:22px 18px}
+    .hero-meta{margin-top:24px}
+    .eyebrow{font-size:10px;letter-spacing:.16em;margin-bottom:14px}
+    .cta-row{margin-top:28px;gap:10px}
+    footer{padding:52px 0 34px}
+  }
+</style>
+</head>
+<body>
+
+<div class="propbar" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Micropigmentación de cejas · Dos Hermanas</p>
+      <h1>Alibrows <em>by Alicia Díaz</em></h1>
+      <p class="lead">
+        Estudio de micropigmentación de cejas en Dos Hermanas (Sevilla). Técnicas de
+        microblading y shading, y formación para profesionales que quieren aprenderlas.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="tel:622413611">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 1.1 4.2 2 2 0 0 1 3.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+          Llamar al 622 413 611
+        </a>
+        <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
+      </div>
+      <div class="hero-meta">
+        <span><i class="dot"></i>Microblading</span>
+        <span><i class="dot"></i>Shading</span>
+        <span><i class="dot"></i>Formación</span>
+      </div>
+    </div>
+
+    <div class="hero-art">
+      <div class="frame">
+        <!-- ilustración de cejas dibujada a mano en SVG -->
+        <svg viewBox="0 0 420 420" role="img" aria-label="Ilustración de un rostro con cejas definidas, trazada a mano">
+          <defs>
+            <linearGradient id="skin" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#F6E3D7"/><stop offset="1" stop-color="#E8C7B4"/>
+            </linearGradient>
+            <linearGradient id="browg" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#5A3A2B"/><stop offset="1" stop-color="#2A1F1C"/>
+            </linearGradient>
+          </defs>
+
+          <circle cx="210" cy="200" r="150" fill="url(#skin)" opacity=".55"/>
+          <circle cx="210" cy="200" r="150" fill="none" stroke="#C98C76" stroke-opacity=".5"/>
+
+          <!-- óvalo del rostro -->
+          <path d="M210 72c54 0 92 40 92 96 0 62-40 124-92 124s-92-62-92-124c0-56 38-96 92-96Z"
+                fill="none" stroke="#2A1F1C" stroke-opacity=".42" stroke-width="2.2"/>
+
+          <!-- ceja izquierda: trazos pelo a pelo -->
+          <g stroke="url(#browg)" stroke-width="2.6" stroke-linecap="round" fill="none">
+            <path d="M136 158c10-9 24-13 38-11"/>
+            <path d="M139 165c10-8 23-11 36-9"/>
+            <path d="M144 172c9-7 21-9 33-7"/>
+            <path d="M174 147c14 2 26 8 34 17"/>
+            <path d="M172 156c13 2 25 7 33 15"/>
+            <path d="M177 163c11 2 21 6 28 13"/>
+          </g>
+          <!-- ceja derecha -->
+          <g stroke="url(#browg)" stroke-width="2.6" stroke-linecap="round" fill="none">
+            <path d="M284 158c-10-9-24-13-38-11"/>
+            <path d="M281 165c-10-8-23-11-36-9"/>
+            <path d="M276 172c-9-7-21-9-33-7"/>
+            <path d="M246 147c-14 2-26 8-34 17"/>
+            <path d="M248 156c-13 2-25 7-33 15"/>
+            <path d="M243 163c-11 2-21 6-28 13"/>
+          </g>
+
+          <!-- ojos -->
+          <path d="M152 198c12-11 32-11 44 0-12 10-32 10-44 0Z" fill="none" stroke="#2A1F1C" stroke-opacity=".65" stroke-width="2.2"/>
+          <path d="M224 198c12-11 32-11 44 0-12 10-32 10-44 0Z" fill="none" stroke="#2A1F1C" stroke-opacity=".65" stroke-width="2.2"/>
+          <circle cx="174" cy="198" r="5.4" fill="#2A1F1C" opacity=".75"/>
+          <circle cx="246" cy="198" r="5.4" fill="#2A1F1C" opacity=".75"/>
+
+          <!-- nariz y labios -->
+          <path d="M210 212v30c0 6-5 9-11 9" fill="none" stroke="#2A1F1C" stroke-opacity=".4" stroke-width="2.2" stroke-linecap="round"/>
+          <path d="M190 272c8-6 14-6 20-2 6-4 12-4 20 2-6 9-13 13-20 13s-14-4-20-13Z" fill="#C98C76" opacity=".7"/>
+
+          <!-- marcas de medición / mapeo -->
+          <g stroke="#A8794F" stroke-width="1.2" stroke-dasharray="5 6" opacity=".75">
+            <path d="M136 158H60"/><path d="M284 158h76"/><path d="M210 60v60"/>
+          </g>
+          <g fill="#A8794F" opacity=".9">
+            <circle cx="60" cy="158" r="3"/><circle cx="360" cy="158" r="3"/><circle cx="210" cy="60" r="3"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICIOS ================= -->
+<section class="services" id="servicios">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Servicios</p>
+      <h2>Cejas definidas y formación para profesionales</h2>
+      <p>Dos líneas de trabajo en el mismo estudio: el tratamiento de micropigmentación
+         para quien quiere unas cejas con forma propia, y la formación para quien quiere
+         aprender a hacerlo.</p>
+    </div>
+
+    <div class="cards">
+      <article class="card">
+        <div class="ico">
+          <svg width="30" height="30" viewBox="0 0 48 48" fill="none" stroke="#4A3832" stroke-width="2.4" stroke-linecap="round" aria-hidden="true">
+            <path d="M8 30c6-8 16-12 26-10"/><path d="M10 35c6-7 15-10 24-8"/>
+            <path d="M28 14c6 2 11 6 14 11"/><path d="M26 20c6 1 10 5 13 9"/>
+          </svg>
+        </div>
+        <h3>Microblading</h3>
+        <p>Técnica de trazo: se dibujan pelos uno a uno siguiendo la dirección natural
+           de la ceja, para rellenar huecos y dar forma sin que se note el relleno.</p>
+        <ul class="tags"><li>Pelo a pelo</li><li>Trazo natural</li></ul>
+      </article>
+
+      <article class="card">
+        <div class="ico">
+          <svg width="30" height="30" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <defs><linearGradient id="sh" x1="0" y1="1" x2="1" y2="0">
+              <stop offset="0" stop-color="#4A3832"/><stop offset="1" stop-color="#C98C76"/>
+            </linearGradient></defs>
+            <path d="M7 32c7-11 20-16 34-13v8c-12-3-23 0-34 11Z" fill="url(#sh)"/>
+            <path d="M7 32c7-11 20-16 34-13" stroke="#4A3832" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Shading</h3>
+        <p>Técnica de sombreado: se trabaja con puntos de pigmento muy difuminados
+           para dar densidad y un acabado de efecto maquillaje, de más suave a más marcado.</p>
+        <ul class="tags"><li>Sombreado</li><li>Efecto polvo</li></ul>
+      </article>
+
+      <article class="card">
+        <div class="ico">
+          <svg width="30" height="30" viewBox="0 0 48 48" fill="none" stroke="#4A3832" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M24 9 6 17l18 8 18-8-18-8Z"/><path d="M12 22v9c0 4 6 7 12 7s12-3 12-7v-9"/>
+          </svg>
+        </div>
+        <h3>Formación</h3>
+        <p>Cursos de micropigmentación de cejas para profesionales: teoría, práctica
+           y acompañamiento en las técnicas que se trabajan en el estudio. Plazas limitadas;
+           el contenido y el calendario se detallan al consultar.</p>
+        <ul class="tags"><li>Para profesionales</li><li>Teoría y práctica</li></ul>
+      </article>
+    </div>
+
+    <!-- bloque etiquetado como pendiente de completar -->
+    <div class="pending">
+      <span class="pending-tag">Estructura pendiente de completar</span>
+      <h3>Próximas convocatorias de los cursos</h3>
+      <p>Espacio reservado en la maqueta para publicar las convocatorias de formación.
+         Esta propuesta no incluye fechas: cada plaza se rellenará con los datos que
+         facilite el estudio (fecha, ciudad, técnica y plazas) y cada tarjeta llevará su
+         propio botón de reserva.</p>
+      <div class="slots">
+        <div class="slot">
+          <span class="ph-label">Convocatoria 01</span>
+          <div class="ph-line mid"></div><div class="ph-line short"></div><div class="ph-line"></div>
+        </div>
+        <div class="slot">
+          <span class="ph-label">Convocatoria 02</span>
+          <div class="ph-line mid"></div><div class="ph-line short"></div><div class="ph-line"></div>
+        </div>
+        <div class="slot">
+          <span class="ph-label">Convocatoria 03</span>
+          <div class="ph-line mid"></div><div class="ph-line short"></div><div class="ph-line"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRIMERA CITA ================= -->
+<section class="steps-sec" id="primera-cita">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Tu primera cita</p>
+      <h2>Cómo funciona, en tres pasos</h2>
+      <p>Para que sepas qué esperar antes de llamar.</p>
+    </div>
+    <div class="steps">
+      <article class="step">
+        <span class="num">01</span>
+        <h3>Llamas y preguntas</h3>
+        <p>Cuentas por teléfono qué tienes en mente y se resuelven tus dudas sobre las
+           técnicas. Desde ahí se acuerda el día y la hora de la cita en el estudio.</p>
+        <div class="step-rule"></div>
+      </article>
+      <article class="step">
+        <span class="num">02</span>
+        <h3>Valoración y diseño</h3>
+        <p>En el estudio se valoran tus cejas y tu piel, se elige la técnica que encaja
+           y se dibuja la forma sobre tu rostro antes de empezar: nada se pigmenta hasta
+           que el diseño te convence.</p>
+        <div class="step-rule"></div>
+      </article>
+      <article class="step">
+        <span class="num">03</span>
+        <h3>Sesión y seguimiento</h3>
+        <p>Se realiza el trabajo y te explican los cuidados posteriores paso a paso,
+           además de cómo quedar para la revisión de la que se te informará en consulta.</p>
+        <div class="step-rule"></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACTO ================= -->
+<section class="contact" id="contacto">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Contacto</p>
+      <h2>El estudio está en Dos Hermanas</h2>
+      <p>Se atiende con cita previa. La forma más rápida de reservar o preguntar es por
+         teléfono.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div>
+        <a class="btn btn-primary" href="tel:622413611">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 1.1 4.2 2 2 0 0 1 3.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+          Llamar al 622 413 611
+        </a>
+
+        <ul class="info-list">
+          <li>
+            <span class="info-ico">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4A3832" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 1.1 4.2 2 2 0 0 1 3.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+            </span>
+            <div>
+              <div class="info-k">Teléfono</div>
+              <div class="info-v"><a href="tel:622413611">622 413 611</a></div>
+            </div>
+          </li>
+          <li>
+            <span class="info-ico">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4A3832" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            </span>
+            <div>
+              <div class="info-k">Dirección</div>
+              <div class="info-v">Avenida de España, 55, Edificio Don José, Oficina 10<br>41703 Dos Hermanas (Sevilla)</div>
+            </div>
+          </li>
+          <li>
+            <span class="info-ico">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4A3832" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l4 2"/></svg>
+            </span>
+            <div>
+              <div class="info-k">Horario</div>
+              <div class="info-v">Consultar horario</div>
+              <div class="info-note">Se informa por teléfono al reservar la cita.</div>
+            </div>
+          </li>
+          <li>
+            <span class="info-ico">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4A3832" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 7 8.5 6 8.5-6"/></svg>
+            </span>
+            <div>
+              <div class="info-k">Email</div>
+              <div class="info-v"><a href="mailto:alibrowsbyaliciadiaz@gmail.com">alibrowsbyaliciadiaz@gmail.com</a></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- mapa esquemático dibujado a mano -->
+      <div class="map-card">
+        <svg viewBox="0 0 640 430" role="img" aria-label="Mapa esquemático de la zona del estudio, con calles abstractas y la ubicación marcada">
+          <rect width="640" height="430" fill="#F7EFE9"/>
+          <!-- manzanas -->
+          <g fill="#EFE2D8">
+            <rect x="24" y="24" width="190" height="120" rx="10"/>
+            <rect x="238" y="24" width="150" height="120" rx="10"/>
+            <rect x="412" y="24" width="204" height="78" rx="10"/>
+            <rect x="24" y="170" width="190" height="104" rx="10"/>
+            <rect x="412" y="128" width="204" height="146" rx="10"/>
+            <rect x="24" y="300" width="262" height="106" rx="10"/>
+            <rect x="312" y="300" width="304" height="106" rx="10"/>
+          </g>
+          <!-- zona verde -->
+          <rect x="238" y="170" width="150" height="104" rx="12" fill="#DCE5D6"/>
+          <g stroke="#A9BC9D" stroke-width="2" fill="none" opacity=".9">
+            <path d="M268 244c12-18 22-26 34-26s22 8 34 26"/>
+            <circle cx="302" cy="202" r="13"/>
+          </g>
+
+          <!-- calles -->
+          <g stroke="#FFFDFB" stroke-width="16" stroke-linecap="round">
+            <path d="M0 158h640"/><path d="M0 288h640"/>
+            <path d="M226 0v430"/><path d="M400 0v430"/>
+          </g>
+          <!-- avenida principal, más ancha -->
+          <path d="M0 112h640" stroke="#FFFDFB" stroke-width="26" stroke-linecap="round"/>
+          <path d="M0 112h640" stroke="#E3B9A8" stroke-width="2.5" stroke-dasharray="16 14" opacity=".9"/>
+          <text x="40" y="104" font-family="-apple-system,Segoe UI,Roboto,sans-serif" font-size="13" font-weight="700" fill="#A8794F" letter-spacing="1.6">AVENIDA PRINCIPAL</text>
+
+          <g font-family="-apple-system,Segoe UI,Roboto,sans-serif" font-size="11.5" fill="#8A7A72" letter-spacing="1.2">
+            <text x="40" y="152">CALLE</text>
+            <text x="40" y="282">CALLE</text>
+            <text x="236" y="400" transform="rotate(-90 236 400)">CALLE</text>
+          </g>
+
+          <!-- marcador del estudio -->
+          <g transform="translate(400 112)">
+            <circle r="46" fill="#C98C76" opacity=".16"/>
+            <circle r="28" fill="#C98C76" opacity=".26"/>
+            <path d="M0-30c-10.5 0-19 8.5-19 19C-19 2 0 24 0 24s19-22 19-35c0-10.5-8.5-19-19-19Z" fill="#2A1F1C"/>
+            <circle cy="-11" r="6.6" fill="#F7EFE9"/>
+          </g>
+          <g transform="translate(424 36)">
+            <rect x="0" y="0" width="192" height="52" rx="12" fill="#FFFDFB" stroke="#2A1F1C" stroke-opacity=".16"/>
+            <text x="16" y="22" font-family="-apple-system,Segoe UI,Roboto,sans-serif" font-size="12.5" font-weight="700" fill="#2A1F1C">Alibrows by Alicia Díaz</text>
+            <text x="16" y="39" font-family="-apple-system,Segoe UI,Roboto,sans-serif" font-size="11.5" fill="#8A7A72">Oficina 10 · Edificio Don José</text>
+          </g>
+        </svg>
+        <div class="map-foot">
+          <span><b>Plano esquemático.</b> Orientativo, no a escala.</span>
+          <span>Avenida de España, 55 · Dos Hermanas</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PIE ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">Alibrows by Alicia Díaz</div>
+        <p class="foot-sub">Estudio de micropigmentación de cejas y formación.
+           Avenida de España, 55, Edificio Don José, Oficina 10 · 41703 Dos Hermanas (Sevilla).</p>
+      </div>
+      <div class="foot-links">
+        <a href="tel:622413611">622 413 611</a>
+        <a href="mailto:alibrowsbyaliciadiaz@gmail.com">alibrowsbyaliciadiaz@gmail.com</a>
+        <span style="color:rgba(234,220,211,.7)">Consultar horario</span>
+      </div>
+    </div>
+    <div class="foot-rule"></div>
+    <p class="foot-credit">
+      <span class="mark">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</span>
+    </p>
+  </div>
+</footer>
+
+<script>
+  // Desplazamiento suave compensando la barra fija
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var t = document.querySelector(a.getAttribute('href'));
+      if (!t) return;
+      e.preventDefault();
+      var bar = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--bar-h')) || 44;
+      window.scrollTo({ top: t.getBoundingClientRect().top + window.pageYOffset - bar - 12, behavior: 'smooth' });
+    });
+  });
+
+  // Entrada suave de tarjetas
+  var noMotion = true; // entrada suave desactivada: el contenido debe verse siempre
+  if (false) {
+    var els = document.querySelectorAll('.card, .step, .pending, .map-card, .info-list');
+    els.forEach(function (el) { el.style.opacity = 0; el.style.transform = 'translateY(14px)'; el.style.transition = 'opacity .6s ease, transform .6s ease'; });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.style.opacity = 1; en.target.style.transform = 'none'; io.unobserve(en.target); }
+      });
+    }, { threshold: .12 });
+    els.forEach(function (el) { io.observe(el); });
+  }
+</script>
+</body>
+</html>
