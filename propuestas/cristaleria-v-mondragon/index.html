@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cristalería V. Mondragón S.L. · Nules — Propuesta de diseño</title>
+<meta name="description" content="Maqueta de propuesta de rediseño web para Cristalería V. Mondragón S.L., Nules (Castellón). FFFFFFstudio.">
+<style>
+  :root{
+    --tinta:#0b1418;
+    --tinta-2:#122027;
+    --linea:rgba(255,255,255,.12);
+    --linea-fuerte:rgba(255,255,255,.22);
+    --texto:#e8f1f4;
+    --texto-sua:#a9bfc7;
+    --vidrio:#7fd4e8;
+    --vidrio-2:#4fb3cf;
+    --arena:#f2efe9;
+    --arena-tinta:#16262d;
+    --max:1120px;
+    --r:14px;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  html,body{max-width:100%;overflow-x:hidden}
+  body{
+    margin:0;
+    padding-top:44px;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    background:var(--tinta);
+    color:var(--texto);
+    line-height:1.6;
+    font-size:16px;
+  }
+  img,svg{max-width:100%}
+  a{color:inherit}
+
+  /* ---------- barra fija de maqueta ---------- */
+  .aviso{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    min-height:44px;display:flex;align-items:center;justify-content:center;
+    padding:7px 14px;
+    background:#050f13;
+    border-bottom:1px solid var(--linea-fuerte);
+    font-size:12px;line-height:1.35;letter-spacing:.02em;
+    color:#bcd3da;text-align:center;
+  }
+  .aviso b{color:#fff;font-weight:600}
+
+  .env{width:100%;max-width:var(--max);margin:0 auto;padding:0 24px}
+
+  /* ---------- cabecera ---------- */
+  .top{border-bottom:1px solid var(--linea);background:rgba(5,15,19,.6)}
+  .top .env{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:16px;padding-bottom:16px;flex-wrap:wrap}
+  .marca{display:flex;align-items:center;gap:12px;min-width:0}
+  .marca .glifo{flex:0 0 auto}
+  .marca-txt{min-width:0}
+  .marca-txt strong{display:block;font-size:15px;letter-spacing:.01em;font-weight:650}
+  .marca-txt span{display:block;font-size:12px;color:var(--texto-sua);letter-spacing:.12em;text-transform:uppercase}
+  .nav{display:flex;gap:20px;font-size:14px;color:var(--texto-sua)}
+  .nav a{text-decoration:none}
+  .nav a:hover{color:#fff}
+  @media(max-width:760px){.nav{display:none}}
+
+  /* ---------- botones ---------- */
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;
+    padding:14px 22px;border-radius:10px;
+    font-size:15px;font-weight:600;text-decoration:none;
+    border:1px solid transparent;
+  }
+  .btn-pri{background:linear-gradient(180deg,#9ee4f5,#5cbcd6);color:#06222b;box-shadow:0 10px 26px rgba(92,188,214,.22)}
+  .btn-sec{border-color:var(--linea-fuerte);color:var(--texto);background:rgba(255,255,255,.04)}
+  .btn-oscuro{background:var(--arena-tinta);color:#fff}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--linea)}
+  .hero-bg{position:absolute;inset:0;
+    background:
+      radial-gradient(900px 520px at 78% 8%,rgba(127,212,232,.26),transparent 62%),
+      radial-gradient(700px 480px at 6% 92%,rgba(70,120,150,.28),transparent 65%),
+      linear-gradient(160deg,#0d1b21,#0a1317 60%,#0b1418);
+  }
+  .hero-reja{position:absolute;inset:0;opacity:.5;
+    background-image:linear-gradient(rgba(255,255,255,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px);
+    background-size:64px 64px;
+    mask-image:linear-gradient(180deg,rgba(0,0,0,.9),transparent 85%);
+    -webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,.9),transparent 85%);
+  }
+  .hero .env{position:relative;padding-top:72px;padding-bottom:72px;
+    display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:48px;align-items:center}
+  .etiqueta{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    color:#b6dee9;border:1px solid var(--linea-fuerte);border-radius:999px;padding:6px 13px;background:rgba(255,255,255,.04)}
+  h1{font-size:clamp(32px,5.1vw,54px);line-height:1.08;margin:20px 0 0;letter-spacing:-.02em;font-weight:700}
+  h1 em{font-style:normal;color:#9ee4f5}
+  .hero p.sub{font-size:clamp(16px,1.6vw,19px);color:var(--texto-sua);margin:18px 0 0;max-width:46ch}
+  .acciones{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+  .tel-nota{margin-top:14px;font-size:13px;color:var(--texto-sua)}
+
+  .ficha{border:1px solid var(--linea);border-radius:18px;padding:22px;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02));backdrop-filter:blur(2px)}
+  .ficha h2{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#b6dee9;margin:0 0 14px;font-weight:600}
+  .ficha dl{margin:0;display:grid;gap:12px}
+  .ficha .fila{display:grid;gap:2px;padding-bottom:12px;border-bottom:1px solid var(--linea)}
+  .ficha .fila:last-child{border-bottom:0;padding-bottom:0}
+  .ficha dt{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--texto-sua)}
+  .ficha dd{margin:0;font-size:15px;font-weight:550;word-break:break-word}
+  .ficha dd a{text-decoration:none}
+
+  @media(max-width:860px){
+    .hero .env{grid-template-columns:1fr;gap:34px;padding-top:48px;padding-bottom:48px}
+  }
+
+  /* ---------- secciones ---------- */
+  section{position:relative}
+  .sec{padding:72px 0;border-bottom:1px solid var(--linea)}
+  .sec-claro{background:var(--arena);color:var(--arena-tinta);border-bottom-color:rgba(0,0,0,.08)}
+  .sec-claro .ojo{color:#4c6b76}
+  .cab{max-width:62ch;margin:0 0 38px}
+  .ojo{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#8fc4d4;margin:0}
+  h2.tit{font-size:clamp(25px,3.3vw,36px);line-height:1.15;margin:12px 0 0;letter-spacing:-.015em;font-weight:700}
+  .cab p{margin:14px 0 0;color:var(--texto-sua)}
+  .sec-claro .cab p{color:#4c6b76}
+
+  /* ---------- servicios ---------- */
+  .rejilla{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+  .tarjeta{border:1px solid var(--linea);border-radius:var(--r);padding:24px;background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.015))}
+  .tarjeta .ic{width:48px;height:48px;border-radius:11px;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(140deg,rgba(158,228,245,.22),rgba(158,228,245,.05));border:1px solid var(--linea-fuerte);margin-bottom:16px}
+  .tarjeta h3{margin:0 0 8px;font-size:17px;font-weight:650;letter-spacing:-.01em}
+  .tarjeta p{margin:0;font-size:14.5px;color:var(--texto-sua)}
+  @media(max-width:900px){.rejilla{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(max-width:600px){.rejilla{grid-template-columns:1fr}}
+
+  /* ---------- pasos ---------- */
+  .pasos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+  .paso{background:#fff;border:1px solid rgba(0,0,0,.09);border-radius:var(--r);padding:24px}
+  .paso .num{width:36px;height:36px;border-radius:9px;background:var(--arena-tinta);color:#9ee4f5;
+    display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;margin-bottom:15px}
+  .paso h3{margin:0 0 7px;font-size:17px;font-weight:650}
+  .paso p{margin:0;font-size:14.5px;color:#4c6b76}
+  @media(max-width:760px){.pasos{grid-template-columns:1fr}}
+
+  /* ---------- galeria marcador ---------- */
+  .galeria{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+  .hueco{border:1px dashed var(--linea-fuerte);border-radius:var(--r);overflow:hidden;background:rgba(255,255,255,.02)}
+  .hueco figcaption{padding:12px 14px;font-size:12.5px;color:var(--texto-sua);border-top:1px dashed var(--linea)}
+  @media(max-width:860px){.galeria{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(max-width:560px){.galeria{grid-template-columns:1fr}}
+
+  /* ---------- presupuesto ---------- */
+  .presu{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.86fr);gap:34px;align-items:start}
+  @media(max-width:900px){.presu{grid-template-columns:1fr;gap:28px}}
+  form{border:1px solid rgba(0,0,0,.1);background:#fff;border-radius:18px;padding:24px}
+  .campos{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .campo{display:grid;gap:7px;min-width:0}
+  .campo.ancho{grid-column:1 / -1}
+  label{font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:#4c6b76;font-weight:600}
+  input,select,textarea{
+    width:100%;max-width:100%;font:inherit;font-size:15px;color:var(--arena-tinta);
+    padding:12px 13px;border:1px solid rgba(0,0,0,.18);border-radius:9px;background:#fbfaf8;
+  }
+  textarea{min-height:104px;resize:vertical}
+  .pie-form{margin-top:18px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .nota{font-size:12.5px;color:#6d8691;margin:14px 0 0}
+  .via{border:1px solid var(--linea);border-radius:var(--r);padding:20px;background:rgba(255,255,255,.04);display:grid;gap:6px}
+  .via + .via{margin-top:14px}
+  @media(max-width:560px){.campos{grid-template-columns:1fr}}
+  .via span{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--texto-sua)}
+  .sec-claro .via{border-color:rgba(0,0,0,.12);background:rgba(22,38,45,.045);color:var(--arena-tinta)}
+  .sec-claro .via span{color:#4c6b76}
+  .sec-claro .via small{color:#5d7a85}
+  .via a,.via strong{font-size:18px;font-weight:650;text-decoration:none;word-break:break-word}
+  .via small{color:var(--texto-sua);font-size:13px}
+
+  /* ---------- contacto ---------- */
+  .contacto{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:34px;align-items:start}
+  @media(max-width:900px){.contacto{grid-template-columns:1fr}}
+  .mapa{border:1px solid var(--linea);border-radius:18px;overflow:hidden;background:#0d1b21}
+  .mapa-pie{display:flex;flex-wrap:wrap;gap:8px 18px;padding:13px 16px;border-top:1px solid var(--linea);font-size:12.5px;color:var(--texto-sua)}
+  .horario{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--linea-fuerte);border-radius:999px;padding:7px 14px;font-size:13px;color:#b6dee9;background:rgba(255,255,255,.04)}
+
+  /* ---------- pie ---------- */
+  footer{padding:44px 0 56px;background:#050f13}
+  .pie-rej{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px;align-items:start}
+  @media(max-width:760px){.pie-rej{grid-template-columns:1fr}}
+  footer .datos{display:grid;gap:5px;font-size:14px;color:var(--texto-sua)}
+  footer .datos a{text-decoration:none;word-break:break-word}
+  .firma{margin-top:34px;padding-top:20px;border-top:1px solid var(--linea);font-size:13px;color:#8fa9b2}
+  .firma strong{color:#cfe5eb;font-weight:600}
+
+  @media(max-width:520px){
+    body{padding-top:58px}
+    .aviso{min-height:58px;font-size:11px;line-height:1.45;padding:8px 12px}
+    .via a{font-size:16px}
+    .env{padding:0 18px}
+    .sec{padding:54px 0}
+  }
+</style>
+</head>
+<body>
+
+<div class="aviso"><span>Propuesta de diseño · maqueta no oficial · <b>FFFFFFstudio</b> · Ángel Rubio</span></div>
+
+<header class="top">
+  <div class="env">
+    <div class="marca">
+      <svg class="glifo" width="38" height="38" viewBox="0 0 38 38" aria-hidden="true">
+        <defs>
+          <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#9ee4f5"/><stop offset="1" stop-color="#4b93ab"/>
+          </linearGradient>
+        </defs>
+        <rect x="1" y="1" width="36" height="36" rx="9" fill="none" stroke="url(#g1)" stroke-width="1.4"/>
+        <path d="M8 27 L19 8 L30 27" fill="none" stroke="url(#g1)" stroke-width="1.6" stroke-linejoin="round"/>
+        <path d="M12.5 21.5 H25.5" stroke="url(#g1)" stroke-width="1.2" opacity=".75"/>
+        <path d="M19 8 V27" stroke="url(#g1)" stroke-width="1" opacity=".45"/>
+      </svg>
+      <span class="marca-txt">
+        <strong>Cristalería V. Mondragón S.L.</strong>
+        <span>Nules · Castellón</span>
+      </span>
+    </div>
+    <nav class="nav" aria-label="Secciones">
+      <a href="#servicios">Servicios</a>
+      <a href="#pasos">Cómo pedir presupuesto</a>
+      <a href="#presupuesto">Presupuesto</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ======================= HERO ======================= -->
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-reja" aria-hidden="true"></div>
+  <div class="env">
+    <div>
+      <p class="etiqueta">
+        <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><rect x="1" y="1" width="10" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M1 8 L8 1" stroke="currentColor" stroke-width="1"/></svg>
+        Cristalería y acristalamiento
+      </p>
+      <h1>Vidrio <em>a medida</em>, mamparas y carpintería de vidrio</h1>
+      <p class="sub">Taller de cristalería en Nules. Tomamos medidas, preparamos el vidrio y lo instalamos. Cuéntanos qué necesitas y preparamos un presupuesto.</p>
+      <div class="acciones">
+        <a class="btn btn-pri" href="tel:+34964670952">
+          <svg width="17" height="17" viewBox="0 0 20 20" aria-hidden="true"><path d="M4.2 2.6h3l1.3 3.4-2 1.5a10.5 10.5 0 0 0 5.5 5.5l1.5-2 3.4 1.3v3a1.6 1.6 0 0 1-1.8 1.6C8.4 16.2 3.8 11.6 2.6 4.4A1.6 1.6 0 0 1 4.2 2.6Z" fill="currentColor"/></svg>
+          Llamar al 964 670 952
+        </a>
+        <a class="btn btn-sec" href="#presupuesto">Pedir presupuesto</a>
+      </div>
+      <p class="tel-nota">También atendemos por móvil en el 636 887 792 y por correo electrónico.</p>
+    </div>
+
+    <aside class="ficha">
+      <h2>El taller</h2>
+      <dl>
+        <div class="fila">
+          <dt>Dirección</dt>
+          <dd>C/ Pedro Alcázar, 18 bajo<br>12520 Nules, Castellón</dd>
+        </div>
+        <div class="fila">
+          <dt>Teléfono fijo</dt>
+          <dd><a href="tel:+34964670952">964 670 952</a></dd>
+        </div>
+        <div class="fila">
+          <dt>Móvil</dt>
+          <dd><a href="tel:+34636887792">636 887 792</a></dd>
+        </div>
+        <div class="fila">
+          <dt>Correo</dt>
+          <dd><a href="mailto:cristaleriasvmondragon@hotmail.com">cristaleriasvmondragon@hotmail.com</a></dd>
+        </div>
+        <div class="fila">
+          <dt>Horario</dt>
+          <dd>Consultar horario</dd>
+        </div>
+      </dl>
+    </aside>
+  </div>
+</section>
+
+<!-- ======================= SERVICIOS ======================= -->
+<section class="sec" id="servicios">
+  <div class="env">
+    <div class="cab">
+      <p class="ojo">Servicios</p>
+      <h2 class="tit">Lo que se hace en una cristalería</h2>
+      <p>Trabajos propios del oficio del vidrio, para vivienda, local y obra. Cada trabajo se mide y se valora por separado.</p>
+    </div>
+
+    <div class="rejilla">
+      <article class="tarjeta">
+        <div class="ic">
+          <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#9ee4f5" stroke-width="1.4">
+            <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/>
+          </svg>
+        </div>
+        <h3>Vidrio a medida</h3>
+        <p>Corte y preparación de vidrio según las medidas tomadas en el sitio: tableros, estantes, tapas, cristales de hueco y remates.</p>
+      </article>
+
+      <article class="tarjeta">
+        <div class="ic">
+          <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#9ee4f5" stroke-width="1.4">
+            <rect x="3" y="3" width="8" height="18" rx="1"/><rect x="13" y="3" width="8" height="18" rx="1"/><path d="M7 11h0.01M17 11h0.01"/>
+          </svg>
+        </div>
+        <h3>Mamparas de baño</h3>
+        <p>Mamparas para plato de ducha y bañera: medición del hueco, elección del tipo de apertura y montaje.</p>
+      </article>
+
+      <article class="tarjeta">
+        <div class="ic">
+          <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#9ee4f5" stroke-width="1.4">
+            <path d="M4 20V5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v15"/><path d="M4 20h16M9 4v16M15 4v16M4 12h16"/>
+          </svg>
+        </div>
+        <h3>Carpintería de vidrio</h3>
+        <p>Conjuntos de vidrio con herrajes: puertas, cerramientos y paños fijos resueltos con la herrajería adecuada a cada hueco.</p>
+      </article>
+
+      <article class="tarjeta">
+        <div class="ic">
+          <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#9ee4f5" stroke-width="1.4">
+            <rect x="2.5" y="4" width="19" height="16" rx="1.5"/><path d="M6 4v16M2.5 8h19" opacity=".8"/><path d="M14 11l5 5" opacity=".6"/>
+          </svg>
+        </div>
+        <h3>Acristalamiento</h3>
+        <p>Colocación de vidrio en ventanas, puertas y cerramientos, con la composición de vidrio que pida cada caso.</p>
+      </article>
+
+      <article class="tarjeta">
+        <div class="ic">
+          <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#9ee4f5" stroke-width="1.4">
+            <rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M8 4l4.5 7L8 20" opacity=".8"/><path d="M13 4l4 6-2.5 4L19 20" opacity=".55"/>
+          </svg>
+        </div>
+        <h3>Sustitución de lunas</h3>
+        <p>Cambio de lunas y cristales dañados o rotos, con retirada del vidrio antiguo y colocación del nuevo.</p>
+      </article>
+
+      <article class="tarjeta">
+        <div class="ic">
+          <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#9ee4f5" stroke-width="1.4">
+            <path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><circle cx="12" cy="12" r="5"/><path d="M12 9.5v5M9.5 12h5" opacity=".7"/>
+          </svg>
+        </div>
+        <h3>Medición y montaje</h3>
+        <p>Toma de medidas del hueco antes de fabricar y montaje del vidrio ya preparado, para que todo encaje a la primera.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= PASOS ======================= -->
+<section class="sec sec-claro" id="pasos">
+  <div class="env">
+    <div class="cab">
+      <p class="ojo">Cómo pedir presupuesto</p>
+      <h2 class="tit">Tres pasos, sin compromiso</h2>
+      <p>No hace falta saber de vidrio para pedir precio. Con una descripción y unas medidas aproximadas se puede empezar.</p>
+    </div>
+
+    <div class="pasos">
+      <article class="paso">
+        <div class="num">1</div>
+        <h3>Cuéntanos el trabajo</h3>
+        <p>Por teléfono, por correo o con el formulario: qué hueco es, para qué lo quieres y las medidas aproximadas si las tienes.</p>
+      </article>
+      <article class="paso">
+        <div class="num">2</div>
+        <h3>Medición</h3>
+        <p>Se confirman las medidas reales del hueco y el tipo de vidrio o mampara que corresponde al caso.</p>
+      </article>
+      <article class="paso">
+        <div class="num">3</div>
+        <h3>Presupuesto y montaje</h3>
+        <p>Recibes el presupuesto por escrito. Si das el visto bueno, se prepara el vidrio y se acuerda el día de montaje.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= GALERIA MARCADOR ======================= -->
+<section class="sec">
+  <div class="env">
+    <div class="cab">
+      <p class="ojo">Galería</p>
+      <h2 class="tit">Espacio reservado para fotos del taller</h2>
+      <p>Estos huecos son marcadores de posición de la maqueta. En la web final irían fotografías reales de trabajos propios, facilitadas por la cristalería.</p>
+    </div>
+
+    <div class="galeria">
+      <figure class="hueco" style="margin:0">
+        <svg viewBox="0 0 320 210" role="img" aria-label="Marcador de posición para una fotografía" style="display:block;width:100%;height:auto">
+          <defs><linearGradient id="h1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#14262e"/><stop offset="1" stop-color="#0c1a20"/></linearGradient></defs>
+          <rect width="320" height="210" fill="url(#h1)"/>
+          <g stroke="rgba(158,228,245,.3)" stroke-width="1" fill="none">
+            <rect x="40" y="35" width="110" height="140" rx="2"/><rect x="170" y="35" width="110" height="140" rx="2"/>
+            <path d="M40 105h110M170 105h110"/>
+          </g>
+          <text x="160" y="198" text-anchor="middle" font-family="sans-serif" font-size="11" fill="rgba(169,191,199,.75)">Foto pendiente</text>
+        </svg>
+        <figcaption>Marcador de posición · pendiente de foto</figcaption>
+      </figure>
+
+      <figure class="hueco" style="margin:0">
+        <svg viewBox="0 0 320 210" role="img" aria-label="Marcador de posición para una fotografía" style="display:block;width:100%;height:auto">
+          <defs><linearGradient id="h2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#14262e"/><stop offset="1" stop-color="#0c1a20"/></linearGradient></defs>
+          <rect width="320" height="210" fill="url(#h2)"/>
+          <g stroke="rgba(158,228,245,.3)" stroke-width="1" fill="none">
+            <rect x="55" y="30" width="210" height="150" rx="2"/>
+            <path d="M160 30v150M55 80h210M55 130h210"/>
+          </g>
+          <text x="160" y="198" text-anchor="middle" font-family="sans-serif" font-size="11" fill="rgba(169,191,199,.75)">Foto pendiente</text>
+        </svg>
+        <figcaption>Marcador de posición · pendiente de foto</figcaption>
+      </figure>
+
+      <figure class="hueco" style="margin:0">
+        <svg viewBox="0 0 320 210" role="img" aria-label="Marcador de posición para una fotografía" style="display:block;width:100%;height:auto">
+          <defs><linearGradient id="h3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#14262e"/><stop offset="1" stop-color="#0c1a20"/></linearGradient></defs>
+          <rect width="320" height="210" fill="url(#h3)"/>
+          <g stroke="rgba(158,228,245,.3)" stroke-width="1" fill="none">
+            <rect x="45" y="40" width="230" height="130" rx="2"/>
+            <path d="M45 40l230 130M275 40L45 170" opacity=".45"/>
+          </g>
+          <text x="160" y="198" text-anchor="middle" font-family="sans-serif" font-size="11" fill="rgba(169,191,199,.75)">Foto pendiente</text>
+        </svg>
+        <figcaption>Marcador de posición · pendiente de foto</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= PRESUPUESTO ======================= -->
+<section class="sec sec-claro" id="presupuesto">
+  <div class="env">
+    <div class="cab">
+      <p class="ojo">Solicitud de presupuesto</p>
+      <h2 class="tit">Pide precio sin tener que llamar</h2>
+      <p>Hoy todo presupuesto depende de una llamada. Este bloque es la propuesta: un formulario que llega al correo del taller, para quien prefiere escribir.</p>
+    </div>
+
+    <div class="presu">
+      <form onsubmit="return false" novalidate>
+        <div class="campos">
+          <div class="campo">
+            <label for="f-nombre">Nombre</label>
+            <input id="f-nombre" name="nombre" type="text" placeholder="Nombre y apellidos">
+          </div>
+          <div class="campo">
+            <label for="f-tel">Teléfono</label>
+            <input id="f-tel" name="telefono" type="tel" placeholder="Para poder llamarte">
+          </div>
+          <div class="campo ancho">
+            <label for="f-email">Correo electrónico</label>
+            <input id="f-email" name="email" type="email" placeholder="tucorreo@ejemplo.com">
+          </div>
+          <div class="campo">
+            <label for="f-tipo">Tipo de trabajo</label>
+            <select id="f-tipo" name="tipo">
+              <option>Vidrio a medida</option>
+              <option>Mampara de baño</option>
+              <option>Carpintería de vidrio</option>
+              <option>Acristalamiento</option>
+              <option>Sustitución de luna</option>
+              <option>Otro / no lo sé</option>
+            </select>
+          </div>
+          <div class="campo">
+            <label for="f-loc">Localidad</label>
+            <input id="f-loc" name="localidad" type="text" placeholder="Población">
+          </div>
+          <div class="campo ancho">
+            <label for="f-med">Medidas aproximadas (si las tienes)</label>
+            <input id="f-med" name="medidas" type="text" placeholder="Ancho × alto, en centímetros">
+          </div>
+          <div class="campo ancho">
+            <label for="f-desc">Describe el trabajo</label>
+            <textarea id="f-desc" name="descripcion" placeholder="Qué hueco es, para qué lo necesitas y cualquier detalle que ayude a valorarlo."></textarea>
+          </div>
+        </div>
+
+        <div class="pie-form">
+          <button type="button" class="btn btn-oscuro">
+            <svg width="16" height="16" viewBox="0 0 20 20" aria-hidden="true"><path d="M2 4h16v12H2z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M2.5 4.5 10 11l7.5-6.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+            Enviar solicitud
+          </button>
+          <a class="btn btn-sec" style="border-color:rgba(0,0,0,.2);color:var(--arena-tinta);background:#fff" href="tel:+34964670952">O llamar al 964 670 952</a>
+        </div>
+        <p class="nota">Formulario de maqueta: es una demostración visual y no envía nada. En la web definitiva las solicitudes llegarían al correo del taller.</p>
+      </form>
+
+      <div>
+        <div class="via">
+          <span>Llamada</span>
+          <a href="tel:+34964670952">964 670 952</a>
+          <small>Teléfono fijo del taller.</small>
+        </div>
+        <div class="via">
+          <span>Móvil</span>
+          <a href="tel:+34636887792">636 887 792</a>
+          <small>Para avisos y consultas rápidas.</small>
+        </div>
+        <div class="via">
+          <span>Correo</span>
+          <a href="mailto:cristaleriasvmondragon@hotmail.com">cristaleriasvmondragon@hotmail.com</a>
+          <small>Si prefieres escribir y adjuntar fotos del hueco.</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= CONTACTO ======================= -->
+<section class="sec" id="contacto">
+  <div class="env">
+    <div class="cab">
+      <p class="ojo">Contacto</p>
+      <h2 class="tit">Dónde estamos</h2>
+      <p>El taller está en Nules, en la calle Pedro Alcázar.</p>
+    </div>
+
+    <div class="contacto">
+      <div class="ficha">
+        <h2>Datos de contacto</h2>
+        <dl>
+          <div class="fila">
+            <dt>Cristalería</dt>
+            <dd>Cristalería V. Mondragón S.L.</dd>
+          </div>
+          <div class="fila">
+            <dt>Dirección</dt>
+            <dd>C/ Pedro Alcázar, 18 bajo<br>12520 Nules, Castellón</dd>
+          </div>
+          <div class="fila">
+            <dt>Teléfonos</dt>
+            <dd><a href="tel:+34964670952">964 670 952</a><br><a href="tel:+34636887792">636 887 792</a></dd>
+          </div>
+          <div class="fila">
+            <dt>Correo</dt>
+            <dd><a href="mailto:cristaleriasvmondragon@hotmail.com">cristaleriasvmondragon@hotmail.com</a></dd>
+          </div>
+        </dl>
+        <p style="margin:18px 0 0"><span class="horario">
+          <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="6.3"/><path d="M8 4.5V8l2.5 1.6"/></svg>
+          Consultar horario
+        </span></p>
+        <p style="margin:14px 0 0"><a class="btn btn-pri" href="tel:+34964670952">
+          <svg width="17" height="17" viewBox="0 0 20 20" aria-hidden="true"><path d="M4.2 2.6h3l1.3 3.4-2 1.5a10.5 10.5 0 0 0 5.5 5.5l1.5-2 3.4 1.3v3a1.6 1.6 0 0 1-1.8 1.6C8.4 16.2 3.8 11.6 2.6 4.4A1.6 1.6 0 0 1 4.2 2.6Z" fill="currentColor"/></svg>
+          Llamar ahora
+        </a></p>
+      </div>
+
+      <div class="mapa">
+        <svg viewBox="0 0 640 400" role="img" aria-label="Plano esquemático de situación del taller: no es un mapa real" style="display:block;width:100%;height:auto">
+          <defs>
+            <linearGradient id="mg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#102029"/><stop offset="1" stop-color="#0a151a"/>
+            </linearGradient>
+          </defs>
+          <rect width="640" height="400" fill="url(#mg)"/>
+          <!-- manzanas abstractas -->
+          <g fill="rgba(255,255,255,.045)" stroke="rgba(255,255,255,.08)" stroke-width="1">
+            <rect x="34" y="34" width="150" height="110" rx="4"/>
+            <rect x="222" y="34" width="180" height="110" rx="4"/>
+            <rect x="440" y="34" width="166" height="110" rx="4"/>
+            <rect x="34" y="256" width="150" height="110" rx="4"/>
+            <rect x="222" y="256" width="180" height="110" rx="4"/>
+            <rect x="440" y="256" width="166" height="110" rx="4"/>
+          </g>
+          <!-- calles -->
+          <g stroke="rgba(158,228,245,.18)" stroke-width="22" stroke-linecap="square">
+            <path d="M0 200 H640"/>
+            <path d="M203 0 V400"/>
+            <path d="M421 0 V400"/>
+          </g>
+          <g stroke="rgba(158,228,245,.5)" stroke-width="1.4" stroke-dasharray="12 12">
+            <path d="M0 200 H640"/><path d="M203 0 V400"/><path d="M421 0 V400"/>
+          </g>
+          <!-- marcador -->
+          <g>
+            <circle cx="300" cy="200" r="26" fill="rgba(158,228,245,.16)"/>
+            <circle cx="300" cy="200" r="14" fill="#9ee4f5"/>
+            <circle cx="300" cy="200" r="5.5" fill="#06222b"/>
+          </g>
+          <text x="300" y="158" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="600" fill="#e8f1f4">C/ Pedro Alcázar, 18 bajo</text>
+          <text x="300" y="248" text-anchor="middle" font-family="sans-serif" font-size="13" fill="rgba(169,191,199,.9)">12520 Nules (Castellón)</text>
+          <text x="20" y="386" font-family="sans-serif" font-size="11" fill="rgba(169,191,199,.65)">Plano esquemático ilustrativo · no es un mapa real</text>
+        </svg>
+        <div class="mapa-pie">
+          <span>C/ Pedro Alcázar, 18 bajo · 12520 Nules</span>
+          <span>Consultar horario</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= PIE ======================= -->
+<footer>
+  <div class="env">
+    <div class="pie-rej">
+      <div>
+        <div class="marca" style="margin-bottom:14px">
+          <svg width="34" height="34" viewBox="0 0 38 38" aria-hidden="true">
+            <rect x="1" y="1" width="36" height="36" rx="9" fill="none" stroke="#5f93a4" stroke-width="1.3"/>
+            <path d="M8 27 L19 8 L30 27" fill="none" stroke="#9ee4f5" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M12.5 21.5 H25.5" stroke="#9ee4f5" stroke-width="1.1" opacity=".7"/>
+          </svg>
+          <span class="marca-txt">
+            <strong>Cristalería V. Mondragón S.L.</strong>
+            <span>Cristalería y acristalamiento</span>
+          </span>
+        </div>
+        <div class="datos">
+          <span>C/ Pedro Alcázar, 18 bajo · 12520 Nules, Castellón</span>
+          <span><a href="tel:+34964670952">964 670 952</a> · <a href="tel:+34636887792">636 887 792</a></span>
+          <span><a href="mailto:cristaleriasvmondragon@hotmail.com">cristaleriasvmondragon@hotmail.com</a></span>
+          <span>Consultar horario</span>
+        </div>
+      </div>
+      <div class="datos">
+        <span style="color:#cfe5eb;font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:12px">Secciones</span>
+        <span><a href="#servicios">Servicios</a></span>
+        <span><a href="#pasos">Cómo pedir presupuesto</a></span>
+        <span><a href="#presupuesto">Solicitud de presupuesto</a></span>
+        <span><a href="#contacto">Contacto</a></span>
+      </div>
+    </div>
+
+    <p class="firma">Propuesta de rediseño presentada por <strong>FFFFFFstudio</strong> — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+</body>
+</html>

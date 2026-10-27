@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Restaurante Casa Paco · El Niño (Mula), Murcia</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --vino:#5c1a24; --vino-osc:#3d0f17; --crema:#faf6ef; --crema2:#f2e9db;
+  --oro:#b8884a; --oro-claro:#d9b887; --tinta:#241a16; --gris:#6c5f58;
+  --linea:rgba(92,26,36,.14);
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --serif:ui-serif,Georgia,"Times New Roman",serif;
+  --barra:46px;
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--sans); color:var(--tinta); background:var(--crema);
+  line-height:1.6; padding-top:var(--barra); overflow-x:hidden;
+}
+img,svg{max-width:100%;display:block}
+a{color:inherit}
+.wrap{width:100%;max-width:1160px;margin:0 auto;padding:0 24px}
+
+/* ---- barra fija ---- */
+.aviso{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  min-height:var(--barra);display:flex;align-items:center;justify-content:center;
+  background:var(--vino-osc);color:#f3e4d4;
+  font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;
+  text-align:center;padding:8px 14px;line-height:1.35;
+  border-bottom:1px solid rgba(216,184,135,.35);
+}
+
+/* ---- nav ---- */
+.nav{background:var(--crema);border-bottom:1px solid var(--linea)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:76px;flex-wrap:wrap;padding-top:10px;padding-bottom:10px}
+.marca{display:flex;align-items:center;gap:12px}
+.sello{width:40px;height:40px;flex:0 0 40px}
+.marca b{display:block;font-family:var(--serif);font-size:19px;letter-spacing:.02em;color:var(--vino);font-weight:600;line-height:1.1}
+.marca span{display:block;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gris)}
+.nav-links{display:flex;gap:26px;font-size:13.5px;letter-spacing:.04em}
+.nav-links a{text-decoration:none;color:var(--gris)}
+.nav-tel{
+  display:inline-block;text-decoration:none;background:var(--vino);color:#fff;
+  padding:11px 20px;border-radius:999px;font-size:14px;font-weight:600;letter-spacing:.02em;
+  white-space:nowrap;
+}
+
+/* ---- hero ---- */
+.hero{
+  position:relative;overflow:hidden;color:#f7ece0;
+  background:
+    radial-gradient(120% 90% at 85% 10%, rgba(184,136,74,.42) 0%, rgba(184,136,74,0) 55%),
+    radial-gradient(90% 80% at 10% 95%, rgba(0,0,0,.45) 0%, rgba(0,0,0,0) 60%),
+    linear-gradient(160deg,#6d2029 0%,#4a1319 45%,#2c0b11 100%);
+}
+.hero .wrap{position:relative;z-index:2;padding-top:84px;padding-bottom:84px;display:grid;grid-template-columns:1.1fr .9fr;gap:52px;align-items:center}
+.kicker{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--oro-claro);margin-bottom:20px}
+.hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(34px,5.2vw,58px);line-height:1.08;letter-spacing:-.015em;margin-bottom:20px}
+.hero h1 em{font-style:italic;color:var(--oro-claro)}
+.hero p.lead{font-size:17.5px;color:rgba(247,236,224,.84);max-width:46ch;margin-bottom:30px}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.btn{display:inline-block;text-decoration:none;border-radius:999px;font-weight:600;letter-spacing:.02em;padding:15px 28px;font-size:15.5px}
+.btn-oro{background:linear-gradient(180deg,#d9b887,#b8884a);color:#2c0b11;box-shadow:0 10px 26px rgba(0,0,0,.28)}
+.btn-ghost{border:1px solid rgba(217,184,135,.55);color:#f0ddc8}
+.hero-meta{margin-top:30px;display:flex;flex-wrap:wrap;gap:12px 28px;font-size:13px;color:rgba(247,236,224,.7)}
+.hero-meta i{font-style:normal;color:var(--oro-claro);margin-right:7px}
+.hero-card{
+  background:rgba(250,246,239,.07);border:1px solid rgba(217,184,135,.3);
+  border-radius:16px;padding:26px;backdrop-filter:blur(2px);
+}
+.hero-card h3{font-family:var(--serif);font-size:18px;color:#fff;margin-bottom:16px;font-weight:600}
+.cifras{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cifra{background:rgba(0,0,0,.22);border:1px solid rgba(217,184,135,.18);border-radius:11px;padding:14px}
+.cifra b{display:block;min-height:30px;font-family:var(--serif);font-size:26px;color:var(--oro-claro);line-height:1.1}
+.cifra span{font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:rgba(247,236,224,.66)}
+.cifra.full{grid-column:1/-1}
+
+/* ---- franja aviso dominio ---- */
+.franja{background:var(--crema2);border-bottom:1px solid var(--linea)}
+.franja .wrap{padding:18px 24px;display:flex;gap:14px;align-items:flex-start;font-size:13.5px;color:var(--gris)}
+.franja svg{flex:0 0 20px;margin-top:2px}
+.franja b{color:var(--vino)}
+
+/* ---- secciones ---- */
+section{padding:76px 0}
+.sec-head{max-width:62ch;margin-bottom:46px}
+.sec-head .kicker{color:var(--oro);margin-bottom:14px}
+.sec-head h2{font-family:var(--serif);font-weight:600;font-size:clamp(27px,3.4vw,38px);line-height:1.15;color:var(--vino);letter-spacing:-.01em;margin-bottom:14px}
+.sec-head p{color:var(--gris);font-size:16.5px}
+
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.card{
+  background:#fff;border:1px solid var(--linea);border-radius:14px;padding:26px 24px;
+  box-shadow:0 1px 2px rgba(60,20,25,.04);
+}
+.ico{width:46px;height:46px;border-radius:11px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;
+  background:linear-gradient(145deg,#f6ecdd,#e8d6bd);border:1px solid rgba(184,136,74,.28)}
+.card h3{font-family:var(--serif);font-size:19px;font-weight:600;color:var(--vino);margin-bottom:9px}
+.card p{font-size:14.5px;color:var(--gris)}
+
+/* pasos */
+.pasos-sec{background:linear-gradient(180deg,var(--crema2),var(--crema))}
+.pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;counter-reset:p}
+.paso{background:#fff;border:1px solid var(--linea);border-radius:14px;padding:30px 26px;position:relative}
+.paso .num{
+  width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:var(--vino);color:var(--oro-claro);font-family:var(--serif);font-size:20px;font-weight:600;margin-bottom:18px;
+}
+.paso h3{font-family:var(--serif);font-size:20px;color:var(--vino);margin-bottom:10px;font-weight:600}
+.paso p{font-size:14.5px;color:var(--gris)}
+.pasos-cta{margin-top:34px;text-align:center}
+.pasos-cta .btn{background:var(--vino);color:#fff}
+
+/* contacto */
+.contacto{background:var(--crema)}
+.cont-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:40px;align-items:start}
+.datos{background:#fff;border:1px solid var(--linea);border-radius:14px;padding:30px;box-shadow:0 1px 2px rgba(60,20,25,.04)}
+.dato{display:flex;gap:16px;padding:17px 0;border-bottom:1px dashed var(--linea)}
+.dato:last-child{border-bottom:0;padding-bottom:0}
+.dato .di{flex:0 0 38px;height:38px;border-radius:10px;background:#f6ecdd;border:1px solid rgba(184,136,74,.26);display:flex;align-items:center;justify-content:center}
+.dato h4{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--oro);margin-bottom:5px;font-weight:700}
+.dato p,.dato a{font-size:15.5px;color:var(--tinta);text-decoration:none;word-break:break-word}
+.dato a.tel{font-family:var(--serif);font-size:23px;color:var(--vino);font-weight:600;letter-spacing:.01em}
+.dato small{display:block;font-size:13px;color:var(--gris);margin-top:3px}
+.mapa{background:#fff;border:1px solid var(--linea);border-radius:14px;padding:16px;box-shadow:0 1px 2px rgba(60,20,25,.04)}
+.mapa svg{width:100%;height:auto;border-radius:9px;display:block}
+.mapa .pie{font-size:12px;color:var(--gris);padding:12px 6px 4px;text-align:center}
+
+/* footer */
+footer{background:var(--vino-osc);color:#e8d6c4;padding:58px 0 30px}
+.f-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:34px;padding-bottom:34px;border-bottom:1px solid rgba(217,184,135,.22)}
+.f-grid h5{font-size:11px;letter-spacing:.17em;text-transform:uppercase;color:var(--oro-claro);margin-bottom:14px}
+.f-grid p,.f-grid a{font-size:14.5px;color:rgba(232,214,196,.84);text-decoration:none;display:block;margin-bottom:7px;word-break:break-word}
+.f-marca b{font-family:var(--serif);font-size:21px;color:#fff;display:block;margin-bottom:8px;font-weight:600}
+.f-fin{padding-top:24px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center}
+.f-fin p{font-size:12.5px;color:rgba(232,214,196,.68);line-height:1.5}
+.f-fin .cred{color:var(--oro-claro)}
+
+@media(max-width:980px){
+  .grid4{grid-template-columns:1fr 1fr}
+  .hero .wrap{grid-template-columns:1fr;gap:38px}
+  .cont-grid{grid-template-columns:1fr}
+  .f-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:700px){
+  :root{--barra:58px}
+  .nav-links{display:none}
+  .nav .wrap{min-height:66px}
+  .wrap{padding:0 18px}
+  section{padding:54px 0}
+  .hero .wrap{padding-top:54px;padding-bottom:58px}
+  .grid4,.pasos{grid-template-columns:1fr}
+  .f-grid{grid-template-columns:1fr;gap:26px}
+  .sec-head{margin-bottom:32px}
+  .btn{width:100%;text-align:center}
+  .cta-row{gap:11px}
+  .datos,.paso,.card{padding:22px 20px}
+  .aviso{font-size:10.5px;letter-spacing:.06em}
+}
+</style>
+</head>
+<body>
+
+<div class="aviso">Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</div>
+
+<header class="nav">
+  <div class="wrap">
+    <div class="marca">
+      <svg class="sello" viewBox="0 0 48 48" aria-hidden="true">
+        <circle cx="24" cy="24" r="22.5" fill="none" stroke="#b8884a" stroke-width="1.2"/>
+        <circle cx="24" cy="24" r="18.5" fill="#5c1a24"/>
+        <path d="M18 14v10a3 3 0 0 0 3 3v7" stroke="#d9b887" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+        <path d="M18 14v7M21 14v7" stroke="#d9b887" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+        <path d="M29 34v-9c2.4-.6 3.4-2.6 3.4-5.4 0-2.4-.6-4.4-1.4-5.6-.6 0-1 .4-1 1v4.6" stroke="#d9b887" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div>
+        <b>Casa Paco</b>
+        <span>Restaurante · El Niño, Mula</span>
+      </div>
+    </div>
+    <nav class="nav-links">
+      <a href="#propuesta">La casa</a>
+      <a href="#celebracion">Celebraciones</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="nav-tel" href="tel:+34968661150">968 66 11 50</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <p class="kicker">Cocina tradicional · Salón de celebraciones</p>
+      <h1>Las celebraciones<br>se recuerdan por<br><em>la mesa</em>.</h1>
+      <p class="lead">Restaurante Casa Paco, en El Niño (Mula). Cocina tradicional, comedores para grupos y terraza, en plena ruta del Camino de Caravaca.</p>
+      <div class="cta-row">
+        <a class="btn btn-oro" href="tel:+34968661150">Llamar · 968 66 11 50</a>
+        <a class="btn btn-ghost" href="#celebracion">Vuestra celebración</a>
+      </div>
+      <div class="hero-meta">
+        <span><i>&#9679;</i>400 plazas</span>
+        <span><i>&#9679;</i>Comedores para grupos</span>
+        <span><i>&#9679;</i>Terraza</span>
+      </div>
+    </div>
+    <aside class="hero-card">
+      <h3>La casa, en datos</h3>
+      <div class="cifras">
+        <div class="cifra"><b>400</b><span>Plazas</span></div>
+        <div class="cifra"><b style="padding:2px 0 3px"><svg viewBox="0 0 34 24" height="24" aria-hidden="true"><circle cx="8" cy="7" r="3.4" fill="none" stroke="#d9b887" stroke-width="1.6"/><circle cx="20" cy="6" r="2.8" fill="none" stroke="#d9b887" stroke-width="1.4"/><circle cx="29" cy="8" r="2.4" fill="none" stroke="#d9b887" stroke-width="1.3"/><path d="M2 20c0-3.6 2.7-6.2 6-6.2s6 2.6 6 6.2" fill="none" stroke="#d9b887" stroke-width="1.6" stroke-linecap="round"/><path d="M16 20c0-3 2-5.2 4.4-5.2S25 17 25 20" fill="none" stroke="#d9b887" stroke-width="1.4" stroke-linecap="round"/><path d="M27 20c0-2.5 1.5-4.2 3.4-4.2 .7 0 1.3.2 1.8.6" fill="none" stroke="#d9b887" stroke-width="1.3" stroke-linecap="round"/></svg></b><span>Comedores para grupos</span></div>
+        <div class="cifra full"><b>Camino de Caravaca</b><span>Establecimiento adherido</span></div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<div class="franja">
+  <div class="wrap">
+    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="#b8884a" stroke-width="1.6"/><path d="M12 7v6M12 16.5v.6" stroke="#5c1a24" stroke-width="1.8" stroke-linecap="round"/></svg>
+    <p><b>Nota de la propuesta:</b> el dominio que aparece hoy en la ficha de Google del restaurante ha caducado y está ocupado por un tercero, de modo que el enlace «Sitio web» lleva a una página sin relación con el negocio. Esta maqueta plantea cómo recuperar una web propia y actualizada.</p>
+  </div>
+</div>
+
+<section id="propuesta">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">Lo que ofrece la casa</p>
+      <h2>Una casa pensada para la mesa larga</h2>
+      <p>Cocina tradicional y espacio de sobra: comedores para grupos, salón de celebraciones y terraza, todo en el mismo sitio.</p>
+    </div>
+    <div class="grid4">
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 32 32" width="24" height="24" aria-hidden="true"><path d="M8 5v9a3 3 0 0 0 3 3v10" stroke="#5c1a24" stroke-width="1.8" fill="none" stroke-linecap="round"/><path d="M8 5v8M11 5v8M14 5v9a3 3 0 0 1-3 3" stroke="#5c1a24" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M22 27V16c2.6-.7 3.8-3 3.8-6.1 0-2.6-.7-4.6-1.6-5.9-.6 0-1.1.5-1.1 1.1v5" stroke="#5c1a24" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Cocina tradicional</h3>
+        <p>Platos de cocina tradicional elaborados en casa. Consultad la propuesta del día por teléfono.</p>
+      </article>
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 32 32" width="24" height="24" aria-hidden="true"><circle cx="11" cy="11" r="4" fill="none" stroke="#5c1a24" stroke-width="1.8"/><circle cx="22" cy="13" r="3.2" fill="none" stroke="#5c1a24" stroke-width="1.6"/><path d="M4 26c0-4.4 3.1-7.5 7-7.5s7 3.1 7 7.5" stroke="#5c1a24" stroke-width="1.8" fill="none" stroke-linecap="round"/><path d="M20 26c0-3.6 2.2-6.2 5.2-6.2 1.2 0 2.2.3 3 .9" stroke="#5c1a24" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg></div>
+        <h3>Comedores para grupos</h3>
+        <p>Espacios diferenciados para comidas de grupo, con capacidad total de 400 plazas en la casa.</p>
+      </article>
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 32 32" width="24" height="24" aria-hidden="true"><path d="M6 26h20M9 26V15M23 26V15" stroke="#5c1a24" stroke-width="1.8" fill="none" stroke-linecap="round"/><path d="M4 15h24l-4-7H8z" stroke="#5c1a24" stroke-width="1.8" fill="none" stroke-linejoin="round"/><path d="M16 8V4M13 5.5h6" stroke="#5c1a24" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
+        <h3>Celebraciones y banquetes</h3>
+        <p>Salón de celebraciones para bodas, comuniones, bautizos y comidas de empresa, con menús a convenir.</p>
+      </article>
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 32 32" width="24" height="24" aria-hidden="true"><path d="M16 5l10 8H6z" stroke="#5c1a24" stroke-width="1.8" fill="none" stroke-linejoin="round"/><path d="M16 13v14M11 20h10" stroke="#5c1a24" stroke-width="1.8" fill="none" stroke-linecap="round"/><path d="M5 27h22" stroke="#5c1a24" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></div>
+        <h3>Terraza</h3>
+        <p>Terraza para comer al aire libre, tomar algo o hacer una parada tranquila de camino a Caravaca.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="pasos-sec" id="celebracion">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">Vuestra celebración</p>
+      <h2>Tres pasos y la fecha queda cerrada</h2>
+      <p>Las celebraciones y los grupos se organizan directamente con la casa, por teléfono.</p>
+    </div>
+    <div class="pasos">
+      <article class="paso">
+        <div class="num">1</div>
+        <h3>Llamad y contadnos</h3>
+        <p>Fecha aproximada, número de personas y tipo de celebración. Con eso se comprueba la disponibilidad de comedor.</p>
+      </article>
+      <article class="paso">
+        <div class="num">2</div>
+        <h3>Ajustamos el menú</h3>
+        <p>Se acuerda la propuesta de menú y la distribución de mesas según el grupo y el comedor elegido.</p>
+      </article>
+      <article class="paso">
+        <div class="num">3</div>
+        <h3>Reserva confirmada</h3>
+        <p>Queda fijada la fecha y los detalles del día. Cualquier cambio se gestiona hablando con la casa.</p>
+      </article>
+    </div>
+    <div class="pasos-cta">
+      <a class="btn" href="tel:+34968661150">Llamar para reservar · 968 66 11 50</a>
+    </div>
+  </div>
+</section>
+
+<section class="contacto" id="contacto">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">Contacto</p>
+      <h2>Dónde estamos</h2>
+      <p>En El Niño, pedanía de Mula (Murcia), junto al trazado del Camino de Caravaca.</p>
+    </div>
+    <div class="cont-grid">
+      <div class="datos">
+        <div class="dato">
+          <div class="di"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6.5 3h3l1.5 4-2 1.5c.8 2.6 2.9 4.7 5.5 5.5L16 12l4 1.5v3c0 1.1-.9 2-2 2C11 18.5 5.5 13 5.5 5c0-1.1.9-2 2-2z" fill="none" stroke="#5c1a24" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+          <div><h4>Teléfono</h4><a class="tel" href="tel:+34968661150">968 66 11 50</a><small>Reservas, grupos y celebraciones</small></div>
+        </div>
+        <div class="dato">
+          <div class="di"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 21s7-6.3 7-11a7 7 0 1 0-14 0c0 4.7 7 11 7 11z" fill="none" stroke="#5c1a24" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.6" fill="none" stroke="#5c1a24" stroke-width="1.5"/></svg></div>
+          <div><h4>Dirección</h4><p>C/ Niño Jesús del Balate, 8<br>30194 El Niño (Mula), Murcia</p></div>
+        </div>
+        <div class="dato">
+          <div class="di"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="#5c1a24" stroke-width="1.6"/><path d="M12 7v5.3l3.4 2" fill="none" stroke="#5c1a24" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+          <div><h4>Horario</h4><p>Consultar horario</p><small>Por teléfono se confirma el horario del día</small></div>
+        </div>
+        <div class="dato">
+          <div class="di"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2" fill="none" stroke="#5c1a24" stroke-width="1.6"/><path d="M3.8 7l8.2 6 8.2-6" fill="none" stroke="#5c1a24" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+          <div><h4>Email</h4><a href="mailto:micfs2001@gmail.com">micfs2001@gmail.com</a></div>
+        </div>
+      </div>
+
+      <div class="mapa">
+        <svg viewBox="0 0 640 420" role="img" aria-label="Plano esquemático orientativo de la ubicación del restaurante">
+          <defs>
+            <linearGradient id="gfondo" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#f7f1e6"/><stop offset="1" stop-color="#eee3d2"/>
+            </linearGradient>
+            <pattern id="trama" width="22" height="22" patternUnits="userSpaceOnUse">
+              <path d="M0 22L22 0" stroke="rgba(184,136,74,.16)" stroke-width="1"/>
+            </pattern>
+          </defs>
+          <rect width="640" height="420" fill="url(#gfondo)"/>
+          <rect width="640" height="420" fill="url(#trama)"/>
+          <!-- manzanas -->
+          <g fill="rgba(92,26,36,.07)" stroke="rgba(92,26,36,.13)" stroke-width="1">
+            <rect x="46" y="58" width="150" height="96" rx="7"/>
+            <rect x="244" y="48" width="132" height="76" rx="7"/>
+            <rect x="430" y="70" width="156" height="110" rx="7"/>
+            <rect x="46" y="238" width="128" height="124" rx="7"/>
+            <rect x="416" y="258" width="170" height="104" rx="7"/>
+          </g>
+          <!-- calles -->
+          <g stroke="#ffffff" stroke-width="26" stroke-linecap="round" fill="none">
+            <path d="M0 196H640"/>
+            <path d="M216 0V420"/>
+            <path d="M398 420V196"/>
+          </g>
+          <g stroke="rgba(184,136,74,.5)" stroke-width="1.4" stroke-dasharray="9 9" fill="none">
+            <path d="M0 196H640"/><path d="M216 0V420"/><path d="M398 420V196"/>
+          </g>
+          <g stroke="#ffffff" stroke-width="13" stroke-linecap="round" fill="none">
+            <path d="M216 296H416"/><path d="M110 196V58"/>
+          </g>
+          <!-- zona verde -->
+          <path d="M248 232c34-16 76-12 96 10 16 18 8 44-14 52-30 11-70 4-86-16-12-16-10-38 4-46z" fill="rgba(104,124,70,.16)" stroke="rgba(104,124,70,.34)" stroke-width="1.2"/>
+          <text x="296" y="268" font-family="-apple-system,Segoe UI,Arial" font-size="12" fill="#6b7a4e" text-anchor="middle">zona verde</text>
+          <!-- marcador -->
+          <g transform="translate(216,196)">
+            <circle r="30" fill="rgba(92,26,36,.1)"/>
+            <circle r="17" fill="#5c1a24"/>
+            <path d="M-5 -7v7a2.6 2.6 0 0 0 2.6 2.6V8" stroke="#d9b887" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <path d="M3.4 8V1.6c1.8-.5 2.6-1.9 2.6-4 0-1.7-.5-3-1.1-3.9-.4 0-.7.3-.7.7V-3" stroke="#d9b887" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+          <rect x="246" y="150" width="236" height="40" rx="9" fill="#ffffff" stroke="rgba(92,26,36,.16)"/>
+          <text x="262" y="166" font-family="-apple-system,Segoe UI,Arial" font-size="12.5" font-weight="700" fill="#5c1a24">Restaurante Casa Paco</text>
+          <text x="262" y="181" font-family="-apple-system,Segoe UI,Arial" font-size="11" fill="#6c5f58">C/ Niño Jesús del Balate, 8</text>
+          <!-- etiquetas calles -->
+          <text x="24" y="190" font-family="-apple-system,Segoe UI,Arial" font-size="11" fill="#8d7f76">vía principal</text>
+          <text x="410" y="400" font-family="-apple-system,Segoe UI,Arial" font-size="11" fill="#8d7f76">acceso terraza</text>
+          <text x="60" y="400" font-family="-apple-system,Segoe UI,Arial" font-size="11" fill="#8d7f76">aparcamiento de la zona</text>
+          <!-- rosa de los vientos -->
+          <g transform="translate(596,386)">
+            <circle r="17" fill="#fff" stroke="rgba(92,26,36,.16)"/>
+            <path d="M0 -11L3.4 0H-3.4z" fill="#5c1a24"/>
+            <path d="M0 11L3.4 0H-3.4z" fill="rgba(92,26,36,.3)"/>
+            <text x="0" y="-13.5" font-family="-apple-system,Segoe UI,Arial" font-size="8" fill="#5c1a24" text-anchor="middle">N</text>
+          </g>
+        </svg>
+        <p class="pie">Plano esquemático orientativo. No representa el callejero real.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div class="f-marca">
+        <b>Restaurante Casa Paco</b>
+        <p>Cocina tradicional y salón de celebraciones en El Niño (Mula), Murcia. Establecimiento adherido al Camino de Caravaca.</p>
+      </div>
+      <div>
+        <h5>Contacto</h5>
+        <a href="tel:+34968661150">968 66 11 50</a>
+        <a href="mailto:micfs2001@gmail.com">micfs2001@gmail.com</a>
+        <p>Consultar horario</p>
+      </div>
+      <div>
+        <h5>Dirección</h5>
+        <p>C/ Niño Jesús del Balate, 8<br>30194 El Niño (Mula)<br>Murcia</p>
+      </div>
+    </div>
+    <div class="f-fin">
+      <p>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+      <p class="cred">Maqueta sin carácter contractual · Alicante</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

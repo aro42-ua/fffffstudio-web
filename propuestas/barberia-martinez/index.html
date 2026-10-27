@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Barbería Martínez · Caravaca de la Cruz · Propuesta de diseño</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --tinta:#13110f;
+  --tinta-2:#1d1a16;
+  --crema:#f4efe6;
+  --crema-2:#e8e0d2;
+  --laton:#c29a4e;
+  --laton-claro:#e0bd77;
+  --rojo:#8f2d24;
+  --azul:#2a3b4d;
+  --texto:#231f1b;
+  --suave:#6b625a;
+  --linea:rgba(35,31,27,.14);
+  --barra:46px;
+  --max:1120px;
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  padding-top:var(--barra);
+  background:var(--crema);
+  color:var(--texto);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+img,svg{max-width:100%;display:block}
+a{color:inherit}
+.wrap{width:100%;max-width:var(--max);margin:0 auto;padding:0 24px}
+
+/* ---------- barra fija ---------- */
+.aviso{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  min-height:var(--barra);
+  display:flex;align-items:center;justify-content:center;
+  background:var(--tinta);
+  color:var(--crema-2);
+  border-bottom:2px solid var(--laton);
+  font-size:12.5px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  text-align:center;
+  padding:8px 14px;
+}
+.aviso span{display:inline-block;max-width:100%}
+
+/* ---------- tipografía ---------- */
+.kicker{
+  font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--laton);font-weight:700;margin:0 0 14px;
+}
+h1,h2,h3{font-family:Georgia,"Times New Roman",Times,serif;font-weight:400;letter-spacing:-.01em;margin:0}
+h1{font-size:clamp(2.1rem,6vw,4rem);line-height:1.05}
+h2{font-size:clamp(1.6rem,3.6vw,2.5rem);line-height:1.15}
+h3{font-size:1.18rem;line-height:1.3}
+p{margin:0 0 1em}
+.lead{font-size:clamp(1rem,1.6vw,1.18rem);color:var(--suave);max-width:54ch}
+section{padding:76px 0}
+.sec-head{max-width:60ch;margin-bottom:44px}
+
+/* ---------- cabecera sitio ---------- */
+.nav{
+  background:var(--tinta);color:var(--crema);
+  border-bottom:1px solid rgba(244,239,230,.12);
+}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 24px;max-width:var(--max);margin:0 auto;flex-wrap:wrap}
+.marca{display:flex;align-items:center;gap:12px;min-width:0}
+.marca .sello{width:40px;height:40px;flex:0 0 auto}
+.marca b{font-family:Georgia,serif;font-weight:400;font-size:1.15rem;letter-spacing:.02em;display:block;line-height:1.1}
+.marca small{display:block;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--laton-claro)}
+.nav-tel{
+  display:inline-flex;align-items:center;gap:8px;
+  border:1px solid var(--laton);color:var(--laton-claro);
+  padding:9px 16px;border-radius:999px;text-decoration:none;
+  font-size:14px;font-weight:600;white-space:nowrap;
+}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(900px 480px at 78% -10%,rgba(194,154,78,.26),transparent 70%),
+    radial-gradient(700px 520px at 6% 110%,rgba(42,59,77,.45),transparent 72%),
+    linear-gradient(165deg,#1a1713 0%,#13110f 48%,#0d0c0b 100%);
+  color:var(--crema);
+  padding:0;
+}
+.hero-grid{
+  display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;
+  max-width:var(--max);margin:0 auto;padding:84px 24px 88px;
+}
+.hero h1{color:#fbf7ef}
+.hero .lead{color:rgba(244,239,230,.74);margin-top:20px}
+.hero-rule{width:86px;height:3px;background:linear-gradient(90deg,var(--laton),transparent);margin:26px 0 0}
+.ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  padding:15px 26px;border-radius:4px;text-decoration:none;
+  font-weight:700;font-size:15.5px;letter-spacing:.01em;border:1px solid transparent;
+}
+.btn-pri{background:linear-gradient(180deg,var(--laton-claro),var(--laton));color:#1a1511;box-shadow:0 10px 26px rgba(0,0,0,.35)}
+.btn-sec{border-color:rgba(244,239,230,.38);color:var(--crema)}
+.hero-meta{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:30px;font-size:14px;color:rgba(244,239,230,.62)}
+.hero-meta span{display:inline-flex;align-items:center;gap:8px}
+.dot{width:5px;height:5px;border-radius:50%;background:var(--laton);flex:0 0 auto}
+.hero-art{display:flex;justify-content:center}
+.hero-art svg{width:100%;max-width:330px;height:auto}
+.franja{height:12px;background:repeating-linear-gradient(135deg,var(--rojo) 0 14px,#f4efe6 14px 28px,var(--azul) 28px 42px,#f4efe6 42px 56px)}
+
+/* ---------- servicios ---------- */
+.servicios{background:var(--crema)}
+.grid-serv{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.card{
+  background:linear-gradient(180deg,#fdfbf7,#f1eade);
+  border:1px solid var(--linea);border-radius:6px;
+  padding:28px 24px 26px;display:flex;flex-direction:column;gap:12px;
+  border-top:3px solid var(--laton);
+}
+.card .ico{width:46px;height:46px}
+.card p{margin:0;font-size:15px;color:var(--suave)}
+.nota{margin-top:26px;font-size:14px;color:var(--suave);border-left:3px solid var(--laton);padding-left:14px}
+
+/* ---------- pasos ---------- */
+.visita{background:var(--tinta-2);color:var(--crema)}
+.visita .lead{color:rgba(244,239,230,.7)}
+.visita .kicker{color:var(--laton-claro)}
+.grid-pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.paso{
+  background:rgba(244,239,230,.055);
+  border:1px solid rgba(244,239,230,.14);
+  border-radius:6px;padding:28px 24px;
+}
+.num{
+  font-family:Georgia,serif;font-size:2rem;color:var(--laton-claro);
+  display:block;line-height:1;margin-bottom:12px;
+}
+.paso h3{color:#fbf7ef;margin-bottom:8px}
+.paso p{margin:0;font-size:15px;color:rgba(244,239,230,.68)}
+.visita .ctas{margin-top:34px}
+
+/* ---------- peregrino ---------- */
+.peregrino{
+  background:
+    radial-gradient(600px 300px at 90% 10%,rgba(194,154,78,.18),transparent 70%),
+    linear-gradient(160deg,#efe7d8,#e4dbc9);
+  border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);
+}
+.pere-grid{display:grid;grid-template-columns:120px 1fr;gap:34px;align-items:center}
+.pere-grid svg{width:120px;height:auto}
+.pere-grid p:last-child{margin-bottom:0}
+
+/* ---------- contacto ---------- */
+.contacto{background:var(--crema)}
+.cont-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:40px;align-items:start}
+.datos{display:flex;flex-direction:column;gap:2px}
+.dato{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid var(--linea)}
+.dato:first-child{border-top:1px solid var(--linea)}
+.dato .ico{width:26px;height:26px;flex:0 0 auto;margin-top:2px}
+.dato b{display:block;font-size:11.5px;letter-spacing:.17em;text-transform:uppercase;color:var(--suave);font-weight:700;margin-bottom:4px}
+.dato .val{display:block;font-size:17px;font-weight:600;color:var(--texto);text-decoration:none;word-break:break-word}
+.dato .val-s{display:block;margin-top:2px;font-size:15px;color:var(--suave);font-weight:400}
+.mapa{
+  border:1px solid var(--linea);border-radius:6px;overflow:hidden;background:#efe8da;
+}
+.mapa svg{width:100%;height:auto;display:block}
+.mapa .pie{padding:12px 16px;font-size:13px;color:var(--suave);background:#fdfbf7;border-top:1px solid var(--linea)}
+.contacto .ctas{margin-top:28px}
+
+/* ---------- pie ---------- */
+footer{background:var(--tinta);color:rgba(244,239,230,.72);padding:54px 0 42px;font-size:14.5px}
+.pie-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:34px}
+footer h3{color:#fbf7ef;font-size:1.05rem;margin-bottom:12px}
+footer a{color:var(--laton-claro);text-decoration:none;word-break:break-word}
+footer p{margin:0 0 .5em}
+.credito{
+  margin-top:40px;padding-top:22px;border-top:1px solid rgba(244,239,230,.16);
+  font-size:13px;color:rgba(244,239,230,.6);
+}
+
+/* ---------- responsive ---------- */
+@media (max-width:980px){
+  .grid-serv{grid-template-columns:repeat(2,1fr)}
+  .hero-grid{grid-template-columns:1fr;gap:38px;padding:62px 24px 66px}
+  .hero-art{order:-1;justify-content:flex-start}
+  .hero-art svg{max-width:210px}
+  .cont-grid{grid-template-columns:1fr;gap:34px}
+  .pie-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  :root{--barra:62px}
+  body{font-size:16px}
+  .wrap{padding:0 18px}
+  .nav-in{padding:14px 18px}
+  .nav-tel{width:100%;justify-content:center}
+  .hero-grid{padding:48px 18px 54px}
+  section{padding:56px 0}
+  .grid-serv,.grid-pasos,.pie-grid{grid-template-columns:1fr}
+  .pere-grid{grid-template-columns:1fr;gap:22px}
+  .pere-grid svg{width:92px}
+  .btn{width:100%}
+  .sec-head{margin-bottom:32px}
+  .aviso{font-size:11px;letter-spacing:.04em;line-height:1.45}
+}
+</style>
+</head>
+<body>
+
+<div class="aviso"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<header class="nav">
+  <div class="nav-in">
+    <div class="marca">
+      <svg class="sello" viewBox="0 0 48 48" aria-hidden="true">
+        <circle cx="24" cy="24" r="22.5" fill="none" stroke="#c29a4e" stroke-width="1.2"/>
+        <circle cx="24" cy="24" r="18" fill="none" stroke="#c29a4e" stroke-width=".6" opacity=".6"/>
+        <path d="M16 15v10a8 8 0 0 0 16 0V15" fill="none" stroke="#e0bd77" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M24 33v5" stroke="#e0bd77" stroke-width="1.6" stroke-linecap="round"/>
+        <circle cx="16" cy="13.5" r="1.8" fill="#e0bd77"/>
+        <circle cx="32" cy="13.5" r="1.8" fill="#e0bd77"/>
+      </svg>
+      <div>
+        <b>Barbería Martínez</b>
+        <small>Caravaca de la Cruz</small>
+      </div>
+    </div>
+    <a class="nav-tel" href="tel:+34722245490">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#e0bd77" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 3h4l2 5-3 2a12 12 0 0 0 6 6l2-3 5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg>
+      722 245 490
+    </a>
+  </div>
+</header>
+
+<!-- HERO -->
+<main>
+<section class="hero" id="inicio">
+  <div class="hero-grid">
+    <div>
+      <p class="kicker">Barbería y peluquería de caballero</p>
+      <h1>El oficio de la navaja,<br>en el corazón de<br>Caravaca de la Cruz</h1>
+      <div class="hero-rule"></div>
+      <p class="lead">Corte, barba y afeitado clásico en Plaza Nueva, en pleno centro histórico. Pide tu cita por teléfono y entra cuando te toca.</p>
+      <div class="ctas">
+        <a class="btn btn-pri" href="tel:+34722245490">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1a1511" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 3h4l2 5-3 2a12 12 0 0 0 6 6l2-3 5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg>
+          Llamar al 722 245 490
+        </a>
+        <a class="btn btn-sec" href="#servicios">Ver servicios</a>
+      </div>
+      <div class="hero-meta">
+        <span><i class="dot"></i>Plaza Nueva, 8 · Caravaca de la Cruz</span>
+        <span><i class="dot"></i>Centro histórico</span>
+        <span><i class="dot"></i>Camino de Caravaca</span>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 300 330" aria-hidden="true">
+        <defs>
+          <linearGradient id="gv" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#e0bd77"/><stop offset="1" stop-color="#9a7533"/>
+          </linearGradient>
+          <linearGradient id="gp" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#f6f1e6"/><stop offset="1" stop-color="#cfc6b4"/>
+          </linearGradient>
+        </defs>
+        <circle cx="150" cy="150" r="128" fill="none" stroke="#c29a4e" stroke-width="1" opacity=".45"/>
+        <circle cx="150" cy="150" r="112" fill="none" stroke="#c29a4e" stroke-width=".5" opacity=".3"/>
+        <!-- poste de barbero -->
+        <rect x="38" y="46" width="34" height="18" rx="4" fill="url(#gv)"/>
+        <rect x="42" y="64" width="26" height="150" fill="url(#gp)"/>
+        <g clip-path="none">
+          <path d="M42 80h26v16H42z" fill="#8f2d24" opacity=".85"/>
+          <path d="M42 112h26v16H42z" fill="#2a3b4d" opacity=".85"/>
+          <path d="M42 144h26v16H42z" fill="#8f2d24" opacity=".85"/>
+          <path d="M42 176h26v16H42z" fill="#2a3b4d" opacity=".85"/>
+        </g>
+        <rect x="38" y="214" width="34" height="18" rx="4" fill="url(#gv)"/>
+        <!-- navaja -->
+        <path d="M118 236 L236 118" stroke="url(#gv)" stroke-width="9" stroke-linecap="round"/>
+        <path d="M122 240 L150 212" stroke="#4a4036" stroke-width="13" stroke-linecap="round"/>
+        <path d="M152 184 L232 104" stroke="#f6f1e6" stroke-width="3" opacity=".55" stroke-linecap="round"/>
+        <!-- tijera -->
+        <g stroke="#e0bd77" stroke-width="4" fill="none" stroke-linecap="round">
+          <path d="M126 80 L196 168"/>
+          <path d="M170 80 L112 152"/>
+          <circle cx="196" cy="182" r="13"/>
+          <circle cx="102" cy="164" r="13"/>
+        </g>
+        <circle cx="150" cy="150" r="3.5" fill="#c29a4e"/>
+      </svg>
+    </div>
+  </div>
+</section>
+<div class="franja"></div>
+
+<!-- SERVICIOS -->
+<section class="servicios" id="servicios">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">Servicios</p>
+      <h2>Lo clásico, bien hecho</h2>
+      <p class="lead">Trabajo de barbería tradicional de caballero: corte, barba y afeitado, con el cuidado de siempre.</p>
+    </div>
+    <div class="grid-serv">
+
+      <article class="card">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="#c29a4e" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <path d="M12 10 L34 36"/><path d="M36 10 L18 32"/>
+          <circle cx="34" cy="39" r="5"/><circle cx="14" cy="35" r="5"/>
+        </svg>
+        <h3>Corte de caballero</h3>
+        <p>Corte a tijera o máquina, adaptado a tu pelo y a cómo lo quieres llevar, con acabado al detalle.</p>
+      </article>
+
+      <article class="card">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="#c29a4e" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <path d="M14 12c0 10 2 18 10 24 8-6 10-14 10-24"/>
+          <path d="M14 12c3 2 7 3 10 3s7-1 10-3"/>
+          <path d="M20 26c2 1.5 6 1.5 8 0"/>
+        </svg>
+        <h3>Arreglo y perfilado de barba</h3>
+        <p>Recorte, simetría y perfilado de los contornos para dejar la barba definida y con forma.</p>
+      </article>
+
+      <article class="card">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="#c29a4e" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <path d="M8 36 L30 14"/><path d="M10 38 L17 31"/>
+          <path d="M30 14l8-4-4 8z"/>
+          <path d="M14 20c4-6 12-8 18-6"/>
+        </svg>
+        <h3>Afeitado clásico</h3>
+        <p>Afeitado a navaja con toalla caliente, espuma y apurado tradicional, paso a paso y sin prisa.</p>
+      </article>
+
+      <article class="card">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="#c29a4e" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <circle cx="24" cy="17" r="8"/>
+          <path d="M11 40c2-7 7-11 13-11s11 4 13 11"/>
+          <path d="M18 13c3 2 9 2 12 0"/>
+        </svg>
+        <h3>Corte infantil</h3>
+        <p>Cortes para los más pequeños, con paciencia y buen ambiente para que la primera vez sea fácil.</p>
+      </article>
+
+    </div>
+    <p class="nota">Para conocer servicios concretos, tarifas y disponibilidad, lo más rápido es una llamada al <a href="tel:+34722245490" style="color:var(--texto)"><strong>722 245 490</strong></a>.</p>
+  </div>
+</section>
+
+<!-- TU VISITA -->
+<section class="visita" id="cita">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">Tu visita</p>
+      <h2>Pedir cita, en tres pasos</h2>
+      <p class="lead">Sin registros ni formularios largos: una llamada y listo.</p>
+    </div>
+    <div class="grid-pasos">
+      <div class="paso">
+        <span class="num">01</span>
+        <h3>Llama a la barbería</h3>
+        <p>Marca el 722 245 490 y di qué quieres hacerte: corte, barba, afeitado o varias cosas a la vez.</p>
+      </div>
+      <div class="paso">
+        <span class="num">02</span>
+        <h3>Acordamos el día y la hora</h3>
+        <p>Te indicamos el hueco disponible que mejor te encaje. Si prefieres otro momento, lo buscamos.</p>
+      </div>
+      <div class="paso">
+        <span class="num">03</span>
+        <h3>Te esperamos en Plaza Nueva</h3>
+        <p>Estamos en Plaza Nueva, 8, en el centro histórico de Caravaca, a pie desde el casco antiguo.</p>
+      </div>
+    </div>
+    <div class="ctas">
+      <a class="btn btn-pri" href="tel:+34722245490">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1a1511" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 3h4l2 5-3 2a12 12 0 0 0 6 6l2-3 5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg>
+        Pedir cita por teléfono
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PEREGRINO -->
+<section class="peregrino" id="peregrino">
+  <div class="wrap">
+    <div class="pere-grid">
+      <svg viewBox="0 0 120 120" aria-hidden="true">
+        <circle cx="60" cy="60" r="56" fill="none" stroke="#c29a4e" stroke-width="1.4"/>
+        <circle cx="60" cy="60" r="47" fill="none" stroke="#c29a4e" stroke-width=".6" opacity=".55"/>
+        <!-- vieira esquemática -->
+        <path d="M60 90 L22 52 A 40 40 0 0 1 98 52 Z" fill="none" stroke="#8f6a24" stroke-width="2" stroke-linejoin="round"/>
+        <g stroke="#c29a4e" stroke-width="1.1" stroke-linecap="round">
+          <path d="M60 90 V34"/>
+          <path d="M60 90 L40 38"/>
+          <path d="M60 90 L80 38"/>
+          <path d="M60 90 L26 50"/>
+          <path d="M60 90 L94 50"/>
+        </g>
+        <circle cx="60" cy="90" r="3" fill="#8f6a24"/>
+      </svg>
+      <div>
+        <p class="kicker" style="color:#8f6a24">Camino de Caravaca</p>
+        <h2 style="margin-bottom:14px">Establecimiento adherido, con tarifa del peregrino</h2>
+        <p style="color:var(--suave);max-width:62ch">Barbería Martínez está adherida al Camino de Caravaca y cuenta con tarifa del peregrino. Si llegas haciendo el Camino, dilo al pedir la cita o al entrar.</p>
+        <p style="color:var(--suave);max-width:62ch;font-size:15px">Las condiciones y el importe de la tarifa se consultan directamente en la barbería o por teléfono.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contacto" id="contacto">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">Contacto</p>
+      <h2>Dónde estamos</h2>
+    </div>
+    <div class="cont-grid">
+      <div>
+        <div class="datos">
+          <div class="dato">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#c29a4e" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 3h4l2 5-3 2a12 12 0 0 0 6 6l2-3 5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg>
+            <div><b>Teléfono</b><a class="val" href="tel:+34722245490">722 245 490</a></div>
+          </div>
+          <div class="dato">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#c29a4e" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 21s7-6.3 7-11a7 7 0 1 0-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+            <div><b>Dirección</b><span class="val">Plaza Nueva, 8</span><span class="val val-s">30400 Caravaca de la Cruz, Murcia</span></div>
+          </div>
+          <div class="dato">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#c29a4e" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2.2"/></svg>
+            <div><b>Horario</b><span class="val">Consultar horario</span></div>
+          </div>
+          <div class="dato">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#c29a4e" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5 12 13l8.5-6.5"/></svg>
+            <div><b>Email</b><a class="val" href="mailto:pascual7m@gmail.com">pascual7m@gmail.com</a></div>
+          </div>
+        </div>
+        <div class="ctas">
+          <a class="btn btn-pri" href="tel:+34722245490" style="color:#1a1511">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1a1511" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 3h4l2 5-3 2a12 12 0 0 0 6 6l2-3 5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg>
+            Llamar ahora
+          </a>
+        </div>
+      </div>
+
+      <div class="mapa">
+        <svg viewBox="0 0 560 360" role="img" aria-label="Plano esquemático de situación en el centro histórico">
+          <rect width="560" height="360" fill="#f0e9db"/>
+          <!-- manzanas -->
+          <g fill="#e4dcc9">
+            <rect x="24" y="24" width="150" height="96" rx="4"/>
+            <rect x="200" y="24" width="120" height="96" rx="4"/>
+            <rect x="348" y="24" width="188" height="68" rx="4"/>
+            <rect x="24" y="152" width="110" height="88" rx="4"/>
+            <rect x="24" y="268" width="150" height="68" rx="4"/>
+            <rect x="214" y="268" width="130" height="68" rx="4"/>
+            <rect x="372" y="268" width="164" height="68" rx="4"/>
+            <rect x="420" y="124" width="116" height="112" rx="4"/>
+          </g>
+          <!-- calles -->
+          <g stroke="#ffffff" stroke-width="16" stroke-linecap="square">
+            <path d="M0 136 H560"/>
+            <path d="M0 254 H560"/>
+            <path d="M186 0 V360"/>
+            <path d="M334 0 V360"/>
+          </g>
+          <g stroke="#d8cfbb" stroke-width="1.4" stroke-dasharray="7 7">
+            <path d="M0 136 H560"/><path d="M0 254 H560"/>
+            <path d="M186 0 V360"/><path d="M334 0 V360"/>
+          </g>
+          <!-- plaza -->
+          <rect x="202" y="152" width="200" height="86" rx="6" fill="#e6dfcb" stroke="#c9bfa8" stroke-width="1.5"/>
+          <circle cx="302" cy="195" r="16" fill="none" stroke="#c29a4e" stroke-width="1.6"/>
+          <circle cx="302" cy="195" r="5" fill="#c29a4e" opacity=".5"/>
+          <text x="302" y="172" text-anchor="middle" font-family="Georgia,serif" font-size="15" fill="#6b625a">Plaza Nueva</text>
+          <!-- marcador -->
+          <g transform="translate(228,186)">
+            <path d="M0 34 C0 34 -17 15 -17 2 A17 17 0 1 1 17 2 C17 15 0 34 0 34z" fill="#8f2d24"/>
+            <circle cx="0" cy="2" r="6" fill="#f4efe6"/>
+          </g>
+          <text x="228" y="240" text-anchor="middle" font-family="-apple-system,Segoe UI,Arial,sans-serif" font-size="13" font-weight="700" fill="#231f1b">Barbería Martínez</text>
+          <!-- etiquetas calles -->
+          <text x="14" y="130" font-family="-apple-system,Segoe UI,Arial,sans-serif" font-size="11" fill="#8a8073">calle</text>
+          <text x="14" y="248" font-family="-apple-system,Segoe UI,Arial,sans-serif" font-size="11" fill="#8a8073">calle</text>
+          <text x="348" y="60" font-family="Georgia,serif" font-size="13" fill="#6b625a">Centro histórico</text>
+          <!-- norte -->
+          <g transform="translate(508,316)">
+            <circle r="20" fill="#fdfbf7" stroke="#d8cfbb"/>
+            <path d="M0 -12 L5 4 L0 0 L-5 4z" fill="#8f2d24"/>
+            <text y="15" text-anchor="middle" font-family="-apple-system,Segoe UI,Arial,sans-serif" font-size="9" font-weight="700" fill="#6b625a">N</text>
+          </g>
+        </svg>
+        <div class="pie">Plano esquemático, sin escala. Solo orientativo: la barbería está en Plaza Nueva, 8.</div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="pie-grid">
+      <div>
+        <h3>Barbería Martínez</h3>
+        <p>Barbería y peluquería de caballero en el centro histórico de Caravaca de la Cruz.</p>
+        <p>Establecimiento adherido al Camino de Caravaca, con tarifa del peregrino.</p>
+      </div>
+      <div>
+        <h3>Contacto</h3>
+        <p><a href="tel:+34722245490">722 245 490</a></p>
+        <p><a href="mailto:pascual7m@gmail.com">pascual7m@gmail.com</a></p>
+        <p>Consultar horario</p>
+      </div>
+      <div>
+        <h3>Dirección</h3>
+        <p>Plaza Nueva, 8</p>
+        <p>30400 Caravaca de la Cruz</p>
+        <p>Murcia</p>
+      </div>
+    </div>
+    <p class="credito">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+</body>
+</html>
