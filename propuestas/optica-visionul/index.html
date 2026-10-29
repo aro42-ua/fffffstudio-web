@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Óptica Visionul · Nules</title>
+<meta name="description" content="Maqueta de propuesta de diseño web para Óptica Visionul, óptica y optometría en Nules (Castellón). Propuesta no oficial de FFFFFFstudio.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  :root{
+    --ink:#0c2a33;
+    --ink-soft:#3d5a63;
+    --ink-mute:#6a838b;
+    --teal:#116b7c;
+    --teal-deep:#0a4855;
+    --teal-light:#e3f0f2;
+    --amber:#c8752b;
+    --amber-light:#fbf0e4;
+    --paper:#fbfcfc;
+    --card:#ffffff;
+    --line:#dde7e9;
+    --radius:18px;
+    --maxw:1120px;
+    --bar-h:44px;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  html,body{max-width:100%;overflow-x:hidden}
+  body{
+    margin:0;
+    padding-top:var(--bar-h);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%;height:auto;display:block}
+  a{color:inherit}
+  h1,h2,h3{margin:0;line-height:1.15;letter-spacing:-0.02em;font-weight:650}
+  p{margin:0}
+
+  /* ---------- barra fija ---------- */
+  .topbar{
+    position:fixed;inset:0 0 auto 0;z-index:9999;
+    min-height:var(--bar-h);
+    display:flex;align-items:center;justify-content:center;
+    padding:9px 16px;
+    background:linear-gradient(90deg,#0a3b46,#116b7c 55%,#0a3b46);
+    color:#eaf6f8;
+    font-size:12.5px;line-height:1.35;letter-spacing:0.035em;
+    text-align:center;
+    box-shadow:0 1px 0 rgba(255,255,255,.12), 0 6px 18px rgba(12,42,51,.18);
+  }
+  .topbar span{display:inline-block;max-width:100%}
+
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--teal);
+  }
+  .eyebrow::before{content:"";width:22px;height:2px;background:currentColor;border-radius:2px;flex:0 0 auto}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(120% 95% at 88% 8%, #d7ecef 0%, rgba(215,236,239,0) 58%),
+      radial-gradient(90% 80% at 2% 100%, #f6e9da 0%, rgba(246,233,218,0) 55%),
+      linear-gradient(170deg,#ffffff 0%,#f2f8f9 100%);
+    border-bottom:1px solid var(--line);
+  }
+  .hero-art{position:absolute;inset:0;pointer-events:none;z-index:0;opacity:.85}
+  .hero-art svg{width:100%;height:100%}
+  .hero-inner{position:relative;z-index:1;padding:88px 0 92px;max-width:720px}
+  h1{
+    font-size:clamp(2.45rem,8.2vw,4.3rem);
+    margin:20px 0 0;font-weight:700;
+    letter-spacing:-0.035em;
+  }
+  h1 .thin{display:block;font-weight:350;color:var(--teal-deep);font-size:.44em;letter-spacing:.02em;margin-top:14px}
+  .lead{margin-top:24px;font-size:clamp(1.03rem,2.6vw,1.22rem);color:var(--ink-soft);max-width:36em}
+  .cta-row{margin-top:36px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:11px;
+    padding:16px 26px;border-radius:999px;
+    background:linear-gradient(135deg,var(--teal) 0%,var(--teal-deep) 100%);
+    color:#fff;text-decoration:none;font-weight:650;font-size:1.02rem;
+    letter-spacing:-0.01em;
+    box-shadow:0 10px 24px -8px rgba(10,72,85,.55);
+    transition:transform .18s ease, box-shadow .18s ease;
+    max-width:100%;
+  }
+  .btn:hover{transform:translateY(-2px);box-shadow:0 16px 30px -10px rgba(10,72,85,.6)}
+  .btn svg{flex:0 0 auto}
+  .btn-ghost{
+    display:inline-flex;align-items:center;gap:9px;
+    padding:15px 22px;border-radius:999px;
+    border:1px solid var(--line);background:#fff;color:var(--ink);
+    text-decoration:none;font-weight:600;font-size:.97rem;
+  }
+  .hero-meta{
+    margin-top:38px;padding-top:26px;border-top:1px solid var(--line);
+    display:flex;flex-wrap:wrap;gap:10px 34px;
+    font-size:.92rem;color:var(--ink-mute);
+  }
+  .hero-meta b{color:var(--ink);font-weight:600}
+
+  /* ---------- secciones ---------- */
+  section{padding:84px 0}
+  .sec-head{max-width:620px}
+  .sec-head h2{font-size:clamp(1.75rem,5vw,2.5rem);margin-top:16px}
+  .sec-head p{margin-top:16px;color:var(--ink-soft)}
+
+  .grid{display:grid;gap:18px;margin-top:46px}
+  .g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+  @media (max-width:900px){.g3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media (max-width:600px){.g3{grid-template-columns:1fr}}
+
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:30px 26px 32px;min-width:0;
+    transition:border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+  }
+  .card:hover{border-color:#bcd6da;transform:translateY(-3px);box-shadow:0 14px 34px -22px rgba(12,42,51,.5)}
+  .card h3{font-size:1.1rem;margin-top:20px}
+  .card p{margin-top:10px;font-size:.95rem;color:var(--ink-soft)}
+  .ico{
+    width:52px;height:52px;border-radius:14px;
+    background:linear-gradient(140deg,var(--teal-light),#f4fafb);
+    border:1px solid #cfe4e7;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .ico svg{width:30px;height:30px;stroke:var(--teal-deep);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+
+  /* ---------- pasos ---------- */
+  .steps{background:linear-gradient(180deg,#f2f8f9,#ffffff);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .step{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:30px 26px 32px;min-width:0;position:relative;
+  }
+  .step-n{
+    font-size:.78rem;font-weight:700;letter-spacing:.12em;
+    color:var(--amber);text-transform:uppercase;
+  }
+  .step h3{font-size:1.12rem;margin-top:12px}
+  .step p{margin-top:10px;font-size:.95rem;color:var(--ink-soft)}
+  .step-bar{height:3px;width:46px;border-radius:3px;background:linear-gradient(90deg,var(--amber),#e9b887);margin-top:22px}
+
+  /* ---------- contacto ---------- */
+  .contact-grid{display:grid;grid-template-columns:minmax(0,0.95fr) minmax(0,1.05fr);gap:28px;margin-top:46px;align-items:start}
+  @media (max-width:860px){.contact-grid{grid-template-columns:1fr}}
+  .panel{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:32px 28px;min-width:0;
+  }
+  .dl{margin:0;display:grid;gap:22px}
+  .dl dt{font-size:.74rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-mute)}
+  .dl dd{margin:7px 0 0;font-size:1.02rem;line-height:1.5}
+  .dl dd a.plain{color:var(--teal-deep);text-decoration:none;font-weight:600;border-bottom:1px solid #b9d5da}
+  .addr{font-style:normal}
+  .chip{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--amber-light);border:1px solid #efd9bf;color:#8d5317;
+    padding:7px 14px;border-radius:999px;font-size:.88rem;font-weight:600;
+  }
+  .map{
+    border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#eef5f6;min-width:0;
+  }
+  .map figcaption{
+    padding:13px 18px;font-size:.8rem;color:var(--ink-mute);
+    border-top:1px solid var(--line);background:#fff;
+  }
+  .map svg{width:100%;height:auto;display:block}
+
+  /* ---------- pie ---------- */
+  footer{
+    background:linear-gradient(160deg,#0a3b46,#0c2a33);
+    color:#cfe3e7;padding:64px 0 54px;
+  }
+  footer .fname{color:#fff;font-size:1.3rem;font-weight:650;letter-spacing:-0.02em}
+  footer .fmail{display:inline-block;margin-top:14px;color:#9fd3dc;text-decoration:none;font-size:1.02rem;border-bottom:1px solid rgba(159,211,220,.45)}
+  .fnote{
+    margin-top:36px;padding-top:24px;border-top:1px solid rgba(255,255,255,.14);
+    font-size:.86rem;color:#9bb4ba;line-height:1.6;
+  }
+  @media (max-width:600px){
+    body{font-size:16px}
+    .wrap{padding:0 18px}
+    .hero-inner{padding:62px 0 66px}
+    section{padding:62px 0}
+    .card,.step,.panel{padding:26px 22px}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar" id="topbar">
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="hero-art" aria-hidden="true">
+    <svg viewBox="0 0 1200 620" preserveAspectRatio="xMaxYMid slice">
+      <defs>
+        <linearGradient id="lg1" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#116b7c" stop-opacity=".30"/>
+          <stop offset="1" stop-color="#116b7c" stop-opacity=".04"/>
+        </linearGradient>
+        <linearGradient id="lg2" x1="0" y1="1" x2="1" y2="0">
+          <stop offset="0" stop-color="#c8752b" stop-opacity=".26"/>
+          <stop offset="1" stop-color="#c8752b" stop-opacity=".03"/>
+        </linearGradient>
+      </defs>
+      <!-- lentes abstractas -->
+      <circle cx="975" cy="232" r="168" fill="none" stroke="url(#lg1)" stroke-width="2"/>
+      <circle cx="975" cy="232" r="120" fill="url(#lg1)" opacity=".5"/>
+      <circle cx="975" cy="232" r="74" fill="none" stroke="#0a4855" stroke-opacity=".18" stroke-width="1.5"/>
+      <circle cx="1135" cy="232" r="168" fill="none" stroke="url(#lg2)" stroke-width="2"/>
+      <path d="M1143 232h-0" stroke="none"/>
+      <path d="M807 232h0" />
+      <!-- puente de gafas -->
+      <path d="M1143 198c12 10 12 22 0 32" fill="none" stroke="#0a4855" stroke-opacity=".16" stroke-width="2"/>
+      <!-- arcos finos -->
+      <circle cx="975" cy="232" r="214" fill="none" stroke="#0a4855" stroke-opacity=".07" stroke-width="1"/>
+      <circle cx="975" cy="232" r="262" fill="none" stroke="#0a4855" stroke-opacity=".05" stroke-width="1"/>
+      <!-- retícula de puntos -->
+      <g fill="#0a4855" fill-opacity=".10">
+        <circle cx="862" cy="468" r="2.5"/><circle cx="902" cy="468" r="2.5"/><circle cx="942" cy="468" r="2.5"/>
+        <circle cx="982" cy="468" r="2.5"/><circle cx="1022" cy="468" r="2.5"/><circle cx="1062" cy="468" r="2.5"/>
+        <circle cx="862" cy="508" r="2.5"/><circle cx="902" cy="508" r="2.5"/><circle cx="942" cy="508" r="2.5"/>
+        <circle cx="982" cy="508" r="2.5"/><circle cx="1022" cy="508" r="2.5"/><circle cx="1062" cy="508" r="2.5"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="wrap">
+    <div class="hero-inner">
+      <span class="eyebrow">Óptica y optometría · Nules</span>
+      <h1>Óptica Visionul
+        <span class="thin">Tu vista, revisada y atendida de cerca.</span>
+      </h1>
+      <p class="lead">
+        Óptica y optometría en el centro de Nules. Revisamos tu visión, te asesoramos
+        sobre las gafas o las lentes de contacto que mejor te encajan y te acompañamos
+        en el ajuste. Para una cita, lo más rápido es llamar.
+      </p>
+      <div class="cta-row">
+        <a class="btn" href="tel:689205548">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 4h4l2 5-2.5 1.6a12 12 0 0 0 5.9 5.9L15 14l5 2v4a1 1 0 0 1-1.1 1A17 17 0 0 1 3 5.1 1 1 0 0 1 4 4z"/>
+          </svg>
+          Llamar al 689 205 548
+        </a>
+        <a class="btn-ghost" href="#contacto">
+          Dónde estamos
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <div class="hero-meta">
+        <span><b>C/ Santa Anna, 28</b> · 12520 Nules, Castellón</span>
+        <span>Atención <b>en tienda</b>, con cita por teléfono</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= SERVICIOS ================= -->
+<section id="servicios">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Servicios</span>
+      <h2>Lo habitual de una óptica, bien explicado</h2>
+      <p>Servicios propios del sector óptico. Si tienes dudas sobre alguno de ellos o sobre tu caso concreto, lo mejor es preguntarlo por teléfono.</p>
+    </div>
+
+    <div class="grid g3">
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M1.8 12S5.4 5.5 12 5.5 22.2 12 22.2 12 18.6 18.5 12 18.5 1.8 12 1.8 12z"/><circle cx="12" cy="12" r="3.2"/></svg></div>
+        <h3>Examen visual y optometría</h3>
+        <p>Medida de la graduación y valoración de cómo ves de lejos y de cerca, para saber qué corrección necesitas.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6.3" cy="14" r="4"/><circle cx="17.7" cy="14" r="4"/><path d="M10.3 13.4c1-.8 2.4-.8 3.4 0M2.3 13.2 4 8.6h2.2M21.7 13.2 20 8.6h-2.2"/></svg></div>
+        <h3>Gafas graduadas</h3>
+        <p>Asesoramiento sobre monturas y tipos de lente según tu graduación, tu uso diario y tu forma de cara.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.2c4 0 7 3.6 7 8s-3 7.6-7 7.6-7-3.2-7-7.6 3-8 7-8z"/><path d="M8.6 9.4c1.2-1.3 2.6-1.8 4-1.6"/></svg></div>
+        <h3>Lentes de contacto</h3>
+        <p>Opciones de lentes de contacto y pautas de uso, mantenimiento e higiene para llevarlas con comodidad.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9h18M4.6 9c-.5 3.1.6 6 3.1 6 2.2 0 3.3-2 3.6-6M19.4 9c.5 3.1-.6 6-3.1 6-2.2 0-3.3-2-3.6-6M11.3 9h1.4M3 9 4.8 6h14.4L21 9"/></svg></div>
+        <h3>Gafas de sol</h3>
+        <p>Gafas de sol con y sin graduación, con atención a la protección frente a la radiación solar.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7.5" r="3.4"/><path d="M5.2 20.5c.5-3.6 3.3-6 6.8-6s6.3 2.4 6.8 6"/><path d="M9.6 7.3h.01M14.4 7.3h.01" stroke-width="2.2"/></svg></div>
+        <h3>Revisión visual infantil</h3>
+        <p>Revisiones adaptadas a los más pequeños, para detectar a tiempo si necesitan corrección o seguimiento.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5h10a1.5 1.5 0 0 1 1.5 1.5v12A1.5 1.5 0 0 1 17 19.5H7A1.5 1.5 0 0 1 5.5 18V6A1.5 1.5 0 0 1 7 4.5z"/><path d="M8.8 9h6.4M8.8 12.3h6.4M8.8 15.6h3.6"/></svg></div>
+        <h3>Ajuste y mantenimiento</h3>
+        <p>Ajuste de la montura, revisión del centrado y pequeñas puestas a punto para que las gafas sienten bien.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRIMERA VISITA ================= -->
+<section class="steps" id="primera-visita">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Tu primera visita</span>
+      <h2>Tres pasos, sin complicaciones</h2>
+      <p>Así suele ser el recorrido desde que llamas hasta que te llevas tus gafas puestas.</p>
+    </div>
+
+    <div class="grid g3">
+      <article class="step">
+        <span class="step-n">Paso 01</span>
+        <h3>Pide cita por teléfono</h3>
+        <p>Llamas, cuentas brevemente qué necesitas y se acuerda un momento para atenderte con calma.</p>
+        <div class="step-bar"></div>
+      </article>
+      <article class="step">
+        <span class="step-n">Paso 02</span>
+        <h3>Revisión y asesoramiento</h3>
+        <p>Se revisa tu visión y se comentan contigo las opciones de lentes o monturas que encajan con tu caso.</p>
+        <div class="step-bar"></div>
+      </article>
+      <article class="step">
+        <span class="step-n">Paso 03</span>
+        <h3>Recogida y ajuste</h3>
+        <p>Cuando están listas, pasas a recogerlas y se ajustan en el momento para que queden cómodas.</p>
+        <div class="step-bar"></div>
+      </article>
+    </div>
+
+    <div class="cta-row" style="margin-top:38px">
+      <a class="btn" href="tel:689205548">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 4h4l2 5-2.5 1.6a12 12 0 0 0 5.9 5.9L15 14l5 2v4a1 1 0 0 1-1.1 1A17 17 0 0 1 3 5.1 1 1 0 0 1 4 4z"/>
+        </svg>
+        Pedir cita: 689 205 548
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACTO ================= -->
+<section id="contacto">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Contacto</span>
+      <h2>En el centro de Nules</h2>
+      <p>Estamos en la calle Santa Anna. Para cualquier consulta o para concertar una visita, el teléfono es la vía más directa.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="panel">
+        <dl class="dl">
+          <div>
+            <dt>Teléfono</dt>
+            <dd>
+              <a class="btn" href="tel:689205548" style="margin-top:6px">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 4h4l2 5-2.5 1.6a12 12 0 0 0 5.9 5.9L15 14l5 2v4a1 1 0 0 1-1.1 1A17 17 0 0 1 3 5.1 1 1 0 0 1 4 4z"/>
+                </svg>
+                689 205 548
+              </a>
+            </dd>
+          </div>
+          <div>
+            <dt>Dirección</dt>
+            <dd><address class="addr">C/ Santa Anna, 28<br>12520 Nules, Castellón</address></dd>
+          </div>
+          <div>
+            <dt>Horario</dt>
+            <dd><span class="chip">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3.2 2"/></svg>
+              Consultar horario
+            </span></dd>
+          </div>
+          <div>
+            <dt>Correo electrónico</dt>
+            <dd><a class="plain" href="mailto:visionul@hotmail.com">visionul@hotmail.com</a></dd>
+          </div>
+        </dl>
+      </div>
+
+      <figure class="map" style="margin:0">
+        <svg viewBox="0 0 560 400" role="img" aria-label="Esquema dibujado de la ubicación en la calle Santa Anna, 28, Nules. No es un mapa real.">
+          <defs>
+            <linearGradient id="mapbg" x1="0" y1="0" x2="0.4" y2="1">
+              <stop offset="0" stop-color="#f3f9fa"/>
+              <stop offset="1" stop-color="#e6f1f3"/>
+            </linearGradient>
+            <linearGradient id="pinG" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#d4832f"/>
+              <stop offset="1" stop-color="#b3651d"/>
+            </linearGradient>
+          </defs>
+
+          <rect width="560" height="400" fill="url(#mapbg)"/>
+
+          <!-- manzanas -->
+          <g fill="#ffffff" stroke="#d6e5e8" stroke-width="1.5">
+            <rect x="34" y="34" width="180" height="116" rx="7"/>
+            <rect x="256" y="34" width="134" height="116" rx="7"/>
+            <rect x="432" y="34" width="94" height="116" rx="7"/>
+            <rect x="34" y="250" width="138" height="116" rx="7"/>
+            <rect x="214" y="250" width="176" height="116" rx="7"/>
+            <rect x="432" y="250" width="94" height="116" rx="7"/>
+            <rect x="34" y="192" width="180" height="22" rx="5"/>
+            <rect x="432" y="192" width="94" height="22" rx="5"/>
+          </g>
+
+          <!-- plaza / zona verde -->
+          <g>
+            <rect x="256" y="178" width="134" height="50" rx="9" fill="#e2efe4" stroke="#c9e0cd" stroke-width="1.5"/>
+            <circle cx="286" cy="203" r="7" fill="#bcd9c2"/>
+            <circle cx="312" cy="196" r="5" fill="#bcd9c2"/>
+            <circle cx="358" cy="206" r="6" fill="#bcd9c2"/>
+          </g>
+
+          <!-- calles: horizontal principal (Santa Anna) -->
+          <g stroke-linecap="round">
+            <line x1="0" y1="232" x2="560" y2="232" stroke="#cfe0e3" stroke-width="30"/>
+            <line x1="0" y1="232" x2="560" y2="232" stroke="#ffffff" stroke-width="24"/>
+            <line x1="0" y1="232" x2="560" y2="232" stroke="#b9ced2" stroke-width="1.6" stroke-dasharray="13 12"/>
+            <!-- secundarias -->
+            <line x1="234" y1="0" x2="234" y2="400" stroke="#dde9eb" stroke-width="20"/>
+            <line x1="234" y1="0" x2="234" y2="400" stroke="#ffffff" stroke-width="14"/>
+            <line x1="411" y1="0" x2="411" y2="400" stroke="#dde9eb" stroke-width="20"/>
+            <line x1="411" y1="0" x2="411" y2="400" stroke="#ffffff" stroke-width="14"/>
+            <line x1="0" y1="170" x2="560" y2="170" stroke="#e4eff0" stroke-width="16"/>
+            <line x1="0" y1="170" x2="560" y2="170" stroke="#ffffff" stroke-width="10"/>
+          </g>
+
+          <!-- etiqueta de la calle -->
+          <g>
+            <rect x="44" y="214" width="148" height="30" rx="15" fill="#0c2a33" opacity=".92"/>
+            <text x="118" y="234" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="14" font-weight="600" fill="#eaf6f8">C/ Santa Anna</text>
+          </g>
+
+          <!-- marcador -->
+          <g>
+            <ellipse cx="300" cy="256" rx="24" ry="7" fill="#0c2a33" opacity=".12"/>
+            <circle cx="300" cy="222" r="34" fill="#c8752b" opacity=".13"/>
+            <path d="M300 186a22 22 0 0 0-22 22c0 15.5 22 42 22 42s22-26.5 22-42a22 22 0 0 0-22-22z" fill="url(#pinG)"/>
+            <circle cx="300" cy="208" r="8.4" fill="#fff"/>
+            <rect x="242" y="270" width="116" height="30" rx="8" fill="#ffffff" stroke="#e3d0b7" stroke-width="1.5"/>
+            <text x="300" y="290" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="13.5" font-weight="700" fill="#8d5317">Nº 28</text>
+          </g>
+
+          <!-- rosa de los vientos esquemática -->
+          <g transform="translate(500,352)" opacity=".55">
+            <circle r="19" fill="#fff" stroke="#d6e5e8" stroke-width="1.5"/>
+            <path d="M0 -12 4 0 0 12 -4 0z" fill="#116b7c"/>
+            <text x="0" y="-22" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="10" font-weight="700" fill="#6a838b">N</text>
+          </g>
+        </svg>
+        <figcaption>Esquema dibujado de la ubicación · no es un mapa real ni a escala</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PIE ================= -->
+<footer>
+  <div class="wrap">
+    <div class="fname">Óptica Visionul</div>
+    <p style="margin-top:8px;font-size:.95rem;color:#a9c6cc">C/ Santa Anna, 28 · 12520 Nules, Castellón · 689 205 548</p>
+    <a class="fmail" href="mailto:visionul@hotmail.com">visionul@hotmail.com</a>
+    <p class="fnote">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var bar = document.getElementById('topbar');
+    function fit() {
+      document.documentElement.style.setProperty('--bar-h', bar.offsetHeight + 'px');
+    }
+    fit();
+    window.addEventListener('resize', fit);
+    window.addEventListener('orientationchange', fit);
+    if (document.fonts && document.fonts.ready) { document.fonts.ready.then(fit); }
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,799 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Casa de aldea La Venta Los Probes — Llanes, Asturias</title>
+<meta name="description" content="Maqueta de propuesta de rediseño para la Casa de aldea La Venta Los Probes, en Puente Nuevo, Llanes (Asturias). Propuesta no oficial de FFFFFFstudio.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --ink:#19211c;
+  --ink-soft:#44524a;
+  --ink-faint:#718176;
+  --deep:#1d3328;
+  --moss:#3e5a46;
+  --moss-lt:#6d8b74;
+  --sage:#cfdac9;
+  --stone:#ded5c6;
+  --stone-dk:#bfb3a0;
+  --cream:#f6f3ec;
+  --cream-2:#efeae0;
+  --paper:#fdfcf9;
+  --clay:#a85c38;
+  --clay-dk:#8c4a2b;
+  --line:rgba(25,33,28,.13);
+  --line-2:rgba(25,33,28,.08);
+  --bar-h:44px;
+  --r-s:6px;
+  --r-m:14px;
+  --r-l:26px;
+  --shadow:0 1px 2px rgba(25,33,28,.04), 0 10px 30px -14px rgba(25,33,28,.16);
+  --serif:ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, "Times New Roman", serif;
+  --sans:system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  padding-top:var(--bar-h);
+  background:var(--cream);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:17px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img,svg{max-width:100%;height:auto}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:600;line-height:1.14;letter-spacing:-.012em;margin:0;text-wrap:balance}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:2.5px solid var(--clay);outline-offset:3px;border-radius:3px}
+
+/* ============ LAYOUT ============ */
+.wrap{width:100%;max-width:1140px;margin:0 auto;padding:0 clamp(20px,5vw,40px)}
+.sec{padding:clamp(60px,8.5vw,112px) 0;position:relative}
+.sec--tight{padding:clamp(48px,6vw,80px) 0}
+
+/* ============ FIXED BAR ============ */
+.bar{
+  position:fixed;inset:0 0 auto 0;z-index:9999;
+  height:var(--bar-h);
+  display:flex;align-items:center;justify-content:center;
+  background:var(--deep);
+  color:#e8ece7;
+  border-bottom:1px solid rgba(255,255,255,.1);
+}
+.bar span{
+  display:block;
+  width:100%;
+  padding:0 14px;
+  text-align:center;
+  font-size:11.5px;
+  line-height:1.3;
+  letter-spacing:.055em;
+  text-transform:uppercase;
+  font-weight:500;
+  overflow-wrap:break-word;
+}
+.bar b{font-weight:700;color:#fff}
+
+/* ============ ATOMS ============ */
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:11.5px;letter-spacing:.17em;text-transform:uppercase;
+  font-weight:650;color:var(--moss);
+  margin:0 0 20px;
+}
+.eyebrow::before{content:"";width:26px;height:1.5px;background:var(--moss-lt);flex:none}
+.eyebrow--on-dark{color:var(--sage)}
+.eyebrow--on-dark::before{background:rgba(207,218,201,.55)}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:11px;
+  padding:16px 30px;
+  border-radius:999px;
+  font-size:16.5px;font-weight:650;letter-spacing:.005em;
+  text-decoration:none;
+  background:var(--clay);color:#fff;
+  border:1px solid var(--clay-dk);
+  box-shadow:0 1px 0 rgba(255,255,255,.22) inset, 0 8px 22px -12px rgba(140,74,43,.75);
+  transition:background .18s ease, transform .18s ease;
+  max-width:100%;
+}
+.btn:hover{background:var(--clay-dk);transform:translateY(-1px)}
+.btn svg{flex:none}
+.btn--ghost{
+  background:transparent;color:var(--deep);
+  border:1.5px solid rgba(29,51,40,.3);
+  box-shadow:none;font-weight:600;
+}
+.btn--ghost:hover{background:rgba(29,51,40,.06);color:var(--deep)}
+.btn--on-dark.btn--ghost{color:#eef1ec;border-color:rgba(238,241,236,.38)}
+.btn--on-dark.btn--ghost:hover{background:rgba(255,255,255,.1);color:#fff}
+
+.lede{font-size:clamp(17px,1.9vw,19.5px);color:var(--ink-soft);line-height:1.62;max-width:62ch}
+.note{
+  display:flex;gap:11px;align-items:flex-start;
+  font-size:14px;line-height:1.55;color:var(--ink-faint);
+}
+.note svg{flex:none;margin-top:3px}
+
+.tag{
+  display:inline-block;
+  font-size:11px;letter-spacing:.11em;text-transform:uppercase;font-weight:700;
+  color:var(--clay-dk);
+  background:rgba(168,92,56,.1);
+  border:1px solid rgba(168,92,56,.22);
+  padding:5px 11px;border-radius:999px;
+  white-space:nowrap;
+}
+
+/* ============ HERO ============ */
+.hero{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(120% 90% at 88% -10%, rgba(109,139,116,.5) 0%, rgba(109,139,116,0) 58%),
+    radial-gradient(90% 70% at 5% 8%, rgba(222,213,198,.75) 0%, rgba(222,213,198,0) 60%),
+    linear-gradient(176deg, #fdfcf9 0%, #f3f0e7 44%, #e7e9df 100%);
+}
+.hero__grain{
+  position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background-image:
+    repeating-linear-gradient(90deg, rgba(25,33,28,.028) 0 1px, transparent 1px 72px);
+}
+.hero__hills{position:absolute;left:0;right:0;bottom:-1px;width:100%;display:block;pointer-events:none}
+.hero__inner{position:relative;z-index:2;padding:clamp(56px,8vw,104px) 0 clamp(150px,19vw,230px)}
+.hero__place{
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:650;
+  color:var(--moss);margin-bottom:24px;
+}
+.hero__place .dot{width:5px;height:5px;border-radius:50%;background:var(--clay);flex:none}
+.hero h1{
+  font-size:clamp(38px,8.2vw,80px);
+  letter-spacing:-.025em;
+  max-width:17ch;
+  margin:0 0 26px;
+}
+.hero h1 em{
+  font-style:normal;display:block;color:var(--moss);
+  font-size:.56em;letter-spacing:-.01em;margin-top:.12em;font-weight:500;
+}
+.hero__lede{font-size:clamp(17.5px,2.2vw,22px);color:var(--ink-soft);max-width:54ch;line-height:1.56}
+.hero__cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:38px}
+.hero__cta-note{font-size:14px;color:var(--ink-faint);max-width:30ch}
+
+/* ============ SECTION HEAD ============ */
+.head{max-width:66ch;margin-bottom:clamp(36px,4.4vw,56px)}
+.head h2{font-size:clamp(28px,4.3vw,44px);margin-bottom:18px}
+.head--center{margin-left:auto;margin-right:auto;text-align:center}
+.head--center .eyebrow{justify-content:center}
+
+/* ============ BRIEF BANNER ============ */
+.brief{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-left:4px solid var(--moss);
+  border-radius:var(--r-m);
+  padding:clamp(22px,3vw,32px);
+  box-shadow:var(--shadow);
+  display:grid;
+  gap:16px;
+}
+.brief h3{font-size:clamp(19px,2.3vw,23px)}
+.brief p{font-size:15.5px;color:var(--ink-soft);line-height:1.62;max-width:72ch}
+.brief ul{margin:0;padding-left:1.15em;font-size:15px;color:var(--ink-soft);display:grid;gap:7px}
+.brief li{padding-left:2px}
+
+/* ============ BLOCKS GRID (contenido a rellenar) ============ */
+.blocks{display:grid;gap:clamp(18px,2.4vw,26px);grid-template-columns:repeat(2,minmax(0,1fr))}
+.block{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:var(--r-l);
+  padding:clamp(22px,2.8vw,32px);
+  display:flex;flex-direction:column;gap:18px;
+  box-shadow:var(--shadow);
+  min-width:0;
+}
+.block--wide{grid-column:1 / -1}
+.block__top{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.block__num{
+  font-family:var(--serif);font-size:13px;font-weight:600;
+  color:var(--moss-lt);letter-spacing:.1em;
+}
+.block h3{font-size:clamp(21px,2.6vw,27px)}
+.block p{font-size:15.5px;color:var(--ink-soft);line-height:1.63}
+
+/* marco de foto vacío (dibujado, sin imagen) */
+.frame{
+  position:relative;
+  border-radius:var(--r-m);
+  border:1.5px dashed var(--stone-dk);
+  background:
+    linear-gradient(135deg, rgba(109,139,116,.1), rgba(222,213,198,.3));
+  aspect-ratio:16/10;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+.frame__label{
+  position:relative;z-index:2;
+  font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;font-weight:700;
+  color:var(--moss);
+  background:rgba(253,252,249,.9);
+  border:1px solid var(--line);
+  padding:7px 13px;border-radius:999px;
+  text-align:center;max-width:88%;
+}
+.frame svg{position:absolute;inset:0;width:100%;height:100%;opacity:.5}
+.frame--tall{aspect-ratio:4/5}
+
+/* líneas de texto marcadas como pendientes */
+.skel{display:grid;gap:9px;margin-top:2px}
+.skel i{display:block;height:9px;border-radius:999px;background:linear-gradient(90deg,var(--cream-2),var(--stone))}
+.skel i:nth-child(1){width:100%}
+.skel i:nth-child(2){width:92%}
+.skel i:nth-child(3){width:68%}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{
+  font-size:13px;font-weight:550;color:var(--ink-soft);
+  background:var(--cream-2);border:1px solid var(--line-2);
+  padding:6px 13px;border-radius:999px;
+}
+
+/* ============ PASOS ============ */
+.band{background:var(--deep);color:#eef1ec}
+.band h2,.band h3{color:#fff}
+.band .lede{color:rgba(238,241,236,.78)}
+.steps{display:grid;gap:clamp(18px,2.4vw,24px);grid-template-columns:repeat(3,minmax(0,1fr));counter-reset:s}
+.step{
+  background:rgba(255,255,255,.055);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:var(--r-l);
+  padding:clamp(24px,3vw,34px);
+  display:flex;flex-direction:column;gap:14px;
+  min-width:0;
+}
+.step__n{
+  width:42px;height:42px;border-radius:50%;flex:none;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-size:19px;font-weight:600;
+  background:var(--sage);color:var(--deep);
+}
+.step h3{font-size:20px}
+.step p{font-size:15.5px;color:rgba(238,241,236,.76);line-height:1.6}
+.band__foot{
+  margin-top:clamp(30px,4vw,44px);
+  padding-top:26px;border-top:1px solid rgba(255,255,255,.14);
+  display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between;
+}
+.band__foot p{font-size:15px;color:rgba(238,241,236,.72);max-width:48ch}
+
+/* ============ CONTACTO ============ */
+.contact{display:grid;gap:clamp(24px,3.4vw,40px);grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);align-items:start}
+.card{
+  background:var(--paper);border:1px solid var(--line);
+  border-radius:var(--r-l);padding:clamp(24px,3vw,34px);
+  box-shadow:var(--shadow);min-width:0;
+}
+.dl{display:grid;gap:22px;margin:0}
+.dl__row{display:grid;gap:5px}
+.dl dt{
+  font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;
+  font-weight:700;color:var(--moss);
+}
+.dl dd{margin:0;font-size:16.5px;color:var(--ink);line-height:1.5;overflow-wrap:break-word}
+.dl dd a{color:var(--clay-dk);text-decoration:none;border-bottom:1.5px solid rgba(168,92,56,.35);font-weight:600}
+.dl dd a:hover{border-bottom-color:var(--clay-dk)}
+.dl dd small{display:block;font-size:14px;color:var(--ink-faint);margin-top:4px}
+.hr{height:1px;background:var(--line);border:0;margin:26px 0}
+
+.map{
+  background:var(--paper);border:1px solid var(--line);
+  border-radius:var(--r-l);overflow:hidden;box-shadow:var(--shadow);min-width:0;
+}
+.map__svg{display:block;width:100%;height:auto;background:#f1efe6}
+.map__cap{
+  display:flex;gap:10px;align-items:flex-start;
+  padding:16px clamp(18px,2.4vw,24px) 20px;
+  border-top:1px solid var(--line-2);
+  font-size:13.5px;color:var(--ink-faint);line-height:1.5;
+}
+.map__cap svg{flex:none;margin-top:2px}
+
+/* ============ FOOTER ============ */
+.foot{background:#141b17;color:#cfd6cf;padding:clamp(48px,6vw,72px) 0 clamp(34px,4vw,46px)}
+.foot__grid{display:grid;gap:30px;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);align-items:start}
+.foot h3{font-family:var(--serif);font-size:clamp(20px,2.4vw,26px);color:#fff;margin-bottom:12px}
+.foot p{font-size:15px;color:rgba(207,214,207,.72);line-height:1.6;max-width:46ch}
+.foot a{color:#f0f3ee;text-decoration:none;border-bottom:1px solid rgba(240,243,238,.3);overflow-wrap:break-word}
+.foot a:hover{border-bottom-color:#f0f3ee}
+.foot__mail{font-size:clamp(17px,2.3vw,22px);font-family:var(--serif)}
+.foot__rule{height:1px;background:rgba(255,255,255,.13);border:0;margin:clamp(34px,4vw,46px) 0 24px}
+.foot__sig{
+  font-size:13.5px;color:rgba(207,214,207,.62);line-height:1.6;
+  letter-spacing:.01em;overflow-wrap:break-word;
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:900px){
+  .steps{grid-template-columns:1fr}
+  .contact{grid-template-columns:1fr}
+  .foot__grid{grid-template-columns:1fr}
+}
+@media (max-width:680px){
+  :root{--bar-h:56px}
+  body{font-size:16.5px}
+  .blocks{grid-template-columns:1fr}
+  .hero__inner{padding-bottom:clamp(120px,32vw,180px)}
+  .hero__cta{gap:12px}
+  .btn{width:100%;padding:15px 22px}
+  .hero__cta-note{max-width:none}
+  .band__foot{flex-direction:column;align-items:flex-start}
+  .frame--tall{aspect-ratio:16/11}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<!-- a) BARRA FIJA -->
+<div class="bar" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<!-- b) HERO -->
+<header class="hero">
+  <div class="hero__grain" aria-hidden="true"></div>
+  <div class="wrap hero__inner">
+    <p class="hero__place">
+      <span class="dot" aria-hidden="true"></span>
+      Puente Nuevo · Llanes · Asturias
+    </p>
+    <h1>Casa de aldea La&nbsp;Venta Los&nbsp;Probes<em>Alojamiento rural en el concejo de Llanes</em></h1>
+    <p class="hero__lede">
+      Una casa de aldea en Puente Nuevo, en el concejo de Llanes, entre la costa
+      asturiana y la montaña. Se reserva hablando directamente con la casa.
+    </p>
+    <div class="hero__cta">
+      <a class="btn" href="tel:630813572">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16.9v2.6a2 2 0 0 1-2.2 2 19.3 19.3 0 0 1-8.4-3 19 19 0 0 1-5.8-5.8 19.3 19.3 0 0 1-3-8.5A2 2 0 0 1 3.6 2h2.6a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.3 9.7a15.5 15.5 0 0 0 5.8 5.8l1.1-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+        Llamar al 630 81 35 72
+      </a>
+      <a class="btn btn--ghost" href="#reservar">Cómo reservar</a>
+    </div>
+    <p class="hero__cta-note" style="margin-top:20px">
+      Reserva directa, sin intermediarios ni comisiones de portales.
+    </p>
+  </div>
+  <!-- paisaje abstracto dibujado -->
+  <svg class="hero__hills" viewBox="0 0 1440 260" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="h1" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#b9c7b7"/><stop offset="1" stop-color="#a3b5a2"/>
+      </linearGradient>
+      <linearGradient id="h2" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#7d9880"/><stop offset="1" stop-color="#63806a"/>
+      </linearGradient>
+      <linearGradient id="h3" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#3f5c48"/><stop offset="1" stop-color="#2b4334"/>
+      </linearGradient>
+    </defs>
+    <path fill="url(#h1)" d="M0 148c130-40 220 12 330-6s180-66 300-54 180 74 300 58 310-60 510-26v140H0Z"/>
+    <path fill="url(#h2)" d="M0 196c160-34 250 10 390-8s240-54 390-36 250 62 400 42 200-32 260-22v98H0Z"/>
+    <path fill="url(#h3)" d="M0 238c180-26 300 6 470-6s280-34 450-16 330 34 520 20v84H0Z"/>
+    <g stroke="#2b4334" stroke-width="2.4" stroke-linecap="round" opacity=".75">
+      <path d="M232 238v-26M232 220l-9-9M232 224l9-9"/>
+      <path d="M1118 232v-22M1118 216l-8-8M1118 220l8-7"/>
+    </g>
+  </svg>
+</header>
+
+<main>
+
+<!-- c) SECCIONES PREPARADAS PARA RELLENAR -->
+<section class="sec" id="estructura" aria-labelledby="t-estructura">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Estructura propuesta</p>
+      <h2 id="t-estructura">Los apartados de la web, listos para que los rellene la casa</h2>
+      <p class="lede">
+        Esta maqueta define la estructura, la jerarquía y el tono. Los textos definitivos
+        y las fotografías los aportaría la casa: aquí solo quedan reservados los huecos,
+        cada uno con su sitio, su medida y su indicación de qué va dentro.
+      </p>
+    </div>
+
+    <div class="brief" style="margin-bottom:clamp(30px,4vw,44px)">
+      <h3>Qué es esto y qué no es</h3>
+      <p>
+        Es una propuesta de diseño enviada por iniciativa propia, sin encargo previo. No es la
+        web oficial de la casa y no sustituye a ninguna información publicada por el negocio.
+      </p>
+      <ul>
+        <li><strong>No se ha inventado nada</strong> sobre la casa: ni habitaciones, ni capacidad, ni servicios, ni tarifas, ni temporadas, ni distintivos.</li>
+        <li>Los únicos datos reales que aparecen son el nombre, la dirección, el teléfono, el WhatsApp y el correo electrónico públicos.</li>
+        <li>Los bloques marcados como pendientes se rellenarían con el contenido que facilite la propia casa.</li>
+      </ul>
+    </div>
+
+    <div class="blocks">
+
+      <!-- LA CASA -->
+      <article class="block block--wide">
+        <div class="block__top">
+          <div>
+            <p class="block__num">01</p>
+            <h3>La casa</h3>
+          </div>
+          <span class="tag">Texto y fotos a aportar</span>
+        </div>
+        <p>
+          Apartado de presentación: qué es la casa, cómo es por dentro y por fuera, y qué
+          encuentra quien llega. Lo escribiría la casa con sus propias palabras; el diseño
+          reserva un texto de presentación y una galería.
+        </p>
+        <div class="skel" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div style="display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr))">
+          <div class="frame">
+            <svg viewBox="0 0 160 100" preserveAspectRatio="none" aria-hidden="true">
+              <rect width="160" height="100" fill="none"/>
+              <path d="M20 72h120" stroke="#6d8b74" stroke-width="1.4"/>
+              <path d="M44 72V42l26-18 26 18v30" stroke="#3e5a46" stroke-width="1.8" fill="none"/>
+              <path d="M38 44l32-22 32 22" stroke="#3e5a46" stroke-width="1.8" fill="none"/>
+              <rect x="62" y="54" width="16" height="18" stroke="#6d8b74" stroke-width="1.3" fill="none"/>
+            </svg>
+            <span class="frame__label">Foto de la casa</span>
+          </div>
+          <div class="frame">
+            <svg viewBox="0 0 160 100" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M18 78h124" stroke="#6d8b74" stroke-width="1.4"/>
+              <circle cx="56" cy="50" r="18" stroke="#3e5a46" stroke-width="1.6" fill="none"/>
+              <path d="M92 78V46l20-12 20 12v32" stroke="#6d8b74" stroke-width="1.5" fill="none"/>
+            </svg>
+            <span class="frame__label">Interior</span>
+          </div>
+          <div class="frame">
+            <svg viewBox="0 0 160 100" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M10 70c22-14 40 6 62-4s44-18 78-6" stroke="#3e5a46" stroke-width="1.8" fill="none"/>
+              <path d="M10 82c30-8 54 6 74-2s46-10 66-2" stroke="#6d8b74" stroke-width="1.5" fill="none"/>
+            </svg>
+            <span class="frame__label">Alrededores</span>
+          </div>
+        </div>
+        <p class="note">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01"/></svg>
+          Los marcos son huecos dibujados, no fotografías: esta maqueta no incluye ninguna imagen de la casa.
+        </p>
+      </article>
+
+      <!-- LAS HABITACIONES -->
+      <article class="block">
+        <div class="block__top">
+          <div>
+            <p class="block__num">02</p>
+            <h3>Las habitaciones</h3>
+          </div>
+          <span class="tag">Pendiente</span>
+        </div>
+        <p>
+          Una ficha por habitación o espacio, con su nombre, su foto y su descripción.
+          El número de habitaciones, la capacidad y lo que incluye cada una los indicaría
+          la casa: la maqueta no supone ninguna cifra.
+        </p>
+        <div class="frame frame--tall">
+          <svg viewBox="0 0 120 150" preserveAspectRatio="none" aria-hidden="true">
+            <rect x="22" y="70" width="76" height="34" rx="4" stroke="#3e5a46" stroke-width="1.6" fill="none"/>
+            <path d="M22 84h76" stroke="#6d8b74" stroke-width="1.3"/>
+            <rect x="30" y="58" width="24" height="12" rx="4" stroke="#6d8b74" stroke-width="1.3" fill="none"/>
+            <path d="M14 104h92" stroke="#6d8b74" stroke-width="1.4"/>
+            <rect x="74" y="26" width="26" height="24" stroke="#6d8b74" stroke-width="1.3" fill="none"/>
+          </svg>
+          <span class="frame__label">Ficha de habitación</span>
+        </div>
+        <div class="skel" aria-hidden="true"><i></i><i></i><i></i></div>
+      </article>
+
+      <!-- EL ENTORNO -->
+      <article class="block">
+        <div class="block__top">
+          <div>
+            <p class="block__num">03</p>
+            <h3>El entorno</h3>
+          </div>
+          <span class="tag">Pendiente</span>
+        </div>
+        <p>
+          Espacio para que la casa cuente qué hay alrededor y qué recomienda a quien se
+          aloja. Los lugares, las distancias y las rutas concretas los elegiría la casa;
+          aquí queda la estructura preparada para recibirlos.
+        </p>
+        <div class="frame frame--tall">
+          <svg viewBox="0 0 120 150" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M8 112c26-20 44 8 64-8s30-26 42-14" stroke="#3e5a46" stroke-width="1.8" fill="none"/>
+            <path d="M8 126c28-10 48 8 60-2s36-12 46-4" stroke="#6d8b74" stroke-width="1.5" fill="none"/>
+            <circle cx="88" cy="38" r="12" stroke="#6d8b74" stroke-width="1.4" fill="none"/>
+            <path d="M28 92V66M28 76l-8-8M28 80l8-7" stroke="#3e5a46" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+          <span class="frame__label">Lugares del entorno</span>
+        </div>
+        <div class="skel" aria-hidden="true"><i></i><i></i><i></i></div>
+      </article>
+
+      <!-- TARIFAS Y TEMPORADAS -->
+      <article class="block block--wide">
+        <div class="block__top">
+          <div>
+            <p class="block__num">04</p>
+            <h3>Tarifas y temporadas</h3>
+          </div>
+          <span class="tag">Precios a fijar por la casa</span>
+        </div>
+        <p>
+          Tabla preparada para los precios y los periodos que decida la casa, con sus
+          condiciones y su política de reserva. <strong>La maqueta no incluye ninguna cifra,
+          ningún periodo ni ninguna condición</strong>: todo ello se incorporaría tal y como
+          lo facilite el negocio.
+        </p>
+        <div style="display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr))">
+          <div style="border:1.5px dashed var(--stone-dk);border-radius:var(--r-m);padding:20px;background:var(--cream-2)">
+            <p style="font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;font-weight:700;color:var(--moss);margin-bottom:12px">Periodo</p>
+            <div class="skel" aria-hidden="true"><i></i><i></i></div>
+          </div>
+          <div style="border:1.5px dashed var(--stone-dk);border-radius:var(--r-m);padding:20px;background:var(--cream-2)">
+            <p style="font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;font-weight:700;color:var(--moss);margin-bottom:12px">Precio</p>
+            <div class="skel" aria-hidden="true"><i></i><i></i></div>
+          </div>
+          <div style="border:1.5px dashed var(--stone-dk);border-radius:var(--r-m);padding:20px;background:var(--cream-2)">
+            <p style="font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;font-weight:700;color:var(--moss);margin-bottom:12px">Condiciones</p>
+            <div class="skel" aria-hidden="true"><i></i><i></i></div>
+          </div>
+        </div>
+        <p class="note">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01"/></svg>
+          Para consultar precios y disponibilidad, la vía es el teléfono o el WhatsApp de la casa.
+        </p>
+      </article>
+
+      <!-- CÓMO LLEGAR -->
+      <article class="block block--wide">
+        <div class="block__top">
+          <div>
+            <p class="block__num">05</p>
+            <h3>Cómo llegar</h3>
+          </div>
+          <span class="tag">Indicaciones a redactar</span>
+        </div>
+        <p>
+          La dirección es un dato real y ya figura en la web. Las indicaciones de llegada
+          —por dónde entrar, dónde aparcar, qué referencia buscar— las redactaría la casa,
+          que es quien las conoce. Debajo, un esquema dibujado de la ubicación.
+        </p>
+        <div class="chips">
+          <span class="chip">Dirección: dato verificado</span>
+          <span class="chip">Indicaciones de acceso: a redactar</span>
+          <span class="chip">Transporte y aparcamiento: a redactar</span>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- d) CÓMO RESERVAR -->
+<section class="sec band" id="reservar" aria-labelledby="t-reservar">
+  <div class="wrap">
+    <div class="head head--center">
+      <p class="eyebrow eyebrow--on-dark">Reserva directa</p>
+      <h2 id="t-reservar">Cómo reservar, en tres pasos</h2>
+      <p class="lede" style="margin:0 auto">
+        Sin formularios largos ni intermediarios: se habla con la casa y se confirma con la casa.
+      </p>
+    </div>
+    <div class="steps">
+      <article class="step">
+        <span class="step__n" aria-hidden="true">1</span>
+        <h3>Llamar o escribir</h3>
+        <p>
+          Una llamada al teléfono de la casa o un mensaje de WhatsApp. Basta con decir
+          qué fechas se tienen en mente.
+        </p>
+      </article>
+      <article class="step">
+        <span class="step__n" aria-hidden="true">2</span>
+        <h3>Confirmar fechas y personas</h3>
+        <p>
+          Se acuerdan las fechas y el número de personas, y la casa indica la
+          disponibilidad y las condiciones que aplican.
+        </p>
+      </article>
+      <article class="step">
+        <span class="step__n" aria-hidden="true">3</span>
+        <h3>Confirmación directa con la casa</h3>
+        <p>
+          La reserva queda confirmada directamente con la casa, sin intermediarios
+          ni portales por medio.
+        </p>
+      </article>
+    </div>
+    <div class="band__foot">
+      <p>
+        Tres pasos descritos de forma genérica. Las condiciones concretas de reserva,
+        señal o cancelación las establece la casa.
+      </p>
+      <a class="btn" href="tel:630813572">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16.9v2.6a2 2 0 0 1-2.2 2 19.3 19.3 0 0 1-8.4-3 19 19 0 0 1-5.8-5.8 19.3 19.3 0 0 1-3-8.5A2 2 0 0 1 3.6 2h2.6a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.3 9.7a15.5 15.5 0 0 0 5.8 5.8l1.1-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+        Llamar al 630 81 35 72
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- e) CONTACTO -->
+<section class="sec" id="contacto" aria-labelledby="t-contacto">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Contacto</p>
+      <h2 id="t-contacto">Hablar con la casa</h2>
+      <p class="lede">Datos de contacto y ubicación reales, tal y como los publica el negocio.</p>
+    </div>
+
+    <div class="contact">
+      <div class="card">
+        <dl class="dl">
+          <div class="dl__row">
+            <dt>Teléfono</dt>
+            <dd><a href="tel:630813572">630 81 35 72</a></dd>
+          </div>
+          <div class="dl__row">
+            <dt>WhatsApp</dt>
+            <dd>985 40 60 95<small>También atienden por WhatsApp en este número.</small></dd>
+          </div>
+          <div class="dl__row">
+            <dt>Dirección</dt>
+            <dd>La Venta los Probes, Ll-14, Puente Nuevo, 33507 Llanes, Asturias</dd>
+          </div>
+          <div class="dl__row">
+            <dt>Horario</dt>
+            <dd>Consultar horario</dd>
+          </div>
+          <div class="dl__row">
+            <dt>Correo</dt>
+            <dd><a href="mailto:info@casalaventalosprobes.com">info@casalaventalosprobes.com</a></dd>
+          </div>
+        </dl>
+        <hr class="hr">
+        <a class="btn" href="tel:630813572" style="width:100%">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16.9v2.6a2 2 0 0 1-2.2 2 19.3 19.3 0 0 1-8.4-3 19 19 0 0 1-5.8-5.8 19.3 19.3 0 0 1-3-8.5A2 2 0 0 1 3.6 2h2.6a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.3 9.7a15.5 15.5 0 0 0 5.8 5.8l1.1-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+          Llamar al 630 81 35 72
+        </a>
+      </div>
+
+      <!-- MAPA ESQUEMÁTICO DIBUJADO EN SVG -->
+      <div class="map">
+        <svg class="map__svg" viewBox="0 0 600 420" role="img" aria-labelledby="mapa-t mapa-d" focusable="false">
+          <title id="mapa-t">Esquema de situación de la casa</title>
+          <desc id="mapa-d">Dibujo esquemático, no un mapa real: una carretera local, un núcleo rural y un marcador en la ubicación aproximada de la casa en Puente Nuevo, Llanes.</desc>
+          <defs>
+            <linearGradient id="mg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#f3f1e8"/><stop offset="1" stop-color="#e6e8dd"/>
+            </linearGradient>
+            <pattern id="mgrid" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M40 0H0v40" fill="none" stroke="rgba(25,33,28,.055)" stroke-width="1"/>
+            </pattern>
+          </defs>
+
+          <rect width="600" height="420" fill="url(#mg)"/>
+          <rect width="600" height="420" fill="url(#mgrid)"/>
+
+          <!-- manchas de verde / prados -->
+          <path d="M0 300c70-26 120 14 190-6s120-44 210-26 150 40 200 22v130H0Z" fill="#cfdac9" opacity=".85"/>
+          <path d="M0 352c90-18 150 12 240-4s160-28 250-10 90 18 110 14v68H0Z" fill="#b5c7b2" opacity=".8"/>
+          <circle cx="92" cy="104" r="56" fill="#d9e1d4" opacity=".8"/>
+          <circle cx="506" cy="150" r="70" fill="#d9e1d4" opacity=".7"/>
+
+          <!-- carretera local abstracta -->
+          <path d="M-20 262C90 258 150 200 236 196c86-4 140 44 230 30 60-9 104-44 174-56"
+                fill="none" stroke="#c9bfab" stroke-width="26" stroke-linecap="round"/>
+          <path d="M-20 262C90 258 150 200 236 196c86-4 140 44 230 30 60-9 104-44 174-56"
+                fill="none" stroke="#fdfcf9" stroke-width="18" stroke-linecap="round"/>
+          <path d="M-20 262C90 258 150 200 236 196c86-4 140 44 230 30 60-9 104-44 174-56"
+                fill="none" stroke="#a8b0a4" stroke-width="2" stroke-dasharray="14 16" stroke-linecap="round"/>
+
+          <!-- camino secundario hacia la casa -->
+          <path d="M300 208c6 40 22 60 40 92" fill="none" stroke="#d3c9b5" stroke-width="12" stroke-linecap="round"/>
+          <path d="M300 208c6 40 22 60 40 92" fill="none" stroke="#fdfcf9" stroke-width="6" stroke-linecap="round"/>
+
+          <!-- etiqueta de la carretera -->
+          <g>
+            <rect x="60" y="282" width="78" height="30" rx="8" fill="#fdfcf9" stroke="#bfb3a0" stroke-width="1.5"/>
+            <text x="99" y="302" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#3e5a46">Ll-14</text>
+          </g>
+
+          <!-- núcleo rural: casitas abstractas -->
+          <g stroke="#3e5a46" stroke-width="2.4" fill="#fdfcf9" stroke-linejoin="round">
+            <path d="M118 196h40v-34l-20-16-20 16z"/>
+            <path d="M172 206h34v-28l-17-14-17 14z"/>
+            <path d="M84 212h32v-26l-16-13-16 13z"/>
+            <path d="M434 358h38v-32l-19-15-19 15z"/>
+            <path d="M482 366h30v-26l-15-12-15 12z"/>
+          </g>
+          <g fill="#6d8b74" opacity=".55">
+            <rect x="132" y="176" width="12" height="20"/>
+            <rect x="184" y="188" width="10" height="18"/>
+            <rect x="447" y="338" width="12" height="20"/>
+          </g>
+
+          <!-- arbolado -->
+          <g stroke="#3e5a46" stroke-width="2.6" stroke-linecap="round" fill="none" opacity=".8">
+            <path d="M246 118v-34M246 98l-12-12M246 104l12-11"/>
+            <path d="M282 128v-28M282 112l-10-10M282 118l10-9"/>
+            <path d="M538 246v-30M538 230l-11-11M538 236l11-10"/>
+            <path d="M48 268v-26M48 254l-10-10M48 258l10-9"/>
+          </g>
+
+          <!-- etiquetas de lugar -->
+          <text x="150" y="246" font-family="system-ui, sans-serif" font-size="15" font-weight="650" fill="#44524a" letter-spacing=".04em">Puente Nuevo</text>
+          <text x="112" y="392" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#6b7a70" letter-spacing=".06em">concejo de Llanes</text>
+          <text x="36" y="56" font-family="system-ui, sans-serif" font-size="12.5" font-weight="700" fill="#71817e" letter-spacing=".16em">ESQUEMA · NO A ESCALA</text>
+
+          <!-- marcador de la casa -->
+          <g>
+            <ellipse cx="344" cy="312" rx="20" ry="6" fill="rgba(25,33,28,.18)"/>
+            <path d="M344 236c-19 0-34 15-34 34 0 24 34 60 34 60s34-36 34-60c0-19-15-34-34-34z" fill="#a85c38" stroke="#8c4a2b" stroke-width="2.5"/>
+            <circle cx="344" cy="269" r="12" fill="#fdfcf9"/>
+            <path d="M338 275v-10l6-5 6 5v10z" fill="#8c4a2b"/>
+          </g>
+          <g>
+            <rect x="372" y="246" width="206" height="46" rx="12" fill="#fdfcf9" stroke="#bfb3a0" stroke-width="1.5"/>
+            <text x="388" y="266" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#19211c">La Venta Los Probes</text>
+            <text x="388" y="283" font-family="system-ui, sans-serif" font-size="12" font-weight="550" fill="#71817e">Ubicación aproximada</text>
+          </g>
+
+          <!-- rosa de los vientos simple -->
+          <g transform="translate(556,382)" opacity=".7">
+            <circle r="17" fill="#fdfcf9" stroke="#bfb3a0" stroke-width="1.4"/>
+            <path d="M0 -11 4 2 0 -1 -4 2z" fill="#a85c38"/>
+            <text y="-18" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9.5" font-weight="700" fill="#71817e">N</text>
+          </g>
+        </svg>
+        <p class="map__cap">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01"/></svg>
+          Esquema dibujado a mano en SVG, sin escala y solo orientativo. No es un mapa real ni
+          una imagen de mapa: la ubicación exacta es la dirección que figura en el apartado de contacto.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- f) PIE -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div>
+        <h3>Casa de aldea La Venta Los Probes</h3>
+        <p>La Venta los Probes, Ll-14, Puente Nuevo, 33507 Llanes, Asturias</p>
+        <p style="margin-top:10px">Teléfono <a href="tel:630813572">630 81 35 72</a> · WhatsApp 985 40 60 95 · Consultar horario</p>
+      </div>
+      <div>
+        <p style="font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:rgba(207,214,207,.6);margin-bottom:10px">Correo electrónico</p>
+        <p class="foot__mail"><a href="mailto:info@casalaventalosprobes.com">info@casalaventalosprobes.com</a></p>
+      </div>
+    </div>
+    <hr class="foot__rule">
+    <p class="foot__sig">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+</body>
+</html>

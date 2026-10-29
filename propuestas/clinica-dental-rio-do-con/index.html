@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clínica Dental Río do Con — Dentista en Vilagarcía de Arousa</title>
+<meta name="description" content="Clínica Dental Río do Con, clínica dental en Vilagarcía de Arousa (Pontevedra). Revisión y diagnóstico, higiene y prevención, odontología conservadora, prótesis, ortodoncia y odontopediatría. Pide cita en el 986 50 22 28.">
+<meta name="theme-color" content="#0f3f4a">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  :root{
+    --tinta:#0e2a31;
+    --tinta-suave:#406b74;
+    --agua:#0f7d8c;
+    --agua-osc:#0b5a66;
+    --agua-clara:#e3f3f4;
+    --menta:#f3fbfa;
+    --papel:#ffffff;
+    --hueso:#f6f8f8;
+    --linea:#dbe7e8;
+    --acento:#b8863b;
+    --radio:18px;
+    --barra:46px;
+    --max:1120px;
+  }
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    padding-top:var(--barra);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+    color:var(--tinta);
+    background:var(--papel);
+    font-size:17px;
+    line-height:1.65;
+    overflow-x:hidden;
+  }
+  img,svg{max-width:100%;height:auto;display:block}
+  a{color:var(--agua-osc)}
+  h1,h2,h3{line-height:1.15;letter-spacing:-.02em;margin:0;font-weight:650}
+  p{margin:0}
+
+  /* ---------- a) barra fija ---------- */
+  .aviso{
+    position:fixed;inset:0 0 auto 0;z-index:9999;
+    min-height:var(--barra);display:flex;align-items:center;justify-content:center;
+    padding:8px 16px;
+    background:linear-gradient(90deg,#0b2b33,#114e5a 55%,#0b2b33);
+    color:#dff1f2;
+    font-size:12.5px;letter-spacing:.055em;text-transform:uppercase;
+    text-align:center;line-height:1.35;
+    border-bottom:1px solid rgba(255,255,255,.14);
+  }
+  .aviso span{display:inline-block;max-width:100%}
+
+  .env{width:100%;max-width:var(--max);margin:0 auto;padding:0 24px}
+  section{padding:84px 0}
+
+  .etiqueta{
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--agua-osc);font-weight:600;margin-bottom:20px;
+  }
+  .etiqueta::before{content:"";width:26px;height:2px;background:var(--acento);border-radius:2px;flex:0 0 auto}
+
+  /* ---------- b) hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    padding:92px 0 96px;
+    background:
+      radial-gradient(1100px 520px at 88% -8%,rgba(15,125,140,.16),transparent 62%),
+      radial-gradient(760px 460px at -8% 104%,rgba(184,134,59,.12),transparent 60%),
+      linear-gradient(170deg,#fbfdfd 0%,var(--menta) 58%,#eaf5f5 100%);
+  }
+  .hero::after{
+    content:"";position:absolute;right:-180px;top:-150px;width:520px;height:520px;
+    border-radius:50%;border:1px solid rgba(15,125,140,.18);
+  }
+  .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:56px;align-items:center}
+  .marca{display:flex;align-items:center;gap:14px;margin-bottom:28px}
+  .marca-txt{font-size:14px;letter-spacing:.17em;text-transform:uppercase;color:var(--tinta-suave);font-weight:600}
+  .hero h1{font-size:clamp(2.1rem,5.2vw,3.5rem);margin-bottom:22px}
+  .hero h1 em{font-style:normal;color:var(--agua-osc)}
+  .entradilla{font-size:clamp(1.02rem,1.5vw,1.2rem);color:var(--tinta-suave);max-width:50ch;margin-bottom:34px}
+  .acciones{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:11px;
+    padding:16px 28px;border-radius:999px;
+    background:linear-gradient(135deg,var(--agua),var(--agua-osc));
+    color:#fff;text-decoration:none;font-weight:650;font-size:1.02rem;
+    box-shadow:0 12px 26px -12px rgba(11,90,102,.65);
+    border:1px solid rgba(255,255,255,.2);
+  }
+  .btn:hover{background:linear-gradient(135deg,var(--agua-osc),#083f49)}
+  .btn-2{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:15px 24px;border-radius:999px;background:#fff;
+    color:var(--agua-osc);text-decoration:none;font-weight:600;
+    border:1px solid var(--linea);
+  }
+  .btn-2:hover{border-color:var(--agua);background:var(--menta)}
+  .micro{margin-top:22px;font-size:13.5px;color:var(--tinta-suave)}
+
+  .tarjeta-hero{
+    background:#fff;border:1px solid var(--linea);border-radius:26px;
+    padding:30px;box-shadow:0 30px 60px -38px rgba(14,42,49,.4);
+  }
+  .tarjeta-hero h2{font-size:13px;letter-spacing:.13em;text-transform:uppercase;color:var(--tinta-suave);margin-bottom:18px;font-weight:600}
+  .fila{display:flex;gap:14px;padding:14px 0;border-top:1px solid var(--linea);align-items:flex-start}
+  .fila:first-of-type{border-top:0}
+  .fila-k{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--tinta-suave);margin-bottom:2px}
+  .fila-v{font-weight:600;overflow-wrap:anywhere}
+  .fila-v a{text-decoration:none}
+  .ico{flex:0 0 auto;width:34px;height:34px;border-radius:10px;background:var(--agua-clara);display:flex;align-items:center;justify-content:center}
+
+  /* ---------- c) servicios ---------- */
+  .svc{background:var(--papel)}
+  .cab{max-width:62ch;margin-bottom:46px}
+  .cab h2{font-size:clamp(1.7rem,3.2vw,2.4rem);margin-bottom:14px}
+  .cab p{color:var(--tinta-suave)}
+  .rejilla{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+  .carta{
+    background:linear-gradient(180deg,#fff,var(--hueso));
+    border:1px solid var(--linea);border-radius:var(--radio);
+    padding:28px 26px 30px;
+  }
+  .carta:hover{border-color:#bcd9dc}
+  .carta-ico{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,var(--agua-clara),#d2eaec);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+  .carta h3{font-size:1.12rem;margin-bottom:9px}
+  .carta p{font-size:.95rem;color:var(--tinta-suave)}
+
+  /* ---------- d) primera visita ---------- */
+  .pasos-sec{
+    background:
+      radial-gradient(900px 400px at 10% 0%,rgba(15,125,140,.1),transparent 60%),
+      linear-gradient(180deg,var(--menta),#eef7f7);
+    border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);
+  }
+  .pasos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;counter-reset:p}
+  .paso{background:#fff;border:1px solid var(--linea);border-radius:var(--radio);padding:30px 26px;position:relative}
+  .num{
+    width:42px;height:42px;border-radius:50%;
+    background:linear-gradient(135deg,var(--agua),var(--agua-osc));color:#fff;
+    display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1rem;
+    margin-bottom:18px;box-shadow:0 10px 20px -12px rgba(11,90,102,.8);
+  }
+  .paso h3{font-size:1.1rem;margin-bottom:9px}
+  .paso p{font-size:.95rem;color:var(--tinta-suave)}
+
+  /* ---------- e) contacto ---------- */
+  .cont-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:start}
+  .datos{background:#fff;border:1px solid var(--linea);border-radius:22px;padding:34px;box-shadow:0 26px 54px -42px rgba(14,42,49,.45)}
+  .datos .btn{margin:6px 0 24px}
+  .mapa-caja{background:linear-gradient(180deg,#fff,var(--hueso));border:1px solid var(--linea);border-radius:22px;padding:22px;overflow:hidden}
+  .mapa-pie{margin-top:14px;font-size:13px;color:var(--tinta-suave);text-align:center}
+  .horario{
+    margin-top:4px;display:inline-flex;align-items:center;gap:9px;
+    padding:10px 16px;border-radius:999px;background:var(--menta);
+    border:1px dashed #b9d7da;color:var(--agua-osc);font-weight:600;font-size:.94rem;
+  }
+
+  /* ---------- f) pie ---------- */
+  footer{background:linear-gradient(160deg,#0b2b33,#0e3f49 70%,#0b2b33);color:#cfe6e8;padding:62px 0 46px}
+  footer h2{color:#fff;font-size:1.3rem;margin-bottom:12px}
+  .pie-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:34px;align-items:start}
+  .pie-dato{margin-top:10px;font-size:.96rem;overflow-wrap:anywhere}
+  .pie-dato a{color:#9fdfe6;text-decoration:none;font-weight:600}
+  .firma{
+    margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,.16);
+    font-size:13.5px;color:#a9cace;line-height:1.6;
+  }
+  .sello{display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#8fc0c6;font-weight:600}
+
+  @media (max-width:900px){
+    .hero-grid,.cont-grid,.pie-grid{grid-template-columns:minmax(0,1fr)}
+    .rejilla,.pasos{grid-template-columns:repeat(2,minmax(0,1fr))}
+  }
+  @media (max-width:620px){
+    :root{--barra:62px}
+    body{font-size:16px}
+    section{padding:58px 0}
+    .hero{padding:58px 0 64px}
+    .env{padding:0 18px}
+    .aviso{font-size:11px;letter-spacing:.04em}
+    .rejilla,.pasos{grid-template-columns:minmax(0,1fr)}
+    .hero-grid{gap:38px}
+    .tarjeta-hero,.datos{padding:24px 20px}
+    .acciones{flex-direction:column;align-items:stretch}
+    .btn,.btn-2{justify-content:center}
+    .hero::after{display:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- a) barra fija -->
+<div class="aviso" role="note"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<!-- b) hero -->
+<header class="hero">
+  <div class="env">
+    <div class="hero-grid">
+      <div>
+        <div class="marca">
+          <svg width="46" height="46" viewBox="0 0 46 46" role="img" aria-label="Símbolo de muela">
+            <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#17a2b4"/><stop offset="1" stop-color="#0b5a66"/>
+            </linearGradient></defs>
+            <circle cx="23" cy="23" r="22" fill="url(#g1)"/>
+            <path d="M15 15.5c0-3 2.6-4.6 4.9-3.5 2 1 4.2 1 6.2 0 2.3-1.1 4.9.5 4.9 3.5 0 2.6-.7 4.4-1.3 7-.5 2.1-.6 4.3-.9 6.6-.2 1.8-.6 3.4-1.9 3.4-1.4 0-1.7-1.8-2-3.8-.3-2-.5-3.9-2-3.9s-1.7 1.9-2 3.9c-.3 2-.6 3.8-2 3.8-1.3 0-1.7-1.6-1.9-3.4-.3-2.3-.4-4.5-.9-6.6-.6-2.6-1.2-4.4-1.2-7Z" fill="#fff" opacity=".96"/>
+          </svg>
+          <div class="marca-txt">Clínica dental · Vilagarcía de Arousa</div>
+        </div>
+
+        <h1>Clínica Dental <em>Río do Con</em></h1>
+        <p class="entradilla">Clínica dental en el centro de Vilagarcía de Arousa, en la Avenida Doutor Tourón. Atención odontológica general para toda la familia, con cita previa por teléfono o WhatsApp.</p>
+
+        <div class="acciones">
+          <a class="btn" href="tel:986502228">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 16.9v2.6a2 2 0 0 1-2.2 2 19.5 19.5 0 0 1-8.5-3 19.2 19.2 0 0 1-5.9-5.9 19.5 19.5 0 0 1-3-8.6A2 2 0 0 1 3.4 2H6a2 2 0 0 1 2 1.7c.1 1 .3 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.1 9.8a15.8 15.8 0 0 0 5.9 5.9l1.2-1.1a2 2 0 0 1 2.1-.5c.9.4 1.8.6 2.8.7a2 2 0 0 1 1.9 2.1Z"/>
+            </svg>
+            Llamar al 986 50 22 28
+          </a>
+          <a class="btn-2" href="#contacto">Cómo llegar y contacto</a>
+        </div>
+        <p class="micro">Esta maqueta se entrega con el título de pestaña, la descripción para Google y el idioma de la página ya escritos en español.</p>
+      </div>
+
+      <aside class="tarjeta-hero">
+        <h2>Datos de contacto</h2>
+        <div class="fila">
+          <div class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0b5a66" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16.9v2.6a2 2 0 0 1-2.2 2 19.5 19.5 0 0 1-8.5-3 19.2 19.2 0 0 1-5.9-5.9 19.5 19.5 0 0 1-3-8.6A2 2 0 0 1 3.4 2H6a2 2 0 0 1 2 1.7c.1 1 .3 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.1 9.8a15.8 15.8 0 0 0 5.9 5.9l1.2-1.1a2 2 0 0 1 2.1-.5c.9.4 1.8.6 2.8.7a2 2 0 0 1 1.9 2.1Z"/></svg></div>
+          <div><div class="fila-k">Teléfono</div><div class="fila-v"><a href="tel:986502228">986 50 22 28</a></div></div>
+        </div>
+        <div class="fila">
+          <div class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0b5a66" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.6 7.3L3 20.5l1.8-5.3A8.4 8.4 0 1 1 21 11.5Z"/></svg></div>
+          <div><div class="fila-k">WhatsApp</div><div class="fila-v">608 25 77 72</div></div>
+        </div>
+        <div class="fila">
+          <div class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0b5a66" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="2.8"/></svg></div>
+          <div><div class="fila-k">Dirección</div><div class="fila-v">Avda. Doutor Tourón, 24, 1º B, 36600 Vilagarcía de Arousa, Pontevedra</div></div>
+        </div>
+        <div class="fila">
+          <div class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0b5a66" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 6.5 9 6.5 9-6.5"/></svg></div>
+          <div><div class="fila-k">Email</div><div class="fila-v"><a href="mailto:info@clinicadentalriodocon.es">info@clinicadentalriodocon.es</a></div></div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</header>
+
+<!-- c) servicios -->
+<section class="svc" id="servicios">
+  <div class="env">
+    <div class="cab">
+      <div class="etiqueta">Servicios</div>
+      <h2>Odontología general, explicada sin tecnicismos</h2>
+      <p>Áreas habituales de una clínica dental. Si tienes una duda concreta sobre tu caso, lo mejor es preguntarla por teléfono antes de la cita.</p>
+    </div>
+    <div class="rejilla">
+
+      <article class="carta">
+        <div class="carta-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0b5a66" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M16.2 16.2 21 21M11 8v6M8 11h6"/></svg></div>
+        <h3>Revisión y diagnóstico</h3>
+        <p>Exploración de dientes, encías y mordida para saber en qué punto está tu boca y qué conviene hacer, si hace falta hacer algo.</p>
+      </article>
+
+      <article class="carta">
+        <div class="carta-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0b5a66" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20c0-4 3-7 7-7s7 3 7 7"/><path d="M12 13V8"/><path d="M8.5 8h7l-.8-3.2a1.5 1.5 0 0 0-1.5-1.1h-2.4A1.5 1.5 0 0 0 9.3 4.8L8.5 8Z"/></svg></div>
+        <h3>Higiene y prevención</h3>
+        <p>Limpieza dental profesional y consejos de cepillado para reducir el riesgo de caries y de problemas de encías con el tiempo.</p>
+      </article>
+
+      <article class="carta">
+        <div class="carta-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0b5a66" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 5.5c0-2.2 1.9-3.4 3.6-2.6 1.5.7 3.1.7 4.6 0C16.9 2.1 18.8 3.3 18.8 5.5c0 2-.5 3.3-1 5.2-.4 1.6-.5 3.2-.7 4.9-.2 1.4-.4 2.6-1.4 2.6s-1.3-1.4-1.5-2.9c-.2-1.5-.4-2.9-1.5-2.9"/><path d="M4 9.5 6.5 12 11 7.5"/></svg></div>
+        <h3>Odontología conservadora</h3>
+        <p>Tratamiento de caries y empastes para conservar el diente natural siempre que sea posible, antes de plantear soluciones mayores.</p>
+      </article>
+
+      <article class="carta">
+        <div class="carta-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0b5a66" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h16"/><path d="M6 9.5V7a6 6 0 0 1 12 0v2.5"/><path d="M7 9.5v4.2c0 1.2.9 2.1 2 2.1s2-.9 2-2.1V9.5M13 9.5v4.2c0 1.2.9 2.1 2 2.1s2-.9 2-2.1V9.5"/><path d="M8 19.5h8"/></svg></div>
+        <h3>Prótesis dental</h3>
+        <p>Opciones fijas y removibles para reponer dientes ausentes y recuperar la función al masticar y la estética de la sonrisa.</p>
+      </article>
+
+      <article class="carta">
+        <div class="carta-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0b5a66" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h18"/><rect x="5" y="8.5" width="3.4" height="7" rx="1"/><rect x="10.3" y="8.5" width="3.4" height="7" rx="1"/><rect x="15.6" y="8.5" width="3.4" height="7" rx="1"/></svg></div>
+        <h3>Ortodoncia</h3>
+        <p>Corrección de la posición de los dientes y de la mordida. El tipo de aparato y la duración dependen de cada caso y se valoran en consulta.</p>
+      </article>
+
+      <article class="carta">
+        <div class="carta-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0b5a66" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4.6"/><path d="M9.8 7.4h.01M14.2 7.4h.01"/><path d="M10.2 10a2.6 2.6 0 0 0 3.6 0"/><path d="M5 20.5c.8-3.3 3.6-5.3 7-5.3s6.2 2 7 5.3"/></svg></div>
+        <h3>Odontopediatría</h3>
+        <p>Atención dental infantil y seguimiento del recambio de dientes, con un trato tranquilo para que la visita no se viva con miedo.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- d) tu primera visita -->
+<section class="pasos-sec" id="primera-visita">
+  <div class="env">
+    <div class="cab">
+      <div class="etiqueta">Tu primera visita</div>
+      <h2>Tres pasos, sin sorpresas</h2>
+      <p>Así es el recorrido habitual desde que llamas hasta que terminas el tratamiento.</p>
+    </div>
+    <div class="pasos">
+      <article class="paso">
+        <div class="num">1</div>
+        <h3>Pides cita</h3>
+        <p>Por teléfono en el <a href="tel:986502228">986 50 22 28</a> o por WhatsApp en el 608 25 77 72. Cuentas brevemente qué te pasa y se te asigna un hueco.</p>
+      </article>
+      <article class="paso">
+        <div class="num">2</div>
+        <h3>Revisión y plan de tratamiento</h3>
+        <p>Se revisa tu boca y se te explica qué se ha visto y qué opciones hay, en un lenguaje que puedas entender, antes de empezar nada.</p>
+      </article>
+      <article class="paso">
+        <div class="num">3</div>
+        <h3>Seguimiento</h3>
+        <p>Se acuerdan las siguientes citas si el tratamiento las necesita y se mantiene un control periódico para que todo siga en orden.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- e) contacto -->
+<section id="contacto">
+  <div class="env">
+    <div class="cab">
+      <div class="etiqueta">Contacto y ubicación</div>
+      <h2>Dónde estamos y cómo pedir cita</h2>
+    </div>
+
+    <div class="cont-grid">
+      <div class="datos">
+        <div class="fila-k">Pide cita por teléfono</div>
+        <a class="btn" href="tel:986502228">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16.9v2.6a2 2 0 0 1-2.2 2 19.5 19.5 0 0 1-8.5-3 19.2 19.2 0 0 1-5.9-5.9 19.5 19.5 0 0 1-3-8.6A2 2 0 0 1 3.4 2H6a2 2 0 0 1 2 1.7c.1 1 .3 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.1 9.8a15.8 15.8 0 0 0 5.9 5.9l1.2-1.1a2 2 0 0 1 2.1-.5c.9.4 1.8.6 2.8.7a2 2 0 0 1 1.9 2.1Z"/></svg>
+          986 50 22 28
+        </a>
+
+        <div class="fila">
+          <div class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0b5a66" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.6 7.3L3 20.5l1.8-5.3A8.4 8.4 0 1 1 21 11.5Z"/></svg></div>
+          <div><div class="fila-k">WhatsApp</div><div class="fila-v">608 25 77 72</div></div>
+        </div>
+
+        <div class="fila">
+          <div class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0b5a66" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="2.8"/></svg></div>
+          <div><div class="fila-k">Dirección</div><div class="fila-v">Avda. Doutor Tourón, 24, 1º B, 36600 Vilagarcía de Arousa, Pontevedra</div></div>
+        </div>
+
+        <div class="fila">
+          <div class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0b5a66" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3 2"/></svg></div>
+          <div>
+            <div class="fila-k">Horario</div>
+            <div class="horario">Consultar horario</div>
+          </div>
+        </div>
+
+        <div class="fila">
+          <div class="ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0b5a66" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 6.5 9 6.5 9-6.5"/></svg></div>
+          <div><div class="fila-k">Email</div><div class="fila-v"><a href="mailto:info@clinicadentalriodocon.es">info@clinicadentalriodocon.es</a></div></div>
+        </div>
+      </div>
+
+      <div class="mapa-caja">
+        <svg viewBox="0 0 520 420" width="520" height="420" role="img" aria-label="Esquema dibujado de la ubicación aproximada en la Avenida Doutor Tourón. No es un mapa real.">
+          <defs>
+            <linearGradient id="fondo" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#f7fbfb"/><stop offset="1" stop-color="#e8f4f4"/>
+            </linearGradient>
+            <linearGradient id="via" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#f0f5f6"/>
+            </linearGradient>
+            <linearGradient id="pin" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#17a2b4"/><stop offset="1" stop-color="#0b5a66"/>
+            </linearGradient>
+          </defs>
+
+          <rect x="0" y="0" width="520" height="420" rx="16" fill="url(#fondo)"/>
+
+          <!-- manzanas -->
+          <g fill="#dbe9ea" stroke="#c7dedf" stroke-width="1.5">
+            <rect x="24" y="26" width="150" height="104" rx="8"/>
+            <rect x="196" y="26" width="118" height="104" rx="8"/>
+            <rect x="336" y="26" width="160" height="104" rx="8"/>
+            <rect x="24" y="258" width="124" height="136" rx="8"/>
+            <rect x="170" y="258" width="150" height="136" rx="8"/>
+            <rect x="342" y="258" width="154" height="136" rx="8"/>
+          </g>
+          <g fill="#cfe2e4" opacity=".75">
+            <rect x="40" y="44" width="48" height="30" rx="4"/>
+            <rect x="100" y="44" width="56" height="30" rx="4"/>
+            <rect x="212" y="44" width="40" height="30" rx="4"/>
+            <rect x="356" y="44" width="60" height="30" rx="4"/>
+            <rect x="42" y="282" width="56" height="34" rx="4"/>
+            <rect x="188" y="282" width="62" height="34" rx="4"/>
+            <rect x="360" y="282" width="64" height="34" rx="4"/>
+          </g>
+
+          <!-- avenida principal -->
+          <rect x="0" y="150" width="520" height="88" fill="url(#via)" stroke="#d3e4e6" stroke-width="1.5"/>
+          <line x1="0" y1="194" x2="520" y2="194" stroke="#b8cfd2" stroke-width="3" stroke-dasharray="22 16"/>
+
+          <!-- calles transversales -->
+          <rect x="174" y="0" width="22" height="150" fill="url(#via)" stroke="#d9e8e9" stroke-width="1.2"/>
+          <rect x="314" y="0" width="22" height="150" fill="url(#via)" stroke="#d9e8e9" stroke-width="1.2"/>
+          <rect x="148" y="238" width="22" height="182" fill="url(#via)" stroke="#d9e8e9" stroke-width="1.2"/>
+          <rect x="320" y="238" width="22" height="182" fill="url(#via)" stroke="#d9e8e9" stroke-width="1.2"/>
+
+          <!-- etiqueta de la avenida -->
+          <g>
+            <rect x="256" y="162" width="244" height="38" rx="19" fill="#0e2a31" opacity=".92"/>
+            <text x="378" y="187" text-anchor="middle" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="18" font-weight="600" fill="#e3f3f4">Avda. Doutor Tourón</text>
+          </g>
+
+          <!-- marcador ubicación aproximada -->
+          <ellipse cx="208" cy="136" rx="26" ry="7" fill="#0b5a66" opacity=".16"/>
+          <circle cx="208" cy="96" r="34" fill="#17a2b4" opacity=".12"/>
+          <path d="M208 44c-14.4 0-26 11.6-26 26 0 18.6 26 62 26 62s26-43.4 26-62c0-14.4-11.6-26-26-26Z" fill="url(#pin)"/>
+          <circle cx="208" cy="70" r="9.5" fill="#ffffff"/>
+          <g>
+            <rect x="248" y="44" width="196" height="50" rx="12" fill="#ffffff" stroke="#cfe2e4" stroke-width="1.5"/>
+            <text x="264" y="66" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="17" font-weight="700" fill="#0e2a31">Río do Con</text>
+            <text x="264" y="84" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="14" fill="#406b74">núm. 24, 1º B</text>
+          </g>
+
+          <!-- norte -->
+          <g opacity=".75">
+            <circle cx="466" cy="374" r="22" fill="#ffffff" stroke="#cfe2e4" stroke-width="1.5"/>
+            <path d="M466 360l6 14h-12l6-14Z" fill="#0b5a66"/>
+            <text x="466" y="389" text-anchor="middle" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="13" font-weight="700" fill="#406b74">N</text>
+          </g>
+        </svg>
+        <p class="mapa-pie">Esquema orientativo dibujado para esta maqueta. No es un mapa a escala.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- f) pie -->
+<footer>
+  <div class="env">
+    <div class="pie-grid">
+      <div>
+        <h2>Clínica Dental Río do Con</h2>
+        <p class="pie-dato">Avda. Doutor Tourón, 24, 1º B, 36600 Vilagarcía de Arousa, Pontevedra</p>
+        <p class="pie-dato">Teléfono <a href="tel:986502228">986 50 22 28</a> · WhatsApp 608 25 77 72</p>
+        <p class="pie-dato"><a href="mailto:info@clinicadentalriodocon.es">info@clinicadentalriodocon.es</a></p>
+        <p class="pie-dato">Consultar horario</p>
+      </div>
+      <div>
+        <div class="sello">FFFFFFstudio</div>
+        <p class="pie-dato">Maqueta de muestra enviada sin solicitud previa, para enseñar cómo podría presentarse la clínica en internet con los datos de contacto reales bien colocados.</p>
+      </div>
+    </div>
+    <p class="firma">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+</body>
+</html>

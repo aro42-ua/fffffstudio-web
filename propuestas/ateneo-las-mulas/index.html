@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ateneo Las Mulas · Maqueta de propuesta</title>
+<meta name="description" content="Maqueta no oficial de página web para Ateneo Las Mulas, taberna de cocina murciana y tapas en Mula (Murcia). Propuesta de FFFFFFstudio.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  :root{
+    --tinta:#241a14;
+    --tinta-70:rgba(36,26,20,.70);
+    --tinta-50:rgba(36,26,20,.50);
+    --papel:#fbf5ea;
+    --papel-2:#f4ead8;
+    --crema:#fffdf8;
+    --barro:#ad4a26;
+    --barro-osc:#8a3a1d;
+    --ocre:#d49a31;
+    --oliva:#5a6a44;
+    --linea:rgba(36,26,20,.14);
+    --sombra:0 1px 2px rgba(36,26,20,.05),0 10px 30px -14px rgba(36,26,20,.22);
+    --radio:18px;
+    --barra:40px;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    --serif:ui-serif,Georgia,"Iowan Old Style","Palatino Linotype","Times New Roman",serif;
+  }
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    padding-top:var(--barra);
+    font-family:var(--sans);
+    color:var(--tinta);
+    background:var(--papel);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  img,svg{max-width:100%;height:auto;display:block}
+  a{color:inherit}
+  h1,h2,h3{margin:0;font-family:var(--serif);font-weight:600;line-height:1.08;letter-spacing:-.015em}
+  p{margin:0}
+
+  /* ---------- a) barra fija ---------- */
+  .aviso{
+    position:fixed;top:0;left:0;right:0;z-index:9999;
+    min-height:var(--barra);
+    display:flex;align-items:center;justify-content:center;
+    padding:7px 14px;
+    background:var(--tinta);
+    color:#f3e7d6;
+    font-size:11.5px;
+    letter-spacing:.055em;
+    text-transform:uppercase;
+    text-align:center;
+    line-height:1.3;
+    box-shadow:0 1px 0 rgba(255,255,255,.08);
+  }
+  .aviso span{display:block;max-width:100%;overflow-wrap:break-word}
+
+  .envoltura{width:100%;max-width:1120px;margin:0 auto;padding:0 24px}
+  section{padding:84px 0}
+  .etiqueta{
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--barro);font-weight:650;margin-bottom:18px;
+  }
+  .etiqueta::before{content:"";width:22px;height:1px;background:var(--barro);flex:0 0 auto}
+
+  /* ---------- b) hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    padding:76px 0 84px;
+    background:
+      radial-gradient(1100px 520px at 82% -8%,rgba(212,154,49,.30),transparent 62%),
+      radial-gradient(760px 500px at 6% 108%,rgba(173,74,38,.20),transparent 66%),
+      linear-gradient(176deg,#fffdf8 0%,#f7eddc 58%,#f1e3cd 100%);
+    border-bottom:1px solid var(--linea);
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:radial-gradient(rgba(36,26,20,.055) 1px,transparent 1px);
+    background-size:16px 16px;
+    mask-image:linear-gradient(190deg,rgba(0,0,0,.55),transparent 72%);
+    -webkit-mask-image:linear-gradient(190deg,rgba(0,0,0,.55),transparent 72%);
+  }
+  .hero-rejilla{
+    position:relative;z-index:1;
+    display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);
+    gap:56px;align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem,7vw,4.6rem);
+    margin:0 0 20px;
+  }
+  .hero h1 em{font-style:normal;display:block;color:var(--barro)}
+  .hero-sub{
+    font-size:clamp(1.02rem,1.5vw,1.2rem);
+    color:var(--tinta-70);max-width:38ch;margin-bottom:14px;
+  }
+  .hero-nota{font-size:.9rem;color:var(--tinta-50);max-width:40ch;margin-bottom:32px}
+  .acciones{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:11px;
+    padding:16px 26px;border-radius:999px;
+    background:var(--barro);color:#fffaf2;
+    text-decoration:none;font-weight:650;font-size:1.02rem;
+    letter-spacing:.005em;
+    box-shadow:0 10px 24px -12px rgba(138,58,29,.75);
+    transition:background .18s ease,transform .18s ease;
+  }
+  .btn:hover{background:var(--barro-osc);transform:translateY(-1px)}
+  .btn svg{flex:0 0 auto}
+  .btn-sec{
+    display:inline-flex;align-items:center;gap:9px;
+    text-decoration:none;font-weight:600;font-size:.95rem;
+    padding:15px 22px;border-radius:999px;
+    border:1px solid var(--linea);background:rgba(255,255,255,.6);
+  }
+  .btn-sec:hover{border-color:var(--tinta-50)}
+  .hero-arte{position:relative}
+
+  /* ---------- c) secciones por rellenar ---------- */
+  .rellenar{background:var(--crema);border-bottom:1px solid var(--linea)}
+  .cabecera{max-width:60ch;margin-bottom:46px}
+  .cabecera h2{font-size:clamp(1.9rem,3.4vw,2.7rem);margin-bottom:16px}
+  .cabecera p{color:var(--tinta-70);font-size:1.02rem}
+  .tarjetas{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,268px),1fr));gap:22px}
+  .tarjeta{
+    display:flex;flex-direction:column;gap:14px;
+    padding:28px 26px 26px;
+    background:var(--papel);
+    border:1px solid var(--linea);border-radius:var(--radio);
+    box-shadow:var(--sombra);
+    min-width:0;
+  }
+  .tarjeta .icono{
+    width:52px;height:52px;border-radius:14px;
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(145deg,rgba(212,154,49,.26),rgba(173,74,38,.16));
+    border:1px solid rgba(173,74,38,.2);
+  }
+  .tarjeta h3{font-size:1.22rem}
+  .tarjeta p{font-size:.95rem;color:var(--tinta-70)}
+  .hueco{
+    margin-top:auto;padding-top:16px;border-top:1px dashed rgba(36,26,20,.22);
+    font-size:.78rem;letter-spacing:.09em;text-transform:uppercase;
+    color:var(--barro);font-weight:650;
+  }
+  .tarjeta--ancha{grid-column:span 2}
+  .lineas{display:flex;flex-direction:column;gap:9px;margin-top:4px}
+  .lineas i{display:block;height:9px;border-radius:5px;background:rgba(36,26,20,.09)}
+  .lineas i:nth-child(1){width:88%}
+  .lineas i:nth-child(2){width:72%}
+  .lineas i:nth-child(3){width:54%}
+
+  /* ---------- d) cómo reservar ---------- */
+  .pasos-sec{
+    background:
+      radial-gradient(800px 420px at 100% 0%,rgba(90,106,68,.16),transparent 64%),
+      linear-gradient(180deg,#f7eddc,#fbf5ea);
+    border-bottom:1px solid var(--linea);
+  }
+  .pasos{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:24px;counter-reset:p}
+  .paso{
+    position:relative;min-width:0;
+    padding:30px 26px;border-radius:var(--radio);
+    background:var(--crema);border:1px solid var(--linea);
+    box-shadow:var(--sombra);
+  }
+  .paso .num{
+    font-family:var(--serif);font-size:2.5rem;line-height:1;
+    color:var(--ocre);display:block;margin-bottom:14px;font-weight:600;
+  }
+  .paso h3{font-size:1.14rem;margin-bottom:8px}
+  .paso p{font-size:.95rem;color:var(--tinta-70)}
+
+  /* ---------- e) contacto ---------- */
+  .contacto{background:var(--crema)}
+  .contacto-rejilla{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:48px;align-items:start}
+  .datos{display:flex;flex-direction:column;gap:22px}
+  .dato{display:flex;gap:16px;align-items:flex-start;min-width:0}
+  .dato .marca{
+    flex:0 0 auto;width:42px;height:42px;border-radius:12px;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--papel-2);border:1px solid var(--linea);
+  }
+  .dato h3{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--tinta-50);margin-bottom:5px;font-family:var(--sans);font-weight:700}
+  .dato p,.dato address{font-style:normal;font-size:1.02rem;overflow-wrap:break-word}
+  .mapa-caja{
+    padding:18px;border-radius:var(--radio);
+    background:var(--papel-2);border:1px solid var(--linea);
+    box-shadow:var(--sombra);
+  }
+  .mapa-caja figcaption{
+    margin-top:14px;font-size:.8rem;color:var(--tinta-50);
+    display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+  }
+  .punto{width:9px;height:9px;border-radius:50%;background:var(--barro);flex:0 0 auto}
+
+  /* ---------- f) pie ---------- */
+  footer{background:var(--tinta);color:#efe2d1;padding:58px 0 40px}
+  footer .envoltura{display:flex;flex-direction:column;gap:26px}
+  .pie-top{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:flex-end}
+  .pie-nombre{font-family:var(--serif);font-size:1.6rem;color:#fff6e9}
+  .pie-mail{color:var(--ocre);text-decoration:none;font-size:1.05rem;overflow-wrap:break-word}
+  .pie-mail:hover{text-decoration:underline}
+  .pie-firma{
+    border-top:1px solid rgba(255,255,255,.14);padding-top:22px;
+    font-size:.86rem;color:rgba(239,226,209,.72);overflow-wrap:break-word;
+  }
+
+  @media (max-width:860px){
+    section{padding:62px 0}
+    .hero{padding:48px 0 62px}
+    .hero-rejilla,.contacto-rejilla{grid-template-columns:minmax(0,1fr);gap:36px}
+    .hero-arte{order:-1;max-width:330px;margin:0 auto 4px}
+    .tarjeta--ancha{grid-column:auto}
+  }
+  @media (max-width:520px){
+    :root{--barra:52px}
+    .envoltura{padding:0 18px}
+    .aviso{font-size:10.5px;letter-spacing:.04em}
+    .btn{width:100%;justify-content:center}
+    .btn-sec{width:100%;justify-content:center}
+  }
+</style>
+</head>
+<body>
+
+<!-- a) barra fija -->
+<div class="aviso" role="note"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<!-- b) hero -->
+<header class="hero">
+  <div class="envoltura hero-rejilla">
+    <div>
+      <span class="etiqueta">Mula · Murcia</span>
+      <h1>Ateneo <em>Las Mulas</em></h1>
+      <p class="hero-sub">Taberna contemporánea de cocina murciana y tapas, en una plaza peatonal y con terraza.</p>
+      <p class="hero-nota">Esta es una maqueta de propuesta: los textos, la carta y las fotografías los aportaría el propio negocio.</p>
+      <div class="acciones">
+        <a class="btn" href="tel:686082591">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6.2 3.5h3l1.6 4-2 1.4a11.5 11.5 0 0 0 5.8 5.8l1.4-2 4 1.6v3a1.7 1.7 0 0 1-1.9 1.7C11.3 18.6 5.4 12.7 4.5 5.4A1.7 1.7 0 0 1 6.2 3.5Z"/>
+          </svg>
+          Reservar: 686 082 591
+        </a>
+        <a class="btn-sec" href="#contacto">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 21s7-5.4 7-11a7 7 0 1 0-14 0c0 5.6 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/>
+          </svg>
+          Dónde estamos
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-arte">
+      <svg viewBox="44 34 362 318" role="img" aria-label="Ilustración abstracta: platos, copa y arcos de una taberna" style="width:100%">
+        <defs>
+          <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#d49a31"/><stop offset="1" stop-color="#ad4a26"/>
+          </linearGradient>
+          <linearGradient id="g2" x1="0" y1="1" x2="1" y2="0">
+            <stop offset="0" stop-color="#5a6a44"/><stop offset="1" stop-color="#8ea06a"/>
+          </linearGradient>
+        </defs>
+        <!-- arcos de fondo -->
+        <path d="M60 330V170a70 70 0 0 1 140 0v160" fill="none" stroke="rgba(36,26,20,.16)" stroke-width="2"/>
+        <path d="M220 330V200a60 60 0 0 1 120 0v130" fill="none" stroke="rgba(36,26,20,.16)" stroke-width="2"/>
+        <!-- plato grande -->
+        <circle cx="168" cy="236" r="104" fill="url(#g1)" opacity=".16"/>
+        <circle cx="168" cy="236" r="104" fill="none" stroke="url(#g1)" stroke-width="2.4"/>
+        <circle cx="168" cy="236" r="70" fill="none" stroke="rgba(173,74,38,.45)" stroke-width="1.4" stroke-dasharray="5 7"/>
+        <circle cx="168" cy="236" r="34" fill="url(#g1)" opacity=".4"/>
+        <!-- platillo tapa -->
+        <circle cx="300" cy="286" r="54" fill="#fffdf8" stroke="rgba(36,26,20,.22)" stroke-width="2"/>
+        <circle cx="300" cy="286" r="30" fill="url(#g2)" opacity=".35"/>
+        <path d="M284 286h32" stroke="rgba(36,26,20,.4)" stroke-width="2" stroke-linecap="round"/>
+        <!-- copa -->
+        <path d="M300 104h48l-7 36a17 17 0 0 1-34 0Z" fill="url(#g1)" opacity=".5"/>
+        <path d="M300 104h48l-7 36a17 17 0 0 1-34 0Z" fill="none" stroke="rgba(36,26,20,.4)" stroke-width="2"/>
+        <path d="M324 174v28m-13 0h26" stroke="rgba(36,26,20,.4)" stroke-width="2" stroke-linecap="round"/>
+        <!-- cubiertos -->
+        <path d="M62 124v74m0-74c-8 0-8 22 0 22s8-22 0-22Z" fill="none" stroke="rgba(36,26,20,.34)" stroke-width="2" stroke-linecap="round"/>
+        <path d="M92 124v22a9 9 0 0 0 18 0v-22m-9 22v52" fill="none" stroke="rgba(36,26,20,.34)" stroke-width="2" stroke-linecap="round"/>
+        <!-- toldo de terraza -->
+        <path d="M24 46h372l-14 30H38Z" fill="url(#g1)" opacity=".22"/>
+        <path d="M38 76q11 14 22 0 11 14 22 0 11 14 22 0 11 14 22 0 11 14 22 0 11 14 22 0 11 14 22 0 11 14 22 0 11 14 22 0 11 14 22 0 11 14 22 0 11 14 22 0 11 14 22 0" fill="none" stroke="rgba(173,74,38,.45)" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M24 46h372" stroke="rgba(36,26,20,.32)" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<!-- c) secciones preparadas para rellenar -->
+<section class="rellenar">
+  <div class="envoltura">
+    <div class="cabecera">
+      <span class="etiqueta">Estructura de la web</span>
+      <h2>Las secciones ya están montadas. Los contenidos los pondríais vosotros.</h2>
+      <p>Cada bloque está diseñado y listo para recibir vuestros textos, precios y fotografías. Aquí no aparece ningún plato, precio ni horario: eso lo decidís vosotros y nosotros lo colocamos.</p>
+    </div>
+
+    <div class="tarjetas">
+      <article class="tarjeta">
+        <span class="icono">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#8a3a1d" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 3h12a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M8.5 8h7M8.5 12h7M8.5 16h4"/>
+          </svg>
+        </span>
+        <h3>La carta</h3>
+        <p>Espacio para la carta completa, organizada por apartados y fácil de actualizar sin tocar el diseño.</p>
+        <div class="lineas"><i></i><i></i><i></i></div>
+        <div class="hueco">Contenido a aportar por el negocio</div>
+      </article>
+
+      <article class="tarjeta">
+        <span class="icono">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#8a3a1d" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="8" cy="9" r="4"/><circle cx="16" cy="15" r="4"/><path d="M3 20h18"/>
+          </svg>
+        </span>
+        <h3>Tapas y raciones</h3>
+        <p>Bloque pensado para mostrar vuestras tapas y raciones con descripción breve y precio, si queréis mostrarlo.</p>
+        <div class="lineas"><i></i><i></i><i></i></div>
+        <div class="hueco">Contenido a aportar por el negocio</div>
+      </article>
+
+      <article class="tarjeta">
+        <span class="icono">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#8a3a1d" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 10h18l-3-5H6Z"/><path d="M12 10v11M8 21h8"/>
+          </svg>
+        </span>
+        <h3>La terraza</h3>
+        <p>Apartado para contar cómo es la terraza en la plaza peatonal, con las fotos que nos facilitéis.</p>
+        <div class="lineas"><i></i><i></i><i></i></div>
+        <div class="hueco">Contenido a aportar por el negocio</div>
+      </article>
+
+      <article class="tarjeta">
+        <span class="icono">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#8a3a1d" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 11h18"/><path d="M8 15h3"/>
+          </svg>
+        </span>
+        <h3>Reserva de mesa</h3>
+        <p>Explicación de cómo se reserva y qué datos hacen falta. De momento, por teléfono; más adelante podría ser un formulario.</p>
+        <div class="lineas"><i></i><i></i><i></i></div>
+        <div class="hueco">Contenido a aportar por el negocio</div>
+      </article>
+
+      <article class="tarjeta tarjeta--ancha">
+        <span class="icono">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#8a3a1d" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="9" cy="8" r="3.2"/><circle cx="16.5" cy="9.5" r="2.4"/><path d="M3 19c0-3.3 2.7-5 6-5s6 1.7 6 5"/><path d="M16 14c3 0 5 1.6 5 5"/>
+          </svg>
+        </span>
+        <h3>Grupos y celebraciones</h3>
+        <p>Un bloque para comidas de grupo, cumpleaños o celebraciones: qué ofrecéis, a partir de cuántas personas y cómo se organiza. Las condiciones las fijáis vosotros y aquí quedan explicadas con claridad, para que quien llame ya sepa de qué habla.</p>
+        <div class="lineas"><i></i><i></i><i></i></div>
+        <div class="hueco">Contenido a aportar por el negocio</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- d) cómo reservar -->
+<section class="pasos-sec">
+  <div class="envoltura">
+    <div class="cabecera">
+      <span class="etiqueta">Cómo reservar</span>
+      <h2>Tres pasos, sin complicaciones.</h2>
+    </div>
+    <div class="pasos">
+      <article class="paso">
+        <span class="num">1</span>
+        <h3>Llamad por teléfono</h3>
+        <p>La reserva se hace por teléfono, hablando directamente con el local.</p>
+        <p style="margin-top:14px"><a class="btn" href="tel:686082591" style="padding:12px 20px;font-size:.95rem">686 082 591</a></p>
+      </article>
+      <article class="paso">
+        <span class="num">2</span>
+        <h3>Confirmad los datos</h3>
+        <p>Día, hora y número de personas. Así se os guarda la mesa que mejor encaje.</p>
+      </article>
+      <article class="paso">
+        <span class="num">3</span>
+        <h3>Llegad y sentaos</h3>
+        <p>El día de la reserva solo hay que llegar al local, dar el nombre y sentarse.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- e) contacto -->
+<section class="contacto" id="contacto">
+  <div class="envoltura">
+    <div class="cabecera">
+      <span class="etiqueta">Contacto</span>
+      <h2>Dónde estamos y cómo llamarnos.</h2>
+    </div>
+
+    <div class="contacto-rejilla">
+      <div class="datos">
+        <div class="dato">
+          <span class="marca">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ad4a26" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M6.2 3.5h3l1.6 4-2 1.4a11.5 11.5 0 0 0 5.8 5.8l1.4-2 4 1.6v3a1.7 1.7 0 0 1-1.9 1.7C11.3 18.6 5.4 12.7 4.5 5.4A1.7 1.7 0 0 1 6.2 3.5Z"/>
+            </svg>
+          </span>
+          <div style="min-width:0">
+            <h3>Teléfono</h3>
+            <p style="margin-bottom:12px">686 082 591</p>
+            <a class="btn" href="tel:686082591" style="padding:12px 20px;font-size:.95rem">Llamar ahora</a>
+          </div>
+        </div>
+
+        <div class="dato">
+          <span class="marca">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ad4a26" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 21s7-5.4 7-11a7 7 0 1 0-14 0c0 5.6 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/>
+            </svg>
+          </span>
+          <div style="min-width:0">
+            <h3>Dirección</h3>
+            <address>Bulevar La Morera, C/ Picasso, 7<br>30170 Mula, Murcia</address>
+          </div>
+        </div>
+
+        <div class="dato">
+          <span class="marca">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ad4a26" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>
+            </svg>
+          </span>
+          <div style="min-width:0">
+            <h3>Horario</h3>
+            <p>Consultar horario</p>
+          </div>
+        </div>
+      </div>
+
+      <figure class="mapa-caja" style="margin:0">
+        <svg viewBox="0 0 560 400" role="img" aria-label="Esquema dibujado de la zona: plaza peatonal y calle Picasso con un marcador en la ubicación aproximada del local" style="width:100%">
+          <defs>
+            <linearGradient id="suelo" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#fffdf8"/><stop offset="1" stop-color="#f1e5cf"/>
+            </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="560" height="400" rx="12" fill="url(#suelo)"/>
+          <!-- manzanas -->
+          <g fill="rgba(36,26,20,.07)" stroke="rgba(36,26,20,.16)" stroke-width="1.5">
+            <rect x="26" y="26" width="150" height="104" rx="7"/>
+            <rect x="26" y="268" width="150" height="106" rx="7"/>
+            <rect x="404" y="26" width="130" height="118" rx="7"/>
+            <rect x="404" y="256" width="130" height="118" rx="7"/>
+            <rect x="214" y="26" width="150" height="70" rx="7"/>
+          </g>
+          <!-- calles -->
+          <path d="M0 200h560" stroke="rgba(36,26,20,.13)" stroke-width="40" stroke-linecap="butt"/>
+          <path d="M0 200h560" stroke="#fffdf8" stroke-width="34"/>
+          <path d="M0 200h560" stroke="rgba(36,26,20,.3)" stroke-width="1.6" stroke-dasharray="12 12"/>
+          <path d="M194 0v400" stroke="rgba(36,26,20,.13)" stroke-width="34"/>
+          <path d="M194 0v400" stroke="#fffdf8" stroke-width="28"/>
+          <path d="M386 0v400" stroke="rgba(36,26,20,.13)" stroke-width="30"/>
+          <path d="M386 0v400" stroke="#fffdf8" stroke-width="24"/>
+          <!-- plaza peatonal -->
+          <rect x="214" y="124" width="150" height="150" rx="14" fill="rgba(212,154,49,.22)" stroke="rgba(173,74,38,.42)" stroke-width="1.8" stroke-dasharray="7 6"/>
+          <g stroke="rgba(173,74,38,.3)" stroke-width="1.2">
+            <path d="M214 160h150M214 199h150M214 238h150"/>
+            <path d="M252 124v150M289 124v150M327 124v150"/>
+          </g>
+          <!-- arbolitos de la plaza -->
+          <g fill="rgba(90,106,68,.42)">
+            <circle cx="232" cy="142" r="9"/><circle cx="346" cy="142" r="9"/>
+            <circle cx="232" cy="256" r="9"/><circle cx="346" cy="256" r="9"/>
+          </g>
+          <text x="289" y="206" text-anchor="middle" font-family="ui-serif, Georgia, serif" font-size="15" fill="rgba(36,26,20,.6)">Plaza peatonal</text>
+          <!-- etiquetas de calle -->
+          <text x="40" y="193" font-family="-apple-system, Segoe UI, Roboto, sans-serif" font-size="13" letter-spacing="1.6" fill="rgba(36,26,20,.52)">C/ PICASSO</text>
+          <text x="470" y="193" text-anchor="middle" font-family="-apple-system, Segoe UI, Roboto, sans-serif" font-size="13" letter-spacing="1.6" fill="rgba(36,26,20,.52)">C/ PICASSO</text>
+          <text x="186" y="366" text-anchor="end" font-family="-apple-system, Segoe UI, Roboto, sans-serif" font-size="12" letter-spacing="1.4" fill="rgba(36,26,20,.4)">BULEVAR LA MORERA</text>
+          <!-- marcador -->
+          <g transform="translate(364,124)">
+            <path d="M0 44c0 0 20-16 20-28A20 20 0 1 0-20 16C-20 28 0 44 0 44Z" fill="#ad4a26"/>
+            <circle cx="0" cy="15" r="7" fill="#fffdf8"/>
+            <circle cx="0" cy="50" r="4" fill="rgba(36,26,20,.18)"/>
+          </g>
+          <text x="364" y="106" text-anchor="middle" font-family="ui-serif, Georgia, serif" font-size="16" fill="#8a3a1d">Ateneo Las Mulas</text>
+        </svg>
+        <figcaption><span class="punto"></span> Esquema dibujado a mano, orientativo. No es un mapa real ni sustituye a la navegación.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- f) pie -->
+<footer>
+  <div class="envoltura">
+    <div class="pie-top">
+      <div>
+        <p class="pie-nombre">Ateneo Las Mulas</p>
+        <p style="color:rgba(239,226,209,.7);font-size:.95rem;margin-top:6px">Bulevar La Morera, C/ Picasso, 7 · 30170 Mula, Murcia</p>
+      </div>
+      <div>
+        <p style="font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(239,226,209,.55);margin-bottom:6px">Email</p>
+        <a class="pie-mail" href="mailto:ateneolasmulas@gmail.com">ateneolasmulas@gmail.com</a>
+      </div>
+    </div>
+    <p class="pie-firma">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+</body>
+</html>
