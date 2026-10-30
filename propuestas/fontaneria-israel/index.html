@@ -1,0 +1,822 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fontanería Israel · Elche — Propuesta de diseño</title>
+<meta name="description" content="Maqueta no oficial de propuesta web para Fontanería Israel (Elche, Alicante). Diseño de FFFFFFstudio.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+:root{
+  --ink:#0b1220;
+  --ink-2:#121c2e;
+  --slate:#1d2a40;
+  --line:rgba(255,255,255,.10);
+  --line-2:rgba(10,18,32,.10);
+  --paper:#f6f8fb;
+  --paper-2:#ffffff;
+  --text:#101a2b;
+  --text-soft:#4a5a73;
+  --on-dark:#eaf1fb;
+  --on-dark-soft:#a8bbd6;
+  --aqua:#2fb8e6;
+  --aqua-deep:#1577c7;
+  --aqua-ink:#0a4f85;
+  --flame:#ff7a3d;
+  --r:16px;
+  --maxw:1180px;
+  --bar-h:44px;
+  --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+html,body{max-width:100%;overflow-x:clip}
+@supports not (overflow-x:clip){ html,body{overflow-x:hidden} }
+body{
+  margin:0;
+  font-family:var(--font);
+  color:var(--text);
+  background:var(--paper);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img,svg{max-width:100%;height:auto;display:block}
+h1,h2,h3,h4{line-height:1.12;margin:0;letter-spacing:-.02em;font-weight:700}
+p{margin:0}
+a{color:inherit}
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+/* ---------- Barra fija de propuesta ---------- */
+.topstack{position:sticky;top:0;z-index:100}
+.proposal-bar{
+  min-height:var(--bar-h);
+  display:flex;align-items:center;justify-content:center;
+  background:#0b1220;
+  color:#dfe8f6;
+  border-bottom:1px solid rgba(47,184,230,.35);
+  padding:7px 16px;
+}
+.proposal-bar span{
+  font-size:12px;letter-spacing:.055em;text-transform:uppercase;
+  font-weight:600;text-align:center;line-height:1.35;
+  max-width:100%;overflow-wrap:break-word;
+}
+.proposal-bar span::before{
+  content:"";display:inline-block;vertical-align:middle;
+  width:7px;height:7px;border-radius:50%;background:var(--aqua);
+  margin-right:9px;margin-top:-2px;
+}
+
+/* ---------- Cabecera del sitio ---------- */
+.site-head{
+  background:rgba(11,18,32,.95);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+  color:var(--on-dark);
+}
+.site-head .inner{
+  display:flex;align-items:center;gap:16px;
+  min-height:64px;flex-wrap:wrap;padding:10px 24px;
+}
+.brand{display:flex;align-items:center;gap:11px;min-width:0}
+.brand .mark{flex:0 0 auto;width:36px;height:36px}
+.brand b{font-size:16px;letter-spacing:-.01em;white-space:nowrap}
+.brand small{display:block;font-size:11px;font-weight:600;color:var(--on-dark-soft);letter-spacing:.09em;text-transform:uppercase}
+.nav{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+.nav a{
+  text-decoration:none;font-size:13.5px;font-weight:600;color:var(--on-dark-soft);
+  padding:8px 11px;border-radius:9px;
+}
+.nav a:hover,.nav a:focus-visible{color:#fff;background:rgba(255,255,255,.07)}
+.head-tel{
+  display:inline-flex;align-items:center;gap:8px;
+  text-decoration:none;font-weight:700;font-size:14px;
+  padding:10px 15px;border-radius:999px;
+  color:#07263f;background:linear-gradient(135deg,var(--aqua) 0%,#54d2f0 100%);
+  white-space:nowrap;
+}
+
+/* ---------- Hero ---------- */
+.hero{
+  position:relative;overflow:hidden;color:var(--on-dark);
+  background:
+    radial-gradient(900px 520px at 88% -8%,rgba(47,184,230,.34),transparent 62%),
+    radial-gradient(700px 480px at 4% 104%,rgba(21,119,199,.30),transparent 64%),
+    linear-gradient(168deg,#0b1220 0%,#132238 52%,#0d1829 100%);
+}
+.hero .deco{position:absolute;inset:0;opacity:.5;pointer-events:none}
+.hero .inner{
+  position:relative;z-index:2;
+  display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);
+  gap:52px;align-items:center;
+  padding:84px 24px 88px;
+}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:#b9e6fa;border:1px solid rgba(47,184,230,.42);
+  background:rgba(47,184,230,.10);
+  padding:7px 13px;border-radius:999px;margin-bottom:22px;
+}
+.hero h1{font-size:clamp(2.1rem,6.2vw,3.9rem);letter-spacing:-.035em}
+.hero h1 .thin{display:block;font-weight:500;color:var(--on-dark-soft);font-size:.42em;letter-spacing:.02em;margin-bottom:12px}
+.hero h1 .grad{
+  background:linear-gradient(100deg,#7fe0ff 0%,#2fb8e6 55%,#1577c7 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero .lede{
+  margin-top:20px;font-size:clamp(1rem,1.9vw,1.15rem);
+  color:var(--on-dark-soft);max-width:46ch;
+}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  text-decoration:none;font-weight:700;font-size:15.5px;
+  padding:15px 24px;border-radius:13px;border:1px solid transparent;
+  min-height:52px;
+}
+.btn-primary{
+  color:#05243c;
+  background:linear-gradient(135deg,#54d2f0 0%,var(--aqua) 45%,#189fd4 100%);
+  box-shadow:0 12px 30px -12px rgba(47,184,230,.65);
+}
+.btn-primary:hover{filter:brightness(1.07)}
+.btn-ghost{color:var(--on-dark);border-color:rgba(255,255,255,.22);background:rgba(255,255,255,.05)}
+.btn-ghost:hover{background:rgba(255,255,255,.1)}
+.hero-note{margin-top:18px;font-size:13px;color:#8ea5c4}
+
+.hero-card{
+  background:rgba(255,255,255,.055);
+  border:1px solid rgba(255,255,255,.13);
+  border-radius:22px;padding:24px;
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+}
+.hero-card .art{border-radius:14px;overflow:hidden;background:#0a1626}
+.hero-card ul{list-style:none;margin:20px 0 0;padding:0;display:grid;gap:12px}
+.hero-card li{display:flex;gap:11px;align-items:flex-start;font-size:14.5px;color:#cfe0f5}
+.hero-card li svg{flex:0 0 auto;margin-top:2px}
+
+/* ---------- Secciones ---------- */
+section{scroll-margin-top:118px}
+.sec{padding:76px 0}
+.sec-head{max-width:62ch;margin-bottom:40px}
+.kicker{
+  font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--aqua-deep);margin-bottom:12px;
+}
+.sec-head h2{font-size:clamp(1.65rem,4.1vw,2.5rem)}
+.sec-head p{margin-top:14px;color:var(--text-soft);font-size:clamp(.98rem,1.7vw,1.08rem)}
+
+/* Servicios */
+.grid-serv{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.card{
+  background:var(--paper-2);
+  border:1px solid var(--line-2);
+  border-radius:var(--r);
+  padding:26px 24px;
+  box-shadow:0 1px 2px rgba(16,26,43,.04),0 14px 34px -26px rgba(16,26,43,.22);
+  min-width:0;
+}
+.card .ico{
+  width:48px;height:48px;border-radius:13px;margin-bottom:18px;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(140deg,#e3f5fd 0%,#cfeafb 100%);
+  border:1px solid rgba(21,119,199,.16);
+}
+.card h3{font-size:1.09rem;margin-bottom:9px}
+.card p{color:var(--text-soft);font-size:14.6px}
+.serv-foot{
+  margin-top:22px;padding:18px 20px;border-radius:14px;
+  background:#eef3f9;border:1px solid var(--line-2);
+  color:var(--text-soft);font-size:14px;
+}
+
+/* Cómo trabajamos */
+.steps-wrap{background:var(--ink);color:var(--on-dark)}
+.steps-wrap .kicker{color:#7fe0ff}
+.steps-wrap .sec-head p{color:var(--on-dark-soft)}
+.grid-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.step{
+  position:relative;min-width:0;
+  background:linear-gradient(160deg,rgba(255,255,255,.075),rgba(255,255,255,.03));
+  border:1px solid rgba(255,255,255,.13);
+  border-radius:18px;padding:28px 24px;
+}
+.step .n{
+  display:flex;align-items:center;justify-content:center;
+  width:42px;height:42px;border-radius:12px;margin-bottom:18px;
+  font-weight:800;font-size:17px;color:#05243c;
+  background:linear-gradient(135deg,#7fe0ff,var(--aqua));
+}
+.step h3{font-size:1.09rem;margin-bottom:9px}
+.step p{color:var(--on-dark-soft);font-size:14.6px}
+
+/* Contacto */
+.grid-contact{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:22px;align-items:start}
+.contact-list{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.contact-list li{
+  display:flex;gap:15px;align-items:flex-start;
+  background:var(--paper-2);border:1px solid var(--line-2);
+  border-radius:14px;padding:18px 20px;min-width:0;
+  box-shadow:0 1px 2px rgba(16,26,43,.04);
+}
+.contact-list .ci{
+  flex:0 0 auto;width:42px;height:42px;border-radius:11px;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(140deg,#e3f5fd,#cfeafb);
+  border:1px solid rgba(21,119,199,.16);
+}
+.contact-list .lbl{
+  font-size:11px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--aqua-ink);margin-bottom:4px;
+}
+.contact-list .val{font-weight:650;font-size:15.6px;overflow-wrap:anywhere}
+.contact-list a.val{text-decoration:none}
+.contact-list a.val[href^="mailto"]{font-size:14.6px;letter-spacing:-.005em}
+.contact-list a.val:hover{text-decoration:underline}
+.contact-list .sub{font-size:13.4px;color:var(--text-soft);margin-top:3px;overflow-wrap:anywhere}
+.socials{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
+.social{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:13.6px;font-weight:650;text-decoration:none;
+  padding:9px 14px;border-radius:999px;
+  border:1px solid var(--line-2);background:var(--paper-2);color:var(--text);
+  overflow-wrap:anywhere;
+}
+.social:hover{border-color:rgba(21,119,199,.4)}
+.map-card{
+  background:var(--paper-2);border:1px solid var(--line-2);
+  border-radius:18px;padding:16px;overflow:hidden;
+  box-shadow:0 1px 2px rgba(16,26,43,.04),0 18px 40px -30px rgba(16,26,43,.25);
+}
+.map-card .map-box{border-radius:12px;overflow:hidden;background:#eaf0f7;line-height:0}
+.map-card svg{width:100%;height:auto}
+.map-legend{
+  display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;
+  margin-top:14px;font-size:12.6px;color:var(--text-soft);
+}
+.map-legend span{display:inline-flex;align-items:center;gap:7px}
+.dot{width:9px;height:9px;border-radius:50%;flex:0 0 auto}
+.map-note{margin-top:10px;font-size:12.4px;color:#73839b}
+
+/* Pie */
+.site-foot{background:var(--ink);color:var(--on-dark-soft);padding:54px 0 36px}
+.foot-top{
+  display:flex;flex-wrap:wrap;gap:26px;justify-content:space-between;align-items:flex-start;
+  padding-bottom:26px;border-bottom:1px solid var(--line);
+}
+.foot-top .fb{display:flex;align-items:center;gap:11px;color:var(--on-dark)}
+.foot-top .fb b{font-size:16px}
+.foot-links{display:grid;gap:7px;font-size:14.3px}
+.foot-links a{text-decoration:none;overflow-wrap:anywhere}
+.foot-links a:hover{color:#fff;text-decoration:underline}
+.foot-credit{
+  margin-top:26px;font-size:13.4px;color:#8ea5c4;
+  display:flex;flex-wrap:wrap;gap:8px 16px;justify-content:space-between;align-items:baseline;
+}
+.foot-credit strong{color:#cfe0f5;font-weight:650}
+
+/* Responsive */
+@media (max-width:980px){
+  .hero .inner{grid-template-columns:minmax(0,1fr);gap:36px;padding:62px 24px 68px}
+  .grid-serv,.grid-steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid-contact{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:720px){
+  .wrap,.site-head .inner,.hero .inner{padding-left:18px;padding-right:18px}
+  .nav{display:none}
+  .site-head .inner{min-height:58px;gap:12px}
+  .head-tel{margin-left:auto}
+  .grid-serv,.grid-steps{grid-template-columns:minmax(0,1fr)}
+  .sec{padding:56px 0}
+  .btn{width:100%}
+  .hero .inner{padding-top:48px;padding-bottom:54px}
+  .foot-top{flex-direction:column;gap:22px}
+}
+@media (max-width:420px){
+  .contact-list a.val[href^="mailto"]{font-size:13px}
+  .brand small{display:none}
+  .head-tel span.t{display:none}
+  .head-tel{padding:10px 13px}
+}
+@media (prefers-reduced-motion:no-preference){
+  html.has-reveal .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+  html.has-reveal .reveal.in{opacity:1;transform:none}
+}
+@media print{ .reveal{opacity:1 !important;transform:none !important} }
+:focus-visible{outline:3px solid var(--aqua);outline-offset:2px;border-radius:6px}
+</style>
+</head>
+<body>
+
+<!-- Barra fija de propuesta -->
+<div class="topstack">
+<div class="proposal-bar" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<!-- Cabecera -->
+<header class="site-head">
+  <div class="inner">
+    <div class="brand">
+      <svg class="mark" viewBox="0 0 48 48" role="img" aria-label="Fontanería Israel">
+        <defs>
+          <linearGradient id="gm" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#7fe0ff"/><stop offset="1" stop-color="#1577c7"/>
+          </linearGradient>
+        </defs>
+        <rect x="1" y="1" width="46" height="46" rx="13" fill="url(#gm)"/>
+        <path d="M24 11c4.6 5.1 8.4 9.6 8.4 14.3A8.4 8.4 0 0 1 24 33.7a8.4 8.4 0 0 1-8.4-8.4C15.6 20.6 19.4 16.1 24 11Z" fill="#06263f" opacity=".92"/>
+        <path d="M24 17.5c2.4 2.9 4.2 5.3 4.2 7.6a4.2 4.2 0 0 1-8.4 0c0-2.3 1.8-4.7 4.2-7.6Z" fill="#9fe9ff"/>
+      </svg>
+      <div>
+        <b>Fontanería Israel</b>
+        <small>Elche · Alicante</small>
+      </div>
+    </div>
+    <nav class="nav" aria-label="Secciones">
+      <a href="#servicios">Servicios</a>
+      <a href="#proceso">Cómo trabajamos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="head-tel" href="tel:+34640169988">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M6.6 3h2.3l1.5 4-2 1.3a12 12 0 0 0 5.3 5.3l1.3-2 4 1.5v2.3A2.6 2.6 0 0 1 16.4 21C9.6 20.6 3.4 14.4 3 7.6A2.6 2.6 0 0 1 6.6 3Z" stroke="#07263f" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="t">Llamar</span> 640 169 988
+    </a>
+  </div>
+</header>
+</div><!-- /.topstack -->
+
+<!-- Hero -->
+<section class="hero" aria-labelledby="h1">
+  <svg class="deco" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="hl" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#2fb8e6" stop-opacity="0"/>
+        <stop offset=".5" stop-color="#2fb8e6" stop-opacity=".85"/>
+        <stop offset="1" stop-color="#2fb8e6" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <g fill="none" stroke="url(#hl)" stroke-width="1.4">
+      <path d="M-40 150 H340 a28 28 0 0 1 28 28 V300 a28 28 0 0 0 28 28 H1240"/>
+      <path d="M-40 420 H180 a28 28 0 0 0 28-28 V240 a28 28 0 0 1 28-28 H760 a28 28 0 0 1 28 28 V560"/>
+      <path d="M1240 90 H960 a28 28 0 0 0-28 28 V220 a28 28 0 0 1-28 28 H520"/>
+    </g>
+    <g fill="#2fb8e6" opacity=".55">
+      <circle cx="368" cy="178" r="3.4"/><circle cx="396" cy="328" r="3.4"/>
+      <circle cx="208" cy="392" r="3.4"/><circle cx="236" cy="212" r="3.4"/>
+      <circle cx="788" cy="240" r="3.4"/><circle cx="932" cy="118" r="3.4"/>
+      <circle cx="904" cy="248" r="3.4"/>
+    </g>
+  </svg>
+
+  <div class="inner">
+    <div>
+      <span class="eyebrow">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 21s7-5.1 7-10.5A7 7 0 0 0 5 10.5C5 15.9 12 21 12 21Z" stroke="#b9e6fa" stroke-width="1.9" stroke-linejoin="round"/>
+          <circle cx="12" cy="10.3" r="2.3" stroke="#b9e6fa" stroke-width="1.9"/>
+        </svg>
+        Fontanería en Elche
+      </span>
+
+      <h1 id="h1">
+        <span class="thin">Fontanería</span>
+        <span class="grad">Israel</span>
+      </h1>
+
+      <p class="lede">
+        Fontaneros en Elche. Reparación de fugas, desatascos, grifería,
+        calentadores y reformas de baño. Cuéntanos qué pasa y te decimos
+        cómo lo resolvemos.
+      </p>
+
+      <div class="cta-row">
+        <a class="btn btn-primary" href="tel:+34640169988">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6.6 3h2.3l1.5 4-2 1.3a12 12 0 0 0 5.3 5.3l1.3-2 4 1.5v2.3A2.6 2.6 0 0 1 16.4 21C9.6 20.6 3.4 14.4 3 7.6A2.6 2.6 0 0 1 6.6 3Z" stroke="#05243c" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Llamar al 640 169 988
+        </a>
+        <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
+      </div>
+
+      <p class="hero-note">C/ Francisco Tomás y Valiente 5 bajo, 03206 Elche</p>
+    </div>
+
+    <aside class="hero-card" aria-label="Zona de trabajo">
+      <div class="art">
+        <svg viewBox="0 0 440 240" role="img" aria-label="Ilustración esquemática de una instalación de fontanería">
+          <defs>
+            <linearGradient id="ag" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#132238"/><stop offset="1" stop-color="#0a1626"/>
+            </linearGradient>
+            <linearGradient id="pipe" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#54d2f0"/><stop offset="1" stop-color="#1577c7"/>
+            </linearGradient>
+          </defs>
+          <rect width="440" height="240" fill="url(#ag)"/>
+          <g stroke="rgba(255,255,255,.055)" stroke-width="1">
+            <path d="M0 40h440M0 80h440M0 120h440M0 160h440M0 200h440"/>
+            <path d="M40 0v240M120 0v240M200 0v240M280 0v240M360 0v240"/>
+          </g>
+          <g fill="none" stroke="url(#pipe)" stroke-width="7" stroke-linecap="round">
+            <path d="M46 196h74a16 16 0 0 0 16-16v-78a16 16 0 0 1 16-16h66"/>
+            <path d="M218 86h52a16 16 0 0 1 16 16v44a16 16 0 0 0 16 16h92"/>
+          </g>
+          <g fill="#0a1626" stroke="#9fe9ff" stroke-width="3.2">
+            <circle cx="218" cy="86" r="11"/>
+            <circle cx="286" cy="146" r="9"/>
+          </g>
+          <rect x="316" y="44" width="76" height="92" rx="12" fill="#101e33" stroke="#2fb8e6" stroke-width="2.6"/>
+          <g stroke="#9fe9ff" stroke-width="2.6" stroke-linecap="round">
+            <path d="M332 66h44M332 82h30"/>
+          </g>
+          <circle cx="368" cy="110" r="9" fill="none" stroke="#54d2f0" stroke-width="2.6"/>
+          <path d="M368 104v6l4 3" stroke="#54d2f0" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+          <g fill="#7fe0ff" opacity=".85">
+            <path d="M152 206c0 3.6-2.7 6.4-6 6.4s-6-2.8-6-6.4c0-3.4 6-9.6 6-9.6s6 6.2 6 9.6Z"/>
+            <path d="M184 214c0 2.7-2 4.8-4.5 4.8s-4.5-2.1-4.5-4.8c0-2.6 4.5-7.2 4.5-7.2s4.5 4.6 4.5 7.2Z"/>
+          </g>
+          <rect x="30" y="188" width="36" height="18" rx="5" fill="#1d2a40" stroke="#2fb8e6" stroke-width="2.2"/>
+        </svg>
+      </div>
+      <ul>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12.5 4.3 4.3L19 7" stroke="#54d2f0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Averías de agua, desagües y sanitarios
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12.5 4.3 4.3L19 7" stroke="#54d2f0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Viviendas, comunidades y locales
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12.5 4.3 4.3L19 7" stroke="#54d2f0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Local propio en Elche y atención por teléfono
+        </li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<!-- Servicios -->
+<section class="sec" id="servicios">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="kicker">Servicios</p>
+      <h2>Lo que resolvemos en casa, en la comunidad y en el local</h2>
+      <p>Trabajos habituales de fontanería. Si lo que necesitas no aparece aquí, llámanos y lo valoramos.</p>
+    </div>
+
+    <div class="grid-serv">
+      <article class="card reveal">
+        <div class="ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 3.2c3 3.4 5.5 6.4 5.5 9.4a5.5 5.5 0 0 1-11 0c0-3 2.5-6 5.5-9.4Z" stroke="#0a4f85" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M12 9.6c1.4 1.7 2.4 3.1 2.4 4.3a2.4 2.4 0 0 1-4.8 0c0-1.2 1-2.6 2.4-4.3Z" fill="#1577c7" opacity=".3"/>
+          </svg>
+        </div>
+        <h3>Reparación de fugas</h3>
+        <p>Localización y reparación de fugas de agua en tuberías, llaves de paso, cisternas y bajantes, con la menor obra posible.</p>
+      </article>
+
+      <article class="card reveal">
+        <div class="ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 6h16M8 6v5a4 4 0 0 0 8 0V6" stroke="#0a4f85" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M12 15v6" stroke="#0a4f85" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M9 19h6" stroke="#1577c7" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Desatascos</h3>
+        <p>Desatasco de fregaderos, lavabos, duchas, inodoros y arquetas. Revisamos el recorrido para que no vuelva a repetirse.</p>
+      </article>
+
+      <article class="card reveal">
+        <div class="ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 20h14M7 20v-3a5 5 0 0 1 10 0v3" stroke="#0a4f85" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 12V5h4" stroke="#0a4f85" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9.5 5h5" stroke="#1577c7" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Instalación y cambio de grifería</h3>
+        <p>Sustitución de grifos de cocina y baño, monomandos, duchas y flexos. También llaves de paso y latiguillos.</p>
+      </article>
+
+      <article class="card reveal">
+        <div class="ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="5" y="3.5" width="14" height="13" rx="3" stroke="#0a4f85" stroke-width="1.8"/>
+            <path d="M8.5 7.5h7M8.5 11h4.5" stroke="#0a4f85" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M9 16.5v4M15 16.5v4" stroke="#1577c7" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Calentadores y termos</h3>
+        <p>Instalación, sustitución y revisión de calentadores y termos eléctricos. También revisamos la salida de humos cuando procede.</p>
+      </article>
+
+      <article class="card reveal">
+        <div class="ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 13h16v4a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-4Z" stroke="#0a4f85" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M7 13V7a3 3 0 0 1 3-3h1" stroke="#0a4f85" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M14 6.5h4" stroke="#1577c7" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Reformas de baño</h3>
+        <p>Cambio de bañera por plato de ducha, sustitución de sanitarios y renovación completa de la fontanería del baño.</p>
+      </article>
+
+      <article class="card reveal">
+        <div class="ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 17h5l3-10 3 6h5" stroke="#0a4f85" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="12" cy="20" r="1.4" fill="#1577c7"/>
+          </svg>
+        </div>
+        <h3>Revisión de instalaciones</h3>
+        <p>Comprobación de la red de agua y desagües en viviendas, comunidades y locales para detectar puntos de riesgo.</p>
+      </article>
+    </div>
+
+    <p class="serv-foot reveal">
+      Cada trabajo se valora después de ver la avería o la instalación. Llámanos y te explicamos
+      cómo lo haríamos antes de empezar.
+    </p>
+  </div>
+</section>
+
+<!-- Cómo trabajamos -->
+<section class="sec steps-wrap" id="proceso">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="kicker">Cómo trabajamos</p>
+      <h2>Tres pasos, sin sorpresas</h2>
+      <p>Un proceso sencillo para que sepas en todo momento qué se va a hacer en tu casa o en tu local.</p>
+    </div>
+
+    <div class="grid-steps">
+      <article class="step reveal">
+        <div class="n">1</div>
+        <h3>Nos cuentas la avería</h3>
+        <p>Llamas al 640 169 988 y describes el problema. Te preguntamos lo necesario para saber qué material y herramienta hay que llevar.</p>
+      </article>
+      <article class="step reveal">
+        <div class="n">2</div>
+        <h3>Vamos a verlo</h3>
+        <p>Nos desplazamos, revisamos la instalación y te explicamos qué está pasando y qué opciones hay antes de tocar nada.</p>
+      </article>
+      <article class="step reveal">
+        <div class="n">3</div>
+        <h3>Lo dejamos resuelto</h3>
+        <p>Hacemos el trabajo acordado, comprobamos que no queda ninguna fuga y recogemos la zona antes de irnos.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Contacto -->
+<section class="sec" id="contacto">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="kicker">Contacto</p>
+      <h2>Estamos en Elche</h2>
+      <p>La forma más rápida de contactar es por teléfono. También puedes escribirnos por correo o por redes sociales.</p>
+    </div>
+
+    <div class="grid-contact">
+      <div class="reveal">
+        <ul class="contact-list">
+          <li>
+            <span class="ci">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6.6 3h2.3l1.5 4-2 1.3a12 12 0 0 0 5.3 5.3l1.3-2 4 1.5v2.3A2.6 2.6 0 0 1 16.4 21C9.6 20.6 3.4 14.4 3 7.6A2.6 2.6 0 0 1 6.6 3Z" stroke="#0a4f85" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <div>
+              <p class="lbl">Teléfono</p>
+              <a class="val" href="tel:+34640169988">640 169 988</a>
+            </div>
+          </li>
+
+          <li>
+            <span class="ci">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 21s7-5.1 7-10.5A7 7 0 0 0 5 10.5C5 15.9 12 21 12 21Z" stroke="#0a4f85" stroke-width="1.8" stroke-linejoin="round"/>
+                <circle cx="12" cy="10.3" r="2.3" stroke="#0a4f85" stroke-width="1.8"/>
+              </svg>
+            </span>
+            <div>
+              <p class="lbl">Dirección</p>
+              <p class="val">C/ Francisco Tomás y Valiente 5 bajo, 03206 Elche</p>
+            </div>
+          </li>
+
+          <li>
+            <span class="ci">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="12" cy="12" r="8.5" stroke="#0a4f85" stroke-width="1.8"/>
+                <path d="M12 7.5V12l3 2" stroke="#0a4f85" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <div>
+              <p class="lbl">Horario</p>
+              <p class="val">Consultar horario</p>
+              <p class="sub">Llámanos al 640 169 988 y te indicamos la disponibilidad.</p>
+            </div>
+          </li>
+
+          <li>
+            <span class="ci">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <rect x="3.2" y="5.5" width="17.6" height="13" rx="3" stroke="#0a4f85" stroke-width="1.8"/>
+                <path d="m4.5 8 7.5 5.2L19.5 8" stroke="#0a4f85" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <div>
+              <p class="lbl">Correo</p>
+              <a class="val" href="mailto:fontaneriaisrael.oficina@gmail.com">fontaneriaisrael.oficina@gmail.com</a>
+            </div>
+          </li>
+
+          <li>
+            <span class="ci">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <rect x="4" y="4" width="16" height="16" rx="4.5" stroke="#0a4f85" stroke-width="1.8"/>
+                <circle cx="12" cy="12" r="3.6" stroke="#0a4f85" stroke-width="1.8"/>
+                <circle cx="16.6" cy="7.4" r="1.1" fill="#1577c7"/>
+              </svg>
+            </span>
+            <div>
+              <p class="lbl">Redes sociales</p>
+              <div class="socials">
+                <a class="social" href="https://www.instagram.com/fontaneriaisrael.elche/" rel="noopener">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <rect x="4" y="4" width="16" height="16" rx="4.5" stroke="#101a2b" stroke-width="1.9"/>
+                    <circle cx="12" cy="12" r="3.6" stroke="#101a2b" stroke-width="1.9"/>
+                    <circle cx="16.6" cy="7.4" r="1.2" fill="#101a2b"/>
+                  </svg>
+                  @fontaneriaisrael.elche
+                </a>
+                <a class="social" href="https://www.facebook.com/FontaneriaIsrael.Elche" rel="noopener">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M13.8 21v-7.6h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.6-1.5h1.5V4.4c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4.1v2.1H8.2v3h2.3V21h3.3Z" stroke="#101a2b" stroke-width="1.6" stroke-linejoin="round"/>
+                  </svg>
+                  /FontaneriaIsrael.Elche
+                </a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Mapa esquemático SVG -->
+      <div class="map-card reveal">
+        <div class="map-box">
+          <svg viewBox="0 0 520 400" role="img" aria-label="Plano esquemático de la zona del taller en Elche. No es un mapa a escala.">
+            <defs>
+              <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#f2f6fb"/><stop offset="1" stop-color="#e3ebf5"/>
+              </linearGradient>
+            </defs>
+            <rect width="520" height="400" fill="url(#bg)"/>
+
+            <!-- manzanas -->
+            <g fill="#dbe5f1">
+              <rect x="34" y="34" width="150" height="104" rx="7"/>
+              <rect x="212" y="34" width="118" height="104" rx="7"/>
+              <rect x="358" y="34" width="128" height="104" rx="7"/>
+              <rect x="34" y="166" width="150" height="88" rx="7"/>
+              <rect x="212" y="166" width="118" height="88" rx="7"/>
+              <rect x="358" y="166" width="128" height="88" rx="7"/>
+              <rect x="34" y="282" width="150" height="84" rx="7"/>
+              <rect x="212" y="282" width="118" height="84" rx="7"/>
+              <rect x="358" y="282" width="128" height="84" rx="7"/>
+            </g>
+
+            <!-- calles -->
+            <g stroke="#ffffff" stroke-width="20" stroke-linecap="round">
+              <path d="M0 152h520"/>
+              <path d="M0 268h520"/>
+              <path d="M198 0v400"/>
+              <path d="M344 0v400"/>
+            </g>
+            <g stroke="#b9c9dd" stroke-width="1.4" stroke-dasharray="8 8">
+              <path d="M0 152h520"/><path d="M0 268h520"/>
+              <path d="M198 0v400"/><path d="M344 0v400"/>
+            </g>
+
+            <!-- via principal -->
+            <path d="M0 356h520" stroke="#cbd9ea" stroke-width="26" stroke-linecap="round"/>
+            <path d="M0 356h520" stroke="#ffffff" stroke-width="2" stroke-dasharray="14 12"/>
+
+            <!-- marcador -->
+            <g transform="translate(252 196)">
+              <circle r="30" fill="#2fb8e6" opacity=".16"/>
+              <circle r="19" fill="#2fb8e6" opacity=".26"/>
+              <path d="M0-24c7.7 0 14 6.3 14 14 0 10.3-14 24-14 24S-14 .3-14-10c0-7.7 6.3-14 14-14Z" fill="#0a4f85"/>
+              <circle cy="-10" r="5.2" fill="#9fe9ff"/>
+            </g>
+
+            <!-- etiquetas -->
+            <g font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="14" font-weight="600" fill="#53657f">
+              <text x="16" y="146">Calle</text>
+              <text x="16" y="262">Calle</text>
+            </g>
+            <g>
+              <rect x="112" y="228" width="280" height="52" rx="11" fill="#ffffff" stroke="#cfdbea" stroke-width="1.4"/>
+            </g>
+            <g font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" text-anchor="middle">
+              <text x="252" y="250" fill="#0a4f85" font-size="16" font-weight="700">Fontanería Israel</text>
+              <text x="252" y="270" fill="#5d6f88" font-size="13" font-weight="500">C/ Francisco Tomás y Valiente 5 bajo</text>
+            </g>
+            <g font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="12" font-weight="600" fill="#6b7d96">
+              <text x="372" y="334">Vía principal</text>
+            </g>
+          </svg>
+        </div>
+        <div class="map-legend">
+          <span><i class="dot" style="background:#0a4f85"></i> Nuestro local</span>
+          <span><i class="dot" style="background:#dbe5f1;border:1px solid #b9c9dd"></i> Manzanas</span>
+          <span><i class="dot" style="background:#cbd9ea"></i> Vía principal</span>
+        </div>
+        <p class="map-note">Esquema orientativo de la ubicación. Para llegar, consulta la dirección completa indicada arriba.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pie -->
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="fb">
+        <svg width="34" height="34" viewBox="0 0 48 48" aria-hidden="true">
+          <rect x="1" y="1" width="46" height="46" rx="13" fill="url(#gm)"/>
+          <path d="M24 11c4.6 5.1 8.4 9.6 8.4 14.3A8.4 8.4 0 0 1 24 33.7a8.4 8.4 0 0 1-8.4-8.4C15.6 20.6 19.4 16.1 24 11Z" fill="#06263f" opacity=".92"/>
+          <path d="M24 17.5c2.4 2.9 4.2 5.3 4.2 7.6a4.2 4.2 0 0 1-8.4 0c0-2.3 1.8-4.7 4.2-7.6Z" fill="#9fe9ff"/>
+        </svg>
+        <div>
+          <b>Fontanería Israel</b>
+          <p style="font-size:13.6px;color:#8ea5c4;margin-top:2px">Fontanería en Elche (Alicante)</p>
+        </div>
+      </div>
+      <div class="foot-links">
+        <a href="tel:+34640169988">640 169 988</a>
+        <a href="mailto:fontaneriaisrael.oficina@gmail.com">fontaneriaisrael.oficina@gmail.com</a>
+        <span>C/ Francisco Tomás y Valiente 5 bajo, 03206 Elche</span>
+        <span>Consultar horario</span>
+      </div>
+      <div class="foot-links">
+        <a href="https://www.instagram.com/fontaneriaisrael.elche/" rel="noopener">Instagram · @fontaneriaisrael.elche</a>
+        <a href="https://www.facebook.com/FontaneriaIsrael.Elche" rel="noopener">Facebook · /FontaneriaIsrael.Elche</a>
+      </div>
+    </div>
+    <div class="foot-credit">
+      <p><strong>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</strong></p>
+      <p>Maqueta no oficial, sin vinculación con el negocio.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+  var root = document.documentElement;
+
+  function showAll(){ els.forEach(function(e){ e.classList.add('in'); }); }
+
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (els.length && !reduce && 'IntersectionObserver' in window) {
+    root.classList.add('has-reveal');
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { rootMargin: '140px 0px 140px 0px', threshold: 0 });
+    els.forEach(function(e, i){
+      e.style.transitionDelay = (Math.min(i,6) * 55) + 'ms';
+      io.observe(e);
+    });
+    // Red de seguridad: si por cualquier motivo no se dispara, se muestra igualmente.
+    setTimeout(showAll, 2200);
+    window.addEventListener('beforeprint', showAll);
+  } else {
+    showAll();
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(ev){
+      var t = document.querySelector(a.getAttribute('href'));
+      if (!t) return;
+      ev.preventDefault();
+      t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+})();
+</script>
+</body>
+</html>

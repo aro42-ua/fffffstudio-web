@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pizzería Taormina · Dénia</title>
+<meta name="description" content="Propuesta de diseño web para Pizzería Taormina, Dénia. Maqueta no oficial de FFFFFFstudio.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  :root{
+    --verde:#0e3b2e;
+    --verde-900:#08261d;
+    --verde-700:#14543f;
+    --crema:#fbf6ec;
+    --crema-2:#f3e9d7;
+    --tomate:#b7362b;
+    --tomate-2:#d8543f;
+    --oro:#d9a44a;
+    --tinta:#1d1b17;
+    --gris:#5e5a52;
+    --linea:rgba(14,59,46,.14);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    --radio:18px;
+    --barra:46px;
+    --max:1180px;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  html,body{max-width:100%;overflow-x:hidden}
+  body{
+    margin:0;
+    background:var(--crema);
+    color:var(--tinta);
+    font-family:var(--sans);
+    font-size:17px;
+    line-height:1.65;
+    padding-top:var(--barra);
+  }
+  img,svg{max-width:100%;display:block}
+  h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.1;margin:0;letter-spacing:-.01em}
+  p{margin:0}
+  a{color:inherit}
+  .wrap{width:100%;max-width:var(--max);margin:0 auto;padding:0 24px}
+  .sec{padding:84px 0}
+  .eyebrow{
+    font-size:12px;letter-spacing:.2em;text-transform:uppercase;
+    font-weight:700;color:var(--tomate);margin-bottom:14px;
+  }
+  .lead{color:var(--gris);font-size:17px;max-width:62ch}
+
+  /* ---------- barra fija ---------- */
+  .aviso{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    height:var(--barra);display:flex;align-items:center;justify-content:center;
+    background:var(--verde-900);color:#f2e6cf;
+    font-size:12px;letter-spacing:.05em;text-align:center;
+    padding:0 14px;border-bottom:1px solid rgba(217,164,74,.35);
+  }
+  .aviso span{
+    display:block;width:100%;
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;color:#fdf8ef;
+    background:
+      radial-gradient(900px 540px at 78% 12%, rgba(217,164,74,.30), transparent 60%),
+      radial-gradient(700px 520px at 8% 92%, rgba(183,54,43,.42), transparent 62%),
+      linear-gradient(165deg,#14543f 0%,#0e3b2e 45%,#08261d 100%);
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:radial-gradient(rgba(255,255,255,.055) 1px, transparent 1px);
+    background-size:16px 16px;
+  }
+  .hero-in{
+    position:relative;z-index:2;
+    display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;
+    padding-top:92px;padding-bottom:96px;
+  }
+  .badge{
+    display:inline-flex;align-items:center;gap:9px;
+    border:1px solid rgba(217,164,74,.5);border-radius:999px;
+    padding:7px 15px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+    color:#e8c98c;background:rgba(0,0,0,.18);
+  }
+  .badge i{width:6px;height:6px;border-radius:50%;background:var(--oro);flex:0 0 auto}
+  h1{
+    font-size:clamp(2.6rem,6.4vw,4.5rem);
+    margin:26px 0 0;color:#fffaf1;
+  }
+  h1 em{display:block;font-style:normal;color:var(--oro);font-size:.42em;letter-spacing:.26em;text-transform:uppercase;font-family:var(--sans);font-weight:700;margin-bottom:16px}
+  .hero p.sub{margin-top:20px;color:rgba(253,248,239,.82);max-width:46ch;font-size:17px}
+  .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:15px 26px;border-radius:999px;text-decoration:none;
+    font-weight:700;font-size:16px;letter-spacing:.01em;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+  }
+  .btn-main{background:var(--tomate);color:#fff;box-shadow:0 12px 28px rgba(183,54,43,.38)}
+  .btn-main:hover{background:var(--tomate-2);transform:translateY(-2px)}
+  .btn-ghost{border:1px solid rgba(253,248,239,.4);color:#fdf8ef}
+  .btn-ghost:hover{background:rgba(253,248,239,.1)}
+  .hero-meta{
+    display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:34px;
+    font-size:13.5px;color:rgba(253,248,239,.7);
+  }
+  .hero-meta b{color:#fdf8ef;font-weight:600}
+  .hero-art{position:relative}
+  .hero-art svg{width:100%;height:auto;filter:drop-shadow(0 26px 50px rgba(0,0,0,.42))}
+
+  /* ---------- cinta ---------- */
+  .cinta{background:var(--oro);color:#2e2206}
+  .cinta-in{
+    display:flex;flex-wrap:wrap;gap:8px 34px;justify-content:center;
+    padding:15px 24px;font-size:12.5px;font-weight:700;
+    letter-spacing:.16em;text-transform:uppercase;text-align:center;
+  }
+  .cinta-in span{display:inline-flex;align-items:center;gap:9px}
+  .cinta-in span::before{content:"";width:5px;height:5px;background:#2e2206;border-radius:50%}
+
+  /* ---------- oferta ---------- */
+  .head{max-width:720px;margin-bottom:46px}
+  .head h2{font-size:clamp(1.9rem,4vw,2.8rem)}
+  .head p{margin-top:16px}
+  .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+  .card{
+    background:#fff;border:1px solid var(--linea);border-radius:var(--radio);
+    padding:28px 26px 30px;min-width:0;
+    transition:transform .18s ease,box-shadow .18s ease;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(14,59,46,.1)}
+  .ico{
+    width:52px;height:52px;border-radius:14px;margin-bottom:18px;
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(145deg,#15543f,#0b2f24);
+  }
+  .ico svg{width:27px;height:27px}
+  .card h3{font-size:1.2rem;margin-bottom:9px}
+  .card p{color:var(--gris);font-size:15.5px}
+  .nota{
+    margin-top:26px;padding:16px 20px;border-left:3px solid var(--oro);
+    background:var(--crema-2);border-radius:0 12px 12px 0;
+    font-size:14.5px;color:#4a4639;
+  }
+
+  /* ---------- pasos ---------- */
+  .pasos-sec{background:linear-gradient(180deg,#f3e9d7 0%,#efe2cc 100%);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+  .pasos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;counter-reset:p}
+  .paso{
+    position:relative;background:#fffdf8;border:1px solid var(--linea);
+    border-radius:var(--radio);padding:34px 26px 28px;min-width:0;
+  }
+  .num{
+    width:44px;height:44px;border-radius:50%;background:var(--verde);color:var(--oro);
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--serif);font-size:1.25rem;margin-bottom:18px;
+  }
+  .paso h3{font-size:1.15rem;margin-bottom:9px}
+  .paso p{color:var(--gris);font-size:15.5px}
+  .paso-cta{margin-top:34px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .btn-dark{background:var(--verde);color:#fdf8ef;box-shadow:0 12px 26px rgba(14,59,46,.26)}
+  .btn-dark:hover{background:var(--verde-700);transform:translateY(-2px)}
+
+  /* ---------- contacto ---------- */
+  .contacto{background:var(--verde-900);color:#f4ead9}
+  .contacto .eyebrow{color:var(--oro)}
+  .cont-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:start}
+  .datos{display:grid;gap:14px}
+  .dato{
+    display:flex;gap:16px;align-items:flex-start;
+    background:rgba(255,255,255,.055);border:1px solid rgba(217,164,74,.22);
+    border-radius:14px;padding:18px 20px;min-width:0;
+  }
+  .dato .ico{width:42px;height:42px;border-radius:11px;margin:0;flex:0 0 auto;background:rgba(217,164,74,.16)}
+  .dato .ico svg{width:21px;height:21px}
+  .dato .k{font-size:11.5px;letter-spacing:.17em;text-transform:uppercase;color:rgba(244,234,217,.6);font-weight:700}
+  .dato .v{font-size:17px;font-weight:600;margin-top:3px;word-break:break-word;overflow-wrap:anywhere}
+  .dato .v a{text-decoration:none;border-bottom:1px solid rgba(217,164,74,.5)}
+  .dato .v a:hover{color:var(--oro)}
+  .dato small{display:block;color:rgba(244,234,217,.6);font-size:13px;margin-top:3px}
+  .mapa{
+    background:rgba(255,255,255,.055);border:1px solid rgba(217,164,74,.22);
+    border-radius:var(--radio);padding:16px;
+  }
+  .mapa svg{width:100%;height:auto;border-radius:10px}
+  .mapa .pie{
+    font-size:12.5px;color:rgba(244,234,217,.62);
+    margin-top:12px;padding:0 4px;
+  }
+
+  /* ---------- footer ---------- */
+  footer{background:#06201a;color:rgba(244,234,217,.78);padding:46px 0 52px;border-top:1px solid rgba(217,164,74,.2)}
+  .f-grid{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:flex-end}
+  .f-marca{font-family:var(--serif);font-size:1.5rem;color:#fdf8ef}
+  .f-grid a{color:var(--oro);text-decoration:none;word-break:break-word;overflow-wrap:anywhere}
+  .f-grid a:hover{text-decoration:underline}
+  .f-firma{
+    margin-top:30px;padding-top:22px;border-top:1px solid rgba(217,164,74,.18);
+    font-size:13.5px;color:rgba(244,234,217,.62);
+  }
+
+  /* ---------- reveal ---------- */
+  .rev{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+  .rev.on{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.rev{opacity:1;transform:none;transition:none}}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:980px){
+    .hero-in{grid-template-columns:1fr;gap:38px;padding-top:68px;padding-bottom:76px}
+    .hero-art{max-width:420px;margin:0 auto}
+    .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .pasos{grid-template-columns:1fr}
+    .cont-grid{grid-template-columns:1fr;gap:30px}
+  }
+  @media (max-width:640px){
+    :root{--barra:58px}
+    body{font-size:16px}
+    .wrap{padding:0 18px}
+    .sec{padding:60px 0}
+    .aviso{font-size:11px;line-height:1.35;letter-spacing:.02em;padding:0 12px}
+    .aviso span{white-space:normal}
+    .hero-in{padding-top:52px;padding-bottom:62px}
+    h1{font-size:clamp(2.2rem,10vw,3rem)}
+    .grid{grid-template-columns:1fr}
+    .btn{width:100%;justify-content:center;padding:15px 20px}
+    .cta-row,.paso-cta{gap:12px}
+    .hero-meta{gap:8px 20px;font-size:13px}
+    .card{padding:24px 22px 26px}
+    .f-grid{flex-direction:column;align-items:flex-start;gap:18px}
+  }
+</style>
+</head>
+<body>
+
+<div class="aviso" role="note"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="wrap hero-in">
+    <div>
+      <span class="badge"><i></i>Pizzería · Cocina italiana · Dénia</span>
+      <h1><em>Dénia · Alicante</em>Pizzería Taormina</h1>
+      <p class="sub">Pizza y cocina italiana en el centro de Dénia. Para comer en la mesa, en la terraza o llevártela a casa.</p>
+      <div class="cta-row">
+        <a class="btn btn-main" href="tel:+34965785007">
+          <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16.9v2.5a2 2 0 0 1-2.2 2 19.5 19.5 0 0 1-8.5-3 19.2 19.2 0 0 1-5.9-5.9 19.5 19.5 0 0 1-3-8.6A2 2 0 0 1 3.4 2H6a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.1 9.8a15.5 15.5 0 0 0 5.9 5.9l1.2-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7A2 2 0 0 1 21 16.9z"/></svg>
+          Llamar al 96 578 50 07
+        </a>
+        <a class="btn btn-ghost" href="#contacto">Ver dónde estamos</a>
+      </div>
+      <div class="hero-meta">
+        <span><b>C/ Benitatxell 3</b> · 03700 Dénia</span>
+        <span>Horario: <b>consultar</b></span>
+      </div>
+    </div>
+
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 400 400" role="presentation">
+        <defs>
+          <radialGradient id="masa" cx="42%" cy="34%" r="72%">
+            <stop offset="0" stop-color="#f6d79a"/><stop offset="60%" stop-color="#e8b765"/><stop offset="100%" stop-color="#c98c3c"/>
+          </radialGradient>
+          <radialGradient id="salsa" cx="44%" cy="36%" r="70%">
+            <stop offset="0" stop-color="#d8543f"/><stop offset="100%" stop-color="#a62c22"/>
+          </radialGradient>
+          <linearGradient id="plato" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="rgba(255,255,255,.16)"/><stop offset="1" stop-color="rgba(255,255,255,.04)"/>
+          </linearGradient>
+        </defs>
+        <circle cx="200" cy="200" r="186" fill="url(#plato)"/>
+        <circle cx="200" cy="200" r="186" fill="none" stroke="rgba(217,164,74,.45)" stroke-width="1.5"/>
+        <circle cx="200" cy="200" r="158" fill="none" stroke="rgba(217,164,74,.22)" stroke-width="1" stroke-dasharray="3 7"/>
+        <circle cx="200" cy="200" r="145" fill="url(#masa)"/>
+        <circle cx="200" cy="200" r="122" fill="url(#salsa)"/>
+        <g fill="#f7f1e2">
+          <circle cx="160" cy="158" r="21" opacity=".95"/>
+          <circle cx="238" cy="150" r="15" opacity=".9"/>
+          <circle cx="152" cy="238" r="16" opacity=".9"/>
+          <circle cx="232" cy="246" r="22" opacity=".95"/>
+          <circle cx="196" cy="198" r="13" opacity=".85"/>
+          <circle cx="266" cy="206" r="11" opacity=".8"/>
+          <circle cx="126" cy="196" r="10" opacity=".8"/>
+          <circle cx="198" cy="272" r="10" opacity=".8"/>
+          <circle cx="200" cy="124" r="10" opacity=".8"/>
+        </g>
+        <g fill="#2f6b3c">
+          <ellipse cx="186" cy="176" rx="13" ry="8" transform="rotate(-22 186 176)"/>
+          <ellipse cx="252" cy="188" rx="12" ry="7" transform="rotate(18 252 188)"/>
+          <ellipse cx="146" cy="214" rx="11" ry="7" transform="rotate(34 146 214)"/>
+          <ellipse cx="214" cy="240" rx="12" ry="7" transform="rotate(-14 214 240)"/>
+          <ellipse cx="200" cy="146" rx="10" ry="6" transform="rotate(8 200 146)"/>
+        </g>
+        <g stroke="rgba(0,0,0,.14)" stroke-width="1.6" fill="none">
+          <path d="M200 78 200 322"/><path d="M78 200 322 200"/>
+          <path d="M114 114 286 286"/><path d="M286 114 114 286"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<div class="cinta">
+  <div class="cinta-in">
+    <span>Horno de pizza</span><span>Cocina italiana</span><span>Terraza</span><span>Para llevar</span><span>Dénia centro</span>
+  </div>
+</div>
+
+<!-- ================= OFERTA ================= -->
+<section class="sec" id="oferta">
+  <div class="wrap">
+    <div class="head rev">
+      <p class="eyebrow">La casa</p>
+      <h2>Pizza, pasta y cocina italiana</h2>
+      <p class="lead">Una pizzería de barrio en una ciudad de paso: mesa, terraza o para llevar, según el plan del día. La carta completa se consulta en el local o por teléfono.</p>
+    </div>
+
+    <div class="grid">
+      <article class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#e8c98c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5 21.5 20A20 20 0 0 1 2.5 20z"/><circle cx="12" cy="11" r="1.3" fill="#e8c98c"/><circle cx="9" cy="16" r="1.3" fill="#e8c98c"/><circle cx="15.2" cy="16.2" r="1.3" fill="#e8c98c"/></svg></div>
+        <h3>Pizzas</h3>
+        <p>Pizzas hechas al momento, con masa preparada en el local. Pregunta por las variedades disponibles cada día.</p>
+      </article>
+
+      <article class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#e8c98c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.2 11.5h17.6a8.8 8.8 0 0 1-8.8 8.8 8.8 8.8 0 0 1-8.8-8.8z"/><path d="M2 11.5h20"/><path d="M7.5 11.5c0-2.6 2-4.6 4.5-4.6s4.5 2 4.5 4.6"/><path d="M10 11.5c0-1.3.9-2.2 2-2.2s2 .9 2 2.2"/><path d="M12 6.9V3.6"/></svg></div>
+        <h3>Pasta y cocina italiana</h3>
+        <p>Platos de pasta y el resto de la cocina italiana de la casa, además de la pizza.</p>
+      </article>
+
+      <article class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#e8c98c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 7.5h17l-1.2 12a1.8 1.8 0 0 1-1.8 1.6H6.5a1.8 1.8 0 0 1-1.8-1.6z"/><path d="M8.5 7.5V6a3.5 3.5 0 0 1 7 0v1.5"/><path d="M9 12.5h6"/></svg></div>
+        <h3>Para llevar</h3>
+        <p>Pide por teléfono y recoge en el local, para comer en el apartamento, en casa o de camino a la playa.</p>
+      </article>
+
+      <article class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#e8c98c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3"/><path d="M3 12h18a9 9 0 0 0-18 0z"/><path d="M12 12v9"/><path d="M8 21h8"/></svg></div>
+        <h3>Terraza</h3>
+        <p>Mesas en la terraza cuando el tiempo acompaña, al ritmo tranquilo del centro de Dénia.</p>
+      </article>
+
+      <article class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#e8c98c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 20.5a6.5 6.5 0 0 1 13 0"/><circle cx="17.5" cy="9.5" r="2.4"/><path d="M15 20.5a5.2 5.2 0 0 1 6.8-4.3"/></svg></div>
+        <h3>Grupos y familias</h3>
+        <p>Comidas y cenas en grupo. Si venís varios, avisa al llamar para organizar la mesa.</p>
+      </article>
+
+      <article class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#e8c98c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.2c0 0-7-5-7-10.2a7 7 0 0 1 14 0c0 5.2-7 10.2-7 10.2z"/><circle cx="12" cy="10.6" r="2.5"/></svg></div>
+        <h3>En el centro, a pie</h3>
+        <p>En la C/ Benitatxell, dentro del casco urbano de Dénia: se llega andando desde el centro.</p>
+      </article>
+    </div>
+
+    <p class="nota rev">Esta página es una maqueta de propuesta. No incluye carta, precios ni horarios: esos datos los aporta el negocio para la versión definitiva.</p>
+  </div>
+</section>
+
+<!-- ================= PASOS ================= -->
+<section class="sec pasos-sec" id="reservar">
+  <div class="wrap">
+    <div class="head rev">
+      <p class="eyebrow">Cómo reservar</p>
+      <h2>Tres pasos y mesa lista</h2>
+      <p class="lead">Sin formularios ni aplicaciones: una llamada basta.</p>
+    </div>
+
+    <div class="pasos">
+      <div class="paso rev">
+        <div class="num">1</div>
+        <h3>Llama al restaurante</h3>
+        <p>Marca el <strong>96 578 50 07</strong> y dinos qué día y a qué hora te gustaría venir.</p>
+      </div>
+      <div class="paso rev">
+        <div class="num">2</div>
+        <h3>Dinos cuántos sois</h3>
+        <p>Número de personas, si preferís mesa dentro o en la terraza, y cualquier cosa que debamos tener en cuenta.</p>
+      </div>
+      <div class="paso rev">
+        <div class="num">3</div>
+        <h3>Te confirmamos</h3>
+        <p>Confirmamos la mesa en la misma llamada. Si lo prefieres para llevar, te decimos cuándo pasar a recogerlo.</p>
+      </div>
+    </div>
+
+    <div class="paso-cta rev">
+      <a class="btn btn-dark" href="tel:+34965785007">Llamar y reservar</a>
+      <span class="lead" style="font-size:14.5px">C/ Benitatxell 3, 03700 Dénia</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACTO ================= -->
+<section class="sec contacto" id="contacto">
+  <div class="wrap">
+    <div class="head rev" style="max-width:720px">
+      <p class="eyebrow">Contacto</p>
+      <h2 style="color:#fffaf1">Dónde encontrarnos</h2>
+    </div>
+
+    <div class="cont-grid">
+      <div class="datos rev">
+        <div class="dato">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#e8c98c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16.9v2.5a2 2 0 0 1-2.2 2 19.5 19.5 0 0 1-8.5-3 19.2 19.2 0 0 1-5.9-5.9 19.5 19.5 0 0 1-3-8.6A2 2 0 0 1 3.4 2H6a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.1 9.8a15.5 15.5 0 0 0 5.9 5.9l1.2-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7A2 2 0 0 1 21 16.9z"/></svg></div>
+          <div>
+            <div class="k">Teléfono</div>
+            <div class="v"><a href="tel:+34965785007">96 578 50 07</a></div>
+          </div>
+        </div>
+
+        <div class="dato">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#e8c98c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7.5-4.6-7.5-10a7.5 7.5 0 0 1 15 0c0 5.4-7.5 10-7.5 10z"/><circle cx="12" cy="10.5" r="2.6"/></svg></div>
+          <div>
+            <div class="k">Dirección</div>
+            <div class="v">C/ Benitatxell 3, 03700 Dénia</div>
+          </div>
+        </div>
+
+        <div class="dato">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#e8c98c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3.2 2"/></svg></div>
+          <div>
+            <div class="k">Horario</div>
+            <div class="v">Consultar horario</div>
+            <small>Llámanos antes de venir y te lo confirmamos.</small>
+          </div>
+        </div>
+
+        <div class="dato">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#e8c98c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2.2"/><path d="M3 6l9 6.5L21 6"/></svg></div>
+          <div>
+            <div class="k">Email</div>
+            <div class="v"><a href="mailto:pizzeriataormina1@gmail.com">pizzeriataormina1@gmail.com</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mapa rev">
+        <svg viewBox="0 0 620 400" role="img" aria-label="Plano esquemático de la zona: la pizzería está en la calle Benitatxell número 3, en Dénia.">
+          <defs>
+            <linearGradient id="fondoMapa" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#0d3326"/><stop offset="100%" stop-color="#071f18"/>
+            </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="620" height="400" rx="10" fill="url(#fondoMapa)"/>
+          <g stroke="rgba(217,164,74,.08)" stroke-width="1">
+            <path d="M0 50h620M0 100h620M0 150h620M0 200h620M0 250h620M0 300h620M0 350h620"/>
+            <path d="M50 0v400M100 0v400M150 0v400M200 0v400M250 0v400M300 0v400M350 0v400M400 0v400M450 0v400M500 0v400M550 0v400"/>
+          </g>
+
+          <!-- manzanas -->
+          <g fill="rgba(255,255,255,.05)" stroke="rgba(217,164,74,.16)" stroke-width="1">
+            <rect x="46" y="46" width="166" height="118" rx="5"/>
+            <rect x="262" y="46" width="134" height="118" rx="5"/>
+            <rect x="446" y="46" width="128" height="118" rx="5"/>
+            <rect x="46" y="238" width="166" height="118" rx="5"/>
+            <rect x="262" y="238" width="134" height="118" rx="5"/>
+            <rect x="446" y="238" width="128" height="118" rx="5"/>
+          </g>
+
+          <!-- calles -->
+          <g stroke="#f0e3cb" stroke-linecap="round" opacity=".85">
+            <path d="M20 201h580" stroke-width="18" opacity=".22"/>
+            <path d="M20 201h580" stroke-width="3"/>
+            <path d="M237 20v360" stroke-width="14" opacity=".18"/>
+            <path d="M237 20v360" stroke-width="2.4"/>
+            <path d="M421 20v360" stroke-width="14" opacity=".18"/>
+            <path d="M421 20v360" stroke-width="2.4"/>
+          </g>
+          <path d="M20 201h580" stroke="#d9a44a" stroke-width="2" stroke-dasharray="12 12" opacity=".65"/>
+
+          <!-- etiquetas de calle -->
+          <g font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif" fill="#e8c98c">
+            <rect x="24" y="174" width="170" height="26" rx="6" fill="rgba(6,32,26,.92)"/><text x="36" y="192" font-size="14" font-weight="700" letter-spacing="1.2">C/ BENITATXELL</text>
+            <text x="248" y="44" font-size="12" opacity=".6">calle</text>
+            <text x="432" y="44" font-size="12" opacity=".6">calle</text>
+            <text x="42" y="382" font-size="12" fill="#f0e3cb" opacity=".55">Dénia · casco urbano · plano esquemático</text>
+          </g>
+
+          <!-- marcador -->
+          <g transform="translate(237 201)">
+            <circle r="34" fill="rgba(183,54,43,.22)"/>
+            <circle r="21" fill="rgba(183,54,43,.34)"/>
+            <path d="M0 -40c-10.5 0-19 8.5-19 19C-19 -8 0 14 0 14s19-22 19-35c0-10.5-8.5-19-19-19z" fill="#b7362b" stroke="#f0e3cb" stroke-width="2"/>
+            <circle cy="-21" r="6.5" fill="#fdf8ef"/>
+          </g>
+          <g font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif">
+            <rect x="268" y="212" width="214" height="54" rx="10" fill="rgba(6,32,26,.92)" stroke="rgba(217,164,74,.4)"/>
+            <text x="284" y="236" font-size="16" font-weight="700" fill="#fffaf1">Pizzería Taormina</text>
+            <text x="284" y="256" font-size="13" fill="#e8c98c">C/ Benitatxell 3 · 03700</text>
+          </g>
+        </svg>
+        <p class="pie">Plano esquemático, no es un mapa a escala. La dirección exacta es C/ Benitatxell 3, 03700 Dénia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <div class="f-marca">Pizzería Taormina</div>
+        <div style="margin-top:6px;font-size:15px">C/ Benitatxell 3, 03700 Dénia (Alicante)</div>
+      </div>
+      <div style="font-size:15px">
+        <div><a href="tel:+34965785007">96 578 50 07</a></div>
+        <div><a href="mailto:pizzeriataormina1@gmail.com">pizzeriataormina1@gmail.com</a></div>
+      </div>
+    </div>
+    <p class="f-firma">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.rev');
+  if(!('IntersectionObserver' in window)){
+    for(var i=0;i<els.length;i++){ els[i].classList.add('on'); }
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); }
+    });
+  },{threshold:0, rootMargin:'300px 0px 300px 0px'});
+  for(var j=0;j<els.length;j++){ io.observe(els[j]); }
+
+  // red de seguridad: nada puede quedarse invisible
+  function revelarTodo(){
+    for(var k=0;k<els.length;k++){ els[k].classList.add('on'); }
+    io.disconnect();
+  }
+  window.addEventListener('load', function(){ setTimeout(revelarTodo, 2000); });
+  setTimeout(revelarTodo, 4000);
+
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(ev){
+      var t = document.querySelector(a.getAttribute('href'));
+      if(!t) return;
+      ev.preventDefault();
+      var bar = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--barra'),10) || 46;
+      window.scrollTo({ top: t.getBoundingClientRect().top + window.pageYOffset - bar - 8, behavior:'smooth' });
+    });
+  });
+})();
+</script>
+</body>
+</html>

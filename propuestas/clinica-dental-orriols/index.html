@@ -1,0 +1,584 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clínica Dental Orriols · Propuesta de diseño</title>
+<meta name="description" content="Propuesta de rediseño web para Clínica Dental Orriols (València). Maqueta no oficial de FFFFFFstudio.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  :root{
+    --ink:#0e2230;
+    --ink-soft:#44606f;
+    --teal-900:#063b45;
+    --teal-700:#0b6273;
+    --teal-500:#128c9e;
+    --teal-300:#6fc6cf;
+    --mint-50:#eff8f8;
+    --mint-100:#dcefef;
+    --paper:#ffffff;
+    --paper-2:#f6fafb;
+    --line:#dce8ea;
+    --accent:#f2a65a;
+    --radius:18px;
+    --radius-s:12px;
+    --bar-h:40px;
+    --shadow-s:0 1px 2px rgba(6,59,69,.06), 0 6px 18px rgba(6,59,69,.06);
+    --shadow-m:0 2px 6px rgba(6,59,69,.07), 0 18px 44px rgba(6,59,69,.10);
+    --ff:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  html,body{max-width:100%;overflow-x:hidden}
+  body{
+    margin:0;
+    font-family:var(--ff);
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.6;
+    font-size:17px;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%;display:block}
+  a{color:inherit}
+  h1,h2,h3,p,ul,ol{margin:0}
+  ul{list-style:none;padding:0}
+
+  /* ---------- barra fija de propuesta ---------- */
+  .studiobar{
+    position:fixed;inset:0 0 auto 0;z-index:100;
+    min-height:var(--bar-h);
+    display:flex;align-items:center;justify-content:center;
+    background:#0b1b22;
+    color:#cfe6e9;
+    font-size:12px;letter-spacing:.06em;text-transform:uppercase;
+    padding:9px 16px;text-align:center;
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .studiobar span{display:inline-block;max-width:100%}
+  .page{padding-top:var(--bar-h)}
+
+  /* ---------- utilidades ---------- */
+  .wrap{width:100%;max-width:1140px;margin:0 auto;padding:0 32px}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--teal-700);font-weight:700;
+  }
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--teal-300)}
+  h2{font-size:clamp(26px,3.4vw,38px);line-height:1.18;letter-spacing:-.02em;font-weight:700;margin:14px 0 0}
+  .lead{color:var(--ink-soft);margin-top:14px;max-width:62ch}
+  section{padding:84px 0}
+
+  /* ---------- cabecera de sitio ---------- */
+  .nav{
+    position:sticky;top:var(--bar-h);z-index:90;
+    background:rgba(255,255,255,.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-in{display:flex;align-items:center;gap:18px;min-height:70px;flex-wrap:nowrap}
+  .brand{display:flex;align-items:center;gap:11px;text-decoration:none;min-width:0}
+  .brand-mark{width:36px;height:36px;flex:0 0 36px}
+  .brand-txt{min-width:0}
+  .brand-txt b{display:block;font-size:15.5px;letter-spacing:-.01em;line-height:1.25}
+  .brand-txt small{display:block;font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-soft)}
+  .nav-links{display:flex;gap:26px;margin-left:auto;font-size:14.5px}
+  .nav-links a{text-decoration:none;color:var(--ink-soft);font-weight:600}
+  .nav-links a:hover{color:var(--teal-700)}
+  .nav-tel{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--teal-700);color:#fff;text-decoration:none;
+    font-weight:700;font-size:14.5px;
+    padding:11px 16px;border-radius:999px;white-space:nowrap;
+  }
+  .nav-tel:hover{background:var(--teal-900)}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;overflow:hidden;padding:0;background:var(--mint-50)}
+  .hero-bg{position:absolute;inset:0;background:
+      radial-gradient(120% 90% at 92% 8%, #cfeef0 0%, rgba(207,238,240,0) 60%),
+      radial-gradient(90% 80% at 2% 100%, #e6f4ef 0%, rgba(230,244,239,0) 62%),
+      linear-gradient(170deg,#f7fcfc 0%,#eaf5f6 100%);}
+  .hero-arc{position:absolute;right:-180px;top:-120px;width:760px;height:760px;border-radius:50%;
+      background:linear-gradient(140deg,rgba(18,140,158,.14),rgba(111,198,207,0));}
+  .hero-in{position:relative;display:grid;grid-template-columns:1.12fr .88fr;gap:46px;align-items:center;
+      padding-block:92px 96px}
+  .hero h1{font-size:clamp(33px,4.3vw,52px);line-height:1.08;letter-spacing:-.03em;font-weight:700;margin-top:16px}
+  .hero h1 em{font-style:normal;color:var(--teal-700);display:block}
+  .hero p.lead{font-size:clamp(16px,1.3vw,18.5px)}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    text-decoration:none;font-weight:700;font-size:16px;
+    padding:15px 24px;border-radius:999px;border:1px solid transparent;
+  }
+  .btn-main{background:var(--teal-700);color:#fff;box-shadow:var(--shadow-s)}
+  .btn-main:hover{background:var(--teal-900)}
+  .btn-ghost{background:#fff;color:var(--teal-900);border-color:var(--line)}
+  .btn-ghost:hover{border-color:var(--teal-300)}
+  .hero-note{margin-top:18px;font-size:14px;color:var(--ink-soft)}
+  .hero-card{
+    background:#fff;border:1px solid var(--line);border-radius:26px;
+    padding:26px;box-shadow:var(--shadow-m);
+  }
+  .hero-card h3{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-700)}
+  .hero-card ul{margin-top:16px;display:grid;gap:12px}
+  .hero-card li{display:flex;gap:11px;align-items:flex-start;font-size:15.5px;color:var(--ink-soft)}
+  .hero-card li b{color:var(--ink);font-weight:700}
+  .tick{flex:0 0 20px;width:20px;height:20px;margin-top:2px}
+  .hero-tooth{margin:4px auto 18px;width:100%;max-width:210px}
+
+  /* ---------- franja ---------- */
+  .strip{background:var(--teal-900);color:#dff0f2;padding:22px 0}
+  .strip-in{display:flex;flex-wrap:wrap;gap:14px 38px;justify-content:center;font-size:14.5px}
+  .strip-in div{display:flex;align-items:center;gap:10px}
+  .strip-in a{color:#fff;text-decoration:none;font-weight:700}
+
+  /* ---------- tratamientos ---------- */
+  .treat{background:var(--paper)}
+  .grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:46px}
+  .card{
+    background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius);
+    padding:28px 26px;display:flex;flex-direction:column;gap:12px;
+  }
+  .card .ico{width:46px;height:46px}
+  .card h3{font-size:19.5px;letter-spacing:-.01em}
+  .card p{color:var(--ink-soft);font-size:15.5px}
+
+  /* ---------- pasos ---------- */
+  .steps{background:var(--mint-50)}
+  .steplist{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:46px;counter-reset:s}
+  .step{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:28px 26px;position:relative;box-shadow:var(--shadow-s);
+  }
+  .step .num{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:42px;height:42px;border-radius:50%;
+    background:var(--teal-700);color:#fff;font-weight:700;font-size:17px;
+  }
+  .step h3{margin-top:16px;font-size:19.5px;letter-spacing:-.01em}
+  .step p{margin-top:9px;color:var(--ink-soft);font-size:15.5px}
+
+  /* ---------- contacto ---------- */
+  .contact{background:var(--paper)}
+  .cgrid{display:grid;grid-template-columns:.95fr 1.05fr;gap:34px;margin-top:46px;align-items:start}
+  .infobox{background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius);padding:30px 28px}
+  .row{display:flex;gap:14px;padding:18px 0;border-bottom:1px solid var(--line)}
+  .row:first-of-type{padding-top:0}
+  .row:last-child{border-bottom:0;padding-bottom:0}
+  .row .ico{flex:0 0 24px;width:24px;height:24px;margin-top:3px}
+  .row h4{margin:0;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-700)}
+  .row p,.row a{margin:5px 0 0;font-size:16px;color:var(--ink);text-decoration:none;word-break:break-word;overflow-wrap:anywhere}
+  .row a{font-weight:700;color:var(--teal-700)}
+  .hours{margin-top:7px;display:grid;gap:5px;font-size:15.5px}
+  .hours span{display:flex;justify-content:space-between;gap:14px;color:var(--ink-soft)}
+  .hours span b{color:var(--ink);font-weight:700;text-align:right;white-space:nowrap}
+  .mapbox{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#eef5f3}
+  .mapbox svg{width:100%;height:auto;display:block}
+  .mapcap{padding:14px 20px;font-size:13.5px;color:var(--ink-soft);background:#fff;border-top:1px solid var(--line)}
+
+  /* ---------- pie ---------- */
+  footer{background:#0b1b22;color:#b9d3d7;padding:58px 0 40px}
+  .fgrid{display:grid;grid-template-columns:1.2fr 1fr;gap:34px;align-items:start}
+  footer b.fname{color:#fff;font-size:19px;letter-spacing:-.01em;display:block}
+  footer p{font-size:15px;margin-top:10px}
+  footer a{color:#fff;font-weight:700;text-decoration:none;word-break:break-word;overflow-wrap:anywhere}
+  .fnote{margin-top:38px;padding-top:22px;border-top:1px solid rgba(255,255,255,.12);
+    font-size:13px;color:#8fb0b6;display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:1000px){
+    .hero-in{grid-template-columns:1fr;gap:40px;padding-block:72px 76px}
+    .cgrid{grid-template-columns:1fr}
+    .grid3,.steplist{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .fgrid{grid-template-columns:1fr}
+  }
+  @media (max-width:760px){
+    .nav-links{display:none}
+    .nav-tel{margin-left:auto}
+  }
+  @media (max-width:480px){
+    .nav-in{gap:10px;min-height:62px}
+    .brand-mark{width:30px;height:30px;flex:0 0 30px}
+    .brand-txt b{font-size:13.5px}
+    .brand-txt small{font-size:9.5px;letter-spacing:.08em}
+    .nav-tel{font-size:13px;padding:9px 13px;gap:6px}
+  }
+  @media (max-width:640px){
+    body{font-size:16px}
+    :root{--bar-h:52px}
+    .wrap{padding:0 18px}
+    section{padding:58px 0}
+    .grid3,.steplist{grid-template-columns:1fr;gap:16px;margin-top:32px}
+    .cgrid{margin-top:32px;gap:22px}
+    .hero-in{padding-block:52px 58px;gap:32px}
+    .hero-arc{right:-240px;top:-200px;width:520px;height:520px}
+    .btn{width:100%;justify-content:center}
+    .hero-cta{gap:10px}
+    .strip-in{flex-direction:column;align-items:flex-start;gap:12px}
+    .studiobar{font-size:10.5px;letter-spacing:.04em;line-height:1.35}
+    .hero-card{padding:22px 20px;border-radius:20px}
+    .card,.step,.infobox{padding:24px 20px}
+    .hours{gap:10px}
+    .hours span{flex-direction:column;align-items:flex-start;gap:1px}
+    .hours span b{text-align:left}
+  }
+</style>
+</head>
+<body>
+
+<div class="studiobar"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<div class="page">
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="wrap nav-in">
+      <a class="brand" href="#inicio">
+        <svg class="brand-mark" viewBox="0 0 40 40" role="img" aria-label="Clínica Dental Orriols">
+          <rect width="40" height="40" rx="11" fill="#0b6273"/>
+          <path d="M20 10.2c-2.1-1.6-5-1.9-6.9-.5-2.1 1.6-2.6 4.7-1.9 7.9.5 2.3 1 3.6 1.4 5.6.4 2 .5 5.3 2.2 5.6 1.6.3 1.9-2.6 2.4-4.4.4-1.4.9-2.2 1.8-2.2.9 0 1.4.8 1.8 2.2.5 1.8.8 4.7 2.4 4.4 1.7-.3 1.8-3.6 2.2-5.6.4-2 .9-3.3 1.4-5.6.7-3.2.2-6.3-1.9-7.9-1.9-1.4-4.8-1.1-6.9.5z" fill="#fff" opacity=".95"/>
+        </svg>
+        <span class="brand-txt">
+          <b>Clínica Dental Orriols</b>
+          <small>València</small>
+        </span>
+      </a>
+      <nav class="nav-links" aria-label="Secciones">
+        <a href="#tratamientos">Tratamientos</a>
+        <a href="#primera-visita">Primera visita</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <a class="nav-tel" href="tel:+34963668328">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+        96 366 83 28
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-arc" aria-hidden="true"></div>
+    <div class="wrap hero-in">
+      <div>
+        <span class="eyebrow">Clínica dental en el barrio de Orriols</span>
+        <h1>Clínica Dental Orriols<em>Tu salud dental, cerca de casa.</em></h1>
+        <p class="lead">Odontología general y tratamientos especializados en València. Atención personalizada, explicaciones claras y un plan de tratamiento que entiendes antes de empezar.</p>
+        <div class="hero-cta">
+          <a class="btn btn-main" href="tel:+34963668328">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+            Pedir cita: 96 366 83 28
+          </a>
+          <a class="btn btn-ghost" href="#tratamientos">Ver tratamientos</a>
+        </div>
+        <p class="hero-note">C/ San Vicente de Paúl 15, 1 bajo · 46019 València</p>
+      </div>
+
+      <aside class="hero-card">
+        <svg class="hero-tooth" viewBox="0 0 220 150" role="img" aria-label="Ilustración de una muela">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#d7eef0"/>
+            </linearGradient>
+            <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#6fc6cf"/><stop offset="1" stop-color="#0b6273"/>
+            </linearGradient>
+          </defs>
+          <ellipse cx="110" cy="128" rx="88" ry="14" fill="#0b6273" opacity=".07"/>
+          <path d="M110 24c-14-11-33-13-45-3.5C51 30.5 48 51 52.5 72c3.5 16 6.5 25 9 38 2.5 13 3 22 10.5 22 7.5 0 9-13 12-24 2.5-9 8-13 14-13h4c6 0 11.5 4 14 13 3 11 4.5 24 12 24s8-9 10.5-22c2.5-13 5.5-22 9-38C171.5 51 168.5 30.5 155 20.5 143 11 124 13 110 24z" fill="url(#g1)" stroke="#9ed3d8" stroke-width="2"/>
+          <path d="M72 46c4-9 14-14 25-13" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity=".9"/>
+          <circle cx="166" cy="40" r="22" fill="url(#g2)"/>
+          <path d="M156 40.5l7 7 14-15" stroke="#fff" stroke-width="4.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h3>Cómo pedir cita</h3>
+        <ul>
+          <li>
+            <svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#0b6273" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            <span><b>Llámanos</b> al 96 366 83 28 y te damos hora.</span>
+          </li>
+          <li>
+            <svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#0b6273" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            <span><b>Escríbenos</b> a clinicadentalorriols@gmail.com si lo prefieres por correo.</span>
+          </li>
+          <li>
+            <svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#0b6273" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            <span><b>Te atendemos</b> en la clínica, en C/ San Vicente de Paúl 15.</span>
+          </li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- FRANJA -->
+  <div class="strip">
+    <div class="wrap strip-in">
+      <div>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#6fc6cf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+        <a href="tel:+34963668328">96 366 83 28</a>
+      </div>
+      <div>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#6fc6cf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+        <span>De lunes a jueves: de 9:30 a 13:00 y de 16:00 a 20:00</span>
+      </div>
+      <div>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#6fc6cf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.8"/></svg>
+        <span>Barrio de Orriols, València</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRATAMIENTOS -->
+  <section class="treat" id="tratamientos">
+    <div class="wrap">
+      <span class="eyebrow">Tratamientos</span>
+      <h2>Lo que podemos hacer por tu boca</h2>
+      <p class="lead">Un recorrido por las áreas habituales de una clínica dental. Cuéntanos qué te preocupa y lo valoramos en consulta antes de proponerte cualquier tratamiento.</p>
+
+      <div class="grid3">
+        <article class="card">
+          <svg class="ico" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <rect width="48" height="48" rx="13" fill="#dcefef"/>
+            <path d="M24 15c-3-2.4-7.1-2.8-9.7-.8-3 2.2-3.4 6.6-2.4 11.1.8 3.4 1.4 5.3 1.9 8 .5 2.8.7 4.7 2.3 4.7s2-2.8 2.6-5.1c.5-1.9 1.7-2.8 3-2.8h.9c1.3 0 2.5.9 3 2.8.6 2.3 1 5.1 2.6 5.1s1.8-1.9 2.3-4.7c.5-2.7 1.1-4.6 1.9-8 1-4.5.6-8.9-2.4-11.1-2.6-2-6.7-1.6-9.7.8z" fill="#0b6273"/>
+          </svg>
+          <h3>Odontología general</h3>
+          <p>Revisiones, empastes, endodoncia y el cuidado del día a día para mantener la boca sana y tratar lo que aparezca a tiempo.</p>
+        </article>
+
+        <article class="card">
+          <svg class="ico" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <rect width="48" height="48" rx="13" fill="#dcefef"/>
+            <path d="M24 12c4.2 2.6 7.6 3.2 10 3.2v9.6c0 6.4-4.3 10.6-10 13.2-5.7-2.6-10-6.8-10-13.2v-9.6c2.4 0 5.8-.6 10-3.2z" stroke="#0b6273" stroke-width="2.6" fill="none" stroke-linejoin="round"/>
+            <path d="M19.6 25.2l3.1 3.2 6.1-6.6" stroke="#0b6273" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h3>Higiene y prevención</h3>
+          <p>Limpiezas, control de sarro y pautas de higiene en casa. Prevenir sale mejor, y más barato, que tratar.</p>
+        </article>
+
+        <article class="card">
+          <svg class="ico" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <rect width="48" height="48" rx="13" fill="#dcefef"/>
+            <path d="M12 19h24" stroke="#0b6273" stroke-width="2.6" stroke-linecap="round"/>
+            <path d="M12 29h24" stroke="#0b6273" stroke-width="2.6" stroke-linecap="round"/>
+            <rect x="15" y="15" width="7" height="8" rx="2" fill="#0b6273"/>
+            <rect x="26" y="25" width="7" height="8" rx="2" fill="#0b6273"/>
+          </svg>
+          <h3>Ortodoncia</h3>
+          <p>Corrección de la posición de los dientes y de la mordida. Estudiamos tu caso y te explicamos las opciones disponibles.</p>
+        </article>
+
+        <article class="card">
+          <svg class="ico" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <rect width="48" height="48" rx="13" fill="#dcefef"/>
+            <path d="M24 12v24" stroke="#0b6273" stroke-width="3" stroke-linecap="round"/>
+            <path d="M17 17h14M18.5 22h11M20 27h8" stroke="#0b6273" stroke-width="2.4" stroke-linecap="round"/>
+            <circle cx="24" cy="12.5" r="3.2" fill="#0b6273"/>
+          </svg>
+          <h3>Implantología</h3>
+          <p>Reposición de dientes ausentes mediante implantes, con estudio previo del hueso y de la mordida.</p>
+        </article>
+
+        <article class="card">
+          <svg class="ico" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <rect width="48" height="48" rx="13" fill="#dcefef"/>
+            <path d="M15 21c0-2.8 2.2-5 5-5h8c2.8 0 5 2.2 5 5v3c0 5-4 9-9 9s-9-4-9-9v-3z" fill="#0b6273"/>
+            <path d="M31.5 13.5l1.3 3 3 1.3-3 1.3-1.3 3-1.3-3-3-1.3 3-1.3z" fill="#128c9e"/>
+          </svg>
+          <h3>Estética dental</h3>
+          <p>Blanqueamiento, carillas y restauraciones para mejorar el aspecto de tu sonrisa sin perder naturalidad.</p>
+        </article>
+
+        <article class="card">
+          <svg class="ico" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <rect width="48" height="48" rx="13" fill="#dcefef"/>
+            <circle cx="24" cy="21" r="8.5" stroke="#0b6273" stroke-width="2.6" fill="none"/>
+            <circle cx="21" cy="19.5" r="1.5" fill="#0b6273"/>
+            <circle cx="27" cy="19.5" r="1.5" fill="#0b6273"/>
+            <path d="M20 24.5c1.1 1.5 2.4 2.2 4 2.2s2.9-.7 4-2.2" stroke="#0b6273" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+            <path d="M14 36c2.5-2.6 6-4 10-4s7.5 1.4 10 4" stroke="#0b6273" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+          </svg>
+          <h3>Odontopediatría</h3>
+          <p>Atención dental para los más pequeños, con revisiones y prevención adaptadas a cada edad y sin prisas.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRIMERA VISITA -->
+  <section class="steps" id="primera-visita">
+    <div class="wrap">
+      <span class="eyebrow">Tu primera visita</span>
+      <h2>Tres pasos, sin sorpresas</h2>
+      <p class="lead">Así funciona la primera cita en la clínica, desde la llamada hasta que sabes exactamente qué te vamos a hacer.</p>
+
+      <div class="steplist">
+        <article class="step">
+          <span class="num">1</span>
+          <h3>Pides cita por teléfono</h3>
+          <p>Nos llamas al 96 366 83 28, nos cuentas brevemente qué te pasa y buscamos un hueco que te encaje.</p>
+        </article>
+        <article class="step">
+          <span class="num">2</span>
+          <h3>Revisión y diagnóstico</h3>
+          <p>En la consulta revisamos tu boca, hacemos las pruebas que haga falta y escuchamos qué te preocupa.</p>
+        </article>
+        <article class="step">
+          <span class="num">3</span>
+          <h3>Plan de tratamiento explicado</h3>
+          <p>Te contamos qué necesitas, en qué orden y con qué alternativas, para que decidas con toda la información.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="contact" id="contacto">
+    <div class="wrap">
+      <span class="eyebrow">Contacto</span>
+      <h2>Dónde estamos y cuándo abrimos</h2>
+      <p class="lead">En el barrio de Orriols, en València. La forma más rápida de conseguir cita es una llamada.</p>
+
+      <div class="cgrid">
+        <div class="infobox">
+          <div class="row">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#0b6273" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+            <div>
+              <h4>Teléfono</h4>
+              <a href="tel:+34963668328">96 366 83 28</a>
+            </div>
+          </div>
+
+          <div class="row">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#0b6273" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.8"/></svg>
+            <div>
+              <h4>Dirección</h4>
+              <p>C/ San Vicente de Paúl 15, 1 bajo, 46019 València</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#0b6273" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 5V3M16 5V3"/></svg>
+            <div>
+              <h4>Horario</h4>
+              <div class="hours">
+                <span>De lunes a jueves: de 9:30 a 13:00 y de 16:00 a 20:00</span>
+                <span>Viernes <b>Consultar horario</b></span>
+                <span>Sábado y domingo <b>Consultar horario</b></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#0b6273" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3.5 7l8.5 6 8.5-6"/></svg>
+            <div>
+              <h4>Correo</h4>
+              <a href="mailto:clinicadentalorriols@gmail.com">clinicadentalorriols@gmail.com</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="mapbox">
+          <svg viewBox="0 0 640 430" role="img" aria-label="Plano esquemático de la zona de la clínica, no es un mapa real">
+            <defs>
+              <linearGradient id="mg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#f2f9f7"/><stop offset="1" stop-color="#e4f1f0"/>
+              </linearGradient>
+            </defs>
+            <rect width="640" height="430" fill="url(#mg)"/>
+            <!-- manzanas -->
+            <g fill="#ffffff" stroke="#d3e4e2" stroke-width="2">
+              <rect x="34" y="30" width="170" height="120" rx="8"/>
+              <rect x="248" y="30" width="150" height="120" rx="8"/>
+              <rect x="442" y="30" width="164" height="120" rx="8"/>
+              <rect x="34" y="196" width="170" height="104" rx="8"/>
+              <rect x="442" y="196" width="164" height="104" rx="8"/>
+              <rect x="34" y="344" width="170" height="60" rx="8"/>
+              <rect x="248" y="344" width="150" height="60" rx="8"/>
+              <rect x="442" y="344" width="164" height="60" rx="8"/>
+            </g>
+            <!-- zona verde -->
+            <rect x="248" y="196" width="150" height="104" rx="10" fill="#dcefdf" stroke="#c2e0c7" stroke-width="2"/>
+            <g fill="#8fc49a">
+              <circle cx="286" cy="236" r="12"/><circle cx="330" cy="268" r="9"/><circle cx="366" cy="226" r="10"/>
+            </g>
+            <!-- calles -->
+            <g stroke="#ffffff" stroke-width="22" stroke-linecap="round">
+              <path d="M0 174h640"/><path d="M0 322h640"/>
+              <path d="M226 0v430"/><path d="M420 0v430"/>
+            </g>
+            <g stroke="#bcd7d6" stroke-width="2" stroke-dasharray="12 12">
+              <path d="M0 174h640"/><path d="M0 322h640"/>
+              <path d="M226 0v430"/><path d="M420 0v430"/>
+            </g>
+            <!-- etiquetas de calle -->
+            <text x="24" y="167" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif" font-size="14" fill="#6f8f93">Calle</text>
+            <text x="24" y="315" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif" font-size="14" fill="#6f8f93">Calle</text>
+            <text x="252" y="420" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif" font-size="14" fill="#6f8f93">Avenida</text>
+            <!-- marcador -->
+            <g transform="translate(420 174)">
+              <circle r="44" fill="#0b6273" opacity=".10"/>
+              <circle r="26" fill="#0b6273" opacity=".16"/>
+              <g transform="translate(-15 -42)">
+                <path d="M15 0a15 15 0 0 1 15 15c0 11-15 27-15 27S0 26 0 15A15 15 0 0 1 15 0z" fill="#0b6273"/>
+                <circle cx="15" cy="15" r="5.6" fill="#ffffff"/>
+              </g>
+            </g>
+            <g transform="translate(236 78)">
+              <rect x="0" y="0" width="186" height="52" rx="10" fill="#0b1b22" opacity=".92"/>
+              <path d="M170 52l12 0 -6 11z" fill="#0b1b22" opacity=".92"/>
+              <text x="14" y="22" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif" font-size="14" font-weight="700" fill="#ffffff">Clínica Dental Orriols</text>
+              <text x="14" y="40" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif" font-size="12.5" fill="#a8c8cd">C/ San Vicente de Paúl 15</text>
+            </g>
+          </svg>
+          <p class="mapcap">Plano esquemático orientativo, no es un mapa real. Dirección exacta: C/ San Vicente de Paúl 15, 1 bajo, 46019 València.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PIE -->
+  <footer>
+    <div class="wrap">
+      <div class="fgrid">
+        <div>
+          <b class="fname">Clínica Dental Orriols</b>
+          <p>C/ San Vicente de Paúl 15, 1 bajo, 46019 València<br>
+             De lunes a jueves: de 9:30 a 13:00 y de 16:00 a 20:00</p>
+        </div>
+        <div>
+          <p>Teléfono: <a href="tel:+34963668328">96 366 83 28</a></p>
+          <p>Correo: <a href="mailto:clinicadentalorriols@gmail.com">clinicadentalorriols@gmail.com</a></p>
+        </div>
+      </div>
+      <div class="fnote">
+        <span>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</span>
+        <span>Maqueta no oficial, sin vinculación con la clínica.</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var links = document.querySelectorAll('a[href^="#"]');
+  for (var i=0;i<links.length;i++){
+    links[i].addEventListener('click', function(e){
+      var id = this.getAttribute('href');
+      if (id.length < 2) return;
+      var t = document.querySelector(id);
+      if (!t) return;
+      e.preventDefault();
+      var bar = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--bar-h')) || 40;
+      var nav = document.querySelector('.nav');
+      var off = bar + (nav ? nav.offsetHeight : 0) + 8;
+      var y = t.getBoundingClientRect().top + window.pageYOffset - off;
+      window.scrollTo({top: y < 0 ? 0 : y, behavior:'smooth'});
+    });
+  }
+})();
+</script>
+</body>
+</html>
