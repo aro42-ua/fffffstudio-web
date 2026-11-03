@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vivienda Rural La Fresneda · Ubrique, Sierra de Cádiz</title>
+<meta name="description" content="Vivienda rural con fines turísticos en Cerro Mulera, Ubrique (Cádiz), en el entorno del Parque Natural Los Alcornocales. Propuesta de diseño no oficial.">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  :root{
+    --verde-900:#1e3326;
+    --verde-700:#2f5440;
+    --verde-500:#4a7a5c;
+    --verde-100:#e4ece5;
+    --arcilla:#a86a3d;
+    --arcilla-claro:#f3e7dc;
+    --crema:#faf7f2;
+    --blanco:#ffffff;
+    --tinta:#1a1f1c;
+    --tinta-suave:#4c564f;
+    --borde:#dcd8cf;
+    --barra:56px;
+    --radio:16px;
+    --sombra:0 1px 2px rgba(26,31,28,.05), 0 12px 32px -18px rgba(26,31,28,.28);
+    --fuente:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+  }
+  html{-webkit-text-size-adjust:100%}
+  html{max-width:100%;overflow-x:hidden}
+  body{max-width:100%}
+  body{
+    margin:0;font-family:var(--fuente);color:var(--tinta);background:var(--crema);
+    line-height:1.6;font-size:17px;
+    padding-top:var(--barra);
+  }
+  img,svg{max-width:100%;display:block}
+  a{color:inherit}
+  h1,h2,h3{line-height:1.15;letter-spacing:-.02em;margin:0 0 .5em;font-weight:650}
+  p{margin:0 0 1em}
+  .env{width:100%;max-width:1120px;margin:0 auto;padding:0 24px}
+
+  /* ---------- Barra fija ---------- */
+  .aviso{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    min-height:var(--barra);display:flex;align-items:center;justify-content:center;
+    background:var(--verde-900);color:#f2efe9;
+    font-size:13px;letter-spacing:.04em;text-align:center;
+    padding:10px 16px;border-bottom:1px solid rgba(255,255,255,.12);
+  }
+  .aviso span{display:inline-block;max-width:100%}
+
+  /* ---------- Cabecera ---------- */
+  .cab{
+    position:sticky;top:var(--barra);z-index:90;
+    background:rgba(250,247,242,.92);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--borde);
+  }
+  .cab .env{display:flex;align-items:center;gap:16px;min-height:66px;flex-wrap:wrap}
+  .marca{display:flex;align-items:center;gap:11px;text-decoration:none;margin-right:auto}
+  .marca .hoja{width:34px;height:34px;flex:none}
+  .marca b{display:block;font-size:15.5px;letter-spacing:-.01em;line-height:1.2}
+  .marca small{display:block;font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--tinta-suave)}
+  .nav{display:flex;gap:22px;font-size:14.5px}
+  .nav a{text-decoration:none;color:var(--tinta-suave);padding:4px 0;border-bottom:1px solid transparent}
+  .nav a:hover{color:var(--verde-700);border-bottom-color:var(--verde-500)}
+
+  /* ---------- Botones ---------- */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    padding:14px 24px;border-radius:999px;text-decoration:none;font-weight:600;font-size:16px;
+    border:1px solid transparent;transition:transform .15s ease, background .15s ease;
+    max-width:100%;
+  }
+  .btn:hover{transform:translateY(-1px)}
+  .btn-p{background:var(--verde-700);color:#fff}
+  .btn-p:hover{background:var(--verde-900)}
+  .btn-s{background:transparent;color:var(--verde-900);border-color:var(--verde-500)}
+  .btn-s:hover{background:var(--verde-100)}
+  .btn svg{width:18px;height:18px;flex:none}
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative;overflow:hidden;padding:72px 0 84px;
+    background:
+      radial-gradient(1100px 520px at 78% -8%, #cfe0cf 0%, rgba(207,224,207,0) 62%),
+      radial-gradient(760px 420px at 6% 102%, var(--arcilla-claro) 0%, rgba(243,231,220,0) 70%),
+      linear-gradient(180deg,#fcfaf6 0%, var(--crema) 100%);
+  }
+  .hero .env{display:grid;grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr);gap:56px;align-items:center}
+  .etiqueta{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--verde-700);
+    background:var(--verde-100);border-radius:999px;padding:7px 15px;margin-bottom:22px;font-weight:600;
+  }
+  .hero h1{font-size:clamp(2.1rem,5.1vw,3.5rem);margin-bottom:.45em}
+  .hero h1 em{font-style:normal;color:var(--verde-700)}
+  .hero .entrada{font-size:19px;color:var(--tinta-suave);max-width:46ch}
+  .acciones{display:flex;flex-wrap:wrap;gap:13px;margin-top:30px}
+  .tel-nota{margin-top:18px;font-size:14.5px;color:var(--tinta-suave)}
+  .tel-nota b{color:var(--tinta)}
+
+  .sierra{
+    border-radius:22px;overflow:hidden;box-shadow:var(--sombra);border:1px solid var(--borde);
+    background:#eef3ea;
+  }
+  .sierra svg{width:100%;height:auto}
+
+  /* ---------- Secciones ---------- */
+  section{padding:84px 0}
+  .st{max-width:60ch;margin-bottom:46px}
+  .st .k{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--arcilla);font-weight:700;margin-bottom:12px}
+  .st h2{font-size:clamp(1.65rem,3.4vw,2.35rem)}
+  .st p{color:var(--tinta-suave);margin:0}
+
+  .rejilla{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+  .tarjeta{
+    background:var(--blanco);border:1px solid var(--borde);border-radius:var(--radio);
+    padding:28px;box-shadow:var(--sombra);
+  }
+  .tarjeta .ico{
+    width:46px;height:46px;border-radius:13px;background:var(--verde-100);
+    display:flex;align-items:center;justify-content:center;margin-bottom:18px;
+  }
+  .tarjeta .ico svg{width:24px;height:24px}
+  .tarjeta h3{font-size:18.5px;margin-bottom:.4em}
+  .tarjeta p{font-size:15.5px;color:var(--tinta-suave);margin:0}
+
+  /* ---------- Reserva ---------- */
+  .reserva{background:var(--verde-900);color:#edf1ea}
+  .reserva .st .k{color:#b9d3bd}
+  .reserva .st p{color:#c7d2c6}
+  .reserva h2{color:#fff}
+  .pasos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+  .paso{
+    border:1px solid rgba(255,255,255,.17);border-radius:var(--radio);padding:28px;
+    background:rgba(255,255,255,.045);
+  }
+  .paso .num{
+    width:40px;height:40px;border-radius:50%;background:#f6f3ec;color:var(--verde-900);
+    display:flex;align-items:center;justify-content:center;font-weight:700;font-size:17px;margin-bottom:18px;
+  }
+  .paso h3{color:#fff;font-size:18px}
+  .paso p{color:#c7d2c6;font-size:15.5px;margin:0}
+  .reserva .cierre{
+    margin-top:34px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;
+    padding-top:28px;border-top:1px solid rgba(255,255,255,.17);
+  }
+  .reserva .cierre p{margin:0;color:#c7d2c6;font-size:15.5px;max-width:46ch}
+  .btn-claro{background:#f6f3ec;color:var(--verde-900)}
+  .btn-claro:hover{background:#fff}
+
+  /* ---------- Contacto ---------- */
+  .contacto .env{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:48px;align-items:start}
+  .datos{display:grid;gap:14px;margin:0;padding:0;list-style:none}
+  .dato{
+    display:flex;gap:15px;align-items:flex-start;
+    background:var(--blanco);border:1px solid var(--borde);border-radius:14px;padding:18px 20px;
+  }
+  .dato .ico{width:38px;height:38px;border-radius:11px;background:var(--arcilla-claro);display:flex;align-items:center;justify-content:center;flex:none}
+  .dato .ico svg{width:20px;height:20px}
+  .dato .et{font-size:12px;letter-spacing:.11em;text-transform:uppercase;color:var(--tinta-suave);margin-bottom:3px}
+  .dato .vl{font-size:16.5px;font-weight:600;word-break:break-word;overflow-wrap:anywhere}
+  .dato .vl a{text-decoration:none;border-bottom:1px solid var(--verde-500)}
+  .dato .vl a:hover{color:var(--verde-700)}
+  .dato .vl span.sec{display:block;font-weight:500;font-size:15.5px;color:var(--tinta-suave)}
+  .mapa{
+    background:var(--blanco);border:1px solid var(--borde);border-radius:var(--radio);
+    padding:20px;box-shadow:var(--sombra);
+  }
+  .mapa svg{width:100%;height:auto;border-radius:10px}
+  .mapa .pie{font-size:13.5px;color:var(--tinta-suave);margin:14px 0 0;text-align:center}
+
+  /* ---------- Pie ---------- */
+  footer{background:#f1ede5;border-top:1px solid var(--borde);padding:52px 0 40px}
+  .pie-top{display:flex;flex-wrap:wrap;gap:26px;justify-content:space-between;align-items:flex-start}
+  .pie-top .col{min-width:min(100%,220px)}
+  .pie-top .et{font-size:12px;letter-spacing:.11em;text-transform:uppercase;color:var(--tinta-suave);margin-bottom:7px}
+  .pie-top a{text-decoration:none;font-weight:600;word-break:break-word;overflow-wrap:anywhere;border-bottom:1px solid var(--verde-500)}
+  .credito{
+    margin-top:36px;padding-top:22px;border-top:1px solid var(--borde);
+    font-size:14px;color:var(--tinta-suave);
+  }
+  .credito strong{color:var(--tinta);font-weight:600}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:900px){
+    .hero .env{grid-template-columns:minmax(0,1fr);gap:38px}
+    .contacto .env{grid-template-columns:minmax(0,1fr);gap:34px}
+    .rejilla,.pasos{grid-template-columns:repeat(2,minmax(0,1fr))}
+  }
+  @media (max-width:640px){
+    :root{--barra:62px}
+    body{font-size:16px}
+    .env{padding:0 18px}
+    .aviso{font-size:11.5px;line-height:1.35;letter-spacing:.02em;padding:9px 14px}
+    .cab .env{min-height:60px}
+    .nav{display:none}
+    .hero{padding:44px 0 56px}
+    section{padding:58px 0}
+    .st{margin-bottom:32px}
+    .rejilla,.pasos{grid-template-columns:minmax(0,1fr);gap:16px}
+    .tarjeta,.paso{padding:24px}
+    .acciones .btn{width:100%}
+    .reserva .cierre .btn{width:100%}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="aviso" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<header class="cab">
+  <div class="env">
+    <a class="marca" href="#inicio">
+      <svg class="hoja" viewBox="0 0 40 40" aria-hidden="true">
+        <circle cx="20" cy="20" r="19" fill="#e4ece5"/>
+        <path d="M20 31c0-8 3.6-13.6 10-16.6C30 22.6 26 29 20 31Z" fill="#2f5440"/>
+        <path d="M20 31c0-8-3.6-13.6-10-16.6C10 22.6 14 29 20 31Z" fill="#4a7a5c"/>
+        <path d="M20 31.5V20" stroke="#1e3326" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      <span>
+        <b>Vivienda Rural La Fresneda</b>
+        <small>Ubrique · Cádiz</small>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Secciones">
+      <a href="#alojamiento">El alojamiento</a>
+      <a href="#reserva">Tu reserva</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="env">
+      <div>
+        <span class="etiqueta">Cerro Mulera · Sierra de Cádiz</span>
+        <h1>Una casa en la sierra, <em>a una llamada de distancia</em></h1>
+        <p class="entrada">
+          Vivienda con fines turísticos en Ubrique, en el entorno del Parque Natural
+          Los Alcornocales. Si quieres venir, lo resolvemos hablando: te contamos
+          la disponibilidad real y reservas en la misma llamada.
+        </p>
+        <div class="acciones">
+          <a class="btn btn-p" href="tel:607571330">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/>
+            </svg>
+            Llamar al 607 571 330
+          </a>
+          <a class="btn btn-s" href="#reserva">Cómo reservar</a>
+        </div>
+        <p class="tel-nota">
+          También atendemos en el <b>956 46 12 52</b>. Sin formularios que fallan
+          ni pagos a medias: hablamos y confirmamos.
+        </p>
+      </div>
+
+      <div class="sierra" aria-hidden="true">
+        <svg viewBox="0 0 640 460" role="presentation">
+          <defs>
+            <linearGradient id="cielo" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#f7f3ea"/><stop offset="1" stop-color="#e6eee6"/>
+            </linearGradient>
+            <linearGradient id="m1" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#9fb8a4"/><stop offset="1" stop-color="#819c89"/>
+            </linearGradient>
+            <linearGradient id="m2" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#6c8c76"/><stop offset="1" stop-color="#53735f"/>
+            </linearGradient>
+            <linearGradient id="m3" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#3b5c47"/><stop offset="1" stop-color="#2a4434"/>
+            </linearGradient>
+            <linearGradient id="prado" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#e9e2d2"/><stop offset="1" stop-color="#ddd3bf"/>
+            </linearGradient>
+          </defs>
+          <rect width="640" height="460" fill="url(#cielo)"/>
+          <circle cx="498" cy="104" r="46" fill="#f4e9d8"/>
+          <path d="M0 236 118 142l86 68 70-50 96 88 104-72 166 110v50H0Z" fill="url(#m1)"/>
+          <path d="M0 282 96 206l92 62 84-44 110 84 108-56 150 92v34H0Z" fill="url(#m2)"/>
+          <path d="M0 338 132 258l110 66 92-38 118 70 188-50v98H0Z" fill="url(#m3)"/>
+          <rect y="372" width="640" height="88" fill="url(#prado)"/>
+          <g fill="#2a4434" opacity=".85">
+            <path d="M74 372v-26M62 346h24"/>
+            <circle cx="74" cy="332" r="19"/>
+            <rect x="71" y="340" width="6" height="34" rx="3"/>
+            <circle cx="152" cy="344" r="14"/>
+            <rect x="149" y="350" width="6" height="26" rx="3"/>
+            <circle cx="566" cy="338" r="17"/>
+            <rect x="563" y="346" width="6" height="30" rx="3"/>
+          </g>
+          <g>
+            <rect x="268" y="316" width="118" height="70" rx="5" fill="#fbf8f2" stroke="#c9c0ae"/>
+            <path d="M258 318 327 274l69 44Z" fill="#b2704a"/>
+            <rect x="288" y="340" width="26" height="24" rx="3" fill="#cfe0dd" stroke="#9db0ab"/>
+            <rect x="338" y="340" width="26" height="46" rx="3" fill="#6c8c76"/>
+            <rect x="352" y="282" width="13" height="26" rx="3" fill="#a9a093"/>
+          </g>
+          <path d="M327 386c-24 22-66 28-104 36M327 386c28 20 72 24 112 34" stroke="#c3b79f" stroke-width="7" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ALOJAMIENTO -->
+  <section id="alojamiento">
+    <div class="env">
+      <div class="st">
+        <div class="k">El alojamiento</div>
+        <h2>Alojamiento rural completo en Ubrique</h2>
+        <p>
+          Una vivienda con fines turísticos para quien busca sierra, silencio y
+          una base desde la que recorrer la comarca. Los detalles concretos de la
+          casa los confirmamos por teléfono, para que lo que leas aquí sea siempre
+          lo que vas a encontrar.
+        </p>
+      </div>
+      <div class="rejilla">
+        <article class="tarjeta">
+          <div class="ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#2f5440" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.8V21h14V9.8"/><path d="M9.5 21v-6h5v6"/>
+            </svg>
+          </div>
+          <h3>Vivienda de uso exclusivo</h3>
+          <p>La casa se alquila completa para tu grupo: llegas, te instalas y la sierra se queda a la puerta.</p>
+        </article>
+        <article class="tarjeta">
+          <div class="ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#2f5440" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 21c0-7 3-11.5 8-14-.5 7.5-4 12-8 14Z"/><path d="M12 21c0-7-3-11.5-8-14 .5 7.5 4 12 8 14Z"/><path d="M12 21.5V12"/>
+            </svg>
+          </div>
+          <h3>Entorno natural protegido</h3>
+          <p>Ubrique está en el Parque Natural Los Alcornocales, en plena Sierra de Cádiz, con senderos y pueblos blancos alrededor.</p>
+        </article>
+        <article class="tarjeta">
+          <div class="ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#2f5440" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 21s-7-5.2-7-10.6A7 7 0 0 1 19 10.4C19 15.8 12 21 12 21Z"/><circle cx="12" cy="10.2" r="2.6"/>
+            </svg>
+          </div>
+          <h3>Ubicación en Cerro Mulera</h3>
+          <p>A las afueras del casco de Ubrique, en el paraje de Cerro Mulera, con acceso por carretera y aparcamiento junto a la casa.</p>
+        </article>
+        <article class="tarjeta">
+          <div class="ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#2f5440" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 18V7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v11"/><path d="M2 18h20"/><path d="M8 11h8"/>
+            </svg>
+          </div>
+          <h3>Escapadas y estancias largas</h3>
+          <p>Fines de semana, puentes o temporadas más tranquilas: dinos las fechas que tienes en mente y lo miramos.</p>
+        </article>
+        <article class="tarjeta">
+          <div class="ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#2f5440" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 17c2.5-4 5-4 7.5 0S15.5 21 18 17s3-4 3-4"/><path d="M3 11c2.5-4 5-4 7.5 0S15.5 15 18 11s3-4 3-4"/>
+            </svg>
+          </div>
+          <h3>Trato directo</h3>
+          <p>Hablas con quien gestiona la casa, no con una centralita: dudas, accesos y detalles se resuelven en una conversación.</p>
+        </article>
+        <article class="tarjeta">
+          <div class="ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#2f5440" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="M9.5 15.5 11 17l3.5-3.5"/>
+            </svg>
+          </div>
+          <h3>Disponibilidad confirmada</h3>
+          <p>Nada de calendarios que no se actualizan: la fecha se bloquea cuando la confirmamos contigo.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESERVA -->
+  <section id="reserva" class="reserva">
+    <div class="env">
+      <div class="st">
+        <div class="k">Tu reserva</div>
+        <h2>Reservar, en tres pasos</h2>
+        <p>
+          Un proceso corto y sin pasos intermedios que se queden a medias.
+          Mientras la reserva en línea no esté operativa, esta es la vía que
+          funciona de verdad.
+        </p>
+      </div>
+      <div class="pasos">
+        <article class="paso">
+          <div class="num">1</div>
+          <h3>Llámanos o escríbenos</h3>
+          <p>Marca el 607 571 330 o el 956 46 12 52, o manda un correo con tus fechas y el número de personas.</p>
+        </article>
+        <article class="paso">
+          <div class="num">2</div>
+          <h3>Confirmamos disponibilidad</h3>
+          <p>Te decimos si esas fechas están libres y te explicamos las condiciones de la estancia, sin compromiso.</p>
+        </article>
+        <article class="paso">
+          <div class="num">3</div>
+          <h3>Cerramos la reserva</h3>
+          <p>Dejamos la fecha bloqueada a tu nombre y te pasamos por escrito cómo llegar y cómo es la entrada a la casa.</p>
+        </article>
+      </div>
+      <div class="cierre">
+        <a class="btn btn-claro" href="tel:607571330">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/>
+          </svg>
+          Llamar ahora
+        </a>
+        <p>Si prefieres dejarlo por escrito, escribe a <strong>lafresnedaubrique@gmail.com</strong> y te respondemos con la disponibilidad.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="contacto">
+    <div class="env">
+      <div>
+        <div class="st">
+          <div class="k">Contacto</div>
+          <h2>Dónde estamos y cómo localizarnos</h2>
+          <p>Cerro Mulera, en Ubrique, provincia de Cádiz. Para cualquier gestión, el teléfono es la vía más rápida.</p>
+        </div>
+        <ul class="datos">
+          <li class="dato">
+            <div class="ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#a86a3d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="et">Teléfonos</div>
+              <div class="vl">
+                <a href="tel:607571330">607 571 330</a>
+                <span class="sec"><a href="tel:956461252">956 46 12 52</a></span>
+              </div>
+            </div>
+          </li>
+          <li class="dato">
+            <div class="ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#a86a3d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 21s-7-5.2-7-10.6A7 7 0 0 1 19 10.4C19 15.8 12 21 12 21Z"/><circle cx="12" cy="10.2" r="2.6"/>
+              </svg>
+            </div>
+            <div>
+              <div class="et">Dirección</div>
+              <div class="vl">Cerro Mulera, s/n<span class="sec">11600 Ubrique (Cádiz)</span></div>
+            </div>
+          </li>
+          <li class="dato">
+            <div class="ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#a86a3d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.6 6.5 8.4 6 8.4-6"/>
+              </svg>
+            </div>
+            <div>
+              <div class="et">Correo</div>
+              <div class="vl"><a href="mailto:lafresnedaubrique@gmail.com">lafresnedaubrique@gmail.com</a></div>
+            </div>
+          </li>
+          <li class="dato">
+            <div class="ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#a86a3d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="9"/><path d="M12 7v5.3l3.4 2"/>
+              </svg>
+            </div>
+            <div>
+              <div class="et">Atención</div>
+              <div class="vl">Consultar horario</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="mapa">
+        <svg viewBox="0 0 560 420" role="img" aria-label="Dibujo esquemático de la ubicación de la casa en el entorno serrano de Ubrique; no es un mapa real">
+          <defs>
+            <linearGradient id="fondoMapa" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#f6f2e9"/><stop offset="1" stop-color="#eaefe6"/>
+            </linearGradient>
+          </defs>
+          <rect width="560" height="420" rx="10" fill="url(#fondoMapa)"/>
+          <g stroke="#e0dac9" stroke-width="1">
+            <path d="M0 70h560M0 140h560M0 210h560M0 280h560M0 350h560"/>
+            <path d="M70 0v420M140 0v420M210 0v420M280 0v420M350 0v420M420 0v420M490 0v420"/>
+          </g>
+          <!-- manchas de monte -->
+          <path d="M26 300c40-70 96-96 150-70 44 22 36 72 2 96-46 32-134 36-152-26Z" fill="#dbe6d8"/>
+          <path d="M352 112c44-54 112-56 148-10 28 36 6 84-40 94-54 12-140-30-108-84Z" fill="#dbe6d8"/>
+          <!-- relieve -->
+          <g fill="none" stroke="#9fb39f" stroke-width="2.2" stroke-linecap="round">
+            <path d="M58 212c22-26 50-26 72 0"/>
+            <path d="M44 226c30-40 72-40 100 0"/>
+            <path d="M398 160c20-24 46-24 66 0"/>
+            <path d="M386 174c26-36 66-36 90 0"/>
+          </g>
+          <!-- carretera -->
+          <path d="M-10 366C110 348 168 300 236 268s136-30 190-74c30-24 60-34 150-30"
+                fill="none" stroke="#cdbfa3" stroke-width="16" stroke-linecap="round"/>
+          <path d="M-10 366C110 348 168 300 236 268s136-30 190-74c30-24 60-34 150-30"
+                fill="none" stroke="#f6f2e9" stroke-width="2.6" stroke-dasharray="12 14"/>
+          <!-- rio -->
+          <path d="M70 44c34 56 10 96 46 140s96 44 120 102" fill="none" stroke="#b8cfd6" stroke-width="7" stroke-linecap="round"/>
+          <!-- nucleo urbano -->
+          <g>
+            <circle cx="152" cy="316" r="30" fill="#e9dfcd"/>
+            <g fill="#bfae92">
+              <rect x="134" y="306" width="13" height="16" rx="2"/>
+              <rect x="151" y="300" width="13" height="22" rx="2"/>
+              <rect x="166" y="310" width="11" height="12" rx="2"/>
+            </g>
+            <text x="152" y="364" text-anchor="middle" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="16" font-weight="600" fill="#4c564f">Ubrique</text>
+          </g>
+          <!-- la casa -->
+          <g>
+            <circle cx="398" cy="196" r="38" fill="#2f5440" opacity=".1"/>
+            <circle cx="398" cy="196" r="23" fill="#2f5440"/>
+            <path d="M388 198v-8l10-8 10 8v8Z" fill="#fff"/>
+            <rect x="395" y="192" width="6" height="6" fill="#2f5440"/>
+            <text x="398" y="256" text-anchor="middle" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="16" font-weight="700" fill="#1e3326">La Fresneda</text>
+            <text x="398" y="276" text-anchor="middle" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="13.5" fill="#4c564f">Cerro Mulera</text>
+          </g>
+          <!-- rotulos entorno -->
+          <text x="470" y="92" text-anchor="middle" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="13" fill="#5f7a65">Los Alcornocales</text>
+          <text x="104" y="196" text-anchor="middle" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="13" fill="#5f7a65">Sierra</text>
+          <!-- norte -->
+          <g transform="translate(508,344)">
+            <circle r="22" fill="#fff" stroke="#dcd8cf"/>
+            <path d="M0-13 6 4 0 0-6 4Z" fill="#a86a3d"/>
+            <text y="16" text-anchor="middle" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="10.5" fill="#4c564f">N</text>
+          </g>
+        </svg>
+        <p class="pie">Esquema orientativo del entorno. No es un mapa a escala.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="env">
+    <div class="pie-top">
+      <div class="col">
+        <div class="et">Vivienda Rural La Fresneda</div>
+        <p style="margin:0;color:var(--tinta-suave);font-size:15.5px">Cerro Mulera, s/n · 11600 Ubrique (Cádiz)</p>
+      </div>
+      <div class="col">
+        <div class="et">Teléfonos</div>
+        <a href="tel:607571330">607 571 330</a> ·
+        <a href="tel:956461252">956 46 12 52</a>
+      </div>
+      <div class="col">
+        <div class="et">Correo</div>
+        <a href="mailto:lafresnedaubrique@gmail.com">lafresnedaubrique@gmail.com</a>
+      </div>
+    </div>
+    <p class="credito">
+      <strong>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</strong>
+    </p>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    // Desplazamiento suave con compensación de la barra fija y la cabecera
+    var enlaces = document.querySelectorAll('a[href^="#"]');
+    for (var i = 0; i < enlaces.length; i++) {
+      enlaces[i].addEventListener('click', function(e){
+        var id = this.getAttribute('href');
+        if (!id || id === '#') return;
+        var destino = document.querySelector(id);
+        if (!destino) return;
+        e.preventDefault();
+        var barra = document.querySelector('.aviso');
+        var cab = document.querySelector('.cab');
+        var desfase = (barra ? barra.offsetHeight : 0) + (cab ? cab.offsetHeight : 0) + 8;
+        var y = destino.getBoundingClientRect().top + window.pageYOffset - desfase;
+        window.scrollTo({ top: y < 0 ? 0 : y, behavior: 'smooth' });
+      });
+    }
+    // La cabecera se pega justo debajo de la barra fija, cualquiera que sea su altura
+    function ajustar(){
+      var barra = document.querySelector('.aviso');
+      if (barra) document.documentElement.style.setProperty('--barra', barra.offsetHeight + 'px');
+    }
+    ajustar();
+    window.addEventListener('resize', ajustar);
+  })();
+</script>
+</body>
+</html>

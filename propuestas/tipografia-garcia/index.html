@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tipografía García · Imprenta en La Orotava</title>
+<meta name="description" content="Maqueta de propuesta de rediseño para Tipografía García, imprenta en La Perdoma, La Orotava.">
+<style>
+:root{
+  --ink:#141419;
+  --ink-soft:#3d3d49;
+  --paper:#f4f1ea;
+  --paper-2:#eae5da;
+  --rule:#d3cbbc;
+  --red:#c1272d;
+  --cyan:#0b6e8f;
+  --yellow:#e3a81a;
+  --max:1180px;
+  --bar:44px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0;max-width:100%;overflow-x:hidden}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;
+  line-height:1.6;
+  padding-top:var(--bar);
+}
+img,svg{max-width:100%;display:block}
+h1,h2,h3,.sans{font-family:"Helvetica Neue",Helvetica,Arial,"Segoe UI",system-ui,sans-serif}
+a{color:inherit}
+
+/* ---------- barra fija ---------- */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  min-height:var(--bar);
+  display:flex;align-items:center;justify-content:center;
+  background:var(--ink);
+  color:#fff;
+  border-bottom:3px solid var(--red);
+  padding:7px 14px;
+}
+.topbar span{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;
+  text-align:center;line-height:1.35;font-weight:600;
+}
+.wrap{width:100%;max-width:var(--max);margin:0 auto;padding-left:24px;padding-right:24px}
+
+/* ---------- marcas de impresión ---------- */
+.regmarks{display:flex;gap:7px;align-items:center}
+.regmarks i{width:11px;height:11px;border-radius:50%;display:block;mix-blend-mode:multiply}
+.c1{background:var(--cyan)}.c2{background:var(--red)}.c3{background:var(--yellow)}.c4{background:var(--ink)}
+footer .regmarks i{mix-blend-mode:normal}
+footer .c1{background:#2ea3c8}footer .c3{background:#f0bb3c}footer .c4{background:#ffffff}
+.kicker{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:11.5px;letter-spacing:.17em;text-transform:uppercase;font-weight:700;
+  color:var(--red);
+}
+.secnum{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:11.5px;letter-spacing:.14em;color:var(--ink-soft);font-weight:700;
+}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(900px 480px at 88% -8%,rgba(11,110,143,.16),transparent 60%),
+    radial-gradient(760px 420px at 4% 108%,rgba(193,39,45,.14),transparent 62%),
+    linear-gradient(176deg,#fbf9f4 0%,var(--paper) 58%,var(--paper-2) 100%);
+  border-bottom:1px solid var(--rule);
+}
+.hero::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(to right,rgba(20,20,25,.045) 1px,transparent 1px);
+  background-size:calc(100%/6) 100%;
+}
+.hero-in{position:relative;padding-top:54px;padding-bottom:64px;display:grid;grid-template-columns:1.08fr .92fr;gap:48px;align-items:center}
+h1{
+  margin:16px 0 0;
+  font-size:clamp(2.3rem,5.4vw,4.1rem);
+  line-height:.98;letter-spacing:-.025em;font-weight:800;
+  text-wrap:balance;
+}
+h1 em{font-style:normal;color:var(--red)}
+.lede{margin:20px 0 0;max-width:34em;font-size:1.06rem;color:var(--ink-soft)}
+.hero-note{
+  margin-top:22px;padding:13px 16px;
+  border-left:4px solid var(--cyan);background:rgba(255,255,255,.72);
+  font-size:.93rem;color:var(--ink-soft)
+}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:700;
+  font-size:.96rem;letter-spacing:.01em;text-decoration:none;
+  padding:14px 22px;border-radius:2px;border:2px solid var(--ink);
+}
+.btn-main{background:var(--red);border-color:var(--red);color:#fff}
+.btn-main:hover{background:#a01f24;border-color:#a01f24}
+.btn-ghost{background:transparent;color:var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:var(--paper)}
+.btn small{display:block;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;opacity:.85;font-weight:600}
+.heroart{width:100%}
+
+/* ---------- tira de datos ---------- */
+.strip{background:var(--ink);color:#f4f1ea}
+.strip-in{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.14)}
+.strip-in div{background:var(--ink);padding:20px 22px}
+.strip dt{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#b9b2a4;margin:0 0 6px}
+.strip dd{margin:0;font-size:1.02rem;line-height:1.35}
+.strip a{color:#fff;text-decoration:none;border-bottom:1px solid var(--red)}
+
+/* ---------- secciones ---------- */
+section{padding-top:66px;padding-bottom:66px}
+.sechead{display:flex;flex-wrap:wrap;align-items:baseline;gap:14px;border-bottom:2px solid var(--ink);padding-bottom:12px;margin-bottom:34px}
+.sechead h2{margin:0;font-size:clamp(1.5rem,3vw,2.1rem);letter-spacing:-.015em;font-weight:800;flex:1 1 auto}
+.sechead .secnum{flex:0 0 auto}
+
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.card{background:#fdfcf9;padding:26px 22px 28px}
+.card h3{margin:14px 0 8px;font-size:1.1rem;letter-spacing:-.01em}
+.card p{margin:0;font-size:.95rem;color:var(--ink-soft)}
+.card .ico{width:44px;height:44px}
+
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;counter-reset:s}
+.step{background:#fdfcf9;border:1px solid var(--rule);border-top:5px solid var(--red);padding:24px 22px 26px;position:relative}
+.step .n{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:800;
+  font-size:2.6rem;line-height:1;color:var(--paper-2);
+  -webkit-text-stroke:2px var(--red);display:block;margin-bottom:8px;
+}
+.step h3{margin:0 0 8px;font-size:1.08rem}
+.step p{margin:0;font-size:.94rem;color:var(--ink-soft)}
+.steps-foot{margin-top:26px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start}
+.cbox{background:#fdfcf9;border:1px solid var(--rule);padding:26px 24px}
+.cbox dl{margin:0;display:grid;gap:18px}
+.cbox dt{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--red);font-weight:700;margin-bottom:4px}
+.cbox dd{margin:0;font-size:1.02rem;line-height:1.45}
+.cbox a{text-decoration:none;border-bottom:1px solid var(--red)}
+.tagpill{display:inline-block;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:.8rem;font-weight:700;letter-spacing:.05em;background:var(--paper-2);border:1px dashed var(--ink-soft);padding:5px 11px}
+.mapwrap{background:#fdfcf9;border:1px solid var(--rule);padding:14px}
+.mapcap{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-soft);margin:10px 2px 2px}
+
+/* ---------- pie ---------- */
+footer{background:var(--ink);color:#e8e3d8;padding:48px 0 38px;margin-top:10px}
+.foot-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:34px;align-items:start}
+footer h3{margin:0 0 10px;font-size:1.25rem;color:#fff}
+footer p{margin:0 0 8px;font-size:.95rem;color:#c9c2b4}
+footer a{color:#fff;text-decoration:none;border-bottom:1px solid var(--red)}
+.foot-rule{height:1px;background:rgba(255,255,255,.2);margin:32px 0 20px}
+.credit{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:12.5px;letter-spacing:.055em;color:#fff;font-weight:600;line-height:1.6
+}
+.credit .dim{display:block;color:#a79f90;font-weight:400;letter-spacing:.03em;margin-top:8px}
+
+@media (max-width:900px){
+  .hero-in{grid-template-columns:1fr;gap:34px;padding-top:40px;padding-bottom:48px}
+  .strip-in{grid-template-columns:1fr}
+  .cards{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .contact{grid-template-columns:1fr;gap:26px}
+  .foot-grid{grid-template-columns:1fr;gap:24px}
+}
+@media (max-width:480px){
+  :root{--bar:58px}
+  body{font-size:16px}
+  .wrap{padding-left:18px;padding-right:18px}
+  section{padding-top:48px;padding-bottom:48px}
+  .topbar span{font-size:10.5px;letter-spacing:.06em}
+  .btn{width:100%;justify-content:center;text-align:center}
+  .cta-row{gap:10px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<header class="hero">
+  <div class="wrap hero-in">
+    <div>
+      <div class="regmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div>
+      <p class="kicker" style="margin:14px 0 0">Imprenta · La Perdoma, La Orotava</p>
+      <h1>Tipografía <em>García</em><br>Imprenta de confianza en el valle</h1>
+      <p class="lede">Impresión digital y offset, papelería comercial, cartelería, encuadernación y personalización. Cuéntanos qué necesitas y lo preparamos contigo.</p>
+      <div class="hero-note">
+        Una web propia en <strong>tipografiagarcia.com</strong>: la dirección que funciona siempre, también cuando el enlace de un directorio externo deja de servir.
+      </div>
+      <div class="cta-row">
+        <a class="btn btn-main" href="tel:922308772"><span>Llamar al 922 308 772<small>Hablar con la imprenta</small></span></a>
+        <a class="btn btn-ghost" href="#presupuesto"><span>Pedir presupuesto<small>En 3 pasos</small></span></a>
+      </div>
+    </div>
+    <div>
+      <svg class="heroart" viewBox="0 0 440 360" role="img" aria-label="Composición abstracta de pliegos impresos y marcas de registro">
+        <defs>
+          <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#e6e0d3"/>
+          </linearGradient>
+          <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#0b6e8f"/><stop offset="1" stop-color="#0a4f66"/>
+          </linearGradient>
+          <linearGradient id="g3" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#c1272d"/><stop offset="1" stop-color="#8c1b20"/>
+          </linearGradient>
+        </defs>
+        <rect x="52" y="34" width="300" height="276" fill="url(#g1)" stroke="#141419" stroke-width="2"/>
+        <rect x="70" y="52" width="300" height="276" fill="url(#g1)" stroke="#141419" stroke-width="2"/>
+        <rect x="88" y="70" width="300" height="276" fill="#fffefb" stroke="#141419" stroke-width="2"/>
+        <rect x="108" y="92" width="150" height="16" fill="#141419"/>
+        <rect x="108" y="118" width="210" height="8" fill="#c8c1b2"/>
+        <rect x="108" y="134" width="188" height="8" fill="#c8c1b2"/>
+        <rect x="108" y="150" width="204" height="8" fill="#c8c1b2"/>
+        <rect x="108" y="178" width="96" height="70" fill="url(#g2)"/>
+        <rect x="216" y="178" width="96" height="70" fill="url(#g3)"/>
+        <rect x="108" y="266" width="130" height="8" fill="#c8c1b2"/>
+        <rect x="108" y="282" width="78" height="8" fill="#141419"/>
+        <g stroke="#141419" stroke-width="1.6" fill="none">
+          <circle cx="30" cy="30" r="11"/><path d="M30 13v34M13 30h34"/>
+        </g>
+        <g stroke="#c1272d" stroke-width="1.6" fill="none">
+          <circle cx="412" cy="336" r="11"/><path d="M412 319v34M395 336h34"/>
+        </g>
+        <g fill="none" stroke="#141419" stroke-width="1.4">
+          <path d="M20 90v28M20 148v28"/><path d="M420 70h-28"/>
+        </g>
+        <g>
+          <rect x="14" y="200" width="16" height="22" fill="#0b6e8f"/>
+          <rect x="14" y="226" width="16" height="22" fill="#c1272d"/>
+          <rect x="14" y="252" width="16" height="22" fill="#e3a81a"/>
+          <rect x="14" y="278" width="16" height="22" fill="#141419"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<div class="strip">
+  <div class="wrap">
+    <dl class="strip-in">
+      <div><dt>Teléfono</dt><dd><a href="tel:922308772">922 308 772</a></dd></div>
+      <div><dt>Dónde estamos</dt><dd>Carretera General de La Perdoma, 110 · La Perdoma, 38315 La Orotava</dd></div>
+      <div><dt>Correo</dt><dd><a href="mailto:cipri@tipografiagarcia.com">cipri@tipografiagarcia.com</a></dd></div>
+    </dl>
+  </div>
+</div>
+
+<section id="servicios">
+  <div class="wrap">
+    <div class="sechead"><span class="secnum">01</span><h2>Qué imprimimos</h2></div>
+    <div class="cards">
+      <article class="card">
+        <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="18" width="36" height="18" rx="2" fill="none" stroke="#141419" stroke-width="2.4"/><rect x="13" y="7" width="22" height="11" fill="none" stroke="#141419" stroke-width="2.4"/><rect x="13" y="30" width="22" height="13" fill="#c1272d"/></svg>
+        <h3>Impresión digital y offset</h3>
+        <p>Tiradas cortas o grandes volúmenes, en el sistema que mejor encaje con cada trabajo.</p>
+      </article>
+      <article class="card">
+        <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="6" width="26" height="34" fill="none" stroke="#141419" stroke-width="2.4"/><path d="M34 14h6v26H14" fill="none" stroke="#0b6e8f" stroke-width="2.4"/><path d="M14 15h14M14 22h14M14 29h9" stroke="#141419" stroke-width="2.2"/></svg>
+        <h3>Papelería comercial</h3>
+        <p>Tarjetas, sobres, hojas con membrete, talonarios, carpetas y folletos para el día a día del negocio.</p>
+      </article>
+      <article class="card">
+        <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="8" width="36" height="24" fill="none" stroke="#141419" stroke-width="2.4"/><path d="M24 32v10M16 42h16" stroke="#141419" stroke-width="2.4"/><rect x="11" y="13" width="12" height="14" fill="#e3a81a"/><path d="M27 15h11M27 21h11M27 27h7" stroke="#141419" stroke-width="2"/></svg>
+        <h3>Cartelería y gran formato</h3>
+        <p>Carteles, lonas y rótulos para escaparate, obra, evento o señalización.</p>
+      </article>
+      <article class="card">
+        <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 12c-5-4-11-4-16-2v26c5-2 11-2 16 2 5-4 11-4 16-2V10c-5-2-11-2-16 2z" fill="none" stroke="#141419" stroke-width="2.4"/><path d="M24 12v26" stroke="#c1272d" stroke-width="2.4"/></svg>
+        <h3>Encuadernación</h3>
+        <p>Grapado, cosido, espiral o pegado para memorias, cuadernos, libretas y dosieres.</p>
+      </article>
+      <article class="card">
+        <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="15" fill="none" stroke="#141419" stroke-width="2.4"/><path d="M24 9v30M9 24h30" stroke="#0b6e8f" stroke-width="2"/><circle cx="24" cy="24" r="5" fill="#c1272d"/></svg>
+        <h3>Personalización</h3>
+        <p>Artículos y soportes impresos con el nombre, el logotipo o los datos de cada cliente.</p>
+      </article>
+      <article class="card">
+        <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M10 38V10h16l12 12v16z" fill="none" stroke="#141419" stroke-width="2.4"/><path d="M26 10v12h12" fill="none" stroke="#141419" stroke-width="2.4"/><path d="M16 28h16M16 33h11" stroke="#c1272d" stroke-width="2.2"/></svg>
+        <h3>¿No está en la lista?</h3>
+        <p>Si tienes un trabajo distinto, descríbelo y te decimos cómo podemos hacerlo.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="presupuesto" style="background:linear-gradient(180deg,#efebe1,#f4f1ea);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)">
+  <div class="wrap">
+    <div class="sechead"><span class="secnum">02</span><h2>Pide presupuesto</h2></div>
+    <div class="steps">
+      <div class="step">
+        <span class="n">1</span>
+        <h3>Cuéntanos el trabajo</h3>
+        <p>Qué quieres imprimir, cuántas unidades y en qué tamaño. Si tienes el archivo, adjúntalo.</p>
+      </div>
+      <div class="step">
+        <span class="n">2</span>
+        <h3>Lo revisamos contigo</h3>
+        <p>Comprobamos el archivo y te planteamos las opciones de papel, acabado y sistema de impresión.</p>
+      </div>
+      <div class="step">
+        <span class="n">3</span>
+        <h3>Te damos el presupuesto</h3>
+        <p>Recibes el precio por escrito antes de imprimir nada. Si te encaja, lo ponemos en marcha.</p>
+      </div>
+    </div>
+    <div class="steps-foot">
+      <a class="btn btn-main" href="tel:922308772"><span>Llamar al 922 308 772<small>Más rápido por teléfono</small></span></a>
+      <a class="btn btn-ghost" href="mailto:cipri@tipografiagarcia.com"><span>Escribir por correo<small>cipri@tipografiagarcia.com</small></span></a>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap">
+    <div class="sechead"><span class="secnum">03</span><h2>Dónde encontrarnos</h2></div>
+    <div class="contact">
+      <div class="cbox">
+        <dl>
+          <div><dt>Teléfono</dt><dd><a href="tel:922308772">922 308 772</a></dd></div>
+          <div><dt>Dirección</dt><dd>Carretera General de La Perdoma, 110<br>La Perdoma · 38315 La Orotava<br>Santa Cruz de Tenerife</dd></div>
+          <div><dt>Horario</dt><dd><span class="tagpill">Consultar horario</span></dd></div>
+          <div><dt>Correo</dt><dd><a href="mailto:cipri@tipografiagarcia.com">cipri@tipografiagarcia.com</a></dd></div>
+        </dl>
+      </div>
+      <div class="mapwrap">
+        <svg viewBox="0 0 520 330" role="img" aria-label="Croquis esquemático: la imprenta está a pie de la carretera general de La Perdoma, en el número 110">
+          <rect width="520" height="330" fill="#f6f3ec"/>
+          <g stroke="#ddd6c7" stroke-width="1">
+            <path d="M0 55h520M0 110h520M0 165h520M0 220h520M0 275h520"/>
+            <path d="M65 0v330M130 0v330M195 0v330M260 0v330M325 0v330M390 0v330M455 0v330"/>
+          </g>
+          <path d="M-10 250 C 120 230, 180 150, 300 128 S 460 96, 530 60" fill="none" stroke="#141419" stroke-width="22" stroke-linecap="round"/>
+          <path d="M-10 250 C 120 230, 180 150, 300 128 S 460 96, 530 60" fill="none" stroke="#f6f3ec" stroke-width="3" stroke-dasharray="14 12"/>
+          <path d="M160 330 C 175 265, 195 215, 258 196" fill="none" stroke="#9c9481" stroke-width="11" stroke-linecap="round"/>
+          <path d="M405 330 C 400 250, 392 180, 372 112" fill="none" stroke="#9c9481" stroke-width="11" stroke-linecap="round"/>
+          <g>
+            <rect x="276" y="152" width="74" height="54" fill="#fffefb" stroke="#141419" stroke-width="2.5"/>
+            <path d="M276 152l37-24 37 24" fill="#c1272d" stroke="#141419" stroke-width="2.5"/>
+            <rect x="292" y="172" width="18" height="34" fill="#141419"/>
+            <rect x="320" y="170" width="16" height="14" fill="#0b6e8f"/>
+          </g>
+          <circle cx="313" cy="128" r="9" fill="#c1272d" stroke="#141419" stroke-width="2.5"/>
+          <path d="M313 137v15" stroke="#141419" stroke-width="2.5"/>
+          <g font-family="Helvetica Neue,Helvetica,Arial,sans-serif" fill="#141419">
+            <text x="24" y="296" font-size="15" font-weight="700">CARRETERA GENERAL</text>
+            <text x="24" y="314" font-size="13" fill="#5a5447">DE LA PERDOMA</text>
+            <text x="368" y="178" font-size="16" font-weight="700">Nº 110</text>
+            <text x="368" y="196" font-size="13" fill="#5a5447">Tipografía García</text>
+          </g>
+          <g stroke="#141419" stroke-width="1.6" fill="none">
+            <circle cx="474" cy="268" r="20"/>
+            <path d="M474 240v56M446 268h56"/>
+          </g>
+          <text x="474" y="236" font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-size="12" font-weight="700" fill="#141419" text-anchor="middle">N</text>
+        </svg>
+        <p class="mapcap">Croquis orientativo, no es un mapa a escala</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="regmarks" aria-hidden="true"><i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i></div>
+        <h3 style="margin-top:14px">Tipografía García</h3>
+        <p>Imprenta en La Perdoma, La Orotava (Santa Cruz de Tenerife).</p>
+        <p>Carretera General de La Perdoma, 110 · 38315</p>
+      </div>
+      <div>
+        <p style="color:#fff"><a href="tel:922308772">922 308 772</a></p>
+        <p style="color:#fff"><a href="mailto:cipri@tipografiagarcia.com">cipri@tipografiagarcia.com</a></p>
+        <p>Horario: consultar horario</p>
+      </div>
+    </div>
+    <div class="foot-rule"></div>
+    <p class="credit">
+      Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante
+      <span class="dim">Maqueta de demostración sin vínculo oficial con el negocio. Los datos de contacto son públicos.</span>
+    </p>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    var t=document.querySelector(a.getAttribute('href'));
+    if(!t)return;
+    e.preventDefault();
+    var bar=parseInt(getComputedStyle(document.documentElement).getPropertyValue('--bar'))||44;
+    window.scrollTo({top:t.getBoundingClientRect().top+window.pageYOffset-bar-8,behavior:'smooth'});
+  });
+});
+</script>
+</body>
+</html>

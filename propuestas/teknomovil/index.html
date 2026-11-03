@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Teknomovil · Informática, telefonía y videojuegos en La Orotava</title>
+<meta name="description" content="Maqueta de propuesta de rediseño para Teknomovil, tienda y servicio técnico de informática, telefonía y videojuegos en La Orotava, Tenerife.">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  :root{
+    --ink:#0a0d14;
+    --ink-2:#111622;
+    --panel:#161c2a;
+    --line:rgba(255,255,255,.10);
+    --line-2:rgba(255,255,255,.18);
+    --txt:#eef2f8;
+    --txt-dim:#aab4c6;
+    --acc:#35e0c0;
+    --acc-2:#5b8cff;
+    --warn:#ffb039;
+    --r:16px;
+    --max:1120px;
+    --barh:46px;
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+  }
+  html{-webkit-text-size-adjust:100%}
+  html,body{max-width:100%;overflow-x:hidden}
+  body{
+    margin:0;font-family:var(--font);color:var(--txt);background:var(--ink);
+    line-height:1.6;-webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%;display:block}
+  h1,h2,h3{line-height:1.15;margin:0;letter-spacing:-.02em;font-weight:700}
+  p{margin:0}
+  a{color:inherit}
+
+  /* ---------- barra fija ---------- */
+  .topbar{
+    position:fixed;inset:0 0 auto 0;z-index:100;
+    min-height:var(--barh);display:flex;align-items:center;justify-content:center;
+    padding:9px 14px;text-align:center;
+    background:linear-gradient(90deg,#1a2236,#0f1420 55%,#1a2236);
+    border-bottom:1px solid var(--line-2);
+    font-size:12.5px;letter-spacing:.04em;color:#dfe6f3;
+  }
+  .topbar span{font-family:var(--mono);font-size:12px}
+  .topbar b{color:var(--acc);font-weight:600}
+
+  .wrap{width:100%;max-width:var(--max);margin:0 auto;padding:0 24px}
+  section{position:relative}
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding-top:calc(var(--barh) + 64px);padding-bottom:72px;
+    background:
+      radial-gradient(900px 480px at 82% -5%,rgba(91,140,255,.26),transparent 62%),
+      radial-gradient(760px 420px at 6% 12%,rgba(53,224,192,.17),transparent 60%),
+      linear-gradient(180deg,#0a0d14,#0d1220 60%,#0a0d14);
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:64px 64px;opacity:.35;
+    mask-image:linear-gradient(180deg,rgba(0,0,0,.9),transparent 78%);
+    -webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,.9),transparent 78%);
+  }
+  .hero .wrap{position:relative;z-index:2}
+  .brandrow{display:flex;align-items:center;gap:12px;margin-bottom:34px}
+  .logo{width:40px;height:40px;flex:0 0 40px}
+  .brandname{font-weight:700;font-size:19px;letter-spacing:-.01em}
+  .brandname small{display:block;font-size:11.5px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:var(--txt-dim)}
+
+  .herogrid{display:grid;grid-template-columns:1.08fr .92fr;gap:46px;align-items:center}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:9px;
+    font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--acc);border:1px solid rgba(53,224,192,.35);background:rgba(53,224,192,.08);
+    padding:6px 12px;border-radius:999px;margin-bottom:20px;
+  }
+  .eyebrow i{width:7px;height:7px;border-radius:50%;background:var(--acc);display:block}
+  h1{font-size:clamp(31px,4.6vw,56px)}
+  h1 em{font-style:normal;background:linear-gradient(90deg,var(--acc),var(--acc-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lead{margin-top:18px;font-size:clamp(15px,1.4vw,18px);color:var(--txt-dim);max-width:52ch}
+  .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;text-decoration:none;
+    padding:14px 22px;border-radius:12px;font-weight:650;font-size:15.5px;border:1px solid transparent;
+  }
+  .btn-p{background:linear-gradient(135deg,var(--acc),#2fb9ff);color:#04131a;box-shadow:0 10px 28px -12px rgba(53,224,192,.75)}
+  .btn-s{background:rgba(255,255,255,.05);border-color:var(--line-2);color:var(--txt)}
+  .btn svg{flex:0 0 18px}
+  .metarow{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:26px;font-size:13.5px;color:var(--txt-dim)}
+  .metarow span{display:inline-flex;align-items:center;gap:8px}
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--acc);flex:0 0 6px}
+
+  /* ---------- tarjeta estado web ---------- */
+  .statuscard{
+    background:linear-gradient(170deg,#141a28,#0e131e);
+    border:1px solid var(--line-2);border-radius:var(--r);padding:20px;
+    box-shadow:0 30px 70px -40px rgba(0,0,0,.95);
+  }
+  .sc-head{display:flex;align-items:center;gap:9px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+  .sc-head b{font-family:var(--mono);font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:var(--txt-dim);font-weight:600}
+  .tl{display:flex;gap:5px}
+  .tl i{width:9px;height:9px;border-radius:50%;background:#2a3346;display:block}
+  .row{display:flex;gap:12px;align-items:flex-start;padding:15px 0;border-bottom:1px solid var(--line)}
+  .row:last-child{border-bottom:0;padding-bottom:2px}
+  .badge{
+    font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.06em;
+    padding:4px 8px;border-radius:6px;flex:0 0 auto;margin-top:2px;
+  }
+  .b-err{background:rgba(255,95,95,.14);color:#ff8d8d;border:1px solid rgba(255,95,95,.35)}
+  .b-ok{background:rgba(53,224,192,.14);color:var(--acc);border:1px solid rgba(53,224,192,.35)}
+  .url{font-family:var(--mono);font-size:13px;word-break:break-all;color:var(--txt)}
+  .url.dead{text-decoration:line-through;text-decoration-color:rgba(255,141,141,.8);color:#9aa5b8}
+  .rowtxt{font-size:12.8px;color:var(--txt-dim);margin-top:4px}
+
+  /* ---------- servicios ---------- */
+  .sec{padding:76px 0;border-top:1px solid var(--line)}
+  .sec-alt{background:linear-gradient(180deg,#0c1119,#0a0d14)}
+  .sechead{max-width:62ch;margin-bottom:38px}
+  .kicker{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--acc-2);margin-bottom:12px}
+  h2{font-size:clamp(25px,3.1vw,36px)}
+  .sechead p{margin-top:14px;color:var(--txt-dim);font-size:15.5px}
+
+  .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .card{
+    background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.015));
+    border:1px solid var(--line);border-radius:var(--r);padding:22px;
+    display:flex;flex-direction:column;gap:12px;min-width:0;
+  }
+  .ico{width:44px;height:44px;flex:0 0 44px;border-radius:11px;display:grid;place-items:center;
+    background:rgba(91,140,255,.12);border:1px solid rgba(91,140,255,.3)}
+  .ico svg{width:22px;height:22px}
+  .card h3{font-size:17px}
+  .card p{font-size:14px;color:var(--txt-dim)}
+
+  /* ---------- pasos ---------- */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;counter-reset:s}
+  .step{
+    position:relative;border:1px solid var(--line);border-radius:var(--r);padding:26px 22px 24px;
+    background:linear-gradient(180deg,#121826,#0d121d);min-width:0;
+  }
+  .step::before{
+    counter-increment:s;content:counter(s,decimal-leading-zero);
+    font-family:var(--mono);font-size:30px;font-weight:700;line-height:1;
+    background:linear-gradient(135deg,var(--acc),var(--acc-2));
+    -webkit-background-clip:text;background-clip:text;color:transparent;display:block;margin-bottom:14px;
+  }
+  .step h3{font-size:17.5px;margin-bottom:8px}
+  .step p{font-size:14px;color:var(--txt-dim)}
+
+  /* ---------- contacto ---------- */
+  .cgrid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+  .infopanel{border:1px solid var(--line-2);border-radius:var(--r);padding:26px;background:linear-gradient(170deg,#141a28,#0e131e)}
+  .iitem{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
+  .iitem:first-of-type{padding-top:0}
+  .iitem:last-of-type{border-bottom:0;padding-bottom:0}
+  .iitem .ico{width:38px;height:38px;flex:0 0 38px;border-radius:10px;background:rgba(53,224,192,.1);border-color:rgba(53,224,192,.3)}
+  .iitem .ico svg{width:19px;height:19px}
+  .ilab{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--txt-dim)}
+  .ival{font-size:16px;font-weight:600;margin-top:3px;word-break:break-word}
+  .ival a{text-decoration:none;color:var(--txt)}
+  .ival a:hover{color:var(--acc)}
+  .ival.soft{font-weight:500;color:var(--txt-dim);font-size:15px}
+  .mappanel{border:1px solid var(--line-2);border-radius:var(--r);overflow:hidden;background:#0d121d}
+  .mappanel figcaption{padding:12px 16px;border-top:1px solid var(--line);font-size:12.5px;color:var(--txt-dim);font-family:var(--mono)}
+  .mapsvg{display:block;width:100%;height:auto}
+
+  /* ---------- pie ---------- */
+  footer{border-top:1px solid var(--line-2);background:#070a10;padding:44px 0 56px}
+  .frow{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:flex-start}
+  .fbrand{font-weight:700;font-size:17px}
+  .fbrand p{font-size:13.5px;color:var(--txt-dim);font-weight:400;margin-top:6px}
+  .fmail{font-family:var(--mono);font-size:14px;margin-top:10px}
+  .fmail a{color:var(--acc);text-decoration:none;word-break:break-all}
+  .fnote{
+    margin-top:30px;padding-top:20px;border-top:1px solid var(--line);
+    font-size:13px;color:var(--txt-dim);
+  }
+  .fnote strong{color:#dfe6f3;font-weight:600}
+
+  @media (max-width:900px){
+    .herogrid{grid-template-columns:1fr;gap:34px}
+    .cards{grid-template-columns:1fr 1fr}
+    .steps{grid-template-columns:1fr}
+    .cgrid{grid-template-columns:1fr}
+  }
+  @media (max-width:600px){
+    :root{--barh:58px}
+    .wrap{padding:0 18px}
+    .topbar{font-size:11px;line-height:1.35;padding:8px 12px}
+    .topbar span{font-size:10.5px}
+    .hero{padding-top:calc(var(--barh) + 40px);padding-bottom:54px}
+    .sec{padding:56px 0}
+    .cards{grid-template-columns:1fr}
+    .btn{width:100%;justify-content:center}
+    .lead{max-width:none}
+    .ival{font-size:15px}
+    .iitem .ival a[href^="mailto"]{font-size:13.5px;overflow-wrap:anywhere}
+    .fmail{font-size:13px}
+    .infopanel{padding:20px}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · <b>FFFFFFstudio</b> · Ángel Rubio</span>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="brandrow">
+      <svg class="logo" viewBox="0 0 48 48" aria-hidden="true">
+        <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#35e0c0"/><stop offset="1" stop-color="#5b8cff"/>
+        </linearGradient></defs>
+        <rect x="2" y="2" width="44" height="44" rx="12" fill="none" stroke="url(#lg)" stroke-width="2.4"/>
+        <rect x="13" y="11" width="13" height="22" rx="3" fill="none" stroke="url(#lg)" stroke-width="2.2"/>
+        <path d="M30 17h7v14h-9" fill="none" stroke="url(#lg)" stroke-width="2.2" stroke-linecap="round"/>
+        <circle cx="19.5" cy="37" r="1.9" fill="#35e0c0"/>
+      </svg>
+      <div class="brandname">Teknomovil<small>La Orotava · Tenerife</small></div>
+    </div>
+
+    <div class="herogrid">
+      <div>
+        <span class="eyebrow"><i></i>Tienda y servicio técnico</span>
+        <h1>Informática, telefonía y <em>videojuegos</em> en La Orotava.</h1>
+        <p class="lead">Venta, accesorios y reparación en un mismo sitio, con atención directa en mostrador. Llámanos y te decimos cómo lo vemos antes de tocar nada.</p>
+        <div class="cta">
+          <a class="btn btn-p" href="tel:922325498">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 3h3l2 5-2.5 1.5a12 12 0 0 0 6 6L15 13l5 2v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 3 5.2 2 2 0 0 1 5 3z"/></svg>
+            Llamar al 922 325 498
+          </a>
+          <a class="btn btn-s" href="#contacto">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 21s7-5.7 7-11a7 7 0 1 0-14 0c0 5.3 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+            Cómo llegar
+          </a>
+        </div>
+        <div class="metarow">
+          <span><i class="dot"></i>Calle Alfonso Trujillo, 1</span>
+          <span><i class="dot"></i>38300 La Orotava</span>
+          <span><i class="dot"></i>Atención en tienda</span>
+        </div>
+      </div>
+
+      <aside class="statuscard" aria-label="Estado de la web actual">
+        <div class="sc-head"><span class="tl"><i></i><i></i><i></i></span><b>Estado de la web actual</b></div>
+        <div class="row">
+          <span class="badge b-err">HTTP 4xx</span>
+          <div style="min-width:0">
+            <div class="url dead">teknomovil.jimdosite.com</div>
+            <p class="rowtxt">Subdominio gratuito de Jimdo que figura en el censo oficial de empresas del Ayuntamiento de La Orotava. Hoy no carga: devuelve error y el visitante se queda sin nada.</p>
+          </div>
+        </div>
+        <div class="row">
+          <span class="badge b-ok">200 OK</span>
+          <div style="min-width:0">
+            <div class="url">esta maqueta</div>
+            <p class="rowtxt">Un solo archivo, sin dependencias externas: teléfono, dirección y servicios visibles desde el primer segundo, también en móvil.</p>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</header>
+
+<section class="sec" id="servicios">
+  <div class="wrap">
+    <div class="sechead">
+      <p class="kicker">Servicios</p>
+      <h2>Lo que se hace en la tienda</h2>
+      <p>Equipos, telefonía, accesorios y videojuegos, más el servicio técnico para lo que ya tienes. Para disponibilidad concreta, lo mejor es preguntar por teléfono.</p>
+    </div>
+    <div class="cards">
+      <article class="card">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#9fc0ff" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="2.5" y="4" width="19" height="12" rx="2"/><path d="M2 19h20"/></svg></span>
+        <h3>Venta de informática</h3>
+        <p>Ordenadores de sobremesa y portátiles, componentes y periféricos para casa, estudio o trabajo.</p>
+      </article>
+      <article class="card">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#9fc0ff" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg></span>
+        <h3>Telefonía</h3>
+        <p>Teléfonos móviles y todo lo que los acompaña, con asesoramiento en mostrador según lo que necesites.</p>
+      </article>
+      <article class="card">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#9fc0ff" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M14.5 6.5 17 4a2.5 2.5 0 0 1 3.5 3.5l-9 9-4.5 1.5 1.5-4.5z"/><path d="M4 20h7"/></svg></span>
+        <h3>Reparación</h3>
+        <p>Servicio técnico de móviles y ordenadores: diagnóstico, presupuesto y reparación hablada contigo.</p>
+      </article>
+      <article class="card">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#9fc0ff" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="2" y="7" width="20" height="10" rx="5"/><path d="M7 12h3M8.5 10.5v3"/><circle cx="16" cy="11" r="1"/><circle cx="18" cy="13.5" r="1"/></svg></span>
+        <h3>Videojuegos y accesorios</h3>
+        <p>Videojuegos, mandos, fundas, cargadores, cables y repuestos de uso diario.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-alt" id="reparacion">
+  <div class="wrap">
+    <div class="sechead">
+      <p class="kicker">Tu reparación</p>
+      <h2>Tres pasos, sin sorpresas</h2>
+      <p>El mismo orden para un móvil o para un ordenador: primero se mira, después se te cuenta y solo entonces se repara.</p>
+    </div>
+    <div class="steps">
+      <article class="step">
+        <h3>Nos lo traes o nos llamas</h3>
+        <p>Cuéntanos qué le pasa al equipo por teléfono o pásate por la tienda con él.</p>
+      </article>
+      <article class="step">
+        <h3>Revisión y presupuesto</h3>
+        <p>Se revisa, se localiza la avería y te explicamos qué tiene y qué opciones hay antes de intervenir.</p>
+      </article>
+      <article class="step">
+        <h3>Reparación y entrega</h3>
+        <p>Con tu aprobación se repara y te avisamos para que lo recojas en mostrador, probado contigo.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="contacto">
+  <div class="wrap">
+    <div class="sechead">
+      <p class="kicker">Contacto</p>
+      <h2>Dónde estamos</h2>
+      <p>En pleno casco de La Orotava. Si vas a venir por algo concreto, una llamada antes te ahorra el viaje.</p>
+    </div>
+    <div class="cgrid">
+      <div class="infopanel">
+        <div class="iitem">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#35e0c0" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M5 3h3l2 5-2.5 1.5a12 12 0 0 0 6 6L15 13l5 2v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 3 5.2 2 2 0 0 1 5 3z"/></svg></span>
+          <div>
+            <p class="ilab">Teléfono</p>
+            <p class="ival"><a href="tel:922325498">922 325 498</a></p>
+          </div>
+        </div>
+        <div class="iitem">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#35e0c0" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M12 21s7-5.7 7-11a7 7 0 1 0-14 0c0 5.3 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg></span>
+          <div>
+            <p class="ilab">Dirección</p>
+            <p class="ival">Calle Alfonso Trujillo, 1<br>38300 La Orotava (Santa Cruz de Tenerife)</p>
+          </div>
+        </div>
+        <div class="iitem">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#35e0c0" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3 2"/></svg></span>
+          <div>
+            <p class="ilab">Horario</p>
+            <p class="ival soft">Consultar horario</p>
+          </div>
+        </div>
+        <div class="iitem">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#35e0c0" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M3 7l9 6 9-6"/></svg></span>
+          <div>
+            <p class="ilab">Email</p>
+            <p class="ival"><a href="mailto:laorotavateknomovil@gmail.com">laorotavateknomovil@gmail.com</a></p>
+          </div>
+        </div>
+      </div>
+
+      <figure class="mappanel" style="margin:0">
+        <svg class="mapsvg" viewBox="0 0 520 330" role="img" aria-label="Plano esquemático de situación: Teknomovil en el número 1 de la calle Alfonso Trujillo">
+          <defs>
+            <linearGradient id="mg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#121a28"/><stop offset="1" stop-color="#0b1018"/>
+            </linearGradient>
+            <linearGradient id="pin" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#35e0c0"/><stop offset="1" stop-color="#5b8cff"/>
+            </linearGradient>
+          </defs>
+          <rect width="520" height="330" fill="url(#mg)"/>
+          <g stroke="rgba(255,255,255,.055)" stroke-width="1">
+            <path d="M0 55h520M0 110h520M0 165h520M0 220h520M0 275h520"/>
+            <path d="M65 0v330M130 0v330M195 0v330M260 0v330M325 0v330M390 0v330M455 0v330"/>
+          </g>
+          <g fill="rgba(255,255,255,.035)" stroke="rgba(255,255,255,.08)">
+            <rect x="34" y="34" width="118" height="78" rx="5"/>
+            <rect x="34" y="214" width="118" height="80" rx="5"/>
+            <rect x="330" y="34" width="150" height="72" rx="5"/>
+            <rect x="358" y="216" width="122" height="78" rx="5"/>
+            <rect x="196" y="36" width="92" height="64" rx="5"/>
+          </g>
+          <path d="M-10 172 L530 152" stroke="rgba(255,255,255,.14)" stroke-width="34" stroke-linecap="butt"/>
+          <path d="M-10 172 L530 152" stroke="#1b2334" stroke-width="30"/>
+          <path d="M-10 172 L530 152" stroke="rgba(53,224,192,.45)" stroke-width="1.6" stroke-dasharray="12 12"/>
+          <path d="M300 -10 L318 340" stroke="rgba(255,255,255,.10)" stroke-width="22"/>
+          <path d="M300 -10 L318 340" stroke="#19202f" stroke-width="18"/>
+          <text x="30" y="145" fill="#8fe8d8" font-family="ui-monospace,Menlo,monospace" font-size="13" letter-spacing="1.5">CALLE ALFONSO TRUJILLO</text>
+          <g transform="translate(206,163)">
+            <circle r="30" fill="rgba(53,224,192,.10)"/>
+            <circle r="18" fill="rgba(53,224,192,.16)"/>
+            <path d="M0 -15 a11 11 0 0 1 11 11 c0 8-11 19-11 19 S-11 4-11-4A11 11 0 0 1 0-15z" fill="url(#pin)"/>
+            <circle cy="-4" r="4" fill="#0b1018"/>
+          </g>
+          <g transform="translate(264,148)">
+            <rect x="0" y="-18" width="118" height="34" rx="8" fill="#0d1320" stroke="rgba(53,224,192,.4)"/>
+            <text x="12" y="-3" fill="#eef2f8" font-family="-apple-system,Segoe UI,Roboto,sans-serif" font-size="13" font-weight="700">Teknomovil</text>
+            <text x="12" y="11" fill="#aab4c6" font-family="ui-monospace,Menlo,monospace" font-size="10.5">nº 1</text>
+          </g>
+          <g fill="#6c7687" font-family="ui-monospace,Menlo,monospace" font-size="10.5" letter-spacing="1">
+            <text x="42" y="60">CASCO</text>
+            <text x="42" y="238">CASCO</text>
+            <text x="344" y="58">LA OROTAVA</text>
+          </g>
+          <g transform="translate(452,296)" stroke="rgba(255,255,255,.4)" fill="none" stroke-width="1.6">
+            <path d="M0 10V-6"/><path d="M-5 -1 0 -8 5 -1"/>
+            <text x="-4" y="-12" fill="#aab4c6" stroke="none" font-family="ui-monospace,Menlo,monospace" font-size="10">N</text>
+          </g>
+        </svg>
+        <figcaption>Plano esquemático, no a escala · referencia visual</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="frow">
+      <div class="fbrand">
+        Teknomovil
+        <p>Calle Alfonso Trujillo, 1 · 38300 La Orotava (Santa Cruz de Tenerife)<br>Teléfono 922 325 498 · Consultar horario</p>
+        <p class="fmail"><a href="mailto:laorotavateknomovil@gmail.com">laorotavateknomovil@gmail.com</a></p>
+      </div>
+      <div class="fbrand" style="font-size:15px">
+        Informática · Telefonía · Videojuegos
+        <p>Venta, accesorios y servicio técnico<br>Atención en tienda</p>
+      </div>
+    </div>
+    <p class="fnote"><strong>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</strong></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Desplazamiento suave compensando la barra fija
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.querySelector(a.getAttribute('href'));
+      if(!t)return;
+      e.preventDefault();
+      var bar=document.querySelector('.topbar');
+      var off=(bar?bar.offsetHeight:0)+14;
+      window.scrollTo({top:t.getBoundingClientRect().top+window.pageYOffset-off,behavior:'smooth'});
+    });
+  });
+  // La barra fija nunca debe tapar el hero: se mide en tiempo real
+  function fit(){
+    var bar=document.querySelector('.topbar');
+    if(bar)document.documentElement.style.setProperty('--barh',bar.offsetHeight+'px');
+  }
+  fit();
+  window.addEventListener('resize',fit);
+})();
+</script>
+</body>
+</html>
