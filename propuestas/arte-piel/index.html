@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arte Piel · Artículos de piel y marroquinería en Ubrique</title>
+<meta name="description" content="Arte Piel, tienda de artículos de piel y marroquinería en Avda. de los Callejones, 29, Ubrique (Cádiz). Bolsos, cinturones, pequeña marroquinería, encargos y reparaciones. Teléfono 956 46 01 39.">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --tinta:#1d1714;
+  --tinta-70:#4a3f38;
+  --cuero:#7a4a26;
+  --cuero-osc:#5c3719;
+  --cuero-cla:#a97246;
+  --crema:#f6f0e7;
+  --crema-2:#efe6d9;
+  --linea:#ddd0bd;
+  --blanco:#fdfaf5;
+  --barra:44px;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua","Times New Roman",Georgia,serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  padding-top:var(--barra);
+  background:var(--crema);
+  color:var(--tinta);
+  font-family:var(--sans);
+  font-size:17px;
+  line-height:1.65;
+  overflow-x:hidden;
+}
+img,svg{max-width:100%}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.14;letter-spacing:-.01em;margin:0}
+h1{font-size:clamp(2.45rem,7.4vw,4.6rem)}
+h2{font-size:clamp(1.65rem,4.2vw,2.5rem)}
+h3{font-size:1.1rem;font-family:var(--sans);font-weight:650;letter-spacing:.01em;line-height:1.3}
+p{margin:0}
+a{color:inherit}
+
+/* ---------- barra fija ---------- */
+.aviso{
+  position:fixed;inset:0 0 auto 0;z-index:100;
+  height:var(--barra);
+  display:flex;align-items:center;justify-content:center;
+  background:var(--tinta);
+  color:#f1e7d9;
+  border-bottom:1px solid rgba(255,255,255,.14);
+  padding:0 12px;
+}
+.aviso span{
+  font-size:11.5px;line-height:1.25;text-align:center;
+  letter-spacing:.055em;text-transform:uppercase;
+  font-weight:600;
+}
+
+/* ---------- layout ---------- */
+.env{width:100%;max-width:1120px;margin:0 auto;padding:0 28px}
+section{padding:84px 0}
+.sec-tit{max-width:46ch}
+.sec-tit .eyebrow{
+  display:block;font-size:11.5px;letter-spacing:.17em;text-transform:uppercase;
+  color:var(--cuero);font-weight:700;margin-bottom:14px;
+}
+.sec-tit p{margin-top:16px;color:var(--tinta-70);font-size:1.03rem}
+.regla{height:1px;background:var(--linea);border:0;margin:0}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;
+  background:
+    radial-gradient(120% 95% at 82% 8%,rgba(169,114,70,.42) 0%,rgba(169,114,70,0) 58%),
+    radial-gradient(100% 80% at 6% 96%,rgba(44,30,20,.55) 0%,rgba(44,30,20,0) 62%),
+    linear-gradient(158deg,#3a2718 0%,#5c3719 42%,#7a4a26 74%,#8d5c33 100%);
+  color:#fbf5ec;
+  padding:112px 0 104px;
+  overflow:hidden;
+}
+.hero::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(118deg,rgba(255,255,255,.035) 0 2px,rgba(0,0,0,0) 2px 7px);
+}
+.hero .env{position:relative;z-index:2}
+.hero .kicker{
+  font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;
+  color:#e6c9a8;font-weight:700;margin:0 0 22px;
+}
+.hero h1{color:#fdf8f0;max-width:17ch}
+.hero .lead{
+  margin:26px 0 0;max-width:42ch;
+  font-size:clamp(1.06rem,2.3vw,1.3rem);
+  color:#f0e2cf;line-height:1.55;
+}
+.hero-acc{width:68px;height:3px;background:#e6c9a8;margin:34px 0 0;border-radius:2px}
+.cta-fila{display:flex;flex-wrap:wrap;gap:14px;margin-top:38px;align-items:center}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:15px 26px;border-radius:2px;
+  font-size:15.5px;font-weight:650;letter-spacing:.015em;
+  text-decoration:none;border:1.5px solid transparent;
+  transition:transform .15s ease,background .15s ease;
+}
+.btn-pri{background:#fdf8f0;color:#4a2c13}
+.btn-pri:hover{transform:translateY(-2px)}
+.btn-sec{border-color:rgba(253,248,240,.5);color:#fdf8f0}
+.btn-sec:hover{background:rgba(253,248,240,.12)}
+.btn svg{flex:0 0 auto}
+.hero-meta{
+  margin-top:46px;padding-top:24px;
+  border-top:1px solid rgba(253,248,240,.2);
+  display:flex;flex-wrap:wrap;gap:10px 34px;
+  font-size:14px;color:#e8d8c2;
+}
+.hero-meta span{display:block}
+
+/* ---------- catálogo ---------- */
+.cat{background:var(--blanco)}
+.rejilla{
+  display:grid;gap:1px;background:var(--linea);
+  grid-template-columns:repeat(3,1fr);
+  margin-top:52px;border:1px solid var(--linea);
+}
+.card{
+  background:var(--blanco);padding:34px 28px 36px;
+  display:flex;flex-direction:column;gap:16px;
+}
+.card .ico{
+  width:46px;height:46px;border-radius:50%;
+  background:linear-gradient(145deg,var(--crema-2),#e3d4bf);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--cuero-osc);flex:0 0 auto;
+}
+.card p{color:var(--tinta-70);font-size:.97rem}
+.card .nota{
+  margin-top:auto;padding-top:14px;
+  font-size:12.5px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--cuero);font-weight:700;
+}
+
+/* ---------- pasos ---------- */
+.pasos{background:var(--crema-2)}
+.pasos-lista{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:52px;
+}
+.paso{background:var(--blanco);border:1px solid var(--linea);padding:32px 28px;border-top:3px solid var(--cuero)}
+.paso .num{
+  font-family:var(--serif);font-size:2.4rem;line-height:1;
+  color:var(--cuero-cla);display:block;margin-bottom:14px;
+}
+.paso h3{margin-bottom:10px}
+.paso p{color:var(--tinta-70);font-size:.97rem}
+
+/* ---------- contacto ---------- */
+.contacto{background:var(--blanco)}
+.cont-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.12fr);gap:56px;margin-top:52px;align-items:start}
+.datos{list-style:none;margin:0;padding:0;border-top:1px solid var(--linea)}
+.datos li{padding:22px 0;border-bottom:1px solid var(--linea)}
+.datos .et{
+  display:block;font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--cuero);font-weight:700;margin-bottom:7px;
+}
+.datos .vl{font-size:1.12rem;font-weight:600;line-height:1.4;word-break:break-word}
+.datos .vl a{text-decoration:none;border-bottom:1.5px solid var(--cuero-cla)}
+.datos .vl a:hover{color:var(--cuero-osc)}
+.datos .sub{display:block;font-size:.92rem;color:var(--tinta-70);font-weight:400;margin-top:5px}
+.mapa-caja{border:1px solid var(--linea);background:var(--crema);padding:14px}
+.mapa-caja svg{display:block;width:100%;height:auto}
+.mapa-pie{
+  margin:12px 2px 2px;font-size:12.5px;color:var(--tinta-70);line-height:1.45;
+}
+
+/* ---------- pie ---------- */
+.pie{background:var(--tinta);color:#e9ddcc;padding:62px 0 56px}
+.pie-top{display:flex;flex-wrap:wrap;gap:28px 48px;justify-content:space-between;align-items:flex-start}
+.pie .marca{font-family:var(--serif);font-size:1.55rem;color:#fdf8f0}
+.pie .marca small{display:block;font-family:var(--sans);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:#b9a78f;margin-top:8px;font-weight:600}
+.pie-cont{font-size:.97rem;line-height:1.8}
+.pie-cont a{text-decoration:none;border-bottom:1px solid rgba(233,221,204,.45);word-break:break-word}
+.pie-cont a:hover{color:#fff}
+.pie-firma{
+  margin-top:44px;padding-top:24px;border-top:1px solid rgba(233,221,204,.22);
+  font-size:13px;color:#b9a78f;line-height:1.6;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width:900px){
+  .rejilla{grid-template-columns:repeat(2,1fr)}
+  .pasos-lista{grid-template-columns:1fr;gap:18px}
+  .cont-grid{grid-template-columns:1fr;gap:40px}
+}
+@media (max-width:640px){
+  :root{--barra:52px}
+  body{font-size:16px}
+  .env{padding:0 20px}
+  section{padding:58px 0}
+  .hero{padding:68px 0 64px}
+  .hero h1{max-width:none}
+  .hero .lead{margin-top:20px}
+  .cta-fila{margin-top:30px;gap:11px}
+  .btn{width:100%;justify-content:center;padding:15px 20px}
+  .hero-meta{margin-top:34px;gap:14px 0;flex-direction:column}
+  .rejilla{grid-template-columns:1fr;margin-top:34px}
+  .card{padding:26px 22px 28px}
+  .pasos-lista{margin-top:34px}
+  .cont-grid{margin-top:34px}
+  .pie{padding:48px 0 44px}
+  .pie-top{flex-direction:column;gap:26px}
+}
+</style>
+</head>
+<body>
+
+<div class="aviso" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<header class="hero">
+  <div class="env">
+    <p class="kicker">Ubrique · Cádiz · Marroquinería</p>
+    <h1>Arte&nbsp;Piel</h1>
+    <p class="lead">Artículos de piel y marroquinería en la Avenida de los Callejones. Taller y tienda en el pueblo de la piel.</p>
+    <div class="hero-acc"></div>
+    <div class="cta-fila">
+      <a class="btn btn-pri" href="tel:956460139">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2.1z"/></svg>
+        Llamar al 956 46 01 39
+      </a>
+      <a class="btn btn-sec" href="#contacto">Dónde estamos</a>
+    </div>
+    <div class="hero-meta">
+      <span>Avda. de los Callejones, 29 — Ubrique (Cádiz)</span>
+      <span>Tienda y encargos</span>
+    </div>
+  </div>
+</header>
+
+<section class="cat" id="articulos">
+  <div class="env">
+    <div class="sec-tit">
+      <span class="eyebrow">Qué encontrarás</span>
+      <h2>Piel y marroquinería</h2>
+      <p>Apartados preparados para que Arte Piel describa con sus propias palabras lo que trabaja en tienda.</p>
+    </div>
+
+    <div class="rejilla">
+      <article class="card">
+        <span class="ico"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h16l-1.3 12H5.3L4 8z"/><path d="M8.5 8V6.5a3.5 3.5 0 0 1 7 0V8"/></svg></span>
+        <h3>Bolsos</h3>
+        <p>Bolsos de piel para el día a día y para ocasiones. Modelos, tamaños y acabados a describir por la tienda.</p>
+        <span class="nota">Texto por completar</span>
+      </article>
+
+      <article class="card">
+        <span class="ico"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h20"/><rect x="9" y="8.5" width="6" height="7" rx="1"/><path d="M12 8.5v7"/></svg></span>
+        <h3>Cinturones</h3>
+        <p>Cinturones de piel en distintos anchos y hebillas. Ajuste y medidas, según lo que la tienda ofrezca.</p>
+        <span class="nota">Texto por completar</span>
+      </article>
+
+      <article class="card">
+        <span class="ico"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="6.5" width="19" height="11.5" rx="1.6"/><path d="M2.5 10.5h19"/><path d="M15 14.5h3.5"/></svg></span>
+        <h3>Pequeña marroquinería</h3>
+        <p>Carteras, monederos, tarjeteros, llaveros y complementos de piel. A detallar por Arte Piel.</p>
+        <span class="nota">Texto por completar</span>
+      </article>
+
+      <article class="card">
+        <span class="ico"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5 8 16"/><path d="M6.2 13.3l4.5 4.5"/><path d="M10.7 17.8 19 9.5a3.2 3.2 0 0 0-4.5-4.5L6.2 13.3"/><path d="M13.2 6.8l4.5 4.5"/></svg></span>
+        <h3>Encargos y reparaciones</h3>
+        <p>Encargos a medida y arreglos de artículos de piel. Consulta en tienda o por teléfono qué se puede hacer.</p>
+        <span class="nota">Texto por completar</span>
+      </article>
+
+      <article class="card">
+        <span class="ico"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 7.5 12 3l9.5 4.5v9L12 21l-9.5-4.5v-9z"/><path d="M2.5 7.5 12 12l9.5-4.5"/><path d="M12 12v9"/></svg></span>
+        <h3>Envíos</h3>
+        <p>Posibilidad de envío de los artículos. Condiciones y destinos, a confirmar por la tienda.</p>
+        <span class="nota">Texto por completar</span>
+      </article>
+
+      <article class="card">
+        <span class="ico"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.8-7-10.3A7 7 0 0 1 19 10.7C19 16.2 12 21 12 21z"/><circle cx="12" cy="10.5" r="2.6"/></svg></span>
+        <h3>En la Avenida de los Callejones</h3>
+        <p>Ubrique es conocido por la marroquinería y la Avenida de los Callejones es una calle de tiendas de piel.</p>
+        <span class="nota">Visita la tienda</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="pasos" id="encargo">
+  <div class="env">
+    <div class="sec-tit">
+      <span class="eyebrow">Tu encargo</span>
+      <h2>Cómo trabajamos</h2>
+      <p>Tres pasos sencillos, del primer contacto a la entrega.</p>
+    </div>
+    <div class="pasos-lista">
+      <article class="paso">
+        <span class="num">01</span>
+        <h3>Cuéntanos qué buscas</h3>
+        <p>Llama a la tienda o pásate por la Avenida de los Callejones y explica qué artículo necesitas.</p>
+      </article>
+      <article class="paso">
+        <span class="num">02</span>
+        <h3>Concretamos el artículo</h3>
+        <p>Vemos juntos piel, medidas y acabados, y confirmamos qué es posible antes de empezar.</p>
+      </article>
+      <article class="paso">
+        <span class="num">03</span>
+        <h3>Recogida o envío</h3>
+        <p>Recoge el encargo en tienda o consulta la opción de envío. Te avisamos cuando esté listo.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="contacto" id="contacto">
+  <div class="env">
+    <div class="sec-tit">
+      <span class="eyebrow">Contacto</span>
+      <h2>Visítanos en Ubrique</h2>
+      <p>Estamos en la Avenida de los Callejones, en pleno recorrido de tiendas de piel del municipio.</p>
+    </div>
+
+    <div class="cont-grid">
+      <ul class="datos">
+        <li>
+          <span class="et">Teléfono</span>
+          <span class="vl"><a href="tel:956460139">956 46 01 39</a></span>
+        </li>
+        <li>
+          <span class="et">Dirección</span>
+          <span class="vl">Avda. de los Callejones, 29, 11600 Ubrique (Cádiz)</span>
+        </li>
+        <li>
+          <span class="et">Horario</span>
+          <span class="vl">Consultar horario
+            <span class="sub">Llama al 956 46 01 39 para confirmarlo.</span>
+          </span>
+        </li>
+        <li>
+          <span class="et">Facebook</span>
+          <span class="vl"><a href="https://www.facebook.com/artepielubrique/" target="_blank" rel="noopener">facebook.com/artepielubrique</a></span>
+        </li>
+      </ul>
+
+      <div>
+        <div class="mapa-caja">
+          <svg viewBox="0 0 520 360" role="img" aria-label="Plano esquemático de la situación de Arte Piel en la Avenida de los Callejones, Ubrique">
+            <defs>
+              <linearGradient id="gFondo" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#f6f0e7"/>
+                <stop offset="1" stop-color="#e8dcc9"/>
+              </linearGradient>
+              <linearGradient id="gVia" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#8d5c33"/>
+                <stop offset="1" stop-color="#5c3719"/>
+              </linearGradient>
+            </defs>
+
+            <rect width="520" height="360" fill="url(#gFondo)"/>
+
+            <!-- manzanas -->
+            <g fill="#ded0ba" opacity=".95">
+              <rect x="26" y="26" width="178" height="112" rx="4"/>
+              <rect x="228" y="26" width="128" height="112" rx="4"/>
+              <rect x="380" y="26" width="114" height="112" rx="4"/>
+              <rect x="26" y="236" width="150" height="98" rx="4"/>
+              <rect x="200" y="236" width="140" height="98" rx="4"/>
+              <rect x="364" y="236" width="130" height="98" rx="4"/>
+            </g>
+
+            <!-- calles secundarias -->
+            <g stroke="#c9b696" stroke-width="16" stroke-linecap="round">
+              <line x1="214" y1="20" x2="214" y2="150"/>
+              <line x1="368" y1="20" x2="368" y2="150"/>
+              <line x1="188" y1="224" x2="188" y2="344"/>
+              <line x1="352" y1="224" x2="352" y2="344"/>
+            </g>
+
+            <!-- avenida principal -->
+            <rect x="0" y="158" width="520" height="56" fill="url(#gVia)"/>
+            <line x1="0" y1="186" x2="520" y2="186" stroke="#f6f0e7" stroke-width="3" stroke-dasharray="22 18" opacity=".85"/>
+            <text x="26" y="150" font-family="-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif"
+                  font-size="20" font-weight="700" fill="#4a3f38" letter-spacing="1.4">AVDA. DE LOS CALLEJONES</text>
+
+            <!-- marcador -->
+            <g>
+              <line x1="300" y1="186" x2="300" y2="262" stroke="#1d1714" stroke-width="3"/>
+              <circle cx="300" cy="186" r="11" fill="#1d1714"/>
+              <circle cx="300" cy="186" r="4.5" fill="#f6f0e7"/>
+              <rect x="186" y="262" width="228" height="62" rx="4" fill="#1d1714"/>
+              <text x="300" y="288" text-anchor="middle" font-family="-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif"
+                    font-size="22" font-weight="700" fill="#fdf8f0">ARTE PIEL</text>
+              <text x="300" y="311" text-anchor="middle" font-family="-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif"
+                    font-size="17" fill="#d8c6ad">Nº 29</text>
+            </g>
+
+            <!-- rótulo municipio -->
+            <text x="494" y="52" text-anchor="end" font-family="-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif"
+                  font-size="18" font-weight="700" fill="#7a4a26" letter-spacing="2">UBRIQUE</text>
+            <text x="494" y="74" text-anchor="end" font-family="-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif"
+                  font-size="17" font-weight="600" fill="#6b5c50">Cádiz</text>
+          </svg>
+        </div>
+        <p class="mapa-pie">Plano esquemático, sin pretensión de exactitud cartográfica.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="pie">
+  <div class="env">
+    <div class="pie-top">
+      <div class="marca">
+        Arte Piel
+        <small>Ubrique · Cádiz</small>
+      </div>
+      <div class="pie-cont">
+        Avda. de los Callejones, 29, 11600 Ubrique (Cádiz)<br>
+        <a href="tel:956460139">956 46 01 39</a><br>
+        <a href="mailto:artepielubrique@gmail.com">artepielubrique@gmail.com</a><br>
+        <a href="https://www.facebook.com/artepielubrique/" target="_blank" rel="noopener">Facebook</a>
+      </div>
+    </div>
+    <p class="pie-firma">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+</body>
+</html>

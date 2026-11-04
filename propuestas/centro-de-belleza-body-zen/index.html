@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Centro de Belleza Body Zen · Belleza y estética en Priego de Córdoba</title>
+<meta name="description" content="Centro de Belleza Body Zen, centro de belleza y estética en Avenida de España, 5, Priego de Córdoba. Tratamientos faciales y corporales, depilación, manos y pies, cejas y pestañas. Cita previa en el 666 117 472.">
+<style>
+  :root{
+    --ink:#1f1a1c;
+    --ink-soft:#4a4044;
+    --ink-mute:#6d6266;
+    --cream:#faf6f2;
+    --cream-2:#f2eae3;
+    --nude:#e6d3c6;
+    --line:#e0d3c9;
+    --rose:#9c5a4e;
+    --rose-dk:#7e4740;
+    --sage:#5f6f63;
+    --white:#fffdfb;
+    --bar:#1f1a1c;
+    --bar-h:44px;
+    --r:14px;
+    --maxw:1140px;
+    --shadow:0 1px 2px rgba(31,26,28,.04), 0 10px 30px rgba(31,26,28,.06);
+    --ff:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+    --ffs:ui-serif,Georgia,Cambria,"Times New Roman",Times,serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    padding-top:var(--bar-h);
+    background:var(--cream);
+    color:var(--ink);
+    font-family:var(--ff);
+    font-size:17px;
+    line-height:1.65;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%}
+  h1,h2,h3{font-family:var(--ffs);font-weight:500;letter-spacing:-.015em;line-height:1.12;margin:0}
+  p{margin:0}
+  a{color:inherit}
+
+  /* ---------- barra fija ---------- */
+  .topbar{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    height:var(--bar-h);
+    display:flex;align-items:center;justify-content:center;
+    background:var(--bar);
+    color:#f4ece6;
+    border-bottom:1px solid rgba(255,255,255,.1);
+  }
+  .topbar span{
+    font-size:12.5px;line-height:1.25;letter-spacing:.055em;text-transform:uppercase;
+    text-align:center;padding:4px 16px;
+    overflow-wrap:break-word;
+  }
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
+  .eyebrow{
+    font-size:12px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--rose);font-weight:600;margin:0 0 18px
+  }
+  .eyebrow.on-dark{color:var(--nude)}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(90% 120% at 12% 0%, #fffdfb 0%, rgba(255,253,251,0) 58%),
+      radial-gradient(70% 90% at 92% 8%, #f0dfd2 0%, rgba(240,223,210,0) 60%),
+      linear-gradient(160deg,#f7efe8 0%,#efe3da 46%,#e7d8cd 100%);
+    border-bottom:1px solid var(--line);
+  }
+  .hero .wrap{position:relative;z-index:2;padding-top:92px;padding-bottom:96px}
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:56px;align-items:center}
+  .hero h1{font-size:clamp(2.2rem,5.4vw,4.2rem)}
+  .hero h1 em{display:block;font-style:italic;color:var(--rose-dk)}
+  .hero .lead{margin-top:22px;font-size:clamp(1.03rem,1.45vw,1.2rem);color:var(--ink-soft);max-width:34ch}
+  .hero .place{
+    margin-top:28px;display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;
+    font-size:14px;color:var(--ink-mute)
+  }
+  .chip{
+    display:inline-block;background:rgba(255,255,255,.72);border:1px solid var(--line);
+    border-radius:999px;padding:6px 14px;font-size:13px;color:var(--ink-soft);
+  }
+  .cta-row{margin-top:34px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--ink);color:#fdf7f3;text-decoration:none;
+    padding:15px 26px;border-radius:999px;
+    font-size:16px;font-weight:600;letter-spacing:.01em;
+    box-shadow:var(--shadow);
+    transition:background .18s ease, transform .18s ease;
+  }
+  .btn:hover{background:var(--rose-dk);transform:translateY(-1px)}
+  .btn svg{flex:0 0 auto}
+  .btn-ghost{
+    display:inline-flex;align-items:center;gap:8px;
+    text-decoration:none;font-size:15px;font-weight:600;color:var(--ink-soft);
+    border-bottom:1px solid var(--nude);padding-bottom:2px;
+  }
+  .btn-ghost:hover{color:var(--rose-dk);border-color:var(--rose)}
+
+  /* ornamento hero */
+  .ornament{width:100%;height:auto;display:block;filter:drop-shadow(0 18px 40px rgba(124,88,72,.16))}
+
+  /* ---------- secciones ---------- */
+  section{scroll-margin-top:calc(var(--bar-h) + 12px)}
+  .sec{padding:96px 0}
+  .sec-head{max-width:62ch}
+  .sec-head h2{font-size:clamp(1.85rem,3.3vw,2.8rem)}
+  .sec-head p{margin-top:18px;color:var(--ink-soft);font-size:1.03rem}
+  .rule{height:1px;background:var(--line);border:0;margin:0}
+
+  .cards{margin-top:52px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+  .card{
+    background:var(--white);border:1px solid var(--line);border-radius:var(--r);
+    padding:30px 28px 32px;box-shadow:var(--shadow);
+    display:flex;flex-direction:column;gap:14px;
+  }
+  .card .ic{
+    width:46px;height:46px;border-radius:12px;
+    background:linear-gradient(145deg,#f4e6dc,#e7d2c4);
+    display:flex;align-items:center;justify-content:center;color:var(--rose-dk);
+    flex:0 0 auto;
+  }
+  .card h3{font-size:1.28rem}
+  .card p{color:var(--ink-soft);font-size:.97rem}
+  .card ul{margin:4px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+  .card ul li{
+    font-size:12.5px;color:var(--ink-mute);background:var(--cream-2);
+    border-radius:999px;padding:5px 11px;
+  }
+  .note{
+    margin-top:34px;padding:18px 22px;border-left:3px solid var(--nude);
+    background:var(--cream-2);border-radius:0 var(--r) var(--r) 0;
+    color:var(--ink-soft);font-size:.95rem;max-width:72ch;
+  }
+
+  /* ---------- pasos ---------- */
+  .steps-sec{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .steps{margin-top:52px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}
+  .step{border-top:2px solid var(--nude);padding-top:24px}
+  .step .num{
+    font-family:var(--ffs);font-size:2.6rem;line-height:1;color:var(--rose);opacity:.55;display:block
+  }
+  .step h3{margin-top:12px;font-size:1.22rem}
+  .step p{margin-top:10px;color:var(--ink-soft);font-size:.97rem}
+
+  /* ---------- contacto ---------- */
+  .contact-sec{
+    background:linear-gradient(170deg,#241e20 0%,#30272a 55%,#3a2f32 100%);
+    color:#f6eee9;
+  }
+  .contact-sec h2{color:#fdf8f5}
+  .contact-grid{margin-top:52px;display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:44px;align-items:start}
+  .cblock{border-top:1px solid rgba(255,255,255,.16);padding:22px 0}
+  .cblock:first-child{border-top:0;padding-top:0}
+  .cblock .lbl{
+    font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:#c9b4a7;margin:0 0 8px
+  }
+  .cblock .val{font-size:1.1rem;color:#fbf5f1;line-height:1.5}
+  .cblock .val a{text-decoration:none;border-bottom:1px solid rgba(230,211,198,.5)}
+  .cblock .val a:hover{border-color:#e6d3c6}
+  .tel-big{font-family:var(--ffs);font-size:clamp(1.7rem,3.4vw,2.3rem);text-decoration:none;border-bottom:0!important}
+  .tel-big:hover{color:var(--nude)}
+  .map-card{
+    background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);
+    border-radius:var(--r);padding:16px;
+  }
+  .map-card figcaption{margin:12px 4px 2px;font-size:12.5px;color:#c0aa9d;line-height:1.5}
+  .map-svg{display:block;width:100%;height:auto;border-radius:10px;background:#f6efe9}
+
+  /* ---------- pie ---------- */
+  .footer{background:var(--cream-2);border-top:1px solid var(--line);padding:56px 0 64px}
+  .footer .name{font-family:var(--ffs);font-size:1.4rem}
+  .footer .lines{margin-top:18px;display:flex;flex-direction:column;gap:10px;font-size:.96rem;color:var(--ink-soft)}
+  .footer .lines a{text-decoration:none;border-bottom:1px solid var(--nude);overflow-wrap:break-word}
+  .footer .lines a:hover{color:var(--rose-dk)}
+  .footer .studio{
+    margin-top:28px;padding-top:22px;border-top:1px solid var(--line);
+    font-size:13.5px;color:var(--ink-mute);letter-spacing:.01em;
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:980px){
+    .hero-grid{grid-template-columns:1fr;gap:40px}
+    .hero .wrap{padding-top:64px;padding-bottom:70px}
+    .hero .lead{max-width:48ch}
+    .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .steps{grid-template-columns:1fr;gap:30px}
+    .contact-grid{grid-template-columns:1fr;gap:34px}
+  }
+  @media (max-width:640px){
+    :root{--bar-h:58px}
+    body{font-size:16.5px}
+    .wrap{padding:0 20px}
+    .sec{padding:64px 0}
+    .hero .wrap{padding-top:48px;padding-bottom:56px}
+    .cards{grid-template-columns:1fr;gap:18px}
+    .card{padding:26px 22px 28px}
+    .btn{width:100%;justify-content:center}
+    .cta-row{gap:18px}
+    .ornament{max-width:420px;margin:0 auto}
+    .topbar span{font-size:11.5px;letter-spacing:.04em}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow">Centro de belleza y estética · Priego de Córdoba</p>
+        <h1>Centro de Belleza <em>Body Zen</em></h1>
+        <p class="lead">Belleza y estética con calma, en el centro de Priego de Córdoba.</p>
+        <div class="cta-row">
+          <a class="btn" href="tel:666117472">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 16.9v2.6a1.6 1.6 0 0 1-1.8 1.6 16.5 16.5 0 0 1-7.2-2.6 16.2 16.2 0 0 1-5-5A16.5 16.5 0 0 1 4.4 6.3 1.6 1.6 0 0 1 6 4.5h2.6a1.6 1.6 0 0 1 1.6 1.4c.1.8.3 1.6.6 2.4a1.6 1.6 0 0 1-.4 1.7l-1 1a13 13 0 0 0 5 5l1-1a1.6 1.6 0 0 1 1.7-.4c.8.3 1.6.5 2.4.6a1.6 1.6 0 0 1 1.4 1.6Z"/>
+            </svg>
+            Pedir cita: 666 117 472
+          </a>
+          <a class="btn-ghost" href="#contacto">Dónde estamos</a>
+        </div>
+        <div class="place">
+          <span class="chip">Avenida de España, 5</span>
+          <span class="chip">14800 Priego de Córdoba</span>
+          <span class="chip">Cita previa</span>
+        </div>
+      </div>
+
+      <div>
+        <svg class="ornament" viewBox="0 0 440 400" role="img" aria-label="Ilustración decorativa: arco con hojas y formas suaves">
+          <defs>
+            <linearGradient id="gA" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#fffdfb"/><stop offset="1" stop-color="#eadbcf"/>
+            </linearGradient>
+            <linearGradient id="gB" x1="0" y1="1" x2="1" y2="0">
+              <stop offset="0" stop-color="#b57a68"/><stop offset="1" stop-color="#d9b6a3"/>
+            </linearGradient>
+            <linearGradient id="gC" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#8d9c8f"/><stop offset="1" stop-color="#5f6f63"/>
+            </linearGradient>
+          </defs>
+          <path d="M70 380V170a150 150 0 0 1 300 0v210Z" fill="url(#gA)" stroke="#dcc9bb"/>
+          <path d="M100 380V172a120 120 0 0 1 240 0v208Z" fill="none" stroke="#e3d0c3" stroke-dasharray="3 7"/>
+          <circle cx="220" cy="158" r="54" fill="url(#gB)" opacity=".92"/>
+          <circle cx="220" cy="158" r="54" fill="none" stroke="#fffdfb" stroke-opacity=".55"/>
+          <path d="M220 252c0-44 26-78 62-92-4 44-26 76-62 92Z" fill="url(#gC)" opacity=".85"/>
+          <path d="M220 252c0-44-26-78-62-92 4 44 26 76 62 92Z" fill="url(#gC)" opacity=".6"/>
+          <path d="M220 252v96" stroke="#5f6f63" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+          <path d="M148 348h144" stroke="#c9ab98" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="132" cy="112" r="7" fill="#c89681" opacity=".55"/>
+          <circle cx="318" cy="96" r="4.5" fill="#8d9c8f" opacity=".6"/>
+          <circle cx="352" cy="146" r="9" fill="#e0c3b1" opacity=".7"/>
+          <circle cx="96" cy="172" r="4" fill="#b57a68" opacity=".5"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= SERVICIOS ================= -->
+<section class="sec" id="servicios">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Qué se puede hacer aquí</p>
+      <h2>Nuestros apartados de servicios</h2>
+      <p>Esta es la estructura propuesta para la carta de servicios del centro. Cada bloque queda listo para que Body Zen escriba sus propios tratamientos, su manera de trabajarlos y los tiempos de cada cita.</p>
+    </div>
+
+    <div class="cards">
+      <article class="card">
+        <span class="ic" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3c4 0 7 3.3 7 7.6 0 5-3.4 9-7 10.4-3.6-1.4-7-5.4-7-10.4C5 6.3 8 3 12 3Z"/>
+            <path d="M9.4 10.6h.01M14.6 10.6h.01"/><path d="M9.6 14.6c1.5 1.1 3.3 1.1 4.8 0"/>
+          </svg>
+        </span>
+        <h3>Tratamientos faciales</h3>
+        <p>Espacio para describir los cuidados de rostro que ofrece el centro y para quién está pensado cada uno.</p>
+        <ul><li>Texto a completar</li><li>Duración por definir</li></ul>
+      </article>
+
+      <article class="card">
+        <span class="ic" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 15c3-1.4 5-4 5-7a4 4 0 0 1 8 0c0 3 2 5.6 5 7"/>
+            <path d="M5 19.4c4.6-1.6 9.4-1.6 14 0"/><path d="M12 8.2v4"/>
+          </svg>
+        </span>
+        <h3>Tratamientos corporales</h3>
+        <p>Apartado reservado al trabajo corporal del centro, con la explicación que quiera dar Body Zen de cada propuesta.</p>
+        <ul><li>Texto a completar</li><li>Duración por definir</li></ul>
+      </article>
+
+      <article class="card">
+        <span class="ic" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4.5 19.5 19 5"/><path d="M8 20c-2.2.4-3.8-1.2-3.4-3.4"/>
+            <path d="M13.2 5.6c1.6-1.6 4-1.8 5.6-.2s1.4 4-.2 5.6"/>
+            <path d="M9.2 9.6 14 14.4"/>
+          </svg>
+        </span>
+        <h3>Depilación</h3>
+        <p>Zonas, modalidades y pautas de cuidado posterior, tal como las explique el propio centro.</p>
+        <ul><li>Texto a completar</li><li>Zonas por definir</li></ul>
+      </article>
+
+      <article class="card">
+        <span class="ic" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 13.5V5.6a1.6 1.6 0 0 1 3.2 0v6"/>
+            <path d="M10.2 11V4.6a1.6 1.6 0 0 1 3.2 0V11"/>
+            <path d="M13.4 11V6.6a1.6 1.6 0 0 1 3.2 0v8.2a6 6 0 0 1-6 6h-.6a5.2 5.2 0 0 1-5.2-5.2V13"/>
+          </svg>
+        </span>
+        <h3>Manos y pies</h3>
+        <p>Cuidado de manos y pies: el centro detalla aquí sus servicios y los acabados que trabaja.</p>
+        <ul><li>Texto a completar</li><li>Duración por definir</li></ul>
+      </article>
+
+      <article class="card">
+        <span class="ic" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3.5 13.5c2.6-3.6 5.4-5.4 8.5-5.4s5.9 1.8 8.5 5.4c-2.6 3.6-5.4 5.4-8.5 5.4s-5.9-1.8-8.5-5.4Z"/>
+            <circle cx="12" cy="13.5" r="2.6"/><path d="M5.6 6.4c4.2-2.1 8.6-2.1 12.8 0"/>
+          </svg>
+        </span>
+        <h3>Cuidado de cejas y pestañas</h3>
+        <p>Diseño y cuidado de la mirada, con el detalle que quiera dar el centro en cada servicio.</p>
+        <ul><li>Texto a completar</li><li>Duración por definir</li></ul>
+      </article>
+
+      <article class="card">
+        <span class="ic" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3.5" y="4.5" width="17" height="15" rx="2.4"/>
+            <path d="M3.5 9.4h17M8.4 4.5V2.8M15.6 4.5V2.8"/>
+            <path d="M8 13.4h3.2M8 16.2h7"/>
+          </svg>
+        </span>
+        <h3>Cita previa</h3>
+        <p>Las citas se gestionan por teléfono. Si más adelante el centro quiere reserva online, la web está preparada para añadirla.</p>
+        <ul><li>Teléfono: 666 117 472</li></ul>
+      </article>
+    </div>
+
+    <p class="note">Los textos de esta maqueta son de ejemplo estructural: no se ha inventado ningún tratamiento, aparato, marca, precio ni horario del centro. Todo el contenido real lo aporta Body Zen.</p>
+  </div>
+</section>
+
+<!-- ================= PRIMERA VISITA ================= -->
+<section class="sec steps-sec" id="primera-visita">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Sin complicaciones</p>
+      <h2>Tu primera visita</h2>
+      <p>Tres pasos para que cualquier persona que entre en la web sepa exactamente cómo empezar.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <span class="num">01</span>
+        <h3>Llama y cuéntanos</h3>
+        <p>Una llamada al 666 117 472 para explicar qué te gustaría trabajar y qué esperas de la visita.</p>
+      </div>
+      <div class="step">
+        <span class="num">02</span>
+        <h3>Reservamos tu hueco</h3>
+        <p>Buscamos juntos el día y la hora que te encajen, y te confirmamos la cita en el centro.</p>
+      </div>
+      <div class="step">
+        <span class="num">03</span>
+        <h3>Nos vemos en el centro</h3>
+        <p>Te recibimos en Avenida de España, 5, con tiempo para valorar tu caso antes de empezar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACTO ================= -->
+<section class="sec contact-sec" id="contacto">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow on-dark">Contacto</p>
+      <h2>Dónde estamos y cómo pedir cita</h2>
+    </div>
+
+    <div class="contact-grid">
+      <div>
+        <div class="cblock">
+          <p class="lbl">Teléfono</p>
+          <p class="val"><a class="tel-big" href="tel:666117472">666 117 472</a></p>
+        </div>
+        <div class="cblock">
+          <p class="lbl">Dirección</p>
+          <p class="val">Avenida de España, 5, 14800 Priego de Córdoba (Córdoba)</p>
+        </div>
+        <div class="cblock">
+          <p class="lbl">Horario</p>
+          <p class="val">Consultar horario</p>
+        </div>
+        <div class="cblock">
+          <p class="lbl">Correo</p>
+          <p class="val"><a href="mailto:mariangelesgomezprodos@gmail.com">mariangelesgomezprodos@gmail.com</a></p>
+        </div>
+      </div>
+
+      <figure class="map-card" style="margin:0">
+        <svg class="map-svg" viewBox="0 0 520 360" role="img" aria-label="Mapa esquemático de la zona: el centro está en Avenida de España, número 5">
+          <rect width="520" height="360" fill="#f6efe9"/>
+          <g fill="#ece2d9">
+            <rect x="18" y="20" width="150" height="86" rx="6"/>
+            <rect x="18" y="244" width="150" height="96" rx="6"/>
+            <rect x="330" y="20" width="172" height="86" rx="6"/>
+            <rect x="330" y="244" width="172" height="96" rx="6"/>
+            <rect x="214" y="20" width="78" height="86" rx="6"/>
+            <rect x="214" y="244" width="78" height="96" rx="6"/>
+          </g>
+          <!-- avenida principal -->
+          <rect x="0" y="140" width="520" height="66" fill="#e2d2c6"/>
+          <rect x="0" y="140" width="520" height="2.5" fill="#d0bcac"/>
+          <rect x="0" y="203.5" width="520" height="2.5" fill="#d0bcac"/>
+          <g stroke="#fffdfb" stroke-width="4" stroke-dasharray="22 18" stroke-linecap="round">
+            <path d="M0 173h520"/>
+          </g>
+          <!-- calles transversales -->
+          <rect x="178" y="0" width="30" height="360" fill="#eadcd1"/>
+          <rect x="296" y="0" width="30" height="360" fill="#eadcd1"/>
+          <!-- rotulo avenida -->
+          <text x="24" y="132" font-family="ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif"
+                font-size="21" font-weight="700" letter-spacing="1.6" fill="#7e4740">AVENIDA DE ESPAÑA</text>
+          <!-- marcador -->
+          <g>
+            <circle cx="260" cy="173" r="26" fill="#9c5a4e" opacity=".16"/>
+            <path d="M260 143c-11.6 0-21 9.2-21 20.6 0 14.6 21 32.4 21 32.4s21-17.8 21-32.4c0-11.4-9.4-20.6-21-20.6Z" fill="#9c5a4e"/>
+            <circle cx="260" cy="163.4" r="7.6" fill="#f6efe9"/>
+          </g>
+          <text x="260" y="232" text-anchor="middle" font-family="ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif"
+                font-size="20" font-weight="700" fill="#2b2326">Body Zen · nº 5</text>
+          <text x="260" y="258" text-anchor="middle" font-family="ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif"
+                font-size="17" fill="#6d6266">Priego de Córdoba</text>
+        </svg>
+        <figcaption>Mapa esquemático, sin exactitud cartográfica: sirve para situar el centro en la Avenida de España.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PIE ================= -->
+<footer class="footer">
+  <div class="wrap">
+    <p class="name">Centro de Belleza Body Zen</p>
+    <div class="lines">
+      <span>Avenida de España, 5, 14800 Priego de Córdoba (Córdoba)</span>
+      <span><a href="tel:666117472">666 117 472</a></span>
+      <span><a href="mailto:mariangelesgomezprodos@gmail.com">mariangelesgomezprodos@gmail.com</a></span>
+      <span>Consultar horario</span>
+    </div>
+    <p class="studio">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var links = document.querySelectorAll('a[href^="#"]');
+  for (var i=0;i<links.length;i++){
+    links[i].addEventListener('click', function(e){
+      var t = document.querySelector(this.getAttribute('href'));
+      if (t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth', block:'start'}); }
+    });
+  }
+})();
+</script>
+</body>
+</html>

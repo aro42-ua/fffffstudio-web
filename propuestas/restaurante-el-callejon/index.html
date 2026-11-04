@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Restaurante El Callejón · Villarcayo (Burgos)</title>
+<meta name="description" content="Restaurante El Callejón, restaurante y bar en Villarcayo de Merindad de Castilla la Vieja (Burgos), en Las Merindades. Cocina tradicional, tapas y raciones, menú del día y grupos. Reservas en el 620 969 432.">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+
+  :root{
+    --carbon:#17140f;
+    --carbon-2:#211c15;
+    --carbon-3:#2e2719;
+    --piedra:#faf6ee;
+    --piedra-2:#f2ebdd;
+    --piedra-3:#e7ddc8;
+    --ocre:#b07c25;
+    --ocre-claro:#d8a33f;
+    --teja:#8e3b24;
+    --tinta:#1b1812;
+    --tinta-suave:#555044;
+    --tinta-tenue:#78715f;
+    --borde:rgba(27,24,18,.13);
+    --borde-claro:rgba(250,246,238,.16);
+    --barra:62px;
+    --radio:4px;
+    --ancho:1120px;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue","Noto Sans",Arial,sans-serif;
+    --serif:ui-serif,Georgia,"Iowan Old Style","Palatino Linotype","Times New Roman",serif;
+  }
+
+  html{-webkit-text-size-adjust:100%}
+
+  body{
+    margin:0;
+    padding-top:var(--barra);
+    font-family:var(--sans);
+    font-size:17px;
+    line-height:1.68;
+    color:var(--tinta);
+    background:var(--piedra);
+    overflow-x:hidden;
+  }
+
+  svg{display:block;max-width:100%}
+  a{color:inherit}
+
+  h1,h2,h3,h4{margin:0;font-family:var(--serif);font-weight:600;line-height:1.1;letter-spacing:-.018em}
+  h1{font-size:clamp(2.5rem,8vw,4.5rem)}
+  h2{font-size:clamp(1.75rem,4vw,2.6rem)}
+  h3{font-family:var(--sans);font-size:1.08rem;font-weight:660;letter-spacing:-.005em;line-height:1.3}
+  p{margin:0}
+  ul{margin:0;padding:0;list-style:none}
+
+  .env{width:100%;max-width:var(--ancho);margin:0 auto;padding:0 24px}
+
+  .rotulo{
+    font-family:var(--sans);
+    font-size:.72rem;
+    font-weight:680;
+    letter-spacing:.17em;
+    text-transform:uppercase;
+    color:var(--ocre);
+  }
+  .rotulo--claro{color:var(--ocre-claro)}
+
+  /* ---------- barra fija de propuesta ---------- */
+  .aviso{
+    position:fixed;
+    top:0;left:0;right:0;
+    z-index:200;
+    min-height:var(--barra);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:10px 16px;
+    background:#100e0a;
+    border-bottom:1px solid rgba(216,163,63,.3);
+  }
+  .aviso p{
+    margin:0;
+    text-align:center;
+    font-size:.74rem;
+    line-height:1.4;
+    font-weight:600;
+    letter-spacing:.075em;
+    text-transform:uppercase;
+    color:#f0e7d4;
+    text-wrap:balance;
+  }
+  .aviso b{color:var(--ocre-claro);font-weight:700}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    overflow:hidden;
+    background:
+      radial-gradient(90% 70% at 18% 0%,rgba(176,124,37,.26) 0%,rgba(176,124,37,0) 58%),
+      radial-gradient(70% 60% at 92% 100%,rgba(142,59,36,.3) 0%,rgba(142,59,36,0) 60%),
+      linear-gradient(168deg,var(--carbon-3) 0%,var(--carbon-2) 46%,var(--carbon) 100%);
+    color:var(--piedra);
+  }
+  /* motivo "callejón": franjas verticales suaves */
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:repeating-linear-gradient(90deg,rgba(250,246,238,.045) 0 1px,rgba(250,246,238,0) 1px 72px);
+    pointer-events:none;
+  }
+  .hero__env{
+    position:relative;
+    padding:88px 24px 92px;
+    max-width:var(--ancho);
+    margin:0 auto;
+  }
+  .hero__grid{
+    display:grid;
+    grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
+    gap:56px;
+    align-items:center;
+  }
+  .hero__marca{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:26px;
+  }
+  .hero__filete{
+    width:46px;height:1px;
+    background:linear-gradient(90deg,var(--ocre-claro),rgba(216,163,63,0));
+  }
+  .hero h1{text-wrap:balance}
+  .hero h1 em{
+    display:block;
+    font-style:normal;
+    color:var(--ocre-claro);
+  }
+  .hero__frase{
+    margin-top:22px;
+    max-width:30em;
+    font-size:clamp(1.05rem,2.2vw,1.3rem);
+    line-height:1.6;
+    color:#ddd3bf;
+  }
+  .hero__sitio{
+    margin-top:18px;
+    font-size:.95rem;
+    color:#a99f8b;
+  }
+  .hero__acciones{
+    margin-top:36px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+    align-items:center;
+  }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:15px 26px;
+    border-radius:var(--radio);
+    font-size:1rem;
+    font-weight:660;
+    letter-spacing:.005em;
+    text-decoration:none;
+    border:1px solid transparent;
+    transition:background-color .18s ease,color .18s ease,border-color .18s ease;
+  }
+  .btn--llamar{
+    background:var(--ocre-claro);
+    color:#17140f;
+    border-color:var(--ocre-claro);
+  }
+  .btn--llamar:hover{background:#e7b556;border-color:#e7b556}
+  .btn--fantasma{
+    background:transparent;
+    color:var(--piedra);
+    border-color:var(--borde-claro);
+  }
+  .btn--fantasma:hover{border-color:rgba(250,246,238,.45)}
+  .btn--oscuro{
+    background:var(--carbon-2);
+    color:var(--piedra);
+    border-color:var(--carbon-2);
+  }
+  .btn--oscuro:hover{background:var(--carbon-3);border-color:var(--carbon-3)}
+
+  /* placa decorativa del hero */
+  .placa{
+    position:relative;
+    border:1px solid var(--borde-claro);
+    border-radius:var(--radio);
+    background:linear-gradient(160deg,rgba(250,246,238,.08),rgba(250,246,238,.02));
+    padding:30px 28px;
+  }
+  .placa__sello{margin:0 auto 20px;width:118px}
+  .placa__lista{
+    display:grid;
+    gap:0;
+  }
+  .placa__lista li{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:16px;
+    padding:12px 0;
+    border-top:1px solid var(--borde-claro);
+    font-size:.93rem;
+  }
+  .placa__lista li:first-child{border-top:0}
+  .placa__lista span:first-child{color:#a99f8b}
+  .placa__lista span:last-child{
+    text-align:right;
+    font-weight:620;
+    color:#efe6d3;
+  }
+
+  /* ---------- cinta ---------- */
+  .cinta{
+    background:var(--piedra-2);
+    border-bottom:1px solid var(--borde);
+  }
+  .cinta__env{
+    max-width:var(--ancho);
+    margin:0 auto;
+    padding:22px 24px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px 34px;
+    justify-content:center;
+    align-items:center;
+  }
+  .cinta__item{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    font-size:.82rem;
+    font-weight:620;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--tinta-suave);
+  }
+  .cinta__punto{
+    width:5px;height:5px;
+    border-radius:50%;
+    background:var(--ocre);
+    flex:0 0 auto;
+  }
+
+  /* ---------- secciones ---------- */
+  .seccion{padding:84px 0}
+  .seccion--piedra{background:var(--piedra)}
+  .seccion--arena{background:var(--piedra-2)}
+  .seccion--oscura{
+    background:linear-gradient(170deg,var(--carbon-2),var(--carbon));
+    color:var(--piedra);
+  }
+
+  .cabecera{max-width:40rem;margin-bottom:46px}
+  .cabecera h2{margin-top:14px;text-wrap:balance}
+  .cabecera p{margin-top:16px;color:var(--tinta-suave);font-size:1.04rem}
+  .seccion--oscura .cabecera p{color:#b9b09c}
+
+  /* servicios */
+  .servicios{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:20px;
+  }
+  .tarjeta{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    padding:28px 26px 30px;
+    background:#fff;
+    border:1px solid var(--borde);
+    border-radius:var(--radio);
+    border-top:3px solid var(--ocre);
+  }
+  .tarjeta__icono{
+    width:34px;height:34px;
+    color:var(--teja);
+    flex:0 0 auto;
+  }
+  .tarjeta p{color:var(--tinta-suave);font-size:.97rem}
+  .tarjeta__nota{
+    margin-top:auto;
+    padding-top:14px;
+    border-top:1px dashed var(--borde);
+    font-size:.78rem;
+    font-weight:620;
+    letter-spacing:.09em;
+    text-transform:uppercase;
+    color:var(--tinta-tenue);
+  }
+
+  /* pasos */
+  .pasos{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:22px;
+    counter-reset:paso;
+  }
+  .paso{
+    position:relative;
+    padding:32px 28px 30px;
+    border:1px solid var(--borde-claro);
+    border-radius:var(--radio);
+    background:linear-gradient(160deg,rgba(250,246,238,.07),rgba(250,246,238,.015));
+  }
+  .paso__num{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:40px;height:40px;
+    margin-bottom:18px;
+    border-radius:50%;
+    border:1px solid rgba(216,163,63,.55);
+    color:var(--ocre-claro);
+    font-family:var(--serif);
+    font-size:1.1rem;
+    font-weight:600;
+  }
+  .paso h3{color:var(--piedra)}
+  .paso p{margin-top:10px;color:#b9b09c;font-size:.97rem}
+  .pasos__pie{
+    margin-top:30px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+    align-items:center;
+  }
+  .pasos__pie .nota{font-size:.9rem;color:#a99f8b}
+
+  /* contacto */
+  .contacto{
+    display:grid;
+    grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);
+    gap:44px;
+    align-items:start;
+  }
+  .datos{display:grid;gap:14px}
+  .dato{
+    display:flex;
+    gap:16px;
+    align-items:flex-start;
+    padding:20px 22px;
+    background:#fff;
+    border:1px solid var(--borde);
+    border-radius:var(--radio);
+  }
+  .dato__icono{width:22px;height:22px;color:var(--teja);flex:0 0 auto;margin-top:4px}
+  .dato__cuerpo{min-width:0}
+  .dato__et{
+    font-size:.72rem;
+    font-weight:680;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--tinta-tenue);
+  }
+  .dato__valor{
+    margin-top:5px;
+    font-family:var(--serif);
+    font-size:1.26rem;
+    font-weight:600;
+    letter-spacing:-.01em;
+    text-decoration:none;
+    color:var(--tinta);
+    word-break:break-word;
+  }
+  a.dato__valor:hover{color:var(--teja)}
+  .dato__extra{margin-top:5px;font-size:.92rem;color:var(--tinta-suave)}
+
+  .mapa{
+    border:1px solid var(--borde);
+    border-radius:var(--radio);
+    background:#fff;
+    overflow:hidden;
+  }
+  .mapa__lienzo{display:block;width:100%;height:auto}
+  .mapa__pie{
+    padding:14px 20px;
+    border-top:1px solid var(--borde);
+    font-size:.82rem;
+    color:var(--tinta-tenue);
+    background:var(--piedra-2);
+  }
+
+  /* pie */
+  .pie{
+    background:var(--carbon);
+    color:#cfc6b2;
+    padding:62px 0 42px;
+  }
+  .pie__grid{
+    display:grid;
+    grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);
+    gap:40px;
+    align-items:start;
+  }
+  .pie h2{color:var(--piedra);font-size:clamp(1.5rem,3vw,2rem)}
+  .pie__mail{
+    display:inline-block;
+    margin-top:16px;
+    font-family:var(--serif);
+    font-size:clamp(1.05rem,2.6vw,1.45rem);
+    font-weight:600;
+    color:var(--ocre-claro);
+    text-decoration:none;
+    word-break:break-word;
+    border-bottom:1px solid rgba(216,163,63,.4);
+  }
+  .pie__mail:hover{color:#e7b556}
+  .pie__tels{margin-top:24px;display:flex;flex-wrap:wrap;gap:10px 28px}
+  .pie__tels a{font-weight:620;text-decoration:none;color:var(--piedra)}
+  .pie__tels a:hover{color:var(--ocre-claro)}
+  .pie__dir{font-size:.95rem;line-height:1.6;color:#a99f8b}
+  .pie__dir strong{display:block;color:var(--piedra);font-weight:620;margin-bottom:6px}
+  .pie__cierre{
+    margin-top:48px;
+    padding-top:24px;
+    border-top:1px solid rgba(250,246,238,.13);
+    display:grid;
+    gap:8px;
+  }
+  .pie__cierre p{font-size:.86rem;color:#8d8575;line-height:1.6}
+  .pie__firma{font-weight:620;color:#cfc6b2 !important}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:980px){
+    .hero__grid{grid-template-columns:minmax(0,1fr);gap:40px}
+    .servicios{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .pasos{grid-template-columns:minmax(0,1fr)}
+    .contacto{grid-template-columns:minmax(0,1fr);gap:32px}
+    .pie__grid{grid-template-columns:minmax(0,1fr);gap:30px}
+  }
+
+  @media (max-width:640px){
+    :root{--barra:74px}
+    body{font-size:16px}
+    .env,.hero__env,.cinta__env{padding-left:18px;padding-right:18px}
+    .hero__env{padding-top:58px;padding-bottom:62px}
+    .seccion{padding:60px 0}
+    .servicios{grid-template-columns:minmax(0,1fr)}
+    .cinta__env{gap:10px 20px;padding-top:18px;padding-bottom:18px}
+    .cinta__item{font-size:.75rem}
+    .hero__acciones .btn,.pasos__pie .btn{width:100%;justify-content:center}
+    .placa{padding:24px 20px}
+    .tarjeta{padding:24px 22px 26px}
+    .paso{padding:26px 22px}
+    .dato{padding:18px}
+    .pie{padding-top:52px}
+  }
+
+  @media (max-width:380px){
+    .hero__marca{flex-wrap:wrap}
+  }
+</style>
+</head>
+<body>
+
+  <!-- ============ barra fija de propuesta ============ -->
+  <div class="aviso" role="note">
+    <p>Propuesta de diseño · maqueta no oficial · <b>FFFFFFstudio</b> · Ángel Rubio</p>
+  </div>
+
+  <!-- ============ hero ============ -->
+  <header class="hero">
+    <div class="hero__env">
+      <div class="hero__grid">
+
+        <div>
+          <div class="hero__marca">
+            <span class="hero__filete" aria-hidden="true"></span>
+            <span class="rotulo rotulo--claro">Restaurante y bar · Las Merindades</span>
+          </div>
+
+          <h1>Restaurante<br><em>El Callejón</em></h1>
+
+          <p class="hero__frase">Cocina de siempre en el centro de Villarcayo. Mesa para comer con calma, barra para tapear sin prisa.</p>
+
+          <p class="hero__sitio">Villarcayo de Merindad de Castilla la Vieja · Burgos</p>
+
+          <div class="hero__acciones">
+            <a class="btn btn--llamar" href="tel:620969432">
+              <svg class="tarjeta__icono" style="width:19px;height:19px;color:currentColor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M6.6 3.5h-2a1.6 1.6 0 0 0-1.6 1.8c.5 4 2.2 7.6 5 10.4 2.8 2.8 6.4 4.5 10.4 5a1.6 1.6 0 0 0 1.8-1.6v-2a1.6 1.6 0 0 0-1.4-1.6c-1-.1-2-.4-2.9-.8a1.6 1.6 0 0 0-1.7.4l-.9.9a13 13 0 0 1-4.8-4.8l.9-.9a1.6 1.6 0 0 0 .4-1.7 10 10 0 0 1-.8-2.9 1.6 1.6 0 0 0-1.6-1.4Z"/>
+              </svg>
+              Reservar: 620 969 432
+            </a>
+            <a class="btn btn--fantasma" href="#contacto">Dónde estamos</a>
+          </div>
+        </div>
+
+        <aside class="placa">
+          <!-- sello decorativo: farol de callejón -->
+          <svg class="placa__sello" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="luz" x1="60" y1="34" x2="60" y2="96" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#d8a33f" stop-opacity=".55"/>
+                <stop offset="1" stop-color="#d8a33f" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <path d="M44 96 60 44l16 52Z" fill="url(#luz)"/>
+            <circle cx="60" cy="60" r="44" stroke="rgba(216,163,63,.45)" stroke-width="1"/>
+            <circle cx="60" cy="60" r="36" stroke="rgba(250,246,238,.16)" stroke-width="1"/>
+            <path d="M60 16v10" stroke="#d8a33f" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M50 30h20l5 8H45l5-8Z" stroke="#d8a33f" stroke-width="1.6" stroke-linejoin="round"/>
+            <path d="M47 38h26v22H47z" stroke="#d8a33f" stroke-width="1.6"/>
+            <path d="M52 44h16v10H52z" fill="#d8a33f" fill-opacity=".35"/>
+            <path d="M44 60h32l-4 6H48l-4-6Z" stroke="#d8a33f" stroke-width="1.6" stroke-linejoin="round"/>
+            <path d="M60 66v12" stroke="#d8a33f" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+
+          <ul class="placa__lista">
+            <li><span>Tipo</span><span>Restaurante / bar</span></li>
+            <li><span>Categoría</span><span>1 tenedor</span></li>
+            <li><span>Comarca</span><span>Las Merindades</span></li>
+            <li><span>Reservas</span><span>Por teléfono</span></li>
+            <li><span>Horario</span><span>Consultar horario</span></li>
+          </ul>
+        </aside>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ cinta ============ -->
+  <div class="cinta">
+    <div class="cinta__env">
+      <span class="cinta__item"><span class="cinta__punto" aria-hidden="true"></span>Cocina tradicional</span>
+      <span class="cinta__item"><span class="cinta__punto" aria-hidden="true"></span>Tapas y raciones</span>
+      <span class="cinta__item"><span class="cinta__punto" aria-hidden="true"></span>Menú del día</span>
+      <span class="cinta__item"><span class="cinta__punto" aria-hidden="true"></span>Grupos y celebraciones</span>
+    </div>
+  </div>
+
+  <!-- ============ servicios ============ -->
+  <section class="seccion seccion--piedra" id="servicios">
+    <div class="env">
+      <div class="cabecera">
+        <span class="rotulo">La casa</span>
+        <h2>Lo que se puede encontrar en El Callejón</h2>
+        <p>Estos apartados quedan preparados para que el restaurante los rellene con sus propios platos, su menú y sus condiciones. En la maqueta se dejan sin contenido a propósito.</p>
+      </div>
+
+      <div class="servicios">
+
+        <article class="tarjeta">
+          <svg class="tarjeta__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 3h14v18l-7-3.2L5 21V3Z"/>
+            <path d="M9 8h6M9 12h6"/>
+          </svg>
+          <h3>Carta</h3>
+          <p>Espacio para la carta de la casa, organizada por apartados y actualizada cuando el restaurante lo necesite.</p>
+          <p class="tarjeta__nota">Pendiente de contenido</p>
+        </article>
+
+        <article class="tarjeta">
+          <svg class="tarjeta__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 13h16a8 8 0 0 1-8 8 8 8 0 0 1-8-8Z"/>
+            <path d="M3 21h18"/>
+            <path d="M9 9c0-1.4 1-2 1.6-2.8.5-.7.5-1.5.1-2.2M14 9c0-1.2.8-1.8 1.3-2.4"/>
+          </svg>
+          <h3>Cocina tradicional</h3>
+          <p>Apartado para contar cómo se cocina en la casa y qué elaboraciones de siempre se mantienen.</p>
+          <p class="tarjeta__nota">Pendiente de contenido</p>
+        </article>
+
+        <article class="tarjeta">
+          <svg class="tarjeta__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="8" cy="9" r="4.2"/>
+            <circle cx="16" cy="15" r="4.2"/>
+            <path d="M2 21h20"/>
+          </svg>
+          <h3>Tapas y raciones</h3>
+          <p>Para la propuesta de barra: tapas y raciones para compartir, con el detalle que decida el restaurante.</p>
+          <p class="tarjeta__nota">Pendiente de contenido</p>
+        </article>
+
+        <article class="tarjeta">
+          <svg class="tarjeta__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="9" cy="8" r="3.2"/>
+            <circle cx="17" cy="9" r="2.6"/>
+            <path d="M3 19c0-3 2.7-5 6-5s6 2 6 5"/>
+            <path d="M16.5 14c2.6.3 4.5 2.2 4.5 5"/>
+          </svg>
+          <h3>Grupos y celebraciones</h3>
+          <p>Para comidas de grupo y celebraciones: aforo, opciones y cómo organizarlo, según indique la casa.</p>
+          <p class="tarjeta__nota">Pendiente de contenido</p>
+        </article>
+
+        <article class="tarjeta">
+          <svg class="tarjeta__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="4" width="18" height="17" rx="2"/>
+            <path d="M3 9h18M8 2.5v3M16 2.5v3"/>
+            <path d="M7.5 13h5M7.5 17h9"/>
+          </svg>
+          <h3>Menú del día</h3>
+          <p>Apartado para publicar el menú del día y cambiarlo sin depender de nadie, desde el móvil.</p>
+          <p class="tarjeta__nota">Pendiente de contenido</p>
+        </article>
+
+        <article class="tarjeta">
+          <svg class="tarjeta__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 21s-7.5-4.9-7.5-10.5A7.5 7.5 0 0 1 12 3a7.5 7.5 0 0 1 7.5 7.5C19.5 16.1 12 21 12 21Z"/>
+            <circle cx="12" cy="10.3" r="2.6"/>
+          </svg>
+          <h3>Dónde y cuándo</h3>
+          <p>Dirección, teléfonos y horario siempre a la vista, para quien busque el restaurante desde el móvil.</p>
+          <p class="tarjeta__nota">Datos reales en Contacto</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ cómo reservar ============ -->
+  <section class="seccion seccion--oscura" id="reservar">
+    <div class="env">
+      <div class="cabecera">
+        <span class="rotulo rotulo--claro">Reservas</span>
+        <h2>Cómo reservar, en tres pasos</h2>
+        <p>La reserva se hace por teléfono, hablando directamente con el restaurante.</p>
+      </div>
+
+      <div class="pasos">
+
+        <article class="paso">
+          <span class="paso__num" aria-hidden="true">1</span>
+          <h3>Llame al restaurante</h3>
+          <p>Marque el <a href="tel:620969432" style="color:var(--ocre-claro);text-decoration:none;border-bottom:1px solid rgba(216,163,63,.4)">620 969 432</a> o el <a href="tel:651416189" style="color:var(--ocre-claro);text-decoration:none;border-bottom:1px solid rgba(216,163,63,.4)">651 416 189</a>. Responde el propio local.</p>
+        </article>
+
+        <article class="paso">
+          <span class="paso__num" aria-hidden="true">2</span>
+          <h3>Indique día, hora y personas</h3>
+          <p>Diga cuántos van a ser y para qué día y hora. Si es un grupo o una celebración, mejor avisar con antelación.</p>
+        </article>
+
+        <article class="paso">
+          <span class="paso__num" aria-hidden="true">3</span>
+          <h3>Confirme con el restaurante</h3>
+          <p>El restaurante confirma la mesa en la misma llamada y resuelve cualquier duda sobre la carta o el horario.</p>
+        </article>
+
+      </div>
+
+      <div class="pasos__pie">
+        <a class="btn btn--llamar" href="tel:620969432">Llamar al 620 969 432</a>
+        <span class="nota">Para conocer el horario, consulte por teléfono.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ contacto ============ -->
+  <section class="seccion seccion--arena" id="contacto">
+    <div class="env">
+      <div class="cabecera">
+        <span class="rotulo">Contacto</span>
+        <h2>Dónde encontrarnos</h2>
+        <p>En pleno centro de Villarcayo, en la calle Doctor Mendizábal.</p>
+      </div>
+
+      <div class="contacto">
+
+        <div class="datos">
+
+          <div class="dato">
+            <svg class="dato__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M6.6 3.5h-2a1.6 1.6 0 0 0-1.6 1.8c.5 4 2.2 7.6 5 10.4 2.8 2.8 6.4 4.5 10.4 5a1.6 1.6 0 0 0 1.8-1.6v-2a1.6 1.6 0 0 0-1.4-1.6c-1-.1-2-.4-2.9-.8a1.6 1.6 0 0 0-1.7.4l-.9.9a13 13 0 0 1-4.8-4.8l.9-.9a1.6 1.6 0 0 0 .4-1.7 10 10 0 0 1-.8-2.9 1.6 1.6 0 0 0-1.6-1.4Z"/>
+            </svg>
+            <div class="dato__cuerpo">
+              <p class="dato__et">Teléfono</p>
+              <a class="dato__valor" href="tel:620969432">620 969 432</a>
+            </div>
+          </div>
+
+          <div class="dato">
+            <svg class="dato__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="6" y="2.5" width="12" height="19" rx="2.4"/>
+              <path d="M10.5 18.5h3"/>
+            </svg>
+            <div class="dato__cuerpo">
+              <p class="dato__et">Segundo teléfono</p>
+              <a class="dato__valor" href="tel:651416189">651 416 189</a>
+            </div>
+          </div>
+
+          <div class="dato">
+            <svg class="dato__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 21s-7.5-4.9-7.5-10.5A7.5 7.5 0 0 1 12 3a7.5 7.5 0 0 1 7.5 7.5C19.5 16.1 12 21 12 21Z"/>
+              <circle cx="12" cy="10.3" r="2.6"/>
+            </svg>
+            <div class="dato__cuerpo">
+              <p class="dato__et">Dirección</p>
+              <p class="dato__valor" style="font-size:1.1rem">Calle Doctor Mendizábal, 4, bajo, 09550 Villarcayo (Burgos)</p>
+              <p class="dato__extra">Villarcayo de Merindad de Castilla la Vieja · Las Merindades</p>
+            </div>
+          </div>
+
+          <div class="dato">
+            <svg class="dato__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"/>
+              <path d="M12 7.2V12l3.4 2"/>
+            </svg>
+            <div class="dato__cuerpo">
+              <p class="dato__et">Horario</p>
+              <p class="dato__valor" style="font-size:1.1rem">Consultar horario</p>
+              <p class="dato__extra">Llamando al 620 969 432 o al 651 416 189.</p>
+            </div>
+          </div>
+
+          <div class="dato">
+            <svg class="dato__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2.8" y="5" width="18.4" height="14" rx="2.2"/>
+              <path d="M3.4 6.6 12 13l8.6-6.4"/>
+            </svg>
+            <div class="dato__cuerpo">
+              <p class="dato__et">Correo</p>
+              <a class="dato__valor" style="font-size:1.08rem" href="mailto:i.garciaormaeche@gmail.com">i.garciaormaeche@gmail.com</a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- mapa esquemático -->
+        <figure class="mapa" style="margin:0">
+          <svg class="mapa__lienzo" id="plano" viewBox="0 0 640 460" role="img" aria-label="Plano esquemático: el restaurante se sitúa en la calle Doctor Mendizábal, en el centro de Villarcayo.">
+            <rect width="640" height="460" fill="#f4eee1"/>
+
+            <!-- manzanas -->
+            <g fill="#e6dcc6">
+              <rect x="34" y="34" width="190" height="130" rx="3"/>
+              <rect x="258" y="34" width="150" height="130" rx="3"/>
+              <rect x="442" y="34" width="164" height="130" rx="3"/>
+              <rect x="34" y="250" width="190" height="88" rx="3"/>
+              <rect x="258" y="250" width="150" height="88" rx="3"/>
+              <rect x="442" y="250" width="164" height="88" rx="3"/>
+              <rect x="34" y="372" width="356" height="54" rx="3"/>
+              <rect x="424" y="372" width="182" height="54" rx="3"/>
+            </g>
+
+            <!-- calle principal (Doctor Mendizábal) -->
+            <rect x="0" y="178" width="640" height="56" fill="#fdfaf3"/>
+            <line x1="0" y1="178" x2="640" y2="178" stroke="#cdbfa2" stroke-width="2"/>
+            <line x1="0" y1="234" x2="640" y2="234" stroke="#cdbfa2" stroke-width="2"/>
+            <line x1="0" y1="206" x2="640" y2="206" stroke="#d8a33f" stroke-width="2" stroke-dasharray="16 14" opacity=".75"/>
+
+            <!-- transversales -->
+            <g>
+              <rect x="224" y="0" width="34" height="460" fill="#fdfaf3"/>
+              <line x1="224" y1="0" x2="224" y2="460" stroke="#cdbfa2" stroke-width="2"/>
+              <line x1="258" y1="0" x2="258" y2="460" stroke="#cdbfa2" stroke-width="2"/>
+
+              <rect x="408" y="0" width="34" height="460" fill="#fdfaf3"/>
+              <line x1="408" y1="0" x2="408" y2="460" stroke="#cdbfa2" stroke-width="2"/>
+              <line x1="442" y1="0" x2="442" y2="460" stroke="#cdbfa2" stroke-width="2"/>
+            </g>
+
+            <!-- callejón estrecho -->
+            <rect x="120" y="234" width="18" height="138" fill="#fdfaf3"/>
+            <line x1="120" y1="234" x2="120" y2="372" stroke="#cdbfa2" stroke-width="1.6"/>
+            <line x1="138" y1="234" x2="138" y2="372" stroke="#cdbfa2" stroke-width="1.6"/>
+
+            <!-- plaza -->
+            <circle cx="532" cy="340" r="0" fill="none"/>
+            <rect x="34" y="348" width="0" height="0"/>
+
+            <!-- rótulos de calle -->
+            <text x="24" y="200" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="21" font-weight="700" fill="#5d5444" letter-spacing="1.1">Calle Doctor Mendizábal</text>
+            <text x="241" y="420" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="14" font-weight="600" fill="#8b8270" letter-spacing=".8" transform="rotate(-90 241 420)">Calle transversal</text>
+            <text x="425" y="406" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="14" font-weight="600" fill="#8b8270" letter-spacing=".8" transform="rotate(-90 425 406)">Calle transversal</text>
+            <text x="150" y="312" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="14" font-weight="600" fill="#8b8270" letter-spacing=".8">Callejón</text>
+
+            <!-- marcador del restaurante -->
+            <g transform="translate(332 206)">
+              <circle r="30" fill="#8e3b24" opacity=".12"/>
+              <circle r="19" fill="#8e3b24" opacity=".2"/>
+              <path d="M0 11c0 0-11-7.4-11-15.4A11 11 0 0 1 0-15.4a11 11 0 0 1 11 11C11 3.6 0 11 0 11Z" fill="#8e3b24"/>
+              <circle cx="0" cy="-4.6" r="3.9" fill="#f4eee1"/>
+            </g>
+            <g transform="translate(332 206)">
+              <rect x="-96" y="22" width="192" height="46" rx="5" fill="#17140f"/>
+              <text x="0" y="41" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="15.5" font-weight="700" fill="#faf6ee">Restaurante El Callejón</text>
+              <text x="0" y="58" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="12.5" font-weight="500" fill="#d8a33f">Doctor Mendizábal, 4, bajo</text>
+            </g>
+
+            <!-- norte -->
+            <g transform="translate(372 400)" opacity=".75">
+              <circle r="17" fill="#fdfaf3" stroke="#cdbfa2" stroke-width="1.4"/>
+              <path d="M0-10 4 2H-4Z" fill="#8e3b24"/>
+              <text x="0" y="12" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="10.5" font-weight="700" fill="#5d5444">N</text>
+            </g>
+          </svg>
+          <figcaption class="mapa__pie">Plano esquemático, sin exactitud cartográfica. Solo sirve para situar la calle.</figcaption>
+        </figure>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ pie ============ -->
+  <footer class="pie">
+    <div class="env">
+      <div class="pie__grid">
+
+        <div>
+          <h2>¿Hablamos de la web del restaurante?</h2>
+          <a class="pie__mail" href="mailto:i.garciaormaeche@gmail.com">i.garciaormaeche@gmail.com</a>
+          <div class="pie__tels">
+            <a href="tel:620969432">620 969 432</a>
+            <a href="tel:651416189">651 416 189</a>
+          </div>
+        </div>
+
+        <div class="pie__dir">
+          <strong>Restaurante El Callejón</strong>
+          Calle Doctor Mendizábal, 4, bajo<br>
+          09550 Villarcayo (Burgos)<br>
+          Villarcayo de Merindad de Castilla la Vieja<br>
+          Comarca de Las Merindades<br>
+          Consultar horario
+        </div>
+
+      </div>
+
+      <div class="pie__cierre">
+        <p>Maqueta de propuesta. Los apartados de carta, menú y servicios quedan pendientes de rellenar con la información que facilite el restaurante.</p>
+        <p class="pie__firma">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+      </div>
+    </div>
+  </footer>
+
+<script>
+  // El plano se recorta en pantallas estrechas para que sus rótulos se lean.
+  (function () {
+    var plano = document.getElementById('plano');
+    if (!plano) return;
+    var estrecho = window.matchMedia('(max-width: 640px)');
+    function ajustar() {
+      plano.setAttribute('viewBox', estrecho.matches ? '4 56 468 404' : '0 0 640 460');
+    }
+    ajustar();
+    if (estrecho.addEventListener) estrecho.addEventListener('change', ajustar);
+    else if (estrecho.addListener) estrecho.addListener(ajustar);
+  })();
+
+  // Desplazamiento suave para los enlaces internos, compensando la barra fija.
+  (function () {
+    var barra = document.querySelector('.aviso');
+    document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        var destino = document.querySelector(a.getAttribute('href'));
+        if (!destino) return;
+        e.preventDefault();
+        var alto = barra ? barra.offsetHeight : 0;
+        var y = destino.getBoundingClientRect().top + window.pageYOffset - alto - 8;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>

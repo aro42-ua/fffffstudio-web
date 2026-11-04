@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anna Costa Perruqueria · El Port de la Selva — Propuesta de diseño web</title>
+<meta name="description" content="Propuesta de página web para Anna Costa Perruqueria, peluquería en El Port de la Selva (Girona). Corte, color, peinado y recogidos, tratamientos de cabello y asesoramiento, con cita concertada.">
+<style>
+  :root{
+    --ink:#1b1613;
+    --ink-soft:#4a403b;
+    --ink-mute:#6f635c;
+    --cream:#faf7f3;
+    --cream-2:#f2ece5;
+    --line:#e2d8cd;
+    --accent:#8c5a4a;
+    --accent-dp:#6d4336;
+    --gold:#b4916a;
+    --bar:#171310;
+    --bar-h:40px;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+    font-size:17px;
+    line-height:1.65;
+    padding-top:var(--bar-h);
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%}
+  h1,h2,h3{
+    font-family:Georgia,"Times New Roman","Iowan Old Style",serif;
+    font-weight:400;
+    letter-spacing:-.01em;
+    line-height:1.14;
+    margin:0;
+    color:var(--ink);
+  }
+  p{margin:0}
+  a{color:inherit}
+  .wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 32px}
+  .eyebrow{
+    font-size:12px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--accent);font-weight:600;margin:0 0 18px;
+  }
+
+  /* ---------- barra fija ---------- */
+  .topbar{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    height:var(--bar-h);
+    display:flex;align-items:center;justify-content:center;
+    background:var(--bar);
+    color:#f4ece4;
+    font-size:12.5px;line-height:1.2;letter-spacing:.04em;
+    text-align:center;
+    padding:0 14px;
+    border-bottom:1px solid rgba(255,255,255,.1);
+  }
+  .topbar span{display:block}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(120% 90% at 85% 8%, rgba(180,145,106,.30) 0%, rgba(180,145,106,0) 58%),
+      radial-gradient(90% 80% at 0% 100%, rgba(140,90,74,.22) 0%, rgba(140,90,74,0) 60%),
+      linear-gradient(170deg,#fdfbf8 0%,#f4ece3 55%,#ece0d4 100%);
+    border-bottom:1px solid var(--line);
+  }
+  .hero-inner{padding:92px 0 100px;position:relative;z-index:2;max-width:760px}
+  .hero h1{font-size:clamp(40px,7.2vw,76px)}
+  .hero h1 .sub{display:block;font-size:.42em;letter-spacing:.16em;text-transform:uppercase;
+    font-family:inherit;color:var(--ink-mute);margin-top:22px;font-style:italic}
+  .hero p.lead{font-size:clamp(17px,2.1vw,21px);color:var(--ink-soft);margin:26px 0 0;max-width:30em}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:40px}
+  .btn{
+    display:inline-block;text-decoration:none;
+    background:var(--accent);color:#fff;
+    padding:15px 28px;border-radius:999px;
+    font-size:16px;font-weight:600;letter-spacing:.02em;
+    border:1px solid var(--accent-dp);
+  }
+  .btn:hover{background:var(--accent-dp)}
+  .btn-ghost{
+    display:inline-block;text-decoration:none;
+    padding:14px 26px;border-radius:999px;
+    border:1px solid var(--ink);color:var(--ink);
+    font-size:15px;font-weight:600;background:transparent;
+  }
+  .btn-ghost:hover{background:var(--ink);color:var(--cream)}
+  .hero-note{margin-top:22px;font-size:14px;color:var(--ink-mute)}
+  .hero-deco{position:absolute;right:-90px;bottom:-110px;width:440px;height:440px;opacity:.5;z-index:1;pointer-events:none}
+
+  /* ---------- rule / section ---------- */
+  section{scroll-margin-top:60px}
+  .band{padding:88px 0}
+  .band-alt{background:var(--cream-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .sec-head{max-width:620px;margin-bottom:48px}
+  .sec-head h2{font-size:clamp(28px,3.6vw,40px)}
+  .sec-head p{margin-top:16px;color:var(--ink-soft)}
+
+  .grid{display:grid;gap:22px;grid-template-columns:repeat(3,1fr)}
+  .card{
+    background:var(--cream);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:30px 28px 32px;
+    display:flex;flex-direction:column;
+  }
+  .band-alt .card{background:#fdfbf8}
+  .card .ic{width:44px;height:44px;margin-bottom:20px;color:var(--accent)}
+  .card h3{font-size:22px;margin-bottom:10px}
+  .card p{color:var(--ink-soft);font-size:16px}
+  .card .tag{
+    margin-top:18px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--gold);font-weight:600;
+  }
+  .card-wide{grid-column:span 3}
+  .card-wide .inner{display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap}
+  .card-wide .inner>div{flex:1 1 280px;min-width:0}
+
+  /* ---------- pasos ---------- */
+  .steps{display:grid;gap:22px;grid-template-columns:repeat(3,1fr);counter-reset:s}
+  .step{
+    background:#fdfbf8;border:1px solid var(--line);border-radius:16px;
+    padding:30px 28px 32px;position:relative;
+  }
+  .step .num{
+    font-family:Georgia,serif;font-size:40px;line-height:1;color:var(--gold);
+    display:block;margin-bottom:16px;
+  }
+  .step h3{font-size:20px;margin-bottom:10px}
+  .step p{color:var(--ink-soft);font-size:16px}
+  .quote-note{
+    margin-top:30px;padding:20px 24px;border-left:3px solid var(--accent);
+    background:rgba(140,90,74,.06);border-radius:0 12px 12px 0;
+    color:var(--ink-soft);font-size:16px;
+  }
+
+  /* ---------- contacto ---------- */
+  .contact{display:grid;gap:34px;grid-template-columns:1.05fr 1fr;align-items:start}
+  .dl{margin:0;border-top:1px solid var(--line)}
+  .dl .row{display:flex;gap:18px;padding:18px 0;border-bottom:1px solid var(--line);align-items:baseline}
+  .dl dt{
+    flex:0 0 118px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-mute);font-weight:600;
+  }
+  .dl dd{margin:0;flex:1 1 auto;min-width:0;font-size:17px;color:var(--ink);overflow-wrap:break-word}
+  .dl dd a{text-decoration:none;border-bottom:1px solid rgba(140,90,74,.45);color:var(--accent-dp);font-weight:600}
+  .dl dd a:hover{background:rgba(140,90,74,.08)}
+  .dl dd small{display:block;font-size:14px;color:var(--ink-mute);margin-top:3px;letter-spacing:0;font-weight:400}
+  .map-box{
+    background:#fdfbf8;border:1px solid var(--line);border-radius:16px;padding:16px 16px 12px;
+  }
+  .map-box figcaption{font-size:13px;color:var(--ink-mute);padding:10px 4px 2px;line-height:1.45}
+  .map-box svg{display:block;width:100%;height:auto}
+  .contact-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--bar);color:#e8ded4;padding:56px 0 60px}
+  footer h3{color:#fff;font-size:24px;margin-bottom:14px}
+  footer p{color:#bdb0a4;font-size:15px}
+  footer a{color:#f0e6da;text-decoration:none;border-bottom:1px solid rgba(240,230,218,.35);overflow-wrap:break-word}
+  .foot-grid{display:flex;gap:40px;flex-wrap:wrap;justify-content:space-between}
+  .foot-sign{
+    margin-top:40px;padding-top:22px;border-top:1px solid rgba(255,255,255,.14);
+    font-size:14px;color:#9d9186;
+  }
+  .foot-sign span{display:block}
+  .foot-sign span+span{margin-top:6px}
+
+  @media (max-width:900px){
+    .grid,.steps{grid-template-columns:repeat(2,1fr)}
+    .card-wide{grid-column:span 2}
+    .contact{grid-template-columns:1fr}
+  }
+  @media (max-width:640px){
+    :root{--bar-h:56px}
+    body{font-size:16px}
+    .wrap{padding:0 20px}
+    .topbar{font-size:11.5px;letter-spacing:.02em;line-height:1.35;padding:0 16px}
+    .hero-inner{padding:56px 0 64px}
+    .hero h1 .sub{margin-top:16px;letter-spacing:.12em}
+    .hero-deco{width:300px;right:-110px;bottom:-130px;opacity:.4}
+    .band{padding:60px 0}
+    .sec-head{margin-bottom:32px}
+    .grid,.steps{grid-template-columns:1fr;gap:16px}
+    .card,.step{padding:26px 22px 28px;border-radius:14px}
+    .card-wide{grid-column:span 1}
+    .btn,.btn-ghost{width:100%;text-align:center}
+    .dl .row{flex-direction:column;gap:4px;padding:16px 0}
+    .dl dt{flex:none}
+    footer{padding:46px 0 52px}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<header class="hero">
+  <svg class="hero-deco" viewBox="0 0 200 200" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="hg" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#b4916a"/>
+        <stop offset="1" stop-color="#8c5a4a"/>
+      </linearGradient>
+    </defs>
+    <g fill="none" stroke="url(#hg)" stroke-width="1.1" opacity=".85">
+      <path d="M20 180 C 20 90, 100 110, 100 40 C 100 -10, 50 10, 60 60"/>
+      <path d="M45 180 C 45 95, 125 115, 125 45 C 125 0, 78 18, 86 66"/>
+      <path d="M70 180 C 70 100, 150 120, 150 50 C 150 8, 104 26, 112 72"/>
+      <circle cx="100" cy="40" r="46"/>
+      <circle cx="100" cy="40" r="66"/>
+    </g>
+  </svg>
+  <div class="wrap">
+    <div class="hero-inner">
+      <p class="eyebrow">Peluquería · El Port de la Selva</p>
+      <h1>Anna Costa Perruqueria<span class="sub">Cita concertada</span></h1>
+      <p class="lead">Peluquería de barrio en El Port de la Selva. Se atiende con cita previa, con tiempo para cada cabello.</p>
+      <div class="hero-cta">
+        <a class="btn" href="tel:872264031">Pedir cita · 872 264 031</a>
+        <a class="btn-ghost" href="#contacto">Cómo llegar</a>
+      </div>
+      <p class="hero-note">Av. Moisès Broggi, 1 · 17489 El Port de la Selva (Girona) · Consultar horario</p>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section class="band" id="servicios">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Servicios</p>
+      <h2>Los apartados de la web, listos para rellenar</h2>
+      <p>Esta maqueta deja preparada la estructura habitual del sector. Los textos de cada apartado los decide la peluquería: aquí solo se propone el contenedor y un texto de ejemplo neutro.</p>
+    </div>
+    <div class="grid">
+
+      <article class="card">
+        <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" focusable="false">
+          <circle cx="11" cy="37" r="6"/><circle cx="11" cy="11" r="6"/>
+          <path d="M16 15 L40 36"/><path d="M16 33 L40 12"/>
+        </svg>
+        <h3>Corte</h3>
+        <p>Corte de cabello adaptado a cada persona. Espacio para explicar cómo se trabaja el corte y para quién.</p>
+        <p class="tag">Texto a definir</p>
+      </article>
+
+      <article class="card">
+        <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" focusable="false">
+          <path d="M24 5 C 24 5, 38 20, 38 29 a14 14 0 0 1-28 0 C 10 20, 24 5, 24 5 Z"/>
+          <path d="M24 36 a7 7 0 0 1-7-7"/>
+        </svg>
+        <h3>Color</h3>
+        <p>Trabajos de color. Apartado reservado para describir los servicios de color que ofrece la peluquería.</p>
+        <p class="tag">Texto a definir</p>
+      </article>
+
+      <article class="card">
+        <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" focusable="false">
+          <path d="M10 38 C 14 24, 20 18, 24 8"/>
+          <path d="M18 38 C 22 26, 28 20, 32 11"/>
+          <path d="M26 38 C 31 27, 36 22, 39 15"/>
+          <path d="M8 42 H 40"/>
+        </svg>
+        <h3>Peinado y recogidos</h3>
+        <p>Peinado y recogidos para el día a día o para una ocasión concreta. A completar con lo que se quiera destacar.</p>
+        <p class="tag">Texto a definir</p>
+      </article>
+
+      <article class="card">
+        <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" focusable="false">
+          <path d="M18 6 h12 v7 l4 8 v19 a4 4 0 0 1-4 4 H18 a4 4 0 0 1-4-4 V21 l4-8 Z"/>
+          <path d="M14 27 H34"/><path d="M20 6 h8"/>
+        </svg>
+        <h3>Tratamientos de cabello</h3>
+        <p>Cuidado y tratamiento del cabello. Aquí se explicará, con palabras de la peluquería, en qué consiste cada tratamiento.</p>
+        <p class="tag">Texto a definir</p>
+      </article>
+
+      <article class="card">
+        <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" focusable="false">
+          <path d="M8 10 h20 v16 h-9 l-7 6 v-6 H8 Z"/>
+          <path d="M40 20 v16 h-9 l-7 6 v-6 h-2"/>
+        </svg>
+        <h3>Asesoramiento</h3>
+        <p>Consejo antes de decidir: valorar el cabello y acordar qué hacer. Apartado abierto para contarlo con sus propias palabras.</p>
+        <p class="tag">Texto a definir</p>
+      </article>
+
+      <article class="card">
+        <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" focusable="false">
+          <rect x="7" y="9" width="34" height="30" rx="4"/>
+          <path d="M7 18 H41"/><path d="M15 9 V5"/><path d="M33 9 V5"/>
+          <path d="M15 27 h8"/>
+        </svg>
+        <h3>Cita concertada</h3>
+        <p>La web no publica horarios: invita a llamar o escribir para acordar el día y la hora. Horario: Consultar horario.</p>
+        <p class="tag">Estructura propuesta</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="band band-alt" id="cita">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Tu cita</p>
+      <h2>Tres pasos y ya está</h2>
+      <p>La cita es concertada. En la ficha de la guía comercial del municipio el horario consta como «hores convingudes», es decir, horas convenidas.</p>
+    </div>
+    <div class="steps">
+      <article class="step">
+        <span class="num">1</span>
+        <h3>Escribe o llama</h3>
+        <p>Por teléfono, por WhatsApp o por Instagram, como resulte más cómodo.</p>
+      </article>
+      <article class="step">
+        <span class="num">2</span>
+        <h3>Acordamos el día</h3>
+        <p>Se busca el hueco que encaje y se confirma la hora. Sin horarios fijos publicados.</p>
+      </article>
+      <article class="step">
+        <span class="num">3</span>
+        <h3>Ven a la hora acordada</h3>
+        <p>Av. Moisès Broggi, 1, en El Port de la Selva. Con la cita hecha, no hay espera.</p>
+      </article>
+    </div>
+    <p class="quote-note">Horario: <strong>Consultar horario</strong>. La ficha municipal indica «hores convingudes», así que la web propone pedir cita en lugar de anunciar un horario que podría no cumplirse.</p>
+  </div>
+</section>
+
+<section class="band" id="contacto">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Contacto</p>
+      <h2>Dónde estamos y cómo localizarnos</h2>
+    </div>
+    <div class="contact">
+      <div>
+        <dl class="dl">
+          <div class="row">
+            <dt>Teléfono</dt>
+            <dd><a href="tel:872264031">872 264 031</a></dd>
+          </div>
+          <div class="row">
+            <dt>WhatsApp</dt>
+            <dd><a href="tel:650360014">650 36 00 14</a>
+              <small>Número publicado en la ficha municipal.</small></dd>
+          </div>
+          <div class="row">
+            <dt>Dirección</dt>
+            <dd>Av. Moisès Broggi, 1, 17489 El Port de la Selva (Girona)</dd>
+          </div>
+          <div class="row">
+            <dt>Horario</dt>
+            <dd>Consultar horario</dd>
+          </div>
+          <div class="row">
+            <dt>Instagram</dt>
+            <dd><a href="https://www.instagram.com/annacosta_perruqueria/" target="_blank" rel="noopener">@annacosta_perruqueria</a></dd>
+          </div>
+          <div class="row">
+            <dt>Email</dt>
+            <dd><a href="mailto:annacostaperruqueria@gmail.com">annacostaperruqueria@gmail.com</a></dd>
+          </div>
+        </dl>
+        <div class="contact-cta">
+          <a class="btn" href="tel:872264031">Llamar · 872 264 031</a>
+          <a class="btn-ghost" href="tel:650360014">WhatsApp · 650 36 00 14</a>
+        </div>
+      </div>
+
+      <figure class="map-box" style="margin:0">
+        <svg viewBox="0 0 420 300" role="img" aria-label="Mapa esquemático de la zona: la peluquería está en la Avinguda Moisès Broggi, número 1, en El Port de la Selva." focusable="false">
+          <defs>
+            <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#cfdfe3"/>
+              <stop offset="1" stop-color="#b9d0d6"/>
+            </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="420" height="300" fill="#f4ece3"/>
+          <rect x="0" y="236" width="420" height="64" fill="url(#sea)"/>
+          <path d="M0 236 q 40 -10 80 0 t 80 0 t 80 0 t 80 0 t 100 0 v 10 H0 Z" fill="#cfdfe3"/>
+          <g stroke="#e2d8cd" stroke-width="1">
+            <rect x="34" y="44" width="88" height="54" fill="#eee4d8"/>
+            <rect x="146" y="44" width="104" height="54" fill="#eee4d8"/>
+            <rect x="274" y="44" width="112" height="54" fill="#eee4d8"/>
+            <rect x="34" y="150" width="88" height="56" fill="#eee4d8"/>
+            <rect x="274" y="150" width="112" height="56" fill="#eee4d8"/>
+          </g>
+          <!-- calles -->
+          <g stroke="#ffffff" stroke-width="20" stroke-linecap="square">
+            <path d="M0 124 H420"/>
+            <path d="M262 20 V236"/>
+            <path d="M134 20 V236"/>
+          </g>
+          <g stroke="#dfd3c6" stroke-width="1" fill="none">
+            <path d="M0 114 H420 M0 134 H420"/>
+            <path d="M252 20 V236 M272 20 V236"/>
+            <path d="M124 20 V236 M144 20 V236"/>
+          </g>
+          <path d="M0 124 H420" stroke="#c9b9a6" stroke-width="1.4" stroke-dasharray="9 9"/>
+          <!-- rótulo de la avenida -->
+          <text x="16" y="118" font-family="Georgia, serif" font-size="19" fill="#6d4336" font-style="italic">Av. Moisès Broggi</text>
+          <text x="160" y="232" font-family="-apple-system, Segoe UI, Arial, sans-serif" font-size="15" fill="#7e7367">Passeig</text>
+          <text x="282" y="270" font-family="Georgia, serif" font-size="18" fill="#5f7a82" font-style="italic">Mar</text>
+          <!-- marcador -->
+          <g>
+            <circle cx="184" cy="124" r="15" fill="rgba(140,90,74,.18)"/>
+            <path d="M184 108 a10.5 10.5 0 0 1 10.5 10.5 C194.5 126 184 140 184 140 S173.5 126 173.5 118.5 A10.5 10.5 0 0 1 184 108 Z" fill="#8c5a4a"/>
+            <circle cx="184" cy="118.5" r="3.6" fill="#f4ece3"/>
+          </g>
+          <g font-family="-apple-system, Segoe UI, Arial, sans-serif">
+            <rect x="146" y="148" width="232" height="54" rx="9" fill="#fdfbf8" stroke="#e2d8cd"/>
+            <text x="160" y="170" font-size="16" font-weight="700" fill="#1b1613">Anna Costa Perruqueria</text>
+            <text x="160" y="191" font-size="14.5" fill="#6f635c">Av. Moisès Broggi, 1</text>
+          </g>
+        </svg>
+        <figcaption>Mapa esquemático, no cartográfico: sirve para situar la calle. La dirección exacta es Av. Moisès Broggi, 1, 17489 El Port de la Selva (Girona).</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h3>Anna Costa Perruqueria</h3>
+        <p>Av. Moisès Broggi, 1<br>17489 El Port de la Selva (Girona)</p>
+        <p style="margin-top:10px">Consultar horario</p>
+      </div>
+      <div>
+        <p style="margin-bottom:8px"><a href="tel:872264031">872 264 031</a></p>
+        <p style="margin-bottom:8px"><a href="tel:650360014">WhatsApp 650 36 00 14</a></p>
+        <p style="margin-bottom:8px"><a href="mailto:annacostaperruqueria@gmail.com">annacostaperruqueria@gmail.com</a></p>
+        <p><a href="https://www.instagram.com/annacosta_perruqueria/" target="_blank" rel="noopener">@annacosta_perruqueria</a></p>
+      </div>
+    </div>
+    <p class="foot-sign">
+      <span>Maqueta de demostración sin carácter oficial. Los contenidos son de ejemplo y están pendientes de revisión por el negocio.</span>
+      <span>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</span>
+    </p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var links = document.querySelectorAll('a[href^="#"]');
+  for (var i=0;i<links.length;i++){
+    links[i].addEventListener('click', function(e){
+      var t = document.querySelector(this.getAttribute('href'));
+      if(!t) return;
+      e.preventDefault();
+      var bar = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--bar-h'),10) || 40;
+      var y = t.getBoundingClientRect().top + window.pageYOffset - bar - 12;
+      window.scrollTo({top:y, behavior:'smooth'});
+    });
+  }
+})();
+</script>
+</body>
+</html>
