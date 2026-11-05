@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pinturas y Toldos Brochacolor · Ciudad Rodrigo — Propuesta de diseño</title>
+<meta name="description" content="Maqueta de propuesta de landing page para Pinturas y Toldos Brochacolor (Ciudad Rodrigo, Salamanca). Propuesta no oficial de FFFFFFstudio, Ángel Rubio.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* ============================================================
+   Maqueta · Pinturas y Toldos Brochacolor
+   Propuesta de diseño — FFFFFFstudio · Ángel Rubio (Alicante)
+   Sin recursos externos: tipografía de sistema, CSS y SVG.
+   ============================================================ */
+
+:root{
+  --ink:        #15202b;
+  --ink-soft:   #2c3a47;
+  --slate:      #5b6b7a;
+  --line:       #dfe4e8;
+  --paper:      #ffffff;
+  --paper-2:    #f5f2ed;
+  --paper-3:    #ebe5dc;
+  --brand:      #0f5f6b;   /* verde azulado: pintura / profesionalidad */
+  --brand-dk:   #0a4650;
+  --brand-lt:   #e3f0f1;
+  --accent:     #c9542b;   /* terracota: toldos / lona */
+  --accent-dk:  #a8411f;
+  --accent-lt:  #fbeae3;
+  --ochre:      #d9a13b;
+
+  --max: 1160px;
+  --r:   16px;
+  --r-s: 10px;
+  --bar: 40px;
+
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --shadow-s: 0 1px 2px rgba(21,32,43,.05), 0 2px 8px rgba(21,32,43,.05);
+  --shadow-m: 0 2px 6px rgba(21,32,43,.06), 0 14px 34px rgba(21,32,43,.09);
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+
+html{ -webkit-text-size-adjust:100%; }
+
+body{
+  margin:0;
+  padding-top:var(--bar);
+  font-family:var(--sans);
+  font-size:17px;
+  line-height:1.65;
+  color:var(--ink-soft);
+  background:var(--paper);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+img,svg{ max-width:100%; }
+
+h1,h2,h3,h4{
+  color:var(--ink);
+  font-weight:700;
+  letter-spacing:-.02em;
+  line-height:1.12;
+  margin:0;
+  text-wrap:balance;
+}
+
+p{ margin:0; }
+
+a{ color:var(--brand-dk); }
+
+.wrap{
+  width:100%;
+  max-width:var(--max);
+  margin:0 auto;
+  padding:0 24px;
+}
+
+section{ scroll-margin-top:calc(var(--bar) + 16px); }
+
+/* ---------- 1. Barra fija de propuesta ---------- */
+.proposal-bar{
+  position:fixed;
+  inset:0 0 auto 0;
+  z-index:100;
+  background:var(--ink);
+  color:#eef2f5;
+  font-size:13px;
+  line-height:1.4;
+  letter-spacing:.035em;
+  text-align:center;
+  padding:11px 16px;
+  border-bottom:1px solid rgba(255,255,255,.12);
+}
+.proposal-bar strong{ color:#fff; font-weight:600; }
+
+/* ---------- 2. Cabecera / navegación ---------- */
+.site-head{
+  border-bottom:1px solid var(--line);
+  background:var(--paper);
+}
+.site-head__in{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  padding:18px 24px;
+  max-width:var(--max);
+  margin:0 auto;
+  width:100%;
+}
+.brand{ display:flex; align-items:center; gap:13px; min-width:0; }
+.brand__mark{ flex:0 0 auto; }
+.brand__txt{ min-width:0; }
+.brand__name{
+  display:block;
+  font-weight:700;
+  font-size:18px;
+  color:var(--ink);
+  letter-spacing:-.02em;
+  line-height:1.15;
+}
+.brand__tag{
+  display:block;
+  font-size:11.5px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--slate);
+  margin-top:3px;
+}
+.nav{ display:flex; align-items:center; gap:28px; }
+.nav a{
+  color:var(--ink-soft);
+  text-decoration:none;
+  font-size:15px;
+  font-weight:500;
+  padding:4px 0;
+  border-bottom:2px solid transparent;
+}
+.nav a:hover{ color:var(--brand-dk); border-bottom-color:var(--brand); }
+.head-cta{ display:flex; align-items:center; gap:14px; }
+
+/* ---------- Botones ---------- */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  font-family:inherit;
+  font-size:16px;
+  font-weight:600;
+  line-height:1.2;
+  text-decoration:none;
+  padding:14px 22px;
+  border-radius:999px;
+  border:1.5px solid transparent;
+  cursor:pointer;
+  transition:transform .15s ease, background-color .15s ease, box-shadow .15s ease;
+}
+.btn svg{ flex:0 0 auto; }
+.btn--primary{
+  background:var(--accent);
+  color:#fff;
+  box-shadow:0 8px 20px rgba(201,84,43,.26);
+}
+.btn--primary:hover{ background:var(--accent-dk); transform:translateY(-1px); }
+.btn--ghost{
+  background:transparent;
+  color:var(--ink);
+  border-color:#c7cfd6;
+}
+.btn--ghost:hover{ border-color:var(--brand); color:var(--brand-dk); }
+.btn--light{
+  background:#fff;
+  color:var(--brand-dk);
+  box-shadow:var(--shadow-s);
+}
+.btn--light:hover{ transform:translateY(-1px); }
+.btn--sm{ font-size:15px; padding:11px 18px; }
+
+/* ---------- 3. Hero ---------- */
+.hero{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(900px 520px at 88% -10%, rgba(217,161,59,.22), transparent 70%),
+    radial-gradient(760px 480px at 6% 105%, rgba(15,95,107,.16), transparent 72%),
+    linear-gradient(170deg, var(--paper-2) 0%, #fbfaf8 55%, var(--paper) 100%);
+  border-bottom:1px solid var(--line);
+}
+.hero__in{
+  display:grid;
+  grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);
+  gap:56px;
+  align-items:center;
+  padding:78px 24px 84px;
+  max-width:var(--max);
+  margin:0 auto;
+  width:100%;
+}
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font-size:12.5px;
+  font-weight:600;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  color:var(--brand-dk);
+  background:var(--brand-lt);
+  border:1px solid #c8e0e3;
+  border-radius:999px;
+  padding:7px 15px;
+  margin-bottom:24px;
+}
+.eyebrow__dot{
+  width:7px; height:7px; border-radius:50%;
+  background:var(--accent);
+  flex:0 0 auto;
+}
+.hero h1{
+  font-size:clamp(34px, 4.9vw, 58px);
+  margin-bottom:22px;
+}
+.hero h1 em{
+  font-style:normal;
+  color:var(--brand);
+  position:relative;
+  white-space:nowrap;
+}
+.hero h1 em{
+  background-image:linear-gradient(rgba(217,161,59,.45), rgba(217,161,59,.45));
+  background-repeat:no-repeat;
+  background-size:100% .17em;
+  background-position:0 92%;
+}
+.hero__lead{
+  font-size:19px;
+  color:var(--slate);
+  max-width:33em;
+  margin-bottom:32px;
+}
+.hero__actions{ display:flex; flex-wrap:wrap; gap:14px; align-items:center; }
+.hero__note{
+  margin-top:26px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px 26px;
+  font-size:14.5px;
+  color:var(--slate);
+}
+.hero__note span{ display:inline-flex; align-items:center; gap:8px; }
+.hero__art{ min-width:0; }
+.hero__art svg{ display:block; width:100%; height:auto; filter:drop-shadow(0 18px 38px rgba(21,32,43,.14)); }
+
+/* ---------- Encabezado de sección ---------- */
+.section{ padding:88px 0; }
+.section--tint{ background:var(--paper-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.section--dark{ background:var(--ink); }
+.s-head{ max-width:44em; margin-bottom:46px; }
+.s-head .eyebrow{ margin-bottom:18px; }
+.s-head h2{ font-size:clamp(28px, 3.3vw, 40px); margin-bottom:16px; }
+.s-head p{ font-size:18px; color:var(--slate); }
+.section--dark .s-head h2{ color:#fff; }
+.section--dark .s-head p{ color:#aebbc6; }
+.section--dark .eyebrow{
+  color:#ffd79b;
+  background:rgba(255,255,255,.08);
+  border-color:rgba(255,255,255,.18);
+}
+
+/* ---------- 4. Servicios ---------- */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+  gap:26px;
+}
+.card{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:var(--r);
+  padding:30px 28px 32px;
+  box-shadow:var(--shadow-s);
+  display:flex;
+  flex-direction:column;
+}
+.card__icon{
+  width:56px; height:56px;
+  border-radius:14px;
+  display:flex; align-items:center; justify-content:center;
+  margin-bottom:20px;
+  flex:0 0 auto;
+}
+.card__icon--a{ background:var(--brand-lt); }
+.card__icon--b{ background:#f6eedf; }
+.card__icon--c{ background:var(--accent-lt); }
+.card h3{ font-size:21px; margin-bottom:11px; }
+.card p{ color:var(--slate); font-size:16px; }
+.card ul{
+  list-style:none;
+  margin:18px 0 0;
+  padding:0;
+  border-top:1px solid var(--line);
+  padding-top:16px;
+}
+.card li{
+  position:relative;
+  padding-left:22px;
+  font-size:15.5px;
+  color:var(--ink-soft);
+  margin-top:9px;
+}
+.card li::before{
+  content:"";
+  position:absolute;
+  left:2px; top:.62em;
+  width:8px; height:8px;
+  border-radius:50%;
+  background:var(--brand);
+  opacity:.5;
+}
+
+/* ---------- 5. Galería (huecos de maqueta) ---------- */
+.gallery-note{
+  display:flex;
+  gap:14px;
+  align-items:flex-start;
+  background:var(--accent-lt);
+  border:1px solid #f0cdbc;
+  border-left:4px solid var(--accent);
+  border-radius:var(--r-s);
+  padding:16px 18px;
+  margin-bottom:34px;
+  font-size:15.5px;
+  color:#7d3416;
+  max-width:62em;
+}
+.gallery-note svg{ flex:0 0 auto; margin-top:2px; }
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(6, minmax(0,1fr));
+  gap:22px;
+}
+.slot{
+  grid-column:span 2;
+  position:relative;
+  border:2px dashed #c3ccd4;
+  border-radius:var(--r);
+  background:
+    repeating-linear-gradient(135deg, rgba(21,32,43,.028) 0 12px, rgba(21,32,43,0) 12px 24px),
+    linear-gradient(160deg, #fbfaf8, var(--paper-3));
+  min-height:230px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  padding:26px 22px;
+  text-align:center;
+}
+.slot--wide{ grid-column:span 3; min-height:280px; }
+.slot--tall{ grid-column:span 3; min-height:280px; }
+.slot__ico{ opacity:.55; }
+.slot figcaption{ display:block; }
+.slot__label{
+  display:block;
+  font-size:15.5px;
+  font-weight:700;
+  color:var(--ink);
+  letter-spacing:-.01em;
+}
+.slot__sub{
+  display:block;
+  margin-top:5px;
+  font-size:13.5px;
+  color:var(--slate);
+  max-width:24em;
+}
+.slot__tag{
+  position:absolute;
+  top:12px; left:12px;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--brand-dk);
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:5px 11px;
+}
+
+/* ---------- 6. Cómo trabajamos ---------- */
+.steps{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+  gap:26px;
+  counter-reset:step;
+}
+.step{
+  position:relative;
+  background:rgba(255,255,255,.055);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:var(--r);
+  padding:30px 28px 32px;
+}
+.step__n{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:44px; height:44px;
+  border-radius:50%;
+  background:var(--ochre);
+  color:#2a1c05;
+  font-weight:700;
+  font-size:19px;
+  margin-bottom:20px;
+}
+.step h3{ color:#fff; font-size:20px; margin-bottom:10px; }
+.step p{ color:#b7c3cd; font-size:16px; }
+
+/* ---------- 7. Contacto ---------- */
+.contact{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);
+  gap:46px;
+  align-items:start;
+}
+.contact-list{ display:grid; gap:14px; }
+.c-item{
+  display:flex;
+  gap:16px;
+  align-items:flex-start;
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:var(--r-s);
+  padding:18px 20px;
+  box-shadow:var(--shadow-s);
+}
+.c-item__ico{
+  width:42px; height:42px;
+  flex:0 0 auto;
+  border-radius:11px;
+  background:var(--brand-lt);
+  display:flex; align-items:center; justify-content:center;
+}
+.c-item__k{
+  display:block;
+  font-size:11.5px;
+  font-weight:600;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--slate);
+  margin-bottom:4px;
+}
+.c-item__v{
+  font-size:18px;
+  font-weight:600;
+  color:var(--ink);
+  text-decoration:none;
+  line-height:1.4;
+  word-break:break-word;
+}
+a.c-item__v:hover{ color:var(--brand-dk); text-decoration:underline; }
+.c-item__v small{
+  display:block;
+  font-size:14.5px;
+  font-weight:400;
+  color:var(--slate);
+  margin-top:2px;
+}
+.contact-actions{ margin-top:22px; display:flex; flex-wrap:wrap; gap:12px; }
+
+.map-card{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:var(--r);
+  overflow:hidden;
+  box-shadow:var(--shadow-m);
+}
+.map-card svg{ display:block; width:100%; height:auto; }
+.map-card__foot{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px 16px;
+  align-items:baseline;
+  justify-content:space-between;
+  padding:14px 18px;
+  border-top:1px solid var(--line);
+  font-size:14px;
+  color:var(--slate);
+  background:#fbfaf8;
+}
+.map-card__foot b{ color:var(--ink); font-size:15px; }
+
+/* ---------- 8. Pie ---------- */
+.site-foot{
+  background:var(--ink);
+  color:#aebbc6;
+  padding:60px 0 34px;
+  font-size:15.5px;
+}
+.foot-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr);
+  gap:38px;
+  padding-bottom:34px;
+  border-bottom:1px solid rgba(255,255,255,.14);
+}
+.site-foot h4{
+  color:#fff;
+  font-size:13px;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  margin-bottom:14px;
+  font-weight:600;
+}
+.site-foot a{ color:#dce5eb; text-decoration:none; word-break:break-word; }
+.site-foot a:hover{ color:#fff; text-decoration:underline; }
+.foot-list{ list-style:none; margin:0; padding:0; display:grid; gap:8px; }
+.foot-brand .brand__name{ color:#fff; }
+.foot-brand .brand__tag{ color:#8d9daa; }
+.foot-brand p{ margin-top:16px; color:#9fadb9; max-width:30em; }
+.foot-bottom{
+  padding-top:26px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px 24px;
+  justify-content:space-between;
+  align-items:center;
+  font-size:14px;
+  color:#8d9daa;
+}
+.studio-credit{
+  display:inline-block;
+  color:#e8eef2;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:999px;
+  padding:9px 16px;
+  font-size:14px;
+  line-height:1.45;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1080px){
+  .hero__in{ gap:40px; }
+  .nav{ gap:20px; }
+}
+
+@media (max-width:900px){
+  .hero__in{ grid-template-columns:minmax(0,1fr); padding:56px 24px 60px; }
+  .hero__art{ order:-1; max-width:520px; }
+  .cards,.steps{ grid-template-columns:minmax(0,1fr); }
+  .contact{ grid-template-columns:minmax(0,1fr); gap:32px; }
+  .gallery{ grid-template-columns:repeat(2, minmax(0,1fr)); }
+  .slot,.slot--wide,.slot--tall{ grid-column:span 1; min-height:210px; }
+  .foot-grid{ grid-template-columns:minmax(0,1fr) minmax(0,1fr); }
+  .nav{ display:none; }
+}
+
+@media (max-width:640px){
+  body{ font-size:16px; }
+  .wrap,.site-head__in,.hero__in{ padding-left:18px; padding-right:18px; }
+  .section{ padding:58px 0; }
+  .s-head{ margin-bottom:32px; }
+  .head-cta .btn span{ display:none; }
+  .head-cta .btn{ padding:11px 14px; }
+  .brand__name{ font-size:16.5px; }
+  .brand__tag{ font-size:10.5px; letter-spacing:.1em; }
+  .hero__lead{ font-size:17px; }
+  .hero__actions .btn{ width:100%; }
+  .gallery{ grid-template-columns:minmax(0,1fr); gap:16px; }
+  .slot,.slot--wide,.slot--tall{ min-height:190px; }
+  .card{ padding:26px 22px 28px; }
+  .step{ padding:26px 22px 28px; }
+  .foot-grid{ grid-template-columns:minmax(0,1fr); gap:30px; }
+  .contact-actions .btn{ width:100%; }
+  .c-item__v{ font-size:16px; }
+  .c-item{ padding:16px 16px; gap:13px; }
+  .proposal-bar{ font-size:11px; letter-spacing:.04em; padding:9px 14px; }
+}
+</style>
+</head>
+<body>
+
+<!-- =============== BARRA FIJA DE PROPUESTA =============== -->
+<div class="proposal-bar" id="proposalBar">
+  Propuesta de diseño · maqueta no oficial · <strong>FFFFFFstudio</strong> · Ángel Rubio
+</div>
+
+<!-- =============== CABECERA =============== -->
+<header class="site-head">
+  <div class="site-head__in">
+    <div class="brand">
+      <span class="brand__mark" aria-hidden="true">
+        <svg width="42" height="42" viewBox="0 0 42 42" role="img">
+          <rect x="0" y="0" width="42" height="42" rx="11" fill="#0f5f6b"/>
+          <path d="M8 26h26v3.2a3 3 0 0 1-3 3H11a3 3 0 0 1-3-3V26z" fill="#d9a13b"/>
+          <path d="M8 26 13 13h16l5 13H8z" fill="#ffffff"/>
+          <path d="M16.2 13h4.3l-2.6 13h-4.3l2.6-13zM25.1 13h4.3l-2.6 13h-4.3l2.6-13z" fill="#c9542b"/>
+        </svg>
+      </span>
+      <span class="brand__txt">
+        <span class="brand__name">Pinturas y Toldos Brochacolor</span>
+        <span class="brand__tag">Ciudad Rodrigo · Salamanca</span>
+      </span>
+    </div>
+
+    <nav class="nav" aria-label="Navegación principal">
+      <a href="#servicios">Servicios</a>
+      <a href="#trabajos">Trabajos</a>
+      <a href="#proceso">Cómo trabajamos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+
+    <div class="head-cta">
+      <a class="btn btn--primary btn--sm" href="tel:+34923481809">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M6.6 3h3l1.5 4.2-2.1 1.5a12 12 0 0 0 6.3 6.3l1.5-2.1L21 14.4v3A3.6 3.6 0 0 1 17.4 21C10 20.4 3.6 14 3 6.6A3.6 3.6 0 0 1 6.6 3z" stroke="#fff" stroke-width="1.9" stroke-linejoin="round"/>
+        </svg>
+        <span>923 48 18 09</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- =============== HERO =============== -->
+<section class="hero" aria-labelledby="hero-t">
+  <div class="hero__in">
+    <div class="hero__txt">
+      <span class="eyebrow"><span class="eyebrow__dot"></span>Pintura · Decoración · Toldos</span>
+      <h1 id="hero-t">Pintamos, decoramos y ponemos <em>sombra</em> donde hace falta.</h1>
+      <p class="hero__lead">
+        Pinturas y Toldos Brochacolor trabaja en Ciudad Rodrigo y alrededores:
+        pintura interior y exterior, decoración e instalación de toldos.
+        Cuéntenos qué necesita y lo vemos sobre el terreno.
+      </p>
+
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="tel:+34923481809">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6.6 3h3l1.5 4.2-2.1 1.5a12 12 0 0 0 6.3 6.3l1.5-2.1L21 14.4v3A3.6 3.6 0 0 1 17.4 21C10 20.4 3.6 14 3 6.6A3.6 3.6 0 0 1 6.6 3z" stroke="#fff" stroke-width="1.9" stroke-linejoin="round"/>
+          </svg>
+          Llamar al 923 48 18 09
+        </a>
+        <a class="btn btn--ghost" href="#servicios">Ver qué hacemos</a>
+      </div>
+
+      <div class="hero__note">
+        <span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z" stroke="#5b6b7a" stroke-width="1.8" stroke-linejoin="round"/>
+            <circle cx="12" cy="10" r="2.4" stroke="#5b6b7a" stroke-width="1.8"/>
+          </svg>
+          Avda. España, 19 · Ciudad Rodrigo
+        </span>
+        <span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6.6 3h3l1.5 4.2-2.1 1.5a12 12 0 0 0 6.3 6.3l1.5-2.1L21 14.4v3A3.6 3.6 0 0 1 17.4 21C10 20.4 3.6 14 3 6.6A3.6 3.6 0 0 1 6.6 3z" stroke="#5b6b7a" stroke-width="1.8" stroke-linejoin="round"/>
+          </svg>
+          También en el 625 280 169
+        </span>
+      </div>
+    </div>
+
+    <!-- Ilustración CSS/SVG: fachada con toldo y brocha. Sin fotografías. -->
+    <div class="hero__art" aria-hidden="true">
+      <svg viewBox="0 0 560 440" role="presentation">
+        <defs>
+          <linearGradient id="gWall" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#ffffff"/>
+            <stop offset="1" stop-color="#ece6dc"/>
+          </linearGradient>
+          <linearGradient id="gPaint" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#1b7985"/>
+            <stop offset="1" stop-color="#0a4650"/>
+          </linearGradient>
+          <linearGradient id="gSky" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#f6f1e7"/>
+            <stop offset="1" stop-color="#e6eef0"/>
+          </linearGradient>
+        </defs>
+
+        <rect x="0" y="0" width="560" height="440" rx="22" fill="url(#gSky)"/>
+
+        <!-- fachada -->
+        <rect x="52" y="54" width="456" height="332" rx="14" fill="url(#gWall)" stroke="#dcd5c9" stroke-width="2"/>
+
+        <!-- franja pintada (muestra de color) -->
+        <path d="M52 250h456v122a14 14 0 0 1-14 14H66a14 14 0 0 1-14-14V250z" fill="url(#gPaint)"/>
+        <path d="M52 250c38 0 44-13 76-13s40 13 76 13 44-14 76-14 40 14 76 14 44-12 76-12h20v16H52v-4z" fill="#0f5f6b" opacity=".55"/>
+
+        <!-- ventana izquierda con toldo a rayas -->
+        <rect x="92" y="112" width="140" height="104" rx="6" fill="#dfe8ea" stroke="#c6d2d5" stroke-width="2"/>
+        <rect x="92" y="112" width="140" height="104" rx="6" fill="none" stroke="#b8c6ca" stroke-width="2"/>
+        <line x1="162" y1="112" x2="162" y2="216" stroke="#b8c6ca" stroke-width="2"/>
+        <g>
+          <path d="M82 104h160l16 46H66l16-46z" fill="#c9542b"/>
+          <path d="M112 104h22l-14 46h-22l14-46z" fill="#f3e3d7"/>
+          <path d="M168 104h22l-14 46h-22l14-46z" fill="#f3e3d7"/>
+          <path d="M224 104h18l10 46h-22l-6-46z" fill="#f3e3d7"/>
+          <path d="M66 150h192v9a5 5 0 0 1-5 5H71a5 5 0 0 1-5-5v-9z" fill="#a8411f"/>
+        </g>
+
+        <!-- ventana derecha -->
+        <rect x="312" y="112" width="140" height="104" rx="6" fill="#eef2f3" stroke="#c6d2d5" stroke-width="2"/>
+        <line x1="382" y1="112" x2="382" y2="216" stroke="#c6d2d5" stroke-width="2"/>
+        <line x1="312" y1="164" x2="452" y2="164" stroke="#c6d2d5" stroke-width="2"/>
+
+        <!-- rodillo -->
+        <g>
+          <rect x="300" y="286" width="150" height="34" rx="8" fill="#f6f1e7" stroke="#d6cec1" stroke-width="2"/>
+          <rect x="312" y="296" width="126" height="14" rx="7" fill="#d9a13b"/>
+          <path d="M374 320v30h-9a9 9 0 0 0-9 9v18" stroke="#2c3a47" stroke-width="7" fill="none" stroke-linecap="round"/>
+        </g>
+
+        <!-- brocha -->
+        <g transform="rotate(-18 150 330)">
+          <rect x="116" y="300" width="18" height="74" rx="6" fill="#2c3a47"/>
+          <rect x="112" y="368" width="26" height="16" rx="4" fill="#9aa6b1"/>
+          <path d="M110 382h30l4 34h-38l4-34z" fill="#f6f1e7" stroke="#d6cec1" stroke-width="2"/>
+        </g>
+
+        <!-- muestras de color -->
+        <g>
+          <circle cx="474" cy="302" r="17" fill="#0f5f6b"/>
+          <circle cx="474" cy="344" r="17" fill="#c9542b"/>
+          <circle cx="474" cy="386" r="17" fill="#d9a13b"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- =============== SERVICIOS =============== -->
+<section class="section" id="servicios" aria-labelledby="serv-t">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="eyebrow"><span class="eyebrow__dot"></span>Servicios</span>
+      <h2 id="serv-t">Tres oficios, un mismo equipo</h2>
+      <p>Lo que hace falta en una casa, un local o una comunidad: dar color, cuidar el acabado y resolver la sombra.</p>
+    </div>
+
+    <div class="cards">
+      <article class="card">
+        <span class="card__icon card__icon--a" aria-hidden="true">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="4" width="18" height="6" rx="2" stroke="#0f5f6b" stroke-width="1.8"/>
+            <path d="M12 10v3.5a2 2 0 0 0 2 2h2" stroke="#0f5f6b" stroke-width="1.8"/>
+            <rect x="14" y="13" width="6" height="8" rx="2" stroke="#0f5f6b" stroke-width="1.8"/>
+          </svg>
+        </span>
+        <h3>Pintura interior y exterior</h3>
+        <p>Pintado de viviendas, locales, portales y fachadas, con preparación previa de las superficies y protección de lo que no se pinta.</p>
+        <ul>
+          <li>Paredes y techos</li>
+          <li>Fachadas y exteriores</li>
+          <li>Portales y zonas comunes</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <span class="card__icon card__icon--b" aria-hidden="true">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+            <path d="M4 20c0-3 2-4 4-5l8-8 3 3-8 8c-1 2-2 4-5 4H4z" stroke="#b07a14" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M15 5l2-2 4 4-2 2-4-4z" stroke="#b07a14" stroke-width="1.8" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <h3>Decoración</h3>
+        <p>Acabados y soluciones decorativas para cambiar el carácter de una estancia: elección de color, texturas y revestimientos de pared.</p>
+        <ul>
+          <li>Asesoramiento de color</li>
+          <li>Acabados y texturas</li>
+          <li>Revestimientos de pared</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <span class="card__icon card__icon--c" aria-hidden="true">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+            <path d="M3 12l9-7 9 7H3z" stroke="#a8411f" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M3 12h18M9 12l-1 4M15 12l1 4" stroke="#a8411f" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M5 20h14" stroke="#a8411f" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <h3>Toldos</h3>
+        <p>Toldos para terrazas, balcones, ventanas y locales. Medición en el sitio, montaje e instalación, y mantenimiento de los que ya están puestos.</p>
+        <ul>
+          <li>Terrazas y balcones</li>
+          <li>Ventanas y escaparates</li>
+          <li>Reparación y cambio de lona</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- =============== GALERÍA (HUECOS DE MAQUETA) =============== -->
+<section class="section section--tint" id="trabajos" aria-labelledby="gal-t">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="eyebrow"><span class="eyebrow__dot"></span>Trabajos</span>
+      <h2 id="gal-t">Antes y después: aquí es donde se vende el trabajo</h2>
+      <p>Un negocio de pintura y toldos se explica mejor con imágenes. Estos marcos son los huecos reservados para sus propias fotos.</p>
+    </div>
+
+    <div class="gallery-note">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="12" cy="12" r="9" stroke="#c9542b" stroke-width="1.8"/>
+        <path d="M12 8h.01M12 11v5" stroke="#c9542b" stroke-width="1.9" stroke-linecap="round"/>
+      </svg>
+      <p><strong>Es una maqueta.</strong> No hemos puesto ninguna foto: los huecos van vacíos a propósito y se rellenarían con fotografías reales de sus trabajos, hechas con el móvil en obra.</p>
+    </div>
+
+    <div class="gallery">
+      <figure class="slot slot--wide">
+        <span class="slot__tag">Antes</span>
+        <span class="slot__ico" aria-hidden="true">
+          <svg width="42" height="42" viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="5" width="18" height="14" rx="2.5" stroke="#5b6b7a" stroke-width="1.6"/>
+            <circle cx="9" cy="10" r="1.8" stroke="#5b6b7a" stroke-width="1.6"/>
+            <path d="M4 17l5-4.5 4 3.5 3-2.5 4 3.5" stroke="#5b6b7a" stroke-width="1.6" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <figcaption>
+          <span class="slot__label">Foto de un trabajo vuestro</span>
+          <span class="slot__sub">Fachada o estancia antes de empezar</span>
+        </figcaption>
+      </figure>
+
+      <figure class="slot slot--tall">
+        <span class="slot__tag">Después</span>
+        <span class="slot__ico" aria-hidden="true">
+          <svg width="42" height="42" viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="5" width="18" height="14" rx="2.5" stroke="#5b6b7a" stroke-width="1.6"/>
+            <circle cx="9" cy="10" r="1.8" stroke="#5b6b7a" stroke-width="1.6"/>
+            <path d="M4 17l5-4.5 4 3.5 3-2.5 4 3.5" stroke="#5b6b7a" stroke-width="1.6" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <figcaption>
+          <span class="slot__label">Foto de un trabajo vuestro</span>
+          <span class="slot__sub">El mismo sitio, ya terminado</span>
+        </figcaption>
+      </figure>
+
+      <figure class="slot">
+        <span class="slot__tag">Pintura</span>
+        <span class="slot__ico" aria-hidden="true">
+          <svg width="38" height="38" viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="5" width="18" height="14" rx="2.5" stroke="#5b6b7a" stroke-width="1.6"/>
+            <path d="M4 17l5-4.5 4 3.5 3-2.5 4 3.5" stroke="#5b6b7a" stroke-width="1.6" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <figcaption>
+          <span class="slot__label">Foto de un trabajo vuestro</span>
+          <span class="slot__sub">Interior pintado</span>
+        </figcaption>
+      </figure>
+
+      <figure class="slot">
+        <span class="slot__tag">Toldo</span>
+        <span class="slot__ico" aria-hidden="true">
+          <svg width="38" height="38" viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="5" width="18" height="14" rx="2.5" stroke="#5b6b7a" stroke-width="1.6"/>
+            <path d="M4 17l5-4.5 4 3.5 3-2.5 4 3.5" stroke="#5b6b7a" stroke-width="1.6" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <figcaption>
+          <span class="slot__label">Foto de un trabajo vuestro</span>
+          <span class="slot__sub">Toldo instalado</span>
+        </figcaption>
+      </figure>
+
+      <figure class="slot">
+        <span class="slot__tag">Detalle</span>
+        <span class="slot__ico" aria-hidden="true">
+          <svg width="38" height="38" viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="5" width="18" height="14" rx="2.5" stroke="#5b6b7a" stroke-width="1.6"/>
+            <path d="M4 17l5-4.5 4 3.5 3-2.5 4 3.5" stroke="#5b6b7a" stroke-width="1.6" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <figcaption>
+          <span class="slot__label">Foto de un trabajo vuestro</span>
+          <span class="slot__sub">Detalle del acabado</span>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- =============== CÓMO TRABAJAMOS =============== -->
+<section class="section section--dark" id="proceso" aria-labelledby="proc-t">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="eyebrow"><span class="eyebrow__dot"></span>Cómo trabajamos</span>
+      <h2 id="proc-t">Tres pasos, sin sorpresas</h2>
+      <p>Del primer teléfono al trabajo terminado, siempre igual.</p>
+    </div>
+
+    <div class="steps">
+      <article class="step">
+        <span class="step__n" aria-hidden="true">1</span>
+        <h3>Visita</h3>
+        <p>Nos llama y pasamos a ver el sitio. Medimos, miramos el estado de las superficies y escuchamos qué tiene en mente.</p>
+      </article>
+      <article class="step">
+        <span class="step__n" aria-hidden="true">2</span>
+        <h3>Presupuesto</h3>
+        <p>Le preparamos un presupuesto por escrito con lo que incluye cada partida, para que decida con la información delante.</p>
+      </article>
+      <article class="step">
+        <span class="step__n" aria-hidden="true">3</span>
+        <h3>Ejecución</h3>
+        <p>Si da el visto bueno, hacemos el trabajo protegiendo muebles y suelos, y lo dejamos todo recogido al acabar.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- =============== CONTACTO =============== -->
+<section class="section" id="contacto" aria-labelledby="cont-t">
+  <div class="wrap">
+    <div class="s-head">
+      <span class="eyebrow"><span class="eyebrow__dot"></span>Contacto</span>
+      <h2 id="cont-t">Llámenos y lo vemos</h2>
+      <p>Estamos en Avda. España, 19, en Ciudad Rodrigo. Lo más rápido es una llamada.</p>
+    </div>
+
+    <div class="contact">
+      <div>
+        <div class="contact-list">
+          <div class="c-item">
+            <span class="c-item__ico" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M6.6 3h3l1.5 4.2-2.1 1.5a12 12 0 0 0 6.3 6.3l1.5-2.1L21 14.4v3A3.6 3.6 0 0 1 17.4 21C10 20.4 3.6 14 3 6.6A3.6 3.6 0 0 1 6.6 3z" stroke="#0f5f6b" stroke-width="1.8" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span>
+              <span class="c-item__k">Teléfono fijo</span>
+              <a class="c-item__v" href="tel:+34923481809">923 48 18 09</a>
+            </span>
+          </div>
+
+          <div class="c-item">
+            <span class="c-item__ico" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <rect x="6" y="2.5" width="12" height="19" rx="3" stroke="#0f5f6b" stroke-width="1.8"/>
+                <path d="M10.5 18.5h3" stroke="#0f5f6b" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <span>
+              <span class="c-item__k">Móvil</span>
+              <a class="c-item__v" href="tel:+34625280169">625 280 169</a>
+            </span>
+          </div>
+
+          <div class="c-item">
+            <span class="c-item__ico" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z" stroke="#0f5f6b" stroke-width="1.8" stroke-linejoin="round"/>
+                <circle cx="12" cy="10" r="2.4" stroke="#0f5f6b" stroke-width="1.8"/>
+              </svg>
+            </span>
+            <span>
+              <span class="c-item__k">Dirección</span>
+              <span class="c-item__v">Avda. España, 19<small>37500 Ciudad Rodrigo (Salamanca)</small></span>
+            </span>
+          </div>
+
+          <div class="c-item">
+            <span class="c-item__ico" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="9" stroke="#0f5f6b" stroke-width="1.8"/>
+                <path d="M12 7.5V12l3.2 2" stroke="#0f5f6b" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <span>
+              <span class="c-item__k">Horario</span>
+              <span class="c-item__v">Consultar horario</span>
+            </span>
+          </div>
+
+          <div class="c-item">
+            <span class="c-item__ico" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="5.5" width="18" height="13" rx="2.5" stroke="#0f5f6b" stroke-width="1.8"/>
+                <path d="M4 7l8 6 8-6" stroke="#0f5f6b" stroke-width="1.8" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span>
+              <span class="c-item__k">Correo</span>
+              <a class="c-item__v" href="mailto:pilarbrochacolor@hotmail.com">pilarbrochacolor@hotmail.com</a>
+            </span>
+          </div>
+        </div>
+
+        <div class="contact-actions">
+          <a class="btn btn--primary" href="tel:+34923481809">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6.6 3h3l1.5 4.2-2.1 1.5a12 12 0 0 0 6.3 6.3l1.5-2.1L21 14.4v3A3.6 3.6 0 0 1 17.4 21C10 20.4 3.6 14 3 6.6A3.6 3.6 0 0 1 6.6 3z" stroke="#fff" stroke-width="1.9" stroke-linejoin="round"/>
+            </svg>
+            Llamar al 923 48 18 09
+          </a>
+          <a class="btn btn--ghost" href="tel:+34625280169">Llamar al móvil</a>
+        </div>
+      </div>
+
+      <!-- Mapa esquemático en SVG: calles abstractas, no un mapa real -->
+      <div class="map-card">
+        <svg viewBox="0 0 620 400" role="img" aria-label="Plano esquemático con un marcador en la Avenida de España">
+          <rect x="0" y="0" width="620" height="400" fill="#eef1ec"/>
+
+          <!-- manzanas -->
+          <g fill="#e2e7de">
+            <rect x="26" y="26" width="176" height="118" rx="7"/>
+            <rect x="238" y="26" width="140" height="118" rx="7"/>
+            <rect x="414" y="26" width="180" height="118" rx="7"/>
+            <rect x="26" y="252" width="176" height="122" rx="7"/>
+            <rect x="238" y="252" width="140" height="122" rx="7"/>
+            <rect x="414" y="252" width="180" height="122" rx="7"/>
+            <rect x="26" y="180" width="176" height="36" rx="6"/>
+            <rect x="414" y="180" width="180" height="36" rx="6"/>
+          </g>
+
+          <!-- zona verde -->
+          <g>
+            <rect x="238" y="266" width="140" height="94" rx="9" fill="#d3e2cd"/>
+            <circle cx="276" cy="300" r="11" fill="#b7d0ae"/>
+            <circle cx="320" cy="328" r="14" fill="#b7d0ae"/>
+            <circle cx="352" cy="292" r="9" fill="#b7d0ae"/>
+          </g>
+
+          <!-- avenida principal (horizontal) -->
+          <rect x="0" y="152" width="620" height="72" fill="#ffffff"/>
+          <line x1="0" y1="188" x2="620" y2="188" stroke="#d9a13b" stroke-width="3" stroke-dasharray="22 16"/>
+
+          <!-- calles verticales -->
+          <rect x="202" y="0" width="38" height="400" fill="#ffffff"/>
+          <rect x="378" y="0" width="38" height="400" fill="#ffffff"/>
+          <line x1="221" y1="0" x2="221" y2="400" stroke="#e3e7df" stroke-width="2" stroke-dasharray="14 12"/>
+          <line x1="397" y1="0" x2="397" y2="400" stroke="#e3e7df" stroke-width="2" stroke-dasharray="14 12"/>
+
+          <!-- etiqueta de la avenida -->
+          <text x="34" y="144" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif" font-size="15" font-weight="600" fill="#6b7a69" letter-spacing="1.6">AVDA. ESPAÑA</text>
+
+          <!-- marcador -->
+          <g>
+            <ellipse cx="300" cy="206" rx="22" ry="7" fill="#15202b" opacity=".16"/>
+            <path d="M300 112c-20 0-36 16-36 36 0 26 36 58 36 58s36-32 36-58c0-20-16-36-36-36z" fill="#c9542b"/>
+            <circle cx="300" cy="147" r="13" fill="#ffffff"/>
+            <rect x="294" y="141" width="12" height="12" rx="2" fill="#c9542b"/>
+          </g>
+          <g>
+            <rect x="344" y="118" width="224" height="48" rx="10" fill="#ffffff" stroke="#dfe4e8" stroke-width="2"/>
+            <text x="360" y="139" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif" font-size="15" font-weight="700" fill="#15202b">Brochacolor</text>
+            <text x="360" y="157" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif" font-size="13" fill="#5b6b7a">Avda. España, 19</text>
+          </g>
+        </svg>
+        <div class="map-card__foot">
+          <span><b>Avda. España, 19</b> · 37500 Ciudad Rodrigo (Salamanca)</span>
+          <span>Plano esquemático, no a escala</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============== PIE =============== -->
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="brand">
+          <span class="brand__mark" aria-hidden="true">
+            <svg width="38" height="38" viewBox="0 0 42 42" role="img">
+              <rect x="0" y="0" width="42" height="42" rx="11" fill="#1b7985"/>
+              <path d="M8 26h26v3.2a3 3 0 0 1-3 3H11a3 3 0 0 1-3-3V26z" fill="#d9a13b"/>
+              <path d="M8 26 13 13h16l5 13H8z" fill="#ffffff"/>
+              <path d="M16.2 13h4.3l-2.6 13h-4.3l2.6-13zM25.1 13h4.3l-2.6 13h-4.3l2.6-13z" fill="#c9542b"/>
+            </svg>
+          </span>
+          <span class="brand__txt">
+            <span class="brand__name">Pinturas y Toldos Brochacolor</span>
+            <span class="brand__tag">Pintura · Decoración · Toldos</span>
+          </span>
+        </div>
+        <p>Avda. España, 19 — 37500 Ciudad Rodrigo (Salamanca).</p>
+      </div>
+
+      <div>
+        <h4>Contacto</h4>
+        <ul class="foot-list">
+          <li><a href="tel:+34923481809">923 48 18 09</a></li>
+          <li><a href="tel:+34625280169">625 280 169</a></li>
+          <li><a href="mailto:pilarbrochacolor@hotmail.com">pilarbrochacolor@hotmail.com</a></li>
+          <li>Consultar horario</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Secciones</h4>
+        <ul class="foot-list">
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#trabajos">Trabajos</a></li>
+          <li><a href="#proceso">Cómo trabajamos</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <span class="studio-credit">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</span>
+      <span>Maqueta de demostración. Sin fotografías ni datos añadidos.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* La barra fija puede ocupar una o dos líneas según el ancho:
+   ajustamos el espacio superior del contenido a su altura real. */
+(function () {
+  var bar = document.getElementById('proposalBar');
+  if (!bar) return;
+  function fit() {
+    var h = bar.offsetHeight;
+    document.documentElement.style.setProperty('--bar', h + 'px');
+  }
+  fit();
+  window.addEventListener('resize', fit);
+  window.addEventListener('orientationchange', fit);
+  if (document.fonts && document.fonts.ready) { document.fonts.ready.then(fit); }
+})();
+</script>
+
+</body>
+</html>

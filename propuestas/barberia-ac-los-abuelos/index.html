@@ -1,0 +1,979 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Barbería AC Los Abuelos · Arucas</title>
+<meta name="description" content="Maqueta de propuesta de landing page para Barbería AC Los Abuelos, Arucas (Las Palmas). Corte, barba y cejas a hilo.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+
+  :root{
+    --ink:        #100E0C;
+    --ink-2:      #191613;
+    --ink-3:      #231F1A;
+    --cream:      #F5F0E8;
+    --cream-2:    #EAE2D5;
+    --brass:      #D4A94A;
+    --brass-dark: #8A6A20;
+    --text-dark:  #DCD5C9;
+    --muted-dark: #A49A8C;
+    --muted-light:#6B6256;
+    --line-dark:  rgba(212,169,74,.22);
+    --line-light: rgba(16,14,12,.14);
+    --bar-h:      40px;
+    --maxw:       1160px;
+    --r:          14px;
+  }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  html, body { max-width: 100%; overflow-x: hidden; }
+
+  body{
+    margin:0;
+    background: var(--ink);
+    color: var(--text-dark);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    padding-top: var(--bar-h);
+  }
+
+  img, svg { max-width: 100%; }
+  a { color: inherit; }
+
+  /* ---------- barra fija de propuesta ---------- */
+  .propuesta-bar{
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 999;
+    min-height: var(--bar-h);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 7px 14px;
+    background: #0A0908;
+    border-bottom: 1px solid var(--line-dark);
+    color: var(--brass);
+    font-size: 11.5px;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    line-height: 1.35;
+  }
+
+  .wrap{
+    width: 100%;
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- tipografía ---------- */
+  h1, h2, h3 {
+    margin: 0;
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.015em;
+  }
+  h1 { font-size: clamp(2.25rem, 6.2vw, 4.15rem); }
+  h2 { font-size: clamp(1.7rem, 3.9vw, 2.6rem); }
+  h3 { font-size: 1.16rem; letter-spacing: 0; line-height: 1.3; }
+  p  { margin: 0; }
+
+  .eyebrow{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--brass);
+    margin: 0 0 20px;
+  }
+  .eyebrow::before{
+    content:"";
+    width: 30px; height: 1px;
+    background: var(--brass);
+    opacity: .65;
+    flex: none;
+  }
+  .eyebrow--light { color: var(--brass-dark); }
+  .eyebrow--light::before { background: var(--brass-dark); }
+
+  .lead{
+    font-size: clamp(1rem, 1.6vw, 1.14rem);
+    color: var(--muted-dark);
+    max-width: 54ch;
+  }
+  .lead--light { color: var(--muted-light); }
+
+  /* ---------- botones ---------- */
+  .btn{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 26px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .02em;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform .18s ease, background .18s ease, border-color .18s ease, color .18s ease;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn:focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; }
+  .btn--primary{
+    background: linear-gradient(135deg, #E8C268, var(--brass) 55%, #AE8528);
+    color: #171310;
+    box-shadow: 0 10px 26px -12px rgba(212,169,74,.6);
+  }
+  .btn--ghost{
+    border-color: rgba(220,213,201,.3);
+    color: var(--cream);
+  }
+  .btn--ghost:hover { border-color: var(--brass); color: var(--brass); }
+  .btn svg { flex: none; }
+
+  /* ---------- cabecera ---------- */
+  .site-head{
+    position: relative;
+    z-index: 5;
+    padding: 22px 0 6px;
+  }
+  .site-head__row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+  .brand{
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    min-width: 0;
+  }
+  .brand__name{
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    color: var(--cream);
+    line-height: 1.25;
+  }
+  .brand__sub{
+    display: block;
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: .22em;
+    color: var(--brass);
+  }
+  .site-nav{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+  .site-nav a{
+    font-size: 13.5px;
+    font-weight: 600;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    color: var(--muted-dark);
+    text-decoration: none;
+    transition: color .18s ease;
+  }
+  .site-nav a:hover { color: var(--brass); }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position: relative;
+    overflow: hidden;
+    padding: 56px 0 84px;
+  }
+  .hero::before{
+    content:"";
+    position: absolute;
+    top: -220px; left: 50%;
+    width: 900px; height: 900px;
+    transform: translateX(-50%);
+    background: radial-gradient(circle at 50% 50%, rgba(212,169,74,.17), rgba(212,169,74,0) 62%);
+    pointer-events: none;
+  }
+  .hero__grid{
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+    gap: 56px;
+    align-items: center;
+  }
+  .hero h1 { color: var(--cream); }
+  .hero h1 em{
+    display: block;
+    font-style: normal;
+    background: linear-gradient(100deg, #F0D28A, var(--brass) 48%, #9C7523);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .hero__lead { margin-top: 24px; }
+  .hero__actions{
+    margin-top: 34px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .hero__note{
+    margin-top: 22px;
+    font-size: 13.5px;
+    color: var(--muted-dark);
+  }
+  .hero__note strong { color: var(--cream); font-weight: 600; }
+
+  .hero__art{
+    position: relative;
+    aspect-ratio: 4 / 5;
+    border-radius: 20px;
+    border: 1px solid var(--line-dark);
+    background:
+      radial-gradient(120% 90% at 20% 0%, rgba(212,169,74,.15), rgba(212,169,74,0) 60%),
+      linear-gradient(160deg, var(--ink-3), #0C0A09);
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+  }
+  .hero__art svg { width: 76%; height: auto; display: block; }
+
+  /* ---------- tira de rasgos ---------- */
+  .strip{
+    border-top: 1px solid rgba(220,213,201,.1);
+    border-bottom: 1px solid rgba(220,213,201,.1);
+    background: #0C0A09;
+    padding: 20px 0;
+  }
+  .strip__row{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 40px;
+    justify-content: center;
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    color: var(--muted-dark);
+  }
+  .strip__row span{ display: inline-flex; align-items: center; gap: 9px; }
+  .strip__dot{ width: 5px; height: 5px; border-radius: 50%; background: var(--brass); flex: none; }
+
+  /* ---------- secciones ---------- */
+  section { padding: 84px 0; }
+  .sec-light{ background: var(--cream); color: var(--ink); }
+  .sec-light h2 { color: var(--ink); }
+  .sec-dark h2 { color: var(--cream); }
+  .sec-head{ max-width: 58ch; margin-bottom: 48px; }
+  .sec-head p { margin-top: 18px; }
+
+  /* servicios */
+  .cards{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap: 22px;
+  }
+  .card{
+    background: #FFFDF9;
+    border: 1px solid var(--line-light);
+    border-radius: var(--r);
+    padding: 30px 26px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .card:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px -26px rgba(16,14,12,.45);
+  }
+  .card__icon{
+    width: 54px; height: 54px;
+    border-radius: 13px;
+    display: grid; place-items: center;
+    background: linear-gradient(145deg, var(--ink-3), var(--ink));
+    border: 1px solid rgba(212,169,74,.3);
+    flex: none;
+  }
+  .card__icon svg { width: 28px; height: 28px; display: block; }
+  .card h3 { color: var(--ink); }
+  .card p { color: var(--muted-light); font-size: 15.5px; }
+  .card__tag{
+    margin-top: auto;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--brass-dark);
+  }
+  .nota-precios{
+    margin-top: 32px;
+    font-size: 14px;
+    color: var(--muted-light);
+    border-left: 3px solid var(--brass);
+    padding-left: 16px;
+    max-width: 62ch;
+  }
+
+  /* pasos */
+  .steps{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap: 22px;
+    counter-reset: paso;
+  }
+  .step{
+    position: relative;
+    padding: 30px 26px;
+    border-radius: var(--r);
+    border: 1px solid var(--line-dark);
+    background: linear-gradient(170deg, var(--ink-2), #0C0A09);
+  }
+  .step__num{
+    display: grid;
+    place-items: center;
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    border: 1px solid rgba(212,169,74,.4);
+    color: var(--brass);
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 18px;
+  }
+  .step h3 { color: var(--cream); margin-bottom: 10px; }
+  .step p { color: var(--muted-dark); font-size: 15.5px; }
+
+  /* contacto */
+  .contact-grid{
+    display: grid;
+    grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
+    gap: 44px;
+    align-items: start;
+  }
+  .info-list{
+    list-style: none;
+    margin: 0 0 30px;
+    padding: 0;
+    display: grid;
+    gap: 2px;
+  }
+  .info-list li{
+    display: flex;
+    gap: 16px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--line-light);
+    align-items: flex-start;
+  }
+  .info-list li:first-child { border-top: 1px solid var(--line-light); }
+  .info-ico{
+    width: 38px; height: 38px;
+    flex: none;
+    border-radius: 10px;
+    display: grid; place-items: center;
+    background: rgba(16,14,12,.06);
+    border: 1px solid var(--line-light);
+  }
+  .info-ico svg { width: 19px; height: 19px; display: block; }
+  .info-k{
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--brass-dark);
+    margin-bottom: 4px;
+  }
+  .info-v{
+    font-size: 16.5px;
+    color: var(--ink);
+    font-weight: 600;
+    line-height: 1.45;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+  .info-v a { text-decoration: none; border-bottom: 1px solid rgba(16,14,12,.25); }
+  .info-v a:hover { color: var(--brass-dark); border-color: var(--brass-dark); }
+  .info-v small{
+    display: block;
+    font-size: 13.5px;
+    font-weight: 400;
+    color: var(--muted-light);
+    margin-top: 3px;
+  }
+
+  .map-card{
+    border-radius: var(--r);
+    overflow: hidden;
+    border: 1px solid var(--line-light);
+    background: #FFFDF9;
+  }
+  .map-card svg{ display: block; width: 100%; height: auto; }
+  .map-card__foot{
+    padding: 16px 20px;
+    font-size: 13px;
+    color: var(--muted-light);
+    border-top: 1px solid var(--line-light);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .map-card__foot svg{ width: 15px; height: 15px; flex: none; margin-top: 3px; }
+
+  /* cta final */
+  .cta-band{
+    background:
+      radial-gradient(90% 140% at 50% 0%, rgba(212,169,74,.16), rgba(212,169,74,0) 65%),
+      linear-gradient(180deg, #0C0A09, var(--ink));
+    text-align: center;
+    border-top: 1px solid var(--line-dark);
+  }
+  .cta-band h2 { color: var(--cream); }
+  .cta-band .lead { margin: 20px auto 0; }
+  .cta-band__actions{
+    margin-top: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    justify-content: center;
+  }
+
+  /* pie */
+  .site-foot{
+    background: #080706;
+    border-top: 1px solid rgba(220,213,201,.1);
+    padding: 54px 0 40px;
+  }
+  .foot-grid{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap: 34px;
+  }
+  .foot-k{
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--brass);
+    margin-bottom: 14px;
+  }
+  .foot-grid p, .foot-grid a{
+    font-size: 15px;
+    color: var(--muted-dark);
+    text-decoration: none;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+  .foot-grid a:hover { color: var(--brass); }
+  .foot-grid ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 9px; }
+  .foot-rule{
+    margin: 40px 0 24px;
+    height: 1px;
+    background: rgba(220,213,201,.1);
+  }
+  .foot-credit{
+    font-size: 13.5px;
+    color: var(--muted-dark);
+    line-height: 1.6;
+  }
+  .foot-credit strong { color: var(--cream); font-weight: 600; }
+
+  /* animación de entrada */
+  .reveal{ opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.is-in{ opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity: 1; transform: none; transition: none; }
+    .btn:hover, .card:hover { transform: none; }
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 960px){
+    .hero__grid{ grid-template-columns: 1fr; gap: 40px; }
+    .hero__art{ aspect-ratio: 16 / 12; max-width: 460px; }
+    .cards, .steps{ grid-template-columns: 1fr 1fr; }
+    .contact-grid{ grid-template-columns: 1fr; gap: 34px; }
+    .foot-grid{ grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 700px){
+    :root{ --bar-h: 50px; }
+    body{ font-size: 16px; }
+    .wrap{ padding: 0 18px; }
+    section{ padding: 60px 0; }
+    .hero{ padding: 36px 0 60px; }
+    .site-nav{ display: none; }
+    .site-head__row{ justify-content: space-between; }
+    .cards, .steps{ grid-template-columns: 1fr; }
+    .foot-grid{ grid-template-columns: 1fr; gap: 28px; }
+    .hero__actions .btn, .cta-band__actions .btn{ width: 100%; }
+    .strip__row{ gap: 12px 24px; font-size: 11.5px; }
+    .sec-head{ margin-bottom: 36px; }
+    .hero__art{ max-width: none; }
+  }
+
+  @media (max-width: 420px){
+    .brand__name{ font-size: 13px; letter-spacing: .1em; }
+    .propuesta-bar{ font-size: 10.5px; letter-spacing: .05em; }
+  }
+</style>
+</head>
+<body>
+
+<div class="propuesta-bar">Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</div>
+
+<header class="site-head">
+  <div class="wrap site-head__row">
+    <div class="brand">
+      <svg width="42" height="42" viewBox="0 0 42 42" fill="none" aria-hidden="true">
+        <rect x="1" y="1" width="40" height="40" rx="11" fill="#191613" stroke="rgba(212,169,74,.4)"/>
+        <path d="M13 12v18M29 12v18" stroke="#D4A94A" stroke-width="1.2" opacity=".5"/>
+        <text x="21" y="27" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif"
+              font-size="14" font-weight="700" fill="#D4A94A" letter-spacing="1">AC</text>
+      </svg>
+      <span class="brand__name">Barbería AC<br>Los Abuelos
+        <span class="brand__sub">Arucas</span>
+      </span>
+    </div>
+    <nav class="site-nav" aria-label="Navegación principal">
+      <a href="#servicios">Servicios</a>
+      <a href="#visita">Tu primera visita</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<main>
+<section class="hero" aria-labelledby="hero-title">
+  <div class="wrap hero__grid">
+    <div>
+      <p class="eyebrow">Barbería en Arucas · Las Palmas</p>
+      <h1 id="hero-title">Corte, barba y cejas<em>con el oficio de siempre</em></h1>
+      <p class="lead hero__lead">
+        Una barbería de barrio en la Avenida Pedro Morales Déniz. Trabajo cuidado,
+        conversación tranquila y el tiempo que cada cliente necesita. Llama y te decimos
+        cuándo pasarte.
+      </p>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="tel:+34673346818">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 5c0-.6.4-1 1-1h2.5c.5 0 .9.3 1 .8l.8 3c.1.4 0 .8-.4 1l-1.6 1.2a12 12 0 0 0 5.7 5.7l1.2-1.6c.2-.3.6-.5 1-.4l3 .8c.5.1.8.5.8 1V19c0 .6-.4 1-1 1h-1A14 14 0 0 1 4 6V5Z"
+                  stroke="#171310" stroke-width="1.7" stroke-linejoin="round"/>
+          </svg>
+          Llamar al 673 34 68 18
+        </a>
+        <a class="btn btn--ghost" href="#servicios">Ver servicios</a>
+      </div>
+      <p class="hero__note">
+        <strong>Lunes a viernes</strong> · 9:00 – 13:00 y 15:00 – 20:00
+      </p>
+    </div>
+
+    <div class="hero__art" role="img" aria-label="Ilustración de un poste de barbería clásico">
+      <svg viewBox="0 0 320 400" fill="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="poleGlass" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#ffffff" stop-opacity=".32"/>
+            <stop offset=".42" stop-color="#ffffff" stop-opacity="0"/>
+            <stop offset="1" stop-color="#000000" stop-opacity=".38"/>
+          </linearGradient>
+          <linearGradient id="capGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#EFD28C"/>
+            <stop offset="1" stop-color="#9C7523"/>
+          </linearGradient>
+          <clipPath id="poleClip">
+            <rect x="126" y="96" width="68" height="206" rx="34"/>
+          </clipPath>
+        </defs>
+
+        <!-- aros decorativos -->
+        <circle cx="160" cy="200" r="134" stroke="#D4A94A" stroke-width="1" opacity=".26"/>
+        <circle cx="160" cy="200" r="155" stroke="#D4A94A" stroke-width="1"
+                stroke-dasharray="3 9" opacity=".18"/>
+
+        <!-- cuerpo del poste -->
+        <g clip-path="url(#poleClip)">
+          <rect x="126" y="96" width="68" height="206" fill="#17120F"/>
+          <g transform="rotate(30 160 199)">
+            <rect x="40" y="20" width="27" height="360" fill="#D4A94A"/>
+            <rect x="94" y="20" width="27" height="360" fill="#D4A94A"/>
+            <rect x="148" y="20" width="27" height="360" fill="#D4A94A"/>
+            <rect x="202" y="20" width="27" height="360" fill="#D4A94A"/>
+            <rect x="256" y="20" width="27" height="360" fill="#D4A94A"/>
+            <rect x="67" y="20" width="27" height="360" fill="#F3EBDC"/>
+            <rect x="121" y="20" width="27" height="360" fill="#F3EBDC"/>
+            <rect x="175" y="20" width="27" height="360" fill="#F3EBDC"/>
+            <rect x="229" y="20" width="27" height="360" fill="#F3EBDC"/>
+          </g>
+          <rect x="126" y="96" width="68" height="206" fill="url(#poleGlass)"/>
+        </g>
+        <rect x="126" y="96" width="68" height="206" rx="34"
+              stroke="rgba(212,169,74,.6)" stroke-width="2"/>
+
+        <!-- remate superior -->
+        <circle cx="160" cy="58" r="13" fill="url(#capGrad)"/>
+        <rect x="150" y="62" width="20" height="16" fill="url(#capGrad)"/>
+        <rect x="112" y="74" width="96" height="26" rx="9" fill="url(#capGrad)"/>
+
+        <!-- remate inferior -->
+        <rect x="112" y="298" width="96" height="26" rx="9" fill="url(#capGrad)"/>
+        <rect x="150" y="320" width="20" height="16" fill="url(#capGrad)"/>
+        <rect x="104" y="332" width="112" height="15" rx="7" fill="url(#capGrad)"/>
+
+        <!-- brillo inferior -->
+        <ellipse cx="160" cy="362" rx="86" ry="10" fill="#D4A94A" opacity=".12"/>
+      </svg>
+    </div>
+  </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="wrap strip__row">
+    <span><i class="strip__dot"></i>Corte de pelo</span>
+    <span><i class="strip__dot"></i>Cuidado de barba</span>
+    <span><i class="strip__dot"></i>Cejas a hilo</span>
+    <span><i class="strip__dot"></i>Avenida Pedro Morales Déniz, Arucas</span>
+  </div>
+</div>
+
+<!-- ================= SERVICIOS ================= -->
+<section id="servicios" class="sec-light">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow eyebrow--light">Servicios</p>
+      <h2>Lo que hacemos en el sillón</h2>
+      <p class="lead lead--light">
+        Tres cosas, bien hechas. Si tienes dudas sobre qué te conviene, lo vemos juntos
+        antes de empezar.
+      </p>
+    </div>
+
+    <div class="cards">
+      <article class="card reveal">
+        <div class="card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D4A94A" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+            <path d="M6.5 5.5 17 16"/>
+            <path d="M17.5 5.5 7 16"/>
+            <circle cx="5" cy="18.5" r="2.4"/>
+            <circle cx="19" cy="18.5" r="2.4"/>
+          </svg>
+        </div>
+        <h3>Corte de pelo</h3>
+        <p>
+          Desde el corte clásico de tijera hasta degradados a máquina. Acabado a tu gusto
+          y consejo sobre cómo mantenerlo entre visitas.
+        </p>
+        <span class="card__tag">Tijera · Máquina · Degradado</span>
+      </article>
+
+      <article class="card reveal">
+        <div class="card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D4A94A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M8 3v5a4 4 0 0 0 8 0V3"/>
+            <path d="M5 11h14"/>
+            <path d="M6.5 11c.6 5.2 2.6 8.4 5.5 10 2.9-1.6 4.9-4.8 5.5-10"/>
+          </svg>
+        </div>
+        <h3>Cuidado de barba</h3>
+        <p>
+          Perfilado, arreglo y repaso de contornos. También el apurado completo si lo que
+          quieres es empezar de cero.
+        </p>
+        <span class="card__tag">Perfilado · Arreglo · Apurado</span>
+      </article>
+
+      <article class="card reveal">
+        <div class="card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D4A94A" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+            <path d="M3 9c3.4-3 7-4.5 10.8-4.5 2.6 0 5 .7 7.2 2"/>
+            <path d="M3 15c3.4 3 7 4.5 10.8 4.5 2.6 0 5-.7 7.2-2"/>
+            <path d="M4.5 12h15" stroke-dasharray="2.2 2.6" opacity=".7"/>
+          </svg>
+        </div>
+        <h3>Depilación de cejas a hilo</h3>
+        <p>
+          Técnica con hilo para definir la ceja con precisión, respetando su forma natural.
+          Rápido y sin ceras.
+        </p>
+        <span class="card__tag">Técnica a hilo</span>
+      </article>
+    </div>
+
+    <p class="nota-precios">
+      Las tarifas se consultan directamente en la barbería o por teléfono. Esta página es
+      una maqueta de propuesta y no publica precios.
+    </p>
+  </div>
+</section>
+
+<!-- ================= PRIMERA VISITA ================= -->
+<section id="visita" class="sec-dark">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Cómo trabajamos</p>
+      <h2>Tu primera visita, en tres pasos</h2>
+      <p class="lead">
+        Sin complicaciones ni formularios. Una llamada y listo.
+      </p>
+    </div>
+
+    <div class="steps">
+      <article class="step reveal">
+        <div class="step__num">01</div>
+        <h3>Llamas y lo acordamos</h3>
+        <p>
+          Marcas el 673 34 68 18 y nos dices qué necesitas. Te indicamos el hueco libre
+          más cercano dentro del horario de atención.
+        </p>
+      </article>
+
+      <article class="step reveal">
+        <div class="step__num">02</div>
+        <h3>Hablamos antes de cortar</h3>
+        <p>
+          Al llegar repasamos qué quieres: largo, forma, contornos. Si no lo tienes claro,
+          te proponemos lo que mejor encaja.
+        </p>
+      </article>
+
+      <article class="step reveal">
+        <div class="step__num">03</div>
+        <h3>Acabado y siguiente cita</h3>
+        <p>
+          Revisamos el resultado contigo y, si te va bien, dejamos apuntada la próxima
+          visita antes de que salgas por la puerta.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACTO ================= -->
+<section id="contacto" class="sec-light">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow eyebrow--light">Contacto y horario</p>
+      <h2>Dónde estamos</h2>
+      <p class="lead lead--light">
+        En la Avenida Pedro Morales Déniz, en Arucas. Lo más rápido es llamar por teléfono.
+      </p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="reveal">
+        <ul class="info-list">
+          <li>
+            <span class="info-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#100E0C" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 5c0-.6.4-1 1-1h2.5c.5 0 .9.3 1 .8l.8 3c.1.4 0 .8-.4 1l-1.6 1.2a12 12 0 0 0 5.7 5.7l1.2-1.6c.2-.3.6-.5 1-.4l3 .8c.5.1.8.5.8 1V19c0 .6-.4 1-1 1h-1A14 14 0 0 1 4 6V5Z"/>
+              </svg>
+            </span>
+            <div>
+              <div class="info-k">Teléfono</div>
+              <div class="info-v"><a href="tel:+34673346818">673 34 68 18</a></div>
+            </div>
+          </li>
+          <li>
+            <span class="info-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#100E0C" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z"/>
+                <circle cx="12" cy="10" r="2.6"/>
+              </svg>
+            </span>
+            <div>
+              <div class="info-k">Dirección</div>
+              <div class="info-v">
+                Av. Pedro Morales Déniz, 191
+                <small>35411 Arucas (Las Palmas)</small>
+              </div>
+            </div>
+          </li>
+          <li>
+            <span class="info-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#100E0C" stroke-width="1.7" stroke-linecap="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="8.5"/>
+                <path d="M12 7.5V12l3 2"/>
+              </svg>
+            </span>
+            <div>
+              <div class="info-k">Horario</div>
+              <div class="info-v">
+                Lunes a viernes: 9:00 – 13:00 y 15:00 – 20:00
+                <small>Sábados y domingos: consultar</small>
+              </div>
+            </div>
+          </li>
+          <li>
+            <span class="info-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#100E0C" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="5.5" width="18" height="13" rx="2.5"/>
+                <path d="m3.8 7 8.2 6 8.2-6"/>
+              </svg>
+            </span>
+            <div>
+              <div class="info-k">Correo</div>
+              <div class="info-v"><a href="mailto:barberiaaclosabuelos@gmail.com">barberiaaclosabuelos@gmail.com</a></div>
+            </div>
+          </li>
+        </ul>
+
+        <a class="btn btn--primary" href="tel:+34673346818">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 5c0-.6.4-1 1-1h2.5c.5 0 .9.3 1 .8l.8 3c.1.4 0 .8-.4 1l-1.6 1.2a12 12 0 0 0 5.7 5.7l1.2-1.6c.2-.3.6-.5 1-.4l3 .8c.5.1.8.5.8 1V19c0 .6-.4 1-1 1h-1A14 14 0 0 1 4 6V5Z"
+                  stroke="#171310" stroke-width="1.7" stroke-linejoin="round"/>
+          </svg>
+          Llamar ahora
+        </a>
+      </div>
+
+      <div class="map-card reveal">
+        <svg viewBox="0 0 560 400" role="img"
+             aria-label="Mapa esquemático con calles abstractas y un marcador en la ubicación de la barbería">
+          <defs>
+            <linearGradient id="mapBg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#EFE8DA"/>
+              <stop offset="1" stop-color="#E2D8C5"/>
+            </linearGradient>
+          </defs>
+
+          <rect width="560" height="400" fill="url(#mapBg)"/>
+
+          <!-- manzanas -->
+          <g fill="#D8CDB7" opacity=".85">
+            <rect x="36" y="34" width="150" height="104" rx="6"/>
+            <rect x="232" y="34" width="118" height="104" rx="6"/>
+            <rect x="396" y="34" width="128" height="140" rx="6"/>
+            <rect x="36" y="186" width="150" height="86" rx="6"/>
+            <rect x="232" y="186" width="118" height="86" rx="6"/>
+            <rect x="36" y="318" width="314" height="50" rx="6"/>
+            <rect x="396" y="222" width="128" height="146" rx="6"/>
+          </g>
+
+          <!-- calles secundarias -->
+          <g stroke="#FBF8F1" stroke-width="16" stroke-linecap="square">
+            <path d="M210 10 V390"/>
+            <path d="M374 10 V390"/>
+            <path d="M10 162 H550"/>
+            <path d="M10 296 H550"/>
+          </g>
+
+          <!-- avenida principal -->
+          <path d="M0 236 H560" stroke="#FBF8F1" stroke-width="34" stroke-linecap="square"/>
+          <path d="M0 236 H560" stroke="#D4A94A" stroke-width="2.4" stroke-dasharray="16 14" opacity=".75"/>
+
+          <text x="26" y="228" font-family="ui-sans-serif, system-ui, sans-serif" font-size="14"
+                font-weight="700" fill="#6B6256" letter-spacing="1.4">AV. PEDRO MORALES DÉNIZ</text>
+
+          <!-- marcador -->
+          <g transform="translate(288 236)">
+            <ellipse cx="0" cy="6" rx="22" ry="7" fill="#100E0C" opacity=".2"/>
+            <circle cx="0" cy="0" r="30" fill="#D4A94A" opacity=".2"/>
+            <circle cx="0" cy="0" r="19" fill="#D4A94A" opacity=".3"/>
+            <g transform="translate(0 -52)">
+              <path d="M0 54c0 0 17-18.5 17-30A17 17 0 1 0-17 24c0 11.5 17 30 17 30Z" fill="#100E0C"/>
+              <circle cx="0" cy="23" r="6.4" fill="#D4A94A"/>
+            </g>
+            <text x="0" y="40" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif"
+                  font-size="13" font-weight="700" fill="#100E0C">Nº 191</text>
+          </g>
+        </svg>
+        <div class="map-card__foot">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#6B6256" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="9"/>
+            <path d="M12 11v5"/><path d="M12 7.6v.1"/>
+          </svg>
+          <span>Esquema orientativo dibujado para la maqueta: no es un mapa real ni está a escala.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA FINAL ================= -->
+<section class="cta-band">
+  <div class="wrap">
+    <h2 class="reveal">¿Te pasas esta semana?</h2>
+    <p class="lead reveal">
+      Llama y buscamos un hueco dentro del horario de lunes a viernes.
+    </p>
+    <div class="cta-band__actions reveal">
+      <a class="btn btn--primary" href="tel:+34673346818">Llamar al 673 34 68 18</a>
+      <a class="btn btn--ghost" href="mailto:barberiaaclosabuelos@gmail.com">Escribir un correo</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ================= PIE ================= -->
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-k">Barbería AC Los Abuelos</div>
+        <p>Av. Pedro Morales Déniz, 191<br>35411 Arucas (Las Palmas)</p>
+      </div>
+      <div>
+        <div class="foot-k">Contacto</div>
+        <ul>
+          <li><a href="tel:+34673346818">673 34 68 18</a></li>
+          <li><a href="mailto:barberiaaclosabuelos@gmail.com">barberiaaclosabuelos@gmail.com</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="foot-k">Horario</div>
+        <p>Lunes a viernes<br>9:00 – 13:00 · 15:00 – 20:00<br>Sábados y domingos: consultar</p>
+      </div>
+    </div>
+
+    <div class="foot-rule"></div>
+
+    <p class="foot-credit">
+      <strong>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</strong><br>
+      Maqueta sin carácter contractual, creada a partir de datos públicos del negocio. Los textos,
+      servicios y horarios son revisables por la barbería antes de cualquier publicación.
+    </p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var items = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    for (var i = 0; i < items.length; i++) items[i].classList.add('is-in');
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+  items.forEach(function (el, idx) {
+    el.style.transitionDelay = (Math.min(idx % 3, 2) * 80) + 'ms';
+    io.observe(el);
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function (ev) {
+      var t = document.querySelector(a.getAttribute('href'));
+      if (!t) return;
+      ev.preventDefault();
+      var top = t.getBoundingClientRect().top + window.pageYOffset - 56;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    });
+  });
+})();
+</script>
+</body>
+</html>

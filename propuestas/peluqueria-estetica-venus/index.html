@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Peluquería Estética Venus · Propuesta de diseño</title>
+<meta name="description" content="Maqueta de propuesta de landing page para Peluquería Estética Venus (Ciudad Rodrigo, Salamanca). FFFFFFstudio — Ángel Rubio.">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  :root{
+    --ink:#241c22;
+    --ink-soft:#5d5058;
+    --ink-faint:#8b7f86;
+    --cream:#fbf7f4;
+    --cream-2:#f4ece7;
+    --line:#e6dad3;
+    --plum:#6d2b4f;
+    --plum-dark:#4e1c38;
+    --rose:#c98a9a;
+    --gold:#b98a4e;
+    --white:#fff;
+    --bar-h:40px;
+    --r:18px;
+    --shadow:0 1px 2px rgba(36,28,34,.04),0 12px 32px -12px rgba(36,28,34,.18);
+    --sans:"Helvetica Neue",Helvetica,Arial,"Segoe UI",Roboto,system-ui,-apple-system,sans-serif;
+    --serif:Georgia,"Times New Roman","Iowan Old Style",serif;
+  }
+  html{-webkit-text-size-adjust:100%}
+  html,body{max-width:100%;overflow-x:hidden}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%;display:block}
+  a{color:inherit}
+
+  /* ---------- barra fija ---------- */
+  .aviso{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    height:var(--bar-h);
+    display:flex;align-items:center;justify-content:center;
+    background:var(--plum-dark);
+    color:#f6e7ee;
+    font-size:11.5px;
+    letter-spacing:.07em;
+    text-transform:uppercase;
+    text-align:center;
+    padding:0 12px;
+    line-height:1.25;
+  }
+  .aviso span{display:block;max-width:100%;overflow-wrap:break-word}
+  .page{padding-top:var(--bar-h)}
+
+  /* ---------- utilidades ---------- */
+  .wrap{width:100%;max-width:1140px;margin:0 auto;padding:0 28px}
+  .eyebrow{
+    font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--gold);font-weight:700;margin:0 0 18px;
+  }
+  h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:-.01em;color:var(--ink)}
+  h1{font-size:clamp(2.3rem,6.2vw,4.1rem);line-height:1.04;margin:0 0 22px}
+  h2{font-size:clamp(1.85rem,4.2vw,2.75rem);line-height:1.1;margin:0 0 18px}
+  h3{font-size:1.2rem;line-height:1.3;margin:0 0 10px}
+  p{margin:0 0 16px}
+  .lead{font-size:clamp(1.02rem,1.7vw,1.2rem);color:var(--ink-soft);max-width:54ch}
+  section{padding:clamp(64px,8vw,110px) 0}
+  .rule{width:52px;height:2px;background:var(--rose);border:0;margin:0 0 26px}
+
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:var(--sans);font-size:1rem;font-weight:700;
+    text-decoration:none;border-radius:999px;
+    padding:15px 28px;transition:transform .18s ease,box-shadow .18s ease,background .18s ease;
+  }
+  .btn-main{background:var(--plum);color:#fff;box-shadow:0 10px 26px -12px rgba(109,43,79,.75)}
+  .btn-main:hover{background:var(--plum-dark);transform:translateY(-2px)}
+  .btn-ghost{border:1.5px solid var(--plum);color:var(--plum)}
+  .btn-ghost:hover{background:rgba(109,43,79,.07)}
+  .btn svg{flex:0 0 auto}
+
+  /* ---------- nav ---------- */
+  .nav{
+    position:sticky;top:var(--bar-h);z-index:60;
+    background:rgba(251,247,244,.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-in{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:66px;padding:10px 28px;max-width:1140px;margin:0 auto}
+  .brand{display:flex;align-items:center;gap:11px;text-decoration:none;min-width:0}
+  .mark{flex:0 0 auto;width:34px;height:34px;border-radius:50%;background:linear-gradient(145deg,var(--plum),var(--rose));display:grid;place-items:center;color:#fff;font-family:var(--serif);font-size:16px;line-height:1}
+  .brand b{font-family:var(--serif);font-weight:400;font-size:1.08rem;letter-spacing:.01em;white-space:nowrap}
+  .brand small{display:block;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);line-height:1.4}
+  .nav-links{display:flex;align-items:center;gap:26px}
+  .nav-links a{font-size:.92rem;text-decoration:none;color:var(--ink-soft)}
+  .nav-links a:hover{color:var(--plum)}
+  .nav-tel{display:inline-flex;align-items:center;gap:8px;font-weight:700;color:var(--plum);text-decoration:none;font-size:.95rem;white-space:nowrap}
+  @media (max-width:860px){.nav-links{display:none}}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;overflow:hidden;background:linear-gradient(170deg,#fdf9f7 0%,#f6ebe8 48%,#efe0e4 100%);padding-top:clamp(52px,6vw,88px)}
+  .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(32px,5vw,64px);align-items:center}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+  .hero-note{margin-top:22px;font-size:.88rem;color:var(--ink-faint)}
+  .hero-art{position:relative;aspect-ratio:1/1;max-width:430px;width:100%;margin-left:auto}
+  .blob{position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 32% 28%,#fff 0%,rgba(255,255,255,0) 55%),linear-gradient(145deg,var(--plum) 0%,#8d3a5f 45%,var(--rose) 100%);box-shadow:var(--shadow)}
+  .hero-art svg{position:absolute;inset:0;width:100%;height:100%}
+  .hero-stats{display:flex;flex-wrap:wrap;gap:0;border-top:1px solid var(--line);margin-top:clamp(44px,5vw,70px)}
+  .hero-stats div{flex:1 1 190px;padding:22px 24px 4px;border-right:1px solid var(--line)}
+  .hero-stats div:last-child{border-right:0}
+  .hero-stats strong{display:block;font-family:var(--serif);font-size:1.1rem;font-weight:400;margin-bottom:2px}
+  .hero-stats span{font-size:.86rem;color:var(--ink-faint)}
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr;gap:38px}
+    .hero-art{max-width:300px;margin:0 auto}
+    .hero-stats div{border-right:0;border-bottom:1px solid var(--line);padding:18px 0 14px;flex-basis:100%}
+    .hero-stats div:last-child{border-bottom:0}
+  }
+
+  /* ---------- servicios ---------- */
+  .sec-head{max-width:620px;margin:0 0 clamp(36px,4vw,56px)}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .card{
+    background:var(--white);border:1px solid var(--line);border-radius:var(--r);
+    padding:30px 28px;box-shadow:0 1px 2px rgba(36,28,34,.03);
+    transition:transform .2s ease,box-shadow .2s ease;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+  .ico{width:46px;height:46px;border-radius:13px;background:var(--cream-2);display:grid;place-items:center;margin-bottom:18px}
+  .ico svg{width:24px;height:24px;stroke:var(--plum);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+  .card p{color:var(--ink-soft);font-size:.96rem;margin:0 0 14px}
+  .tags{display:flex;flex-wrap:wrap;gap:7px;margin:0;padding:0;list-style:none}
+  .tags li{font-size:.78rem;letter-spacing:.02em;color:var(--plum);background:rgba(109,43,79,.07);border-radius:999px;padding:5px 11px}
+  @media (max-width:980px){.cards{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:620px){.cards{grid-template-columns:1fr}}
+
+  /* ---------- pasos ---------- */
+  .pasos{background:var(--plum-dark);color:#f3e6ec}
+  .pasos h2,.pasos h3{color:#fff}
+  .pasos .lead{color:rgba(243,230,236,.78)}
+  .pasos .eyebrow{color:var(--rose)}
+  .pasos .rule{background:var(--rose)}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.16);border-radius:var(--r);overflow:hidden;margin-top:clamp(34px,4vw,52px)}
+  .step{background:var(--plum-dark);padding:34px 30px}
+  .step-n{font-family:var(--serif);font-size:2.4rem;line-height:1;color:var(--rose);display:block;margin-bottom:16px}
+  .step p{color:rgba(243,230,236,.8);font-size:.96rem;margin:0}
+  @media (max-width:760px){.steps{grid-template-columns:1fr}}
+
+  /* ---------- contacto ---------- */
+  .contact-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(30px,4vw,56px);align-items:start}
+  .info{list-style:none;margin:0;padding:0}
+  .info li{display:flex;gap:16px;padding:20px 0;border-bottom:1px solid var(--line)}
+  .info li:first-child{border-top:1px solid var(--line)}
+  .info .ico{margin:0;width:42px;height:42px;flex:0 0 42px;border-radius:12px}
+  .info b{display:block;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);font-weight:700;margin-bottom:4px}
+  .info span,.info a{font-size:1.02rem;color:var(--ink);text-decoration:none;overflow-wrap:anywhere}
+  .info a:hover{color:var(--plum)}
+  .info em{display:block;font-style:normal;font-size:.86rem;color:var(--ink-faint);margin-top:3px}
+  .map{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:14px;box-shadow:var(--shadow)}
+  .map svg{width:100%;height:auto;border-radius:10px;display:block}
+  .map-cap{font-size:.8rem;color:var(--ink-faint);margin:12px 4px 2px;line-height:1.5}
+  .contact-cta{margin-top:28px;display:flex;flex-wrap:wrap;gap:14px}
+  @media (max-width:860px){.contact-grid{grid-template-columns:1fr}}
+
+  /* ---------- pie ---------- */
+  footer{background:#201a1e;color:#cfc3c9;padding:clamp(52px,6vw,74px) 0 34px;font-size:.93rem}
+  .foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:34px}
+  footer h4{font-family:var(--serif);font-weight:400;color:#fff;font-size:1.3rem;margin:0 0 12px}
+  footer p{color:#a99ca3;margin:0 0 10px}
+  footer a{color:#e8dde2;text-decoration:none;overflow-wrap:anywhere}
+  footer a:hover{color:#fff;text-decoration:underline}
+  .foot-lbl{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#8a7d84;margin:0 0 10px;font-weight:700}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:40px;padding-top:24px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center}
+  .credit{color:#fff;font-size:.9rem;margin:0}
+  .foot-bottom small{color:#8a7d84;font-size:.82rem}
+  @media (max-width:760px){.foot-grid{grid-template-columns:1fr;gap:28px}}
+
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+  :focus-visible{outline:2.5px solid var(--gold);outline-offset:3px;border-radius:4px}
+</style>
+</head>
+<body>
+
+<div class="aviso"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<div class="page">
+
+  <nav class="nav">
+    <div class="nav-in">
+      <a class="brand" href="#inicio">
+        <span class="mark">V</span>
+        <span>
+          <b>Venus</b>
+          <small>Peluquería · Estética</small>
+        </span>
+      </a>
+      <div class="nav-links">
+        <a href="#servicios">Servicios</a>
+        <a href="#visita">Tu primera visita</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+      <a class="nav-tel" href="tel:+34923481357">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+        923 48 13 57
+      </a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">Ciudad Rodrigo · Salamanca</p>
+          <h1>Tu pelo y tu piel,<br>cuidados con calma.</h1>
+          <p class="lead">Peluquería y centro de estética en el centro de Ciudad Rodrigo. Un espacio tranquilo donde escuchamos lo que necesitas antes de tocar unas tijeras.</p>
+          <div class="hero-cta">
+            <a class="btn btn-main" href="tel:+34923481357">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+              Llamar al 923 48 13 57
+            </a>
+            <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
+          </div>
+          <p class="hero-note">Las citas se reservan por teléfono. Consultar horario.</p>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="blob"></div>
+          <svg viewBox="0 0 400 400" role="presentation">
+            <defs>
+              <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#ffffff" stop-opacity=".92"/>
+                <stop offset="1" stop-color="#ffffff" stop-opacity=".35"/>
+              </linearGradient>
+            </defs>
+            <g fill="none" stroke="url(#g1)" stroke-width="2" stroke-linecap="round">
+              <path d="M110 320c0-70 30-110 30-160s-20-70-20-70"/>
+              <path d="M150 325c0-80 36-118 36-172 0-34-14-58-14-58"/>
+              <path d="M192 328c0-86 42-124 42-180 0-30-12-52-12-52"/>
+              <path d="M234 325c0-80 38-116 38-168 0-28-10-48-10-48"/>
+              <path d="M276 318c0-70 30-104 30-150"/>
+            </g>
+            <g stroke="#ffffff" stroke-opacity=".8" stroke-width="2.2" fill="none" stroke-linecap="round">
+              <circle cx="300" cy="96" r="20"/>
+              <circle cx="300" cy="150" r="20"/>
+              <path d="M312 110 L356 196"/>
+              <path d="M312 136 L356 50"/>
+            </g>
+            <circle cx="96" cy="128" r="46" fill="#ffffff" fill-opacity=".1"/>
+            <circle cx="96" cy="128" r="46" fill="none" stroke="#fff" stroke-opacity=".35"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="hero-stats">
+        <div><strong>Peluquería</strong><span>Corte, color y tratamientos capilares</span></div>
+        <div><strong>Estética</strong><span>Cuidado facial, corporal y depilación</span></div>
+        <div><strong>Cita previa</strong><span>Por teléfono, en una llamada</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section id="servicios">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Servicios</p>
+        <hr class="rule">
+        <h2>Dos especialidades, un mismo sitio</h2>
+        <p class="lead">Peluquería y estética bajo el mismo techo, para que no tengas que repartir el cuidado entre varias puertas.</p>
+      </div>
+      <div class="cards">
+        <article class="card reveal">
+          <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.5 15.5"/><path d="M20 20 8.5 8.5"/></svg></div>
+          <h3>Corte y peinado</h3>
+          <p>Cortes de señora, caballero e infantil, con el peinado y el acabado que mejor encaje con tu pelo.</p>
+          <ul class="tags"><li>Corte</li><li>Lavado</li><li>Peinado</li><li>Recogidos</li></ul>
+        </article>
+        <article class="card reveal">
+          <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3s6 6.2 6 10a6 6 0 0 1-12 0c0-3.8 6-10 6-10z"/><path d="M12 17a3 3 0 0 0 3-3"/></svg></div>
+          <h3>Color y mechas</h3>
+          <p>Coloración, mechas, matices y retoque de raíz, valorando antes el estado del cabello.</p>
+          <ul class="tags"><li>Tinte</li><li>Mechas</li><li>Matizado</li></ul>
+        </article>
+        <article class="card reveal">
+          <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18c1.5-6 5-10 8-12"/><path d="M4 18c6 1 11-2 13-7"/><path d="M8 20h12"/></svg></div>
+          <h3>Tratamientos capilares</h3>
+          <p>Hidratación, nutrición y tratamientos para cabello castigado, seco o sin cuerpo.</p>
+          <ul class="tags"><li>Hidratación</li><li>Nutrición</li><li>Anticaída</li></ul>
+        </article>
+        <article class="card reveal">
+          <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M9 10h.01"/><path d="M15 10h.01"/><path d="M9 14.5c1.6 1.2 4.8 1.2 6 0"/></svg></div>
+          <h3>Estética facial</h3>
+          <p>Limpiezas e higiene facial, cuidado de cejas y pestañas, y tratamientos adaptados a tu piel.</p>
+          <ul class="tags"><li>Limpieza facial</li><li>Cejas</li><li>Pestañas</li></ul>
+        </article>
+        <article class="card reveal">
+          <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3c0 4 3 5 3 9s-3 5-3 9"/><path d="M17 3c0 4-3 5-3 9s3 5 3 9"/></svg></div>
+          <h3>Depilación</h3>
+          <p>Depilación facial y corporal, con la técnica que resulte más cómoda para cada zona.</p>
+          <ul class="tags"><li>Facial</li><li>Corporal</li><li>Cera</li></ul>
+        </article>
+        <article class="card reveal">
+          <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M7 12V7a5 5 0 0 1 10 0v5"/><path d="M6 12v3a6 6 0 0 0 12 0v-3"/></svg></div>
+          <h3>Manos, pies y cuerpo</h3>
+          <p>Manicura, pedicura y tratamientos corporales para completar el cuidado en la misma visita.</p>
+          <ul class="tags"><li>Manicura</li><li>Pedicura</li><li>Corporal</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PASOS -->
+  <section class="pasos" id="visita">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Tu primera visita</p>
+        <hr class="rule">
+        <h2>Así funciona, en tres pasos</h2>
+        <p class="lead">Sin complicaciones: una llamada, una conversación y el tiempo que haga falta.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal">
+          <span class="step-n">01</span>
+          <h3>Llamas y reservas</h3>
+          <p>Nos cuentas qué necesitas por teléfono y buscamos juntas un hueco que te venga bien.</p>
+        </div>
+        <div class="step reveal">
+          <span class="step-n">02</span>
+          <h3>Hablamos antes de empezar</h3>
+          <p>Al llegar valoramos tu pelo o tu piel y acordamos el servicio antes de ponernos a trabajar.</p>
+        </div>
+        <div class="step reveal">
+          <span class="step-n">03</span>
+          <h3>Te vas con tus pautas</h3>
+          <p>Te explicamos cómo mantener el resultado en casa y, si procede, cuándo conviene volver.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Contacto</p>
+        <hr class="rule">
+        <h2>Estamos en la Calle Plasencia</h2>
+        <p class="lead">En pleno Ciudad Rodrigo. Llámanos para pedir cita o para consultar cualquier duda sobre un servicio.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="reveal">
+          <ul class="info">
+            <li>
+              <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></div>
+              <div><b>Teléfono</b><a href="tel:+34923481357">923 48 13 57</a><em>Cita previa por teléfono</em></div>
+            </li>
+            <li>
+              <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+              <div><b>Dirección</b><span>Calle Plasencia, 4<br>37500 Ciudad Rodrigo (Salamanca)</span></div>
+            </li>
+            <li>
+              <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div>
+              <div><b>Horario</b><span>Consultar horario</span><em>Llámanos y te indicamos la disponibilidad.</em></div>
+            </li>
+            <li>
+              <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5 12 13l8.5-6.5"/></svg></div>
+              <div><b>Email</b><a href="mailto:blancomariajose53@gmail.com">blancomariajose53@gmail.com</a></div>
+            </li>
+          </ul>
+          <div class="contact-cta">
+            <a class="btn btn-main" href="tel:+34923481357">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+              Pedir cita por teléfono
+            </a>
+          </div>
+        </div>
+
+        <div class="map reveal">
+          <svg viewBox="0 0 560 400" role="img" aria-label="Mapa esquemático de situación: Calle Plasencia, 4, Ciudad Rodrigo">
+            <defs>
+              <linearGradient id="mapbg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#f2e8e4"/>
+                <stop offset="1" stop-color="#ecdfdd"/>
+              </linearGradient>
+            </defs>
+            <rect width="560" height="400" rx="10" fill="url(#mapbg)"/>
+            <g fill="#e0d0c7">
+              <rect x="22" y="18" width="124" height="103" rx="6"/>
+              <rect x="202" y="18" width="156" height="103" rx="6"/>
+              <rect x="414" y="18" width="124" height="103" rx="6"/>
+              <rect x="22" y="178" width="124" height="89" rx="6"/>
+              <rect x="414" y="178" width="124" height="89" rx="6"/>
+              <rect x="22" y="322" width="124" height="60" rx="6"/>
+              <rect x="202" y="322" width="156" height="60" rx="6"/>
+              <rect x="414" y="322" width="124" height="60" rx="6"/>
+            </g>
+            <g stroke="#fdfaf8" stroke-width="30" fill="none">
+              <path d="M-10 150 H570"/>
+              <path d="M-10 295 H570"/>
+              <path d="M175 -10 V410"/>
+              <path d="M385 -10 V410"/>
+            </g>
+            <g stroke="#d9c6bb" stroke-width="1.2" stroke-dasharray="8 10" fill="none">
+              <path d="M0 150 H560"/>
+              <path d="M0 295 H560"/>
+              <path d="M175 0 V400"/>
+              <path d="M385 0 V400"/>
+            </g>
+            <rect x="202" y="178" width="156" height="89" rx="6" fill="#6d2b4f" fill-opacity=".1" stroke="#6d2b4f" stroke-width="1.6" stroke-dasharray="6 5"/>
+            <g font-family="Helvetica,Arial,sans-serif" font-size="17" fill="#7d6f76" letter-spacing="1.2" font-weight="bold">
+              <text x="20" y="157">CALLE PLASENCIA</text>
+              <text x="20" y="302">CALLE SECUNDARIA</text>
+              <text transform="translate(182,135) rotate(-90)" x="0" y="0">TRAVESÍA</text>
+            </g>
+            <g transform="translate(280,208)">
+              <ellipse cy="30" rx="17" ry="5" fill="#6d2b4f" opacity=".16"/>
+              <path d="M0 -30 C 14 -30 24 -19 24 -6 C 24 9 0 30 0 30 C 0 30 -24 9 -24 -6 C -24 -19 -14 -30 0 -30 Z" fill="#6d2b4f"/>
+              <circle cy="-7" r="8" fill="#fbf7f4"/>
+            </g>
+            <text x="280" y="261" text-anchor="middle" font-family="Georgia,serif" font-size="23" fill="#4e1c38">Venus · nº 4</text>
+          </svg>
+          <p class="map-cap">Esquema orientativo de situación, no un mapa a escala. Calle Plasencia, 4 — 37500 Ciudad Rodrigo (Salamanca).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <h4>Peluquería Estética Venus</h4>
+          <p>Peluquería y centro de estética en Ciudad Rodrigo, Salamanca.</p>
+        </div>
+        <div>
+          <p class="foot-lbl">Dónde estamos</p>
+          <p>Calle Plasencia, 4<br>37500 Ciudad Rodrigo<br>Salamanca</p>
+          <p>Consultar horario</p>
+        </div>
+        <div>
+          <p class="foot-lbl">Contacto</p>
+          <p><a href="tel:+34923481357">923 48 13 57</a></p>
+          <p><a href="mailto:blancomariajose53@gmail.com">blancomariajose53@gmail.com</a></p>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <p class="credit">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+        <small>Maqueta sin carácter contractual. Datos de contacto tomados del directorio municipal de empresas.</small>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){
+    for(var i=0;i<els.length;i++){els[i].classList.add('in');}
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  },{threshold:.12, rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(el,idx){ el.style.transitionDelay = ((idx%3)*70)+'ms'; io.observe(el); });
+
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(ev){
+      var t = document.querySelector(a.getAttribute('href'));
+      if(!t) return;
+      ev.preventDefault();
+      var bar = 40, nav = 66;
+      window.scrollTo({top: t.getBoundingClientRect().top + window.pageYOffset - bar - nav + 1, behavior:'smooth'});
+    });
+  });
+})();
+</script>
+</body>
+</html>
