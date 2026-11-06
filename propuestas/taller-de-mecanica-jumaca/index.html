@@ -1,0 +1,607 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Taller de Mecánica Jumaca · La Orotava</title>
+<meta name="description" content="Propuesta de diseño no oficial para Taller de Mecánica Jumaca: electromecánica, diagnosis de averías y servicio pre-ITV en La Orotava.">
+<style>
+  :root{
+    --ink:#0d1014;
+    --ink-2:#14191f;
+    --ink-3:#1b222a;
+    --line:rgba(255,255,255,.10);
+    --line-strong:rgba(255,255,255,.18);
+    --paper:#f4f5f7;
+    --paper-2:#e7eaee;
+    --txt:#eef1f5;
+    --txt-dim:#a8b2bd;
+    --txt-ink:#121820;
+    --txt-ink-dim:#4c5663;
+    --acc:#ffb020;
+    --acc-2:#ff8a1f;
+    --acc-deep:#c86a00;
+    --steel:#5c7891;
+    --r:16px;
+    --bar:40px;
+    --maxw:1180px;
+    --pad:clamp(16px,4vw,40px);
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    padding-top:var(--bar);
+    background:var(--ink);
+    color:var(--txt);
+    font-family:"Helvetica Neue",Helvetica,Arial,"Segoe UI",system-ui,sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%}
+  a{color:inherit}
+  h1,h2,h3,p,ul{margin:0}
+  ul{padding:0;list-style:none}
+
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+
+  /* ---------- barra fija ---------- */
+  .notice{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    min-height:var(--bar);
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(90deg,#ffb020,#ff8a1f 55%,#ffb020);
+    color:#231500;
+    font-size:11.5px;letter-spacing:.055em;text-transform:uppercase;
+    font-weight:700;text-align:center;
+    padding:7px 14px;line-height:1.35;
+    box-shadow:0 1px 0 rgba(0,0,0,.35);
+  }
+
+  /* ---------- cabecera ---------- */
+  .top{
+    border-bottom:1px solid var(--line);
+    background:rgba(13,16,20,.9);
+  }
+  .top-in{display:flex;align-items:center;gap:16px;min-height:76px;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;margin-right:auto}
+  .brand-mark{width:42px;height:42px;flex:0 0 42px}
+  .brand-txt{display:flex;flex-direction:column;line-height:1.15}
+  .brand-name{font-size:17px;font-weight:800;letter-spacing:.02em}
+  .brand-sub{font-size:10.5px;letter-spacing:.17em;text-transform:uppercase;color:var(--acc)}
+  .nav{display:flex;gap:22px;align-items:center}
+  .nav a{
+    text-decoration:none;font-size:13px;letter-spacing:.09em;text-transform:uppercase;
+    color:var(--txt-dim);padding:6px 0;border-bottom:1px solid transparent;
+  }
+  .nav a:hover{color:var(--txt);border-bottom-color:var(--acc)}
+
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    text-decoration:none;font-weight:800;
+    border-radius:999px;padding:13px 22px;
+    font-size:15px;letter-spacing:.01em;
+    border:1px solid transparent;
+  }
+  .btn svg{flex:0 0 17px}
+  .btn-acc{background:linear-gradient(180deg,var(--acc),var(--acc-2));color:#231500;box-shadow:0 8px 22px -12px rgba(255,138,31,.9)}
+  .btn-acc:hover{filter:brightness(1.07)}
+  .btn-ghost{border-color:var(--line-strong);color:var(--txt);background:rgba(255,255,255,.03)}
+  .btn-ghost:hover{border-color:var(--acc);color:var(--acc)}
+  .btn-sm{padding:10px 17px;font-size:13.5px}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(900px 520px at 78% 18%,rgba(255,176,32,.16),transparent 62%),
+      radial-gradient(700px 480px at 6% 92%,rgba(92,120,145,.22),transparent 65%),
+      linear-gradient(170deg,#101419,#0b0e12 70%);
+    border-bottom:1px solid var(--line);
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:64px 64px;opacity:.5;
+    -webkit-mask-image:radial-gradient(70% 70% at 50% 35%,#000,transparent);
+            mask-image:radial-gradient(70% 70% at 50% 35%,#000,transparent);
+    pointer-events:none;
+  }
+  .hero-in{position:relative;display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(24px,4vw,56px);align-items:center;padding:clamp(48px,7vw,92px) 0 clamp(52px,7vw,96px)}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:11.5px;letter-spacing:.17em;text-transform:uppercase;color:var(--acc);
+    border:1px solid rgba(255,176,32,.38);border-radius:999px;padding:7px 14px;
+    background:rgba(255,176,32,.08);
+  }
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--acc);flex:0 0 7px}
+  h1{
+    margin:20px 0 0;
+    font-size:clamp(34px,5.4vw,62px);
+    line-height:1.04;letter-spacing:-.025em;font-weight:800;
+  }
+  h1 em{font-style:normal;display:block;color:transparent;background:linear-gradient(90deg,var(--acc),#ffd27a);-webkit-background-clip:text;background-clip:text}
+  .lede{margin-top:20px;font-size:clamp(16px,1.6vw,18.5px);color:var(--txt-dim);max-width:52ch}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:30px;padding-top:24px;border-top:1px solid var(--line)}
+  .hero-meta div{display:flex;align-items:center;gap:9px;font-size:13.5px;color:var(--txt-dim)}
+  .hero-meta strong{color:var(--txt);font-weight:700}
+  .hero-art{width:100%;height:auto;display:block;filter:drop-shadow(0 26px 40px rgba(0,0,0,.5))}
+
+  /* ---------- secciones ---------- */
+  section{padding:clamp(56px,7vw,100px) 0}
+  .s-head{max-width:66ch}
+  .kicker{font-size:11.5px;letter-spacing:.19em;text-transform:uppercase;color:var(--acc);font-weight:700}
+  h2{margin-top:12px;font-size:clamp(26px,3.5vw,40px);line-height:1.1;letter-spacing:-.02em;font-weight:800}
+  .s-head p{margin-top:14px;color:var(--txt-dim);font-size:16.5px}
+
+  #servicios{background:linear-gradient(180deg,#0d1014,#10151a)}
+  .grid{display:grid;gap:18px;margin-top:40px;grid-template-columns:repeat(3,minmax(0,1fr))}
+  .card{
+    background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.015));
+    border:1px solid var(--line);border-radius:var(--r);
+    padding:26px 24px 28px;
+    transition:border-color .18s,transform .18s;
+  }
+  .card:hover{border-color:rgba(255,176,32,.5);transform:translateY(-3px)}
+  .ico{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;background:rgba(255,176,32,.12);border:1px solid rgba(255,176,32,.3);margin-bottom:18px}
+  .ico svg{width:24px;height:24px;display:block}
+  .card h3{font-size:18px;font-weight:800;letter-spacing:-.01em}
+  .card p{margin-top:9px;color:var(--txt-dim);font-size:14.6px}
+
+  /* ---------- pasos ---------- */
+  #proceso{background:var(--paper);color:var(--txt-ink)}
+  #proceso .kicker{color:var(--acc-deep)}
+  #proceso .s-head p{color:var(--txt-ink-dim)}
+  .steps{display:grid;gap:18px;margin-top:42px;grid-template-columns:repeat(3,minmax(0,1fr))}
+  .step{
+    position:relative;background:#fff;border:1px solid #d9dee5;border-radius:var(--r);
+    padding:30px 26px 28px;
+  }
+  .step-n{
+    display:grid;place-items:center;width:48px;height:48px;border-radius:14px;
+    background:linear-gradient(180deg,var(--acc),var(--acc-2));color:#231500;
+    font-weight:800;font-size:20px;letter-spacing:-.02em;
+  }
+  .step h3{margin-top:18px;font-size:19px;font-weight:800;letter-spacing:-.01em}
+  .step p{margin-top:9px;color:var(--txt-ink-dim);font-size:14.8px}
+  .step-rule{height:3px;width:52px;border-radius:3px;background:#e2e6ec;margin-top:20px}
+
+  /* ---------- contacto ---------- */
+  #contacto{background:linear-gradient(180deg,#10151a,#0b0e12)}
+  .c-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(22px,3.4vw,44px);margin-top:40px;align-items:start}
+  .c-list{display:grid;gap:14px}
+  .c-item{
+    display:flex;gap:16px;align-items:flex-start;
+    border:1px solid var(--line);border-radius:var(--r);
+    padding:20px;background:rgba(255,255,255,.035);
+  }
+  .c-item .ico{margin:0;flex:0 0 46px}
+  .c-label{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--txt-dim)}
+  .c-val{margin-top:4px;font-size:17.5px;font-weight:700;letter-spacing:-.01em;text-decoration:none;display:block;word-break:break-word}
+  .c-val:hover{color:var(--acc)}
+  .c-note{margin-top:3px;font-size:13.5px;color:var(--txt-dim)}
+  .c-body{min-width:0}
+  .call-box{
+    margin-top:14px;border-radius:var(--r);padding:22px;
+    border:1px solid rgba(255,176,32,.34);
+    background:linear-gradient(135deg,rgba(255,176,32,.14),rgba(255,138,31,.05));
+  }
+  .call-box p{font-size:14.6px;color:var(--txt-dim)}
+  .call-box .btn{margin-top:16px}
+  .map-card{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:#111720}
+  .map-card svg{display:block;width:100%;height:auto}
+  .map-cap{
+    display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;justify-content:space-between;
+    padding:14px 18px;border-top:1px solid var(--line);font-size:12.6px;color:var(--txt-dim);
+  }
+  .map-cap strong{color:var(--txt)}
+  .legend{display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+  .legend svg{flex:0 0 13px;width:13px;height:13px;max-width:13px}
+
+  /* ---------- pie ---------- */
+  footer{background:#080a0d;border-top:1px solid var(--line);padding:52px 0 40px}
+  .f-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:start}
+  .f-grid p{color:var(--txt-dim);font-size:14.5px;margin-top:12px}
+  .f-links{display:grid;gap:9px}
+  .f-links a{text-decoration:none;font-size:14.6px;color:var(--txt-dim);word-break:break-word}
+  .f-links a:hover{color:var(--acc)}
+  .f-bar{
+    margin-top:36px;padding-top:22px;border-top:1px solid var(--line);
+    display:flex;flex-wrap:wrap;gap:10px 20px;justify-content:space-between;
+    font-size:12.6px;color:var(--txt-dim);
+  }
+  .f-credit{color:var(--acc);font-weight:700}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:1000px){
+    .hero-in{grid-template-columns:1fr}
+    .hero-art{max-width:520px;margin:0 auto}
+    .grid,.steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .c-grid,.f-grid{grid-template-columns:1fr}
+  }
+  @media (max-width:720px){
+    :root{--bar:52px}
+    .nav{display:none}
+    .top-in{min-height:68px;gap:12px}
+    .grid,.steps{grid-template-columns:1fr}
+    .hero-cta .btn{width:100%;justify-content:center}
+    .f-bar{flex-direction:column}
+  }
+  @media (max-width:420px){
+    .notice{font-size:10.5px;letter-spacing:.03em}
+    .c-item{padding:17px;gap:13px}
+  }
+</style>
+</head>
+<body>
+
+<div class="notice">Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</div>
+
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="#inicio">
+      <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
+        <defs><linearGradient id="gBrand" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#ffb020"/><stop offset="1" stop-color="#ff8a1f"/>
+        </linearGradient></defs>
+        <rect x="1.5" y="1.5" width="45" height="45" rx="12" fill="#161c24" stroke="rgba(255,255,255,.14)"/>
+        <circle cx="24" cy="24" r="12.5" fill="none" stroke="url(#gBrand)" stroke-width="2.6"/>
+        <circle cx="24" cy="24" r="4.4" fill="url(#gBrand)"/>
+        <g stroke="url(#gBrand)" stroke-width="2.6" stroke-linecap="round">
+          <path d="M24 7.5v5"/><path d="M24 35.5v5"/><path d="M7.5 24h5"/><path d="M35.5 24h5"/>
+          <path d="M12.3 12.3l3.5 3.5"/><path d="M32.2 32.2l3.5 3.5"/>
+          <path d="M35.7 12.3l-3.5 3.5"/><path d="M15.8 32.2l-3.5 3.5"/>
+        </g>
+      </svg>
+      <span class="brand-txt">
+        <span class="brand-name">Taller de Mecánica Jumaca</span>
+        <span class="brand-sub">La Orotava · Tenerife</span>
+      </span>
+    </a>
+    <nav class="nav">
+      <a href="#servicios">Servicios</a>
+      <a href="#proceso">Cómo trabajamos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="btn btn-acc btn-sm" href="tel:+34922331564">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 16.9v2.6a2 2 0 0 1-2.2 2 19 19 0 0 1-8.3-2.9 18.6 18.6 0 0 1-5.7-5.7A19 19 0 0 1 1.9 4.6 2 2 0 0 1 3.9 2.4h2.6a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.6 10.2a15 15 0 0 0 5.7 5.7l1.2-1.2a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.6 2z"/>
+      </svg>
+      922 331 564
+    </a>
+  </div>
+</header>
+
+<main id="inicio">
+
+  <!-- HERO -->
+  <section class="hero" style="padding:0">
+    <div class="wrap hero-in">
+      <div>
+        <span class="eyebrow"><span class="dot"></span>Electromecánica · Diagnosis · Pre-ITV</span>
+        <h1>Tu coche, revisado<em>con criterio técnico.</em></h1>
+        <p class="lede">Taller de electromecánica en La Orotava. Diagnosis electrónica de averías, mantenimiento y preparación del vehículo antes de pasar la ITV.</p>
+        <div class="hero-cta">
+          <a class="btn btn-acc" href="tel:+34922331564">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 16.9v2.6a2 2 0 0 1-2.2 2 19 19 0 0 1-8.3-2.9 18.6 18.6 0 0 1-5.7-5.7A19 19 0 0 1 1.9 4.6 2 2 0 0 1 3.9 2.4h2.6a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.6 10.2a15 15 0 0 0 5.7 5.7l1.2-1.2a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.6 2z"/>
+            </svg>
+            Llamar al 922 331 564
+          </a>
+          <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
+        </div>
+        <div class="hero-meta">
+          <div>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#ffb020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span><strong>Calle Peralito, 20</strong> · 38300 La Orotava</span>
+          </div>
+          <div>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#ffb020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3 2"/></svg>
+            <span><strong>Consultar horario</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ilustración: elevador + coche esquemático -->
+      <svg class="hero-art" viewBox="0 0 520 400" role="img" aria-label="Ilustración esquemática de un vehículo sobre un elevador de taller">
+        <defs>
+          <linearGradient id="gBody" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#2b3744"/><stop offset="1" stop-color="#1a222b"/>
+          </linearGradient>
+          <linearGradient id="gGlass" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#5c7891" stop-opacity=".9"/><stop offset="1" stop-color="#2b3744" stop-opacity=".7"/>
+          </linearGradient>
+          <linearGradient id="gAcc2" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#ffb020"/><stop offset="1" stop-color="#ff8a1f"/>
+          </linearGradient>
+          <radialGradient id="gGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0" stop-color="#ffb020" stop-opacity=".35"/><stop offset="1" stop-color="#ffb020" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+
+        <circle cx="300" cy="170" r="150" fill="url(#gGlow)"/>
+
+        <!-- coche -->
+        <g>
+          <path d="M96 196c6-26 16-44 26-50 26-14 108-16 142-6 16 5 42 24 60 34 22 5 36 9 42 14 5 5 6 14 4 22l-8 8H104l-9-8c-3-6-3-14 1-14z" fill="url(#gBody)" stroke="rgba(255,255,255,.14)" stroke-width="2"/>
+          <path d="M139 148c20-8 76-10 102-3 11 3 28 18 40 27H128c2-11 5-21 11-24z" fill="url(#gGlass)"/>
+          <path d="M223 145v27" stroke="rgba(13,16,20,.65)" stroke-width="4"/>
+          <rect x="112" y="186" width="44" height="7" rx="3.5" fill="url(#gAcc2)"/>
+          <rect x="332" y="188" width="34" height="6" rx="3" fill="#8e5a12"/>
+          <circle cx="172" cy="218" r="36" fill="#0f141a" stroke="rgba(255,255,255,.12)" stroke-width="2"/>
+          <circle cx="172" cy="218" r="16" fill="#263240" stroke="#5c7891" stroke-width="3"/>
+          <circle cx="340" cy="218" r="36" fill="#0f141a" stroke="rgba(255,255,255,.12)" stroke-width="2"/>
+          <circle cx="340" cy="218" r="16" fill="#263240" stroke="#5c7891" stroke-width="3"/>
+        </g>
+
+        <!-- elevador -->
+        <g>
+          <rect x="120" y="254" width="280" height="15" rx="7" fill="#232c36" stroke="rgba(255,255,255,.12)" stroke-width="2"/>
+          <rect x="246" y="269" width="28" height="78" fill="#1b232c" stroke="rgba(255,255,255,.1)" stroke-width="2"/>
+          <rect x="252" y="275" width="16" height="66" fill="none" stroke="rgba(255,176,32,.35)" stroke-width="2" stroke-dasharray="5 7"/>
+          <rect x="196" y="347" width="128" height="16" rx="6" fill="url(#gAcc2)"/>
+        </g>
+
+        <!-- suelo -->
+        <g stroke="rgba(255,255,255,.1)" stroke-width="2">
+          <path d="M40 374h440"/>
+        </g>
+        <g stroke="rgba(255,176,32,.25)" stroke-width="3" stroke-linecap="round">
+          <path d="M60 386h40"/><path d="M120 386h40"/><path d="M180 386h40"/><path d="M240 386h40"/><path d="M300 386h40"/><path d="M360 386h40"/><path d="M420 386h40"/>
+        </g>
+
+        <!-- señal de diagnosis -->
+        <g>
+          <rect x="376" y="60" width="112" height="76" rx="12" fill="#121920" stroke="rgba(255,176,32,.45)" stroke-width="2"/>
+          <path d="M390 112l12-20 11 14 10-26 12 32 11-18 12 18" fill="none" stroke="url(#gAcc2)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="390" y="74" width="46" height="6" rx="3" fill="#5c7891"/>
+          <rect x="442" y="74" width="20" height="6" rx="3" fill="#2f3b48"/>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section id="servicios">
+    <div class="wrap">
+      <div class="s-head">
+        <span class="kicker">Servicios</span>
+        <h2>Lo que se hace en el taller</h2>
+        <p>Trabajo de electromecánica y diagnosis sobre turismos: localizar la avería, explicarla y repararla con el vehículo en mano.</p>
+      </div>
+      <div class="grid">
+
+        <article class="card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#ffb020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 3.5a4.5 4.5 0 0 0-6 6l-5 5a2 2 0 0 0 0 2.8l1.2 1.2a2 2 0 0 0 2.8 0l5-5a4.5 4.5 0 0 0 6-6l-2.6 2.6-2.4-.6-.6-2.4z"/></svg></div>
+          <h3>Electromecánica</h3>
+          <p>Reparación mecánica y del sistema eléctrico del vehículo: motor, transmisión, arranque, alternador y cableado.</p>
+        </article>
+
+        <article class="card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#ffb020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="13" rx="2.5"/><path d="M5.5 14l2.5-4 2 2.6 2-5 2.2 6 1.6-3 1.7 3.4"/><path d="M9 20.5h6"/></svg></div>
+          <h3>Diagnosis electrónica</h3>
+          <p>Lectura de centralitas y códigos de avería para identificar el origen del fallo antes de sustituir piezas.</p>
+        </article>
+
+        <article class="card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#ffb020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 3.5h7l3 3v12a2 2 0 0 1-2 2H7.5a2 2 0 0 1-2-2V5.5a2 2 0 0 1 2-2z"/><path d="M9 13l2.2 2.3L15.5 11"/><path d="M9 8h5"/></svg></div>
+          <h3>Servicio pre-ITV</h3>
+          <p>Revisión previa de los puntos que mira la inspección y corrección de lo que haría rechazar el vehículo.</p>
+        </article>
+
+        <article class="card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#ffb020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7.5h11l2.5 4H20a1.5 1.5 0 0 1 1.5 1.5v3H4z"/><path d="M4 16v2.5"/><circle cx="9" cy="16" r="2.3"/><circle cx="17" cy="16" r="2.3"/><path d="M6.5 4.5h7"/></svg></div>
+          <h3>Mantenimiento periódico</h3>
+          <p>Cambio de aceite y filtros, correas, líquidos y revisiones de mantenimiento según el estado del vehículo.</p>
+        </article>
+
+        <article class="card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#ffb020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3.2"/><path d="M12 3.5v5"/><path d="M20.5 12h-5"/><path d="M12 20.5v-5"/><path d="M3.5 12h5"/></svg></div>
+          <h3>Frenos y suspensión</h3>
+          <p>Discos, pastillas, latiguillos, amortiguadores y revisión de la dirección y el tren de rodaje.</p>
+        </article>
+
+        <article class="card">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#ffb020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4"/><path d="M12 3.5v4"/><path d="M12 16.5v4"/><path d="M3.5 12h4"/><path d="M16.5 12h4"/><path d="M6 6l2.8 2.8"/><path d="M15.2 15.2L18 18"/><path d="M18 6l-2.8 2.8"/><path d="M8.8 15.2L6 18"/></svg></div>
+          <h3>Neumáticos</h3>
+          <p>Sustitución y equilibrado, revisión de presiones y del desgaste para detectar problemas de alineación.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CÓMO TRABAJAMOS -->
+  <section id="proceso">
+    <div class="wrap">
+      <div class="s-head">
+        <span class="kicker">Cómo trabajamos</span>
+        <h2>Tres pasos, sin sorpresas</h2>
+        <p>Del primer aviso a la entrega del coche, con la avería explicada en cada momento.</p>
+      </div>
+      <div class="steps">
+        <article class="step">
+          <div class="step-n">1</div>
+          <h3>Nos cuentas la avería</h3>
+          <p>Llamas al taller y describes el síntoma: un ruido, un testigo encendido, un consumo raro o la ITV que toca pasar.</p>
+          <div class="step-rule"></div>
+        </article>
+        <article class="step">
+          <div class="step-n">2</div>
+          <h3>Revisión y diagnóstico</h3>
+          <p>Se revisa el vehículo con equipo de diagnosis y comprobación mecánica, y se te explica qué tiene y qué hace falta.</p>
+          <div class="step-rule"></div>
+        </article>
+        <article class="step">
+          <div class="step-n">3</div>
+          <h3>Reparación y entrega</h3>
+          <p>Con tu aprobación se repara y se comprueba el resultado antes de devolverte el coche en mano.</p>
+          <div class="step-rule"></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <div class="wrap">
+      <div class="s-head">
+        <span class="kicker">Contacto</span>
+        <h2>Dónde estamos</h2>
+        <p>El taller está en el casco de La Orotava. Lo más rápido es una llamada para contar la avería y acordar cuándo llevar el coche.</p>
+      </div>
+
+      <div class="c-grid">
+        <div>
+          <div class="c-list">
+            <div class="c-item">
+              <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#ffb020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16.9v2.6a2 2 0 0 1-2.2 2 19 19 0 0 1-8.3-2.9 18.6 18.6 0 0 1-5.7-5.7A19 19 0 0 1 1.9 4.6 2 2 0 0 1 3.9 2.4h2.6a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.6 10.2a15 15 0 0 0 5.7 5.7l1.2-1.2a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.6 2z"/></svg></div>
+              <div class="c-body">
+                <div class="c-label">Teléfono</div>
+                <a class="c-val" href="tel:+34922331564">922 331 564</a>
+              </div>
+            </div>
+
+            <div class="c-item">
+              <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#ffb020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+              <div class="c-body">
+                <div class="c-label">Dirección</div>
+                <div class="c-val">Calle Peralito, 20</div>
+                <div class="c-note">38300 La Orotava · Santa Cruz de Tenerife</div>
+              </div>
+            </div>
+
+            <div class="c-item">
+              <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#ffb020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3 2"/></svg></div>
+              <div class="c-body">
+                <div class="c-label">Horario</div>
+                <div class="c-val">Consultar horario</div>
+              </div>
+            </div>
+
+            <div class="c-item">
+              <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#ffb020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg></div>
+              <div class="c-body">
+                <div class="c-label">Email</div>
+                <a class="c-val" href="mailto:tallerjumaca@hotmail.com">tallerjumaca@hotmail.com</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="call-box">
+            <p>¿Testigo encendido, un ruido nuevo o la ITV encima? Cuéntalo por teléfono y te decimos cuándo puedes traer el coche.</p>
+            <a class="btn btn-acc" href="tel:+34922331564">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16.9v2.6a2 2 0 0 1-2.2 2 19 19 0 0 1-8.3-2.9 18.6 18.6 0 0 1-5.7-5.7A19 19 0 0 1 1.9 4.6 2 2 0 0 1 3.9 2.4h2.6a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.6 10.2a15 15 0 0 0 5.7 5.7l1.2-1.2a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.6 2z"/></svg>
+              Llamar ahora
+            </a>
+          </div>
+        </div>
+
+        <!-- MAPA ESQUEMÁTICO -->
+        <div class="map-card">
+          <svg viewBox="0 0 560 430" role="img" aria-label="Plano esquemático: el taller está en Calle Peralito, número 20">
+            <defs>
+              <linearGradient id="gMap" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#121a23"/><stop offset="1" stop-color="#0d1319"/>
+              </linearGradient>
+              <linearGradient id="gPin" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#ffb020"/><stop offset="1" stop-color="#ff8a1f"/>
+              </linearGradient>
+            </defs>
+
+            <rect width="560" height="430" fill="url(#gMap)"/>
+
+            <!-- manzanas -->
+            <g fill="#18212b" stroke="rgba(255,255,255,.055)" stroke-width="1.5">
+              <rect x="34" y="34" width="146" height="110" rx="6"/>
+              <rect x="222" y="34" width="118" height="110" rx="6"/>
+              <rect x="382" y="34" width="144" height="110" rx="6"/>
+              <rect x="34" y="186" width="146" height="94" rx="6"/>
+              <rect x="382" y="186" width="144" height="94" rx="6"/>
+              <rect x="34" y="322" width="146" height="74" rx="6"/>
+              <rect x="222" y="322" width="118" height="74" rx="6"/>
+              <rect x="382" y="322" width="144" height="74" rx="6"/>
+            </g>
+
+            <!-- calles secundarias -->
+            <g stroke="#27333f" stroke-width="16" stroke-linecap="square">
+              <path d="M0 165h560"/>
+              <path d="M201 0v430"/>
+              <path d="M361 0v430"/>
+              <path d="M0 301h560"/>
+            </g>
+            <g stroke="rgba(255,255,255,.1)" stroke-width="1.5" stroke-dasharray="9 11">
+              <path d="M0 165h560"/><path d="M0 301h560"/><path d="M201 0v430"/><path d="M361 0v430"/>
+            </g>
+
+            <!-- Calle Peralito (vía destacada) -->
+            <path d="M24 233h512" stroke="#36465a" stroke-width="26" stroke-linecap="round"/>
+            <path d="M24 233h512" stroke="rgba(255,176,32,.9)" stroke-width="2.6" stroke-dasharray="16 14"/>
+            <text x="44" y="221" fill="#ffd27a" font-family="Helvetica,Arial,sans-serif" font-size="17" font-weight="700" letter-spacing="1.4">CALLE PERALITO</text>
+
+            <!-- bloque del taller -->
+            <rect x="222" y="186" width="118" height="94" rx="6" fill="#1d2833" stroke="rgba(255,176,32,.45)" stroke-width="2"/>
+            <text x="281" y="272" fill="#8b98a6" font-family="Helvetica,Arial,sans-serif" font-size="13" text-anchor="middle">Nº 20</text>
+
+            <!-- chincheta -->
+            <g>
+              <circle cx="281" cy="224" r="30" fill="rgba(255,176,32,.14)"/>
+              <circle cx="281" cy="224" r="19" fill="rgba(255,176,32,.2)"/>
+              <path d="M281 200a13 13 0 0 0-13 13c0 9 13 22 13 22s13-13 13-22a13 13 0 0 0-13-13z" fill="url(#gPin)" stroke="#231500" stroke-width="1.4"/>
+              <circle cx="281" cy="213" r="4.6" fill="#231500"/>
+            </g>
+
+            <!-- etiqueta -->
+            <g>
+              <rect x="330" y="124" width="196" height="54" rx="10" fill="#0f151c" stroke="rgba(255,176,32,.4)" stroke-width="1.6"/>
+              <text x="346" y="147" fill="#eef1f5" font-family="Helvetica,Arial,sans-serif" font-size="15" font-weight="700">Taller de Mecánica Jumaca</text>
+              <text x="346" y="166" fill="#a8b2bd" font-family="Helvetica,Arial,sans-serif" font-size="13">Calle Peralito, 20 · La Orotava</text>
+              <path d="M330 156l-32 48" stroke="rgba(255,176,32,.45)" stroke-width="1.6" stroke-dasharray="5 5"/>
+            </g>
+
+            <!-- norte -->
+            <g>
+              <circle cx="506" cy="398" r="17" fill="#0f151c" stroke="rgba(255,255,255,.12)" stroke-width="1.4"/>
+              <path d="M506 388l5 12h-10z" fill="#ffb020"/>
+              <text x="506" y="408" fill="#a8b2bd" font-family="Helvetica,Arial,sans-serif" font-size="9.5" text-anchor="middle" letter-spacing="1">N</text>
+            </g>
+          </svg>
+          <div class="map-cap">
+            <span class="legend">
+              <svg width="13" height="13" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a8 8 0 0 0-8 8c0 6 8 12 8 12s8-6 8-12a8 8 0 0 0-8-8z" fill="#ffb020"/></svg>
+              <strong>Calle Peralito, 20</strong>
+            </span>
+            <span>Plano esquemático, no a escala · trazado orientativo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <strong style="font-size:17px">Taller de Mecánica Jumaca</strong>
+        <p>Electromecánica, diagnosis de averías y servicio pre-ITV en Calle Peralito, 20 · 38300 La Orotava (Santa Cruz de Tenerife).</p>
+      </div>
+      <div class="f-links">
+        <a href="tel:+34922331564">922 331 564</a>
+        <a href="mailto:tallerjumaca@hotmail.com">tallerjumaca@hotmail.com</a>
+        <a href="#contacto">Consultar horario</a>
+      </div>
+    </div>
+    <div class="f-bar">
+      <span>Taller de Mecánica Jumaca · La Orotava, Tenerife</span>
+      <span class="f-credit">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

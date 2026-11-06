@@ -1,0 +1,862 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hostal-Restaurante El Polvorín · Cantalejo (Segovia)</title>
+<meta name="description" content="Propuesta de rediseño no oficial para Hostal-Restaurante El Polvorín, Cantalejo (Segovia). Maqueta de FFFFFFstudio.">
+<style>
+  :root{
+    --clay:#A4472B;
+    --clay-d:#7E3220;
+    --stone:#2C3330;
+    --stone-2:#3E4743;
+    --sage:#6E7F6A;
+    --cream:#F6F1E7;
+    --cream-2:#EDE4D4;
+    --sand:#DCCFB6;
+    --ink:#20231F;
+    --muted:#5C635C;
+    --line:rgba(44,51,48,.14);
+    --gold:#C08B2E;
+    --radius:18px;
+    --maxw:1180px;
+    --sh:0 18px 40px -24px rgba(32,35,31,.45);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;max-width:100%;overflow-x:hidden}
+  body{
+    padding-top:var(--barh,36px);
+    background:var(--cream);
+    color:var(--ink);
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+    font-size:17px;
+    line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%}
+  a{color:inherit}
+  h1,h2,h3,h4{margin:0;line-height:1.14;font-weight:600;letter-spacing:-.012em}
+  p{margin:0}
+  .sans{font-family:"Helvetica Neue",Helvetica,Arial,"Segoe UI",system-ui,sans-serif}
+
+  /* ---------- barra fija de autoría ---------- */
+  .studiobar{
+    position:fixed;inset:0 0 auto 0;z-index:90;
+    background:var(--stone);
+    color:#EFEAE0;
+    border-bottom:1px solid rgba(255,255,255,.1);
+  }
+  .studiobar .in{
+    max-width:var(--maxw);margin:0 auto;
+    padding:9px 20px;
+    display:flex;align-items:center;gap:10px;
+    font-family:"Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;
+    font-size:11.5px;letter-spacing:.055em;text-transform:uppercase;
+    line-height:1.35;
+  }
+  .studiobar .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);flex:0 0 auto}
+  .studiobar .txt{min-width:0}
+
+  /* ---------- nav ---------- */
+  .nav{
+    position:sticky;top:var(--barh,36px);z-index:60;
+    background:rgba(246,241,231,.93);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav .in{
+    max-width:var(--maxw);margin:0 auto;padding:13px 20px;
+    display:flex;align-items:center;gap:18px;flex-wrap:wrap;
+  }
+  .brand{display:flex;align-items:center;gap:11px;text-decoration:none;min-width:0}
+  .brand .mark{width:38px;height:38px;flex:0 0 auto}
+  .brand b{display:block;font-size:16px;letter-spacing:-.01em;line-height:1.15}
+  .brand span{
+    display:block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--muted);font-family:"Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;
+  }
+  .navlinks{display:flex;gap:22px;margin-left:auto;font-size:13.5px;letter-spacing:.02em}
+  .navlinks a{text-decoration:none;color:var(--stone-2);padding-bottom:2px;border-bottom:1px solid transparent}
+  .navlinks a:hover{border-bottom-color:var(--clay);color:var(--clay)}
+  .navtel{
+    margin-left:4px;text-decoration:none;
+    background:var(--clay);color:#fff;
+    padding:9px 16px;border-radius:999px;
+    font-size:13.5px;letter-spacing:.01em;white-space:nowrap;
+  }
+  .navtel:hover{background:var(--clay-d)}
+
+  /* ---------- layout ---------- */
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+  section{position:relative}
+  .eyebrow{
+    font-family:"Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;
+    font-size:11px;letter-spacing:.17em;text-transform:uppercase;
+    color:var(--clay);margin-bottom:14px;display:flex;align-items:center;gap:9px;
+  }
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--clay);display:block;flex:0 0 auto}
+  .lead{color:var(--muted);font-size:17.5px;max-width:60ch}
+
+  /* ---------- hero ---------- */
+  .hero{
+    background:
+      radial-gradient(1100px 520px at 78% -8%, rgba(192,139,46,.20), transparent 62%),
+      radial-gradient(760px 480px at 6% 104%, rgba(110,127,106,.26), transparent 66%),
+      linear-gradient(170deg,#FBF7EE 0%,var(--cream) 46%,var(--cream-2) 100%);
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+  }
+  .hero .grid{
+    display:grid;grid-template-columns:1.06fr .94fr;gap:56px;align-items:center;
+    padding:72px 0 78px;
+  }
+  .hero h1{font-size:clamp(34px,4.3vw,56px);letter-spacing:-.025em}
+  .hero h1 em{font-style:normal;color:var(--clay);display:block}
+  .hero .sub{margin-top:22px;font-size:18.5px;color:var(--stone-2);max-width:47ch}
+  .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    text-decoration:none;border-radius:999px;
+    padding:14px 24px;font-size:15.5px;letter-spacing:.005em;
+    border:1px solid transparent;transition:.16s;
+  }
+  .btn-main{background:var(--clay);color:#fff;box-shadow:var(--sh)}
+  .btn-main:hover{background:var(--clay-d)}
+  .btn-ghost{background:transparent;color:var(--stone);border-color:rgba(44,51,48,.3)}
+  .btn-ghost:hover{border-color:var(--stone);background:rgba(44,51,48,.05)}
+  .btn svg{flex:0 0 auto}
+  .trust{
+    margin-top:28px;display:flex;flex-wrap:wrap;gap:9px 10px;
+    font-family:"Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;font-size:12.5px;
+  }
+  .chip{
+    background:rgba(255,255,255,.72);border:1px solid var(--line);
+    padding:6px 13px;border-radius:999px;color:var(--stone-2);
+  }
+
+  /* ilustración hero */
+  .scene{
+    border-radius:var(--radius);overflow:hidden;
+    box-shadow:var(--sh);border:1px solid rgba(44,51,48,.1);
+    background:#DDE6E6;display:block;
+  }
+  .scene svg{display:block;width:100%;height:auto}
+
+  /* ---------- franja de ventaja ---------- */
+  .strip{background:var(--stone);color:#F0EBE1}
+  .strip .in{
+    max-width:var(--maxw);margin:0 auto;padding:30px 20px;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:26px;
+  }
+  .strip h4{font-size:15.5px;color:#fff;margin-bottom:5px}
+  .strip p{font-size:14.5px;color:rgba(240,235,225,.74);line-height:1.5}
+
+  /* ---------- bloques ---------- */
+  .band{padding:76px 0}
+  .band + .band{border-top:1px solid var(--line)}
+  .band-alt{background:linear-gradient(180deg,#FBF8F1,var(--cream))}
+  .head{max-width:72ch;margin-bottom:38px}
+  .head h2{font-size:clamp(26px,2.9vw,38px)}
+  .head p{margin-top:16px}
+
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .card{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px 24px 28px;display:flex;flex-direction:column;gap:12px;
+  }
+  .card .ic{width:40px;height:40px}
+  .card h3{font-size:19.5px}
+  .card p{font-size:15.5px;color:var(--muted)}
+
+  /* dos columnas */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+  .split.rev .vis{order:-1}
+  .ulist{list-style:none;margin:20px 0 0;padding:0;display:grid;gap:11px}
+  .ulist li{display:flex;gap:11px;font-size:16px;color:var(--stone-2)}
+  .ulist li::before{
+    content:"";flex:0 0 auto;margin-top:9px;width:7px;height:7px;border-radius:2px;
+    background:var(--clay);transform:rotate(45deg);
+  }
+
+  /* pasos */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;counter-reset:s}
+  .step{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:30px 24px 28px;position:relative;overflow:hidden;
+  }
+  .step .n{
+    font-family:"Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;
+    font-size:12px;letter-spacing:.14em;color:var(--clay);text-transform:uppercase;
+    display:block;margin-bottom:12px;
+  }
+  .step h3{font-size:19px;margin-bottom:9px}
+  .step p{font-size:15.5px;color:var(--muted)}
+  .step::after{
+    content:"";position:absolute;top:0;left:0;right:0;height:4px;
+    background:linear-gradient(90deg,var(--clay),var(--gold));
+  }
+
+  /* ---------- contacto ---------- */
+  .contact{display:grid;grid-template-columns:.92fr 1.08fr;gap:44px;align-items:start}
+  .info{display:grid;gap:14px}
+  .row{
+    background:#fff;border:1px solid var(--line);border-radius:14px;
+    padding:16px 18px;display:flex;gap:14px;align-items:flex-start;
+  }
+  .row .ic{width:26px;height:26px;flex:0 0 auto;margin-top:2px}
+  .row .k{
+    font-family:"Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;
+    font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+  }
+  .row .v{font-size:17px;margin-top:3px;word-break:break-word}
+  .row .v a{text-decoration:none;border-bottom:1px solid rgba(164,71,43,.4);color:var(--clay-d)}
+  .row .v a:hover{border-bottom-color:var(--clay)}
+  .row .v small{display:block;font-size:13.5px;color:var(--muted);border:0;margin-top:2px}
+  .mapcard{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:14px;box-shadow:var(--sh);
+  }
+  .mapcard svg{display:block;width:100%;height:auto;border-radius:12px}
+  .mapnote{
+    font-family:"Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;
+    font-size:11.5px;color:var(--muted);padding:11px 4px 2px;letter-spacing:.02em;
+  }
+
+  /* ---------- cta final ---------- */
+  .final{
+    background:linear-gradient(140deg,var(--clay) 0%,#8E3A24 58%,#6B2A1B 100%);
+    color:#fff;
+  }
+  .final .in{max-width:var(--maxw);margin:0 auto;padding:66px 20px;text-align:center}
+  .final h2{font-size:clamp(26px,3vw,38px);color:#fff}
+  .final p{margin:16px auto 0;max-width:52ch;color:rgba(255,255,255,.84);font-size:17px}
+  .final .ctas{justify-content:center}
+  .final .btn-main{background:#fff;color:var(--clay-d)}
+  .final .btn-main:hover{background:var(--cream)}
+  .final .btn-ghost{color:#fff;border-color:rgba(255,255,255,.5)}
+  .final .btn-ghost:hover{background:rgba(255,255,255,.12);border-color:#fff}
+
+  /* ---------- pie ---------- */
+  footer{background:var(--stone);color:rgba(240,235,225,.76);font-size:14.5px}
+  footer .in{max-width:var(--maxw);margin:0 auto;padding:52px 20px 40px}
+  .fgrid{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:34px}
+  footer h5{
+    color:#fff;font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+    font-family:"Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;margin:0 0 12px;font-weight:600;
+  }
+  footer a{color:#F0EBE1;text-decoration:none;border-bottom:1px solid rgba(240,235,225,.28);word-break:break-word}
+  footer a:hover{border-bottom-color:#F0EBE1}
+  footer .fl{display:grid;gap:8px;justify-items:start}
+  .sig{
+    margin-top:38px;padding-top:20px;border-top:1px solid rgba(255,255,255,.14);
+    font-family:"Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;
+    font-size:12.5px;color:rgba(240,235,225,.62);line-height:1.6;
+  }
+  .sig strong{color:#fff;font-weight:600}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:1000px){
+    .hero .grid{grid-template-columns:1fr;gap:40px;padding:52px 0 60px}
+    .split{grid-template-columns:1fr;gap:32px}
+    .split.rev .vis{order:0}
+    .contact{grid-template-columns:1fr;gap:28px}
+    .cards,.steps,.strip .in{grid-template-columns:1fr 1fr}
+    .fgrid{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:720px){
+    body{font-size:16.5px}
+    .wrap{padding:0 16px}
+    .studiobar .in{padding:8px 16px;font-size:10px;letter-spacing:.04em}
+    .nav .in{padding:11px 16px;gap:12px}
+    .navlinks{display:none}
+    .navtel{margin-left:auto;padding:9px 15px;font-size:13px}
+    .band{padding:52px 0}
+    .cards,.steps,.strip .in,.fgrid{grid-template-columns:1fr}
+    .strip .in{padding:26px 16px;gap:20px}
+    .hero .sub{font-size:17px}
+    .btn{padding:13px 20px;font-size:15px}
+    .ctas .btn{width:100%;justify-content:center}
+    .final .in{padding:50px 16px}
+    footer .in{padding:42px 16px 34px}
+    .mapcard{padding:10px}
+    body{padding-top:var(--barh,50px)}
+    .eyebrow{flex-wrap:wrap;font-size:10.5px;letter-spacing:.14em}
+    .hero .grid{padding-top:44px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ BARRA FIJA DE AUTORÍA ============ -->
+<div class="studiobar">
+  <div class="in">
+    <span class="dot"></span>
+    <span class="txt">Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+  </div>
+</div>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="in">
+    <a class="brand" href="#top">
+      <svg class="mark" viewBox="0 0 48 48" aria-hidden="true">
+        <rect width="48" height="48" rx="12" fill="#2C3330"/>
+        <path d="M11 29.5 24 19l13 10.5" fill="none" stroke="#C08B2E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M14.5 28.5V37h19v-8.5" fill="none" stroke="#F6F1E7" stroke-width="2.2" stroke-linejoin="round"/>
+        <rect x="21" y="30.5" width="6" height="6.5" fill="#A4472B"/>
+        <circle cx="24" cy="13.5" r="2.1" fill="#C08B2E"/>
+      </svg>
+      <span>
+        <b>El Polvorín</b>
+        <span>Hostal · Restaurante</span>
+      </span>
+    </a>
+    <nav class="navlinks sans">
+      <a href="#habitaciones">Habitaciones</a>
+      <a href="#restaurante">Restaurante</a>
+      <a href="#entorno">Zona y entorno</a>
+      <a href="#reservar">Cómo reservar</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="navtel sans" href="tel:+34921520117">921 520 117</a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <div class="eyebrow">Cantalejo · Segovia · Hoces del Duratón</div>
+        <h1>Hostal-Restaurante<br><em>El Polvorín</em></h1>
+        <p class="sub">Alojamiento y restaurante en el centro de Cantalejo, en la zona de las Hoces del Duratón. Reserva hablando directamente con nosotros, por teléfono, sin intermediarios.</p>
+        <div class="ctas">
+          <a class="btn btn-main sans" href="tel:+34921520117">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6.2 3.5h3l1.5 4-2 1.4a11.5 11.5 0 0 0 6.4 6.4l1.4-2 4 1.5v3c0 1-.8 1.8-1.8 1.7C11.6 19.2 4.8 12.4 4.5 5.3c0-1 .7-1.8 1.7-1.8Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Llamar al 921 520 117
+          </a>
+          <a class="btn btn-ghost sans" href="#reservar">
+            Reserva directa, sin comisiones
+          </a>
+        </div>
+        <div class="trust sans">
+          <span class="chip">Trato directo con el hostal</span>
+          <span class="chip">Hostal + restaurante en el mismo sitio</span>
+          <span class="chip">C/ Segovia, 1 · Cantalejo</span>
+        </div>
+      </div>
+
+      <!-- ilustración: pueblo + hoces, 100% SVG a mano -->
+      <div class="vis">
+        <div class="scene">
+          <svg viewBox="0 0 640 480" role="img" aria-label="Ilustración de un pueblo castellano junto al cañón de las Hoces del Duratón">
+            <defs>
+              <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#C9DCE2"/>
+                <stop offset="55%" stop-color="#E6E3D4"/>
+                <stop offset="100%" stop-color="#F2E6D0"/>
+              </linearGradient>
+              <linearGradient id="rockA" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#C79A6E"/>
+                <stop offset="100%" stop-color="#8E6442"/>
+              </linearGradient>
+              <linearGradient id="rockB" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#B2834F"/>
+                <stop offset="100%" stop-color="#74512F"/>
+              </linearGradient>
+              <linearGradient id="field" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#8A9B6E"/>
+                <stop offset="100%" stop-color="#5E6E4C"/>
+              </linearGradient>
+              <linearGradient id="river" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#6E99A6"/>
+                <stop offset="100%" stop-color="#9BBCC2"/>
+              </linearGradient>
+            </defs>
+
+            <rect width="640" height="480" fill="url(#sky)"/>
+            <circle cx="500" cy="96" r="42" fill="#F0D79C" opacity=".75"/>
+            <circle cx="500" cy="96" r="26" fill="#F7E9C3" opacity=".85"/>
+            <!-- aves -->
+            <path d="M120 96c7-6 11-6 17 0" stroke="#6B6457" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <path d="M150 78c6-5 10-5 15 0" stroke="#6B6457" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <path d="M184 104c5-4 9-4 13 0" stroke="#6B6457" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+
+            <!-- cañón lejano -->
+            <path d="M0 262h140l40-34 70 18 54-28 76 24 60-18 90 26 50-14v62H0Z" fill="#A8947C" opacity=".55"/>
+            <!-- paredes del cañón -->
+            <path d="M0 300l96-6 44 30 86-12 54 26 96-16 74 22 90-12 100 8v52H0Z" fill="url(#rockA)"/>
+            <path d="M0 352l110 10 70-18 82 22 74-14 92 20 88-12 124 6v48H0Z" fill="url(#rockB)"/>
+            <!-- estratos -->
+            <path d="M40 332h88M180 324h72M300 340h96M430 330h86" stroke="#6D4A2C" stroke-width="2.4" opacity=".4" stroke-linecap="round"/>
+            <!-- río -->
+            <path d="M-10 404c90 16 150-10 232 4s150 26 236 10 172 2 192 8v54H-10Z" fill="url(#river)"/>
+            <path d="M30 420c70 10 120-6 180 2" stroke="#D8E8EA" stroke-width="3" fill="none" opacity=".55" stroke-linecap="round"/>
+            <path d="M330 436c80 8 140-4 210 2" stroke="#D8E8EA" stroke-width="3" fill="none" opacity=".5" stroke-linecap="round"/>
+
+            <!-- campos -->
+            <path d="M0 268h210l-16 46H0Z" fill="url(#field)" opacity=".85"/>
+            <path d="M440 256h200v52H452Z" fill="url(#field)" opacity=".7"/>
+
+            <!-- pueblo -->
+            <g>
+              <!-- iglesia -->
+              <rect x="258" y="196" width="26" height="78" fill="#E8DFCC"/>
+              <path d="M255 196l16-26 16 26Z" fill="#9C5436"/>
+              <rect x="266" y="214" width="10" height="14" rx="5" fill="#5E6B64"/>
+              <rect x="284" y="226" width="58" height="48" fill="#F1E8D6"/>
+              <path d="M280 226l29-16 33 16Z" fill="#A85B3A"/>
+              <rect x="300" y="248" width="12" height="26" fill="#6E7F6A"/>
+              <!-- casa principal (hostal) -->
+              <rect x="150" y="232" width="98" height="46" fill="#FBF4E6"/>
+              <path d="M144 232l53-22 57 22Z" fill="#B0603C"/>
+              <rect x="166" y="248" width="16" height="14" fill="#5E6B64"/>
+              <rect x="194" y="248" width="16" height="14" fill="#5E6B64"/>
+              <rect x="222" y="250" width="16" height="28" fill="#8A4A2F"/>
+              <rect x="186" y="214" width="8" height="12" fill="#C2B49A"/>
+              <!-- casitas laterales -->
+              <rect x="352" y="244" width="52" height="34" fill="#EFE5D2"/>
+              <path d="M347 244l31-16 31 16Z" fill="#96513A"/>
+              <rect x="370" y="256" width="12" height="22" fill="#6E7F6A"/>
+              <rect x="104" y="250" width="44" height="28" fill="#EDE2CE"/>
+              <path d="M99 250l27-14 27 14Z" fill="#8F4F36"/>
+              <rect x="412" y="254" width="40" height="24" fill="#E7DCC8"/>
+              <path d="M407 254l25-13 25 13Z" fill="#8B4B34"/>
+            </g>
+
+            <!-- árboles -->
+            <g fill="#4E6046">
+              <ellipse cx="70" cy="258" rx="17" ry="21"/>
+              <ellipse cx="486" cy="250" rx="15" ry="19"/>
+              <ellipse cx="520" cy="262" rx="12" ry="15"/>
+              <ellipse cx="330" cy="292" rx="13" ry="16"/>
+            </g>
+            <g stroke="#3B2C20" stroke-width="3">
+              <path d="M70 276v12M486 266v10M330 306v8"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FRANJA ============ -->
+<div class="strip">
+  <div class="in">
+    <div>
+      <h4 class="sans">Hoy toda la venta pasa por portales</h4>
+      <p class="sans">El negocio aparece en agregadores y portales de reserva de terceros, que se quedan una comisión de cada noche vendida.</p>
+    </div>
+    <div>
+      <h4 class="sans">Sin web propia ni dominio</h4>
+      <p class="sans">El directorio del Ayuntamiento de Cantalejo deja el campo de web vacío, así que no hay ninguna página que sea del hostal.</p>
+    </div>
+    <div>
+      <h4 class="sans">La propuesta</h4>
+      <p class="sans">Una web propia que recoja esa demanda y la convierta en llamadas directas al hostal, sin intermediarios.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ HABITACIONES ============ -->
+<section class="band" id="habitaciones">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <div class="eyebrow">Alojamiento</div>
+        <h2 style="font-size:clamp(26px,2.9vw,38px)">Habitaciones para descansar<br>en el centro del pueblo</h2>
+        <p class="lead" style="margin-top:16px">Alojamiento de hostal en Cantalejo, pensado tanto para quien viene unos días a conocer la zona como para quien pasa por trabajo y necesita una cama tranquila y algo caliente al llegar.</p>
+        <ul class="ulist">
+          <li>Disponibilidad y tipos de habitación, confirmados por teléfono en el momento</li>
+          <li>Hostal y restaurante en el mismo edificio: se duerme y se cena en el mismo sitio</li>
+          <li>Ubicación en el casco urbano, a pie de calle</li>
+          <li>Estancias de una noche o de varios días, según lo que necesites</li>
+        </ul>
+        <div class="ctas">
+          <a class="btn btn-main sans" href="tel:+34921520117">Consultar disponibilidad</a>
+        </div>
+      </div>
+      <div class="vis">
+        <div class="scene" style="background:#F1E8D6">
+          <svg viewBox="0 0 560 420" role="img" aria-label="Ilustración de una habitación con cama, ventana y lámpara">
+            <defs>
+              <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#F6EFE1"/><stop offset="100%" stop-color="#E7DCC7"/>
+              </linearGradient>
+              <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#B98B5E"/><stop offset="100%" stop-color="#9A6E46"/>
+              </linearGradient>
+              <linearGradient id="outside" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#BBD4DC"/><stop offset="100%" stop-color="#E3DCC4"/>
+              </linearGradient>
+            </defs>
+            <rect width="560" height="420" fill="url(#wall)"/>
+            <rect y="300" width="560" height="120" fill="url(#floor)"/>
+            <path d="M0 300h560" stroke="#7E5736" stroke-width="3"/>
+            <g stroke="#8A6241" stroke-width="1.5" opacity=".45">
+              <path d="M60 300v120M160 300v120M280 300v120M400 300v120M500 300v120"/>
+            </g>
+
+            <!-- ventana -->
+            <rect x="60" y="72" width="150" height="130" rx="4" fill="#8A6241"/>
+            <rect x="68" y="80" width="134" height="114" fill="url(#outside)"/>
+            <path d="M68 160h134v34H68Z" fill="#7E8E68" opacity=".8"/>
+            <circle cx="170" cy="106" r="14" fill="#F0D79C"/>
+            <path d="M135 80v114M68 137h134" stroke="#8A6241" stroke-width="6"/>
+
+            <!-- cabecero y cama -->
+            <rect x="250" y="130" width="250" height="86" rx="10" fill="#C9A07A"/>
+            <rect x="262" y="142" width="226" height="62" rx="6" fill="#B98B5E"/>
+            <rect x="238" y="248" width="286" height="62" rx="10" fill="#FBF6EA"/>
+            <rect x="238" y="276" width="286" height="34" rx="8" fill="#A4472B"/>
+            <rect x="268" y="216" width="92" height="42" rx="10" fill="#fff"/>
+            <rect x="372" y="216" width="92" height="42" rx="10" fill="#fff"/>
+            <rect x="238" y="306" width="286" height="10" rx="5" fill="#7E3220"/>
+            <rect x="248" y="316" width="12" height="20" fill="#6B4A30"/>
+            <rect x="500" y="316" width="12" height="20" fill="#6B4A30"/>
+
+            <!-- mesilla y lámpara -->
+            <rect x="140" y="252" width="76" height="58" rx="6" fill="#A87C52"/>
+            <rect x="150" y="266" width="56" height="16" rx="3" fill="#8A6241"/>
+            <path d="M178 252v-26" stroke="#4A4037" stroke-width="4"/>
+            <path d="M158 226h40l-8-28h-24Z" fill="#C08B2E"/>
+            <circle cx="178" cy="238" r="26" fill="#F0D79C" opacity=".3"/>
+
+            <!-- alfombra -->
+            <ellipse cx="330" cy="372" rx="140" ry="28" fill="#6E7F6A" opacity=".55"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESTAURANTE ============ -->
+<section class="band band-alt" id="restaurante">
+  <div class="wrap">
+    <div class="split rev">
+      <div>
+        <div class="eyebrow">Restaurante</div>
+        <h2 style="font-size:clamp(26px,2.9vw,38px)">Cocina de pueblo,<br>en el mismo edificio</h2>
+        <p class="lead" style="margin-top:16px">El restaurante da servicio tanto a quien se aloja como a quien viene solo a comer. Para saber qué hay cada día, qué se puede preparar para un grupo o reservar mesa, lo más rápido es llamar y preguntar.</p>
+        <ul class="ulist">
+          <li>Comidas y cenas para clientes del hostal y para el público del pueblo</li>
+          <li>Reserva de mesa por teléfono, incluidos grupos</li>
+          <li>Opciones del día y posibilidades para grupos, consultadas directamente</li>
+          <li>Consultar horario de cocina antes de venir</li>
+        </ul>
+        <div class="ctas">
+          <a class="btn btn-main sans" href="tel:+34921520117">Reservar mesa por teléfono</a>
+        </div>
+      </div>
+      <div class="vis">
+        <div class="scene" style="background:#EDE4D4">
+          <svg viewBox="0 0 560 420" role="img" aria-label="Ilustración de una mesa puesta con plato, copa y cubiertos">
+            <defs>
+              <linearGradient id="tbl" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#9E6E46"/><stop offset="100%" stop-color="#7B5433"/>
+              </linearGradient>
+              <radialGradient id="plate" cx="50%" cy="38%" r="70%">
+                <stop offset="0" stop-color="#FFFFFF"/><stop offset="100%" stop-color="#E4DAC8"/>
+              </radialGradient>
+            </defs>
+            <rect width="560" height="420" fill="#F3EADA"/>
+            <!-- pared de piedra -->
+            <g opacity=".5">
+              <rect y="0" width="560" height="190" fill="#DCCFB6"/>
+              <g stroke="#BBA98B" stroke-width="2" fill="none">
+                <path d="M0 42h560M0 86h560M0 130h560M0 174h560"/>
+                <path d="M70 0v42M190 0v42M330 0v42M470 0v42"/>
+                <path d="M20 42v44M140 42v44M260 42v44M400 42v44M520 42v44"/>
+                <path d="M90 86v44M230 86v44M360 86v44M480 86v44"/>
+                <path d="M40 130v44M170 130v44M300 130v44M440 130v44"/>
+              </g>
+            </g>
+            <!-- mesa -->
+            <rect x="0" y="190" width="560" height="230" fill="url(#tbl)"/>
+            <path d="M0 190h560" stroke="#5F4026" stroke-width="4"/>
+            <g stroke="#6B4728" stroke-width="2" opacity=".5">
+              <path d="M0 250h560M0 320h560M0 380h560"/>
+            </g>
+            <!-- mantel -->
+            <path d="M80 236h400l26 150H54Z" fill="#F7F1E4"/>
+            <path d="M80 236h400l4 24H76Z" fill="#E9E0CD"/>
+            <!-- plato -->
+            <ellipse cx="280" cy="314" rx="104" ry="54" fill="url(#plate)"/>
+            <ellipse cx="280" cy="310" rx="70" ry="35" fill="none" stroke="#C9BBA2" stroke-width="3"/>
+            <ellipse cx="280" cy="310" rx="40" ry="20" fill="#CBB08A" opacity=".55"/>
+            <!-- cubiertos -->
+            <g fill="#B9BDBE">
+              <rect x="150" y="286" width="9" height="62" rx="4"/>
+              <ellipse cx="154.5" cy="282" rx="11" ry="15"/>
+              <rect x="408" y="286" width="9" height="62" rx="4"/>
+              <path d="M404 266h17v18h-17Z"/>
+            </g>
+            <!-- copa -->
+            <path d="M448 196h44l-6 34c0 10-7 17-16 17s-16-7-16-17Z" fill="#C7DDE2" opacity=".9"/>
+            <path d="M466 247v34h-14v8h32v-8h-14Z" fill="#C7DDE2" opacity=".9"/>
+            <path d="M452 214h36l-3 16h-30Z" fill="#A4472B" opacity=".75"/>
+            <!-- pan y jarra -->
+            <ellipse cx="108" cy="292" rx="40" ry="22" fill="#D9A866"/>
+            <path d="M84 284c12-8 36-8 48 0" stroke="#B4823F" stroke-width="3" fill="none"/>
+            <path d="M330 214h60v62h-60Z" fill="#9FB0A8" opacity=".0"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ENTORNO ============ -->
+<section class="band" id="entorno">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">Zona y entorno</div>
+      <h2>Cantalejo, en la zona de las Hoces del Duratón</h2>
+      <p class="lead">El hostal está en Cantalejo (Segovia), un pueblo situado en la zona de las Hoces del Duratón. Es un punto de partida práctico para quien viene a recorrer la comarca y necesita dormir y comer cerca.</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <svg class="ic" viewBox="0 0 48 48" aria-hidden="true">
+          <path d="M4 38h40" stroke="#6E7F6A" stroke-width="2.6" stroke-linecap="round"/>
+          <path d="M6 38l12-18 9 12 6-8 9 14Z" fill="#A4472B" opacity=".2"/>
+          <path d="M6 38l12-18 9 12 6-8 9 14" fill="none" stroke="#A4472B" stroke-width="2.6" stroke-linejoin="round"/>
+          <circle cx="36" cy="13" r="4" fill="#C08B2E"/>
+        </svg>
+        <h3>Hoces del Duratón</h3>
+        <p>Cantalejo se encuentra en la zona de las Hoces del Duratón, el paraje por el que llega la mayoría de visitantes a la comarca.</p>
+      </div>
+      <div class="card">
+        <svg class="ic" viewBox="0 0 48 48" aria-hidden="true">
+          <rect x="7" y="18" width="34" height="22" rx="3" fill="#6E7F6A" opacity=".18"/>
+          <path d="M7 40V18l17-11 17 11v22" fill="none" stroke="#2C3330" stroke-width="2.6" stroke-linejoin="round"/>
+          <rect x="20" y="28" width="8" height="12" fill="#A4472B"/>
+        </svg>
+        <h3>En el casco urbano</h3>
+        <p>La dirección es C/ Segovia, 1, en Cantalejo: se llega a pie desde el pueblo y se aparca el coche para moverse por la zona.</p>
+      </div>
+      <div class="card">
+        <svg class="ic" viewBox="0 0 48 48" aria-hidden="true">
+          <path d="M24 42s14-12.5 14-22A14 14 0 0 0 10 20c0 9.5 14 22 14 22Z" fill="#A4472B" opacity=".16"/>
+          <path d="M24 42s14-12.5 14-22A14 14 0 0 0 10 20c0 9.5 14 22 14 22Z" fill="none" stroke="#A4472B" stroke-width="2.6" stroke-linejoin="round"/>
+          <circle cx="24" cy="20" r="5" fill="none" stroke="#2C3330" stroke-width="2.4"/>
+        </svg>
+        <h3>Base para la comarca</h3>
+        <p>Alojamiento y restaurante en el mismo edificio, para usar el pueblo como base durante la estancia en la zona.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CÓMO RESERVAR ============ -->
+<section class="band band-alt" id="reservar">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">Reserva directa</div>
+      <h2>Cómo reservar, en 3 pasos</h2>
+      <p class="lead">Reservar hablando con el hostal evita la comisión de los portales y permite resolver cualquier duda en la misma llamada: habitación, mesa, llegada o estancias largas.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <span class="n">Paso 1</span>
+        <h3>Llama al hostal</h3>
+        <p>Marca el <a href="tel:+34921520117" style="color:var(--clay-d)">921 520 117</a> o el <a href="tel:+34689916771" style="color:var(--clay-d)">689 916 771</a>. Si prefieres escribir, puedes usar el correo de contacto.</p>
+      </div>
+      <div class="step">
+        <span class="n">Paso 2</span>
+        <h3>Cuenta qué necesitas</h3>
+        <p>Fechas, número de personas y si quieres también mesa en el restaurante. Te confirmamos en la llamada qué hay disponible.</p>
+      </div>
+      <div class="step">
+        <span class="n">Paso 3</span>
+        <h3>Reserva confirmada</h3>
+        <p>La reserva queda hecha directamente con el hostal, sin plataformas de por medio ni comisiones de intermediarios.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section class="band" id="contacto">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">Contacto</div>
+      <h2>Dónde estamos y cómo localizarnos</h2>
+    </div>
+    <div class="contact">
+      <div class="info">
+        <div class="row">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6.2 3.5h3l1.5 4-2 1.4a11.5 11.5 0 0 0 6.4 6.4l1.4-2 4 1.5v3c0 1-.8 1.8-1.8 1.7C11.6 19.2 4.8 12.4 4.5 5.3c0-1 .7-1.8 1.7-1.8Z" stroke="#A4472B" stroke-width="1.7" stroke-linejoin="round"/>
+          </svg>
+          <div>
+            <div class="k">Teléfonos</div>
+            <div class="v"><a href="tel:+34921520117">921 520 117</a></div>
+            <div class="v"><a href="tel:+34689916771">689 916 771</a></div>
+          </div>
+        </div>
+        <div class="row">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 21s7-6.3 7-11a7 7 0 1 0-14 0c0 4.7 7 11 7 11Z" stroke="#A4472B" stroke-width="1.7" stroke-linejoin="round"/>
+            <circle cx="12" cy="10" r="2.6" stroke="#2C3330" stroke-width="1.6"/>
+          </svg>
+          <div>
+            <div class="k">Dirección</div>
+            <div class="v">C/ Segovia, 1<small>40320 Cantalejo (Segovia)</small></div>
+          </div>
+        </div>
+        <div class="row">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="8.4" stroke="#A4472B" stroke-width="1.7"/>
+            <path d="M12 7.4V12l3.4 2.2" stroke="#2C3330" stroke-width="1.7" stroke-linecap="round"/>
+          </svg>
+          <div>
+            <div class="k">Horario</div>
+            <div class="v">Consultar horario<small>Llámanos y te informamos del horario de hostal y restaurante.</small></div>
+          </div>
+        </div>
+        <div class="row">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3.2" y="5.4" width="17.6" height="13.2" rx="2.2" stroke="#A4472B" stroke-width="1.7"/>
+            <path d="M4.4 6.8 12 12.6l7.6-5.8" stroke="#2C3330" stroke-width="1.7" stroke-linejoin="round"/>
+          </svg>
+          <div>
+            <div class="k">Email</div>
+            <div class="v"><a href="mailto:rubenhome76@gmail.com">rubenhome76@gmail.com</a></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MAPA ESQUEMÁTICO SVG -->
+      <div>
+        <div class="mapcard">
+          <svg viewBox="0 0 620 420" role="img" aria-label="Mapa esquemático de la ubicación en Calle Segovia número 1, Cantalejo">
+            <defs>
+              <linearGradient id="mapbg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#F3EFE4"/><stop offset="100%" stop-color="#E8E1D0"/>
+              </linearGradient>
+            </defs>
+            <rect width="620" height="420" rx="10" fill="url(#mapbg)"/>
+            <!-- manzanas -->
+            <g fill="#DDD5C2">
+              <rect x="30" y="30" width="170" height="120" rx="6"/>
+              <rect x="248" y="30" width="140" height="120" rx="6"/>
+              <rect x="436" y="30" width="154" height="120" rx="6"/>
+              <rect x="30" y="248" width="170" height="142" rx="6"/>
+              <rect x="248" y="248" width="140" height="142" rx="6"/>
+              <rect x="436" y="248" width="154" height="142" rx="6"/>
+            </g>
+            <!-- plaza / zona verde -->
+            <rect x="248" y="30" width="140" height="120" rx="6" fill="#CBD5BE"/>
+            <g stroke="#9FB092" stroke-width="2" fill="none">
+              <path d="M268 90h100M318 50v80"/>
+            </g>
+            <!-- calles -->
+            <g stroke="#FFFFFF" stroke-width="22" stroke-linecap="square">
+              <path d="M0 198h620"/>
+              <path d="M224 0v420"/>
+              <path d="M412 0v420"/>
+            </g>
+            <g stroke="#C6BCA6" stroke-width="1.6" fill="none">
+              <path d="M0 187h620M0 209h620M213 0v420M235 0v420M401 0v420M423 0v420"/>
+            </g>
+            <g stroke="#E6C98C" stroke-width="2.4" stroke-dasharray="14 12" fill="none">
+              <path d="M0 198h620"/>
+            </g>
+
+            <!-- etiquetas de calle -->
+            <g font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" fill="#5F5748" letter-spacing="1.4">
+              <text x="40" y="193">C/ SEGOVIA</text>
+              <text x="232" y="318" transform="rotate(90 232 318)">TRAVESÍA</text>
+              <text x="420" y="60" transform="rotate(90 420 60)">CALLE</text>
+            </g>
+
+            <!-- marcador -->
+            <g>
+              <path d="M300 198c0 0 0 0 0 0" fill="none"/>
+              <circle cx="258" cy="236" r="34" fill="#A4472B" opacity=".14"/>
+              <path d="M258 262s20-17.5 20-30a20 20 0 1 0-40 0c0 12.5 20 30 20 30Z" fill="#A4472B"/>
+              <circle cx="258" cy="231" r="7.4" fill="#F6F1E7"/>
+            </g>
+            <!-- cartel -->
+            <g>
+              <rect x="294" y="192" width="284" height="72" rx="10" fill="#2C3330"/>
+              <text x="312" y="221" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" fill="#FFFFFF" font-weight="600">Hostal-Restaurante El Polvorín</text>
+              <text x="312" y="247" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="14.5" fill="#CFC9BC">C/ Segovia, 1 · 40320 Cantalejo</text>
+            </g>
+            <!-- rosa de los vientos -->
+            <g transform="translate(560 368)">
+              <circle r="26" fill="#FFFFFF" opacity=".82"/>
+              <path d="M0 -19 6 0 0 19 -6 0Z" fill="#2C3330"/>
+              <path d="M0 -19 6 0 -6 0Z" fill="#A4472B"/>
+              <text y="-26" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="11" fill="#6B6252">N</text>
+            </g>
+          </svg>
+          <div class="mapnote">Mapa esquemático orientativo dibujado para esta maqueta. No sustituye a un mapa real: el trazado de las calles es una representación simplificada.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA FINAL ============ -->
+<section class="final">
+  <div class="in">
+    <h2>Reserva directa, hablando con el hostal</h2>
+    <p>Sin portales de por medio y sin comisiones de intermediarios: una llamada y la reserva queda hecha con nosotros.</p>
+    <div class="ctas">
+      <a class="btn btn-main sans" href="tel:+34921520117">Llamar al 921 520 117</a>
+      <a class="btn btn-ghost sans" href="tel:+34689916771">O al 689 916 771</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PIE ============ -->
+<footer>
+  <div class="in">
+    <div class="fgrid">
+      <div>
+        <h5>Hostal-Restaurante El Polvorín</h5>
+        <p>Hostal con restaurante en Cantalejo (Segovia), en la zona de las Hoces del Duratón. Reserva directa por teléfono.</p>
+      </div>
+      <div>
+        <h5>Contacto</h5>
+        <div class="fl sans">
+          <a href="tel:+34921520117">921 520 117</a>
+          <a href="tel:+34689916771">689 916 771</a>
+          <a href="mailto:rubenhome76@gmail.com">rubenhome76@gmail.com</a>
+        </div>
+      </div>
+      <div>
+        <h5>Dirección</h5>
+        <div class="fl sans">
+          <span>C/ Segovia, 1</span>
+          <span>40320 Cantalejo (Segovia)</span>
+          <span>Consultar horario</span>
+        </div>
+      </div>
+    </div>
+    <div class="sig">
+      <strong>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</strong><br>
+      Maqueta no oficial, sin relación contractual con el negocio. Datos de contacto y dirección tomados de fuentes públicas; el resto del contenido es texto de ejemplo genérico, pendiente de validar con el propietario.
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var bar=document.querySelector('.studiobar');
+  function set(){
+    document.documentElement.style.setProperty('--barh', bar.offsetHeight+'px');
+  }
+  set();
+  window.addEventListener('resize',set);
+  if(window.ResizeObserver){new ResizeObserver(set).observe(bar);}
+})();
+</script>
+</body>
+</html>

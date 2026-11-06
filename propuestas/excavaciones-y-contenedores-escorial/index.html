@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Excavaciones y Contenedores Escorial S.L. — Cantalejo (Segovia)</title>
+<meta name="description" content="Excavaciones, movimiento de tierras y alquiler de contenedores en Cantalejo, Segovia. Propuesta de diseño no oficial de FFFFFFstudio.">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  :root{
+    --negro:#0e1012;
+    --carbon:#16191c;
+    --grafito:#1f2429;
+    --acero:#2b3238;
+    --humo:#49535c;
+    --niebla:#9aa5ae;
+    --hueso:#e9ecef;
+    --blanco:#fff;
+    --ambar:#f2a51c;
+    --ambar-claro:#ffc24d;
+    --ambar-osc:#b87608;
+    --tierra:#6e5436;
+    --barra:46px;
+    --max:1180px;
+    --r:14px;
+  }
+  html{-webkit-text-size-adjust:100%}
+  html,body{max-width:100%;overflow-x:hidden}
+  body{
+    margin:0;
+    background:var(--negro);
+    color:var(--hueso);
+    font-family:"Helvetica Neue",Helvetica,Arial,"Segoe UI",system-ui,sans-serif;
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    padding-top:calc(var(--barra) + 74px);
+  }
+  html{scroll-padding-top:calc(var(--barra) + 90px)}
+  .topbar{position:fixed;top:0;left:0;right:0;z-index:950}
+  img,svg{max-width:100%;display:block}
+  a{color:inherit}
+  h1,h2,h3,h4{margin:0;line-height:1.1;letter-spacing:-0.02em;font-weight:800}
+  p{margin:0}
+  .wrap{width:100%;max-width:var(--max);margin:0 auto;padding:0 22px}
+
+  /* ---------- BARRA FIJA MAQUETA ---------- */
+  .aviso{
+    position:relative;z-index:999;
+    min-height:var(--barra);
+    display:flex;align-items:center;justify-content:center;
+    text-align:center;
+    background:linear-gradient(90deg,#1a1205 0%,#2b1f06 50%,#1a1205 100%);
+    border-bottom:1px solid rgba(242,165,28,.45);
+    color:var(--ambar-claro);
+    font-size:12px;letter-spacing:.09em;text-transform:uppercase;
+    font-weight:700;
+    padding:8px 16px;
+    line-height:1.35;
+  }
+  .aviso span{display:inline-block;max-width:100%}
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:relative;z-index:900;
+    background:rgba(14,16,18,.96);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--acero);
+  }
+  .nav-in{display:flex;align-items:center;gap:18px;min-height:72px;padding:12px 22px;max-width:var(--max);margin:0 auto}
+  .logo{display:flex;align-items:center;gap:11px;text-decoration:none;flex:1;min-width:0}
+  .logo-mark{flex:0 0 auto}
+  .logo-txt{min-width:0}
+  .logo-txt b{display:block;font-size:14.5px;font-weight:800;letter-spacing:-0.01em;line-height:1.2;color:var(--blanco)}
+  .logo-txt i{display:block;font-style:normal;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ambar);font-weight:700;margin-top:2px}
+  .nav-links{display:flex;gap:26px;list-style:none;margin:0;padding:0}
+  .nav-links a{text-decoration:none;font-size:14px;font-weight:600;color:var(--niebla);letter-spacing:.01em;padding:6px 0;border-bottom:2px solid transparent}
+  .nav-links a:hover{color:var(--blanco);border-bottom-color:var(--ambar)}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    text-decoration:none;font-weight:800;font-size:15px;
+    padding:13px 22px;border-radius:10px;border:2px solid transparent;
+    letter-spacing:-0.005em;white-space:nowrap;
+  }
+  .btn-pri{background:linear-gradient(180deg,var(--ambar-claro),var(--ambar));color:#1a1205;box-shadow:0 8px 22px -10px rgba(242,165,28,.75)}
+  .btn-pri:hover{background:linear-gradient(180deg,#ffd27a,var(--ambar-claro))}
+  .btn-sec{border-color:var(--acero);color:var(--hueso);background:rgba(255,255,255,.03)}
+  .btn-sec:hover{border-color:var(--humo);background:rgba(255,255,255,.07)}
+  .nav .btn{padding:11px 18px;font-size:14px}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--acero)}
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(900px 480px at 78% 12%,rgba(242,165,28,.16),transparent 65%),
+      radial-gradient(700px 500px at 8% 90%,rgba(110,84,54,.3),transparent 70%),
+      linear-gradient(170deg,#15181b 0%,#0e1012 55%,#0b0d0e 100%);
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;opacity:.5;
+    background-image:linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px);
+    background-size:46px 46px;
+    mask-image:linear-gradient(to bottom,#000,transparent 85%);
+    -webkit-mask-image:linear-gradient(to bottom,#000,transparent 85%);
+  }
+  .hero-in{position:relative;z-index:2;display:grid;grid-template-columns:1.08fr .92fr;gap:54px;align-items:center;padding:84px 22px 92px;max-width:var(--max);margin:0 auto}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:11.5px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--ambar);border:1px solid rgba(242,165,28,.35);background:rgba(242,165,28,.09);padding:7px 14px;border-radius:100px;margin-bottom:24px}
+  .eyebrow i{width:7px;height:7px;border-radius:50%;background:var(--ambar);display:block;flex:0 0 auto}
+  h1{font-size:clamp(2.1rem,5.1vw,3.95rem);color:var(--blanco)}
+  h1 em{font-style:normal;display:block;color:var(--ambar)}
+  .lead{font-size:clamp(1rem,1.5vw,1.14rem);color:var(--niebla);margin-top:22px;max-width:40ch}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:13px;margin-top:34px}
+  .hero-note{margin-top:26px;font-size:13.5px;color:var(--niebla);display:flex;align-items:center;gap:7px 12px;flex-wrap:wrap}
+  .hero-note b{color:var(--hueso);font-weight:700}
+  .hero-note em{font-style:normal;color:var(--ambar-claro);font-weight:700;border:1px solid rgba(242,165,28,.35);background:rgba(242,165,28,.1);border-radius:100px;padding:3px 11px;font-size:12.5px}
+  .hero-art{position:relative}
+  .hero-art svg{width:100%;height:auto;filter:drop-shadow(0 26px 44px rgba(0,0,0,.6))}
+
+  /* ---------- CINTA ---------- */
+  .cinta{background:var(--ambar);color:#1a1205;overflow:hidden}
+  .cinta ul{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 34px;list-style:none;margin:0;padding:15px 22px;max-width:var(--max);margin:0 auto}
+  .cinta li{font-size:12.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;display:flex;align-items:center;gap:8px}
+  .cinta li::before{content:"";width:6px;height:6px;background:#1a1205;transform:rotate(45deg);flex:0 0 auto}
+
+  /* ---------- SECCIONES ---------- */
+  section{position:relative}
+  .sec{padding:86px 0}
+  .sec-alt{background:linear-gradient(180deg,#121517,#0e1012);border-top:1px solid var(--acero);border-bottom:1px solid var(--acero)}
+  .sec-head{max-width:640px;margin-bottom:46px}
+  .kicker{font-size:11.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--ambar);margin-bottom:14px}
+  .sec-head h2{font-size:clamp(1.65rem,3.4vw,2.5rem);color:var(--blanco)}
+  .sec-head p{color:var(--niebla);margin-top:16px;font-size:1.02rem}
+
+  /* ---------- SERVICIOS ---------- */
+  .grid-srv{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .card{
+    background:linear-gradient(165deg,rgba(255,255,255,.055),rgba(255,255,255,.015));
+    border:1px solid var(--acero);border-radius:var(--r);
+    padding:26px 24px 28px;position:relative;overflow:hidden;
+  }
+  .card::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--ambar),transparent)}
+  .card:hover{border-color:rgba(242,165,28,.45);background:linear-gradient(165deg,rgba(242,165,28,.08),rgba(255,255,255,.02))}
+  .ico{width:46px;height:46px;border-radius:11px;background:rgba(242,165,28,.13);border:1px solid rgba(242,165,28,.3);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+  .card h3{font-size:1.12rem;color:var(--blanco);margin-bottom:9px}
+  .card p{font-size:.94rem;color:var(--niebla)}
+
+  /* ---------- PASOS ---------- */
+  .grid-pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;counter-reset:p}
+  .paso{
+    background:var(--carbon);border:1px solid var(--acero);border-radius:var(--r);
+    padding:30px 26px 32px;position:relative;
+  }
+  .paso-n{
+    display:flex;align-items:center;justify-content:center;
+    width:52px;height:52px;border-radius:13px;
+    background:linear-gradient(180deg,var(--ambar-claro),var(--ambar-osc));
+    color:#17120a;font-weight:800;font-size:1.4rem;line-height:1;
+    margin-bottom:20px;box-shadow:0 10px 24px -12px rgba(242,165,28,.8);
+  }
+  .paso h3{font-size:1.14rem;color:var(--blanco);margin-bottom:10px}
+  .paso p{font-size:.95rem;color:var(--niebla)}
+  .paso-line{display:none}
+
+  /* ---------- CONTACTO ---------- */
+  .grid-cont{display:grid;grid-template-columns:1fr 1.12fr;gap:26px;align-items:start}
+  .panel{background:var(--carbon);border:1px solid var(--acero);border-radius:var(--r);padding:30px 28px}
+  .dato{display:flex;gap:15px;padding:17px 0;border-bottom:1px dashed var(--acero)}
+  .dato:last-child{border-bottom:0;padding-bottom:0}
+  .dato:first-child{padding-top:0}
+  .dato .ico{width:40px;height:40px;border-radius:10px;margin:0;flex:0 0 auto}
+  .dato-t{font-size:10.8px;letter-spacing:.14em;text-transform:uppercase;color:var(--humo);font-weight:800;margin-bottom:5px}
+  .dato-v{font-size:1.02rem;color:var(--blanco);font-weight:700;line-height:1.42;word-break:break-word;overflow-wrap:anywhere}
+  .dato-v a{text-decoration:none;color:var(--blanco);border-bottom:1px solid rgba(242,165,28,.55);display:inline-block}
+  .dato-v a:hover{color:var(--ambar-claro)}
+  .dato-v small{display:block;font-size:13px;font-weight:600;color:var(--niebla);margin-top:4px}
+  .tels{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+  .tels .btn{flex:1 1 170px}
+  .mapa-box{background:var(--carbon);border:1px solid var(--acero);border-radius:var(--r);padding:18px 18px 16px;overflow:hidden}
+  .mapa-box svg{width:100%;height:auto;border-radius:9px;background:#101316}
+  .mapa-cap{display:flex;align-items:flex-start;gap:9px;margin-top:14px;font-size:12.5px;color:var(--niebla);line-height:1.45}
+  .mapa-cap i{margin-top:5px}
+  .mapa-cap i{width:9px;height:9px;flex:0 0 auto;border-radius:50%;background:var(--ambar)}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:#0a0c0d;border-top:1px solid var(--acero);padding:54px 0 34px}
+  .foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:34px}
+  .foot-grid h4{font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--ambar);margin-bottom:16px}
+  .foot-grid p,.foot-grid li{font-size:.93rem;color:var(--niebla)}
+  .foot-grid ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+  .foot-grid a{text-decoration:none;color:var(--niebla);word-break:break-word;overflow-wrap:anywhere}
+  .foot-grid a:hover{color:var(--ambar-claro)}
+  .foot-logo{display:flex;align-items:center;gap:11px;margin-bottom:16px}
+  .creditos{
+    margin-top:42px;padding-top:24px;border-top:1px solid var(--acero);
+    display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center;
+    font-size:12.5px;color:var(--niebla);line-height:1.5;
+  }
+  .creditos .ffff{color:var(--niebla);font-weight:700}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:980px){
+    .hero-in{grid-template-columns:1fr;gap:42px;padding:62px 22px 70px}
+    .lead{max-width:none}
+    .grid-srv{grid-template-columns:repeat(2,1fr)}
+    .grid-pasos{grid-template-columns:1fr}
+    .grid-cont{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .nav-links{display:none}
+  }
+  @media (max-width:620px){
+    :root{--barra:58px}
+    body{font-size:16px}
+    .wrap{padding:0 18px}
+    .aviso{font-size:10.5px;letter-spacing:.06em;padding:8px 14px}
+    .nav-in{padding:10px 18px;gap:12px;min-height:66px}
+    .nav .btn{padding:10px 14px;font-size:13px}
+    .nav .btn span{display:none}
+    .logo-txt b{font-size:13px}
+    .hero-in{padding:48px 18px 56px;gap:34px}
+    .sec{padding:60px 0}
+    .sec-head{margin-bottom:34px}
+    .grid-srv{grid-template-columns:1fr;gap:14px}
+    .card{padding:22px 20px 24px}
+    .panel,.paso{padding:24px 20px}
+    .mapa-box{padding:14px 14px 12px}
+    .tels .btn{flex:1 1 100%}
+    .foot-grid{grid-template-columns:1fr;gap:28px}
+    .creditos{flex-direction:column;align-items:flex-start;gap:10px}
+    .cinta ul{gap:9px 20px;padding:13px 18px}
+    .cinta li{font-size:11px}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar" id="topbar">
+<!-- BARRA FIJA OBLIGATORIA -->
+<div class="aviso" role="note"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-in">
+    <a class="logo" href="#top">
+      <svg class="logo-mark" width="38" height="38" viewBox="0 0 38 38" aria-hidden="true">
+        <rect x="1" y="1" width="36" height="36" rx="9" fill="#1f2429" stroke="#f2a51c" stroke-width="1.6"/>
+        <path d="M7 27h24" stroke="#f2a51c" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M10 23V15l6-3 5 4v7" stroke="#e9ecef" stroke-width="2" stroke-linejoin="round" fill="none"/>
+        <path d="M21 16l7 7" stroke="#f2a51c" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <span class="logo-txt">
+        <b>Excavaciones y Contenedores Escorial S.L.</b>
+        <i>Cantalejo · Segovia</i>
+      </span>
+    </a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#proceso">Cómo trabajamos</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-pri" href="tel:+34921053466" aria-label="Llamar al 921 053 466">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 4h4l2 5-2.5 1.8a12 12 0 005.7 5.7L15 14l5 2v4a1 1 0 01-1 1A17 17 0 013 5a1 1 0 011-1z" fill="#1a1205"/></svg>
+      <span>921 053 466</span>
+    </a>
+  </div>
+</header>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-in">
+    <div>
+      <span class="eyebrow"><i></i> Obra civil y movimiento de tierras</span>
+      <h1>Excavaciones y contenedores<em>en Cantalejo, Segovia</em></h1>
+      <p class="lead">Excavaciones, movimiento de tierras y alquiler de contenedores. Cuéntenos la obra por teléfono y le indicamos cómo lo planteamos.</p>
+      <div class="hero-cta">
+        <a class="btn btn-pri" href="tel:+34921053466">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 4h4l2 5-2.5 1.8a12 12 0 005.7 5.7L15 14l5 2v4a1 1 0 01-1 1A17 17 0 013 5a1 1 0 011-1z" fill="#1a1205"/></svg>
+          Llamar al 921 053 466
+        </a>
+        <a class="btn btn-sec" href="#contacto">Ver datos de contacto</a>
+      </div>
+      <p class="hero-note"><b>C/ Caleras, 29 — 40320 Cantalejo (Segovia)</b> <em>Consultar horario</em></p>
+    </div>
+
+    <div class="hero-art">
+      <!-- Ilustración SVG: excavadora + contenedor -->
+      <svg viewBox="0 0 520 400" role="img" aria-label="Ilustración de una excavadora junto a un contenedor de obra">
+        <defs>
+          <linearGradient id="gAm" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#ffc24d"/><stop offset="1" stop-color="#d4890f"/>
+          </linearGradient>
+          <linearGradient id="gAm2" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#f2a51c"/><stop offset="1" stop-color="#b87608"/>
+          </linearGradient>
+          <linearGradient id="gSky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#1d2228"/><stop offset="1" stop-color="#101316"/>
+          </linearGradient>
+          <linearGradient id="gTierra" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#6e5436"/><stop offset="1" stop-color="#3a2d1e"/>
+          </linearGradient>
+        </defs>
+
+        <rect x="0" y="0" width="520" height="400" rx="18" fill="url(#gSky)"/>
+        <g stroke="rgba(255,255,255,.05)" stroke-width="1">
+          <path d="M0 60h520M0 120h520M0 180h520M0 240h520"/>
+          <path d="M80 0v400M180 0v400M280 0v400M380 0v400M480 0v400"/>
+        </g>
+        <circle cx="408" cy="86" r="42" fill="rgba(242,165,28,.10)"/>
+        <circle cx="408" cy="86" r="24" fill="rgba(242,165,28,.16)"/>
+
+        <!-- terreno -->
+        <path d="M0 300 C70 288 120 296 170 302 C230 309 300 298 360 304 C420 310 470 302 520 296 V400 H0 Z" fill="url(#gTierra)"/>
+        <path d="M0 300 C70 288 120 296 170 302 C230 309 300 298 360 304 C420 310 470 302 520 296" fill="none" stroke="#8a6b45" stroke-width="2"/>
+        <!-- zanja -->
+        <path d="M22 305 l18 40 h50 l18 -39" fill="#15181b" stroke="#8a6b45" stroke-width="2" stroke-linejoin="round"/>
+        <!-- montones de tierra -->
+        <path d="M274 304c10-16 22-16 32 0z" fill="#8a6b45"/>
+        <path d="M112 302c8-13 18-13 26 0z" fill="#7a5f3d"/>
+
+        <!-- CONTENEDOR -->
+        <g>
+          <path d="M330 232 h150 l-14 62 h-150 z" fill="url(#gAm2)"/>
+          <path d="M330 232 h150 l-5 22 h-150 z" fill="#ffc24d" opacity=".55"/>
+          <g stroke="#8a5c06" stroke-width="2" opacity=".75">
+            <path d="M356 233l-11 61M386 233l-9 61M416 233l-7 61M446 233l-5 61"/>
+          </g>
+          <path d="M330 232 h150 l-14 62 h-150 z" fill="none" stroke="#7d5405" stroke-width="2.5"/>
+          <rect x="344" y="294" width="118" height="7" rx="3" fill="#2b3238"/>
+        </g>
+
+        <!-- EXCAVADORA -->
+        <g>
+          <!-- brazo -->
+          <path d="M152 196 L96 150" stroke="#2b3238" stroke-width="15" stroke-linecap="round"/>
+          <path d="M152 196 L96 150" stroke="url(#gAm)" stroke-width="9" stroke-linecap="round"/>
+          <path d="M96 150 L74 214" stroke="#2b3238" stroke-width="13" stroke-linecap="round"/>
+          <path d="M96 150 L74 214" stroke="url(#gAm)" stroke-width="7.5" stroke-linecap="round"/>
+          <!-- cuchara -->
+          <path d="M60 212 c-12 10 -10 30 6 36 l34 10 -6 -40 z" fill="#49535c" stroke="#9aa5ae" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M66 250 l34 10" stroke="#e9ecef" stroke-width="3" stroke-linecap="round"/>
+          <!-- cuerpo -->
+          <path d="M148 186 h92 a10 10 0 0 1 10 10 v44 h-112 v-44 a10 10 0 0 1 10 -10z" fill="url(#gAm2)" stroke="#7d5405" stroke-width="2.5"/>
+          <!-- cabina -->
+          <path d="M178 136 h50 a9 9 0 0 1 9 9 v41 h-68 v-41 a9 9 0 0 1 9 -9z" fill="url(#gAm)" stroke="#7d5405" stroke-width="2.5"/>
+          <path d="M186 146 h42 v30 h-42z" fill="#1d2228" opacity=".9"/>
+          <path d="M186 146 l42 30" stroke="rgba(255,255,255,.14)" stroke-width="4"/>
+          <!-- orugas -->
+          <rect x="128" y="246" width="136" height="42" rx="21" fill="#1f2429" stroke="#49535c" stroke-width="2.5"/>
+          <circle cx="152" cy="267" r="13" fill="#2b3238" stroke="#9aa5ae" stroke-width="2.5"/>
+          <circle cx="196" cy="267" r="10" fill="#2b3238" stroke="#9aa5ae" stroke-width="2"/>
+          <circle cx="240" cy="267" r="13" fill="#2b3238" stroke="#9aa5ae" stroke-width="2.5"/>
+          <g stroke="#49535c" stroke-width="2.5">
+            <path d="M140 246v42M160 246v42M180 246v42M200 246v42M220 246v42M240 246v42"/>
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- CINTA -->
+<div class="cinta">
+  <ul>
+    <li>Excavaciones</li>
+    <li>Movimiento de tierras</li>
+    <li>Alquiler de contenedores</li>
+    <li>Retirada de escombros</li>
+  </ul>
+</div>
+
+<!-- SERVICIOS -->
+<section class="sec" id="servicios">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">Servicios</p>
+      <h2>Lo que hacemos en obra</h2>
+      <p>Trabajos de excavación y movimiento de tierras, y contenedores para la retirada de material. Para el detalle de cada trabajo, lo mejor es una llamada.</p>
+    </div>
+
+    <div class="grid-srv">
+      <article class="card">
+        <div class="ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M3 20h18" stroke="#f2a51c" stroke-width="2" stroke-linecap="round"/>
+            <path d="M6 17V11l5-3 4 3v6" stroke="#ffc24d" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M15 11l5 6" stroke="#f2a51c" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Excavaciones</h3>
+        <p>Apertura y excavación de terreno con maquinaria para el arranque de la obra.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M2 18c3-4 6 2 9-2s7 1 11-3" stroke="#ffc24d" stroke-width="2" stroke-linecap="round"/>
+            <path d="M2 21h20" stroke="#f2a51c" stroke-width="2" stroke-linecap="round"/>
+            <path d="M8 9l3-4 3 4" stroke="#f2a51c" stroke-width="2" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3>Movimiento de tierras</h3>
+        <p>Desmonte, relleno, nivelación y traslado de tierras dentro y fuera de la parcela.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 7h16v4H4z" stroke="#ffc24d" stroke-width="2"/>
+            <path d="M6 11v8M18 11v8M4 19h16" stroke="#f2a51c" stroke-width="2" stroke-linecap="round"/>
+            <path d="M9 7V4h6v3" stroke="#f2a51c" stroke-width="2" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3>Demoliciones</h3>
+        <p>Derribo de elementos y estructuras, con la carga y salida del material generado.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M3 7h18l-2 10H5z" stroke="#ffc24d" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M7 7l-.6 10M12 7v10M17 7l.6 10" stroke="#f2a51c" stroke-width="1.8"/>
+            <path d="M4 20h16" stroke="#f2a51c" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Alquiler de contenedores</h3>
+        <p>Contenedores para obra y reforma: los llevamos, los recogemos y gestionamos el vaciado.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M3 17h13l3-6h2v6h-3" stroke="#ffc24d" stroke-width="2" stroke-linejoin="round"/>
+            <circle cx="8" cy="19" r="2" stroke="#f2a51c" stroke-width="2"/>
+            <circle cx="18" cy="19" r="2" stroke="#f2a51c" stroke-width="2"/>
+            <path d="M5 13l3-6h6l1 4" stroke="#f2a51c" stroke-width="1.8" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3>Retirada de escombros</h3>
+        <p>Carga y transporte de escombros y restos de obra para dejar el tajo despejado.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M3 9h18" stroke="#f2a51c" stroke-width="2" stroke-linecap="round"/>
+            <path d="M6 9v5l3 6M18 9v5l-3 6" stroke="#ffc24d" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M9 20h6" stroke="#f2a51c" stroke-width="2" stroke-linecap="round"/>
+            <path d="M12 3v6" stroke="#f2a51c" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Zanjas y cimentaciones</h3>
+        <p>Zanjas para instalaciones y vaciados para cimentación, replanteados sobre el terreno.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section class="sec sec-alt" id="proceso">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">Cómo trabajamos</p>
+      <h2>Tres pasos, sin vueltas</h2>
+      <p>De la llamada a la obra terminada y el terreno limpio.</p>
+    </div>
+
+    <div class="grid-pasos">
+      <article class="paso">
+        <div class="paso-n">1</div>
+        <h3>Nos llama y nos cuenta la obra</h3>
+        <p>Nos dice qué hay que hacer, dónde está el terreno y cómo es el acceso. Con eso valoramos qué maquinaria y qué contenedor encaja.</p>
+      </article>
+      <article class="paso">
+        <div class="paso-n">2</div>
+        <h3>Vemos el terreno y planteamos el trabajo</h3>
+        <p>Comprobamos el acceso y el espacio disponible, y acordamos con usted cómo y cuándo se ejecuta.</p>
+      </article>
+      <article class="paso">
+        <div class="paso-n">3</div>
+        <h3>Ejecutamos y retiramos el material</h3>
+        <p>Hacemos la excavación o el movimiento de tierras y nos ocupamos de la salida del material y de la recogida del contenedor.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="sec" id="contacto">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">Contacto</p>
+      <h2>Hablemos de su obra</h2>
+      <p>Estamos en Cantalejo. La forma más rápida de resolver dudas es llamar por teléfono.</p>
+    </div>
+
+    <div class="grid-cont">
+      <div class="panel">
+        <div class="dato">
+          <div class="ico">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 4h4l2 5-2.5 1.8a12 12 0 005.7 5.7L15 14l5 2v4a1 1 0 01-1 1A17 17 0 013 5a1 1 0 011-1z" fill="#f2a51c"/></svg>
+          </div>
+          <div>
+            <p class="dato-t">Teléfonos</p>
+            <p class="dato-v">
+              <a href="tel:+34921053466">921 053 466</a><br>
+              <a href="tel:+34617494498">617 494 498</a>
+            </p>
+          </div>
+        </div>
+
+        <div class="dato">
+          <div class="ico">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22s7-7.1 7-12a7 7 0 10-14 0c0 4.9 7 12 7 12z" stroke="#f2a51c" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.6" fill="#f2a51c"/></svg>
+          </div>
+          <div>
+            <p class="dato-t">Dirección</p>
+            <p class="dato-v">C/ Caleras, 29<small>40320 Cantalejo (Segovia)</small></p>
+          </div>
+        </div>
+
+        <div class="dato">
+          <div class="ico">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="#f2a51c" stroke-width="2"/><path d="M12 7v5l4 2" stroke="#f2a51c" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <p class="dato-t">Horario</p>
+            <p class="dato-v">Consultar horario</p>
+          </div>
+        </div>
+
+        <div class="dato">
+          <div class="ico">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5" stroke="#f2a51c" stroke-width="2"/><path d="M4 7l8 6 8-6" stroke="#f2a51c" stroke-width="2" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <p class="dato-t">Email</p>
+            <p class="dato-v"><a href="mailto:joseluisescorial_kantalejo@hotmail.com">joseluisescorial_kantalejo@hotmail.com</a></p>
+          </div>
+        </div>
+
+        <div class="tels">
+          <a class="btn btn-pri" href="tel:+34921053466">Llamar 921 053 466</a>
+          <a class="btn btn-sec" href="tel:+34617494498">Llamar 617 494 498</a>
+        </div>
+      </div>
+
+      <div class="mapa-box">
+        <!-- Mapa esquemático dibujado a mano: solo calles y la ubicación real -->
+        <svg viewBox="0 0 640 420" role="img" aria-label="Mapa esquemático de la ubicación en C/ Caleras, 29, Cantalejo">
+          <defs>
+            <linearGradient id="gMapa" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#141719"/><stop offset="1" stop-color="#0d0f11"/>
+            </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="640" height="420" fill="url(#gMapa)"/>
+
+          <!-- manzanas -->
+          <g fill="#191d21" stroke="#242a2f" stroke-width="2">
+            <rect x="34" y="36" width="178" height="118" rx="7"/>
+            <rect x="262" y="36" width="150" height="118" rx="7"/>
+            <rect x="462" y="36" width="144" height="118" rx="7"/>
+            <rect x="34" y="208" width="178" height="96" rx="7"/>
+            <rect x="262" y="208" width="150" height="96" rx="7"/>
+            <rect x="462" y="208" width="144" height="96" rx="7"/>
+            <rect x="34" y="352" width="340" height="40" rx="7"/>
+            <rect x="424" y="352" width="182" height="40" rx="7"/>
+          </g>
+
+          <!-- calzadas -->
+          <g stroke="#2e353b" stroke-width="30" stroke-linecap="round">
+            <path d="M18 181 H622"/>
+            <path d="M18 328 H622"/>
+            <path d="M237 24 V404"/>
+            <path d="M437 24 V404"/>
+          </g>
+          <g stroke="#4a545d" stroke-width="2" stroke-dasharray="12 12">
+            <path d="M18 181 H622"/>
+            <path d="M18 328 H622"/>
+            <path d="M237 24 V404"/>
+            <path d="M437 24 V404"/>
+          </g>
+
+          <!-- calle destacada -->
+          <path d="M18 181 H622" stroke="rgba(242,165,28,.16)" stroke-width="30" stroke-linecap="round"/>
+          <path d="M18 181 H622" stroke="#f2a51c" stroke-width="2.5" stroke-dasharray="14 10"/>
+
+          <!-- rotulo de calle (solo la calle real) -->
+          <rect x="30" y="162" width="136" height="30" rx="8" fill="#0e1012" stroke="rgba(242,165,28,.5)" stroke-width="1.5"/>
+          <text x="98" y="183" text-anchor="middle" fill="#ffc24d" font-family="Helvetica,Arial,sans-serif" font-size="16" font-weight="bold" letter-spacing="1.4">C/ CALERAS</text>
+
+          <!-- marcador -->
+          <g>
+            <circle cx="320" cy="181" r="34" fill="rgba(242,165,28,.14)"/>
+            <circle cx="320" cy="181" r="22" fill="rgba(242,165,28,.22)"/>
+            <path d="M320 146a20 20 0 00-20 20c0 14 20 33 20 33s20-19 20-33a20 20 0 00-20-20z" fill="#f2a51c" stroke="#1a1205" stroke-width="2.5"/>
+            <circle cx="320" cy="166" r="7" fill="#1a1205"/>
+            <rect x="238" y="218" width="166" height="40" rx="9" fill="#0e1012" stroke="#f2a51c" stroke-width="2"/>
+            <text x="321" y="236" text-anchor="middle" fill="#ffffff" font-family="Helvetica,Arial,sans-serif" font-size="15" font-weight="bold">C/ Caleras, 29</text>
+            <text x="321" y="251" text-anchor="middle" fill="#9aa5ae" font-family="Helvetica,Arial,sans-serif" font-size="12">40320 Cantalejo (Segovia)</text>
+          </g>
+
+          <!-- norte -->
+          <g>
+            <circle cx="588" cy="384" r="22" fill="#0e1012" stroke="#2e353b" stroke-width="2"/>
+            <path d="M588 370 l7 18 -7 -5 -7 5z" fill="#f2a51c"/>
+            <text x="588" y="398" text-anchor="middle" fill="#9aa5ae" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="bold">N</text>
+          </g>
+        </svg>
+        <p class="mapa-cap"><i></i> Mapa esquemático orientativo, dibujado para esta propuesta: solo señala la calle y el número reales.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo">
+          <svg width="34" height="34" viewBox="0 0 38 38" aria-hidden="true">
+            <rect x="1" y="1" width="36" height="36" rx="9" fill="#16191c" stroke="#f2a51c" stroke-width="1.6"/>
+            <path d="M7 27h24" stroke="#f2a51c" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M10 23V15l6-3 5 4v7" stroke="#e9ecef" stroke-width="2" stroke-linejoin="round" fill="none"/>
+            <path d="M21 16l7 7" stroke="#f2a51c" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <strong style="color:#fff;font-size:15px;line-height:1.25">Excavaciones y Contenedores<br>Escorial S.L.</strong>
+        </div>
+        <p>Excavaciones, movimiento de tierras y alquiler de contenedores en Cantalejo (Segovia).</p>
+      </div>
+
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="tel:+34921053466">921 053 466</a></li>
+          <li><a href="tel:+34617494498">617 494 498</a></li>
+          <li><a href="mailto:joseluisescorial_kantalejo@hotmail.com">joseluisescorial_kantalejo@hotmail.com</a></li>
+          <li>Consultar horario</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Dónde estamos</h4>
+        <ul>
+          <li>C/ Caleras, 29</li>
+          <li>40320 Cantalejo (Segovia)</li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#proceso">Cómo trabajamos</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="creditos">
+      <p class="ffff">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+      <p>Maqueta no oficial. Sin vínculo con la empresa; datos tomados del directorio municipal.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var bar=document.getElementById('topbar');
+  function fit(){
+    var h=bar.offsetHeight;
+    document.body.style.paddingTop=h+'px';
+    document.documentElement.style.scrollPaddingTop=(h+16)+'px';
+  }
+  fit();
+  window.addEventListener('resize',fit);
+  window.addEventListener('load',fit);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,633 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Óptica Vasconcellos · Ciudad Rodrigo</title>
+<meta name="description" content="Propuesta de diseño web no oficial para Óptica Vasconcellos (Ciudad Rodrigo, Salamanca), elaborada por FFFFFFstudio.">
+<style>
+  :root{
+    --ink:#0f1d26;
+    --ink-soft:#3c5563;
+    --ink-mute:#6b8392;
+    --paper:#f7f9f9;
+    --paper-2:#ffffff;
+    --line:#dde6e8;
+    --teal:#0d6773;
+    --teal-dp:#084a53;
+    --teal-lt:#e7f2f3;
+    --amber:#c97b2a;
+    --amber-lt:#fdf3e7;
+    --bar:#101c22;
+    --radius:18px;
+    --shadow-s:0 1px 2px rgba(15,29,38,.06), 0 6px 18px rgba(15,29,38,.05);
+    --shadow-m:0 2px 6px rgba(15,29,38,.07), 0 18px 44px rgba(15,29,38,.09);
+    --bar-h:40px;
+    --maxw:1120px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Helvetica Neue",Helvetica,Arial,"Segoe UI",system-ui,sans-serif;
+    font-size:17px;
+    line-height:1.62;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%}
+  .illus{display:block;width:100%;height:auto}
+  h1,h2,h3,h4{margin:0;line-height:1.14;letter-spacing:-.018em;font-weight:700}
+  p{margin:0}
+  a{color:inherit}
+
+  /* ---------- barra fija de propuesta ---------- */
+  .studiobar{
+    position:fixed;top:0;left:0;right:0;z-index:90;
+    min-height:var(--bar-h);
+    display:flex;align-items:center;justify-content:center;
+    background:var(--bar);
+    color:#e9f1f2;
+    font-size:12.5px;line-height:1.35;letter-spacing:.055em;
+    text-transform:uppercase;
+    padding:9px 16px;
+    text-align:center;
+    border-bottom:1px solid rgba(255,255,255,.12);
+  }
+  .studiobar span{display:inline-block;max-width:100%}
+  .studiobar b{font-weight:700;color:#fff}
+
+  /* ---------- cabecera del sitio ---------- */
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  .site-head{
+    position:sticky;top:var(--bar-h);z-index:80;
+    background:rgba(247,249,249,.92);
+    backdrop-filter:saturate(140%) blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .site-head-in{display:flex;align-items:center;gap:18px;min-height:74px;padding:12px 0}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0}
+  .brand-mark{flex:0 0 auto}
+  .brand-txt{min-width:0}
+  .brand-name{font-size:17.5px;font-weight:700;letter-spacing:-.02em;white-space:nowrap}
+  .brand-sub{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);white-space:nowrap}
+  .nav{margin-left:auto;display:flex;align-items:center;gap:26px}
+  .nav a{font-size:14.5px;text-decoration:none;color:var(--ink-soft);white-space:nowrap}
+  .nav a:hover{color:var(--teal-dp)}
+
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    font-size:15.5px;font-weight:700;letter-spacing:-.005em;
+    text-decoration:none;border-radius:999px;
+    padding:13px 22px;border:1px solid transparent;
+    transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
+    white-space:nowrap;
+  }
+  .btn svg{flex:0 0 auto}
+  .btn-primary{background:var(--teal);color:#fff;box-shadow:var(--shadow-s)}
+  .btn-primary:hover{background:var(--teal-dp);transform:translateY(-1px)}
+  .btn-ghost{background:#fff;color:var(--teal-dp);border-color:var(--line);box-shadow:var(--shadow-s)}
+  .btn-ghost:hover{border-color:#bcd3d6}
+  .btn-sm{padding:10px 17px;font-size:14.5px}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;overflow:hidden;background:
+      radial-gradient(900px 520px at 88% -8%, #d9ecee 0%, rgba(217,236,238,0) 62%),
+      linear-gradient(180deg,#f7f9f9 0%, #eef5f6 100%);
+    border-bottom:1px solid var(--line);
+  }
+  .hero-in{display:grid;grid-template-columns:1.08fr .92fr;gap:54px;align-items:center;padding:78px 0 86px}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--teal-dp);
+    background:#fff;border:1px solid #cfe3e5;border-radius:999px;padding:7px 14px;
+    margin-bottom:22px;font-weight:600;
+  }
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--amber);flex:0 0 auto}
+  .hero h1{font-size:clamp(34px,5vw,58px);letter-spacing:-.034em}
+  .hero h1 em{font-style:normal;color:var(--teal)}
+  .hero-lead{margin-top:20px;font-size:18.5px;color:var(--ink-soft);max-width:30em}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:13px;margin-top:30px}
+  .hero-note{margin-top:18px;font-size:14px;color:var(--ink-mute)}
+  .hero-art{display:flex;justify-content:center;align-items:center}
+  .hero-card{
+    background:var(--paper-2);border:1px solid var(--line);border-radius:26px;
+    padding:26px;box-shadow:var(--shadow-m);width:100%;max-width:420px;
+  }
+  .hero-card-h{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:14px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .chip{font-size:13px;background:var(--teal-lt);color:var(--teal-dp);border-radius:999px;padding:6px 12px;font-weight:600}
+
+  /* ---------- secciones ---------- */
+  section{scroll-margin-top:124px}
+  .pad{padding:84px 0}
+  .pad-sm{padding:64px 0}
+  .sec-head{max-width:40em;margin-bottom:42px}
+  .kicker{font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--amber);font-weight:700;margin-bottom:14px}
+  .sec-head h2{font-size:clamp(27px,3.3vw,38px)}
+  .sec-head p{margin-top:16px;color:var(--ink-soft);font-size:17.5px}
+
+  .grid-serv{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+  .card{
+    background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px;box-shadow:var(--shadow-s);
+    transition:transform .14s ease, box-shadow .14s ease, border-color .14s ease;
+  }
+  .card:hover{transform:translateY(-2px);box-shadow:var(--shadow-m);border-color:#c9dde0}
+  .ico{
+    width:50px;height:50px;border-radius:14px;background:var(--teal-lt);
+    display:flex;align-items:center;justify-content:center;margin-bottom:18px;
+  }
+  .card h3{font-size:19px;letter-spacing:-.02em}
+  .card p{margin-top:10px;color:var(--ink-soft);font-size:15.5px;line-height:1.58}
+
+  /* ---------- pasos ---------- */
+  .steps-sec{background:var(--bar);color:#eaf2f3;border-top:1px solid #0b1317}
+  .steps-sec .kicker{color:#e8ab62}
+  .steps-sec .sec-head p{color:#b6c9cf}
+  .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+  .step{
+    background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.14);
+    border-radius:var(--radius);padding:26px;
+  }
+  .step-n{
+    width:40px;height:40px;border-radius:11px;background:#e8ab62;color:#231304;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;font-size:17px;margin-bottom:18px;
+  }
+  .step h3{font-size:18.5px;color:#fff}
+  .step p{margin-top:10px;color:#b9ccd2;font-size:15.5px;line-height:1.58}
+
+  /* ---------- contacto ---------- */
+  .contact-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:28px;align-items:start}
+  .info-list{display:grid;gap:14px;margin-top:4px}
+  .info{
+    display:flex;gap:15px;align-items:flex-start;
+    background:var(--paper-2);border:1px solid var(--line);border-radius:14px;
+    padding:18px 20px;box-shadow:var(--shadow-s);text-decoration:none;
+  }
+  .info-ic{width:38px;height:38px;border-radius:10px;background:var(--teal-lt);display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+  .info-k{display:block;font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-mute);font-weight:600}
+  .info-v{display:block;font-size:17.5px;font-weight:700;letter-spacing:-.015em;margin-top:3px;word-break:break-word}
+  .info-v small{display:block;font-size:14.5px;font-weight:400;color:var(--ink-soft);letter-spacing:0;margin-top:2px}
+  a.info:hover{border-color:#bcd3d6}
+  .hours-badge{
+    display:inline-flex;align-items:center;gap:9px;margin-top:20px;
+    background:var(--amber-lt);border:1px solid #f0dcc0;color:#7c4a12;
+    border-radius:999px;padding:9px 16px;font-size:14.5px;font-weight:600;
+  }
+  .mapcard{background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-m);overflow:hidden}
+  .mapcard figcaption{
+    display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;justify-content:space-between;
+    padding:14px 20px;border-top:1px solid var(--line);font-size:13.5px;color:var(--ink-mute);
+  }
+  .mapcard figcaption strong{color:var(--ink);font-size:14.5px}
+  .mapsvg{display:block;width:100%;height:auto;background:#eef4f3}
+
+  /* ---------- pie ---------- */
+  .foot{background:#0a1418;color:#c9d9de;border-top:1px solid #0b1317}
+  .foot-in{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:34px;padding:60px 0 30px}
+  .foot h4{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#7f9aa3;margin-bottom:14px;font-weight:700}
+  .foot-name{font-size:19px;font-weight:700;color:#fff;letter-spacing:-.02em}
+  .foot p{font-size:15px;color:#a9bfc6;margin-top:10px}
+  .foot a{color:#e3eef0;text-decoration:none;word-break:break-word}
+  .foot a:hover{text-decoration:underline}
+  .foot ul{list-style:none;margin:0;padding:0;display:grid;gap:9px;font-size:15px}
+  .foot-bar{
+    border-top:1px solid rgba(255,255,255,.12);
+    padding:20px 0 34px;font-size:13px;color:#8aa4ac;
+    display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:space-between;
+  }
+  .foot-credit{color:#e3eef0;font-weight:600}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:980px){
+    .hero-in{grid-template-columns:1fr;gap:40px;padding:58px 0 66px}
+    .grid-serv{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .steps{grid-template-columns:1fr}
+    .contact-grid{grid-template-columns:1fr}
+    .foot-in{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:760px){
+    .nav{display:none}
+    .site-head-in{gap:12px}
+    .head-cta{margin-left:auto}
+    .site-head-in{min-height:66px}
+    .brand-name{font-size:16.5px}
+  }
+  @media (max-width:560px){
+    .cta-num{display:none}
+    .head-cta{padding:12px;border-radius:50%}
+  }
+  @media (max-width:640px){
+    :root{--bar-h:52px}
+    body{font-size:16.5px}
+    .wrap{padding:0 18px}
+    .studiobar{font-size:11px;letter-spacing:.045em;padding:8px 14px}
+    .pad{padding:58px 0}
+    .pad-sm{padding:48px 0}
+    .hero-in{padding:44px 0 54px}
+    .hero-lead{font-size:17px}
+    .hero-cta .btn{width:100%}
+    .grid-serv{grid-template-columns:1fr}
+    .sec-head{margin-bottom:30px}
+    .card,.step,.hero-card{padding:22px}
+    .foot-in{grid-template-columns:1fr;gap:28px;padding:48px 0 24px}
+    .foot-bar{padding:18px 0 30px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none!important}
+  }
+</style>
+</head>
+<body>
+
+<!-- BARRA FIJA DE PROPUESTA -->
+<div class="studiobar" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · <b>Ángel Rubio</b></span>
+</div>
+
+<header class="site-head">
+  <div class="wrap site-head-in">
+    <a class="brand" href="#top">
+      <span class="brand-mark" aria-hidden="true">
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+          <rect width="42" height="42" rx="12" fill="#0d6773"/>
+          <path d="M8 21c3.6-5.4 8-8.1 13-8.1S30.4 15.6 34 21c-3.6 5.4-8 8.1-13 8.1S11.6 26.4 8 21z" stroke="#9fd4d8" stroke-width="2" stroke-linejoin="round"/>
+          <circle cx="21" cy="21" r="4.6" fill="#e8ab62"/>
+          <circle cx="19.4" cy="19.3" r="1.5" fill="#fff" opacity=".85"/>
+        </svg>
+      </span>
+      <span class="brand-txt">
+        <span class="brand-name">Óptica Vasconcellos</span>
+        <span class="brand-sub">Ciudad Rodrigo</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Secciones">
+      <a href="#servicios">Servicios</a>
+      <a href="#visita">Tu primera visita</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="btn btn-primary btn-sm head-cta" href="tel:+34650708626" aria-label="Llamar al 650 708 626">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M3.2 2.4h2.3l1.1 2.8-1.5 1.1a8.2 8.2 0 0 0 4.6 4.6l1.1-1.5 2.8 1.1v2.3c0 .6-.5 1.1-1.1 1.1A11.4 11.4 0 0 1 2.1 3.5c0-.6.5-1.1 1.1-1.1z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+      </svg>
+      <span class="cta-num">650 708 626</span>
+    </a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-in">
+      <div>
+        <span class="eyebrow"><span class="dot"></span>Examen visual y optometría</span>
+        <h1>Tu vista, revisada <em>con calma</em> y explicada sin prisas.</h1>
+        <p class="hero-lead">Óptica Vasconcellos es tu óptica en el centro de Ciudad Rodrigo. Pide cita por teléfono y te atendemos de forma personalizada: graduación, adaptación de tus gafas o lentes de contacto y seguimiento después.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="tel:+34650708626">
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3.2 2.4h2.3l1.1 2.8-1.5 1.1a8.2 8.2 0 0 0 4.6 4.6l1.1-1.5 2.8 1.1v2.3c0 .6-.5 1.1-1.1 1.1A11.4 11.4 0 0 1 2.1 3.5c0-.6.5-1.1 1.1-1.1z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+            Llamar al 650 708 626
+          </a>
+          <a class="btn btn-ghost" href="#contacto">Cómo llegar</a>
+        </div>
+        <p class="hero-note">C/ Madrid, 19 · 37500 Ciudad Rodrigo (Salamanca)</p>
+      </div>
+
+      <div class="hero-art">
+        <div class="hero-card">
+          <div class="hero-card-h">Salud visual</div>
+          <svg class="illus" viewBox="0 0 360 200" role="img" aria-label="Ilustración esquemática de un ojo y dos lentes correctoras">
+            <defs>
+              <linearGradient id="gSky" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#e7f2f3"/><stop offset="1" stop-color="#cfe6e8"/>
+              </linearGradient>
+              <linearGradient id="gLens" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#ffffff" stop-opacity=".92"/>
+                <stop offset="1" stop-color="#9fd4d8" stop-opacity=".55"/>
+              </linearGradient>
+              <radialGradient id="gIris" cx="40%" cy="35%" r="75%">
+                <stop offset="0" stop-color="#2a97a3"/><stop offset="1" stop-color="#084a53"/>
+              </radialGradient>
+            </defs>
+            <rect x="0" y="0" width="360" height="200" rx="16" fill="url(#gSky)"/>
+            <g stroke="#b2d5d9" stroke-width="1" opacity=".75">
+              <path d="M0 50h360M0 100h360M0 150h360"/>
+            </g>
+            <!-- ojo -->
+            <path d="M60 100c28-40 62-60 100-60s72 20 100 60c-28 40-62 60-100 60s-72-20-100-60z" fill="#fff" stroke="#0d6773" stroke-width="3" stroke-linejoin="round"/>
+            <circle cx="160" cy="100" r="30" fill="url(#gIris)"/>
+            <circle cx="160" cy="100" r="12" fill="#06282e"/>
+            <circle cx="150" cy="90" r="6" fill="#fff" opacity=".9"/>
+            <circle cx="172" cy="112" r="3" fill="#fff" opacity=".5"/>
+            <!-- lentes correctoras -->
+            <g>
+              <circle cx="258" cy="100" r="38" fill="url(#gLens)" stroke="#0d6773" stroke-width="2.5"/>
+              <circle cx="318" cy="100" r="30" fill="url(#gLens)" stroke="#0d6773" stroke-width="2.5" opacity=".75"/>
+              <path d="M296 100h-0" stroke="#0d6773" stroke-width="2.5"/>
+              <path d="M220 100h-2" stroke="#0d6773" stroke-width="2.5"/>
+            </g>
+            <!-- rayo de luz refractado -->
+            <path d="M20 72c70 0 110 10 170 28" stroke="#c97b2a" stroke-width="2.5" stroke-dasharray="7 6" fill="none"/>
+            <path d="M20 128c70 0 110-10 170-28" stroke="#c97b2a" stroke-width="2.5" stroke-dasharray="7 6" fill="none" opacity=".6"/>
+          </svg>
+          <div class="chips">
+            <span class="chip">Examen visual</span>
+            <span class="chip">Optometría</span>
+            <span class="chip">Atención personal</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section id="servicios" class="pad">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="kicker">Servicios</div>
+        <h2>Lo que puedes resolver en la óptica</h2>
+        <p>Desde la revisión de la vista hasta la montura puesta y ajustada. Si tienes dudas sobre tu caso, lo más rápido es llamarnos y preguntar.</p>
+      </div>
+
+      <div class="grid-serv">
+        <article class="card">
+          <div class="ico" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+              <path d="M2 12c3-5 6-7.5 10-7.5S19 7 22 12c-3 5-6 7.5-10 7.5S5 17 2 12z" stroke="#0d6773" stroke-width="1.8" stroke-linejoin="round"/>
+              <circle cx="12" cy="12" r="3.4" fill="#0d6773"/>
+            </svg>
+          </div>
+          <h3>Examen visual</h3>
+          <p>Medimos cómo ves de lejos y de cerca y comprobamos si tu graduación actual sigue siendo la correcta.</p>
+        </article>
+
+        <article class="card">
+          <div class="ico" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+              <path d="M4 5h16M6 5v9a3 3 0 0 0 6 0V5M18 5v6" stroke="#0d6773" stroke-width="1.8" stroke-linecap="round"/>
+              <circle cx="18" cy="15.5" r="3.3" stroke="#0d6773" stroke-width="1.8"/>
+            </svg>
+          </div>
+          <h3>Optometría</h3>
+          <p>Revisión más completa del funcionamiento visual: enfoque, coordinación entre los dos ojos y fatiga al leer o con pantallas.</p>
+        </article>
+
+        <article class="card">
+          <div class="ico" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+              <circle cx="6.8" cy="14" r="4.1" stroke="#0d6773" stroke-width="1.8"/>
+              <circle cx="17.2" cy="14" r="4.1" stroke="#0d6773" stroke-width="1.8"/>
+              <path d="M10.9 13.6c.7-.6 1.5-.6 2.2 0M2.7 12 4.4 7.6h2.2M21.3 12l-1.7-4.4h-2.2" stroke="#0d6773" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Gafas graduadas</h3>
+          <p>Elegimos juntos la montura y el tipo de lente que encaja con tu graduación y con tu día a día, y te la ajustamos antes de salir.</p>
+        </article>
+
+        <article class="card">
+          <div class="ico" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+              <path d="M3 9h18l-1.4 2.6A5 5 0 0 1 15 14h-1.4A2.6 2.6 0 0 1 11 11.4 2.6 2.6 0 0 1 8.4 14H7a5 5 0 0 1-4.6-2.4L3 9z" fill="#0d6773" opacity=".18"/>
+              <path d="M3 9h18M4.4 9 6 6.2h12L19.6 9M3 9l1.4 2.6A5 5 0 0 0 9 14a2.6 2.6 0 0 0 2.6-2.6M21 9l-1.4 2.6A5 5 0 0 1 15 14a2.6 2.6 0 0 1-2.6-2.6" stroke="#0d6773" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Gafas de sol</h3>
+          <p>Gafas de sol con y sin graduación, pensadas para que protejas los ojos de verdad y no solo para que no moleste la luz.</p>
+        </article>
+
+        <article class="card">
+          <div class="ico" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="7.6" stroke="#0d6773" stroke-width="1.8"/>
+              <circle cx="12" cy="12" r="3.3" stroke="#0d6773" stroke-width="1.6" opacity=".6"/>
+              <path d="M6.6 7.2c1.2 3.2 3.4 5.4 6.6 6.6" stroke="#0d6773" stroke-width="1.6" stroke-linecap="round" opacity=".55"/>
+            </svg>
+          </div>
+          <h3>Lentes de contacto</h3>
+          <p>Adaptación de lentillas y revisión de cómo las llevas puestas, con indicaciones claras de manejo y mantenimiento.</p>
+        </article>
+
+        <article class="card">
+          <div class="ico" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+              <path d="M8 4.5h8M9.5 4.5v3.2L5.8 15a3.4 3.4 0 0 0 3 5h6.4a3.4 3.4 0 0 0 3-5l-3.7-7.3V4.5" stroke="#0d6773" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M7.2 15h9.6" stroke="#0d6773" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Ajustes y mantenimiento</h3>
+          <p>Si la montura se ha abierto, se desliza o roza, pásate: la revisamos, la ajustamos y cambiamos las piezas que haga falta.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- TU PRIMERA VISITA -->
+  <section id="visita" class="steps-sec pad">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="kicker">Tu primera visita</div>
+        <h2>Tres pasos, sin complicaciones</h2>
+        <p>Así funciona desde que descuelgas el teléfono hasta que sales con tus gafas puestas.</p>
+      </div>
+      <div class="steps">
+        <article class="step">
+          <div class="step-n">1</div>
+          <h3>Llamas y pides cita</h3>
+          <p>Nos cuentas qué te pasa o qué necesitas por teléfono y acordamos un día y una hora para atenderte sin esperas.</p>
+        </article>
+        <article class="step">
+          <div class="step-n">2</div>
+          <h3>Revisamos tu visión</h3>
+          <p>Hacemos el examen visual, te explicamos en palabras normales lo que hemos medido y qué opciones tienes.</p>
+        </article>
+        <article class="step">
+          <div class="step-n">3</div>
+          <h3>Eliges y ajustamos</h3>
+          <p>Decides montura y lentes con nuestro consejo. Al recogerlas las ajustamos a tu cara y te quedas con el seguimiento abierto.</p>
+        </article>
+      </div>
+      <p style="margin-top:28px">
+        <a class="btn btn-primary" href="tel:+34650708626">
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3.2 2.4h2.3l1.1 2.8-1.5 1.1a8.2 8.2 0 0 0 4.6 4.6l1.1-1.5 2.8 1.1v2.3c0 .6-.5 1.1-1.1 1.1A11.4 11.4 0 0 1 2.1 3.5c0-.6.5-1.1 1.1-1.1z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+          Pedir cita por teléfono
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="pad">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="kicker">Contacto</div>
+        <h2>Estamos en C/ Madrid, 19</h2>
+        <p>En pleno centro de Ciudad Rodrigo. Lo más directo es llamarnos: te decimos cuándo pasarte y resolvemos la duda en la misma llamada.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div>
+          <div class="info-list">
+            <a class="info" href="tel:+34650708626">
+              <span class="info-ic" aria-hidden="true">
+                <svg width="19" height="19" viewBox="0 0 16 16" fill="none">
+                  <path d="M3.2 2.4h2.3l1.1 2.8-1.5 1.1a8.2 8.2 0 0 0 4.6 4.6l1.1-1.5 2.8 1.1v2.3c0 .6-.5 1.1-1.1 1.1A11.4 11.4 0 0 1 2.1 3.5c0-.6.5-1.1 1.1-1.1z" stroke="#0d6773" stroke-width="1.5" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span>
+                <span class="info-k">Teléfono</span>
+                <span class="info-v">650 708 626<small>Pulsa para llamar</small></span>
+              </span>
+            </a>
+
+            <div class="info">
+              <span class="info-ic" aria-hidden="true">
+                <svg width="19" height="19" viewBox="0 0 16 16" fill="none">
+                  <path d="M8 14.5s5-4.2 5-8A5 5 0 0 0 3 6.5c0 3.8 5 8 5 8z" stroke="#0d6773" stroke-width="1.5" stroke-linejoin="round"/>
+                  <circle cx="8" cy="6.4" r="1.9" stroke="#0d6773" stroke-width="1.5"/>
+                </svg>
+              </span>
+              <span>
+                <span class="info-k">Dirección</span>
+                <span class="info-v">C/ Madrid, 19<small>37500 Ciudad Rodrigo (Salamanca)</small></span>
+              </span>
+            </div>
+
+            <a class="info" href="mailto:opticavasconcellos@hotmail.es">
+              <span class="info-ic" aria-hidden="true">
+                <svg width="19" height="19" viewBox="0 0 16 16" fill="none">
+                  <rect x="1.8" y="3.4" width="12.4" height="9.2" rx="1.6" stroke="#0d6773" stroke-width="1.5"/>
+                  <path d="m2.4 4.4 5.6 4.1 5.6-4.1" stroke="#0d6773" stroke-width="1.5" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span>
+                <span class="info-k">Email</span>
+                <span class="info-v" style="font-size:15.5px">opticavasconcellos@hotmail.es</span>
+              </span>
+            </a>
+          </div>
+
+          <span class="hours-badge">
+            <svg width="17" height="17" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <circle cx="8" cy="8" r="6.2" stroke="#7c4a12" stroke-width="1.5"/>
+              <path d="M8 4.6V8l2.4 1.6" stroke="#7c4a12" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            Consultar horario
+          </span>
+        </div>
+
+        <figure class="mapcard" style="margin:0">
+          <svg class="mapsvg" viewBox="0 0 640 430" role="img" aria-label="Mapa esquemático de la zona: la óptica está en la calle Madrid, número 19, en Ciudad Rodrigo">
+            <defs>
+              <linearGradient id="gMap" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#f1f7f6"/><stop offset="1" stop-color="#e4eeec"/>
+              </linearGradient>
+            </defs>
+            <rect width="640" height="430" fill="url(#gMap)"/>
+
+            <!-- manzanas -->
+            <g fill="#d9e6e3">
+              <rect x="40" y="46" width="180" height="104" rx="7"/>
+              <rect x="258" y="46" width="138" height="104" rx="7"/>
+              <rect x="434" y="46" width="166" height="104" rx="7"/>
+              <rect x="40" y="276" width="180" height="112" rx="7"/>
+              <rect x="258" y="276" width="138" height="112" rx="7"/>
+              <rect x="434" y="276" width="166" height="112" rx="7"/>
+              <rect x="40" y="188" width="180" height="52" rx="7"/>
+              <rect x="434" y="188" width="166" height="52" rx="7"/>
+            </g>
+
+            <!-- calles secundarias (verticales) -->
+            <g stroke="#ffffff" stroke-width="20" stroke-linecap="square">
+              <path d="M239 30v370"/>
+              <path d="M415 30v370"/>
+            </g>
+            <g stroke="#c3d7d3" stroke-width="1.4" stroke-dasharray="6 8">
+              <path d="M239 30v370"/>
+              <path d="M415 30v370"/>
+            </g>
+
+            <!-- calle Madrid (horizontal, principal) -->
+            <path d="M20 214h600" stroke="#ffffff" stroke-width="34" stroke-linecap="square"/>
+            <path d="M20 214h600" stroke="#e8ab62" stroke-width="3" stroke-dasharray="16 14" opacity=".85"/>
+
+            <!-- bloque de la óptica -->
+            <rect x="258" y="188" width="138" height="52" rx="7" fill="#cfe3e1"/>
+
+            <!-- marcador -->
+            <g>
+              <path d="M320 150c-17 0-30 13-30 30 0 21 30 46 30 46s30-25 30-46c0-17-13-30-30-30z" fill="#0d6773"/>
+              <circle cx="320" cy="180" r="11.5" fill="#fff"/>
+              <circle cx="320" cy="180" r="5" fill="#c97b2a"/>
+            </g>
+
+            <!-- etiquetas -->
+            <g font-family="Helvetica Neue,Helvetica,Arial,sans-serif">
+              <rect x="176" y="96" width="288" height="62" rx="12" fill="#ffffff" stroke="#d2e2df" stroke-width="1.4"/>
+              <text x="320" y="124" text-anchor="middle" font-size="19" font-weight="700" fill="#0f1d26">Óptica Vasconcellos</text>
+              <text x="320" y="146" text-anchor="middle" font-size="14.5" fill="#3c5563">C/ Madrid, 19</text>
+              <text x="52" y="207" font-size="14" font-weight="700" fill="#5d7681" letter-spacing="1.6">CALLE MADRID</text>
+              <text x="470" y="207" font-size="14" font-weight="700" fill="#5d7681" letter-spacing="1.6">CALLE MADRID</text>
+              <text x="231" y="368" font-size="12.5" fill="#7b929b" transform="rotate(-90 231 368)">calle transversal</text>
+              <text x="407" y="368" font-size="12.5" fill="#7b929b" transform="rotate(-90 407 368)">calle transversal</text>
+              <text x="320" y="268" text-anchor="middle" font-size="12.5" fill="#7b929b">esquema orientativo · no a escala</text>
+            </g>
+
+            <!-- norte -->
+            <g transform="translate(590 386)">
+              <circle r="21" fill="#ffffff" stroke="#cddfdb" stroke-width="1.4"/>
+              <path d="M0 -13 5.5 6 0 2 -5.5 6z" fill="#0d6773"/>
+              <text x="0" y="17" text-anchor="middle" font-size="10" font-weight="700" fill="#5d7681" font-family="Helvetica Neue,Helvetica,Arial,sans-serif">N</text>
+            </g>
+          </svg>
+          <figcaption>
+            <strong>C/ Madrid, 19 · 37500 Ciudad Rodrigo</strong>
+            <span>Mapa esquemático dibujado a mano</span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- PIE -->
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div>
+      <div class="foot-name">Óptica Vasconcellos</div>
+      <p>Óptica en Ciudad Rodrigo (Salamanca). Examen visual y optometría, gafas graduadas, gafas de sol y lentes de contacto.</p>
+    </div>
+    <div>
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="tel:+34650708626">650 708 626</a></li>
+        <li><a href="mailto:opticavasconcellos@hotmail.es">opticavasconcellos@hotmail.es</a></li>
+        <li>C/ Madrid, 19 — 37500 Ciudad Rodrigo (Salamanca)</li>
+        <li>Consultar horario</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Secciones</h4>
+      <ul>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#visita">Tu primera visita</a></li>
+        <li><a href="#contacto">Contacto y mapa</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap foot-bar">
+    <span class="foot-credit">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</span>
+    <span>Maqueta de demostración · no es la web oficial del negocio</span>
+  </div>
+</footer>
+
+</body>
+</html>

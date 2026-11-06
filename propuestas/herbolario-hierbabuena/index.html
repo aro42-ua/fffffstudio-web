@@ -1,0 +1,797 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Herbolario Hierbabuena · Cantalejo (Segovia)</title>
+<meta name="description" content="Herbolario Hierbabuena — herbolario y dietética en Cantalejo (Segovia). C/ Frontón, 17. Maqueta de propuesta de diseño.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  :root{
+    --cream:#F6F3EA;
+    --cream-2:#EFEADC;
+    --paper:#FFFDF8;
+    --ink:#1B2A22;
+    --ink-soft:#415349;
+    --green-900:#16281F;
+    --green-800:#1E3A2D;
+    --green-700:#2A5240;
+    --green-500:#487B60;
+    --sage:#9DB89A;
+    --sage-soft:#C9D8C4;
+    --ochre:#B4863C;
+    --line:rgba(27,42,34,.14);
+    --line-strong:rgba(27,42,34,.24);
+    --bar-h:38px;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,"Times New Roman",serif;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    --radius:18px;
+    --shadow:0 1px 2px rgba(22,40,31,.05),0 14px 36px -18px rgba(22,40,31,.28);
+  }
+  html{-webkit-text-size-adjust:100%}
+  html,body{max-width:100%;overflow-x:hidden}
+  body{
+    margin:0;
+    padding-top:var(--bar-h);
+    background:var(--cream);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%}
+  a{color:inherit}
+  h1,h2,h3,h4{font-family:var(--serif);font-weight:600;line-height:1.14;margin:0;letter-spacing:-.012em}
+  p{margin:0}
+  .wrap{width:100%;max-width:1160px;margin:0 auto;padding:0 28px}
+  .eyebrow{
+    font-family:var(--sans);font-size:11.5px;font-weight:650;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--green-500);margin:0 0 14px
+  }
+  .eyebrow.on-dark{color:var(--sage)}
+
+  /* ---------- barra fija de propuesta ---------- */
+  .proposal-bar{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    height:var(--bar-h);display:flex;align-items:center;justify-content:center;
+    background:var(--green-900);
+    color:#EAF0E7;
+    font-size:11.5px;letter-spacing:.055em;font-weight:500;
+    padding:0 14px;text-align:center;
+    border-bottom:1px solid rgba(255,255,255,.1);
+  }
+  .proposal-bar span{
+    display:block;max-width:100%;
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  }
+
+  /* ---------- cabecera ---------- */
+  .site-head{
+    position:relative;z-index:40;
+    border-bottom:1px solid var(--line);
+    background:rgba(246,243,234,.92);
+    backdrop-filter:blur(8px);
+  }
+  .head-in{display:flex;align-items:center;gap:20px;min-height:76px;padding:12px 0}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0}
+  .brand .mark{flex:none;width:40px;height:40px}
+  .brand-txt{min-width:0}
+  .brand-name{display:block;font-family:var(--serif);font-size:19px;font-weight:600;letter-spacing:-.015em;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .brand-sub{display:block;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);line-height:1.5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .nav{margin-left:auto;display:flex;align-items:center;gap:26px}
+  .nav a.navlink{
+    text-decoration:none;font-size:14.5px;color:var(--ink-soft);
+    padding:6px 0;border-bottom:1px solid transparent;
+  }
+  .nav a.navlink:hover{color:var(--green-700);border-bottom-color:var(--sage)}
+  @media (max-width:900px){.nav .navlink{display:none}}
+
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    font-family:var(--sans);font-size:15px;font-weight:600;letter-spacing:.005em;
+    text-decoration:none;border-radius:999px;padding:12px 22px;
+    border:1px solid transparent;white-space:nowrap;
+  }
+  .btn-primary{background:var(--green-800);color:#F4F8F2;box-shadow:0 10px 24px -14px rgba(22,40,31,.8)}
+  .btn-primary:hover{background:var(--green-700)}
+  .btn-ghost{border-color:var(--line-strong);color:var(--green-800);background:transparent}
+  .btn-ghost:hover{border-color:var(--green-500);background:rgba(72,123,96,.07)}
+  .btn-light{background:var(--paper);color:var(--green-900)}
+  .btn-light:hover{background:#fff}
+  .btn-outline-light{border-color:rgba(255,255,255,.4);color:#EAF0E7}
+  .btn-outline-light:hover{border-color:rgba(255,255,255,.75);background:rgba(255,255,255,.08)}
+  .btn .ic{flex:none;width:17px;height:17px}
+  .btn-sm{padding:10px 18px;font-size:14px}
+  .lbl-short{display:none}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;overflow:hidden;background:
+      radial-gradient(130% 90% at 88% 6%, #E7EFE3 0%, rgba(231,239,227,0) 58%),
+      radial-gradient(100% 70% at 4% 96%, #EFEADC 0%, rgba(239,234,220,0) 62%),
+      linear-gradient(180deg,#F8F6EF 0%, var(--cream) 100%);
+  }
+  .hero-deco{position:absolute;inset:0;pointer-events:none;z-index:0}
+  .hero-deco svg{position:absolute}
+  .hero-sprig-a{top:-40px;right:-70px;width:520px;opacity:.5}
+  .hero-sprig-b{bottom:-110px;left:-120px;width:420px;opacity:.32}
+  .hero-in{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:56px;align-items:center;padding:92px 0 96px}
+  h1{font-size:clamp(2.35rem,5.1vw,4.1rem)}
+  .hero h1 em{font-style:italic;color:var(--green-700)}
+  .hero-lead{margin-top:22px;font-size:clamp(1.02rem,1.25vw,1.16rem);color:var(--ink-soft);max-width:33em}
+  .hero-cta{margin-top:34px;display:flex;flex-wrap:wrap;gap:12px}
+  .hero-meta{
+    margin-top:30px;padding-top:22px;border-top:1px solid var(--line);
+    display:flex;flex-wrap:wrap;gap:10px 34px;font-size:14px;color:var(--ink-soft)
+  }
+  .hero-meta div{display:flex;align-items:center;gap:9px;min-width:0}
+  .hero-meta svg{flex:none;width:16px;height:16px;color:var(--green-500)}
+
+  /* tarjeta ilustración */
+  .hero-card{
+    position:relative;border-radius:26px;overflow:hidden;
+    background:linear-gradient(165deg,var(--green-800) 0%, #255142 55%, #2F6049 100%);
+    box-shadow:var(--shadow);
+    min-height:420px;display:flex;flex-direction:column;justify-content:flex-end;
+    padding:26px;
+  }
+  .hero-card .jar{position:absolute;inset:0;width:100%;height:100%}
+  .hero-card .cap{
+    position:relative;z-index:2;color:#E7EFE3;font-size:13.5px;line-height:1.5;
+    background:rgba(13,27,20,.42);backdrop-filter:blur(3px);
+    border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:14px 16px;
+  }
+  .hero-card .cap strong{display:block;font-family:var(--serif);font-size:16.5px;font-weight:600;margin-bottom:3px;color:#fff}
+
+  /* ---------- tira de valores ---------- */
+  .strip{background:var(--green-900);color:#DDE7D9}
+  .strip ul{list-style:none;margin:0;padding:26px 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px 36px}
+  .strip li{display:flex;gap:13px;align-items:flex-start;font-size:14.5px;line-height:1.5;min-width:0}
+  .strip svg{flex:none;width:20px;height:20px;color:var(--sage);margin-top:2px}
+  .strip b{color:#fff;font-weight:600}
+
+  /* ---------- secciones ---------- */
+  section{position:relative}
+  .sec{padding:92px 0}
+  .sec-head{max-width:640px;margin-bottom:46px}
+  .sec-head h2{font-size:clamp(1.85rem,3.2vw,2.65rem)}
+  .sec-head p{margin-top:16px;color:var(--ink-soft);font-size:1.02rem}
+
+  .grid-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+  .card{
+    background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+    padding:28px 26px 30px;display:flex;flex-direction:column;min-width:0;
+    box-shadow:0 1px 2px rgba(22,40,31,.04);
+  }
+  .card:hover{border-color:var(--sage);box-shadow:var(--shadow)}
+  .card .icon{width:48px;height:48px;margin-bottom:20px;color:var(--green-700)}
+  .card h3{font-size:1.2rem;margin-bottom:10px}
+  .card p{color:var(--ink-soft);font-size:15px}
+  .card .tags{margin:16px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:7px}
+  .card .tags li{
+    font-size:11.5px;letter-spacing:.03em;color:var(--green-700);
+    border:1px solid var(--sage-soft);background:rgba(157,184,154,.14);
+    border-radius:999px;padding:4px 10px;
+  }
+
+  /* pasos */
+  .steps-sec{background:
+      linear-gradient(180deg,var(--cream-2) 0%, #EAE4D4 100%);
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;counter-reset:s}
+  .step{
+    position:relative;background:var(--paper);border:1px solid var(--line);
+    border-radius:var(--radius);padding:30px 26px;min-width:0;
+  }
+  .step-n{
+    display:flex;align-items:center;justify-content:center;
+    width:44px;height:44px;border-radius:50%;
+    background:var(--green-800);color:#F2F7F0;
+    font-family:var(--serif);font-size:19px;font-weight:600;
+    margin-bottom:18px;
+  }
+  .step h3{font-size:1.14rem;margin-bottom:9px}
+  .step p{color:var(--ink-soft);font-size:15px}
+  .step-join{position:absolute;top:52px;right:-15px;width:30px;height:12px;color:var(--sage);z-index:2}
+  @media (max-width:860px){.step-join{display:none}}
+
+  /* ---------- contacto ---------- */
+  .contact-sec{background:var(--green-900);color:#E3EBDF}
+  .contact-sec .sec-head h2{color:#fff}
+  .contact-sec .sec-head p{color:#B9C9B4}
+  .contact-grid{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);gap:34px;align-items:start}
+  .info-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+  .info-list li{
+    display:flex;gap:16px;padding:20px 0;border-bottom:1px solid rgba(255,255,255,.13);min-width:0
+  }
+  .info-list li:first-child{border-top:1px solid rgba(255,255,255,.13)}
+  .info-list .ic{flex:none;width:21px;height:21px;color:var(--sage);margin-top:4px}
+  .info-k{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#9FB69B;margin-bottom:5px}
+  .info-v{font-family:var(--serif);font-size:1.22rem;color:#fff;line-height:1.3;word-break:break-word}
+  .info-v a{text-decoration:none;border-bottom:1px solid rgba(157,184,154,.5)}
+  .info-v a:hover{border-bottom-color:#fff}
+  .info-note{font-size:13.5px;color:#A8BCA3;margin-top:5px}
+  .contact-actions{margin-top:28px;display:flex;flex-wrap:wrap;gap:12px}
+
+  .map-card{
+    background:#F3F1E6;border:1px solid rgba(255,255,255,.16);
+    border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)
+  }
+  .map-card figure{margin:0}
+  .map-card svg{display:block;width:100%;height:auto}
+  .map-card figcaption{
+    padding:14px 18px;font-size:12.5px;color:#4A5B50;
+    background:#EAE7DA;border-top:1px solid rgba(27,42,34,.1);
+  }
+
+  /* ---------- aviso ---------- */
+  .note-sec{background:var(--cream-2);border-top:1px solid var(--line)}
+  .note{
+    display:flex;gap:16px;align-items:flex-start;
+    padding:26px 0;font-size:14px;color:var(--ink-soft)
+  }
+  .note svg{flex:none;width:20px;height:20px;color:var(--green-500);margin-top:2px}
+
+  /* ---------- pie ---------- */
+  footer{background:#12201A;color:#C6D4C1;padding:62px 0 34px}
+  .foot-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr);gap:36px}
+  .foot-brand{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+  .foot-brand .mark{flex:none;width:38px;height:38px}
+  .foot-brand .brand-name{color:#fff}
+  .foot-brand .brand-sub{color:#8FA78B}
+  footer p{font-size:14px;color:#A9BCA5}
+  .foot-h{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#8FA78B;margin-bottom:14px}
+  .foot-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px;font-size:14.5px}
+  .foot-list a{text-decoration:none;color:#D5E1D1;word-break:break-word}
+  .foot-list a:hover{color:#fff;text-decoration:underline;text-underline-offset:3px}
+  .credit{
+    margin-top:46px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);
+    display:flex;flex-wrap:wrap;gap:10px 24px;align-items:baseline;
+    font-size:13px;color:#93A890;
+  }
+  .credit .lead{color:#E3EBDF;font-weight:600}
+
+  @media (max-width:980px){
+    .hero-in{grid-template-columns:1fr;gap:40px;padding:72px 0 78px}
+    .hero-card{min-height:340px}
+    .contact-grid{grid-template-columns:1fr}
+    .grid-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .strip ul{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .foot-brand-col{grid-column:1 / -1}
+  }
+  @media (max-width:700px){
+    :root{--bar-h:52px}
+    body{font-size:16.5px}
+    .wrap{padding:0 20px}
+    .proposal-bar{font-size:11px;line-height:1.35}
+    .proposal-bar span{white-space:normal}
+    .sec{padding:66px 0}
+    .sec-head{margin-bottom:34px}
+    .grid-cards,.steps{grid-template-columns:1fr}
+    .hero-in{padding:56px 0 64px}
+    .hero-sprig-a{width:330px;top:-30px;right:-110px;opacity:.38}
+    .hero-sprig-b{display:none}
+    .hero-cta .btn{flex:1 1 100%}
+    .hero-meta{gap:12px;flex-direction:column}
+    .foot-grid{grid-template-columns:1fr;gap:30px}
+    .head-in{min-height:66px}
+    .brand-name{font-size:15.5px}
+    .brand-sub{display:none}
+    .lbl-full{display:none}
+    .lbl-short{display:inline}
+    .nav{gap:0}
+    .btn-sm{padding:10px 15px;font-size:14px}
+    footer{padding:48px 0 28px}
+  }
+  @media (max-width:420px){
+    .wrap{padding:0 16px}
+    .brand .mark{width:34px;height:34px}
+    .btn{font-size:14.5px;padding:12px 18px}
+  }
+  @media (prefers-reduced-motion:no-preference){
+    .card,.btn,.nav a.navlink{transition:all .22s ease}
+  }
+</style>
+</head>
+<body>
+
+<div class="proposal-bar" role="note"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<!-- símbolos SVG reutilizables -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="mark" viewBox="0 0 48 48">
+      <circle cx="24" cy="24" r="23" fill="none" stroke="currentColor" stroke-width="1.4" opacity=".35"/>
+      <path d="M24 39V15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M24 30c-7 0-11-4-11-10 6 0 11 3.5 11 10z" fill="currentColor" opacity=".9"/>
+      <path d="M24 24c7 0 11-4 11-10-6 0-11 3.5-11 10z" fill="currentColor" opacity=".55"/>
+      <path d="M24 18c-5 0-8-3-8-7 4.5 0 8 2.5 8 7z" fill="currentColor" opacity=".7"/>
+    </symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6.5 3h3l1.5 4-2 1.5a12 12 0 0 0 6.5 6.5L17 13l4 1.5v3a2.5 2.5 0 0 1-2.8 2.5C11 19.2 4.8 13 3.9 5.8A2.5 2.5 0 0 1 6.5 3z"/>
+    </symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/>
+    </symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3.2 2"/>
+    </symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2.8" y="5" width="18.4" height="14" rx="2.4"/><path d="M3.3 6.5 12 13l8.7-6.5"/>
+    </symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 12.5a7.5 7.5 0 0 1-7.5 7.5H9l-5 3 1.2-3.9A7.5 7.5 0 0 1 11.5 5h2A7.5 7.5 0 0 1 21 12.5z"/>
+    </symbol>
+    <symbol id="i-shop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3.6 8.5h16.8L19.5 20H4.5L3.6 8.5z"/><path d="M4 8.5 6.4 4h11.2L20 8.5"/><path d="M9.4 12.5a2.6 2.6 0 0 0 5.2 0"/>
+    </symbol>
+    <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="9"/><path d="M12 11v5.5"/><path d="M12 7.8h.01"/>
+    </symbol>
+    <symbol id="i-arrow" viewBox="0 0 30 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M1 6h26"/><path d="M23 2.2 27 6l-4 3.8"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="site-head">
+  <div class="wrap head-in">
+    <a class="brand" href="#top">
+      <svg class="mark" style="color:var(--green-700)" aria-hidden="true"><use href="#mark"/></svg>
+      <span class="brand-txt">
+        <span class="brand-name">Herbolario Hierbabuena</span>
+        <span class="brand-sub">Herbolario y dietética</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Navegación principal">
+      <a class="navlink" href="#que-encontraras">Qué encontrarás</a>
+      <a class="navlink" href="#primera-visita">Tu primera visita</a>
+      <a class="navlink" href="#contacto">Contacto</a>
+      <a class="btn btn-primary btn-sm" href="tel:+34618215559" aria-label="Llamar al 618 215 559">
+        <svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg><span class="lbl-full">618 215 559</span><span class="lbl-short">Llamar</span>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-deco" aria-hidden="true">
+      <svg class="hero-sprig-a" viewBox="0 0 400 400" fill="none">
+        <g stroke="#2A5240" stroke-width="1.6" stroke-linecap="round" opacity=".55">
+          <path d="M330 20C300 90 270 160 250 250c-8 36-10 70-8 110"/>
+          <path d="M300 95c-30-8-54 2-70 26 26 12 52 6 70-26z" fill="#9DB89A" fill-opacity=".3"/>
+          <path d="M292 140c28-14 52-12 72 6-24 20-50 20-72-6z" fill="#9DB89A" fill-opacity=".22"/>
+          <path d="M272 192c-32-6-56 6-70 32 28 10 54 0 70-32z" fill="#9DB89A" fill-opacity=".3"/>
+          <path d="M262 244c28-16 54-16 74 2-24 22-50 24-74-2z" fill="#9DB89A" fill-opacity=".22"/>
+          <path d="M250 300c-32-4-55 9-67 36 28 8 53-3 67-36z" fill="#9DB89A" fill-opacity=".28"/>
+          <path d="M150 60c20 60 34 128 36 208"/>
+          <path d="M166 120c-24-10-46-5-62 14 22 14 46 11 62-14z" fill="#9DB89A" fill-opacity=".22"/>
+          <path d="M178 178c24-12 46-10 62 6-20 18-44 17-62-6z" fill="#9DB89A" fill-opacity=".18"/>
+          <path d="M186 238c-26-8-48 0-60 22 24 10 48 3 60-22z" fill="#9DB89A" fill-opacity=".22"/>
+        </g>
+      </svg>
+      <svg class="hero-sprig-b" viewBox="0 0 300 300" fill="none">
+        <g stroke="#2A5240" stroke-width="1.5" stroke-linecap="round" opacity=".5">
+          <path d="M40 290C60 210 90 140 140 80c18-22 38-40 60-54"/>
+          <path d="M92 168c-26-12-48-8-64 12 22 16 48 14 64-12z" fill="#9DB89A" fill-opacity=".26"/>
+          <path d="M118 120c26-14 50-12 68 6-22 20-48 20-68-6z" fill="#9DB89A" fill-opacity=".2"/>
+          <path d="M66 222c-26-10-50-4-64 16 24 14 50 10 64-16z" fill="#9DB89A" fill-opacity=".26"/>
+          <circle cx="206" cy="24" r="12" fill="#B4863C" fill-opacity=".3"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="wrap hero-in">
+      <div>
+        <p class="eyebrow">Cantalejo · Segovia</p>
+        <h1>Tu herbolario de<br><em>confianza</em> en Cantalejo</h1>
+        <p class="hero-lead">
+          Plantas e infusiones, complementos alimenticios, dietética, alimentación especial
+          y cosmética natural, con atención directa en el mostrador. Te escuchamos, te explicamos
+          qué es cada producto y te acompañamos en la elección.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="tel:+34618215559">
+            <svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>
+            Llamar al 618 215 559
+          </a>
+          <a class="btn btn-ghost" href="#contacto">Cómo llegar</a>
+        </div>
+        <div class="hero-meta">
+          <div><svg aria-hidden="true"><use href="#i-pin"/></svg><span>C/ Frontón, 17 · 40320 Cantalejo</span></div>
+          <div><svg aria-hidden="true"><use href="#i-clock"/></svg><span>Consultar horario</span></div>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <svg class="jar" viewBox="0 0 400 460" fill="none" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="gGlass" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#ffffff" stop-opacity=".30"/>
+              <stop offset="1" stop-color="#ffffff" stop-opacity=".06"/>
+            </linearGradient>
+            <linearGradient id="gFill" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#C9D8C4" stop-opacity=".55"/>
+              <stop offset="1" stop-color="#8FAE8B" stop-opacity=".75"/>
+            </linearGradient>
+            <linearGradient id="gFill2" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#E4D3A8" stop-opacity=".5"/>
+              <stop offset="1" stop-color="#B4863C" stop-opacity=".6"/>
+            </linearGradient>
+          </defs>
+          <!-- repisa -->
+          <path d="M20 352h360" stroke="#ffffff" stroke-opacity=".22" stroke-width="2"/>
+          <path d="M34 352v26M366 352v26" stroke="#ffffff" stroke-opacity=".12" stroke-width="2"/>
+          <!-- tarro grande -->
+          <g>
+            <rect x="118" y="138" width="110" height="214" rx="16" fill="url(#gGlass)" stroke="#ffffff" stroke-opacity=".4" stroke-width="1.6"/>
+            <path d="M134 246h78v90a16 16 0 0 1-16 16h-46a16 16 0 0 1-16-16v-90z" fill="url(#gFill)"/>
+            <rect x="130" y="120" width="86" height="22" rx="8" fill="#ffffff" fill-opacity=".3"/>
+            <rect x="140" y="268" width="66" height="34" rx="5" fill="#F6F3EA" fill-opacity=".9"/>
+            <path d="M150 280h46M150 290h32" stroke="#2A5240" stroke-opacity=".5" stroke-width="2.4" stroke-linecap="round"/>
+            <!-- ramita dentro -->
+            <g stroke="#1E3A2D" stroke-opacity=".45" stroke-width="1.6" stroke-linecap="round">
+              <path d="M173 244V168"/>
+              <path d="M173 206c-16-4-27 2-33 15 14 6 26 1 33-15z" fill="#1E3A2D" fill-opacity=".2"/>
+              <path d="M173 184c14-7 26-6 34 3-12 10-25 10-34-3z" fill="#1E3A2D" fill-opacity=".16"/>
+            </g>
+          </g>
+          <!-- tarro pequeño derecha -->
+          <g>
+            <rect x="248" y="206" width="78" height="146" rx="13" fill="url(#gGlass)" stroke="#ffffff" stroke-opacity=".34" stroke-width="1.5"/>
+            <path d="M260 282h54v56a14 14 0 0 1-14 14h-26a14 14 0 0 1-14-14v-56z" fill="url(#gFill2)"/>
+            <rect x="258" y="192" width="58" height="16" rx="6" fill="#ffffff" fill-opacity=".26"/>
+            <rect x="262" y="298" width="50" height="26" rx="4" fill="#F6F3EA" fill-opacity=".85"/>
+            <path d="M271 308h32M271 316h20" stroke="#8a6526" stroke-opacity=".6" stroke-width="2.2" stroke-linecap="round"/>
+          </g>
+          <!-- mortero izquierda -->
+          <g>
+            <path d="M48 282h62c0 28-14 48-31 48s-31-20-31-48z" fill="#ffffff" fill-opacity=".2" stroke="#ffffff" stroke-opacity=".34" stroke-width="1.5"/>
+            <path d="M40 276h78" stroke="#ffffff" stroke-opacity=".34" stroke-width="3" stroke-linecap="round"/>
+            <path d="M74 330v22" stroke="#ffffff" stroke-opacity=".22" stroke-width="4" stroke-linecap="round"/>
+            <path d="M96 272 118 232" stroke="#ffffff" stroke-opacity=".3" stroke-width="5" stroke-linecap="round"/>
+          </g>
+          <!-- hojas sueltas -->
+          <g opacity=".5">
+            <path d="M330 118c-20-6-36 0-45 17 18 8 35 2 45-17z" fill="#C9D8C4" fill-opacity=".45"/>
+            <path d="M62 150c18-9 34-7 44 5-15 12-32 11-44-5z" fill="#C9D8C4" fill-opacity=".35"/>
+            <circle cx="300" cy="72" r="7" fill="#E4D3A8" fill-opacity=".4"/>
+            <circle cx="86" cy="98" r="5" fill="#E4D3A8" fill-opacity=".3"/>
+          </g>
+        </svg>
+        <p class="cap">
+          <strong>Atención en mostrador</strong>
+          Pregunta sin compromiso: te contamos qué hay detrás de cada producto y qué opciones tienes.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIRA -->
+  <div class="strip">
+    <div class="wrap">
+      <ul>
+        <li><svg aria-hidden="true"><use href="#i-shop"/></svg><span><b>Comercio de barrio.</b> En el centro de Cantalejo, a pie de calle.</span></li>
+        <li><svg aria-hidden="true"><use href="#i-chat"/></svg><span><b>Trato personal.</b> Resolvemos dudas sobre composición, formatos y uso.</span></li>
+        <li><svg aria-hidden="true"><use href="#i-phone"/></svg><span><b>Por teléfono.</b> Consulta disponibilidad antes de venir: 618 215 559.</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SERVICIOS -->
+  <section class="sec" id="que-encontraras">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Qué encontrarás</p>
+        <h2>Categorías habituales del herbolario</h2>
+        <p>Una selección de productos de herbolario y dietética. Si buscas algo concreto,
+           lo mejor es llamar y preguntar por disponibilidad.</p>
+      </div>
+      <div class="grid-cards">
+
+        <article class="card">
+          <svg class="icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <path d="M24 42V14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M24 32c-9 0-14-5-14-13 8 0 14 4.5 14 13z" fill="currentColor" fill-opacity=".18" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+            <path d="M24 24c9 0 14-5 14-13-8 0-14 4.5-14 13z" fill="currentColor" fill-opacity=".1" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+            <path d="M16 44h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <h3>Plantas medicinales e infusiones</h3>
+          <p>Plantas a granel y en bolsitas, mezclas de infusión y tés, con la información de cada envase a tu disposición.</p>
+          <ul class="tags"><li>A granel</li><li>Bolsitas</li><li>Mezclas</li></ul>
+        </article>
+
+        <article class="card">
+          <svg class="icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <rect x="13" y="13" width="22" height="30" rx="5" fill="currentColor" fill-opacity=".12" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M17 9h14v4H17z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M13 27h22" stroke="currentColor" stroke-width="1.6"/>
+            <circle cx="20" cy="34" r="2.3" fill="currentColor" fill-opacity=".55"/>
+            <circle cx="28" cy="36" r="2" fill="currentColor" fill-opacity=".4"/>
+            <circle cx="25" cy="31" r="1.6" fill="currentColor" fill-opacity=".45"/>
+            <path d="M19 20h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+          <h3>Complementos alimenticios</h3>
+          <p>Cápsulas, comprimidos, viales y polvos. Te ayudamos a leer el etiquetado y a comparar formatos y cantidades.</p>
+          <ul class="tags"><li>Cápsulas</li><li>Viales</li><li>Polvos</li></ul>
+        </article>
+
+        <article class="card">
+          <svg class="icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <path d="M8 20h32l-3 20a4 4 0 0 1-4 3.5H15a4 4 0 0 1-4-3.5L8 20z" fill="currentColor" fill-opacity=".1" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M8 20l5-8h22l5 8" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M18 28a6 6 0 0 0 12 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M24 12V5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          <h3>Dietética y alimentación especial</h3>
+          <p>Productos sin gluten, sin lactosa, sin azúcares añadidos, ecológicos y de origen vegetal, además de despensa a granel.</p>
+          <ul class="tags"><li>Sin gluten</li><li>Sin lactosa</li><li>Eco</li><li>Vegetal</li></ul>
+        </article>
+
+        <article class="card">
+          <svg class="icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <path d="M20 8h8v6l5 7v19a4 4 0 0 1-4 4H19a4 4 0 0 1-4-4V21l5-7V8z" fill="currentColor" fill-opacity=".11" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M15 28h18" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M24 36c-4 0-6-2.2-6-5.6 3.5 0 6 2 6 5.6z" fill="currentColor" fill-opacity=".45"/>
+            <path d="M24 34c4 0 6-2.2 6-5.6-3.5 0-6 2-6 5.6z" fill="currentColor" fill-opacity=".3"/>
+            <path d="M18 8h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          <h3>Cosmética natural</h3>
+          <p>Cuidado facial, corporal y capilar de base natural, aceites vegetales y esenciales, e higiene para toda la familia.</p>
+          <ul class="tags"><li>Facial</li><li>Corporal</li><li>Aceites</li></ul>
+        </article>
+
+        <article class="card">
+          <svg class="icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <path d="M42 24.5A14.5 14.5 0 0 1 27.5 39H19l-9 5.5 2.2-7A14.5 14.5 0 0 1 20.5 10h3A14.5 14.5 0 0 1 42 24.5z" fill="currentColor" fill-opacity=".1" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M18 21h16M18 27h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          <h3>Asesoramiento personalizado</h3>
+          <p>Escuchamos lo que buscas y te explicamos las opciones disponibles en la tienda, sin prisas y con el etiquetado delante.</p>
+          <ul class="tags"><li>Sin cita</li><li>En mostrador</li><li>Por teléfono</li></ul>
+        </article>
+
+        <article class="card">
+          <svg class="icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <path d="M10 15h28l-2 25a4 4 0 0 1-4 3.6H16a4 4 0 0 1-4-3.6L10 15z" fill="currentColor" fill-opacity=".1" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M18 15V11a6 6 0 0 1 12 0v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M24 23v12M18 29h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          <h3>Encargos y productos a petición</h3>
+          <p>Si no está en la estantería, pregúntanos: te decimos si es posible conseguirlo y cuándo podrías pasar a recogerlo.</p>
+          <ul class="tags"><li>Consulta previa</li><li>Recogida en tienda</li></ul>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PRIMERA VISITA -->
+  <section class="sec steps-sec" id="primera-visita">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Tu primera visita</p>
+        <h2>Cómo funciona, en tres pasos</h2>
+        <p>Nunca has entrado en un herbolario y no sabes qué esperar. Es más sencillo de lo que parece.</p>
+      </div>
+      <div class="steps">
+        <article class="step">
+          <div class="step-n">1</div>
+          <h3>Llama o pásate</h3>
+          <p>Si quieres algo concreto, llama antes al <a href="tel:+34618215559" style="color:var(--green-700)">618 215 559</a> y lo comprobamos. Si vienes a mirar, entra sin más: no hace falta cita.</p>
+          <svg class="step-join" aria-hidden="true"><use href="#i-arrow"/></svg>
+        </article>
+        <article class="step">
+          <div class="step-n">2</div>
+          <h3>Cuéntanos qué buscas</h3>
+          <p>Nos dices para qué o para quién es, qué formato prefieres y si tienes alguna intolerancia o preferencia alimentaria.</p>
+          <svg class="step-join" aria-hidden="true"><use href="#i-arrow"/></svg>
+        </article>
+        <article class="step">
+          <div class="step-n">3</div>
+          <h3>Te mostramos las opciones</h3>
+          <p>Vemos juntos lo que hay disponible, con la composición y el etiquetado a la vista, y decides tú con la información delante.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="sec contact-sec" id="contacto">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow on-dark">Contacto y ubicación</p>
+        <h2>Estamos en la C/ Frontón, 17</h2>
+        <p>En Cantalejo (Segovia). Para saber si estamos abiertos o si tenemos lo que buscas, lo más rápido es una llamada.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div>
+          <ul class="info-list">
+            <li>
+              <svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>
+              <div>
+                <div class="info-k">Teléfono</div>
+                <div class="info-v"><a href="tel:+34618215559">618 215 559</a></div>
+              </div>
+            </li>
+            <li>
+              <svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>
+              <div>
+                <div class="info-k">Dirección</div>
+                <div class="info-v">C/ Frontón, 17<br>40320 Cantalejo (Segovia)</div>
+              </div>
+            </li>
+            <li>
+              <svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg>
+              <div>
+                <div class="info-k">Horario</div>
+                <div class="info-v">Consultar horario</div>
+                <div class="info-note">Llámanos y te confirmamos el horario del día.</div>
+              </div>
+            </li>
+            <li>
+              <svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg>
+              <div>
+                <div class="info-k">Correo</div>
+                <div class="info-v"><a href="mailto:fasanleo@hotmail.com">fasanleo@hotmail.com</a></div>
+              </div>
+            </li>
+          </ul>
+          <div class="contact-actions">
+            <a class="btn btn-light" href="tel:+34618215559">
+              <svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>Llamar ahora
+            </a>
+            <a class="btn btn-outline-light" href="mailto:fasanleo@hotmail.com">Escribir un correo</a>
+          </div>
+        </div>
+
+        <div class="map-card">
+          <figure>
+            <svg viewBox="0 0 640 420" role="img" aria-label="Plano esquemático: el herbolario está en la calle Frontón, número 17, en Cantalejo.">
+              <defs>
+                <linearGradient id="mapBg" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#F3F1E6"/>
+                  <stop offset="1" stop-color="#E7E4D5"/>
+                </linearGradient>
+                <pattern id="block" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                  <rect width="14" height="14" fill="#DCD8C6"/>
+                  <path d="M0 7h14" stroke="#CFCAB4" stroke-width="1.4"/>
+                </pattern>
+              </defs>
+
+              <rect width="640" height="420" fill="url(#mapBg)"/>
+
+              <!-- manzanas -->
+              <g fill="url(#block)" stroke="#C6C1AA" stroke-width="1.2">
+                <rect x="34" y="34" width="190" height="124" rx="7"/>
+                <rect x="276" y="34" width="150" height="124" rx="7"/>
+                <rect x="470" y="34" width="136" height="168" rx="7"/>
+                <rect x="34" y="214" width="190" height="90" rx="7"/>
+                <rect x="276" y="214" width="150" height="90" rx="7"/>
+                <rect x="470" y="252" width="136" height="134" rx="7"/>
+                <rect x="34" y="352" width="190" height="34" rx="7"/>
+                <rect x="276" y="352" width="150" height="34" rx="7"/>
+              </g>
+
+              <!-- calzadas -->
+              <g stroke="#FBFAF4" stroke-linecap="round">
+                <path d="M0 186h640" stroke-width="30"/>
+                <path d="M250 0v420" stroke-width="26"/>
+                <path d="M448 0v420" stroke-width="20"/>
+                <path d="M0 328h640" stroke-width="20"/>
+                <path d="M0 14h640" stroke-width="14"/>
+              </g>
+              <g stroke="#DAD5C1" stroke-width="1.1" fill="none">
+                <path d="M0 171h640M0 201h640"/>
+                <path d="M237 0v420M263 0v420"/>
+                <path d="M438 0v420M458 0v420"/>
+                <path d="M0 318h640M0 338h640"/>
+              </g>
+              <path d="M0 186h640" stroke="#C9D8C4" stroke-width="2" stroke-dasharray="14 12" opacity=".9"/>
+
+              <!-- etiqueta calle real -->
+              <g>
+                <rect x="52" y="170" width="150" height="32" rx="16" fill="#1E3A2D"/>
+                <text x="127" y="192" text-anchor="middle" font-family="system-ui,Segoe UI,Arial,sans-serif" font-size="18" font-weight="600" fill="#F2F7F0">C/ Frontón</text>
+              </g>
+
+              <!-- marcador -->
+              <g>
+                <ellipse cx="330" cy="208" rx="26" ry="8" fill="#1E3A2D" opacity=".16"/>
+                <circle cx="330" cy="166" r="30" fill="#487B60" opacity=".16"/>
+                <path d="M330 206c0 0-20-19.5-20-33a20 20 0 1 1 40 0c0 13.5-20 33-20 33z" fill="#1E3A2D"/>
+                <circle cx="330" cy="172" r="7.4" fill="#F6F3EA"/>
+                <g transform="translate(330,172)" stroke="#1E3A2D" stroke-width="1.5" stroke-linecap="round">
+                  <path d="M0 4V-4"/>
+                  <path d="M0 1c-3.2 0-5-1.8-5-4.6 2.8 0 5 1.6 5 4.6z" fill="#1E3A2D"/>
+                  <path d="M0-1.4c3.2 0 5-1.8 5-4.6-2.8 0-5 1.6-5 4.6z" fill="#1E3A2D" opacity=".6"/>
+                </g>
+              </g>
+              <g>
+                <rect x="358" y="134" width="196" height="64" rx="13" fill="#FFFDF8" stroke="#1E3A2D" stroke-opacity=".2"/>
+                <text x="378" y="161" font-family="system-ui,Segoe UI,Arial,sans-serif" font-size="19" font-weight="700" fill="#1B2A22">Hierbabuena</text>
+                <text x="378" y="182" font-family="system-ui,Segoe UI,Arial,sans-serif" font-size="15.5" fill="#415349">C/ Frontón, 17</text>
+              </g>
+
+              <!-- rosa de los vientos -->
+              <g transform="translate(588,372)" opacity=".55">
+                <circle r="20" fill="#FFFDF8" stroke="#1E3A2D" stroke-opacity=".2"/>
+                <path d="M0-14 4 0 0 4-4 0z" fill="#1E3A2D"/>
+                <path d="M0 14 4 0 0-4-4 0z" fill="#1E3A2D" opacity=".3"/>
+                <text x="0" y="-22" text-anchor="middle" font-family="system-ui,Arial,sans-serif" font-size="9" font-weight="700" fill="#1B2A22">N</text>
+              </g>
+
+              <!-- marco -->
+              <rect x="0.6" y="0.6" width="638.8" height="418.8" rx="4" fill="none" stroke="#1E3A2D" stroke-opacity=".12"/>
+            </svg>
+          </figure>
+          <figcaption>Plano esquemático dibujado a mano para esta maqueta: sitúa la calle Frontón y el número 17. No es un mapa a escala ni sustituye a un mapa oficial.</figcaption>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AVISO -->
+  <div class="note-sec">
+    <div class="wrap">
+      <div class="note">
+        <svg aria-hidden="true"><use href="#i-info"/></svg>
+        <p>Los productos de herbolario y dietética son complementos de una alimentación variada y equilibrada,
+           y no sustituyen a una dieta adecuada ni a la indicación de un profesional sanitario.
+           Esta página no ofrece consejo médico ni atribuye propiedades curativas a ningún producto.</p>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand-col">
+        <div class="foot-brand">
+          <svg class="mark" style="color:#9DB89A" aria-hidden="true"><use href="#mark"/></svg>
+          <span>
+            <span class="brand-name">Herbolario Hierbabuena</span><br>
+            <span class="brand-sub">Herbolario y dietética · Cantalejo</span>
+          </span>
+        </div>
+        <p>Comercio local en C/ Frontón, 17 — 40320 Cantalejo (Segovia).
+           Para disponibilidad y horario, lo más rápido es llamar.</p>
+      </div>
+
+      <div>
+        <div class="foot-h">Contacto</div>
+        <ul class="foot-list">
+          <li><a href="tel:+34618215559">618 215 559</a></li>
+          <li><a href="mailto:fasanleo@hotmail.com">fasanleo@hotmail.com</a></li>
+          <li>C/ Frontón, 17<br>40320 Cantalejo (Segovia)</li>
+          <li>Consultar horario</li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="foot-h">Secciones</div>
+        <ul class="foot-list">
+          <li><a href="#que-encontraras">Qué encontrarás</a></li>
+          <li><a href="#primera-visita">Tu primera visita</a></li>
+          <li><a href="#contacto">Contacto y ubicación</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="credit">
+      <span class="lead">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</span>
+      <span>Maqueta de demostración sin vinculación con el negocio. Contenido pendiente de revisión por el titular.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
