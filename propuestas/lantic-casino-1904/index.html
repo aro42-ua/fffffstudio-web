@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L'Antic Casino 1904 — Restaurante en L'Ametlla de Mar</title>
+<meta name="description" content="Maqueta de propuesta de rediseño web para el restaurante L'Antic Casino 1904, L'Ametlla de Mar (Tarragona).">
+<style>
+  :root{
+    --ink:#15211e;
+    --ink-soft:#3c4b47;
+    --cream:#f6f1e7;
+    --cream-2:#efe7d8;
+    --paper:#fffdf8;
+    --green:#1d3a32;
+    --green-2:#2b5349;
+    --terra:#c0623a;
+    --terra-2:#e08a5c;
+    --line:rgba(21,33,30,.14);
+    --radius:18px;
+    --bar-h:42px;
+    --maxw:1180px;
+    --shadow:0 18px 50px -24px rgba(21,33,30,.35);
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  html,body{max-width:100%;overflow-x:hidden}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:"Helvetica Neue",Helvetica,Arial,"Segoe UI",system-ui,sans-serif;
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%;display:block}
+  h1,h2,h3,h4{margin:0;line-height:1.1;font-weight:600;letter-spacing:-.02em}
+  p{margin:0}
+  a{color:inherit}
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+
+  /* ---------- Barra fija de propuesta ---------- */
+  .propbar{
+    position:fixed;inset:0 0 auto 0;z-index:100;
+    height:var(--bar-h);
+    display:flex;align-items:center;justify-content:center;
+    background:var(--ink);color:#f3efe6;
+    font-size:12.5px;letter-spacing:.04em;line-height:1.3;
+    padding:0 14px;text-align:center;
+  }
+  .propbar span{
+    display:block;
+    max-width:100%;
+    overflow-wrap:anywhere;
+  }
+  .page{padding-top:var(--bar-h)}
+
+  /* ---------- Nav ---------- */
+  .nav{
+    position:sticky;top:var(--bar-h);z-index:90;
+    background:rgba(246,241,231,.92);
+    backdrop-filter:saturate(1.2) blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-in{
+    display:flex;align-items:center;justify-content:space-between;gap:18px;
+    min-height:64px;padding:10px 28px;
+    width:100%;max-width:var(--maxw);margin:0 auto;
+  }
+  .brandmark{display:flex;align-items:center;gap:11px;min-width:0}
+  .brandmark .mk{flex:0 0 auto}
+  .brandmark b{
+    font-weight:600;font-size:15.5px;letter-spacing:.01em;
+    line-height:1.2;
+  }
+  .brandmark small{display:block;font-weight:400;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+  .nav-links{display:flex;gap:26px;align-items:center}
+  .nav-links a{
+    text-decoration:none;font-size:14px;color:var(--ink-soft);
+    padding:4px 0;border-bottom:1px solid transparent;
+  }
+  .nav-links a:hover{color:var(--ink);border-bottom-color:var(--terra)}
+  .nav-call{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--green);color:#fdfaf3;text-decoration:none;
+    padding:11px 17px;border-radius:999px;font-size:14px;font-weight:500;
+    white-space:nowrap;
+  }
+  .nav-call:hover{background:var(--green-2)}
+  @media (max-width:900px){ .nav-links{display:none} }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(120% 90% at 82% 8%, rgba(224,138,92,.34) 0%, rgba(224,138,92,0) 58%),
+      radial-gradient(100% 80% at 6% 92%, rgba(43,83,73,.42) 0%, rgba(43,83,73,0) 60%),
+      linear-gradient(168deg,#13302a 0%,#1d3a32 46%,#2d4f41 100%);
+    color:#f7f2e8;
+  }
+  .hero::after{
+    content:"";position:absolute;inset:auto 0 -1px 0;height:120px;
+    background:linear-gradient(180deg,rgba(246,241,231,0),var(--cream));
+    pointer-events:none;
+  }
+  .hero-in{
+    position:relative;z-index:2;
+    display:grid;grid-template-columns:1.08fr .92fr;gap:54px;align-items:center;
+    padding:92px 28px 110px;
+    width:100%;max-width:var(--maxw);margin:0 auto;
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;
+    color:rgba(247,242,232,.76);margin-bottom:22px;
+  }
+  .eyebrow i{width:26px;height:1px;background:var(--terra-2);display:block}
+  .hero h1{
+    font-size:clamp(38px,5.6vw,68px);
+    font-weight:600;letter-spacing:-.035em;
+    margin-bottom:20px;
+  }
+  .hero h1 em{font-style:normal;display:block;color:var(--terra-2)}
+  .hero-lead{
+    font-size:clamp(16.5px,1.5vw,19.5px);
+    color:rgba(247,242,232,.84);max-width:46ch;margin-bottom:34px;
+  }
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    text-decoration:none;border-radius:999px;
+    padding:16px 26px;font-size:16px;font-weight:500;
+    white-space:nowrap;
+  }
+  .btn-primary{background:var(--terra);color:#fff8f2}
+  .btn-primary:hover{background:var(--terra-2);color:#241208}
+  .btn-ghost{border:1px solid rgba(247,242,232,.38);color:#f7f2e8}
+  .btn-ghost:hover{background:rgba(247,242,232,.1)}
+  .hero-meta{
+    display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:38px;
+    font-size:13.5px;color:rgba(247,242,232,.68);
+  }
+  .hero-meta div{display:flex;align-items:center;gap:8px}
+
+  /* Hero art */
+  .hero-art{
+    position:relative;border-radius:24px;overflow:hidden;
+    background:linear-gradient(150deg,rgba(247,242,232,.14),rgba(247,242,232,.04));
+    border:1px solid rgba(247,242,232,.16);
+    padding:26px;
+  }
+  .plate-note{
+    font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+    color:rgba(247,242,232,.6);margin-top:18px;text-align:center;
+  }
+  @media (max-width:900px){
+    .hero-in{grid-template-columns:1fr;gap:38px;padding:62px 22px 86px}
+  }
+
+  /* ---------- Secciones ---------- */
+  section{position:relative}
+  .sec{padding:92px 0}
+  .sec-head{max-width:62ch;margin-bottom:46px}
+  .sec-tag{
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--terra);margin-bottom:16px;
+  }
+  .sec-tag i{width:24px;height:1px;background:var(--terra);display:block}
+  .sec h2{font-size:clamp(28px,3.4vw,42px);margin-bottom:16px}
+  .sec-head p{color:var(--ink-soft);font-size:17px}
+
+  /* Cards apartados */
+  .grid-4{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+  .card{
+    background:var(--paper);border:1px solid var(--line);
+    border-radius:var(--radius);padding:30px;
+    display:flex;flex-direction:column;gap:16px;
+    box-shadow:0 1px 0 rgba(21,33,30,.04);
+  }
+  .card .ico{
+    width:46px;height:46px;border-radius:13px;
+    background:var(--cream-2);
+    display:flex;align-items:center;justify-content:center;flex:0 0 auto;
+  }
+  .card h3{font-size:21px}
+  .card p{color:var(--ink-soft);font-size:15.5px}
+  .slot{
+    margin-top:auto;
+    border:1px dashed rgba(21,33,30,.26);
+    border-radius:12px;background:var(--cream);
+    padding:16px 18px;
+    font-size:13.5px;color:var(--ink-soft);
+    display:flex;align-items:center;gap:11px;
+  }
+  .slot b{font-weight:600;color:var(--ink)}
+  @media (max-width:760px){ .grid-4{grid-template-columns:1fr} }
+
+  /* Pasos */
+  .steps-band{background:var(--green);color:#f4efe5}
+  .steps-band .sec-tag{color:var(--terra-2)}
+  .steps-band .sec-tag i{background:var(--terra-2)}
+  .steps-band .sec-head p{color:rgba(244,239,229,.76)}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .step{
+    border:1px solid rgba(244,239,229,.18);border-radius:var(--radius);
+    padding:30px;background:rgba(244,239,229,.05);
+  }
+  .step .n{
+    width:38px;height:38px;border-radius:50%;
+    border:1px solid var(--terra-2);color:var(--terra-2);
+    display:flex;align-items:center;justify-content:center;
+    font-size:15px;font-weight:600;margin-bottom:20px;
+  }
+  .step h3{font-size:19.5px;margin-bottom:10px}
+  .step p{color:rgba(244,239,229,.76);font-size:15.5px}
+  .steps-foot{
+    margin-top:34px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;
+    font-size:14.5px;color:rgba(244,239,229,.72);
+  }
+  @media (max-width:860px){ .steps{grid-template-columns:1fr} }
+
+  /* Contacto */
+  .contact-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:34px;align-items:start}
+  .info-list{display:flex;flex-direction:column;gap:2px;margin-bottom:28px}
+  .info{
+    display:flex;gap:16px;align-items:flex-start;
+    padding:20px 0;border-bottom:1px solid var(--line);
+  }
+  .info:first-child{border-top:1px solid var(--line)}
+  .info .ico{
+    width:38px;height:38px;border-radius:11px;background:var(--cream-2);
+    display:flex;align-items:center;justify-content:center;flex:0 0 auto;
+  }
+  .info-k{font-size:11.5px;letter-spacing:.17em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:5px}
+  .info-v{font-size:17.5px;font-weight:500;overflow-wrap:anywhere}
+  .info-v a{text-decoration:none;border-bottom:1px solid var(--line)}
+  .info-v a:hover{border-bottom-color:var(--terra)}
+  .info-note{font-size:14px;color:var(--ink-soft);margin-top:4px}
+  .map-card{
+    background:var(--paper);border:1px solid var(--line);
+    border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);
+  }
+  .map-card figcaption{
+    font-size:13px;color:var(--ink-soft);margin-top:16px;
+    display:flex;align-items:center;gap:9px;
+  }
+  .map-card figcaption span{
+    width:9px;height:9px;border-radius:50%;background:var(--terra);flex:0 0 auto;
+  }
+  @media (max-width:900px){ .contact-grid{grid-template-columns:1fr} }
+
+  /* Footer */
+  footer{background:var(--ink);color:#e9e4d9;padding:62px 0 40px}
+  .foot-top{
+    display:grid;grid-template-columns:1.2fr .8fr;gap:34px;
+    padding-bottom:34px;border-bottom:1px solid rgba(233,228,217,.16);
+  }
+  .foot-top h3{font-size:22px;margin-bottom:12px}
+  .foot-top p{color:rgba(233,228,217,.7);font-size:15.5px}
+  .foot-contact{display:flex;flex-direction:column;gap:12px;font-size:15.5px}
+  .foot-contact a{text-decoration:none;border-bottom:1px solid rgba(233,228,217,.28);overflow-wrap:anywhere}
+  .foot-contact a:hover{border-bottom-color:var(--terra-2)}
+  .foot-bottom{
+    padding-top:26px;display:flex;flex-wrap:wrap;gap:12px 24px;
+    justify-content:space-between;align-items:center;
+    font-size:13px;color:rgba(233,228,217,.62);
+  }
+  .foot-credit{color:rgba(233,228,217,.86);overflow-wrap:anywhere}
+  @media (max-width:860px){ .foot-top{grid-template-columns:1fr} }
+
+  @media (max-width:620px){
+    :root{--bar-h:54px}
+  }
+  @media (max-width:520px){
+    body{font-size:16px}
+    .wrap{padding:0 20px}
+    .nav-in{padding:10px 20px}
+    .sec{padding:64px 0}
+    .card,.step{padding:24px}
+    .btn{padding:15px 22px;font-size:15.5px}
+    .hero-cta .btn{flex:1 1 100%;justify-content:center}
+    .propbar{font-size:11.5px;letter-spacing:.01em}
+  }
+</style>
+</head>
+<body>
+
+<div class="propbar" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<div class="page">
+
+  <header class="nav">
+    <div class="nav-in">
+      <div class="brandmark">
+        <svg class="mk" width="36" height="36" viewBox="0 0 36 36" aria-hidden="true">
+          <circle cx="18" cy="18" r="17" fill="none" stroke="#1d3a32" stroke-width="1.3"/>
+          <circle cx="18" cy="18" r="12.4" fill="none" stroke="#c0623a" stroke-width="1"/>
+          <path d="M18 9.6v16.8M12.4 13.2v9.6M23.6 13.2v9.6" stroke="#1d3a32" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+        <b>L'Antic Casino 1904<small>Restaurante</small></b>
+      </div>
+      <nav class="nav-links" aria-label="Secciones">
+        <a href="#propuesta">La casa</a>
+        <a href="#carta">Carta</a>
+        <a href="#reservar">Reservar</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <a class="nav-call" href="tel:+34877915504">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/>
+        </svg>
+        877 91 55 04
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="propuesta">
+    <div class="hero-in">
+      <div>
+        <div class="eyebrow"><i></i> L'Ametlla de Mar · Tarragona</div>
+        <h1>L'Antic Casino<em>1904</em></h1>
+        <p class="hero-lead">Restaurante en la Plaça del Canó, en el centro de L'Ametlla de Mar. Esta maqueta propone una web clara, rápida y pensada para el móvil: que quien os busque encuentre la casa, la carta y el teléfono en segundos.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="tel:+34877915504">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/>
+            </svg>
+            Llamar al 877 91 55 04
+          </a>
+          <a class="btn btn-ghost" href="#reservar">Cómo reservar</a>
+        </div>
+        <div class="hero-meta">
+          <div>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="2.8"/></svg>
+            Pl. del Canó, 2
+          </div>
+          <div>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3.2 2"/></svg>
+            Consultar horario
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 420 320" width="100%" height="auto" role="presentation">
+          <defs>
+            <linearGradient id="hgSky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#2d5a4c"/>
+              <stop offset="1" stop-color="#17352e"/>
+            </linearGradient>
+            <linearGradient id="hgPlate" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#f7f2e8" stop-opacity=".95"/>
+              <stop offset="1" stop-color="#e3d9c6" stop-opacity=".8"/>
+            </linearGradient>
+            <linearGradient id="hgTerra" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#e08a5c"/>
+              <stop offset="1" stop-color="#c0623a"/>
+            </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="420" height="320" rx="16" fill="url(#hgSky)"/>
+          <!-- horizonte y mar esquemático -->
+          <path d="M0 196h420" stroke="#f7f2e8" stroke-opacity=".18" stroke-width="1"/>
+          <g stroke="#f7f2e8" stroke-opacity=".16" stroke-width="1.6" fill="none" stroke-linecap="round">
+            <path d="M28 216c14-9 28-9 42 0s28 9 42 0"/>
+            <path d="M112 240c14-9 28-9 42 0s28 9 42 0"/>
+            <path d="M196 216c14-9 28-9 42 0s28 9 42 0"/>
+            <path d="M280 240c14-9 28-9 42 0s28 9 42 0"/>
+            <path d="M70 266c14-9 28-9 42 0s28 9 42 0"/>
+            <path d="M238 266c14-9 28-9 42 0s28 9 42 0"/>
+          </g>
+          <!-- plato -->
+          <circle cx="210" cy="140" r="78" fill="url(#hgPlate)"/>
+          <circle cx="210" cy="140" r="60" fill="none" stroke="#1d3a32" stroke-opacity=".22" stroke-width="1.2"/>
+          <circle cx="210" cy="140" r="30" fill="none" stroke="#c0623a" stroke-opacity=".5" stroke-width="1.2"/>
+          <circle cx="210" cy="140" r="9" fill="url(#hgTerra)" opacity=".85"/>
+          <!-- cubiertos -->
+          <g stroke="#f7f2e8" stroke-opacity=".7" stroke-width="2.2" fill="none" stroke-linecap="round">
+            <path d="M96 92v96"/><path d="M90 92v22a6 6 0 0 0 12 0V92"/>
+            <path d="M324 92v96"/><path d="M324 92c10 6 10 22 0 28"/>
+          </g>
+        </svg>
+        <p class="plate-note">Espacio preparado para vuestras fotografías</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- APARTADOS -->
+  <section class="sec" id="carta">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-tag"><i></i> Apartados de la web</div>
+        <h2>Cuatro bloques listos para rellenar con lo vuestro</h2>
+        <p>La maqueta deja la estructura montada y vacía a propósito: ningún plato, precio ni horario está escrito, porque eso lo decidís vosotros. Nos pasáis los textos y las fotos, y los colocamos.</p>
+      </div>
+
+      <div class="grid-4">
+        <article class="card">
+          <div class="ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1d3a32" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M5 3v18M5 3h11a3 3 0 0 1 3 3v15H5"/><path d="M9 9h6M9 13h6"/></svg>
+          </div>
+          <h3>Carta</h3>
+          <p>Un apartado por secciones, legible en el móvil y fácil de actualizar sin tocar el diseño.</p>
+          <div class="slot">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="3" stroke-dasharray="3 3"/></svg>
+            <span><b>Espacio preparado</b> para vuestra carta</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1d3a32" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="16" rx="3"/><path d="M8 3v3M16 3v3M3.5 10h17"/></svg>
+          </div>
+          <h3>Menú del día</h3>
+          <p>Un bloque que se cambia en un minuto, pensado para que esté siempre al día.</p>
+          <div class="slot">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="3" stroke-dasharray="3 3"/></svg>
+            <span><b>Espacio preparado</b> para el menú del día</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1d3a32" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 20v-7a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v7"/><path d="M7 10V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v4M3 20h18"/></svg>
+          </div>
+          <h3>Sala</h3>
+          <p>Para contar cómo es el local y el ambiente, con sitio para las fotos que queráis.</p>
+          <div class="slot">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="3" stroke-dasharray="3 3"/></svg>
+            <span><b>Espacio preparado</b> para describir la sala</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1d3a32" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16l-1.3 11a2 2 0 0 1-2 1.8H7.3a2 2 0 0 1-2-1.8L4 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+          </div>
+          <h3>Para llevar</h3>
+          <p>Un apartado para explicar el servicio de recogida y que quien llame ya sepa qué pedir.</p>
+          <div class="slot">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="3" stroke-dasharray="3 3"/></svg>
+            <span><b>Espacio preparado</b> para el servicio para llevar</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CÓMO RESERVAR -->
+  <section class="sec steps-band" id="reservar">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-tag"><i></i> Cómo reservar</div>
+        <h2>Tres pasos y la mesa queda hablada</h2>
+        <p>La reserva se hace por teléfono, con la casa al otro lado. La web solo tiene que ponerlo fácil.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="n">1</div>
+          <h3>Llamad al restaurante</h3>
+          <p>Un botón de llamada visible en todo momento, también al bajar por la página desde el móvil.</p>
+        </div>
+        <div class="step">
+          <div class="n">2</div>
+          <h3>Decid día, hora y personas</h3>
+          <p>La web indica qué datos conviene tener a mano para que la llamada sea corta.</p>
+        </div>
+        <div class="step">
+          <div class="n">3</div>
+          <h3>Confirmación de la casa</h3>
+          <p>El restaurante confirma la mesa en la misma llamada y resuelve cualquier duda directamente.</p>
+        </div>
+      </div>
+
+      <div class="steps-foot">
+        <a class="btn btn-primary" href="tel:+34877915504">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/>
+          </svg>
+          Llamar al 877 91 55 04
+        </a>
+        <span>Horario de atención: consultar con el restaurante.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="sec" id="contacto">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-tag"><i></i> Contacto</div>
+        <h2>Dónde estáis y cómo os encuentran</h2>
+        <p>Los datos esenciales juntos y arriba, sin que nadie tenga que buscarlos.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div>
+          <div class="info-list">
+            <div class="info">
+              <div class="ico">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1d3a32" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+              </div>
+              <div>
+                <div class="info-k">Teléfono</div>
+                <div class="info-v"><a href="tel:+34877915504">877 91 55 04</a></div>
+              </div>
+            </div>
+
+            <div class="info">
+              <div class="ico">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1d3a32" stroke-width="1.7" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="2.8"/></svg>
+              </div>
+              <div>
+                <div class="info-k">Dirección</div>
+                <div class="info-v">Pl. del Canó, 2</div>
+                <div class="info-note">43860 L'Ametlla de Mar (Tarragona)</div>
+              </div>
+            </div>
+
+            <div class="info">
+              <div class="ico">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1d3a32" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3.2 2"/></svg>
+              </div>
+              <div>
+                <div class="info-k">Horario</div>
+                <div class="info-v">Consultar horario</div>
+                <div class="info-note">Lo añadimos cuando nos lo confirméis.</div>
+              </div>
+            </div>
+
+            <div class="info">
+              <div class="ico">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1d3a32" stroke-width="1.7" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 7l8 6 8-6"/></svg>
+              </div>
+              <div>
+                <div class="info-k">Email</div>
+                <div class="info-v"><a href="mailto:anticcasino1904@gmail.com">anticcasino1904@gmail.com</a></div>
+              </div>
+            </div>
+          </div>
+
+          <a class="btn btn-primary" href="tel:+34877915504">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/>
+            </svg>
+            Llamar al 877 91 55 04
+          </a>
+        </div>
+
+        <figure class="map-card" style="margin:0">
+          <svg viewBox="0 0 560 400" width="100%" height="auto" role="img" aria-label="Plano esquemático dibujado a mano: la plaça del Canó con las calles que la rodean y el restaurante en el número 2.">
+            <defs>
+              <linearGradient id="mapBg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#f6f1e7"/>
+                <stop offset="1" stop-color="#eadfca"/>
+              </linearGradient>
+            </defs>
+            <rect x="0" y="0" width="560" height="400" rx="12" fill="url(#mapBg)"/>
+
+            <!-- manzanas -->
+            <g fill="#1d3a32" fill-opacity=".07" stroke="#1d3a32" stroke-opacity=".2" stroke-width="1.4">
+              <path d="M34 36c62-5 118-4 160 2 4 34 3 66-2 96-54 5-106 4-156-2-5-32-5-64-2-96Z"/>
+              <path d="M372 30c56-4 106-3 150 3 5 36 4 70-1 102-50 4-99 3-146-3-6-34-6-68-3-102Z"/>
+              <path d="M30 262c58-5 110-4 150 2 5 32 4 62-1 92-50 4-98 3-146-3-6-30-6-60-3-91Z"/>
+              <path d="M392 266c48-4 92-3 132 3 5 30 4 59-1 88-44 4-86 3-128-3-5-29-5-58-3-88Z"/>
+            </g>
+
+            <!-- plaza -->
+            <path d="M212 148c44-8 92-8 136 1 7 36 6 70-1 102-46 7-94 7-138-1-7-34-7-68 3-102Z"
+                  fill="#e08a5c" fill-opacity=".16" stroke="#c0623a" stroke-opacity=".7" stroke-width="1.8" stroke-linejoin="round"/>
+            <text x="280" y="206" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="15" font-weight="600" fill="#1d3a32">Plaça del Canó</text>
+            <!-- arbolitos de la plaza -->
+            <g stroke="#2b5349" stroke-opacity=".5" stroke-width="1.4" fill="none">
+              <circle cx="236" cy="236" r="7"/><circle cx="280" cy="242" r="7"/><circle cx="324" cy="236" r="7"/>
+            </g>
+
+            <!-- calles -->
+            <g stroke="#1d3a32" stroke-opacity=".3" stroke-width="2" fill="none" stroke-linecap="round">
+              <path d="M28 142c86 6 170 7 252 4 86-3 168-5 250 1"/>
+              <path d="M24 252c88 7 174 8 258 4 84-4 164-6 246 2"/>
+              <path d="M196 24c-6 118-6 236 2 354"/>
+              <path d="M360 20c7 120 7 238 0 356"/>
+            </g>
+            <g font-family="Helvetica,Arial,sans-serif" font-size="11.5" fill="#3c4b47" fill-opacity=".85">
+              <text x="44" y="134">carrer</text>
+              <text x="470" y="134">carrer</text>
+              <text x="44" y="246">carrer</text>
+              <text x="470" y="246">carrer</text>
+              <text x="152" y="372" transform="rotate(-90 152 372)">carrer</text>
+              <text x="394" y="372" transform="rotate(-90 394 372)">carrer</text>
+            </g>
+
+            <!-- marcador del restaurante -->
+            <g>
+              <path d="M258 150c0-15 12-27 27-27s27 12 27 27c0 20-27 44-27 44s-27-24-27-44Z"
+                    fill="#c0623a" transform="translate(-5,-58)"/>
+              <circle cx="280" cy="94" r="8.5" fill="#f6f1e7"/>
+              <text x="280" y="98" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="10" font-weight="700" fill="#c0623a">2</text>
+            </g>
+            <text x="280" y="68" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="13.5" font-weight="600" fill="#15211e">L'Antic Casino 1904</text>
+          </svg>
+          <figcaption><span></span> Plano esquemático, dibujado a mano para la maqueta. No es un mapa a escala.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot-top">
+        <div>
+          <h3>L'Antic Casino 1904</h3>
+          <p>Maqueta de propuesta de rediseño web. Los contenidos finales (carta, menú, horario y fotografías) los aporta el restaurante; aquí solo está preparada la estructura.</p>
+        </div>
+        <div class="foot-contact">
+          <div><a href="tel:+34877915504">877 91 55 04</a></div>
+          <div><a href="mailto:anticcasino1904@gmail.com">anticcasino1904@gmail.com</a></div>
+          <div>Pl. del Canó, 2 · 43860 L'Ametlla de Mar (Tarragona)</div>
+          <div>Consultar horario</div>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span class="foot-credit">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</span>
+        <span>Maqueta no oficial, sin vínculo comercial con el negocio.</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

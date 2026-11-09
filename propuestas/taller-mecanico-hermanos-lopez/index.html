@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Taller Mecánico Hermanos López — Toro (Zamora)</title>
+<meta name="description" content="Maqueta de propuesta de rediseño web para Taller Mecánico Hermanos López, Toro (Zamora).">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  :root{
+    --bg:#0d1014;
+    --bg2:#12171d;
+    --panel:#171d24;
+    --line:#252e37;
+    --txt:#eef2f6;
+    --mut:#9aa7b4;
+    --acc:#ff9a1f;
+    --acc2:#ffc56b;
+    --bar:44px;
+    --max:1120px;
+  }
+  html,body{margin:0;padding:0;max-width:100%;overflow-x:hidden}
+  body{
+    background:var(--bg);
+    color:var(--txt);
+    font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%;display:block}
+  h1,h2,h3{line-height:1.12;margin:0;letter-spacing:-.02em;font-weight:800}
+  p{margin:0}
+  a{color:inherit}
+  .wrap{width:100%;max-width:var(--max);margin:0 auto;padding:0 24px}
+
+  /* barra fija */
+  .topbar{
+    position:fixed;inset:0 0 auto 0;z-index:100;
+    min-height:var(--bar);display:flex;align-items:center;justify-content:center;
+    background:#ffb43c;color:#1a1205;
+    border-bottom:1px solid rgba(0,0,0,.25);
+    padding:9px 16px;text-align:center;
+  }
+  .topbar span{
+    font-size:12px;font-weight:700;letter-spacing:.01em;line-height:1.35;
+    text-wrap:balance;
+  }
+  main{padding-top:var(--bar)}
+  @media(max-width:700px){:root{--bar:58px}}
+  @media(max-width:390px){:root{--bar:60px}}
+
+  /* nav */
+  .nav{
+    border-bottom:1px solid var(--line);
+    background:rgba(13,16,20,.9);
+  }
+  .nav-in{display:flex;align-items:center;gap:16px;min-height:68px;flex-wrap:wrap;padding-top:10px;padding-bottom:10px}
+  .brand{display:flex;align-items:center;gap:11px;min-width:0}
+  .mark{width:38px;height:38px;flex:0 0 38px}
+  .bname{font-weight:800;font-size:15px;letter-spacing:-.01em;line-height:1.2}
+  .bsub{font-size:11px;color:var(--mut);letter-spacing:.14em;text-transform:uppercase;line-height:1.3}
+  .nav-links{display:flex;gap:22px;margin-left:auto;font-size:14px;color:var(--mut)}
+  .nav-links a{text-decoration:none}
+  .nav-cta{
+    margin-left:auto;display:inline-flex;align-items:center;gap:8px;
+    background:var(--acc);color:#1a1205;text-decoration:none;
+    font-weight:800;font-size:14px;padding:11px 16px;border-radius:999px;white-space:nowrap;
+  }
+  @media(max-width:860px){.nav-links{display:none}}
+
+  /* hero */
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(900px 480px at 82% -12%,rgba(255,154,31,.22),transparent 62%),
+      radial-gradient(700px 420px at 8% 110%,rgba(60,120,200,.14),transparent 60%),
+      linear-gradient(180deg,#10151b,#0d1014);
+    border-bottom:1px solid var(--line);
+  }
+  .hero-in{display:grid;grid-template-columns:1.08fr .92fr;gap:48px;align-items:center;padding:76px 0 84px}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--acc2);
+    border:1px solid rgba(255,154,31,.35);background:rgba(255,154,31,.07);
+    padding:7px 13px;border-radius:999px;margin-bottom:22px;font-weight:700;
+  }
+  .hero h1{font-size:clamp(34px,5vw,58px)}
+  .hero h1 em{font-style:normal;color:var(--acc)}
+  .hero p.lead{margin-top:20px;font-size:clamp(16px,1.3vw,18.5px);color:var(--mut);max-width:52ch}
+  .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;text-decoration:none;
+    font-weight:800;font-size:16px;padding:16px 24px;border-radius:12px;
+  }
+  .btn-a{background:var(--acc);color:#1a1205;box-shadow:0 10px 26px -12px rgba(255,154,31,.7)}
+  .btn-b{background:#1b232c;color:var(--txt);border:1px solid #3a4654}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:30px;font-size:13.5px;color:var(--mut)}
+  .hero-meta div{display:flex;align-items:center;gap:8px}
+  .hero-art{
+    border:1px solid var(--line);border-radius:20px;overflow:hidden;
+    background:linear-gradient(160deg,#1a222b,#11161c);
+    padding:10px;
+  }
+  @media(max-width:900px){
+    .hero-in{grid-template-columns:1fr;gap:34px;padding:52px 0 60px}
+    .hero-art{order:-1}
+  }
+
+  /* secciones */
+  section{padding:76px 0}
+  .shead{max-width:60ch;margin-bottom:40px}
+  .ktag{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--acc);font-weight:800;margin-bottom:12px}
+  .shead h2{font-size:clamp(26px,3.3vw,38px)}
+  .shead p{margin-top:14px;color:var(--mut);font-size:16.5px}
+
+  .grid{display:grid;gap:18px;grid-template-columns:repeat(3,1fr)}
+  @media(max-width:980px){.grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:620px){.grid{grid-template-columns:1fr}}
+  .card{
+    background:linear-gradient(180deg,var(--panel),#131920);
+    border:1px solid var(--line);border-radius:16px;padding:26px 24px;
+  }
+  .ico{width:44px;height:44px;margin-bottom:18px}
+  .card h3{font-size:18px}
+  .card p{margin-top:10px;color:var(--mut);font-size:14.8px}
+
+  .steps-sec{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .steps{display:grid;gap:18px;grid-template-columns:repeat(3,1fr);counter-reset:s}
+  @media(max-width:860px){.steps{grid-template-columns:1fr}}
+  .step{
+    position:relative;border:1px solid var(--line);border-radius:16px;
+    padding:28px 24px;background:#141a21;
+  }
+  .step .num{
+    font-size:13px;font-weight:800;color:#1a1205;background:var(--acc);
+    width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;
+  }
+  .step h3{font-size:18px}
+  .step p{margin-top:10px;color:var(--mut);font-size:14.8px}
+
+  /* contacto */
+  .cgrid{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start}
+  @media(max-width:900px){.cgrid{grid-template-columns:1fr}}
+  .cbox{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:30px 26px}
+  .dl{margin:0;padding:0}
+  .row{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+  .row:last-child{border-bottom:0;padding-bottom:0}
+  .row svg{flex:0 0 22px;width:22px;height:22px;margin-top:2px}
+  .row .k{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);font-weight:700}
+  .row .v{font-size:16.5px;font-weight:700;margin-top:3px;word-break:break-word}
+  .row .v a{text-decoration:none}
+  .row .v.small{font-size:15.5px;font-weight:600;color:var(--txt)}
+  .tel-big{font-size:clamp(22px,2.6vw,30px);font-weight:800;letter-spacing:-.01em;color:var(--acc2);text-decoration:none;display:inline-block}
+  .maptitle{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);font-weight:700;margin-bottom:14px}
+  .mapbox{background:linear-gradient(170deg,#141b22,#101519);border:1px solid var(--line);border-radius:18px;padding:22px}
+  .mapnote{margin-top:14px;font-size:12.5px;color:var(--mut);line-height:1.5}
+
+  /* pie */
+  footer{border-top:1px solid var(--line);background:#0a0d11;padding:52px 0 60px}
+  .fgrid{display:grid;grid-template-columns:1.3fr 1fr;gap:28px;align-items:start}
+  @media(max-width:760px){.fgrid{grid-template-columns:1fr}}
+  footer p{color:var(--mut);font-size:14.5px}
+  .fmail{display:inline-block;margin-top:10px;font-size:17px;font-weight:800;color:var(--acc2);text-decoration:none;word-break:break-word}
+  .fbar{margin-top:36px;padding-top:22px;border-top:1px solid var(--line);font-size:13px;color:var(--mut);line-height:1.6}
+  .fbar strong{color:#cdd6de;font-weight:700}
+</style>
+</head>
+<body>
+
+<div class="topbar"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<main>
+
+  <!-- NAV -->
+  <div class="nav">
+    <div class="wrap nav-in">
+      <div class="brand">
+        <svg class="mark" viewBox="0 0 48 48" aria-hidden="true">
+          <rect x="1" y="1" width="46" height="46" rx="12" fill="#1b232c" stroke="#303b46"/>
+          <circle cx="24" cy="24" r="11.5" fill="none" stroke="#ff9a1f" stroke-width="3"/>
+          <circle cx="24" cy="24" r="4" fill="#ff9a1f"/>
+          <g stroke="#ff9a1f" stroke-width="3" stroke-linecap="round">
+            <path d="M24 7.5v5"/><path d="M24 35.5v5"/><path d="M7.5 24h5"/><path d="M35.5 24h5"/>
+          </g>
+        </svg>
+        <div>
+          <div class="bname">Hermanos López</div>
+          <div class="bsub">Taller mecánico</div>
+        </div>
+      </div>
+      <nav class="nav-links" aria-label="Secciones">
+        <a href="#servicios">Servicios</a>
+        <a href="#proceso">Cómo trabajamos</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <a class="nav-cta" href="tel:+34980692688">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" aria-hidden="true"><path d="M5 3h4l2 5-3 2a12 12 0 0 0 6 6l2-3 5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg>
+        980 692 688
+      </a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="wrap hero-in">
+      <div>
+        <div class="eyebrow">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="5"/></svg>
+          Toro · Zamora
+        </div>
+        <h1>Tu coche, en manos de un <em>taller de barrio</em> con oficio.</h1>
+        <p class="lead">Venta y reparación de automóvil en el Polígono Industrial Norte de Toro. Mecánica general, mantenimiento y diagnosis electrónica. Cuéntanos qué le pasa y te decimos cómo lo vemos.</p>
+        <div class="cta-row">
+          <a class="btn btn-a" href="tel:+34980692688">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" aria-hidden="true"><path d="M5 3h4l2 5-3 2a12 12 0 0 0 6 6l2-3 5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg>
+            Llamar al 980 692 688
+          </a>
+          <a class="btn btn-b" href="#servicios">Ver servicios</a>
+        </div>
+        <div class="hero-meta">
+          <div>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff9a1f" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>
+            Polígono Industrial Norte, parcela 19
+          </div>
+          <div>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff9a1f" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            Consultar horario
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-art">
+        <svg viewBox="0 0 520 420" role="img" aria-label="Ilustración esquemática de un elevador de taller con un vehículo y herramientas">
+          <defs>
+            <linearGradient id="gsky" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#1d2832"/><stop offset="1" stop-color="#111720"/>
+            </linearGradient>
+            <linearGradient id="gcar" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#3a4654"/><stop offset="1" stop-color="#28323d"/>
+            </linearGradient>
+            <linearGradient id="gcar2" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#46535f"/><stop offset="1" stop-color="#28323d"/>
+            </linearGradient>
+            <linearGradient id="gacc" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#ff9a1f"/><stop offset="1" stop-color="#ffc56b"/>
+            </linearGradient>
+          </defs>
+          <rect width="520" height="420" rx="12" fill="url(#gsky)"/>
+          <g opacity=".5" stroke="#2c3742" stroke-width="1">
+            <path d="M0 60h520M0 120h520M0 180h520M0 240h520M0 300h520M0 360h520"/>
+            <path d="M65 0v420M130 0v420M195 0v420M260 0v420M325 0v420M390 0v420M455 0v420"/>
+          </g>
+          <!-- foco -->
+          <path d="M260 0 L380 250 L140 250 Z" fill="#ff9a1f" opacity=".07"/>
+          <!-- coche esquemático -->
+          <g>
+            <path d="M120 196c6-26 16-44 30-52 22-12 138-12 160 0 14 8 24 26 30 52 6 4 9 10 9 18v18a8 8 0 0 1-8 8H119a8 8 0 0 1-8-8v-18c0-8 3-14 9-18z" fill="url(#gcar2)" stroke="#5b6b7a" stroke-width="2"/>
+            <path d="M163 152c18-7 134-7 152 0 8 4 15 16 20 34H143c5-18 12-30 20-34z" fill="#0f141a" opacity=".75"/>
+            <path d="M186 148v38M254 145v41M318 148v38" stroke="#5b6b7a" stroke-width="2"/>
+            <rect x="124" y="204" width="34" height="11" rx="5" fill="url(#gacc)"/>
+            <rect x="342" y="204" width="34" height="11" rx="5" fill="#ffefd6" opacity=".55"/>
+            <circle cx="168" cy="243" r="25" fill="#0d1216" stroke="#55646f" stroke-width="3"/>
+            <circle cx="168" cy="243" r="9" fill="#55646f"/>
+            <circle cx="332" cy="243" r="25" fill="#0d1216" stroke="#55646f" stroke-width="3"/>
+            <circle cx="332" cy="243" r="9" fill="#55646f"/>
+          </g>
+          <!-- elevador -->
+          <rect x="96" y="276" width="308" height="13" rx="6" fill="#39454f"/>
+          <rect x="140" y="289" width="24" height="64" fill="#2f3a44"/>
+          <rect x="336" y="289" width="24" height="64" fill="#2f3a44"/>
+          <rect x="60" y="353" width="400" height="15" rx="7" fill="url(#gacc)" opacity=".9"/>
+          <!-- herramientas -->
+          <g stroke="#7b8b99" stroke-width="5" stroke-linecap="round" opacity=".85">
+            <path d="M424 104l34 34"/><path d="M452 96l12 12"/>
+          </g>
+          <circle cx="418" cy="98" r="10" fill="none" stroke="#7b8b99" stroke-width="5"/>
+          <g opacity=".85">
+            <circle cx="86" cy="104" r="22" fill="none" stroke="#7b8b99" stroke-width="5"/>
+            <path d="M86 90v14l10 7" stroke="#ff9a1f" stroke-width="4" stroke-linecap="round" fill="none"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <!-- SERVICIOS -->
+  <section id="servicios">
+    <div class="wrap">
+      <div class="shead">
+        <div class="ktag">Servicios</div>
+        <h2>Lo que se hace en el taller</h2>
+        <p>Trabajos habituales de un taller de automóvil, desde el mantenimiento rutinario hasta la localización de averías. Si tu caso no aparece aquí, pregúntalo por teléfono.</p>
+      </div>
+      <div class="grid">
+
+        <article class="card">
+          <svg class="ico" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <rect x="1" y="1" width="46" height="46" rx="13" fill="#1e2630" stroke="#303b46"/>
+            <path d="M18 30l-5 5a3.5 3.5 0 0 0 5 5l5-5" stroke="#ff9a1f" stroke-width="2.6" stroke-linecap="round"/>
+            <path d="M27 24l7-7m-4-4l8 8" stroke="#ff9a1f" stroke-width="2.6" stroke-linecap="round"/>
+            <path d="M20 28l12-12-4-4-6 2-2 6-4 4z" stroke="#9aa7b4" stroke-width="2.2" stroke-linejoin="round"/>
+          </svg>
+          <h3>Mecánica general</h3>
+          <p>Reparación de motor, embrague, transmisión, suspensión, dirección y escape. Diagnóstico previo y explicación de la avería antes de intervenir.</p>
+        </article>
+
+        <article class="card">
+          <svg class="ico" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <rect x="1" y="1" width="46" height="46" rx="13" fill="#1e2630" stroke="#303b46"/>
+            <path d="M24 12c4 6 8 9.5 8 15a8 8 0 0 1-16 0c0-5.5 4-9 8-15z" stroke="#ff9a1f" stroke-width="2.6" stroke-linejoin="round"/>
+            <path d="M21 29a3 3 0 0 0 3 3" stroke="#9aa7b4" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+          <h3>Mantenimiento periódico</h3>
+          <p>Cambio de aceite y filtros, revisión de niveles, frenos, correas y refrigeración siguiendo los intervalos de mantenimiento del vehículo.</p>
+        </article>
+
+        <article class="card">
+          <svg class="ico" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <rect x="1" y="1" width="46" height="46" rx="13" fill="#1e2630" stroke="#303b46"/>
+            <rect x="11" y="14" width="26" height="20" rx="4" stroke="#9aa7b4" stroke-width="2.2"/>
+            <path d="M15 26l4-6 3 9 4-12 3 9h4" stroke="#ff9a1f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h3>Diagnosis electrónica</h3>
+          <p>Lectura de centralita y códigos de avería para localizar el origen del fallo, revisar sensores y comprobar el testigo que se ha encendido.</p>
+        </article>
+
+        <article class="card">
+          <svg class="ico" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <rect x="1" y="1" width="46" height="46" rx="13" fill="#1e2630" stroke="#303b46"/>
+            <circle cx="24" cy="24" r="11" stroke="#ff9a1f" stroke-width="2.6"/>
+            <circle cx="24" cy="24" r="4.5" stroke="#9aa7b4" stroke-width="2.2"/>
+            <path d="M24 13v6M24 29v6M13 24h6M29 24h6" stroke="#9aa7b4" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+          <h3>Neumáticos</h3>
+          <p>Montaje y equilibrado, rotación, reparación de pinchazos cuando procede y comprobación de presiones y desgaste.</p>
+        </article>
+
+        <article class="card">
+          <svg class="ico" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <rect x="1" y="1" width="46" height="46" rx="13" fill="#1e2630" stroke="#303b46"/>
+            <path d="M16 13h12l4 5v17a2 2 0 0 1-2 2H18a2 2 0 0 1-2-2V13z" stroke="#9aa7b4" stroke-width="2.2" stroke-linejoin="round"/>
+            <path d="M20 26l3 3 6-7" stroke="#ff9a1f" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h3>Pre-ITV</h3>
+          <p>Revisión de los puntos que se comprueban en la inspección técnica: luces, frenos, emisiones, holguras y estado general, para pasarla sin sorpresas.</p>
+        </article>
+
+        <article class="card">
+          <svg class="ico" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <rect x="1" y="1" width="46" height="46" rx="13" fill="#1e2630" stroke="#303b46"/>
+            <path d="M26 11l-9 15h6l-2 11 9-15h-6l2-11z" fill="none" stroke="#ff9a1f" stroke-width="2.6" stroke-linejoin="round"/>
+          </svg>
+          <h3>Electricidad del automóvil</h3>
+          <p>Batería y alternador, motor de arranque, iluminación, fusibles y cableado. Búsqueda de consumos y fallos eléctricos intermitentes.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESO -->
+  <section id="proceso" class="steps-sec">
+    <div class="wrap">
+      <div class="shead">
+        <div class="ktag">Cómo trabajamos</div>
+        <h2>Tres pasos, sin letra pequeña</h2>
+        <p>Una forma de trabajar sencilla: primero entender la avería, después explicarla y solo entonces repararla.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="num">1</div>
+          <h3>Nos cuentas qué pasa</h3>
+          <p>Llamas al taller o te pasas por el polígono y describes el síntoma: un ruido, un testigo encendido, una revisión que toca. Acordamos cuándo dejar el coche.</p>
+        </div>
+        <div class="step">
+          <div class="num">2</div>
+          <h3>Revisamos y te lo explicamos</h3>
+          <p>Comprobamos el vehículo y te contamos qué hemos encontrado, qué es urgente y qué puede esperar, antes de poner mano a la obra.</p>
+        </div>
+        <div class="step">
+          <div class="num">3</div>
+          <h3>Reparamos y te avisamos</h3>
+          <p>Hacemos el trabajo acordado y te llamamos cuando el coche está listo, indicándote lo que se ha sustituido y a qué conviene estar atento.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <div class="wrap">
+      <div class="shead">
+        <div class="ktag">Contacto</div>
+        <h2>Estamos en el Polígono Industrial Norte</h2>
+        <p>La forma más rápida de resolver una duda es el teléfono: una llamada y te decimos si hace falta traer el coche.</p>
+      </div>
+
+      <div class="cgrid">
+        <div class="cbox">
+          <dl class="dl">
+            <div class="row">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#ff9a1f" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 3h4l2 5-3 2a12 12 0 0 0 6 6l2-3 5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg>
+              <div>
+                <div class="k">Teléfono</div>
+                <div class="v"><a class="tel-big" href="tel:+34980692688">980 692 688</a></div>
+              </div>
+            </div>
+            <div class="row">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#ff9a1f" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>
+              <div>
+                <div class="k">Dirección</div>
+                <div class="v small">Polígono Industrial Norte, parcela 19<br>49800 Toro (Zamora)</div>
+              </div>
+            </div>
+            <div class="row">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#ff9a1f" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+              <div>
+                <div class="k">Horario</div>
+                <div class="v small">Consultar horario</div>
+              </div>
+            </div>
+            <div class="row">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#ff9a1f" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+              <div>
+                <div class="k">Correo</div>
+                <div class="v small"><a href="mailto:hnoslopez@hotmail.es">hnoslopez@hotmail.es</a></div>
+              </div>
+            </div>
+          </dl>
+        </div>
+
+        <div class="mapbox">
+          <div class="maptitle">Cómo llegar · croquis</div>
+          <svg viewBox="0 0 520 360" role="img" aria-label="Croquis dibujado a mano del polígono industrial con la parcela 19 señalada">
+            <rect width="520" height="360" rx="12" fill="#0f141a"/>
+            <g opacity=".22" stroke="#2c3742" stroke-width="1">
+              <path d="M0 40h520M0 80h520M0 120h520M0 160h520M0 200h520M0 240h520M0 280h520M0 320h520"/>
+              <path d="M40 0v360M80 0v360M120 0v360M160 0v360M200 0v360M240 0v360M280 0v360M320 0v360M360 0v360M400 0v360M440 0v360M480 0v360"/>
+            </g>
+            <!-- viales dibujados a mano -->
+            <g fill="none" stroke="#5e6d7b" stroke-width="9" stroke-linecap="round">
+              <path d="M24 300c70-6 150-4 214 2 70 7 150 4 258-10"/>
+              <path d="M150 316c-4-70 1-128 10-186 4-28 3-50 1-74"/>
+              <path d="M372 302c3-64-1-116-8-168"/>
+              <path d="M40 150c88 8 176 10 268 4 52-4 108-10 176-20"/>
+            </g>
+            <g fill="none" stroke="#39454f" stroke-width="3" stroke-dasharray="11 11" stroke-linecap="round">
+              <path d="M26 226c84 6 170 8 254 3 68-5 142-11 216-20"/>
+            </g>
+            <!-- naves -->
+            <g fill="#1b232c" stroke="#36424d" stroke-width="2.5">
+              <path d="M44 166l78 4 1 44-80-3z"/>
+              <path d="M178 170l74 2 3 44-78-2z"/>
+              <path d="M284 170l68-1 3 42-70 1z"/>
+              <path d="M400 164l72-6 5 42-74 5z"/>
+              <path d="M46 246l76 3 2 36-79-3z"/>
+              <path d="M398 242l74-5 4 36-76 5z"/>
+            </g>
+            <!-- parcela 19 -->
+            <path d="M182 244l80 2 3 38-83-2z" fill="rgba(255,154,31,.17)" stroke="#ff9a1f" stroke-width="3.4"/>
+            <circle cx="223" cy="264" r="10" fill="#ff9a1f"/>
+            <text x="223" y="268" text-anchor="middle" font-size="11" font-weight="700" font-family="ui-sans-serif,system-ui,sans-serif" fill="#1a1205">19</text>
+            <text x="223" y="330" text-anchor="middle" font-size="15" font-weight="700" font-family="ui-sans-serif,system-ui,sans-serif" fill="#ffc56b">Parcela 19</text>
+            <text x="92" y="132" font-size="12.5" font-family="ui-sans-serif,system-ui,sans-serif" fill="#8d9aa7">Polígono Industrial Norte</text>
+            <!-- norte -->
+            <g transform="translate(470,56)">
+              <circle r="22" fill="#141b22" stroke="#36424d" stroke-width="2"/>
+              <path d="M0 -13l6 15h-12z" fill="#ff9a1f"/>
+              <text y="15" text-anchor="middle" font-size="10.5" font-weight="700" font-family="ui-sans-serif,system-ui,sans-serif" fill="#8d9aa7">N</text>
+            </g>
+          </svg>
+          <p class="mapnote">Croquis orientativo dibujado a mano para esta propuesta. No es un plano a escala ni un mapa oficial.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PIE -->
+  <footer>
+    <div class="wrap">
+      <div class="fgrid">
+        <div>
+          <div class="bname" style="font-size:19px">Taller Mecánico Hermanos López</div>
+          <p style="margin-top:10px">Venta y reparación de automóvil<br>Polígono Industrial Norte, parcela 19 · 49800 Toro (Zamora)</p>
+        </div>
+        <div>
+          <div class="k" style="font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#9aa7b4;font-weight:700">Escríbenos</div>
+          <a class="fmail" href="mailto:hnoslopez@hotmail.es">hnoslopez@hotmail.es</a>
+          <p style="margin-top:10px">Teléfono <a href="tel:+34980692688" style="color:#ffc56b;text-decoration:none;font-weight:700">980 692 688</a> · Consultar horario</p>
+        </div>
+      </div>
+      <div class="fbar">
+        <strong>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</strong><br>
+        Maqueta de demostración sin vínculo oficial con el negocio. Los datos de contacto y la dirección son públicos; el resto del contenido es texto de ejemplo del sector.
+      </div>
+    </div>
+  </footer>
+
+</main>
+</body>
+</html>
