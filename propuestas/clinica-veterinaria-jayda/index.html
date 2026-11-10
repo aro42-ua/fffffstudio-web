@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clínica Veterinaria Jayda · Tomelloso</title>
+<style>
+  :root{
+    --tinta:#10241f;
+    --tinta-2:#365049;
+    --verde:#1f7a5c;
+    --verde-osc:#14563f;
+    --verde-cl:#e6f4ee;
+    --arena:#f7f4ee;
+    --blanco:#ffffff;
+    --linea:#dfe6e1;
+    --acento:#f08a5d;
+    --barra:#0c1c18;
+    --radio:18px;
+    --sombra:0 18px 40px -24px rgba(16,36,31,.35);
+    --barra-h:44px;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{margin:0;padding:0;max-width:100%;overflow-x:hidden}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    color:var(--tinta);
+    background:var(--blanco);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%;display:block}
+  a{color:inherit}
+
+  /* ---------- barra fija ---------- */
+  .aviso{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:var(--barra);
+    color:#e9f3ef;
+    font-size:12px;
+    letter-spacing:.04em;
+    text-align:center;
+    padding:12px 16px;
+    min-height:var(--barra-h);
+    display:flex;align-items:center;justify-content:center;
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .aviso span{display:inline-block;max-width:100%}
+
+  .wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 24px}
+
+  /* ---------- nav ---------- */
+  .nav{
+    position:relative;z-index:5;
+    display:flex;align-items:center;justify-content:space-between;
+    gap:16px;flex-wrap:wrap;
+    padding:22px 0 6px;
+  }
+  .marca{display:flex;align-items:center;gap:12px;min-width:0}
+  .marca .logo{width:44px;height:44px;flex:0 0 44px}
+  .marca b{display:block;font-size:17px;letter-spacing:-.01em;line-height:1.2}
+  .marca small{display:block;font-size:12px;color:var(--tinta-2);letter-spacing:.06em;text-transform:uppercase}
+  .nav-links{display:flex;gap:22px;font-size:14px;color:var(--tinta-2);flex-wrap:wrap}
+  .nav-links a{text-decoration:none}
+  .nav-links a:hover{color:var(--verde)}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    padding-top:calc(var(--barra-h) + 26px);
+    background:
+      radial-gradient(900px 420px at 85% -10%, #d7ece2 0%, rgba(215,236,226,0) 65%),
+      linear-gradient(180deg,#fbfaf7 0%, #f3f6f2 100%);
+    border-bottom:1px solid var(--linea);
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);
+    gap:48px;align-items:center;
+    padding:42px 0 64px;
+  }
+  .pill{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--blanco);border:1px solid var(--linea);
+    color:var(--verde-osc);font-size:12.5px;font-weight:600;
+    letter-spacing:.04em;text-transform:uppercase;
+    padding:7px 14px;border-radius:999px;margin-bottom:22px;
+  }
+  .pill i{width:7px;height:7px;border-radius:50%;background:var(--verde);display:block}
+  h1{
+    font-size:clamp(32px,5vw,54px);
+    line-height:1.06;letter-spacing:-.025em;
+    margin:0 0 18px;font-weight:700;
+  }
+  h1 em{font-style:normal;color:var(--verde)}
+  .lead{font-size:clamp(16px,1.35vw,18.5px);color:var(--tinta-2);margin:0 0 28px;max-width:34em}
+  .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:22px}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:15px 22px;border-radius:14px;
+    font-size:16px;font-weight:650;text-decoration:none;
+    border:1px solid transparent;transition:transform .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px)}
+  .btn-pri{background:var(--verde);color:#fff;box-shadow:var(--sombra)}
+  .btn-sec{background:var(--blanco);color:var(--tinta);border-color:var(--linea)}
+  .btn small{display:block;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;opacity:.72;line-height:1}
+  .btn .tel{font-size:16.5px;letter-spacing:-.01em;line-height:1.25}
+  .hero-nota{font-size:13.5px;color:var(--tinta-2);margin:0}
+
+  /* tarjeta ilustración */
+  .card-ilu{
+    background:var(--blanco);border:1px solid var(--linea);
+    border-radius:26px;padding:22px;box-shadow:var(--sombra);
+  }
+  .card-ilu .cab{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px}
+  .card-ilu .cab span{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--tinta-2)}
+  .dots{display:flex;gap:6px}
+  .dots i{width:9px;height:9px;border-radius:50%;background:var(--linea);display:block}
+  .dots i:first-child{background:var(--verde)}
+  .mini-datos{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+  .mini{background:var(--verde-cl);border-radius:12px;padding:12px 14px}
+  .mini b{display:block;font-size:13px}
+  .mini small{font-size:11.5px;color:var(--tinta-2)}
+
+  /* ---------- secciones ---------- */
+  section{padding:76px 0}
+  .sec-cab{max-width:46em;margin-bottom:38px}
+  .kicker{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--verde);margin:0 0 12px}
+  h2{font-size:clamp(26px,3.2vw,38px);line-height:1.14;letter-spacing:-.02em;margin:0 0 14px;font-weight:700}
+  .sec-cab p{color:var(--tinta-2);margin:0;font-size:16.5px}
+
+  .grid-serv{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:18px}
+  .serv{
+    background:var(--blanco);border:1px solid var(--linea);border-radius:var(--radio);
+    padding:26px 24px;min-width:0;
+  }
+  .serv .ico{width:46px;height:46px;border-radius:13px;background:var(--verde-cl);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+  .serv h3{font-size:18px;margin:0 0 8px;letter-spacing:-.01em}
+  .serv p{margin:0;font-size:14.6px;color:var(--tinta-2)}
+
+  .urg{
+    margin-top:22px;background:#fff6f1;border:1px solid #f6d9c9;border-radius:var(--radio);
+    padding:24px;display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap;
+  }
+  .urg .ico{width:44px;height:44px;border-radius:12px;background:#fde4d6;display:flex;align-items:center;justify-content:center;flex:0 0 44px}
+  .urg div{min-width:0;flex:1 1 260px}
+  .urg h3{margin:0 0 6px;font-size:18px}
+  .urg p{margin:0;font-size:14.6px;color:#6a4433}
+
+  /* pasos */
+  .pasos-sec{background:var(--arena);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+  .grid-pasos{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+  .paso{background:var(--blanco);border:1px solid var(--linea);border-radius:var(--radio);padding:26px 24px;position:relative;min-width:0}
+  .paso .num{
+    width:38px;height:38px;border-radius:11px;background:var(--verde);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;margin-bottom:16px;
+  }
+  .paso h3{font-size:18px;margin:0 0 8px}
+  .paso p{margin:0;font-size:14.6px;color:var(--tinta-2)}
+
+  /* contacto */
+  .grid-cont{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:30px;align-items:start}
+  .bloque{background:var(--blanco);border:1px solid var(--linea);border-radius:var(--radio);padding:28px 26px}
+  .dato{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--linea);align-items:flex-start}
+  .dato:last-child{border-bottom:0;padding-bottom:0}
+  .dato:first-of-type{padding-top:0}
+  .dato .ico{width:38px;height:38px;border-radius:11px;background:var(--verde-cl);display:flex;align-items:center;justify-content:center;flex:0 0 38px}
+  .dato .txt{min-width:0}
+  .dato .et{font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--tinta-2);margin:0 0 4px}
+  .dato .vl{font-size:16.5px;margin:0;font-weight:600;letter-spacing:-.01em;word-break:break-word}
+  .dato .vl a{text-decoration:none}
+  .dato .vl a:hover{color:var(--verde)}
+  .dato .sub{font-size:13.5px;color:var(--tinta-2);margin:4px 0 0;font-weight:400}
+  .mapa-box{background:var(--blanco);border:1px solid var(--linea);border-radius:var(--radio);padding:20px;overflow:hidden}
+  .mapa-box .pie{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:14px;font-size:12.5px;color:var(--tinta-2)}
+  .mapa-box svg{width:100%;height:auto;border-radius:12px}
+
+  /* footer */
+  footer{background:var(--barra);color:#cfe0da;padding:54px 0 36px;margin-top:0}
+  .f-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:start}
+  footer b{color:#fff}
+  footer .f-tit{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#7fa89c;margin:0 0 12px}
+  footer p{margin:0 0 8px;font-size:14.5px;word-break:break-word}
+  footer a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.3)}
+  footer a:hover{border-color:#fff}
+  .f-marca{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+  .f-marca .logo{width:40px;height:40px;flex:0 0 40px}
+  .f-bar{
+    margin-top:34px;padding-top:22px;border-top:1px solid rgba(255,255,255,.14);
+    display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+    font-size:13px;color:#9dbcb1;
+  }
+  .f-bar strong{color:#fff;font-weight:600}
+
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;gap:34px;padding:34px 0 52px}
+    .grid-cont{grid-template-columns:1fr}
+    .f-grid{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:640px){
+    :root{--barra-h:60px}
+    .aviso{font-size:11px;line-height:1.4;padding:10px 14px}
+    .wrap{padding:0 18px}
+    section{padding:54px 0}
+    .nav{padding:18px 0 4px}
+    .nav-links{display:none}
+    .hero{padding-top:calc(var(--barra-h) + 18px)}
+    .btn{width:100%;justify-content:center}
+    .ctas{gap:10px}
+    .f-grid{grid-template-columns:1fr;gap:26px}
+    .mini-datos{grid-template-columns:1fr}
+    .card-ilu{padding:18px;border-radius:20px}
+  }
+</style>
+</head>
+<body>
+
+<div class="aviso"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="wrap">
+    <div class="nav">
+      <div class="marca">
+        <svg class="logo" viewBox="0 0 48 48" aria-hidden="true">
+          <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#2a9b74"/><stop offset="1" stop-color="#14563f"/>
+          </linearGradient></defs>
+          <rect width="48" height="48" rx="13" fill="url(#g1)"/>
+          <circle cx="18.5" cy="18" r="3.5" fill="#fff" opacity=".95"/>
+          <circle cx="29.5" cy="18" r="3.5" fill="#fff" opacity=".95"/>
+          <circle cx="13.5" cy="26.5" r="3" fill="#fff" opacity=".8"/>
+          <circle cx="34.5" cy="26.5" r="3" fill="#fff" opacity=".8"/>
+          <path d="M24 24c4.6 0 8.2 3.4 8.2 7.4 0 3.2-2.6 5.2-8.2 5.2s-8.2-2-8.2-5.2c0-4 3.6-7.4 8.2-7.4z" fill="#fff"/>
+        </svg>
+        <div>
+          <b>Clínica Veterinaria Jayda</b>
+          <small>Tomelloso · Ciudad Real</small>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="#servicios">Servicios</a>
+        <a href="#primera-visita">Tu primera visita</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+
+    <div class="hero-grid">
+      <div>
+        <span class="pill"><i></i> Atención veterinaria en Tomelloso</span>
+        <h1>El cuidado de tu animal, <em>cerca de casa</em></h1>
+        <p class="lead">Clínica Veterinaria Jayda atiende en C/ La Sal, 15 bis, en Tomelloso. Llámanos y te indicamos cómo seguir: lo resolvemos por teléfono, sin formularios ni esperas.</p>
+        <div class="ctas">
+          <a class="btn btn-pri" href="tel:+34926512907">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+            <span><small>Llamar</small><span class="tel">926 512 907</span></span>
+          </a>
+          <a class="btn btn-sec" href="tel:+34669886201">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18.5h2"/></svg>
+            <span><small>Móvil</small><span class="tel">669 886 201</span></span>
+          </a>
+        </div>
+        <p class="hero-nota">Dirección: C/ La Sal, 15 bis · 13700 Tomelloso (Ciudad Real) · Horario: consultar por teléfono.</p>
+      </div>
+
+      <div class="card-ilu">
+        <div class="cab">
+          <span>Clínica Jayda</span>
+          <span class="dots"><i></i><i></i><i></i></span>
+        </div>
+        <svg viewBox="0 0 420 260" role="img" aria-label="Ilustración de un perro y un gato dentro de la clínica">
+          <defs>
+            <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#e9f4ef"/><stop offset="1" stop-color="#d6e9e0"/>
+            </linearGradient>
+            <linearGradient id="d1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#b98a5e"/><stop offset="1" stop-color="#8e6238"/>
+            </linearGradient>
+            <linearGradient id="c1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#5a6b72"/><stop offset="1" stop-color="#394a52"/>
+            </linearGradient>
+          </defs>
+          <rect width="420" height="260" rx="14" fill="url(#bg)"/>
+          <circle cx="340" cy="56" r="34" fill="#fff" opacity=".55"/>
+          <rect x="34" y="188" width="352" height="10" rx="5" fill="#fff" opacity=".7"/>
+
+          <!-- perro -->
+          <g>
+            <ellipse cx="152" cy="190" rx="62" ry="9" fill="#0f2b22" opacity=".09"/>
+            <path d="M118 188c-4-26 2-52 10-66 8-14 36-16 48-4 12 12 16 44 12 70z" fill="url(#d1)"/>
+            <circle cx="152" cy="98" r="40" fill="url(#d1)"/>
+            <path d="M116 74c-12-6-22 4-20 18 2 14 12 22 20 20z" fill="#7c5430"/>
+            <path d="M188 74c12-6 22 4 20 18-2 14-12 22-20 20z" fill="#7c5430"/>
+            <ellipse cx="152" cy="118" rx="22" ry="17" fill="#f3e7d8"/>
+            <ellipse cx="152" cy="112" rx="8" ry="6" fill="#2b1d14"/>
+            <circle cx="138" cy="92" r="5.4" fill="#2b1d14"/>
+            <circle cx="166" cy="92" r="5.4" fill="#2b1d14"/>
+            <circle cx="136.4" cy="90.2" r="1.8" fill="#fff"/>
+            <circle cx="164.4" cy="90.2" r="1.8" fill="#fff"/>
+            <path d="M144 126q8 7 16 0" stroke="#2b1d14" stroke-width="3" fill="none" stroke-linecap="round"/>
+          </g>
+
+          <!-- gato -->
+          <g>
+            <ellipse cx="276" cy="190" rx="50" ry="8" fill="#0f2b22" opacity=".09"/>
+            <path d="M250 188c-5-20 0-40 8-50 7-9 29-10 37 0 8 10 12 30 7 50z" fill="url(#c1)"/>
+            <circle cx="276" cy="124" r="31" fill="url(#c1)"/>
+            <path d="M252 104l-5-22 21 11z" fill="#43555d"/>
+            <path d="M300 104l5-22-21 11z" fill="#43555d"/>
+            <ellipse cx="276" cy="138" rx="15" ry="11" fill="#e8eef0"/>
+            <path d="M276 132l-4 5h8z" fill="#2b3a40"/>
+            <ellipse cx="264" cy="120" rx="4.4" ry="5.6" fill="#f2c14e"/>
+            <ellipse cx="288" cy="120" rx="4.4" ry="5.6" fill="#f2c14e"/>
+            <ellipse cx="264" cy="120" rx="1.6" ry="4.6" fill="#22313a"/>
+            <ellipse cx="288" cy="120" rx="1.6" ry="4.6" fill="#22313a"/>
+            <path d="M258 142h-18M258 147h-16M294 142h18M294 147h16" stroke="#e8eef0" stroke-width="2" stroke-linecap="round" opacity=".8"/>
+            <path d="M310 186c18-4 24-18 20-32" stroke="#43555d" stroke-width="11" fill="none" stroke-linecap="round"/>
+          </g>
+
+          <!-- cruz veterinaria -->
+          <g transform="translate(330 40)">
+            <circle cx="0" cy="0" r="22" fill="#1f7a5c"/>
+            <path d="M-9 0h18M0 -9v18" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+          </g>
+        </svg>
+        <div class="mini-datos">
+          <div class="mini"><b>C/ La Sal, 15 bis</b><small>13700 Tomelloso</small></div>
+          <div class="mini"><b>926 512 907</b><small>Consultar horario</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ SERVICIOS ============ -->
+<section id="servicios">
+  <div class="wrap">
+    <div class="sec-cab">
+      <p class="kicker">Servicios</p>
+      <h2>Lo que puedes consultarnos</h2>
+      <p>Áreas habituales de una clínica veterinaria. Para saber si atendemos un caso concreto, lo más rápido es llamar y preguntar.</p>
+    </div>
+
+    <div class="grid-serv">
+      <article class="serv">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#14563f" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4.8 13.5a8 8 0 0 0 14.4 0"/><circle cx="12" cy="7" r="3.4"/><path d="M12 13.5v7"/></svg></div>
+        <h3>Consulta veterinaria</h3>
+        <p>Valoración del animal, exploración y orientación sobre los pasos a seguir en cada caso.</p>
+      </article>
+
+      <article class="serv">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#14563f" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3l5 5"/><path d="M13.5 5.5l5 5"/><path d="M10 9l5 5-6.5 6.5a2.5 2.5 0 0 1-3.5 0l-1.5-1.5a2.5 2.5 0 0 1 0-3.5z"/><path d="M8 11l5 5"/></svg></div>
+        <h3>Vacunación y desparasitación</h3>
+        <p>Pautas preventivas periódicas para perros y gatos, con seguimiento de las fechas.</p>
+      </article>
+
+      <article class="serv">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#14563f" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l9 9"/><path d="M13 13l6 6"/><circle cx="5.5" cy="18.5" r="2.2"/><path d="M7 17L17 7"/><path d="M15 3h6v6"/></svg></div>
+        <h3>Cirugía</h3>
+        <p>Intervenciones quirúrgicas con preparación previa e indicaciones de cuidados posteriores.</p>
+      </article>
+
+      <article class="serv">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#14563f" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="12" rx="3"/><path d="M7 11h4M7 15h7"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></div>
+        <h3>Identificación</h3>
+        <p>Identificación del animal y registro de sus datos, imprescindible para su documentación.</p>
+      </article>
+
+      <article class="serv">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#14563f" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-5 3 10 2-5h7"/></svg></div>
+        <h3>Revisiones</h3>
+        <p>Controles de seguimiento para vigilar la evolución y detectar cambios a tiempo.</p>
+      </article>
+
+      <article class="serv">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#14563f" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg></div>
+        <h3>Dudas y orientación</h3>
+        <p>Si no sabes si tu animal necesita cita, llámanos y te orientamos sin compromiso.</p>
+      </article>
+    </div>
+
+    <div class="urg">
+      <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#b95b2c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 16H3z"/><path d="M12 9v4M12 16h.01"/></svg></div>
+      <div>
+        <h3>Urgencias: consultar por teléfono</h3>
+        <p>Ante una situación urgente, llama a <a href="tel:+34926512907" style="color:#b95b2c;font-weight:600">926 512 907</a> o a <a href="tel:+34669886201" style="color:#b95b2c;font-weight:600">669 886 201</a> y te indicarán cómo proceder. La disponibilidad se confirma siempre por teléfono.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRIMERA VISITA ============ -->
+<section id="primera-visita" class="pasos-sec">
+  <div class="wrap">
+    <div class="sec-cab">
+      <p class="kicker">Tu primera visita</p>
+      <h2>Tres pasos y ya está</h2>
+      <p>Sin registros ni formularios: una llamada basta para dejarlo todo organizado antes de venir.</p>
+    </div>
+    <div class="grid-pasos">
+      <article class="paso">
+        <div class="num">1</div>
+        <h3>Llama a la clínica</h3>
+        <p>Marca el 926 512 907 o el 669 886 201, cuéntanos qué le pasa a tu animal y acordamos el momento de la visita. El horario se confirma en esa misma llamada.</p>
+      </article>
+      <article class="paso">
+        <div class="num">2</div>
+        <h3>Prepara lo que tengas</h3>
+        <p>Trae la documentación del animal si la tienes a mano, su cartilla y cualquier informe o tratamiento anterior. Si no lo tienes, no pasa nada: se puede empezar de cero.</p>
+      </article>
+      <article class="paso">
+        <div class="num">3</div>
+        <h3>Ven a C/ La Sal, 15 bis</h3>
+        <p>Te atendemos en la clínica, valoramos al animal y te explicamos las opciones y los cuidados en lenguaje claro, sin tecnicismos.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section id="contacto">
+  <div class="wrap">
+    <div class="sec-cab">
+      <p class="kicker">Contacto</p>
+      <h2>Dónde estamos y cómo llamarnos</h2>
+      <p>Estamos en el casco urbano de Tomelloso. El croquis de abajo es un esquema orientativo de la calle, no un mapa a escala.</p>
+    </div>
+
+    <div class="grid-cont">
+      <div class="bloque">
+        <div class="dato">
+          <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#14563f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></div>
+          <div class="txt">
+            <p class="et">Teléfono</p>
+            <p class="vl"><a href="tel:+34926512907">926 512 907</a></p>
+            <p class="sub">Línea de la clínica</p>
+          </div>
+        </div>
+        <div class="dato">
+          <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#14563f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18.5h2"/></svg></div>
+          <div class="txt">
+            <p class="et">Móvil</p>
+            <p class="vl"><a href="tel:+34669886201">669 886 201</a></p>
+            <p class="sub">Segunda línea de contacto</p>
+          </div>
+        </div>
+        <div class="dato">
+          <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#14563f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.6-7-11a7 7 0 0 1 14 0c0 5.4-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg></div>
+          <div class="txt">
+            <p class="et">Dirección</p>
+            <p class="vl">C/ La Sal, 15 bis</p>
+            <p class="sub">13700 Tomelloso (Ciudad Real)</p>
+          </div>
+        </div>
+        <div class="dato">
+          <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#14563f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3.2 2"/></svg></div>
+          <div class="txt">
+            <p class="et">Horario</p>
+            <p class="vl">Consultar horario</p>
+            <p class="sub">Te lo confirmamos en la llamada.</p>
+          </div>
+        </div>
+        <div class="dato">
+          <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#14563f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.6 6.5 12 13l8.4-6.5"/></svg></div>
+          <div class="txt">
+            <p class="et">Email</p>
+            <p class="vl"><a href="mailto:vetjayda@yahoo.es">vetjayda@yahoo.es</a></p>
+            <p class="sub">Para consultas que no sean urgentes.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mapa-box">
+        <svg viewBox="0 0 520 380" role="img" aria-label="Croquis esquemático de la ubicación de la clínica en C/ La Sal, 15 bis">
+          <defs>
+            <linearGradient id="mb" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#f3f7f4"/><stop offset="1" stop-color="#e7eee9"/>
+            </linearGradient>
+          </defs>
+          <rect width="520" height="380" rx="12" fill="url(#mb)"/>
+
+          <!-- manzanas -->
+          <g fill="#dbe7e0" stroke="#cbdbd3" stroke-width="1.5">
+            <rect x="30" y="34" width="156" height="98" rx="8"/>
+            <rect x="214" y="34" width="92" height="98" rx="8"/>
+            <rect x="334" y="34" width="156" height="98" rx="8"/>
+            <rect x="30" y="246" width="156" height="100" rx="8"/>
+            <rect x="214" y="246" width="92" height="100" rx="8"/>
+            <rect x="334" y="246" width="156" height="100" rx="8"/>
+          </g>
+
+          <!-- calles -->
+          <rect x="0" y="148" width="520" height="82" fill="#ffffff"/>
+          <rect x="190" y="0" width="28" height="380" fill="#ffffff"/>
+          <rect x="302" y="0" width="28" height="380" fill="#ffffff"/>
+          <path d="M0 189h520" stroke="#cfdbd4" stroke-width="2.5" stroke-dasharray="16 14"/>
+
+          <text x="22" y="222" font-family="sans-serif" font-size="14" font-weight="700" letter-spacing="1" fill="#6d847c">C/ LA SAL</text>
+          
+          <!-- marcador clínica -->
+          <g transform="translate(96 189)">
+            <circle cx="0" cy="0" r="30" fill="#1f7a5c" opacity=".13"/>
+            <circle cx="0" cy="0" r="19" fill="#1f7a5c"/>
+            <path d="M-7 0h14M0 -7v14" stroke="#fff" stroke-width="4.4" stroke-linecap="round"/>
+          </g>
+          <g transform="translate(96 189)">
+            <rect x="30" y="-26" width="300" height="52" rx="11" fill="#10241f"/>
+            <text x="46" y="-5" font-family="sans-serif" font-size="15" font-weight="700" fill="#ffffff">Clínica Veterinaria Jayda</text>
+            <text x="46" y="15" font-family="sans-serif" font-size="13" fill="#a9c6bb">C/ La Sal, 15 bis · Tomelloso</text>
+          </g>
+
+          <!-- norte -->
+          <g transform="translate(466 312)">
+            <circle cx="0" cy="0" r="22" fill="#ffffff" stroke="#dde7e1"/>
+            <path d="M0 -12l6 14h-12z" fill="#1f7a5c"/>
+            <text x="0" y="16" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="700" fill="#365049">N</text>
+          </g>
+        </svg>
+        <div class="pie">
+          <span>Croquis orientativo · no es un mapa a escala</span>
+          <span>Tomelloso (Ciudad Real)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <div class="f-marca">
+          <svg class="logo" viewBox="0 0 48 48" aria-hidden="true">
+            <rect width="48" height="48" rx="13" fill="#1f7a5c"/>
+            <circle cx="18.5" cy="18" r="3.5" fill="#fff" opacity=".95"/>
+            <circle cx="29.5" cy="18" r="3.5" fill="#fff" opacity=".95"/>
+            <circle cx="13.5" cy="26.5" r="3" fill="#fff" opacity=".8"/>
+            <circle cx="34.5" cy="26.5" r="3" fill="#fff" opacity=".8"/>
+            <path d="M24 24c4.6 0 8.2 3.4 8.2 7.4 0 3.2-2.6 5.2-8.2 5.2s-8.2-2-8.2-5.2c0-4 3.6-7.4 8.2-7.4z" fill="#fff"/>
+          </svg>
+          <b>Clínica Veterinaria Jayda</b>
+        </div>
+        <p>C/ La Sal, 15 bis<br>13700 Tomelloso (Ciudad Real)</p>
+        <p>Horario: consultar horario.</p>
+      </div>
+      <div>
+        <p class="f-tit">Contacto</p>
+        <p><a href="tel:+34926512907">926 512 907</a></p>
+        <p><a href="tel:+34669886201">669 886 201</a></p>
+        <p><a href="mailto:vetjayda@yahoo.es">vetjayda@yahoo.es</a></p>
+      </div>
+      <div>
+        <p class="f-tit">Secciones</p>
+        <p><a href="#servicios">Servicios</a></p>
+        <p><a href="#primera-visita">Tu primera visita</a></p>
+        <p><a href="#contacto">Contacto</a></p>
+      </div>
+    </div>
+    <div class="f-bar">
+      <strong>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</strong>
+      <span>Maqueta de demostración · contenido pendiente de validar con la clínica</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

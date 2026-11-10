@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Casa Rural Atalanta de la Vera — Jaraíz de la Vera (Cáceres)</title>
+<meta name="description" content="Propuesta de diseño web para Casa Rural Atalanta de la Vera, Jaraíz de la Vera, comarca de La Vera (Cáceres). Maqueta no oficial de FFFFFFstudio.">
+<style>
+  :root{
+    --verde-900:#13251c;
+    --verde-800:#1b3326;
+    --verde-700:#26472f;
+    --verde-500:#3f6b43;
+    --verde-300:#7fa364;
+    --oliva:#a8bb7a;
+    --crema:#f6f1e4;
+    --crema-2:#efe7d4;
+    --arcilla:#b4653a;
+    --arcilla-claro:#d08a57;
+    --piedra:#6f6a5c;
+    --tinta:#1c201a;
+    --borde:rgba(28,32,26,.12);
+    --barra-h:44px;
+    --ff:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,"Times New Roman",serif;
+    --ff-s:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    --radio:18px;
+    --sombra:0 18px 44px -24px rgba(19,37,28,.45);
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--crema);
+    color:var(--tinta);
+    font-family:var(--ff-s);
+    font-size:17px;
+    line-height:1.65;
+    overflow-x:hidden;
+  }
+  img,svg{max-width:100%;display:block}
+  h1,h2,h3,h4{font-family:var(--ff);font-weight:600;line-height:1.14;margin:0;letter-spacing:-.01em}
+  p{margin:0}
+  a{color:inherit}
+
+  /* ---------- barra fija de aviso ---------- */
+  .aviso{
+    position:fixed;inset:0 0 auto 0;z-index:100;
+    min-height:var(--barra-h);
+    display:flex;align-items:center;justify-content:center;
+    background:var(--verde-900);
+    color:#e7e2d2;
+    font-family:var(--ff-s);
+    font-size:12.5px;
+    letter-spacing:.03em;
+    text-align:center;
+    padding:9px 14px;
+    border-bottom:1px solid rgba(255,255,255,.1);
+  }
+  .aviso span{display:inline-block;max-width:100%}
+
+  .wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 28px}
+
+  /* ---------- nav ---------- */
+  .nav{
+    position:relative;z-index:5;
+    display:flex;align-items:center;justify-content:space-between;
+    gap:18px;flex-wrap:wrap;
+    padding:22px 0 10px;
+  }
+  .marca{display:flex;align-items:center;gap:12px;min-width:0}
+  .marca .sello{flex:0 0 auto}
+  .marca b{display:block;font-family:var(--ff);font-size:19px;line-height:1.1;color:#f3eede}
+  .marca small{display:block;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(243,238,222,.66);margin-top:3px}
+  .menu{display:flex;gap:26px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+  .menu a{
+    text-decoration:none;font-size:14px;letter-spacing:.02em;
+    color:rgba(243,238,222,.8);padding:4px 0;border-bottom:1px solid transparent;
+  }
+  .menu a:hover{color:#fff;border-bottom-color:var(--oliva)}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    background:
+      radial-gradient(1100px 520px at 12% -5%, rgba(168,187,122,.30), transparent 62%),
+      radial-gradient(900px 600px at 95% 10%, rgba(180,101,58,.26), transparent 60%),
+      linear-gradient(170deg,var(--verde-900) 0%,var(--verde-800) 48%,var(--verde-700) 100%);
+    color:#f3eede;
+    padding-top:var(--barra-h);
+    overflow:hidden;
+    isolation:isolate;
+  }
+  .hero .sierra{position:absolute;left:0;right:0;bottom:-2px;width:100%;height:170px;z-index:0;pointer-events:none}
+  .hero-grid{
+    position:relative;z-index:2;
+    display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);
+    gap:52px;align-items:center;
+    padding:62px 0 128px;
+  }
+  .kicker{
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--oliva);
+    border:1px solid rgba(168,187,122,.4);
+    border-radius:999px;padding:7px 15px;
+    background:rgba(168,187,122,.08);
+  }
+  .kicker i{width:6px;height:6px;border-radius:50%;background:var(--oliva);flex:0 0 auto}
+  h1{font-size:clamp(2.1rem,5.1vw,3.9rem);margin:22px 0 0;color:#fbf7ec}
+  h1 em{font-style:italic;color:var(--oliva)}
+  .lead{margin-top:20px;font-size:clamp(1rem,1.25vw,1.12rem);color:rgba(243,238,222,.82);max-width:46ch}
+  .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    text-decoration:none;font-family:var(--ff-s);font-size:15.5px;font-weight:600;
+    padding:15px 26px;border-radius:999px;border:1px solid transparent;
+    transition:transform .18s ease, background .18s ease, border-color .18s ease;
+    max-width:100%;
+  }
+  .btn-1{background:var(--arcilla);color:#fff;box-shadow:0 14px 30px -16px rgba(180,101,58,.85)}
+  .btn-1:hover{background:var(--arcilla-claro);transform:translateY(-2px)}
+  .btn-2{background:transparent;color:#f3eede;border-color:rgba(243,238,222,.34)}
+  .btn-2:hover{border-color:var(--oliva);color:#fff;transform:translateY(-2px)}
+  .hero-meta{
+    display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:34px;
+    font-size:13.5px;color:rgba(243,238,222,.66);
+  }
+  .hero-meta span{display:inline-flex;align-items:center;gap:8px}
+  .dot{width:5px;height:5px;border-radius:50%;background:var(--arcilla-claro);flex:0 0 auto}
+
+  /* tarjeta ilustrada del hero */
+  .postal{
+    position:relative;border-radius:26px;overflow:hidden;
+    border:1px solid rgba(243,238,222,.18);
+    background:linear-gradient(165deg,rgba(246,241,228,.1),rgba(246,241,228,.03));
+    box-shadow:0 34px 70px -34px rgba(0,0,0,.6);
+    backdrop-filter:blur(2px);
+  }
+  .postal svg{width:100%;height:auto}
+  .postal-pie{
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+    padding:14px 18px;font-size:12px;letter-spacing:.09em;text-transform:uppercase;
+    color:rgba(243,238,222,.72);border-top:1px solid rgba(243,238,222,.14);
+    background:rgba(19,37,28,.35);flex-wrap:wrap;
+  }
+
+  /* ---------- secciones ---------- */
+  section{position:relative}
+  .sec{padding:92px 0}
+  .sec-cab{max-width:62ch}
+  .ojo{
+    font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--arcilla);font-weight:700;
+  }
+  .sec h2{font-size:clamp(1.65rem,3.2vw,2.5rem);margin-top:14px;color:var(--verde-900)}
+  .sec h2 + p{margin-top:18px;color:#4a4f45;font-size:1.03rem}
+
+  .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:48px}
+  .card{
+    background:#fffdf7;border:1px solid var(--borde);border-radius:var(--radio);
+    padding:30px 26px 32px;box-shadow:var(--sombra);
+    display:flex;flex-direction:column;gap:14px;
+  }
+  .card .ico{
+    width:46px;height:46px;border-radius:13px;flex:0 0 auto;
+    display:grid;place-items:center;
+    background:linear-gradient(150deg,var(--verde-700),var(--verde-500));
+  }
+  .card h3{font-size:1.22rem;color:var(--verde-900)}
+  .card p{color:#53584d;font-size:.97rem}
+  .card ul{margin:4px 0 0;padding-left:18px;color:#53584d;font-size:.93rem}
+  .card li{margin-bottom:5px}
+
+  /* franja entorno */
+  .entorno{background:var(--crema-2);border-top:1px solid var(--borde);border-bottom:1px solid var(--borde)}
+  .entorno-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:52px;align-items:center}
+  .marco{
+    border-radius:22px;overflow:hidden;border:1px solid var(--borde);
+    background:linear-gradient(170deg,#dfe7cf,#c9d6b2);box-shadow:var(--sombra);
+  }
+  .marco svg{width:100%;height:auto}
+  .lista-plana{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:14px}
+  .lista-plana li{display:flex;gap:13px;align-items:flex-start;color:#4a4f45;font-size:1rem}
+  .tick{flex:0 0 auto;margin-top:3px}
+
+  /* pasos */
+  .pasos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:50px;counter-reset:p}
+  .paso{
+    position:relative;background:#fffdf7;border:1px solid var(--borde);
+    border-radius:var(--radio);padding:34px 26px 30px;box-shadow:var(--sombra);
+  }
+  .paso .num{
+    font-family:var(--ff);font-size:2.4rem;line-height:1;color:var(--oliva);
+    display:block;margin-bottom:12px;
+  }
+  .paso h3{font-size:1.16rem;color:var(--verde-900);margin-bottom:10px}
+  .paso p{color:#53584d;font-size:.97rem}
+  .paso-nota{margin-top:34px;font-size:.93rem;color:var(--piedra);max-width:70ch}
+
+  /* contacto */
+  .contacto{background:var(--verde-900);color:#f3eede}
+  .contacto h2{color:#fbf7ec}
+  .contacto .ojo{color:var(--oliva)}
+  .contacto h2 + p{color:rgba(243,238,222,.78)}
+  .cont-grid{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:48px;margin-top:48px;align-items:start}
+  .datos{display:grid;gap:12px}
+  .dato{
+    display:flex;gap:16px;align-items:flex-start;
+    background:rgba(246,241,228,.06);border:1px solid rgba(243,238,222,.14);
+    border-radius:15px;padding:20px 22px;
+  }
+  .dato .ico-s{
+    width:38px;height:38px;border-radius:11px;flex:0 0 auto;display:grid;place-items:center;
+    background:rgba(168,187,122,.16);border:1px solid rgba(168,187,122,.32);
+  }
+  .dato .tx{min-width:0}
+  .dato h4{font-family:var(--ff-s);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--oliva);font-weight:700;margin-bottom:6px}
+  .dato p,.dato a{font-size:1rem;color:#f3eede;text-decoration:none;overflow-wrap:anywhere;word-break:break-word}
+  .dato a:hover{color:var(--oliva)}
+  .croquis{
+    border-radius:20px;overflow:hidden;border:1px solid rgba(243,238,222,.16);
+    background:rgba(246,241,228,.05);
+  }
+  .croquis svg{width:100%;height:auto}
+  .croquis-pie{
+    padding:13px 18px;font-size:12px;color:rgba(243,238,222,.6);
+    border-top:1px solid rgba(243,238,222,.14);letter-spacing:.04em;
+  }
+  .contacto .btn-1{margin-top:8px}
+
+  /* pie */
+  footer{background:#0f1d16;color:rgba(243,238,222,.72);padding:58px 0 40px}
+  .pie-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr);gap:38px}
+  .pie-grid h4{font-family:var(--ff-s);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--oliva);font-weight:700;margin-bottom:14px}
+  .pie-grid p,.pie-grid a{font-size:.95rem;overflow-wrap:anywhere}
+  .pie-grid a{text-decoration:none;color:rgba(243,238,222,.82)}
+  .pie-grid a:hover{color:var(--oliva)}
+  .pie-grid ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+  .pie-marca b{display:block;font-family:var(--ff);font-size:1.22rem;color:#f3eede;margin-bottom:8px}
+  .firma{
+    margin-top:44px;padding-top:24px;border-top:1px solid rgba(243,238,222,.14);
+    display:flex;flex-wrap:wrap;gap:12px 26px;justify-content:space-between;
+    font-size:13px;color:rgba(243,238,222,.6);
+  }
+  .firma strong{color:rgba(243,238,222,.86);font-weight:600}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:980px){
+    .hero-grid{grid-template-columns:1fr;gap:42px;padding:48px 0 110px}
+    .entorno-grid{grid-template-columns:1fr;gap:38px}
+    .cont-grid{grid-template-columns:1fr;gap:36px}
+    .cards,.pasos{grid-template-columns:1fr 1fr}
+    .pie-grid{grid-template-columns:1fr 1fr}
+    .pie-marca{grid-column:1 / -1}
+  }
+  @media (max-width:700px){
+    :root{--barra-h:58px}
+    body{font-size:16px}
+    .wrap{padding:0 18px}
+    .nav{padding:18px 0 6px}
+    .menu{gap:16px 18px}
+    .menu a{font-size:13px}
+    .hero .sierra{height:110px}
+    .hero-grid{padding:36px 0 84px}
+    .sec{padding:64px 0}
+    .cards,.pasos{grid-template-columns:1fr;gap:18px}
+    .pie-grid{grid-template-columns:1fr;gap:30px}
+    .cta-row{gap:11px}
+    .btn{width:100%;justify-content:center;padding:15px 20px;font-size:15px}
+    .hero-meta{gap:8px 18px;font-size:12.5px}
+    .firma{flex-direction:column;gap:10px}
+    .aviso{font-size:11.5px;line-height:1.35;letter-spacing:.015em}
+  }
+  @media (max-width:430px){
+    .menu{display:none}
+    .marca b{font-size:17px}
+  }
+</style>
+</head>
+<body>
+
+<div class="aviso"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <svg class="sierra" viewBox="0 0 1440 170" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <path d="M0 118 L120 92 L250 110 L380 70 L520 100 L660 58 L800 96 L950 66 L1100 104 L1250 80 L1440 112 L1440 170 L0 170 Z" fill="rgba(246,241,228,.07)"/>
+    <path d="M0 140 L160 120 L310 136 L470 108 L640 132 L820 106 L1000 134 L1180 114 L1440 140 L1440 170 L0 170 Z" fill="#f6f1e4"/>
+  </svg>
+
+  <div class="wrap">
+    <nav class="nav">
+      <div class="marca">
+        <svg class="sello" width="44" height="44" viewBox="0 0 44 44" aria-hidden="true" focusable="false">
+          <circle cx="22" cy="22" r="21" fill="none" stroke="rgba(168,187,122,.55)" stroke-width="1.2"/>
+          <path d="M11 26 L22 15 L33 26" fill="none" stroke="#a8bb7a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M14.5 26 V33 H29.5 V26" fill="none" stroke="#a8bb7a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M20 33 V28.5 H24 V33" fill="none" stroke="rgba(208,138,87,.95)" stroke-width="1.6" stroke-linejoin="round"/>
+        </svg>
+        <div>
+          <b>Atalanta de la Vera</b>
+          <small>Casa rural · Jaraíz de la Vera</small>
+        </div>
+      </div>
+      <ul class="menu">
+        <li><a href="#la-casa">La casa</a></li>
+        <li><a href="#el-entorno">El entorno</a></li>
+        <li><a href="#reservar">Cómo reservar</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <div class="hero-grid">
+      <div>
+        <span class="kicker"><i></i>Comarca de La Vera · Cáceres</span>
+        <h1>Una casa rural en <em>Jaraíz de la Vera</em>, para desconectar sin complicaciones.</h1>
+        <p class="lead">Alojamiento rural en el corazón de La Vera. Escríbenos y te contamos la disponibilidad, cómo llegar y todo lo que necesites saber antes de reservar.</p>
+        <div class="cta-row">
+          <a class="btn btn-1" href="mailto:atalantadelavera@gmail.com">
+            <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><rect x="1.4" y="3.6" width="17.2" height="12.8" rx="2.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M2 5.2 L10 11 L18 5.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Escríbenos
+          </a>
+          <a class="btn btn-2" href="#reservar">Cómo reservar</a>
+        </div>
+        <div class="hero-meta">
+          <span><i class="dot"></i>Registro turístico TR-CC-00561</span>
+          <span><i class="dot"></i>Reserva directa con los propietarios</span>
+        </div>
+      </div>
+
+      <div class="postal">
+        <svg viewBox="0 0 520 390" role="img" aria-label="Ilustración de una casa rural entre huertos y sierra">
+          <defs>
+            <linearGradient id="cielo" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#2b4a33"/><stop offset="55%" stop-color="#3f6b43"/><stop offset="100%" stop-color="#6c8f55"/>
+            </linearGradient>
+            <linearGradient id="monte1" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#1b3326"/><stop offset="100%" stop-color="#27442e"/>
+            </linearGradient>
+            <linearGradient id="monte2" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#2f5435"/><stop offset="100%" stop-color="#436b42"/>
+            </linearGradient>
+            <linearGradient id="prado" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#6f9154"/><stop offset="100%" stop-color="#4e6f3d"/>
+            </linearGradient>
+            <linearGradient id="tejado" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#c8743f"/><stop offset="100%" stop-color="#9d5530"/>
+            </linearGradient>
+          </defs>
+
+          <rect width="520" height="390" fill="url(#cielo)"/>
+          <circle cx="408" cy="74" r="30" fill="rgba(246,241,228,.22)"/>
+          <circle cx="408" cy="74" r="18" fill="rgba(246,241,228,.4)"/>
+
+          <path d="M0 196 L92 128 L168 180 L248 118 L330 184 L404 140 L520 192 L520 390 L0 390 Z" fill="url(#monte1)"/>
+          <path d="M0 232 L86 186 L180 224 L282 176 L392 220 L520 184 L520 390 L0 390 Z" fill="url(#monte2)"/>
+          <path d="M0 268 C110 246 180 282 268 266 C360 250 440 284 520 262 L520 390 L0 390 Z" fill="url(#prado)"/>
+
+          <!-- bancales / huertos -->
+          <g stroke="rgba(19,37,28,.18)" stroke-width="1.4" fill="none">
+            <path d="M0 300 C120 284 220 312 340 298 C420 288 470 304 520 296"/>
+            <path d="M0 330 C130 314 230 342 350 328 C430 318 480 332 520 326"/>
+            <path d="M0 360 C140 346 240 372 360 358 C440 348 486 362 520 356"/>
+          </g>
+
+          <!-- casa -->
+          <g>
+            <path d="M176 254 L260 206 L344 254 Z" fill="url(#tejado)"/>
+            <rect x="192" y="252" width="136" height="80" rx="4" fill="#f1ead8"/>
+            <rect x="192" y="252" width="136" height="80" rx="4" fill="none" stroke="rgba(19,37,28,.2)" stroke-width="1.4"/>
+            <rect x="208" y="268" width="26" height="26" rx="3" fill="#2f5435"/>
+            <rect x="248" y="268" width="26" height="26" rx="3" fill="#2f5435"/>
+            <rect x="288" y="268" width="26" height="26" rx="3" fill="#2f5435"/>
+            <rect x="246" y="302" width="30" height="30" rx="2.5" fill="#b4653a"/>
+            <rect x="296" y="212" width="16" height="30" rx="2" fill="#9d5530"/>
+            <path d="M176 254 L344 254" stroke="rgba(19,37,28,.25)" stroke-width="1.6"/>
+          </g>
+
+          <!-- árboles -->
+          <g>
+            <rect x="106" y="296" width="6" height="30" fill="#3d3327"/>
+            <circle cx="109" cy="286" r="24" fill="#355a36"/>
+            <circle cx="96" cy="294" r="15" fill="#3f6b43"/>
+            <rect x="412" y="302" width="6" height="28" fill="#3d3327"/>
+            <circle cx="415" cy="292" r="20" fill="#2f5435"/>
+            <rect x="452" y="312" width="5" height="22" fill="#3d3327"/>
+            <circle cx="454" cy="304" r="15" fill="#3a6239"/>
+          </g>
+
+          <!-- camino -->
+          <path d="M260 332 C252 350 236 364 206 390 L306 390 C286 364 270 350 262 332 Z" fill="rgba(246,241,228,.5)"/>
+        </svg>
+        <div class="postal-pie">
+          <span>La Vera · Cáceres</span>
+          <span>Camino Juego de Bolos</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ LA CASA / PROPUESTA ============ -->
+<section class="sec" id="la-casa">
+  <div class="wrap">
+    <div class="sec-cab">
+      <span class="ojo">La propuesta</span>
+      <h2>Una web que responde a lo que la gente pregunta antes de reservar</h2>
+      <p>Quien busca una casa rural quiere resolver tres dudas: cómo es la casa, qué se puede hacer alrededor y cómo se reserva. Esta maqueta ordena la web en torno a esas tres preguntas, con el contacto siempre a un clic.</p>
+    </div>
+
+    <div class="cards">
+      <article class="card">
+        <span class="ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 11 L12 4 L21 11" fill="none" stroke="#f3eede" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.5 11 V20 H18.5 V11" fill="none" stroke="#f3eede" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 20 V15 H14 V20" fill="none" stroke="#a8bb7a" stroke-width="1.7" stroke-linejoin="round"/></svg>
+        </span>
+        <h3>La casa</h3>
+        <p>Un espacio para presentar el alojamiento con sus propias fotos y en sus propias palabras, con una ficha clara y actualizable:</p>
+        <ul>
+          <li>Galería de estancias y exteriores</li>
+          <li>Ficha de características y equipamiento</li>
+          <li>Normas de la casa y condiciones</li>
+          <li>Registro turístico a la vista</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <span class="ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 17 L8 9 L13 15 L16.5 10.5 L22 17" fill="none" stroke="#f3eede" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="17.5" cy="6" r="2.6" fill="none" stroke="#a8bb7a" stroke-width="1.7"/><path d="M2 20.5 H22" stroke="#f3eede" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </span>
+        <h3>El entorno</h3>
+        <p>La comarca vende sola, pero hay que contarla. Una sección para orientar al visitante sobre lo que tiene alrededor:</p>
+        <ul>
+          <li>Qué ver y hacer en La Vera</li>
+          <li>Rutas y naturaleza de la zona</li>
+          <li>Jaraíz de la Vera y pueblos vecinos</li>
+          <li>Cómo llegar y moverse</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <span class="ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="16" rx="2.4" fill="none" stroke="#f3eede" stroke-width="1.8"/><path d="M3 10 H21" stroke="#f3eede" stroke-width="1.7"/><path d="M8 3 V6.5 M16 3 V6.5" stroke="#f3eede" stroke-width="1.8" stroke-linecap="round"/><path d="M8 15 L10.6 17.6 L15.5 12.8" fill="none" stroke="#a8bb7a" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <h3>Cómo reservar</h3>
+        <p>El punto donde hoy se pierden consultas. La propuesta lo convierte en el eje de la web:</p>
+        <ul>
+          <li>Formulario de consulta que funciona</li>
+          <li>Enlace de email y mensajería comprobados</li>
+          <li>Pasos de la reserva explicados</li>
+          <li>Reserva directa, sin intermediarios</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ENTORNO + DIAGNÓSTICO ============ -->
+<section class="sec entorno" id="el-entorno">
+  <div class="wrap entorno-grid">
+    <div class="marco">
+      <svg viewBox="0 0 520 380" role="img" aria-label="Ilustración del entorno: sierra, huertos y senderos">
+        <defs>
+          <linearGradient id="g-cielo2" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#e8eedd"/><stop offset="100%" stop-color="#cfdcb9"/>
+          </linearGradient>
+        </defs>
+        <rect width="520" height="380" fill="url(#g-cielo2)"/>
+        <path d="M0 150 L110 86 L190 140 L280 72 L370 138 L450 100 L520 142 L520 380 L0 380 Z" fill="#8aa96c" opacity=".55"/>
+        <path d="M0 196 L96 152 L196 194 L300 148 L408 190 L520 158 L520 380 L0 380 Z" fill="#6f9154" opacity=".7"/>
+        <path d="M0 240 C120 222 200 254 300 240 C390 228 460 250 520 238 L520 380 L0 380 Z" fill="#577a42"/>
+        <!-- parcelas -->
+        <g opacity=".5" stroke="#3f6b43" stroke-width="1.3" fill="none">
+          <path d="M0 272 C120 256 220 284 340 270 C420 260 470 276 520 268"/>
+          <path d="M0 304 C130 288 230 316 350 302 C430 292 480 306 520 300"/>
+          <path d="M0 338 C140 324 240 350 360 336 C440 326 486 340 520 334"/>
+        </g>
+        <!-- sendero -->
+        <path d="M60 380 C140 320 160 296 250 282 C330 270 380 252 430 226" fill="none" stroke="#f1ead8" stroke-width="7" stroke-linecap="round" opacity=".85" stroke-dasharray="1 0"/>
+        <!-- hitos -->
+        <g>
+          <circle cx="250" cy="282" r="7" fill="#b4653a" stroke="#f6f1e4" stroke-width="2.4"/>
+          <circle cx="430" cy="226" r="7" fill="#26472f" stroke="#f6f1e4" stroke-width="2.4"/>
+        </g>
+        <!-- arboles -->
+        <g>
+          <rect x="128" y="286" width="5" height="26" fill="#4a3c2b"/><circle cx="130" cy="278" r="18" fill="#3f6b43"/>
+          <rect x="378" y="300" width="5" height="24" fill="#4a3c2b"/><circle cx="380" cy="292" r="16" fill="#355a36"/>
+          <rect x="468" y="286" width="5" height="26" fill="#4a3c2b"/><circle cx="470" cy="278" r="17" fill="#3a6239"/>
+        </g>
+      </svg>
+    </div>
+
+    <div>
+      <span class="ojo">Punto de partida</span>
+      <h2>Hoy, quien intenta escribir no siempre llega</h2>
+      <p>Una casa rural que vive de la reserva directa depende de que el contacto funcione. En la web actual hay varios puntos que lo rompen, y arreglarlos es lo primero que propone esta maqueta.</p>
+      <ul class="lista-plana">
+        <li>
+          <svg class="tick" width="18" height="18" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="9" fill="none" stroke="#b4653a" stroke-width="1.6"/><path d="M7 7 L13 13 M13 7 L7 13" stroke="#b4653a" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <span>El enlace de WhatsApp está mal construido —el parámetro del número va vacío—, así que no abre conversación con nadie.</span>
+        </li>
+        <li>
+          <svg class="tick" width="18" height="18" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="9" fill="none" stroke="#b4653a" stroke-width="1.6"/><path d="M7 7 L13 13 M13 7 L7 13" stroke="#b4653a" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <span>El botón «CONTACTA» devuelve a la portada en lugar de llevar a una sección de contacto.</span>
+        </li>
+        <li>
+          <svg class="tick" width="18" height="18" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="9" fill="none" stroke="#b4653a" stroke-width="1.6"/><path d="M7 7 L13 13 M13 7 L7 13" stroke="#b4653a" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <span>El menú «More» está vacío: ocupa sitio y no lleva a ninguna parte.</span>
+        </li>
+        <li>
+          <svg class="tick" width="18" height="18" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="9" fill="none" stroke="#b4653a" stroke-width="1.6"/><path d="M7 7 L13 13 M13 7 L7 13" stroke="#b4653a" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <span>El pie sigue marcando «© 2023»: el contenido lleva tiempo congelado y eso se nota al llegar.</span>
+        </li>
+        <li>
+          <svg class="tick" width="18" height="18" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="9" fill="none" stroke="#3f6b43" stroke-width="1.6"/><path d="M6.2 10.4 L8.8 13 L13.8 7.6" fill="none" stroke="#3f6b43" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>En esta propuesta: un único camino de contacto, comprobado, visible en todas las pantallas y repetido al final de cada sección.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CÓMO RESERVAR ============ -->
+<section class="sec" id="reservar">
+  <div class="wrap">
+    <div class="sec-cab">
+      <span class="ojo">Cómo reservar</span>
+      <h2>Tres pasos y hablas directamente con la casa</h2>
+      <p>Sin intermediarios y sin formularios interminables. El objetivo es que la consulta llegue siempre.</p>
+    </div>
+
+    <div class="pasos">
+      <article class="paso">
+        <span class="num">01</span>
+        <h3>Escribe tu consulta</h3>
+        <p>Cuéntanos las fechas que tienes en mente y cuántas personas sois. Un correo corto basta para empezar.</p>
+      </article>
+      <article class="paso">
+        <span class="num">02</span>
+        <h3>Te confirmamos disponibilidad</h3>
+        <p>Revisamos el calendario y te respondemos con la disponibilidad y las condiciones de la estancia.</p>
+      </article>
+      <article class="paso">
+        <span class="num">03</span>
+        <h3>Cerramos la reserva</h3>
+        <p>Acordamos los detalles de la llegada y te enviamos las indicaciones para encontrar la casa sin perderte.</p>
+      </article>
+    </div>
+
+    <p class="paso-nota">Esta maqueta es una propuesta de diseño: los textos son de ejemplo y se ajustarían con los datos y las condiciones reales de la casa antes de publicar nada.</p>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section class="sec contacto" id="contacto">
+  <div class="wrap">
+    <div class="sec-cab">
+      <span class="ojo">Contacto</span>
+      <h2>Escríbenos y te contamos</h2>
+      <p>Estamos en Jaraíz de la Vera, en la comarca de La Vera. Para disponibilidad, condiciones o cualquier duda antes de reservar, el correo es la vía directa.</p>
+    </div>
+
+    <div class="cont-grid">
+      <div>
+        <div class="datos">
+          <div class="dato">
+            <span class="ico-s">
+              <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M10 18.5 C10 18.5 16.2 12.6 16.2 8.3 C16.2 4.9 13.4 2.2 10 2.2 C6.6 2.2 3.8 4.9 3.8 8.3 C3.8 12.6 10 18.5 10 18.5 Z" fill="none" stroke="#a8bb7a" stroke-width="1.6" stroke-linejoin="round"/><circle cx="10" cy="8.3" r="2.3" fill="none" stroke="#a8bb7a" stroke-width="1.6"/></svg>
+            </span>
+            <div class="tx">
+              <h4>Dirección</h4>
+              <p>Camino Juego de Bolos s/n<br>10400 Jaraíz de la Vera (Cáceres)</p>
+            </div>
+          </div>
+
+          <div class="dato">
+            <span class="ico-s">
+              <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><rect x="1.8" y="4" width="16.4" height="12" rx="2" fill="none" stroke="#a8bb7a" stroke-width="1.6"/><path d="M2.4 5.4 L10 11 L17.6 5.4" fill="none" stroke="#a8bb7a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <div class="tx">
+              <h4>Correo electrónico</h4>
+              <a href="mailto:atalantadelavera@gmail.com">atalantadelavera@gmail.com</a>
+            </div>
+          </div>
+
+          <div class="dato">
+            <span class="ico-s">
+              <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="8" fill="none" stroke="#a8bb7a" stroke-width="1.6"/><path d="M10 5.6 V10 L13.2 12" fill="none" stroke="#a8bb7a" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <div class="tx">
+              <h4>Horario de atención</h4>
+              <p>Consultar horario</p>
+            </div>
+          </div>
+
+          <div class="dato">
+            <span class="ico-s">
+              <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><rect x="2.4" y="4.2" width="15.2" height="13.4" rx="2" fill="none" stroke="#a8bb7a" stroke-width="1.6"/><path d="M2.4 8.4 H17.6" stroke="#a8bb7a" stroke-width="1.5"/><path d="M6.4 2.4 V5.4 M13.6 2.4 V5.4" stroke="#a8bb7a" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </span>
+            <div class="tx">
+              <h4>Disponibilidad</h4>
+              <p>Consultar disponibilidad</p>
+            </div>
+          </div>
+
+          <div class="dato">
+            <span class="ico-s">
+              <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.4 2.6 H15.6 V17.4 H4.4 Z" fill="none" stroke="#a8bb7a" stroke-width="1.6" stroke-linejoin="round"/><path d="M7 7 H13 M7 10 H13 M7 13 H11" stroke="#a8bb7a" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </span>
+            <div class="tx">
+              <h4>Registro turístico</h4>
+              <p>TR-CC-00561</p>
+            </div>
+          </div>
+        </div>
+
+        <a class="btn btn-1" href="mailto:atalantadelavera@gmail.com">
+          <svg width="18" height="18" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><rect x="1.4" y="3.6" width="17.2" height="12.8" rx="2.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M2 5.2 L10 11 L18 5.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Escríbenos a atalantadelavera@gmail.com
+        </a>
+      </div>
+
+      <div class="croquis">
+        <svg viewBox="0 0 560 420" role="img" aria-label="Croquis esquemático de situación: la casa junto al Camino Juego de Bolos, en Jaraíz de la Vera">
+          <rect width="560" height="420" fill="#16271d"/>
+          <!-- retícula -->
+          <g stroke="rgba(246,241,228,.07)" stroke-width="1">
+            <path d="M0 60 H560 M0 120 H560 M0 180 H560 M0 240 H560 M0 300 H560 M0 360 H560"/>
+            <path d="M70 0 V420 M140 0 V420 M210 0 V420 M280 0 V420 M350 0 V420 M420 0 V420 M490 0 V420"/>
+          </g>
+
+          <!-- manchas: casco urbano y campo -->
+          <path d="M40 250 C70 196 150 170 214 192 C268 210 286 266 258 312 C226 364 118 372 70 336 C38 312 26 282 40 250 Z" fill="rgba(168,187,122,.10)" stroke="rgba(168,187,122,.3)" stroke-width="1.4" stroke-dasharray="6 5"/>
+          <path d="M330 92 C396 70 486 96 510 148 C532 198 496 246 436 252 C374 258 330 224 322 176 C316 140 320 110 330 92 Z" fill="rgba(63,107,67,.16)" stroke="rgba(168,187,122,.22)" stroke-width="1.3" stroke-dasharray="5 6"/>
+
+          <!-- viales -->
+          <g stroke="rgba(246,241,228,.5)" stroke-width="8" stroke-linecap="round" fill="none">
+            <path d="M0 300 C120 292 210 268 300 230 C382 196 460 178 560 176"/>
+          </g>
+          <g stroke="rgba(208,138,87,.9)" stroke-width="6" stroke-linecap="round" fill="none" stroke-dasharray="14 9">
+            <path d="M300 230 C318 274 330 302 352 338"/>
+          </g>
+          <g stroke="rgba(246,241,228,.26)" stroke-width="4" stroke-linecap="round" fill="none">
+            <path d="M150 420 C168 370 178 338 196 300"/>
+            <path d="M450 252 C456 294 462 330 470 372"/>
+          </g>
+
+          <!-- marcador casa -->
+          <g>
+            <circle cx="352" cy="338" r="24" fill="rgba(180,101,58,.22)"/>
+            <circle cx="352" cy="338" r="13" fill="#b4653a" stroke="#f6f1e4" stroke-width="3"/>
+          </g>
+          <!-- nodo pueblo -->
+          <circle cx="152" cy="282" r="8" fill="#a8bb7a"/>
+
+          <!-- etiquetas -->
+          <g font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif">
+            <text x="352" y="382" fill="#f6f1e4" font-size="15" font-weight="700" text-anchor="middle">Atalanta de la Vera</text>
+            <text x="352" y="402" fill="rgba(246,241,228,.62)" font-size="12.5" text-anchor="middle">Camino Juego de Bolos s/n</text>
+            <text x="152" y="306" fill="#a8bb7a" font-size="13.5" font-weight="600" text-anchor="middle">Jaraíz de la Vera</text>
+            <text x="416" y="318" fill="rgba(208,138,87,.95)" font-size="12" font-weight="600" text-anchor="middle" transform="rotate(-62 416 318)">Camino</text>
+            <text x="80" y="330" fill="rgba(246,241,228,.5)" font-size="12">Casco urbano</text>
+            <text x="404" y="120" fill="rgba(168,187,122,.75)" font-size="12.5">Comarca de La Vera</text>
+            <text x="30" y="40" fill="rgba(246,241,228,.45)" font-size="11.5" letter-spacing="2">CROQUIS ORIENTATIVO</text>
+          </g>
+
+          <!-- norte -->
+          <g transform="translate(508,44)">
+            <path d="M0 -18 L7 10 L0 4 L-7 10 Z" fill="rgba(246,241,228,.65)"/>
+            <text x="0" y="26" fill="rgba(246,241,228,.5)" font-size="11" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial,sans-serif">N</text>
+          </g>
+        </svg>
+        <div class="croquis-pie">Croquis esquemático, no a escala. Las indicaciones exactas para llegar se envían al confirmar la reserva.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PIE ============ -->
+<footer>
+  <div class="wrap">
+    <div class="pie-grid">
+      <div class="pie-marca">
+        <b>Casa Rural Atalanta de la Vera</b>
+        <p>Camino Juego de Bolos s/n<br>10400 Jaraíz de la Vera (Cáceres)<br>Comarca de La Vera</p>
+        <p style="margin-top:12px;color:rgba(243,238,222,.55);font-size:.88rem">Registro turístico TR-CC-00561</p>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="mailto:atalantadelavera@gmail.com">atalantadelavera@gmail.com</a></li>
+          <li>Consultar horario</li>
+          <li>Consultar disponibilidad</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Secciones</h4>
+        <ul>
+          <li><a href="#la-casa">La casa</a></li>
+          <li><a href="#el-entorno">El entorno</a></li>
+          <li><a href="#reservar">Cómo reservar</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="firma">
+      <span><strong>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</strong></span>
+      <span>Maqueta de demostración · textos de ejemplo sin valor contractual</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
