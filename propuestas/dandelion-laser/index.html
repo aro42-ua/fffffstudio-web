@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dandelion Laser · Maqueta</title>
+<meta name="description" content="Propuesta de rediseño no oficial para Dandelion Laser, centro de depilación láser de diodo en Don Benito.">
+<style>
+  :root{
+    --plum:#2e2232;
+    --plum-soft:#4a3a50;
+    --ink:#31283a;
+    --muted:#6d6274;
+    --line:#e9e1ec;
+    --cream:#fbf8f6;
+    --sand:#f3ece7;
+    --rose:#d9a2a6;
+    --rose-deep:#b9767e;
+    --gold:#c9a66b;
+    --mint:#9fb8ac;
+    --white:#ffffff;
+    --r-lg:28px;
+    --r-md:18px;
+    --r-sm:12px;
+    --shadow:0 18px 50px -24px rgba(46,34,50,.28);
+    --shadow-sm:0 10px 28px -20px rgba(46,34,50,.35);
+    --topbar:44px;
+    --fs-hero:clamp(2.6rem,6.6vw,5.1rem);
+    --fs-h2:clamp(1.75rem,3.6vw,2.9rem);
+    --fs-h3:clamp(1.05rem,1.6vw,1.2rem);
+    --fs-lead:clamp(1.04rem,1.5vw,1.26rem);
+    --fs-body:1rem;
+    --fs-small:.875rem;
+    --fs-micro:.76rem;
+    --maxw:1180px;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+    font-size:var(--fs-body);
+    line-height:1.65;
+    color:var(--ink);
+    background:var(--cream);
+    overflow-x:hidden;
+  }
+  img,svg{max-width:100%;display:block}
+  a{color:inherit}
+  .sans{font-family:"Helvetica Neue",Helvetica,Arial,"Segoe UI",system-ui,-apple-system,sans-serif}
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  @media(max-width:480px){.wrap{padding:0 18px}}
+
+  /* ---------- topbar ---------- */
+  .topbar{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    min-height:var(--topbar);
+    display:flex;align-items:center;justify-content:center;
+    background:var(--plum);
+    color:#f0e8ec;
+    font-family:"Helvetica Neue",Helvetica,Arial,"Segoe UI",system-ui,sans-serif;
+    font-size:var(--fs-micro);
+    letter-spacing:.055em;
+    text-transform:uppercase;
+    padding:9px 16px;
+    text-align:center;
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .topbar span{display:block;max-width:100%;text-wrap:balance}
+  body{padding-top:var(--topbar)}
+  @media(max-width:560px){:root{--topbar:62px}}
+  @media(max-width:360px){:root{--topbar:78px}}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(130% 95% at 86% 6%, #f7dfe0 0%, rgba(247,223,224,0) 58%),
+      radial-gradient(110% 80% at 4% 92%, #efe6dd 0%, rgba(239,230,221,0) 60%),
+      linear-gradient(168deg,#fdfbfa 0%,#f6efea 100%);
+  }
+  .hero::after{
+    content:"";position:absolute;inset:auto 0 0 0;height:1px;background:var(--line);
+  }
+  .hero-inner{
+    display:grid;grid-template-columns:1.12fr .88fr;gap:56px;align-items:center;
+    padding:96px 0 104px;
+  }
+  .eyebrow{
+    font-family:"Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;
+    font-size:var(--fs-micro);letter-spacing:.2em;text-transform:uppercase;
+    color:var(--rose-deep);margin:0 0 22px;
+  }
+  h1{
+    font-size:var(--fs-hero);line-height:1.02;margin:0 0 20px;
+    font-weight:400;letter-spacing:-.018em;color:var(--plum);
+  }
+  h1 em{display:block;font-style:normal;color:var(--rose-deep)}
+  .lead{font-size:var(--fs-lead);color:var(--muted);margin:0 0 34px;max-width:38ch}
+  .cta-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:"Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;
+    font-size:.95rem;letter-spacing:.02em;text-decoration:none;
+    padding:15px 26px;border-radius:999px;
+    background:var(--plum);color:#fdf7f8;border:1px solid var(--plum);
+    box-shadow:var(--shadow-sm);
+  }
+  .btn svg{width:17px;height:17px;flex:0 0 auto}
+  .btn-ghost{background:transparent;color:var(--plum);border-color:#d9cdd6;box-shadow:none}
+  .cta-note{
+    font-family:"Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;
+    font-size:var(--fs-small);color:var(--muted);margin:18px 0 0;
+  }
+
+  /* hero art */
+  .hero-art{position:relative;aspect-ratio:1/1;max-width:412px;margin-left:auto;width:100%}
+  .hero-art .disc{
+    position:absolute;inset:0;border-radius:50%;
+    background:conic-gradient(from 210deg,#f6dcdd,#efe4ea,#e6ddd3,#f7e7e2,#f6dcdd);
+    box-shadow:var(--shadow);
+  }
+  .hero-art .ring{
+    position:absolute;inset:-16px;border-radius:50%;border:1px solid #e3d3d6;
+  }
+  .hero-art .ring.two{inset:-34px;border-color:#ece0e2}
+  .hero-art svg{position:absolute;inset:0;width:100%;height:100%}
+
+  /* ---------- sections ---------- */
+  section{padding:88px 0}
+  .sec-head{max-width:54ch;margin:0 0 50px}
+  h2{font-size:var(--fs-h2);line-height:1.12;font-weight:400;letter-spacing:-.012em;color:var(--plum);margin:0 0 14px}
+  .sec-head p{margin:0;color:var(--muted);font-size:var(--fs-lead)}
+  .label{
+    font-family:"Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;
+    font-size:var(--fs-micro);letter-spacing:.2em;text-transform:uppercase;
+    color:var(--rose-deep);margin:0 0 16px;
+  }
+
+  #servicios{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+  .card{
+    background:linear-gradient(180deg,#fdfbfa,#f8f3f0);
+    border:1px solid var(--line);border-radius:var(--r-md);
+    padding:26px 24px 22px;display:flex;flex-direction:column;gap:12px;
+    min-width:0;
+  }
+  .card .ic{
+    width:44px;height:44px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    background:#f3e3e4;border:1px solid #ecd6d8;flex:0 0 auto;
+  }
+  .card .ic svg{width:22px;height:22px}
+  .card h3{font-size:var(--fs-h3);margin:0;font-weight:400;color:var(--plum);letter-spacing:-.005em}
+  .card p{margin:0;color:var(--muted);font-size:var(--fs-small);line-height:1.6}
+  .card .meta{
+    margin-top:auto;padding-top:14px;border-top:1px dashed #e2d6dc;
+    font-family:"Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;
+    display:flex;align-items:flex-start;gap:10px;line-height:1.45;
+  }
+  .card .meta .k{
+    font-size:var(--fs-micro);letter-spacing:.14em;text-transform:uppercase;
+    color:var(--muted);margin:0 0 3px;
+  }
+  .card .meta .v{font-size:.88rem;color:var(--plum);margin:0;letter-spacing:.01em}
+  .dot{width:5px;height:5px;border-radius:50%;background:var(--gold);flex:0 0 auto;margin-top:.62em}
+  .disclaimer{
+    margin:30px 0 0;padding:18px 22px;border-radius:var(--r-sm);
+    background:var(--sand);border:1px solid #e6dcd4;
+    font-family:"Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;
+    font-size:var(--fs-small);color:var(--plum-soft);
+  }
+
+  /* ---------- pasos ---------- */
+  .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}
+  .step{position:relative;padding-top:26px;border-top:2px solid #e8dde1;min-width:0}
+  .step .n{
+    position:absolute;top:-17px;left:0;
+    width:34px;height:34px;border-radius:50%;
+    background:var(--plum);color:#fdf7f8;
+    display:flex;align-items:center;justify-content:center;
+    font-family:"Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;
+    font-size:.82rem;letter-spacing:.02em;
+  }
+  .step h3{font-size:var(--fs-h3);font-weight:400;color:var(--plum);margin:0 0 8px}
+  .step p{margin:0;color:var(--muted);font-size:var(--fs-small)}
+
+  /* ---------- contacto ---------- */
+  #contacto{background:var(--white);border-top:1px solid var(--line)}
+  .contact-grid{display:grid;grid-template-columns:1fr 1.06fr;gap:48px;align-items:start}
+  .info{display:flex;flex-direction:column;gap:4px;margin:0;padding:0;list-style:none}
+  .info li{
+    display:flex;gap:16px;align-items:flex-start;
+    padding:18px 0;border-bottom:1px solid var(--line);min-width:0;
+  }
+  .info li:last-child{border-bottom:0}
+  .info .ic{
+    width:38px;height:38px;border-radius:50%;background:#f1ece6;border:1px solid #e6ddd4;
+    display:flex;align-items:center;justify-content:center;flex:0 0 auto;
+  }
+  .info .ic svg{width:19px;height:19px}
+  .info .k{
+    font-family:"Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;
+    font-size:var(--fs-micro);letter-spacing:.16em;text-transform:uppercase;
+    color:var(--rose-deep);margin:0 0 4px;
+  }
+  .info .v{margin:0;font-size:1.06rem;color:var(--plum);line-height:1.45;overflow-wrap:break-word;min-width:0}
+  .info .v a{text-decoration:none;border-bottom:1px solid #ddcdd3}
+  .info .v small{display:block;font-size:var(--fs-small);color:var(--muted)}
+  .map{
+    border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;
+    background:#f7f3ef;box-shadow:var(--shadow-sm);
+  }
+  .map svg{width:100%;height:auto;display:block}
+  .map-cap{
+    padding:12px 18px;border-top:1px solid var(--line);
+    font-family:"Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;
+    font-size:var(--fs-micro);letter-spacing:.07em;text-transform:uppercase;color:var(--muted);
+  }
+
+  /* ---------- footer ---------- */
+  footer{background:var(--plum);color:#efe6ea;padding:64px 0 40px}
+  .f-top{display:flex;flex-wrap:wrap;gap:28px;justify-content:space-between;align-items:flex-end}
+  .f-name{font-size:1.5rem;margin:0 0 6px;font-weight:400;letter-spacing:.01em}
+  .f-sub{margin:0;color:#b9a9b4;font-size:var(--fs-small)}
+  .f-mail{
+    font-family:"Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;
+    font-size:1rem;color:#f7eef1;text-decoration:none;
+    border-bottom:1px solid rgba(255,255,255,.3);overflow-wrap:break-word;
+  }
+  .f-rule{height:1px;background:rgba(255,255,255,.14);margin:36px 0 22px}
+  .f-credit{
+    font-family:"Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;
+    font-size:var(--fs-small);color:#bdaeb8;margin:0;
+  }
+
+  /* ---------- responsive ---------- */
+  @media(max-width:980px){
+    .hero-inner{grid-template-columns:1fr;gap:44px;padding:68px 0 76px}
+    .hero-art{margin:0 auto;max-width:330px}
+    .lead{max-width:46ch}
+    .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .contact-grid{grid-template-columns:1fr;gap:34px}
+  }
+  @media(max-width:680px){
+    section{padding:62px 0}
+    .grid{grid-template-columns:1fr;gap:16px}
+    .steps{grid-template-columns:1fr;gap:34px}
+    .sec-head{margin-bottom:34px}
+    .hero-inner{padding:52px 0 60px}
+    .hero-art{max-width:260px}
+    .btn{width:100%;justify-content:center}
+    .cta-row{gap:10px}
+    .f-top{align-items:flex-start}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar" role="note"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-inner">
+      <div>
+        <p class="eyebrow">Don Benito · Badajoz</p>
+        <h1>Dandelion<em>Laser</em></h1>
+        <p class="lead">Centro de depilación láser de diodo. Sesiones en cabina, con atención personalizada y valoración previa de la zona a tratar.</p>
+        <div class="cta-row">
+          <a class="btn" href="tel:+34644522266">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3.5h3l1.5 4-2 1.4a12 12 0 0 0 5.1 5.1l1.4-2 4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.5 5.7 2 2 0 0 1 6.5 3.5z"/></svg>
+            Llamar al 644 522 266
+          </a>
+          <a class="btn btn-ghost" href="#servicios">Ver zonas de tratamiento</a>
+        </div>
+        <p class="cta-note">Pide tu cita por teléfono y resolvemos tus dudas antes de empezar.</p>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="ring two"></div>
+        <div class="ring"></div>
+        <div class="disc"></div>
+        <svg viewBox="0 0 400 400" fill="none">
+          <g stroke="#ffffff" stroke-opacity=".75" stroke-width="1.2" stroke-linecap="round">
+            <circle cx="200" cy="200" r="118"/>
+            <circle cx="200" cy="200" r="78" stroke-opacity=".5"/>
+          </g>
+          <g stroke="#b9767e" stroke-opacity=".6" stroke-width="1.3" stroke-linecap="round">
+            <line x1="200" y1="200" x2="200" y2="96"/>
+            <line x1="200" y1="200" x2="290" y2="148"/>
+            <line x1="200" y1="200" x2="290" y2="252"/>
+            <line x1="200" y1="200" x2="200" y2="304"/>
+            <line x1="200" y1="200" x2="110" y2="252"/>
+            <line x1="200" y1="200" x2="110" y2="148"/>
+            <line x1="200" y1="200" x2="262" y2="110"/>
+            <line x1="200" y1="200" x2="138" y2="110"/>
+            <line x1="200" y1="200" x2="262" y2="290"/>
+            <line x1="200" y1="200" x2="138" y2="290"/>
+          </g>
+          <g fill="#ffffff" fill-opacity=".92">
+            <circle cx="200" cy="96" r="5"/><circle cx="290" cy="148" r="5"/>
+            <circle cx="290" cy="252" r="5"/><circle cx="200" cy="304" r="5"/>
+            <circle cx="110" cy="252" r="5"/><circle cx="110" cy="148" r="5"/>
+            <circle cx="262" cy="110" r="4"/><circle cx="138" cy="110" r="4"/>
+            <circle cx="262" cy="290" r="4"/><circle cx="138" cy="290" r="4"/>
+          </g>
+          <circle cx="200" cy="200" r="13" fill="#2e2232" fill-opacity=".85"/>
+          <circle cx="200" cy="200" r="24" stroke="#2e2232" stroke-opacity=".3" stroke-width="1"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="servicios">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Zonas de tratamiento</p>
+        <h2>Depilación láser de diodo, zona por zona</h2>
+        <p>Trabajamos las zonas habituales del cuerpo y del rostro. Cada caso se valora en cabina antes de la primera sesión.</p>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#b9767e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c3.6 0 6 2.6 6 6.2 0 4.3-2.7 6.4-2.7 8.1 0 1.4-1.5 2.4-3.3 2.4s-3.3-1-3.3-2.4C8.7 15.6 6 13.5 6 9.2C6 5.6 8.4 3 12 3z"/><path d="M10 10h.01M14 10h.01"/></svg></div>
+          <h3>Rostro</h3>
+          <p>Zonas faciales pequeñas y de contorno, tratadas por separado según la superficie a cubrir.</p>
+          <div class="meta"><span class="dot"></span><div><p class="k">Precio y sesiones</p><p class="v">Consultar en centro</p></div></div>
+        </article>
+
+        <article class="card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#b9767e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3v5.5C9 10 7.5 10.8 7.5 13.5V21"/><path d="M15 3v5.5c0 1.5 1.5 2.3 1.5 5V21"/><path d="M9 8.5h6"/></svg></div>
+          <h3>Axilas</h3>
+          <p>Una de las zonas más solicitadas, de superficie reducida y sesión breve.</p>
+          <div class="meta"><span class="dot"></span><div><p class="k">Precio y sesiones</p><p class="v">Consultar en centro</p></div></div>
+        </article>
+
+        <article class="card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#b9767e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3c0 3 .6 4.6 1.8 6.4 1.2 1.8 1.6 3 1.6 5.1V21"/><path d="M16 5c0 2.6-.8 4-2 5.6"/><path d="M11.4 14.5h4.2"/></svg></div>
+          <h3>Brazos</h3>
+          <p>Brazo completo o media zona, según lo que se valore en la consulta previa.</p>
+          <div class="meta"><span class="dot"></span><div><p class="k">Precio y sesiones</p><p class="v">Consultar en centro</p></div></div>
+        </article>
+
+        <article class="card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#b9767e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 3v6.2c0 2.3-1 3.6-1 6.3V21"/><path d="M14.5 3v6.2c0 2.3 1 3.6 1 6.3V21"/><path d="M7 21h4M13 21h4"/></svg></div>
+          <h3>Piernas</h3>
+          <p>Pierna completa o por tramos, incluida la zona inferior de forma independiente.</p>
+          <div class="meta"><span class="dot"></span><div><p class="k">Precio y sesiones</p><p class="v">Consultar en centro</p></div></div>
+        </article>
+
+        <article class="card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#b9767e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 6h14"/><path d="M6 6c0 5 2.6 8 6 12 3.4-4 6-7 6-12"/></svg></div>
+          <h3>Ingles y zona íntima</h3>
+          <p>Distintos niveles de cobertura, siempre acordados con la persona antes de la sesión.</p>
+          <div class="meta"><span class="dot"></span><div><p class="k">Precio y sesiones</p><p class="v">Consultar en centro</p></div></div>
+        </article>
+
+        <article class="card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#b9767e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="14" height="16" rx="4"/><path d="M12 4v16"/></svg></div>
+          <h3>Espalda, torso y abdomen</h3>
+          <p>Zonas amplias que pueden trabajarse completas o divididas en secciones.</p>
+          <div class="meta"><span class="dot"></span><div><p class="k">Precio y sesiones</p><p class="v">Consultar en centro</p></div></div>
+        </article>
+      </div>
+
+      <p class="disclaimer">Las zonas se agrupan en términos genéricos. La combinación de zonas, la duración de cada sesión y el presupuesto se definen en la valoración previa: <strong>consultar en centro</strong>. Esta maqueta no incluye tarifas ni número de sesiones.</p>
+    </div>
+  </section>
+
+  <section id="primera-sesion">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Cómo empezamos</p>
+        <h2>Tu primera sesión</h2>
+        <p>Tres pasos sencillos, sin compromiso hasta que tengas toda la información.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="n sans">01</div>
+          <h3>Llamada y cita</h3>
+          <p>Nos cuentas qué zona te interesa y buscamos un hueco que te encaje. Horario de atención: consultar en centro.</p>
+        </div>
+        <div class="step">
+          <div class="n sans">02</div>
+          <h3>Valoración en cabina</h3>
+          <p>Vemos la zona, hablamos de tus antecedentes y te explicamos cómo funciona el láser de diodo y qué cuidados conviene seguir.</p>
+        </div>
+        <div class="step">
+          <div class="n sans">03</div>
+          <h3>Sesión y seguimiento</h3>
+          <p>Si decides empezar, realizamos la sesión y acordamos cuándo tiene sentido la siguiente revisión.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Contacto</p>
+        <h2>Estamos en el centro de Don Benito</h2>
+      </div>
+      <div class="contact-grid">
+        <ul class="info">
+          <li>
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#2e2232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3.5h3l1.5 4-2 1.4a12 12 0 0 0 5.1 5.1l1.4-2 4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.5 5.7 2 2 0 0 1 6.5 3.5z"/></svg></span>
+            <div>
+              <p class="k">Teléfono</p>
+              <p class="v"><a href="tel:+34644522266">644 522 266</a></p>
+            </div>
+          </li>
+          <li>
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#2e2232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg></span>
+            <div>
+              <p class="k">Dirección</p>
+              <p class="v">Av. Alonso Martín, 7<small>06400 Don Benito (Badajoz)</small></p>
+            </div>
+          </li>
+          <li>
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#2e2232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg></span>
+            <div>
+              <p class="k">Horario</p>
+              <p class="v">Consultar horario<small>Te lo confirmamos por teléfono al pedir la cita.</small></p>
+            </div>
+          </li>
+          <li>
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#2e2232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="13" rx="2.5"/><path d="M4 7l8 6 8-6"/></svg></span>
+            <div>
+              <p class="k">Email</p>
+              <p class="v"><a href="mailto:dandelionlaser@gmail.com">dandelionlaser@gmail.com</a></p>
+            </div>
+          </li>
+        </ul>
+
+        <div class="map">
+          <svg viewBox="0 0 560 400" role="img" aria-label="Mapa esquemático de situación: marcador sobre la avenida donde se encuentra el centro.">
+            <rect width="560" height="400" fill="#f4efe9"/>
+            <g fill="#ece5dc">
+              <rect x="30" y="34" width="150" height="104" rx="8"/>
+              <rect x="212" y="26" width="128" height="78" rx="8"/>
+              <rect x="372" y="40" width="156" height="112" rx="8"/>
+              <rect x="26" y="206" width="130" height="80" rx="8"/>
+              <rect x="190" y="214" width="146" height="94" rx="8"/>
+              <rect x="368" y="200" width="160" height="84" rx="8"/>
+              <rect x="60" y="326" width="200" height="52" rx="8"/>
+              <rect x="300" y="320" width="196" height="58" rx="8"/>
+            </g>
+            <g stroke="#ffffff" stroke-width="26" stroke-linecap="round">
+              <line x1="0" y1="176" x2="560" y2="172"/>
+              <line x1="178" y1="0" x2="186" y2="400"/>
+            </g>
+            <g stroke="#ffffff" stroke-width="13" stroke-linecap="round">
+              <line x1="0" y1="306" x2="560" y2="306"/>
+              <line x1="356" y1="0" x2="360" y2="400"/>
+              <line x1="186" y1="60" x2="40" y2="150"/>
+            </g>
+            <g stroke="#ddd3c6" stroke-width="1.4" stroke-dasharray="7 9">
+              <line x1="0" y1="176" x2="560" y2="172"/>
+              <line x1="178" y1="0" x2="186" y2="400"/>
+            </g>
+            <g fill="#9fb8ac" fill-opacity=".5">
+              <circle cx="470" cy="340" r="26"/>
+              <circle cx="100" cy="258" r="18"/>
+            </g>
+            <g font-family="Helvetica Neue,Helvetica,Arial,sans-serif" font-size="12" fill="#8c8075" letter-spacing="1.4">
+              <text x="26" y="160">AVENIDA</text>
+              <text x="200" y="388">CALLE</text>
+            </g>
+            <g transform="translate(250 112)">
+              <ellipse cx="0" cy="66" rx="20" ry="6" fill="#2e2232" fill-opacity=".16"/>
+              <path d="M0 64C0 64 26 36 26 21A26 26 0 1 0-26 21C-26 36 0 64 0 64z" fill="#b9767e"/>
+              <circle cx="0" cy="21" r="9.5" fill="#fdf7f8"/>
+            </g>
+            <g transform="translate(250 112)">
+              <circle r="50" fill="none" stroke="#b9767e" stroke-opacity=".35" stroke-width="1.4"/>
+              <circle r="74" fill="none" stroke="#b9767e" stroke-opacity=".18" stroke-width="1.4"/>
+            </g>
+          </svg>
+          <p class="map-cap">Mapa esquemático · no a escala · referencia de situación</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-top">
+      <div>
+        <p class="f-name">Dandelion Laser</p>
+        <p class="f-sub">Centro de depilación láser de diodo · Don Benito (Badajoz)</p>
+      </div>
+      <div>
+        <a class="f-mail" href="mailto:dandelionlaser@gmail.com">dandelionlaser@gmail.com</a>
+      </div>
+    </div>
+    <div class="f-rule"></div>
+    <p class="f-credit">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+</body>
+</html>

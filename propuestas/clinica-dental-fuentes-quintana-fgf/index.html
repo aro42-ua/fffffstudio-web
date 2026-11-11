@@ -1,0 +1,783 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clínica Dental Fuentes Quintana FGF</title>
+<meta name="description" content="Propuesta de rediseño no oficial para Clínica Dental Fuentes Quintana FGF, Don Benito (Badajoz).">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  :root{
+    --ink:#10232b;
+    --ink-soft:#3c5a63;
+    --ink-mute:#637f87;
+    --line:#dce7ea;
+    --line-soft:#eaf2f4;
+    --bg:#ffffff;
+    --bg-alt:#f5fafb;
+    --brand:#0f6b73;
+    --brand-deep:#0a4a50;
+    --brand-light:#d7eef0;
+    --accent:#8fcfd1;
+    --bar:#0a2a30;
+    --radius:16px;
+    --radius-lg:24px;
+    --maxw:1120px;
+    --bar-h:44px;
+    --fs-base:17px;
+    --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  }
+
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:var(--fs-base);
+    line-height:1.65;
+    font-weight:400;
+    letter-spacing:-0.005em;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%;display:block}
+  a{color:inherit}
+
+  h1,h2,h3{
+    margin:0;
+    line-height:1.14;
+    letter-spacing:-0.025em;
+    font-weight:600;
+    color:var(--ink);
+    text-wrap:balance;
+  }
+  p{margin:0}
+
+  .wrap{
+    width:100%;
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  /* ---------- Barra fija ---------- */
+  .studiobar{
+    position:fixed;
+    inset:0 0 auto 0;
+    z-index:50;
+    height:var(--bar-h);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--bar);
+    color:#cfe6e8;
+    font-size:12.5px;
+    line-height:1.3;
+    letter-spacing:0.035em;
+    text-align:center;
+    padding:6px 16px;
+  }
+  .studiobar span{
+    display:block;
+    max-width:100%;
+    text-wrap:balance;
+  }
+
+  .page{padding-top:var(--bar-h)}
+
+  /* ---------- Cabecera de marca ---------- */
+  .brandrow{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:26px 0 0;
+  }
+  .mark{
+    flex:0 0 auto;
+    width:42px;height:42px;
+    border-radius:12px;
+    background:linear-gradient(145deg,var(--brand) 0%,var(--brand-deep) 100%);
+    display:grid;place-items:center;
+  }
+  .mark svg{width:24px;height:24px}
+  .brandtext{min-width:0}
+  .brandtext strong{
+    display:block;
+    font-size:15.5px;
+    font-weight:600;
+    letter-spacing:-0.015em;
+    line-height:1.25;
+  }
+  .brandtext small{
+    display:block;
+    font-size:12.5px;
+    color:var(--ink-mute);
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    margin-top:2px;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative;overflow:hidden}
+  .hero::before{
+    content:"";
+    position:absolute;
+    top:-220px;right:-180px;
+    width:720px;height:720px;
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 35%, #e4f4f5 0%, #f2fbfb 48%, rgba(255,255,255,0) 72%);
+    z-index:0;
+  }
+  .hero .wrap{position:relative;z-index:1}
+  .hero-grid{
+    display:grid;
+    grid-template-columns:minmax(0,1.08fr) minmax(0,0.92fr);
+    gap:56px;
+    align-items:center;
+    padding:62px 0 76px;
+  }
+  .eyebrow{
+    display:inline-block;
+    font-size:12.5px;
+    font-weight:600;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--brand);
+    background:var(--brand-light);
+    border-radius:999px;
+    padding:6px 14px;
+    margin-bottom:22px;
+  }
+  h1{
+    font-size:clamp(2.1rem, 1.35rem + 2.6vw, 3.3rem);
+    font-weight:650;
+  }
+  .lede{
+    margin-top:20px;
+    font-size:clamp(1rem, 0.96rem + 0.3vw, 1.17rem);
+    color:var(--ink-soft);
+    max-width:46ch;
+    line-height:1.6;
+  }
+  .cta-row{
+    margin-top:32px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px 14px;
+    align-items:center;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    text-decoration:none;
+    font-weight:600;
+    font-size:16px;
+    letter-spacing:-0.01em;
+    border-radius:999px;
+    padding:14px 24px;
+    border:1px solid transparent;
+    transition:background .18s ease, border-color .18s ease, color .18s ease;
+  }
+  .btn svg{width:18px;height:18px;flex:0 0 auto}
+  .btn-primary{
+    background:var(--brand);
+    color:#fff;
+  }
+  .btn-primary:hover{background:var(--brand-deep)}
+  .btn-ghost{
+    border-color:var(--line);
+    color:var(--ink);
+    background:#fff;
+  }
+  .btn-ghost:hover{border-color:var(--brand);color:var(--brand-deep)}
+  .cta-note{
+    margin-top:16px;
+    font-size:13.5px;
+    color:var(--ink-mute);
+  }
+
+  .hero-art{
+    position:relative;
+    border-radius:var(--radius-lg);
+    background:linear-gradient(160deg,#0f6b73 0%,#0a4a50 58%,#07363b 100%);
+    padding:30px;
+    min-height:330px;
+    display:flex;
+    align-items:flex-end;
+    overflow:hidden;
+    box-shadow:0 24px 50px -28px rgba(10,74,80,.45);
+  }
+  .hero-art::after{
+    content:"";
+    position:absolute;
+    top:-90px;left:-70px;
+    width:320px;height:320px;
+    border-radius:50%;
+    background:rgba(255,255,255,.07);
+  }
+  .hero-art-svg{
+    position:absolute;
+    inset:0;
+    width:100%;height:100%;
+  }
+  .hero-card{
+    position:relative;
+    z-index:2;
+    background:rgba(255,255,255,.95);
+    border-radius:14px;
+    padding:18px 20px;
+    width:100%;
+  }
+  .hero-card b{
+    display:block;
+    font-size:14px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--brand);
+    font-weight:650;
+  }
+  .hero-card p{
+    margin-top:6px;
+    font-size:14.5px;
+    color:var(--ink-soft);
+    line-height:1.5;
+  }
+
+  /* ---------- Secciones ---------- */
+  section{scroll-margin-top:calc(var(--bar-h) + 16px)}
+  .band{background:var(--bg-alt);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
+  .sec{padding:76px 0}
+  .sec-head{max-width:58ch;margin-bottom:40px}
+  .sec-head h2{font-size:clamp(1.55rem, 1.25rem + 1.1vw, 2.1rem)}
+  .sec-head p{margin-top:14px;color:var(--ink-soft);font-size:16.5px}
+  .kicker{
+    display:block;
+    font-size:12.5px;
+    font-weight:600;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--brand);
+    margin-bottom:12px;
+  }
+
+  .cards{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:20px;
+  }
+  .card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:26px 24px 28px;
+    min-width:0;
+  }
+  .card .ico{
+    width:44px;height:44px;
+    border-radius:12px;
+    background:var(--brand-light);
+    display:grid;place-items:center;
+    margin-bottom:18px;
+  }
+  .card .ico svg{width:24px;height:24px}
+  .card h3{font-size:17.5px;font-weight:600;letter-spacing:-0.015em}
+  .card p{margin-top:9px;font-size:15.5px;color:var(--ink-soft);line-height:1.6}
+
+  .note{
+    margin-top:28px;
+    font-size:14px;
+    color:var(--ink-mute);
+    max-width:70ch;
+    line-height:1.6;
+  }
+
+  /* ---------- Pasos ---------- */
+  .steps{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:24px;
+    counter-reset:s;
+  }
+  .step{
+    position:relative;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:28px 24px;
+    min-width:0;
+  }
+  .step .num{
+    width:38px;height:38px;
+    border-radius:50%;
+    background:var(--brand);
+    color:#fff;
+    display:grid;place-items:center;
+    font-size:15px;font-weight:650;
+    margin-bottom:18px;
+  }
+  .step h3{font-size:17px;font-weight:600}
+  .step p{margin-top:9px;font-size:15.5px;color:var(--ink-soft);line-height:1.6}
+
+  /* ---------- Contacto ---------- */
+  .contact-grid{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);
+    gap:40px;
+    align-items:start;
+  }
+  .infolist{
+    list-style:none;
+    margin:0;padding:0;
+    display:grid;
+    gap:2px;
+  }
+  .infolist li{
+    display:flex;
+    gap:16px;
+    align-items:flex-start;
+    padding:18px 0;
+    border-bottom:1px solid var(--line);
+    min-width:0;
+  }
+  .infolist li:first-child{border-top:1px solid var(--line)}
+  .infolist .ico{
+    flex:0 0 auto;
+    width:38px;height:38px;
+    border-radius:10px;
+    background:var(--brand-light);
+    display:grid;place-items:center;
+  }
+  .infolist .ico svg{width:20px;height:20px}
+  .infolist .t{min-width:0}
+  .infolist .lab{
+    display:block;
+    font-size:12px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--ink-mute);
+    font-weight:600;
+  }
+  .infolist .val{
+    display:block;
+    margin-top:3px;
+    font-size:16.5px;
+    font-weight:550;
+    color:var(--ink);
+    text-decoration:none;
+    overflow-wrap:anywhere;
+    line-height:1.45;
+  }
+  a.val:hover{color:var(--brand-deep)}
+  .infolist .sub{
+    display:block;
+    margin-top:3px;
+    font-size:14px;
+    color:var(--ink-mute);
+  }
+
+  .mapcard{
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    background:#fff;
+    overflow:hidden;
+  }
+  .mapcard svg{width:100%;height:auto;display:block}
+  .mapcap{
+    padding:14px 18px;
+    border-top:1px solid var(--line-soft);
+    font-size:13.5px;
+    color:var(--ink-mute);
+    line-height:1.5;
+  }
+
+  /* ---------- Pie ---------- */
+  footer{
+    background:var(--bar);
+    color:#bfdbde;
+    padding:52px 0 44px;
+  }
+  footer h2{
+    color:#fff;
+    font-size:19px;
+    font-weight:600;
+  }
+  .foot-grid{
+    display:flex;
+    flex-wrap:wrap;
+    gap:32px;
+    justify-content:space-between;
+    align-items:flex-start;
+  }
+  .foot-col{min-width:0;max-width:44ch}
+  .foot-col p{margin-top:10px;font-size:15px;line-height:1.6;color:#a9c9cd}
+  .foot-col a{
+    color:#fff;
+    text-decoration:none;
+    border-bottom:1px solid rgba(255,255,255,.3);
+    overflow-wrap:anywhere;
+  }
+  .foot-col a:hover{border-bottom-color:#fff}
+  .foot-rule{
+    height:1px;
+    background:rgba(255,255,255,.14);
+    margin:34px 0 22px;
+  }
+  .foot-bottom{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px 22px;
+    font-size:13.5px;
+    color:#8fb4b9;
+    line-height:1.55;
+  }
+  .foot-bottom .studio{color:#d6ecee}
+
+  /* ---------- 390px ---------- */
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:minmax(0,1fr);gap:36px;padding:40px 0 56px}
+    .cards,.steps{grid-template-columns:minmax(0,1fr)}
+    .contact-grid{grid-template-columns:minmax(0,1fr);gap:32px}
+    .sec{padding:56px 0}
+  }
+  @media (max-width:560px){
+    :root{--fs-base:16px;--bar-h:52px}
+    .wrap{padding:0 20px}
+    .studiobar{font-size:11.5px;letter-spacing:0.02em;padding:6px 14px}
+    .brandrow{padding-top:22px;gap:12px}
+    .hero-art{min-height:260px;padding:20px}
+    .btn{padding:13px 20px;font-size:15.5px}
+    .btn-primary,.btn-ghost{width:100%;justify-content:center}
+    .card,.step{padding:22px 20px}
+    .sec-head{margin-bottom:30px}
+    footer{padding:44px 0 36px}
+    .foot-grid{gap:26px}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="studiobar" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<div class="page">
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="brandrow">
+        <div class="mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 4.2c-1.6-1-3.2-1.3-4.4-.8C6 4 5.2 5.6 5.2 7.9c0 1.7.3 3 .7 4.6.5 1.9.6 3.3.8 4.7.2 1.4.7 2.4 1.6 2.4.9 0 1.3-.9 1.6-2.4.3-1.6.5-2.9 2.1-2.9s1.8 1.3 2.1 2.9c.3 1.5.7 2.4 1.6 2.4.9 0 1.4-1 1.6-2.4.2-1.4.3-2.8.8-4.7.4-1.6.7-2.9.7-4.6 0-2.3-.8-3.9-2.4-4.5-1.2-.5-2.8-.2-4.4.8z"/>
+          </svg>
+        </div>
+        <div class="brandtext">
+          <strong>Clínica Dental Fuentes Quintana FGF</strong>
+          <small>Don Benito · Badajoz</small>
+        </div>
+      </div>
+
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow">Clínica dental</span>
+          <h1>Odontología general, infantil y para mayores en Don Benito</h1>
+          <p class="lede">Atención dental para toda la familia, con un trato cercano y explicaciones claras en cada paso. Pida cita por teléfono y le indicaremos la disponibilidad.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="tel:+34637456166">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 16.9v2.6a1.7 1.7 0 0 1-1.9 1.7 16.6 16.6 0 0 1-7.2-2.6 16.3 16.3 0 0 1-5-5A16.6 16.6 0 0 1 4.3 6.4 1.7 1.7 0 0 1 6 4.5h2.6a1.7 1.7 0 0 1 1.7 1.5c.1.8.3 1.6.6 2.4a1.7 1.7 0 0 1-.4 1.8l-1.1 1.1a13.3 13.3 0 0 0 5 5l1.1-1.1a1.7 1.7 0 0 1 1.8-.4c.8.3 1.6.5 2.4.6a1.7 1.7 0 0 1 1.5 1.7z"/>
+              </svg>
+              Llamar al 637 456 166
+            </a>
+            <a class="btn btn-ghost" href="#contacto">
+              Cómo llegar
+            </a>
+          </div>
+          <p class="cta-note">C/ Pérez Galdós, 21 · 06400 Don Benito (Badajoz)</p>
+        </div>
+
+        <div class="hero-art" aria-hidden="true">
+          <svg class="hero-art-svg" viewBox="0 0 420 340" preserveAspectRatio="xMidYMid slice" fill="none">
+            <defs>
+              <linearGradient id="hg1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#ffffff" stop-opacity=".22"/>
+                <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <circle cx="330" cy="70" r="120" fill="url(#hg1)"/>
+            <g stroke="#8fcfd1" stroke-opacity=".45" stroke-width="1.2">
+              <path d="M-20 250 C 80 200, 140 290, 250 230 S 400 180, 460 220"/>
+              <path d="M-20 285 C 90 240, 150 325, 260 265 S 410 215, 470 255"/>
+            </g>
+            <g opacity=".6">
+              <circle cx="86" cy="96" r="4" fill="#8fcfd1"/>
+              <circle cx="128" cy="62" r="2.4" fill="#d7eef0"/>
+              <circle cx="58" cy="140" r="2.4" fill="#d7eef0"/>
+            </g>
+          </svg>
+          <div class="hero-card">
+            <b>Pedir cita</b>
+            <p>Llámenos al 637 456 166 y consultaremos juntos la primera visita que mejor le encaje.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Servicios -->
+  <section class="sec band" id="servicios">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Servicios</span>
+        <h2>Cuidado dental para cada etapa de la vida</h2>
+        <p>Una clínica dental de barrio, con tratamientos de odontología general y atención adaptada a niños y a personas mayores.</p>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <div class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0a4a50" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 5c-1.5-1-3-1.2-4.1-.7C6.4 4.9 5.7 6.3 5.7 8.4c0 1.6.3 2.8.6 4.2.5 1.8.6 3.1.8 4.4.2 1.3.6 2.2 1.4 2.2.9 0 1.2-.8 1.5-2.2.3-1.5.5-2.7 2-2.7s1.7 1.2 2 2.7c.3 1.4.6 2.2 1.5 2.2.8 0 1.2-.9 1.4-2.2.2-1.3.3-2.6.8-4.4.3-1.4.6-2.6.6-4.2 0-2.1-.7-3.5-2.2-4.1-1.1-.5-2.6-.3-4.1.7z"/>
+            </svg>
+          </div>
+          <h3>Odontología general</h3>
+          <p>Diagnóstico, tratamiento de caries y seguimiento de la salud de dientes y encías en consulta.</p>
+        </article>
+
+        <article class="card">
+          <div class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0a4a50" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="8.2" r="3.4"/>
+              <path d="M6 20.5c0-3.1 2.7-5.3 6-5.3s6 2.2 6 5.3"/>
+              <path d="M9.9 8.4h.01M14.1 8.4h.01"/>
+            </svg>
+          </div>
+          <h3>Odontología infantil</h3>
+          <p>Primeras visitas y revisiones de los más pequeños, con un ritmo tranquilo para que se familiaricen con la consulta.</p>
+        </article>
+
+        <article class="card">
+          <div class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0a4a50" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.5 9.2a4.6 4.6 0 0 0-7.9-2.6l-.6.6-.6-.6A4.6 4.6 0 0 0 3.5 9.2c0 4.3 5.4 7.6 8.5 10.3 3.1-2.7 8.5-6 8.5-10.3z"/>
+            </svg>
+          </div>
+          <h3>Atención a personas mayores</h3>
+          <p>Tratamientos y cuidados orientados a las necesidades dentales propias de la edad adulta avanzada.</p>
+        </article>
+
+        <article class="card">
+          <div class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0a4a50" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 3.5H5.8A1.8 1.8 0 0 0 4 5.3v13.4a1.8 1.8 0 0 0 1.8 1.8h12.4a1.8 1.8 0 0 0 1.8-1.8V5.3a1.8 1.8 0 0 0-1.8-1.8H15"/>
+              <rect x="9" y="2" width="6" height="3.4" rx="1.2"/>
+              <path d="M8.4 13.1l2.1 2.1 4.6-4.6"/>
+            </svg>
+          </div>
+          <h3>Revisiones periódicas</h3>
+          <p>Exploración de rutina para detectar a tiempo cualquier cambio y decidir con usted los siguientes pasos.</p>
+        </article>
+
+        <article class="card">
+          <div class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0a4a50" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 21.5c3.5-2.4 5.6-5 5.6-8.1V6.1L12 3.8 6.4 6.1v7.3c0 3.1 2.1 5.7 5.6 8.1z"/>
+              <path d="M9.6 12.5l1.7 1.7 3.3-3.3"/>
+            </svg>
+          </div>
+          <h3>Higiene y prevención</h3>
+          <p>Limpieza dental en consulta y pautas sencillas de higiene para mantener la boca sana en casa.</p>
+        </article>
+
+        <article class="card">
+          <div class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0a4a50" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 20.3s-1.2-.9-2.6-.9c-1.9 0-3.4.9-3.4.9V5.6s1.5-.9 3.4-.9c1.4 0 2.6.9 2.6.9s1.2-.9 2.6-.9c1.9 0 3.4.9 3.4.9v14.7s-1.5-.9-3.4-.9c-1.4 0-2.6.9-2.6.9z"/>
+              <path d="M12 6.1v14.2"/>
+            </svg>
+          </div>
+          <h3>Consulta y orientación</h3>
+          <p>Explicamos el estado de su boca y las opciones disponibles, sin prisas y en un lenguaje claro.</p>
+        </article>
+      </div>
+
+      <p class="note">Esta maqueta recoge servicios habituales del sector como ejemplo de estructura. El listado definitivo, así como cualquier dato clínico, debe confirmarlo la clínica antes de publicarse.</p>
+    </div>
+  </section>
+
+  <!-- Primera visita -->
+  <section class="sec" id="primera-visita">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Primera visita</span>
+        <h2>Tu primera visita, en tres pasos</h2>
+        <p>Así se desarrolla el primer contacto con la clínica, para que sepa qué esperar antes de venir.</p>
+      </div>
+
+      <div class="steps">
+        <article class="step">
+          <div class="num" aria-hidden="true">1</div>
+          <h3>Pide cita por teléfono</h3>
+          <p>Llame al 637 456 166 y cuéntenos brevemente el motivo de la consulta. Le indicaremos la disponibilidad de la clínica.</p>
+        </article>
+        <article class="step">
+          <div class="num" aria-hidden="true">2</div>
+          <h3>Revisión y conversación</h3>
+          <p>En la consulta exploramos su boca y hablamos de sus antecedentes y de lo que le preocupa, sin compromiso de tratamiento.</p>
+        </article>
+        <article class="step">
+          <div class="num" aria-hidden="true">3</div>
+          <h3>Plan explicado con calma</h3>
+          <p>Le explicamos lo que hemos observado y las opciones posibles para que decida con toda la información.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section class="sec band" id="contacto">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Contacto</span>
+        <h2>Dónde estamos y cómo pedir cita</h2>
+        <p>La clínica se encuentra en el centro de Don Benito. Para citas y consultas, el teléfono es la vía directa.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div>
+          <ul class="infolist">
+            <li>
+              <span class="ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#0a4a50" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 16.9v2.6a1.7 1.7 0 0 1-1.9 1.7 16.6 16.6 0 0 1-7.2-2.6 16.3 16.3 0 0 1-5-5A16.6 16.6 0 0 1 4.3 6.4 1.7 1.7 0 0 1 6 4.5h2.6a1.7 1.7 0 0 1 1.7 1.5c.1.8.3 1.6.6 2.4a1.7 1.7 0 0 1-.4 1.8l-1.1 1.1a13.3 13.3 0 0 0 5 5l1.1-1.1a1.7 1.7 0 0 1 1.8-.4c.8.3 1.6.5 2.4.6a1.7 1.7 0 0 1 1.5 1.7z"/>
+                </svg>
+              </span>
+              <span class="t">
+                <span class="lab">Teléfono</span>
+                <a class="val" href="tel:+34637456166">637 456 166</a>
+              </span>
+            </li>
+            <li>
+              <span class="ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#0a4a50" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 10.2c0 5.3-8 11.3-8 11.3s-8-6-8-11.3a8 8 0 0 1 16 0z"/>
+                  <circle cx="12" cy="10" r="2.7"/>
+                </svg>
+              </span>
+              <span class="t">
+                <span class="lab">Dirección</span>
+                <span class="val">C/ Pérez Galdós, 21</span>
+                <span class="sub">06400 Don Benito (Badajoz)</span>
+              </span>
+            </li>
+            <li>
+              <span class="ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#0a4a50" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="8.4"/>
+                  <path d="M12 7.6V12l3 1.9"/>
+                </svg>
+              </span>
+              <span class="t">
+                <span class="lab">Horario</span>
+                <span class="val">Consultar horario</span>
+                <span class="sub">Le informamos por teléfono.</span>
+              </span>
+            </li>
+            <li>
+              <span class="ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#0a4a50" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3.2" y="5.2" width="17.6" height="13.6" rx="2.2"/>
+                  <path d="M4 7l8 5.6L20 7"/>
+                </svg>
+              </span>
+              <span class="t">
+                <span class="lab">Correo electrónico</span>
+                <a class="val" href="mailto:clinicadentalfgf@gmail.com">clinicadentalfgf@gmail.com</a>
+              </span>
+            </li>
+          </ul>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="tel:+34637456166">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 16.9v2.6a1.7 1.7 0 0 1-1.9 1.7 16.6 16.6 0 0 1-7.2-2.6 16.3 16.3 0 0 1-5-5A16.6 16.6 0 0 1 4.3 6.4 1.7 1.7 0 0 1 6 4.5h2.6a1.7 1.7 0 0 1 1.7 1.5c.1.8.3 1.6.6 2.4a1.7 1.7 0 0 1-.4 1.8l-1.1 1.1a13.3 13.3 0 0 0 5 5l1.1-1.1a1.7 1.7 0 0 1 1.8-.4c.8.3 1.6.5 2.4.6a1.7 1.7 0 0 1 1.5 1.7z"/>
+              </svg>
+              Llamar al 637 456 166
+            </a>
+          </div>
+        </div>
+
+        <div class="mapcard">
+          <svg viewBox="0 0 520 380" role="img" aria-label="Plano esquemático y orientativo de la ubicación de la clínica en C/ Pérez Galdós, 21.">
+            <rect width="520" height="380" fill="#eef6f7"/>
+            <g fill="#e2eff0">
+              <rect x="22" y="22" width="150" height="104" rx="6"/>
+              <rect x="212" y="22" width="130" height="104" rx="6"/>
+              <rect x="382" y="22" width="116" height="104" rx="6"/>
+              <rect x="22" y="188" width="150" height="86" rx="6"/>
+              <rect x="212" y="188" width="130" height="86" rx="6"/>
+              <rect x="382" y="188" width="116" height="86" rx="6"/>
+              <rect x="22" y="320" width="150" height="40" rx="6"/>
+              <rect x="212" y="320" width="286" height="40" rx="6"/>
+            </g>
+            <g stroke="#ffffff" stroke-width="22" stroke-linecap="square">
+              <path d="M0 158 H520"/>
+              <path d="M0 298 H520"/>
+              <path d="M194 0 V380"/>
+              <path d="M362 0 V380"/>
+            </g>
+            <g stroke="#c3dcdf" stroke-width="1.6" stroke-dasharray="7 9">
+              <path d="M0 158 H520"/>
+              <path d="M0 298 H520"/>
+              <path d="M194 0 V380"/>
+              <path d="M362 0 V380"/>
+            </g>
+            <g font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#637f87" letter-spacing="0.5">
+              <text x="30" y="153">Calle</text>
+              <text x="30" y="293">Calle</text>
+              <text x="216" y="366">Calle</text>
+            </g>
+            <g>
+              <circle cx="258" cy="158" r="26" fill="#0f6b73" fill-opacity=".12"/>
+              <path d="M258 128a18.5 18.5 0 0 0-18.5 18.5c0 12.4 18.5 28.5 18.5 28.5s18.5-16.1 18.5-28.5A18.5 18.5 0 0 0 258 128z" fill="#0f6b73"/>
+              <circle cx="258" cy="146" r="6.6" fill="#ffffff"/>
+            </g>
+            <g font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif">
+              <rect x="294" y="128" width="196" height="44" rx="10" fill="#ffffff" stroke="#dce7ea"/>
+              <text x="310" y="147" font-size="13.5" font-weight="600" fill="#10232b">C/ Pérez Galdós, 21</text>
+              <text x="310" y="164" font-size="12" fill="#637f87">06400 Don Benito</text>
+            </g>
+          </svg>
+          <p class="mapcap">Plano esquemático y orientativo, no a escala: representa la posición aproximada de la clínica, no el trazado real de las calles.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-col">
+          <h2>Clínica Dental Fuentes Quintana FGF</h2>
+          <p>C/ Pérez Galdós, 21 · 06400 Don Benito (Badajoz)<br>
+          Teléfono: <a href="tel:+34637456166">637 456 166</a><br>
+          Correo: <a href="mailto:clinicadentalfgf@gmail.com">clinicadentalfgf@gmail.com</a></p>
+        </div>
+        <div class="foot-col">
+          <h2>Sobre esta maqueta</h2>
+          <p>Maqueta de demostración sin vínculo oficial con la clínica. Los datos de contacto son públicos; el resto del contenido es texto de ejemplo pendiente de validación.</p>
+        </div>
+      </div>
+      <div class="foot-rule"></div>
+      <div class="foot-bottom">
+        <span class="studio">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pintura i Decoració Tarròs — Propuesta de diseño</title>
+<meta name="description" content="Propuesta de rediseño no oficial para Pintura i Decoració Tarròs, Mollerussa (Lleida). Maqueta de FFFFFFstudio.">
+<style>
+  :root{
+    --ink:#15202b;
+    --ink-soft:#2c3c4c;
+    --slate:#5b6b7a;
+    --line:#dfe3e7;
+    --paper:#f7f5f2;
+    --paper-2:#ffffff;
+    --terra:#c05a30;
+    --terra-dark:#a4451f;
+    --ochre:#d99c3b;
+    --teal:#2f6f73;
+    --radius:18px;
+    --maxw:1200px;
+    --fs-base:clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
+    --h1:clamp(2.15rem, 1.35rem + 3.6vw, 4.25rem);
+    --h2:clamp(1.6rem, 1.22rem + 1.5vw, 2.4rem);
+    --h3:clamp(1.1rem, 1.04rem + 0.3vw, 1.25rem);
+    --sp-sec:clamp(3.75rem, 2.6rem + 5vw, 7.5rem);
+    --gut:clamp(1.15rem, 0.6rem + 2.4vw, 2.5rem);
+    --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  html,body{max-width:100%;overflow-x:hidden}
+  body{
+    margin:0;
+    font-family:var(--sans);
+    font-size:var(--fs-base);
+    line-height:1.65;
+    color:var(--ink-soft);
+    background:var(--paper);
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%;display:block}
+  h1,h2,h3,h4{color:var(--ink);line-height:1.1;letter-spacing:-0.022em;margin:0;font-weight:650}
+  p{margin:0}
+  a{color:inherit}
+  .wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gut)}
+  .eyebrow{
+    font-size:.75rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--terra);margin:0 0 .9rem
+  }
+  .lede{font-size:clamp(1.03rem,.98rem + .38vw,1.2rem);color:var(--slate);max-width:60ch}
+
+  /* ---------- Barra fija ---------- */
+  .tagbar,.tagbar-spacer{
+    font-size:clamp(.62rem,.5rem + .38vw,.78rem);
+    letter-spacing:.055em;
+    font-weight:600;
+    line-height:1.4;
+    padding:.6rem var(--gut);
+    text-align:center;
+  }
+  .tagbar{
+    position:fixed;inset:0 0 auto 0;z-index:100;
+    background:var(--ink);
+    color:#f2ede7;
+    border-bottom:1px solid rgba(255,255,255,.12);
+    text-wrap:balance;
+  }
+  .tagbar-spacer{visibility:hidden;pointer-events:none}
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative;overflow:hidden;background:var(--ink);color:#eef1f4;isolation:isolate}
+  .hero::before{
+    content:"";position:absolute;inset:0;z-index:-2;
+    background:
+      radial-gradient(118% 88% at 86% 6%, rgba(217,156,59,.34) 0%, rgba(217,156,59,0) 58%),
+      radial-gradient(96% 76% at 6% 96%, rgba(47,111,115,.46) 0%, rgba(47,111,115,0) 62%),
+      linear-gradient(168deg,#16222e 0%,#1b2b38 46%,#13202a 100%);
+  }
+  .hero::after{
+    content:"";position:absolute;z-index:-1;left:-20%;right:-20%;bottom:-46%;height:92%;
+    background:radial-gradient(60% 56% at 42% 72%, rgba(192,90,48,.52) 0%, rgba(192,90,48,.22) 42%, rgba(192,90,48,0) 72%);
+    filter:blur(26px);
+  }
+  .hero-inner{
+    display:grid;gap:clamp(2.25rem,1rem + 5vw,4.5rem);
+    grid-template-columns:1fr;
+    align-items:center;
+    padding-block:clamp(3.25rem,2rem + 7vw,6.75rem) clamp(3.5rem,2rem + 7vw,7rem);
+  }
+  @media (min-width:900px){ .hero-inner{grid-template-columns:1.08fr .92fr} }
+  .hero .eyebrow{color:var(--ochre)}
+  .hero h1{
+    font-size:var(--h1);color:#fff;font-weight:680;letter-spacing:-.032em;
+    margin:0 0 1.15rem;text-wrap:balance;
+  }
+  .hero h1 .accent{
+    background:linear-gradient(96deg,var(--ochre),#eec375);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero p.lede{color:#c3ced8;max-width:46ch}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:.85rem 1rem;margin-top:2.1rem;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:.6rem;
+    padding:.9rem 1.5rem;border-radius:999px;
+    font-weight:680;font-size:1rem;letter-spacing:-.01em;
+    text-decoration:none;border:1px solid transparent;
+    transition:transform .18s ease, box-shadow .18s ease, background-color .18s ease;
+    max-width:100%;
+  }
+  .btn-primary{
+    background:linear-gradient(100deg,var(--terra),#d4703f);
+    color:#fff;box-shadow:0 10px 26px -12px rgba(192,90,48,.85);
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 32px -14px rgba(192,90,48,.95)}
+  .btn-ghost{border-color:rgba(255,255,255,.3);color:#e8edf2}
+  .btn-ghost:hover{background:rgba(255,255,255,.08)}
+  .btn svg{flex:0 0 auto}
+  .hero-note{font-size:.8rem;color:#8e9eac;margin-top:1.4rem;letter-spacing:.01em}
+
+  .hero-art{width:100%;max-width:520px;margin-inline:auto}
+  @media (min-width:900px){ .hero-art{margin-inline:0 0} }
+
+  /* ---------- Secciones ---------- */
+  section{padding-block:var(--sp-sec)}
+  .sec-head{max-width:62ch;margin-bottom:clamp(2.25rem,1.4rem + 2.6vw,3.4rem)}
+  .sec-head h2{font-size:var(--h2);margin:0 0 .95rem;text-wrap:balance}
+
+  /* ---------- Servicios ---------- */
+  #servicios{background:var(--paper-2);border-block:1px solid var(--line)}
+  .cards{display:grid;gap:clamp(1rem,.5rem + 1.4vw,1.45rem);grid-template-columns:1fr}
+  @media (min-width:620px){ .cards{grid-template-columns:repeat(2,minmax(0,1fr))} }
+  @media (min-width:1000px){ .cards{grid-template-columns:repeat(4,minmax(0,1fr))} }
+  .card{
+    background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+    padding:clamp(1.4rem,1rem + 1vw,1.75rem);
+    display:flex;flex-direction:column;gap:.8rem;min-width:0;
+    position:relative;overflow:hidden;
+    transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  }
+  .card::before{
+    content:"";position:absolute;inset:0 0 auto 0;height:3px;
+    background:linear-gradient(90deg,var(--terra),var(--ochre));
+    opacity:.85;
+  }
+  .card:hover{transform:translateY(-3px);box-shadow:0 18px 38px -26px rgba(21,32,43,.42);border-color:#cfd6dd}
+  .card-ico{
+    width:46px;height:46px;border-radius:13px;flex:0 0 auto;
+    display:grid;place-items:center;
+    background:linear-gradient(145deg,#eef2f4,#dfe6ea);
+    border:1px solid var(--line);
+  }
+  .card-ico svg{width:24px;height:24px}
+  .card h3{font-size:var(--h3);letter-spacing:-.015em}
+  .card p{font-size:.95rem;color:var(--slate);line-height:1.6}
+
+  /* ---------- Proceso ---------- */
+  #proceso{background:linear-gradient(176deg,var(--paper) 0%,#eceef0 100%)}
+  .steps{display:grid;gap:clamp(1.1rem,.6rem + 1.6vw,1.6rem);grid-template-columns:1fr;counter-reset:s}
+  @media (min-width:860px){ .steps{grid-template-columns:repeat(3,minmax(0,1fr))} }
+  .step{
+    background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius);
+    padding:clamp(1.5rem,1.1rem + 1.1vw,2rem);min-width:0;
+    display:flex;flex-direction:column;gap:.75rem;
+  }
+  .step-num{
+    width:40px;height:40px;border-radius:50%;flex:0 0 auto;
+    display:grid;place-items:center;
+    font-weight:700;font-size:.95rem;color:#fff;letter-spacing:0;
+    background:linear-gradient(140deg,var(--teal),#3d8488);
+  }
+  .step h3{font-size:var(--h3)}
+  .step p{font-size:.95rem;color:var(--slate)}
+
+  /* ---------- Contacto ---------- */
+  #contacto{background:var(--paper-2);border-top:1px solid var(--line)}
+  .contact-grid{display:grid;gap:clamp(1.6rem,1rem + 3vw,3rem);grid-template-columns:1fr;align-items:start}
+  @media (min-width:920px){ .contact-grid{grid-template-columns:.92fr 1.08fr} }
+  .info-list{display:grid;gap:1rem;margin:0;padding:0;list-style:none}
+  .info{
+    display:flex;gap:.95rem;align-items:flex-start;min-width:0;
+    background:var(--paper);border:1px solid var(--line);border-radius:14px;
+    padding:1.05rem 1.15rem;
+  }
+  .info-ico{
+    width:38px;height:38px;border-radius:11px;flex:0 0 auto;display:grid;place-items:center;
+    background:var(--ink);
+  }
+  .info-ico svg{width:19px;height:19px}
+  .info-body{min-width:0}
+  .info dt,.info .lbl{
+    font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--slate);margin-bottom:.2rem;
+  }
+  .info .val{font-size:1.04rem;font-weight:620;color:var(--ink);letter-spacing:-.01em;overflow-wrap:break-word}
+  .info a.val{text-decoration:none;border-bottom:1px solid rgba(192,90,48,.4)}
+  .info a.val:hover{color:var(--terra-dark);border-bottom-color:var(--terra)}
+  .info .sub{font-size:.88rem;color:var(--slate);margin-top:.15rem}
+  .contact-cta{margin-top:1.6rem;display:flex;flex-wrap:wrap;gap:.8rem}
+  .contact-cta .btn-primary{box-shadow:0 10px 24px -14px rgba(192,90,48,.8)}
+
+  .map-card{
+    border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+    background:var(--paper);box-shadow:0 20px 44px -34px rgba(21,32,43,.5);
+  }
+  .map-card svg{width:100%;height:auto;display:block}
+  .map-foot{
+    display:flex;flex-wrap:wrap;gap:.35rem .75rem;align-items:baseline;
+    padding:.95rem 1.15rem;border-top:1px solid var(--line);background:var(--paper-2);
+  }
+  .map-foot strong{color:var(--ink);font-size:.95rem;font-weight:650}
+  .map-foot span{font-size:.82rem;color:var(--slate)}
+
+  /* ---------- Pie ---------- */
+  footer{background:var(--ink);color:#aebbc7;padding-block:clamp(2.75rem,2rem + 3vw,4rem)}
+  .foot-top{
+    display:flex;flex-wrap:wrap;gap:1.6rem 2.5rem;justify-content:space-between;align-items:flex-start;
+    padding-bottom:1.9rem;border-bottom:1px solid rgba(255,255,255,.13);
+  }
+  .foot-brand{min-width:0}
+  .foot-brand .nm{color:#fff;font-weight:680;font-size:1.18rem;letter-spacing:-.018em;margin-bottom:.3rem}
+  .foot-brand p{font-size:.92rem;max-width:34ch}
+  .foot-links{display:grid;gap:.55rem;min-width:0}
+  .foot-links .lbl{
+    font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#7f8e9c;margin-bottom:.1rem;
+  }
+  .foot-links a{color:#e3e9ee;text-decoration:none;font-size:.95rem;overflow-wrap:break-word;display:inline-flex;align-items:center;gap:.5rem}
+  .foot-links a:hover{color:var(--ochre)}
+  .foot-links a svg{width:16px;height:16px;flex:0 0 auto}
+  .foot-note{
+    margin-top:1.8rem;font-size:.84rem;color:#8b9aa8;line-height:1.6;text-wrap:balance;
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none!important;animation:none!important}
+  }
+</style>
+</head>
+<body>
+
+<div class="tagbar">Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</div>
+<div class="tagbar-spacer" aria-hidden="true">Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</div>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="wrap hero-inner">
+    <div>
+      <p class="eyebrow">Mollerussa · Lleida</p>
+      <h1>Pintura i Decoració <span class="accent">Tarròs</span></h1>
+      <p class="lede">Pintura y decoración para hogar, negocios e industria. Interiores, exteriores y acabados decorativos, con el trabajo hecho a medida de cada espacio.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="tel:+34973600507">
+          <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6.6 3.5h-2a1.6 1.6 0 0 0-1.6 1.7c.3 3.6 1.8 7 4.2 9.6 2.5 2.6 5.8 4.2 9.4 4.6a1.6 1.6 0 0 0 1.8-1.6v-2a1.6 1.6 0 0 0-1.4-1.6c-.8-.1-1.6-.3-2.3-.6a1.6 1.6 0 0 0-1.7.4l-.9.9a13 13 0 0 1-4.6-4.7l.9-.9a1.6 1.6 0 0 0 .3-1.7c-.3-.8-.5-1.5-.5-2.3a1.6 1.6 0 0 0-1.6-1.4Z"/>
+          </svg>
+          Llamar al 973 60 05 07
+        </a>
+        <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
+      </div>
+      <p class="hero-note">C/ Ferrer i Busquets, 88 · 25230 Mollerussa (Lleida)</p>
+    </div>
+
+    <div class="hero-art">
+      <svg viewBox="0 0 440 400" role="img" aria-label="Ilustración abstracta: muestras de color y un rodillo de pintura">
+        <defs>
+          <linearGradient id="hg1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#d4703f"/><stop offset="1" stop-color="#a4451f"/>
+          </linearGradient>
+          <linearGradient id="hg2" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#e6b35c"/><stop offset="1" stop-color="#c88f2c"/>
+          </linearGradient>
+          <linearGradient id="hg3" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#3d8488"/><stop offset="1" stop-color="#265a5e"/>
+          </linearGradient>
+          <linearGradient id="hg4" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#ffffff" stop-opacity=".95"/><stop offset="1" stop-color="#d9e1e7" stop-opacity=".8"/>
+          </linearGradient>
+          <linearGradient id="hgroll" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#f3f6f8"/><stop offset="1" stop-color="#c3ced6"/>
+          </linearGradient>
+        </defs>
+
+        <!-- muros / planos de color -->
+        <rect x="24" y="36" width="190" height="238" rx="16" fill="url(#hg3)" opacity=".92"/>
+        <rect x="52" y="76" width="190" height="238" rx="16" fill="url(#hg2)" opacity=".92"/>
+        <rect x="80" y="116" width="190" height="238" rx="16" fill="url(#hg1)"/>
+
+        <!-- brocha de barrido -->
+        <path d="M96 300c54-34 110-52 162-50" stroke="#ffffff" stroke-opacity=".38" stroke-width="16" stroke-linecap="round" fill="none"/>
+        <path d="M104 328c52-26 104-40 150-38" stroke="#ffffff" stroke-opacity=".2" stroke-width="9" stroke-linecap="round" fill="none"/>
+
+        <!-- tarjeta de muestras -->
+        <g transform="translate(252 160)">
+          <rect x="0" y="0" width="150" height="178" rx="14" fill="url(#hg4)"/>
+          <rect x="18" y="20" width="114" height="26" rx="7" fill="#15202b" opacity=".85"/>
+          <rect x="18" y="56" width="114" height="26" rx="7" fill="#c05a30"/>
+          <rect x="18" y="92" width="114" height="26" rx="7" fill="#d99c3b"/>
+          <rect x="18" y="128" width="114" height="26" rx="7" fill="#2f6f73"/>
+        </g>
+
+        <!-- rodillo -->
+        <g transform="rotate(-24 330 92)">
+          <rect x="268" y="52" width="128" height="34" rx="12" fill="url(#hgroll)"/>
+          <rect x="268" y="52" width="128" height="34" rx="12" fill="none" stroke="#9fadb8" stroke-width="2"/>
+          <path d="M332 86v26h-34" stroke="#e8eef2" stroke-width="7" stroke-linecap="round" fill="none"/>
+          <path d="M298 112h-44" stroke="#d99c3b" stroke-width="9" stroke-linecap="round" fill="none"/>
+        </g>
+        <circle cx="402" cy="366" r="14" fill="#d99c3b" opacity=".75"/>
+        <circle cx="36" cy="344" r="9" fill="#ffffff" opacity=".4"/>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ===== SERVICIOS ===== -->
+<section id="servicios">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Servicios</p>
+      <h2>Trabajos de pintura y decoración, dentro y fuera</h2>
+      <p class="lede">Un mismo equipo para la vivienda, el local comercial y la nave industrial: preparación de superficies, aplicación y acabado.</p>
+    </div>
+
+    <div class="cards">
+      <article class="card">
+        <div class="card-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#c05a30" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="4" width="14" height="6" rx="2"/><path d="M12 10v4H8.5"/><path d="M8.5 14h-1a1.5 1.5 0 0 0-1.5 1.5V20h5v-4.5A1.5 1.5 0 0 0 9.5 14Z"/><path d="M17 7h4"/>
+          </svg>
+        </div>
+        <h3>Pintura interior</h3>
+        <p>Paredes y techos de viviendas y locales: preparación, reparación de imperfecciones y aplicación de pintura con acabado uniforme.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#c05a30" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 20h18"/><path d="M5 20V9l7-5 7 5v11"/><path d="M9.5 20v-5h5v5"/>
+          </svg>
+        </div>
+        <h3>Pintura exterior y fachadas</h3>
+        <p>Revestimiento y pintado de fachadas, patios y elementos exteriores, con los tratamientos previos que cada superficie necesita.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#c05a30" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M14.5 3.5 20.5 9.5 10 20H4v-6L14.5 3.5Z"/><path d="M12.5 5.5 18.5 11.5"/><path d="M4 14h6v6"/>
+          </svg>
+        </div>
+        <h3>Decoración y acabados</h3>
+        <p>Acabados decorativos, esmaltes, papel pintado y elección de color para dar carácter a cada estancia o escaparate.</p>
+      </article>
+
+      <article class="card">
+        <div class="card-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#c05a30" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 21h18"/><path d="M4 21V11l5 3V11l5 3V7l6 4v10"/><path d="M8 21v-3h4v3"/>
+          </svg>
+        </div>
+        <h3>Industria y comercio</h3>
+        <p>Pintura de naves, almacenes, oficinas y locales comerciales, organizando el trabajo para afectar lo menos posible a la actividad.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROCESO ===== -->
+<section id="proceso">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Cómo trabajamos</p>
+      <h2>Tres pasos, de la primera visita al espacio terminado</h2>
+    </div>
+
+    <div class="steps">
+      <article class="step">
+        <div class="step-num">1</div>
+        <h3>Visita y presupuesto</h3>
+        <p>Vemos el espacio, hablamos de lo que se quiere conseguir y preparamos un presupuesto con los trabajos y los materiales detallados.</p>
+      </article>
+      <article class="step">
+        <div class="step-num">2</div>
+        <h3>Preparación y color</h3>
+        <p>Protegemos muebles y suelos, preparamos las superficies y concretamos acabados y colores antes de empezar a aplicar.</p>
+      </article>
+      <article class="step">
+        <div class="step-num">3</div>
+        <h3>Ejecución y repaso final</h3>
+        <p>Realizamos el trabajo, repasamos los detalles con quien lo ha encargado y dejamos la zona limpia y lista para usar.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACTO ===== -->
+<section id="contacto">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Contacto</p>
+      <h2>Estamos en Mollerussa</h2>
+      <p class="lede">Llámanos para comentar el trabajo que tienes en mente y concertar una visita.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div>
+        <ul class="info-list">
+          <li class="info">
+            <div class="info-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#d99c3b" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M6.6 3.5h-2a1.6 1.6 0 0 0-1.6 1.7c.3 3.6 1.8 7 4.2 9.6 2.5 2.6 5.8 4.2 9.4 4.6a1.6 1.6 0 0 0 1.8-1.6v-2a1.6 1.6 0 0 0-1.4-1.6c-.8-.1-1.6-.3-2.3-.6a1.6 1.6 0 0 0-1.7.4l-.9.9a13 13 0 0 1-4.6-4.7l.9-.9a1.6 1.6 0 0 0 .3-1.7c-.3-.8-.5-1.5-.5-2.3a1.6 1.6 0 0 0-1.6-1.4Z"/>
+              </svg>
+            </div>
+            <div class="info-body">
+              <div class="lbl">Teléfono</div>
+              <a class="val" href="tel:+34973600507">973 60 05 07</a>
+            </div>
+          </li>
+
+          <li class="info">
+            <div class="info-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#d99c3b" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/>
+              </svg>
+            </div>
+            <div class="info-body">
+              <div class="lbl">Dirección</div>
+              <div class="val">C/ Ferrer i Busquets, 88</div>
+              <div class="sub">25230 Mollerussa (Lleida)</div>
+            </div>
+          </li>
+
+          <li class="info">
+            <div class="info-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#d99c3b" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3.2 2"/>
+              </svg>
+            </div>
+            <div class="info-body">
+              <div class="lbl">Horario</div>
+              <div class="val">Consultar horario</div>
+            </div>
+          </li>
+
+          <li class="info">
+            <div class="info-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#d99c3b" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="5.5" width="18" height="13" rx="2.4"/><path d="m3.8 7 8.2 6 8.2-6"/>
+              </svg>
+            </div>
+            <div class="info-body">
+              <div class="lbl">Email</div>
+              <a class="val" href="mailto:tarrosonline@tpde.es">tarrosonline@tpde.es</a>
+            </div>
+          </li>
+        </ul>
+
+        <div class="contact-cta">
+          <a class="btn btn-primary" href="tel:+34973600507">
+            <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M6.6 3.5h-2a1.6 1.6 0 0 0-1.6 1.7c.3 3.6 1.8 7 4.2 9.6 2.5 2.6 5.8 4.2 9.4 4.6a1.6 1.6 0 0 0 1.8-1.6v-2a1.6 1.6 0 0 0-1.4-1.6c-.8-.1-1.6-.3-2.3-.6a1.6 1.6 0 0 0-1.7.4l-.9.9a13 13 0 0 1-4.6-4.7l.9-.9a1.6 1.6 0 0 0 .3-1.7c-.3-.8-.5-1.5-.5-2.3a1.6 1.6 0 0 0-1.6-1.4Z"/>
+            </svg>
+            973 60 05 07
+          </a>
+        </div>
+      </div>
+
+      <!-- Mapa esquemático (no representa ningún mapa real) -->
+      <div class="map-card">
+        <svg viewBox="0 0 560 400" role="img" aria-label="Mapa esquemático con calles abstractas y un marcador que señala la ubicación del taller">
+          <defs>
+            <linearGradient id="mbg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#eef1f3"/><stop offset="1" stop-color="#e2e7ea"/>
+            </linearGradient>
+            <linearGradient id="mpin" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#d4703f"/><stop offset="1" stop-color="#a4451f"/>
+            </linearGradient>
+          </defs>
+
+          <rect width="560" height="400" fill="url(#mbg)"/>
+
+          <!-- manzanas -->
+          <g fill="#d7dee3" opacity=".85">
+            <rect x="34" y="34" width="150" height="104" rx="8"/>
+            <rect x="214" y="34" width="118" height="104" rx="8"/>
+            <rect x="362" y="34" width="164" height="104" rx="8"/>
+            <rect x="34" y="176" width="150" height="86" rx="8"/>
+            <rect x="362" y="176" width="164" height="86" rx="8"/>
+            <rect x="34" y="300" width="150" height="66" rx="8"/>
+            <rect x="214" y="300" width="118" height="66" rx="8"/>
+            <rect x="362" y="300" width="164" height="66" rx="8"/>
+          </g>
+          <!-- manzana del negocio, destacada -->
+          <rect x="214" y="176" width="118" height="86" rx="8" fill="#c8d2d8"/>
+
+          <!-- calles -->
+          <g stroke="#ffffff" stroke-linecap="square" fill="none">
+            <path d="M0 157h560" stroke-width="22"/>
+            <path d="M0 281h560" stroke-width="18"/>
+            <path d="M198 0v400" stroke-width="20"/>
+            <path d="M347 0v400" stroke-width="16"/>
+          </g>
+          <g stroke="#b9c4cb" stroke-width="1.6" stroke-dasharray="9 11" fill="none">
+            <path d="M0 157h560"/><path d="M198 0v400"/>
+          </g>
+
+          <!-- vía diagonal -->
+          <path d="M-20 392 L 300 -12" stroke="#ffffff" stroke-width="13" fill="none" opacity=".75"/>
+
+          <!-- zona verde -->
+          <circle cx="462" cy="219" r="26" fill="#9fc0a8" opacity=".55"/>
+
+          <!-- marcador -->
+          <g transform="translate(240 118)">
+            <ellipse cx="33" cy="104" rx="19" ry="6.5" fill="#15202b" opacity=".2"/>
+            <path d="M33 101C33 101 57 73 57 50.5A24 24 0 1 0 9 50.5C9 73 33 101 33 101Z" fill="url(#mpin)" stroke="#8d3a18" stroke-width="2"/>
+            <circle cx="33" cy="48" r="9" fill="#fff"/>
+          </g>
+
+          <!-- etiqueta -->
+          <g transform="translate(246 264)">
+            <rect x="0" y="0" width="278" height="66" rx="14" fill="#15202b" opacity=".94"/>
+            <text x="20" y="28" fill="#ffffff" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="20" font-weight="650">C/ Ferrer i Busquets, 88</text>
+            <text x="20" y="50" fill="#bac6d0" font-family="ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="16">25230 Mollerussa (Lleida)</text>
+          </g>
+        </svg>
+
+        <div class="map-foot">
+          <strong>Plano esquemático</strong>
+          <span>Representación orientativa, no es un mapa a escala.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ===== PIE ===== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="nm">Pintura i Decoració Tarròs</div>
+        <p>Pintura y decoración para hogar, negocios e industria. C/ Ferrer i Busquets, 88 · 25230 Mollerussa (Lleida).</p>
+      </div>
+
+      <div class="foot-links">
+        <div class="lbl">Contacto</div>
+        <a href="tel:+34973600507">973 60 05 07</a>
+        <a href="mailto:tarrosonline@tpde.es">tarrosonline@tpde.es</a>
+        <div class="val" style="font-size:.95rem;color:#e3e9ee">Consultar horario</div>
+      </div>
+
+      <div class="foot-links">
+        <div class="lbl">Redes</div>
+        <a href="https://facebook.com/tarrospintures.decoracio/">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.2h2.5l.4-2.9h-2.9V9.1c0-.8.2-1.4 1.5-1.4h1.5V5.1C16.2 5 15.4 5 14.5 5c-2.3 0-3.9 1.4-3.9 4v2H8.1v2.9h2.5V21h2.9Z"/></svg>
+          Facebook
+        </a>
+        <a href="https://instagram.com/tarrospintures/">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1.1" fill="currentColor" stroke="none"/></svg>
+          Instagram
+        </a>
+      </div>
+    </div>
+
+    <p class="foot-note">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+</body>
+</html>
