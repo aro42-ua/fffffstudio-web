@@ -1,0 +1,661 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rutas Ecuestres Doñana · El Rocío (Almonte)</title>
+<meta name="description" content="Rutas a caballo por el entorno de Doñana y El Rocío. Salidas guiadas, iniciación y grupos. El Rocío, Almonte (Huelva).">
+<style>
+  :root{
+    --arena:#F7F1E6;
+    --arena-2:#EFE6D6;
+    --crema:#FFFDF8;
+    --marisma:#3F6B57;
+    --marisma-osc:#2A4A3C;
+    --agua:#2E6F73;
+    --agua-cl:#D9E8E6;
+    --terracota:#B8603A;
+    --tinta:#1F2A24;
+    --tinta-sv:#5C6A61;
+    --linea:rgba(31,42,36,.12);
+    --barra:60px;
+    --sombra:0 1px 2px rgba(31,42,36,.05),0 10px 30px rgba(31,42,36,.07);
+    --r:18px;
+    --fuente:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;padding:0;
+    font-family:var(--fuente);
+    color:var(--tinta);
+    background:var(--arena);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  img,svg{max-width:100%;display:block}
+  a{color:inherit}
+  h1,h2,h3{margin:0;line-height:1.14;letter-spacing:-.02em;font-weight:650}
+  p{margin:0}
+
+  /* ---------- Barra fija ---------- */
+  .barra{
+    position:fixed;inset:0 0 auto 0;z-index:100;
+    min-height:var(--barra);
+    display:flex;align-items:center;justify-content:center;
+    gap:10px;
+    padding:9px 16px;
+    background:var(--tinta);
+    color:#F4EFE6;
+    font-size:12.5px;line-height:1.35;
+    letter-spacing:.01em;
+    text-align:center;
+    box-shadow:0 2px 14px rgba(31,42,36,.18);
+  }
+  .barra .punto{
+    width:7px;height:7px;border-radius:50%;
+    background:var(--terracota);flex:0 0 auto;
+  }
+  .barra span{display:inline-block;max-width:100%}
+
+  /* ---------- Cabecera de marca ---------- */
+  .pagina{padding-top:var(--barra)}
+  .nav{
+    position:sticky;top:var(--barra);z-index:90;
+    background:rgba(247,241,230,.88);
+    -webkit-backdrop-filter:saturate(140%) blur(10px);
+    backdrop-filter:saturate(140%) blur(10px);
+    border-bottom:1px solid var(--linea);
+  }
+  .nav-in{
+    max-width:1160px;margin:0 auto;padding:12px 20px;
+    display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+  }
+  .marca{display:flex;align-items:center;gap:11px;min-width:0}
+  .marca .sello{
+    width:38px;height:38px;flex:0 0 auto;border-radius:12px;
+    background:linear-gradient(145deg,var(--marisma),var(--agua));
+    display:grid;place-items:center;
+  }
+  .marca b{display:block;font-size:15px;font-weight:650;letter-spacing:-.01em;white-space:nowrap}
+  .marca small{display:block;font-size:11.5px;color:var(--tinta-sv);letter-spacing:.06em;text-transform:uppercase}
+  .nav-links{display:flex;gap:22px;margin-left:auto;font-size:14px}
+  .nav-links a{text-decoration:none;color:var(--tinta-sv)}
+  .nav-links a:hover{color:var(--marisma)}
+  .nav-tel{
+    margin-left:auto;display:inline-flex;align-items:center;gap:8px;
+    text-decoration:none;font-size:14px;font-weight:600;
+    padding:9px 15px;border-radius:999px;
+    background:var(--marisma);color:#fff;white-space:nowrap;
+  }
+  .nav-links + .nav-tel{margin-left:0}
+
+  /* ---------- Contenedores ---------- */
+  .env{max-width:1160px;margin:0 auto;padding:0 20px}
+  section{position:relative}
+  .eyebrow{
+    font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--agua);font-weight:650;margin-bottom:14px;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(90% 70% at 85% 0%,rgba(46,111,115,.14),transparent 60%),
+      linear-gradient(180deg,#FBF7EF 0%,var(--arena) 60%,var(--arena-2) 100%);
+  }
+  .hero-in{
+    max-width:1160px;margin:0 auto;padding:62px 20px 0;
+    display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);
+    gap:44px;align-items:center;
+  }
+  .hero h1{font-size:clamp(32px,5.1vw,58px)}
+  .hero h1 em{font-style:normal;color:var(--marisma)}
+  .hero .entradilla{
+    margin-top:20px;font-size:clamp(16px,1.35vw,18.5px);
+    color:var(--tinta-sv);max-width:46ch;
+  }
+  .acciones{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    text-decoration:none;font-weight:650;font-size:16px;
+    padding:15px 24px;border-radius:999px;
+    border:1px solid transparent;transition:transform .15s ease;
+  }
+  .btn:active{transform:translateY(1px)}
+  .btn-pri{background:var(--marisma);color:#fff;box-shadow:0 10px 24px rgba(63,107,87,.25)}
+  .btn-sec{background:transparent;color:var(--marisma-osc);border-color:rgba(31,42,36,.22)}
+  .hero-notas{
+    display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:28px;
+    font-size:13.5px;color:var(--tinta-sv);
+  }
+  .hero-notas span{display:inline-flex;align-items:center;gap:8px}
+  .hero-art{min-width:0}
+  .hero-art svg{width:100%;height:auto;border-radius:var(--r);box-shadow:var(--sombra)}
+  .onda{display:block;width:100%;height:auto;margin-top:-2px}
+
+  /* ---------- Servicios ---------- */
+  .servicios{padding:72px 0 76px;background:var(--crema)}
+  .cab{max-width:62ch}
+  .cab h2{font-size:clamp(26px,3.2vw,38px)}
+  .cab p{margin-top:14px;color:var(--tinta-sv);font-size:16.5px}
+  .rejilla{
+    display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:18px;margin-top:40px;
+  }
+  .tarjeta{
+    background:var(--arena);border:1px solid var(--linea);
+    border-radius:var(--r);padding:24px 22px 26px;
+    display:flex;flex-direction:column;gap:12px;min-width:0;
+  }
+  .tarjeta .ico{
+    width:46px;height:46px;border-radius:13px;flex:0 0 auto;
+    background:var(--agua-cl);display:grid;place-items:center;
+  }
+  .tarjeta h3{font-size:18px}
+  .tarjeta p{font-size:14.5px;color:var(--tinta-sv)}
+
+  /* ---------- Reservar ---------- */
+  .reservar{padding:76px 0 80px;background:linear-gradient(180deg,var(--arena) 0%,var(--arena-2) 100%)}
+  .pasos{
+    display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:18px;margin-top:40px;
+  }
+  .paso{
+    background:var(--crema);border:1px solid var(--linea);
+    border-radius:var(--r);padding:26px 24px 28px;min-width:0;
+    box-shadow:var(--sombra);
+  }
+  .paso .num{
+    width:38px;height:38px;border-radius:50%;
+    background:var(--marisma);color:#fff;
+    display:grid;place-items:center;font-weight:700;font-size:15px;
+    margin-bottom:16px;
+  }
+  .paso h3{font-size:18.5px}
+  .paso p{margin-top:9px;font-size:14.5px;color:var(--tinta-sv)}
+  .cinta{
+    margin-top:34px;padding:20px 24px;border-radius:var(--r);
+    background:var(--marisma-osc);color:#EDE7DA;
+    display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px;
+  }
+  .cinta p{font-size:15px;min-width:0}
+  .cinta a{
+    margin-left:auto;text-decoration:none;font-weight:650;font-size:15px;
+    padding:12px 20px;border-radius:999px;background:#F7F1E6;color:var(--marisma-osc);
+    white-space:nowrap;
+  }
+
+  /* ---------- Contacto ---------- */
+  .contacto{padding:76px 0 80px;background:var(--crema)}
+  .contacto-rejilla{
+    display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);
+    gap:36px;align-items:start;margin-top:36px;
+  }
+  .datos{display:flex;flex-direction:column;gap:14px}
+  .dato{
+    display:flex;gap:14px;align-items:flex-start;
+    padding:18px 20px;border:1px solid var(--linea);border-radius:14px;
+    background:var(--arena);min-width:0;
+  }
+  .dato .ico{
+    width:38px;height:38px;flex:0 0 auto;border-radius:11px;
+    background:var(--agua-cl);display:grid;place-items:center;
+  }
+  .dato .et{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--tinta-sv)}
+  .dato .vl{font-size:16px;font-weight:600;margin-top:3px;word-break:break-word;overflow-wrap:anywhere}
+  .dato .vl a{text-decoration:none;color:var(--marisma-osc)}
+  .dato .vl a:hover{text-decoration:underline}
+  .mapa{
+    border:1px solid var(--linea);border-radius:var(--r);
+    background:var(--arena);padding:14px;box-shadow:var(--sombra);min-width:0;
+  }
+  .mapa svg{width:100%;height:auto;border-radius:12px;display:block}
+  .mapa .pie{
+    font-size:12.5px;color:var(--tinta-sv);
+    padding:12px 6px 2px;text-align:center;
+  }
+
+  /* ---------- Pie ---------- */
+  footer{background:var(--tinta);color:#E7E1D5;padding:52px 0 40px}
+  .pie-rejilla{
+    display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);
+    gap:30px;align-items:start;
+  }
+  footer .marca b{color:#FFFDF8}
+  footer .marca small{color:rgba(231,225,213,.6)}
+  .pie-txt{margin-top:16px;font-size:14.5px;color:rgba(231,225,213,.75);max-width:44ch}
+  .pie-contacto{display:flex;flex-direction:column;gap:9px;font-size:15px}
+  .pie-contacto a{text-decoration:none;color:#FFFDF8;word-break:break-word;overflow-wrap:anywhere}
+  .pie-contacto span{color:rgba(231,225,213,.7);font-size:14px}
+  .pie-linea{
+    margin-top:36px;padding-top:20px;border-top:1px solid rgba(231,225,213,.18);
+    font-size:13px;color:rgba(231,225,213,.72);
+    display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:980px){
+    .hero-in{grid-template-columns:1fr;gap:34px;padding-top:48px}
+    .rejilla{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .contacto-rejilla{grid-template-columns:1fr}
+    .pie-rejilla{grid-template-columns:1fr}
+    .nav-links{display:none}
+  }
+  @media (max-width:640px){
+    :root{--barra:68px;--r:16px}
+    .barra{font-size:11.5px;padding:9px 14px}
+    .nav-in{padding:10px 16px;gap:10px}
+    .env,.hero-in{padding-left:16px;padding-right:16px}
+    .hero-in{padding-top:36px}
+    .hero .entradilla{font-size:16px}
+    .acciones{gap:10px}
+    .btn{width:100%;justify-content:center;padding:15px 18px}
+    .rejilla,.pasos{grid-template-columns:1fr;gap:14px}
+    .servicios,.reservar,.contacto{padding:54px 0 58px}
+    .cinta{flex-direction:column;align-items:flex-start}
+    .cinta a{margin-left:0;width:100%;text-align:center}
+    .nav-tel{font-size:13px;padding:8px 13px}
+    .dato .vl{font-size:14.5px}
+    .marca .sello{width:34px;height:34px}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="barra" role="note">
+  <span class="punto" aria-hidden="true"></span>
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<div class="pagina">
+
+  <header class="nav">
+    <div class="nav-in">
+      <div class="marca">
+        <div class="sello" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M3 17c2.6 0 3.6-1.6 4.4-3.3C8.4 11.5 9.6 9 13 9c1.9 0 3 .8 4 1.8" stroke="#FFFDF8" stroke-width="1.7" stroke-linecap="round"/>
+            <path d="M13 9V6.4c0-.5.5-.8.9-.5l3.3 2.3c.3.2.7.2 1 0l1.4-.8" stroke="#FFFDF8" stroke-width="1.7" stroke-linecap="round"/>
+            <path d="M7.4 13.7 6.2 19M11.6 11.2 11 19M16.2 11.4 18 19" stroke="#FFFDF8" stroke-width="1.7" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <b>Rutas Ecuestres Doñana</b>
+          <small>El Rocío · Almonte</small>
+        </div>
+      </div>
+      <nav class="nav-links" aria-label="Secciones">
+        <a href="#servicios">Rutas</a>
+        <a href="#reservar">Cómo reservar</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <a class="nav-tel" href="tel:+34687572850">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M6.5 3.5h2.8l1.4 3.4-2 1.4a11 11 0 0 0 5 5l1.4-2 3.4 1.4v2.8c0 1.1-.9 2-2 2A14.5 14.5 0 0 1 4.5 5.5c0-1.1.9-2 2-2Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        687 572 850
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-in">
+      <div>
+        <p class="eyebrow">Turismo ecuestre · Huelva</p>
+        <h1>Rutas a caballo por el entorno de <em>Doñana</em> y El&nbsp;Rocío</h1>
+        <p class="entradilla">Salidas guiadas a caballo desde El Rocío, en Almonte. Para quien quiere conocer el paisaje de marisma, arena y pinares al paso tranquilo de un caballo.</p>
+        <div class="acciones">
+          <a class="btn btn-pri" href="tel:+34687572850">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6.5 3.5h2.8l1.4 3.4-2 1.4a11 11 0 0 0 5 5l1.4-2 3.4 1.4v2.8c0 1.1-.9 2-2 2A14.5 14.5 0 0 1 4.5 5.5c0-1.1.9-2 2-2Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Llamar al 687 572 850
+          </a>
+          <a class="btn btn-sec" href="#servicios">Ver las rutas</a>
+        </div>
+        <div class="hero-notas">
+          <span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="var(--agua)" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="var(--agua)" stroke-width="1.7"/></svg>
+            El Rocío, Almonte (Huelva)
+          </span>
+          <span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.2" stroke="var(--agua)" stroke-width="1.7"/><path d="M12 7.6V12l3 1.8" stroke="var(--agua)" stroke-width="1.7" stroke-linecap="round"/></svg>
+            Consultar horario
+          </span>
+          <span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 18c2.4 0 3.4-1.5 4.2-3.1.9-2 2-4.3 5.2-4.3 1.8 0 2.8.7 3.7 1.6" stroke="var(--agua)" stroke-width="1.7" stroke-linecap="round"/><path d="M13.4 10.6V8.2c0-.5.5-.8.9-.5l3.1 2.1c.3.2.7.2.9 0l1.3-.7" stroke="var(--agua)" stroke-width="1.7" stroke-linecap="round"/></svg>
+            Salidas guiadas a caballo
+          </span>
+        </div>
+      </div>
+
+      <div class="hero-art">
+        <!-- Paisaje estilizado: marisma, agua, pinares y caballo. 100% SVG. -->
+        <svg viewBox="0 0 640 480" role="img" aria-label="Ilustración estilizada de paisaje de marisma con un caballo">
+          <defs>
+            <linearGradient id="cielo" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#FDF6E9"/>
+              <stop offset="52%" stop-color="#F2E7D2"/>
+              <stop offset="100%" stop-color="#E9DFC8"/>
+            </linearGradient>
+            <linearGradient id="agua" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#9FC4C2"/>
+              <stop offset="100%" stop-color="#6FA3A4"/>
+            </linearGradient>
+            <linearGradient id="suelo" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#E4D4B4"/>
+              <stop offset="100%" stop-color="#D6C29C"/>
+            </linearGradient>
+            <clipPath id="marco"><rect x="0" y="0" width="640" height="480" rx="20"/></clipPath>
+          </defs>
+
+          <g clip-path="url(#marco)">
+            <rect width="640" height="480" fill="url(#cielo)"/>
+            <circle cx="486" cy="112" r="54" fill="#F6E3C4" opacity=".85"/>
+            <circle cx="486" cy="112" r="34" fill="#F3D9AE" opacity=".9"/>
+
+            <!-- nubes largas -->
+            <g fill="#FFFDF6" opacity=".66">
+              <rect x="60" y="92" width="190" height="11" rx="5.5"/>
+              <rect x="120" y="120" width="128" height="9" rx="4.5"/>
+              <rect x="372" y="168" width="160" height="9" rx="4.5"/>
+            </g>
+
+            <!-- línea de pinares -->
+            <g fill="#4C7360" opacity=".55">
+              <path d="M0 236h640v16H0z"/>
+            </g>
+            <g fill="#3F6B57" opacity=".75">
+              <path d="M24 236c6-26 12-34 18-34s12 8 18 34H24Z"/>
+              <path d="M78 236c7-32 14-42 22-42s15 10 22 42H78Z"/>
+              <path d="M146 236c5-22 10-29 15-29s10 7 15 29h-30Z"/>
+              <path d="M208 236c7-30 13-39 20-39s14 9 21 39h-41Z"/>
+              <path d="M292 236c5-20 9-27 14-27s9 7 14 27h-28Z"/>
+              <path d="M352 236c7-28 13-37 20-37s14 9 20 37h-40Z"/>
+              <path d="M436 236c5-23 10-31 15-31s10 8 15 31h-30Z"/>
+              <path d="M500 236c7-31 14-41 21-41s15 10 22 41h-43Z"/>
+              <path d="M578 236c5-19 9-26 14-26s9 7 14 26h-28Z"/>
+            </g>
+
+            <!-- lámina de agua -->
+            <path d="M0 252h640v96H0z" fill="url(#agua)"/>
+            <g stroke="#FFFDF8" stroke-width="3" stroke-linecap="round" opacity=".5">
+              <path d="M44 276h92M172 290h64M268 272h120M424 292h86M96 310h118M300 318h96M452 266h60M120 334h150M352 338h120"/>
+            </g>
+            <!-- reflejo cálido -->
+            <g fill="#F7E8CE" opacity=".45">
+              <rect x="462" y="258" width="48" height="6" rx="3"/>
+              <rect x="470" y="276" width="32" height="6" rx="3"/>
+              <rect x="458" y="296" width="56" height="6" rx="3"/>
+            </g>
+
+            <!-- orilla de arena -->
+            <path d="M0 348c86-14 150 10 238 4 92-6 148-22 240-14 62 5 100 14 162 8v134H0V348Z" fill="url(#suelo)"/>
+            <g stroke="#C8B28A" stroke-width="4" stroke-linecap="round" opacity=".7">
+              <path d="M52 400h110M210 416h86M330 398h126M480 420h92M100 440h150M320 448h140"/>
+            </g>
+
+            <!-- juncos -->
+            <g stroke="#3F6B57" stroke-width="4" stroke-linecap="round" opacity=".8">
+              <path d="M44 358v-34M56 358v-26M68 358v-40M592 366v-36M604 366v-26M580 366v-30"/>
+            </g>
+
+            <!-- caballo estilizado -->
+            <g transform="translate(172 306)" fill="none" stroke="#2A4A3C" stroke-linecap="round" stroke-linejoin="round">
+              <ellipse cx="105" cy="128" rx="76" ry="5" fill="#1F2A24" opacity=".15" stroke="none"/>
+              <path d="M54 60c-12 4-19 18-21 38" stroke-width="7"/>
+              <path d="M64 82v18l-8 24" stroke-width="7"/>
+              <path d="M80 84v18l6 22" stroke-width="7"/>
+              <path d="M128 80v20l-6 24" stroke-width="7"/>
+              <path d="M142 76v24l7 24" stroke-width="7"/>
+              <path d="M124 72 L148 14 L170 23 L146 76 Z" fill="#2A4A3C" stroke="none"/>
+              <path d="M145 16c2-9 10-13 18-9l22 11c6 3 5 10-1 12l-20 7c-10 3-21-7-19-21Z" fill="#2A4A3C" stroke="none"/>
+              <path d="M152 6l2-12 9 9Z" fill="#2A4A3C" stroke="none"/>
+              <ellipse cx="99" cy="60" rx="47" ry="26" fill="#2A4A3C" stroke="none"/>
+              <path d="M147 17c7-2 12 1 14 6" stroke="#4C7360" stroke-width="5"/>
+              <path d="M137 42c8-3 14-1 18 4" stroke="#4C7360" stroke-width="5"/>
+              <circle cx="163" cy="15" r="3" fill="#F7F1E6" stroke="none"/>
+            </g>
+            <!-- aves -->
+            <g stroke="#2A4A3C" stroke-width="3.2" fill="none" stroke-linecap="round" opacity=".6">
+              <path d="M108 58c6-6 10-6 16 0M140 44c6-6 10-6 16 0M126 76c5-5 9-5 14 0"/>
+            </g>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <svg class="onda" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 42c180-26 360 18 540 14s360-44 540-30 300 30 360 26V70H0V42Z" fill="#FFFDF8"/>
+    </svg>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section class="servicios" id="servicios">
+    <div class="env">
+      <div class="cab">
+        <p class="eyebrow">Qué ofrecemos</p>
+        <h2>Caballos, paisaje y buen paso</h2>
+        <p>Actividades de turismo ecuestre en el entorno de Doñana y El Rocío. Cuéntanos qué te apetece y lo vemos por teléfono.</p>
+      </div>
+
+      <div class="rejilla">
+        <article class="tarjeta">
+          <div class="ico" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3.5 17.5c2.6 0 3.7-1.6 4.6-3.4 1-2.2 2.2-4.8 5.7-4.8 2 0 3.2.9 4.2 1.9" stroke="var(--marisma)" stroke-width="1.8" stroke-linecap="round"/><path d="M13.8 9.3V6.5c0-.6.6-.9 1-.5l3.4 2.4c.3.2.8.2 1.1 0l1.4-.9" stroke="var(--marisma)" stroke-width="1.8" stroke-linecap="round"/><path d="M8.1 14.1 7 19.5M12.4 11.6 11.8 19.5M17 11.8 18.8 19.5" stroke="var(--marisma)" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Rutas a caballo</h3>
+          <p>Paseos por el entorno natural de El Rocío, con el caballo como forma de descubrirlo con calma.</p>
+        </article>
+
+        <article class="tarjeta">
+          <div class="ico" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 20V7.5l7-3.5 7 3.5V20" stroke="var(--marisma)" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 20v-6.5" stroke="var(--marisma)" stroke-width="1.8" stroke-linecap="round"/><path d="M8.6 20v-3.2M15.4 20v-3.2" stroke="var(--marisma)" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Salidas guiadas</h3>
+          <p>Siempre acompañados: salimos con guía para que solo tengas que disfrutar del camino.</p>
+        </article>
+
+        <article class="tarjeta">
+          <div class="ico" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.4" stroke="var(--marisma)" stroke-width="1.8"/><path d="M12 8.2v7.6M8.2 12h7.6" stroke="var(--marisma)" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Iniciación</h3>
+          <p>¿Nunca has montado? Hay sitio para ti: adaptamos la salida a quien empieza desde cero.</p>
+        </article>
+
+        <article class="tarjeta">
+          <div class="ico" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="9.2" r="3.1" stroke="var(--marisma)" stroke-width="1.8"/><circle cx="16.6" cy="10.4" r="2.4" stroke="var(--marisma)" stroke-width="1.8"/><path d="M3.4 19c0-3.1 2.5-5 5.6-5s5.6 1.9 5.6 5" stroke="var(--marisma)" stroke-width="1.8" stroke-linecap="round"/><path d="M16 14.4c2.6.2 4.6 1.9 4.6 4.6" stroke="var(--marisma)" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Grupos</h3>
+          <p>Familias, amigos o grupos que vienen a El Rocío: consúltanos y organizamos la salida.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESERVAR -->
+  <section class="reservar" id="reservar">
+    <div class="env">
+      <div class="cab">
+        <p class="eyebrow">Cómo reservar</p>
+        <h2>Tres pasos y estás sobre el caballo</h2>
+        <p>Reservamos por teléfono o por correo, directamente con nosotros.</p>
+      </div>
+
+      <div class="pasos">
+        <article class="paso">
+          <div class="num">1</div>
+          <h3>Nos escribes o llamas</h3>
+          <p>Cuéntanos cuántos sois, si habéis montado antes y qué fechas tenéis en mente.</p>
+        </article>
+        <article class="paso">
+          <div class="num">2</div>
+          <h3>Lo ajustamos contigo</h3>
+          <p>Te proponemos la salida que mejor encaja y confirmamos el día y la hora disponibles.</p>
+        </article>
+        <article class="paso">
+          <div class="num">3</div>
+          <h3>Nos vemos en El Rocío</h3>
+          <p>Te esperamos en nuestra dirección de El Rocío y salimos desde allí con los caballos.</p>
+        </article>
+      </div>
+
+      <div class="cinta">
+        <p>Lo más rápido es una llamada: te contamos las opciones en un minuto.</p>
+        <a href="tel:+34687572850">Llamar al 687 572 850</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="contacto" id="contacto">
+    <div class="env">
+      <div class="cab">
+        <p class="eyebrow">Contacto</p>
+        <h2>Estamos en El Rocío</h2>
+        <p>Puedes llamarnos, escribirnos un correo o venir a vernos.</p>
+      </div>
+
+      <div class="contacto-rejilla">
+        <div class="datos">
+          <div class="dato">
+            <div class="ico" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6.5 3.5h2.8l1.4 3.4-2 1.4a11 11 0 0 0 5 5l1.4-2 3.4 1.4v2.8c0 1.1-.9 2-2 2A14.5 14.5 0 0 1 4.5 5.5c0-1.1.9-2 2-2Z" stroke="var(--marisma)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <div class="et">Teléfono</div>
+              <div class="vl"><a href="tel:+34687572850">687 572 850</a></div>
+            </div>
+          </div>
+
+          <div class="dato">
+            <div class="ico" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="var(--marisma)" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="var(--marisma)" stroke-width="1.8"/></svg>
+            </div>
+            <div>
+              <div class="et">Dirección</div>
+              <div class="vl">C/ Sanlúcar, 77, El Rocío,<br>21750 Almonte (Huelva)</div>
+            </div>
+          </div>
+
+          <div class="dato">
+            <div class="ico" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3.4" y="5.6" width="17.2" height="12.8" rx="2.4" stroke="var(--marisma)" stroke-width="1.8"/><path d="m4.4 7 7.6 5.4L19.6 7" stroke="var(--marisma)" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <div>
+              <div class="et">Correo</div>
+              <div class="vl"><a href="mailto:rutasecuestresdonana@gmail.com">rutasecuestresdonana@gmail.com</a></div>
+            </div>
+          </div>
+
+          <div class="dato">
+            <div class="ico" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.4" stroke="var(--marisma)" stroke-width="1.8"/><path d="M12 7.4V12l3.2 1.9" stroke="var(--marisma)" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <div>
+              <div class="et">Horario</div>
+              <div class="vl">Consultar horario</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mapa">
+          <!-- Mapa esquemático abstracto: caminos, lámina de agua y marcador. Sin topónimos. -->
+          <svg viewBox="0 0 680 430" role="img" aria-label="Mapa esquemático con caminos abstractos y un marcador de la ubicación">
+            <defs>
+              <clipPath id="marcoMapa"><rect x="0" y="0" width="680" height="430" rx="14"/></clipPath>
+            </defs>
+            <g clip-path="url(#marcoMapa)">
+              <rect width="680" height="430" fill="#F3EADA"/>
+              <!-- retícula suave -->
+              <g stroke="#E0D2B8" stroke-width="1.4">
+                <path d="M0 48h680M0 112h680M0 176h680M0 240h680M0 304h680M0 368h680"/>
+                <path d="M56 0v430M152 0v430M248 0v430M344 0v430M440 0v430M536 0v430M632 0v430"/>
+              </g>
+              <!-- mancha de agua abstracta -->
+              <path d="M396 60c74-6 134 18 160 58 24 38 8 84-36 106-46 24-108 18-142-14-32-30-30-74-6-104 10-14 14-42 24-46Z" fill="#CFE2E0"/>
+              <path d="M424 108c48-4 86 12 102 38" stroke="#9FC4C2" stroke-width="5" stroke-linecap="round" fill="none"/>
+              <path d="M416 158c40 0 70 12 88 32" stroke="#9FC4C2" stroke-width="5" stroke-linecap="round" fill="none"/>
+              <!-- zona verde abstracta -->
+              <path d="M0 300c80-22 150 6 214 2 46-4 80-26 130-20 30 4 52 18 76 16v132H0V300Z" fill="#DCE6D8"/>
+              <!-- caminos -->
+              <path d="M-10 236c92 0 128-38 196-38 56 0 92 30 150 30 62 0 96-36 164-36 54 0 90 24 180 20"
+                    stroke="#CBB68E" stroke-width="18" fill="none" stroke-linecap="round"/>
+              <path d="M-10 236c92 0 128-38 196-38 56 0 92 30 150 30 62 0 96-36 164-36 54 0 90 24 180 20"
+                    stroke="#F6EEDE" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="22 16"/>
+              <path d="M186 198c6-62 24-98 56-132" stroke="#CBB68E" stroke-width="13" fill="none" stroke-linecap="round"/>
+              <path d="M336 228c-14 66-10 124 10 176" stroke="#CBB68E" stroke-width="13" fill="none" stroke-linecap="round"/>
+              <path d="M336 228c-14 66-10 124 10 176" stroke="#F6EEDE" stroke-width="5" fill="none" stroke-linecap="round" stroke-dasharray="16 14"/>
+              <path d="M500 192c44-30 92-40 150-36" stroke="#CBB68E" stroke-width="11" fill="none" stroke-linecap="round"/>
+              <!-- manzanas abstractas -->
+              <g fill="#E8DAC0" stroke="#D9C8A6" stroke-width="2">
+                <rect x="68" y="266" width="76" height="46" rx="7"/>
+                <rect x="166" y="276" width="62" height="38" rx="7"/>
+                <rect x="96" y="124" width="64" height="40" rx="7"/>
+                <rect x="252" y="112" width="56" height="36" rx="7"/>
+              </g>
+              <!-- marcador -->
+              <g transform="translate(236 150)">
+                <ellipse cx="34" cy="92" rx="24" ry="7" fill="#1F2A24" opacity=".16"/>
+                <path d="M34 90s30-30 30-50a30 30 0 1 0-60 0c0 20 30 50 30 50Z" fill="#B8603A"/>
+                <circle cx="34" cy="39" r="11.5" fill="#FFF7EA"/>
+              </g>
+              <!-- rosa de los vientos -->
+              <g transform="translate(606 360)" opacity=".75">
+                <circle r="26" fill="#FFFDF8" stroke="#D9C8A6" stroke-width="2"/>
+                <path d="M0-18 5-3h-10Z" fill="#B8603A"/>
+                <path d="M0 18 5 3h-10Z" fill="#8E9C8F"/>
+                <path d="M0-14v28" stroke="#C9BCA2" stroke-width="1.4"/>
+              </g>
+            </g>
+          </svg>
+          <p class="pie">Mapa esquemático orientativo. Dirección exacta: C/ Sanlúcar, 77, El Rocío, 21750 Almonte (Huelva).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PIE -->
+  <footer>
+    <div class="env">
+      <div class="pie-rejilla">
+        <div>
+          <div class="marca">
+            <div class="sello" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M3 17c2.6 0 3.6-1.6 4.4-3.3C8.4 11.5 9.6 9 13 9c1.9 0 3 .8 4 1.8" stroke="#FFFDF8" stroke-width="1.7" stroke-linecap="round"/>
+                <path d="M13 9V6.4c0-.5.5-.8.9-.5l3.3 2.3c.3.2.7.2 1 0l1.4-.8" stroke="#FFFDF8" stroke-width="1.7" stroke-linecap="round"/>
+                <path d="M7.4 13.7 6.2 19M11.6 11.2 11 19M16.2 11.4 18 19" stroke="#FFFDF8" stroke-width="1.7" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <b>Rutas Ecuestres Doñana</b>
+              <small>Turismo ecuestre · El Rocío</small>
+            </div>
+          </div>
+          <p class="pie-txt">Rutas a caballo por el entorno de Doñana y El Rocío, en Almonte (Huelva).</p>
+        </div>
+
+        <div class="pie-contacto">
+          <a href="tel:+34687572850">687 572 850</a>
+          <a href="mailto:rutasecuestresdonana@gmail.com">rutasecuestresdonana@gmail.com</a>
+          <span>C/ Sanlúcar, 77, El Rocío, 21750 Almonte (Huelva)</span>
+          <span>Consultar horario</span>
+        </div>
+      </div>
+
+      <div class="pie-linea">
+        <span>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

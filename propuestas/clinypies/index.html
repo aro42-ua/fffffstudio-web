@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clinypies, C.B. — Clínica de podología en Tomelloso</title>
+<meta name="description" content="Clinypies, C.B. — clínica de podología en Tomelloso (Ciudad Real). C/ Lepanto, 55. Teléfono 926 028 905.">
+<style>
+  :root{
+    --tinta:#10242e;
+    --tinta-2:#2d4a56;
+    --suave:#5d7784;
+    --linea:#dfe7ea;
+    --linea-2:#eef3f5;
+    --papel:#ffffff;
+    --papel-2:#f6f9fa;
+    --acento:#0f6f7a;
+    --acento-2:#0b545d;
+    --acento-luz:#e6f2f3;
+    --menta:#9fd4cf;
+    --barra:#0a1b22;
+    --radio:18px;
+    --sombra:0 1px 2px rgba(16,36,46,.04),0 12px 32px -12px rgba(16,36,46,.14);
+    --fuente:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    font-family:var(--fuente);
+    color:var(--tinta);
+    background:var(--papel);
+    font-size:17px;
+    line-height:1.65;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%;display:block}
+  h1,h2,h3{margin:0;line-height:1.15;letter-spacing:-.022em;font-weight:650}
+  p{margin:0}
+  a{color:inherit}
+
+  /* ---------- barra fija ---------- */
+  .aviso{
+    position:fixed;inset:0 0 auto 0;z-index:100;
+    background:var(--barra);
+    color:#cfe0e3;
+    font-size:12px;
+    letter-spacing:.02em;
+    padding:9px 16px;
+    text-align:center;
+    line-height:1.4;
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .aviso b{color:#fff;font-weight:600}
+  body{padding-top:46px}
+
+  .envoltura{width:100%;max-width:1120px;margin:0 auto;padding:0 28px}
+
+  /* ---------- cabecera ---------- */
+  .cabecera{
+    border-bottom:1px solid var(--linea);
+    background:rgba(255,255,255,.9);
+  }
+  .cabecera-fila{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px 0}
+  .marca{display:flex;align-items:center;gap:11px;min-width:0}
+  .marca-sello{width:38px;height:38px;flex:0 0 38px}
+  .marca-texto{min-width:0}
+  .marca-nombre{font-weight:680;font-size:18px;letter-spacing:-.02em;white-space:nowrap}
+  .marca-sub{font-size:11.5px;color:var(--suave);letter-spacing:.07em;text-transform:uppercase;line-height:1.3}
+  .cabecera-nav{display:flex;align-items:center;gap:26px}
+  .cabecera-nav a{color:var(--tinta-2);text-decoration:none;font-size:14.5px;font-weight:500}
+  .cabecera-nav a:hover{color:var(--acento)}
+  .cabecera-nav a.tel-cab,
+  .tel-cab{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--acento);color:#fff;text-decoration:none;
+    padding:10px 17px;border-radius:999px;font-weight:600;font-size:14.5px;white-space:nowrap;
+  }
+  .cabecera-nav a.tel-cab:hover,
+  .tel-cab:hover{background:var(--acento-2);color:#fff}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(120% 90% at 100% 0%, #e9f4f4 0%, rgba(233,244,244,0) 58%),
+      radial-gradient(90% 80% at 0% 100%, #f1f7f8 0%, rgba(241,247,248,0) 60%),
+      linear-gradient(180deg,#fbfdfd 0%,#ffffff 100%);
+    border-bottom:1px solid var(--linea);
+  }
+  .hero-rejilla{
+    display:grid;grid-template-columns:1.08fr .92fr;gap:54px;align-items:center;
+    padding:82px 0 88px;
+  }
+  .pildora{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--acento-2);background:var(--acento-luz);
+    padding:7px 14px;border-radius:999px;margin-bottom:22px;
+  }
+  .pildora span{width:6px;height:6px;border-radius:50%;background:var(--acento);flex:0 0 6px}
+  .hero h1{font-size:clamp(34px,4.6vw,55px);font-weight:680}
+  .hero h1 em{font-style:normal;color:var(--acento)}
+  .hero-texto{margin-top:22px;font-size:18px;color:var(--tinta-2);max-width:48ch}
+  .acciones{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    text-decoration:none;font-weight:620;font-size:16px;
+    padding:15px 26px;border-radius:999px;border:1px solid transparent;
+  }
+  .btn-pri{background:var(--acento);color:#fff;box-shadow:0 10px 24px -12px rgba(15,111,122,.7)}
+  .btn-pri:hover{background:var(--acento-2)}
+  .btn-sec{background:#fff;color:var(--tinta);border-color:var(--linea)}
+  .btn-sec:hover{border-color:var(--acento);color:var(--acento-2)}
+  .hero-nota{margin-top:18px;font-size:14px;color:var(--suave)}
+
+  .hero-arte{position:relative}
+  .tarjeta-arte{
+    background:#fff;border:1px solid var(--linea);border-radius:26px;
+    box-shadow:var(--sombra);padding:26px;
+  }
+  .arte-pie{
+    display:flex;align-items:center;gap:12px;margin-top:22px;
+    padding-top:20px;border-top:1px solid var(--linea-2);
+  }
+  .arte-pie-icono{width:34px;height:34px;flex:0 0 34px}
+  .arte-pie-txt{font-size:13.5px;color:var(--suave);line-height:1.45}
+  .arte-pie-txt b{display:block;color:var(--tinta);font-size:14.5px;font-weight:620}
+
+  /* ---------- secciones ---------- */
+  .seccion{padding:84px 0}
+  .seccion-gris{background:var(--papel-2);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+  .rotulo{
+    font-size:12.5px;font-weight:650;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--acento);margin-bottom:14px;
+  }
+  .seccion h2{font-size:clamp(27px,3.1vw,37px)}
+  .seccion-intro{margin-top:16px;color:var(--tinta-2);max-width:62ch;font-size:17px}
+  .cab-seccion{max-width:720px;margin-bottom:46px}
+
+  .rejilla-serv{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .serv{
+    background:#fff;border:1px solid var(--linea);border-radius:var(--radio);
+    padding:26px 24px 28px;box-shadow:0 1px 2px rgba(16,36,46,.03);
+  }
+  .serv-icono{
+    width:46px;height:46px;border-radius:13px;
+    background:linear-gradient(145deg,var(--acento-luz),#f4fafa);
+    display:flex;align-items:center;justify-content:center;margin-bottom:18px;
+    border:1px solid #d8ebec;
+  }
+  .serv-icono svg{width:24px;height:24px}
+  .serv h3{font-size:18px;font-weight:650}
+  .serv p{margin-top:9px;font-size:15px;color:var(--suave);line-height:1.6}
+  .nota-serv{
+    margin-top:30px;font-size:14px;color:var(--suave);
+    background:#fff;border:1px solid var(--linea);border-left:3px solid var(--menta);
+    border-radius:12px;padding:16px 20px;
+  }
+
+  /* ---------- pasos ---------- */
+  .rejilla-pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;counter-reset:p}
+  .paso{position:relative;padding-top:8px}
+  .paso-num{
+    width:44px;height:44px;border-radius:50%;
+    background:var(--barra);color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:650;font-size:17px;margin-bottom:18px;
+  }
+  .paso h3{font-size:19px}
+  .paso p{margin-top:9px;color:var(--tinta-2);font-size:15.5px}
+  .paso::after{
+    content:"";position:absolute;top:30px;left:56px;right:-12px;height:1px;
+    background:linear-gradient(90deg,var(--linea),rgba(223,231,234,0));
+  }
+  .paso:last-child::after{display:none}
+
+  /* ---------- contacto ---------- */
+  .rejilla-contacto{display:grid;grid-template-columns:.95fr 1.05fr;gap:40px;align-items:start}
+  .datos{list-style:none;margin:0;padding:0}
+  .datos li{display:flex;gap:16px;padding:20px 0;border-bottom:1px solid var(--linea)}
+  .datos li:first-child{padding-top:0}
+  .datos li:last-child{border-bottom:0}
+  .dato-ico{
+    width:40px;height:40px;flex:0 0 40px;border-radius:11px;
+    background:var(--acento-luz);display:flex;align-items:center;justify-content:center;
+  }
+  .dato-ico svg{width:20px;height:20px}
+  .dato-et{font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--suave);font-weight:620}
+  .dato-val{font-size:17.5px;font-weight:600;margin-top:3px;word-break:break-word}
+  .dato-val a{text-decoration:none;color:var(--tinta)}
+  .dato-val a:hover{color:var(--acento)}
+  .dato-aux{font-size:14px;color:var(--suave);margin-top:3px}
+
+  .mapa-caja{
+    background:#fff;border:1px solid var(--linea);border-radius:var(--radio);
+    box-shadow:var(--sombra);overflow:hidden;
+  }
+  .mapa-caja svg{width:100%;height:auto;display:block}
+  .mapa-pie{
+    padding:14px 20px;border-top:1px solid var(--linea-2);
+    font-size:13.5px;color:var(--suave);display:flex;align-items:center;gap:9px;
+  }
+  .punto-menta{width:9px;height:9px;border-radius:50%;background:var(--acento);flex:0 0 9px}
+
+  .cta-tira{
+    margin-top:46px;background:var(--barra);border-radius:22px;
+    padding:34px 36px;display:flex;align-items:center;justify-content:space-between;
+    gap:24px;flex-wrap:wrap;
+  }
+  .cta-tira h3{color:#fff;font-size:22px}
+  .cta-tira p{color:#9fb4ba;font-size:15px;margin-top:7px;max-width:52ch}
+  .btn-claro{background:#fff;color:var(--barra)}
+  .btn-claro:hover{background:var(--menta);color:#06282c}
+
+  /* ---------- pie ---------- */
+  .pie{background:#fff;border-top:1px solid var(--linea);padding:50px 0 34px}
+  .pie-rejilla{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:34px}
+  .pie h4{margin:0 0 12px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--suave);font-weight:650}
+  .pie-lista{list-style:none;margin:0;padding:0;font-size:15px;color:var(--tinta-2)}
+  .pie-lista li{margin-bottom:7px}
+  .pie-lista a{text-decoration:none}
+  .pie-lista a:hover{color:var(--acento)}
+  .pie-marca{font-weight:680;font-size:18px;letter-spacing:-.02em}
+  .pie-marca-sub{font-size:14.5px;color:var(--suave);margin-top:7px;max-width:34ch}
+  .pie-firma{
+    margin-top:38px;padding-top:22px;border-top:1px solid var(--linea);
+    font-size:13.5px;color:var(--suave);line-height:1.6;
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:900px){
+    .hero-rejilla{grid-template-columns:1fr;gap:40px;padding:56px 0 64px}
+    .rejilla-serv{grid-template-columns:repeat(2,1fr)}
+    .rejilla-contacto{grid-template-columns:1fr;gap:30px}
+    .pie-rejilla{grid-template-columns:1fr 1fr}
+    .cabecera-nav a{display:none}
+  }
+  @media (max-width:620px){
+    body{font-size:16px;padding-top:58px}
+    .aviso{font-size:11px;padding:8px 14px}
+    .envoltura{padding:0 20px}
+    .cabecera-fila{padding:14px 0;gap:12px}
+    .marca-sello{width:34px;height:34px;flex:0 0 34px}
+    .marca-nombre{font-size:16px}
+    .marca-sub{font-size:10px;letter-spacing:.05em}
+    .tel-cab{padding:9px 13px;font-size:13px}
+    .tel-cab .tel-cab-txt{display:none}
+    .seccion{padding:58px 0}
+    .cab-seccion{margin-bottom:32px}
+    .hero-texto{font-size:16.5px}
+    .acciones{gap:10px}
+    .btn{width:100%;padding:14px 20px;font-size:15.5px}
+    .rejilla-serv{grid-template-columns:1fr;gap:14px}
+    .rejilla-pasos{grid-template-columns:1fr;gap:26px}
+    .paso::after{display:none}
+    .tarjeta-arte{padding:18px;border-radius:20px}
+    .cta-tira{padding:26px 22px;border-radius:18px}
+    .cta-tira h3{font-size:19px}
+    .pie-rejilla{grid-template-columns:1fr;gap:26px}
+    .pie{padding:40px 0 30px}
+  }
+</style>
+</head>
+<body>
+
+<div class="aviso">Propuesta de diseño · maqueta no oficial · <b>FFFFFFstudio</b> · Ángel Rubio</div>
+
+<header class="cabecera">
+  <div class="envoltura cabecera-fila">
+    <div class="marca">
+      <svg class="marca-sello" viewBox="0 0 40 40" aria-hidden="true">
+        <defs>
+          <linearGradient id="g-sello" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#14808c"/><stop offset="1" stop-color="#0b545d"/>
+          </linearGradient>
+        </defs>
+        <rect width="40" height="40" rx="11" fill="url(#g-sello)"/>
+        <path d="M20 14.2c4 0 6.4 2.8 6.6 6.6.2 3.4-1.4 5.4-1.6 8.1-.1 2.2-2 3.6-5 3.6s-4.9-1.5-5-3.7c-.2-2.8-1.8-4.7-1.6-8.1.2-3.7 2.6-6.5 6.6-6.5z" fill="#ffffff" opacity=".95"/>
+        <circle cx="12.4" cy="13.6" r="2.3" fill="#ffffff" opacity=".8"/>
+        <circle cx="17.5" cy="9.9" r="1.9" fill="#ffffff" opacity=".8"/>
+        <circle cx="22.6" cy="9.6" r="1.8" fill="#ffffff" opacity=".8"/>
+        <circle cx="27.2" cy="11.6" r="1.6" fill="#ffffff" opacity=".8"/>
+      </svg>
+      <div class="marca-texto">
+        <div class="marca-nombre">Clinypies, C.B.</div>
+        <div class="marca-sub">Podología · Tomelloso</div>
+      </div>
+    </div>
+    <nav class="cabecera-nav">
+      <a href="#servicios">Servicios</a>
+      <a href="#visita">Tu primera visita</a>
+      <a href="#contacto">Contacto</a>
+      <a class="tel-cab" href="tel:+34926028905">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.8 2.1z"/></svg>
+        <span class="tel-cab-txt">926 028 905</span>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="envoltura hero-rejilla">
+    <div>
+      <div class="pildora"><span></span>Clínica de podología en Tomelloso</div>
+      <h1>Cuidado de los pies con <em>atención profesional</em> y cercana.</h1>
+      <p class="hero-texto">Clinypies, C.B. es una clínica de podología situada en Tomelloso (Ciudad Real). Atendemos las consultas relacionadas con la salud del pie y la marcha mediante cita previa.</p>
+      <div class="acciones">
+        <a class="btn btn-pri" href="tel:+34926028905">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.8 2.1z"/></svg>
+          Llamar al 926 028 905
+        </a>
+        <a class="btn btn-sec" href="#servicios">Ver servicios</a>
+      </div>
+      <p class="hero-nota">C/ Lepanto, 55 · 13700 Tomelloso (Ciudad Real)</p>
+    </div>
+
+    <div class="hero-arte">
+      <div class="tarjeta-arte">
+        <svg viewBox="0 0 420 300" role="img" aria-label="Ilustración abstracta de la planta del pie y la pisada">
+          <defs>
+            <linearGradient id="g-fondo" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#f3fafa"/><stop offset="1" stop-color="#e4f1f2"/>
+            </linearGradient>
+            <linearGradient id="g-pie" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#14808c"/><stop offset="1" stop-color="#0b545d"/>
+            </linearGradient>
+          </defs>
+          <rect width="420" height="300" rx="16" fill="url(#g-fondo)"/>
+          <g stroke="#cfe4e5" stroke-width="1">
+            <path d="M0 75h420M0 150h420M0 225h420"/>
+            <path d="M105 0v300M210 0v300M315 0v300"/>
+          </g>
+          <circle cx="210" cy="150" r="108" fill="#ffffff" opacity=".66"/>
+          <g transform="translate(140 52)">
+            <path d="M70 12c16 0 27 13 29 31 2 17-3 31-5 46-2 14 2 25 1 39-1 17-11 30-25 30-15 0-25-12-27-29-2-16 1-28-2-43-3-16-9-29-7-46C36 24 52 12 70 12z" fill="url(#g-pie)" opacity=".92"/>
+            <g fill="#9fd4cf">
+              <ellipse cx="33" cy="22" rx="11" ry="13"/>
+              <ellipse cx="54" cy="7" rx="8.5" ry="10"/>
+              <ellipse cx="73" cy="3" rx="8" ry="9.5"/>
+              <ellipse cx="91" cy="7" rx="7" ry="8.5"/>
+              <ellipse cx="106" cy="16" rx="6" ry="7.5"/>
+            </g>
+            <path d="M58 58c10 6 22 6 32 0" fill="none" stroke="#bfe6e4" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M54 92c14 7 28 7 42 0" fill="none" stroke="#bfe6e4" stroke-width="2.4" stroke-linecap="round"/>
+          </g>
+          <g fill="none" stroke="#0f6f7a" stroke-width="1.6" opacity=".4" stroke-linecap="round">
+            <path d="M38 258c22-10 44-10 66 0"/>
+            <path d="M316 258c22-10 44-10 66 0"/>
+          </g>
+        </svg>
+        <div class="arte-pie">
+          <svg class="arte-pie-icono" viewBox="0 0 34 34" aria-hidden="true">
+            <rect width="34" height="34" rx="10" fill="#e6f2f3"/>
+            <path d="M11 17.4l3.6 3.6L23 12.6" fill="none" stroke="#0f6f7a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div class="arte-pie-txt">
+            <b>Atención con cita previa</b>
+            Puedes llamarnos para consultar disponibilidad y resolver tus dudas antes de acudir.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="seccion seccion-gris" id="servicios">
+  <div class="envoltura">
+    <div class="cab-seccion">
+      <div class="rotulo">Servicios</div>
+      <h2>Qué atendemos en consulta</h2>
+      <p class="seccion-intro">Servicios habituales de una clínica de podología. Cada caso se valora de forma individual en consulta, donde se explica el abordaje más adecuado.</p>
+    </div>
+
+    <div class="rejilla-serv">
+      <article class="serv">
+        <div class="serv-icono">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0f6f7a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3v8a4 4 0 0 0 8 0V3"/><path d="M12 15v6"/><path d="M9 21h6"/></svg>
+        </div>
+        <h3>Quiropodia</h3>
+        <p>Cuidado y mantenimiento de la piel y las uñas del pie: durezas, callosidades y zonas de presión.</p>
+      </article>
+
+      <article class="serv">
+        <div class="serv-icono">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0f6f7a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19c3-1 5-3 5-6"/><path d="M9 13c3 1 6 0 8-2"/><path d="M17 11c1.5-1 2.5-2.5 3-4"/><circle cx="6.5" cy="5.5" r="1.6"/><circle cx="11" cy="4" r="1.3"/></svg>
+        </div>
+        <h3>Estudio de la marcha</h3>
+        <p>Valoración de la pisada y de la forma de caminar para entender el origen de las molestias.</p>
+      </article>
+
+      <article class="serv">
+        <div class="serv-icono">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0f6f7a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 16c-1-4 0-8 3-10 2-1.4 4.5-.8 6.5.6 2 1.4 4 3.4 4.3 6 .3 2.3-1.3 4-3.6 4H8.8C6.8 16.6 5.4 17 5 16z"/><path d="M6 19.5h12"/></svg>
+        </div>
+        <h3>Plantillas personalizadas</h3>
+        <p>Soportes plantares adaptados a cada pie a partir de la valoración realizada en consulta.</p>
+      </article>
+
+      <article class="serv">
+        <div class="serv-icono">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0f6f7a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 14c-.6-2.6.4-5.6 2.6-6.8 2.4-1.3 5.3.1 6.4 2.6"/><path d="M6.5 14.5c1.6 3.2 4.6 4.8 7.3 4"/><path d="M15.5 10.5c1.8.8 2.9 2.6 2.6 4.4"/></svg>
+        </div>
+        <h3>Uñas</h3>
+        <p>Atención de las alteraciones de la uña, como las uñas encarnadas o los cambios en su aspecto.</p>
+      </article>
+
+      <article class="serv">
+        <div class="serv-icono">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0f6f7a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><circle cx="12" cy="12" r="8.4" stroke-dasharray="3 3.4"/></svg>
+        </div>
+        <h3>Papilomas</h3>
+        <p>Valoración y tratamiento de las verrugas plantares, con seguimiento de su evolución en consulta.</p>
+      </article>
+
+      <article class="serv">
+        <div class="serv-icono">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0f6f7a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 7.5a4.6 4.6 0 0 0-8.5-2.1A4.6 4.6 0 0 0 3.5 7.5c0 5 8.5 10 8.5 10s8.5-5 8.5-10z"/><path d="M8.5 11h2l1-2 1.5 3.4 1-1.4h2"/></svg>
+        </div>
+        <h3>Pie diabético</h3>
+        <p>Revisión y cuidado preventivo del pie en personas con diabetes, con pautas de higiene y seguimiento.</p>
+      </article>
+    </div>
+
+    <p class="nota-serv">Esta página tiene carácter informativo y no sustituye a la valoración en consulta. Para saber si un servicio se ajusta a tu caso, lo más adecuado es llamar y preguntar.</p>
+  </div>
+</section>
+
+<section class="seccion" id="visita">
+  <div class="envoltura">
+    <div class="cab-seccion">
+      <div class="rotulo">Tu primera visita</div>
+      <h2>Cómo es el proceso, en tres pasos</h2>
+      <p class="seccion-intro">Si es la primera vez que acudes a la clínica, así se desarrolla habitualmente la visita.</p>
+    </div>
+
+    <div class="rejilla-pasos">
+      <article class="paso">
+        <div class="paso-num">1</div>
+        <h3>Pides cita por teléfono</h3>
+        <p>Llamas al 926 028 905, cuentas brevemente el motivo de la consulta y se acuerda un día y una hora.</p>
+      </article>
+      <article class="paso">
+        <div class="paso-num">2</div>
+        <h3>Valoración en consulta</h3>
+        <p>En la clínica se revisa el pie, se pregunta por los antecedentes y por el calzado, y se valora la pisada si el caso lo requiere.</p>
+      </article>
+      <article class="paso">
+        <div class="paso-num">3</div>
+        <h3>Explicación y pautas</h3>
+        <p>Se te explica qué se ha observado, las opciones de tratamiento disponibles y, si procede, cuándo conviene una revisión.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="seccion seccion-gris" id="contacto">
+  <div class="envoltura">
+    <div class="cab-seccion">
+      <div class="rotulo">Contacto</div>
+      <h2>Dónde estamos y cómo localizarnos</h2>
+      <p class="seccion-intro">La clínica se encuentra en Tomelloso (Ciudad Real). Para pedir cita o preguntar cualquier duda, el teléfono es la vía más directa.</p>
+    </div>
+
+    <div class="rejilla-contacto">
+      <div>
+        <ul class="datos">
+          <li>
+            <div class="dato-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#0f6f7a" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.8 2.1z"/></svg>
+            </div>
+            <div>
+              <div class="dato-et">Teléfono</div>
+              <div class="dato-val"><a href="tel:+34926028905">926 028 905</a></div>
+              <div class="dato-aux">Atención con cita previa.</div>
+            </div>
+          </li>
+          <li>
+            <div class="dato-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#0f6f7a" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10.5c0 5.5-8 11.5-8 11.5s-8-6-8-11.5a8 8 0 0 1 16 0z"/><circle cx="12" cy="10.3" r="2.8"/></svg>
+            </div>
+            <div>
+              <div class="dato-et">Dirección</div>
+              <div class="dato-val">C/ Lepanto, 55</div>
+              <div class="dato-aux">13700 Tomelloso (Ciudad Real)</div>
+            </div>
+          </li>
+          <li>
+            <div class="dato-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#0f6f7a" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.3V12l3.3 2"/></svg>
+            </div>
+            <div>
+              <div class="dato-et">Horario</div>
+              <div class="dato-val">Consultar horario</div>
+              <div class="dato-aux">Por teléfono se te indica la disponibilidad.</div>
+            </div>
+          </li>
+          <li>
+            <div class="dato-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#0f6f7a" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.8" y="4.8" width="18.4" height="14.4" rx="2.4"/><path d="M3.4 6.4l8.6 6 8.6-6"/></svg>
+            </div>
+            <div>
+              <div class="dato-et">Correo electrónico</div>
+              <div class="dato-val"><a href="mailto:clinypies@gmail.com">clinypies@gmail.com</a></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="mapa-caja">
+        <svg viewBox="0 0 560 380" role="img" aria-label="Mapa esquemático con la ubicación aproximada de la clínica">
+          <defs>
+            <linearGradient id="g-mapa" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#f7fbfb"/><stop offset="1" stop-color="#eaf3f4"/>
+            </linearGradient>
+          </defs>
+          <rect width="560" height="380" fill="url(#g-mapa)"/>
+          <g fill="#e2eef0">
+            <rect x="34" y="34" width="150" height="104" rx="7"/>
+            <rect x="214" y="34" width="118" height="104" rx="7"/>
+            <rect x="362" y="34" width="164" height="104" rx="7"/>
+            <rect x="34" y="170" width="150" height="80" rx="7"/>
+            <rect x="362" y="170" width="164" height="80" rx="7"/>
+            <rect x="34" y="282" width="150" height="64" rx="7"/>
+            <rect x="214" y="282" width="118" height="64" rx="7"/>
+            <rect x="362" y="282" width="164" height="64" rx="7"/>
+          </g>
+          <g stroke="#ffffff" stroke-width="18" stroke-linecap="square">
+            <path d="M0 154h560"/>
+            <path d="M0 266h560"/>
+            <path d="M199 0v380"/>
+            <path d="M347 0v380"/>
+          </g>
+          <g stroke="#cadde0" stroke-width="1.6" stroke-dasharray="7 9">
+            <path d="M0 154h560"/>
+            <path d="M0 266h560"/>
+            <path d="M199 0v380"/>
+            <path d="M347 0v380"/>
+          </g>
+          <g stroke="#ffffff" stroke-width="9">
+            <path d="M214 210h118"/>
+          </g>
+          <rect x="214" y="170" width="118" height="80" rx="7" fill="#dceaec" opacity=".8"/>
+          <g transform="translate(273 152)">
+            <ellipse cx="0" cy="74" rx="19" ry="6" fill="#0f6f7a" opacity=".16"/>
+            <path d="M0 72C0 72-20 44-20 27A20 20 0 0 1 20 27C20 44 0 72 0 72z" fill="#0f6f7a"/>
+            <circle cx="0" cy="27" r="7.6" fill="#ffffff"/>
+          </g>
+          <g fill="#0f6f7a" opacity=".2">
+            <circle cx="273" cy="179" r="46" fill="none" stroke="#0f6f7a" stroke-width="1.4" stroke-dasharray="4 6"/>
+          </g>
+        </svg>
+        <div class="mapa-pie"><span class="punto-menta"></span> Mapa esquemático orientativo: no refleja el trazado real de las calles.</div>
+      </div>
+    </div>
+
+    <div class="cta-tira">
+      <div>
+        <h3>¿Tienes una duda sobre tus pies?</h3>
+        <p>Llámanos y te indicamos si conviene una valoración en consulta y cuándo hay disponibilidad.</p>
+      </div>
+      <a class="btn btn-claro" href="tel:+34926028905">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.8 2.1z"/></svg>
+        926 028 905
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="pie">
+  <div class="envoltura">
+    <div class="pie-rejilla">
+      <div>
+        <div class="pie-marca">Clinypies, C.B.</div>
+        <p class="pie-marca-sub">Clínica de podología en Tomelloso (Ciudad Real).</p>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul class="pie-lista">
+          <li><a href="tel:+34926028905">926 028 905</a></li>
+          <li><a href="mailto:clinypies@gmail.com">clinypies@gmail.com</a></li>
+          <li>Consultar horario</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Dónde estamos</h4>
+        <ul class="pie-lista">
+          <li>C/ Lepanto, 55</li>
+          <li>13700 Tomelloso</li>
+          <li>Ciudad Real</li>
+        </ul>
+      </div>
+    </div>
+    <p class="pie-firma">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+</body>
+</html>

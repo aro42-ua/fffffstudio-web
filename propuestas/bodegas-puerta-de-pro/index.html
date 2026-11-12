@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bodegas Puerta de Pro · Tomelloso</title>
+<style>
+  :root{
+    --vino:#4A1226;
+    --vino-osc:#2E0A17;
+    --vino-claro:#6E2038;
+    --crema:#F7F2E8;
+    --crema-2:#EFE7D8;
+    --arena:#DED2BC;
+    --oro:#B98B2E;
+    --tinta:#241B18;
+    --tinta-2:#5A4C45;
+    --borde:rgba(36,27,24,.14);
+    --radio:16px;
+    --max:1120px;
+    --barra:46px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;max-width:100%;overflow-x:hidden}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    background:var(--crema);
+    color:var(--tinta);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%;display:block}
+  h1,h2,h3{
+    font-family:Georgia,"Times New Roman",Times,serif;
+    font-weight:600;
+    line-height:1.14;
+    letter-spacing:-.01em;
+    margin:0;
+  }
+  p{margin:0}
+  a{color:inherit}
+  .wrap{width:100%;max-width:var(--max);margin:0 auto;padding:0 24px}
+
+  /* ---------- Barra fija ---------- */
+  .aviso{
+    position:fixed;inset:0 0 auto 0;z-index:100;
+    min-height:var(--barra);
+    display:flex;align-items:center;justify-content:center;
+    background:var(--tinta);
+    color:#F3EADF;
+    padding:8px 16px;
+    font-size:12.5px;
+    letter-spacing:.04em;
+    text-align:center;
+    border-bottom:1px solid rgba(243,234,223,.18);
+  }
+  .aviso span{display:inline-block;max-width:100%}
+  .aviso b{font-weight:600;color:#E8C77A}
+
+  /* ---------- Cabecera ---------- */
+  .nav{
+    position:relative;z-index:5;
+    padding-top:calc(var(--barra) + 22px);
+    padding-bottom:10px;
+  }
+  .nav-in{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .marca{display:flex;align-items:center;gap:12px;min-width:0}
+  .marca .sello{flex:0 0 auto}
+  .marca-txt{min-width:0}
+  .marca-txt strong{
+    display:block;font-family:Georgia,serif;font-size:17px;line-height:1.2;
+    color:var(--vino);letter-spacing:.01em;
+  }
+  .marca-txt small{display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--tinta-2)}
+  .nav-links{display:flex;gap:22px;font-size:14px;color:var(--tinta-2)}
+  .nav-links a{text-decoration:none;padding:4px 0;border-bottom:1px solid transparent}
+  .nav-links a:hover{color:var(--vino);border-bottom-color:var(--oro)}
+  @media (max-width:760px){.nav-links{display:none}}
+  @media (max-width:600px){.nav{padding-top:calc(var(--barra) + 40px)}}
+
+  /* ---------- Hero ---------- */
+  .hero{padding:26px 0 8px}
+  .hero-card{
+    position:relative;overflow:hidden;
+    border-radius:26px;
+    background:
+      radial-gradient(120% 90% at 86% 6%, rgba(185,139,46,.30) 0%, rgba(185,139,46,0) 56%),
+      radial-gradient(90% 80% at 6% 96%, rgba(110,32,56,.55) 0%, rgba(110,32,56,0) 60%),
+      linear-gradient(152deg, #5A1730 0%, #3C0E20 48%, #250914 100%);
+    color:#F6EFE6;
+    padding:56px 48px 52px;
+    box-shadow:0 24px 60px -34px rgba(46,10,23,.65);
+  }
+  .hero-card::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:linear-gradient(rgba(246,239,230,.045) 1px, transparent 1px);
+    background-size:100% 7px;
+    mix-blend-mode:overlay;
+  }
+  .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.18fr) minmax(0,.82fr);gap:44px;align-items:center}
+  .kicker{
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;
+    color:#E7C780;margin-bottom:20px;
+  }
+  .kicker i{width:26px;height:1px;background:#E7C780;display:block;opacity:.7}
+  .hero h1{font-size:clamp(32px,4.4vw,52px);color:#FBF6EE}
+  .hero h1 em{font-style:italic;color:#E7C780}
+  .hero-sub{margin-top:18px;font-size:17px;color:rgba(246,239,230,.84);max-width:46ch}
+  .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:14px 24px;border-radius:999px;
+    font-size:15px;font-weight:600;text-decoration:none;
+    border:1px solid transparent;transition:transform .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px)}
+  .btn-oro{background:#E7C780;color:#2E0A17;box-shadow:0 10px 24px -14px rgba(231,199,128,.9)}
+  .btn-linea{border-color:rgba(246,239,230,.42);color:#F6EFE6}
+  .btn-vino{background:var(--vino);color:#FBF6EE}
+  .btn svg{flex:0 0 auto}
+  .hero-nota{margin-top:18px;font-size:13px;color:rgba(246,239,230,.6)}
+
+  /* copas decorativas */
+  .hero-art{position:relative;display:flex;justify-content:center}
+  .hero-art svg{width:100%;max-width:300px;height:auto}
+  @media (max-width:900px){
+    .hero-card{padding:40px 26px 38px;border-radius:22px}
+    .hero-grid{grid-template-columns:1fr;gap:30px}
+    .hero-art{order:-1}
+    .hero-art svg{max-width:190px}
+    .hero-sub{max-width:none}
+  }
+
+  /* ---------- Tiras de datos ---------- */
+  .tira{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--borde);border:1px solid var(--borde);border-radius:var(--radio);overflow:hidden;margin-top:22px}
+  .tira div{background:var(--crema-2);padding:18px 20px}
+  .tira small{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--tinta-2);margin-bottom:5px}
+  .tira strong{font-size:15px;font-weight:600;color:var(--vino);word-break:break-word}
+  @media (max-width:760px){.tira{grid-template-columns:1fr}}
+
+  /* ---------- Secciones ---------- */
+  section{padding:62px 0}
+  .sec-head{max-width:62ch;margin-bottom:34px}
+  .sec-kicker{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--oro);font-weight:600;margin-bottom:12px}
+  .sec-head h2{font-size:clamp(25px,3.1vw,36px);color:var(--vino-osc)}
+  .sec-head p{margin-top:14px;font-size:16.5px;color:var(--tinta-2)}
+
+  .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+  .card{
+    background:#fff;border:1px solid var(--borde);border-radius:var(--radio);
+    padding:28px 24px;
+    box-shadow:0 14px 34px -28px rgba(36,27,24,.5);
+  }
+  .card .ic{
+    width:46px;height:46px;border-radius:12px;
+    background:linear-gradient(145deg,#F3E6CD,#E3CEA3);
+    display:flex;align-items:center;justify-content:center;margin-bottom:18px;
+  }
+  .card h3{font-size:19px;color:var(--vino-osc)}
+  .card p{margin-top:9px;font-size:14.8px;color:var(--tinta-2)}
+  @media (max-width:980px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media (max-width:640px){.cards{grid-template-columns:1fr}}
+
+  /* ---------- Pasos ---------- */
+  .pasos-sec{background:var(--crema-2);border-top:1px solid var(--borde);border-bottom:1px solid var(--borde)}
+  .pasos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;counter-reset:p}
+  .paso{position:relative;background:#fff;border:1px solid var(--borde);border-radius:var(--radio);padding:30px 24px 26px}
+  .paso .num{
+    width:40px;height:40px;border-radius:50%;
+    background:var(--vino);color:#F6EFE6;
+    display:flex;align-items:center;justify-content:center;
+    font-family:Georgia,serif;font-size:17px;margin-bottom:16px;
+  }
+  .paso h3{font-size:18px;color:var(--vino-osc)}
+  .paso p{margin-top:8px;font-size:14.8px;color:var(--tinta-2)}
+  @media (max-width:860px){.pasos{grid-template-columns:1fr}}
+
+  /* ---------- Contacto ---------- */
+  .cont-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:26px;align-items:stretch}
+  @media (max-width:900px){.cont-grid{grid-template-columns:1fr}}
+  .panel{background:#fff;border:1px solid var(--borde);border-radius:var(--radio);padding:30px 26px;display:flex;flex-direction:column}
+  .panel .cont-btns{margin-top:auto;padding-top:26px}
+  .dl{margin:0;padding:0}
+  .dl .fila{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--borde)}
+  .dl .fila:last-child{border-bottom:0;padding-bottom:0}
+  .dl .fila:first-child{padding-top:0}
+  .dl .ic2{
+    flex:0 0 auto;width:34px;height:34px;border-radius:9px;
+    background:var(--crema-2);display:flex;align-items:center;justify-content:center;
+  }
+  .dl dt{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--tinta-2);margin-bottom:3px}
+  .dl dd{margin:0;font-size:16px;color:var(--vino-osc);font-weight:500;word-break:break-word}
+  .dl dd a{text-decoration:none;border-bottom:1px solid rgba(185,139,46,.5)}
+  .dl dd.mail{font-size:15px}
+  @media (max-width:420px){.dl dd.mail{font-size:13.6px;letter-spacing:-.1px}}
+  .dl dd a:hover{color:var(--vino-claro)}
+  .dl dd .mas{display:block;font-size:14px;font-weight:400;color:var(--tinta-2);margin-top:3px}
+  .chip{
+    display:inline-flex;align-items:center;gap:8px;margin-top:4px;
+    background:var(--crema-2);border:1px solid var(--borde);
+    border-radius:999px;padding:6px 14px;font-size:13.5px;color:var(--tinta-2);font-weight:500;
+  }
+  .cont-btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+
+  /* mapa */
+  .mapa{background:#fff;border:1px solid var(--borde);border-radius:var(--radio);padding:14px;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+  .mapa svg{width:100%;height:auto;border-radius:10px;display:block}
+  .mapa .pie{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--tinta-2);padding:12px 6px 2px}
+  .mapa .pie i{width:9px;height:9px;border-radius:50%;background:var(--vino);display:block;flex:0 0 auto}
+
+  /* ---------- Pie ---------- */
+  footer{background:var(--vino-osc);color:rgba(246,239,230,.82);padding:52px 0 34px;margin-top:0}
+  .foot-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr);gap:30px}
+  @media (max-width:860px){.foot-grid{grid-template-columns:1fr;gap:26px}}
+  footer h4{font-family:Georgia,serif;font-size:16px;color:#F6EFE6;margin:0 0 12px;font-weight:600}
+  footer p,footer a{font-size:14.5px;color:rgba(246,239,230,.74);text-decoration:none;word-break:break-word}
+  footer a:hover{color:#E7C780}
+  footer ul{list-style:none;margin:0;padding:0}
+  footer li{margin-bottom:8px}
+  .firma{
+    margin-top:38px;padding-top:22px;
+    border-top:1px solid rgba(246,239,230,.16);
+    font-size:13px;color:rgba(246,239,230,.62);
+    text-align:center;line-height:1.7;
+  }
+</style>
+</head>
+<body>
+
+<div class="aviso"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <div class="marca">
+      <svg class="sello" width="44" height="44" viewBox="0 0 44 44" aria-hidden="true">
+        <circle cx="22" cy="22" r="21" fill="#4A1226"/>
+        <circle cx="22" cy="22" r="17.5" fill="none" stroke="#B98B2E" stroke-width="1"/>
+        <path d="M15 13h14l-1 7a6 6 0 0 1-12 0z" fill="#E7C780"/>
+        <path d="M22 26v5" stroke="#E7C780" stroke-width="1.6"/>
+        <path d="M17.5 31.5h9" stroke="#E7C780" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      <div class="marca-txt">
+        <strong>Bodegas Puerta de Pro</strong>
+        <small>Tomelloso</small>
+      </div>
+    </div>
+    <nav class="nav-links">
+      <a href="#servicios">Servicios</a>
+      <a href="#visita">Tu visita</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="wrap">
+    <div class="hero-card">
+      <div class="hero-grid">
+        <div>
+          <span class="kicker"><i></i>Bar · Restaurante · Cafetería</span>
+          <h1>Bodegas Puerta de Pro,<br>mesa y <em>buen vino</em> en Tomelloso</h1>
+          <p class="hero-sub">Un bar-restaurante en el centro de Tomelloso, corazón de la comarca del vino de La Mancha, para tomar algo, comer con calma o acabar el día con una copa.</p>
+          <div class="cta-row">
+            <a class="btn btn-oro" href="tel:+34926705771">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+              Llamar al 926 705 771
+            </a>
+            <a class="btn btn-linea" href="#contacto">Cómo llegar</a>
+          </div>
+          <p class="hero-nota">Avenida Juan Carlos I, 123, bajo · 13700 Tomelloso (Ciudad Real)</p>
+        </div>
+        <div class="hero-art">
+          <svg viewBox="0 0 240 240" aria-hidden="true">
+            <defs>
+              <linearGradient id="gv" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#9A2246"/><stop offset="1" stop-color="#5B0F27"/>
+              </linearGradient>
+              <linearGradient id="gcopa" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="rgba(246,239,230,.5)"/><stop offset="1" stop-color="rgba(246,239,230,.14)"/>
+              </linearGradient>
+            </defs>
+            <circle cx="120" cy="120" r="104" fill="none" stroke="rgba(231,199,128,.35)" stroke-width="1"/>
+            <circle cx="120" cy="120" r="88" fill="rgba(231,199,128,.06)"/>
+            <!-- copa grande -->
+            <path d="M84 58h72l-5 42a31 31 0 0 1-62 0z" fill="url(#gcopa)" stroke="rgba(231,199,128,.75)" stroke-width="1.6"/>
+            <path d="M88.5 76h63l-3.5 24a26 26 0 0 1-56 0z" fill="url(#gv)"/>
+            <path d="M120 131v46" stroke="rgba(231,199,128,.8)" stroke-width="3" stroke-linecap="round"/>
+            <path d="M96 180h48" stroke="rgba(231,199,128,.8)" stroke-width="3.4" stroke-linecap="round"/>
+            <!-- uvas -->
+            <g fill="rgba(231,199,128,.5)">
+              <circle cx="46" cy="150" r="8"/><circle cx="62" cy="158" r="8"/><circle cx="54" cy="168" r="8"/>
+              <circle cx="38" cy="166" r="8"/><circle cx="48" cy="182" r="8"/>
+            </g>
+            <path d="M46 138c4-8 12-10 18-8" stroke="rgba(231,199,128,.6)" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <g fill="rgba(231,199,128,.32)">
+              <circle cx="190" cy="156" r="7"/><circle cx="203" cy="163" r="7"/><circle cx="196" cy="173" r="7"/><circle cx="183" cy="169" r="7"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="tira">
+      <div><small>Dónde</small><strong>Avenida Juan Carlos I, 123, bajo · Tomelloso</strong></div>
+      <div><small>Teléfonos</small><strong>926 705 771 · 692 060 465</strong></div>
+      <div><small>Horario</small><strong>Consultar horario</strong></div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-kicker">Servicios</p>
+      <h2>Lo que puedes hacer aquí</h2>
+      <p>Un mismo local para el café de la mañana, la comida del mediodía y la copa de después. Consulta la oferta disponible por teléfono.</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6E2038" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 8h1a4 4 0 0 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"/><path d="M6 2v3M10 2v3M14 2v3"/></svg></div>
+        <h3>Cafetería</h3>
+        <p>Servicio de cafetería para el desayuno, la media mañana o la merienda, en barra o en mesa.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6E2038" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 2v7a3 3 0 0 0 6 0V2"/><path d="M6 9v13"/><path d="M17 2c-2 2-2.5 4-2.5 6.5S16 13 18 13s3.5-2 3.5-4.5S20 4 18 2z"/><path d="M18 13v9"/></svg></div>
+        <h3>Comidas y cenas</h3>
+        <p>Servicio de restaurante para comer o cenar sentado. Pregunta por la oferta del día al reservar.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6E2038" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h14l-1.5 9a5.5 5.5 0 0 1-11 0z"/><path d="M12 18v3"/><path d="M8.5 21h7"/></svg></div>
+        <h3>Vinos y bebidas</h3>
+        <p>Selección de vinos y bebidas para acompañar la mesa o para tomar una copa tranquila.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6E2038" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><circle cx="16.5" cy="9.5" r="2.6"/><path d="M3 20c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5"/><path d="M16 14.6c2.9.2 5 2.2 5 5.4"/></svg></div>
+        <h3>Grupos y celebraciones</h3>
+        <p>Posibilidad de atender mesas de grupo y celebraciones. Conviene avisar con antelación por teléfono.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6E2038" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V9l8-6 8 6v12"/><path d="M9 21v-7h6v7"/></svg></div>
+        <h3>Enoturismo en Tomelloso</h3>
+        <p>Punto de parada para quien recorre Tomelloso y su entorno vitivinícola, promocionado como destino de enoturismo.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6E2038" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="15" rx="2.5"/><path d="M2.5 10h19"/><path d="M7 3v4M17 3v4"/></svg></div>
+        <h3>Reserva por teléfono</h3>
+        <p>Reservas y consultas directamente por llamada, sin formularios ni intermediarios.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PASOS -->
+<section class="pasos-sec" id="visita">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-kicker">Tu visita</p>
+      <h2>Cómo funciona, en tres pasos</h2>
+      <p>Sin complicaciones: una llamada, una mesa y tiempo para disfrutarla.</p>
+    </div>
+    <div class="pasos">
+      <div class="paso">
+        <div class="num">1</div>
+        <h3>Llama y pregunta</h3>
+        <p>Marca el 926 705 771 o el 692 060 465 para consultar el horario, la disponibilidad de mesa y la oferta del día.</p>
+      </div>
+      <div class="paso">
+        <div class="num">2</div>
+        <h3>Reserva tu mesa</h3>
+        <p>Indica el número de personas y la hora que te interesa. Si vienes en grupo, avisa con algo de antelación.</p>
+      </div>
+      <div class="paso">
+        <div class="num">3</div>
+        <h3>Ven a Avenida Juan Carlos I</h3>
+        <p>Te esperamos en el número 123, bajo, en Tomelloso. Llega, siéntate y déjate aconsejar en la mesa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-kicker">Contacto</p>
+      <h2>Dónde estamos y cómo localizarnos</h2>
+      <p>Datos de contacto del local. Para el horario de apertura, consúltalo por teléfono.</p>
+    </div>
+    <div class="cont-grid">
+      <div class="panel">
+        <dl class="dl">
+          <div class="fila">
+            <span class="ic2"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#6E2038" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.8"/></svg></span>
+            <div>
+              <dt>Dirección</dt>
+              <dd>Avenida Juan Carlos I, 123, bajo<span class="mas">13700 Tomelloso (Ciudad Real)</span></dd>
+            </div>
+          </div>
+          <div class="fila">
+            <span class="ic2"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#6E2038" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span>
+            <div>
+              <dt>Teléfonos</dt>
+              <dd><a href="tel:+34926705771">926 705 771</a><span class="mas"><a href="tel:+34692060465">692 060 465</a></span></dd>
+            </div>
+          </div>
+          <div class="fila">
+            <span class="ic2"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#6E2038" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3 7l9 6 9-6"/></svg></span>
+            <div>
+              <dt>Email</dt>
+              <dd class="mail"><a href="mailto:bodegaspuertadepro@gmail.com">bodegaspuertadepro@gmail.com</a></dd>
+            </div>
+          </div>
+          <div class="fila">
+            <span class="ic2"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#6E2038" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3.5 2.2"/></svg></span>
+            <div>
+              <dt>Horario</dt>
+              <dd><span class="chip">Consultar horario</span></dd>
+            </div>
+          </div>
+        </dl>
+        <div class="cont-btns">
+          <a class="btn btn-vino" href="tel:+34926705771">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+            926 705 771
+          </a>
+          <a class="btn btn-vino" href="tel:+34692060465">692 060 465</a>
+        </div>
+      </div>
+
+      <div class="mapa">
+        <svg viewBox="0 0 520 390" role="img" aria-label="Mapa esquemático de situación del local">
+          <rect width="520" height="390" rx="10" fill="#EFE7D8"/>
+          <!-- manzanas -->
+          <g fill="#E4D9C2">
+            <rect x="26" y="26" width="150" height="104" rx="6"/>
+            <rect x="206" y="26" width="118" height="104" rx="6"/>
+            <rect x="354" y="26" width="140" height="104" rx="6"/>
+            <rect x="26" y="252" width="150" height="112" rx="6"/>
+            <rect x="206" y="252" width="118" height="112" rx="6"/>
+            <rect x="354" y="252" width="140" height="112" rx="6"/>
+            <rect x="26" y="162" width="150" height="58" rx="6"/>
+            <rect x="354" y="162" width="140" height="58" rx="6"/>
+          </g>
+          <!-- avenida principal horizontal -->
+          <rect x="0" y="130" width="520" height="32" fill="#F7F2E8"/>
+          <line x1="0" y1="146" x2="520" y2="146" stroke="#C7B795" stroke-width="2" stroke-dasharray="16 12"/>
+          <!-- calles -->
+          <rect x="176" y="0" width="30" height="390" fill="#F7F2E8"/>
+          <rect x="324" y="0" width="30" height="390" fill="#F7F2E8"/>
+          <rect x="0" y="220" width="520" height="32" fill="#F7F2E8"/>
+          <!-- bordes -->
+          <g stroke="#DACCB0" stroke-width="1.5" fill="none">
+            <path d="M0 130h520M0 162h520M0 220h520M0 252h520"/>
+            <path d="M176 0v390M206 0v390M324 0v390M354 0v390"/>
+          </g>
+          <!-- plaza / rotonda -->
+          <circle cx="191" cy="146" r="22" fill="#E4D9C2" stroke="#DACCB0" stroke-width="1.5"/>
+          <circle cx="191" cy="146" r="8" fill="#CFBF9E"/>
+          <!-- zonas verdes -->
+          <g fill="#D3D9C0">
+            <rect x="222" y="276" width="86" height="64" rx="6"/>
+          </g>
+          <circle cx="246" cy="300" r="7" fill="#BCC6A4"/>
+          <circle cx="268" cy="316" r="9" fill="#BCC6A4"/>
+          <circle cx="290" cy="294" r="6" fill="#BCC6A4"/>
+          <!-- marcador -->
+          <g transform="translate(240 92)">
+            <ellipse cx="22" cy="60" rx="15" ry="4.5" fill="rgba(36,27,24,.18)"/>
+            <path d="M22 59C22 59 40 38 40 23A18 18 0 1 0 4 23c0 15 18 36 18 36z" fill="#4A1226"/>
+            <circle cx="22" cy="22" r="7.5" fill="#E7C780"/>
+          </g>
+        </svg>
+        <div class="pie"><i></i>Esquema de situación orientativo, no a escala.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h4>Bodegas Puerta de Pro</h4>
+        <p>Bar-restaurante y cafetería en Tomelloso (Ciudad Real), en plena comarca vitivinícola de La Mancha.</p>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="tel:+34926705771">926 705 771</a></li>
+          <li><a href="tel:+34692060465">692 060 465</a></li>
+          <li><a href="mailto:bodegaspuertadepro@gmail.com">bodegaspuertadepro@gmail.com</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Dirección</h4>
+        <ul>
+          <li>Avenida Juan Carlos I, 123, bajo</li>
+          <li>13700 Tomelloso (Ciudad Real)</li>
+          <li>Consultar horario</li>
+        </ul>
+      </div>
+    </div>
+    <p class="firma">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+</body>
+</html>

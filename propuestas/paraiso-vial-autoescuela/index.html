@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paraiso Vial Autoescuela · Tomelloso</title>
+<meta name="description" content="Propuesta de diseño web para Paraiso Vial Autoescuela, Tomelloso (Ciudad Real). Maqueta no oficial de FFFFFFstudio.">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  :root{
+    --ink:#0d1b2a;
+    --ink-2:#2c4257;
+    --muted:#5b7183;
+    --line:#dfe6ec;
+    --bg:#ffffff;
+    --bg-soft:#f4f7fa;
+    --blue:#15559a;
+    --blue-d:#0d3b70;
+    --blue-l:#2f7fd6;
+    --amber:#f2a516;
+    --amber-d:#c07c00;
+    --bar-h:44px;
+    --r:16px;
+    --max:1120px;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+  }
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;font-family:var(--sans);color:var(--ink);background:var(--bg);
+    font-size:17px;line-height:1.6;overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%;display:block}
+  a{color:inherit}
+  h1,h2,h3,p,ul{margin:0}
+  ul{padding:0;list-style:none}
+
+  /* ---------- barra fija de propuesta ---------- */
+  .studiobar{
+    position:fixed;inset:0 0 auto 0;z-index:100;height:var(--bar-h);
+    display:flex;align-items:center;justify-content:center;
+    background:#0d1b2a;color:#eaf1f8;
+    font-size:12.5px;letter-spacing:.015em;
+    padding:0 12px;text-align:center;
+    border-bottom:1px solid rgba(255,255,255,.12);
+  }
+  .studiobar span{
+    display:block;max-width:100%;
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  }
+  .page{padding-top:var(--bar-h)}
+
+  /* ---------- utilidades ---------- */
+  .wrap{width:100%;max-width:var(--max);margin:0 auto;padding:0 24px}
+  .eyebrow{
+    font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--blue);margin-bottom:14px;
+  }
+  .eyebrow.on-dark{color:#8fc3f5}
+  h2.sec{font-size:clamp(26px,3.3vw,38px);line-height:1.15;letter-spacing:-.02em;font-weight:800}
+  .sec-lead{margin-top:14px;color:var(--muted);max-width:56ch;font-size:16.5px}
+  section{padding:68px 0}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    padding:14px 22px;border-radius:999px;text-decoration:none;
+    font-weight:700;font-size:16px;letter-spacing:.005em;
+    border:1.5px solid transparent;transition:transform .15s ease;
+  }
+  .btn:active{transform:translateY(1px)}
+  .btn-main{background:var(--amber);color:#2b1c00;box-shadow:0 6px 18px rgba(0,0,0,.18)}
+  .btn-ghost{border-color:rgba(255,255,255,.45);color:#fff}
+  .btn-out{border-color:var(--line);color:var(--blue-d);background:#fff}
+  .btn svg{flex:0 0 auto}
+
+  /* ---------- cabecera de marca ---------- */
+  .brandbar{
+    position:relative;z-index:5;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+    padding:18px 0 4px;
+  }
+  .brand{display:flex;align-items:center;gap:12px;min-width:0}
+  .brand .mark{flex:0 0 auto}
+  .brand .txt{min-width:0}
+  .brand .n{font-weight:800;font-size:17px;letter-spacing:-.01em;line-height:1.15;color:#fff}
+  .brand .s{font-size:12px;color:#a9c7e6;letter-spacing:.07em;text-transform:uppercase}
+  .topcall{
+    display:inline-flex;align-items:center;gap:8px;text-decoration:none;
+    color:#eaf1f8;font-weight:700;font-size:15.5px;white-space:nowrap;
+    border:1.5px solid rgba(255,255,255,.3);border-radius:999px;padding:9px 16px;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;color:#fff;
+    background:
+      radial-gradient(900px 520px at 88% -8%, rgba(242,165,22,.3), transparent 62%),
+      radial-gradient(700px 500px at 6% 108%, rgba(47,127,214,.5), transparent 60%),
+      linear-gradient(158deg,#0d3b70 0%,#15559a 48%,#0d2744 100%);
+  }
+  .hero::after{
+    content:"";position:absolute;inset:auto 0 0 0;height:1px;background:rgba(255,255,255,.14)
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.08fr .92fr;gap:48px;align-items:center;
+    padding:46px 0 72px;
+  }
+  .hero h1{
+    font-size:clamp(30px,3.95vw,46px);line-height:1.08;letter-spacing:-.03em;font-weight:800;
+  }
+  .hero h1 em{max-width:none}
+  .hero h1 em{font-style:normal;color:#ffc85a;display:block;white-space:nowrap}
+  .hero p.lead{margin-top:20px;font-size:18px;color:#d5e5f5;max-width:50ch}
+  .hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+  .hero .note{
+    margin-top:22px;font-size:14.5px;color:#a9c7e6;
+    display:flex;align-items:center;gap:9px;flex-wrap:wrap;
+  }
+  .hero .note b{color:#eaf1f8;font-weight:700}
+
+  /* tarjeta visual del hero (solo SVG/CSS) */
+  .heroart{
+    border-radius:22px;padding:22px;
+    background:linear-gradient(170deg,rgba(255,255,255,.14),rgba(255,255,255,.04));
+    border:1px solid rgba(255,255,255,.2);
+    backdrop-filter:blur(2px);
+  }
+  .heroart .cap{
+    font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#a9c7e6;margin-bottom:14px
+  }
+  .heroart ul{display:grid;gap:10px;margin-top:18px}
+  .heroart li{
+    display:flex;align-items:center;gap:11px;font-size:15px;color:#eaf1f8;
+    background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);
+    border-radius:12px;padding:11px 13px;
+  }
+  .heroart li svg{flex:0 0 auto}
+
+  /* ---------- servicios ---------- */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
+  .card{
+    border:1px solid var(--line);border-radius:var(--r);padding:26px 24px;background:#fff;
+    display:flex;flex-direction:column;gap:12px;
+  }
+  .card .ic{
+    width:48px;height:48px;border-radius:13px;display:grid;place-items:center;flex:0 0 auto;
+    background:linear-gradient(145deg,#e8f1fb,#d3e4f7);
+  }
+  .card h3{font-size:19px;font-weight:800;letter-spacing:-.01em}
+  .card p{color:var(--muted);font-size:15.5px}
+  .card.alt .ic{background:linear-gradient(145deg,#fdf0d4,#f9e0ab)}
+
+  /* ---------- pasos ---------- */
+  .steps-sec{background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
+  .step{
+    background:#fff;border:1px solid var(--line);border-radius:var(--r);
+    padding:26px 24px;position:relative;
+  }
+  .step .num{
+    width:42px;height:42px;border-radius:12px;display:grid;place-items:center;
+    background:var(--blue);color:#fff;font-weight:800;font-size:18px;margin-bottom:16px;
+  }
+  .step:nth-child(2) .num{background:var(--blue-l)}
+  .step:nth-child(3) .num{background:var(--amber);color:#2b1c00}
+  .step h3{font-size:18.5px;font-weight:800;letter-spacing:-.01em}
+  .step p{color:var(--muted);font-size:15.5px;margin-top:9px}
+  .steps-cta{margin-top:30px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .steps-cta .btn-main{box-shadow:0 6px 18px rgba(242,165,22,.3)}
+
+  /* ---------- contacto ---------- */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin-top:40px;align-items:start}
+  .info{display:grid;gap:14px}
+  .row{
+    display:flex;gap:14px;align-items:flex-start;
+    border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:#fff;
+  }
+  .row .ic{
+    width:40px;height:40px;border-radius:11px;flex:0 0 auto;display:grid;place-items:center;
+    background:linear-gradient(145deg,#e8f1fb,#d3e4f7);
+  }
+  .row .k{font-size:12px;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .row .v{font-size:17px;font-weight:700;margin-top:3px;letter-spacing:-.005em;overflow-wrap:break-word}
+  .row .v a{text-decoration:none;color:var(--blue-d)}
+  .row .v .sep{color:#9fb2c2;font-weight:400;padding:0 7px}
+  .row .x{font-size:14.5px;color:var(--muted);margin-top:4px}
+  .maptile{
+    border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:#fff
+  }
+  .maptile svg{width:100%;height:auto;display:block}
+  .maptile .foot{
+    padding:13px 18px;border-top:1px solid var(--line);background:var(--bg-soft);
+    font-size:13.5px;color:var(--muted);
+  }
+
+  /* ---------- pie ---------- */
+  footer{background:#0d1b2a;color:#c8d9e9;padding:52px 0 34px}
+  .fgrid{display:grid;grid-template-columns:1.2fr 1fr;gap:34px;align-items:start}
+  footer .fn{color:#fff;font-weight:800;font-size:18px;letter-spacing:-.01em}
+  footer .fs{font-size:14.5px;margin-top:8px;color:#9bb4ca}
+  footer .flinks{display:grid;gap:9px;font-size:15.5px}
+  footer .flinks a{text-decoration:none;color:#eaf1f8;font-weight:600;overflow-wrap:break-word}
+  .credit{
+    margin-top:36px;padding-top:20px;border-top:1px solid rgba(255,255,255,.14);
+    font-size:13.5px;color:#9bb4ca;
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;gap:34px;padding:34px 0 56px}
+    .cards,.steps{grid-template-columns:1fr 1fr}
+    .contact-grid{grid-template-columns:1fr;gap:24px}
+    .fgrid{grid-template-columns:1fr;gap:26px}
+  }
+  @media (max-width:620px){
+    :root{--bar-h:52px}
+    body{font-size:16.5px}
+    .studiobar{font-size:11.5px;line-height:1.3;padding:0 14px}
+    .studiobar span{white-space:normal;overflow:visible;text-overflow:clip}
+    .wrap{padding:0 18px}
+    section{padding:52px 0}
+    .brandbar{padding:16px 0 0;gap:10px}
+    .topcall{display:none}
+    .hero p.lead{font-size:16.5px}
+    .hero .cta .btn{width:100%}
+    .cards,.steps{grid-template-columns:1fr}
+    .heroart{padding:18px}
+    .steps-cta .btn{width:100%}
+    .row .v{font-size:16px}
+  }
+</style>
+</head>
+<body>
+
+<div class="studiobar"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<div class="page">
+
+  <!-- ============ HERO ============ -->
+  <header class="hero">
+    <div class="wrap">
+      <div class="brandbar">
+        <div class="brand">
+          <svg class="mark" width="46" height="46" viewBox="0 0 46 46" aria-hidden="true">
+            <rect width="46" height="46" rx="13" fill="url(#bg1)"/>
+            <path d="M23 9.5 33.5 14v8.6c0 6.6-4.3 11.4-10.5 13.9-6.2-2.5-10.5-7.3-10.5-13.9V14L23 9.5Z" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="1.4"/>
+            <path d="M18 27.5 20.4 18h5.2L28 27.5" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <path d="M19.1 24h7.8" stroke="#ffc85a" stroke-width="2.1" stroke-linecap="round"/>
+            <defs>
+              <linearGradient id="bg1" x1="0" y1="0" x2="46" y2="46">
+                <stop offset="0" stop-color="#2f7fd6"/><stop offset="1" stop-color="#0d3b70"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <div class="txt">
+            <div class="n">Paraiso Vial Autoescuela</div>
+            <div class="s">Tomelloso · Ciudad Real</div>
+          </div>
+        </div>
+        <a class="topcall" href="tel:+34926044315">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 3h3l1.5 4.2-2 1.4a12 12 0 0 0 5.3 5.3l1.4-2L20 13.4v3A2.6 2.6 0 0 1 17.4 19C10.5 18.6 5.4 13.5 5 6.6A2.6 2.6 0 0 1 6.6 3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          926 044 315
+        </a>
+      </div>
+
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow on-dark">Formación vial en Tomelloso</div>
+          <h1>Aprende a conducir<em>paso a paso.</em></h1>
+          <p class="lead">Autoescuela en el centro de Tomelloso. Clases teóricas y prácticas, preparación de los test y gestión de los trámites, todo bien explicado y con un trato cercano de principio a fin.</p>
+          <div class="cta">
+            <a class="btn btn-main" href="tel:+34926044315">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 3h3l1.5 4.2-2 1.4a12 12 0 0 0 5.3 5.3l1.4-2L20 13.4v3A2.6 2.6 0 0 1 17.4 19C10.5 18.6 5.4 13.5 5 6.6A2.6 2.6 0 0 1 6.6 3Z" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></svg>
+              Llamar al 926 044 315
+            </a>
+            <a class="btn btn-ghost" href="#contacto">Cómo llegar</a>
+          </div>
+          <p class="note">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="#ffc85a" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5" stroke="#ffc85a" stroke-width="1.8"/></svg>
+            <span><b>C/ de la Concordia, 11</b> · 13700 Tomelloso</span>
+          </p>
+        </div>
+
+        <div class="heroart">
+          <div class="cap">De la matrícula al carnet</div>
+          <svg viewBox="0 0 380 158" role="img" aria-label="Ilustración esquemática de una vía con tres etapas de la formación">
+            <defs>
+              <linearGradient id="road" x1="0" y1="0" x2="380" y2="0">
+                <stop offset="0" stop-color="#143a63"/><stop offset="1" stop-color="#0f2a49"/>
+              </linearGradient>
+            </defs>
+            <rect x="0" y="0" width="380" height="158" rx="14" fill="rgba(255,255,255,.05)"/>
+            <path d="M14 126 C110 126 96 34 190 34 C284 34 272 92 366 92" stroke="url(#road)" stroke-width="26" fill="none" stroke-linecap="round"/>
+            <path d="M14 126 C110 126 96 34 190 34 C284 34 272 92 366 92" stroke="#ffc85a" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-dasharray="11 13"/>
+            <circle cx="22" cy="126" r="8.5" fill="#2f7fd6" stroke="#eaf1f8" stroke-width="2.2"/>
+            <circle cx="190" cy="34" r="8.5" fill="#2f7fd6" stroke="#eaf1f8" stroke-width="2.2"/>
+            <circle cx="358" cy="92" r="10" fill="#f2a516" stroke="#eaf1f8" stroke-width="2.2"/>
+            <g fill="#a9c7e6" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="11.5" font-weight="600">
+              <text x="22" y="150" text-anchor="middle">Teórica</text>
+              <text x="190" y="22" text-anchor="middle">Prácticas</text>
+              <text x="356" y="118" text-anchor="middle">Carnet</text>
+            </g>
+          </svg>
+          <ul>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 5.5h14v13H5z" stroke="#ffc85a" stroke-width="1.7"/><path d="M8.5 10h7M8.5 14h4.5" stroke="#eaf1f8" stroke-width="1.7" stroke-linecap="round"/></svg>
+              Teoría clara y test de repaso
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="7.5" stroke="#ffc85a" stroke-width="1.7"/><circle cx="12" cy="12" r="2.4" stroke="#eaf1f8" stroke-width="1.7"/><path d="M12 4.5v5M4.9 15.5l4.6-2M19.1 15.5l-4.6-2" stroke="#eaf1f8" stroke-width="1.6" stroke-linecap="round"/></svg>
+              Prácticas adaptadas a tu ritmo
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 4h7l4 4v12H7z" stroke="#ffc85a" stroke-width="1.7" stroke-linejoin="round"/><path d="M13.5 4v4.5H18" stroke="#ffc85a" stroke-width="1.7" stroke-linejoin="round"/><path d="M10 13.5h5M10 16.5h3.5" stroke="#eaf1f8" stroke-width="1.6" stroke-linecap="round"/></svg>
+              Trámites gestionados por nosotros
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ SERVICIOS ============ -->
+  <section id="servicios">
+    <div class="wrap">
+      <div class="eyebrow">Qué hacemos</div>
+      <h2 class="sec">Formación para obtener tu permiso de conducir</h2>
+      <p class="sec-lead">Te acompañamos en todo el proceso: la parte teórica, la parte práctica y el papeleo. Consúltanos qué permisos y qué formación podemos ofrecerte en este momento.</p>
+
+      <div class="cards">
+        <article class="card">
+          <div class="ic">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2.5" stroke="#15559a" stroke-width="1.8"/><path d="M6.5 10h6M6.5 13.5h4" stroke="#2f7fd6" stroke-width="1.8" stroke-linecap="round"/><circle cx="17" cy="11" r="2" stroke="#2f7fd6" stroke-width="1.8"/></svg>
+          </div>
+          <h3>Permisos de conducir</h3>
+          <p>Preparación para la obtención del permiso de conducir. Pregúntanos por las opciones disponibles y te orientamos según tu caso.</p>
+        </article>
+
+        <article class="card">
+          <div class="ic">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5.5h16v10.5H4z" stroke="#15559a" stroke-width="1.8"/><path d="M8 19.5h8" stroke="#15559a" stroke-width="1.8" stroke-linecap="round"/><path d="M7.5 9.5h9M7.5 12.8h6" stroke="#2f7fd6" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Clases teóricas</h3>
+          <p>Las normas de circulación, las señales y la seguridad vial explicadas con calma, resolviendo dudas en clase hasta que todo encaje.</p>
+        </article>
+
+        <article class="card alt">
+          <div class="ic">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8" stroke="#c07c00" stroke-width="1.8"/><circle cx="12" cy="12" r="2.6" stroke="#c07c00" stroke-width="1.8"/><path d="M12 4v5.4M5.1 16l4.7-2.1M18.9 16l-4.7-2.1" stroke="#f2a516" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Clases prácticas</h3>
+          <p>Al volante, por las calles de Tomelloso y su entorno, avanzando al ritmo que necesites y repasando lo que cueste más.</p>
+        </article>
+
+        <article class="card">
+          <div class="ic">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4.5" y="3.5" width="15" height="17" rx="2.5" stroke="#15559a" stroke-width="1.8"/><path d="m8.2 9.6 1.7 1.7 3-3" stroke="#2f7fd6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="m8.2 15.3 1.7 1.7 3-3" stroke="#2f7fd6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Test de examen</h3>
+          <p>Test de repaso para que llegues al examen teórico con la práctica suficiente y sabiendo dónde están tus puntos flojos.</p>
+        </article>
+
+        <article class="card">
+          <div class="ic">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.5 3.5h7L18 8v12.5H6.5z" stroke="#15559a" stroke-width="1.8" stroke-linejoin="round"/><path d="M13 3.5V8h5" stroke="#15559a" stroke-width="1.8" stroke-linejoin="round"/><path d="M9.5 13h5M9.5 16.3h3.5" stroke="#2f7fd6" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Trámites y gestiones</h3>
+          <p>Nos encargamos del papeleo y de la tramitación que lleva asociada tu formación, para que tú te centres en aprender.</p>
+        </article>
+
+        <article class="card alt">
+          <div class="ic">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3.5 19 6.6v6.1c0 4.7-3 8.1-7 9.8-4-1.7-7-5.1-7-9.8V6.6L12 3.5Z" stroke="#c07c00" stroke-width="1.8" stroke-linejoin="round"/><path d="m8.9 12.2 2 2.1 4.2-4.3" stroke="#f2a516" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Orientación personalizada</h3>
+          <p>Si no sabes por dónde empezar, te explicamos el proceso completo y qué pasos te tocan a ti en cada momento.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CÓMO EMPEZAR ============ -->
+  <section class="steps-sec" id="empezar">
+    <div class="wrap">
+      <div class="eyebrow">Cómo empezar</div>
+      <h2 class="sec">Tres pasos y estás dentro</h2>
+      <p class="sec-lead">Empezar es más sencillo de lo que parece. Una llamada basta para saber exactamente qué necesitas.</p>
+
+      <div class="steps">
+        <article class="step">
+          <div class="num">1</div>
+          <h3>Llámanos o pásate</h3>
+          <p>Cuéntanos tu situación por teléfono o acércate a la oficina de la C/ de la Concordia, 11. Te explicamos cómo funciona todo sin compromiso.</p>
+        </article>
+        <article class="step">
+          <div class="num">2</div>
+          <h3>Matrícula y teórica</h3>
+          <p>Formalizamos la matrícula, nos ocupamos de los trámites y arrancas con las clases teóricas y los test de repaso.</p>
+        </article>
+        <article class="step">
+          <div class="num">3</div>
+          <h3>Prácticas y examen</h3>
+          <p>Pasas a las clases prácticas al volante y preparamos juntos el examen, avanzando a tu ritmo hasta el final.</p>
+        </article>
+      </div>
+
+      <div class="steps-cta">
+        <a class="btn btn-main" href="tel:+34926044315">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 3h3l1.5 4.2-2 1.4a12 12 0 0 0 5.3 5.3l1.4-2L20 13.4v3A2.6 2.6 0 0 1 17.4 19C10.5 18.6 5.4 13.5 5 6.6A2.6 2.6 0 0 1 6.6 3Z" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></svg>
+          Llamar al 926 044 315
+        </a>
+        <a class="btn btn-out" href="tel:+34645399515">O al 645 399 515</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACTO ============ -->
+  <section id="contacto">
+    <div class="wrap">
+      <div class="eyebrow">Contacto</div>
+      <h2 class="sec">Estamos en el centro de Tomelloso</h2>
+      <p class="sec-lead">Pregúntanos lo que necesites por teléfono o pásate por la oficina. Te atendemos encantados.</p>
+
+      <div class="contact-grid">
+        <div class="info">
+          <div class="row">
+            <div class="ic">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 3h3l1.5 4.2-2 1.4a12 12 0 0 0 5.3 5.3l1.4-2L20 13.4v3A2.6 2.6 0 0 1 17.4 19C10.5 18.6 5.4 13.5 5 6.6A2.6 2.6 0 0 1 6.6 3Z" stroke="#15559a" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <div class="k">Teléfonos</div>
+              <div class="v"><a href="tel:+34926044315">926 044 315</a><span class="sep">/</span><a href="tel:+34645399515">645 399 515</a></div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="ic">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="#15559a" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5" stroke="#2f7fd6" stroke-width="1.8"/></svg>
+            </div>
+            <div>
+              <div class="k">Dirección</div>
+              <div class="v">C/ de la Concordia, 11</div>
+              <div class="x">13700 Tomelloso (Ciudad Real)</div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="ic">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.2" stroke="#15559a" stroke-width="1.8"/><path d="M12 7.6V12l3 1.9" stroke="#2f7fd6" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <div>
+              <div class="k">Horario</div>
+              <div class="v">Consultar horario</div>
+              <div class="x">Llámanos y te indicamos la disponibilidad.</div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="ic">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.2" y="5.5" width="17.6" height="13" rx="2.4" stroke="#15559a" stroke-width="1.8"/><path d="m4 7.4 8 5.6 8-5.6" stroke="#2f7fd6" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <div class="k">Email</div>
+              <div class="v"><a href="mailto:paraisovial@gmail.com">paraisovial@gmail.com</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="maptile">
+          <svg viewBox="0 0 520 340" role="img" aria-label="Mapa esquemático de la ubicación de la autoescuela">
+            <rect width="520" height="340" fill="#eef3f8"/>
+            <g fill="#e2eaf2">
+              <rect x="22" y="24" width="116" height="78" rx="6"/>
+              <rect x="178" y="24" width="140" height="78" rx="6"/>
+              <rect x="358" y="24" width="140" height="78" rx="6"/>
+              <rect x="22" y="142" width="116" height="74" rx="6"/>
+              <rect x="358" y="142" width="140" height="74" rx="6"/>
+              <rect x="22" y="256" width="116" height="62" rx="6"/>
+              <rect x="178" y="256" width="140" height="62" rx="6"/>
+              <rect x="358" y="256" width="140" height="62" rx="6"/>
+            </g>
+            <g stroke="#cfdbe6" stroke-width="1.4" fill="none">
+              <rect x="22" y="24" width="116" height="78" rx="6"/>
+              <rect x="178" y="24" width="140" height="78" rx="6"/>
+              <rect x="358" y="24" width="140" height="78" rx="6"/>
+              <rect x="22" y="142" width="116" height="74" rx="6"/>
+              <rect x="358" y="142" width="140" height="74" rx="6"/>
+              <rect x="22" y="256" width="116" height="62" rx="6"/>
+              <rect x="178" y="256" width="140" height="62" rx="6"/>
+              <rect x="358" y="256" width="140" height="62" rx="6"/>
+            </g>
+            <!-- calles -->
+            <g stroke="#ffffff" stroke-width="30" stroke-linecap="square">
+              <path d="M0 122h520"/>
+              <path d="M0 236h520"/>
+              <path d="M158 0v340"/>
+              <path d="M338 0v340"/>
+            </g>
+            <g stroke="#c2d2e0" stroke-width="1.2" fill="none">
+              <path d="M0 107h520M0 137h520M0 221h520M0 251h520"/>
+              <path d="M143 0v340M173 0v340M323 0v340M353 0v340"/>
+            </g>
+            <g stroke="#ffc85a" stroke-width="2.4" stroke-dasharray="12 14" fill="none">
+              <path d="M0 122h520"/><path d="M338 0v340"/>
+            </g>
+            <!-- edificio destacado -->
+            <rect x="178" y="142" width="140" height="74" rx="6" fill="#dbe8f6" stroke="#15559a" stroke-width="1.8"/>
+            <!-- marcador -->
+            <g transform="translate(248 155)">
+              <ellipse cx="0" cy="49" rx="15" ry="5" fill="rgba(13,27,42,.18)"/>
+              <path d="M0 47C0 47 20 28.5 20 17A20 20 0 1 0-20 17C-20 28.5 0 47 0 47Z" fill="#15559a" stroke="#fff" stroke-width="3"/>
+              <circle cx="0" cy="16.5" r="6.9" fill="#ffc85a"/>
+            </g>
+          </svg>
+          <div class="foot">Mapa esquemático, orientativo. No refleja el trazado real de las calles.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PIE ============ -->
+  <footer>
+    <div class="wrap">
+      <div class="fgrid">
+        <div>
+          <div class="fn">Paraiso Vial Autoescuela</div>
+          <div class="fs">C/ de la Concordia, 11 · 13700 Tomelloso (Ciudad Real)<br>Titular: Eva Mº Paraíso González</div>
+        </div>
+        <div class="flinks">
+          <a href="tel:+34926044315">926 044 315</a>
+          <a href="tel:+34645399515">645 399 515</a>
+          <a href="mailto:paraisovial@gmail.com">paraisovial@gmail.com</a>
+        </div>
+      </div>
+      <div class="credit">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</div>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
