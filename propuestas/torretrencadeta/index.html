@@ -1,0 +1,598 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Torretrencadeta · Finca familiar i formatgeria · Ciutadella de Menorca</title>
+<meta name="description" content="Torretrencadeta, finca familiar y quesería en Ciutadella de Menorca. Quesos de leche de vaca frisona y de oveja menorquina, con venta directa en la finca.">
+<style>
+  :root{
+    --cream:#f7f2e7;
+    --cream-2:#efe7d6;
+    --ink:#2a2419;
+    --ink-soft:#5b5243;
+    --green:#1f4034;
+    --green-2:#2f5a48;
+    --green-soft:#8aa79a;
+    --butter:#e3b23c;
+    --butter-soft:#f2d58b;
+    --terra:#b5542f;
+    --line:rgba(42,36,25,.14);
+    --line-strong:rgba(42,36,25,.26);
+    --bar-h:44px;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    --serif:ui-serif,Georgia,"Iowan Old Style","Times New Roman",Times,serif;
+    --radius:18px;
+    --maxw:1180px;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    padding-top:var(--bar-h);
+    background:var(--cream);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:17px;
+    line-height:1.65;
+    overflow-x:hidden;
+  }
+  img,svg{max-width:100%}
+  a{color:inherit}
+  h1,h2,h3{font-family:var(--serif);font-weight:600;letter-spacing:-.015em;line-height:1.12;margin:0}
+  p{margin:0}
+
+  /* ---------- barra fija de propuesta ---------- */
+  .proposal-bar{
+    position:fixed;top:0;left:0;right:0;z-index:99;
+    height:var(--bar-h);
+    display:flex;align-items:center;justify-content:center;
+    gap:.5em;
+    padding:0 14px;
+    background:var(--ink);
+    color:var(--cream);
+    font-size:12.5px;
+    line-height:1.25;
+    letter-spacing:.01em;
+    text-align:center;
+    border-bottom:1px solid rgba(247,242,231,.18);
+  }
+  .proposal-bar span{
+    display:block;
+    max-width:100%;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+  }
+  .proposal-bar .dot{
+    flex:0 0 auto;width:7px;height:7px;border-radius:50%;
+    background:var(--butter);
+  }
+
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  .eyebrow{
+    font-size:12px;letter-spacing:.16em;text-transform:none;
+    color:var(--green-2);font-weight:600;
+  }
+  .eyebrow::before{content:"— ";color:var(--butter)}
+
+  /* ---------- nav ---------- */
+  .site-nav{
+    position:sticky;top:var(--bar-h);z-index:60;
+    background:rgba(247,242,231,.92);
+    backdrop-filter:saturate(140%) blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .site-nav .wrap{display:flex;align-items:center;gap:18px;min-height:66px;flex-wrap:wrap;padding-top:10px;padding-bottom:10px}
+  .brand{display:flex;align-items:center;gap:11px;margin-right:auto;text-decoration:none}
+  .brand-mark{flex:0 0 auto}
+  .brand-name{font-family:var(--serif);font-size:19px;font-weight:600;letter-spacing:-.01em;line-height:1.1}
+  .brand-sub{font-size:11px;color:var(--ink-soft);letter-spacing:.09em;line-height:1.2}
+  .nav-links{display:flex;gap:22px;font-size:14.5px}
+  .nav-links a{text-decoration:none;color:var(--ink-soft);padding-bottom:2px;border-bottom:1px solid transparent}
+  .nav-links a:hover{color:var(--green);border-bottom-color:var(--butter)}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;
+    padding:12px 20px;border-radius:999px;
+    font-size:15px;font-weight:600;text-decoration:none;
+    border:1px solid transparent;
+    white-space:nowrap;
+  }
+  .btn-primary{background:var(--green);color:var(--cream);box-shadow:0 8px 22px -12px rgba(31,64,52,.7)}
+  .btn-primary:hover{background:var(--green-2)}
+  .btn-ghost{border-color:var(--line-strong);color:var(--ink)}
+  .btn-ghost:hover{border-color:var(--green);color:var(--green)}
+  .btn svg{flex:0 0 auto}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;overflow:hidden;padding:76px 0 84px;
+    background:
+      radial-gradient(120% 90% at 88% 6%, rgba(242,213,139,.5) 0%, rgba(242,213,139,0) 58%),
+      radial-gradient(90% 80% at 2% 96%, rgba(138,167,154,.38) 0%, rgba(138,167,154,0) 60%),
+      linear-gradient(176deg,var(--cream) 0%, var(--cream-2) 100%);
+  }
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:54px;align-items:center}
+  .hero h1{font-size:clamp(34px,5.2vw,60px);margin:16px 0 0}
+  .hero h1 em{font-style:normal;color:var(--green);display:block}
+  .hero-lead{margin-top:20px;font-size:clamp(16.5px,1.5vw,19.5px);color:var(--ink-soft);max-width:34em}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:13px;margin-top:30px}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:30px;font-size:14px;color:var(--ink-soft)}
+  .hero-meta div{display:flex;align-items:center;gap:8px}
+  .hero-art{display:flex;justify-content:center}
+  .hero-art svg{width:100%;max-width:430px;height:auto;filter:drop-shadow(0 26px 40px rgba(42,36,25,.16))}
+
+  /* ---------- tira de valores ---------- */
+  .strip{background:var(--green);color:var(--cream)}
+  .strip .wrap{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;padding-top:26px;padding-bottom:26px}
+  .strip p{font-size:14.5px;line-height:1.5}
+  .strip b{display:block;font-family:var(--serif);font-size:16.5px;font-weight:600;margin-bottom:3px}
+  .strip .item{display:flex;gap:13px;align-items:flex-start}
+  .strip svg{flex:0 0 auto;margin-top:3px}
+
+  /* ---------- secciones ---------- */
+  section{scroll-margin-top:calc(var(--bar-h) + 78px)}
+  .sec{padding:84px 0}
+  .sec-head{max-width:40em}
+  .sec-head h2{font-size:clamp(27px,3.4vw,40px);margin:13px 0 0}
+  .sec-head p{margin-top:16px;color:var(--ink-soft);font-size:17px}
+
+  .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:44px}
+  .card{
+    background:#fffdf7;border:1px solid var(--line);border-radius:var(--radius);
+    padding:28px 26px 30px;display:flex;flex-direction:column;gap:12px;
+    box-shadow:0 1px 0 rgba(255,255,255,.7) inset;
+  }
+  .card-ico{width:50px;height:50px;border-radius:14px;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(150deg,var(--butter-soft),#fff5df);border:1px solid rgba(227,178,60,.45)}
+  .card h3{font-size:21px}
+  .card p{color:var(--ink-soft);font-size:15.5px}
+  .tag{
+    align-self:flex-start;margin-top:4px;
+    font-size:12px;letter-spacing:.06em;color:var(--green-2);
+    background:rgba(138,167,154,.2);border:1px solid rgba(47,90,72,.2);
+    padding:5px 11px;border-radius:999px;
+  }
+
+  /* ---------- pasos ---------- */
+  .steps-sec{background:linear-gradient(180deg,#fffdf7 0%, var(--cream-2) 100%);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:46px}
+  .step{position:relative;padding:30px 26px;background:var(--cream);border:1px solid var(--line);border-radius:var(--radius)}
+  .step-n{
+    font-family:var(--serif);font-size:15px;font-weight:600;
+    width:38px;height:38px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--green);color:var(--cream);margin-bottom:16px;
+  }
+  .step h3{font-size:20px;margin-bottom:9px}
+  .step p{color:var(--ink-soft);font-size:15.5px}
+
+  /* ---------- contacto ---------- */
+  .contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.02fr);gap:40px;margin-top:46px;align-items:start}
+  .info-list{display:flex;flex-direction:column;gap:4px}
+  .info{display:flex;gap:16px;padding:20px 0;border-bottom:1px solid var(--line)}
+  .info:first-child{border-top:1px solid var(--line)}
+  .info-ico{flex:0 0 auto;width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;
+    background:rgba(31,64,52,.08);border:1px solid rgba(31,64,52,.14)}
+  .info-k{font-size:12px;letter-spacing:.12em;color:var(--green-2);font-weight:600}
+  .info-v{font-size:17px;margin-top:3px;word-break:break-word}
+  .info-v a{text-decoration:none;border-bottom:1px solid var(--butter)}
+  .info-note{font-size:13.5px;color:var(--ink-soft);margin-top:3px}
+  .contact-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+
+  .map-card{background:#fffdf7;border:1px solid var(--line);border-radius:var(--radius);padding:18px 18px 14px;overflow:hidden}
+  .map-card svg{display:block;width:100%;height:auto;border-radius:12px}
+  .map-cap{font-size:12.5px;color:var(--ink-soft);margin-top:12px;padding:0 4px}
+
+  /* ---------- pie ---------- */
+  footer{background:var(--ink);color:var(--cream);padding:58px 0 34px;margin-top:0}
+  .foot-top{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr);gap:34px}
+  .foot-brand .brand-name{color:var(--cream)}
+  .foot-brand p{color:rgba(247,242,231,.66);font-size:14.5px;margin-top:12px;max-width:30em}
+  .foot-col h4{font-family:var(--serif);font-size:15px;font-weight:600;margin:0 0 12px}
+  .foot-col p,.foot-col a{display:block;font-size:14.5px;color:rgba(247,242,231,.72);text-decoration:none;margin-bottom:7px;word-break:break-word}
+  .foot-col a:hover{color:var(--butter-soft)}
+  .foot-rule{height:1px;background:rgba(247,242,231,.16);margin:38px 0 22px}
+  .foot-bottom{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;font-size:13px;color:rgba(247,242,231,.62)}
+  .credit{color:var(--butter-soft)}
+
+  @media (max-width:980px){
+    .hero-grid{grid-template-columns:1fr;gap:40px}
+    .hero-art{order:-1}
+    .hero-art svg{max-width:340px}
+    .cards,.steps,.strip .wrap{grid-template-columns:1fr}
+    .contact-grid{grid-template-columns:1fr}
+    .foot-top{grid-template-columns:1fr 1fr}
+    .foot-brand{grid-column:1 / -1}
+  }
+  @media (max-width:640px){
+    :root{--bar-h:58px}
+    body{font-size:16px}
+    .wrap{padding:0 18px}
+    .proposal-bar{font-size:11.5px;line-height:1.35}
+    .proposal-bar span{white-space:normal}
+    .proposal-bar .dot{display:none}
+    .site-nav .wrap{min-height:0;gap:12px}
+    .nav-links{display:none}
+    .brand{margin-right:0}
+    .site-nav .btn{width:100%;justify-content:center}
+    .hero{padding:48px 0 56px}
+    .sec{padding:60px 0}
+    .foot-top{grid-template-columns:1fr}
+    .hero-cta .btn{width:100%;justify-content:center}
+  }
+</style>
+</head>
+<body>
+
+<div class="proposal-bar" role="note">
+  <i class="dot" aria-hidden="true"></i>
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+  <i class="dot" aria-hidden="true"></i>
+</div>
+
+<nav class="site-nav">
+  <div class="wrap">
+    <a class="brand" href="#inicio">
+      <span class="brand-mark" aria-hidden="true">
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+          <rect x="1" y="1" width="40" height="40" rx="13" fill="#1f4034"/>
+          <path d="M9 27.5c0-5.5 4.6-10 10.2-10h10.4c1.3 0 2.4 1 2.4 2.4v7.6c0 .8-.7 1.5-1.5 1.5H10.5c-.8 0-1.5-.7-1.5-1.5z" fill="#f2d58b"/>
+          <circle cx="16.5" cy="24" r="1.9" fill="#1f4034"/>
+          <circle cx="23" cy="26.5" r="1.3" fill="#1f4034"/>
+          <circle cx="27.5" cy="22.5" r="1.5" fill="#1f4034"/>
+          <path d="M13 17.5c1.2-3.6 4.2-6 8-6s6.8 2.4 8 6" stroke="#e3b23c" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <span>
+        <span class="brand-name">Torretrencadeta</span>
+        <span class="brand-sub">Ciutadella de Menorca</span>
+      </span>
+    </a>
+    <div class="nav-links">
+      <a href="#productos">Quesos</a>
+      <a href="#visita">Tu visita</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <a class="btn btn-primary" href="tel:+34645468536">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5.2 2.3 6.6 5 5.3 6.4a9 9 0 0 0 4.3 4.3L11 9.4l2.7 1.4v2.4c0 .6-.5 1.1-1.1 1C6.6 13.6 2.4 9.4 1.8 3.4c-.1-.6.4-1.1 1-1.1z" fill="currentColor"/></svg>
+      645 468 536
+    </a>
+  </div>
+</nav>
+
+<header class="hero" id="inicio">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Finca familiar i formatgeria · Menorca</p>
+      <h1>Queso de finca,<em>hecho en Ciutadella.</em></h1>
+      <p class="hero-lead">Somos una finca familiar y quesería en Ciutadella de Menorca. Elaboramos queso con leche de nuestras vacas frisonas y de nuestras ovejas menorquinas, y lo vendemos directamente aquí, en la finca.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="tel:+34645468536">
+          <svg width="17" height="17" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5.2 2.3 6.6 5 5.3 6.4a9 9 0 0 0 4.3 4.3L11 9.4l2.7 1.4v2.4c0 .6-.5 1.1-1.1 1C6.6 13.6 2.4 9.4 1.8 3.4c-.1-.6.4-1.1 1-1.1z" fill="currentColor"/></svg>
+          Llamar al 645 468 536
+        </a>
+        <a class="btn btn-ghost" href="#visita">Cómo visitarnos</a>
+      </div>
+      <div class="hero-meta">
+        <div>
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="6.4" r="2.3" stroke="#5b5243" stroke-width="1.4"/><path d="M8 14.5S2.8 10 2.8 6.6a5.2 5.2 0 0 1 10.4 0C13.2 10 8 14.5 8 14.5z" stroke="#5b5243" stroke-width="1.4"/></svg>
+          Camí Vell km 8, Ciutadella
+        </div>
+        <div>
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.5 8.5 6.3 12.3 13.5 4.5" stroke="#5b5243" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Venta directa en la finca
+        </div>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 400 360" fill="none" role="presentation">
+        <defs>
+          <linearGradient id="hg1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#fffdf7"/><stop offset="1" stop-color="#efe7d6"/>
+          </linearGradient>
+          <linearGradient id="hg2" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#f6dd9d"/><stop offset="1" stop-color="#e3b23c"/>
+          </linearGradient>
+          <linearGradient id="hg3" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#fdf3dd"/><stop offset="1" stop-color="#f2d58b"/>
+          </linearGradient>
+          <clipPath id="hclip"><circle cx="200" cy="176" r="161"/></clipPath>
+        </defs>
+        <circle cx="200" cy="176" r="162" fill="url(#hg1)" stroke="rgba(42,36,25,.12)"/>
+        <g clip-path="url(#hclip)">
+          <path d="M58 250c40-16 66-6 92 2s62 10 100-6 76-10 92 2v94H58z" fill="#e7eee9" opacity=".75"/>
+          <path d="M40 272c48-22 78-8 108 2s66 8 104-10 74-12 108 4" stroke="#8aa79a" stroke-width="2.4" stroke-linecap="round"/>
+        </g>
+        <g>
+          <ellipse cx="200" cy="236" rx="126" ry="26" fill="rgba(42,36,25,.08)"/>
+          <path d="M104 214c0-6 5-11 11-11h170c6 0 11 5 11 11v8c0 7-6 13-13 13H117c-7 0-13-6-13-13z" fill="#f7f2e7" stroke="rgba(42,36,25,.16)" stroke-width="1.6"/>
+          <path d="M126 203c0-44 33-79 74-79s74 35 74 79z" fill="url(#hg2)"/>
+          <path d="M126 203c0-44 33-79 74-79" stroke="#fff6e0" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+          <circle cx="166" cy="178" r="9" fill="#d19a28" opacity=".85"/>
+          <circle cx="206" cy="160" r="6" fill="#d19a28" opacity=".85"/>
+          <circle cx="232" cy="186" r="7.5" fill="#d19a28" opacity=".85"/>
+          <circle cx="188" cy="194" r="4.5" fill="#d19a28" opacity=".85"/>
+        </g>
+        <g transform="translate(252 116)">
+          <path d="M0 42c0-23 19-42 42-42s42 19 42 42-19 42-42 42S0 65 0 42z" fill="url(#hg3)" stroke="rgba(42,36,25,.16)" stroke-width="1.6"/>
+          <path d="M42 8v68M8 42h68" stroke="#e3b23c" stroke-width="2" opacity=".7"/>
+          <circle cx="42" cy="42" r="12" fill="none" stroke="#e3b23c" stroke-width="2" opacity=".7"/>
+        </g>
+        <g transform="translate(62 128)" opacity=".9">
+          <path d="M8 60c0-18 12-32 28-32s28 14 28 32z" fill="#2f5a48"/>
+          <path d="M36 28c-7-9-3-20 0-24 3 4 7 15 0 24z" fill="#8aa79a"/>
+          <path d="M0 60h72" stroke="#1f4034" stroke-width="2.4" stroke-linecap="round"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<div class="strip">
+  <div class="wrap">
+    <div class="item">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 20c0-5 4-9 9-9h7a2 2 0 0 1 2 2v6a1 1 0 0 1-1 1z" fill="#f2d58b"/><circle cx="10" cy="17" r="1.6" fill="#1f4034"/><circle cx="16" cy="18" r="1.2" fill="#1f4034"/></svg>
+      <p><b>Leche de la finca</b>De nuestras vacas frisonas y nuestras ovejas menorquinas.</p>
+    </div>
+    <div class="item">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h14l-2 16H7z" stroke="#f2d58b" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 10h8" stroke="#f2d58b" stroke-width="1.8" stroke-linecap="round"/></svg>
+      <p><b>Venta directa</b>Del obrador a tu bolsa, sin intermediarios.</p>
+    </div>
+    <div class="item">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s-7-5.6-7-10a7 7 0 0 1 14 0c0 4.4-7 10-7 10z" stroke="#f2d58b" stroke-width="1.8"/><circle cx="12" cy="10.6" r="2.6" stroke="#f2d58b" stroke-width="1.8"/></svg>
+      <p><b>En Ciutadella</b>Finca familiar en el Camí Vell, a las afueras del pueblo.</p>
+    </div>
+  </div>
+</div>
+
+<section class="sec" id="productos">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Lo que elaboramos</p>
+      <h2>Quesos de vaca y de oveja, de nuestra propia leche</h2>
+      <p>Trabajamos con dos rebaños y dos lecheras muy distintas. Si quieres saber qué tenemos hecho en este momento, lo mejor es llamarnos antes de venir.</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-ico" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M3 19c0-5 4-9 9-9h7a2 2 0 0 1 2 2v6a1 1 0 0 1-1 1z" fill="#1f4034" opacity=".9"/><circle cx="10" cy="16" r="1.5" fill="#f2d58b"/><circle cx="16" cy="17" r="1.1" fill="#f2d58b"/></svg>
+        </div>
+        <h3>Queso de leche de vaca frisona</h3>
+        <p>Elaborado con la leche de nuestras vacas frisonas, en la propia finca.</p>
+        <span class="tag">Elaboración propia</span>
+      </div>
+      <div class="card">
+        <div class="card-ico" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M5 17c0-3.9 3.1-7 7-7s7 3.1 7 7a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1z" fill="#1f4034" opacity=".9"/><path d="M9 7.5c-1-2 .3-4.2 1.4-5 .6 1.2 1.6 3.6 0 5" fill="#2f5a48"/></svg>
+        </div>
+        <h3>Queso de leche de oveja menorquina</h3>
+        <p>De nuestro rebaño de oveja menorquina, una raza propia de la isla.</p>
+        <span class="tag">Raza menorquina</span>
+      </div>
+      <div class="card">
+        <div class="card-ico" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 8h16v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z" stroke="#1f4034" stroke-width="1.8"/><path d="M8.5 8V6.5a3.5 3.5 0 0 1 7 0V8" stroke="#1f4034" stroke-width="1.8"/></svg>
+        </div>
+        <h3>Venta directa en la finca</h3>
+        <p>Puedes comprar el queso aquí mismo, donde se elabora. Llámanos para consultar el horario de venta.</p>
+        <span class="tag">En Camí Vell km 8</span>
+      </div>
+      <div class="card">
+        <div class="card-ico" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 7h13l3 4v7a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z" stroke="#1f4034" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12h6" stroke="#1f4034" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Encargos</h3>
+        <p>Si necesitas una cantidad concreta, avísanos por teléfono o correo y lo preparamos para cuando vengas a recogerlo.</p>
+        <span class="tag">Por teléfono o email</span>
+      </div>
+      <div class="card">
+        <div class="card-ico" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M3 20V9l9-5 9 5v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z" stroke="#1f4034" stroke-width="1.8" stroke-linejoin="round"/><path d="M9.5 21v-6h5v6" stroke="#1f4034" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Hostelería y comercio</h3>
+        <p>Si eres restaurante o tienda de la isla y quieres trabajar nuestro queso, escríbenos y lo hablamos.</p>
+        <span class="tag">Consultar condiciones</span>
+      </div>
+      <div class="card">
+        <div class="card-ico" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="#1f4034" stroke-width="1.8"/><path d="M12 7.5v5l3.2 2" stroke="#1f4034" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Antes de venir, llámanos</h3>
+        <p>Somos una finca en activo. Una llamada basta para saber qué hay disponible y a qué hora podemos atenderte.</p>
+        <span class="tag">Consultar horario</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec steps-sec" id="visita">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Tu visita a la finca</p>
+      <h2>Comprar queso aquí es así de sencillo</h2>
+      <p>Tres pasos, sin complicaciones.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-n">1</div>
+        <h3>Llámanos</h3>
+        <p>Marca el 645 468 536 y nos cuentas qué buscas. Te decimos qué tenemos y podemos consultar el horario de atención en la finca para ese día.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">2</div>
+        <h3>Te lo preparamos</h3>
+        <p>Si quieres una cantidad concreta o un encargo para una fecha, lo apuntamos y lo dejamos listo para cuando pases.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">3</div>
+        <h3>Ven a recogerlo</h3>
+        <p>Nos encontrarás en el Camí Vell km 8, en Ciutadella. Recoges el queso donde se elabora y te lo llevas de la finca.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="contacto">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Contacto y cómo llegar</p>
+      <h2>Estamos en el Camí Vell, Ciutadella</h2>
+      <p>La finca está fuera del casco urbano, en el Camí Vell. Si es la primera vez que vienes, llámanos y te orientamos.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div>
+        <div class="info-list">
+          <div class="info">
+            <div class="info-ico" aria-hidden="true">
+              <svg width="19" height="19" viewBox="0 0 16 16" fill="none"><path d="M5.2 2.3 6.6 5 5.3 6.4a9 9 0 0 0 4.3 4.3L11 9.4l2.7 1.4v2.4c0 .6-.5 1.1-1.1 1C6.6 13.6 2.4 9.4 1.8 3.4c-.1-.6.4-1.1 1-1.1z" fill="#1f4034"/></svg>
+            </div>
+            <div>
+              <div class="info-k">Teléfono</div>
+              <div class="info-v"><a href="tel:+34645468536">645 468 536</a></div>
+              <div class="info-note">Lo más rápido para encargos y para preguntar qué hay disponible.</div>
+            </div>
+          </div>
+
+          <div class="info">
+            <div class="info-ico" aria-hidden="true">
+              <svg width="19" height="19" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="6.4" r="2.3" stroke="#1f4034" stroke-width="1.4"/><path d="M8 14.5S2.8 10 2.8 6.6a5.2 5.2 0 0 1 10.4 0C13.2 10 8 14.5 8 14.5z" stroke="#1f4034" stroke-width="1.4"/></svg>
+            </div>
+            <div>
+              <div class="info-k">Dirección</div>
+              <div class="info-v">Polígono 18, parcela 34, Camí Vell km 8<br>07760 Ciutadella de Menorca, Illes Balears</div>
+            </div>
+          </div>
+
+          <div class="info">
+            <div class="info-ico" aria-hidden="true">
+              <svg width="19" height="19" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.3" stroke="#1f4034" stroke-width="1.4"/><path d="M8 4.6V8l2.4 1.5" stroke="#1f4034" stroke-width="1.4" stroke-linecap="round"/></svg>
+            </div>
+            <div>
+              <div class="info-k">Horario</div>
+              <div class="info-v">Consultar horario</div>
+              <div class="info-note">Llámanos antes de venir y te confirmamos cuándo podemos atenderte.</div>
+            </div>
+          </div>
+
+          <div class="info">
+            <div class="info-ico" aria-hidden="true">
+              <svg width="19" height="19" viewBox="0 0 16 16" fill="none"><rect x="1.8" y="3.4" width="12.4" height="9.2" rx="1.6" stroke="#1f4034" stroke-width="1.4"/><path d="m2.4 4.4 5.6 4 5.6-4" stroke="#1f4034" stroke-width="1.4" stroke-linecap="round"/></svg>
+            </div>
+            <div>
+              <div class="info-k">Correo</div>
+              <div class="info-v"><a href="mailto:torretrencadeta@gmail.com">torretrencadeta@gmail.com</a></div>
+              <div class="info-note">Para encargos con antelación y consultas de hostelería y comercio.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-actions">
+          <a class="btn btn-primary" href="tel:+34645468536">
+            <svg width="17" height="17" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5.2 2.3 6.6 5 5.3 6.4a9 9 0 0 0 4.3 4.3L11 9.4l2.7 1.4v2.4c0 .6-.5 1.1-1.1 1C6.6 13.6 2.4 9.4 1.8 3.4c-.1-.6.4-1.1 1-1.1z" fill="currentColor"/></svg>
+            Llamar al 645 468 536
+          </a>
+          <a class="btn btn-ghost" href="mailto:torretrencadeta@gmail.com">Escribir un correo</a>
+        </div>
+      </div>
+
+      <div class="map-card">
+        <svg viewBox="0 0 560 400" role="img" aria-label="Mapa esquemático dibujado a mano: la finca Torretrencadeta en el Camí Vell km 8, al este del casco urbano de Ciutadella de Menorca.">
+          <defs>
+            <linearGradient id="mland" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#f3f6f2"/><stop offset="1" stop-color="#e6ede8"/>
+            </linearGradient>
+          </defs>
+          <rect width="560" height="400" rx="12" fill="url(#mland)"/>
+          <!-- mar esquematico -->
+          <path d="M0 0h118c-10 26-24 44-18 72 6 30-14 48-30 70-16 22-26 44-18 70 8 26-6 48-20 66-10 13-18 22-20 34H0z" fill="#cfe0e6"/>
+          <path d="M96 24c-8 20-18 36-12 60M70 108c-12 20-26 34-20 58M48 196c-10 18-22 32-16 54" stroke="#9cbcc7" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <text x="30" y="44" font-family="Georgia, serif" font-size="14" fill="#5f8793" transform="rotate(-18 30 44)">mar</text>
+          <!-- parcelas de campo -->
+          <g stroke="#bcd0c2" stroke-width="1.6" fill="none">
+            <path d="M210 60h110v78H210zM330 76h92v62h-92zM196 150h104v74H196zM312 150h118v56H312zM344 216h100v70H344zM206 236h116v64H206z"/>
+          </g>
+          <g stroke="#a9c3b0" stroke-width="1.2" fill="none" opacity=".8">
+            <path d="M224 66v66M246 66v66M268 66v66M360 158v40M382 158v40M404 158v40"/>
+          </g>
+          <!-- carretera principal: Cami Vell -->
+          <path d="M60 318C140 300 182 250 250 238s150 2 212-42 60-74 78-90" stroke="#e8d7ad" stroke-width="18" fill="none" stroke-linecap="round"/>
+          <path d="M60 318C140 300 182 250 250 238s150 2 212-42 60-74 78-90" stroke="#f7f2e7" stroke-width="2.6" stroke-dasharray="12 12" fill="none" stroke-linecap="round"/>
+          <!-- camino secundario a la finca -->
+          <path d="M398 196c18 26 24 44 22 68" stroke="#e8d7ad" stroke-width="9" fill="none" stroke-linecap="round"/>
+          <!-- pueblo de Ciutadella -->
+          <g>
+            <circle cx="112" cy="300" r="42" fill="#efe7d6" stroke="#cbbf9f" stroke-width="1.6"/>
+            <g fill="#c9bb98">
+              <rect x="92" y="286" width="13" height="16" rx="2"/>
+              <rect x="110" y="278" width="11" height="24" rx="2"/>
+              <rect x="125" y="290" width="12" height="12" rx="2"/>
+              <rect x="100" y="306" width="16" height="11" rx="2"/>
+              <rect x="120" y="306" width="11" height="11" rx="2"/>
+            </g>
+            <text x="112" y="356" text-anchor="middle" font-family="Georgia, serif" font-size="14.5" fill="#5b5243">Ciutadella</text>
+          </g>
+          <!-- marcador de la finca -->
+          <g>
+            <circle cx="420" cy="272" r="30" fill="rgba(31,64,52,.1)"/>
+            <path d="M420 300c0-10-14-18-14-30a14 14 0 0 1 28 0c0 12-14 20-14 30z" fill="#1f4034"/>
+            <circle cx="420" cy="268" r="5.2" fill="#f2d58b"/>
+            <rect x="334" y="196" width="172" height="46" rx="10" fill="#fffdf7" stroke="rgba(42,36,25,.14)"/>
+            <text x="420" y="214" text-anchor="middle" font-family="Georgia, serif" font-size="17" font-weight="bold" fill="#1f4034">Torretrencadeta</text>
+            <text x="420" y="233" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#5b5243">Camí Vell km 8</text>
+          </g>
+          <!-- etiqueta del camino -->
+          <text x="258" y="222" font-family="Georgia, serif" font-size="13" fill="#9b8a5e" transform="rotate(-9 258 222)">Camí Vell</text>
+          <!-- rosa de los vientos -->
+          <g transform="translate(508 330)">
+            <circle r="22" fill="#f7f2e7" stroke="#cbbf9f" stroke-width="1.4"/>
+            <path d="M0-15 5 0 0 15-5 0z" fill="#1f4034"/>
+            <text x="0" y="-25" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#5b5243">N</text>
+          </g>
+          <!-- vinetas de ganado dibujadas a mano -->
+          <g opacity=".75">
+            <g transform="translate(240 102)">
+              <path d="M0 16c0-8 6-14 14-14s14 6 14 14z" fill="#8aa79a"/>
+              <path d="M14 2C9-3 11-10 13-12c2 2 6 8 1 14z" fill="#b5c9bf"/>
+            </g>
+            <g transform="translate(306 306)">
+              <path d="M2 14c0-7 6-12 13-12s13 5 13 12z" fill="#c9a36b"/>
+              <circle cx="9" cy="8" r="1.6" fill="#7a5f34"/>
+              <circle cx="20" cy="10" r="1.3" fill="#7a5f34"/>
+            </g>
+          </g>
+        </svg>
+        <p class="map-cap">Mapa esquemático orientativo, dibujado a mano. No es un mapa a escala: para llegar la primera vez, llámanos y te indicamos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <span class="brand-name">Torretrencadeta</span>
+        <p>Finca familiar y quesería en Ciutadella de Menorca. Queso de leche de vaca frisona y de oveja menorquina, con venta directa en la finca.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Contacto</h4>
+        <a href="tel:+34645468536">645 468 536</a>
+        <a href="mailto:torretrencadeta@gmail.com">torretrencadeta@gmail.com</a>
+        <p>Consultar horario</p>
+      </div>
+      <div class="foot-col">
+        <h4>Dónde estamos</h4>
+        <p>Polígono 18, parcela 34<br>Camí Vell km 8<br>07760 Ciutadella de Menorca<br>Illes Balears</p>
+      </div>
+    </div>
+    <div class="foot-rule"></div>
+    <div class="foot-bottom">
+      <p>© Torretrencadeta · Ciutadella de Menorca</p>
+      <p class="credit">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

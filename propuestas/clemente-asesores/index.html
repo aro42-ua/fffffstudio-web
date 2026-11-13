@@ -1,0 +1,692 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clemente Asesores · Gestoría, asesoría e inmobiliaria en Coria</title>
+<meta name="description" content="Propuesta de diseño para Clemente Asesores e Inmobiliaria El Precio Justo, Coria (Cáceres). Maqueta no oficial de FFFFFFstudio.">
+<style>
+  :root{
+    --ink:#101a24;
+    --ink-2:#2a3b4d;
+    --muted:#5b6d80;
+    --line:#dfe5ec;
+    --paper:#ffffff;
+    --shell:#f4f6f9;
+    --brand:#143a5a;
+    --brand-2:#1d5480;
+    --accent:#b07d2a;
+    --accent-soft:#f6efe1;
+    --bar:#0d1620;
+    --radius:16px;
+    --maxw:1140px;
+    --bar-h:42px;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{margin:0;padding:0;max-width:100%;overflow-x:hidden}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+    color:var(--ink);background:var(--paper);
+    font-size:17px;line-height:1.62;
+    font-feature-settings:"kern" 1;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%;display:block}
+  a{color:inherit}
+  h1,h2,h3,h4{margin:0;line-height:1.18;letter-spacing:-.018em;font-weight:650}
+  p{margin:0}
+  ul{margin:0;padding:0;list-style:none}
+
+  /* ---------- barra fija de propuesta ---------- */
+  .proposal-bar{
+    position:fixed;inset:0 0 auto 0;z-index:90;
+    min-height:var(--bar-h);
+    display:flex;align-items:center;justify-content:center;
+    gap:8px;padding:9px 16px;
+    background:var(--bar);color:#e8edf3;
+    font-size:12.5px;line-height:1.35;letter-spacing:.012em;
+    text-align:center;
+    border-bottom:1px solid rgba(255,255,255,.1);
+  }
+  .proposal-bar span{display:block}
+  .page{padding-top:var(--bar-h)}
+
+  /* ---------- utilidades ---------- */
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:12.5px;letter-spacing:.14em;color:var(--accent);
+    font-weight:600;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--accent);display:block;flex:0 0 auto}
+  .lead{color:var(--muted);font-size:17.5px}
+  section{padding:88px 0}
+
+  /* ---------- cabecera de sitio ---------- */
+  .site-head{
+    position:sticky;top:var(--bar-h);z-index:80;
+    background:rgba(255,255,255,.94);
+    backdrop-filter:saturate(140%) blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .site-head .inner{
+    display:flex;align-items:center;gap:20px;
+    min-height:76px;padding:12px 28px;
+    width:100%;max-width:var(--maxw);margin:0 auto;
+  }
+  .brand{display:flex;align-items:center;gap:13px;text-decoration:none;min-width:0}
+  .brand>span{min-width:0}
+  .brand b,.brand small{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .brand .mark{width:40px;height:40px;flex:0 0 auto}
+  .brand b{display:block;font-size:17px;font-weight:680;letter-spacing:-.02em}
+  .brand small{display:block;font-size:11.5px;color:var(--muted);letter-spacing:.055em}
+  .nav{display:flex;align-items:center;gap:26px;margin-left:auto}
+  .nav a{font-size:15px;color:var(--ink-2);text-decoration:none;font-weight:520}
+  .nav a:hover{color:var(--brand-2)}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    padding:13px 22px;border-radius:999px;text-decoration:none;
+    font-weight:600;font-size:15.5px;border:1px solid transparent;
+    white-space:nowrap;
+  }
+  .btn-primary{background:var(--brand);color:#fff;box-shadow:0 10px 24px -14px rgba(20,58,90,.75)}
+  .btn-primary:hover{background:var(--brand-2)}
+  .btn-ghost{border-color:var(--line);color:var(--ink);background:var(--paper)}
+  .btn-ghost:hover{border-color:#bcc7d4}
+  .btn-light{background:#fff;color:var(--brand)}
+  .btn-outline-light{border-color:rgba(255,255,255,.4);color:#fff}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(900px 520px at 82% -10%,rgba(29,84,128,.16),transparent 70%),
+      radial-gradient(700px 420px at 4% 110%,rgba(176,125,42,.12),transparent 72%),
+      linear-gradient(176deg,#fbfcfe 0%,#f2f5f9 100%);
+    border-bottom:1px solid var(--line);
+    padding:92px 0 96px;
+  }
+  .hero .grid{display:grid;grid-template-columns:1.08fr .92fr;gap:56px;align-items:center}
+  .hero h1{font-size:clamp(34px,4.3vw,54px);margin:20px 0 20px;font-weight:680}
+  .hero h1 .soft{color:var(--brand-2)}
+  .hero .lead{max-width:50ch}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:13px;margin-top:32px}
+  .hero-note{margin-top:20px;font-size:14px;color:var(--muted)}
+  .pill-row{display:flex;flex-wrap:wrap;gap:9px;margin-top:34px}
+  .pill{
+    border:1px solid var(--line);background:rgba(255,255,255,.8);
+    border-radius:999px;padding:7px 15px;font-size:13.5px;color:var(--ink-2);
+  }
+
+  /* tarjeta decorativa del hero (SVG a mano) */
+  .hero-art{
+    background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+    padding:24px;box-shadow:0 30px 60px -40px rgba(16,26,36,.4);
+  }
+  .hero-art h4{font-size:15px;margin-bottom:4px}
+  .hero-art p{font-size:13.5px;color:var(--muted)}
+  .hero-art .divider{height:1px;background:var(--line);margin:18px 0}
+  .art-list{display:grid;gap:12px}
+  .art-list li{display:flex;gap:12px;align-items:flex-start;font-size:14.5px;color:var(--ink-2)}
+  .art-list .ico{width:30px;height:30px;flex:0 0 auto}
+
+  /* ---------- servicios ---------- */
+  .sec-head{max-width:62ch;margin-bottom:46px}
+  .sec-head h2{font-size:clamp(26px,3vw,36px);margin:16px 0 14px}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .card{
+    background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+    padding:30px 26px 28px;display:flex;flex-direction:column;gap:14px;
+  }
+  .card .ico{width:44px;height:44px}
+  .card h3{font-size:19.5px}
+  .card p{font-size:15.3px;color:var(--muted)}
+  .card ul{display:grid;gap:9px;margin-top:2px}
+  .card li{position:relative;padding-left:18px;font-size:14.8px;color:var(--ink-2)}
+  .card li::before{
+    content:"";position:absolute;left:0;top:.62em;
+    width:6px;height:6px;border-radius:50%;background:var(--accent);
+  }
+
+  /* bloque inmobiliaria */
+  .realestate{background:var(--shell);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .realestate .grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:52px;align-items:center}
+  .realestate h2{font-size:clamp(26px,3vw,36px);margin:16px 0 16px}
+  .realestate .lead{margin-bottom:24px}
+  .tag-house{
+    display:inline-flex;align-items:center;gap:10px;background:var(--accent-soft);
+    color:#7d5614;border-radius:999px;padding:8px 16px;font-size:13.5px;font-weight:600;
+  }
+  .re-list{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:26px}
+  .re-list div{
+    background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:16px 18px;font-size:14.8px;color:var(--ink-2);
+  }
+  .re-list b{display:block;font-size:15.4px;color:var(--ink);margin-bottom:3px}
+  .re-art{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+
+  /* ---------- pasos ---------- */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;counter-reset:s}
+  .step{
+    position:relative;padding:30px 26px;border-radius:var(--radius);
+    border:1px solid var(--line);background:linear-gradient(180deg,#fff,#fafbfd);
+  }
+  .step .num{
+    width:40px;height:40px;border-radius:12px;background:var(--brand);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-weight:680;font-size:17px;
+    margin-bottom:16px;
+  }
+  .step h3{font-size:18.5px;margin-bottom:9px}
+  .step p{font-size:15.2px;color:var(--muted)}
+
+  /* ---------- contacto ---------- */
+  .contact{background:var(--brand);color:#eef3f8;border-top:1px solid #0e2b44}
+  .contact .eyebrow{color:#d8b878}
+  .contact .eyebrow::before{background:#d8b878}
+  .contact h2{color:#fff;font-size:clamp(26px,3vw,36px);margin:16px 0 14px}
+  .contact .lead{color:#bfd0e0}
+  .contact .grid{display:grid;grid-template-columns:1fr 1fr;gap:46px;align-items:start}
+  .cblocks{display:grid;gap:16px;margin-top:30px}
+  .cblock{
+    background:rgba(255,255,255,.065);border:1px solid rgba(255,255,255,.16);
+    border-radius:14px;padding:20px 22px;
+  }
+  .cblock h4{font-size:13px;letter-spacing:.11em;color:#9fb8cd;font-weight:600;margin-bottom:11px}
+  .cblock .row{display:flex;flex-wrap:wrap;gap:10px 22px}
+  .cblock a,.cblock p{font-size:16.4px;color:#fff;text-decoration:none;font-weight:560}
+  .cblock a:hover{text-decoration:underline}
+  .cblock .addr{display:grid;gap:9px}
+  .cblock .addr p{font-size:15.6px;font-weight:460;color:#e3ecf4;line-height:1.5}
+  .cblock .addr span{display:block;color:#9fb8cd;font-size:13.6px;font-weight:500}
+  .hours{
+    display:inline-flex;align-items:center;gap:9px;margin-top:4px;
+    font-size:15.2px;color:#e3ecf4;
+  }
+  .contact-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+  .map-card{
+    background:rgba(255,255,255,.055);
+    border:1px solid rgba(255,255,255,.16);border-radius:var(--radius);
+    padding:20px 20px 16px;
+  }
+  .map-card figcaption{font-size:13.2px;color:#9fb8cd;margin-top:12px;line-height:1.5}
+  .map-card svg{width:100%;height:auto}
+
+  /* ---------- pie ---------- */
+  .foot{background:#0b141d;color:#9fb0c0;padding:52px 0 40px}
+  .foot .grid{display:grid;grid-template-columns:1.2fr 1fr;gap:34px;align-items:start}
+  .foot a{color:#dce6ef}
+  .foot .brand b{color:#fff}
+  .foot .brand small{color:#7e92a5}
+  .foot .fmail{margin-top:16px;font-size:16px}
+  .foot .fsmall{font-size:13.6px;line-height:1.65;color:#8498aa}
+  .foot .rule{height:1px;background:rgba(255,255,255,.1);margin:34px 0 22px}
+  .studio{font-size:13.8px;color:#97a9ba}
+  .studio b{color:#e6edf4;font-weight:600}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:1000px){
+    .hero .grid,.realestate .grid,.contact .grid,.foot .grid{grid-template-columns:1fr;gap:38px}
+    .cards,.steps{grid-template-columns:1fr 1fr}
+    .nav{display:none}
+  }
+  @media (max-width:680px){
+    :root{--bar-h:58px}
+    body{font-size:16.2px}
+    section{padding:62px 0}
+    .wrap{padding:0 18px}
+    .site-head .inner{padding:10px 18px;min-height:66px;gap:12px}
+    .hero{padding:58px 0 64px}
+    .cards,.steps,.re-list{grid-template-columns:1fr}
+    .hero-cta .btn,.contact-cta .btn{flex:1 1 100%}
+    .brand .mark{width:36px;height:36px}
+    .brand b{font-size:15.6px}
+    .brand small{font-size:10.8px;letter-spacing:.04em}
+    .site-head .head-call{padding:12px;border-radius:50%}
+    .site-head .head-call .callnum{display:none}
+    .cblock{padding:17px 18px}
+    .cblock .row{gap:8px 16px}
+  }
+  @media (max-width:380px){
+    .wrap{padding:0 16px}
+  }
+</style>
+</head>
+<body>
+
+<div class="proposal-bar" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<div class="page">
+
+  <header class="site-head">
+    <div class="inner">
+      <a class="brand" href="#inicio">
+        <svg class="mark" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+          <rect x="1.5" y="1.5" width="45" height="45" rx="12" fill="#143a5a"/>
+          <path d="M23.2 18.6a6.6 6.6 0 1 0 0 11.8" stroke="#ffffff" stroke-width="3.1" stroke-linecap="round" fill="none"/>
+          <path d="M26.4 31.2L31.2 17.6l4.8 13.6" stroke="#b07d2a" stroke-width="3.1" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <path d="M28.1 27.4h6.2" stroke="#b07d2a" stroke-width="2.4" stroke-linecap="round"/>
+        </svg>
+        <span>
+          <b>Clemente Asesores</b>
+          <small>Gestoría · Asesoría · Inmobiliaria</small>
+        </span>
+      </a>
+      <nav class="nav" aria-label="Navegación principal">
+        <a href="#servicios">Servicios</a>
+        <a href="#inmobiliaria">Inmobiliaria</a>
+        <a href="#proceso">Cómo trabajamos</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <a class="btn btn-primary head-call" href="tel:+34927503283" aria-label="Llamar al 927 50 32 83">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 3.5h3.2l1.6 4-2.1 1.5a11.5 11.5 0 0 0 5.8 5.8l1.5-2.1 4 1.6V19a1.5 1.5 0 0 1-1.6 1.5C10.3 20 4 13.7 3.5 5.1A1.5 1.5 0 0 1 5 3.5z" stroke="#ffffff" stroke-width="1.7" stroke-linejoin="round"/></svg>
+        <span class="callnum">927 50 32 83</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="inicio">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="wrap">
+        <div class="grid">
+          <div>
+            <span class="eyebrow">Coria · Cáceres</span>
+            <h1>Tu gestoría, tu asesoría y tu <span class="soft">inmobiliaria</span>, en la misma casa.</h1>
+            <p class="lead">Llevamos los impuestos, las nóminas, la contabilidad y los trámites de autónomos, empresas y particulares en Coria. Y, bajo el mismo techo, la compraventa y el alquiler de vivienda con Inmobiliaria El Precio Justo.</p>
+            <div class="hero-cta">
+              <a class="btn btn-primary" href="tel:+34927503283">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 3.5h3.2l1.6 4-2.1 1.5a11.5 11.5 0 0 0 5.8 5.8l1.5-2.1 4 1.6V19a1.5 1.5 0 0 1-1.6 1.5C10.3 20 4 13.7 3.5 5.1A1.5 1.5 0 0 1 5 3.5z" stroke="#ffffff" stroke-width="1.7" stroke-linejoin="round"/></svg>
+                Llamar al 927 50 32 83
+              </a>
+              <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
+            </div>
+            <p class="hero-note">También puede escribirnos a mmartin@clementeasesores.es</p>
+            <div class="pill-row">
+              <span class="pill">Autónomos</span>
+              <span class="pill">Pymes y sociedades</span>
+              <span class="pill">Particulares</span>
+              <span class="pill">Comunidades</span>
+            </div>
+          </div>
+
+          <aside class="hero-art" aria-label="Resumen de áreas">
+            <h4>Un único despacho, cuatro frentes</h4>
+            <p>Lo que normalmente se reparte entre varias oficinas.</p>
+            <div class="divider"></div>
+            <ul class="art-list">
+              <li>
+                <svg class="ico" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="2.5" y="2.5" width="27" height="27" rx="8" fill="#eef3f8"/><path d="M10 21.5l4-5 3 3 5-7" stroke="#143a5a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 11h4" stroke="#b07d2a" stroke-width="2" stroke-linecap="round"/></svg>
+                <span><b>Fiscal.</b> Declaraciones, IVA, IRPF, sociedades y renta.</span>
+              </li>
+              <li>
+                <svg class="ico" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="2.5" y="2.5" width="27" height="27" rx="8" fill="#eef3f8"/><circle cx="16" cy="13" r="3.4" stroke="#143a5a" stroke-width="2"/><path d="M9.5 23c1.4-3 3.7-4.4 6.5-4.4S21.1 20 22.5 23" stroke="#b07d2a" stroke-width="2" stroke-linecap="round"/></svg>
+                <span><b>Laboral.</b> Nóminas, contratos, altas y seguros sociales.</span>
+              </li>
+              <li>
+                <svg class="ico" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="2.5" y="2.5" width="27" height="27" rx="8" fill="#eef3f8"/><path d="M10 22V15M16 22V10M22 22v-4" stroke="#143a5a" stroke-width="2.2" stroke-linecap="round"/></svg>
+                <span><b>Contable.</b> Libros, cuentas anuales y cierre del ejercicio.</span>
+              </li>
+              <li>
+                <svg class="ico" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="2.5" y="2.5" width="27" height="27" rx="8" fill="#f6efe1"/><path d="M9 16.5L16 10l7 6.5" stroke="#b07d2a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M11.2 16.2V23h9.6v-6.8" stroke="#143a5a" stroke-width="2" stroke-linejoin="round"/></svg>
+                <span><b>Inmobiliaria.</b> Compraventa y alquiler de vivienda.</span>
+              </li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVICIOS ============ -->
+    <section id="servicios">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow">Servicios</span>
+          <h2>De la declaración trimestral al papeleo que nadie quiere hacer.</h2>
+          <p class="lead">Trabajamos de forma continuada con autónomos y empresas, y también puntualmente para particulares que necesitan resolver un trámite concreto.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <svg class="ico" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <rect x="1" y="1" width="46" height="46" rx="14" fill="#eef3f8"/>
+              <rect x="14" y="11" width="20" height="26" rx="4" stroke="#143a5a" stroke-width="2"/>
+              <path d="M18.5 19h11M18.5 24h11M18.5 29h6" stroke="#143a5a" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="32" cy="32" r="6.4" fill="#f6efe1" stroke="#b07d2a" stroke-width="2"/>
+              <path d="M29.6 32h4.8" stroke="#b07d2a" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <h3>Asesoría fiscal</h3>
+            <p>Las obligaciones con Hacienda, presentadas en plazo y revisadas antes de enviarlas.</p>
+            <ul>
+              <li>Declaraciones trimestrales y resúmenes anuales</li>
+              <li>IVA, IRPF, retenciones y pagos fraccionados</li>
+              <li>Impuesto de sociedades y renta de particulares</li>
+              <li>Altas, cambios y bajas en censo y epígrafes</li>
+              <li>Atención de requerimientos y notificaciones</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <svg class="ico" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <rect x="1" y="1" width="46" height="46" rx="14" fill="#eef3f8"/>
+              <circle cx="19" cy="19" r="4.6" stroke="#143a5a" stroke-width="2"/>
+              <path d="M11 33c1.8-4 4.6-5.8 8-5.8s6.2 1.8 8 5.8" stroke="#143a5a" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="31.5" cy="21" r="3.4" stroke="#b07d2a" stroke-width="2"/>
+              <path d="M28 32c1-2.6 2.3-3.9 4.2-3.9 1.8 0 3.1 1.1 4 3.2" stroke="#b07d2a" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <h3>Asesoría laboral</h3>
+            <p>Todo lo que rodea a tener personal contratado, sin sobresaltos cada mes.</p>
+            <ul>
+              <li>Nóminas, pagas extra y finiquitos</li>
+              <li>Contratos, prórrogas y modificaciones</li>
+              <li>Altas, bajas y variaciones en Seguridad Social</li>
+              <li>Partes de baja, vacaciones y permisos</li>
+              <li>Autónomos: alta, cuota y cambios de base</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <svg class="ico" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <rect x="1" y="1" width="46" height="46" rx="14" fill="#eef3f8"/>
+              <path d="M13 34V24M20.3 34V16M27.7 34v-6M35 34V20" stroke="#143a5a" stroke-width="2.4" stroke-linecap="round"/>
+              <path d="M11 38h26" stroke="#b07d2a" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <h3>Contabilidad</h3>
+            <p>Las cuentas al día durante el año, no solo cuando toca cerrarlas.</p>
+            <ul>
+              <li>Contabilidad de empresas y de autónomos</li>
+              <li>Libros oficiales y registros obligatorios</li>
+              <li>Cuentas anuales y cierre del ejercicio</li>
+              <li>Depósito y legalización en el Registro</li>
+              <li>Seguimiento de resultados y previsiones</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <svg class="ico" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <rect x="1" y="1" width="46" height="46" rx="14" fill="#eef3f8"/>
+              <rect x="12" y="13" width="18" height="23" rx="3.4" stroke="#143a5a" stroke-width="2"/>
+              <path d="M16.5 20h9M16.5 25h9M16.5 30h5" stroke="#143a5a" stroke-width="2" stroke-linecap="round"/>
+              <path d="M30 17h5a2 2 0 0 1 2 2v13" stroke="#b07d2a" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="37" cy="35" r="2.6" fill="#b07d2a"/>
+            </svg>
+            <h3>Trámites y gestoría</h3>
+            <p>La ventanilla que ahorra viajes, colas y formularios devueltos.</p>
+            <ul>
+              <li>Constitución y cambios en sociedades</li>
+              <li>Vehículos: transferencias, bajas y duplicados</li>
+              <li>Herencias, escrituras y trámites notariales</li>
+              <li>Licencias, certificados y subvenciones</li>
+              <li>Presentación electrónica ante la Administración</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <svg class="ico" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <rect x="1" y="1" width="46" height="46" rx="14" fill="#eef3f8"/>
+              <path d="M24 12l12 9v16H12V21l12-9z" stroke="#143a5a" stroke-width="2" stroke-linejoin="round"/>
+              <rect x="20" y="27" width="8" height="10" stroke="#b07d2a" stroke-width="2"/>
+            </svg>
+            <h3>Vivienda y patrimonio</h3>
+            <p>Si compra, vende o alquila, la parte fiscal y la parte inmobiliaria se hablan entre ellas.</p>
+            <ul>
+              <li>Plusvalía, ITP y declaración de la operación</li>
+              <li>Contratos de arrendamiento y fianzas</li>
+              <li>Tributación de alquileres</li>
+              <li>Cambios de titularidad y suministros</li>
+              <li>Comunidades de propietarios</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <svg class="ico" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <rect x="1" y="1" width="46" height="46" rx="14" fill="#f6efe1"/>
+              <circle cx="24" cy="24" r="11" stroke="#b07d2a" stroke-width="2"/>
+              <path d="M24 18v6l4.4 2.6" stroke="#143a5a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <h3>Consultas puntuales</h3>
+            <p>No hace falta ser cliente habitual para preguntar por un caso concreto.</p>
+            <ul>
+              <li>Dudas sobre un impuesto o una notificación</li>
+              <li>Revisión de un contrato antes de firmarlo</li>
+              <li>Qué conviene antes de darse de alta</li>
+              <li>Qué documentación hay que reunir</li>
+              <li>Segunda opinión sobre un trámite</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ INMOBILIARIA ============ -->
+    <section id="inmobiliaria" class="realestate">
+      <div class="wrap">
+        <div class="grid">
+          <div>
+            <span class="tag-house">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3.5 11L12 4l8.5 7" stroke="#7d5614" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.8 10.6V20h12.4v-9.4" stroke="#7d5614" stroke-width="2" stroke-linejoin="round"/></svg>
+              Inmobiliaria El Precio Justo
+            </span>
+            <h2>La misma casa, ahora también en la misma web.</h2>
+            <p class="lead">Nuestra parte inmobiliaria funciona con el mismo teléfono y la misma oficina que la gestoría. Hasta ahora eran dos webs separadas; aquí van juntas, porque comprar o alquilar una vivienda termina siendo también un asunto de impuestos, contratos y papeleo.</p>
+            <div class="re-list">
+              <div><b>Compraventa</b>Vivienda, locales, fincas y solares en Coria y comarca.</div>
+              <div><b>Alquiler</b>Búsqueda de inquilino o de vivienda, con contrato redactado.</div>
+              <div><b>Valoración</b>Orientación sobre el precio antes de poner algo en venta.</div>
+              <div><b>Gestión completa</b>Visitas, documentación, notaría e impuestos de la operación.</div>
+            </div>
+          </div>
+
+          <div class="re-art">
+            <svg viewBox="0 0 420 300" role="img" aria-label="Esquema: la gestoría y la inmobiliaria comparten teléfono y oficina">
+              <rect x="0" y="0" width="420" height="300" rx="12" fill="#f8fafc"/>
+              <g stroke="#dfe5ec" stroke-width="1">
+                <path d="M0 60h420M0 120h420M0 180h420M0 240h420"/>
+              </g>
+              <!-- caja gestoría -->
+              <rect x="26" y="40" width="160" height="96" rx="12" fill="#ffffff" stroke="#143a5a" stroke-width="2"/>
+              <text x="46" y="76" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#143a5a">Gestoría y</text>
+              <text x="46" y="96" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#143a5a">asesoría</text>
+              <text x="46" y="118" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#5b6d80">Clemente Asesores</text>
+              <!-- caja inmobiliaria -->
+              <rect x="234" y="40" width="160" height="96" rx="12" fill="#ffffff" stroke="#b07d2a" stroke-width="2"/>
+              <text x="254" y="76" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#8a600f">Inmobiliaria</text>
+              <text x="254" y="96" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#8a600f">El Precio Justo</text>
+              <text x="254" y="118" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#5b6d80">La misma casa</text>
+              <!-- union -->
+              <path d="M106 136v38h104M314 136v38H210M210 174v34" stroke="#2a3b4d" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <circle cx="210" cy="174" r="4" fill="#2a3b4d"/>
+              <rect x="96" y="212" width="228" height="62" rx="12" fill="#143a5a"/>
+              <text x="210" y="238" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13.5" font-weight="bold" fill="#ffffff">Mismo teléfono · misma oficina</text>
+              <text x="210" y="258" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#bfd0e0">Una sola web para las dos</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROCESO ============ -->
+    <section id="proceso">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow">Tu primera consulta</span>
+          <h2>Cómo trabajamos, en tres pasos.</h2>
+          <p class="lead">Sin compromiso en la primera conversación: primero entendemos el caso y después decidimos juntos qué hace falta.</p>
+        </div>
+        <div class="steps">
+          <article class="step">
+            <div class="num">1</div>
+            <h3>Nos cuenta el caso</h3>
+            <p>Llámenos o escríbanos y explíquenos su situación: si es un alta, un impuesto, una nómina, una herencia o una vivienda. Le diremos con qué documentación conviene venir.</p>
+          </article>
+          <article class="step">
+            <div class="num">2</div>
+            <h3>Revisamos y le damos un plan</h3>
+            <p>Miramos los papeles, le explicamos las opciones en lenguaje claro y le decimos qué trámites hay que hacer, en qué orden y con qué plazos oficiales.</p>
+          </article>
+          <article class="step">
+            <div class="num">3</div>
+            <h3>Nos encargamos y le avisamos</h3>
+            <p>Presentamos, registramos y hacemos el seguimiento. Usted recibe el justificante y un aviso cada vez que haya algo que firmar o que decidir.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACTO ============ -->
+    <section id="contacto" class="contact">
+      <div class="wrap">
+        <div class="grid">
+          <div>
+            <span class="eyebrow">Contacto</span>
+            <h2>Estamos en Coria, en dos oficinas del centro.</h2>
+            <p class="lead">Lo más rápido es llamar. Si prefiere pasarse, estas son las dos direcciones.</p>
+
+            <div class="cblocks">
+              <div class="cblock">
+                <h4>Teléfonos</h4>
+                <div class="row">
+                  <a href="tel:+34927503283">927 50 32 83</a>
+                  <a href="tel:+34927508019">927 50 80 19</a>
+                </div>
+              </div>
+
+              <div class="cblock">
+                <h4>Direcciones</h4>
+                <div class="addr">
+                  <p><span>Oficina</span>C/ La Corredera, 20 · 10800 Coria (Cáceres)</p>
+                  <p><span>Oficina</span>Avda. Extremadura, 27 · 10800 Coria (Cáceres)</p>
+                </div>
+              </div>
+
+              <div class="cblock">
+                <h4>Horario</h4>
+                <p class="hours">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.6" stroke="#d8b878" stroke-width="1.8"/><path d="M12 7.6V12l3.2 1.9" stroke="#d8b878" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Consultar horario
+                </p>
+              </div>
+
+              <div class="cblock">
+                <h4>Correo</h4>
+                <a href="mailto:mmartin@clementeasesores.es">mmartin@clementeasesores.es</a>
+              </div>
+            </div>
+
+            <div class="contact-cta">
+              <a class="btn btn-light" href="tel:+34927503283">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 3.5h3.2l1.6 4-2.1 1.5a11.5 11.5 0 0 0 5.8 5.8l1.5-2.1 4 1.6V19a1.5 1.5 0 0 1-1.6 1.5C10.3 20 4 13.7 3.5 5.1A1.5 1.5 0 0 1 5 3.5z" stroke="#143a5a" stroke-width="1.7" stroke-linejoin="round"/></svg>
+                Llamar ahora
+              </a>
+              <a class="btn btn-outline-light" href="mailto:mmartin@clementeasesores.es">Escribir un correo</a>
+            </div>
+          </div>
+
+          <figure class="map-card">
+            <svg viewBox="0 0 460 360" role="img" aria-label="Plano esquemático del centro de Coria con las dos oficinas: C/ La Corredera, 20 y Avda. Extremadura, 27">
+              <rect x="0" y="0" width="460" height="360" rx="14" fill="#0f2e49"/>
+              <!-- manzanas -->
+              <g fill="#15405f">
+                <rect x="28" y="36" width="120" height="78" rx="7"/>
+                <rect x="170" y="36" width="96" height="78" rx="7"/>
+                <rect x="288" y="36" width="144" height="54" rx="7"/>
+                <rect x="28" y="140" width="86" height="92" rx="7"/>
+                <rect x="138" y="140" width="128" height="60" rx="7"/>
+                <rect x="288" y="116" width="144" height="116" rx="7"/>
+                <rect x="28" y="258" width="150" height="68" rx="7"/>
+                <rect x="202" y="226" width="64" height="100" rx="7"/>
+                <rect x="288" y="258" width="144" height="68" rx="7"/>
+              </g>
+              <!-- rio / zona verde -->
+              <path d="M28 336c70-16 120 6 190-10s150-6 214-24" stroke="#1f6f86" stroke-width="7" fill="none" stroke-linecap="round" opacity=".75"/>
+              <!-- calles -->
+              <g stroke="#2d5a7d" stroke-width="12" stroke-linecap="round">
+                <path d="M160 24v312"/>
+                <path d="M24 128h412"/>
+                <path d="M278 24v312"/>
+                <path d="M24 246h412"/>
+              </g>
+              <g stroke="#4d7fa3" stroke-width="2" stroke-dasharray="7 9" stroke-linecap="round">
+                <path d="M160 24v312"/>
+                <path d="M24 128h412"/>
+                <path d="M278 24v312"/>
+                <path d="M24 246h412"/>
+              </g>
+              <!-- etiquetas de calle -->
+              <text x="36" y="120" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#9fc3dd">C/ La Corredera</text>
+              <text x="36" y="238" font-family="Arial, Helvetica, sans-serif" font-size="12.5" fill="#9fc3dd">Avda. Extremadura</text>
+              <text x="36" y="316" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#7fa8c4">Coria (Cáceres)</text>
+              <!-- marcador 1 -->
+              <g>
+                <path d="M160 128c-11 0-20 9-20 20 0 14 20 32 20 32s20-18 20-32c0-11-9-20-20-20z" fill="#e3b464"/>
+                <circle cx="160" cy="148" r="7.5" fill="#0f2e49"/>
+                <rect x="186" y="128" width="116" height="40" rx="8" fill="#ffffff"/>
+                <text x="198" y="145" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="bold" fill="#143a5a">La Corredera, 20</text>
+                <text x="198" y="160" font-family="Arial, Helvetica, sans-serif" font-size="11.5" fill="#5b6d80">Oficina</text>
+              </g>
+              <!-- marcador 2 -->
+              <g>
+                <path d="M278 246c-11 0-20 9-20 20 0 14 20 32 20 32s20-18 20-32c0-11-9-20-20-20z" fill="#9fc3dd"/>
+                <circle cx="278" cy="266" r="7.5" fill="#0f2e49"/>
+                <rect x="120" y="246" width="134" height="40" rx="8" fill="#ffffff"/>
+                <text x="132" y="263" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="bold" fill="#143a5a">Extremadura, 27</text>
+                <text x="132" y="278" font-family="Arial, Helvetica, sans-serif" font-size="11.5" fill="#5b6d80">Oficina</text>
+              </g>
+              <!-- norte -->
+              <g>
+                <circle cx="416" cy="326" r="18" fill="#15405f" stroke="#4d7fa3" stroke-width="1.5"/>
+                <path d="M416 314l5 13h-10z" fill="#e3b464"/>
+                <text x="416" y="337" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10.5" fill="#9fc3dd">N</text>
+              </g>
+            </svg>
+            <figcaption>Plano esquemático, dibujado para orientar. No está a escala.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <div class="grid">
+        <div>
+          <a class="brand" href="#inicio" style="text-decoration:none">
+            <svg class="mark" viewBox="0 0 48 48" aria-hidden="true">
+              <rect x="1.5" y="1.5" width="45" height="45" rx="12" fill="#143a5a"/>
+              <path d="M23.2 18.6a6.6 6.6 0 1 0 0 11.8" stroke="#ffffff" stroke-width="3.1" stroke-linecap="round" fill="none"/>
+              <path d="M26.4 31.2L31.2 17.6l4.8 13.6" stroke="#b07d2a" stroke-width="3.1" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <path d="M28.1 27.4h6.2" stroke="#b07d2a" stroke-width="2.4" stroke-linecap="round"/>
+            </svg>
+            <span>
+              <b>Clemente Asesores</b>
+              <small>e Inmobiliaria El Precio Justo</small>
+            </span>
+          </a>
+          <p class="fmail"><a href="mailto:mmartin@clementeasesores.es">mmartin@clementeasesores.es</a></p>
+          <p class="fsmall" style="margin-top:10px">
+            927 50 32 83 · 927 50 80 19<br>
+            Consultar horario
+          </p>
+        </div>
+        <div>
+          <p class="fsmall">
+            C/ La Corredera, 20 · 10800 Coria (Cáceres)<br>
+            Avda. Extremadura, 27 · 10800 Coria (Cáceres)
+          </p>
+          <p class="fsmall" style="margin-top:14px">
+            <a href="#servicios">Servicios</a> · <a href="#inmobiliaria">Inmobiliaria</a> · <a href="#proceso">Cómo trabajamos</a> · <a href="#contacto">Contacto</a>
+          </p>
+        </div>
+      </div>
+      <div class="rule"></div>
+      <p class="studio"><b>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</b></p>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

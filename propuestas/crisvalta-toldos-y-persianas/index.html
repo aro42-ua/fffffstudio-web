@@ -1,0 +1,802 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crisvalta Toldos y Persianas — Don Benito (Badajoz)</title>
+<meta name="description" content="Carpinteria de aluminio, metalica y PVC. Toldos y persianas en Don Benito, Badajoz.">
+<style>
+  :root{
+    --ink:#13171a;
+    --ink-2:#232a2f;
+    --muted:#69737a;
+    --line:#e2e6e9;
+    --line-2:#eef1f3;
+    --bg:#f5f7f8;
+    --card:#ffffff;
+    --accent:#b14e2c;
+    --accent-d:#8d3d21;
+    --accent-s:#f6ece6;
+    --sand:#e9e2d7;
+    --radius:16px;
+    --radius-s:10px;
+    --topbar:40px;
+    --maxw:1120px;
+    --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    padding-top:var(--topbar);
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.6;
+    font-size:16px;
+    overflow-x:hidden;
+  }
+  img,svg{max-width:100%}
+  a{color:inherit}
+  h1,h2,h3,p{margin:0}
+
+  /* ---------- barra fija de propuesta ---------- */
+  .notice{
+    position:fixed;
+    inset:0 0 auto 0;
+    z-index:100;
+    min-height:var(--topbar);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:.6rem;
+    padding:.35rem 14px;
+    background:linear-gradient(90deg,#15191c,#272e33 55%,#15191c);
+    color:#eceff1;
+    border-bottom:1px solid rgba(255,255,255,.12);
+    font-size:.74rem;
+    letter-spacing:.015em;
+    text-align:center;
+  }
+  .notice .dot{
+    flex:0 0 auto;
+    width:7px;height:7px;border-radius:50%;
+    background:var(--accent);
+    box-shadow:0 0 0 3px rgba(177,78,44,.25);
+  }
+  .notice span{display:block}
+
+  /* ---------- utilidades ---------- */
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 clamp(16px,4vw,32px)}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:.5rem;
+    font-size:.76rem;font-weight:600;letter-spacing:.09em;
+    color:var(--accent);
+  }
+  .eyebrow::before{content:"";width:22px;height:2px;background:var(--accent);border-radius:2px}
+  .eyebrow.on-dark{color:#e5b79f}
+  .eyebrow.on-dark::before{background:#e5b79f}
+  h2.sect{
+    font-size:clamp(1.5rem,3.6vw,2.1rem);
+    line-height:1.18;letter-spacing:-.02em;font-weight:650;
+    margin:.7rem 0 .55rem;
+  }
+  .lede{color:var(--muted);max-width:56ch;font-size:clamp(.95rem,1.4vw,1.03rem)}
+  section{padding:clamp(52px,7vw,84px) 0}
+
+  /* ---------- cabecera del sitio ---------- */
+  .site-head{
+    position:relative;z-index:5;
+    padding:18px 0;
+    border-bottom:1px solid rgba(255,255,255,.1);
+  }
+  .site-head .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:.7rem;min-width:0}
+  .brand .mark{flex:0 0 auto}
+  .brand .txt{min-width:0}
+  .brand b{
+    display:block;font-size:1.02rem;font-weight:650;letter-spacing:-.015em;
+    color:#fff;line-height:1.25;
+  }
+  .brand small{display:block;font-size:.72rem;color:#9fabb2;letter-spacing:.02em}
+  .head-contact{display:flex;align-items:center;gap:.5rem;font-size:.86rem;color:#cfd7db}
+  .head-contact a{text-decoration:none;font-weight:600;color:#fff;white-space:nowrap}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    padding:0 0 clamp(56px,7vw,86px);
+    background:
+      radial-gradient(1100px 520px at 78% -8%,rgba(177,78,44,.30),transparent 62%),
+      linear-gradient(170deg,#1c2227 0%,#12171a 58%,#0e1215 100%);
+    color:#fff;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:repeating-linear-gradient(118deg,rgba(255,255,255,.045) 0 1px,transparent 1px 7px);
+  }
+  .hero-grid{
+    position:relative;z-index:3;
+    display:grid;grid-template-columns:1.12fr .88fr;gap:clamp(28px,4vw,52px);
+    align-items:center;
+    padding-top:clamp(40px,6vw,72px);
+  }
+  .hero h1{
+    font-size:clamp(2rem,5.2vw,3.35rem);
+    line-height:1.06;letter-spacing:-.032em;font-weight:680;
+    margin:.85rem 0 1rem;
+  }
+  .hero h1 em{font-style:normal;color:#eaa884}
+  .hero p.sub{color:#b9c4ca;font-size:clamp(1rem,1.6vw,1.12rem);max-width:50ch}
+  .hero-acts{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.7rem}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:.6rem;
+    padding:.86rem 1.4rem;border-radius:999px;
+    font-size:.97rem;font-weight:620;text-decoration:none;letter-spacing:-.005em;
+    border:1px solid transparent;
+  }
+  .btn-main{
+    background:linear-gradient(180deg,#c25c37,var(--accent-d));
+    color:#fff;
+    box-shadow:0 10px 26px -10px rgba(177,78,44,.8),inset 0 1px 0 rgba(255,255,255,.22);
+  }
+  .btn-ghost{border-color:rgba(255,255,255,.3);color:#fff}
+  .hero-tags{
+    display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1.6rem;
+    font-size:.8rem;color:#9fabb2;
+  }
+  .hero-tags li{
+    list-style:none;
+    padding:.32rem .74rem;border-radius:999px;
+    border:1px solid rgba(255,255,255,.16);
+    background:rgba(255,255,255,.04);
+  }
+  .hero-art{position:relative}
+  .hero-art .frame{
+    border-radius:20px;
+    padding:14px;
+    background:linear-gradient(150deg,rgba(255,255,255,.14),rgba(255,255,255,.03));
+    border:1px solid rgba(255,255,255,.16);
+    box-shadow:0 30px 70px -36px rgba(0,0,0,.9);
+  }
+  .hero-art svg{display:block;width:100%;height:auto;border-radius:12px}
+
+  /* ---------- servicios ---------- */
+  .services{background:var(--card);border-top:1px solid var(--line)}
+  .cards{
+    display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:clamp(12px,1.6vw,18px);margin-top:2.3rem;
+  }
+  .card{
+    border:1px solid var(--line);border-radius:var(--radius);
+    padding:clamp(18px,2vw,24px);
+    background:linear-gradient(180deg,#fff,#fbfcfc);
+  }
+  .card .ico{
+    width:46px;height:46px;border-radius:12px;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--accent-s);color:var(--accent-d);
+    border:1px solid #efddd3;
+    margin-bottom:1rem;
+  }
+  .card .ico svg{width:24px;height:24px;display:block}
+  .card h3{font-size:1.04rem;font-weight:640;letter-spacing:-.015em;margin-bottom:.35rem}
+  .card p{font-size:.92rem;color:var(--muted)}
+
+  /* ---------- proceso ---------- */
+  .process{background:var(--bg)}
+  .steps{
+    display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:clamp(14px,2vw,22px);margin-top:2.3rem;counter-reset:s;
+  }
+  .step{
+    position:relative;background:var(--card);
+    border:1px solid var(--line);border-radius:var(--radius);
+    padding:clamp(20px,2.2vw,26px);
+  }
+  .step .n{
+    display:flex;align-items:center;justify-content:center;
+    width:38px;height:38px;border-radius:50%;
+    background:var(--ink);color:#fff;
+    font-size:.92rem;font-weight:650;letter-spacing:.01em;
+    margin-bottom:.95rem;
+  }
+  .step h3{font-size:1.02rem;font-weight:640;letter-spacing:-.015em;margin-bottom:.35rem}
+  .step p{font-size:.92rem;color:var(--muted)}
+
+  /* ---------- galeria preparada ---------- */
+  .gallery{background:var(--card);border-top:1px solid var(--line)}
+  .gal-note{
+    display:flex;align-items:flex-start;gap:.7rem;
+    margin-top:1.6rem;padding:.95rem 1.1rem;
+    border:1px dashed #d3c7bb;border-radius:var(--radius-s);
+    background:#fdfaf7;color:var(--ink-2);
+    font-size:.9rem;max-width:62ch;
+  }
+  .gal-note svg{flex:0 0 auto;width:20px;height:20px;color:var(--accent);margin-top:.12rem}
+  .frames{
+    display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:clamp(12px,1.6vw,18px);margin-top:1.5rem;
+  }
+  .ph{
+    position:relative;
+    aspect-ratio:4/3;
+    border-radius:var(--radius-s);
+    border:1px solid var(--line);
+    background:
+      linear-gradient(135deg,#fafbfb 0%,#f1f3f4 100%),
+      var(--line-2);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:.5rem;padding:14px;text-align:center;
+    overflow:hidden;
+  }
+  .ph::before{
+    content:"";position:absolute;inset:0;
+    background:repeating-linear-gradient(45deg,rgba(0,0,0,.022) 0 6px,transparent 6px 12px);
+  }
+  .ph svg.gl{width:34px;height:34px;color:#aab4ba;position:relative}
+  .ph b{position:relative;font-size:.8rem;font-weight:600;color:var(--ink-2)}
+  .ph span{position:relative;font-size:.72rem;color:var(--muted)}
+  .ph i{
+    position:absolute;width:13px;height:13px;
+    border-color:#c3ccd1;border-style:solid;border-width:0;
+  }
+  .ph i:nth-child(1){top:9px;left:9px;border-top-width:2px;border-left-width:2px}
+  .ph i:nth-child(2){top:9px;right:9px;border-top-width:2px;border-right-width:2px}
+  .ph i:nth-child(3){bottom:9px;left:9px;border-bottom-width:2px;border-left-width:2px}
+  .ph i:nth-child(4){bottom:9px;right:9px;border-bottom-width:2px;border-right-width:2px}
+
+  /* ---------- contacto ---------- */
+  .contact{
+    background:linear-gradient(170deg,#1b2125,#111518);
+    color:#fff;
+  }
+  .contact .lede{color:#aab6bd}
+  .c-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:clamp(22px,3vw,40px);
+    margin-top:2.3rem;align-items:start;
+  }
+  .c-list{display:grid;gap:.85rem}
+  .c-row{
+    display:flex;gap:.9rem;align-items:flex-start;
+    padding:1rem 1.1rem;border-radius:var(--radius-s);
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.1);
+  }
+  .c-row .ci{flex:0 0 auto;width:22px;height:22px;color:#eaa884;margin-top:.15rem}
+  .c-row .ci svg{width:22px;height:22px;display:block}
+  .c-row dt{font-size:.74rem;letter-spacing:.07em;color:#8e9aa1;font-weight:600}
+  .c-row dd{margin:.15rem 0 0;font-size:1rem;font-weight:600;letter-spacing:-.01em;word-break:break-word}
+  .c-row dd a{text-decoration:none}
+  .c-row dd small{display:block;font-size:.84rem;font-weight:400;color:#aab6bd;letter-spacing:0}
+  .map-card{
+    border-radius:var(--radius);overflow:hidden;
+    border:1px solid rgba(255,255,255,.13);
+    background:rgba(255,255,255,.04);
+  }
+  .map-card svg{display:block;width:100%;height:auto}
+  .map-card .cap{
+    padding:.7rem .95rem;font-size:.76rem;color:#8e9aa1;
+    border-top:1px solid rgba(255,255,255,.1);
+  }
+  .c-cta{margin-top:1.4rem;display:flex;flex-wrap:wrap;gap:.7rem}
+
+  /* ---------- pie ---------- */
+  footer{background:#0c0f11;color:#8e9aa1;padding:clamp(34px,4vw,48px) 0}
+  .f-top{
+    display:flex;flex-wrap:wrap;gap:1.2rem;justify-content:space-between;align-items:flex-start;
+    padding-bottom:1.3rem;border-bottom:1px solid rgba(255,255,255,.1);
+  }
+  .f-top b{display:block;color:#fff;font-size:1rem;font-weight:640;letter-spacing:-.015em}
+  .f-top p{font-size:.86rem;margin-top:.2rem}
+  .f-mail{font-size:.9rem}
+  .f-mail a{color:#fff;text-decoration:none;font-weight:600;word-break:break-word}
+  .f-studio{
+    margin-top:1.3rem;font-size:.8rem;color:#78848b;
+    display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;
+  }
+  .f-studio .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex:0 0 auto}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;gap:30px}
+    .hero-art{order:-1}
+    .cards,.steps,.frames{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .c-grid{grid-template-columns:1fr}
+  }
+  @media (max-width:620px){
+    :root{--topbar:54px}
+    .notice{font-size:.7rem;line-height:1.35;padding:.45rem 14px}
+    .site-head{padding:14px 0}
+    .site-head .wrap{justify-content:center;text-align:center;gap:.7rem}
+    .brand{flex-direction:column;justify-content:center;align-items:center;gap:.55rem}
+    .brand b{font-size:.98rem}
+    .brand small{font-size:.7rem;line-height:1.45}
+    .head-contact{width:100%;justify-content:center}
+    .cards,.steps,.frames{grid-template-columns:1fr}
+    .hero h1{letter-spacing:-.025em}
+    .btn{width:100%}
+    .hero-acts,.c-cta{gap:.6rem}
+    .f-top{flex-direction:column}
+  }
+</style>
+</head>
+<body>
+
+<!-- barra de propuesta -->
+<div class="notice" role="note">
+  <span class="dot" aria-hidden="true"></span>
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<header class="hero">
+  <div class="site-head">
+    <div class="wrap">
+      <div class="brand">
+        <span class="mark" aria-hidden="true">
+          <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+            <rect x="1" y="1" width="40" height="40" rx="11" fill="#1f262b" stroke="#3b454c"/>
+            <path d="M8 16.5 21 9.5l13 7" stroke="#eaa884" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 16.5h18v4H12z" fill="#b14e2c"/>
+            <path d="M12 21.5h18M12 25h18M12 28.5h18" stroke="#9fabb2" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M21 21.5v11" stroke="#6b7378" stroke-width="1.2"/>
+          </svg>
+        </span>
+        <span class="txt">
+          <b>Crisvalta Toldos y Persianas</b>
+          <small>Carpintería de aluminio, metálica y PVC · Don Benito</small>
+        </span>
+      </div>
+      <p class="head-contact">
+        <span>Llámanos</span>
+        <a href="tel:+34924804551">924 80 45 51</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow on-dark">Don Benito · Badajoz</span>
+        <h1>Aluminio, PVC, <em>toldos y persianas</em> hechos a medida.</h1>
+        <p class="sub">
+          Taller de carpintería de aluminio, metálica y PVC en Don Benito. Fabricamos,
+          instalamos y reparamos cerramientos, toldos y persianas, tomando las medidas
+          en su casa o local.
+        </p>
+        <div class="hero-acts">
+          <a class="btn btn-main" href="tel:+34924804551">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6.6 3.5h3l1.5 4-2.2 1.6a12 12 0 0 0 5.9 5.9l1.6-2.2 4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.6 5.7 2 2 0 0 1 6.6 3.5Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Llamar al 924 80 45 51
+          </a>
+          <a class="btn btn-ghost" href="#contacto">Ver dónde estamos</a>
+        </div>
+        <ul class="hero-tags">
+          <li>Aluminio</li>
+          <li>PVC</li>
+          <li>Carpintería metálica</li>
+          <li>Toldos</li>
+          <li>Persianas</li>
+          <li>Medición a domicilio</li>
+        </ul>
+      </div>
+
+      <div class="hero-art">
+        <div class="frame">
+          <!-- ilustracion: ventana de aluminio con toldo, dibujada a mano -->
+          <svg viewBox="0 0 420 330" fill="none" role="img" aria-label="Ilustración de una ventana de aluminio con toldo y persiana">
+            <defs>
+              <linearGradient id="g-sky" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#2b343a"/>
+                <stop offset="1" stop-color="#1a2024"/>
+              </linearGradient>
+              <linearGradient id="g-alu" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#cfd8dd"/>
+                <stop offset=".45" stop-color="#8e9aa1"/>
+                <stop offset="1" stop-color="#c3ccd1"/>
+              </linearGradient>
+              <linearGradient id="g-glass" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#4a5a63" stop-opacity=".85"/>
+                <stop offset="1" stop-color="#2a3338" stop-opacity=".85"/>
+              </linearGradient>
+            </defs>
+
+            <rect width="420" height="330" fill="url(#g-sky)"/>
+            <path d="M0 278h420" stroke="#39434a" stroke-width="1.5"/>
+
+            <!-- toldo de rayas -->
+            <path d="M150 54 L270 54 L346 104 L74 104 Z" fill="#b14e2c"/>
+            <path d="M167 54 L184 54 L152 104 L113 104 Z" fill="#f0e6dc"/>
+            <path d="M201 54 L219 54 L229 104 L191 104 Z" fill="#f0e6dc"/>
+            <path d="M236 54 L253 54 L307 104 L268 104 Z" fill="#f0e6dc"/>
+            <path d="M150 54 L270 54 L346 104 L74 104 Z" fill="none" stroke="#8d3d21" stroke-width="2.5" stroke-linejoin="round"/>
+            <!-- faldon -->
+            <path d="M74 104 q17 17 34 0 q17 17 34 0 q17 17 34 0 q17 17 34 0 q17 17 34 0 q17 17 34 0 q17 17 34 0 q17 17 34 0 Z" fill="#8d3d21"/>
+            <!-- brazos -->
+            <path d="M104 134 L88 110M316 134 L332 110" stroke="#9fabb2" stroke-width="4" stroke-linecap="round"/>
+
+            <!-- hueco acristalado -->
+            <rect x="104" y="130" width="212" height="140" rx="3" fill="url(#g-glass)"/>
+            <!-- persiana a media altura -->
+            <rect x="108" y="134" width="204" height="54" fill="#aab6bd"/>
+            <path d="M108 142h204M108 150h204M108 158h204M108 166h204M108 174h204M108 182h204" stroke="#7e8a91" stroke-width="1.6"/>
+            <path d="M128 262 L196 196" stroke="#ffffff" stroke-width="2" opacity=".07"/>
+            <!-- marco y junquillo -->
+            <rect x="104" y="130" width="212" height="140" rx="3" stroke="url(#g-alu)" stroke-width="7"/>
+            <rect x="207" y="130" width="6" height="140" fill="url(#g-alu)"/>
+            <rect x="196" y="206" width="8" height="22" rx="4" fill="#cfd8dd"/>
+            <rect x="216" y="206" width="8" height="22" rx="4" fill="#cfd8dd"/>
+
+            <!-- cota de medida -->
+            <path d="M104 300h212" stroke="#eaa884" stroke-width="1.6"/>
+            <path d="M104 294v12M316 294v12" stroke="#eaa884" stroke-width="1.6"/>
+            <rect x="178" y="286" width="64" height="28" rx="6" fill="#1a2024" stroke="#eaa884"/>
+            <text x="210" y="305" text-anchor="middle" font-family="ui-sans-serif,system-ui,sans-serif" font-size="13" fill="#eaa884">a medida</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- ================= servicios ================= -->
+  <section class="services" id="servicios">
+    <div class="wrap">
+      <span class="eyebrow">Lo que hacemos</span>
+      <h2 class="sect">Carpintería, toldos y persianas</h2>
+      <p class="lede">
+        Trabajamos el aluminio, el hierro y el PVC en nuestro taller de Don Benito,
+        de la medición al montaje.
+      </p>
+
+      <div class="cards">
+        <article class="card">
+          <div class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="3.5" width="18" height="17" rx="2" stroke="currentColor" stroke-width="1.7"/>
+              <path d="M12 3.5v17M3 12h18" stroke="currentColor" stroke-width="1.7"/>
+              <path d="M9.6 11v2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Ventanas y cerramientos</h3>
+          <p>Ventanas, puertas, balconeras y cerramientos de aluminio y PVC fabricados a la medida del hueco.</p>
+        </article>
+
+        <article class="card">
+          <div class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M3 6.5h18M3 11h18M3 15.5h18M3 20h18" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+              <path d="M5.5 4v18M18.5 4v18" stroke="currentColor" stroke-width="1.3" opacity=".5"/>
+            </svg>
+          </div>
+          <h3>Persianas</h3>
+          <p>Montaje, sustitución y reparación de persianas, cajones, cintas y mecanismos.</p>
+        </article>
+
+        <article class="card">
+          <div class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M2.5 11 12 5.5 21.5 11l-1.3 4.5L12 11 3.8 15.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+              <path d="M3.8 15.5q2 1.6 4 0t4 0 4 0 4.4 0" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              <path d="M12 5.5V3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Toldos</h3>
+          <p>Toldos para ventanas, terrazas y fachadas, con la estructura y el accionamiento que pida cada hueco.</p>
+        </article>
+
+        <article class="card">
+          <div class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M4 20V7l7-3 9 4v12" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+              <path d="M4 13h16M11 4v16" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M2.5 20h19" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Carpintería metálica</h3>
+          <p>Rejas, puertas, vallas, barandillas y estructuras metálicas hechas en el taller.</p>
+        </article>
+
+        <article class="card">
+          <div class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M14.5 3.5a4 4 0 0 0 5 5l-11 11a2.5 2.5 0 0 1-3.5-3.5l11-11Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+              <path d="M6 18.2h.01" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Reparaciones</h3>
+          <p>Arreglo de toldos, persianas y carpinterías que ya tiene puestas: cambio de piezas, ajustes y repasos.</p>
+        </article>
+
+        <article class="card">
+          <div class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M3 8.5h18v7H3z" stroke="currentColor" stroke-width="1.7"/>
+              <path d="M7 8.5v3M11 8.5v4M15 8.5v3M19 8.5v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M2.5 19h19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".5"/>
+            </svg>
+          </div>
+          <h3>Medición a domicilio</h3>
+          <p>Pasamos por su casa, obra o local a tomar medidas antes de fabricar nada.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= como trabajamos ================= -->
+  <section class="process" id="como-trabajamos">
+    <div class="wrap">
+      <span class="eyebrow">Cómo trabajamos</span>
+      <h2 class="sect">Tres pasos, sin sorpresas</h2>
+      <p class="lede">De la primera llamada al montaje, siempre con las mismas manos.</p>
+
+      <div class="steps">
+        <article class="step">
+          <div class="n">1</div>
+          <h3>Nos llama y nos cuenta</h3>
+          <p>Nos explica qué necesita por teléfono o por correo y concretamos una visita para ver el hueco.</p>
+        </article>
+        <article class="step">
+          <div class="n">2</div>
+          <h3>Medimos y le pasamos propuesta</h3>
+          <p>Tomamos las medidas en el sitio, miramos las opciones de material y le damos la propuesta por escrito.</p>
+        </article>
+        <article class="step">
+          <div class="n">3</div>
+          <h3>Fabricamos e instalamos</h3>
+          <p>Lo preparamos en el taller y lo montamos nosotros mismos, dejando la obra recogida.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= galeria preparada para sus fotos ================= -->
+  <section class="gallery" id="trabajos">
+    <div class="wrap">
+      <span class="eyebrow">Trabajos</span>
+      <h2 class="sect">Galería lista para sus fotos</h2>
+      <p class="lede">
+        Este espacio está preparado para los trabajos reales del taller: cerramientos
+        montados, toldos instalados, rejas y persianas.
+      </p>
+
+      <p class="gal-note">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/>
+          <path d="M12 8h.01M12 11v5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        <span>
+          <b>Marcos vacíos a propósito.</b> En esta maqueta no se usa ninguna fotografía:
+          cada hueco se rellenaría con fotos de sus propios trabajos, hechas en el taller
+          o en las instalaciones ya terminadas.
+        </span>
+      </p>
+
+      <div class="frames">
+        <div class="ph">
+          <i></i><i></i><i></i><i></i>
+          <svg class="gl" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M3 16l5-4 4 3 3.5-3 5 4" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            <circle cx="8.6" cy="9.4" r="1.5" stroke="currentColor" stroke-width="1.4"/>
+          </svg>
+          <b>Cerramientos de aluminio</b>
+          <span>Aquí iría su foto</span>
+        </div>
+        <div class="ph">
+          <i></i><i></i><i></i><i></i>
+          <svg class="gl" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M3 16l5-4 4 3 3.5-3 5 4" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            <circle cx="8.6" cy="9.4" r="1.5" stroke="currentColor" stroke-width="1.4"/>
+          </svg>
+          <b>Toldos instalados</b>
+          <span>Aquí iría su foto</span>
+        </div>
+        <div class="ph">
+          <i></i><i></i><i></i><i></i>
+          <svg class="gl" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M3 16l5-4 4 3 3.5-3 5 4" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            <circle cx="8.6" cy="9.4" r="1.5" stroke="currentColor" stroke-width="1.4"/>
+          </svg>
+          <b>Persianas y cajones</b>
+          <span>Aquí iría su foto</span>
+        </div>
+        <div class="ph">
+          <i></i><i></i><i></i><i></i>
+          <svg class="gl" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M3 16l5-4 4 3 3.5-3 5 4" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            <circle cx="8.6" cy="9.4" r="1.5" stroke="currentColor" stroke-width="1.4"/>
+          </svg>
+          <b>Carpintería metálica</b>
+          <span>Aquí iría su foto</span>
+        </div>
+        <div class="ph">
+          <i></i><i></i><i></i><i></i>
+          <svg class="gl" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M3 16l5-4 4 3 3.5-3 5 4" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            <circle cx="8.6" cy="9.4" r="1.5" stroke="currentColor" stroke-width="1.4"/>
+          </svg>
+          <b>Ventanas de PVC</b>
+          <span>Aquí iría su foto</span>
+        </div>
+        <div class="ph">
+          <i></i><i></i><i></i><i></i>
+          <svg class="gl" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M3 16l5-4 4 3 3.5-3 5 4" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            <circle cx="8.6" cy="9.4" r="1.5" stroke="currentColor" stroke-width="1.4"/>
+          </svg>
+          <b>El taller</b>
+          <span>Aquí iría su foto</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= contacto ================= -->
+  <section class="contact" id="contacto">
+    <div class="wrap">
+      <span class="eyebrow on-dark">Contacto</span>
+      <h2 class="sect">Estamos en la Avenida Sevilla</h2>
+      <p class="lede">Llámenos y le decimos cuándo podemos pasar a tomar medidas.</p>
+
+      <div class="c-grid">
+        <dl class="c-list">
+          <div class="c-row">
+            <span class="ci" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M6.6 3.5h3l1.5 4-2.2 1.6a12 12 0 0 0 5.9 5.9l1.6-2.2 4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.6 5.7 2 2 0 0 1 6.6 3.5Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <div>
+              <dt>Teléfono</dt>
+              <dd><a href="tel:+34924804551">924 80 45 51</a></dd>
+            </div>
+          </div>
+
+          <div class="c-row">
+            <span class="ci" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                <circle cx="12" cy="10" r="2.6" stroke="currentColor" stroke-width="1.8"/>
+              </svg>
+            </span>
+            <div>
+              <dt>Dirección</dt>
+              <dd>
+                Avenida Sevilla, 18 (Ctra. Mengabril)
+                <small>06400 Don Benito (Badajoz)</small>
+              </dd>
+            </div>
+          </div>
+
+          <div class="c-row">
+            <span class="ci" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M12 7.2V12l3.4 2.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <div>
+              <dt>Horario</dt>
+              <dd>Consultar horario</dd>
+            </div>
+          </div>
+
+          <div class="c-row">
+            <span class="ci" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="5" width="18" height="14" rx="2.5" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M4 7.5l8 5.5 8-5.5" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <div>
+              <dt>Correo</dt>
+              <dd><a href="mailto:crisvalta@crisvalta.es">crisvalta@crisvalta.es</a></dd>
+            </div>
+          </div>
+        </dl>
+
+        <div class="map-card">
+          <!-- croquis esquematico dibujado a mano, no es un mapa real -->
+          <svg viewBox="0 0 440 330" fill="none" role="img" aria-label="Croquis esquemático de la situación del taller en la Avenida Sevilla, Don Benito">
+            <rect width="440" height="330" fill="#171d21"/>
+            <path d="M0 0h440v330H0z" fill="none"/>
+            <g opacity=".3" stroke="#39434a" stroke-width="1">
+              <path d="M0 55h440M0 110h440M0 165h440M0 220h440M0 275h440"/>
+              <path d="M55 0v330M110 0v330M165 0v330M220 0v330M275 0v330M330 0v330M385 0v330"/>
+            </g>
+
+            <!-- manzanas -->
+            <g fill="#1f262b" stroke="#333d44" stroke-width="1.5">
+              <rect x="36" y="40" width="112" height="78" rx="4"/>
+              <rect x="36" y="212" width="112" height="82" rx="4"/>
+              <rect x="300" y="40" width="104" height="78" rx="4"/>
+              <rect x="300" y="212" width="104" height="82" rx="4"/>
+            </g>
+
+            <!-- avenida principal (vertical) -->
+            <path d="M212 0v330" stroke="#3f4a52" stroke-width="40"/>
+            <path d="M212 0v330" stroke="#5d6a73" stroke-width="2" stroke-dasharray="14 12"/>
+
+            <!-- carretera de mengabril (diagonal) -->
+            <path d="M0 150 L440 196" stroke="#3f4a52" stroke-width="28"/>
+            <path d="M0 150 L440 196" stroke="#5d6a73" stroke-width="2" stroke-dasharray="12 10"/>
+
+            <!-- calle secundaria -->
+            <path d="M0 262h440" stroke="#333d44" stroke-width="14"/>
+
+            <!-- parcela del taller -->
+            <rect x="236" y="120" width="76" height="56" rx="5" fill="#b14e2c" opacity=".2"/>
+            <rect x="236" y="120" width="76" height="56" rx="5" stroke="#b14e2c" stroke-width="2" stroke-dasharray="6 5"/>
+
+            <!-- marcador -->
+            <g>
+              <path d="M274 98c-9.4 0-17 7.6-17 17 0 12.6 17 27 17 27s17-14.4 17-27c0-9.4-7.6-17-17-17Z" fill="#c25c37" stroke="#f0e6dc" stroke-width="2.4"/>
+              <circle cx="274" cy="114.5" r="6" fill="#171d21"/>
+            </g>
+
+            <!-- etiquetas -->
+            <g font-family="ui-sans-serif,system-ui,sans-serif" fill="#aab6bd">
+              <text x="200" y="36" font-size="13" text-anchor="end" transform="rotate(-90 200 36)" fill="#8e9aa1">Avenida Sevilla</text>
+              <text x="26" y="140" font-size="13" fill="#8e9aa1">Ctra. Mengabril</text>
+              <text x="274" y="168" font-size="12.5" text-anchor="middle" fill="#eaa884">n.º 18</text>
+              <text x="92" y="86" font-size="12" text-anchor="middle" fill="#8e9aa1">Don Benito</text>
+              <text x="352" y="252" font-size="12" text-anchor="middle" fill="#8e9aa1">Badajoz</text>
+            </g>
+
+            <!-- rosa de los vientos -->
+            <g transform="translate(400 300)">
+              <circle r="18" fill="#1f262b" stroke="#39434a"/>
+              <path d="M0 -12 L4.5 2 L0 -1.5 L-4.5 2 Z" fill="#eaa884"/>
+              <text y="13" font-size="8.5" text-anchor="middle" font-family="ui-sans-serif,system-ui,sans-serif" fill="#8e9aa1">N</text>
+            </g>
+          </svg>
+          <p class="cap">Croquis orientativo dibujado para esta maqueta. No es un mapa a escala.</p>
+        </div>
+      </div>
+
+      <div class="c-cta">
+        <a class="btn btn-main" href="tel:+34924804551">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6.6 3.5h3l1.5 4-2.2 1.6a12 12 0 0 0 5.9 5.9l1.6-2.2 4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.6 5.7 2 2 0 0 1 6.6 3.5Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Llamar al 924 80 45 51
+        </a>
+        <a class="btn btn-ghost" href="mailto:crisvalta@crisvalta.es">Escribir un correo</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-top">
+      <div>
+        <b>Crisvalta Toldos y Persianas</b>
+        <p>Carpintería de aluminio, metálica y PVC · Toldos y persianas<br>
+           Avenida Sevilla, 18 (Ctra. Mengabril) · 06400 Don Benito (Badajoz)</p>
+      </div>
+      <div class="f-mail">
+        <p>Teléfono <a href="tel:+34924804551">924 80 45 51</a></p>
+        <p>Correo <a href="mailto:crisvalta@crisvalta.es">crisvalta@crisvalta.es</a></p>
+        <p>Consultar horario</p>
+      </div>
+    </div>
+    <p class="f-studio">
+      <span class="dot" aria-hidden="true"></span>
+      <span>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</span>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
