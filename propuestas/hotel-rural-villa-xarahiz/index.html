@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hotel Rural Villa Xarahiz — Jaraíz de la Vera (Cáceres) · propuesta de diseño</title>
+<style>
+  :root{
+    --crema:#f7f1e6;
+    --crema-2:#efe5d4;
+    --papel:#fffdf8;
+    --tinta:#2e2820;
+    --tinta-2:#5c5243;
+    --oliva:#4f6042;
+    --oliva-osc:#39462f;
+    --terra:#b4603a;
+    --terra-osc:#8f4827;
+    --dorado:#c99a4e;
+    --linea:#ded0b8;
+    --barra-h:46px;
+    --sombra:0 1px 2px rgba(46,40,32,.06), 0 10px 30px rgba(46,40,32,.07);
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{margin:0;padding:0;max-width:100%;overflow-x:hidden}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    background:var(--crema);
+    color:var(--tinta);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size:17px;
+    line-height:1.65;
+    padding-top:var(--barra-h);
+    text-rendering:optimizeLegibility;
+  }
+  img,svg{max-width:100%}
+  h1,h2,h3{margin:0;line-height:1.14;letter-spacing:-.018em;font-weight:650}
+  p{margin:0}
+  a{color:inherit}
+
+  /* ---------- barra fija ---------- */
+  .barra{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    height:var(--barra-h);
+    display:flex;align-items:center;justify-content:center;
+    background:var(--oliva-osc);
+    color:#f3eadb;
+    border-bottom:1px solid rgba(0,0,0,.25);
+    text-transform:none;
+    padding:0 14px;
+  }
+  .barra span{
+    font-size:12.5px;line-height:1.25;letter-spacing:.01em;
+    text-align:center;font-weight:500;
+    display:block;max-width:100%;
+  }
+
+  /* ---------- utilidades ---------- */
+  .env{width:100%;max-width:1120px;margin:0 auto;padding:0 24px}
+  .sec{padding:84px 0}
+  .rotulo{
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--terra-osc);font-weight:650;margin-bottom:18px;
+  }
+  .rotulo::before{content:"";width:26px;height:1px;background:var(--dorado)}
+  .lead{color:var(--tinta-2);font-size:18px;max-width:62ch}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;overflow:hidden;background:
+      radial-gradient(120% 90% at 85% 0%, rgba(201,154,78,.30) 0%, rgba(201,154,78,0) 58%),
+      radial-gradient(100% 80% at 0% 100%, rgba(79,96,66,.32) 0%, rgba(79,96,66,0) 60%),
+      linear-gradient(168deg,#fbf6ec 0%,#f3ead9 48%,#e9dcc5 100%);
+    border-bottom:1px solid var(--linea)}
+  .hero-sierra{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:190px;display:block;pointer-events:none}
+  .hero .env{position:relative;z-index:2}
+  .hero-in{padding:92px 0 150px;max-width:760px}
+  .hero h1{font-size:clamp(34px,5.4vw,60px);margin-bottom:22px}
+  .hero h1 em{display:block;margin-top:12px;font-style:normal;font-weight:450;font-size:.62em;line-height:1.24;letter-spacing:-.012em;color:var(--oliva-osc)}
+  .hero .lead{font-size:clamp(17px,2.1vw,20.5px);max-width:56ch}
+  .ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:15px 24px;border-radius:999px;
+    font-size:16.5px;font-weight:650;text-decoration:none;
+    border:1px solid transparent;transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px)}
+  .btn-1{background:var(--terra);color:#fff8f1;box-shadow:0 8px 22px rgba(143,72,39,.26)}
+  .btn-1:hover{background:var(--terra-osc)}
+  .btn-2{background:rgba(255,253,248,.82);color:var(--oliva-osc);border-color:var(--linea)}
+  .btn-2:hover{background:#fffdf8}
+  .btn svg{flex:0 0 auto}
+  .hero-nota{margin-top:16px;font-size:14.5px;color:var(--tinta-2)}
+
+  /* ---------- servicios ---------- */
+  .rejilla{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-top:40px}
+  .carta{
+    background:var(--papel);border:1px solid var(--linea);border-radius:18px;
+    padding:28px 26px 30px;box-shadow:var(--sombra);
+  }
+  .carta h3{font-size:21px;margin-bottom:10px}
+  .carta p{color:var(--tinta-2);font-size:16px}
+  .icono{
+    width:48px;height:48px;border-radius:13px;margin-bottom:18px;
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(140deg,#f0e6d2,#e2d3b6);border:1px solid var(--linea);
+  }
+  .icono svg{width:25px;height:25px;display:block}
+
+  /* ---------- pasos ---------- */
+  .pasos-sec{background:linear-gradient(180deg,#f2e9d8 0%,#efe5d4 100%);border-block:1px solid var(--linea)}
+  .pasos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:42px}
+  .paso{background:var(--papel);border:1px solid var(--linea);border-radius:18px;padding:28px 26px;box-shadow:var(--sombra);position:relative}
+  .paso-n{
+    width:40px;height:40px;border-radius:50%;
+    background:var(--oliva);color:#f4efe3;
+    display:flex;align-items:center;justify-content:center;
+    font-size:17px;font-weight:700;margin-bottom:16px;
+  }
+  .paso h3{font-size:19.5px;margin-bottom:9px}
+  .paso p{color:var(--tinta-2);font-size:15.8px}
+
+  /* ---------- contacto ---------- */
+  .cont{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:34px;margin-top:40px;align-items:start}
+  .fichas{display:flex;flex-direction:column;gap:14px}
+  .ficha{
+    display:flex;gap:16px;align-items:flex-start;
+    background:var(--papel);border:1px solid var(--linea);border-radius:16px;
+    padding:20px 22px;box-shadow:var(--sombra);text-decoration:none;
+  }
+  a.ficha{transition:border-color .15s ease, transform .15s ease}
+  a.ficha:hover{border-color:var(--terra);transform:translateY(-1px)}
+  .ficha-ico{
+    flex:0 0 auto;width:42px;height:42px;border-radius:11px;
+    background:linear-gradient(140deg,#eee3cd,#e0d0b1);border:1px solid var(--linea);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .ficha-ico svg{width:22px;height:22px;display:block}
+  .ficha > span:last-child{min-width:0}
+  .ficha-t{display:block;font-size:12.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--tinta-2);font-weight:650;margin-bottom:3px}
+  .ficha-v{display:block;font-size:19px;font-weight:650;color:var(--tinta);word-break:break-word;line-height:1.3}
+  .ficha-v small{display:block;font-size:14.5px;font-weight:450;color:var(--tinta-2);margin-top:4px;letter-spacing:0;text-transform:none}
+  .mapa{
+    background:var(--papel);border:1px solid var(--linea);border-radius:18px;
+    padding:18px 18px 16px;box-shadow:var(--sombra);
+  }
+  .mapa svg{width:100%;height:auto;display:block;border-radius:11px}
+  .mapa-pie{font-size:13.5px;color:var(--tinta-2);margin-top:12px;text-align:center}
+
+  /* ---------- pie ---------- */
+  .pie{background:var(--oliva-osc);color:#e9e0ce;padding:54px 0 42px;text-transform:none}
+  .pie-top{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:30px;align-items:start}
+  .pie h3{font-size:19px;color:#f6efe1;margin-bottom:10px}
+  .pie p{font-size:15.5px;color:#cfc4ad}
+  .pie a{color:#f0e3c6;text-decoration:none;border-bottom:1px solid rgba(240,227,198,.4)}
+  .pie a:hover{border-bottom-color:#f0e3c6}
+  .pie-datos{display:flex;flex-direction:column;gap:8px;font-size:15.5px}
+  .pie-sep{height:1px;background:rgba(240,227,198,.22);margin:32px 0 22px}
+  .pie-firma{font-size:14.5px;color:#cfc4ad;text-transform:none;line-height:1.6}
+  .pie-firma strong{color:#f6efe1;font-weight:650}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:860px){
+    .cont{grid-template-columns:minmax(0,1fr)}
+    .pasos{grid-template-columns:minmax(0,1fr)}
+    .pie-top{grid-template-columns:minmax(0,1fr)}
+  }
+  @media (max-width:640px){
+    :root{--barra-h:54px}
+    body{font-size:16.5px}
+    .env{padding:0 18px}
+    .sec{padding:60px 0}
+    .hero-in{padding:56px 0 104px}
+    .hero-sierra{height:124px}
+    .rejilla{grid-template-columns:minmax(0,1fr);gap:16px}
+    .carta{padding:24px 22px 26px;border-radius:16px}
+    .paso{padding:24px 22px}
+    .ctas{gap:12px}
+    .btn{width:100%;justify-content:center;padding:16px 20px}
+    .barra span{font-size:12px}
+    .ficha{padding:18px}
+    .ficha-v{font-size:17.5px}
+  }
+</style>
+</head>
+<body>
+
+<div class="barra" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <svg class="hero-sierra" viewBox="0 0 1440 190" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <path d="M0 128 L120 96 L250 118 L360 72 L470 104 L600 60 L720 98 L840 66 L960 106 L1080 80 L1200 112 L1320 86 L1440 120 L1440 190 L0 190 Z" fill="#4f6042" opacity=".16"/>
+    <path d="M0 152 L140 134 L270 150 L400 118 L520 142 L650 112 L780 140 L900 120 L1030 146 L1160 126 L1290 150 L1440 134 L1440 190 L0 190 Z" fill="#39462f" opacity=".2"/>
+  </svg>
+  <div class="env">
+    <div class="hero-in">
+      <span class="rotulo">Jaraíz de la Vera · Cáceres</span>
+      <h1>Hotel Rural Villa Xarahiz<em>Descansar en La Vera, con el teléfono a un toque</em></h1>
+      <p class="lead">Alojamiento rural con restaurante en plena comarca de La Vera. Esta maqueta plantea una web en la que reservar, llamar o encontrar el hotel se resuelve en un solo gesto, también desde el móvil.</p>
+      <div class="ctas">
+        <a class="btn btn-1" href="tel:+34927665150">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.4 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2z"/></svg>
+          Llamar al 927 66 51 50
+        </a>
+        <a class="btn btn-2" href="#contacto">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Cómo llegar
+        </a>
+      </div>
+      <p class="hero-nota">Ctra. EX-203, 4 · 10400 Jaraíz de la Vera (Cáceres)</p>
+    </div>
+  </div>
+</header>
+
+<!-- ============ SERVICIOS ============ -->
+<section class="sec" id="hotel">
+  <div class="env">
+    <span class="rotulo">El hotel</span>
+    <h2 style="font-size:clamp(27px,3.6vw,38px);margin-bottom:16px">Alojamiento, mesa y campo en el mismo sitio</h2>
+    <p class="lead">Una descripción breve de lo que ofrece la casa, pensada para que quien llega desde el móvil entienda en diez segundos si es el sitio que busca.</p>
+
+    <div class="rejilla">
+      <article class="carta">
+        <div class="icono">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#4f6042" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6"/><path d="M6 10V7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v3"/><path d="M2 18h20"/><path d="M5 18v2"/><path d="M19 18v2"/></svg>
+        </div>
+        <h3>Habitaciones</h3>
+        <p>Estancias para una noche de paso o para una escapada de varios días. Consulta disponibilidad y tipos de habitación por teléfono.</p>
+      </article>
+
+      <article class="carta">
+        <div class="icono">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#b4603a" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 3v8a2 2 0 0 0 4 0V3"/><path d="M8 11v10"/><path d="M16 3c-1.5 1.2-2 2.6-2 4.5 0 1.6.7 2.6 2 3.5"/><path d="M16 11v10"/></svg>
+        </div>
+        <h3>Restaurante</h3>
+        <p>Comedor propio en el mismo establecimiento, abierto también a quien solo viene a comer. La carta y los pases se consultan directamente con el hotel.</p>
+      </article>
+
+      <article class="carta">
+        <div class="icono">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#4f6042" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 22V9"/><path d="M12 13 7 8"/><path d="m12 11 5-5"/><path d="M3 22h18"/><path d="M12 9a4 4 0 1 0-4-4 4 4 0 0 0 4 4z"/></svg>
+        </div>
+        <h3>Entorno</h3>
+        <p>Punto de partida para recorrer la comarca de La Vera: pueblos, gargantas y rutas a pie que salen de los alrededores de Jaraíz.</p>
+      </article>
+
+      <article class="carta">
+        <div class="icono">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#b4603a" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="9" cy="8" r="3"/><path d="M3 20v-1a5 5 0 0 1 5-5h2a5 5 0 0 1 5 5v1"/><path d="M17 7.2a3 3 0 0 1 0 5.6"/><path d="M19 20v-1a4 4 0 0 0-2-3.4"/></svg>
+        </div>
+        <h3>Celebraciones pequeñas</h3>
+        <p>Comidas familiares y reuniones de grupo reducido en el restaurante. Cuéntanos cuántos sois y lo vemos por teléfono.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PASOS ============ -->
+<section class="sec pasos-sec">
+  <div class="env">
+    <span class="rotulo">Tu reserva en 3 pasos</span>
+    <h2 style="font-size:clamp(27px,3.6vw,38px);margin-bottom:16px">Sin formularios largos ni pasarelas</h2>
+    <p class="lead">La reserva se resuelve hablando con el hotel. La web solo tiene que quitar de en medio todo lo que estorba para llegar a esa llamada.</p>
+
+    <div class="pasos">
+      <article class="paso">
+        <div class="paso-n">1</div>
+        <h3>Llamas o escribes</h3>
+        <p>Un toque en el teléfono abre la llamada en el móvil. El correo abre el gestor de correo ya con la dirección puesta.</p>
+      </article>
+      <article class="paso">
+        <div class="paso-n">2</div>
+        <h3>Confirmáis fechas</h3>
+        <p>El hotel te dice qué hay libre para esos días y qué incluye. Sin intermediarios ni comisiones de portal.</p>
+      </article>
+      <article class="paso">
+        <div class="paso-n">3</div>
+        <h3>Llegas a Jaraíz</h3>
+        <p>La dirección y el acceso desde la EX-203 quedan a la vista, para enviarlos por mensaje o abrirlos en el navegador del coche.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section class="sec" id="contacto">
+  <div class="env">
+    <span class="rotulo">Contacto</span>
+    <h2 style="font-size:clamp(27px,3.6vw,38px);margin-bottom:16px">Dónde estamos y cómo localizarnos</h2>
+    <p class="lead">Todos los datos de contacto, pulsables desde el primer momento.</p>
+
+    <div class="cont">
+      <div class="fichas">
+        <a class="ficha" href="tel:+34927665150">
+          <span class="ficha-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#b4603a" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.4 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2z"/></svg>
+          </span>
+          <span>
+            <span class="ficha-t">Teléfono</span>
+            <span class="ficha-v">927 66 51 50<small>Toca para llamar desde el móvil</small></span>
+          </span>
+        </a>
+
+        <div class="ficha">
+          <span class="ficha-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#4f6042" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </span>
+          <span>
+            <span class="ficha-t">Dirección</span>
+            <span class="ficha-v">Ctra. EX-203, 4<small>10400 Jaraíz de la Vera (Cáceres)</small></span>
+          </span>
+        </div>
+
+        <div class="ficha">
+          <span class="ficha-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#4f6042" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+          </span>
+          <span>
+            <span class="ficha-t">Horario</span>
+            <span class="ficha-v">Consultar horario<small>Por teléfono o por correo</small></span>
+          </span>
+        </div>
+
+        <a class="ficha" href="mailto:villaxarahiz@villaxarahiz.com">
+          <span class="ficha-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#b4603a" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 7 9 6 9-6"/></svg>
+          </span>
+          <span>
+            <span class="ficha-t">Correo</span>
+            <span class="ficha-v">villaxarahiz@villaxarahiz.com<small>Toca para escribirnos</small></span>
+          </span>
+        </a>
+      </div>
+
+      <div class="mapa">
+        <svg viewBox="0 0 520 380" role="img" aria-label="Mapa esquemático: la carretera EX-203 pasando junto al casco del pueblo, con el hotel señalado." focusable="false">
+          <defs>
+            <linearGradient id="g-campo" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#eef1e4"/>
+              <stop offset="1" stop-color="#e2e8d5"/>
+            </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="520" height="380" rx="10" fill="url(#g-campo)"/>
+          <!-- parcelas de campo -->
+          <g opacity=".5" fill="none" stroke="#b9c4a3" stroke-width="1.4">
+            <path d="M0 70 H190"/><path d="M0 140 H150"/><path d="M330 300 H520"/><path d="M380 340 H520"/>
+            <path d="M80 0 V150"/><path d="M460 250 V380"/>
+          </g>
+          <!-- garganta / agua -->
+          <path d="M0 250 C 70 236, 120 272, 190 258 C 250 246, 290 282, 360 272" fill="none" stroke="#8fb0bd" stroke-width="7" stroke-linecap="round" opacity=".65"/>
+          <!-- arbolado -->
+          <g fill="#6f8a5c" opacity=".6">
+            <circle cx="46" cy="196" r="10"/><circle cx="72" cy="208" r="7"/><circle cx="122" cy="316" r="9"/>
+            <circle cx="150" cy="330" r="6.5"/><circle cx="430" cy="92" r="9"/><circle cx="458" cy="104" r="6.5"/>
+            <circle cx="486" cy="60" r="8"/>
+          </g>
+          <!-- carretera EX-203 -->
+          <path d="M-10 318 C 110 300, 160 214, 268 190 C 364 168, 420 92, 530 58" fill="none" stroke="#cbbda3" stroke-width="26" stroke-linecap="round"/>
+          <path d="M-10 318 C 110 300, 160 214, 268 190 C 364 168, 420 92, 530 58" fill="none" stroke="#f4eee1" stroke-width="18" stroke-linecap="round"/>
+          <path d="M-10 318 C 110 300, 160 214, 268 190 C 364 168, 420 92, 530 58" fill="none" stroke="#c9a05e" stroke-width="2.4" stroke-dasharray="14 13" stroke-linecap="round"/>
+          <!-- casco urbano -->
+          <g>
+            <rect x="92" y="52" width="150" height="104" rx="9" fill="#e6dcc6" stroke="#cdbfa4" stroke-width="1.5"/>
+            <g fill="#d2c3a6">
+              <rect x="106" y="68" width="26" height="24" rx="3"/><rect x="140" y="64" width="34" height="30" rx="3"/>
+              <rect x="182" y="72" width="24" height="20" rx="3"/><rect x="110" y="104" width="32" height="28" rx="3"/>
+              <rect x="152" y="108" width="28" height="24" rx="3"/><rect x="190" y="104" width="34" height="30" rx="3"/>
+            </g>
+            <path d="M160 40 v12" stroke="#b4603a" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="160" cy="36" r="4.5" fill="#b4603a"/>
+            <text x="167" y="172" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial,sans-serif" font-size="16" font-weight="600" fill="#5c5243">Jaraíz de la Vera</text>
+          </g>
+          <!-- etiqueta carretera -->
+          <g>
+            <rect x="30" y="332" width="104" height="34" rx="9" fill="#fffdf8" stroke="#ded0b8" stroke-width="1.5"/>
+            <text x="82" y="354" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial,sans-serif" font-size="15" font-weight="650" fill="#5c5243">EX-203</text>
+          </g>
+          <!-- chincheta hotel -->
+          <g>
+            <ellipse cx="282" cy="226" rx="17" ry="5" fill="#2e2820" opacity=".14"/>
+            <path d="M282 224 C 282 224, 268 206, 268 195 a14 14 0 0 1 28 0 c0 11-14 29-14 29z" fill="#b4603a"/>
+            <circle cx="282" cy="194" r="5.4" fill="#fff8f1"/>
+            <rect x="306" y="206" width="166" height="34" rx="9" fill="#39462f"/>
+            <text x="389" y="228" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial,sans-serif" font-size="15" font-weight="650" fill="#f3eadb">Villa Xarahiz</text>
+          </g>
+        </svg>
+        <p class="mapa-pie">Esquema orientativo, no es un mapa a escala.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PIE ============ -->
+<footer class="pie">
+  <div class="env">
+    <div class="pie-top">
+      <div>
+        <h3>Hotel Rural Villa Xarahiz</h3>
+        <p>Hotel rural con restaurante en Jaraíz de la Vera, comarca de La Vera (Cáceres).</p>
+      </div>
+      <div class="pie-datos">
+        <span>Ctra. EX-203, 4 · 10400 Jaraíz de la Vera (Cáceres)</span>
+        <span>Teléfono: <a href="tel:+34927665150">927 66 51 50</a></span>
+        <span>Correo: <a href="mailto:villaxarahiz@villaxarahiz.com">villaxarahiz@villaxarahiz.com</a></span>
+        <span>Horario: consultar horario</span>
+      </div>
+    </div>
+    <div class="pie-sep"></div>
+    <p class="pie-firma"><strong>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</strong><br>
+    Maqueta de trabajo sin vínculo oficial con el establecimiento, realizada solo con datos públicos de contacto. Estudio: <a href="https://aro42-ua.github.io/fffffstudio-web/">aro42-ua.github.io/fffffstudio-web</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

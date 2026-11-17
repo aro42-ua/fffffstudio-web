@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clínica Podológica Placentina · Podología en Plasencia (Cáceres)</title>
+<meta name="description" content="Maqueta de propuesta de rediseño para Clínica Podológica Placentina, clínica de podología en Plasencia (Cáceres).">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  :root{
+    --tinta:#10303f;
+    --tinta-2:#1d4a5e;
+    --azul:#1f6f8b;
+    --azul-claro:#e8f2f5;
+    --verde:#3f8f80;
+    --verde-claro:#e9f4f1;
+    --papel:#ffffff;
+    --papel-2:#f5f9fa;
+    --linea:#d9e6ea;
+    --texto:#243b44;
+    --texto-sua:#5a7480;
+    --barra:40px;
+    --radio:14px;
+    --max:1120px;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;padding-top:var(--barra);
+    font-family:var(--sans);color:var(--texto);background:var(--papel);
+    font-size:16px;line-height:1.6;overflow-x:hidden;
+  }
+  img,svg{max-width:100%}
+  h1,h2,h3{color:var(--tinta);line-height:1.2;margin:0 0 .5em;letter-spacing:-.015em;font-weight:650}
+  p{margin:0 0 1em}
+  a{color:var(--azul)}
+
+  /* ---------- barra fija de propuesta ---------- */
+  .aviso{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    min-height:var(--barra);
+    display:flex;align-items:center;justify-content:center;
+    gap:.4em;padding:6px 14px;
+    background:var(--tinta);color:#eaf4f7;
+    font-size:12.5px;line-height:1.35;text-align:center;
+    letter-spacing:.01em;text-transform:none;
+    box-shadow:0 1px 0 rgba(255,255,255,.08);
+  }
+  .aviso span{display:inline-block}
+
+  .envoltorio{width:100%;max-width:var(--max);margin:0 auto;padding:0 24px}
+
+  /* ---------- cabecera ---------- */
+  .cabecera{border-bottom:1px solid var(--linea);background:rgba(255,255,255,.92)}
+  .cabecera-int{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:14px 0}
+  .marca{display:flex;align-items:center;gap:11px;min-width:0}
+  .marca .sello{flex:0 0 auto;width:38px;height:38px}
+  .marca-txt{min-width:0}
+  .marca-txt strong{display:block;font-size:15.5px;color:var(--tinta);font-weight:650;line-height:1.25;letter-spacing:-.01em}
+  .marca-txt small{display:block;font-size:12px;color:var(--texto-sua);letter-spacing:.06em}
+  .menu{display:flex;gap:22px;margin-left:auto;flex-wrap:wrap}
+  .menu a{color:var(--tinta-2);text-decoration:none;font-size:14.5px;padding:4px 0;border-bottom:1px solid transparent}
+  .menu a:hover{border-bottom-color:var(--azul)}
+  .tel-cab{
+    display:inline-flex;align-items:center;gap:8px;text-decoration:none;
+    background:var(--tinta);color:#fff;font-weight:600;font-size:14.5px;
+    padding:10px 16px;border-radius:999px;white-space:nowrap;
+  }
+  .tel-cab:hover{background:var(--azul)}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(900px 420px at 88% -10%, rgba(63,143,128,.20), transparent 70%),
+      radial-gradient(760px 420px at 6% 110%, rgba(31,111,139,.16), transparent 70%),
+      linear-gradient(168deg,#f3f9fa 0%,#e9f2f5 52%,#e4f0ef 100%);
+  }
+  .hero-int{
+    display:grid;grid-template-columns:1.12fr .88fr;gap:46px;align-items:center;
+    padding:74px 0 82px;
+  }
+  .sobretitulo{
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:12.5px;letter-spacing:.1em;color:var(--tinta-2);
+    background:rgba(255,255,255,.75);border:1px solid var(--linea);
+    padding:6px 13px;border-radius:999px;margin-bottom:20px;
+  }
+  .punto{width:7px;height:7px;border-radius:50%;background:var(--verde);flex:0 0 auto}
+  .hero h1{font-size:clamp(30px,4.6vw,51px);margin-bottom:.45em;font-weight:680}
+  .hero .entradilla{font-size:clamp(16px,1.5vw,18.5px);color:var(--tinta-2);max-width:33em;margin-bottom:28px}
+  .acciones{display:flex;gap:13px;flex-wrap:wrap;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;text-decoration:none;
+    font-weight:620;font-size:16px;padding:14px 23px;border-radius:12px;
+    border:1px solid transparent;
+  }
+  .btn-p{background:var(--tinta);color:#fff;box-shadow:0 10px 22px -12px rgba(16,48,63,.65)}
+  .btn-p:hover{background:var(--azul)}
+  .btn-s{background:rgba(255,255,255,.85);color:var(--tinta);border-color:var(--linea)}
+  .btn-s:hover{border-color:var(--azul);color:var(--azul)}
+  .pie-hero{margin-top:22px;font-size:14px;color:var(--texto-sua)}
+  .hero-arte{display:flex;justify-content:center;align-items:center;min-width:0}
+  .hero-arte svg{width:100%;height:auto;max-width:390px;display:block}
+
+  /* ---------- franja de datos ---------- */
+  .franja{background:var(--tinta);color:#dcebf0}
+  .franja-int{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:0}
+  .franja-it{display:flex;gap:13px;align-items:flex-start;padding:24px 0}
+  .franja-it + .franja-it{border-left:1px solid rgba(255,255,255,.13);padding-left:26px}
+  .franja-it svg{flex:0 0 auto;width:22px;height:22px;margin-top:2px}
+  .franja-it .et{display:block;font-size:11.5px;letter-spacing:.11em;color:#8fb6c3;margin-bottom:3px}
+  .franja-it .va{font-size:15px;color:#fff;line-height:1.45}
+  .franja-it a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.4)}
+
+  /* ---------- secciones ---------- */
+  section{padding:76px 0}
+  .claro{background:var(--papel)}
+  .suave{background:var(--papel-2);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+  .enc{max-width:40em;margin-bottom:42px}
+  .eyebrow{font-size:12.5px;letter-spacing:.12em;color:var(--verde);margin:0 0 12px;font-weight:650}
+  .enc h2{font-size:clamp(25px,3.1vw,35px)}
+  .enc p{color:var(--texto-sua);font-size:17px;margin:0}
+
+  .rejilla{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(258px,100%),1fr));gap:20px}
+  .tarjeta{
+    background:var(--papel);border:1px solid var(--linea);border-radius:var(--radio);
+    padding:26px 24px 24px;display:flex;flex-direction:column;
+  }
+  .tarjeta:hover{border-color:#b9d4dc;box-shadow:0 14px 30px -22px rgba(16,48,63,.4)}
+  .icono{
+    width:46px;height:46px;border-radius:12px;background:var(--azul-claro);
+    display:flex;align-items:center;justify-content:center;margin-bottom:17px;flex:0 0 auto;
+  }
+  .icono svg{width:25px;height:25px;display:block}
+  .tarjeta h3{font-size:18.5px;margin-bottom:.4em}
+  .tarjeta p{font-size:15px;color:var(--texto-sua);margin:0}
+
+  /* ---------- pasos ---------- */
+  .pasos{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:22px;counter-reset:p}
+  .paso{position:relative;background:var(--papel);border:1px solid var(--linea);border-radius:var(--radio);padding:30px 26px 26px}
+  .paso .num{
+    width:38px;height:38px;border-radius:50%;background:var(--verde-claro);color:var(--verde);
+    display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;
+    border:1px solid #cfe6e0;margin-bottom:16px;
+  }
+  .paso h3{font-size:18px}
+  .paso p{font-size:15px;color:var(--texto-sua);margin:0}
+
+  /* ---------- contacto ---------- */
+  .cont{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+  .ficha{background:var(--papel);border:1px solid var(--linea);border-radius:var(--radio);padding:30px 28px}
+  .fila{display:flex;gap:15px;padding:17px 0;border-bottom:1px solid var(--linea);align-items:flex-start}
+  .fila:first-of-type{padding-top:0}
+  .fila:last-child{border-bottom:0;padding-bottom:0}
+  .fila svg{flex:0 0 auto;width:21px;height:21px;margin-top:3px}
+  .fila .et{display:block;font-size:11.5px;letter-spacing:.11em;color:var(--texto-sua);margin-bottom:4px}
+  .fila .va{font-size:16.5px;color:var(--tinta);line-height:1.5;word-break:break-word}
+  .fila .va a{color:var(--tinta);text-decoration:none;border-bottom:1px solid #b9d4dc}
+  .fila .va a:hover{color:var(--azul);border-bottom-color:var(--azul)}
+  .fila .va .sec{display:block;font-size:14px;color:var(--texto-sua);margin-top:3px}
+  .ficha .btn{margin-top:24px;width:100%;justify-content:center}
+  .mapa-caja{background:var(--papel);border:1px solid var(--linea);border-radius:var(--radio);padding:16px 16px 13px;min-width:0}
+  .mapa-caja svg{width:100%;height:auto;display:block;border-radius:9px}
+  .mapa-pie{font-size:12.5px;color:var(--texto-sua);margin:11px 2px 0;line-height:1.45}
+
+  /* ---------- pie ---------- */
+  footer{background:var(--tinta);color:#c9dfe7;padding:52px 0 34px;text-transform:none}
+  .pie-sup{display:grid;grid-template-columns:1.2fr 1fr;gap:36px;padding-bottom:30px;border-bottom:1px solid rgba(255,255,255,.14)}
+  footer h3{color:#fff;font-size:17px;margin-bottom:.55em}
+  footer p{font-size:14.5px;line-height:1.65;margin:0 0 .5em}
+  footer a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.38);word-break:break-word}
+  footer a:hover{border-bottom-color:#fff}
+  .pie-inf{padding-top:26px;display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between;align-items:baseline}
+  .pie-inf p{font-size:13.5px;color:#9dc0cd;margin:0;text-transform:none}
+  .credito{font-size:13.5px}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:900px){
+    .hero-int{grid-template-columns:1fr;gap:38px;padding:52px 0 60px}
+    .hero-arte{order:-1}
+    .hero-arte svg{max-width:300px}
+    .cont{grid-template-columns:1fr;gap:26px}
+    .franja-int{grid-template-columns:1fr}
+    .franja-it{padding:19px 0}
+    .franja-it + .franja-it{border-left:0;border-top:1px solid rgba(255,255,255,.13);padding-left:0}
+    .pie-sup{grid-template-columns:1fr;gap:26px}
+  }
+  @media (max-width:640px){
+    :root{--barra:54px}
+    .aviso{font-size:12px;padding:7px 12px}
+    .envoltorio{padding:0 18px}
+    section{padding:52px 0}
+    .cabecera-int{padding:12px 0;gap:11px;flex-wrap:nowrap}
+    .menu{display:none}
+    .marca{flex:1 1 auto}
+    .marca .sello{width:34px;height:34px}
+    .marca-txt strong{font-size:14px}
+    .marca-txt small{font-size:11.5px}
+    .tel-cab{flex:0 0 auto;margin-left:auto;font-size:13.5px;padding:9px 13px}
+    .enc{margin-bottom:30px}
+    .tarjeta,.paso,.ficha{padding:22px 20px}
+    .btn{width:100%;justify-content:center}
+    .acciones{gap:10px}
+  }
+  @media (prefers-reduced-motion:no-preference){
+    a,.tarjeta{transition:background-color .18s ease,border-color .18s ease,color .18s ease,box-shadow .18s ease}
+  }
+</style>
+</head>
+<body>
+
+<div class="aviso" role="note"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<header class="cabecera">
+  <div class="envoltorio cabecera-int">
+    <div class="marca">
+      <svg class="sello" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+        <circle cx="24" cy="24" r="23" fill="#10303f"/>
+        <path d="M18 33c-2.6 0-4.3-1.9-4.3-4.6 0-2.3 1-4 1.3-6.2.2-1.6.1-3 .5-4.6.6-2.4 2.4-3.9 4.6-3.9 2.4 0 3.8 1.7 3.8 4.3 0 2.1-.7 3.6-.7 5.4 0 1.2.4 2 .4 3.2 0 3.9-2.3 6.4-5.6 6.4Z" fill="#8ec6bb" opacity=".95"/>
+        <circle cx="29.5" cy="16.2" r="2.5" fill="#cfe6e0"/>
+        <circle cx="33.6" cy="21" r="2.1" fill="#cfe6e0" opacity=".85"/>
+        <circle cx="34.2" cy="26.4" r="1.7" fill="#cfe6e0" opacity=".7"/>
+      </svg>
+      <div class="marca-txt">
+        <strong>Clínica Podológica Placentina</strong>
+        <small>Plasencia · Cáceres</small>
+      </div>
+    </div>
+    <nav class="menu" aria-label="Secciones">
+      <a href="#servicios">Servicios</a>
+      <a href="#visita">Tu primera visita</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="tel-cab" href="tel:+34927410848">
+      <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15.5 21a13.5 13.5 0 0 1-12.5-12.5A2.5 2.5 0 0 1 5.5 6h2a1.6 1.6 0 0 1 1.6 1.3l.5 2.3a1.6 1.6 0 0 1-.6 1.6l-1 .8a10.4 10.4 0 0 0 4.7 4.7l.8-1a1.6 1.6 0 0 1 1.6-.6l2.3.5A1.6 1.6 0 0 1 18 18.5v2a2.5 2.5 0 0 1-2.5 2.5Z"/></svg>
+      927 41 08 48
+    </a>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" style="padding:0">
+    <div class="envoltorio hero-int">
+      <div class="hero-txt">
+        <span class="sobretitulo"><span class="punto"></span>Clínica de podología en Plasencia</span>
+        <h1>El cuidado de tus pies, con criterio clínico</h1>
+        <p class="entradilla">Somos la Clínica Podológica Placentina, en la Avda. de Salamanca de Plasencia. Atendemos la salud del pie en consulta: exploración, diagnóstico y tratamiento podológico, con cita previa.</p>
+        <div class="acciones">
+          <a class="btn btn-p" href="tel:+34927410848">
+            <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15.5 21a13.5 13.5 0 0 1-12.5-12.5A2.5 2.5 0 0 1 5.5 6h2a1.6 1.6 0 0 1 1.6 1.3l.5 2.3a1.6 1.6 0 0 1-.6 1.6l-1 .8a10.4 10.4 0 0 0 4.7 4.7l.8-1a1.6 1.6 0 0 1 1.6-.6l2.3.5A1.6 1.6 0 0 1 18 18.5v2a2.5 2.5 0 0 1-2.5 2.5Z"/></svg>
+            Llamar y pedir cita
+          </a>
+          <a class="btn btn-s" href="#servicios">Ver servicios</a>
+        </div>
+        <p class="pie-hero">Atención con cita previa · Consultar horario</p>
+      </div>
+      <div class="hero-arte">
+        <svg viewBox="0 0 320 320" role="img" aria-label="Ilustración abstracta de un pie formada por líneas y círculos" focusable="false">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#ffffff"/>
+              <stop offset="1" stop-color="#e2eef1"/>
+            </linearGradient>
+            <linearGradient id="g2" x1="0" y1="0" x2="0.4" y2="1">
+              <stop offset="0" stop-color="#2d7f93"/>
+              <stop offset="1" stop-color="#3f8f80"/>
+            </linearGradient>
+          </defs>
+          <circle cx="160" cy="160" r="148" fill="url(#g1)"/>
+          <circle cx="160" cy="160" r="148" fill="none" stroke="#cfe2e8"/>
+          <circle cx="160" cy="160" r="116" fill="none" stroke="#d8e8ec" stroke-dasharray="3 7"/>
+          <g transform="translate(14,0)">
+            <path d="M138 252c-18 0-30-13-30-32 0-16 7-28 9-43 2-12 1-22 4-33 5-18 17-29 33-29 17 0 27 12 27 30 0 15-5 26-5 39 0 9 3 15 3 23 0 28-17 45-41 45Z" fill="url(#g2)" opacity=".92"/>
+            <path d="M138 252c-18 0-30-13-30-32 0-16 7-28 9-43 2-12 1-22 4-33 5-18 17-29 33-29" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width="2"/>
+            <circle cx="196" cy="100" r="15" fill="#2d7f93" opacity=".85"/>
+            <circle cx="216" cy="131" r="12.5" fill="#2d7f93" opacity=".7"/>
+            <circle cx="222" cy="160" r="10.5" fill="#2d7f93" opacity=".58"/>
+            <circle cx="221" cy="186" r="8.5" fill="#2d7f93" opacity=".46"/>
+          </g>
+          <circle cx="252" cy="68" r="5" fill="#3f8f80" opacity=".6"/>
+          <circle cx="76" cy="92" r="3.5" fill="#2d7f93" opacity=".45"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FRANJA DATOS ============ -->
+  <div class="franja">
+    <div class="envoltorio">
+      <div class="franja-int">
+        <div class="franja-it">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#8ec6bb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21s7-6.3 7-11a7 7 0 1 0-14 0c0 4.7 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+          <div><span class="et">DÓNDE ESTAMOS</span><span class="va">Avda. de Salamanca, parcela 14, nº 1<br>Plasencia (Cáceres)</span></div>
+        </div>
+        <div class="franja-it">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#8ec6bb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15.5 21a13.5 13.5 0 0 1-12.5-12.5A2.5 2.5 0 0 1 5.5 6h2a1.6 1.6 0 0 1 1.6 1.3l.5 2.3a1.6 1.6 0 0 1-.6 1.6l-1 .8a10.4 10.4 0 0 0 4.7 4.7l.8-1a1.6 1.6 0 0 1 1.6-.6l2.3.5A1.6 1.6 0 0 1 18 18.5v2a2.5 2.5 0 0 1-2.5 2.5Z"/></svg>
+          <div><span class="et">TELÉFONOS</span><span class="va"><a href="tel:+34927410848">927 41 08 48</a> · <a href="tel:+34602065935">602 06 59 35</a></span></div>
+        </div>
+        <div class="franja-it">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#8ec6bb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3.2 2"/></svg>
+          <div><span class="et">HORARIO</span><span class="va">Consultar horario</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SERVICIOS ============ -->
+  <section id="servicios" class="claro">
+    <div class="envoltorio">
+      <div class="enc">
+        <p class="eyebrow">SERVICIOS</p>
+        <h2>Qué atendemos en consulta</h2>
+        <p>Tratamientos de podología general. La indicación concreta, en cada caso, se decide tras la exploración en la clínica.</p>
+      </div>
+      <div class="rejilla">
+
+        <article class="tarjeta">
+          <div class="icono">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1f6f8b" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 18 15 7l2.5 2.5L6.5 20.5 4 21Z"/><path d="M14 5.5 18.5 10"/><path d="M17 3.5 20.5 7"/></svg>
+          </div>
+          <h3>Quiropodia</h3>
+          <p>Tratamiento en consulta de durezas, callosidades, hiperqueratosis y uñas con alteraciones del corte, con material estéril.</p>
+        </article>
+
+        <article class="tarjeta">
+          <div class="icono">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1f6f8b" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 20h18"/><path d="M6 20V9l4-4 4 4v11"/><path d="M14 20v-6l4-3v9"/></svg>
+          </div>
+          <h3>Estudio de la marcha</h3>
+          <p>Exploración biomecánica del pie y análisis de la pisada para valorar el apoyo y, si procede, el tratamiento ortopodológico.</p>
+        </article>
+
+        <article class="tarjeta">
+          <div class="icono">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1f6f8b" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="9" cy="6.5" r="3"/><path d="M4 21v-3a5 5 0 0 1 10 0v3"/><path d="M17 11.5h4"/><path d="M19 9.5v4"/></svg>
+          </div>
+          <h3>Podología infantil</h3>
+          <p>Revisión del pie en edad de crecimiento: valoración del apoyo, la marcha y las alteraciones ungueales y de la piel.</p>
+        </article>
+
+        <article class="tarjeta">
+          <div class="icono">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1f6f8b" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 3v18"/><path d="M4.5 8h15"/><path d="M4.5 16h15"/></svg>
+          </div>
+          <h3>Podología deportiva</h3>
+          <p>Valoración del pie en personas que practican deporte, atendiendo al calzado, al gesto deportivo y a las molestias de sobrecarga.</p>
+        </article>
+
+        <article class="tarjeta">
+          <div class="icono">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1f6f8b" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7.5 15.5c0-4 2-7.5 4.5-7.5s4.5 3.5 4.5 7.5c0 2.6-2 4.5-4.5 4.5s-4.5-1.9-4.5-4.5Z"/><path d="M9.5 15.2c.6-.5 1.5-.8 2.5-.8s1.9.3 2.5.8"/><path d="M12 4.5v2"/></svg>
+          </div>
+          <h3>Cirugía ungueal</h3>
+          <p>Tratamiento de la uña encarnada y otras alteraciones de la uña mediante técnicas quirúrgicas de consulta con anestesia local.</p>
+        </article>
+
+        <article class="tarjeta">
+          <div class="icono">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1f6f8b" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21s7-6.3 7-11a7 7 0 1 0-14 0c0 4.7 7 11 7 11Z"/><path d="M9.5 10h5"/><path d="M12 7.5v5"/></svg>
+          </div>
+          <h3>¿No sabes qué necesitas?</h3>
+          <p>Si tienes una molestia y no sabes en qué tratamiento encaja, llámanos y lo valoramos en consulta antes de decidir nada.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PRIMERA VISITA ============ -->
+  <section id="visita" class="suave">
+    <div class="envoltorio">
+      <div class="enc">
+        <p class="eyebrow">TU PRIMERA VISITA</p>
+        <h2>Cómo funciona, en tres pasos</h2>
+        <p>Así es la primera cita en la clínica, para que sepas a qué vienes antes de entrar por la puerta.</p>
+      </div>
+      <div class="pasos">
+        <article class="paso">
+          <div class="num">1</div>
+          <h3>Pides cita por teléfono</h3>
+          <p>Nos llamas al 927 41 08 48 o al 602 06 59 35, nos cuentas brevemente qué te pasa y acordamos un día y una hora.</p>
+        </article>
+        <article class="paso">
+          <div class="num">2</div>
+          <h3>Exploración en consulta</h3>
+          <p>En la clínica revisamos el pie, preguntamos por tus antecedentes y por el calzado, y valoramos qué está ocurriendo.</p>
+        </article>
+        <article class="paso">
+          <div class="num">3</div>
+          <h3>Te explicamos las opciones</h3>
+          <p>Te contamos qué hemos visto y qué tratamientos caben en tu caso, con sus tiempos, para que decidas con la información delante.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACTO ============ -->
+  <section id="contacto" class="claro">
+    <div class="envoltorio">
+      <div class="enc">
+        <p class="eyebrow">CONTACTO</p>
+        <h2>Dónde estamos y cómo localizarnos</h2>
+        <p>Estamos en la Avda. de Salamanca de Plasencia. Para cualquier cita o duda, el teléfono es la vía más directa.</p>
+      </div>
+      <div class="cont">
+
+        <div class="ficha">
+          <div class="fila">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1f6f8b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15.5 21a13.5 13.5 0 0 1-12.5-12.5A2.5 2.5 0 0 1 5.5 6h2a1.6 1.6 0 0 1 1.6 1.3l.5 2.3a1.6 1.6 0 0 1-.6 1.6l-1 .8a10.4 10.4 0 0 0 4.7 4.7l.8-1a1.6 1.6 0 0 1 1.6-.6l2.3.5A1.6 1.6 0 0 1 18 18.5v2a2.5 2.5 0 0 1-2.5 2.5Z"/></svg>
+            <div><span class="et">TELÉFONOS</span><span class="va"><a href="tel:+34927410848">927 41 08 48</a><span class="sec">Teléfono de la clínica</span></span></div>
+          </div>
+          <div class="fila">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1f6f8b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg>
+            <div><span class="et">MÓVIL</span><span class="va"><a href="tel:+34602065935">602 06 59 35</a></span></div>
+          </div>
+          <div class="fila">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1f6f8b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21s7-6.3 7-11a7 7 0 1 0-14 0c0 4.7 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+            <div><span class="et">DIRECCIÓN</span><span class="va">Avda. de Salamanca, parcela 14, nº 1<br>Plasencia (Cáceres)</span></div>
+          </div>
+          <div class="fila">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1f6f8b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7 12 13l8.5-6"/></svg>
+            <div><span class="et">CORREO</span><span class="va"><a href="mailto:info@podologiaplasencia.es">info@podologiaplasencia.es</a></span></div>
+          </div>
+          <div class="fila">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1f6f8b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3.2 2"/></svg>
+            <div><span class="et">HORARIO</span><span class="va">Consultar horario<span class="sec">Atención con cita previa</span></span></div>
+          </div>
+          <a class="btn btn-p" href="tel:+34927410848">
+            <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15.5 21a13.5 13.5 0 0 1-12.5-12.5A2.5 2.5 0 0 1 5.5 6h2a1.6 1.6 0 0 1 1.6 1.3l.5 2.3a1.6 1.6 0 0 1-.6 1.6l-1 .8a10.4 10.4 0 0 0 4.7 4.7l.8-1a1.6 1.6 0 0 1 1.6-.6l2.3.5A1.6 1.6 0 0 1 18 18.5v2a2.5 2.5 0 0 1-2.5 2.5Z"/></svg>
+            Llamar al 927 41 08 48
+          </a>
+        </div>
+
+        <div class="mapa-caja">
+          <svg viewBox="0 0 520 400" role="img" aria-label="Esquema abstracto que sitúa la clínica junto a la Avenida de Salamanca" focusable="false">
+            <defs>
+              <linearGradient id="gm" x1="0" y1="0" x2="0.6" y2="1">
+                <stop offset="0" stop-color="#f4f9fa"/>
+                <stop offset="1" stop-color="#e8f1f3"/>
+              </linearGradient>
+            </defs>
+            <rect width="520" height="400" fill="url(#gm)"/>
+            <g fill="#dceaed">
+              <rect x="26" y="30" width="150" height="96" rx="7"/>
+              <rect x="26" y="146" width="150" height="74" rx="7"/>
+              <rect x="26" y="240" width="112" height="128" rx="7"/>
+              <rect x="330" y="30" width="164" height="78" rx="7"/>
+              <rect x="372" y="250" width="122" height="118" rx="7"/>
+            </g>
+            <g fill="#cfe2e6">
+              <rect x="300" y="128" width="194" height="96" rx="7"/>
+            </g>
+            <path d="M-10 318 L530 92" stroke="#b7d2d9" stroke-width="40" fill="none"/>
+            <path d="M-10 318 L530 92" stroke="#ffffff" stroke-width="2.4" stroke-dasharray="16 14" fill="none" opacity=".9"/>
+            <path d="M196 400 L250 0" stroke="#cbdfe4" stroke-width="20" fill="none"/>
+            <path d="M330 236 L520 236" stroke="#cbdfe4" stroke-width="16" fill="none"/>
+            <text x="300" y="150" transform="rotate(-22.7 300 150)" fill="#56808c" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="17" font-weight="600" letter-spacing="1.2">AVDA. DE SALAMANCA</text>
+            <g transform="translate(208,214)">
+              <ellipse cx="0" cy="46" rx="21" ry="6" fill="#10303f" opacity=".16"/>
+              <path d="M0 44c0-14-16-21-16-33a16 16 0 0 1 32 0c0 12-16 19-16 33Z" fill="#1f6f8b"/>
+              <circle cx="0" cy="11" r="6.2" fill="#ffffff"/>
+            </g>
+            <g transform="translate(238,196)">
+              <rect x="0" y="0" width="186" height="52" rx="9" fill="#ffffff" opacity=".96" stroke="#cfe2e6"/>
+              <text x="14" y="21" fill="#10303f" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="14.5" font-weight="700">Clínica Podológica</text>
+              <text x="14" y="39" fill="#10303f" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="14.5" font-weight="700">Placentina</text>
+            </g>
+            <text x="44" y="340" fill="#7ea4ae" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="13" letter-spacing=".6">Parcela 14</text>
+          </svg>
+          <p class="mapa-pie">Esquema orientativo de la ubicación, no es un mapa a escala. La dirección exacta es Avda. de Salamanca, parcela 14, nº 1, Plasencia (Cáceres).</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="envoltorio">
+    <div class="pie-sup">
+      <div>
+        <h3>Clínica Podológica Placentina</h3>
+        <p>Avda. de Salamanca, parcela 14, nº 1 · Plasencia (Cáceres)</p>
+        <p>Teléfonos: <a href="tel:+34927410848">927 41 08 48</a> · <a href="tel:+34602065935">602 06 59 35</a></p>
+        <p>Correo: <a href="mailto:info@podologiaplasencia.es">info@podologiaplasencia.es</a></p>
+        <p>Consultar horario · Atención con cita previa</p>
+      </div>
+      <div>
+        <h3>Sobre esta página</h3>
+        <p>Esta es una maqueta de propuesta, sin carácter oficial, creada para mostrar cómo podría presentarse la clínica en internet. Los datos de contacto son los públicos de la clínica; no se incluye ninguna otra información.</p>
+      </div>
+    </div>
+    <div class="pie-inf">
+      <p class="credito">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+      <p><a href="https://aro42-ua.github.io/fffffstudio-web/">aro42-ua.github.io/fffffstudio-web</a></p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

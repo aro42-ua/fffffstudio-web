@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aracena Casas Rurales con Encanto — casas rurales en la Sierra de Aracena (Huelva)</title>
+<meta name="description" content="Propuesta de rediseño para Aracena Casas Rurales con Encanto: casas rurales en Alájar, Castaño del Robledo y Valdelarco, Sierra de Aracena (Huelva). Maqueta no oficial de FFFFFFstudio.">
+<style>
+  :root{
+    --verde-900:#1e3328;
+    --verde-800:#28412f;
+    --verde-700:#33543d;
+    --verde-500:#5d7f5f;
+    --verde-300:#9bb79a;
+    --tierra-700:#8a5433;
+    --tierra-500:#b0794a;
+    --crema:#f7f2e8;
+    --crema-2:#efe7d7;
+    --papel:#fffdf8;
+    --tinta:#2a2620;
+    --tinta-sua:#5b544a;
+    --linea:#ded3bf;
+    --radio:18px;
+    --sombra:0 1px 2px rgba(42,38,32,.05), 0 10px 30px rgba(42,38,32,.07);
+    --barra-h:46px;
+    --max:1120px;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{margin:0;padding:0;max-width:100%;overflow-x:hidden}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    color:var(--tinta);
+    background:var(--crema);
+    line-height:1.62;
+    font-size:17px;
+    padding-top:var(--barra-h);
+  }
+  img,svg{max-width:100%}
+  h1,h2,h3{line-height:1.18;margin:0;letter-spacing:-.015em;font-weight:650}
+  p{margin:0}
+  a{color:inherit}
+  .env{width:100%;max-width:var(--max);margin:0 auto;padding:0 24px}
+
+  /* ---------- barra fija ---------- */
+  .barra{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    min-height:var(--barra-h);
+    display:flex;align-items:center;justify-content:center;
+    background:var(--verde-900);
+    color:#e8efe6;
+    border-bottom:1px solid rgba(255,255,255,.12);
+    text-transform:none;
+  }
+  .barra span{
+    display:block;
+    font-size:12.5px;line-height:1.35;
+    letter-spacing:.02em;
+    padding:7px 16px;text-align:center;
+    text-transform:none;
+  }
+
+  /* ---------- cabecera ---------- */
+  .cab{
+    border-bottom:1px solid var(--linea);
+    background:var(--papel);
+  }
+  .cab .fila{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 0;flex-wrap:wrap}
+  .marca{display:flex;align-items:center;gap:11px;min-width:0}
+  .marca .sello{flex:0 0 auto}
+  .marca b{display:block;font-size:15.5px;font-weight:650;letter-spacing:-.01em}
+  .marca small{display:block;font-size:12.5px;color:var(--tinta-sua);letter-spacing:.04em}
+  .cab .tel{
+    font-size:14.5px;font-weight:600;text-decoration:none;
+    color:var(--verde-800);
+    border:1px solid var(--linea);border-radius:999px;
+    padding:8px 16px;background:var(--crema);
+    white-space:nowrap;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;overflow:hidden;background:
+      radial-gradient(120% 90% at 85% 0%, #f3ead8 0%, rgba(243,234,216,0) 60%),
+      linear-gradient(170deg,#fffdf8 0%, var(--crema) 55%, var(--crema-2) 100%);
+    border-bottom:1px solid var(--linea);
+  }
+  .hero .sierra{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:210px;display:block;pointer-events:none}
+  .hero .env{position:relative;z-index:2;padding-top:64px;padding-bottom:230px}
+  .ojal{
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:12.5px;letter-spacing:.08em;color:var(--verde-700);
+    background:rgba(255,255,255,.75);border:1px solid var(--linea);
+    border-radius:999px;padding:6px 14px;margin-bottom:22px;
+  }
+  .ojal i{width:6px;height:6px;border-radius:50%;background:var(--tierra-700);flex:0 0 auto}
+  .hero h1{font-size:clamp(31px,5.1vw,54px);max-width:17.5em;color:var(--verde-900)}
+  .hero h1 em{font-style:normal;color:var(--tierra-700)}
+  .hero .sub{margin-top:20px;max-width:34em;font-size:clamp(16px,1.6vw,19px);color:var(--tinta-sua)}
+  .acc{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    text-decoration:none;font-weight:650;font-size:16px;
+    padding:14px 24px;border-radius:999px;border:1px solid transparent;
+  }
+  .btn-p{background:var(--verde-800);color:#f6f3ea;box-shadow:var(--sombra)}
+  .btn-s{background:var(--papel);color:var(--verde-800);border-color:var(--linea)}
+  .btn svg{flex:0 0 auto}
+  .nota{margin-top:16px;font-size:13.5px;color:var(--tinta-sua)}
+
+  /* ---------- secciones ---------- */
+  section{padding:76px 0}
+  .tit{max-width:30em}
+  .tit .eti{font-size:12.5px;letter-spacing:.1em;color:var(--tierra-700);margin-bottom:12px}
+  .tit h2{font-size:clamp(25px,3.2vw,36px);color:var(--verde-900)}
+  .tit p{margin-top:14px;color:var(--tinta-sua);font-size:16.5px}
+
+  .pueblos{background:var(--papel);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+  .rejilla{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:38px}
+  .carta{
+    background:var(--crema);border:1px solid var(--linea);border-radius:var(--radio);
+    overflow:hidden;display:flex;flex-direction:column;min-width:0;
+  }
+  .carta .lamina{height:132px;position:relative;overflow:hidden}
+  .carta .lamina svg{position:absolute;inset:0;width:100%;height:100%}
+  .carta .cuerpo{padding:20px 22px 24px}
+  .carta h3{font-size:19.5px;color:var(--verde-900)}
+  .carta .loc{display:block;font-size:12.5px;letter-spacing:.06em;color:var(--tierra-700);margin-bottom:7px}
+  .carta p{margin-top:9px;font-size:15px;color:var(--tinta-sua)}
+  .carta .accion{
+    margin-top:18px;padding-top:15px;border-top:1px dashed var(--linea);
+    font-size:14px;
+  }
+  .carta .accion strong{display:block;font-weight:600;color:var(--verde-800)}
+  .carta .accion a{display:inline-block;margin-top:5px;text-decoration:none;font-weight:650;color:var(--tierra-700)}
+
+  /* ---------- pasos ---------- */
+  .pasos .rejilla{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .paso{
+    background:var(--papel);border:1px solid var(--linea);border-radius:var(--radio);
+    padding:26px 24px 28px;min-width:0;box-shadow:var(--sombra);
+  }
+  .paso .n{
+    width:40px;height:40px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--verde-800);color:#f3efe4;
+    font-size:16px;font-weight:650;margin-bottom:16px;
+  }
+  .paso h3{font-size:18.5px;color:var(--verde-900)}
+  .paso p{margin-top:9px;font-size:15px;color:var(--tinta-sua)}
+
+  /* ---------- contacto ---------- */
+  .contacto{background:var(--verde-900);color:#e9efe5;border-top:1px solid var(--verde-700)}
+  .contacto .tit h2{color:#fdfbf4}
+  .contacto .tit .eti{color:var(--verde-300)}
+  .contacto .tit p{color:#c3d2bf}
+  .dos{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;margin-top:38px;align-items:start}
+  .ficha{background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.14);border-radius:var(--radio);padding:26px 24px;min-width:0}
+  .ficha dl{margin:0}
+  .ficha dt{font-size:12.5px;letter-spacing:.07em;color:var(--verde-300);margin-top:20px}
+  .ficha dt:first-child{margin-top:0}
+  .ficha dd{margin:5px 0 0;font-size:16.5px;word-break:break-word}
+  .ficha dd a{text-decoration:none;font-weight:600;color:#fdfbf4;border-bottom:1px solid rgba(255,255,255,.3)}
+  .ficha .btn{margin-top:26px;background:var(--crema);color:var(--verde-900)}
+  .mapa{background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.14);border-radius:var(--radio);padding:18px;min-width:0}
+  .mapa svg{display:block;width:100%;height:auto}
+  .mapa .leyenda{margin-top:12px;font-size:12.5px;color:#bccdb8;line-height:1.5}
+
+  /* ---------- pie ---------- */
+  .pie{background:var(--verde-800);color:#dfe8da;padding:40px 0;text-transform:none}
+  .pie .fila{display:flex;flex-wrap:wrap;gap:22px;justify-content:space-between;align-items:flex-start}
+  .pie a{color:#fdfbf4}
+  .pie .izq{min-width:0}
+  .pie b{font-size:16px;font-weight:650;display:block;color:#fdfbf4}
+  .pie .mail{display:inline-block;margin-top:8px;font-size:15.5px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.35);word-break:break-word}
+  .pie .der{font-size:13.5px;max-width:30em;color:#c8d6c3;text-transform:none}
+  .pie .der a{text-decoration:underline;word-break:break-word}
+  .pie .raya{height:1px;background:rgba(255,255,255,.15);margin:26px 0 20px}
+  .pie .firma{font-size:14px;color:#e6eee2;text-transform:none}
+
+  @media (max-width:900px){
+    .rejilla,.pasos .rejilla{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .dos{grid-template-columns:minmax(0,1fr)}
+  }
+  @media (max-width:620px){
+    body{font-size:16.5px}
+    .env{padding:0 18px}
+    section{padding:54px 0}
+    .hero .env{padding-top:42px;padding-bottom:168px}
+    .hero .sierra{height:150px}
+    .rejilla,.pasos .rejilla{grid-template-columns:minmax(0,1fr);gap:16px}
+    .cab .fila{padding:13px 0}
+    .cab .tel{font-size:13.5px;padding:7px 13px}
+    .btn{width:100%;justify-content:center}
+    :root{--barra-h:50px}
+    .barra span{font-size:11.5px;letter-spacing:.01em}
+    .carta .lamina{height:112px}
+  }
+</style>
+</head>
+<body>
+
+<div class="barra" role="note"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<header class="cab">
+  <div class="env fila">
+    <div class="marca">
+      <svg class="sello" width="38" height="38" viewBox="0 0 38 38" aria-hidden="true">
+        <circle cx="19" cy="19" r="18.2" fill="#f7f2e8" stroke="#ded3bf"></circle>
+        <path d="M6 25.5 L13 15 L18.5 22.5 L23.5 13.5 L32 25.5 Z" fill="#33543d"></path>
+        <path d="M6 25.5 L32 25.5 L32 28 L6 28 Z" fill="#8a5433"></path>
+        <circle cx="27.5" cy="10.5" r="2.6" fill="#b0794a"></circle>
+      </svg>
+      <span>
+        <b>Aracena Casas Rurales con Encanto</b>
+        <small>Sierra de Aracena · Huelva</small>
+      </span>
+    </div>
+    <a class="tel" href="tel:+34627940658">627 940 658</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" style="padding:0">
+    <div class="env">
+      <span class="ojal"><i></i>Alájar · Castaño del Robledo · Valdelarco</span>
+      <h1>Casas rurales en la <em>Sierra de Aracena</em>, reservadas directamente con nosotros.</h1>
+      <p class="sub">Alojamiento rural en pueblos de la sierra onubense, entre castaños y caminos. Te contamos lo que hay disponible y resolvemos tus dudas por teléfono, sin intermediarios.</p>
+      <div class="acc">
+        <a class="btn btn-p" href="tel:+34627940658">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16.9v2.6a2 2 0 0 1-2.2 2 19 19 0 0 1-8.3-2.9 18.6 18.6 0 0 1-5.7-5.7A19 19 0 0 1 1.9 4.6 2 2 0 0 1 3.9 2.4h2.6a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1l-1 1a15 15 0 0 0 5.6 5.6l1-1a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2.1z"></path></svg>
+          Llamar al 627 940 658
+        </a>
+        <a class="btn btn-s" href="#contacto">Ver cómo contactar</a>
+      </div>
+      <p class="nota">Consultar disponibilidad y precio por teléfono: 627 940 658 o 607 930 117.</p>
+    </div>
+    <svg class="sierra" viewBox="0 0 1200 210" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 150 L120 96 L250 134 L380 72 L520 126 L660 84 L800 128 L950 90 L1080 130 L1200 104 L1200 210 L0 210 Z" fill="#9bb79a" opacity=".55"></path>
+      <path d="M0 176 L140 132 L300 164 L450 118 L600 158 L760 122 L920 160 L1060 128 L1200 158 L1200 210 L0 210 Z" fill="#5d7f5f" opacity=".6"></path>
+      <path d="M0 200 L160 172 L340 196 L520 166 L700 194 L880 168 L1050 194 L1200 174 L1200 210 L0 210 Z" fill="#33543d" opacity=".85"></path>
+    </svg>
+  </section>
+
+  <!-- PUEBLOS -->
+  <section class="pueblos" id="casas">
+    <div class="env">
+      <div class="tit">
+        <p class="eti">Dónde están las casas</p>
+        <h2>Tres pueblos de la Sierra de Aracena</h2>
+        <p>Las casas se reparten entre Alájar, Castaño del Robledo y Valdelarco. Cada pueblo tiene su propio carácter; si quieres saber qué hay libre en cada uno y cómo es cada casa, lo mejor es una llamada.</p>
+      </div>
+      <div class="rejilla">
+
+        <article class="carta">
+          <div class="lamina">
+            <svg viewBox="0 0 400 140" preserveAspectRatio="none" aria-hidden="true">
+              <rect width="400" height="140" fill="#eae2cf"></rect>
+              <path d="M0 108 L90 56 L180 96 L270 50 L400 100 L400 140 L0 140 Z" fill="#9bb79a"></path>
+              <path d="M0 126 L120 92 L240 120 L360 94 L400 108 L400 140 L0 140 Z" fill="#5d7f5f"></path>
+              <path d="M150 140 L150 112 L176 96 L202 112 L202 140 Z" fill="#fffdf8"></path>
+              <path d="M144 114 L176 92 L208 114 Z" fill="#8a5433"></path>
+              <circle cx="330" cy="40" r="15" fill="#f0d9a8"></circle>
+            </svg>
+          </div>
+          <div class="cuerpo">
+            <span class="loc">Localidad</span>
+            <h3>Alájar</h3>
+            <p>Pueblo serrano de calles estrechas y casas encaladas, al pie de la Peña de Arias Montano. Punto de partida habitual para caminar por la sierra.</p>
+            <div class="accion">
+              <strong>Consultar disponibilidad y precio</strong>
+              <a href="tel:+34627940658">Llamar al 627 940 658</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="carta">
+          <div class="lamina">
+            <svg viewBox="0 0 400 140" preserveAspectRatio="none" aria-hidden="true">
+              <rect width="400" height="140" fill="#e7e5d2"></rect>
+              <path d="M0 100 L110 62 L210 100 L320 58 L400 92 L400 140 L0 140 Z" fill="#9bb79a"></path>
+              <path d="M0 122 L100 100 L210 126 L320 100 L400 118 L400 140 L0 140 Z" fill="#5d7f5f"></path>
+              <g fill="#33543d">
+                <path d="M60 140 Q60 108 46 100 Q74 104 74 140 Z"></path>
+                <path d="M110 140 Q110 100 96 90 Q126 96 126 140 Z"></path>
+              </g>
+              <path d="M240 140 L240 104 L268 86 L296 104 L296 140 Z" fill="#fffdf8"></path>
+              <path d="M232 106 L268 82 L304 106 Z" fill="#8a5433"></path>
+            </svg>
+          </div>
+          <div class="cuerpo">
+            <span class="loc">Localidad · dirección de contacto</span>
+            <h3>Castaño del Robledo</h3>
+            <p>Entre castañares, uno de los núcleos más pequeños y tranquilos de la sierra. Aquí está también nuestra dirección de contacto.</p>
+            <div class="accion">
+              <strong>Consultar disponibilidad y precio</strong>
+              <a href="tel:+34627940658">Llamar al 627 940 658</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="carta">
+          <div class="lamina">
+            <svg viewBox="0 0 400 140" preserveAspectRatio="none" aria-hidden="true">
+              <rect width="400" height="140" fill="#ece3cd"></rect>
+              <path d="M0 96 L130 54 L250 94 L360 60 L400 76 L400 140 L0 140 Z" fill="#9bb79a"></path>
+              <path d="M0 124 L130 98 L260 124 L380 102 L400 110 L400 140 L0 140 Z" fill="#5d7f5f"></path>
+              <path d="M96 140 L96 106 L122 88 L148 106 L148 140 Z" fill="#fffdf8"></path>
+              <path d="M88 108 L122 84 L156 108 Z" fill="#8a5433"></path>
+              <path d="M300 140 Q300 104 286 94 Q316 100 316 140 Z" fill="#33543d"></path>
+              <circle cx="60" cy="42" r="13" fill="#f0d9a8"></circle>
+            </svg>
+          </div>
+          <div class="cuerpo">
+            <span class="loc">Localidad</span>
+            <h3>Valdelarco</h3>
+            <p>Pequeña localidad de la Sierra de Aracena, rodeada de campo y con muy poco tráfico. Buena base para desconectar unos días.</p>
+            <div class="accion">
+              <strong>Consultar disponibilidad y precio</strong>
+              <a href="tel:+34627940658">Llamar al 627 940 658</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PASOS -->
+  <section class="pasos">
+    <div class="env">
+      <div class="tit">
+        <p class="eti">Reserva directa</p>
+        <h2>Tu reserva en 3 pasos</h2>
+        <p>Sin formularios interminables ni comisiones de portales: hablas con nosotros y lo dejamos resuelto.</p>
+      </div>
+      <div class="rejilla">
+        <article class="paso">
+          <div class="n">1</div>
+          <h3>Nos llamas o escribes</h3>
+          <p>Cuéntanos las fechas que tienes en mente y en qué pueblo te gustaría quedarte. Puedes llamar al 627 940 658 o al 607 930 117, o escribir al correo.</p>
+        </article>
+        <article class="paso">
+          <div class="n">2</div>
+          <h3>Te confirmamos qué hay disponible</h3>
+          <p>Revisamos las fechas y te decimos qué casas están libres, cómo son y el precio para tu estancia. Sin compromiso y por el canal que prefieras.</p>
+        </article>
+        <article class="paso">
+          <div class="n">3</div>
+          <h3>Cierras la reserva directa</h3>
+          <p>Si te encaja, lo confirmamos y acordamos contigo la llegada y las llaves. Trato directo con quien gestiona las casas, de principio a fin.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="contacto" id="contacto">
+    <div class="env">
+      <div class="tit">
+        <p class="eti">Contacto</p>
+        <h2>Hablamos y te decimos qué hay libre</h2>
+        <p>La forma más rápida de saber la disponibilidad real es el teléfono. Si lo prefieres, escríbenos y te respondemos.</p>
+      </div>
+      <div class="dos">
+        <div class="ficha">
+          <dl>
+            <dt>Teléfonos</dt>
+            <dd><a href="tel:+34627940658">627 940 658</a></dd>
+            <dd><a href="tel:+34607930117">607 930 117</a></dd>
+            <dt>Correo</dt>
+            <dd><a href="mailto:info@aracenacasasrurales.com">info@aracenacasasrurales.com</a></dd>
+            <dt>Dirección de contacto</dt>
+            <dd>Castaño del Robledo, 21292 (Huelva)</dd>
+            <dt>Horario de atención</dt>
+            <dd>Consultar horario</dd>
+            <dt>Disponibilidad y precios</dt>
+            <dd>Consultar disponibilidad y precio</dd>
+          </dl>
+          <a class="btn" href="tel:+34627940658">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16.9v2.6a2 2 0 0 1-2.2 2 19 19 0 0 1-8.3-2.9 18.6 18.6 0 0 1-5.7-5.7A19 19 0 0 1 1.9 4.6 2 2 0 0 1 3.9 2.4h2.6a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1l-1 1a15 15 0 0 0 5.6 5.6l1-1a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2.1z"></path></svg>
+          Llamar al 627 940 658
+          </a>
+        </div>
+
+        <div class="mapa">
+          <svg viewBox="0 0 520 380" role="img" aria-label="Mapa esquemático de la Sierra de Aracena con los tres pueblos: Alájar, Castaño del Robledo y Valdelarco. Formas abstractas, no es cartografía real.">
+            <rect width="520" height="380" rx="12" fill="#22392c"></rect>
+            <g opacity=".45" stroke="#9bb79a" stroke-width="1">
+              <path d="M0 95 H520 M0 190 H520 M0 285 H520 M130 0 V380 M260 0 V380 M390 0 V380" stroke-dasharray="3 9"></path>
+            </g>
+            <path d="M-10 250 Q70 180 150 232 Q230 290 320 212 Q400 146 530 222 L530 390 L-10 390 Z" fill="#2f4a39"></path>
+            <path d="M-10 300 Q90 250 190 296 Q300 346 400 282 Q470 238 530 274 L530 390 L-10 390 Z" fill="#3b5c45"></path>
+            <g fill="#5d7f5f" opacity=".9">
+              <path d="M40 210 L92 128 L144 210 Z"></path>
+              <path d="M186 196 L246 100 L306 196 Z"></path>
+              <path d="M340 206 L394 122 L448 206 Z"></path>
+            </g>
+            <g fill="#9bb79a" opacity=".85">
+              <path d="M70 168 L92 128 L114 168 Z"></path>
+              <path d="M222 138 L246 100 L270 138 Z"></path>
+              <path d="M372 162 L394 122 L416 162 Z"></path>
+            </g>
+            <path d="M96 300 Q180 262 252 288 Q330 316 414 268" fill="none" stroke="#d8c8a4" stroke-width="2.5" stroke-dasharray="9 8" stroke-linecap="round"></path>
+            <g>
+              <circle cx="96" cy="300" r="9" fill="#f7f2e8" stroke="#8a5433" stroke-width="3"></circle>
+              <circle cx="252" cy="288" r="11" fill="#b0794a" stroke="#f7f2e8" stroke-width="3"></circle>
+              <circle cx="414" cy="268" r="9" fill="#f7f2e8" stroke="#8a5433" stroke-width="3"></circle>
+            </g>
+            <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" fill="#f3efe3" font-size="17">
+              <text x="96" y="334" text-anchor="middle">Alájar</text>
+              <text x="252" y="252" text-anchor="middle">Castaño del Robledo</text>
+              <text x="414" y="302" text-anchor="middle">Valdelarco</text>
+              <text x="26" y="42" fill="#9bb79a" font-size="14">Sierra de Aracena · Huelva</text>
+            </g>
+          </svg>
+          <p class="leyenda">Esquema orientativo, no es un mapa cartográfico. El punto destacado marca Castaño del Robledo, donde está la dirección de contacto.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="pie">
+  <div class="env">
+    <div class="fila">
+      <div class="izq">
+        <b>Aracena Casas Rurales con Encanto</b>
+        <a class="mail" href="mailto:info@aracenacasasrurales.com">info@aracenacasasrurales.com</a>
+        <p style="margin-top:10px;font-size:14px;color:#c8d6c3">Castaño del Robledo, 21292 (Huelva) · 627 940 658 · 607 930 117</p>
+      </div>
+      <p class="der">Maqueta de demostración sin vínculo oficial con el negocio. Los datos de contacto son públicos y reales; el resto es propuesta de diseño. Estudio: <a href="https://aro42-ua.github.io/fffffstudio-web/">aro42-ua.github.io/fffffstudio-web</a></p>
+    </div>
+    <div class="raya"></div>
+    <p class="firma">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+</body>
+</html>
