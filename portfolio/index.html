@@ -1,0 +1,334 @@
+<title>Trabajos de FFFFFFstudio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Dos webs recientes de FFFFFFstudio: una web de empresa para una constructora de Alicante y un portfolio de autora para una directora de fotografía.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@1,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
+<style>
+  /* Maqueta: índice editorial del estudio; cada caso es un capítulo con su propio registro (papel sobrio / banda amarilla) */
+  :root{
+    color-scheme: light;
+    --paper:#F6F4EF;
+    --paper-2:#ECE8DF;
+    --ink:#141210;
+    --ink-soft:#57524B;
+    --rule:rgba(20,18,16,.16);
+    --accent:#1B34D8;
+    --global:#1B5929;
+    --luque:#FFFF00;
+    --display:"Newsreader","Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    --body:"Inter","Segoe UI","Helvetica Neue",Arial,sans-serif;
+    --mono:"JetBrains Mono",Consolas,"SFMono-Regular",Menlo,monospace;
+    --punch:"Archivo","Arial Black","Helvetica Neue",Arial,sans-serif;
+    --max:1180px;
+  }
+  /* Diseño de un solo tema, a juego con la web del estudio: todos los colores están fijados */
+  *{box-sizing:border-box}
+  html,body{overflow-x:hidden}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;height:auto;display:block}
+  a{color:inherit}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  .wrap{max-width:var(--max);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+  @media (min-width:760px){.wrap{padding-left:max(40px,env(safe-area-inset-left,0px));padding-right:max(40px,env(safe-area-inset-right,0px))}}
+  .label{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+  h1,h2,h3{text-wrap:balance;margin:0;font-weight:400}
+
+  /* cabecera */
+  .top{display:flex;flex-wrap:wrap;gap:8px 24px;align-items:baseline;justify-content:space-between;padding-block:22px;border-bottom:1px solid var(--rule)}
+  .marca{font-family:var(--body);font-weight:600;font-size:18px;letter-spacing:-.01em;text-decoration:none;display:inline-flex;align-items:center;gap:10px}
+  .marca::before{content:"";width:16px;height:16px;background:#fff;outline:4px solid var(--ink);outline-offset:-4px;box-shadow:0 0 0 3px var(--ink)}
+  .top .label{color:var(--ink-soft)}
+  .top a.label{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--ink)}
+  .top a.label:hover{color:var(--accent);border-color:var(--accent)}
+
+  /* portada */
+  .hero{padding-block:clamp(56px,9vw,120px) clamp(40px,6vw,72px)}
+  .hero .label{color:var(--accent)}
+  .hero h1{font-family:var(--display);font-size:clamp(40px,6.4vw,84px);line-height:1.02;letter-spacing:-.02em;margin-top:20px;max-width:15ch}
+  .hero h1 em{font-style:italic;color:var(--accent)}
+  .hero p{max-width:60ch;color:var(--ink-soft);font-size:clamp(17px,1.4vw,19px);margin:28px 0 0}
+  .indice{list-style:none;margin:clamp(40px,6vw,64px) 0 0;padding:0;border-top:1px solid var(--ink)}
+  .indice a{display:grid;grid-template-columns:110px 1fr auto;gap:8px 24px;align-items:baseline;padding-block:20px;border-bottom:1px solid var(--rule);text-decoration:none}
+  .indice a:hover .nombre{color:var(--accent)}
+  .indice .nombre{font-family:var(--display);font-size:clamp(24px,2.6vw,34px);line-height:1.15;transition:color .2s}
+  .indice .que{color:var(--ink-soft);font-size:15px}
+  .indice .flecha{font-family:var(--mono)}
+  .indice .label{color:var(--ink-soft)}
+  @media (max-width:640px){.indice a{grid-template-columns:1fr auto}.indice .label{grid-column:1/-1}}
+
+  /* casos */
+  .caso{padding-block:clamp(64px,9vw,112px)}
+  .caso-cab{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px 56px;align-items:end}
+  .caso-cab h2{font-family:var(--display);font-size:clamp(36px,5vw,64px);line-height:1.02;letter-spacing:-.02em;margin-top:14px}
+  .caso-cab p{margin:0;color:var(--ink-soft);max-width:52ch}
+  @media (max-width:820px){.caso-cab{grid-template-columns:1fr}}
+
+  .escena{position:relative;margin-top:clamp(40px,5vw,64px);padding-right:clamp(48px,14%,180px);padding-bottom:clamp(24px,5vw,56px)}
+  .navegador{border-radius:10px;overflow:hidden;background:#fff;box-shadow:0 1px 0 var(--rule),0 24px 60px -24px rgba(20,18,16,.35);border:1px solid var(--rule)}
+  .navegador .barra{display:flex;align-items:center;gap:6px;padding:10px 14px;background:var(--paper-2);border-bottom:1px solid var(--rule)}
+  .navegador .barra i{width:10px;height:10px;border-radius:50%;background:rgba(20,18,16,.18)}
+  .navegador .barra span{margin-left:12px;font-family:var(--mono);font-size:12px;color:var(--ink-soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .navegador img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top}
+  .movil{position:absolute;right:0;bottom:0;width:clamp(110px,22%,250px);border-radius:26px;padding:7px;background:var(--ink);box-shadow:0 30px 60px -20px rgba(20,18,16,.5)}
+  .movil img{border-radius:20px;aspect-ratio:390/760;object-fit:cover;object-position:top;width:100%}
+
+  .detalle{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:40px 64px;margin-top:clamp(40px,5vw,72px)}
+  @media (max-width:820px){.detalle{grid-template-columns:1fr}}
+  .detalle h3{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px}
+  .encargo{font-family:var(--display);font-size:clamp(21px,2vw,25px);line-height:1.35;margin:0 0 36px;max-width:40ch}
+  .hecho{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+  .hecho li{padding-block:14px;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:22px 1fr;gap:10px}
+  .hecho li::before{content:"+";font-family:var(--mono);color:var(--accent)}
+  .ficha{display:grid;gap:0;margin:0;border-top:1px solid var(--rule)}
+  .ficha div{display:grid;grid-template-columns:110px 1fr;gap:12px;padding-block:12px;border-bottom:1px solid var(--rule)}
+  .ficha dt{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);padding-top:3px}
+  .ficha dd{margin:0}
+  .segunda{margin-top:28px}
+  .ver{display:inline-flex;align-items:center;gap:10px;margin-top:28px;padding:14px 22px;background:var(--ink);color:var(--paper);text-decoration:none;font-weight:500;border-radius:2px}
+  .ver:hover{background:var(--accent)}
+  .ver span{font-family:var(--mono)}
+
+  /* caso Global: acento verde de su marca */
+  #global .label.tipo{color:var(--global)}
+  #global .hecho li::before{color:var(--global)}
+
+  /* caso Luque!: el porfolio cambia de registro */
+  .banda-luque{background:var(--luque);color:var(--ink)}
+  .banda-luque .caso-cab h2{font-family:var(--punch);font-style:italic;font-weight:800;font-size:clamp(56px,10vw,140px);letter-spacing:-.04em;line-height:.9}
+  .banda-luque .caso-cab p,.banda-luque .ficha dt{color:var(--ink)}
+  .banda-luque .hecho,.banda-luque .hecho li,.banda-luque .ficha,.banda-luque .ficha div{border-color:rgba(20,18,16,.35)}
+  .banda-luque .hecho li::before{content:"■";font-size:10px;color:var(--ink);padding-top:6px}
+  .banda-luque .navegador{border-color:var(--ink);box-shadow:10px 10px 0 var(--ink)}
+  .banda-luque .navegador .barra{background:var(--ink)}
+  .banda-luque .navegador .barra i{background:var(--luque)}
+  .banda-luque .navegador .barra span{color:var(--luque)}
+  .banda-luque .movil{box-shadow:10px 10px 0 rgba(20,18,16,.25)}
+  .banda-luque .ver:hover{background:var(--ink);color:var(--luque)}
+  .visor{position:relative}
+  .visor::before,.visor::after{content:"";position:absolute;width:26px;height:26px;border:3px solid var(--ink);z-index:1;pointer-events:none}
+  .visor::before{top:-12px;left:-12px;border-right:0;border-bottom:0}
+  .visor::after{bottom:-12px;right:-12px;border-left:0;border-top:0}
+  .banda-luque .segunda{box-shadow:10px 10px 0 var(--ink)}
+
+  /* oferta */
+  .oferta{padding-block:clamp(64px,9vw,112px);border-top:1px solid var(--ink)}
+  .oferta h2{font-family:var(--display);font-size:clamp(34px,4.4vw,56px);line-height:1.05;letter-spacing:-.02em;max-width:18ch;margin-top:14px}
+  .oferta .label{color:var(--accent)}
+  .dos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;margin-top:48px;border-top:1px solid var(--rule)}
+  @media (max-width:820px){.dos{grid-template-columns:1fr}}
+  .dos article{padding:32px 0;display:flex;flex-direction:column;gap:14px}
+  @media (min-width:821px){.dos article:first-child{padding-right:48px;border-right:1px solid var(--rule)}.dos article:last-child{padding-left:48px}}
+  @media (max-width:820px){.dos article+article{border-top:1px solid var(--rule)}}
+  .dos h3{font-family:var(--display);font-size:clamp(24px,2.4vw,30px);line-height:1.2}
+  .dos p{margin:0;color:var(--ink-soft);max-width:48ch}
+  .dos ul{margin:6px 0 0;padding:0;list-style:none;display:grid;gap:8px}
+  .dos li{display:grid;grid-template-columns:22px 1fr;gap:8px}
+  .dos li::before{content:"→";font-family:var(--mono);color:var(--accent)}
+  .chip{align-self:flex-start;padding:4px 10px;border:1px solid currentColor;border-radius:999px}
+  .chip.verde{color:var(--global)}
+  .chip.amarillo{color:var(--ink);background:var(--luque);border-color:var(--ink)}
+  .comun{margin-top:8px;padding:24px 28px;background:var(--paper-2);display:grid;grid-template-columns:auto 1fr;gap:8px 24px;align-items:baseline}
+  .comun p{margin:0}
+  @media (max-width:640px){.comun{grid-template-columns:1fr}}
+
+  /* contacto */
+  .contacto{background:var(--ink);color:var(--paper)}
+  .contacto .wrap{padding-block:clamp(64px,9vw,104px)}
+  .contacto h2{font-family:var(--display);font-size:clamp(36px,5vw,64px);line-height:1.05;letter-spacing:-.02em;max-width:16ch}
+  .contacto p{color:rgba(246,244,239,.72);max-width:52ch;margin:20px 0 32px}
+  .correo{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .correo code{font-family:var(--mono);font-size:clamp(15px,2vw,20px);padding:12px 16px;border:1px solid rgba(246,244,239,.3);user-select:all;overflow-wrap:anywhere}
+  .correo button{font:500 15px var(--body);padding:13px 18px;background:var(--paper);color:var(--ink);border:0;cursor:pointer}
+  .correo button:hover{background:var(--accent);color:#fff}
+  .pie{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;margin-top:64px;padding-top:20px;border-top:1px solid rgba(246,244,239,.2);color:rgba(246,244,239,.6)}
+
+  @media (prefers-reduced-motion:no-preference){
+    .escena .navegador,.escena .movil{transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+    .escena:hover .movil{transform:translateY(-8px) rotate(-1.5deg)}
+  }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <a class="marca" href="#inicio">FFFFFFstudio</a>
+    <span class="label">Ángel Rubio · Diseño y desarrollo web · Alicante</span>
+    <a class="label" href="#contacto">Escríbeme</a>
+  </header>
+
+  <section class="hero" id="inicio">
+    <span class="label">Trabajos seleccionados · 2026</span>
+    <h1>Una web para conseguir clientes. Otra para <em>dejar huella.</em></h1>
+    <p>Diseño y programo webs a medida, sin plantillas. Estos dos encargos recientes muestran los dos extremos: una constructora que necesita que la llamen para pedir presupuesto y una directora de fotografía que necesita que su trabajo se recuerde.</p>
+    <ol class="indice">
+      <li><a href="#global"><span class="label">Empresa</span><span><span class="nombre">Global Interiorismo y Proyectos</span><br><span class="que">Construcción y reformas · San Vicente del Raspeig</span></span><span class="flecha" aria-hidden="true">↓</span></a></li>
+      <li><a href="#luque"><span class="label">Creativa</span><span><span class="nombre">Luque!</span><br><span class="que">Lidia Luque · Dirección de fotografía y cámara</span></span><span class="flecha" aria-hidden="true">↓</span></a></li>
+    </ol>
+  </section>
+</div>
+
+<section class="caso" id="global">
+  <div class="wrap">
+    <div class="caso-cab">
+      <div>
+        <span class="label tipo">Web de empresa</span>
+        <h2>Global Interiorismo y Proyectos</h2>
+      </div>
+      <p>Empresa de construcción y reformas de San Vicente del Raspeig con equipo propio de todos los gremios. Necesitaba una web seria, clara y pensada para que el visitante pida presupuesto.</p>
+    </div>
+
+    <div class="escena">
+      <div class="navegador">
+        <div class="barra" aria-hidden="true"><i></i><i></i><i></i><span>Portada</span></div>
+        <img src="img/global-hero.webp" width="1440" height="900" alt="Portada de la web de Global Interiorismo y Proyectos: titular «Construimos y reformamos con oficio», botón para pedir presupuesto y foto de una piscina reformada.">
+      </div>
+      <div class="movil">
+        <img src="img/global-movil.webp" width="780" height="1688" alt="La misma portada vista en un móvil.">
+      </div>
+    </div>
+
+    <div class="detalle">
+      <div>
+        <h3>El encargo</h3>
+        <p class="encargo">Sustituir una web de 2020 que no explicaba bien qué hacía la empresa ni ayudaba a pedir presupuesto.</p>
+        <h3>Lo que hice</h3>
+        <ul class="hecho">
+          <li>Un mensaje claro desde la portada: equipo propio de todos los gremios y un único interlocutor para toda la obra.</li>
+          <li>Pedir presupuesto siempre a mano: teléfono, WhatsApp y un formulario que pregunta el tipo de obra.</li>
+          <li>Cinco áreas de servicio y un método de trabajo en cuatro fases, con presupuesto cerrado y planning por semanas.</li>
+          <li>Fotos de obra real de la propia empresa en lugar de imágenes de banco.</li>
+          <li>Preparada para aparecer en Google en Alicante: datos estructurados, sitemap y textos para buscadores.</li>
+          <li>Un editor privado para que la empresa cambie textos y fotos sin tocar código, con vista previa antes de publicar.</li>
+          <li>Páginas de aviso legal, privacidad y cookies.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Ficha</h3>
+        <dl class="ficha">
+          <div><dt>Sector</dt><dd>Construcción y reformas</dd></div>
+          <div><dt>Qué es</dt><dd>Web corporativa con editor de contenidos</dd></div>
+          <div><dt>Objetivo</dt><dd>Solicitudes de presupuesto y búsqueda local</dd></div>
+          <div><dt>Hecha con</dt><dd>HTML, CSS y JavaScript a medida; editor en PHP</dd></div>
+        </dl>
+        <div class="navegador segunda">
+          <div class="barra" aria-hidden="true"><i></i><i></i><i></i><span>Proyectos</span></div>
+          <img src="img/global-proyectos.webp" width="1440" height="900" loading="lazy" alt="Sección «Trabajo reciente» con fotos de un chalet reformado y de un baño con bañera exenta.">
+        </div>
+        <a class="ver" href="https://global-interiorismos-web.vercel.app" target="_blank" rel="noopener">Ver la web <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="caso banda-luque" id="luque">
+  <div class="wrap">
+    <div class="caso-cab">
+      <div>
+        <span class="label">Web de autora</span>
+        <h2>Luque!</h2>
+      </div>
+      <p>Portfolio de Lidia Luque, directora de fotografía y operadora de cámara. Aquí la web no vende un servicio: tiene que transmitir una mirada y dejar que las imágenes hablen.</p>
+    </div>
+
+    <div class="escena">
+      <div class="navegador visor">
+        <div class="barra" aria-hidden="true"><i></i><i></i><i></i><span>lidialuque.com</span></div>
+        <img src="img/lidia-galeria.webp" width="1440" height="900" alt="Galería de lidialuque.com: fotogramas de videoclips y editoriales flotando sobre fondo amarillo, con menú de categorías arriba.">
+      </div>
+      <div class="movil">
+        <img src="img/lidia-movil.webp" width="780" height="1688" alt="Versión móvil: un abanico de fotos con el proyecto «La Boquerona» destacado y pestañas de categorías.">
+      </div>
+    </div>
+
+    <div class="detalle">
+      <div>
+        <h3>El encargo</h3>
+        <p class="encargo">Un portfolio que se pareciera a su trabajo: directo, con color y con todo el foco en las imágenes.</p>
+        <h3>Lo que hice</h3>
+        <ul class="hecho">
+          <li>Una identidad visual propia: amarillo pleno, tipografía rotunda y las marcas del visor de una cámara.</li>
+          <li>Una portada de entrada y una galería que se explora moviendo el ratón o con el teclado.</li>
+          <li>Doce proyectos en cuatro categorías: Editorial, Videoclip, Cortometraje y Foto Stills.</li>
+          <li>Un visor para cada proyecto, con su ficha: cliente, año, papel y enlace al vídeo.</li>
+          <li>En el móvil, una galería táctil propia, no una versión encogida del ordenador.</li>
+          <li>Un panel privado desde el que Lidia crea proyectos, sube y ordena fotos y publica cuando quiere. Las fotos se optimizan solas.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Ficha</h3>
+        <dl class="ficha">
+          <div><dt>Sector</dt><dd>Fotografía y cine</dd></div>
+          <div><dt>Qué es</dt><dd>Portfolio interactivo con panel de gestión</dd></div>
+          <div><dt>Objetivo</dt><dd>Enseñar su trabajo y que la contraten</dd></div>
+          <div><dt>Panel</dt><dd>Acceso privado con código por correo</dd></div>
+        </dl>
+        <div class="navegador segunda">
+          <div class="barra" aria-hidden="true"><i></i><i></i><i></i><span>Entrada</span></div>
+          <img src="img/lidia-intro.webp" width="1440" height="900" loading="lazy" alt="Pantalla de entrada de lidialuque.com: el nombre «Luque!» en negro sobre amarillo y el botón Entrar.">
+        </div>
+        <a class="ver" href="https://lidialuque.com" target="_blank" rel="noopener">Ver la web <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="oferta">
+    <span class="label">Qué puedo hacer por ti</span>
+    <h2>El mismo oficio, adaptado a lo que necesita tu proyecto.</h2>
+    <div class="dos">
+      <article>
+        <span class="label chip verde">Empresas y negocios</span>
+        <h3>Una web que trae clientes</h3>
+        <p>Explica rápido qué haces, transmite confianza y lleva al visitante a llamarte, escribirte o pedir presupuesto.</p>
+        <ul>
+          <li>Textos claros, escritos para tu cliente</li>
+          <li>Contacto a un toque: teléfono, WhatsApp y formularios</li>
+          <li>Preparada para Google y para tu zona</li>
+          <li>Rápida en el móvil y con la parte legal al día</li>
+        </ul>
+      </article>
+      <article>
+        <span class="label chip amarillo">Creativos y diseñadores</span>
+        <h3>Una web con carácter propio</h3>
+        <p>Una dirección de arte hecha para ti, que se recuerda y deja el protagonismo a tu trabajo.</p>
+        <ul>
+          <li>Diseño a medida, sin plantillas</li>
+          <li>Galerías e interacciones con tu lenguaje visual</li>
+          <li>Ligera aunque tenga mucha imagen y vídeo</li>
+          <li>Un panel para subir tus proyectos tú mismo</li>
+        </ul>
+      </article>
+    </div>
+    <div class="comun">
+      <span class="label">En los dos casos</span>
+      <p>Código hecho a medida, una web que funciona igual de bien en el móvil y un sistema para que puedas actualizarla sin depender de mí.</p>
+    </div>
+  </section>
+</div>
+
+<section class="contacto" id="contacto">
+  <div class="wrap">
+    <span class="label">Contacto</span>
+    <h2>¿Hablamos de tu web?</h2>
+    <p>Cuéntame qué haces y qué necesitas. Te respondo con una propuesta concreta, sin compromiso.</p>
+    <div class="correo">
+      <code id="correo">angelrubioortiz2005@gmail.com</code>
+      <button type="button" id="copiar">Copiar correo</button>
+    </div>
+    <div class="pie label">
+      <span>FFFFFFstudio · Ángel Rubio</span>
+      <span>Alicante · 2026</span>
+    </div>
+  </div>
+</section>
+
+<script>
+  const btn = document.getElementById('copiar');
+  btn.addEventListener('click', async () => {
+    const txt = document.getElementById('correo').textContent;
+    try { await navigator.clipboard.writeText(txt); btn.textContent = 'Copiado'; }
+    catch { getSelection().selectAllChildren(document.getElementById('correo')); btn.textContent = 'Selecciónalo y cópialo'; }
+    setTimeout(() => btn.textContent = 'Copiar correo', 2500);
+  });
+</script>
