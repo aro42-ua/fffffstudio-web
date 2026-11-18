@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jamones y Embutidos Neila</title>
+<meta name="description" content="Propuesta de diseño (maqueta no oficial) para Jamones y Embutidos Neila S.L., Jerez de los Caballeros (Badajoz).">
+<style>
+:root{
+  --ink:#2a1a14;
+  --ink-soft:#5c4639;
+  --cream:#f6efe4;
+  --cream-2:#efe4d4;
+  --paper:#fffdf9;
+  --wine:#6b1f2a;
+  --wine-d:#4a1219;
+  --wine-l:#8c2f3a;
+  --gold:#b98b43;
+  --gold-l:#d8b472;
+  --line:rgba(42,26,20,.14);
+  --maxw:1120px;
+  --r:14px;
+  --shadow:0 18px 40px -24px rgba(42,26,20,.45);
+  --bar:44px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;max-width:100%;overflow-x:hidden}
+body{
+  background:var(--cream);
+  color:var(--ink);
+  font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  font-size:17px;line-height:1.65;
+  -webkit-text-size-adjust:100%;
+  padding-top:var(--bar);
+}
+img,svg{max-width:100%}
+h1,h2,h3{line-height:1.15;margin:0;letter-spacing:-.01em}
+p{margin:0}
+a{color:inherit}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;width:100%}
+
+/* ---- barra fija ---- */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  min-height:var(--bar);display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(90deg,#241310,#3a1d19 50%,#241310);
+  color:#f0e3d2;border-bottom:1px solid rgba(217,180,114,.35);
+}
+.topbar span{
+  font-family:ui-sans-serif,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
+  padding:9px 16px;text-align:center;line-height:1.4;
+}
+
+/* ---- nav ---- */
+.nav{border-bottom:1px solid var(--line);background:var(--paper)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:76px;flex-wrap:wrap;padding-top:10px;padding-bottom:10px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand .mark{flex:0 0 auto}
+.brand b{display:block;font-size:17px;letter-spacing:.01em}
+.brand small{
+  display:block;font-family:ui-sans-serif,system-ui,sans-serif;
+  font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft)
+}
+.navlinks{display:flex;align-items:center;gap:24px;font-family:ui-sans-serif,system-ui,sans-serif;font-size:13.5px}
+.navlinks a{text-decoration:none;color:var(--ink-soft)}
+.navlinks a:hover{color:var(--wine)}
+
+/* ---- botones ---- */
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:ui-sans-serif,system-ui,sans-serif;font-size:15px;font-weight:600;
+  text-decoration:none;padding:14px 22px;border-radius:999px;border:1px solid transparent;
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+.btn:hover{transform:translateY(-1px)}
+.btn-pri{background:linear-gradient(180deg,var(--wine-l),var(--wine));color:#fff6ea;box-shadow:0 10px 24px -12px rgba(107,31,42,.7)}
+.btn-sec{background:transparent;color:var(--ink);border-color:rgba(42,26,20,.3)}
+.btn-sec:hover{border-color:var(--wine);color:var(--wine)}
+.btn-ghost{background:rgba(255,253,249,.1);color:#f4e8d8;border-color:rgba(217,180,114,.5)}
+
+/* ---- hero ---- */
+.hero{
+  position:relative;overflow:hidden;color:#f6ebdb;
+  background:
+    radial-gradient(120% 90% at 85% 10%, rgba(185,139,67,.28), transparent 60%),
+    radial-gradient(100% 80% at 10% 90%, rgba(140,47,58,.55), transparent 65%),
+    linear-gradient(160deg,#39191b 0%,#2a1114 45%,#1d0d10 100%);
+}
+.hero .grain{position:absolute;inset:0;opacity:.5;pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding-top:84px;padding-bottom:84px}
+.eyebrow{
+  font-family:ui-sans-serif,system-ui,sans-serif;font-size:11.5px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--gold-l);margin-bottom:22px;display:block
+}
+.hero h1{font-size:clamp(32px,4.6vw,58px);font-weight:400}
+.hero h1 em{font-style:italic;color:var(--gold-l)}
+.hero p.lead{margin-top:22px;font-size:18px;color:rgba(246,235,219,.82);max-width:46ch}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;align-items:center}
+.hero-note{
+  margin-top:26px;font-family:ui-sans-serif,system-ui,sans-serif;font-size:12.5px;
+  color:rgba(246,235,219,.6);letter-spacing:.04em
+}
+.hero-art{display:flex;justify-content:center}
+
+/* ---- secciones ---- */
+section{padding:84px 0}
+.sec-head{max-width:62ch;margin-bottom:48px}
+.sec-head .eyebrow{color:var(--wine)}
+.sec-head h2{font-size:clamp(26px,3vw,38px);font-weight:400}
+.sec-head p{margin-top:16px;color:var(--ink-soft)}
+.rule{height:1px;background:var(--line);max-width:var(--maxw);margin:0 auto}
+
+/* ---- productos ---- */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--r);
+  padding:28px;display:flex;flex-direction:column;gap:14px;box-shadow:var(--shadow)
+}
+.card .ic{width:46px;height:46px}
+.card h3{font-size:19px;font-weight:600}
+.card p{color:var(--ink-soft);font-size:15.5px}
+.placeholder{
+  border:1px dashed rgba(107,31,42,.45);background:repeating-linear-gradient(135deg,rgba(107,31,42,.05) 0 10px,transparent 10px 20px);
+  border-radius:var(--r);padding:26px 28px;margin-top:26px
+}
+.placeholder b{
+  display:block;font-family:ui-sans-serif,system-ui,sans-serif;font-size:11px;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--wine);margin-bottom:8px
+}
+.placeholder p{color:var(--ink-soft);font-size:15.5px}
+
+/* ---- pasos ---- */
+.steps{background:var(--cream-2)}
+.steplist{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--paper)}
+.step{padding:34px 30px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:12px}
+.step:last-child{border-right:none}
+.step .num{
+  font-family:ui-sans-serif,system-ui,sans-serif;font-size:12px;letter-spacing:.2em;
+  color:var(--gold);font-weight:700
+}
+.step h3{font-size:20px;font-weight:600}
+.step p{color:var(--ink-soft);font-size:15.5px}
+
+/* ---- contacto ---- */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:start}
+.info{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:34px;box-shadow:var(--shadow)}
+.info dl{margin:0;display:grid;gap:22px}
+.info dt{
+  font-family:ui-sans-serif,system-ui,sans-serif;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--ink-soft);margin-bottom:5px
+}
+.info dd{margin:0;font-size:17.5px}
+.info dd a{text-decoration:none;color:var(--wine);font-weight:600;word-break:break-word}
+.info dd.phone a{font-size:25px;letter-spacing:.01em}
+.info .muted{color:var(--ink-soft);font-size:15.5px}
+.info .btn{margin-top:28px;width:100%;justify-content:center}
+.mapbox{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:18px;box-shadow:var(--shadow)}
+.mapbox svg{display:block;width:100%;height:auto;border-radius:8px}
+.mapcap{
+  font-family:ui-sans-serif,system-ui,sans-serif;font-size:12px;color:var(--ink-soft);
+  padding:12px 6px 2px;letter-spacing:.03em
+}
+
+/* ---- footer ---- */
+footer{background:linear-gradient(160deg,#2a1114,#1b0c0e);color:rgba(246,235,219,.78);padding:60px 0 0}
+.foot-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:34px}
+footer h4{
+  font-family:ui-sans-serif,system-ui,sans-serif;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--gold-l);margin:0 0 14px
+}
+footer p,footer li{font-size:15.5px}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+footer a{color:rgba(246,235,219,.9);text-decoration:none;word-break:break-word}
+footer a:hover{color:var(--gold-l)}
+.credit{
+  margin-top:52px;border-top:1px solid rgba(217,180,114,.25);padding:20px 0 26px;
+  font-family:ui-sans-serif,system-ui,sans-serif;font-size:12.5px;color:rgba(246,235,219,.65);
+  text-align:center;letter-spacing:.04em;line-height:1.6
+}
+
+@media (max-width:900px){
+  .hero .wrap{grid-template-columns:1fr;gap:40px;padding-top:56px;padding-bottom:64px}
+  .hero-art{order:-1;max-width:320px;margin:0 auto}
+  .grid3{grid-template-columns:1fr}
+  .steplist{grid-template-columns:1fr}
+  .step{border-right:none;border-bottom:1px solid var(--line)}
+  .step:last-child{border-bottom:none}
+  .contact-grid{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr;gap:28px}
+  .navlinks{display:none}
+}
+@media (max-width:480px){
+  :root{--bar:58px}
+  body{font-size:16px}
+  .wrap{padding:0 18px}
+  section{padding:58px 0}
+  .sec-head{margin-bottom:34px}
+  .card,.info{padding:22px}
+  .step{padding:26px 22px}
+  .btn{padding:13px 18px;font-size:14.5px}
+  .hero-cta .btn{width:100%;justify-content:center}
+  .info dd.phone a{font-size:22px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#inicio">
+      <svg class="mark" width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
+        <circle cx="20" cy="20" r="19" fill="none" stroke="#6b1f2a" stroke-width="1.2"/>
+        <circle cx="20" cy="20" r="15" fill="none" stroke="#b98b43" stroke-width=".8"/>
+        <path d="M14 10c4.6-1.4 8.8.3 10.6 4.2 1.9 4.1.6 9.4-2.9 13.6-1.7 2-3.6 3.4-5.2 3.9-.9.3-1.6-.6-1.2-1.4 1.6-3.1 1.8-5.6.6-7.3-.7-1-1.9-1.7-3.3-2.3-1.9-.8-2.5-3-1.2-4.6l2.6-3.1z" fill="#6b1f2a"/>
+        <path d="M13.5 14.6c1.3.9 2.7 1.4 4.2 1.6" stroke="#f6efe4" stroke-width="1" fill="none" stroke-linecap="round"/>
+      </svg>
+      <span>
+        <b>Jamones y Embutidos Neila</b>
+        <small>Jerez de los Caballeros · Badajoz</small>
+      </span>
+    </a>
+    <nav class="navlinks">
+      <a href="#producto">Producto</a>
+      <a href="#proceso">Cómo trabajamos</a>
+      <a href="#contacto">Contacto</a>
+      <a class="btn btn-sec" href="tel:+34924750641">924 750 641</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="inicio">
+  <svg class="grain" aria-hidden="true" preserveAspectRatio="none" viewBox="0 0 100 100">
+    <defs>
+      <pattern id="dots" width="4" height="4" patternUnits="userSpaceOnUse">
+        <circle cx="1" cy="1" r=".35" fill="rgba(246,235,219,.07)"/>
+      </pattern>
+    </defs>
+    <rect width="100" height="100" fill="url(#dots)"/>
+  </svg>
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Elaboración y venta de ibérico</span>
+      <h1>Jamones y embutidos<br><em>ibéricos</em> de Jerez de los Caballeros</h1>
+      <p class="lead">Elaboración y venta de jamón, paleta y embutido ibérico. Atención directa por teléfono para particulares, tiendas y hostelería.</p>
+      <div class="hero-cta">
+        <a class="btn btn-pri" href="tel:+34924750641">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <path d="M4 4h4l2 5-2.5 1.5a12 12 0 006 6L15 14l5 2v4a16 16 0 01-16-16z"/>
+          </svg>
+          Llamar al 924 750 641
+        </a>
+        <a class="btn btn-ghost" href="#producto">Ver el producto</a>
+      </div>
+      <p class="hero-note">C/ Eritas, 70 · 06380 Jerez de los Caballeros (Badajoz) · Consultar horario</p>
+    </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 320 320" width="320" height="320" role="img" aria-label="Ilustración de una pieza de jamón sobre soporte">
+        <defs>
+          <linearGradient id="g-ham" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#8c2f3a"/><stop offset=".55" stop-color="#6b1f2a"/><stop offset="1" stop-color="#43121a"/>
+          </linearGradient>
+          <linearGradient id="g-fat" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#f6efe4"/><stop offset="1" stop-color="#ddcdb4"/>
+          </linearGradient>
+          <linearGradient id="g-gold" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#d8b472"/><stop offset="1" stop-color="#9c7334"/>
+          </linearGradient>
+        </defs>
+        <circle cx="160" cy="158" r="126" fill="none" stroke="rgba(217,180,114,.28)" stroke-width="1"/>
+        <circle cx="160" cy="158" r="104" fill="none" stroke="rgba(217,180,114,.14)" stroke-width="1"/>
+
+        <!-- jamonero -->
+        <rect x="228" y="104" width="12" height="166" rx="6" fill="#3f2a1c"/>
+        <rect x="222" y="100" width="24" height="12" rx="6" fill="url(#g-gold)"/>
+        <rect x="64" y="262" width="192" height="14" rx="7" fill="url(#g-gold)"/>
+        <rect x="88" y="276" width="22" height="24" rx="5" fill="#3f2a1c"/>
+        <rect x="210" y="276" width="22" height="24" rx="5" fill="#3f2a1c"/>
+
+        <!-- pieza -->
+        <g transform="rotate(-38 160 160)">
+          <rect x="196" y="156" width="78" height="26" rx="13" fill="#5d2a1c"/>
+          <path d="M268 150c12 2 20 9 20 19s-8 17-20 19c-5 1-8-2-8-7v-24c0-5 3-8 8-7z" fill="#24110f"/>
+          <path d="M100 170c0-30 18-54 48-54h40c20 0 34 14 34 29v50c0 15-14 29-34 29h-40c-30 0-48-24-48-54z" fill="url(#g-ham)"/>
+          <path d="M148 118c-26 6-40 26-40 51" fill="none" stroke="rgba(246,235,219,.22)" stroke-width="3" stroke-linecap="round"/>
+          <path d="M216 148c6 14 6 30 0 44" fill="none" stroke="rgba(246,235,219,.16)" stroke-width="3" stroke-linecap="round"/>
+          <ellipse cx="100" cy="170" rx="17" ry="46" fill="url(#g-fat)"/>
+          <ellipse cx="101" cy="170" rx="11" ry="34" fill="#9e2f38"/>
+          <ellipse cx="101" cy="170" rx="11" ry="34" fill="none" stroke="rgba(246,235,219,.6)" stroke-width="1.6"/>
+          <path d="M97 152c4 5 4 11 0 16M104 158c-3 4-3 9 0 13M99 182c4 4 4 8 0 12" stroke="rgba(246,235,219,.55)" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+        </g>
+
+        <!-- lonchas -->
+        <g opacity=".95">
+          <ellipse cx="140" cy="292" rx="26" ry="9" fill="#8c2f3a"/>
+          <ellipse cx="140" cy="292" rx="26" ry="9" fill="none" stroke="#e8d7bb" stroke-width="2"/>
+          <ellipse cx="172" cy="296" rx="24" ry="8" fill="#6b1f2a"/>
+          <ellipse cx="172" cy="296" rx="24" ry="8" fill="none" stroke="#e8d7bb" stroke-width="2"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRODUCTO ================= -->
+<section id="producto">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Producto y servicios</span>
+      <h2>Qué se elabora y qué se vende</h2>
+      <p>Categorías habituales del sector del ibérico. La selección concreta, las piezas disponibles y los formatos los define el obrador.</p>
+    </div>
+    <div class="grid3">
+      <article class="card">
+        <svg class="ic" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <path d="M30 7c8 3 13 12 13 23 0 12-9 14-16 14-5 0-7-4-5-7 3-5 3-8 0-10-4-3-5-8-2-11l10-9z" fill="#6b1f2a"/>
+          <path d="M14 34c-3-2-4-6-2-9" stroke="#b98b43" stroke-width="2.4" stroke-linecap="round"/>
+        </svg>
+        <h3>Jamón ibérico</h3>
+        <p>Piezas enteras de jamón, curadas en bodega y vendidas con hueso según disponibilidad del obrador.</p>
+      </article>
+      <article class="card">
+        <svg class="ic" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <path d="M26 9c7 2 12 9 12 17 0 9-7 12-13 12-4 0-6-3-4-6 2-4 2-6 0-8-3-2-4-6-1-8l6-7z" fill="#8c2f3a"/>
+          <circle cx="24" cy="24" r="20" stroke="#b98b43" stroke-width="1.4" fill="none"/>
+        </svg>
+        <h3>Paleta ibérica</h3>
+        <p>Paletas curadas, formato más manejable que el jamón, para consumo doméstico y para corte en mostrador.</p>
+      </article>
+      <article class="card">
+        <svg class="ic" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <rect x="7" y="18" width="34" height="13" rx="6.5" fill="#6b1f2a"/>
+          <circle cx="16" cy="24.5" r="2.4" fill="#f6efe4"/>
+          <circle cx="24" cy="24.5" r="2.4" fill="#f6efe4"/>
+          <circle cx="32" cy="24.5" r="2.4" fill="#f6efe4"/>
+          <path d="M7 18c-2-4 0-7 3-8M41 31c2 4 0 7-3 8" stroke="#b98b43" stroke-width="2" fill="none" stroke-linecap="round"/>
+        </svg>
+        <h3>Embutidos curados</h3>
+        <p>Chorizo, salchichón, lomo y morcón: las piezas de embutido ibérico propias de la matanza y la curación tradicional.</p>
+      </article>
+      <article class="card">
+        <svg class="ic" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <path d="M6 32l14-9 10 5 12-13" stroke="#6b1f2a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M34 15h8v8" stroke="#b98b43" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h3>Loncheado y envasado</h3>
+        <p>Preparación del producto en los formatos que el obrador tenga habilitados, para llevar o para reparto.</p>
+      </article>
+      <article class="card">
+        <svg class="ic" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <rect x="7" y="14" width="26" height="20" rx="3" fill="#6b1f2a"/>
+          <path d="M33 21h6l4 6v7h-10z" fill="#8c2f3a"/>
+          <circle cx="15" cy="36" r="4" fill="#2a1a14"/><circle cx="36" cy="36" r="4" fill="#2a1a14"/>
+          <path d="M11 20h14" stroke="#f6efe4" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <h3>Venta a hostelería y tiendas</h3>
+        <p>Suministro a bares, restaurantes y comercios de alimentación, con condiciones acordadas directamente por teléfono.</p>
+      </article>
+      <article class="card">
+        <svg class="ic" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <path d="M24 5l5 6 8-1-1 8 6 5-6 5 1 8-8-1-5 6-5-6-8 1 1-8-6-5 6-5-1-8 8 1z" fill="#6b1f2a"/>
+          <path d="M19 24l4 4 7-8" stroke="#f6efe4" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h3>Encargos y lotes</h3>
+        <p>Composición de lotes y encargos a medida según lo que haya disponible en cada momento. Se consultan por teléfono.</p>
+      </article>
+    </div>
+
+    <div class="placeholder">
+      <b>Hueco preparado</b>
+      <p>Aquí irían vuestros productos reales, con sus nombres, sus fotografías y la descripción de cada pieza tal y como la contáis en el mostrador. Esta maqueta deja el espacio hecho y pendiente de rellenar con vuestra información.</p>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- ================= PROCESO ================= -->
+<section class="steps" id="proceso">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Cómo trabajamos</span>
+      <h2>Tres pasos, sin vueltas</h2>
+      <p>Un recorrido sencillo para que quien entre en la web sepa exactamente qué tiene que hacer para comprar.</p>
+    </div>
+    <div class="steplist">
+      <div class="step">
+        <span class="num">01</span>
+        <h3>Nos llamáis</h3>
+        <p>Una llamada al 924 750 641 y se habla de lo que buscáis: tipo de pieza, cantidad y si es para casa o para un negocio.</p>
+      </div>
+      <div class="step">
+        <span class="num">02</span>
+        <h3>Preparamos el pedido</h3>
+        <p>Se confirma qué hay disponible, el formato en que se prepara y cuándo estará listo. Todo acordado antes de empezar.</p>
+      </div>
+      <div class="step">
+        <span class="num">03</span>
+        <h3>Recogida o entrega</h3>
+        <p>Se recoge en C/ Eritas, 70, o se acuerda la forma de entrega que el obrador tenga disponible en ese momento.</p>
+      </div>
+    </div>
+    <div class="placeholder">
+      <b>Hueco preparado</b>
+      <p>Aquí iría vuestra forma real de trabajar: cómo se hacen los encargos, qué zonas cubrís y en qué condiciones salen los pedidos. Lo escribimos con vuestras palabras cuando nos lo contéis.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACTO ================= -->
+<section id="contacto">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Contacto</span>
+      <h2>Dónde estamos</h2>
+      <p>El teléfono es la vía directa. El plano es un esquema orientativo de la situación del obrador, no un mapa a escala.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="info">
+        <dl>
+          <div>
+            <dt>Teléfono</dt>
+            <dd class="phone"><a href="tel:+34924750641">924 750 641</a></dd>
+          </div>
+          <div>
+            <dt>Dirección</dt>
+            <dd>C/ Eritas, 70<br>06380 Jerez de los Caballeros<br>Badajoz</dd>
+          </div>
+          <div>
+            <dt>Horario</dt>
+            <dd class="muted">Consultar horario</dd>
+          </div>
+          <div>
+            <dt>Correo</dt>
+            <dd><a href="mailto:embutidosneila@telefonica.net">embutidosneila@telefonica.net</a></dd>
+          </div>
+        </dl>
+        <a class="btn btn-pri" href="tel:+34924750641">Llamar al 924 750 641</a>
+      </div>
+
+      <div class="mapbox">
+        <svg viewBox="0 0 520 380" role="img" aria-label="Plano esquemático de la ubicación en C/ Eritas, 70, Jerez de los Caballeros">
+          <defs>
+            <linearGradient id="g-map" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#f3ead9"/><stop offset="1" stop-color="#e6d9c2"/>
+            </linearGradient>
+          </defs>
+          <rect width="520" height="380" fill="url(#g-map)"/>
+          <!-- manzanas -->
+          <g fill="rgba(42,26,20,.07)">
+            <rect x="34" y="34" width="136" height="90" rx="6"/>
+            <rect x="200" y="34" width="118" height="90" rx="6"/>
+            <rect x="350" y="34" width="136" height="130" rx="6"/>
+            <rect x="34" y="156" width="136" height="104" rx="6"/>
+            <rect x="350" y="196" width="136" height="150" rx="6"/>
+            <rect x="34" y="292" width="200" height="54" rx="6"/>
+          </g>
+          <!-- viales -->
+          <g stroke="#fffdf9" stroke-width="20" stroke-linecap="square">
+            <path d="M0 140h520"/>
+            <path d="M186 0v380"/>
+            <path d="M334 0v380"/>
+            <path d="M0 276h520"/>
+          </g>
+          <g stroke="rgba(42,26,20,.18)" stroke-width="1" fill="none">
+            <path d="M0 130h520M0 150h520M0 266h520M0 286h520"/>
+            <path d="M176 0v380M196 0v380M324 0v380M344 0v380"/>
+          </g>
+          <!-- calle destacada -->
+          <path d="M186 208h148" stroke="#b98b43" stroke-width="12" stroke-linecap="round" opacity=".55"/>
+          <!-- etiquetas -->
+          <g font-family="ui-sans-serif,system-ui,sans-serif" fill="#5c4639" font-size="15">
+            <text x="24" y="120" opacity=".9">Travesía</text>
+            <text x="352" y="252" opacity=".9">Acceso al núcleo</text>
+            <text x="194" y="196" fill="#6b1f2a" font-weight="700" font-size="16">C/ Eritas</text>
+          </g>
+          <!-- marcador -->
+          <g transform="translate(318,208)">
+            <circle r="30" fill="rgba(107,31,42,.13)"/>
+            <circle r="17" fill="rgba(107,31,42,.22)"/>
+            <path d="M0-30c-9.4 0-17 7.6-17 17 0 12 17 29 17 29s17-17 17-29c0-9.4-7.6-17-17-17z" fill="#6b1f2a"/>
+            <circle cy="-13" r="6" fill="#f6efe4"/>
+          </g>
+          <g font-family="ui-sans-serif,system-ui,sans-serif">
+            <rect x="148" y="258" width="236" height="52" rx="8" fill="#fffdf9" stroke="rgba(42,26,20,.14)"/>
+            <text x="164" y="280" font-size="16" font-weight="700" fill="#2a1a14">C/ Eritas, 70</text>
+            <text x="164" y="299" font-size="14" fill="#5c4639">06380 Jerez de los Caballeros</text>
+          </g>
+          <!-- rosa de los vientos -->
+          <g transform="translate(58,336)" font-family="ui-sans-serif,system-ui,sans-serif">
+            <path d="M0-20l6 14H-6z" fill="#6b1f2a"/>
+            <path d="M0 20l6-14H-6z" fill="rgba(42,26,20,.3)"/>
+            <text x="-4" y="-26" font-size="13" fill="#5c4639">N</text>
+          </g>
+          <text x="394" y="360" font-family="ui-sans-serif,system-ui,sans-serif" font-size="13" fill="#5c4639" opacity=".8">Plano esquemático</text>
+        </svg>
+        <p class="mapcap">Esquema orientativo dibujado para esta propuesta. No sustituye a un mapa real.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PIE ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h4>Jamones y Embutidos Neila S.L.</h4>
+        <p>Elaboración y venta de jamones y embutidos ibéricos en Jerez de los Caballeros, Badajoz.</p>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="tel:+34924750641">924 750 641</a></li>
+          <li><a href="mailto:embutidosneila@telefonica.net">embutidosneila@telefonica.net</a></li>
+          <li>Consultar horario</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Dirección</h4>
+        <ul>
+          <li>C/ Eritas, 70</li>
+          <li>06380 Jerez de los Caballeros</li>
+          <li>Badajoz</li>
+        </ul>
+      </div>
+    </div>
+    <p class="credit">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    var el=document.querySelector(a.getAttribute('href'));
+    if(!el)return;
+    e.preventDefault();
+    var bar=document.querySelector('.topbar');
+    var off=bar?bar.offsetHeight:0;
+    window.scrollTo({top:el.getBoundingClientRect().top+window.pageYOffset-off,behavior:'smooth'});
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,775 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Varaderos de Punta Umbría S.L. — Propuesta de diseño</title>
+<style>
+:root{
+  --navy-900:#07141d;
+  --navy-800:#0c1f2b;
+  --navy-700:#123040;
+  --navy-600:#1a4256;
+  --steel:#5d8ba3;
+  --steel-light:#9cbccd;
+  --line:rgba(156,188,205,.22);
+  --line-strong:rgba(156,188,205,.42);
+  --paper:#f4f6f7;
+  --paper-2:#e7ecee;
+  --ink:#0b1a23;
+  --ink-soft:#4a5e69;
+  --amber:#e0821f;
+  --amber-dark:#b8651026;
+  --bar-h:40px;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+html,body{max-width:100%;overflow-x:hidden}
+body{
+  margin:0;
+  font-family:var(--sans);
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.6;
+  font-size:16px;
+  padding-top:var(--bar-h);
+}
+img,svg{max-width:100%}
+h1,h2,h3,h4{margin:0;line-height:1.15;letter-spacing:-.015em;font-weight:650}
+p{margin:0}
+a{color:inherit}
+
+/* ---------- barra fija de propuesta ---------- */
+.proposal-bar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  height:var(--bar-h);
+  display:flex;align-items:center;justify-content:center;
+  background:var(--navy-900);
+  color:var(--steel-light);
+  border-bottom:1px solid var(--line-strong);
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  padding:0 12px;
+  text-align:center;
+}
+.proposal-bar span{
+  display:block;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  max-width:100%;
+}
+
+/* ---------- layout ---------- */
+.wrap{width:100%;max-width:1160px;margin:0 auto;padding:0 32px}
+section{position:relative}
+.eyebrow{
+  font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--steel);display:flex;align-items:center;gap:10px;margin-bottom:18px;
+}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--steel);display:block;flex:0 0 28px}
+.sec-head{max-width:620px;margin-bottom:46px}
+.sec-head h2{font-size:clamp(26px,3.4vw,38px)}
+.sec-head p{margin-top:14px;color:var(--ink-soft);font-size:16px}
+
+/* ---------- hero ---------- */
+.hero{
+  background:
+    radial-gradient(120% 90% at 88% 8%, rgba(93,139,163,.30) 0%, rgba(93,139,163,0) 58%),
+    linear-gradient(168deg,var(--navy-800) 0%,var(--navy-900) 62%,#050f16 100%);
+  color:#eef3f5;
+  overflow:hidden;
+  border-bottom:1px solid var(--line-strong);
+}
+.hero-grid-bg{
+  position:absolute;inset:0;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:68px 68px;
+  mask-image:linear-gradient(to bottom,rgba(0,0,0,.65),transparent 85%);
+  -webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,.65),transparent 85%);
+  pointer-events:none;
+}
+.hero .wrap{position:relative;z-index:2;padding-top:84px;padding-bottom:84px}
+.hero-inner{display:grid;grid-template-columns:1.08fr .92fr;gap:56px;align-items:center}
+.hero-mark{
+  font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--steel-light);margin-bottom:22px;
+}
+.hero h1{font-size:clamp(32px,4.6vw,56px);color:#fff;letter-spacing:-.03em}
+.hero h1 em{font-style:normal;color:var(--steel-light);display:block;font-weight:400;font-size:.52em;letter-spacing:.01em;margin-top:16px;line-height:1.45}
+.hero-lead{margin-top:26px;color:#c4d6de;font-size:17px;max-width:46ch}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:15px 24px;border-radius:2px;
+  font-weight:600;font-size:15px;text-decoration:none;
+  border:1px solid transparent;transition:transform .15s ease,background .15s ease,border-color .15s ease;
+}
+.btn-primary{background:var(--amber);color:#1b0f02;border-color:var(--amber)}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-ghost{border-color:var(--line-strong);color:#dce7ec}
+.btn-ghost:hover{border-color:var(--steel-light);transform:translateY(-2px)}
+.btn svg{flex:0 0 16px}
+.hero-tags{
+  display:flex;flex-wrap:wrap;gap:8px;margin-top:34px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase;
+}
+.hero-tags span{border:1px solid var(--line);padding:6px 11px;color:var(--steel-light);border-radius:2px}
+
+/* hero figura */
+.hero-fig{
+  border:1px solid var(--line-strong);
+  background:linear-gradient(180deg,rgba(18,48,64,.75),rgba(7,20,29,.55));
+  padding:22px;border-radius:3px;
+}
+.hero-fig figcaption{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--steel);margin-top:16px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+}
+.hero-fig svg{display:block;width:100%;height:auto}
+
+/* ---------- servicios ---------- */
+.services{padding:86px 0;background:var(--paper)}
+.svc-list{display:grid;gap:0;border-top:1px solid rgba(11,26,35,.14)}
+.svc{
+  display:grid;grid-template-columns:72px 1fr 300px;gap:28px;align-items:start;
+  padding:30px 4px;border-bottom:1px solid rgba(11,26,35,.14);
+  transition:background .18s ease;
+}
+.svc:hover{background:var(--paper-2)}
+.svc-num{font-family:var(--mono);font-size:12px;color:var(--steel);letter-spacing:.08em;padding-top:6px}
+.svc-main{display:flex;gap:20px;align-items:flex-start}
+.svc-ico{
+  flex:0 0 46px;width:46px;height:46px;border:1px solid rgba(11,26,35,.18);border-radius:2px;
+  display:grid;place-items:center;background:#fff;
+}
+.svc-ico svg{display:block}
+.svc h3{font-size:20px;margin-bottom:6px}
+.svc-main p{color:var(--ink-soft);font-size:15px}
+.svc-note{
+  font-family:var(--mono);font-size:11px;line-height:1.75;letter-spacing:.04em;
+  color:var(--steel);text-transform:uppercase;padding-top:6px;
+}
+
+/* ---------- proceso ---------- */
+.process{
+  padding:86px 0;color:#eaf1f4;
+  background:linear-gradient(180deg,var(--navy-800),var(--navy-900));
+  border-top:1px solid var(--line-strong);border-bottom:1px solid var(--line-strong);
+}
+.process .sec-head h2{color:#fff}
+.process .sec-head p{color:#a9c2ce}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.step{
+  border:1px solid var(--line);background:rgba(93,139,163,.07);
+  padding:28px 24px 26px;border-radius:3px;position:relative;overflow:hidden;
+}
+.step::after{
+  content:attr(data-n);
+  position:absolute;right:14px;top:4px;
+  font-family:var(--mono);font-size:68px;font-weight:700;color:rgba(156,188,205,.09);line-height:1;
+}
+.step-ico{width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--line-strong);border-radius:2px;margin-bottom:20px}
+.step h3{font-size:18px;color:#fff;margin-bottom:10px}
+.step p{color:#aac2ce;font-size:14.5px}
+
+/* ---------- galeria vacia ---------- */
+.gallery{padding:86px 0;background:var(--paper-2)}
+.gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.gal-card{
+  background:#fff;border:1px solid rgba(11,26,35,.14);border-radius:3px;overflow:hidden;
+  display:flex;flex-direction:column;
+}
+.gal-slot{
+  aspect-ratio:4/3;width:100%;
+  background:
+    repeating-linear-gradient(135deg,rgba(93,139,163,.09) 0 10px,rgba(93,139,163,0) 10px 20px),
+    linear-gradient(160deg,#e3e9ec,#f3f6f7);
+  display:grid;place-items:center;position:relative;
+  border-bottom:1px solid rgba(11,26,35,.14);
+}
+.gal-slot-inner{text-align:center;padding:16px}
+.gal-slot svg{display:block;margin:0 auto 10px}
+.gal-slot b{
+  display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--steel);font-weight:600;
+}
+.gal-meta{padding:18px 18px 20px;display:grid;gap:12px}
+.gal-field{display:grid;gap:5px}
+.gal-field span{
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#8aa0ab;
+}
+.gal-ph{height:12px;border-radius:2px;background:linear-gradient(90deg,rgba(11,26,35,.10),rgba(11,26,35,.05));}
+.gal-ph.short{width:58%}
+.gal-foot{
+  margin-top:26px;font-family:var(--mono);font-size:11px;letter-spacing:.05em;
+  color:var(--ink-soft);border-left:2px solid var(--amber);padding:10px 0 10px 14px;
+}
+
+/* ---------- contacto ---------- */
+.contact{padding:86px 0;background:var(--paper)}
+.contact-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:40px;align-items:start}
+.info-list{display:grid;gap:2px;border:1px solid rgba(11,26,35,.14);background:#fff;border-radius:3px}
+.info-row{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:22px 24px;border-bottom:1px solid rgba(11,26,35,.1)}
+.info-row:last-child{border-bottom:0}
+.info-row .ico{width:34px;height:34px;border:1px solid rgba(11,26,35,.16);border-radius:2px;display:grid;place-items:center}
+.info-row dt{
+  font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#8aa0ab;margin-bottom:4px;
+}
+.info-row dd{margin:0;font-size:17px;font-weight:600;word-break:break-word}
+.info-row dd a{text-decoration:none;border-bottom:1px solid var(--line-strong)}
+.info-row dd small{display:block;font-weight:400;font-size:14px;color:var(--ink-soft);margin-top:3px}
+.contact-cta{margin-top:22px}
+.contact-cta .btn-primary{width:100%;justify-content:center}
+
+.map-card{border:1px solid rgba(11,26,35,.16);background:#fff;border-radius:3px;padding:18px;overflow:hidden}
+.map-card svg{display:block;width:100%;height:auto}
+.map-legend{
+  display:flex;flex-wrap:wrap;gap:16px;margin-top:16px;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);
+}
+.map-legend i{display:inline-block;width:10px;height:10px;margin-right:7px;vertical-align:-1px;border-radius:1px}
+.map-note{
+  margin-top:10px;font-size:12px;color:#8aa0ab;font-family:var(--mono);letter-spacing:.04em;
+}
+
+/* ---------- pie ---------- */
+footer{background:var(--navy-900);color:#9cbccd;padding:58px 0 34px;border-top:1px solid var(--line-strong)}
+.foot-top{display:grid;grid-template-columns:1.2fr 1fr;gap:34px;padding-bottom:30px;border-bottom:1px solid var(--line)}
+.foot-top h3{color:#fff;font-size:19px;margin-bottom:10px}
+.foot-top p{font-size:14.5px;color:#9cbccd}
+.foot-contact{display:grid;gap:10px;font-size:15px}
+.foot-contact a{color:#e3edf1;text-decoration:none;border-bottom:1px solid var(--line-strong);word-break:break-word}
+.foot-label{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel);display:block;margin-bottom:3px}
+.foot-bottom{
+  margin-top:26px;display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center;
+  font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:var(--steel);
+}
+.foot-credit{color:#c6dae3}
+
+/* ---------- responsive ---------- */
+@media (max-width:980px){
+  .hero-inner{grid-template-columns:1fr;gap:42px}
+  .steps{grid-template-columns:1fr}
+  .gal-grid{grid-template-columns:1fr 1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .svc{grid-template-columns:48px 1fr;gap:18px}
+  .svc-note{grid-column:2;padding-top:0}
+  .foot-top{grid-template-columns:1fr}
+}
+@media (max-width:620px){
+  :root{--bar-h:52px}
+  .wrap{padding:0 16px}
+  .proposal-bar{font-size:9.5px;letter-spacing:.03em;line-height:1.35;padding:0 10px}
+  .proposal-bar span{white-space:normal;overflow:visible;text-overflow:clip}
+  .hero .wrap{padding-top:52px;padding-bottom:56px}
+  .hero h1{letter-spacing:-.02em}
+  .hero-fig{padding:14px}
+  .services,.process,.gallery,.contact{padding:58px 0}
+  .sec-head{margin-bottom:32px}
+  .gal-grid{grid-template-columns:1fr 1fr;gap:14px}
+  .gal-slot{aspect-ratio:1/1}
+  .gal-slot-inner{padding:10px}
+  .gal-slot svg{width:24px;height:24px;margin-bottom:8px}
+  .gal-slot b{font-size:9.5px;letter-spacing:.07em;line-height:1.5}
+  .gal-meta{padding:14px 12px 16px;gap:10px}
+  .gal-field span{font-size:9px;letter-spacing:.08em}
+  .svc{grid-template-columns:1fr;gap:14px;padding:26px 0}
+  .svc-num{padding-top:0}
+  .svc-note{grid-column:1}
+  .svc-main{gap:14px}
+  .btn{width:100%;justify-content:center}
+  .info-row{grid-template-columns:34px 1fr;gap:14px;padding:18px}
+  .map-card{padding:12px}
+  .foot-bottom{flex-direction:column;align-items:flex-start;gap:10px}
+}
+</style>
+</head>
+<body>
+
+<div class="proposal-bar" role="note"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="hero-grid-bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="hero-inner">
+      <div>
+        <p class="hero-mark">Punta Umbría · Huelva · Varadero</p>
+        <h1>Varaderos de Punta Umbría S.L.
+          <em>Reparación y mantenimiento de embarcaciones en C/ Varadero, 14.</em>
+        </h1>
+        <p class="hero-lead">Carpintería de ribera, gel-coat, pulidos y antifouling. Trabajo de taller sobre el casco, con el barco en seco y en manos de quien lo repara.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="tel:+34666451359">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.4-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+            Llamar al 666 451 359
+          </a>
+          <a class="btn btn-ghost" href="#contacto">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Ver cómo llegar
+          </a>
+        </div>
+        <div class="hero-tags">
+          <span>Reparación</span><span>Mantenimiento</span><span>Carpintería de ribera</span><span>Gel-coat</span><span>Pulidos</span><span>Antifouling</span>
+        </div>
+      </div>
+
+      <figure class="hero-fig">
+        <!-- Esquema tecnico: embarcacion en seco sobre picaderos -->
+        <svg viewBox="0 0 460 300" role="img" aria-label="Esquema técnico de una embarcación en seco sobre picaderos en el varadero">
+          <defs>
+            <linearGradient id="hull" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#9cbccd" stop-opacity=".30"/>
+              <stop offset="1" stop-color="#5d8ba3" stop-opacity=".10"/>
+            </linearGradient>
+            <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#5d8ba3" stop-opacity=".26"/>
+              <stop offset="1" stop-color="#5d8ba3" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <!-- retícula -->
+          <g stroke="#9cbccd" stroke-opacity=".13">
+            <path d="M0 40H460M0 80H460M0 120H460M0 160H460M0 200H460M0 240H460"/>
+            <path d="M40 0V300M100 0V300M160 0V300M220 0V300M280 0V300M340 0V300M400 0V300"/>
+          </g>
+          <!-- linea de agua -->
+          <rect x="0" y="236" width="460" height="64" fill="url(#water)"/>
+          <path d="M0 236H460" stroke="#9cbccd" stroke-opacity=".45" stroke-dasharray="5 5"/>
+          <text x="6" y="252" font-family="monospace" font-size="10" fill="#9cbccd" fill-opacity=".8">LÍNEA DE AGUA</text>
+          <!-- rampa del varadero -->
+          <path d="M296 236 L460 196 L460 236 Z" fill="#9cbccd" fill-opacity=".10"/>
+          <g stroke="#9cbccd" stroke-opacity=".30">
+            <path d="M310 232 L324 228M340 225 L354 221M370 218 L384 214M400 211 L414 207"/>
+          </g>
+          <!-- casco -->
+          <path d="M70 96 L306 96 L336 120 L300 178 Q230 206 150 200 Q104 196 86 170 L70 120 Z"
+                fill="url(#hull)" stroke="#9cbccd" stroke-width="1.6" stroke-opacity=".85"/>
+          <!-- linea de flotacion / antifouling -->
+          <path d="M74 150 Q180 166 302 150" stroke="#e0821f" stroke-width="2" fill="none" stroke-opacity=".9"/>
+          <text x="346" y="154" font-family="monospace" font-size="9.5" fill="#e0821f">OBRA VIVA</text>
+          <!-- cubierta / superestructura -->
+          <path d="M132 96 L146 60 L236 60 L252 96" fill="#9cbccd" fill-opacity=".12" stroke="#9cbccd" stroke-opacity=".6"/>
+          <g stroke="#9cbccd" stroke-opacity=".5">
+            <path d="M160 68V88M186 68V88M212 68V88"/>
+          </g>
+          <!-- picaderos -->
+          <g fill="#9cbccd" fill-opacity=".20" stroke="#9cbccd" stroke-opacity=".55">
+            <rect x="112" y="200" width="30" height="36"/>
+            <rect x="196" y="204" width="30" height="32"/>
+            <rect x="262" y="186" width="30" height="50"/>
+          </g>
+          <!-- cotas -->
+          <g stroke="#9cbccd" stroke-opacity=".55">
+            <path d="M70 272H336"/>
+            <path d="M70 266V278M336 266V278"/>
+          </g>
+          <text x="186" y="290" font-family="monospace" font-size="9.5" fill="#9cbccd" fill-opacity=".85">ESLORA</text>
+          <g stroke="#9cbccd" stroke-opacity=".55">
+            <path d="M44 96V200"/><path d="M38 96H50M38 200H50"/>
+          </g>
+          <text x="10" y="156" font-family="monospace" font-size="9.5" fill="#9cbccd" fill-opacity=".85" transform="rotate(-90 22 152)">CALADO</text>
+        </svg>
+        <figcaption><span>Esq. 01 — Embarcación en seco</span><span>Varadero · Punta Umbría</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</header>
+
+<!-- ================= SERVICIOS ================= -->
+<section class="services" id="servicios">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Servicios</p>
+      <h2>Lo que hacemos en el varadero</h2>
+      <p>Cada trabajo se valora sobre el barco. Para presupuesto, una llamada y una visita.</p>
+    </div>
+
+    <div class="svc-list">
+      <article class="svc">
+        <div class="svc-num">01</div>
+        <div class="svc-main">
+          <div class="svc-ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1a4256" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9l-3.7 3.8z"/></svg>
+          </div>
+          <div>
+            <h3>Reparación de embarcaciones</h3>
+            <p>Intervención sobre daños en el casco y los elementos de la embarcación, con el barco en seco en el varadero.</p>
+          </div>
+        </div>
+        <p class="svc-note">Diagnóstico sobre el barco<br>Presupuesto previo</p>
+      </article>
+
+      <article class="svc">
+        <div class="svc-num">02</div>
+        <div class="svc-main">
+          <div class="svc-ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1a4256" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 7.3 12 2.8 3.5 7.3v9.4L12 21.2l8.5-4.5z"/><path d="M12 12v9.2"/><path d="M20.5 7.3 12 12 3.5 7.3"/></svg>
+          </div>
+          <div>
+            <h3>Mantenimiento</h3>
+            <p>Revisiones y trabajos de conservación para que la embarcación llegue en condiciones a cada temporada.</p>
+          </div>
+        </div>
+        <p class="svc-note">Trabajo programado<br>Barco en seco</p>
+      </article>
+
+      <article class="svc">
+        <div class="svc-num">03</div>
+        <div class="svc-main">
+          <div class="svc-ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1a4256" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9.5 12 4l9 5.5"/><path d="M5 11v8h14v-8"/><path d="M9 19v-5h6v5"/><path d="M3 9.5h18"/></svg>
+          </div>
+          <div>
+            <h3>Carpintería de ribera</h3>
+            <p>Trabajo de madera aplicado a la embarcación, el oficio tradicional del varadero.</p>
+          </div>
+        </div>
+        <p class="svc-note">Oficio de taller<br>Madera sobre casco</p>
+      </article>
+
+      <article class="svc">
+        <div class="svc-num">04</div>
+        <div class="svc-main">
+          <div class="svc-ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1a4256" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 3H8.5L3 8.5V21h16z"/><path d="M8.5 3v5.5H3"/><path d="M8 14h8"/><path d="M8 17.5h5"/></svg>
+          </div>
+          <div>
+            <h3>Gel-coat</h3>
+            <p>Tratamiento de la capa de gel-coat del casco: reparación de la superficie y recuperación del acabado.</p>
+          </div>
+        </div>
+        <p class="svc-note">Acabado de superficie<br>Casco y cubierta</p>
+      </article>
+
+      <article class="svc">
+        <div class="svc-num">05</div>
+        <div class="svc-main">
+          <div class="svc-ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1a4256" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 14.5c1.5-4 4-6 8-6.5"/><path d="M7 10.5c2-2.5 4-3.5 6.5-4"/></svg>
+          </div>
+          <div>
+            <h3>Pulidos</h3>
+            <p>Pulido del casco para devolver brillo y uniformidad a la superficie exterior de la embarcación.</p>
+          </div>
+        </div>
+        <p class="svc-note">Trabajo de acabado<br>Superficie exterior</p>
+      </article>
+
+      <article class="svc">
+        <div class="svc-num">06</div>
+        <div class="svc-main">
+          <div class="svc-ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1a4256" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3h5l1 8H7z"/><path d="M7 11h7v9H7z"/><path d="M14 6h3a2 2 0 0 1 2 2v3"/><path d="M7 15h7"/></svg>
+          </div>
+          <div>
+            <h3>Antifouling</h3>
+            <p>Preparación y aplicación de antifouling sobre la obra viva, con el barco en seco.</p>
+          </div>
+        </div>
+        <p class="svc-note">Obra viva<br>Preparación y aplicación</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROCESO ================= -->
+<section class="process" id="proceso">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Cómo trabajamos</p>
+      <h2>Tres pasos, sin sorpresas</h2>
+      <p>El mismo orden en todos los trabajos: primero se ve el barco, después se presupuesta, y solo entonces se entra en taller.</p>
+    </div>
+    <div class="steps">
+      <article class="step" data-n="01">
+        <div class="step-ico">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9cbccd" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.4-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+        </div>
+        <h3>Llamada y visita</h3>
+        <p>Nos cuenta qué le pasa al barco por teléfono. Se concreta una visita al varadero para verlo.</p>
+      </article>
+      <article class="step" data-n="02">
+        <div class="step-ico">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9cbccd" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6"/><path d="M9 17h4"/></svg>
+        </div>
+        <h3>Valoración y presupuesto</h3>
+        <p>Se revisa la embarcación, se define qué trabajos hacen falta y se pasa un presupuesto antes de empezar.</p>
+      </article>
+      <article class="step" data-n="03">
+        <div class="step-ico">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9cbccd" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18s2-6 9-6 9 6 9 6"/><path d="M12 12V5"/><path d="M8 5h8"/><path d="M4 21h16"/></svg>
+        </div>
+        <h3>Trabajo y entrega</h3>
+        <p>Se ejecuta lo acordado con el barco en seco y se avisa cuando la embarcación está lista.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GALERIA (vacia, preparada) ================= -->
+<section class="gallery" id="trabajos">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Trabajos</p>
+      <h2>Galería preparada, pendiente de fotos</h2>
+      <p>Estos huecos están listos para las fotografías reales del varadero. Cada ficha recoge la imagen, el tipo de trabajo y la embarcación.</p>
+    </div>
+
+    <div class="gal-grid">
+      <article class="gal-card">
+        <div class="gal-slot">
+          <div class="gal-slot-inner">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#5d8ba3" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10.5" r="1.8"/><path d="M3 17l5-4.5 4 3.5 3-2.5 6 5"/></svg>
+            <b>Hueco para foto 01</b>
+          </div>
+        </div>
+        <div class="gal-meta">
+          <div class="gal-field"><span>Tipo de trabajo</span><div class="gal-ph"></div></div>
+          <div class="gal-field"><span>Embarcación</span><div class="gal-ph short"></div></div>
+        </div>
+      </article>
+
+      <article class="gal-card">
+        <div class="gal-slot">
+          <div class="gal-slot-inner">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#5d8ba3" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10.5" r="1.8"/><path d="M3 17l5-4.5 4 3.5 3-2.5 6 5"/></svg>
+            <b>Hueco para foto 02</b>
+          </div>
+        </div>
+        <div class="gal-meta">
+          <div class="gal-field"><span>Tipo de trabajo</span><div class="gal-ph"></div></div>
+          <div class="gal-field"><span>Embarcación</span><div class="gal-ph short"></div></div>
+        </div>
+      </article>
+
+      <article class="gal-card">
+        <div class="gal-slot">
+          <div class="gal-slot-inner">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#5d8ba3" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10.5" r="1.8"/><path d="M3 17l5-4.5 4 3.5 3-2.5 6 5"/></svg>
+            <b>Hueco para foto 03</b>
+          </div>
+        </div>
+        <div class="gal-meta">
+          <div class="gal-field"><span>Tipo de trabajo</span><div class="gal-ph"></div></div>
+          <div class="gal-field"><span>Embarcación</span><div class="gal-ph short"></div></div>
+        </div>
+      </article>
+
+      <article class="gal-card">
+        <div class="gal-slot">
+          <div class="gal-slot-inner">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#5d8ba3" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10.5" r="1.8"/><path d="M3 17l5-4.5 4 3.5 3-2.5 6 5"/></svg>
+            <b>Hueco para foto 04</b>
+          </div>
+        </div>
+        <div class="gal-meta">
+          <div class="gal-field"><span>Tipo de trabajo</span><div class="gal-ph"></div></div>
+          <div class="gal-field"><span>Embarcación</span><div class="gal-ph short"></div></div>
+        </div>
+      </article>
+
+      <article class="gal-card">
+        <div class="gal-slot">
+          <div class="gal-slot-inner">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#5d8ba3" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10.5" r="1.8"/><path d="M3 17l5-4.5 4 3.5 3-2.5 6 5"/></svg>
+            <b>Hueco para foto 05</b>
+          </div>
+        </div>
+        <div class="gal-meta">
+          <div class="gal-field"><span>Tipo de trabajo</span><div class="gal-ph"></div></div>
+          <div class="gal-field"><span>Embarcación</span><div class="gal-ph short"></div></div>
+        </div>
+      </article>
+
+      <article class="gal-card">
+        <div class="gal-slot">
+          <div class="gal-slot-inner">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#5d8ba3" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10.5" r="1.8"/><path d="M3 17l5-4.5 4 3.5 3-2.5 6 5"/></svg>
+            <b>Hueco para foto 06</b>
+          </div>
+        </div>
+        <div class="gal-meta">
+          <div class="gal-field"><span>Tipo de trabajo</span><div class="gal-ph"></div></div>
+          <div class="gal-field"><span>Embarcación</span><div class="gal-ph short"></div></div>
+        </div>
+      </article>
+    </div>
+
+    <p class="gal-foot">Maqueta sin contenido inventado: los huecos se rellenan con fotos y datos que facilite el varadero.</p>
+  </div>
+</section>
+
+<!-- ================= CONTACTO ================= -->
+<section class="contact" id="contacto">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Contacto</p>
+      <h2>Dónde estamos</h2>
+      <p>En el varadero de Punta Umbría. Lo más rápido es una llamada.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div>
+        <dl class="info-list">
+          <div class="info-row">
+            <div class="ico">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1a4256" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.4-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+            </div>
+            <div>
+              <dt>Teléfono</dt>
+              <dd><a href="tel:+34666451359">666 451 359</a></dd>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="ico">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1a4256" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <dt>Dirección</dt>
+              <dd>C/ Varadero, 14<small>21100 Punta Umbría (Huelva)</small></dd>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="ico">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1a4256" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+            </div>
+            <div>
+              <dt>Horario</dt>
+              <dd>Consultar horario</dd>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="ico">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1a4256" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+            </div>
+            <div>
+              <dt>Email</dt>
+              <dd><a href="mailto:varaderodepuntaumbria@gmail.com">varaderodepuntaumbria@gmail.com</a></dd>
+            </div>
+          </div>
+        </dl>
+        <div class="contact-cta">
+          <a class="btn btn-primary" href="tel:+34666451359">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.4-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+            Llamar al 666 451 359
+          </a>
+        </div>
+      </div>
+
+      <div class="map-card">
+        <!-- Mapa esquematico SVG, sin cartografia real -->
+        <svg viewBox="0 0 520 360" role="img" aria-label="Mapa esquemático de la zona del varadero: la ría, el muelle y la C/ Varadero con el número 14 señalado">
+          <defs>
+            <linearGradient id="ria" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#5d8ba3" stop-opacity=".30"/>
+              <stop offset="1" stop-color="#5d8ba3" stop-opacity=".14"/>
+            </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="520" height="360" fill="#f7f9fa"/>
+          <!-- reticula -->
+          <g stroke="#0b1a23" stroke-opacity=".07">
+            <path d="M0 40H520M0 80H520M0 120H520M0 160H520M0 200H520M0 240H520M0 280H520M0 320H520"/>
+            <path d="M40 0V360M80 0V360M120 0V360M160 0V360M200 0V360M240 0V360M280 0V360M320 0V360M360 0V360M400 0V360M440 0V360M480 0V360"/>
+          </g>
+          <!-- agua / ria -->
+          <path d="M0 268 Q120 236 240 254 Q372 274 520 240 L520 360 L0 360 Z" fill="url(#ria)"/>
+          <g stroke="#5d8ba3" stroke-opacity=".5" fill="none" stroke-width="1.4">
+            <path d="M40 302q16-9 32 0t32 0"/>
+            <path d="M160 316q16-9 32 0t32 0"/>
+            <path d="M300 306q16-9 32 0t32 0"/>
+            <path d="M408 326q16-9 32 0t32 0"/>
+          </g>
+          <text x="20" y="348" font-family="monospace" font-size="11" fill="#5d8ba3">RÍA</text>
+          <!-- manzanas -->
+          <g fill="#0b1a23" fill-opacity=".05" stroke="#0b1a23" stroke-opacity=".14">
+            <rect x="34" y="52" width="118" height="76"/>
+            <rect x="34" y="160" width="118" height="62"/>
+            <rect x="196" y="52" width="140" height="76"/>
+            <rect x="196" y="160" width="68" height="62"/>
+            <rect x="382" y="52" width="104" height="76"/>
+            <rect x="382" y="160" width="104" height="54"/>
+          </g>
+          <!-- viales secundarios -->
+          <g stroke="#0b1a23" stroke-opacity=".20" stroke-width="7" stroke-linecap="square">
+            <path d="M174 30V236"/>
+            <path d="M358 30V220"/>
+            <path d="M24 142H500"/>
+          </g>
+          <!-- C/ Varadero -->
+          <path d="M24 240H500" stroke="#1a4256" stroke-opacity=".85" stroke-width="11" stroke-linecap="square"/>
+          <path d="M24 240H500" stroke="#f7f9fa" stroke-width="1.6" stroke-dasharray="12 12"/>
+          <text x="30" y="226" font-family="monospace" font-size="12" letter-spacing="1" fill="#123040">C/ VARADERO</text>
+          <!-- muelle -->
+          <path d="M296 254 L296 334 L336 334 L336 254 Z" fill="#0b1a23" fill-opacity=".07" stroke="#0b1a23" stroke-opacity=".18"/>
+          <text x="344" y="300" font-family="monospace" font-size="10.5" fill="#4a5e69">MUELLE</text>
+          <!-- parcela del varadero -->
+          <rect x="272" y="162" width="92" height="60" fill="#e0821f" fill-opacity=".12" stroke="#e0821f" stroke-width="1.6"/>
+          <text x="282" y="196" font-family="monospace" font-size="11" font-weight="bold" fill="#b86510">N.º 14</text>
+          <!-- chincheta -->
+          <g transform="translate(318,138)">
+            <path d="M0 24c0 0 13-13.5 13-22A13 13 0 1 0-13 2c0 8.5 13 22 13 22z" fill="#e0821f"/>
+            <circle cx="0" cy="2" r="4.6" fill="#fff"/>
+          </g>
+          <!-- rosa de los vientos -->
+          <g transform="translate(466,310)">
+            <circle r="24" fill="#fff" stroke="#0b1a23" stroke-opacity=".16"/>
+            <path d="M0-17 5 0 0 17-5 0Z" fill="#123040" fill-opacity=".75"/>
+            <text x="-4" y="-26" font-family="monospace" font-size="10" fill="#4a5e69">N</text>
+          </g>
+          <!-- escala -->
+          <g transform="translate(34,330)">
+            <path d="M0 0H70" stroke="#4a5e69" stroke-width="1.4"/>
+            <path d="M0-4V4M70-4V4M35-3V3" stroke="#4a5e69" stroke-width="1.4"/>
+          </g>
+          <!-- marco -->
+          <rect x="1" y="1" width="518" height="358" fill="none" stroke="#0b1a23" stroke-opacity=".16"/>
+        </svg>
+        <div class="map-legend">
+          <span><i style="background:#e0821f"></i>C/ Varadero, 14</span>
+          <span><i style="background:#1a4256"></i>C/ Varadero</span>
+          <span><i style="background:#9cbccd"></i>Ría</span>
+        </div>
+        <p class="map-note">Croquis orientativo dibujado para esta propuesta; no es un mapa a escala.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PIE ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <h3>Varaderos de Punta Umbría S.L.</h3>
+        <p>Varadero en Punta Umbría (Huelva). Reparación y mantenimiento de embarcaciones, carpintería de ribera, gel-coat, pulidos y antifouling.</p>
+      </div>
+      <div class="foot-contact">
+        <div><span class="foot-label">Teléfono</span><a href="tel:+34666451359">666 451 359</a></div>
+        <div><span class="foot-label">Email</span><a href="mailto:varaderodepuntaumbria@gmail.com">varaderodepuntaumbria@gmail.com</a></div>
+        <div><span class="foot-label">Dirección</span>C/ Varadero, 14 · 21100 Punta Umbría (Huelva)</div>
+        <div><span class="foot-label">Horario</span>Consultar horario</div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p class="foot-credit">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+      <p>Maqueta no oficial</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    var t=document.querySelector(a.getAttribute('href'));
+    if(!t)return;
+    e.preventDefault();
+    var bar=parseInt(getComputedStyle(document.documentElement).getPropertyValue('--bar-h'),10)||40;
+    window.scrollTo({top:t.getBoundingClientRect().top+window.pageYOffset-bar-8,behavior:'smooth'});
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,662 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gestoria Rullan Sóller</title>
+<meta name="description" content="Propuesta de rediseño para Gestoria Rullan Sóller — maqueta no oficial de FFFFFFstudio.">
+<style>
+  :root{
+    --ink:#101823;
+    --ink-2:#1b2736;
+    --slate:#4a5868;
+    --slate-2:#6d7b8c;
+    --line:#dde3ea;
+    --line-2:#e9edf2;
+    --paper:#ffffff;
+    --paper-2:#f6f8fa;
+    --paper-3:#eef2f6;
+    --accent:#1f5f6b;
+    --accent-2:#2d7f8d;
+    --accent-soft:#e8f1f2;
+    --gold:#9a7b3f;
+    --bar-h:40px;
+    --radius:14px;
+    --shadow:0 1px 2px rgba(16,24,35,.05), 0 12px 32px -18px rgba(16,24,35,.22);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,"Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;max-width:100%}
+  html{overflow-x:clip}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.6;
+    font-size:16px;
+    padding-top:var(--bar-h);
+  }
+  img,svg{max-width:100%}
+  h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.18;letter-spacing:-.01em;margin:0}
+  p{margin:0}
+  a{color:inherit}
+
+  .wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 24px}
+
+  /* ---------- barra fija de propuesta ---------- */
+  .propbar{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    height:var(--bar-h);
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(90deg,#101823 0%,#1b2736 50%,#101823 100%);
+    color:#e7ecf2;
+    font-size:12.5px;letter-spacing:.045em;
+    padding:0 14px;text-align:center;
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .propbar span{
+    display:block;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+    max-width:100%;
+  }
+
+  /* ---------- cabecera del sitio ---------- */
+  .nav{
+    position:sticky;top:var(--bar-h);z-index:90;
+    background:rgba(255,255,255,.92);
+    backdrop-filter:saturate(140%) blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-in{display:flex;align-items:center;gap:16px;min-height:66px;flex-wrap:wrap;padding:10px 24px}
+  .brand{display:flex;align-items:center;gap:11px;margin-right:auto;min-width:0}
+  .brand .mark{flex:0 0 auto}
+  .brand-txt{min-width:0}
+  .brand-name{font-family:var(--serif);font-size:18px;line-height:1.15;white-space:nowrap}
+  .brand-sub{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--slate-2)}
+  .nav-links{display:flex;gap:22px;font-size:14px;color:var(--slate)}
+  .nav-links a{text-decoration:none}
+  .nav-links a:hover{color:var(--accent)}
+  .nav-tel{
+    display:inline-flex;align-items:center;gap:8px;
+    text-decoration:none;font-size:14.5px;font-weight:600;
+    padding:9px 15px;border-radius:999px;
+    background:var(--ink);color:#fff;white-space:nowrap;
+  }
+  .nav-tel:hover{background:var(--accent)}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(900px 420px at 88% -10%, rgba(45,127,141,.16), transparent 70%),
+      radial-gradient(700px 500px at 0% 110%, rgba(154,123,63,.10), transparent 70%),
+      linear-gradient(170deg,#f8fafc 0%,#eef2f6 100%);
+    border-bottom:1px solid var(--line);
+  }
+  .hero-in{display:grid;grid-template-columns:1.08fr .92fr;gap:56px;align-items:center;padding:84px 24px 88px}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--accent);background:var(--accent-soft);
+    border:1px solid #d3e4e6;border-radius:999px;padding:6px 13px;margin-bottom:22px;
+  }
+  .hero h1{font-size:clamp(32px,4.6vw,55px);margin-bottom:20px}
+  .hero h1 em{font-style:normal;color:var(--accent)}
+  .lede{font-size:clamp(16px,1.3vw,18.5px);color:var(--slate);max-width:52ch}
+  .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    text-decoration:none;font-weight:600;font-size:16px;
+    padding:15px 24px;border-radius:999px;border:1px solid transparent;
+    transition:background .18s ease,color .18s ease,border-color .18s ease;
+  }
+  .btn-primary{background:var(--accent);color:#fff;box-shadow:0 10px 26px -14px rgba(31,95,107,.7)}
+  .btn-primary:hover{background:#174a54}
+  .btn-ghost{border-color:var(--line);background:#fff;color:var(--ink)}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+  .cta-note{font-size:13.5px;color:var(--slate-2)}
+
+  .hero-card{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);padding:26px;
+  }
+  .hero-card h3{font-size:16px;margin-bottom:4px}
+  .hero-card .hc-sub{font-size:13px;color:var(--slate-2);margin-bottom:18px}
+  .hc-list{list-style:none;margin:0;padding:0;display:grid;gap:11px}
+  .hc-list li{display:flex;gap:11px;align-items:flex-start;font-size:14.5px;color:var(--ink-2)}
+  .hc-list svg{flex:0 0 auto;margin-top:3px}
+  .hc-rule{height:1px;background:var(--line-2);margin:20px 0 16px}
+  .hc-foot{font-size:13px;color:var(--slate-2)}
+  .hc-foot strong{color:var(--ink);font-weight:600}
+
+  /* ---------- secciones ---------- */
+  section{scroll-margin-top:calc(var(--bar-h) + 76px)}
+  .band{padding:84px 0}
+  .band-alt{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .sec-head{max-width:62ch;margin-bottom:44px}
+  .sec-kicker{font-size:11.5px;letter-spacing:.17em;text-transform:uppercase;color:var(--gold);margin-bottom:13px}
+  .sec-head h2{font-size:clamp(26px,3vw,36px);margin-bottom:14px}
+  .sec-head p{color:var(--slate);font-size:16.5px}
+
+  .areas{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .area{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px 24px 24px;display:flex;flex-direction:column;gap:12px;
+    transition:border-color .18s ease,transform .18s ease,box-shadow .18s ease;
+  }
+  .area:hover{border-color:#c9d8db;transform:translateY(-2px);box-shadow:var(--shadow)}
+  .area-ico{
+    width:44px;height:44px;border-radius:11px;flex:0 0 auto;
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(145deg,var(--accent-soft),#f4f8f9);
+    border:1px solid #dbe8ea;
+  }
+  .area h3{font-size:19px}
+  .area p{font-size:14.5px;color:var(--slate)}
+  .area .num{font-size:11.5px;letter-spacing:.14em;color:var(--slate-2);text-transform:uppercase}
+
+  /* ---------- pasos ---------- */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;counter-reset:s}
+  .step{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:28px 24px;position:relative;
+  }
+  .step-n{
+    font-family:var(--serif);font-size:15px;font-weight:600;
+    width:38px;height:38px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--ink);color:#fff;margin-bottom:16px;
+  }
+  .step h3{font-size:18.5px;margin-bottom:9px}
+  .step p{font-size:14.5px;color:var(--slate)}
+
+  /* ---------- hueco de contenido ---------- */
+  .slot{
+    border:1px dashed #c4ced9;border-radius:var(--radius);
+    background:repeating-linear-gradient(135deg,#fbfcfd 0 10px,#f4f7fa 10px 20px);
+    padding:22px 22px;margin-top:28px;
+  }
+  .slot-tag{
+    display:inline-block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+    color:#6f7d8d;border:1px solid #d3dbe4;background:#fff;border-radius:999px;
+    padding:4px 10px;margin-bottom:10px;
+  }
+  .slot p{font-size:14px;color:var(--slate);max-width:72ch}
+
+  /* ---------- contacto ---------- */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+  .panel{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:28px;box-shadow:var(--shadow);
+  }
+  .data{list-style:none;margin:0;padding:0;display:grid;gap:20px}
+  .data li{display:flex;gap:14px;align-items:flex-start}
+  .data .d-ico{
+    width:38px;height:38px;border-radius:10px;flex:0 0 auto;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--paper-3);border:1px solid var(--line);
+  }
+  .d-label{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--slate-2);margin-bottom:3px}
+  .d-val{font-size:16.5px;font-family:var(--serif)}
+  .d-val a{text-decoration:none}
+  .d-val a:hover{color:var(--accent)}
+  .d-val small{display:block;font-family:var(--sans);font-size:13.5px;color:var(--slate);margin-top:3px;font-weight:400}
+  .contact-cta{margin-top:26px;padding-top:22px;border-top:1px solid var(--line-2)}
+
+  .mapwrap{
+    border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#fff;
+    box-shadow:var(--shadow);
+  }
+  .mapwrap svg{display:block;width:100%;height:auto}
+  .map-cap{
+    padding:13px 18px;border-top:1px solid var(--line-2);
+    font-size:12.5px;color:var(--slate-2);background:var(--paper-2);
+  }
+
+  /* ---------- pie ---------- */
+  footer{
+    background:var(--ink);color:#c9d3df;
+    padding:56px 0 30px;margin-top:0;
+  }
+  .foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:34px}
+  .foot-brand .brand-name{color:#fff}
+  .foot-brand .brand-sub{color:#8795a6}
+  .foot-brand p{font-size:14px;color:#9fadbd;margin-top:14px;max-width:38ch}
+  .foot-col h4{font-family:var(--sans);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#8795a6;margin:0 0 14px;font-weight:600}
+  .foot-col ul{list-style:none;margin:0;padding:0;display:grid;gap:9px;font-size:14.5px}
+  .foot-col a{text-decoration:none;color:#d7dfe8;word-break:break-word}
+  .foot-col a:hover{color:#fff}
+  .foot-col .muted{color:#8795a6;font-size:14px}
+  .foot-rule{height:1px;background:rgba(255,255,255,.1);margin:38px 0 20px}
+  .foot-bottom{display:flex;flex-wrap:wrap;gap:12px 22px;justify-content:space-between;font-size:12.5px;color:#8795a6}
+  .credit{color:#aebbc9}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:980px){
+    .hero-in{grid-template-columns:1fr;gap:38px;padding:58px 24px 64px}
+    .areas{grid-template-columns:repeat(2,1fr)}
+    .steps{grid-template-columns:1fr}
+    .contact-grid{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .foot-brand{grid-column:1 / -1}
+  }
+  @media (max-width:760px){
+    .nav-links{display:none}
+  }
+  @media (max-width:640px){
+    :root{--bar-h:52px}
+    .propbar{font-size:10.5px;letter-spacing:.02em;line-height:1.35;padding:0 12px}
+    .propbar span{white-space:normal;text-overflow:clip}
+    .wrap{padding:0 16px}
+    .nav-in{padding:10px 16px;min-height:60px;gap:10px}
+    .brand-name{font-size:16px}
+    .nav-tel{font-size:13.5px;padding:8px 13px}
+    .hero-in{padding:44px 16px 52px;gap:32px}
+    .band{padding:58px 0}
+    .areas{grid-template-columns:1fr;gap:16px}
+    .btn{width:100%;padding:14px 18px;font-size:15.5px}
+    .cta-row{gap:10px}
+    .cta-note{text-align:left}
+    .panel,.hero-card{padding:22px 18px}
+    .foot-grid{grid-template-columns:1fr;gap:28px}
+    .d-val{font-size:16px}
+  }
+  @media (max-width:400px){
+    .brand-sub{letter-spacing:.1em;font-size:9.5px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none !important}
+  }
+</style>
+</head>
+<body>
+
+<div class="propbar" role="note"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<header class="nav">
+  <div class="nav-in">
+    <div class="brand">
+      <svg class="mark" width="38" height="38" viewBox="0 0 38 38" aria-hidden="true">
+        <rect x="1" y="1" width="36" height="36" rx="9" fill="#101823"/>
+        <path d="M11 27V11h7.4c2.9 0 4.8 1.7 4.8 4.3 0 2-1.1 3.4-2.9 3.9L24 27h-3.3l-3.3-7h-3.5v7H11Zm2.9-9.4h4c1.5 0 2.4-.8 2.4-2.1 0-1.3-.9-2.1-2.4-2.1h-4v4.2Z" fill="#fff"/>
+        <circle cx="27.5" cy="13" r="2.2" fill="#2d7f8d"/>
+      </svg>
+      <div class="brand-txt">
+        <div class="brand-name">Gestoria Rullan</div>
+        <div class="brand-sub">Sóller · Mallorca</div>
+      </div>
+    </div>
+    <nav class="nav-links" aria-label="Secciones">
+      <a href="#areas">Áreas</a>
+      <a href="#proceso">Cómo trabajamos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="nav-tel" href="tel:+34971630580">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+      971 63 05 80
+    </a>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" aria-labelledby="hero-t">
+    <div class="wrap hero-in">
+      <div>
+        <span class="eyebrow">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 3 4 7v5c0 5 3.4 8.3 8 9 4.6-.7 8-4 8-9V7l-8-4Z"/></svg>
+          Gestoría administrativa en Sóller
+        </span>
+        <h1 id="hero-t">Su gestoría de confianza en el <em>centro de Sóller</em></h1>
+        <p class="lede">Laboral, fiscal y contable, constitución de empresas, seguros y contratos de alquiler. Atención directa, en despacho, para autónomos, empresas y particulares.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="tel:+34971630580">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+            Llamar al 971 63 05 80
+          </a>
+          <a class="btn btn-ghost" href="#areas">Ver áreas de trabajo</a>
+        </div>
+        <p class="cta-note">C/ Es Born, 5, entresuelo · 07100 Sóller · Consultar horario</p>
+      </div>
+
+      <aside class="hero-card">
+        <h3>Áreas que atendemos</h3>
+        <p class="hc-sub">Seis líneas de trabajo del despacho.</p>
+        <ul class="hc-list">
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1f5f6b" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Laboral</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1f5f6b" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Fiscal</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1f5f6b" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Contable</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1f5f6b" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Constitución de empresas</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1f5f6b" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Seguros</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1f5f6b" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Contratos de alquiler</li>
+        </ul>
+        <div class="hc-rule"></div>
+        <p class="hc-foot"><strong>Teléfono:</strong> <a href="tel:+34971630580" style="text-decoration:none">971 63 05 80</a><br><strong>Email:</strong> <a href="mailto:info@gestoriarullan.com" style="text-decoration:none">info@gestoriarullan.com</a></p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============ ÁREAS ============ -->
+  <section class="band" id="areas" aria-labelledby="areas-t">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="sec-kicker">Áreas de trabajo</p>
+        <h2 id="areas-t">Seis áreas, una a una</h2>
+        <p>Cada área se atiende en el despacho de Sóller. Si no sabe en cuál encaja su caso, llame y lo vemos.</p>
+      </div>
+
+      <div class="areas">
+        <article class="area">
+          <div class="area-ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1f5f6b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></svg>
+          </div>
+          <p class="num">Área 01</p>
+          <h3>Laboral</h3>
+          <p>Gestión laboral de la empresa y de las personas que trabajan en ella.</p>
+        </article>
+
+        <article class="area">
+          <div class="area-ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1f5f6b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M9 13h6"/><path d="M9 17h4"/></svg>
+          </div>
+          <p class="num">Área 02</p>
+          <h3>Fiscal</h3>
+          <p>Obligaciones fiscales y trato con la Administración tributaria.</p>
+        </article>
+
+        <article class="area">
+          <div class="area-ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1f5f6b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8"/><path d="M8 10h3"/><path d="M13 10h3"/><path d="M8 14h3"/><path d="M13 14h3"/><path d="M8 18h8"/></svg>
+          </div>
+          <p class="num">Área 03</p>
+          <h3>Contable</h3>
+          <p>Contabilidad al día y cuentas preparadas para su presentación.</p>
+        </article>
+
+        <article class="area">
+          <div class="area-ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1f5f6b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V8l7-5 7 5v13"/><path d="M9 21v-6h6v6"/></svg>
+          </div>
+          <p class="num">Área 04</p>
+          <h3>Constitución de empresas</h3>
+          <p>Acompañamiento en los trámites para poner en marcha una sociedad.</p>
+        </article>
+
+        <article class="area">
+          <div class="area-ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1f5f6b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6.5V12c0 4.8 3.3 8.1 8 9 4.7-.9 8-4.2 8-9V6.5L12 3Z"/><path d="M9.2 12.2 11.4 14.4 15 10.8"/></svg>
+          </div>
+          <p class="num">Área 05</p>
+          <h3>Seguros</h3>
+          <p>Seguros para la actividad, el negocio y el ámbito particular.</p>
+        </article>
+
+        <article class="area">
+          <div class="area-ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1f5f6b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6Z"/><path d="M15 2v4h4"/><path d="M8.5 16.5c1.6-3.4 2.6-5.2 3.1-5.2.6 0 .3 2.6 1.1 2.6.6 0 1-1 2.3-1"/></svg>
+          </div>
+          <p class="num">Área 06</p>
+          <h3>Contratos de alquiler</h3>
+          <p>Redacción y gestión de contratos de arrendamiento.</p>
+        </article>
+      </div>
+
+      <div class="slot">
+        <span class="slot-tag">Hueco preparado · contenido del despacho</span>
+        <p>Espacio reservado para que la gestoría detalle, en sus propias palabras, qué incluye cada área y a qué perfil de cliente se dirige. Esta maqueta no describe servicios que no estén confirmados por el despacho.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CÓMO TRABAJAMOS ============ -->
+  <section class="band band-alt" id="proceso" aria-labelledby="proc-t">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="sec-kicker">Cómo trabajamos</p>
+        <h2 id="proc-t">Tres pasos, sin vueltas</h2>
+        <p>Una forma de empezar clara, para que sepa qué va a pasar antes de llamar.</p>
+      </div>
+
+      <div class="steps">
+        <article class="step">
+          <div class="step-n">1</div>
+          <h3>Nos cuenta su caso</h3>
+          <p>Por teléfono o en el despacho. Nos explica su situación y qué necesita resolver.</p>
+        </article>
+        <article class="step">
+          <div class="step-n">2</div>
+          <h3>Revisamos y le decimos qué hace falta</h3>
+          <p>Vemos la documentación, le indicamos los pasos y los plazos que afectan a su caso.</p>
+        </article>
+        <article class="step">
+          <div class="step-n">3</div>
+          <h3>Nos encargamos de la gestión</h3>
+          <p>Tramitamos lo acordado y le mantenemos informado de lo que se va presentando.</p>
+        </article>
+      </div>
+
+      <div class="slot">
+        <span class="slot-tag">Hueco preparado · detalle del proceso</span>
+        <p>Si el despacho quiere precisar su forma de trabajar (documentación que suele pedir, canal de contacto preferido, periodicidad de los envíos), este bloque queda listo para recibir ese texto.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACTO ============ -->
+  <section class="band" id="contacto" aria-labelledby="cont-t">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="sec-kicker">Contacto</p>
+        <h2 id="cont-t">Dónde estamos y cómo localizarnos</h2>
+        <p>El despacho está en el centro de Sóller, en la calle Es Born.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="panel">
+          <ul class="data">
+            <li>
+              <span class="d-ico">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1f5f6b" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+              </span>
+              <div>
+                <p class="d-label">Teléfono</p>
+                <p class="d-val"><a href="tel:+34971630580">971 63 05 80</a></p>
+              </div>
+            </li>
+            <li>
+              <span class="d-ico">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1f5f6b" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              </span>
+              <div>
+                <p class="d-label">Dirección</p>
+                <p class="d-val">C/ Es Born, 5, entresuelo<small>07100 Sóller (Mallorca)</small></p>
+              </div>
+            </li>
+            <li>
+              <span class="d-ico">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1f5f6b" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+              </span>
+              <div>
+                <p class="d-label">Horario</p>
+                <p class="d-val">Consultar horario<small>Llame al despacho para confirmarlo antes de acercarse.</small></p>
+              </div>
+            </li>
+            <li>
+              <span class="d-ico">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1f5f6b" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3 6 9 6.5L21 6"/></svg>
+              </span>
+              <div>
+                <p class="d-label">Email</p>
+                <p class="d-val"><a href="mailto:info@gestoriarullan.com">info@gestoriarullan.com</a></p>
+              </div>
+            </li>
+          </ul>
+
+          <div class="contact-cta">
+            <a class="btn btn-primary" href="tel:+34971630580">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+              Llamar al 971 63 05 80
+            </a>
+          </div>
+        </div>
+
+        <div class="mapwrap">
+          <svg viewBox="0 0 560 420" role="img" aria-labelledby="map-t map-d">
+            <title id="map-t">Plano esquemático de la ubicación del despacho</title>
+            <desc id="map-d">Esquema dibujado a mano alzada que sitúa el despacho en la calle Es Born, número 5, en Sóller. No es un mapa a escala.</desc>
+            <defs>
+              <linearGradient id="mg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#f3f7f8"/>
+                <stop offset="1" stop-color="#e8eef2"/>
+              </linearGradient>
+              <linearGradient id="mw" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#cfe0e4"/>
+                <stop offset="1" stop-color="#b9d2d8"/>
+              </linearGradient>
+            </defs>
+
+            <rect width="560" height="420" fill="url(#mg)"/>
+
+            <!-- manzanas -->
+            <g fill="#ffffff" stroke="#dbe3ea" stroke-width="1.5">
+              <rect x="34" y="40" width="130" height="96" rx="6"/>
+              <rect x="34" y="208" width="130" height="80" rx="6"/>
+              <rect x="34" y="320" width="130" height="64" rx="6"/>
+              <rect x="372" y="40" width="154" height="78" rx="6"/>
+              <rect x="372" y="246" width="154" height="92" rx="6"/>
+              <rect x="226" y="40" width="112" height="60" rx="6"/>
+              <rect x="226" y="330" width="112" height="54" rx="6"/>
+            </g>
+
+            <!-- plaza / zona verde -->
+            <rect x="372" y="188" width="154" height="62" rx="8" fill="#e6efe6" stroke="#d2e2d2" stroke-width="1.5"/>
+            <text x="484" y="226" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#5f7a60">Plaça</text>
+
+            <!-- calles -->
+            <g stroke="#ffffff" stroke-width="22" stroke-linecap="square">
+              <line x1="196" y1="18" x2="196" y2="402"/>
+              <line x1="18" y1="172" x2="542" y2="172"/>
+              <line x1="18" y1="306" x2="542" y2="306"/>
+              <line x1="354" y1="18" x2="354" y2="402"/>
+            </g>
+            <g stroke="#e3eaf0" stroke-width="22" stroke-linecap="square" opacity=".55">
+              <line x1="196" y1="18" x2="196" y2="402"/>
+              <line x1="18" y1="172" x2="542" y2="172"/>
+            </g>
+
+            <!-- calle principal destacada: Es Born -->
+            <line x1="196" y1="18" x2="196" y2="402" stroke="#dce8ea" stroke-width="24"/>
+            <line x1="196" y1="18" x2="196" y2="402" stroke="#2d7f8d" stroke-width="2" stroke-dasharray="9 9" opacity=".55"/>
+
+            <!-- torrente / agua esquemática -->
+            <path d="M18 376 C90 366 140 392 210 380 C290 366 330 394 404 382 C470 371 510 390 542 382"
+                  fill="none" stroke="url(#mw)" stroke-width="9" stroke-linecap="round"/>
+
+            <!-- etiquetas de calle -->
+            <g font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif" font-size="12.5" fill="#6d7b8c">
+              <text x="208" y="36" transform="rotate(90 208 36)">C/ Es Born</text>
+              <text x="40" y="166">Calle</text>
+              <text x="40" y="300">Calle</text>
+              <text x="366" y="36" transform="rotate(90 366 36)">Calle</text>
+            </g>
+
+            <!-- marcador del despacho -->
+            <g>
+              <circle cx="196" cy="226" r="27" fill="#1f5f6b" opacity=".12"/>
+              <circle cx="196" cy="226" r="16" fill="#1f5f6b" opacity=".2"/>
+              <path d="M196 206a11 11 0 0 0-11 11c0 8 11 19 11 19s11-11 11-19a11 11 0 0 0-11-11Z" fill="#1f5f6b"/>
+              <circle cx="196" cy="217" r="4" fill="#ffffff"/>
+            </g>
+
+            <!-- cartel del despacho -->
+            <g>
+              <rect x="224" y="192" width="200" height="62" rx="9" fill="#101823"/>
+              <text x="238" y="216" font-family="Georgia, serif" font-size="15" fill="#ffffff">Gestoria Rullan</text>
+              <text x="238" y="236" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif" font-size="12" fill="#a9b7c5">C/ Es Born, 5 · entresuelo</text>
+            </g>
+
+            <!-- norte -->
+            <g transform="translate(500,372)">
+              <circle r="19" fill="#ffffff" stroke="#dbe3ea" stroke-width="1.5"/>
+              <path d="M0 -11 L5 4 L0 1 L-5 4 Z" fill="#101823"/>
+              <text y="15" text-anchor="middle" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif" font-size="9" fill="#6d7b8c">N</text>
+            </g>
+          </svg>
+          <p class="map-cap">Plano esquemático, no a escala. Referencia visual de la ubicación en C/ Es Born, 5, Sóller.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="brand" style="margin:0">
+          <svg width="36" height="36" viewBox="0 0 38 38" aria-hidden="true">
+            <rect x="1" y="1" width="36" height="36" rx="9" fill="#ffffff" fill-opacity=".08" stroke="rgba(255,255,255,.18)"/>
+            <path d="M11 27V11h7.4c2.9 0 4.8 1.7 4.8 4.3 0 2-1.1 3.4-2.9 3.9L24 27h-3.3l-3.3-7h-3.5v7H11Zm2.9-9.4h4c1.5 0 2.4-.8 2.4-2.1 0-1.3-.9-2.1-2.4-2.1h-4v4.2Z" fill="#fff"/>
+            <circle cx="27.5" cy="13" r="2.2" fill="#4fa3b1"/>
+          </svg>
+          <div class="brand-txt">
+            <div class="brand-name">Gestoria Rullan</div>
+            <div class="brand-sub">Sóller · Mallorca</div>
+          </div>
+        </div>
+        <p>Gestoría administrativa en Sóller. Laboral, fiscal, contable, constitución de empresas, seguros y contratos de alquiler.</p>
+      </div>
+
+      <div class="foot-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="tel:+34971630580">971 63 05 80</a></li>
+          <li><a href="mailto:info@gestoriarullan.com">info@gestoriarullan.com</a></li>
+          <li class="muted">Consultar horario</li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h4>Despacho</h4>
+        <ul>
+          <li class="muted">C/ Es Born, 5, entresuelo</li>
+          <li class="muted">07100 Sóller (Mallorca)</li>
+          <li><a href="#areas">Áreas de trabajo</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot-rule"></div>
+    <div class="foot-bottom">
+      <p class="credit">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+      <p>Maqueta no oficial · sin vinculación con el negocio</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Desplazamiento suave respetando la barra fija y la cabecera pegajosa.
+  (function () {
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        var id = a.getAttribute('href');
+        if (!id || id === '#') return;
+        var t = document.querySelector(id);
+        if (!t) return;
+        e.preventDefault();
+        var nav = document.querySelector('.nav');
+        var bar = document.querySelector('.propbar');
+        var off = (nav ? nav.offsetHeight : 0) + (bar ? bar.offsetHeight : 0) + 8;
+        var y = t.getBoundingClientRect().top + window.pageYOffset - off;
+        window.scrollTo({ top: y, behavior: reduce ? 'auto' : 'smooth' });
+      });
+    });
+  })();
+</script>
+</body>
+</html>

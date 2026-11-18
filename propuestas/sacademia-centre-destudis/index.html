@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>S'Acadèmia - Centre d'Estudis · Inca</title>
+<meta name="description" content="Propuesta de diseño (maqueta no oficial) para S'Acadèmia - Centre d'Estudis, Inca.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  :root{
+    --ink:#15233a;
+    --ink-soft:#3d4f6b;
+    --muted:#6b7a90;
+    --line:#dfe5ee;
+    --bg:#f7f9fc;
+    --card:#ffffff;
+    --brand:#1f4e79;
+    --brand-deep:#15375a;
+    --accent:#e08a2e;
+    --accent-soft:#fdf2e2;
+    --radius:16px;
+    --maxw:1120px;
+    --bar-h:42px;
+    --font:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  }
+
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  html,body{max-width:100%;overflow-x:hidden}
+  body{
+    margin:0;
+    font-family:var(--font);
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.6;
+    font-size:16px;
+  }
+  img,svg{max-width:100%;display:block}
+  h1,h2,h3,h4{margin:0;line-height:1.2;letter-spacing:-0.015em;font-weight:700}
+  p{margin:0}
+  a{color:inherit}
+
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  /* ---------- Barra fija de propuesta ---------- */
+  .proposal-bar{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    min-height:var(--bar-h);
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(90deg,#15233a 0%,#1f4e79 55%,#2b6396 100%);
+    color:#eaf1f9;
+    font-size:12.5px;letter-spacing:0.04em;
+    text-align:center;
+    padding:9px 16px;
+    border-bottom:1px solid rgba(255,255,255,.16);
+  }
+  .proposal-bar span{display:inline-block;max-width:100%}
+
+  /* ---------- Cabecera ---------- */
+  .site-head{
+    position:relative;z-index:50;
+    padding-top:calc(var(--bar-h) + 18px);
+    padding-bottom:14px;
+  }
+  .site-head .wrap{
+    display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  }
+  .brand{display:flex;align-items:center;gap:12px;min-width:0}
+  .brand-mark{
+    width:44px;height:44px;flex:0 0 44px;border-radius:12px;
+    background:linear-gradient(145deg,#1f4e79,#15233a);
+    display:grid;place-items:center;
+    box-shadow:0 6px 16px rgba(21,35,58,.22);
+  }
+  .brand-mark svg{width:24px;height:24px}
+  .brand-text{min-width:0}
+  .brand-name{font-size:17px;font-weight:700;letter-spacing:-0.01em;white-space:nowrap}
+  .brand-sub{font-size:11.5px;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase}
+
+  .head-nav{display:flex;align-items:center;gap:22px}
+  .head-nav a{
+    text-decoration:none;font-size:14.5px;color:var(--ink-soft);
+    padding:4px 0;border-bottom:2px solid transparent;transition:.18s;
+  }
+  .head-nav a:hover{color:var(--brand);border-bottom-color:var(--accent)}
+  .head-nav .nav-links{display:flex;gap:22px}
+
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    font-size:15px;font-weight:600;text-decoration:none;
+    padding:13px 24px;border-radius:12px;border:1px solid transparent;
+    transition:.18s;cursor:pointer;
+  }
+  .btn svg{width:17px;height:17px;flex:0 0 17px}
+  .btn-primary{
+    background:linear-gradient(135deg,#e08a2e,#c9741c);
+    color:#fff;box-shadow:0 8px 20px rgba(201,116,28,.28);
+  }
+  .btn-primary:hover{filter:brightness(1.06);transform:translateY(-1px)}
+  .btn-ghost{
+    background:#fff;color:var(--brand);border-color:var(--line);
+  }
+  .btn-ghost:hover{border-color:var(--brand);background:#f4f8fc}
+  .btn-outline-light{
+    background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.4);
+  }
+  .btn-outline-light:hover{background:rgba(255,255,255,.16)}
+  .btn-sm{padding:10px 18px;font-size:14px}
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative;overflow:hidden;padding:26px 0 64px}
+  .hero-grid{
+    display:grid;grid-template-columns:1.08fr .92fr;gap:44px;align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--accent-soft);color:#a65f10;
+    font-size:12.5px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;
+    padding:7px 14px;border-radius:999px;border:1px solid #f3dcbd;
+    margin-bottom:20px;
+  }
+  .eyebrow svg{width:14px;height:14px}
+  .hero h1{font-size:clamp(30px,4.2vw,50px)}
+  .hero h1 em{font-style:normal;color:var(--brand);display:block}
+  .hero-lead{margin-top:18px;font-size:17.5px;color:var(--ink-soft);max-width:34em}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+  .hero-note{
+    margin-top:20px;font-size:13.5px;color:var(--muted);
+    display:flex;align-items:flex-start;gap:8px;max-width:30em;
+  }
+  .hero-note svg{width:15px;height:15px;flex:0 0 15px;margin-top:4px}
+
+  /* Tarjeta visual del hero (sin fotos: SVG + gradiente) */
+  .hero-card{
+    position:relative;border-radius:22px;padding:26px;
+    background:linear-gradient(160deg,#1f4e79 0%,#15233a 100%);
+    color:#eaf1f9;box-shadow:0 22px 50px rgba(21,35,58,.26);
+    overflow:hidden;
+  }
+  .hero-card::after{
+    content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;
+    background:radial-gradient(circle,rgba(224,138,46,.42),transparent 68%);
+    pointer-events:none;
+  }
+  .hero-card h3{font-size:15px;letter-spacing:0.05em;text-transform:uppercase;color:#9dbbd8}
+  .hero-card .deskline{margin:18px 0 20px;border-radius:14px;background:rgba(255,255,255,.06);padding:14px}
+  .hero-card .deskline svg{width:100%;height:auto}
+  .mini-list{list-style:none;margin:0;padding:0;display:grid;gap:11px}
+  .mini-list li{display:flex;align-items:flex-start;gap:10px;font-size:14.5px;color:#dce8f4}
+  .mini-list svg{width:16px;height:16px;flex:0 0 16px;margin-top:4px}
+
+  /* ---------- Bloques de sección ---------- */
+  section{scroll-margin-top:calc(var(--bar-h) + 16px)}
+  .band{padding:62px 0}
+  .band-white{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .band-tint{background:linear-gradient(180deg,#f7f9fc,#eef3f9)}
+
+  .sec-head{max-width:46em;margin-bottom:38px}
+  .sec-kicker{
+    font-size:12.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;
+    color:var(--accent);margin-bottom:10px;
+  }
+  .sec-head h2{font-size:clamp(24px,3vw,33px)}
+  .sec-head p{margin-top:14px;font-size:16.5px;color:var(--ink-soft)}
+
+  /* ---------- Servicios ---------- */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px 24px;transition:.2s;
+  }
+  .band-white .card{background:#fcfdff}
+  .card:hover{border-color:#bcd0e6;box-shadow:0 12px 28px rgba(21,35,58,.08);transform:translateY(-2px)}
+  .card-ic{
+    width:46px;height:46px;border-radius:13px;display:grid;place-items:center;
+    background:linear-gradient(145deg,#e9f1f9,#d7e5f3);margin-bottom:16px;
+  }
+  .card-ic svg{width:24px;height:24px}
+  .card h3{font-size:17.5px;margin-bottom:9px}
+  .card p{font-size:14.8px;color:var(--ink-soft)}
+
+  .placeholder{
+    margin-top:16px;padding:13px 15px;border-radius:12px;
+    border:1.5px dashed #c6b393;background:#fdfaf4;
+    font-size:13.5px;color:#8a6a33;
+    display:flex;align-items:flex-start;gap:9px;
+  }
+  .placeholder svg{width:15px;height:15px;flex:0 0 15px;margin-top:3px}
+  .placeholder strong{display:block;font-size:11.5px;letter-spacing:0.1em;text-transform:uppercase;color:#a67c33;margin-bottom:3px;font-weight:700}
+
+  /* ---------- Pasos ---------- */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;counter-reset:s}
+  .step{
+    position:relative;background:#fff;border:1px solid var(--line);
+    border-radius:var(--radius);padding:28px 24px 24px;
+  }
+  .step-n{
+    width:40px;height:40px;border-radius:50%;
+    background:linear-gradient(145deg,#1f4e79,#15233a);color:#fff;
+    display:grid;place-items:center;font-size:17px;font-weight:700;
+    margin-bottom:16px;box-shadow:0 6px 14px rgba(21,35,58,.2);
+  }
+  .step h3{font-size:17.5px;margin-bottom:9px}
+  .step p{font-size:14.8px;color:var(--ink-soft)}
+  .step-rail{height:3px;border-radius:2px;background:linear-gradient(90deg,#1f4e79,#e08a2e);margin-bottom:26px;max-width:120px}
+
+  /* ---------- Contacto ---------- */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start}
+  .panel{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px;
+  }
+  .contact-list{list-style:none;margin:0;padding:0;display:grid;gap:18px}
+  .contact-list li{display:flex;gap:14px;align-items:flex-start}
+  .ci{
+    width:40px;height:40px;flex:0 0 40px;border-radius:11px;display:grid;place-items:center;
+    background:var(--accent-soft);border:1px solid #f3dcbd;
+  }
+  .ci svg{width:19px;height:19px}
+  .cl-label{font-size:11.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .cl-value{font-size:16.5px;font-weight:600;margin-top:2px;overflow-wrap:break-word}
+  .cl-value a{text-decoration:none;color:var(--brand);border-bottom:1px solid rgba(31,78,121,.3)}
+  .cl-value a:hover{border-bottom-color:var(--accent)}
+  .cl-note{font-size:13.8px;color:var(--muted);margin-top:3px}
+  .phones{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:2px}
+
+  .map-panel{padding:0;overflow:hidden}
+  .map-head{padding:20px 24px 14px;border-bottom:1px solid var(--line)}
+  .map-head h3{font-size:16.5px}
+  .map-head p{font-size:13.6px;color:var(--muted);margin-top:5px}
+  .map-figure{background:linear-gradient(170deg,#eef4fa,#e2ebf5);padding:10px}
+  .map-figure svg{width:100%;height:auto;border-radius:10px}
+  .map-foot{padding:14px 24px 20px;font-size:13px;color:var(--muted)}
+
+  /* ---------- CTA franja ---------- */
+  .cta-band{
+    background:linear-gradient(135deg,#15233a 0%,#1f4e79 70%,#27598a 100%);
+    color:#fff;padding:52px 0;
+  }
+  .cta-inner{display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap}
+  .cta-inner h2{font-size:clamp(22px,2.6vw,30px)}
+  .cta-inner p{margin-top:10px;color:#c6daec;font-size:16px;max-width:36em}
+  .cta-actions{display:flex;flex-wrap:wrap;gap:12px}
+
+  /* ---------- Pie ---------- */
+  .site-foot{background:#101b2d;color:#aebfd2;padding:46px 0 0}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px}
+  .site-foot h4{color:#fff;font-size:14px;letter-spacing:0.09em;text-transform:uppercase;margin-bottom:14px}
+  .site-foot p,.site-foot li{font-size:14.5px;line-height:1.7}
+  .site-foot ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+  .site-foot a{color:#d6e4f2;text-decoration:none;border-bottom:1px solid rgba(214,228,242,.25);overflow-wrap:break-word}
+  .site-foot a:hover{color:#fff;border-bottom-color:var(--accent)}
+  .foot-brand{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+  .foot-brand .brand-mark{box-shadow:none;background:linear-gradient(145deg,#2b6396,#1f4e79)}
+  .foot-brand .brand-name{color:#fff}
+  .studio-line{
+    margin-top:40px;border-top:1px solid rgba(255,255,255,.1);
+    padding:20px 0 26px;font-size:13.2px;color:#8da3bb;
+    display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:980px){
+    .hero-grid{grid-template-columns:1fr;gap:34px}
+    .cards,.steps{grid-template-columns:repeat(2,1fr)}
+    .contact-grid{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:720px){
+    :root{--bar-h:58px}
+    .wrap{padding:0 16px}
+    .proposal-bar{font-size:11.5px;line-height:1.45;letter-spacing:0.02em;padding:8px 14px}
+    .site-head .wrap{align-items:flex-start}
+    .head-nav .nav-links{display:none}
+    .head-nav{display:none}
+    .site-head{padding-bottom:4px}
+    .band{padding:46px 0}
+    .hero{padding:16px 0 46px}
+    .cards,.steps{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr;gap:26px}
+    .hero-actions .btn{width:100%}
+    .cta-actions{width:100%}
+    .cta-actions .btn{width:100%}
+    .studio-line{flex-direction:column;gap:10px}
+    .brand-name{white-space:normal}
+  }
+  @media (max-width:420px){
+    .hero h1{font-size:28px}
+    .cl-value{font-size:15.5px}
+    .panel{padding:22px 18px}
+    .card,.step{padding:22px 18px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none!important;animation:none!important}
+  }
+</style>
+</head>
+<body>
+
+<!-- Barra fija de propuesta -->
+<div class="proposal-bar" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<!-- Cabecera -->
+<header class="site-head">
+  <div class="wrap">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#f3c88a" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 7.5 12 3.5l9 4-9 4-9-4Z"/>
+          <path d="M6.5 9.4v5.1c0 1.6 2.5 2.9 5.5 2.9s5.5-1.3 5.5-2.9V9.4"/>
+          <path d="M20.3 8.6v5.6"/>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <div class="brand-name">S'Acadèmia</div>
+        <div class="brand-sub">Centre d'Estudis · Inca</div>
+      </div>
+    </div>
+    <nav class="head-nav" aria-label="Navegación principal">
+      <div class="nav-links">
+        <a href="#servicios">Qué hacemos</a>
+        <a href="#empezar">Cómo empezar</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+      <a class="btn btn-primary btn-sm" href="tel:+34971883564">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 16.9v2.5a2 2 0 0 1-2.2 2 19.3 19.3 0 0 1-8.4-3 19 19 0 0 1-5.8-5.8 19.3 19.3 0 0 1-3-8.5A2 2 0 0 1 3.6 2h2.5a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.2 9.8a15.5 15.5 0 0 0 5.8 5.8l1.2-1.2a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/>
+        </svg>
+        971 883 564
+      </a>
+    </nav>
+  </div>
+</header>
+
+<!-- 1. HERO -->
+<section class="hero" aria-labelledby="hero-title">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 3 3 7.5l9 4 9-4L12 3Z"/><path d="M21 7.5v5"/>
+        </svg>
+        Academia y centro de estudios en Inca
+      </span>
+      <h1 id="hero-title">Apoyo escolar con <em>seguimiento cercano</em></h1>
+      <p class="hero-lead">
+        Refuerzo por niveles, hábitos de estudio y acompañamiento constante en grupos reducidos.
+        Lo primero es conocer el caso: nos cuentas la situación y te explicamos cómo podemos ayudar.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="tel:+34971883564">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 16.9v2.5a2 2 0 0 1-2.2 2 19.3 19.3 0 0 1-8.4-3 19 19 0 0 1-5.8-5.8 19.3 19.3 0 0 1-3-8.5A2 2 0 0 1 3.6 2h2.5a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.2 9.8a15.5 15.5 0 0 0 5.8 5.8l1.2-1.2a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/>
+          </svg>
+          Llamar al 971 883 564
+        </a>
+        <a class="btn btn-ghost" href="#contacto">Ver cómo contactar</a>
+      </div>
+      <p class="hero-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#8a97a8" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/>
+        </svg>
+        Avinguda General Luque, 90 · Inca (Mallorca). Consultar horario.
+      </p>
+    </div>
+
+    <aside class="hero-card" aria-label="Resumen del centro">
+      <h3>En qué nos centramos</h3>
+      <div class="deskline" aria-hidden="true">
+        <!-- Ilustración SVG: mesa de estudio esquemática -->
+        <svg viewBox="0 0 320 128" role="img" aria-hidden="true">
+          <defs>
+            <linearGradient id="gdesk" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#4b85bd"/><stop offset="1" stop-color="#2b6396"/>
+            </linearGradient>
+            <linearGradient id="gbook" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#e9a657"/><stop offset="1" stop-color="#c9741c"/>
+            </linearGradient>
+          </defs>
+          <!-- lineas de cuaderno -->
+          <g stroke="rgba(255,255,255,.14)" stroke-width="1">
+            <path d="M14 26h292M14 44h292M14 62h292M14 80h292"/>
+          </g>
+          <!-- mesa -->
+          <rect x="22" y="92" width="276" height="8" rx="4" fill="url(#gdesk)"/>
+          <path d="M44 100v18M276 100v18" stroke="#4b85bd" stroke-width="6" stroke-linecap="round"/>
+          <!-- libros apilados -->
+          <rect x="52" y="76" width="74" height="9" rx="3" fill="url(#gbook)"/>
+          <rect x="58" y="65" width="62" height="9" rx="3" fill="#7fa9d1"/>
+          <rect x="64" y="54" width="50" height="9" rx="3" fill="#cfe1f1"/>
+          <!-- portatil / libreta abierta -->
+          <path d="M168 84 196 56h66l-20 28Z" fill="rgba(255,255,255,.16)" stroke="#9dbbd8" stroke-width="1.6" stroke-linejoin="round"/>
+          <path d="M196 56v28" stroke="#9dbbd8" stroke-width="1.6"/>
+          <!-- lapiz -->
+          <path d="M136 86l30-30 7 7-30 30-9 2Z" fill="#f3c88a"/>
+          <path d="M166 56l7 7 5-5-7-7Z" fill="#e08a2e"/>
+          <!-- reloj / progreso -->
+          <circle cx="282" cy="40" r="17" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="4"/>
+          <path d="M282 23a17 17 0 0 1 12 29" fill="none" stroke="#e08a2e" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <ul class="mini-list">
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#e8a85c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+          Grupos reducidos y trabajo por niveles
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#e8a85c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+          Técnicas de estudio y organización
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#e8a85c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+          Seguimiento y comunicación con la familia
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#e8a85c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+          Centro en Inca, a pie de calle
+        </li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<!-- 2. SERVICIOS -->
+<section class="band band-white" id="servicios" aria-labelledby="serv-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-kicker">Qué hacemos</div>
+      <h2 id="serv-title">Áreas de trabajo del centro</h2>
+      <p>Líneas de trabajo habituales de una academia de refuerzo. El detalle concreto de cada una lo define el centro.</p>
+    </div>
+
+    <div class="cards">
+      <article class="card">
+        <div class="card-ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1f4e79" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H10a2 2 0 0 1 2 2v14a1.6 1.6 0 0 0-1.6-1.6H5.5A1.5 1.5 0 0 1 4 16.9Z"/>
+            <path d="M20 5.5A1.5 1.5 0 0 0 18.5 4H14a2 2 0 0 0-2 2v14a1.6 1.6 0 0 1 1.6-1.6h4.9A1.5 1.5 0 0 0 20 16.9Z"/>
+          </svg>
+        </div>
+        <h3>Refuerzo escolar por niveles</h3>
+        <p>Trabajo sobre el temario que el alumno lleva en clase, ajustado a su curso y a lo que necesita reforzar en cada momento.</p>
+        <div class="placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+          <span><strong>Pendiente de contenido</strong>Aquí irían los niveles y horarios del curso.</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1f4e79" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18h6"/><path d="M10 21h4"/>
+            <path d="M12 3a6 6 0 0 0-3.5 10.9c.4.3.6.8.6 1.3V16h5.8v-.8c0-.5.2-1 .6-1.3A6 6 0 0 0 12 3Z"/>
+          </svg>
+        </div>
+        <h3>Técnicas de estudio</h3>
+        <p>Cómo planificar la semana, tomar apuntes, resumir y preparar un examen. El objetivo es que el alumno acabe trabajando solo.</p>
+        <div class="placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+          <span><strong>Pendiente de contenido</strong>Aquí iría la descripción que use el centro para esta área.</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1f4e79" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 19v-1.5a3 3 0 0 0-3-3H6a3 3 0 0 0-3 3V19"/>
+            <circle cx="9.5" cy="7.5" r="3.2"/>
+            <path d="M21 19v-1.5a3 3 0 0 0-2.3-2.9"/><path d="M16.5 4.6a3.2 3.2 0 0 1 0 5.8"/>
+          </svg>
+        </div>
+        <h3>Grupos reducidos</h3>
+        <p>Sesiones con pocos alumnos para poder atender dudas concretas y seguir el ritmo de cada uno sin perder el del grupo.</p>
+        <div class="placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+          <span><strong>Pendiente de contenido</strong>Aquí iría el criterio de agrupación que aplica el centro.</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1f4e79" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19V6.5A1.5 1.5 0 0 1 5.5 5H14l6 6v8a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 19Z"/>
+            <path d="M14 5v6h6"/><path d="M8.5 15.5h7"/>
+          </svg>
+        </div>
+        <h3>Preparación de exámenes</h3>
+        <p>Repaso guiado antes de pruebas y evaluaciones, con práctica sobre ejercicios parecidos a los que entran.</p>
+        <div class="placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+          <span><strong>Pendiente de contenido</strong>Aquí irían las convocatorias y materias que atiende el centro.</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1f4e79" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3.5 6.5h17v11h-17Z"/><path d="M7 10.5h6"/><path d="M7 13.5h4"/>
+            <path d="M8 17.5 6.5 21"/><path d="M16 17.5 17.5 21"/>
+          </svg>
+        </div>
+        <h3>Seguimiento y tutoría</h3>
+        <p>Revisión periódica de cómo va el alumno y comunicación con la familia para ajustar el trabajo cuando hace falta.</p>
+        <div class="placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+          <span><strong>Pendiente de contenido</strong>Aquí iría cómo organiza el centro el seguimiento con las familias.</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1f4e79" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3.5" y="5" width="17" height="15.5" rx="2"/>
+            <path d="M3.5 9.5h17"/><path d="M8 3.5v3M16 3.5v3"/>
+            <path d="M7.5 13h3M13.5 13h3M7.5 16.5h3"/>
+          </svg>
+        </div>
+        <h3>Otras áreas del centro</h3>
+        <p>Espacio reservado para las actividades o servicios adicionales que S'Acadèmia quiera destacar en su web.</p>
+        <div class="placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+          <span><strong>Pendiente de contenido</strong>Aquí iría el resto de la oferta del curso actual.</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 3. CÓMO EMPEZAR -->
+<section class="band band-tint" id="empezar" aria-labelledby="pasos-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-kicker">Cómo empezar</div>
+      <h2 id="pasos-title">Tres pasos, sin complicaciones</h2>
+      <p>El proceso para incorporarse al centro, explicado de forma sencilla.</p>
+    </div>
+    <div class="step-rail" aria-hidden="true"></div>
+
+    <div class="steps">
+      <article class="step">
+        <div class="step-n" aria-hidden="true">1</div>
+        <h3>Llamas o escribes</h3>
+        <p>Contactas con el centro por teléfono o por correo y cuentas el curso del alumno y qué necesita reforzar.</p>
+      </article>
+      <article class="step">
+        <div class="step-n" aria-hidden="true">2</div>
+        <h3>Valoráis la situación juntos</h3>
+        <p>El centro revisa el caso y propone la forma de trabajo que encaja, y vosotros acordáis cuándo se puede empezar.</p>
+      </article>
+      <article class="step">
+        <div class="step-n" aria-hidden="true">3</div>
+        <h3>Empieza y se hace seguimiento</h3>
+        <p>El alumno comienza las sesiones y el centro va revisando su evolución, ajustando lo que haga falta.</p>
+      </article>
+    </div>
+
+    <div class="placeholder" style="max-width:52em;margin-top:26px">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+      <span><strong>Pendiente de contenido</strong>Aquí irían los plazos de matrícula y la documentación que pida el centro.</span>
+    </div>
+  </div>
+</section>
+
+<!-- 4. CONTACTO -->
+<section class="band band-white" id="contacto" aria-labelledby="cont-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-kicker">Contacto</div>
+      <h2 id="cont-title">Dónde estamos y cómo localizarnos</h2>
+      <p>El centro está en Inca, en la Avinguda General Luque. Para horarios de atención, lo mejor es llamar.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="panel">
+        <ul class="contact-list">
+          <li>
+            <div class="ci" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#c9741c" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 16.9v2.5a2 2 0 0 1-2.2 2 19.3 19.3 0 0 1-8.4-3 19 19 0 0 1-5.8-5.8 19.3 19.3 0 0 1-3-8.5A2 2 0 0 1 3.6 2h2.5a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.2 9.8a15.5 15.5 0 0 0 5.8 5.8l1.2-1.2a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="cl-label">Teléfonos</div>
+              <div class="cl-value phones">
+                <a href="tel:+34971883564">971 883 564</a>
+                <a href="tel:+34616875986">616 875 986</a>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="ci" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#c9741c" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 10.5c0 5.2-6.3 10.3-7.5 11.2a.8.8 0 0 1-1 0C10.3 20.8 4 15.7 4 10.5a8 8 0 0 1 16 0Z"/>
+                <circle cx="12" cy="10.3" r="2.7"/>
+              </svg>
+            </div>
+            <div>
+              <div class="cl-label">Dirección</div>
+              <div class="cl-value">Avinguda General Luque, 90</div>
+              <div class="cl-note">07300 Inca (Mallorca)</div>
+            </div>
+          </li>
+          <li>
+            <div class="ci" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#c9741c" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3.2 2"/>
+              </svg>
+            </div>
+            <div>
+              <div class="cl-label">Horario</div>
+              <div class="cl-value">Consultar horario</div>
+              <div class="cl-note">Llamando al 971 883 564 os informan de la disponibilidad.</div>
+            </div>
+          </li>
+          <li>
+            <div class="ci" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#c9741c" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="m3.6 6.8 8.4 6 8.4-6"/>
+              </svg>
+            </div>
+            <div>
+              <div class="cl-label">Correo electrónico</div>
+              <div class="cl-value"><a href="mailto:sacademia.centre.estudis@gmail.com">sacademia.centre.estudis<wbr>@gmail.com</a></div>
+            </div>
+          </li>
+        </ul>
+
+        <div class="placeholder" style="margin-top:22px">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+          <span><strong>Pendiente de contenido</strong>Aquí iría el horario de atención real y, si procede, un formulario de contacto.</span>
+        </div>
+      </div>
+
+      <div class="panel map-panel">
+        <div class="map-head">
+          <h3>Plano de situación</h3>
+          <p>Esquema orientativo de la ubicación del centro. No sustituye a un mapa real.</p>
+        </div>
+        <div class="map-figure">
+          <!-- Mapa esquemático SVG inline -->
+          <svg viewBox="0 0 520 360" role="img" aria-label="Plano esquemático: el centro se encuentra en la Avinguda General Luque, número 90, en Inca.">
+            <defs>
+              <linearGradient id="gmap" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#f4f8fc"/><stop offset="1" stop-color="#e6eef7"/>
+              </linearGradient>
+              <linearGradient id="gpin" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#e9a657"/><stop offset="1" stop-color="#c9741c"/>
+              </linearGradient>
+            </defs>
+
+            <rect width="520" height="360" rx="12" fill="url(#gmap)"/>
+
+            <!-- manzanas -->
+            <g fill="#dbe6f2">
+              <rect x="34" y="34" width="150" height="86" rx="7"/>
+              <rect x="34" y="236" width="150" height="90" rx="7"/>
+              <rect x="336" y="34" width="150" height="86" rx="7"/>
+              <rect x="336" y="236" width="150" height="90" rx="7"/>
+              <rect x="212" y="34" width="92" height="86" rx="7"/>
+              <rect x="212" y="236" width="92" height="90" rx="7"/>
+            </g>
+            <!-- zona verde -->
+            <g>
+              <rect x="336" y="236" width="150" height="90" rx="7" fill="#d7e8da"/>
+              <circle cx="380" cy="272" r="13" fill="#b7d4bd"/>
+              <circle cx="420" cy="296" r="16" fill="#b7d4bd"/>
+              <circle cx="452" cy="262" r="11" fill="#b7d4bd"/>
+            </g>
+
+            <!-- avenida principal horizontal -->
+            <rect x="0" y="150" width="520" height="56" fill="#ffffff"/>
+            <path d="M0 150h520M0 206h520" stroke="#c4d4e6" stroke-width="2"/>
+            <path d="M12 178h496" stroke="#e08a2e" stroke-width="2.6" stroke-dasharray="16 12" stroke-linecap="round"/>
+        
+            <!-- calles verticales -->
+            <rect x="188" y="0" width="24" height="360" fill="#ffffff"/>
+            <path d="M188 0v360M212 0v360" stroke="#c4d4e6" stroke-width="2"/>
+            <rect x="304" y="0" width="24" height="360" fill="#ffffff"/>
+            <path d="M304 0v360M328 0v360" stroke="#c4d4e6" stroke-width="2"/>
+
+            <!-- rótulo de la avenida (por encima de las calles) -->
+            <g>
+              <rect x="18" y="124" width="196" height="24" rx="6" fill="#ffffff" stroke="#c9d9ea" stroke-width="1.4"/>
+              <text x="30" y="141" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" fill="#2e4765">Avinguda General Luque</text>
+            </g>
+
+            <!-- edificio del centro -->
+            <rect x="222" y="212" width="74" height="40" rx="6" fill="#1f4e79"/>
+            <text x="259" y="237" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="13" font-weight="700" fill="#ffffff">nº 90</text>
+
+            <!-- pin -->
+            <g transform="translate(259 196)">
+              <path d="M0 12c0-9-11-13-11-23A11 11 0 0 1 11-23 11 11 0 0 1 11-11C11-1 0 3 0 12Z" fill="url(#gpin)"/>
+              <circle cx="0" cy="-11" r="4.4" fill="#ffffff"/>
+            </g>
+
+            <!-- etiqueta del centro -->
+            <g>
+              <rect x="150" y="268" width="218" height="46" rx="9" fill="#ffffff" stroke="#c9d9ea" stroke-width="1.6"/>
+              <text x="166" y="289" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" fill="#15233a">S'Acadèmia · Centre d'Estudis</text>
+              <text x="166" y="306" font-family="Segoe UI, Arial, sans-serif" font-size="12.5" fill="#6b7a90">Avinguda General Luque, 90 — Inca</text>
+            </g>
+
+            <!-- norte -->
+            <g transform="translate(470 40)">
+              <circle r="20" fill="#ffffff" stroke="#c9d9ea" stroke-width="1.6"/>
+              <path d="M0 -11 5 4 0 0 -5 4Z" fill="#1f4e79"/>
+              <text x="0" y="16" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="10" font-weight="700" fill="#6b7a90">N</text>
+            </g>
+          </svg>
+        </div>
+        <div class="map-foot">Esquema dibujado para la propuesta. En la web definitiva se puede sustituir por un mapa interactivo.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band" aria-labelledby="cta-title">
+  <div class="wrap cta-inner">
+    <div>
+      <h2 id="cta-title">¿Dudas sobre si encaja para vuestro caso?</h2>
+      <p>Una llamada basta para saberlo. El centro os explica cómo trabaja y qué opciones hay.</p>
+    </div>
+    <div class="cta-actions">
+      <a class="btn btn-primary" href="tel:+34971883564">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 16.9v2.5a2 2 0 0 1-2.2 2 19.3 19.3 0 0 1-8.4-3 19 19 0 0 1-5.8-5.8 19.3 19.3 0 0 1-3-8.5A2 2 0 0 1 3.6 2h2.5a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.2 9.8a15.5 15.5 0 0 0 5.8 5.8l1.2-1.2a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/>
+        </svg>
+        971 883 564
+      </a>
+      <a class="btn btn-outline-light" href="tel:+34616875986">616 875 986</a>
+    </div>
+  </div>
+</section>
+
+<!-- 5. PIE -->
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <div class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#f3c88a" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 7.5 12 3.5l9 4-9 4-9-4Z"/>
+              <path d="M6.5 9.4v5.1c0 1.6 2.5 2.9 5.5 2.9s5.5-1.3 5.5-2.9V9.4"/>
+              <path d="M20.3 8.6v5.6"/>
+            </svg>
+          </div>
+          <div>
+            <div class="brand-name">S'Acadèmia</div>
+            <div class="brand-sub">Centre d'Estudis</div>
+          </div>
+        </div>
+        <p>Academia de refuerzo escolar y centro de estudios en Inca, Mallorca.</p>
+      </div>
+
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="tel:+34971883564">971 883 564</a></li>
+          <li><a href="tel:+34616875986">616 875 986</a></li>
+          <li><a href="mailto:sacademia.centre.estudis@gmail.com">sacademia.centre.estudis<wbr>@gmail.com</a></li>
+          <li>Consultar horario</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Dirección</h4>
+        <ul>
+          <li>Avinguda General Luque, 90</li>
+          <li>07300 Inca (Mallorca)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="studio-line">
+      <span>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</span>
+      <span>Maqueta no oficial · contenido pendiente de validar con el centro</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Desplazamiento suave compensando la barra fija
+  (function () {
+    var bar = document.querySelector('.proposal-bar');
+    document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        var id = a.getAttribute('href');
+        if (!id || id === '#') return;
+        var target = document.querySelector(id);
+        if (!target) return;
+        e.preventDefault();
+        var offset = (bar ? bar.offsetHeight : 0) + 12;
+        var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
