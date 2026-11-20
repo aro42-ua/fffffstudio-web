@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Asesoría Almoradí — Propuesta de diseño</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --ink:#131a21;
+  --ink-2:#2d3a45;
+  --muted:#5e6d79;
+  --line:#dfdcd4;
+  --paper:#f6f4ef;
+  --paper-2:#fffefb;
+  --deep:#10242e;
+  --accent:#1f6b63;
+  --accent-soft:#e4ede9;
+  --gold:#a3813f;
+  --bar-h:44px;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --serif:ui-serif,Georgia,"Times New Roman",serif;
+}
+html,body{margin:0;padding:0;max-width:100%;overflow-x:hidden}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  padding-top:var(--bar-h);
+}
+img,svg{max-width:100%}
+h1,h2,h3{margin:0;line-height:1.14;letter-spacing:-.02em;font-weight:600}
+p{margin:0}
+a{color:inherit}
+.wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 24px}
+
+/* ---------- barra fija ---------- */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  height:var(--bar-h);
+  display:flex;align-items:center;justify-content:center;
+  background:var(--deep);
+  color:#e7efec;
+  border-bottom:1px solid rgba(255,255,255,.10);
+  text-transform:none;
+}
+.topbar span{
+  display:block;
+  font-size:11.5px;letter-spacing:.055em;
+  padding:0 16px;
+  text-align:center;
+  line-height:1.3;
+}
+.topbar .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--gold);margin-right:9px;vertical-align:1px}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(900px 440px at 88% -12%,rgba(31,107,99,.16),transparent 62%),
+    radial-gradient(640px 360px at 4% 104%,rgba(163,129,63,.12),transparent 60%),
+    linear-gradient(180deg,var(--paper-2) 0%,var(--paper) 100%);
+  border-bottom:1px solid var(--line);
+}
+.hero .wrap{padding-top:78px;padding-bottom:78px}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent);font-weight:600;
+  margin-bottom:26px;
+}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--accent);display:block}
+.hero h1{
+  font-family:var(--serif);
+  font-size:clamp(38px,7.2vw,70px);
+  font-weight:500;
+  letter-spacing:-.025em;
+  max-width:17ch;
+}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.lede{
+  margin-top:24px;max-width:50ch;
+  font-size:clamp(16.5px,1.9vw,19.5px);
+  color:var(--ink-2);
+}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:36px}
+.btn{
+  display:inline-flex;align-items:center;gap:11px;
+  background:var(--deep);color:#f4f7f5;
+  text-decoration:none;font-weight:600;font-size:16px;
+  padding:16px 26px;border-radius:999px;
+  border:1px solid var(--deep);
+}
+.btn svg{flex:0 0 auto}
+.btn .num{letter-spacing:.01em}
+.btn-note{font-size:13.5px;color:var(--muted)}
+.hero-meta{
+  display:flex;flex-wrap:wrap;gap:8px 28px;
+  margin-top:48px;padding-top:26px;
+  border-top:1px solid var(--line);
+  font-size:14px;color:var(--muted);
+}
+.hero-meta b{color:var(--ink);font-weight:600}
+
+/* ---------- secciones ---------- */
+section{padding:76px 0}
+.sec-head{max-width:62ch;margin-bottom:44px}
+.kicker{
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold);font-weight:700;margin-bottom:14px;
+}
+.sec-head h2{font-family:var(--serif);font-weight:500;font-size:clamp(27px,3.6vw,40px)}
+.sec-head p{margin-top:16px;color:var(--muted);font-size:16.5px}
+
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.card{
+  background:var(--paper-2);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:30px 26px 32px;
+  display:flex;flex-direction:column;
+}
+.ico{
+  width:48px;height:48px;border-radius:12px;
+  background:var(--accent-soft);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:22px;
+}
+.ico svg{display:block}
+.card h3{font-size:20px;letter-spacing:-.01em}
+.card .sub{margin-top:9px;font-size:14px;color:var(--muted)}
+.card ul{list-style:none;margin:22px 0 0;padding:0;border-top:1px solid var(--line)}
+.card li{
+  font-size:15px;color:var(--ink-2);
+  padding:11px 0 11px 22px;position:relative;
+  border-bottom:1px solid var(--line);
+}
+.card li:last-child{border-bottom:0;padding-bottom:0}
+.card li::before{
+  content:"";position:absolute;left:4px;top:19px;
+  width:7px;height:7px;border-radius:2px;
+  background:var(--accent);opacity:.55;
+}
+
+/* ---------- pasos ---------- */
+.steps-sec{background:var(--deep);color:#e9efec}
+.steps-sec .kicker{color:#c9a862}
+.steps-sec .sec-head p{color:#a8b8b4}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.step{
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:16px;padding:28px 24px 30px;
+  background:rgba(255,255,255,.035);
+}
+.step .n{
+  font-family:var(--serif);font-size:34px;line-height:1;
+  color:#8fc0b8;display:block;margin-bottom:18px;
+}
+.step h3{font-size:18.5px;color:#f2f6f4}
+.step p{margin-top:11px;font-size:15px;color:#a9bab6}
+
+/* ---------- contacto ---------- */
+.contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:28px;align-items:start}
+.panel{
+  background:var(--paper-2);border:1px solid var(--line);
+  border-radius:16px;padding:30px 26px;
+}
+.dl{margin:0}
+.row{padding:18px 0;border-bottom:1px solid var(--line)}
+.row:first-child{padding-top:0}
+.row:last-child{border-bottom:0;padding-bottom:0}
+.row .lbl{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.row .val{margin-top:7px;font-size:17px;color:var(--ink);font-weight:500}
+.row .val a{text-decoration:none;border-bottom:1px solid var(--accent);color:var(--accent);font-weight:600}
+.row .val small{display:block;font-weight:400;font-size:14px;color:var(--muted);margin-top:4px}
+.tag{
+  display:inline-block;font-size:13px;font-weight:600;
+  color:var(--accent);background:var(--accent-soft);
+  padding:5px 12px;border-radius:999px;
+}
+.mapbox{
+  background:var(--paper-2);border:1px solid var(--line);
+  border-radius:16px;padding:20px;
+}
+.mapbox svg{display:block;width:100%;height:auto}
+.mapcap{margin-top:14px;font-size:13px;color:var(--muted);line-height:1.5}
+
+/* ---------- pie ---------- */
+footer{background:var(--paper-2);border-top:1px solid var(--line);padding:46px 0 52px}
+.foot{display:flex;flex-wrap:wrap;gap:22px;justify-content:space-between;align-items:flex-end}
+.foot .name{font-family:var(--serif);font-size:21px}
+.foot .mail{margin-top:9px;font-size:15px}
+.foot .mail a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent);word-break:break-word}
+.credit{font-size:13px;color:var(--muted);max-width:44ch;line-height:1.6}
+
+@media (max-width:900px){
+  .grid3,.steps{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  :root{--bar-h:56px}
+  .wrap{padding:0 18px}
+  .hero .wrap{padding-top:52px;padding-bottom:56px}
+  section{padding:56px 0}
+  .topbar span{font-size:11px;letter-spacing:.03em}
+  .btn{width:100%;justify-content:center}
+  .hero-meta{gap:14px;flex-direction:column}
+  .card,.panel,.step{padding-left:20px;padding-right:20px}
+  .mapbox{padding:14px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar"><span><i class="dot"></i>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Asesoría fiscal, laboral y contable · Almoradí</p>
+    <h1>Asesoría <em>Almoradí</em></h1>
+    <p class="lede">Asesoramiento fiscal, laboral y contable a empresas y empresarios. Un despacho en Calle Mayor donde se resuelven las obligaciones de tu negocio hablando con una persona, no con un formulario.</p>
+    <div class="hero-cta">
+      <a class="btn" href="tel:966781741">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 3.5h-2a1.5 1.5 0 0 0-1.5 1.6c.35 4 2 7.6 4.6 10.2 2.6 2.6 6.2 4.3 10.2 4.6a1.5 1.5 0 0 0 1.6-1.5v-2a1.5 1.5 0 0 0-1.3-1.5l-2.3-.3a1.5 1.5 0 0 0-1.5.7l-.7 1.1a12 12 0 0 1-5.1-5.1l1.1-.7a1.5 1.5 0 0 0 .7-1.5l-.3-2.3a1.5 1.5 0 0 0-1.5-1.3Z"/></svg>
+        <span class="num">96 678 17 41</span>
+      </a>
+      <span class="btn-note">Llama y cuéntanos tu caso.</span>
+    </div>
+    <div class="hero-meta">
+      <span><b>Calle Mayor 65</b>, PB · 03160 Almoradí (Alicante)</span>
+      <span>Horario: <b>consultar horario</b></span>
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="servicios">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">Tres áreas</p>
+      <h2>Lo que un negocio necesita tener en orden</h2>
+      <p>Las tres áreas que atiende el despacho, con las tareas habituales de cada una.</p>
+    </div>
+    <div class="grid3">
+
+      <article class="card">
+        <div class="ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1f6b63" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.5" y="2.8" width="15" height="18.4" rx="2.4"/><path d="M8 7.2h8M8 11.3h3.4M8 15.4h3.4"/><path d="M14.6 11.3h2.6M15.9 10v2.6"/><path d="M14.6 15.6h2.6"/></svg>
+        </div>
+        <h3>Fiscal</h3>
+        <p class="sub">Impuestos al día, sin sobresaltos de última hora.</p>
+        <ul>
+          <li>Impuestos trimestrales y anuales</li>
+          <li>IVA y sus declaraciones</li>
+          <li>Declaración de la renta</li>
+          <li>Obligaciones fiscales de la actividad</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <div class="ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1f6b63" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.1"/><path d="M3.4 20c0-3.1 2.5-5.4 5.6-5.4s5.6 2.3 5.6 5.4"/><path d="M16.4 5.1a3 3 0 0 1 0 5.8"/><path d="M17.6 14.9c1.8.7 3 2.4 3 4.4"/></svg>
+        </div>
+        <h3>Laboral</h3>
+        <p class="sub">La gestión de tu plantilla, mes a mes.</p>
+        <ul>
+          <li>Nóminas</li>
+          <li>Contratos de trabajo</li>
+          <li>Seguros sociales</li>
+          <li>Altas y bajas de trabajadores</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <div class="ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1f6b63" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 19.4V9.6M8.8 19.4V5.4M14 19.4v-7.2M19.2 19.4V8"/><path d="M2.4 21.4h19.2"/><path d="M3.6 6.4 8.8 2.6l5.2 3.4 5.2-2.2"/></svg>
+        </div>
+        <h3>Contable</h3>
+        <p class="sub">Cuentas claras para decidir con datos.</p>
+        <ul>
+          <li>Contabilidad de la empresa</li>
+          <li>Cuentas anuales</li>
+          <li>Libros contables</li>
+          <li>Seguimiento periódico de la actividad</li>
+        </ul>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="steps-sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">Cómo trabajamos</p>
+      <h2>Tres pasos, sin vueltas</h2>
+      <p>Una forma de trabajar sencilla: entender el caso, organizarlo y mantenerlo al día.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <span class="n">01</span>
+        <h3>Nos cuentas tu situación</h3>
+        <p>Llamas o te pasas por el despacho y revisamos en qué punto está tu negocio y qué obligaciones tienes por delante.</p>
+      </div>
+      <div class="step">
+        <span class="n">02</span>
+        <h3>Ordenamos la documentación</h3>
+        <p>Vemos qué hay que presentar en lo fiscal, lo laboral y lo contable, y preparamos lo que falte para dejarlo correcto.</p>
+      </div>
+      <div class="step">
+        <span class="n">03</span>
+        <h3>Lo mantenemos al día</h3>
+        <p>Nos ocupamos de los plazos y de las presentaciones periódicas, y te avisamos de lo que necesita tu decisión.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">Contacto</p>
+      <h2>Dónde estamos y cómo localizarnos</h2>
+    </div>
+    <div class="contact-grid">
+
+      <div class="panel">
+        <div class="dl">
+          <div class="row">
+            <p class="lbl">Teléfono</p>
+            <p class="val"><a href="tel:966781741">96 678 17 41</a></p>
+          </div>
+          <div class="row">
+            <p class="lbl">Dirección</p>
+            <p class="val">Calle Mayor 65, piso PB<small>03160 Almoradí (Alicante)</small></p>
+          </div>
+          <div class="row">
+            <p class="lbl">Horario</p>
+            <p class="val"><span class="tag">Consultar horario</span></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mapbox">
+        <svg viewBox="0 0 440 332" role="img" aria-label="Croquis de situación: el despacho está en Calle Mayor 65, planta baja, en Almoradí.">
+          <defs>
+            <linearGradient id="g-fondo" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#f3f1ea"/>
+              <stop offset="1" stop-color="#eae7dd"/>
+            </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="440" height="332" rx="10" fill="url(#g-fondo)"/>
+
+          <rect x="20" y="30" width="154" height="88" rx="6" fill="#e0ddd2"/>
+          <rect x="206" y="30" width="130" height="88" rx="6" fill="#e0ddd2"/>
+          <rect x="368" y="30" width="52" height="88" rx="6" fill="#e0ddd2"/>
+          <rect x="20" y="200" width="122" height="78" rx="6" fill="#e0ddd2"/>
+          <rect x="174" y="200" width="134" height="78" rx="6" fill="#e0ddd2"/>
+          <rect x="340" y="200" width="80" height="78" rx="6" fill="#e0ddd2"/>
+
+          <rect x="0" y="132" width="440" height="54" fill="#ffffff"/>
+          <line x1="0" y1="132" x2="440" y2="132" stroke="#cdc8ba" stroke-width="1.6"/>
+          <line x1="0" y1="186" x2="440" y2="186" stroke="#cdc8ba" stroke-width="1.6"/>
+
+          <rect x="142" y="186" width="32" height="92" fill="#ffffff"/>
+          <line x1="142" y1="186" x2="142" y2="278" stroke="#cdc8ba" stroke-width="1.6"/>
+          <line x1="174" y1="186" x2="174" y2="278" stroke="#cdc8ba" stroke-width="1.6"/>
+          <rect x="336" y="0" width="32" height="132" fill="#ffffff"/>
+          <line x1="336" y1="0" x2="336" y2="132" stroke="#cdc8ba" stroke-width="1.6"/>
+          <line x1="368" y1="0" x2="368" y2="132" stroke="#cdc8ba" stroke-width="1.6"/>
+
+          <text x="20" y="176" font-family="-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="19" font-weight="700" fill="#8d8878" letter-spacing="2">CALLE MAYOR</text>
+
+          <circle cx="262" cy="159" r="20" fill="#1f6b63" opacity="0.15"/>
+          <circle cx="262" cy="159" r="9.5" fill="#1f6b63" stroke="#ffffff" stroke-width="3.5"/>
+          <line x1="262" y1="139" x2="262" y2="104" stroke="#1f6b63" stroke-width="2.2"/>
+          <rect x="112" y="62" width="300" height="42" rx="10" fill="#10242e"/>
+          <text x="262" y="89" text-anchor="middle" font-family="-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="19" font-weight="700" fill="#f2f6f4">Asesoría Almoradí · nº 65</text>
+
+          <rect x="130" y="292" width="180" height="30" rx="8" fill="#ffffff"/>
+          <text x="220" y="312" text-anchor="middle" font-family="-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif" font-size="17" font-weight="600" fill="#6f6a5c">Planta baja (PB)</text>
+        </svg>
+        <p class="mapcap">Croquis orientativo, no a escala: solo sitúa el acceso al despacho en Calle Mayor.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <p class="name">Asesoría Almoradí</p>
+        <p class="mail"><a href="mailto:jadrianrv@gmail.com">jadrianrv@gmail.com</a></p>
+      </div>
+      <p class="credit">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

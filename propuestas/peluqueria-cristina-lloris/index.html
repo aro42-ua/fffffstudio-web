@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Peluquería Cristina Lloris · Elche</title>
+<meta name="description" content="Propuesta de diseño web para Peluquería Cristina Lloris, Calle Cristóbal Sanz 19, Elche. Maqueta no oficial de FFFFFFstudio.">
+<style>
+  :root{
+    --ink:#1C1714;
+    --ink-soft:#3B322C;
+    --muted:#6E615A;
+    --line:#E2D8CE;
+    --paper:#FBF7F2;
+    --paper-2:#F3EBE2;
+    --card:#FFFFFF;
+    --brass:#9A6B3F;
+    --brass-deep:#7C5330;
+    --sage:#4C5B50;
+    --radius:18px;
+    --maxw:1120px;
+    --bar:44px;
+    --shadow:0 1px 2px rgba(28,23,20,.04), 0 14px 34px -18px rgba(28,23,20,.22);
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, "Times New Roman", serif;
+    --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:17px;
+    line-height:1.65;
+    overflow-x:hidden;
+  }
+  img,svg{max-width:100%}
+  a{color:inherit}
+  h1,h2,h3{font-family:var(--serif);font-weight:600;letter-spacing:-.015em;line-height:1.12;margin:0}
+  p{margin:0}
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+
+  /* ---------- barra fija ---------- */
+  .topbar{
+    position:fixed;inset:0 0 auto 0;z-index:50;
+    height:var(--bar);
+    display:flex;align-items:center;justify-content:center;
+    background:var(--ink);
+    color:#EFE6DC;
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .topbar span{
+    display:block;
+    font-size:12.5px;letter-spacing:.02em;line-height:1.3;
+    text-align:center;
+    padding:0 14px;
+    text-transform:none;
+    color:#E8DCCF;
+  }
+  .topbar strong{font-weight:600;color:#fff}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    padding:calc(var(--bar) + 78px) 0 86px;
+    background:
+      radial-gradient(1100px 520px at 82% -12%, rgba(154,107,63,.16), transparent 62%),
+      radial-gradient(820px 460px at 6% 108%, rgba(76,91,80,.13), transparent 66%),
+      linear-gradient(176deg,#FDFAF6 0%, var(--paper-2) 100%);
+  }
+  .hero::after{
+    content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--line);
+  }
+  .hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:56px;align-items:center}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--brass-deep);font-weight:650;
+    margin-bottom:22px;
+  }
+  .eyebrow i{display:block;width:26px;height:1px;background:var(--brass);opacity:.65}
+  h1{font-size:clamp(2.45rem,6.1vw,4.25rem)}
+  h1 em{font-style:italic;color:var(--brass-deep)}
+  .lede{
+    margin-top:22px;max-width:36ch;
+    font-size:1.1rem;color:var(--ink-soft);
+  }
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:34px}
+  .btn{
+    display:inline-flex;align-items:center;gap:11px;
+    padding:15px 26px;border-radius:999px;
+    background:var(--ink);color:#FBF7F2;
+    text-decoration:none;font-weight:600;font-size:1rem;
+    border:1px solid var(--ink);
+    box-shadow:var(--shadow);
+  }
+  .btn svg{flex:none}
+  .btn-note{font-size:.88rem;color:var(--muted)}
+  .hero-card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px 26px 22px;box-shadow:var(--shadow);
+  }
+  .hero-card h3{font-size:1.05rem;margin-bottom:14px}
+  .facts{list-style:none;margin:0;padding:0;display:grid;gap:13px}
+  .facts li{display:grid;grid-template-columns:20px 1fr;gap:12px;font-size:.95rem;color:var(--ink-soft);line-height:1.5}
+  .facts svg{margin-top:3px;color:var(--brass)}
+  .facts a{color:var(--brass-deep);text-decoration:none;font-weight:600;border-bottom:1px solid rgba(154,107,63,.35)}
+
+  /* ---------- secciones ---------- */
+  section{padding:84px 0}
+  .shead{max-width:56ch;margin-bottom:42px}
+  .shead .kicker{
+    font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--brass-deep);font-weight:650;display:block;margin-bottom:12px;
+  }
+  .shead h2{font-size:clamp(1.8rem,3.6vw,2.5rem)}
+  .shead p{margin-top:16px;color:var(--muted)}
+
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:28px 26px;box-shadow:var(--shadow);
+  }
+  .ico{
+    width:46px;height:46px;border-radius:13px;
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(150deg,#F6EEE5,#EADCCB);
+    border:1px solid rgba(154,107,63,.22);
+    color:var(--brass-deep);margin-bottom:18px;
+  }
+  .card h3{font-size:1.18rem;margin-bottom:10px}
+  .card p{font-size:.95rem;color:var(--muted)}
+
+  /* pasos */
+  .steps-sec{background:var(--ink);color:#F0E8DF}
+  .steps-sec .shead .kicker{color:#C79A6C}
+  .steps-sec .shead h2{color:#FDFAF6}
+  .steps-sec .shead p{color:#B7A99C}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .step{
+    border:1px solid rgba(255,255,255,.14);border-radius:var(--radius);
+    padding:26px 24px;
+    background:linear-gradient(170deg,rgba(255,255,255,.055),rgba(255,255,255,.015));
+  }
+  .step .n{
+    font-family:var(--serif);font-size:1rem;font-weight:600;
+    width:38px;height:38px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    background:#C79A6C;color:#241B13;margin-bottom:16px;
+  }
+  .step h3{font-size:1.1rem;color:#FDFAF6;margin-bottom:9px}
+  .step p{font-size:.94rem;color:#BCAEA1}
+  .step a{color:#E3C49F;text-decoration:none;font-weight:600;border-bottom:1px solid rgba(227,196,159,.4)}
+
+  /* contacto */
+  .contact-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:28px;align-items:start}
+  .panel{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:30px 28px;box-shadow:var(--shadow);
+  }
+  .rows{list-style:none;margin:0;padding:0;display:grid;gap:20px}
+  .rows li{display:grid;grid-template-columns:22px 1fr;gap:14px}
+  .rows svg{margin-top:4px;color:var(--brass);flex:none}
+  .rows .lb{display:block;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:650;margin-bottom:3px}
+  .rows .vl{font-size:1.02rem;color:var(--ink);line-height:1.45}
+  .rows .vl a{text-decoration:none;color:var(--brass-deep);font-weight:650;border-bottom:1px solid rgba(154,107,63,.35)}
+  .badge{
+    display:inline-flex;align-items:center;gap:8px;margin-top:4px;
+    padding:6px 13px;border-radius:999px;font-size:.84rem;font-weight:600;
+    background:#EDF0EC;color:var(--sage);border:1px solid rgba(76,91,80,.2);
+  }
+  .mapbox{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:20px;box-shadow:var(--shadow);
+  }
+  .mapbox svg{display:block;width:100%;height:auto}
+  .mapnote{margin-top:14px;font-size:.82rem;color:var(--muted);line-height:1.5}
+
+  /* pie */
+  footer{
+    background:var(--paper-2);border-top:1px solid var(--line);
+    padding:56px 0 44px;
+  }
+  .fgrid{display:flex;flex-wrap:wrap;gap:28px;justify-content:space-between;align-items:flex-start}
+  .fname{font-family:var(--serif);font-size:1.3rem;font-weight:600}
+  .fmail{margin-top:8px;font-size:.98rem}
+  .fmail a{color:var(--brass-deep);text-decoration:none;font-weight:650;border-bottom:1px solid rgba(154,107,63,.35);word-break:break-word}
+  .social{display:flex;gap:10px;flex-wrap:wrap}
+  .social a{
+    display:inline-flex;align-items:center;gap:9px;
+    padding:11px 18px;border-radius:999px;text-decoration:none;
+    background:var(--card);border:1px solid var(--line);
+    font-size:.92rem;font-weight:600;color:var(--ink-soft);
+  }
+  .social svg{color:var(--brass-deep);flex:none}
+  .fnote{
+    margin-top:40px;padding-top:22px;border-top:1px solid var(--line);
+    font-size:.86rem;color:var(--muted);line-height:1.6;
+  }
+
+  @media (max-width:980px){
+    .hero-grid{grid-template-columns:1fr;gap:38px}
+    .cards,.steps{grid-template-columns:1fr 1fr}
+    .contact-grid{grid-template-columns:1fr}
+    .lede{max-width:48ch}
+  }
+  @media (max-width:640px){
+    :root{--bar:58px}
+    body{font-size:16px}
+    .wrap{padding:0 18px}
+    .hero{padding:calc(var(--bar) + 44px) 0 58px}
+    section{padding:58px 0}
+    .cards,.steps{grid-template-columns:1fr}
+    .topbar span{font-size:11.5px;letter-spacing:0}
+    .hero-card,.panel{padding:22px 20px}
+    .card{padding:24px 22px}
+    .shead{margin-bottom:30px}
+    .btn{width:100%;justify-content:center}
+    .hero-actions{gap:12px}
+    .btn-note{text-align:left}
+    footer{padding:44px 0 36px}
+  }
+</style>
+</head>
+<body>
+
+<!-- 1. barra fija -->
+<div class="topbar" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<!-- 2. hero -->
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow"><i></i>Peluquería en Elche</span>
+      <h1>Peluquería<br><em>Cristina Lloris</em></h1>
+      <p class="lede">Un salón de barrio en el centro de Elche. Corte, color y cuidado del cabello, con cita previa por teléfono.</p>
+      <div class="hero-actions">
+        <a class="btn" href="tel:965444680">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16.9v2.2a2 2 0 0 1-2.2 2 19 19 0 0 1-8.3-2.9 18.6 18.6 0 0 1-5.7-5.7A19 19 0 0 1 1.9 4.2 2 2 0 0 1 3.9 2h2.2a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L7.3 9.7a15 15 0 0 0 5.7 5.7l1.1-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2Z"/></svg>
+          Pedir cita: 96 544 46 80
+        </a>
+        <span class="btn-note">Calle Cristóbal Sanz 19, Elche</span>
+      </div>
+    </div>
+    <aside class="hero-card">
+      <h3>De un vistazo</h3>
+      <ul class="facts">
+        <li>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+          <span>Calle Cristóbal Sanz 19<br>03201 Elche/Elx (Alicante)</span>
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg>
+          <span>Consultar horario</span>
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8.2 12h7.6M12 8.2v7.6"/></svg>
+          <span>Local accesible</span>
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16.9v2.2a2 2 0 0 1-2.2 2 19 19 0 0 1-8.3-2.9 18.6 18.6 0 0 1-5.7-5.7A19 19 0 0 1 1.9 4.2 2 2 0 0 1 3.9 2h2.2a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L7.3 9.7a15 15 0 0 0 5.7 5.7l1.1-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2Z"/></svg>
+          <span><a href="tel:965444680">96 544 46 80</a></span>
+        </li>
+      </ul>
+    </aside>
+  </div>
+</header>
+
+<main>
+
+<!-- 3. servicios -->
+<section id="servicios">
+  <div class="wrap">
+    <div class="shead">
+      <span class="kicker">Servicios</span>
+      <h2>Lo habitual de un salón de peluquería</h2>
+      <p>Servicios propios del sector. Para confirmar qué se ofrece en el salón y en qué condiciones, lo mejor es preguntar por teléfono.</p>
+    </div>
+    <div class="cards">
+
+      <article class="card">
+        <div class="ico">
+          <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6.2" cy="17.6" r="2.8"/><circle cx="17.8" cy="17.6" r="2.8"/><path d="M8.3 15.6 19 3.4M15.7 15.6 5 3.4"/></svg>
+        </div>
+        <h3>Corte</h3>
+        <p>Corte de cabello para mujer, hombre y niños, con lavado y acabado.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico">
+          <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.2c3.4 3.6 5.6 6.3 5.6 8.9a5.6 5.6 0 0 1-11.2 0c0-2.6 2.2-5.3 5.6-8.9Z"/><path d="M9.6 12.4a2.4 2.4 0 0 0 2.4 2.4"/></svg>
+        </div>
+        <h3>Color y mechas</h3>
+        <p>Trabajos de color, cobertura de canas y mechas según el tipo de cabello.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico">
+          <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20.2c1.9-5.4 4.6-8.9 8.1-10.6 3.4-1.7 6-1.5 7.9.4"/><path d="M13.6 3.6c2.2 1.2 3.4 3 3.6 5.4M7.2 14.4c2.4-.4 4.3.2 5.7 1.8"/></svg>
+        </div>
+        <h3>Peinado y recogidos</h3>
+        <p>Peinado de diario y recogidos para bodas, comuniones y otros eventos.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico">
+          <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.4 3.4h7.2l-.7 4.1a3 3 0 0 0 .6 2.4l1.2 1.5a4 4 0 0 1 .9 2.5v5.1a1.6 1.6 0 0 1-1.6 1.6H7.9a1.6 1.6 0 0 1-1.6-1.6v-5.1a4 4 0 0 1 .9-2.5l1.2-1.5a3 3 0 0 0 .6-2.4Z"/><path d="M6.6 15.4h10.8"/></svg>
+        </div>
+        <h3>Tratamientos capilares</h3>
+        <p>Tratamientos de hidratación y cuidado del cabello y del cuero cabelludo.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico">
+          <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.6s-7.4-4.1-7.4-9.6a4.3 4.3 0 0 1 7.4-3 4.3 4.3 0 0 1 7.4 3c0 5.5-7.4 9.6-7.4 9.6Z"/></svg>
+        </div>
+        <h3>Cuidado y asesoramiento</h3>
+        <p>Consejo sobre qué corte, color o rutina encaja mejor con tu cabello.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico">
+          <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.4" y="4.6" width="17.2" height="15.4" rx="2.4"/><path d="M3.4 9.4h17.2M8.4 2.8v3.4M15.6 2.8v3.4"/><circle cx="12" cy="14.6" r="1.5"/></svg>
+        </div>
+        <h3>Cita previa</h3>
+        <p>La cita se gestiona por teléfono, llamando directamente al salón.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- 4. cómo pedir cita -->
+<section class="steps-sec" id="cita">
+  <div class="wrap">
+    <div class="shead">
+      <span class="kicker">Cómo pedir cita</span>
+      <h2>Tres pasos y listo</h2>
+      <p>Sin formularios ni aplicaciones: una llamada al salón es suficiente.</p>
+    </div>
+    <div class="steps">
+      <article class="step">
+        <div class="n">1</div>
+        <h3>Llama al salón</h3>
+        <p>Marca <a href="tel:965444680">96 544 46 80</a>. Si no te pueden atender en ese momento, prueba más tarde.</p>
+      </article>
+      <article class="step">
+        <div class="n">2</div>
+        <h3>Di qué necesitas</h3>
+        <p>Corte, color, peinado o tratamiento: con saber qué buscas se reserva el tiempo adecuado.</p>
+      </article>
+      <article class="step">
+        <div class="n">3</div>
+        <h3>Acuerda el día y la hora</h3>
+        <p>Se fija la cita en el momento. El horario del salón conviene consultarlo en esa misma llamada.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 5. contacto -->
+<section id="contacto">
+  <div class="wrap">
+    <div class="shead">
+      <span class="kicker">Contacto</span>
+      <h2>Dónde está el salón</h2>
+      <p>En la Calle Cristóbal Sanz, en Elche. El croquis es orientativo y no está a escala.</p>
+    </div>
+    <div class="contact-grid">
+
+      <div class="panel">
+        <ul class="rows">
+          <li>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16.9v2.2a2 2 0 0 1-2.2 2 19 19 0 0 1-8.3-2.9 18.6 18.6 0 0 1-5.7-5.7A19 19 0 0 1 1.9 4.2 2 2 0 0 1 3.9 2h2.2a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L7.3 9.7a15 15 0 0 0 5.7 5.7l1.1-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2Z"/></svg>
+            <div><span class="lb">Teléfono</span><span class="vl"><a href="tel:965444680">96 544 46 80</a></span></div>
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+            <div><span class="lb">Dirección</span><span class="vl">Calle Cristóbal Sanz 19<br>03201 Elche/Elx (Alicante)</span></div>
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg>
+            <div><span class="lb">Horario</span><span class="vl">Consultar horario</span></div>
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 19.5h15M7.5 19.5V9.2L12 5.4l4.5 3.8v10.3"/><path d="M10.6 19.5v-4.1h2.8v4.1"/></svg>
+            <div><span class="lb">El local</span><span class="vl"><span class="badge">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5 9.6 17 19 7.5"/></svg>
+              Local accesible</span></span></div>
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5.2" width="18" height="13.6" rx="2.2"/><path d="M3.8 6.4 12 12.6l8.2-6.2"/></svg>
+            <div><span class="lb">Email</span><span class="vl"><a href="mailto:crialloris65@gmail.com">crialloris65@gmail.com</a></span></div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="mapbox">
+        <svg viewBox="0 0 520 400" role="img" aria-label="Croquis orientativo: el salón está en el número 19 de la Calle Cristóbal Sanz, en Elche.">
+          <defs>
+            <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#FBF7F2"/>
+              <stop offset="1" stop-color="#F1E9DF"/>
+            </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="520" height="400" rx="12" fill="url(#bg)"/>
+
+          <!-- manzanas -->
+          <g fill="#E7DCCF" stroke="#D8C9B7" stroke-width="1.5">
+            <rect x="24" y="24" width="186" height="96" rx="7"/>
+            <rect x="310" y="24" width="186" height="96" rx="7"/>
+            <rect x="24" y="214" width="186" height="162" rx="7"/>
+            <rect x="310" y="214" width="186" height="162" rx="7"/>
+          </g>
+
+          <!-- calle transversal -->
+          <rect x="230" y="0" width="60" height="400" fill="#FFFFFF" stroke="#DCCDBB" stroke-width="1.5"/>
+          <!-- calle principal -->
+          <rect x="0" y="152" width="520" height="52" fill="#FFFFFF" stroke="#DCCDBB" stroke-width="1.5"/>
+          <path d="M8 178H512" stroke="#CDBCA6" stroke-width="3" stroke-dasharray="18 15" stroke-linecap="round"/>
+
+          <!-- etiqueta calle principal -->
+          <text x="24" y="140" font-family="Georgia, serif" font-style="italic" font-size="22" fill="#6E615A">Calle Cristóbal Sanz</text>
+
+          <!-- conector + punto del salón -->
+          <path d="M120 250 L140 206" stroke="#7C5330" stroke-width="3" stroke-linecap="round" stroke-dasharray="8 7"/>
+          <g>
+            <circle cx="144" cy="178" r="20" fill="#9A6B3F" opacity=".18"/>
+            <circle cx="144" cy="178" r="10" fill="#7C5330" stroke="#FFFFFF" stroke-width="3.5"/>
+          </g>
+
+          <!-- cartel del salón -->
+          <g>
+            <rect x="40" y="252" width="268" height="96" rx="12" fill="#1C1714"/>
+            <text x="62" y="294" font-family="Georgia, serif" font-size="27" fill="#FDFAF6">Cristina Lloris</text>
+            <text x="62" y="325" font-family="Helvetica, Arial, sans-serif" font-size="21" fill="#C7B6A4">Nº 19 · peluquería</text>
+          </g>
+
+          <!-- brújula -->
+          <g transform="translate(458,62)">
+            <circle r="26" fill="#FFFFFF" stroke="#DCCDBB" stroke-width="1.5"/>
+            <path d="M0 -8 L7 12 L0 7.5 L-7 12 Z" fill="#7C5330"/>
+            <text x="0" y="-11" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#6E615A">N</text>
+          </g>
+        </svg>
+        <p class="mapnote">Croquis esquemático, no un mapa a escala. El punto marca el salón en el número 19 de la Calle Cristóbal Sanz.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- 6. pie -->
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <div class="fname">Peluquería Cristina Lloris</div>
+        <p class="fmail"><a href="mailto:crialloris65@gmail.com">crialloris65@gmail.com</a></p>
+      </div>
+      <div class="social">
+        <a href="https://www.instagram.com/peluqueriacristinalloris/" rel="noopener">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.4" y="3.4" width="17.2" height="17.2" rx="5"/><circle cx="12" cy="12" r="4.1"/><circle cx="16.9" cy="7.1" r="1.1" fill="currentColor" stroke="none"/></svg>
+          Instagram
+        </a>
+        <a href="https://www.facebook.com/cristinallorispelu/" rel="noopener">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.8 8.6h2.6M14.8 21V9.8a3 3 0 0 1 3-3h.6M11.2 13.2h4.4"/><rect x="3.4" y="3.4" width="17.2" height="17.2" rx="5"/></svg>
+          Facebook
+        </a>
+      </div>
+    </div>
+    <p class="fnote">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+</body>
+</html>

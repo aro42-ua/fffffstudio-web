@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Taller Arias · Elda</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  :root{
+    --ink:#0d1014;
+    --ink-2:#151a21;
+    --ink-3:#1d242e;
+    --line:#2a333f;
+    --paper:#f6f7f8;
+    --paper-2:#ffffff;
+    --muted:#5e6a78;
+    --muted-d:#9aa7b5;
+    --amber:#ffb629;
+    --amber-d:#b46f00;
+    --steel:#3c74a8;
+    --radius:14px;
+    --maxw:1120px;
+    --bar:44px;
+  }
+  html,body{margin:0;padding:0;max-width:100%;overflow-x:hidden}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%}
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 22px}
+  h1,h2,h3{margin:0;line-height:1.12;letter-spacing:-.02em;font-weight:650}
+  p{margin:0}
+
+  /* ---------- barra fija ---------- */
+  .topbar{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    min-height:var(--bar);
+    display:flex;align-items:center;justify-content:center;
+    background:var(--amber);
+    color:#2a1c00;
+    border-bottom:1px solid rgba(0,0,0,.22);
+    text-transform:none;
+  }
+  .topbar span{
+    display:block;
+    padding:9px 16px;
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:.005em;
+    text-align:center;
+    line-height:1.35;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    background:
+      radial-gradient(900px 520px at 78% 8%, rgba(255,182,41,.17), transparent 62%),
+      radial-gradient(760px 520px at 8% 92%, rgba(60,116,168,.22), transparent 60%),
+      linear-gradient(170deg,#11161d 0%,#0d1014 58%,#0a0d11 100%);
+    color:#eef2f6;
+    padding-top:calc(var(--bar) + 64px);
+    padding-bottom:72px;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px);
+    background-size:46px 46px;
+    mask-image:linear-gradient(180deg,rgba(0,0,0,.65),transparent 72%);
+    -webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,.65),transparent 72%);
+  }
+  .hero .wrap{position:relative;z-index:1}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:12.5px;font-weight:650;letter-spacing:.14em;
+    color:#ffd27a;
+    border:1px solid rgba(255,182,41,.4);
+    background:rgba(255,182,41,.09);
+    border-radius:999px;padding:7px 14px;
+    margin-bottom:26px;
+  }
+  .eyebrow i{width:7px;height:7px;border-radius:50%;background:var(--amber);display:block}
+  h1{
+    font-size:clamp(2.45rem,7.2vw,4.4rem);
+    font-weight:700;
+    letter-spacing:-.035em;
+  }
+  h1 .thin{display:block;font-weight:300;color:#8e9dad;font-size:.44em;letter-spacing:.01em;margin-top:14px}
+  .lead{
+    margin-top:26px;max-width:46ch;
+    font-size:clamp(1.02rem,2.6vw,1.22rem);
+    color:#c2cdd9;
+  }
+  .cta-row{margin-top:36px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:11px;
+    text-decoration:none;font-weight:650;font-size:1.02rem;
+    padding:15px 24px;border-radius:12px;
+    border:1px solid transparent;
+  }
+  .btn-main{background:var(--amber);color:#241700;box-shadow:0 10px 30px -12px rgba(255,182,41,.55)}
+  .btn-main:hover{background:#ffc552}
+  .btn-ghost{color:#dfe7ef;border-color:#39434f;background:rgba(255,255,255,.03)}
+  .hero-facts{
+    margin-top:46px;padding-top:26px;border-top:1px solid #222a34;
+    display:flex;flex-wrap:wrap;gap:12px 40px;
+    font-size:14.5px;color:#9fadbb;
+  }
+  .hero-facts b{color:#e6edf4;font-weight:600}
+
+  /* ---------- secciones ---------- */
+  section{padding:76px 0}
+  .shead{max-width:60ch;margin-bottom:40px}
+  .ktag{
+    font-size:12px;font-weight:700;letter-spacing:.16em;color:var(--amber-d);
+    display:block;margin-bottom:14px;
+  }
+  h2{font-size:clamp(1.65rem,4.4vw,2.35rem)}
+  .shead p{margin-top:14px;color:var(--muted);font-size:1.03rem}
+
+  .grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(252px,1fr))}
+  .card{
+    background:var(--paper-2);
+    border:1px solid #e3e7eb;
+    border-radius:var(--radius);
+    padding:26px 24px 28px;
+  }
+  .card .ico{
+    width:46px;height:46px;border-radius:11px;
+    background:var(--ink-2);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:18px;
+  }
+  .card .ico svg{width:25px;height:25px;display:block}
+  .card h3{font-size:1.09rem;margin-bottom:9px}
+  .card p{color:var(--muted);font-size:.95rem}
+
+  /* ---------- pasos ---------- */
+  .steps{background:var(--ink);color:#e9eef3}
+  .steps .shead p{color:var(--muted-d)}
+  .steps .ktag{color:var(--amber)}
+  .stepgrid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .step{
+    background:linear-gradient(180deg,#161c24,#121720);
+    border:1px solid #242d38;border-radius:var(--radius);
+    padding:26px 24px 28px;
+  }
+  .step .n{
+    font-size:13px;font-weight:700;letter-spacing:.1em;color:var(--amber);
+    display:block;margin-bottom:16px;
+  }
+  .step h3{font-size:1.09rem;margin-bottom:10px;color:#f2f6fa}
+  .step p{color:var(--muted-d);font-size:.95rem}
+
+  /* ---------- contacto ---------- */
+  .contact{background:#eceff2}
+  .ctwo{display:grid;gap:20px;grid-template-columns:1fr}
+  @media(min-width:900px){.ctwo{grid-template-columns:0.9fr 1.1fr;align-items:start}}
+  .infocard{background:var(--paper-2);border:1px solid #dfe4e9;border-radius:var(--radius);padding:28px 24px}
+  .irow{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid #edf0f3}
+  .irow:last-child{border-bottom:0;padding-bottom:0}
+  .irow:first-of-type{padding-top:0}
+  .irow svg{width:21px;height:21px;flex:0 0 21px;margin-top:3px}
+  .irow .k{font-size:11.5px;font-weight:700;letter-spacing:.11em;color:var(--muted);display:block;margin-bottom:3px}
+  .irow .v{font-size:1.02rem;font-weight:600;color:var(--ink);overflow-wrap:anywhere}
+  .irow a.v{color:var(--ink);text-decoration:none;border-bottom:2px solid var(--amber)}
+  .note{font-size:.88rem;color:var(--muted);font-weight:400;margin-top:4px}
+  .mapcard{background:var(--ink-2);border:1px solid #27303b;border-radius:var(--radius);padding:20px}
+  .mapcard svg{width:100%;height:auto;display:block;border-radius:9px}
+  .mapcap{color:var(--muted-d);font-size:.84rem;margin-top:14px;text-align:center}
+  .callbar{margin-top:26px;display:flex;flex-wrap:wrap;gap:12px}
+
+  /* ---------- pie ---------- */
+  footer{background:#0a0d11;color:#aab6c3;padding:54px 0 46px;font-size:.95rem}
+  .frow{display:flex;flex-wrap:wrap;gap:22px 34px;align-items:baseline}
+  footer a{color:#e8eef4;text-decoration:none;border-bottom:1px solid #3a4451}
+  footer a:hover{border-color:var(--amber)}
+  .fname{font-weight:650;color:#f2f6fa;font-size:1.06rem;letter-spacing:-.01em}
+  .fsig{margin-top:30px;padding-top:22px;border-top:1px solid #1b2129;color:#7d8a98;font-size:.88rem}
+
+  @media(max-width:460px){
+    body{font-size:16px}
+    section{padding:58px 0}
+    .wrap{padding:0 18px}
+    .hero{padding-top:calc(var(--bar) + 44px);padding-bottom:56px}
+    .topbar span{font-size:11.5px;padding:8px 12px}
+    :root{--bar:58px}
+    .btn{width:100%;justify-content:center}
+    .hero-facts{gap:10px 0;flex-direction:column}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow"><i></i>MANTENIMIENTO Y REPARACIÓN DE VEHÍCULOS</span>
+    <h1>Taller Arias<span class="thin">Taller mecánico en Elda, calle Miguel Servet</span></h1>
+    <p class="lead">Un taller de barrio para el mantenimiento y la reparación de tu coche. Lo más rápido es llamar y contarnos qué le pasa.</p>
+    <div class="cta-row">
+      <a class="btn btn-main" href="tel:966847400">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3.5h3l1.5 4-2 1.5a12 12 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.5 5.7 2 2 0 0 1 6.5 3.5z"/></svg>
+        Llamar al 96 684 74 00
+      </a>
+      <a class="btn btn-ghost" href="#contacto">Ver dónde estamos</a>
+    </div>
+    <div class="hero-facts">
+      <span>Calle Miguel Servet 8 · <b>03600 Elda</b></span>
+      <span>Horario: <b>consultar horario</b></span>
+    </div>
+  </div>
+</header>
+
+<section id="servicios">
+  <div class="wrap">
+    <div class="shead">
+      <span class="ktag">SERVICIOS</span>
+      <h2>Lo que hace un taller de barrio</h2>
+      <p>Trabajos habituales de mantenimiento y reparación de vehículos. Si lo que necesitas no aparece aquí, pregúntanoslo por teléfono.</p>
+    </div>
+    <div class="grid">
+
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#ffb629" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 7.5l-2.6 2.6-3-3L17.5 4.5a5 5 0 0 0-6 6.4L5 17.4a2.2 2.2 0 0 0 3.1 3.1l6.5-6.5a5 5 0 0 0 5.9-6.5z"/></svg></div>
+        <h3>Revisiones y mantenimiento</h3>
+        <p>Revisión general del vehículo y el mantenimiento periódico que toca según uso y kilómetros.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#ffb629" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 13.5h18"/><path d="M4.5 13.5l2-5.3A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.2l2 5.3"/><path d="M3 13.5V18h18v-4.5"/><circle cx="7.2" cy="17.9" r="1.3"/><circle cx="16.8" cy="17.9" r="1.3"/></svg></div>
+        <h3>Pre-ITV y diagnosis</h3>
+        <p>Comprobación de los puntos que mira la ITV y lectura de los avisos del cuadro antes de pasarla.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#ffb629" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.2"/><circle cx="12" cy="12" r="3.2"/><path d="M12 3.8v4M12 16.2v4M3.8 12h4M16.2 12h4"/></svg></div>
+        <h3>Frenos y suspensión</h3>
+        <p>Pastillas, discos, amortiguadores y todo lo que afecta a cómo frena y cómo se asienta el coche.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#ffb629" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.4"/><circle cx="12" cy="12" r="3.4"/><path d="M12 3.6l1.6 4.4h-3.2zM12 20.4l-1.6-4.4h3.2zM3.6 12l4.4-1.6v3.2zM20.4 12l-4.4 1.6v-3.2z"/></svg></div>
+        <h3>Neumáticos</h3>
+        <p>Cambio y equilibrado de ruedas, revisión de presiones y estado del dibujo.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#ffb629" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5s4.6 5.2 4.6 8.4a4.6 4.6 0 0 1-9.2 0C7.4 8.7 12 3.5 12 3.5z"/><path d="M9.6 12.4a2.4 2.4 0 0 0 2.4 2.4"/><path d="M4 19.5h16"/></svg></div>
+        <h3>Cambio de aceite y filtros</h3>
+        <p>Sustitución de aceite y de los filtros de aceite, aire, combustible y habitáculo.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#ffb629" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.4v17.2"/><path d="M5.6 6.4l12.8 11.2M18.4 6.4L5.6 17.6"/><path d="M3.6 12h16.8"/><circle cx="12" cy="12" r="2.3"/></svg></div>
+        <h3>Aire acondicionado</h3>
+        <p>Revisión del circuito del aire, carga del gas y cambio del filtro del habitáculo.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#ffb629" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.4 3.2L6.6 13.1h4.3l-1.3 7.7 6.8-9.9h-4.3z"/></svg></div>
+        <h3>Electricidad y electrónica</h3>
+        <p>Batería, alternador, luces, sensores y averías eléctricas del vehículo.</p>
+      </article>
+
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#ffb629" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3.5h3l1.5 4-2 1.5a12 12 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.5 5.7 2 2 0 0 1 6.5 3.5z"/></svg></div>
+        <h3>¿Otra cosa?</h3>
+        <p>Cuéntanos la avería por teléfono y te decimos si podemos verlo en el taller.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="steps">
+  <div class="wrap">
+    <div class="shead">
+      <span class="ktag">CÓMO TRABAJAMOS</span>
+      <h2>Tres pasos, sin sorpresas</h2>
+      <p>Una forma de trabajar sencilla: nos cuentas, lo miramos, te lo explicamos antes de tocar nada.</p>
+    </div>
+    <div class="stepgrid">
+      <article class="step">
+        <span class="n">01</span>
+        <h3>Nos lo cuentas</h3>
+        <p>Llamas al taller y nos describes el síntoma: un ruido, un aviso en el cuadro o la revisión que te toca.</p>
+      </article>
+      <article class="step">
+        <span class="n">02</span>
+        <h3>Lo revisamos</h3>
+        <p>Vemos el coche en el taller, localizamos de dónde viene el problema y te decimos qué hace falta.</p>
+      </article>
+      <article class="step">
+        <span class="n">03</span>
+        <h3>Te lo explicamos antes</h3>
+        <p>Te contamos qué se va a hacer y qué supone, y empezamos la reparación cuando nos das el visto bueno.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contacto">
+  <div class="wrap">
+    <div class="shead">
+      <span class="ktag">CONTACTO</span>
+      <h2>Dónde estamos</h2>
+      <p>En la calle Miguel Servet, en Elda. Lo más directo es una llamada.</p>
+    </div>
+
+    <div class="ctwo">
+      <div class="infocard">
+        <div class="irow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#b46f00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3.5h3l1.5 4-2 1.5a12 12 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.5 5.7 2 2 0 0 1 6.5 3.5z"/></svg>
+          <div>
+            <span class="k">TELÉFONO</span>
+            <a class="v" href="tel:966847400">96 684 74 00</a>
+          </div>
+        </div>
+        <div class="irow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#b46f00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s6.5-6.1 6.5-10.3A6.5 6.5 0 0 0 5.5 10.7C5.5 14.9 12 21 12 21z"/><circle cx="12" cy="10.4" r="2.4"/></svg>
+          <div>
+            <span class="k">DIRECCIÓN</span>
+            <span class="v">Calle Miguel Servet 8<br>03600 Elda (Alicante)</span>
+          </div>
+        </div>
+        <div class="irow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#b46f00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.4"/><path d="M12 7.3V12l3.3 2"/></svg>
+          <div>
+            <span class="k">HORARIO</span>
+            <span class="v">Consultar horario</span>
+            <p class="note">No publicamos horario en esta maqueta: confírmalo por teléfono.</p>
+          </div>
+        </div>
+        <div class="callbar">
+          <a class="btn btn-main" href="tel:966847400">Llamar ahora</a>
+        </div>
+      </div>
+
+      <div class="mapcard">
+        <svg viewBox="0 0 440 300" role="img" aria-label="Croquis de situación: el taller está en la calle Miguel Servet.">
+          <defs>
+            <linearGradient id="g-map" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#1b222c"/>
+              <stop offset="1" stop-color="#141a22"/>
+            </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="440" height="300" rx="10" fill="url(#g-map)"/>
+          <g stroke="#2d3744" stroke-width="13" stroke-linecap="square">
+            <path d="M0 62 H440"/>
+            <path d="M0 246 H440"/>
+            <path d="M88 0 V300"/>
+            <path d="M332 0 V300"/>
+          </g>
+          <path d="M0 158 H440" stroke="#3f4e60" stroke-width="22" stroke-linecap="square"/>
+          <path d="M0 158 H440" stroke="#ffb629" stroke-width="2" stroke-dasharray="14 12" opacity=".55"/>
+          <g fill="#202834">
+            <rect x="100" y="76" width="220" height="66" rx="5"/>
+            <rect x="100" y="178" width="100" height="54" rx="5"/>
+            <rect x="214" y="178" width="106" height="54" rx="5"/>
+            <rect x="346" y="76" width="82" height="66" rx="5"/>
+            <rect x="346" y="178" width="82" height="54" rx="5"/>
+          </g>
+          <text x="16" y="144" fill="#ffd27a" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="19" font-weight="600">Calle Miguel Servet</text>
+          <circle cx="238" cy="158" r="17" fill="#ffb629" opacity=".18"/>
+          <circle cx="238" cy="158" r="8.5" fill="#ffb629" stroke="#0d1014" stroke-width="2.5"/>
+          <path d="M238 158 L238 206" stroke="#ffb629" stroke-width="2" stroke-dasharray="4 5"/>
+          <rect x="152" y="208" width="174" height="38" rx="9" fill="#0d1014" stroke="#3a4552"/>
+          <text x="239" y="233" text-anchor="middle" fill="#f2f6fa" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="19" font-weight="650">Taller Arias · nº 8</text>
+        </svg>
+        <p class="mapcap">Esquema simplificado, no es un mapa a escala.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="fname">Taller Arias</p>
+    <div class="frow" style="margin-top:14px">
+      <span>Calle Miguel Servet 8, 03600 Elda (Alicante)</span>
+      <span><a href="tel:966847400">96 684 74 00</a></span>
+      <span><a href="mailto:taller_arias_@hotmail.com">taller_arias_@hotmail.com</a></span>
+      <span><a href="https://es-es.facebook.com/TallerAriasElda" rel="noopener noreferrer" target="_blank">Facebook</a></span>
+      <span>Consultar horario</span>
+    </div>
+    <p class="fsig">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+</body>
+</html>
