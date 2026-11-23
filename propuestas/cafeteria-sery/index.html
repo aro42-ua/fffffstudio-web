@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cafetería Sery · Ibi — Propuesta de diseño</title>
+<style>
+  :root{
+    --crema:#FBF5EC;
+    --crema-2:#F4E8D7;
+    --tostado:#E6D2B5;
+    --cafe:#3A2317;
+    --cafe-2:#5A3A26;
+    --canela:#B9723C;
+    --canela-cl:#D99A5E;
+    --verde:#5C6B4A;
+    --tinta:#2B1C13;
+    --tinta-sv:#6B564A;
+    --linea:rgba(58,35,23,.14);
+    --barra:44px;
+    --radio:18px;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    --serif:Georgia,"Times New Roman",'Iowan Old Style',serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{max-width:100%;overflow-x:hidden}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    padding-top:var(--barra);
+    font-family:var(--sans);
+    color:var(--tinta);
+    background:var(--crema);
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%}
+  h1,h2,h3{font-family:var(--serif);font-weight:700;line-height:1.14;letter-spacing:-.01em;margin:0}
+  p{margin:0}
+  a{color:inherit}
+
+  /* ---------- barra fija ---------- */
+  .aviso{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    min-height:var(--barra);
+    display:flex;align-items:center;justify-content:center;
+    padding:9px 16px;
+    background:var(--tinta);
+    color:#F3E7D8;
+    font-size:12px;
+    letter-spacing:.055em;
+    text-transform:uppercase;
+    text-align:center;
+    box-shadow:0 1px 0 rgba(0,0,0,.2);
+  }
+  .aviso span{display:block;max-width:100%}
+
+  /* ---------- estructura ---------- */
+  .wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 24px}
+  section{padding:84px 0}
+  .et{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:var(--sans);font-size:11.5px;font-weight:700;
+    letter-spacing:.16em;text-transform:uppercase;
+    color:var(--canela);margin-bottom:18px;
+  }
+  .et::before{content:"";width:26px;height:1px;background:var(--canela);display:block;flex:none}
+  .lead{font-size:18px;color:var(--tinta-sv);max-width:60ch}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    padding:0;
+    background:
+      radial-gradient(900px 520px at 88% -8%, rgba(217,154,94,.55), transparent 62%),
+      radial-gradient(700px 480px at 4% 108%, rgba(92,107,74,.26), transparent 65%),
+      linear-gradient(168deg,#FDF8F1 0%, var(--crema-2) 58%, var(--tostado) 100%);
+    border-bottom:1px solid var(--linea);
+  }
+  .hero .wrap{position:relative;z-index:2;padding-top:72px;padding-bottom:84px}
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:56px;align-items:center}
+  .marca{display:flex;align-items:center;gap:14px;margin-bottom:34px}
+  .sello{
+    width:52px;height:52px;flex:none;border-radius:50%;
+    background:linear-gradient(145deg,var(--cafe-2),var(--tinta));
+    display:grid;place-items:center;
+    box-shadow:0 8px 20px rgba(58,35,23,.26);
+  }
+  .marca-txt{line-height:1.2}
+  .marca-txt b{display:block;font-family:var(--serif);font-size:19px;letter-spacing:.01em}
+  .marca-txt small{display:block;font-size:11.5px;letter-spacing:.17em;text-transform:uppercase;color:var(--tinta-sv)}
+  h1{font-size:clamp(2.05rem,4.8vw,3.5rem);margin-bottom:20px}
+  h1 em{font-style:normal;color:var(--canela)}
+  .hero p.lead{font-size:19px;color:var(--cafe-2)}
+  .ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:15px 26px;border-radius:999px;
+    font-size:15.5px;font-weight:700;text-decoration:none;
+    border:1.5px solid transparent;transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-pri{background:var(--tinta);color:#FDF8F1;box-shadow:0 10px 24px rgba(43,28,19,.26)}
+  .btn-pri:hover{transform:translateY(-2px)}
+  .btn-sec{background:rgba(255,255,255,.62);color:var(--cafe);border-color:rgba(58,35,23,.28)}
+  .btn-sec:hover{background:#fff}
+  .micro{margin-top:16px;font-size:13.5px;color:var(--tinta-sv)}
+
+  /* taza decorativa */
+  .taza{
+    background:rgba(255,255,255,.5);
+    border:1px solid rgba(255,255,255,.8);
+    border-radius:26px;
+    padding:28px;
+    box-shadow:0 22px 50px rgba(58,35,23,.14);
+    backdrop-filter:blur(2px);
+  }
+  .taza svg{display:block;width:100%;height:auto}
+
+  /* ---------- gancho / problema ---------- */
+  .gancho{background:var(--tinta);color:#F3E7D8}
+  .gancho h2{font-size:clamp(1.7rem,3.4vw,2.4rem);color:#FDF8F1;margin-bottom:14px}
+  .gancho .et{color:var(--canela-cl)}
+  .gancho .et::before{background:var(--canela-cl)}
+  .gancho .lead{color:rgba(243,231,216,.82)}
+  .faltan{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:38px}
+  .falta{
+    border:1px solid rgba(243,231,216,.22);
+    border-radius:14px;padding:18px 16px;
+    background:rgba(255,255,255,.04);
+  }
+  .falta b{display:block;font-size:14.5px;letter-spacing:.01em;margin-bottom:4px;color:#FDF8F1}
+  .falta span{font-size:13px;color:rgba(243,231,216,.66)}
+  .falta.ok{border-color:rgba(217,154,94,.5);background:rgba(217,154,94,.12)}
+
+  /* ---------- oferta ---------- */
+  .oferta{background:linear-gradient(180deg,var(--crema) 0%, #FDF9F3 100%)}
+  .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:40px}
+  .card{
+    background:#fff;border:1px solid var(--linea);border-radius:var(--radio);
+    padding:26px 24px;box-shadow:0 2px 0 rgba(58,35,23,.05);
+  }
+  .ic{
+    width:46px;height:46px;border-radius:13px;margin-bottom:16px;
+    display:grid;place-items:center;
+    background:linear-gradient(140deg,var(--crema-2),var(--tostado));
+    border:1px solid rgba(58,35,23,.1);
+  }
+  .card h3{font-size:19px;margin-bottom:8px}
+  .card p{font-size:15.5px;color:var(--tinta-sv)}
+  .carta-slot{
+    margin-top:30px;
+    border:2px dashed rgba(185,114,60,.55);
+    border-radius:var(--radio);
+    background:repeating-linear-gradient(135deg,rgba(185,114,60,.05) 0 12px,transparent 12px 24px);
+    padding:34px 26px;text-align:center;
+  }
+  .carta-slot h3{font-size:clamp(1.25rem,2.6vw,1.6rem);margin-bottom:10px;color:var(--cafe)}
+  .carta-slot p{font-size:15.5px;color:var(--tinta-sv);max-width:58ch;margin:0 auto}
+  .slot-tag{
+    display:inline-block;margin-bottom:14px;padding:6px 14px;border-radius:999px;
+    background:var(--canela);color:#fff;font-size:11.5px;font-weight:700;
+    letter-spacing:.14em;text-transform:uppercase;
+  }
+
+  /* ---------- pasos ---------- */
+  .pasos{background:var(--crema-2);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+  .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:40px}
+  .step{background:#FDF9F3;border:1px solid var(--linea);border-radius:var(--radio);padding:28px 24px}
+  .num{
+    font-family:var(--serif);font-size:30px;line-height:1;color:var(--canela);
+    display:block;margin-bottom:12px;
+  }
+  .step h3{font-size:18.5px;margin-bottom:8px}
+  .step p{font-size:15.5px;color:var(--tinta-sv)}
+
+  /* ---------- contacto ---------- */
+  .contacto{background:#FDF9F3}
+  .cgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:40px;align-items:start;margin-top:40px}
+  .datos{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+  .datos li{
+    display:flex;gap:16px;align-items:flex-start;
+    padding:18px 2px;border-bottom:1px solid var(--linea);
+  }
+  .datos li:last-child{border-bottom:0}
+  .datos .di{width:36px;height:36px;flex:none;border-radius:10px;display:grid;place-items:center;background:var(--crema-2);border:1px solid rgba(58,35,23,.1)}
+  .datos .dt{display:block;font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--tinta-sv);margin-bottom:3px}
+  .datos strong{display:block;font-size:16.5px;color:var(--tinta);font-weight:700;overflow-wrap:anywhere}
+  .datos a{color:var(--canela);text-decoration:none;border-bottom:1px solid rgba(185,114,60,.4)}
+  .mapa{
+    background:#fff;border:1px solid var(--linea);border-radius:var(--radio);
+    padding:16px;box-shadow:0 2px 0 rgba(58,35,23,.05);
+  }
+  .mapa svg{display:block;width:100%;height:auto;border-radius:10px}
+  .mapa figcaption{margin-top:12px;font-size:13px;color:var(--tinta-sv);text-align:center}
+  .nota{
+    margin-top:26px;padding:18px 20px;border-left:3px solid var(--canela);
+    background:var(--crema-2);border-radius:0 12px 12px 0;
+    font-size:14.5px;color:var(--cafe-2);
+  }
+
+  /* ---------- pie ---------- */
+  footer{background:var(--tinta);color:rgba(243,231,216,.8);padding:56px 0 44px}
+  .ftop{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:flex-end}
+  footer h3{color:#FDF8F1;font-size:22px;margin-bottom:8px}
+  footer a{color:var(--canela-cl);text-decoration:none;border-bottom:1px solid rgba(217,154,94,.45);overflow-wrap:anywhere}
+  .fmail{font-size:17px}
+  .fline{margin-top:34px;padding-top:22px;border-top:1px solid rgba(243,231,216,.18);font-size:13px;line-height:1.7;color:rgba(243,231,216,.62)}
+  .fline b{display:block;color:rgba(243,231,216,.9);font-weight:600;margin-bottom:6px}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:minmax(0,1fr);gap:38px}
+    .faltan{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .cards,.steps{grid-template-columns:minmax(0,1fr)}
+    .cgrid{grid-template-columns:minmax(0,1fr);gap:32px}
+  }
+  @media (max-width:640px){
+    :root{--barra:58px}
+    body{font-size:16px}
+    .aviso{font-size:10.5px;letter-spacing:.04em;line-height:1.45;padding:8px 14px}
+    .wrap{padding:0 18px}
+    section{padding:58px 0}
+    .hero .wrap{padding-top:44px;padding-bottom:56px}
+    h1{font-size:2rem}
+    .hero p.lead,.lead{font-size:16.5px}
+    .ctas{gap:11px}
+    .btn{width:100%;justify-content:center;padding:14px 20px;font-size:15px}
+    .taza{padding:18px;border-radius:20px}
+    .faltan{grid-template-columns:minmax(0,1fr)}
+    .carta-slot{padding:26px 18px}
+    .card,.step,.mapa{padding:22px 18px}
+    .mapa{padding:12px}
+    .ftop{align-items:flex-start}
+  }
+</style>
+</head>
+<body>
+
+<div class="aviso" role="note"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="marca">
+          <div class="sello" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F3E7D8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9Z"/>
+              <path d="M16 10h2.2a2.3 2.3 0 0 1 0 4.6H16"/>
+              <path d="M7 5.4c.9-.8.9-1.6 0-2.4M11 5.4c.9-.8.9-1.6 0-2.4"/>
+            </svg>
+          </div>
+          <div class="marca-txt">
+            <b>Cafetería Sery</b>
+            <small>Ibi · Alicante</small>
+          </div>
+        </div>
+
+        <h1>El bar de barrio de <em>C/&nbsp;Constitución</em>, por fin con su propia web.</h1>
+        <p class="lead">Bar-cafetería en Ibi. Esta es una maqueta de propuesta: una página sencilla, clara y cálida para que quien busque un café, un almuerzo o una merienda en el centro os encuentre y sepa cómo contactar.</p>
+
+        <div class="ctas">
+          <a class="btn btn-pri" href="mailto:seryortiz@gmail.com">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 7 9 6 9-6"/></svg>
+            Escribir por correo
+          </a>
+          <a class="btn btn-sec" href="#contacto">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.3 7-11a7 7 0 1 0-14 0c0 5.7 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+            Ver dónde estamos
+          </a>
+        </div>
+        <p class="micro">Contacto por correo electrónico. Teléfono: consultar.</p>
+      </div>
+
+      <div class="taza" aria-hidden="true">
+        <svg viewBox="0 0 420 300" role="presentation">
+          <defs>
+            <linearGradient id="gTaza" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#FFFDF9"/><stop offset="1" stop-color="#EADCC6"/>
+            </linearGradient>
+            <linearGradient id="gCafe" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#6B4126"/><stop offset="1" stop-color="#36200F"/>
+            </linearGradient>
+            <linearGradient id="gPlato" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#E3D2B8"/><stop offset="1" stop-color="#CBB391"/>
+            </linearGradient>
+          </defs>
+          <circle cx="210" cy="140" r="118" fill="#F6E9D6" opacity=".75"/>
+          <circle cx="210" cy="140" r="90" fill="none" stroke="#C9A978" stroke-width="1.2" opacity=".8"/>
+          <!-- vapor -->
+          <g stroke="#B9723C" stroke-width="3.4" stroke-linecap="round" fill="none" opacity=".55">
+            <path d="M186 74c-10-10 10-18 0-29"/>
+            <path d="M210 68c-11-11 11-20 0-32"/>
+            <path d="M234 74c-10-10 10-18 0-29"/>
+          </g>
+          <!-- plato -->
+          <ellipse cx="210" cy="238" rx="118" ry="19" fill="url(#gPlato)"/>
+          <ellipse cx="210" cy="233" rx="92" ry="13" fill="#F3E6D1"/>
+          <!-- asa -->
+          <path d="M300 140h22a28 28 0 0 1 0 56h-16" fill="none" stroke="url(#gTaza)" stroke-width="18" stroke-linecap="round"/>
+          <path d="M300 140h22a28 28 0 0 1 0 56h-16" fill="none" stroke="#C9A978" stroke-width="2" stroke-linecap="round" opacity=".7"/>
+          <!-- cuerpo -->
+          <path d="M120 120h186v62c0 29-23 52-52 52h-82c-29 0-52-23-52-52v-62Z" fill="url(#gTaza)" stroke="#C9A978" stroke-width="2"/>
+          <!-- café -->
+          <ellipse cx="213" cy="122" rx="93" ry="15" fill="url(#gCafe)"/>
+          <ellipse cx="213" cy="120" rx="78" ry="11" fill="#8A5A34" opacity=".55"/>
+          <path d="M120 120h186" stroke="#C9A978" stroke-width="2"/>
+          <!-- granos -->
+          <g fill="#6B4126" opacity=".5">
+            <ellipse cx="78" cy="252" rx="13" ry="9" transform="rotate(-18 78 252)"/>
+            <path d="M68 251c7-5 13-2 20 1" stroke="#F6E9D6" stroke-width="1.6" fill="none"/>
+            <ellipse cx="346" cy="258" rx="12" ry="8" transform="rotate(14 346 258)"/>
+            <path d="M336 257c7-4 13-2 19 2" stroke="#F6E9D6" stroke-width="1.6" fill="none"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= GANCHO ================= -->
+<section class="gancho">
+  <div class="wrap">
+    <span class="et">El punto de partida</span>
+    <h2>Hoy, quien os busca encuentra media ficha.</h2>
+    <p class="lead">En la ficha del Ajuntament d'Ibi, dentro de la categoría oficial «Hostelería y turismo &gt;&gt; Bar-Cafetería», de Cafetería Sery solo constan la dirección y el correo. No hay web, ni teléfono, ni horario, ni redes sociales. Esta maqueta propone llenar ese hueco con una página propia, sin inventar nada: los datos que falten los ponéis vosotros.</p>
+    <div class="faltan">
+      <div class="falta ok"><b>Dirección</b><span>Consta en la ficha</span></div>
+      <div class="falta ok"><b>Correo</b><span>Consta en la ficha</span></div>
+      <div class="falta"><b>Web y redes</b><span>No constan</span></div>
+      <div class="falta"><b>Teléfono y horario</b><span>No constan</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= OFERTA ================= -->
+<section class="oferta" id="oferta">
+  <div class="wrap">
+    <span class="et">Lo propio de un bar-cafetería</span>
+    <h2 style="font-size:clamp(1.7rem,3.4vw,2.4rem);margin-bottom:14px">De la primera cafetera del día<br>a la última merienda.</h2>
+    <p class="lead">Así se presentaría la oferta en la web, descrita en términos generales. Los platos, las combinaciones y los precios concretos los decidís vosotros: esta maqueta no propone ninguna carta.</p>
+
+    <div class="cards">
+      <article class="card">
+        <div class="ic" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5A3A26" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h11v4.5A4.5 4.5 0 0 1 10.5 19h-2A4.5 4.5 0 0 1 4 14.5V10Z"/><path d="M15 11h2.2a2.2 2.2 0 0 1 0 4.4H15"/><path d="M6.5 6.8c.8-.7.8-1.5 0-2.2M10.5 6.8c.8-.7.8-1.5 0-2.2"/></svg>
+        </div>
+        <h3>Desayunos y cafés</h3>
+        <p>La franja de la mañana: cafés, infusiones y desayunos para tomar rápido en barra o con calma en mesa.</p>
+      </article>
+      <article class="card">
+        <div class="ic" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5A3A26" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 12h17"/><path d="M5 12a7 7 0 0 1 14 0"/><path d="M4 16.5h16"/><path d="M8 8.5V5M12 8.5V4M16 8.5V5"/></svg>
+        </div>
+        <h3>Almuerzos y bocadillos</h3>
+        <p>El almuerzo de media mañana y los bocadillos de siempre, pensados tanto para quedarse como para llevar.</p>
+      </article>
+      <article class="card">
+        <div class="ic" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5A3A26" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.2"/><circle cx="12" cy="12" r="3.4"/><path d="M12 3.8v2.4M12 17.8v2.4M3.8 12h2.4M17.8 12h2.4"/></svg>
+        </div>
+        <h3>Meriendas y tapas</h3>
+        <p>Para la tarde y el rato de después: meriendas y tapas para compartir en un bar de barrio, sin prisa.</p>
+      </article>
+    </div>
+
+    <div class="carta-slot">
+      <span class="slot-tag">Apartado reservado</span>
+      <h3>Espacio para vuestra carta</h3>
+      <p>Este bloque queda preparado y vacío a propósito. Aquí iría vuestra carta real —los apartados, los productos y los precios que decidáis—, tal y como nos la facilitéis. No se ha escrito nada en vuestro nombre.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PASOS ================= -->
+<section class="pasos" id="pasos">
+  <div class="wrap">
+    <span class="et">Qué encontraréis</span>
+    <h2 style="font-size:clamp(1.7rem,3.4vw,2.4rem);margin-bottom:14px">Cómo trabajamos, en tres pasos.</h2>
+    <p class="lead">Un proceso corto y sin tecnicismos, pensado para un negocio que ya tiene bastante con abrir cada día.</p>
+    <div class="steps">
+      <article class="step">
+        <span class="num">01</span>
+        <h3>Nos contáis el bar</h3>
+        <p>Una conversación por correo para recoger lo vuestro: horario, carta, fotos si queréis y cómo preferís que os contacten. Nada se publica sin que lo veáis.</p>
+      </article>
+      <article class="step">
+        <span class="num">02</span>
+        <h3>Ajustamos la maqueta</h3>
+        <p>Partimos de esta propuesta y la adaptamos con vuestros datos reales. Revisáis textos y diseño, y se corrige hasta que os representa.</p>
+      </article>
+      <article class="step">
+        <span class="num">03</span>
+        <h3>Se publica y queda vuestra</h3>
+        <p>La web se pone en marcha, rápida y legible en el móvil, y se queda lista para que cambiéis horario o carta cuando lo necesitéis.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACTO ================= -->
+<section class="contacto" id="contacto">
+  <div class="wrap">
+    <span class="et">Dónde estamos</span>
+    <h2 style="font-size:clamp(1.7rem,3.4vw,2.4rem);margin-bottom:14px">En el centro de Ibi.</h2>
+    <p class="lead">Estos son los únicos datos de contacto verificados del negocio. Lo que no consta aparece como «consultar»: preferimos dejarlo abierto antes que publicar algo sin confirmar.</p>
+
+    <div class="cgrid">
+      <div>
+        <ul class="datos">
+          <li>
+            <span class="di" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5A3A26" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.3 7-11a7 7 0 1 0-14 0c0 5.7 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg></span>
+            <div class="dato-t"><span class="dt">Dirección</span><strong>C/ Constitución 10, 03440 Ibi (Alicante)</strong></div>
+          </li>
+          <li>
+            <span class="di" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5A3A26" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 7 9 6 9-6"/></svg></span>
+            <div class="dato-t"><span class="dt">Correo electrónico</span><strong><a href="mailto:seryortiz@gmail.com">seryortiz@gmail.com</a></strong></div>
+          </li>
+          <li>
+            <span class="di" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5A3A26" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3.5h3l1.5 4-2 1.5a10 10 0 0 0 5 5l1.5-2 4 1.5v3a1.8 1.8 0 0 1-2 1.8A14.5 14.5 0 0 1 4.7 5.5a1.8 1.8 0 0 1 1.8-2Z"/></svg></span>
+            <div class="dato-t"><span class="dt">Contacto telefónico</span><strong>Teléfono: consultar</strong></div>
+          </li>
+          <li>
+            <span class="di" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5A3A26" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg></span>
+            <div class="dato-t"><span class="dt">Horario</span><strong>Consultar horario</strong></div>
+          </li>
+          <li>
+            <span class="di" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5A3A26" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V8l8-4 8 4v11"/><path d="M4 19h16"/><path d="M10 19v-5h4v5"/></svg></span>
+            <div class="dato-t"><span class="dt">Categoría oficial</span><strong>Hostelería y turismo &gt;&gt; Bar-Cafetería</strong></div>
+          </li>
+        </ul>
+
+        <div class="nota">
+          Si queréis que la web muestre teléfono, horario o redes, basta con decírnoslo por correo y se añade. Mientras no esté confirmado, no se publica.
+        </div>
+
+        <div class="ctas" style="margin-top:26px">
+          <a class="btn btn-pri" href="mailto:seryortiz@gmail.com">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 7 9 6 9-6"/></svg>
+            Escribir a seryortiz@gmail.com
+          </a>
+        </div>
+      </div>
+
+      <figure class="mapa" style="margin:0">
+        <svg viewBox="0 0 520 380" role="img" aria-label="Esquema estilizado de calles con la ubicación aproximada en la calle Constitución. No es un mapa real.">
+          <defs>
+            <linearGradient id="gMapa" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#F7EFE2"/><stop offset="1" stop-color="#EFE0C9"/>
+            </linearGradient>
+          </defs>
+          <rect width="520" height="380" rx="10" fill="url(#gMapa)"/>
+          <!-- manzanas -->
+          <g fill="#E4D2B6" opacity=".85">
+            <rect x="34" y="34" width="150" height="104" rx="7"/>
+            <rect x="214" y="34" width="118" height="104" rx="7"/>
+            <rect x="362" y="34" width="124" height="150" rx="7"/>
+            <rect x="34" y="200" width="112" height="146" rx="7"/>
+            <rect x="176" y="238" width="156" height="108" rx="7"/>
+            <rect x="362" y="238" width="124" height="108" rx="7"/>
+          </g>
+          <!-- plaza -->
+          <circle cx="248" cy="186" r="40" fill="#CFDAC0" opacity=".9"/>
+          <circle cx="248" cy="186" r="16" fill="#9FB187" opacity=".8"/>
+          <!-- calles -->
+          <g stroke="#FBF7F0" stroke-width="20" stroke-linecap="square" fill="none">
+            <path d="M0 170h520"/>
+            <path d="M160 0v380"/>
+            <path d="M344 0v380"/>
+            <path d="M0 222h520"/>
+          </g>
+          <g stroke="#D7C3A2" stroke-width="1.4" stroke-dasharray="7 9" fill="none" opacity=".9">
+            <path d="M0 196h520"/>
+            <path d="M252 0v380"/>
+          </g>
+          <!-- rotulo calle principal -->
+          <text x="26" y="160" font-family="Georgia, serif" font-size="15" fill="#6B5540" opacity=".95">C/ Constitución</text>
+          <!-- marcador -->
+          <g transform="translate(252 196)">
+            <circle r="30" fill="#B9723C" opacity=".16"/>
+            <circle r="18" fill="#B9723C" opacity=".26"/>
+            <g transform="translate(0,-4)">
+              <path d="M0 16c0-8 9-12 9-20A9 9 0 1 0-9-4c0 8 9 12 9 20Z" fill="#3A2317"/>
+              <circle cx="0" cy="-4.5" r="3.6" fill="#F3E7D8"/>
+            </g>
+          </g>
+          <text x="268" y="236" font-family="Georgia, serif" font-size="15" fill="#3A2317" font-weight="bold">Cafetería Sery</text>
+          <text x="268" y="256" font-family="-apple-system, Arial, sans-serif" font-size="12" fill="#7A6450">Nº 10 · 03440 Ibi</text>
+          <!-- leyenda -->
+          <rect x="24" y="330" width="214" height="30" rx="15" fill="#FBF7F0" opacity=".92"/>
+          <text x="38" y="350" font-family="-apple-system, Arial, sans-serif" font-size="12" fill="#7A6450">Esquema orientativo · no es un mapa</text>
+        </svg>
+        <figcaption>Esquema de calles estilizado, solo orientativo. No sustituye a un mapa.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PIE ================= -->
+<footer>
+  <div class="wrap">
+    <div class="ftop">
+      <div>
+        <h3>Cafetería Sery</h3>
+        <p>C/ Constitución 10, 03440 Ibi (Alicante)<br>Bar-Cafetería · Teléfono: consultar · Consultar horario</p>
+      </div>
+      <p class="fmail">Escribidnos: <a href="mailto:seryortiz@gmail.com">seryortiz@gmail.com</a></p>
+    </div>
+    <div class="fline">
+      <b>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</b>
+      Maqueta no oficial y sin vínculo comercial con el negocio, creada como demostración de diseño. Solo se han utilizado datos públicos verificados: dirección, correo y categoría oficial de la ficha del Ajuntament d'Ibi. No se incluyen teléfonos, horarios, precios, platos, reseñas ni cifras, porque no constan.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
