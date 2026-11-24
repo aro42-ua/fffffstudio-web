@@ -1,0 +1,611 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dibutec · Propuesta</title>
+<meta name="description" content="Maqueta de propuesta comercial no oficial para Dibutec, copistería y papelería en Eibar. Diseño de FFFFFFstudio.">
+<style>
+  :root{
+    --ink:#14161a;
+    --ink-2:#2b2f36;
+    --paper:#f6f4ef;
+    --paper-2:#fffdf8;
+    --line:#dcd7cc;
+    --mute:#6b6f78;
+    --c:#00a7cf;
+    --m:#d6336c;
+    --y:#f2b705;
+    --k:#14161a;
+    --radius:14px;
+    --maxw:1140px;
+    --fs-h1:clamp(2.1rem,6.2vw,4.4rem);
+    --fs-h2:clamp(1.45rem,3.3vw,2.3rem);
+    --sans:"Helvetica Neue",Helvetica,Arial,"Segoe UI",system-ui,-apple-system,sans-serif;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{margin:0;padding:0;max-width:100%}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    font-family:var(--sans);
+    color:var(--ink);
+    background:
+      radial-gradient(1200px 600px at 78% -10%, rgba(0,167,207,.10), transparent 60%),
+      radial-gradient(900px 520px at 4% 8%, rgba(214,51,108,.07), transparent 62%),
+      linear-gradient(180deg,var(--paper-2),var(--paper) 42%,var(--paper));
+    line-height:1.55;
+    font-size:16px;
+    letter-spacing:.005em;
+  }
+  img,svg{max-width:100%;display:block}
+  a{color:inherit}
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 20px}
+
+  /* ---------- barra fija ---------- */
+  .topbar{
+    position:sticky;top:0;z-index:999;
+    background:linear-gradient(90deg,var(--k),#23272e 55%,#2f343c);
+    color:#f3f1ec;
+    border-bottom:1px solid rgba(255,255,255,.14);
+  }
+  .topbar .wrap{display:flex;align-items:center;gap:10px;min-height:40px;padding-top:7px;padding-bottom:7px}
+  .topbar .dots{display:flex;gap:5px;flex:0 0 auto}
+  .topbar .dots i{width:9px;height:9px;border-radius:50%;display:block}
+  .topbar .dots i:nth-child(1){background:var(--c)}
+  .topbar .dots i:nth-child(2){background:var(--m)}
+  .topbar .dots i:nth-child(3){background:var(--y)}
+  .topbar p{
+    margin:0;font-family:var(--mono);
+    font-size:clamp(10px,2.55vw,12.5px);
+    letter-spacing:.02em;line-height:1.35;
+    overflow-wrap:break-word;min-width:0;
+  }
+
+  /* ---------- nav ---------- */
+  .nav{border-bottom:1px solid var(--line);background:rgba(255,253,248,.72);backdrop-filter:blur(6px)}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:14px;padding-bottom:14px}
+  .brand{display:flex;align-items:center;gap:11px;min-width:0}
+  .mark{width:38px;height:38px;flex:0 0 auto}
+  .brand b{font-size:1.18rem;letter-spacing:.14em;text-transform:uppercase;display:block;line-height:1}
+  .brand span{font-size:.72rem;color:var(--mute);letter-spacing:.09em;text-transform:uppercase}
+  .nav ul{display:flex;gap:20px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+  .nav ul a{text-decoration:none;font-size:.86rem;letter-spacing:.04em;color:var(--ink-2);padding-bottom:3px;border-bottom:1.5px solid transparent}
+  .nav ul a:hover{border-bottom-color:var(--m)}
+
+  /* ---------- botones ---------- */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    padding:14px 22px;border-radius:999px;text-decoration:none;
+    font-weight:700;font-size:.95rem;letter-spacing:.02em;border:1.5px solid var(--ink);
+    background:var(--ink);color:#fffdf8;transition:transform .15s ease, box-shadow .15s ease;
+    max-width:100%;text-align:center;
+  }
+  .btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(20,22,26,.22)}
+  .btn.ghost{background:transparent;color:var(--ink)}
+  .btn.ghost:hover{box-shadow:0 10px 26px rgba(20,22,26,.12)}
+  .btn small{font-weight:500;opacity:.78;font-size:.8em}
+
+  .tag{
+    display:inline-flex;align-items:center;gap:7px;
+    font-family:var(--mono);font-size:.68rem;letter-spacing:.11em;text-transform:uppercase;
+    padding:5px 10px;border:1px dashed #b9b2a4;border-radius:999px;color:var(--mute);background:rgba(255,255,255,.55);
+  }
+  .tag::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--y);flex:0 0 auto}
+
+  /* ---------- hero ---------- */
+  .hero{padding:clamp(34px,5.5vw,76px) 0 clamp(30px,4vw,56px)}
+  .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(24px,4vw,54px);align-items:center}
+  .eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--m);margin:0 0 14px}
+  h1{font-size:var(--fs-h1);line-height:.98;margin:0 0 18px;letter-spacing:-.025em;font-weight:800;overflow-wrap:break-word}
+  h1 em{font-style:normal;background:linear-gradient(180deg,transparent 62%,rgba(242,183,5,.5) 62%)}
+  .lede{font-size:clamp(1rem,1.9vw,1.18rem);color:var(--ink-2);margin:0 0 22px;max-width:46ch}
+  .hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+  .hero-meta{display:flex;gap:10px;flex-wrap:wrap;list-style:none;margin:0;padding:0}
+  .hero-meta li{font-size:.82rem;color:var(--mute);border-left:2px solid var(--line);padding-left:10px}
+
+  /* tarjeta "prueba de color" */
+  .proof{
+    border:1px solid var(--line);border-radius:var(--radius);background:var(--paper-2);
+    box-shadow:0 26px 60px -34px rgba(20,22,26,.45);overflow:hidden;
+  }
+  .proof-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 14px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);flex-wrap:wrap}
+  .proof-body{padding:clamp(14px,2.4vw,22px)}
+  .swatches{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px}
+  .sw{aspect-ratio:1/1;border-radius:8px;position:relative;overflow:hidden}
+  .sw span{position:absolute;left:7px;bottom:5px;font-family:var(--mono);font-size:.64rem;color:#fffdf8;letter-spacing:.08em}
+  .sw.c{background:linear-gradient(145deg,#7fe0f3,var(--c))}
+  .sw.m{background:linear-gradient(145deg,#f58fb3,var(--m))}
+  .sw.y{background:linear-gradient(145deg,#ffe28a,var(--y))}
+  .sw.k{background:linear-gradient(145deg,#4b5159,var(--k))}
+  .rules{display:grid;gap:9px}
+  .rule{height:9px;border-radius:999px;background:linear-gradient(90deg,var(--c),var(--m) 48%,var(--y));opacity:.85}
+  .rule:nth-child(2){width:78%;background:linear-gradient(90deg,#c9c3b6,#8e8a80)}
+  .rule:nth-child(3){width:54%;background:linear-gradient(90deg,#c9c3b6,#8e8a80)}
+  .proof-foot{display:flex;gap:14px;flex-wrap:wrap;padding:12px 14px;border-top:1px solid var(--line);font-family:var(--mono);font-size:.66rem;color:var(--mute);letter-spacing:.07em;text-transform:uppercase}
+
+  /* ---------- problema ---------- */
+  .band{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.6),rgba(255,255,255,0))}
+  .band .wrap{padding:clamp(26px,3.6vw,44px) 20px}
+  .band-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,3vw,40px);align-items:start}
+  .band h2{font-size:var(--fs-h2);margin:12px 0 0;letter-spacing:-.02em;line-height:1.1}
+  .band p{color:var(--ink-2);margin:12px 0 0}
+  .check{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+  .check li{display:flex;gap:11px;align-items:flex-start;font-size:.95rem;color:var(--ink-2)}
+  .check svg{flex:0 0 auto;margin-top:2px}
+
+  /* ---------- secciones ---------- */
+  section{scroll-margin-top:72px}
+  .sec{padding:clamp(40px,5.5vw,78px) 0}
+  .sec-head{max-width:62ch;margin-bottom:clamp(22px,3vw,38px)}
+  .sec-head h2{font-size:var(--fs-h2);margin:12px 0 10px;letter-spacing:-.02em;line-height:1.1}
+  .sec-head p{color:var(--mute);margin:0}
+
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .card{
+    border:1px solid var(--line);border-radius:var(--radius);padding:20px;background:var(--paper-2);
+    display:flex;flex-direction:column;gap:11px;position:relative;overflow:hidden;min-width:0;
+    transition:transform .16s ease,box-shadow .16s ease;
+  }
+  .card:hover{transform:translateY(-3px);box-shadow:0 18px 40px -26px rgba(20,22,26,.45)}
+  .card::after{content:"";position:absolute;inset:auto 0 0 0;height:3px;background:linear-gradient(90deg,var(--c),var(--m),var(--y));opacity:.75}
+  .card h3{margin:0;font-size:1.05rem;letter-spacing:-.01em}
+  .card p{margin:0;font-size:.92rem;color:var(--ink-2)}
+  .card .ico{width:34px;height:34px}
+  .card .prop{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);border:1px dashed #c3bcae;border-radius:999px;padding:3px 8px;align-self:flex-start}
+  .note{
+    margin-top:18px;font-size:.84rem;color:var(--mute);
+    border-left:3px solid var(--y);padding:8px 0 8px 12px;background:linear-gradient(90deg,rgba(242,183,5,.09),transparent 70%);
+  }
+
+  /* ---------- formulario ---------- */
+  .form-wrap{display:grid;grid-template-columns:1fr .9fr;gap:clamp(20px,3.4vw,44px);align-items:start}
+  form{border:1px solid var(--line);border-radius:var(--radius);background:var(--paper-2);padding:clamp(16px,2.6vw,26px);box-shadow:0 24px 56px -36px rgba(20,22,26,.4)}
+  .frow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;min-width:0}
+  .field label{font-size:.78rem;letter-spacing:.07em;text-transform:uppercase;color:var(--mute);font-family:var(--mono)}
+  input,select,textarea{
+    font:inherit;font-size:.95rem;color:var(--ink);width:100%;max-width:100%;
+    padding:11px 12px;border:1px solid #cfc9bd;border-radius:9px;background:#fff;
+  }
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--c);outline-offset:1px;border-color:var(--c)}
+  textarea{min-height:104px;resize:vertical}
+  .drop{
+    border:1.5px dashed #c3bcae;border-radius:11px;padding:18px 14px;text-align:center;
+    background:repeating-linear-gradient(45deg,rgba(0,167,207,.05) 0 10px,transparent 10px 20px);
+  }
+  .drop p{margin:8px 0 0;font-size:.86rem;color:var(--mute)}
+  .drop input[type=file]{display:block;width:max-content;max-width:100%;margin:12px auto 0;background:transparent;border:0;padding:0;font-size:.84rem}
+  .consent{display:flex;gap:10px;align-items:flex-start;font-size:.84rem;line-height:1.5;color:var(--mute);margin:4px 0 18px;text-transform:none;letter-spacing:normal;font-family:var(--sans)}
+  .consent input{width:16px;height:16px;flex:0 0 auto;margin-top:2px}
+  .form-msg{margin:12px 0 0;font-size:.84rem;color:var(--ink-2);min-height:1.2em}
+  .aside-box{border:1px solid var(--line);border-radius:var(--radius);padding:20px;background:rgba(255,255,255,.55)}
+  .aside-box h3{margin:0 0 10px;font-size:1rem}
+  .aside-box ol{margin:0;padding-left:20px;font-size:.92rem;color:var(--ink-2);display:grid;gap:8px}
+
+  /* ---------- pasos ---------- */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;counter-reset:s}
+  .step{border-top:2px solid var(--ink);padding-top:16px;min-width:0}
+  .step .n{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;color:var(--m);text-transform:uppercase}
+  .step h3{margin:8px 0 7px;font-size:1.08rem;letter-spacing:-.01em}
+  .step p{margin:0;font-size:.92rem;color:var(--ink-2)}
+
+  /* ---------- contacto ---------- */
+  .contact-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(20px,3.4vw,44px);align-items:start}
+  .dl{display:grid;gap:16px;margin:0}
+  .dl div{border-bottom:1px dotted var(--line);padding-bottom:14px}
+  .dl dt{font-family:var(--mono);font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;color:var(--mute);margin-bottom:5px}
+  .dl dd{margin:0;font-size:1.02rem;overflow-wrap:break-word}
+  .dl dd a{text-decoration:none;border-bottom:1.5px solid var(--y)}
+  .map-card{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--paper-2)}
+  .map-card figcaption{padding:11px 14px;border-top:1px solid var(--line);font-family:var(--mono);font-size:.66rem;letter-spacing:.07em;text-transform:uppercase;color:var(--mute)}
+
+  /* ---------- pie ---------- */
+  footer{background:var(--k);color:#e9e6e0;margin-top:clamp(30px,4vw,56px)}
+  footer .wrap{padding:clamp(30px,4vw,52px) 20px}
+  .foot-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(20px,3vw,40px);align-items:start}
+  footer h3{margin:0 0 10px;font-size:1rem;letter-spacing:.1em;text-transform:uppercase}
+  footer p{margin:0 0 8px;font-size:.9rem;color:#b9b5ad;overflow-wrap:break-word}
+  footer a{color:#fffdf8;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.35)}
+  .foot-rule{height:1px;background:linear-gradient(90deg,var(--c),var(--m),var(--y));margin:clamp(22px,3vw,34px) 0 18px;opacity:.65}
+  .signature{font-family:var(--mono);font-size:.78rem;letter-spacing:.04em;color:#dedad2;margin:0;overflow-wrap:break-word}
+
+  @media (max-width:900px){
+    .hero-grid,.band-grid,.form-wrap,.contact-grid,.foot-grid{grid-template-columns:1fr}
+    .cards,.steps{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:620px){
+    .nav ul{gap:14px}
+    .cards,.steps,.frow{grid-template-columns:1fr}
+    .swatches{grid-template-columns:repeat(4,1fr)}
+    .hero-cta .btn{width:100%}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<!-- BARRA FIJA -->
+<div class="topbar" role="note" aria-label="Aviso de maqueta">
+  <div class="wrap">
+    <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+    <p>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</p>
+  </div>
+</div>
+
+<header class="nav">
+  <div class="wrap">
+    <div class="brand">
+      <svg class="mark" viewBox="0 0 48 48" aria-hidden="true">
+        <rect x="2" y="2" width="44" height="44" rx="9" fill="#14161a"/>
+        <rect x="9" y="12" width="22" height="26" rx="2.5" fill="#f6f4ef"/>
+        <rect x="15" y="8" width="22" height="26" rx="2.5" fill="none" stroke="#00a7cf" stroke-width="2.2"/>
+        <circle cx="35" cy="36" r="4.4" fill="#d6336c"/>
+        <path d="M13 19h14M13 24h14M13 29h9" stroke="#14161a" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <span class="brand-txt"><b>Dibutec</b><span>Copistería y papelería · Eibar</span></span>
+    </div>
+    <nav aria-label="Secciones">
+      <ul>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#archivos">Enviar archivos</a></li>
+        <li><a href="#proceso">Cómo trabajamos</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Copistería y papelería en Eibar</p>
+        <h1>Tus copias, listas <em>sin salir de casa</em> dos veces.</h1>
+        <p class="lede">Dibutec lleva más de 20 años imprimiendo, encuadernando y resolviendo la papelería del día a día en Julian Etxeberria Kalea. Esta propuesta añade lo único que hoy falta: una página donde se puedan ver los formatos y mandar el trabajo antes de venir a recogerlo.</p>
+        <div class="hero-cta">
+          <a class="btn" href="tel:+34943200769">Llamar al 943 20 07 69 <small>(un toque)</small></a>
+          <a class="btn ghost" href="#archivos">Enviar un archivo</a>
+        </div>
+        <ul class="hero-meta">
+          <li>Más de 20 años de actividad</li>
+          <li>Julian Etxeberria Kalea, 17 · Eibar</li>
+          <li>Horario: consultar por teléfono</li>
+        </ul>
+      </div>
+
+      <figure class="proof" style="margin:0">
+        <div class="proof-head"><span>Prueba de color</span><span>Dibutec · Eibar</span></div>
+        <div class="proof-body">
+          <div class="swatches">
+            <div class="sw c"><span>C</span></div>
+            <div class="sw m"><span>M</span></div>
+            <div class="sw y"><span>Y</span></div>
+            <div class="sw k"><span>K</span></div>
+          </div>
+          <div class="rules"><div class="rule"></div><div class="rule"></div><div class="rule"></div></div>
+        </div>
+        <div class="proof-foot"><span>Color y B/N</span><span>Gran formato</span><span>Encuadernación</span></div>
+      </figure>
+    </div>
+  </section>
+
+  <!-- PROBLEMA -->
+  <div class="band">
+    <div class="wrap band-grid">
+      <div>
+        <span class="tag">El punto de partida</span>
+        <h2>El dominio funciona. La web, no.</h2>
+        <p>Hoy <strong>copisteriadibutec.es</strong> resuelve, pero no responde por HTTPS: la página no carga y el dominio sirve únicamente para el correo. Quien busca una copistería en Eibar no encuentra nada que mirar ni ningún sitio donde dejar su archivo.</p>
+      </div>
+      <ul class="check">
+        <li>
+          <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="none" stroke="#00a7cf" stroke-width="1.6"/><path d="M6 10.4l2.6 2.6L14 7.6" fill="none" stroke="#00a7cf" stroke-width="2" stroke-linecap="round"/></svg>
+          <span>Una sola página, servida por HTTPS, con los formatos y servicios a la vista.</span>
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="none" stroke="#d6336c" stroke-width="1.6"/><path d="M6 10.4l2.6 2.6L14 7.6" fill="none" stroke="#d6336c" stroke-width="2" stroke-linecap="round"/></svg>
+          <span>Un formulario para recibir archivos y peticiones de presupuesto en el correo que ya usáis.</span>
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="none" stroke="#f2b705" stroke-width="1.6"/><path d="M6 10.4l2.6 2.6L14 7.6" fill="none" stroke="#f2b705" stroke-width="2" stroke-linecap="round"/></svg>
+          <span>Teléfono y dirección en un toque desde el móvil, sin buscar en directorios.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SERVICIOS -->
+  <section class="sec" id="servicios">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="tag">Apartados propuestos</span>
+        <h2>Servicios que la página podría mostrar</h2>
+        <p>Los siguientes bloques son una propuesta de contenido redactada por FFFFFFstudio a partir de los servicios habituales del sector. Quedan pendientes de revisión por Dibutec y <strong>no incluyen tarifas</strong>: los precios y los formatos definitivos los confirmáis vosotros.</p>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><rect x="6" y="14" width="28" height="16" rx="3" fill="none" stroke="#14161a" stroke-width="2"/><rect x="12" y="6" width="16" height="9" rx="1.5" fill="#f6f4ef" stroke="#14161a" stroke-width="2"/><rect x="12" y="26" width="16" height="9" rx="1.5" fill="#fff" stroke="#14161a" stroke-width="2"/><circle cx="29" cy="19" r="2" fill="#00a7cf"/></svg>
+          <h3>Impresión en color y blanco y negro</h3>
+          <p>Copias y trabajos desde archivo o desde original, con los acabados y gramajes que la copistería ofrezca.</p>
+          <span class="prop">Apartado propuesto</span>
+        </article>
+
+        <article class="card">
+          <svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><path d="M5 30V10l12 4v20z" fill="none" stroke="#14161a" stroke-width="2"/><path d="M17 14l18-6v20l-18 6z" fill="none" stroke="#d6336c" stroke-width="2"/><path d="M22 12v18" stroke="#14161a" stroke-width="1.6"/></svg>
+          <h3>Gran formato</h3>
+          <p>Planos, carteles y piezas de medidas grandes, con la posibilidad de mandar el archivo antes de pasar a recogerlo.</p>
+          <span class="prop">Apartado propuesto</span>
+        </article>
+
+        <article class="card">
+          <svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><rect x="8" y="7" width="24" height="26" rx="2" fill="none" stroke="#14161a" stroke-width="2"/><path d="M13 7v26" stroke="#14161a" stroke-width="2"/><circle cx="10.5" cy="13" r="1.4" fill="#f2b705"/><circle cx="10.5" cy="20" r="1.4" fill="#f2b705"/><circle cx="10.5" cy="27" r="1.4" fill="#f2b705"/><path d="M18 14h10M18 20h10M18 26h6" stroke="#6b6f78" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <h3>Encuadernación</h3>
+          <p>Apuntes, proyectos y memorias encuadernados en los sistemas que trabajéis, indicados en la propia página.</p>
+          <span class="prop">Apartado propuesto</span>
+        </article>
+
+        <article class="card">
+          <svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><path d="M9 33V9a2 2 0 012-2h13l7 7v19a2 2 0 01-2 2H11a2 2 0 01-2-2z" fill="none" stroke="#14161a" stroke-width="2"/><path d="M24 7v7h7" stroke="#14161a" stroke-width="2"/><path d="M14 22h12M14 27h8" stroke="#00a7cf" stroke-width="2" stroke-linecap="round"/></svg>
+          <h3>Papelería</h3>
+          <p>El material de escritorio, escolar y de oficina del día a día, agrupado por familias para que se vea de un vistazo.</p>
+          <span class="prop">Apartado propuesto</span>
+        </article>
+
+        <article class="card">
+          <svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><rect x="5" y="16" width="13" height="17" rx="2" fill="none" stroke="#14161a" stroke-width="2"/><rect x="21" y="7" width="14" height="26" rx="2" fill="none" stroke="#d6336c" stroke-width="2"/><path d="M25 13h6M25 18h6M25 23h4" stroke="#6b6f78" stroke-width="1.7" stroke-linecap="round"/><path d="M9 21h5M9 26h5" stroke="#6b6f78" stroke-width="1.7" stroke-linecap="round"/></svg>
+          <h3>Trabajos para empresas</h3>
+          <p>Tiradas repetidas, documentación interna y encargos recurrentes, con un canal propio para enviar los archivos.</p>
+          <span class="prop">Apartado propuesto</span>
+        </article>
+
+        <article class="card">
+          <svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="13" fill="none" stroke="#14161a" stroke-width="2"/><path d="M20 12v8l6 4" stroke="#f2b705" stroke-width="2.2" stroke-linecap="round"/></svg>
+          <h3>Consultas y plazos</h3>
+          <p>Un apartado para resolver dudas antes de imprimir: medidas, archivos aceptados y tiempos, redactados con vosotros.</p>
+          <span class="prop">Apartado propuesto</span>
+        </article>
+      </div>
+
+      <p class="note">Esta maqueta no publica precios, horarios, marcas ni plazos concretos. Todo dato de ese tipo se incorpora solo cuando Dibutec lo facilite.</p>
+    </div>
+  </section>
+
+  <!-- ARCHIVOS -->
+  <section class="sec" id="archivos" style="border-top:1px solid var(--line)">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="tag">Bloque preparado · sin conectar</span>
+        <h2>Enviar archivos y pedir presupuesto</h2>
+        <p>Así quedaría el canal de entrada de trabajos. En la maqueta el formulario está vacío y no envía nada; al publicar, se conectaría al correo de Dibutec.</p>
+      </div>
+
+      <div class="form-wrap">
+        <form id="f" novalidate>
+          <div class="frow">
+            <div class="field">
+              <label for="nombre">Nombre</label>
+              <input id="nombre" name="nombre" type="text" autocomplete="name" placeholder="">
+            </div>
+            <div class="field">
+              <label for="tel">Teléfono</label>
+              <input id="tel" name="tel" type="tel" autocomplete="tel" placeholder="">
+            </div>
+          </div>
+
+          <div class="frow">
+            <div class="field">
+              <label for="email">Correo electrónico</label>
+              <input id="email" name="email" type="email" autocomplete="email" placeholder="">
+            </div>
+            <div class="field">
+              <label for="tipo">Tipo de trabajo</label>
+              <select id="tipo" name="tipo">
+                <option value="" selected>Seleccionar</option>
+                <option>Impresión en color</option>
+                <option>Impresión en blanco y negro</option>
+                <option>Gran formato</option>
+                <option>Encuadernación</option>
+                <option>Papelería</option>
+                <option>Trabajo para empresa</option>
+                <option>Otra consulta</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="detalle">Indicaciones del trabajo</label>
+            <textarea id="detalle" name="detalle" placeholder=""></textarea>
+          </div>
+
+          <div class="field">
+            <label for="archivo">Archivos</label>
+            <div class="drop">
+              <svg width="34" height="34" viewBox="0 0 40 40" aria-hidden="true" style="margin:0 auto"><path d="M20 28V11m0 0l-6 6m6-6l6 6" stroke="#00a7cf" stroke-width="2.4" stroke-linecap="round" fill="none"/><path d="M8 26v4a2 2 0 002 2h20a2 2 0 002-2v-4" stroke="#14161a" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+              <p>Arrastra aquí los documentos o selecciónalos</p>
+              <input id="archivo" name="archivo" type="file" multiple>
+            </div>
+          </div>
+
+          <label class="consent" for="ok">
+            <input id="ok" name="ok" type="checkbox">
+            <span>Casilla de consentimiento pendiente de redactar con Dibutec antes de publicar.</span>
+          </label>
+
+          <button class="btn" type="submit">Enviar la petición</button>
+          <p class="form-msg" id="msg" role="status" aria-live="polite"></p>
+        </form>
+
+        <aside class="aside-box">
+          <h3>Qué resolvería este bloque</h3>
+          <ol>
+            <li>El cliente deja el archivo y las indicaciones sin pasar por el mostrador.</li>
+            <li>La petición llega al correo que Dibutec ya tiene en funcionamiento.</li>
+            <li>El presupuesto se confirma por teléfono o por correo, como hasta ahora.</li>
+          </ol>
+          <p class="note" style="margin-top:16px">Maqueta: los campos están vacíos a propósito y el botón no envía datos a ningún servidor.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESO -->
+  <section class="sec" id="proceso" style="border-top:1px solid var(--line)">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="tag">Propuesta de contenido</span>
+        <h2>Cómo trabajamos</h2>
+        <p>Tres pasos para explicar en la propia página la forma de encargar un trabajo.</p>
+      </div>
+      <div class="steps">
+        <article class="step">
+          <span class="n">Paso 01</span>
+          <h3>Nos cuentas el trabajo</h3>
+          <p>Por teléfono o desde el formulario: qué hay que imprimir, en qué formato y para cuándo lo necesitas.</p>
+        </article>
+        <article class="step">
+          <span class="n">Paso 02</span>
+          <h3>Confirmamos y preparamos</h3>
+          <p>Revisamos el archivo, aclaramos las dudas que haga falta y te confirmamos el trabajo antes de ponerlo en máquina.</p>
+        </article>
+        <article class="step">
+          <span class="n">Paso 03</span>
+          <h3>Lo recoges en la tienda</h3>
+          <p>Te avisamos cuando está listo y lo recoges en Julian Etxeberria Kalea, 17, en Eibar.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="sec" id="contacto" style="border-top:1px solid var(--line)">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="tag">Datos reales del negocio</span>
+        <h2>Contacto</h2>
+      </div>
+
+      <div class="contact-grid">
+        <dl class="dl">
+          <div>
+            <dt>Teléfono</dt>
+            <dd><a href="tel:+34943200769">943 20 07 69</a></dd>
+          </div>
+          <div>
+            <dt>Dirección</dt>
+            <dd>Julian Etxeberria Kalea, 17<br>20600 Eibar (Gipuzkoa)</dd>
+          </div>
+          <div>
+            <dt>Correo</dt>
+            <dd><a href="mailto:dibutec@copisteriadibutec.es">dibutec@copisteriadibutec.es</a></dd>
+          </div>
+          <div style="border-bottom:0">
+            <dt>Horario</dt>
+            <dd>Consultar horario <span style="color:var(--mute);font-size:.86rem">· llamando al 943 20 07 69</span></dd>
+          </div>
+        </dl>
+
+        <figure class="map-card" style="margin:0">
+          <svg viewBox="0 0 640 400" role="img" aria-label="Mapa esquemático de la ubicación en Julian Etxeberria Kalea, 17, Eibar">
+            <defs>
+              <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#fffdf8"/><stop offset="1" stop-color="#eeeae1"/>
+              </linearGradient>
+              <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+                <path d="M32 0H0V32" fill="none" stroke="#e3ded3" stroke-width="1"/>
+              </pattern>
+            </defs>
+            <rect width="640" height="400" fill="url(#bg)"/>
+            <rect width="640" height="400" fill="url(#grid)"/>
+
+            <!-- manzanas -->
+            <g fill="#e6e1d6">
+              <rect x="40" y="46" width="180" height="104" rx="6"/>
+              <rect x="250" y="46" width="150" height="104" rx="6"/>
+              <rect x="430" y="46" width="170" height="104" rx="6"/>
+              <rect x="40" y="252" width="150" height="112" rx="6"/>
+              <rect x="222" y="252" width="200" height="112" rx="6"/>
+              <rect x="452" y="252" width="148" height="112" rx="6"/>
+            </g>
+
+            <!-- calle principal -->
+            <rect x="0" y="178" width="640" height="46" fill="#d9d3c6"/>
+            <path d="M0 201h640" stroke="#fffdf8" stroke-width="2.5" stroke-dasharray="20 16"/>
+            <!-- transversales -->
+            <rect x="226" y="0" width="22" height="400" fill="#e2dcd0"/>
+            <rect x="404" y="0" width="22" height="400" fill="#e2dcd0"/>
+
+            <!-- etiqueta de calle -->
+            <text x="22" y="170" font-family="Helvetica,Arial,sans-serif" font-size="15" letter-spacing="1.2" fill="#6b6f78">JULIAN ETXEBERRIA KALEA</text>
+
+            <!-- marcador en el 17 -->
+            <g transform="translate(300 201)">
+              <circle r="34" fill="#d6336c" opacity=".12"/>
+              <circle r="21" fill="#d6336c" opacity=".2"/>
+              <path d="M0 10c7-11 11-16 11-22a11 11 0 10-22 0c0 6 4 11 11 22z" fill="#d6336c"/>
+              <circle cy="-12" r="4.2" fill="#fffdf8"/>
+            </g>
+            <g transform="translate(322 158)">
+              <rect x="0" y="-20" width="128" height="30" rx="6" fill="#14161a"/>
+              <text x="12" y="0" font-family="Helvetica,Arial,sans-serif" font-size="14" fill="#fffdf8">Dibutec · nº 17</text>
+            </g>
+
+            <!-- rosa de los vientos -->
+            <g transform="translate(590 350)" opacity=".55">
+              <circle r="20" fill="none" stroke="#6b6f78" stroke-width="1.2"/>
+              <path d="M0 -15L5 0 0 15 -5 0z" fill="#14161a"/>
+              <text x="-4" y="-24" font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#6b6f78">N</text>
+            </g>
+          </svg>
+          <figcaption>Mapa esquemático · no a escala · referencia de la dirección real</figcaption>
+        </figure>
+      </div>
+
+      <div style="margin-top:clamp(22px,3vw,34px);display:flex;gap:12px;flex-wrap:wrap">
+        <a class="btn" href="tel:+34943200769">Llamar al 943 20 07 69</a>
+        <a class="btn ghost" href="mailto:dibutec@copisteriadibutec.es">Escribir un correo</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- PIE -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h3>Dibutec</h3>
+        <p>Copistería y papelería en Eibar. Más de 20 años de actividad.</p>
+        <p>Julian Etxeberria Kalea, 17 · 20600 Eibar (Gipuzkoa)</p>
+        <p>Teléfono: <a href="tel:+34943200769">943 20 07 69</a></p>
+        <p>Correo: <a href="mailto:dibutec@copisteriadibutec.es">dibutec@copisteriadibutec.es</a></p>
+        <p>Horario: consultar por teléfono</p>
+      </div>
+      <div>
+        <h3>Sobre esta página</h3>
+        <p>Documento de trabajo con fines de propuesta. No es la web oficial de Dibutec ni está vinculada al negocio, y ningún contenido ha sido aprobado por él.</p>
+        <p>Los apartados de servicios son propuestas de contenido, sin tarifas ni horarios.</p>
+      </div>
+    </div>
+    <div class="foot-rule" aria-hidden="true"></div>
+    <p class="signature">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('f').addEventListener('submit', function (e) {
+    e.preventDefault();
+    document.getElementById('msg').textContent =
+      'Maqueta de demostración: este formulario no envía datos. En la versión publicada, la petición llegaría al correo de Dibutec.';
+  });
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function (ev) {
+      var t = document.querySelector(a.getAttribute('href'));
+      if (t) { ev.preventDefault(); t.scrollIntoView({behavior: 'smooth', block: 'start'}); }
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gabinet Duarri i Associats — Propuesta de diseño · FFFFFFstudio</title>
+<meta name="description" content="Propuesta de diseño (maqueta no oficial) para Gabinet Duarri i Associats, gabinete profesional de gestoría y asesoría en Calaf, Barcelona.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  :root{
+    --ink:#121a24;
+    --ink-2:#2a3747;
+    --muted:#5d6b7c;
+    --line:#dcdfe4;
+    --line-soft:#e9ebef;
+    --paper:#fbfaf8;
+    --paper-2:#f3f2ee;
+    --white:#ffffff;
+    --navy:#17293d;
+    --navy-2:#20374f;
+    --accent:#8a6a34;
+    --accent-soft:#c8a86a;
+    --bar-h:46px;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,"Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    --wrap:1140px;
+  }
+  html{-webkit-text-size-adjust:100%}
+  html,body{max-width:100%;overflow-x:hidden}
+  body{
+    margin:0;
+    font-family:var(--sans);
+    color:var(--ink-2);
+    background:var(--paper);
+    font-size:17px;
+    line-height:1.65;
+    padding-top:var(--bar-h);
+  }
+  img,svg{max-width:100%;display:block}
+  h1,h2,h3,h4{font-family:var(--serif);color:var(--ink);font-weight:600;letter-spacing:-.01em;margin:0}
+  p{margin:0}
+  a{color:inherit}
+
+  /* ---------- barra fija ---------- */
+  .topbar{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    height:var(--bar-h);
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(90deg,#101b28 0%,#1d3450 52%,#101b28 100%);
+    color:#eef1f5;
+    border-bottom:1px solid rgba(200,168,106,.35);
+  }
+  .topbar span{
+    font-size:12.5px;letter-spacing:.055em;text-transform:uppercase;
+    font-weight:500;text-align:center;padding:0 14px;line-height:1.3;
+  }
+
+  .wrap{width:100%;max-width:var(--wrap);margin:0 auto;padding:0 28px}
+  .eyebrow{
+    font-size:11.5px;letter-spacing:.17em;text-transform:uppercase;
+    color:var(--accent);font-weight:700;margin-bottom:14px;
+  }
+  .eyebrow.on-dark{color:var(--accent-soft)}
+  .rule{height:1px;background:var(--line);border:0;margin:0}
+
+  /* ---------- cabecera ---------- */
+  .masthead{
+    background:var(--white);
+    border-bottom:1px solid var(--line);
+  }
+  .masthead .inner{
+    display:flex;align-items:center;justify-content:space-between;gap:18px;
+    padding-top:20px;padding-bottom:20px;flex-wrap:wrap;
+  }
+  .brand{display:flex;align-items:center;gap:13px;min-width:0}
+  .brand .mark{flex:0 0 auto}
+  .brand .txt{min-width:0}
+  .brand .name{
+    font-family:var(--serif);font-size:19px;color:var(--ink);
+    font-weight:600;line-height:1.2;letter-spacing:-.01em;
+  }
+  .brand .sub{
+    font-size:11px;letter-spacing:.15em;text-transform:uppercase;
+    color:var(--muted);margin-top:4px;
+  }
+  .nav{display:flex;align-items:center;gap:26px;flex-wrap:wrap}
+  .nav a{
+    font-size:14px;color:var(--ink-2);text-decoration:none;
+    padding-bottom:2px;border-bottom:1px solid transparent;
+  }
+  .nav a:hover{border-bottom-color:var(--accent-soft);color:var(--ink)}
+  .nav .phone{
+    font-weight:600;color:var(--navy);white-space:nowrap;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding:0;
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(900px 480px at 88% -10%,rgba(200,168,106,.16),transparent 62%),
+      radial-gradient(700px 520px at 6% 108%,rgba(255,255,255,.07),transparent 60%),
+      linear-gradient(158deg,#16273a 0%,#1d3350 48%,#111d2c 100%);
+    color:#e7ecf2;
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px);
+    background-size:100% 42px;opacity:.5;
+  }
+  .hero .inner{
+    position:relative;z-index:2;
+    display:grid;grid-template-columns:1.12fr .88fr;gap:56px;align-items:center;
+    padding-top:84px;padding-bottom:88px;
+  }
+  .hero h1{
+    color:#fff;font-size:clamp(34px,4.2vw,52px);line-height:1.1;
+    margin-bottom:22px;
+  }
+  .hero h1 em{font-style:normal;color:var(--accent-soft)}
+  .hero .lead{
+    font-size:18px;color:#c3cedb;max-width:40em;margin-bottom:14px;
+  }
+  .hero .lead-2{font-size:15.5px;color:#9fb0c1;max-width:40em}
+  .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:15.5px;font-weight:600;text-decoration:none;
+    padding:14px 24px;border-radius:2px;border:1px solid transparent;
+    transition:transform .15s ease,background .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px)}
+  .btn-primary{background:var(--accent-soft);color:#1a2434;border-color:var(--accent-soft)}
+  .btn-primary:hover{background:#d7bb81}
+  .btn-ghost{color:#dde4ec;border-color:rgba(221,228,236,.4)}
+  .btn-ghost:hover{border-color:var(--accent-soft);color:#fff}
+  .btn svg{flex:0 0 auto}
+
+  .hero-card{
+    background:rgba(255,255,255,.055);
+    border:1px solid rgba(200,168,106,.3);
+    border-radius:3px;padding:26px 26px 22px;
+    backdrop-filter:blur(2px);
+  }
+  .hero-card h2{color:#fff;font-size:17px;margin-bottom:4px}
+  .hero-card .note{font-size:12.5px;color:#9fb0c1;margin-bottom:18px}
+  .hero-card dl{margin:0;display:grid;gap:0}
+  .hero-card .row{
+    display:flex;gap:14px;align-items:baseline;justify-content:space-between;
+    padding:11px 0;border-bottom:1px solid rgba(255,255,255,.1);
+  }
+  .hero-card .row:last-child{border-bottom:0;padding-bottom:0}
+  .hero-card dt{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#93a4b6;flex:0 0 auto}
+  .hero-card dd{margin:0;font-size:15px;color:#e7ecf2;text-align:right;min-width:0;word-break:break-word}
+  .hero-card dd a{text-decoration:none;border-bottom:1px solid rgba(200,168,106,.5)}
+
+  /* ---------- secciones ---------- */
+  section{padding:76px 0}
+  .sec-head{max-width:46em;margin-bottom:44px}
+  .sec-head h2{font-size:clamp(26px,3vw,34px);line-height:1.18;margin-bottom:14px}
+  .sec-head p{color:var(--muted);font-size:16.5px}
+
+  .badge{
+    display:inline-block;font-size:11px;letter-spacing:.11em;text-transform:uppercase;
+    font-weight:700;color:var(--accent);
+    background:rgba(200,168,106,.14);
+    border:1px solid rgba(138,106,52,.25);
+    padding:4px 10px;border-radius:2px;
+  }
+  .badge-line{margin-bottom:18px}
+
+  /* áreas */
+  #areas{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .grid-areas{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-soft)}
+  .area{
+    background:var(--white);padding:30px 26px 28px;
+    display:flex;flex-direction:column;gap:12px;
+  }
+  .area .ico{
+    width:40px;height:40px;border-radius:2px;
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(145deg,#f6f3ec,#e8e2d4);
+    border:1px solid rgba(138,106,52,.22);
+  }
+  .area h3{font-size:19px;line-height:1.25}
+  .area p{font-size:15px;color:var(--muted)}
+  .area ul{margin:4px 0 0;padding:0;list-style:none;display:grid;gap:7px}
+  .area li{
+    font-size:14px;color:var(--ink-2);padding-left:16px;position:relative;
+  }
+  .area li::before{
+    content:"";position:absolute;left:0;top:.62em;
+    width:6px;height:1px;background:var(--accent-soft);
+  }
+  .area .tag{
+    margin-top:auto;padding-top:14px;
+    font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;
+    color:#8e99a6;border-top:1px dashed var(--line);
+  }
+
+  /* cómo trabajamos */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+  .step{
+    background:var(--white);border:1px solid var(--line);
+    border-top:2px solid var(--accent-soft);
+    padding:28px 26px;border-radius:2px;
+  }
+  .step .n{
+    font-family:var(--serif);font-size:13px;letter-spacing:.14em;
+    color:var(--accent);font-weight:700;margin-bottom:12px;display:block;
+  }
+  .step h3{font-size:19px;margin-bottom:10px}
+  .step p{font-size:15px;color:var(--muted)}
+
+  /* contacto */
+  #contacto{
+    background:
+      radial-gradient(760px 420px at 92% 0%,rgba(200,168,106,.14),transparent 62%),
+      linear-gradient(170deg,#16273a,#101c2b);
+    color:#e7ecf2;
+  }
+  #contacto .sec-head h2{color:#fff}
+  #contacto .sec-head p{color:#a8b7c6}
+  .contact-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:48px;align-items:start}
+  .contact-list{display:grid;gap:0;margin:0}
+  .c-item{
+    display:grid;grid-template-columns:38px 1fr;gap:16px;align-items:start;
+    padding:22px 0;border-bottom:1px solid rgba(255,255,255,.12);
+  }
+  .c-item:first-child{padding-top:0}
+  .c-item .ci{
+    width:38px;height:38px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    border:1px solid rgba(200,168,106,.45);background:rgba(255,255,255,.05);
+  }
+  .c-item .k{
+    font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;
+    color:#93a4b6;margin-bottom:5px;
+  }
+  .c-item .v{font-size:17px;color:#fff;font-family:var(--serif);word-break:break-word}
+  .c-item .v a{text-decoration:none;border-bottom:1px solid rgba(200,168,106,.55)}
+  .c-item .v a:hover{color:var(--accent-soft)}
+  .c-item .hint{font-size:13.5px;color:#9fb0c1;margin-top:5px}
+  .map-frame{
+    border:1px solid rgba(200,168,106,.3);
+    border-radius:3px;padding:14px;background:rgba(255,255,255,.04);
+  }
+  .map-frame svg{width:100%;height:auto}
+  .map-cap{
+    font-size:12px;color:#93a4b6;margin-top:12px;
+    letter-spacing:.04em;text-align:center;
+  }
+
+  /* pie */
+  footer{background:#0d1621;color:#aebbc8;padding:52px 0 44px}
+  .foot-top{
+    display:grid;grid-template-columns:1.2fr 1fr;gap:38px;
+    padding-bottom:30px;border-bottom:1px solid rgba(255,255,255,.1);
+  }
+  footer .fname{font-family:var(--serif);color:#fff;font-size:18px;margin-bottom:8px}
+  footer .fline{font-size:14.5px;line-height:1.75}
+  footer .fline a{color:#e2e8ee;text-decoration:none;border-bottom:1px solid rgba(200,168,106,.5)}
+  footer .flabel{
+    font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    color:#7d8c9b;margin-bottom:9px;
+  }
+  .foot-sign{
+    margin-top:26px;font-size:13.5px;color:#8d9caa;
+    display:flex;flex-wrap:wrap;gap:8px 18px;align-items:baseline;
+  }
+  .foot-sign .studio{color:#d8c49a}
+  .foot-note{
+    margin-top:14px;font-size:12.5px;color:#6f7e8d;max-width:60em;
+  }
+
+  @media (max-width:900px){
+    .hero .inner{grid-template-columns:1fr;gap:38px;padding-top:62px;padding-bottom:66px}
+    .grid-areas{grid-template-columns:repeat(2,1fr)}
+    .steps{grid-template-columns:1fr;gap:18px}
+    .contact-grid{grid-template-columns:1fr;gap:34px}
+    .foot-top{grid-template-columns:1fr;gap:26px}
+  }
+  @media (max-width:620px){
+    body{font-size:16px;--bar-h:54px}
+    .wrap{padding:0 18px}
+    .topbar span{font-size:11px;letter-spacing:.03em}
+    .masthead .inner{padding-top:16px;padding-bottom:16px}
+    .nav{gap:16px;width:100%}
+    .nav a:not(.phone){display:none}
+    .nav .phone{font-size:15px}
+    section{padding:54px 0}
+    .hero .inner{padding-top:48px;padding-bottom:54px}
+    .hero .lead{font-size:16.5px}
+    .grid-areas{grid-template-columns:1fr}
+    .btn{width:100%;justify-content:center}
+    .cta-row{gap:10px}
+    .hero-card{padding:20px}
+    .hero-card .row{flex-direction:column;gap:3px;align-items:flex-start}
+    .hero-card dd{text-align:left}
+    .c-item{grid-template-columns:1fr;gap:10px}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<header class="masthead">
+  <div class="wrap inner">
+    <div class="brand">
+      <svg class="mark" width="44" height="44" viewBox="0 0 44 44" aria-hidden="true">
+        <defs>
+          <linearGradient id="mg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#1d3350"/>
+            <stop offset="1" stop-color="#101d2c"/>
+          </linearGradient>
+        </defs>
+        <rect x="0.5" y="0.5" width="43" height="43" rx="2" fill="url(#mg)"/>
+        <path d="M11 32V12h5.4c4.6 0 7.4 3.6 7.4 10S21 32 16.4 32H11z" fill="none" stroke="#c8a86a" stroke-width="1.8"/>
+        <path d="M27 12v12.8c0 4.4 2.3 7.2 6 7.2" fill="none" stroke="#9fb0c1" stroke-width="1.6"/>
+        <circle cx="33" cy="12" r="1.8" fill="#c8a86a"/>
+      </svg>
+      <div class="txt">
+        <div class="name">Gabinet Duarri i Associats</div>
+        <div class="sub">Gestoría i assessoria · Calaf</div>
+      </div>
+    </div>
+    <nav class="nav" aria-label="Secciones propuestas">
+      <a href="#areas">Áreas de trabajo</a>
+      <a href="#metodo">Cómo trabajamos</a>
+      <a href="#contacto">Contacto</a>
+      <a class="phone" href="tel:+34938698729">93 869 87 29</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div class="wrap inner">
+      <div>
+        <div class="eyebrow on-dark">Gabinete profesional · Calaf, Barcelona</div>
+        <h1>Un gabinete al que se llega <em>en una llamada</em>.</h1>
+        <p class="lead">Gabinet Duarri i Associats es un gabinete profesional de gestoría y asesoría en Calaf. Esta maqueta propone una presencia web clara, legible y sin adornos: quién sois, de qué os ocupáis y cómo contactar, en la primera pantalla.</p>
+        <p class="lead-2">Hoy el dominio gabinetduarri.com responde, pero el certificado HTTPS falla y www no tiene registro DNS: el navegador avisa y no se sirve ningún contenido. Quien compara asesorías antes de llamar no encuentra nada.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="tel:+34938698729">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16.9v2.6a2 2 0 0 1-2.2 2 19 19 0 0 1-8.3-3 18.6 18.6 0 0 1-5.7-5.7A19 19 0 0 1 1.9 4.5 2 2 0 0 1 3.9 2.3h2.6a2 2 0 0 1 2 1.7c.1 1 .3 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.6 10.1a15 15 0 0 0 5.7 5.7l1.2-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.6 2z"/></svg>
+            Llamar al 93 869 87 29
+          </a>
+          <a class="btn btn-ghost" href="#areas">Ver áreas propuestas</a>
+        </div>
+      </div>
+
+      <aside class="hero-card" aria-label="Datos de contacto">
+        <h2>Datos del gabinete</h2>
+        <p class="note">Información verificada públicamente.</p>
+        <dl>
+          <div class="row"><dt>Teléfono</dt><dd><a href="tel:+34938698729">93 869 87 29</a></dd></div>
+          <div class="row"><dt>Dirección</dt><dd>Passeig de Santa Calamanda, 12<br>08280 Calaf (Barcelona)</dd></div>
+          <div class="row"><dt>Email</dt><dd><a href="mailto:gabinetduarri@gabinetduarri.com">gabinetduarri@gabinetduarri.com</a></dd></div>
+          <div class="row"><dt>Horario</dt><dd>Consultar horario</dd></div>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ÁREAS -->
+  <section id="areas">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="badge badge-line">Apartados propuestos · contenido pendiente de confirmar</div>
+        <h2>Áreas de trabajo</h2>
+        <p>Estructura propuesta a partir de las áreas habituales de un gabinete de gestoría y asesoría. Los textos son un borrador de maqueta: el contenido definitivo lo fijaría el gabinete según los servicios que presta realmente.</p>
+      </div>
+
+      <div class="grid-areas">
+        <article class="area">
+          <div class="ico">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8a6a34" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></svg>
+          </div>
+          <h3>Laboral</h3>
+          <p>Gestión del día a día de las personas contratadas, desde el alta hasta la nómina mensual.</p>
+          <ul>
+            <li>Altas, bajas y variaciones</li>
+            <li>Nóminas y seguros sociales</li>
+            <li>Contratos y modificaciones</li>
+          </ul>
+          <div class="tag">Apartado propuesto</div>
+        </article>
+
+        <article class="area">
+          <div class="ico">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8a6a34" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h4"/></svg>
+          </div>
+          <h3>Fiscal</h3>
+          <p>Preparación y presentación de las obligaciones periódicas ante la administración tributaria.</p>
+          <ul>
+            <li>Declaraciones trimestrales y anuales</li>
+            <li>Impuesto de sociedades y renta</li>
+            <li>Atención a requerimientos</li>
+          </ul>
+          <div class="tag">Apartado propuesto</div>
+        </article>
+
+        <article class="area">
+          <div class="ico">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8a6a34" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20h18"/><rect x="5" y="11" width="3.4" height="7"/><rect x="10.3" y="7" width="3.4" height="11"/><rect x="15.6" y="13" width="3.4" height="5"/></svg>
+          </div>
+          <h3>Contable</h3>
+          <p>Llevanza de la contabilidad y cierre de ejercicio, con los libros al día y listos para revisar.</p>
+          <ul>
+            <li>Contabilidad de empresas y autónomos</li>
+            <li>Cuentas anuales y libros oficiales</li>
+            <li>Seguimiento periódico de resultados</li>
+          </ul>
+          <div class="tag">Apartado propuesto</div>
+        </article>
+
+        <article class="area">
+          <div class="ico">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8a6a34" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V8l7-5 7 5v13"/><path d="M10 21v-6h4v6"/></svg>
+          </div>
+          <h3>Constitución de empresas</h3>
+          <p>Acompañamiento en la puesta en marcha de una actividad, desde la forma jurídica hasta el alta.</p>
+          <ul>
+            <li>Elección de forma jurídica</li>
+            <li>Constitución de sociedades</li>
+            <li>Alta de actividad y censos</li>
+          </ul>
+          <div class="tag">Apartado propuesto</div>
+        </article>
+
+        <article class="area">
+          <div class="ico">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8a6a34" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h8"/></svg>
+          </div>
+          <h3>Trámites</h3>
+          <p>Gestión de la documentación y de las presentaciones que exigen tiempo y desplazamientos.</p>
+          <ul>
+            <li>Trámites ante organismos públicos</li>
+            <li>Certificados y documentación</li>
+            <li>Presentaciones telemáticas</li>
+          </ul>
+          <div class="tag">Apartado propuesto</div>
+        </article>
+
+        <article class="area">
+          <div class="ico">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8a6a34" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h3>Consulta previa</h3>
+          <p>Espacio propuesto para resolver la duda concreta que trae a un cliente nuevo antes de contratar nada.</p>
+          <ul>
+            <li>Planteamiento del caso por teléfono</li>
+            <li>Qué documentación hace falta</li>
+            <li>Siguiente paso recomendado</li>
+          </ul>
+          <div class="tag">Apartado propuesto</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- MÉTODO -->
+  <section id="metodo">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Propuesta de contenido</div>
+        <h2>Cómo trabajamos</h2>
+        <p>Tres pasos para que quien entra en la web sepa qué va a pasar si llama. El detalle de cada paso lo ajustaría el gabinete a su forma real de trabajar.</p>
+      </div>
+      <div class="steps">
+        <article class="step">
+          <span class="n">PASO 01</span>
+          <h3>Nos lo cuentas</h3>
+          <p>Una llamada o un correo con el caso: la empresa, la actividad o el trámite que tienes delante. Sin formularios largos ni documentación por adelantado.</p>
+        </article>
+        <article class="step">
+          <span class="n">PASO 02</span>
+          <h3>Lo revisamos</h3>
+          <p>Revisamos la situación, decimos qué documentación hace falta y qué plazos hay por delante. Antes de empezar queda claro el alcance del trabajo.</p>
+        </article>
+        <article class="step">
+          <span class="n">PASO 03</span>
+          <h3>Nos ocupamos</h3>
+          <p>Nos encargamos de la gestión y de las presentaciones, y te avisamos de cada vencimiento. Tú conservas un interlocutor único para todo.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow on-dark">Contacto</div>
+        <h2>Estamos en el centro de Calaf</h2>
+        <p>Teléfono directo, dirección del gabinete y un plano esquemático de la ubicación. El horario de atención se indicaría aquí cuando el gabinete lo confirme.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-list">
+          <div class="c-item">
+            <div class="ci">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#c8a86a" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16.9v2.6a2 2 0 0 1-2.2 2 19 19 0 0 1-8.3-3 18.6 18.6 0 0 1-5.7-5.7A19 19 0 0 1 1.9 4.5 2 2 0 0 1 3.9 2.3h2.6a2 2 0 0 1 2 1.7c.1 1 .3 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.6 10.1a15 15 0 0 0 5.7 5.7l1.2-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.6 2z"/></svg>
+            </div>
+            <div>
+              <div class="k">Teléfono</div>
+              <div class="v"><a href="tel:+34938698729">93 869 87 29</a></div>
+              <div class="hint">Vía de contacto principal del gabinete.</div>
+            </div>
+          </div>
+
+          <div class="c-item">
+            <div class="ci">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#c8a86a" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.8"/></svg>
+            </div>
+            <div>
+              <div class="k">Dirección</div>
+              <div class="v">Passeig de Santa Calamanda, 12<br>08280 Calaf (Barcelona)</div>
+            </div>
+          </div>
+
+          <div class="c-item">
+            <div class="ci">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#c8a86a" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="M12 7v5.3l3.4 2"/></svg>
+            </div>
+            <div>
+              <div class="k">Horario</div>
+              <div class="v">Consultar horario</div>
+              <div class="hint">No se publica ningún horario en esta maqueta: lo indicaría el gabinete.</div>
+            </div>
+          </div>
+
+          <div class="c-item">
+            <div class="ci">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#c8a86a" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.6" y="4.6" width="18.8" height="14.8" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+            </div>
+            <div>
+              <div class="k">Email</div>
+              <div class="v"><a href="mailto:gabinetduarri@gabinetduarri.com">gabinetduarri@gabinetduarri.com</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="map-frame">
+            <svg viewBox="0 0 520 340" role="img" aria-label="Plano esquemático de la ubicación del gabinete en el Passeig de Santa Calamanda, 12, Calaf">
+              <defs>
+                <linearGradient id="mapbg" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#1b2f46"/>
+                  <stop offset="1" stop-color="#132234"/>
+                </linearGradient>
+                <pattern id="blockhatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
+                  <rect width="7" height="7" fill="#1f354e"/>
+                  <line x1="0" y1="0" x2="0" y2="7" stroke="#26405c" stroke-width="1.6"/>
+                </pattern>
+              </defs>
+
+              <rect width="520" height="340" fill="url(#mapbg)" rx="2"/>
+
+              <!-- manzanas -->
+              <g fill="url(#blockhatch)" stroke="#2c4765" stroke-width="1">
+                <rect x="26" y="26" width="150" height="88" rx="2"/>
+                <rect x="26" y="150" width="150" height="72" rx="2"/>
+                <rect x="26" y="256" width="150" height="58" rx="2"/>
+                <rect x="212" y="26" width="118" height="88" rx="2"/>
+                <rect x="366" y="26" width="128" height="120" rx="2"/>
+                <rect x="212" y="248" width="118" height="66" rx="2"/>
+                <rect x="366" y="248" width="128" height="66" rx="2"/>
+              </g>
+
+              <!-- viales -->
+              <g stroke="#3d5a7c" stroke-width="13" stroke-linecap="square" opacity=".85">
+                <line x1="0" y1="132" x2="520" y2="132"/>
+                <line x1="194" y1="0" x2="194" y2="340"/>
+                <line x1="348" y1="0" x2="348" y2="340"/>
+                <line x1="0" y1="236" x2="520" y2="236"/>
+              </g>
+              <g stroke="#6d8bb0" stroke-width="1" stroke-dasharray="7 7" opacity=".6">
+                <line x1="0" y1="132" x2="520" y2="132"/>
+                <line x1="194" y1="0" x2="194" y2="340"/>
+                <line x1="348" y1="0" x2="348" y2="340"/>
+                <line x1="0" y1="236" x2="520" y2="236"/>
+              </g>
+
+              <!-- paseo destacado -->
+              <line x1="212" y1="183" x2="494" y2="183" stroke="#c8a86a" stroke-width="9" opacity=".32" stroke-linecap="round"/>
+              <line x1="212" y1="183" x2="494" y2="183" stroke="#c8a86a" stroke-width="1.4" stroke-dasharray="5 6" opacity=".85"/>
+
+              <!-- zona verde -->
+              <g>
+                <rect x="212" y="134" width="118" height="44" rx="2" fill="#1d3a37" stroke="#2a5450" stroke-width="1"/>
+                <circle cx="240" cy="156" r="7" fill="#2f5e58"/>
+                <circle cx="266" cy="152" r="5.4" fill="#2f5e58"/>
+                <circle cx="294" cy="158" r="6.2" fill="#2f5e58"/>
+              </g>
+
+              <!-- marcador -->
+              <g transform="translate(372,183)">
+                <circle cx="0" cy="0" r="26" fill="#c8a86a" opacity=".13"/>
+                <circle cx="0" cy="0" r="16" fill="#c8a86a" opacity=".2"/>
+                <path d="M0 -22c-6.8 0-12.3 5.5-12.3 12.3C-12.3 -1 0 12 0 12s12.3-13 12.3-21.7C12.3 -16.5 6.8 -22 0 -22z" fill="#c8a86a" stroke="#f0e2c4" stroke-width="1.2"/>
+                <circle cx="0" cy="-9.4" r="4.4" fill="#17293d"/>
+              </g>
+
+              <!-- etiquetas -->
+              <g font-family="-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif" fill="#9fb0c1">
+                <rect x="282" y="192" width="216" height="40" rx="2" fill="#0f1c2b" opacity=".78"/>
+                <text x="490" y="208" text-anchor="end" font-size="13" font-weight="700" fill="#e9dcbe">Passeig de Santa Calamanda, 12</text>
+                <text x="490" y="224" text-anchor="end" font-size="11.5" fill="#a9b9c8">08280 Calaf (Barcelona)</text>
+                <text x="222" y="163" font-size="10.5" letter-spacing="1.4" fill="#5f8f87">ZONA VERDE</text>
+                <text x="36" y="20" font-size="10" letter-spacing="1.8" fill="#7f93a9">CENTRO URBANO</text>
+              </g>
+
+              <!-- norte -->
+              <g transform="translate(486,314)">
+                <path d="M0 -16 L5 4 L0 -0.6 L-5 4 Z" fill="#c8a86a"/>
+                <text x="0" y="17" font-size="9.5" text-anchor="middle" fill="#9fb0c1" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" letter-spacing="1">N</text>
+              </g>
+
+              <rect x="0.5" y="0.5" width="519" height="339" rx="2" fill="none" stroke="#2c4765"/>
+            </svg>
+          </div>
+          <p class="map-cap">Plano esquemático, no a escala. Orientativo de la ubicación del gabinete.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <div class="fname">Gabinet Duarri i Associats</div>
+        <p class="fline">
+          Passeig de Santa Calamanda, 12 · 08280 Calaf (Barcelona)<br>
+          <a href="tel:+34938698729">93 869 87 29</a><br>
+          <a href="mailto:gabinetduarri@gabinetduarri.com">gabinetduarri@gabinetduarri.com</a><br>
+          Horario: consultar horario
+        </p>
+      </div>
+      <div>
+        <div class="flabel">Sobre esta página</div>
+        <p class="fline">Maqueta de demostración sin vínculo oficial con el gabinete. Las áreas de trabajo y los textos son una propuesta de estructura: no reflejan servicios confirmados ni condiciones de contratación.</p>
+      </div>
+    </div>
+
+    <p class="foot-sign">
+      <span class="studio">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</span>
+    </p>
+    <p class="foot-note">Motivo de la propuesta: el dominio gabinetduarri.com resuelve, pero el HTTPS falla por error de certificado y www no tiene registro DNS, de modo que no se sirve ningún contenido.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var links = document.querySelectorAll('a[href^="#"]');
+  for (var i=0;i<links.length;i++){
+    links[i].addEventListener('click', function(e){
+      var id = this.getAttribute('href');
+      if (id.length < 2) return;
+      var el = document.querySelector(id);
+      if (!el) return;
+      e.preventDefault();
+      var bar = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--bar-h'),10) || 46;
+      var top = el.getBoundingClientRect().top + window.pageYOffset - bar - 6;
+      window.scrollTo({top: top, behavior: 'smooth'});
+    });
+  }
+})();
+</script>
+</body>
+</html>

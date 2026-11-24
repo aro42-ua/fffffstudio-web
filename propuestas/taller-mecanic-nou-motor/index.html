@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Taller mecanic Nou Motor · Propuesta de diseño</title>
+<meta name="description" content="Maqueta de propuesta de web para Taller mecanic Nou Motor, taller mecánico y electromecánica en Calaf (Barcelona). Documento no oficial de FFFFFFstudio.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  :root{
+    --acero:#0e1216;
+    --acero-2:#161c22;
+    --acero-3:#1e262e;
+    --humo:#f4f6f7;
+    --humo-2:#e6eaed;
+    --linea:rgba(255,255,255,.09);
+    --linea-c:rgba(14,18,22,.12);
+    --ambar:#ff7a18;
+    --ambar-2:#ffa94d;
+    --azul:#4da3c7;
+    --txt:#11161a;
+    --txt-2:#55626d;
+    --txt-inv:#dfe5ea;
+    --txt-inv-2:#95a3af;
+    --maxw:1140px;
+    --bar:40px;
+    --r:16px;
+    --sans:"Helvetica Neue",Helvetica,Arial,sans-serif;
+    --mono:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+  }
+  @media (max-width:620px){:root{--bar:56px}}
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--humo);color:var(--txt);
+    font-family:var(--sans);font-size:17px;line-height:1.65;
+    overflow-x:visible;
+  }
+  svg{display:block;max-width:100%}
+  h1,h2,h3,h4{margin:0;line-height:1.1;letter-spacing:-.02em;font-weight:700}
+  p{margin:0}
+  a{color:inherit}
+  ul{margin:0;padding:0;list-style:none}
+
+  /* ---------- barra fija ---------- */
+  .aviso{
+    position:fixed;inset:0 0 auto 0;z-index:200;
+    min-height:var(--bar);
+    display:flex;align-items:center;justify-content:center;
+    padding:.4rem .8rem;
+    background:#07090b;color:#e8edf1;
+    font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;
+    text-align:center;line-height:1.35;
+    border-bottom:1px solid rgba(255,122,24,.38);
+  }
+  .aviso span{display:inline-block;max-width:100%}
+
+  .marco{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:clamp(18px,5vw,40px)}
+  .etq{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+    padding:5px 11px;border-radius:999px;
+    border:1px solid currentColor;opacity:.85;
+  }
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    padding:15px 24px;border-radius:999px;
+    font-size:15.5px;font-weight:700;text-decoration:none;
+    border:1px solid transparent;transition:transform .15s ease,background .15s ease;
+  }
+  .btn:hover{transform:translateY(-2px)}
+  .btn-pri{background:linear-gradient(135deg,var(--ambar),#e65c00);color:#fff;box-shadow:0 14px 34px -16px rgba(255,122,24,.85)}
+  .btn-sec{border-color:rgba(255,255,255,.3);color:var(--txt-inv)}
+  .btn-sec-osc{border-color:var(--linea-c);color:var(--txt)}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(1100px 620px at 78% -8%,rgba(255,122,24,.22),transparent 62%),
+      radial-gradient(760px 480px at 6% 108%,rgba(77,163,199,.16),transparent 66%),
+      linear-gradient(170deg,#0b0f13 0%,#141b22 58%,#0e1317 100%);
+    color:var(--txt-inv);
+    padding-top:var(--bar);
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:linear-gradient(var(--linea) 1px,transparent 1px),linear-gradient(90deg,var(--linea) 1px,transparent 1px);
+    background-size:64px 64px;
+    mask-image:radial-gradient(820px 520px at 70% 18%,#000 10%,transparent 78%);
+    -webkit-mask-image:radial-gradient(820px 520px at 70% 18%,#000 10%,transparent 78%);
+    opacity:.6;
+  }
+  .nav{position:relative;z-index:3;padding:20px 0 6px}
+  .nav-fila{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+  .marca{display:flex;align-items:center;gap:13px;min-width:0}
+  .sello{flex:0 0 auto;width:48px;height:48px}
+  .marca-txt{min-width:0}
+  .marca-txt strong{display:block;font-size:clamp(16.5px,2.5vw,19px);color:#fff;letter-spacing:-.01em}
+  .marca-txt small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.17em;text-transform:uppercase;color:var(--txt-inv-2)}
+  .menu{display:flex;gap:24px;font-size:14px;color:var(--txt-inv-2)}
+  .menu a{text-decoration:none;padding-bottom:3px;border-bottom:1px solid transparent}
+  .menu a:hover{color:#fff;border-bottom-color:var(--ambar)}
+  @media (max-width:900px){.menu{display:none}}
+
+  .hero-cuerpo{position:relative;z-index:3;padding:clamp(34px,6vw,70px) 0 clamp(44px,7vw,84px)}
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:clamp(28px,5vw,56px);align-items:center}
+  @media (max-width:900px){.hero-grid{grid-template-columns:minmax(0,1fr);gap:34px}}
+  .hero .etq{color:var(--ambar-2);background:rgba(255,122,24,.08)}
+  h1{font-size:clamp(33px,6.1vw,58px);margin:18px 0 0;color:#fff}
+  h1 em{font-style:normal;color:var(--ambar-2)}
+  .hero-sub{margin-top:18px;font-size:clamp(16px,2.1vw,19px);color:var(--txt-inv);max-width:44ch}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+  .hero-tel{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--txt-inv-2);margin-top:16px}
+
+  /* ---------- tarjeta diagnosis hero ---------- */
+  .panel{
+    background:linear-gradient(160deg,rgba(255,255,255,.085),rgba(255,255,255,.025));
+    border:1px solid var(--linea);border-radius:22px;
+    padding:clamp(20px,3vw,28px);
+    backdrop-filter:blur(2px);
+  }
+  .panel-cab{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+  .panel-cab h3{font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--txt-inv-2);font-family:var(--mono);font-weight:400}
+  .led{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ambar-2)}
+  .led i{width:8px;height:8px;border-radius:50%;background:var(--ambar);box-shadow:0 0 0 4px rgba(255,122,24,.18)}
+  .chk{display:grid;gap:11px}
+  .chk li{display:flex;align-items:flex-start;gap:11px;font-size:14.5px;color:var(--txt-inv);line-height:1.5}
+  .chk svg{flex:0 0 auto;width:19px;height:19px;margin-top:2px}
+  .panel-pie{margin-top:20px;padding-top:16px;border-top:1px solid var(--linea);font-size:12.5px;color:var(--txt-inv-2)}
+
+  /* ---------- secciones ---------- */
+  section{position:relative}
+  .sec{padding:clamp(52px,7.5vw,92px) 0}
+  .sec-cab{max-width:60ch}
+  .sec-cab .etq{color:#c1521a;background:rgba(255,122,24,.09);border-color:rgba(255,122,24,.35)}
+  .sec-cab h2{font-size:clamp(26px,4.3vw,40px);margin:16px 0 0}
+  .sec-cab p{margin-top:14px;color:var(--txt-2);font-size:clamp(15.5px,1.9vw,17.5px)}
+  .nota{
+    margin-top:22px;padding:13px 16px;border-radius:12px;
+    background:#fff;border:1px dashed rgba(255,122,24,.5);
+    font-size:13.5px;color:var(--txt-2);
+  }
+  .nota b{color:#b64a16}
+
+  /* ---------- servicios ---------- */
+  .cuadricula{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:38px}
+  @media (max-width:980px){.cuadricula{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media (max-width:620px){.cuadricula{grid-template-columns:minmax(0,1fr)}}
+  .tarjeta{
+    position:relative;background:#fff;border:1px solid var(--linea-c);border-radius:var(--r);
+    padding:24px 22px 22px;display:flex;flex-direction:column;gap:12px;
+    box-shadow:0 18px 44px -34px rgba(14,18,22,.5);
+    transition:transform .18s ease,box-shadow .18s ease;
+  }
+  .tarjeta:hover{transform:translateY(-3px);box-shadow:0 26px 54px -30px rgba(14,18,22,.45)}
+  .tarjeta::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;border-radius:var(--r) var(--r) 0 0;background:linear-gradient(90deg,var(--ambar),rgba(255,122,24,0))}
+  .ico{width:46px;height:46px;border-radius:12px;background:linear-gradient(150deg,#fff1e4,#ffe0c6);display:grid;place-items:center;border:1px solid rgba(255,122,24,.25)}
+  .ico svg{width:26px;height:26px}
+  .tarjeta h3{font-size:19px}
+  .tarjeta p{font-size:14.8px;color:var(--txt-2);line-height:1.6}
+  .tarjeta .marca-prop{
+    margin-top:auto;font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;
+    color:#9c6a45;display:inline-flex;align-items:center;gap:7px;padding-top:6px;
+  }
+  .tarjeta .marca-prop i{width:5px;height:5px;border-radius:50%;background:var(--ambar);flex:0 0 auto}
+
+  /* ---------- pasos ---------- */
+  .pasos-sec{background:linear-gradient(175deg,#131a21,#0c1115);color:var(--txt-inv)}
+  .pasos-sec .sec-cab .etq{color:var(--ambar-2);background:rgba(255,122,24,.1);border-color:rgba(255,122,24,.4)}
+  .pasos-sec .sec-cab h2{color:#fff}
+  .pasos-sec .sec-cab p{color:var(--txt-inv-2)}
+  .pasos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:40px;counter-reset:p}
+  @media (max-width:860px){.pasos{grid-template-columns:minmax(0,1fr)}}
+  .paso{
+    position:relative;border:1px solid var(--linea);border-radius:var(--r);
+    background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.02));
+    padding:26px 22px;
+  }
+  .paso .num{
+    font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--ambar-2);
+    display:block;margin-bottom:12px;
+  }
+  .paso h3{font-size:19px;color:#fff}
+  .paso p{margin-top:10px;font-size:14.8px;color:var(--txt-inv-2);line-height:1.6}
+  .paso-linea{position:absolute;top:34px;right:-12px;width:24px;height:1px;background:rgba(255,122,24,.5)}
+  @media (max-width:860px){.paso-linea{display:none}}
+
+  /* ---------- contacto ---------- */
+  .cont-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(26px,4vw,48px);margin-top:38px;align-items:start}
+  @media (max-width:900px){.cont-grid{grid-template-columns:minmax(0,1fr)}}
+  .datos{display:grid;gap:14px}
+  .dato{
+    display:flex;gap:14px;align-items:flex-start;
+    background:#fff;border:1px solid var(--linea-c);border-radius:14px;padding:18px 18px;
+  }
+  .dato .ico{width:40px;height:40px;border-radius:11px}
+  .dato .ico svg{width:22px;height:22px}
+  .dato-txt{min-width:0}
+  .dato-txt small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--txt-2)}
+  .dato-txt strong{display:block;font-size:17px;margin-top:3px;word-break:break-word;letter-spacing:-.01em}
+  .dato-txt a{text-decoration:none;border-bottom:1px solid rgba(255,122,24,.5)}
+  .dato-txt span.aclara{display:block;font-size:13px;color:var(--txt-2);margin-top:4px}
+
+  .mapa-caja{background:#fff;border:1px solid var(--linea-c);border-radius:var(--r);padding:16px;box-shadow:0 20px 50px -38px rgba(14,18,22,.55)}
+  .mapa-caja figcaption{margin-top:12px;font-size:12.5px;color:var(--txt-2);line-height:1.5}
+  .mapa-caja svg{width:100%;height:auto;border-radius:10px}
+
+  /* ---------- pie ---------- */
+  footer{background:#07090b;color:var(--txt-inv-2);padding:clamp(38px,5vw,56px) 0 34px;font-size:14.5px}
+  .pie-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px;align-items:start}
+  @media (max-width:760px){.pie-grid{grid-template-columns:minmax(0,1fr)}}
+  footer strong.nom{display:block;color:#fff;font-size:18px;letter-spacing:-.01em}
+  footer .pie-dato{margin-top:10px;line-height:1.7}
+  footer a{color:var(--ambar-2);text-decoration:none;border-bottom:1px solid rgba(255,169,77,.35);word-break:break-word}
+  .pie-sello{
+    margin-top:30px;padding-top:22px;border-top:1px solid rgba(255,255,255,.1);
+    display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;justify-content:space-between;
+    font-size:13px;
+  }
+  .pie-sello em{font-style:normal;color:var(--txt-inv);font-family:var(--mono);font-size:11.5px;letter-spacing:.07em}
+</style>
+</head>
+<body>
+
+<div class="aviso"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<header class="hero">
+  <div class="nav marco">
+    <div class="nav-fila">
+      <div class="marca">
+        <svg class="sello" viewBox="0 0 48 48" role="img" aria-label="Emblema Nou Motor">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#ffa94d"/><stop offset="1" stop-color="#e65c00"/>
+            </linearGradient>
+          </defs>
+          <rect x="1.5" y="1.5" width="45" height="45" rx="12" fill="rgba(255,255,255,.06)" stroke="rgba(255,169,77,.45)"/>
+          <circle cx="24" cy="24" r="11" fill="none" stroke="url(#g1)" stroke-width="2.4"/>
+          <circle cx="24" cy="24" r="3.6" fill="url(#g1)"/>
+          <g stroke="url(#g1)" stroke-width="2.4" stroke-linecap="round">
+            <path d="M24 9.5v4"/><path d="M24 34.5v4"/><path d="M9.5 24h4"/><path d="M34.5 24h4"/>
+          </g>
+        </svg>
+        <div class="marca-txt">
+          <strong>Taller mecanic Nou Motor</strong>
+          <small>Calaf · Barcelona</small>
+        </div>
+      </div>
+      <nav class="menu" aria-label="Secciones propuestas">
+        <a href="#servicios">Servicios</a>
+        <a href="#como">Cómo trabajamos</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="hero-cuerpo marco">
+    <div class="hero-grid">
+      <div>
+        <span class="etq">Propuesta de web · no oficial</span>
+        <h1>Tu taller de confianza en Calaf, <em>también en internet</em>.</h1>
+        <p class="hero-sub">Mecánica general y electromecánica en Ctra. Llarga, 15. Esta maqueta plantea cómo sería la web del taller: clara, rápida y pensada para que quien busque un taller en Calaf acabe llamando.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-pri" href="tel:+34938680442">
+            <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/>
+            </svg>
+            Llamar al 93 868 04 42
+          </a>
+          <a class="btn btn-sec" href="#contacto">Dónde estamos</a>
+        </div>
+        <p class="hero-tel">Botón de llamada real · tel:+34938680442</p>
+      </div>
+
+      <div class="panel">
+        <div class="panel-cab">
+          <h3>Diagnóstico de la web actual</h3>
+          <span class="led"><i></i>Sin servicio</span>
+        </div>
+        <ul class="chk">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#ff8a3d" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v6"/><path d="M12 16.6h.01"/></svg>
+            <span>El dominio apunta a una página de aparcamiento de IONOS: no hay web publicada.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#ff8a3d" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="4" y="10.5" width="16" height="10" rx="2"/><path d="M8 10.5V8a4 4 0 0 1 7-2.6"/><path d="M4.5 4.5l15 16"/></svg>
+            <span>La conexión segura (HTTPS) falla por una configuración TLS rota.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#ff8a3d" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 12h18"/><circle cx="12" cy="12" r="9"/><path d="M12 3a16 16 0 0 1 0 18 16 16 0 0 1 0-18Z"/></svg>
+            <span>La versión con <b>www</b> no tiene registro DNS, así que tampoco resuelve.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#6fd3a0" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3.5 6.5h17v11h-17z"/><path d="M3.5 7l8.5 6 8.5-6"/></svg>
+            <span>El correo corporativo sí funciona: el dominio se puede recuperar sin tocarlo.</span>
+          </li>
+        </ul>
+        <p class="panel-pie">Se paga dominio y alojamiento, pero ahora mismo nadie que busque el taller llega a una web.</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="sec marco" id="servicios">
+    <div class="sec-cab">
+      <span class="etq">Apartados propuestos</span>
+      <h2>Los servicios del taller, explicados en su propia página</h2>
+      <p>Esta es una propuesta de estructura para la sección de servicios. Los textos son una redacción de partida sobre los trabajos habituales de un taller de mecánica y electromecánica; el taller los confirmaría y ajustaría antes de publicar.</p>
+      <div class="nota"><b>Nota de la maqueta:</b> ninguno de estos apartados está confirmado por el taller. Son <b>secciones propuestas</b> por FFFFFFstudio como punto de partida.</div>
+    </div>
+
+    <div class="cuadricula">
+      <article class="tarjeta">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#d1601c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a3.6 3.6 0 0 0 4.8 4.8l-8 8a3.4 3.4 0 0 1-4.8-4.8Z"/><path d="M14.7 6.3 18 3l3 3-3.3 3.3"/></svg></div>
+        <h3>Mecánica general</h3>
+        <p>Reparación de motor, embrague, frenos, suspensión, dirección y escape. Localizar la avería, explicar qué hace falta y presupuestar antes de intervenir.</p>
+        <span class="marca-prop"><i></i>Apartado propuesto</span>
+      </article>
+
+      <article class="tarjeta">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#d1601c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4.5 13.5H11l-1 8.5L19.5 10H13Z"/></svg></div>
+        <h3>Electromecánica</h3>
+        <p>Baterías, alternador, motor de arranque, luces, sensores y el cableado del vehículo. La parte eléctrica tratada con el mismo detalle que la mecánica.</p>
+        <span class="marca-prop"><i></i>Apartado propuesto</span>
+      </article>
+
+      <article class="tarjeta">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#d1601c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5a8.5 8.5 0 1 1-6 2.5"/><path d="M6 2v4h4"/><path d="M12 8v4l3 2"/></svg></div>
+        <h3>Mantenimiento y revisiones</h3>
+        <p>Cambio de aceite y filtros, correas, líquidos, pastillas y neumáticos. Revisiones periódicas para que el coche no llegue al taller por sorpresa.</p>
+        <span class="marca-prop"><i></i>Apartado propuesto</span>
+      </article>
+
+      <article class="tarjeta">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#d1601c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="13" rx="2.5"/><path d="M6 14l2.5-4 2.5 4 2-6 2.5 6H18"/><path d="M8.5 20.5h7"/></svg></div>
+        <h3>Diagnosis</h3>
+        <p>Lectura de la centralita y de los testigos encendidos para saber qué está pasando de verdad, en lugar de cambiar piezas a ciegas.</p>
+        <span class="marca-prop"><i></i>Apartado propuesto</span>
+      </article>
+
+      <article class="tarjeta">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#d1601c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4.5h8l2 5H6Z"/><path d="M4.5 9.5h15v7h-15z"/><circle cx="8" cy="19" r="1.6"/><circle cx="16" cy="19" r="1.6"/><path d="M14.5 12.5l1.6 1.6 2.6-2.8"/></svg></div>
+        <h3>Preparación de ITV</h3>
+        <p>Comprobación previa de los puntos que se revisan en la inspección y corrección de lo que no pasaría, para evitar el viaje de vuelta.</p>
+        <span class="marca-prop"><i></i>Apartado propuesto</span>
+      </article>
+
+      <article class="tarjeta">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#d1601c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5 20 7v5.5c0 4.4-3.3 7.1-8 8.5-4.7-1.4-8-4.1-8-8.5V7Z"/><path d="M9 12l2.3 2.3L15.5 10"/></svg></div>
+        <h3>Lo que ve quien os busca</h3>
+        <p>Una web propia, con HTTPS en orden y el teléfono a un toque, para que la primera impresión del taller sea la que le corresponde.</p>
+        <span class="marca-prop"><i></i>Apartado propuesto</span>
+      </article>
+    </div>
+  </section>
+
+  <section class="pasos-sec" id="como">
+    <div class="sec marco">
+      <div class="sec-cab">
+        <span class="etq">Cómo trabajamos</span>
+        <h2>Tres pasos, sin sorpresas</h2>
+        <p>Redacción propuesta para explicar al cliente qué pasa desde que llama hasta que recoge el coche.</p>
+      </div>
+      <div class="pasos">
+        <article class="paso">
+          <span class="num">Paso 01</span>
+          <h3>Nos llamas y traes el coche</h3>
+          <p>Cuentas qué le pasa al vehículo por teléfono y acordamos cuándo puedes dejarlo en el taller, en Ctra. Llarga, 15.</p>
+          <span class="paso-linea" aria-hidden="true"></span>
+        </article>
+        <article class="paso">
+          <span class="num">Paso 02</span>
+          <h3>Revisamos y te explicamos</h3>
+          <p>Localizamos la avería, te decimos qué hay que hacer y qué cuesta, y no se toca nada hasta que das el visto bueno.</p>
+          <span class="paso-linea" aria-hidden="true"></span>
+        </article>
+        <article class="paso">
+          <span class="num">Paso 03</span>
+          <h3>Reparamos y te avisamos</h3>
+          <p>Hacemos el trabajo acordado y te llamamos en cuanto el coche está listo para recoger.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec marco" id="contacto">
+    <div class="sec-cab">
+      <span class="etq">Contacto</span>
+      <h2>Dónde estamos y cómo llegar</h2>
+      <p>Los datos reales del taller, colocados donde se buscan: arriba, visibles y pulsables desde el móvil.</p>
+    </div>
+
+    <div class="cont-grid">
+      <div class="datos">
+        <div class="dato">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#d1601c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg></div>
+          <div class="dato-txt">
+            <small>Teléfono</small>
+            <strong><a href="tel:+34938680442">93 868 04 42</a></strong>
+          </div>
+        </div>
+
+        <div class="dato">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#d1601c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.5s7-5.3 7-11a7 7 0 1 0-14 0c0 5.7 7 11 7 11Z"/><circle cx="12" cy="10.5" r="2.6"/></svg></div>
+          <div class="dato-txt">
+            <small>Dirección</small>
+            <strong>Ctra. Llarga, 15</strong>
+            <span class="aclara">08280 Calaf (Barcelona)</span>
+          </div>
+        </div>
+
+        <div class="dato">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#d1601c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3.2 2"/></svg></div>
+          <div class="dato-txt">
+            <small>Horario</small>
+            <strong>Consultar horario</strong>
+            <span class="aclara">Esta maqueta no inventa horarios: los pondría el taller.</span>
+          </div>
+        </div>
+
+        <div class="dato">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#d1601c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2.4"/><path d="M3.6 6.5 12 13l8.4-6.5"/></svg></div>
+          <div class="dato-txt">
+            <small>Correo</small>
+            <strong><a href="mailto:info@noumotorcalaf.com">info@noumotorcalaf.com</a></strong>
+          </div>
+        </div>
+
+        <a class="btn btn-pri" href="tel:+34938680442" style="margin-top:6px">
+          <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+          Llamar ahora
+        </a>
+      </div>
+
+      <figure class="mapa-caja" style="margin:0">
+        <svg viewBox="0 0 520 340" role="img" aria-label="Mapa esquemático: el taller está en Ctra. Llarga, 15, en Calaf.">
+          <defs>
+            <linearGradient id="gmap" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#f6f8f9"/><stop offset="1" stop-color="#e9eef1"/>
+            </linearGradient>
+            <linearGradient id="gpin" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#ffa94d"/><stop offset="1" stop-color="#e65c00"/>
+            </linearGradient>
+          </defs>
+          <rect width="520" height="340" rx="10" fill="url(#gmap)"/>
+          <g fill="#dde4e8">
+            <rect x="24" y="26" width="104" height="66" rx="5"/>
+            <rect x="150" y="26" width="86" height="66" rx="5"/>
+            <rect x="330" y="26" width="90" height="48" rx="5"/>
+            <rect x="24" y="208" width="96" height="62" rx="5"/>
+            <rect x="146" y="226" width="78" height="44" rx="5"/>
+            <rect x="372" y="206" width="112" height="70" rx="5"/>
+            <rect x="432" y="26" width="52" height="86" rx="5"/>
+          </g>
+          <g stroke="#cfd8de" stroke-width="1" opacity=".85">
+            <path d="M24 300h472"/><path d="M24 14h472"/>
+          </g>
+          <path d="M0 150h520v38H0z" fill="#ffffff"/>
+          <path d="M0 169h520" stroke="#c3ced6" stroke-width="2" stroke-dasharray="14 12"/>
+          <path d="M268 0v150" stroke="#ffffff" stroke-width="26"/>
+          <path d="M268 0v150" stroke="#c3ced6" stroke-width="2" stroke-dasharray="12 10"/>
+          <path d="M268 188v152" stroke="#ffffff" stroke-width="26"/>
+          <path d="M268 188v152" stroke="#c3ced6" stroke-width="2" stroke-dasharray="12 10"/>
+          <text x="20" y="143" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="12.5" letter-spacing="1.6" fill="#7b8893">CTRA. LLARGA</text>
+          <text x="278" y="328" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="12.5" letter-spacing="1.6" fill="#7b8893">CALAF</text>
+
+          <g>
+            <rect x="196" y="196" width="150" height="86" rx="10" fill="#11161a"/>
+            <rect x="196" y="196" width="150" height="86" rx="10" fill="none" stroke="rgba(255,169,77,.6)"/>
+            <text x="214" y="228" font-family="Helvetica,Arial,sans-serif" font-size="15" font-weight="700" fill="#ffffff">Nou Motor</text>
+            <text x="214" y="250" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="11" letter-spacing="1.1" fill="#95a3af">CTRA. LLARGA, 15</text>
+            <text x="214" y="268" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="11" letter-spacing="1.1" fill="#95a3af">08280 CALAF</text>
+          </g>
+          <g>
+            <path d="M271 136c0-11.6 9.4-21 21-21s21 9.4 21 21c0 15-21 34-21 34s-21-19-21-34Z" fill="url(#gpin)"/>
+            <circle cx="292" cy="136" r="7.2" fill="#fff"/>
+          </g>
+        </svg>
+        <figcaption>Mapa esquemático dibujado para la maqueta, no un plano a escala. Indica únicamente que el taller está en Ctra. Llarga, 15, en Calaf. En la web definitiva iría un mapa real con enlace a la navegación.</figcaption>
+      </figure>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="marco">
+    <div class="pie-grid">
+      <div>
+        <strong class="nom">Taller mecanic Nou Motor</strong>
+        <p class="pie-dato">
+          Taller mecánico y electromecánica de vehículos<br>
+          Ctra. Llarga, 15 · 08280 Calaf (Barcelona)<br>
+          Teléfono: <a href="tel:+34938680442">93 868 04 42</a><br>
+          Correo: <a href="mailto:info@noumotorcalaf.com">info@noumotorcalaf.com</a><br>
+          Horario: consultar horario
+        </p>
+      </div>
+      <div>
+        <strong class="nom">Sobre esta maqueta</strong>
+        <p class="pie-dato">
+          Documento de trabajo sin relación oficial con el taller. No contiene reseñas, cifras, precios, horarios ni marcas: solo los datos públicos de contacto y una propuesta de estructura y diseño.
+        </p>
+      </div>
+    </div>
+    <div class="pie-sello">
+      <em>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</em>
+      <span>Maqueta no oficial · Alicante</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    document.querySelectorAll('.menu a, a[href^="#"]').forEach(function(a){
+      a.addEventListener('click', function(e){
+        var id = a.getAttribute('href');
+        if(!id || id.length < 2) return;
+        var t = document.querySelector(id);
+        if(!t) return;
+        e.preventDefault();
+        var y = t.getBoundingClientRect().top + window.pageYOffset - 56;
+        window.scrollTo({top: y, behavior: 'smooth'});
+      });
+    });
+  })();
+</script>
+</body>
+</html>

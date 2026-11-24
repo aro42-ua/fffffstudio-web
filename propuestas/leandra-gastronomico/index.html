@@ -1,0 +1,734 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leandra Gastronómico · Propuesta de diseño</title>
+<meta name="description" content="Maqueta de propuesta de diseño web para Leandra Gastronómico (Elda, Alicante). Documento no oficial realizado por FFFFFFstudio.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  :root{
+    --ink:#140f0c;
+    --ink-2:#1d1612;
+    --cream:#f6efe6;
+    --cream-2:#efe4d6;
+    --sand:#d9c7ae;
+    --gold:#c8a258;
+    --gold-soft:#e3c386;
+    --olive:#6d7a58;
+    --wine:#7c3246;
+    --line:rgba(246,239,230,.14);
+    --line-dark:rgba(20,15,12,.12);
+    --bar-h:40px;
+    --sans:"Helvetica Neue",Helvetica,Arial,system-ui,sans-serif;
+    --serif:"Hoefler Text","Georgia",Cambria,"Times New Roman",serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{margin:0;padding:0;max-width:100%;overflow-x:hidden}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    font-family:var(--sans);
+    color:var(--cream);
+    background:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%;display:block}
+  a{color:inherit}
+  h1,h2,h3,h4{margin:0;font-family:var(--serif);font-weight:400;letter-spacing:-.01em;line-height:1.1}
+  p{margin:0}
+
+  /* ---------- barra fija ---------- */
+  .topbar{
+    position:fixed;inset:0 0 auto 0;z-index:100;
+    min-height:var(--bar-h);
+    display:flex;align-items:center;justify-content:center;
+    text-align:center;
+    padding:9px 16px;
+    background:linear-gradient(90deg,#120c09 0%,#241812 50%,#120c09 100%);
+    border-bottom:1px solid rgba(200,162,88,.35);
+    color:var(--gold-soft);
+    font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;
+    line-height:1.35;
+    backdrop-filter:saturate(140%);
+  }
+  .topbar span{display:inline-block;max-width:100%}
+
+  /* ---------- layout ---------- */
+  .wrap{width:100%;max-width:1140px;margin:0 auto;padding:0 32px}
+  section{position:relative}
+  .eyebrow{
+    font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--gold);margin-bottom:18px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:"";width:28px;height:1px;background:var(--gold);flex:0 0 auto;opacity:.7}
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding:calc(var(--bar-h) + 76px) 0 92px;
+    background:
+      radial-gradient(900px 540px at 78% 8%,rgba(200,162,88,.20),transparent 62%),
+      radial-gradient(700px 520px at 6% 92%,rgba(124,50,70,.26),transparent 65%),
+      linear-gradient(170deg,#191210 0%,#140f0c 55%,#100c0a 100%);
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:minmax(0,1.18fr) minmax(0,.82fr);
+    gap:52px;align-items:center;
+  }
+  .brandmark{display:flex;align-items:center;gap:14px;margin-bottom:30px}
+  .brandmark .mono{
+    font-family:var(--serif);font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:var(--sand)
+  }
+  h1.hero-title{
+    font-size:clamp(38px,5.1vw,60px);
+    letter-spacing:-.02em;
+  }
+  h1.hero-title em{font-style:italic;color:var(--gold-soft)}
+  .hero-lead{
+    margin-top:22px;max-width:46ch;color:rgba(246,239,230,.76);font-size:16.5px;
+  }
+  .hero-meta{
+    margin-top:26px;display:flex;flex-wrap:wrap;gap:8px 10px;
+  }
+  .chip{
+    border:1px solid var(--line);border-radius:999px;padding:6px 14px;
+    font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:rgba(246,239,230,.68);
+    background:rgba(246,239,230,.03);
+  }
+  .cta-row{margin-top:34px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:15px 26px;border-radius:999px;text-decoration:none;
+    font-size:14px;letter-spacing:.04em;font-weight:600;
+    border:1px solid transparent;transition:transform .18s ease,box-shadow .18s ease,background .18s ease;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg,var(--gold-soft),var(--gold));
+    color:#1a120a;box-shadow:0 14px 34px rgba(200,162,88,.22);
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 40px rgba(200,162,88,.3)}
+  .btn-ghost{border-color:var(--line);color:var(--cream);background:rgba(246,239,230,.03)}
+  .btn-ghost:hover{background:rgba(246,239,230,.08)}
+  .btn svg{flex:0 0 auto}
+  .hero-note{margin-top:18px;font-size:13px;color:rgba(246,239,230,.55);max-width:40ch}
+
+  .hero-art{position:relative;min-width:0}
+  .plate-card{
+    border:1px solid var(--line);border-radius:22px;padding:28px;
+    background:linear-gradient(160deg,rgba(246,239,230,.06),rgba(246,239,230,.015));
+  }
+  .plate-card figcaption{
+    margin-top:20px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+    color:rgba(246,239,230,.5);text-align:center;
+  }
+
+  /* ---------- aviso del problema ---------- */
+  .notice{
+    padding:30px 0;background:linear-gradient(90deg,#1b1210,#241611 55%,#1b1210);
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  }
+  .notice-in{display:flex;gap:18px;align-items:flex-start}
+  .notice .dot{
+    flex:0 0 auto;width:10px;height:10px;border-radius:50%;margin-top:9px;
+    background:#d9765f;box-shadow:0 0 0 5px rgba(217,118,95,.16);
+  }
+  .notice h2{font-size:19px;margin-bottom:8px}
+  .notice p{font-size:14.5px;color:rgba(246,239,230,.68);max-width:78ch}
+  .notice code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;color:var(--gold-soft);word-break:break-word}
+
+  /* ---------- servicios ---------- */
+  .light{background:var(--cream);color:var(--ink)}
+  .light .eyebrow{color:#8a6a28}
+  .sec{padding:92px 0}
+  .sec-head{max-width:62ch;margin-bottom:48px}
+  .sec-head h2{font-size:clamp(28px,3.4vw,42px)}
+  .sec-head p{margin-top:16px;font-size:16px;color:rgba(20,15,12,.66)}
+  .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+  .card{
+    border:1px solid var(--line-dark);border-radius:18px;padding:28px;
+    background:linear-gradient(170deg,#fffaf3,#f1e6d7);
+    display:flex;flex-direction:column;min-width:0;
+  }
+  .card .ic{
+    width:44px;height:44px;border-radius:12px;margin-bottom:20px;
+    display:grid;place-items:center;
+    background:linear-gradient(135deg,rgba(200,162,88,.28),rgba(124,50,70,.14));
+    border:1px solid rgba(20,15,12,.08);
+  }
+  .card h3{font-size:21px;margin-bottom:10px}
+  .card p{font-size:14.5px;color:rgba(20,15,12,.68)}
+  .card ul{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:8px}
+  .card li{font-size:13.5px;color:rgba(20,15,12,.62);padding-left:18px;position:relative}
+  .card li::before{
+    content:"";position:absolute;left:0;top:8px;width:7px;height:7px;border-radius:2px;
+    background:var(--gold);opacity:.75;transform:rotate(45deg);
+  }
+  .card .tag{
+    margin-top:auto;padding-top:20px;font-size:11px;letter-spacing:.16em;
+    text-transform:uppercase;color:rgba(20,15,12,.38);
+  }
+
+  /* ---------- proceso ---------- */
+  .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;counter-reset:s}
+  .step{
+    position:relative;padding:30px 26px;border-radius:18px;min-width:0;
+    border:1px solid var(--line);
+    background:linear-gradient(170deg,rgba(246,239,230,.06),rgba(246,239,230,.015));
+  }
+  .step .num{
+    font-family:var(--serif);font-size:44px;line-height:1;color:var(--gold);opacity:.55;
+    display:block;margin-bottom:16px;
+  }
+  .step h3{font-size:20px;margin-bottom:10px}
+  .step p{font-size:14.5px;color:rgba(246,239,230,.68)}
+  .rule{height:1px;background:var(--line);margin:0}
+
+  /* ---------- contacto ---------- */
+  .contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:44px;align-items:start}
+  .info{display:grid;gap:2px}
+  .info-row{
+    display:flex;gap:16px;padding:20px 0;border-top:1px solid var(--line);align-items:flex-start;
+  }
+  .info-row:first-child{border-top:0;padding-top:0}
+  .info-row .ic2{
+    flex:0 0 auto;width:36px;height:36px;border-radius:10px;display:grid;place-items:center;
+    background:rgba(200,162,88,.12);border:1px solid rgba(200,162,88,.24);
+  }
+  .info-row .lbl{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(246,239,230,.45);margin-bottom:5px}
+  .info-row .val{font-size:16.5px;font-family:var(--serif)}
+  .info-row .val a{text-decoration:none;border-bottom:1px solid rgba(200,162,88,.5);padding-bottom:1px}
+  .info-row .val a:hover{color:var(--gold-soft)}
+  .info-row .sub{font-size:13px;color:rgba(246,239,230,.52);margin-top:5px}
+  .map{
+    border:1px solid var(--line);border-radius:18px;overflow:hidden;
+    background:linear-gradient(160deg,#17110e,#1f1713);
+  }
+  .map figcaption{
+    padding:14px 18px;border-top:1px solid var(--line);
+    font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(246,239,230,.42);
+  }
+  .map-svg{width:100%;height:auto;display:block}
+
+  /* ---------- pie ---------- */
+  footer{
+    padding:54px 0 64px;
+    background:linear-gradient(180deg,#100c0a,#0b0807);
+    border-top:1px solid rgba(200,162,88,.22);
+  }
+  .foot-grid{display:flex;flex-wrap:wrap;gap:28px;justify-content:space-between;align-items:flex-start}
+  .foot-brand{font-family:var(--serif);font-size:20px;letter-spacing:.02em}
+  .foot-brand span{display:block;font-family:var(--sans);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,239,230,.42);margin-top:8px}
+  .foot-links{display:grid;gap:7px;font-size:14px}
+  .foot-links a{text-decoration:none;color:rgba(246,239,230,.72)}
+  .foot-links a:hover{color:var(--gold-soft)}
+  .signature{
+    margin-top:40px;padding-top:24px;border-top:1px solid var(--line);
+    font-size:13px;color:rgba(246,239,230,.6);
+  }
+  .signature strong{color:var(--gold-soft);font-weight:600}
+  .disclaimer{margin-top:10px;font-size:12px;color:rgba(246,239,230,.35);max-width:70ch}
+
+  .reveal{opacity:1;transform:none}
+  .js-anim .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+  .js-anim .reveal.in{opacity:1;transform:none}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:980px){
+    .cards,.steps{grid-template-columns:minmax(0,1fr)}
+    .hero-grid,.contact-grid{grid-template-columns:minmax(0,1fr);gap:40px}
+    .sec{padding:70px 0}
+    .hero{padding:calc(var(--bar-h) + 56px) 0 70px}
+  }
+  @media (max-width:560px){
+    :root{--bar-h:52px}
+    .wrap{padding:0 18px}
+    .topbar{font-size:10px;letter-spacing:.05em;padding:8px 14px}
+    .hero{padding:calc(var(--bar-h) + 44px) 0 58px}
+    h1.hero-title{font-size:33px}
+    .hero-lead{font-size:15.5px}
+    .btn{width:100%;justify-content:center}
+    .cta-row{gap:10px}
+    .plate-card{padding:18px}
+    .sec{padding:58px 0}
+    .card,.step{padding:24px 20px}
+    .foot-grid{gap:22px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .js-anim .reveal{opacity:1;transform:none;transition:none}
+    .btn{transition:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar" role="note"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="brandmark">
+          <svg width="46" height="46" viewBox="0 0 46 46" aria-hidden="true">
+            <defs>
+              <linearGradient id="gm" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#e3c386"/><stop offset="1" stop-color="#b3853f"/>
+              </linearGradient>
+            </defs>
+            <circle cx="23" cy="23" r="22" fill="none" stroke="url(#gm)" stroke-width="1.2" opacity=".65"/>
+            <circle cx="23" cy="23" r="16" fill="none" stroke="url(#gm)" stroke-width=".8" opacity=".35"/>
+            <text x="23" y="29.5" text-anchor="middle" font-family="Georgia,serif" font-size="18" fill="url(#gm)">L</text>
+          </svg>
+          <div class="mono">Leandra<br>Gastronómico</div>
+        </div>
+
+        <div class="eyebrow">Elda · Alicante</div>
+        <h1 class="hero-title">Un espacio gastronómico<br>con <em>una web a su altura</em></h1>
+        <p class="hero-lead">
+          Maqueta de propuesta para Leandra Gastronómico: una web propia, rápida y clara
+          donde el cliente encuentre la carta, el menú del día, los eventos y la forma de reservar
+          sin salir de la página.
+        </p>
+
+        <div class="hero-meta">
+          <span class="chip">Restaurante</span>
+          <span class="chip">Espacio gastronómico</span>
+          <span class="chip">Eventos y celebraciones</span>
+        </div>
+
+        <div class="cta-row">
+          <a class="btn btn-primary" href="tel:+34966981229">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/>
+            </svg>
+            Llamar 96 698 12 29
+          </a>
+          <a class="btn btn-ghost" href="#contacto">
+            Ver contacto y ubicación
+          </a>
+        </div>
+        <p class="hero-note">Los apartados de esta maqueta están preparados para rellenarse con la carta, los menús y las fotografías reales del restaurante.</p>
+      </div>
+
+      <div class="hero-art">
+        <figure class="plate-card" style="margin:0">
+          <svg class="map-svg" viewBox="0 0 420 320" role="img" aria-label="Ilustración abstracta de un plato y cubiertos">
+            <defs>
+              <radialGradient id="pl" cx="50%" cy="38%" r="62%">
+                <stop offset="0" stop-color="#2b211c"/><stop offset="1" stop-color="#171110"/>
+              </radialGradient>
+              <linearGradient id="rim" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#e3c386"/><stop offset=".55" stop-color="#9b7435"/><stop offset="1" stop-color="#e3c386"/>
+              </linearGradient>
+              <linearGradient id="steam" x1="0" y1="1" x2="0" y2="0">
+                <stop offset="0" stop-color="#e3c386" stop-opacity=".0"/><stop offset="1" stop-color="#e3c386" stop-opacity=".5"/>
+              </linearGradient>
+              <linearGradient id="wineG" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#9c3f56"/><stop offset="1" stop-color="#5e2235"/>
+              </linearGradient>
+            </defs>
+
+            <!-- vapor -->
+            <path d="M196 92c-10-14 8-22 0-36" fill="none" stroke="url(#steam)" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M216 86c-9-13 7-20 0-32" fill="none" stroke="url(#steam)" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M236 92c-10-14 8-22 0-34" fill="none" stroke="url(#steam)" stroke-width="2.2" stroke-linecap="round"/>
+
+            <!-- plato -->
+            <ellipse cx="216" cy="188" rx="124" ry="86" fill="url(#pl)" stroke="url(#rim)" stroke-width="1.6" opacity=".95"/>
+            <ellipse cx="216" cy="188" rx="92" ry="62" fill="none" stroke="url(#rim)" stroke-width=".9" opacity=".45"/>
+            <ellipse cx="216" cy="186" rx="52" ry="34" fill="none" stroke="url(#rim)" stroke-width=".7" opacity=".3"/>
+            <!-- composición en el plato -->
+            <circle cx="200" cy="180" r="17" fill="#6d7a58" opacity=".55"/>
+            <circle cx="232" cy="192" r="12" fill="#c8a258" opacity=".45"/>
+            <circle cx="214" cy="204" r="8" fill="#7c3246" opacity=".5"/>
+            <path d="M188 200c10 6 24 7 36 2" fill="none" stroke="#e3c386" stroke-width="1.2" opacity=".5"/>
+
+            <!-- tenedor -->
+            <g opacity=".8" stroke="url(#rim)" stroke-width="1.6" fill="none" stroke-linecap="round">
+              <path d="M58 92v54c0 8 5 11 5 18v88"/>
+              <path d="M48 92v38M68 92v38"/>
+              <path d="M48 130h20"/>
+            </g>
+            <!-- copa -->
+            <g>
+              <path d="M348 86h44l-6 36a16 16 0 0 1-32 0Z" fill="url(#wineG)" opacity=".8"/>
+              <path d="M344 78h52l-4 20h-44Z" fill="none" stroke="url(#rim)" stroke-width="1.4"/>
+              <path d="M344 78h52l-8 48a22 22 0 0 1-36 0Z" fill="none" stroke="url(#rim)" stroke-width="1.4"/>
+              <path d="M370 148v72M352 222h36" fill="none" stroke="url(#rim)" stroke-width="1.4" stroke-linecap="round"/>
+            </g>
+          </svg>
+          <figcaption>Ilustración de la maqueta · sin fotografías del local</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= AVISO ================= -->
+<section class="notice">
+  <div class="wrap notice-in">
+    <span class="dot" aria-hidden="true"></span>
+    <div>
+      <h2>El punto de partida</h2>
+      <p>
+        En la ficha oficial del Ayuntamiento de Elda, Leandra Gastronómico anuncia la dirección
+        <code>leandraespaciogastronomico.com</code>, pero ese dominio no resuelve: quien lo escribe recibe un error
+        (NXDOMAIN) y no llega a ninguna página. Facebook e Instagram siguen activos, pero no hay un sitio propio
+        donde consultar la carta ni reservar. Esta maqueta propone exactamente eso.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICIOS ================= -->
+<section class="sec light" id="propuesta">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">La propuesta</div>
+      <h2>Apartados preparados para el día a día del restaurante</h2>
+      <p>
+        Cada bloque está maquetado y listo para recibir el contenido real que facilite el restaurante.
+        En esta maqueta no se incluye ningún plato, precio ni horario: solo la estructura.
+      </p>
+    </div>
+
+    <div class="cards">
+      <article class="card reveal">
+        <div class="ic" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8a6a28" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 3v18M4 3h4M18 3v7a3 3 0 0 1-3 3h0v8M13 3v7"/>
+          </svg>
+        </div>
+        <h3>Carta</h3>
+        <p>Apartado para publicar la carta por secciones, legible en el móvil y actualizable sin tocar código ni subir un PDF.</p>
+        <ul>
+          <li>Secciones y platos que define el restaurante</li>
+          <li>Marcado de alérgenos cuando se facilite</li>
+          <li>Versión imprimible para sala</li>
+        </ul>
+        <div class="tag">Pendiente de contenido real</div>
+      </article>
+
+      <article class="card reveal">
+        <div class="ic" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8a6a28" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4M8 14h8"/>
+          </svg>
+        </div>
+        <h3>Menú del día</h3>
+        <p>Espacio fijo para el menú de cada jornada, de forma que el cliente lo vea al entrar y no haya que repetirlo por teléfono.</p>
+        <ul>
+          <li>Bloque editable día a día</li>
+          <li>Aviso visible cuando no esté publicado</li>
+          <li>Enlace directo para compartir por redes</li>
+        </ul>
+        <div class="tag">Pendiente de contenido real</div>
+      </article>
+
+      <article class="card reveal">
+        <div class="ic" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8a6a28" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3l2.3 4.8 5.2.7-3.8 3.6.9 5.2L12 14.8 7.4 17.3l.9-5.2L4.5 8.5l5.2-.7Z"/>
+          </svg>
+        </div>
+        <h3>Eventos y celebraciones</h3>
+        <p>Apartado para comidas de empresa, celebraciones y eventos privados, con un formulario de solicitud que llega al correo del restaurante.</p>
+        <ul>
+          <li>Formulario de petición de presupuesto</li>
+          <li>Campos de fecha, número de personas y contacto</li>
+          <li>Condiciones que indique el restaurante</li>
+        </ul>
+        <div class="tag">Pendiente de contenido real</div>
+      </article>
+
+      <article class="card reveal">
+        <div class="ic" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8a6a28" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 10c0 6-8 11-8 11S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="2.6"/>
+          </svg>
+        </div>
+        <h3>Reservas y contacto</h3>
+        <p>Llamada en un toque desde el móvil, formulario de reserva y la ubicación bien visible, para no perder clientes en el camino.</p>
+        <ul>
+          <li>Botón de teléfono en toda la web</li>
+          <li>Formulario de reserva al correo del local</li>
+          <li>Dirección y cómo llegar</li>
+        </ul>
+        <div class="tag">Funcional en la maqueta</div>
+      </article>
+
+      <article class="card reveal">
+        <div class="ic" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8a6a28" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="9"/><path d="M3.5 9h17M3.5 15h17M12 3c-3 3-3 15 0 18M12 3c3 3 3 15 0 18"/>
+          </svg>
+        </div>
+        <h3>Dominio y visibilidad</h3>
+        <p>Dejar el dominio funcionando y el negocio localizable, para que el enlace que ya aparece publicado lleve a algún sitio.</p>
+        <ul>
+          <li>Dominio activo con certificado</li>
+          <li>Datos de contacto coherentes en las fichas</li>
+          <li>Enlace a las redes sociales que ya usan</li>
+        </ul>
+        <div class="tag">Incluido en la propuesta</div>
+      </article>
+
+      <article class="card reveal">
+        <div class="ic" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8a6a28" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="5" y="2" width="14" height="20" rx="2.5"/><path d="M10 18h4"/>
+          </svg>
+        </div>
+        <h3>Pensada para el móvil</h3>
+        <p>La mayoría de quien busca dónde comer lo hace desde el teléfono: la maqueta se diseña primero para esa pantalla.</p>
+        <ul>
+          <li>Carga ligera, sin elementos innecesarios</li>
+          <li>Texto legible sin ampliar</li>
+          <li>Teléfono y dirección siempre a un toque</li>
+        </ul>
+        <div class="tag">Incluido en la propuesta</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROCESO ================= -->
+<section class="sec" id="proceso">
+  <div class="wrap">
+    <div class="sec-head reveal" style="max-width:62ch">
+      <div class="eyebrow">Cómo trabajamos</div>
+      <h2>Tres pasos, sin complicaciones para el restaurante</h2>
+      <p style="color:rgba(246,239,230,.68)">
+        El objetivo es que el equipo del local dedique el mínimo tiempo posible: una conversación,
+        una revisión y la web publicada.
+      </p>
+    </div>
+
+    <div class="steps">
+      <article class="step reveal">
+        <span class="num">01</span>
+        <h3>Conversamos</h3>
+        <p>Una llamada o una visita para entender cómo funciona el espacio, qué quiere que vea el cliente y qué contenido hay ya disponible (carta, fotos, redes).</p>
+      </article>
+      <article class="step reveal">
+        <span class="num">02</span>
+        <h3>Diseñamos y revisas</h3>
+        <p>Preparo la web completa con el contenido real y se revisa junta antes de publicar nada. Los cambios que haga falta se aplican en esa fase.</p>
+      </article>
+      <article class="step reveal">
+        <span class="num">03</span>
+        <h3>Publicamos y acompañamos</h3>
+        <p>Dominio funcionando, web publicada y acompañamiento posterior para actualizar carta o menú cuando el restaurante lo necesite.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ================= CONTACTO ================= -->
+<section class="sec" id="contacto">
+  <div class="wrap">
+    <div class="sec-head reveal" style="max-width:62ch">
+      <div class="eyebrow">Contacto y ubicación</div>
+      <h2>Datos del restaurante</h2>
+      <p style="color:rgba(246,239,230,.68)">
+        Los datos que figuran a continuación son los publicados por el propio negocio.
+        El horario se deja sin rellenar a propósito: lo facilitará el restaurante.
+      </p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="info reveal">
+        <div class="info-row">
+          <span class="ic2" aria-hidden="true">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#e3c386" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/>
+            </svg>
+          </span>
+          <div>
+            <div class="lbl">Teléfono</div>
+            <div class="val"><a href="tel:+34966981229">96 698 12 29</a></div>
+            <div class="val" style="margin-top:6px"><a href="tel:+34615869045">615 869 045</a></div>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <span class="ic2" aria-hidden="true">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#e3c386" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 10c0 6-8 11-8 11S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="2.6"/>
+            </svg>
+          </span>
+          <div>
+            <div class="lbl">Dirección</div>
+            <div class="val">Avenida Chapí 38</div>
+            <div class="sub">03600 Elda (Alicante)</div>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <span class="ic2" aria-hidden="true">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#e3c386" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3 2"/>
+            </svg>
+          </span>
+          <div>
+            <div class="lbl">Horario</div>
+            <div class="val">Consultar horario</div>
+            <div class="sub">Se publicará el horario que facilite el restaurante.</div>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <span class="ic2" aria-hidden="true">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#e3c386" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/>
+            </svg>
+          </span>
+          <div>
+            <div class="lbl">Correo</div>
+            <div class="val"><a href="mailto:admin@casapaulino.com">admin@casapaulino.com</a></div>
+          </div>
+        </div>
+
+        <div style="padding-top:26px">
+          <a class="btn btn-primary" href="tel:+34966981229">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/>
+            </svg>
+            Llamar al restaurante
+          </a>
+        </div>
+      </div>
+
+      <figure class="map reveal" style="margin:0">
+        <svg class="map-svg" viewBox="0 0 560 400" role="img" aria-label="Mapa esquemático y abstracto de la ubicación en Avenida Chapí 38, Elda">
+          <defs>
+            <linearGradient id="mapbg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#1c1512"/><stop offset="1" stop-color="#120d0b"/>
+            </linearGradient>
+            <linearGradient id="av" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#c8a258" stop-opacity=".25"/>
+              <stop offset=".5" stop-color="#e3c386" stop-opacity=".75"/>
+              <stop offset="1" stop-color="#c8a258" stop-opacity=".25"/>
+            </linearGradient>
+          </defs>
+          <rect width="560" height="400" fill="url(#mapbg)"/>
+
+          <!-- manzanas abstractas -->
+          <g fill="#f6efe6" opacity=".045">
+            <rect x="34" y="34" width="138" height="88" rx="6"/>
+            <rect x="192" y="34" width="110" height="88" rx="6"/>
+            <rect x="322" y="34" width="86" height="88" rx="6"/>
+            <rect x="428" y="34" width="98" height="88" rx="6"/>
+            <rect x="34" y="252" width="110" height="114" rx="6"/>
+            <rect x="164" y="252" width="146" height="114" rx="6"/>
+            <rect x="330" y="252" width="94" height="114" rx="6"/>
+            <rect x="444" y="252" width="82" height="114" rx="6"/>
+          </g>
+          <g fill="none" stroke="#f6efe6" stroke-width=".7" opacity=".10">
+            <rect x="34" y="34" width="138" height="88" rx="6"/>
+            <rect x="192" y="34" width="110" height="88" rx="6"/>
+            <rect x="322" y="34" width="86" height="88" rx="6"/>
+            <rect x="428" y="34" width="98" height="88" rx="6"/>
+            <rect x="34" y="252" width="110" height="114" rx="6"/>
+            <rect x="164" y="252" width="146" height="114" rx="6"/>
+            <rect x="330" y="252" width="94" height="114" rx="6"/>
+            <rect x="444" y="252" width="82" height="114" rx="6"/>
+          </g>
+
+          <!-- calles secundarias -->
+          <g stroke="#f6efe6" stroke-opacity=".13" stroke-width="7" stroke-linecap="round">
+            <path d="M180 20v120M180 244v140"/>
+            <path d="M312 20v120M312 244v140"/>
+            <path d="M418 20v120M418 244v140"/>
+            <path d="M152 244v140"/>
+          </g>
+
+          <!-- avenida principal -->
+          <path d="M0 188h560" stroke="#f6efe6" stroke-opacity=".07" stroke-width="54" stroke-linecap="butt"/>
+          <path d="M0 188h560" stroke="url(#av)" stroke-width="3"/>
+          <g stroke="#e3c386" stroke-opacity=".3" stroke-width="2" stroke-dasharray="14 16">
+            <path d="M0 170h560"/><path d="M0 206h560"/>
+          </g>
+
+          <!-- marcador -->
+          <g transform="translate(276 150)">
+            <circle cx="0" cy="38" r="30" fill="#c8a258" opacity=".10"/>
+            <circle cx="0" cy="38" r="17" fill="#c8a258" opacity=".16"/>
+            <path d="M0 0c-10 0-18 8-18 18 0 12 18 30 18 30s18-18 18-30C18 8 10 0 0 0Z" fill="#c8a258"/>
+            <circle cx="0" cy="18" r="6.2" fill="#140f0c"/>
+          </g>
+          <text x="276" y="128" text-anchor="middle" font-family="Georgia,serif" font-size="16" fill="#f6efe6" opacity=".9">Leandra Gastronómico</text>
+          <text x="276" y="232" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="11.5" letter-spacing="2.4" fill="#e3c386" opacity=".8">AVENIDA CHAPÍ</text>
+
+          <!-- rosa de los vientos -->
+          <g transform="translate(508 352)" opacity=".5">
+            <circle r="19" fill="none" stroke="#e3c386" stroke-width=".9" opacity=".6"/>
+            <path d="M0 -14 L4 0 L0 14 L-4 0 Z" fill="#e3c386" opacity=".8"/>
+            <text x="0" y="-22" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="8.5" fill="#e3c386">N</text>
+          </g>
+        </svg>
+        <figcaption>Esquema orientativo de la maqueta · no es un mapa a escala</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PIE ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        Leandra Gastronómico
+        <span>Avenida Chapí 38 · 03600 Elda</span>
+      </div>
+      <nav class="foot-links" aria-label="Enlaces del pie">
+        <a href="tel:+34966981229">96 698 12 29</a>
+        <a href="tel:+34615869045">615 869 045</a>
+        <a href="mailto:admin@casapaulino.com">admin@casapaulino.com</a>
+        <span style="color:rgba(246,239,230,.42);font-size:13px">Consultar horario</span>
+      </nav>
+      <div class="foot-links">
+        <a href="#propuesta">La propuesta</a>
+        <a href="#proceso">Cómo trabajamos</a>
+        <a href="#contacto">Contacto y ubicación</a>
+      </div>
+    </div>
+
+    <p class="signature">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+    <p class="disclaimer">
+      Documento de trabajo sin relación oficial con el negocio. Los datos de contacto y la dirección son los
+      publicados por el propio restaurante; el resto del contenido es estructura de maqueta pendiente de rellenar.
+    </p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)) return;
+  document.documentElement.classList.add('js-anim');
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  },{rootMargin:'0px 0px -8% 0px',threshold:0.08});
+  els.forEach(function(el){ io.observe(el); });
+  setTimeout(function(){ document.documentElement.classList.remove('js-anim'); },2500);
+
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(ev){
+      var t = document.querySelector(a.getAttribute('href'));
+      if(!t) return;
+      ev.preventDefault();
+      var bar = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--bar-h'))||40;
+      window.scrollTo({top:t.getBoundingClientRect().top+window.pageYOffset-bar-14,behavior:'smooth'});
+    });
+  });
+})();
+</script>
+</body>
+</html>

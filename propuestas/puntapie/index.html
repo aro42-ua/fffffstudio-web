@@ -1,0 +1,723 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Puntapié · Calzado, bolsos y complementos en Elda</title>
+<meta name="description" content="Propuesta de diseño (maqueta no oficial) para Puntapié, tienda de calzado, bolsos y complementos en Elda, Alicante.">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  :root{
+    --ink:#231A1C;
+    --ink-soft:#5A4A4E;
+    --cream:#FBF7F2;
+    --cream-2:#F3EAE1;
+    --line:rgba(35,26,28,.12);
+    --accent:#A8443C;
+    --accent-dp:#7C2E2A;
+    --plum:#3A2328;
+    --gold:#C08A4A;
+    --maxw:1140px;
+    --bar:44px;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+    --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:17px;
+    line-height:1.65;
+    overflow-x:hidden;
+    padding-top:var(--bar);
+  }
+  img,svg{max-width:100%;display:block}
+  a{color:inherit}
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  /* ---------- Barra fija ---------- */
+  .topbar{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    min-height:var(--bar);
+    display:flex;align-items:center;justify-content:center;
+    background:var(--plum);
+    color:#F6ECE6;
+    border-bottom:1px solid rgba(246,236,230,.18);
+    padding:8px 14px;
+    text-align:center;
+  }
+  .topbar span{
+    font-size:12px;letter-spacing:.07em;text-transform:uppercase;
+    font-weight:600;line-height:1.35;
+  }
+  .topbar .dotmark{
+    display:inline-block;width:7px;height:7px;border-radius:50%;
+    background:var(--gold);margin-right:9px;vertical-align:middle;
+  }
+
+  /* ---------- Nav ---------- */
+  .nav{
+    position:sticky;top:var(--bar);z-index:90;
+    background:rgba(251,247,242,.94);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-in{display:flex;align-items:center;gap:18px;min-height:66px;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:11px;margin-right:auto;text-decoration:none}
+  .brand-mark{width:34px;height:34px;flex:0 0 34px}
+  .brand-txt{font-family:var(--serif);font-size:23px;letter-spacing:.02em;line-height:1}
+  .brand-sub{display:block;font-family:var(--sans);font-size:9.5px;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--ink-soft);margin-top:4px}
+  .nav-links{display:flex;gap:22px;list-style:none;margin:0;padding:0}
+  .nav-links a{
+    text-decoration:none;font-size:13.5px;letter-spacing:.04em;color:var(--ink-soft);
+    padding-bottom:3px;border-bottom:1px solid transparent;
+  }
+  .nav-links a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+  .nav-cta{
+    text-decoration:none;background:var(--ink);color:var(--cream);
+    font-size:13.5px;font-weight:600;letter-spacing:.03em;
+    padding:11px 18px;border-radius:999px;white-space:nowrap;
+  }
+  .nav-cta:hover{background:var(--accent-dp)}
+  @media (max-width:860px){
+    .nav-links{display:none}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative;overflow:hidden;padding:72px 0 78px;
+    background:
+      radial-gradient(800px 520px at 88% -10%, rgba(192,138,74,.20), transparent 68%),
+      radial-gradient(640px 480px at 4% 102%, rgba(168,68,60,.14), transparent 70%),
+      linear-gradient(170deg,var(--cream) 0%,var(--cream-2) 100%);
+  }
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;
+    color:var(--accent-dp);background:rgba(168,68,60,.09);
+    border:1px solid rgba(168,68,60,.22);
+    padding:7px 14px;border-radius:999px;margin-bottom:22px;
+  }
+  h1{
+    font-family:var(--serif);font-weight:400;
+    font-size:clamp(2.35rem,5.6vw,4rem);
+    line-height:1.04;letter-spacing:-.015em;margin:0 0 20px;
+  }
+  h1 em{font-style:italic;color:var(--accent-dp)}
+  .lead{font-size:clamp(1rem,2.4vw,1.18rem);color:var(--ink-soft);margin:0 0 30px;max-width:46ch}
+  .cta-row{display:flex;flex-wrap:wrap;gap:13px;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;text-decoration:none;
+    font-weight:600;font-size:16px;letter-spacing:.01em;
+    padding:15px 26px;border-radius:999px;border:1px solid transparent;
+  }
+  .btn-main{background:var(--accent-dp);color:#FFF6F2;box-shadow:0 10px 26px -12px rgba(124,46,42,.7)}
+  .btn-main:hover{background:var(--ink)}
+  .btn-ghost{border-color:rgba(35,26,28,.26);color:var(--ink)}
+  .btn-ghost:hover{border-color:var(--ink);background:rgba(35,26,28,.04)}
+  .btn svg{width:18px;height:18px;flex:0 0 18px}
+  .hero-note{margin:22px 0 0;font-size:13.5px;color:var(--ink-soft)}
+
+  /* Hero art */
+  .hero-art{position:relative}
+  .hero-art .card{
+    border-radius:20px;overflow:hidden;
+    border:1px solid var(--line);
+    background:#fff;
+    box-shadow:0 30px 60px -34px rgba(58,35,40,.45);
+  }
+  .hero-art svg{width:100%;height:auto}
+
+  @media (max-width:900px){
+    .hero{padding:52px 0 58px}
+    .hero-grid{grid-template-columns:1fr;gap:38px}
+    .btn{width:100%;justify-content:center}
+    .cta-row{gap:11px}
+  }
+
+  /* ---------- Tira de valores ---------- */
+  .strip{background:var(--plum);color:#EFE2DC}
+  .strip-in{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+  .strip-item{padding:26px 22px;border-left:1px solid rgba(239,226,220,.16)}
+  .strip-item:first-child{border-left:0;padding-left:0}
+  .strip-k{font-family:var(--serif);font-size:19px;margin:0 0 5px}
+  .strip-v{margin:0;font-size:13.5px;color:rgba(239,226,220,.72);line-height:1.55}
+  @media (max-width:760px){
+    .strip-in{grid-template-columns:1fr}
+    .strip-item{border-left:0;border-top:1px solid rgba(239,226,220,.16);padding:20px 0}
+    .strip-item:first-child{border-top:0}
+  }
+
+  /* ---------- Secciones ---------- */
+  section{scroll-margin-top:calc(var(--bar) + 76px)}
+  .sec{padding:84px 0}
+  .sec-alt{background:linear-gradient(180deg,var(--cream-2),var(--cream))}
+  .sec-head{max-width:62ch;margin-bottom:46px}
+  .kicker{
+    font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    font-weight:700;color:var(--accent-dp);margin:0 0 14px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .kicker::after{content:"";flex:1;height:1px;background:var(--line);max-width:90px}
+  h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.85rem,4.2vw,2.7rem);
+    line-height:1.12;letter-spacing:-.01em;margin:0 0 16px}
+  .sec-head p{margin:0;color:var(--ink-soft);font-size:1.03rem}
+  @media (max-width:760px){.sec{padding:60px 0}}
+
+  /* Cards catálogo */
+  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+  .card-item{
+    background:#fff;border:1px solid var(--line);border-radius:18px;
+    overflow:hidden;display:flex;flex-direction:column;
+    transition:transform .25s ease,box-shadow .25s ease;
+  }
+  .card-item:hover{transform:translateY(-4px);box-shadow:0 24px 44px -28px rgba(58,35,40,.4)}
+  .card-art{height:168px;position:relative;overflow:hidden}
+  .card-art svg{position:absolute;inset:0;width:100%;height:100%}
+  .card-body{padding:24px 24px 26px}
+  .card-body h3{font-family:var(--serif);font-weight:400;font-size:1.4rem;margin:0 0 9px;line-height:1.2}
+  .card-body p{margin:0;color:var(--ink-soft);font-size:.96rem}
+  .tagline{margin:14px 0 0;font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent-dp);font-weight:700}
+  @media (max-width:760px){.cards{grid-template-columns:1fr}}
+
+  /* Pasos */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;counter-reset:s}
+  .step{
+    background:#fff;border:1px solid var(--line);border-radius:18px;padding:30px 26px 32px;
+    position:relative;
+  }
+  .step-n{
+    font-family:var(--serif);font-size:44px;line-height:1;color:rgba(168,68,60,.26);
+    display:block;margin-bottom:14px;
+  }
+  .step h3{font-family:var(--serif);font-weight:400;font-size:1.3rem;margin:0 0 10px}
+  .step p{margin:0;color:var(--ink-soft);font-size:.96rem}
+  @media (max-width:860px){.steps{grid-template-columns:1fr}}
+
+  /* ---------- Contacto ---------- */
+  .contact-grid{display:grid;grid-template-columns:1fr 1.08fr;gap:40px;align-items:start}
+  .info-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+  .info-list li{
+    display:flex;gap:16px;align-items:flex-start;
+    padding:20px 0;border-bottom:1px solid var(--line);
+  }
+  .ico{
+    flex:0 0 38px;width:38px;height:38px;border-radius:10px;
+    background:rgba(168,68,60,.1);display:flex;align-items:center;justify-content:center;
+  }
+  .ico svg{width:19px;height:19px}
+  .info-k{font-size:11px;letter-spacing:.17em;text-transform:uppercase;
+    color:var(--ink-soft);font-weight:700;margin:0 0 4px}
+  .info-v{margin:0;font-size:1.06rem;line-height:1.45}
+  .info-v a{text-decoration:none;border-bottom:1px solid rgba(124,46,42,.35)}
+  .info-v a:hover{color:var(--accent-dp)}
+  .info-v small{display:block;font-size:.84rem;color:var(--ink-soft);margin-top:3px}
+  .map-card{
+    background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;
+    box-shadow:0 24px 50px -34px rgba(58,35,40,.4);
+  }
+  .map-card svg{width:100%;height:auto;display:block}
+  .map-foot{padding:16px 20px;border-top:1px solid var(--line);
+    font-size:13px;color:var(--ink-soft);display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .map-foot strong{color:var(--ink);font-weight:600}
+  @media (max-width:900px){.contact-grid{grid-template-columns:1fr;gap:30px}}
+
+  /* Aviso propuesta */
+  .notice{
+    margin-top:60px;border:1px dashed rgba(124,46,42,.38);
+    background:rgba(168,68,60,.055);border-radius:16px;padding:26px 28px;
+  }
+  .notice h3{font-family:var(--serif);font-weight:400;font-size:1.25rem;margin:0 0 10px}
+  .notice p{margin:0;color:var(--ink-soft);font-size:.96rem;max-width:72ch}
+
+  /* ---------- Pie ---------- */
+  footer{background:var(--plum);color:#E8D9D3;padding:54px 0 36px;margin-top:0}
+  .foot-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:34px}
+  .foot-brand{display:flex;align-items:center;gap:11px;margin-bottom:14px}
+  .foot-brand .brand-txt{color:#FBF7F2}
+  .foot-grid p{margin:0 0 8px;font-size:14px;color:rgba(232,217,211,.78);line-height:1.6}
+  .foot-h{font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;
+    color:rgba(232,217,211,.55);margin:0 0 12px}
+  .foot-grid a{color:#F3E4DE;text-decoration:none;border-bottom:1px solid rgba(243,228,222,.3)}
+  .foot-grid a:hover{color:#fff}
+  .foot-rule{height:1px;background:rgba(232,217,211,.18);margin:34px 0 22px}
+  .signature{font-size:13.5px;color:rgba(232,217,211,.8);text-align:center;line-height:1.6;margin:0}
+  @media (max-width:760px){.foot-grid{grid-template-columns:1fr;gap:26px}}
+
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<!-- BARRA FIJA -->
+<div class="topbar" role="note">
+  <span><i class="dotmark"></i>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#inicio" aria-label="Puntapié, inicio">
+      <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
+        <defs><linearGradient id="bm" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#A8443C"/><stop offset="1" stop-color="#3A2328"/>
+        </linearGradient></defs>
+        <circle cx="24" cy="24" r="23" fill="url(#bm)"/>
+        <path d="M13 31c0-4.3 1.6-7 4.4-9.4 1.9-1.6 2.9-3.2 3.2-5.6.1-1 .9-1.7 1.9-1.6.9.1 1.6.9 1.6 1.9 0 1.5-.3 2.8-.8 4 2.6.5 4.6 1.4 6.9 2.9 2.4 1.6 4 3.3 4 5.6 0 1.3-1 2.2-2.3 2.2H15.3C14 31 13 31.1 13 31z" fill="#FBF7F2" opacity=".95"/>
+        <circle cx="33.5" cy="17.5" r="2.6" fill="#C08A4A"/>
+      </svg>
+      <span>
+        <span class="brand-txt">Puntapié</span>
+        <span class="brand-sub">Elda · Alicante</span>
+      </span>
+    </a>
+    <nav aria-label="Secciones">
+      <ul class="nav-links">
+        <li><a href="#tienda">La tienda</a></li>
+        <li><a href="#temporada">Temporada</a></li>
+        <li><a href="#como">Cómo trabajamos</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+    <a class="nav-cta" href="tel:+34966275742">96 627 57 42</a>
+  </div>
+</header>
+
+<main id="inicio">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Calzado · Bolsos · Complementos</span>
+        <h1>Tu tienda de calzado en <em>el centro de Elda</em></h1>
+        <p class="lead">Puntapié es una tienda de calzado, bolsos y complementos en la Calle Jardines de Elda. Atención de tienda de barrio, con tiempo para probar, comparar y acertar con el par.</p>
+        <div class="cta-row">
+          <a class="btn btn-main" href="tel:+34966275742">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/>
+            </svg>
+            Llamar a la tienda
+          </a>
+          <a class="btn btn-ghost" href="#contacto">Ver dónde estamos</a>
+        </div>
+        <p class="hero-note">Calle Jardines 30, 03600 Elda (Alicante) · Consultar horario</p>
+      </div>
+      <div class="hero-art">
+        <div class="card">
+          <svg viewBox="0 0 560 440" role="img" aria-label="Ilustración de escaparate de calzado y complementos">
+            <defs>
+              <linearGradient id="hbg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#F7EFE6"/><stop offset="1" stop-color="#E7D7C8"/>
+              </linearGradient>
+              <linearGradient id="shoeA" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#A8443C"/><stop offset="1" stop-color="#6E2A28"/>
+              </linearGradient>
+              <linearGradient id="bagA" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#3A2328"/><stop offset="1" stop-color="#241518"/>
+              </linearGradient>
+              <linearGradient id="shelf" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#C9B39C"/><stop offset="1" stop-color="#AE9377"/>
+              </linearGradient>
+            </defs>
+            <rect width="560" height="440" fill="url(#hbg)"/>
+            <circle cx="470" cy="70" r="120" fill="#C08A4A" opacity=".16"/>
+            <circle cx="80" cy="370" r="110" fill="#A8443C" opacity=".10"/>
+
+            <!-- estante superior -->
+            <rect x="60" y="178" width="440" height="7" rx="3.5" fill="url(#shelf)"/>
+            <!-- zapato de tacón -->
+            <g>
+              <path d="M150 178c0-6-2-14-10-22-9-9-14-17-14-27 0-5 4-8 8-7 4 1 6 4 6 8 0 6 2 10 6 14 10 10 20 14 32 18 10 3 16 8 16 16h-44z" fill="url(#shoeA)"/>
+              <path d="M186 178c0-8-6-13-16-16l-4-1v17h20z" fill="#7C2E2A"/>
+              <rect x="124" y="140" width="5" height="38" rx="2.5" fill="#6E2A28"/>
+            </g>
+            <!-- botín -->
+            <g transform="translate(236 0)">
+              <path d="M20 178v-44c0-5 4-9 9-9h16c5 0 9 4 9 9v18c0 6 4 9 11 12 9 4 14 8 14 14h-59z" fill="#3A2328"/>
+              <rect x="18" y="172" width="63" height="7" rx="3" fill="#1C1013"/>
+              <path d="M31 134h22" stroke="#C08A4A" stroke-width="3" stroke-linecap="round"/>
+              <path d="M31 146h22" stroke="#C08A4A" stroke-width="3" stroke-linecap="round"/>
+            </g>
+            <!-- bailarina -->
+            <g transform="translate(390 0)">
+              <path d="M8 178c0-9 6-15 16-19 11-5 18-10 24-18 3-4 9-3 11 1 2 4 1 7-2 10-4 5-5 9-5 14 0 7-5 12-14 12H8z" fill="#C08A4A"/>
+              <rect x="6" y="174" width="62" height="6" rx="3" fill="#9A6A33"/>
+            </g>
+
+            <!-- estante inferior -->
+            <rect x="60" y="316" width="440" height="7" rx="3.5" fill="url(#shelf)"/>
+            <!-- bolso -->
+            <g transform="translate(96 0)">
+              <path d="M10 316V248c0-4 3-7 7-7h86c4 0 7 3 7 7v68H10z" fill="url(#bagA)"/>
+              <path d="M34 241v-14c0-14 11-25 26-25s26 11 26 25v14" fill="none" stroke="#3A2328" stroke-width="7" stroke-linecap="round"/>
+              <rect x="48" y="268" width="24" height="14" rx="4" fill="#C08A4A"/>
+            </g>
+            <!-- caja -->
+            <g transform="translate(246 0)">
+              <rect x="0" y="262" width="120" height="54" rx="5" fill="#FBF7F2" stroke="#D6C3AE" stroke-width="2"/>
+              <rect x="0" y="262" width="120" height="13" rx="5" fill="#EADBC9"/>
+              <path d="M22 290h40" stroke="#A8443C" stroke-width="4" stroke-linecap="round"/>
+              <path d="M22 301h66" stroke="#D6C3AE" stroke-width="4" stroke-linecap="round"/>
+            </g>
+            <!-- cinturón enrollado -->
+            <g transform="translate(400 0)">
+              <circle cx="46" cy="290" r="26" fill="none" stroke="#6E2A28" stroke-width="11"/>
+              <circle cx="46" cy="290" r="11" fill="none" stroke="#C08A4A" stroke-width="5"/>
+            </g>
+            <rect x="0" y="406" width="560" height="34" fill="#3A2328" opacity=".07"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIRA -->
+  <div class="strip">
+    <div class="wrap strip-in">
+      <div class="strip-item">
+        <p class="strip-k">Tienda de calle</p>
+        <p class="strip-v">En Calle Jardines 30, en Elda, para probarse el calzado antes de decidir.</p>
+      </div>
+      <div class="strip-item">
+        <p class="strip-k">Trato directo</p>
+        <p class="strip-v">Se atiende por teléfono y en mostrador, sin intermediarios.</p>
+      </div>
+      <div class="strip-item">
+        <p class="strip-k">Calzado y complementos</p>
+        <p class="strip-v">Calzado, bolsos y complementos reunidos en un mismo sitio.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIENDA -->
+  <section class="sec" id="tienda">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">La tienda</p>
+        <h2>Calzado, bolsos y complementos</h2>
+        <p>Una propuesta de cómo presentar en la web lo que ya se ofrece en el mostrador. Los apartados se concretarían con la tienda antes de publicar nada.</p>
+      </div>
+      <div class="cards">
+
+        <article class="card-item">
+          <div class="card-art">
+            <svg viewBox="0 0 400 168" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <defs><linearGradient id="c1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#F6EDE3"/><stop offset="1" stop-color="#E3CFBC"/></linearGradient></defs>
+              <rect width="400" height="168" fill="url(#c1)"/>
+              <circle cx="330" cy="30" r="64" fill="#A8443C" opacity=".14"/>
+              <path d="M90 126c0-8-3-18-14-29-12-12-19-23-19-37 0-7 5-11 11-10 6 1 9 6 9 11 0 9 3 14 9 20 13 13 27 19 43 24 13 4 21 11 21 21H90z" fill="#7C2E2A"/>
+              <rect x="54" y="74" width="7" height="52" rx="3.5" fill="#5B1F1E"/>
+              <g transform="translate(192 34)">
+                <path d="M16 92V44c0-4 3-7 7-7h12c4 0 7 3 7 7v16c0 6 4 9 11 12 9 4 15 9 15 16v4H16z" fill="#3A2328"/>
+                <rect x="14" y="86" width="56" height="7" rx="3" fill="#1C1013"/>
+                <path d="M26 46h16M26 58h16" stroke="#C08A4A" stroke-width="3" stroke-linecap="round"/>
+              </g>
+              <rect x="40" y="126" width="320" height="6" rx="3" fill="#B99B7F"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <h3>Calzado</h3>
+            <p>Un apartado donde organizar el calzado por tipo y uso, de manera que quien busque algo concreto sepa si puede encontrarlo en la tienda antes de venir.</p>
+            <p class="tagline">Apartado propuesto</p>
+          </div>
+        </article>
+
+        <article class="card-item">
+          <div class="card-art">
+            <svg viewBox="0 0 400 168" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <defs><linearGradient id="c2" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#F3EAE4"/><stop offset="1" stop-color="#DCCBC4"/></linearGradient></defs>
+              <rect width="400" height="168" fill="url(#c2)"/>
+              <circle cx="66" cy="140" r="70" fill="#3A2328" opacity=".10"/>
+              <g transform="translate(118 26)">
+                <path d="M8 116V50c0-5 4-9 9-9h98c5 0 9 4 9 9v66H8z" fill="#3A2328"/>
+                <path d="M36 41V27c0-15 12-27 30-27s30 12 30 27v14" fill="none" stroke="#3A2328" stroke-width="8" stroke-linecap="round"/>
+                <rect x="52" y="70" width="28" height="16" rx="5" fill="#C08A4A"/>
+              </g>
+              <g transform="translate(286 70)">
+                <circle cx="38" cy="38" r="30" fill="none" stroke="#A8443C" stroke-width="12"/>
+                <circle cx="38" cy="38" r="12" fill="none" stroke="#C08A4A" stroke-width="5"/>
+              </g>
+            </svg>
+          </div>
+          <div class="card-body">
+            <h3>Bolsos y complementos</h3>
+            <p>Espacio para mostrar bolsos y complementos junto al calzado, que es como se ven en tienda: combinados, y no cada cosa por separado.</p>
+            <p class="tagline">Apartado propuesto</p>
+          </div>
+        </article>
+
+        <article class="card-item" id="temporada">
+          <div class="card-art">
+            <svg viewBox="0 0 400 168" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <defs><linearGradient id="c3" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#F7F0E4"/><stop offset="1" stop-color="#E6D5B7"/></linearGradient></defs>
+              <rect width="400" height="168" fill="url(#c3)"/>
+              <path d="M0 140 L70 96 L140 126 L220 62 L300 104 L400 48 L400 168 L0 168Z" fill="#C08A4A" opacity=".26"/>
+              <path d="M0 152 L80 122 L160 146 L250 98 L330 130 L400 92" fill="none" stroke="#7C2E2A" stroke-width="3.5" opacity=".65"/>
+              <g transform="translate(150 24)">
+                <rect x="0" y="20" width="100" height="48" rx="5" fill="#FBF7F2" stroke="#D2BC9E" stroke-width="2"/>
+                <rect x="0" y="20" width="100" height="12" rx="5" fill="#EADBC0"/>
+                <path d="M20 46h34" stroke="#A8443C" stroke-width="4" stroke-linecap="round"/>
+                <path d="M20 57h56" stroke="#D2BC9E" stroke-width="4" stroke-linecap="round"/>
+              </g>
+              <circle cx="62" cy="40" r="20" fill="#A8443C" opacity=".3"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <h3>Temporada</h3>
+            <p>Una sección que se actualiza cuando cambia la temporada, para que quien entre en la web vea lo que hay disponible ahora y no una página congelada.</p>
+            <p class="tagline">Apartado propuesto</p>
+          </div>
+        </article>
+
+        <article class="card-item">
+          <div class="card-art">
+            <svg viewBox="0 0 400 168" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <defs><linearGradient id="c4" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#F1E9E9"/><stop offset="1" stop-color="#D8C8CB"/></linearGradient></defs>
+              <rect width="400" height="168" fill="url(#c4)"/>
+              <circle cx="340" cy="130" r="80" fill="#A8443C" opacity=".12"/>
+              <g transform="translate(60 36)">
+                <rect x="0" y="0" width="128" height="96" rx="8" fill="#FBF7F2" stroke="#C9B3B6" stroke-width="2"/>
+                <path d="M20 26h88M20 44h66M20 62h78" stroke="#3A2328" stroke-width="4" stroke-linecap="round" opacity=".32"/>
+              </g>
+              <g transform="translate(214 54)">
+                <circle cx="34" cy="34" r="26" fill="none" stroke="#7C2E2A" stroke-width="6"/>
+                <path d="M53 53 L74 74" stroke="#7C2E2A" stroke-width="7" stroke-linecap="round"/>
+              </g>
+            </svg>
+          </div>
+          <div class="card-body">
+            <h3>Asesoramiento en tienda</h3>
+            <p>Contar en la web que se puede pasar a preguntar, probar y resolver dudas de talla o uso con alguien delante. Es lo que una tienda de barrio ofrece y una web rara vez explica.</p>
+            <p class="tagline">Apartado propuesto</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CÓMO TRABAJAMOS -->
+  <section class="sec sec-alt" id="como">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">Cómo trabajamos</p>
+        <h2>Tres pasos, sin complicaciones</h2>
+        <p>Así se contaría en la web el camino desde la primera consulta hasta salir de la tienda con el par puesto.</p>
+      </div>
+      <div class="steps">
+        <article class="step">
+          <span class="step-n">01</span>
+          <h3>Pregunta antes de venir</h3>
+          <p>Una llamada al teléfono de la tienda sirve para saber si está lo que se busca, en qué tallas y qué merece la pena ver en persona.</p>
+        </article>
+        <article class="step">
+          <span class="step-n">02</span>
+          <h3>Pruébatelo con calma</h3>
+          <p>En tienda se puede comparar modelos, probar varias tallas y ver cómo combinan el calzado, el bolso y el complemento.</p>
+        </article>
+        <article class="step">
+          <span class="step-n">03</span>
+          <h3>Sal con lo que te convence</h3>
+          <p>Se decide allí mismo, con el criterio de quien atiende a diario y conoce cómo sienta y cómo se usa cada tipo de calzado.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="sec" id="contacto">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">Contacto</p>
+        <h2>Dónde estamos y cómo llamarnos</h2>
+        <p>Todos los datos de esta sección son los que publica la tienda. El horario se deja sin concretar a propósito: lo fijaría Puntapié.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div>
+          <ul class="info-list">
+            <li>
+              <span class="ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#7C2E2A" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/>
+                </svg>
+              </span>
+              <div>
+                <p class="info-k">Teléfono</p>
+                <p class="info-v">
+                  <a href="tel:+34966275742">96 627 57 42</a><br>
+                  <a href="tel:+34616369432">616 369 432</a>
+                </p>
+              </div>
+            </li>
+            <li>
+              <span class="ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#7C2E2A" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/>
+                </svg>
+              </span>
+              <div>
+                <p class="info-k">Dirección</p>
+                <p class="info-v">Calle Jardines 30<small>03600 Elda (Alicante)</small></p>
+              </div>
+            </li>
+            <li>
+              <span class="ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#7C2E2A" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/>
+                </svg>
+              </span>
+              <div>
+                <p class="info-k">Horario</p>
+                <p class="info-v">Consultar horario<small>Se mostraría el horario que facilite la tienda.</small></p>
+              </div>
+            </li>
+            <li>
+              <span class="ico" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#7C2E2A" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5 12 13l8.5-6.5"/>
+                </svg>
+              </span>
+              <div>
+                <p class="info-k">Email</p>
+                <p class="info-v"><a href="mailto:puntapiemoda@hotmail.com">puntapiemoda@hotmail.com</a></p>
+              </div>
+            </li>
+          </ul>
+          <div class="cta-row" style="margin-top:28px">
+            <a class="btn btn-main" href="tel:+34966275742">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/>
+              </svg>
+              96 627 57 42
+            </a>
+          </div>
+        </div>
+
+        <div class="map-card">
+          <svg viewBox="0 0 560 400" role="img" aria-label="Mapa esquemático de la ubicación de Puntapié en Calle Jardines 30, Elda">
+            <defs>
+              <linearGradient id="mapbg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#F7F2EB"/><stop offset="1" stop-color="#ECE3D7"/>
+              </linearGradient>
+            </defs>
+            <rect width="560" height="400" fill="url(#mapbg)"/>
+            <!-- manzanas -->
+            <g fill="#DED2C2">
+              <rect x="34" y="34" width="150" height="104" rx="7"/>
+              <rect x="212" y="34" width="124" height="104" rx="7"/>
+              <rect x="366" y="34" width="160" height="104" rx="7"/>
+              <rect x="34" y="248" width="150" height="118" rx="7"/>
+              <rect x="212" y="248" width="124" height="118" rx="7"/>
+              <rect x="366" y="248" width="160" height="118" rx="7"/>
+              <rect x="34" y="166" width="150" height="54" rx="7"/>
+              <rect x="366" y="166" width="160" height="54" rx="7"/>
+            </g>
+            <!-- calles verticales -->
+            <g stroke="#FBF7F2" stroke-width="18" stroke-linecap="square">
+              <path d="M198 20 V380"/>
+              <path d="M351 20 V380"/>
+            </g>
+            <g stroke="#FBF7F2" stroke-width="16">
+              <path d="M20 152 H540"/>
+            </g>
+            <!-- Calle Jardines, destacada -->
+            <path d="M20 234 H540" stroke="#E3CDAE" stroke-width="28"/>
+            <path d="M20 234 H540" stroke="#C08A4A" stroke-width="2" stroke-dasharray="14 12" opacity=".75"/>
+            <text x="44" y="228" font-family="ui-sans-serif,system-ui,sans-serif" font-size="14.5" font-weight="700" fill="#7C2E2A" letter-spacing="1.2">CALLE JARDINES</text>
+
+            <!-- marcador -->
+            <g transform="translate(238 148)">
+              <ellipse cx="34" cy="92" rx="23" ry="7" fill="#3A2328" opacity=".22"/>
+              <path d="M34 90C34 90 8 60 8 38a26 26 0 0 1 52 0c0 22-26 52-26 52z" fill="#A8443C"/>
+              <circle cx="34" cy="37" r="11" fill="#FBF7F2"/>
+              <circle cx="34" cy="37" r="4.5" fill="#7C2E2A"/>
+            </g>
+            <g transform="translate(300 262)">
+              <rect x="0" y="0" width="212" height="58" rx="10" fill="#3A2328"/>
+              <text x="16" y="24" font-family="ui-sans-serif,system-ui,sans-serif" font-size="14" font-weight="700" fill="#FBF7F2">Puntapié</text>
+              <text x="16" y="44" font-family="ui-sans-serif,system-ui,sans-serif" font-size="12.5" fill="#D8C6BF">Calle Jardines 30 · Elda</text>
+            </g>
+            <text x="368" y="110" font-family="ui-sans-serif,system-ui,sans-serif" font-size="12" fill="#9A8A78" letter-spacing="1">CENTRO DE ELDA</text>
+          </svg>
+          <div class="map-foot">
+            <strong>Mapa esquemático</strong>
+            <span>· orientativo, sin escala · Calle Jardines 30, 03600 Elda (Alicante)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="notice">
+        <h3>Sobre esta página</h3>
+        <p>Esta es una maqueta de propuesta, no la web oficial de Puntapié. Se ha preparado porque la ficha pública del Ayuntamiento de Elda sigue enviando a puntapiemoda.es, un dominio que ya no existe: quien busca la tienda y pincha ese enlace llega a una página que no carga. Los textos de catálogo son de muestra y se concretarían con la tienda; no se incluyen marcas, precios, horarios ni valoraciones.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
+            <circle cx="24" cy="24" r="23" fill="#A8443C"/>
+            <path d="M13 31c0-4.3 1.6-7 4.4-9.4 1.9-1.6 2.9-3.2 3.2-5.6.1-1 .9-1.7 1.9-1.6.9.1 1.6.9 1.6 1.9 0 1.5-.3 2.8-.8 4 2.6.5 4.6 1.4 6.9 2.9 2.4 1.6 4 3.3 4 5.6 0 1.3-1 2.2-2.3 2.2H15.3C14 31 13 31.1 13 31z" fill="#FBF7F2"/>
+            <circle cx="33.5" cy="17.5" r="2.6" fill="#C08A4A"/>
+          </svg>
+          <span class="brand-txt">Puntapié</span>
+        </div>
+        <p>Tienda de calzado, bolsos y complementos.<br>Calle Jardines 30, 03600 Elda (Alicante).</p>
+      </div>
+      <div>
+        <p class="foot-h">Contacto</p>
+        <p><a href="tel:+34966275742">96 627 57 42</a></p>
+        <p><a href="tel:+34616369432">616 369 432</a></p>
+        <p><a href="mailto:puntapiemoda@hotmail.com">puntapiemoda@hotmail.com</a></p>
+      </div>
+      <div>
+        <p class="foot-h">Visitar la tienda</p>
+        <p>Calle Jardines 30<br>03600 Elda (Alicante)</p>
+        <p>Consultar horario</p>
+      </div>
+    </div>
+    <div class="foot-rule"></div>
+    <p class="signature">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var links = document.querySelectorAll('a[href^="#"]');
+  for (var i=0;i<links.length;i++){
+    links[i].addEventListener('click', function(e){
+      var id = this.getAttribute('href');
+      if (id.length < 2) return;
+      var el = document.querySelector(id);
+      if (!el) return;
+      e.preventDefault();
+      el.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  }
+  // La barra fija define el desplazamiento del nav adhesivo.
+  function syncBar(){
+    var bar = document.querySelector('.topbar');
+    if (bar) document.documentElement.style.setProperty('--bar', bar.offsetHeight + 'px');
+  }
+  syncBar();
+  window.addEventListener('resize', syncBar);
+})();
+</script>
+</body>
+</html>
