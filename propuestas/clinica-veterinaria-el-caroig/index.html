@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clínica Veterinaria El Caroig · Enguera</title>
+<meta name="description" content="Propuesta de diseño web para Clínica Veterinaria El Caroig, Enguera (Valencia). Maqueta no oficial de FFFFFFstudio.">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  :root{
+    --ink:#10211f;
+    --ink-soft:#3d534f;
+    --ink-mute:#6b817c;
+    --paper:#f6f4ee;
+    --paper-2:#fffefb;
+    --line:#e2ded2;
+    --teal:#0f4c45;
+    --teal-2:#176b60;
+    --mint:#bfe3d4;
+    --mint-soft:#e4f2ea;
+    --amber:#e08a3c;
+    --amber-soft:#f8e6d2;
+    --radius:20px;
+    --bar:44px;
+    --shadow:0 1px 2px rgba(16,33,31,.05), 0 12px 32px -18px rgba(16,33,31,.28);
+  }
+  html,body{margin:0;padding:0;max-width:100%;overflow-x:hidden}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size:17px;
+    line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+    padding-top:var(--bar);
+  }
+  img,svg{max-width:100%}
+  h1,h2,h3,h4{margin:0;line-height:1.14;letter-spacing:-.022em;font-weight:650}
+  p{margin:0}
+  a{color:inherit}
+  ul{margin:0;padding:0;list-style:none}
+
+  /* ---------- barra fija ---------- */
+  .bar{
+    position:fixed;inset:0 0 auto 0;z-index:100;
+    min-height:var(--bar);
+    display:flex;align-items:center;justify-content:center;
+    padding:7px 14px;
+    background:#0b1a18;
+    color:#e8f1ed;
+    font-size:12.5px;line-height:1.3;letter-spacing:.015em;
+    text-align:center;
+    border-bottom:1px solid rgba(255,255,255,.1);
+  }
+  .bar span{display:inline-block;max-width:100%}
+
+  .wrap{width:100%;max-width:1160px;margin:0 auto;padding:0 28px}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12px;font-weight:620;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--teal-2);
+  }
+  .eyebrow::before{content:"";width:22px;height:1.5px;background:var(--teal-2);opacity:.5;border-radius:2px}
+  .lead{color:var(--ink-soft);font-size:1.06rem}
+
+  /* ---------- nav ---------- */
+  .nav{
+    position:sticky;top:var(--bar);z-index:60;
+    background:rgba(246,244,238,.88);
+    backdrop-filter:saturate(140%) blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-in{display:flex;align-items:center;gap:16px;min-height:66px;flex-wrap:wrap;padding:10px 28px}
+  .brand{display:flex;align-items:center;gap:11px;margin-right:auto;min-width:0}
+  .brand-mark{flex:0 0 auto;width:38px;height:38px;border-radius:12px;background:linear-gradient(145deg,var(--teal) 0%,var(--teal-2) 55%,#2a8d7c 100%);display:grid;place-items:center;box-shadow:0 6px 16px -8px rgba(15,76,69,.7)}
+  .brand-txt{min-width:0}
+  .brand-name{font-size:15px;font-weight:660;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .brand-sub{font-size:11.5px;color:var(--ink-mute);letter-spacing:.07em;text-transform:uppercase}
+  .nav-links{display:flex;gap:4px;flex-wrap:wrap}
+  .nav-links a{font-size:14px;font-weight:550;color:var(--ink-soft);text-decoration:none;padding:7px 11px;border-radius:999px}
+  .nav-links a:hover{background:var(--mint-soft);color:var(--teal)}
+
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    padding:13px 22px;border-radius:999px;
+    font-size:15px;font-weight:620;text-decoration:none;
+    border:1.5px solid transparent;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn svg{flex:0 0 auto}
+  .btn-main{background:linear-gradient(140deg,var(--teal) 0%,var(--teal-2) 100%);color:#fff;box-shadow:0 10px 24px -14px rgba(15,76,69,.9)}
+  .btn-main:hover{transform:translateY(-1px)}
+  .btn-urg{background:#fff;color:#a2541a;border-color:var(--amber-soft);box-shadow:var(--shadow)}
+  .btn-ghost{background:transparent;color:var(--teal);border-color:#c9d8d2}
+  .btn-sm{padding:10px 17px;font-size:14px}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;overflow:hidden}
+  .hero::before{
+    content:"";position:absolute;inset:0;z-index:0;
+    background:
+      radial-gradient(900px 480px at 85% -8%, rgba(42,141,124,.22), transparent 65%),
+      radial-gradient(640px 420px at 6% 104%, rgba(224,138,60,.16), transparent 68%),
+      linear-gradient(180deg,#fffefb 0%, #f6f4ee 100%);
+  }
+  .hero-in{position:relative;z-index:1;display:grid;grid-template-columns:1.07fr .93fr;gap:52px;align-items:center;padding:76px 28px 84px}
+  h1{font-size:clamp(2.1rem,4.4vw,3.5rem);margin:20px 0 0;font-weight:680}
+  h1 em{font-style:normal;display:block;color:var(--teal-2)}
+  .hero p.lead{margin-top:22px;max-width:30em}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+  .hero-note{margin-top:20px;font-size:13.5px;color:var(--ink-mute);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--teal-2);flex:0 0 auto}
+
+  .hero-card{
+    background:var(--paper-2);border:1px solid var(--line);border-radius:26px;
+    padding:26px;box-shadow:var(--shadow);
+  }
+  .hero-art{border-radius:18px;overflow:hidden;background:linear-gradient(160deg,#0f4c45,#2a8d7c 70%,#7cc2ad);display:block}
+  .hero-art svg{display:block;width:100%;height:auto}
+  .hero-facts{display:grid;gap:2px;margin-top:22px;border-top:1px solid var(--line);padding-top:4px}
+  .fact{display:flex;gap:13px;align-items:flex-start;padding:13px 2px;border-bottom:1px solid var(--line)}
+  .fact:last-child{border-bottom:0}
+  .fact-ic{flex:0 0 auto;width:34px;height:34px;border-radius:10px;background:var(--mint-soft);display:grid;place-items:center;color:var(--teal)}
+  .fact-k{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute)}
+  .fact-v{font-size:15.5px;font-weight:600;word-break:break-word}
+  .fact-v a{text-decoration:none}
+  .fact-v a:hover{text-decoration:underline}
+
+  /* ---------- secciones ---------- */
+  section{scroll-margin-top:calc(var(--bar) + 76px)}
+  .sec{padding:84px 0}
+  .sec-alt{background:var(--paper-2);border-block:1px solid var(--line)}
+  .sec-head{max-width:40em}
+  .sec-head h2{font-size:clamp(1.65rem,3vw,2.4rem);margin:16px 0 0}
+  .sec-head p{margin-top:16px}
+
+  .grid{display:grid;gap:18px;margin-top:44px}
+  .g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .card{
+    background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px 24px;box-shadow:0 1px 2px rgba(16,33,31,.04);
+  }
+  .sec-alt .card{background:var(--paper)}
+  .card-ic{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(145deg,var(--mint-soft),var(--mint));color:var(--teal);margin-bottom:18px}
+  .card h3{font-size:1.14rem}
+  .card p{margin-top:10px;color:var(--ink-soft);font-size:15.3px}
+  .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
+  .tag{font-size:12.5px;font-weight:550;color:var(--teal);background:var(--mint-soft);border-radius:999px;padding:5px 11px}
+
+  /* pasos */
+  .steps{counter-reset:s;display:grid;gap:18px;margin-top:44px;grid-template-columns:repeat(3,minmax(0,1fr))}
+  .step{position:relative;background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius);padding:28px 24px 26px}
+  .sec-alt .step{background:var(--paper)}
+  .step-n{
+    width:40px;height:40px;border-radius:12px;display:grid;place-items:center;
+    background:var(--teal);color:#fff;font-weight:660;font-size:15px;letter-spacing:.02em;
+    margin-bottom:18px;
+  }
+  .step h3{font-size:1.1rem}
+  .step p{margin-top:10px;color:var(--ink-soft);font-size:15.3px}
+
+  /* contacto */
+  .contact{display:grid;grid-template-columns:1fr 1.05fr;gap:22px;margin-top:44px;align-items:start}
+  .panel{background:var(--paper-2);border:1px solid var(--line);border-radius:var(--radius);padding:28px 26px;box-shadow:var(--shadow)}
+  .panel h3{font-size:1.2rem;margin-bottom:6px}
+  .contact-list{margin-top:18px;display:grid;gap:2px}
+  .hours{
+    margin-top:20px;display:flex;align-items:center;gap:11px;
+    background:var(--amber-soft);border:1px solid #f0d6b8;border-radius:14px;padding:13px 15px;
+    color:#8c4a12;font-size:14.5px;font-weight:560;
+  }
+  .map{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#eef0e9;box-shadow:var(--shadow)}
+  .map svg{display:block;width:100%;height:auto}
+  .map-cap{padding:13px 18px;font-size:12.8px;color:var(--ink-mute);background:var(--paper-2);border-top:1px solid var(--line)}
+
+  /* ---------- pie ---------- */
+  footer{background:#0b1a18;color:#cfe0da;padding:66px 0 34px;margin-top:0}
+  .foot-top{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:34px}
+  footer h4{font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:#7fa89d;font-weight:620;margin-bottom:14px}
+  footer p,footer li{font-size:14.6px;color:#cfe0da}
+  footer li{margin-bottom:8px;word-break:break-word}
+  footer a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.28)}
+  footer a:hover{border-bottom-color:#fff}
+  .foot-brand{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+  .foot-rule{height:1px;background:rgba(255,255,255,.14);margin:40px 0 22px}
+  .foot-sig{font-size:13.6px;color:#9dbdb3;line-height:1.6}
+  .foot-sig strong{color:#fff;font-weight:600}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:1000px){
+    .hero-in{grid-template-columns:1fr;gap:40px;padding:56px 24px 64px}
+    .g3{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .steps{grid-template-columns:1fr}
+    .contact{grid-template-columns:1fr}
+    .foot-top{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:640px){
+    :root{--bar:58px;--radius:18px}
+    body{font-size:16px}
+    .wrap,.nav-in,.hero-in{padding-left:18px;padding-right:18px}
+    .bar{font-size:11.6px;padding:8px 12px}
+    .nav-in{min-height:0;gap:10px;padding-top:12px;padding-bottom:12px}
+    .nav-links{display:none}
+    .brand{margin-right:0;flex:1 1 auto}
+    .sec{padding:58px 0}
+    .g3{grid-template-columns:1fr}
+    .grid,.steps,.contact{margin-top:30px}
+    .hero-cta .btn{flex:1 1 100%}
+    .hero-card{padding:18px;border-radius:20px}
+    .panel{padding:22px 19px}
+    footer{padding-top:50px}
+    .foot-top{grid-template-columns:1fr;gap:28px}
+  }
+</style>
+</head>
+<body>
+
+<div class="bar"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<header class="nav">
+  <div class="nav-in">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 20.5s-7.2-4.3-7.2-9.4A4.3 4.3 0 0 1 12 8.6a4.3 4.3 0 0 1 7.2 2.5c0 5.1-7.2 9.4-7.2 9.4Z" fill="#fff" opacity=".95"/>
+          <circle cx="7.1" cy="5.2" r="1.9" fill="#fff" opacity=".75"/>
+          <circle cx="16.9" cy="5.2" r="1.9" fill="#fff" opacity=".75"/>
+        </svg>
+      </div>
+      <div class="brand-txt">
+        <div class="brand-name">Clínica Veterinaria El Caroig</div>
+        <div class="brand-sub">Enguera · Valencia</div>
+      </div>
+    </div>
+    <nav class="nav-links" aria-label="Secciones">
+      <a href="#servicios">Servicios</a>
+      <a href="#visita">Primera visita</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="btn btn-main btn-sm" href="tel:+34962224700">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 3.8h3.2l1.5 4-2 1.4a11.4 11.4 0 0 0 5.6 5.6l1.4-2 4 1.5v3.2a1.7 1.7 0 0 1-1.9 1.7C9.6 18.6 5.4 14.4 4.3 6.5A1.7 1.7 0 0 1 4.5 3.8Z" fill="currentColor"/></svg>
+      962 22 47 00
+    </a>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div class="hero-in wrap">
+      <div>
+        <span class="eyebrow">Clínica veterinaria en Enguera</span>
+        <h1>Cuidamos de tu animal<em>como de los nuestros.</em></h1>
+        <p class="lead">Atención veterinaria para perros, gatos y otros animales de compañía en Enguera y la comarca de la Canal de Navarrés. Llámanos y te explicamos qué necesita tu animal.</p>
+        <div class="hero-cta">
+          <a class="btn btn-main" href="tel:+34962224700">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 3.8h3.2l1.5 4-2 1.4a11.4 11.4 0 0 0 5.6 5.6l1.4-2 4 1.5v3.2a1.7 1.7 0 0 1-1.9 1.7C9.6 18.6 5.4 14.4 4.3 6.5A1.7 1.7 0 0 1 4.5 3.8Z" fill="currentColor"/></svg>
+            Llamar al 962 22 47 00
+          </a>
+          <a class="btn btn-urg" href="tel:+34639776717">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3.2 21 19.4H3L12 3.2Z" fill="currentColor" opacity=".18"/><path d="M12 8.6v4.6M12 15.9v.1" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"/></svg>
+            Urgencias · 639 77 67 17
+          </a>
+        </div>
+        <p class="hero-note"><span class="dot" aria-hidden="true"></span> Camí del Vapor, 12 · 46810 Enguera (Valencia)</p>
+      </div>
+
+      <div class="hero-card">
+        <div class="hero-art">
+          <svg viewBox="0 0 520 330" role="img" aria-label="Ilustración abstracta de una huella sobre formas orgánicas">
+            <defs>
+              <linearGradient id="hg1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#0d443e"/><stop offset=".55" stop-color="#1d7568"/><stop offset="1" stop-color="#53ab96"/>
+              </linearGradient>
+              <linearGradient id="hg2" x1="0" y1="1" x2="1" y2="0">
+                <stop offset="0" stop-color="#ffffff" stop-opacity=".07"/><stop offset="1" stop-color="#ffffff" stop-opacity=".3"/>
+              </linearGradient>
+            </defs>
+            <rect width="520" height="330" fill="url(#hg1)"/>
+            <circle cx="92" cy="268" r="150" fill="url(#hg2)"/>
+            <circle cx="446" cy="48" r="104" fill="#ffffff" opacity=".1"/>
+            <path d="M0 268c86-54 150 18 236-28s168 26 284-34v124H0Z" fill="#ffffff" opacity=".09"/>
+            <g transform="translate(260 162) scale(1.08)" fill="#ffffff">
+              <path d="M0 58c-26 0-46-15-46-33 0-17 14-27 27-36 10-7 12-18 19-18s9 11 19 18c13 9 27 19 27 36 0 18-20 33-46 33Z" opacity=".96"/>
+              <ellipse cx="-52" cy="-28" rx="15" ry="20" opacity=".72" transform="rotate(-18 -52 -28)"/>
+              <ellipse cx="-20" cy="-56" rx="14" ry="19" opacity=".82"/>
+              <ellipse cx="20" cy="-56" rx="14" ry="19" opacity=".82"/>
+              <ellipse cx="52" cy="-28" rx="15" ry="20" opacity=".72" transform="rotate(18 52 -28)"/>
+            </g>
+            <g stroke="#ffffff" stroke-opacity=".3" stroke-width="1.4" fill="none">
+              <circle cx="260" cy="150" r="128"/><circle cx="260" cy="150" r="166"/>
+            </g>
+          </svg>
+        </div>
+        <div class="hero-facts">
+          <div class="fact">
+            <div class="fact-ic" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M4.5 3.8h3.2l1.5 4-2 1.4a11.4 11.4 0 0 0 5.6 5.6l1.4-2 4 1.5v3.2a1.7 1.7 0 0 1-1.9 1.7C9.6 18.6 5.4 14.4 4.3 6.5A1.7 1.7 0 0 1 4.5 3.8Z" fill="currentColor"/></svg></div>
+            <div><div class="fact-k">Cita y consultas</div><div class="fact-v"><a href="tel:+34962224700">962 22 47 00</a></div></div>
+          </div>
+          <div class="fact">
+            <div class="fact-ic" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M12 3.4 20.8 19H3.2L12 3.4Z" fill="currentColor" opacity=".2"/><path d="M12 8.8v4.5M12 16v.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+            <div><div class="fact-k">Urgencias</div><div class="fact-v"><a href="tel:+34639776717">639 77 67 17</a></div></div>
+          </div>
+          <div class="fact">
+            <div class="fact-ic" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M12 21s-6.6-6.1-6.6-11A6.6 6.6 0 0 1 18.6 10c0 4.9-6.6 11-6.6 11Z" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><circle cx="12" cy="9.8" r="2.3" fill="currentColor"/></svg></div>
+            <div><div class="fact-k">Dónde estamos</div><div class="fact-v">Camí del Vapor, 12 — Enguera</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section class="sec sec-alt" id="servicios">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Servicios</span>
+        <h2>Lo que podemos hacer por tu animal</h2>
+        <p class="lead">Llámanos para saber qué servicios están disponibles en cada momento y cómo preparar la visita.</p>
+      </div>
+      <div class="grid g3">
+
+        <article class="card">
+          <div class="card-ic" aria-hidden="true"><svg width="23" height="23" viewBox="0 0 24 24" fill="none"><path d="M9 3.5v3.1a4.5 4.5 0 0 0 9 0V3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M6.5 11.5h11M12 11.5v6.2a2.8 2.8 0 1 0 5.6 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="6.5" cy="11.5" r="2.4" stroke="currentColor" stroke-width="1.8"/></svg></div>
+          <h3>Consulta general</h3>
+          <p>Revisión del animal, exploración y orientación sobre el siguiente paso cuando notas que algo no va bien.</p>
+          <div class="tags"><span class="tag">Perros</span><span class="tag">Gatos</span><span class="tag">Animales de compañía</span></div>
+        </article>
+
+        <article class="card">
+          <div class="card-ic" aria-hidden="true"><svg width="23" height="23" viewBox="0 0 24 24" fill="none"><path d="M14.6 3.6 20.4 9.4M16.6 5.6 7.2 15a4.1 4.1 0 1 0 5.8 5.8l9.4-9.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M12.4 9.8l2.9 2.9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          <h3>Vacunación y prevención</h3>
+          <p>Pauta vacunal, desparasitación interna y externa y control de los recordatorios para que no se te pasen.</p>
+          <div class="tags"><span class="tag">Calendario vacunal</span><span class="tag">Antiparasitarios</span></div>
+        </article>
+
+        <article class="card">
+          <div class="card-ic" aria-hidden="true"><svg width="23" height="23" viewBox="0 0 24 24" fill="none"><rect x="3.4" y="5.4" width="17.2" height="13.2" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M3.4 12.4h4l1.6-3 2.6 6 2-4.4 1.6 1.4h5.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Diagnóstico</h3>
+          <p>Pruebas de apoyo al diagnóstico para entender qué le ocurre al animal antes de decidir el tratamiento.</p>
+          <div class="tags"><span class="tag">Pruebas de imagen</span><span class="tag">Analíticas</span></div>
+        </article>
+
+        <article class="card">
+          <div class="card-ic" aria-hidden="true"><svg width="23" height="23" viewBox="0 0 24 24" fill="none"><path d="M6.6 3.6v7.6a5.4 5.4 0 0 0 10.8 0V3.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M4.8 3.6h3.6M15.6 3.6h3.6M12 16.6v3.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          <h3>Cirugía</h3>
+          <p>Intervenciones quirúrgicas con preparación previa, seguimiento del postoperatorio y pautas claras para casa.</p>
+          <div class="tags"><span class="tag">Esterilización</span><span class="tag">Postoperatorio</span></div>
+        </article>
+
+        <article class="card">
+          <div class="card-ic" aria-hidden="true"><svg width="23" height="23" viewBox="0 0 24 24" fill="none"><path d="M7.8 9.6c0-2.6 1.9-4.6 4.2-4.6s4.2 2 4.2 4.6c0 1.9-.9 2.9-.9 4.6 0 1.3-1.4 2.2-3.3 2.2s-3.3-.9-3.3-2.2c0-1.7-.9-2.7-.9-4.6Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M10 19.4h4M10.6 21.2h2.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          <h3>Odontología</h3>
+          <p>Revisión de la boca y limpieza dental, una de las cosas que más se pasan por alto en perros y gatos.</p>
+          <div class="tags"><span class="tag">Limpieza dental</span><span class="tag">Revisión bucal</span></div>
+        </article>
+
+        <article class="card">
+          <div class="card-ic" aria-hidden="true"><svg width="23" height="23" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.6" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.6v4.6l3.2 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Identificación y documentación</h3>
+          <p>Microchip, cartilla sanitaria y los trámites que te piden para viajar o registrar a tu animal.</p>
+          <div class="tags"><span class="tag">Microchip</span><span class="tag">Cartilla</span><span class="tag">Pasaporte</span></div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PRIMERA VISITA -->
+  <section class="sec" id="visita">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Cómo trabajamos</span>
+        <h2>Tu primera visita, en tres pasos</h2>
+        <p class="lead">Sin sorpresas: te contamos qué vamos a hacer antes de hacerlo.</p>
+      </div>
+      <div class="steps">
+        <article class="step">
+          <div class="step-n">1</div>
+          <h3>Nos llamas</h3>
+          <p>Nos cuentas por teléfono qué le pasa a tu animal y acordamos cuándo venir. Si es una urgencia, usa el teléfono de urgencias.</p>
+        </article>
+        <article class="step">
+          <div class="step-n">2</div>
+          <h3>Lo vemos con calma</h3>
+          <p>En la consulta exploramos al animal, repasamos su historia y, si hace falta, proponemos pruebas antes de decidir nada.</p>
+        </article>
+        <article class="step">
+          <div class="step-n">3</div>
+          <h3>Te explicamos el plan</h3>
+          <p>Te damos las pautas por escrito, resolvemos tus dudas y fijamos la revisión o el seguimiento que necesite.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="sec sec-alt" id="contacto">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Contacto</span>
+        <h2>Estamos en Enguera</h2>
+        <p class="lead">Llámanos para pedir cita o para cualquier duda sobre tu animal.</p>
+      </div>
+
+      <div class="contact">
+        <div class="panel">
+          <h3>Clínica Veterinaria El Caroig</h3>
+          <p class="lead" style="font-size:.97rem">Camí del Vapor, 12 · 46810 Enguera (Valencia)</p>
+
+          <div class="contact-list">
+            <div class="fact">
+              <div class="fact-ic" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M4.5 3.8h3.2l1.5 4-2 1.4a11.4 11.4 0 0 0 5.6 5.6l1.4-2 4 1.5v3.2a1.7 1.7 0 0 1-1.9 1.7C9.6 18.6 5.4 14.4 4.3 6.5A1.7 1.7 0 0 1 4.5 3.8Z" fill="currentColor"/></svg></div>
+              <div><div class="fact-k">Teléfono</div><div class="fact-v"><a href="tel:+34962224700">962 22 47 00</a></div></div>
+            </div>
+            <div class="fact">
+              <div class="fact-ic" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M12 3.4 20.8 19H3.2L12 3.4Z" fill="currentColor" opacity=".2"/><path d="M12 8.8v4.5M12 16v.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+              <div><div class="fact-k">Urgencias</div><div class="fact-v"><a href="tel:+34639776717">639 77 67 17</a></div></div>
+            </div>
+            <div class="fact">
+              <div class="fact-ic" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><rect x="3.2" y="5.4" width="17.6" height="13.2" rx="2.6" stroke="currentColor" stroke-width="1.8"/><path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div><div class="fact-k">Email</div><div class="fact-v"><a href="mailto:vet@elcaroig.es">vet@elcaroig.es</a></div></div>
+            </div>
+            <div class="fact">
+              <div class="fact-ic" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M12 21s-6.6-6.1-6.6-11A6.6 6.6 0 0 1 18.6 10c0 4.9-6.6 11-6.6 11Z" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><circle cx="12" cy="9.8" r="2.3" fill="currentColor"/></svg></div>
+              <div><div class="fact-k">Dirección</div><div class="fact-v">Camí del Vapor, 12<br>46810 Enguera (Valencia)</div></div>
+            </div>
+          </div>
+
+          <div class="hours">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="flex:0 0 auto"><circle cx="12" cy="12" r="8.6" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.6v4.6l3.2 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Consultar horario</span>
+          </div>
+
+          <div class="hero-cta" style="margin-top:22px">
+            <a class="btn btn-main" href="tel:+34962224700">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 3.8h3.2l1.5 4-2 1.4a11.4 11.4 0 0 0 5.6 5.6l1.4-2 4 1.5v3.2a1.7 1.7 0 0 1-1.9 1.7C9.6 18.6 5.4 14.4 4.3 6.5A1.7 1.7 0 0 1 4.5 3.8Z" fill="currentColor"/></svg>
+              Pedir cita por teléfono
+            </a>
+            <a class="btn btn-ghost" href="mailto:vet@elcaroig.es">Escribir un email</a>
+          </div>
+        </div>
+
+        <div class="map">
+          <svg viewBox="0 0 640 430" role="img" aria-label="Croquis esquemático de situación de la clínica en Camí del Vapor, 12, Enguera">
+            <rect width="640" height="430" fill="#eef1ea"/>
+            <g fill="#e4e9df">
+              <rect x="34" y="34" width="168" height="118" rx="8"/>
+              <rect x="252" y="34" width="150" height="118" rx="8"/>
+              <rect x="452" y="34" width="156" height="92" rx="8"/>
+              <rect x="34" y="214" width="140" height="106" rx="8"/>
+              <rect x="224" y="214" width="112" height="106" rx="8"/>
+              <rect x="386" y="190" width="222" height="130" rx="8"/>
+              <rect x="34" y="372" width="574" height="26" rx="8"/>
+            </g>
+            <g stroke="#ffffff" fill="none" stroke-linecap="round">
+              <path d="M0 183h640" stroke-width="30"/>
+              <path d="M222 0v430" stroke-width="24"/>
+              <path d="M0 350h640" stroke-width="18"/>
+              <path d="M424 183v247" stroke-width="16"/>
+              <path d="M424 126 540 60" stroke-width="13"/>
+            </g>
+            <g stroke="#c8d2c6" stroke-width="2" stroke-dasharray="7 8" fill="none">
+              <path d="M0 183h640"/><path d="M222 0v430"/>
+            </g>
+            <g fill="#8a9a92" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="13" font-weight="600">
+              <text x="46" y="178">Camí del Vapor</text>
+              <text x="254" y="424" transform="rotate(-90 254 424)">Vía transversal</text>
+              <text x="46" y="345">Travesía</text>
+              <text x="440" y="412">Acceso</text>
+            </g>
+            <g>
+              <circle cx="300" cy="183" r="34" fill="#0f4c45" opacity=".12"/>
+              <circle cx="300" cy="183" r="21" fill="#0f4c45"/>
+              <path d="M300 170.5c3.6 0 6.5 2.9 6.5 6.5 0 4.6-6.5 10.5-6.5 10.5s-6.5-5.9-6.5-10.5c0-3.6 2.9-6.5 6.5-6.5Z" fill="#ffffff"/>
+            </g>
+            <g>
+              <rect x="334" y="152" width="214" height="62" rx="12" fill="#ffffff" stroke="#dcdfd6"/>
+              <text x="350" y="178" fill="#10211f" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="15" font-weight="650">El Caroig</text>
+              <text x="350" y="199" fill="#6b817c" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="13">Camí del Vapor, 12</text>
+            </g>
+            <g fill="#a7b4ac" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="12" font-weight="600" letter-spacing="1.4">
+              <text x="508" y="404">ENGUERA · 46810</text>
+            </g>
+          </svg>
+          <div class="map-cap">Croquis esquemático orientativo, no es un mapa a escala.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <div class="foot-brand">
+          <div class="brand-mark" aria-hidden="true">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 20.5s-7.2-4.3-7.2-9.4A4.3 4.3 0 0 1 12 8.6a4.3 4.3 0 0 1 7.2 2.5c0 5.1-7.2 9.4-7.2 9.4Z" fill="#fff" opacity=".95"/>
+              <circle cx="7.1" cy="5.2" r="1.9" fill="#fff" opacity=".75"/>
+              <circle cx="16.9" cy="5.2" r="1.9" fill="#fff" opacity=".75"/>
+            </svg>
+          </div>
+          <div style="font-size:16px;font-weight:620;color:#fff">Clínica Veterinaria El Caroig</div>
+        </div>
+        <p>Camí del Vapor, 12 · 46810 Enguera (Valencia)</p>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="tel:+34962224700">962 22 47 00</a></li>
+          <li>Urgencias: <a href="tel:+34639776717">639 77 67 17</a></li>
+          <li><a href="mailto:vet@elcaroig.es">vet@elcaroig.es</a></li>
+          <li>Consultar horario</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Secciones</h4>
+        <ul>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#visita">Primera visita</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-rule"></div>
+    <p class="foot-sig">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Autoescuela Mas Fácil · Autoescuela en Dénia (Alicante)</title>
+<meta name="description" content="Autoescuela Mas Fácil, autoescuela en Dénia (Alicante). Calle Campo Torres, 37. Permiso B, motocicletas A1/A2/A, recuperación de puntos, clases prácticas y test teórico.">
+<meta name="robots" content="noindex">
+<style>
+  :root{
+    --tinta:#101a2b;
+    --tinta-2:#1b2d47;
+    --verde:#17805a;
+    --verde-claro:#24a97a;
+    --lima:#8fd14f;
+    --ambar:#f2a615;
+    --papel:#f5f8f6;
+    --blanco:#ffffff;
+    --gris:#596a7b;
+    --linea:#dde7e2;
+    --barra:58px;
+    --radio:18px;
+    --sombra:0 18px 40px -22px rgba(16,26,43,.45);
+    --fuente:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    font-family:var(--fuente);
+    color:var(--tinta);
+    background:var(--papel);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  img,svg{max-width:100%}
+  h1,h2,h3{line-height:1.18;margin:0;letter-spacing:-.02em;font-weight:700}
+  p{margin:0}
+  a{color:inherit}
+  ul{margin:0;padding:0;list-style:none}
+
+  /* ---------- barra fija ---------- */
+  .aviso{
+    position:fixed;inset:0 0 auto 0;z-index:100;
+    min-height:var(--barra);
+    display:flex;align-items:center;justify-content:center;
+    padding:9px 16px;
+    background:linear-gradient(90deg,#101a2b,#1b2d47 55%,#17805a);
+    color:#eaf6f0;
+    font-size:12.5px;line-height:1.35;letter-spacing:.02em;
+    text-align:center;
+    border-bottom:1px solid rgba(255,255,255,.14);
+  }
+  .aviso span{display:inline-block;max-width:72ch}
+  .aviso b{font-weight:600;color:#fff}
+
+  .page{padding-top:var(--barra)}
+  .wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 24px}
+
+  /* ---------- cabecera ---------- */
+  .top{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:16px;flex-wrap:wrap;
+    padding:22px 0 6px;
+  }
+  .marca{display:flex;align-items:center;gap:12px;min-width:0}
+  .marca .txt{min-width:0;display:flex;flex-direction:column;gap:2px}
+  .marca .nom{font-weight:700;font-size:17px;letter-spacing:-.01em}
+  .marca .sub{font-size:11.5px;color:var(--gris);letter-spacing:.09em;text-transform:uppercase}
+  .top .tel{
+    display:inline-flex;align-items:center;gap:9px;
+    text-decoration:none;font-weight:600;font-size:15px;
+    padding:10px 16px;border-radius:999px;
+    background:var(--blanco);border:1px solid var(--linea);
+    color:var(--tinta-2);
+    box-shadow:0 6px 16px -12px rgba(16,26,43,.5);
+  }
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;overflow:hidden;padding:34px 0 60px}
+  .hero::before{
+    content:"";position:absolute;z-index:0;
+    top:-250px;right:-200px;width:740px;height:740px;border-radius:50%;
+    background:radial-gradient(circle at 35% 35%,rgba(36,169,122,.28),rgba(143,209,79,.16) 46%,rgba(245,248,246,0) 70%);
+  }
+  .hero .wrap{position:relative;z-index:1}
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);gap:48px;align-items:center}
+  .pill{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--verde);background:rgba(23,128,90,.09);
+    border:1px solid rgba(23,128,90,.2);
+    padding:7px 14px;border-radius:999px;
+  }
+  .hero h1{font-size:clamp(1.95rem,4.5vw,3.3rem);margin:20px 0 0}
+  .hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--verde),var(--lima));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero .lead{margin-top:18px;font-size:clamp(1rem,1.3vw,1.12rem);color:var(--gris);max-width:52ch}
+  .acciones{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    text-decoration:none;font-weight:650;font-size:16px;
+    padding:15px 24px;border-radius:14px;border:1px solid transparent;
+    min-height:52px;
+  }
+  .btn-pri{
+    background:linear-gradient(135deg,var(--verde),var(--verde-claro));
+    color:#fff;box-shadow:0 16px 30px -18px rgba(23,128,90,.9);
+  }
+  .btn-sec{background:var(--blanco);border-color:var(--linea);color:var(--tinta-2)}
+  .nota{margin-top:16px;font-size:13.5px;color:var(--gris)}
+
+  /* tarjeta visual del hero */
+  .tarjeta-visual{
+    position:relative;border-radius:26px;padding:24px;
+    background:linear-gradient(160deg,#101a2b,#1b2d47 58%,#17805a);
+    box-shadow:var(--sombra);color:#eaf6f0;overflow:hidden;
+  }
+  .tarjeta-visual .glow{
+    position:absolute;width:320px;height:320px;border-radius:50%;
+    top:-130px;right:-110px;
+    background:radial-gradient(circle,rgba(143,209,79,.34),rgba(143,209,79,0) 68%);
+  }
+  .tarjeta-visual .cab{position:relative;display:flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:rgba(234,246,240,.72)}
+  .tarjeta-visual .dibujo{position:relative;margin:16px 0 18px}
+  .tarjeta-visual ul{position:relative;display:grid;gap:10px}
+  .tarjeta-visual li{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;color:rgba(234,246,240,.92)}
+  .tarjeta-visual li svg{flex:0 0 auto;margin-top:3px}
+
+  /* ---------- secciones ---------- */
+  .sec{padding:62px 0}
+  .sec-alt{background:var(--blanco);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+  .sec-cab{max-width:62ch}
+  .sec-cab .eti{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--verde)}
+  .sec-cab h2{font-size:clamp(1.5rem,2.8vw,2.1rem);margin:12px 0 0}
+  .sec-cab p{margin-top:14px;color:var(--gris);font-size:1rem}
+
+  .aviso-relleno{
+    display:flex;gap:12px;align-items:flex-start;
+    margin-top:24px;padding:14px 16px;
+    background:rgba(242,166,21,.08);
+    border:1px solid rgba(242,166,21,.28);
+    border-left:4px solid var(--ambar);
+    border-radius:12px;
+    font-size:13.5px;color:var(--tinta-2);
+  }
+  .aviso-relleno svg{flex:0 0 auto;margin-top:2px}
+
+  /* rejilla de permisos */
+  .rejilla{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:30px}
+  .carta{
+    background:var(--blanco);border:1px solid var(--linea);border-radius:var(--radio);
+    padding:22px;display:flex;flex-direction:column;gap:12px;
+    box-shadow:0 10px 24px -22px rgba(16,26,43,.55);
+  }
+  .sec-alt .carta{background:var(--papel)}
+  .carta .ico{
+    width:46px;height:46px;border-radius:13px;flex:0 0 auto;
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(140deg,rgba(23,128,90,.12),rgba(143,209,79,.18));
+    border:1px solid rgba(23,128,90,.16);
+  }
+  .carta h3{font-size:1.06rem}
+  .carta .cat{font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--verde)}
+  .carta p{font-size:14.2px;color:var(--gris)}
+  .carta .ph{
+    margin-top:auto;font-size:12.5px;color:var(--gris);line-height:1.5;
+    padding-top:12px;border-top:1px dashed var(--linea);
+  }
+  .carta .ph b{font-weight:600;color:var(--tinta-2)}
+
+  /* pasos */
+  .pasos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:30px}
+  .paso{
+    position:relative;background:var(--blanco);border:1px solid var(--linea);
+    border-radius:var(--radio);padding:24px 22px;
+  }
+  .paso .num{
+    width:42px;height:42px;border-radius:12px;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;font-size:17px;color:#fff;
+    background:linear-gradient(135deg,var(--verde),var(--verde-claro));
+    box-shadow:0 12px 22px -16px rgba(23,128,90,.95);
+  }
+  .paso h3{font-size:1.05rem;margin:16px 0 0}
+  .paso p{margin-top:9px;font-size:14.2px;color:var(--gris)}
+
+  /* contacto */
+  .contacto-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.04fr);gap:34px;margin-top:30px;align-items:start}
+  .datos{display:grid;gap:14px}
+  .dato{
+    display:flex;gap:14px;align-items:flex-start;
+    background:var(--blanco);border:1px solid var(--linea);
+    border-radius:14px;padding:16px 18px;
+  }
+  .dato .ico{
+    width:40px;height:40px;border-radius:11px;flex:0 0 auto;
+    display:flex;align-items:center;justify-content:center;
+    background:rgba(23,128,90,.09);border:1px solid rgba(23,128,90,.16);
+  }
+  .dato .cont{min-width:0}
+  .dato .et{font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gris)}
+  .dato .vl{margin-top:3px;font-size:15.5px;font-weight:600;color:var(--tinta)}
+  .dato .vl a{text-decoration:none;display:block;word-break:break-word}
+  .dato .vl a + a{margin-top:3px}
+  .dato .ex{margin-top:4px;font-size:13px;color:var(--gris);font-weight:400}
+
+  .mapa{
+    background:var(--blanco);border:1px solid var(--linea);
+    border-radius:var(--radio);padding:18px;box-shadow:0 10px 24px -22px rgba(16,26,43,.55);
+  }
+  .mapa .tit{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+  .mapa .tit h3{font-size:1rem}
+  .mapa .tit span{font-size:11.5px;color:var(--gris);letter-spacing:.04em}
+  .mapa svg{display:block;width:100%;height:auto;border-radius:12px}
+  .mapa .pie{margin-top:12px;font-size:12.5px;color:var(--gris)}
+
+  /* pie */
+  footer{background:var(--tinta);color:#dbe7e0;padding:46px 0 34px}
+  .pie-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px;align-items:start}
+  footer .nom{font-weight:700;font-size:17px;color:#fff}
+  footer .dir{margin-top:10px;font-size:14px;color:rgba(219,231,224,.8);line-height:1.7}
+  footer .enl{display:grid;gap:7px;font-size:14.5px}
+  footer .enl a{text-decoration:none;color:#fff;font-weight:600;word-break:break-word}
+  footer .et{font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(219,231,224,.6);margin-bottom:8px}
+  .firma{
+    margin-top:34px;padding-top:20px;border-top:1px solid rgba(255,255,255,.14);
+    font-size:13px;color:rgba(219,231,224,.78);line-height:1.6;
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:980px){
+    .hero-grid{grid-template-columns:minmax(0,1fr);gap:34px}
+    .rejilla,.pasos{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .contacto-grid{grid-template-columns:minmax(0,1fr);gap:24px}
+    .pie-grid{grid-template-columns:minmax(0,1fr)}
+  }
+  @media (max-width:640px){
+    :root{--barra:72px}
+    .wrap{padding:0 16px}
+    .sec{padding:46px 0}
+    .hero{padding:26px 0 46px}
+    .rejilla,.pasos{grid-template-columns:minmax(0,1fr)}
+    .top{padding:18px 0 4px}
+    .top .tel{width:100%;justify-content:center}
+    .acciones{gap:10px}
+    .btn{width:100%}
+    .aviso{font-size:12px}
+  }
+</style>
+</head>
+<body>
+
+<div class="aviso" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · <b>FFFFFFstudio</b> · Ángel Rubio</span>
+</div>
+
+<div class="page">
+
+  <header class="wrap top">
+    <div class="marca">
+      <svg width="44" height="44" viewBox="0 0 44 44" aria-hidden="true">
+        <rect width="44" height="44" rx="13" fill="#101a2b"></rect>
+        <circle cx="22" cy="22" r="11.5" fill="none" stroke="#8fd14f" stroke-width="2.4"></circle>
+        <circle cx="22" cy="22" r="3.6" fill="#24a97a"></circle>
+        <path d="M22 10.5v8M11.4 26.5l7.4-3.4M32.6 26.5l-7.4-3.4" stroke="#8fd14f" stroke-width="2.4" stroke-linecap="round"></path>
+      </svg>
+      <div class="txt">
+        <span class="nom">Autoescuela Mas Fácil</span>
+        <span class="sub">Dénia · Alicante</span>
+      </div>
+    </div>
+    <a class="tel" href="tel:+34966286268">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M5 3h3.2l1.6 4-2.2 1.6a12 12 0 0 0 5.8 5.8L15 12.2l4 1.6V17a2 2 0 0 1-2.2 2A14.5 14.5 0 0 1 3 5.2 2 2 0 0 1 5 3Z" stroke="#17805a" stroke-width="1.9" stroke-linejoin="round"></path>
+      </svg>
+      96 628 62 68
+    </a>
+  </header>
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="pill">Autoescuela en Dénia (03700)</span>
+        <h1>Saca tu permiso de conducir <em>en Dénia</em>, con una autoescuela del barrio.</h1>
+        <p class="lead">Estamos en la Calle Campo Torres, 37. Llámanos y te explicamos sin compromiso cómo funciona cada permiso, qué necesitas para empezar y cuándo puedes incorporarte.</p>
+        <div class="acciones">
+          <a class="btn btn-pri" href="tel:+34966286268">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M5 3h3.2l1.6 4-2.2 1.6a12 12 0 0 0 5.8 5.8L15 12.2l4 1.6V17a2 2 0 0 1-2.2 2A14.5 14.5 0 0 1 3 5.2 2 2 0 0 1 5 3Z" stroke="#ffffff" stroke-width="1.9" stroke-linejoin="round"></path>
+            </svg>
+            Llamar: 96 628 62 68
+          </a>
+          <a class="btn btn-sec" href="#permisos">Ver permisos y servicios</a>
+        </div>
+        <p class="nota">También puedes llamarnos al <a href="tel:+34687603432"><b>687 603 432</b></a> o escribirnos a <a href="mailto:automasfacil@hotmail.com">automasfacil@hotmail.com</a>.</p>
+      </div>
+
+      <div class="tarjeta-visual">
+        <span class="glow"></span>
+        <div class="cab">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" stroke="#8fd14f" stroke-width="2"></circle>
+            <path d="M12 7.5v5l3.5 2" stroke="#8fd14f" stroke-width="2" stroke-linecap="round"></path>
+          </svg>
+          Tu primer paso
+        </div>
+
+        <div class="dibujo">
+          <svg viewBox="0 0 420 200" width="100%" height="auto" role="img" aria-label="Ilustración de una carretera con un semáforo">
+            <defs>
+              <linearGradient id="gCarretera" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#2a3d57"></stop>
+                <stop offset="1" stop-color="#16243a"></stop>
+              </linearGradient>
+            </defs>
+            <rect x="0" y="0" width="420" height="200" rx="16" fill="rgba(255,255,255,.04)"></rect>
+            <path d="M150 196 L196 54 L240 54 L286 196 Z" fill="url(#gCarretera)"></path>
+            <path d="M216 62v14M216 88v16M216 116v20M216 150v24M216 186v10" stroke="#8fd14f" stroke-width="5" stroke-linecap="round" opacity=".85"></path>
+            <path d="M150 196 L196 54" stroke="rgba(234,246,240,.42)" stroke-width="2"></path>
+            <path d="M286 196 L240 54" stroke="rgba(234,246,240,.42)" stroke-width="2"></path>
+            <rect x="60" y="44" width="46" height="104" rx="15" fill="#101a2b" stroke="rgba(234,246,240,.3)" stroke-width="2"></rect>
+            <rect x="79" y="148" width="8" height="48" fill="rgba(234,246,240,.28)"></rect>
+            <circle cx="83" cy="68" r="11" fill="#e2574c" opacity=".35"></circle>
+            <circle cx="83" cy="96" r="11" fill="#f2a615" opacity=".35"></circle>
+            <circle cx="83" cy="124" r="11" fill="#8fd14f"></circle>
+            <circle cx="340" cy="78" r="30" fill="none" stroke="rgba(143,209,79,.5)" stroke-width="2" stroke-dasharray="5 7"></circle>
+            <circle cx="340" cy="78" r="13" fill="rgba(36,169,122,.5)"></circle>
+          </svg>
+        </div>
+
+        <ul>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#8fd14f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            Te atendemos por teléfono y en el local, en Calle Campo Torres, 37.
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#8fd14f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            Te contamos los pasos del permiso que te interesa y qué documentación hace falta.
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#8fd14f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            Consulta por teléfono el horario de atención y la disponibilidad de clases.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PERMISOS ================= -->
+  <section class="sec sec-alt" id="permisos">
+    <div class="wrap">
+      <div class="sec-cab">
+        <span class="eti">Permisos y servicios</span>
+        <h2>Los apartados habituales de una autoescuela, listos para contar lo vuestro</h2>
+        <p>Esta maqueta deja preparada la estructura de las secciones que un alumno busca antes de entrar por la puerta. Cada bloque se rellena con la formación, el proceso y las condiciones que realmente ofrece la autoescuela.</p>
+      </div>
+
+      <div class="aviso-relleno">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 4l8.5 15H3.5L12 4Z" stroke="#b97d06" stroke-width="2" stroke-linejoin="round"></path>
+          <path d="M12 10v4M12 16.4v.2" stroke="#b97d06" stroke-width="2" stroke-linecap="round"></path>
+        </svg>
+        <span>Los textos de abajo son descripciones genéricas del sector, a modo de ejemplo de maquetación. No incluyen precios, tasas, plazos ni oferta concreta: esos datos los facilita la autoescuela.</span>
+      </div>
+
+      <div class="rejilla">
+
+        <article class="carta">
+          <span class="ico">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 15.5h16M5.5 15.5l1.6-5.2A2 2 0 0 1 9 8.8h6a2 2 0 0 1 1.9 1.5l1.6 5.2" stroke="#17805a" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"></path>
+              <circle cx="7.5" cy="17.4" r="1.7" stroke="#17805a" stroke-width="1.8"></circle>
+              <circle cx="16.5" cy="17.4" r="1.7" stroke="#17805a" stroke-width="1.8"></circle>
+            </svg>
+          </span>
+          <span class="cat">Permiso B</span>
+          <h3>Coche</h3>
+          <p>El permiso para conducir turismos. Combina la parte teórica y las clases prácticas hasta llegar al examen.</p>
+          <p class="ph"><b>Apartado por completar:</b> formación y proceso reales.</p>
+        </article>
+
+        <article class="carta">
+          <span class="ico">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="5.8" cy="16.2" r="3" stroke="#17805a" stroke-width="1.9"></circle>
+              <circle cx="18.2" cy="16.2" r="3" stroke="#17805a" stroke-width="1.9"></circle>
+              <path d="M8.8 16.2h5.4l-2.6-5.4h3.6M12 7.4h3.6" stroke="#17805a" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </span>
+          <span class="cat">A1 · A2 · A</span>
+          <h3>Motocicletas</h3>
+          <p>Los tres permisos de moto, cada uno con su cilindrada y sus requisitos de edad y de experiencia previa.</p>
+          <p class="ph"><b>Apartado por completar:</b> categorías que se imparten.</p>
+        </article>
+
+        <article class="carta">
+          <span class="ico">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 4.2l7 2.6v5.4c0 4-2.9 6.6-7 7.6-4.1-1-7-3.6-7-7.6V6.8l7-2.6Z" stroke="#17805a" stroke-width="1.9" stroke-linejoin="round"></path>
+              <path d="M9.2 12.1l2.1 2.1 3.7-4" stroke="#17805a" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </span>
+          <span class="cat">Puntos</span>
+          <h3>Recuperación de puntos</h3>
+          <p>Cursos dirigidos a conductores que han perdido puntos del permiso y quieren recuperarlos.</p>
+          <p class="ph"><b>Apartado por completar:</b> cursos y convocatorias.</p>
+        </article>
+
+        <article class="carta">
+          <span class="ico">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="7.6" stroke="#17805a" stroke-width="1.9"></circle>
+              <circle cx="12" cy="12" r="2.3" stroke="#17805a" stroke-width="1.9"></circle>
+              <path d="M12 4.4v3.2M5.1 15.6l3-1.4M18.9 15.6l-3-1.4" stroke="#17805a" stroke-width="1.9" stroke-linecap="round"></path>
+            </svg>
+          </span>
+          <span class="cat">Prácticas</span>
+          <h3>Clases prácticas</h3>
+          <p>Las clases al volante con profesor, el bloque que más dudas genera: cuántas hacen falta y cómo se organizan.</p>
+          <p class="ph"><b>Apartado por completar:</b> organización de las clases.</p>
+        </article>
+
+        <article class="carta">
+          <span class="ico">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="5" y="3.6" width="14" height="16.8" rx="2.4" stroke="#17805a" stroke-width="1.9"></rect>
+              <path d="M8.6 8.6h6.8M8.6 12h6.8M8.6 15.4h4.2" stroke="#17805a" stroke-width="1.9" stroke-linecap="round"></path>
+            </svg>
+          </span>
+          <span class="cat">Teórico</span>
+          <h3>Test teórico</h3>
+          <p>La preparación de la parte teórica: temario, test de práctica y repaso de los fallos más frecuentes.</p>
+          <p class="ph"><b>Apartado por completar:</b> material y clases teóricas.</p>
+        </article>
+
+        <article class="carta">
+          <span class="ico">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M5 4.6h3l1.4 3.6-2 1.4a10.6 10.6 0 0 0 5 5l1.4-2 3.6 1.4v3a1.8 1.8 0 0 1-2 1.8A13 13 0 0 1 3.2 6.6 1.8 1.8 0 0 1 5 4.6Z" stroke="#17805a" stroke-width="1.9" stroke-linejoin="round"></path>
+            </svg>
+          </span>
+          <span class="cat">Otras consultas</span>
+          <h3>Pregunta por tu caso</h3>
+          <p>Si lo que necesitas no aparece en esta página, llámanos y te decimos si podemos ayudarte.</p>
+          <p class="ph"><b>Apartado por completar:</b> resto de servicios.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CÓMO EMPEZAR ================= -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-cab">
+        <span class="eti">Cómo empezar</span>
+        <h2>Tres pasos para empezar con tu permiso</h2>
+        <p>Sin formularios ni trámites por internet: el primer contacto es una llamada o una visita al local.</p>
+      </div>
+
+      <div class="pasos">
+        <article class="paso">
+          <span class="num">1</span>
+          <h3>Llámanos y cuéntanos qué permiso quieres</h3>
+          <p>En la llamada te explicamos cómo funciona ese permiso y qué documentación necesitas preparar. Aprovecha para consultar el horario de atención.</p>
+        </article>
+        <article class="paso">
+          <span class="num">2</span>
+          <h3>Pásate por la autoescuela</h3>
+          <p>Estamos en la Calle Campo Torres, 37, en Dénia. Allí formalizamos la matrícula y resolvemos las dudas que te queden.</p>
+        </article>
+        <article class="paso">
+          <span class="num">3</span>
+          <h3>Empieza con la teoría y las prácticas</h3>
+          <p>Te incorporas a la formación teórica y organizamos tus clases prácticas hasta que estés listo para el examen.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACTO ================= -->
+  <section class="sec sec-alt" id="contacto">
+    <div class="wrap">
+      <div class="sec-cab">
+        <span class="eti">Contacto</span>
+        <h2>Dónde estamos y cómo localizarnos</h2>
+        <p>La forma más rápida de resolver cualquier duda es llamando por teléfono.</p>
+      </div>
+
+      <div class="contacto-grid">
+
+        <div class="datos">
+          <div class="dato">
+            <span class="ico">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 3.8h3.1l1.5 3.9-2.1 1.5a11.6 11.6 0 0 0 5.4 5.4l1.5-2.1 3.9 1.5v3.1a1.9 1.9 0 0 1-2.1 1.9A14 14 0 0 1 3.1 5.9 1.9 1.9 0 0 1 5 3.8Z" stroke="#17805a" stroke-width="1.9" stroke-linejoin="round"></path>
+              </svg>
+            </span>
+            <div class="cont">
+              <div class="et">Teléfonos</div>
+              <div class="vl">
+                <a href="tel:+34966286268">96 628 62 68</a>
+                <a href="tel:+34687603432">687 603 432</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="dato">
+            <span class="ico">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 21s6.4-5.6 6.4-10.2A6.4 6.4 0 0 0 5.6 10.8C5.6 15.4 12 21 12 21Z" stroke="#17805a" stroke-width="1.9" stroke-linejoin="round"></path>
+                <circle cx="12" cy="10.4" r="2.4" stroke="#17805a" stroke-width="1.9"></circle>
+              </svg>
+            </span>
+            <div class="cont">
+              <div class="et">Dirección</div>
+              <div class="vl">Calle Campo Torres, 37</div>
+              <div class="ex">03700 Dénia (Alicante)</div>
+            </div>
+          </div>
+
+          <div class="dato">
+            <span class="ico">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="12" cy="12" r="8.4" stroke="#17805a" stroke-width="1.9"></circle>
+                <path d="M12 7.2V12l3.4 2" stroke="#17805a" stroke-width="1.9" stroke-linecap="round"></path>
+              </svg>
+            </span>
+            <div class="cont">
+              <div class="et">Horario</div>
+              <div class="vl">Consultar horario</div>
+              <div class="ex">Llámanos al 96 628 62 68 y te indicamos el horario de atención.</div>
+            </div>
+          </div>
+
+          <div class="dato">
+            <span class="ico">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <rect x="3.4" y="5.4" width="17.2" height="13.2" rx="2.2" stroke="#17805a" stroke-width="1.9"></rect>
+                <path d="M4.2 7l7.8 5.4L19.8 7" stroke="#17805a" stroke-width="1.9" stroke-linejoin="round"></path>
+              </svg>
+            </span>
+            <div class="cont">
+              <div class="et">Correo</div>
+              <div class="vl"><a href="mailto:automasfacil@hotmail.com">automasfacil@hotmail.com</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mapa">
+          <div class="tit">
+            <h3>Cómo llegar</h3>
+            <span>Croquis orientativo</span>
+          </div>
+          <svg viewBox="0 0 560 400" role="img" aria-label="Croquis esquemático de la ubicación de la autoescuela en la Calle Campo Torres, 37, de Dénia">
+            <rect x="0" y="0" width="560" height="400" rx="14" fill="#eef4f0"></rect>
+
+            <!-- manzanas -->
+            <rect x="26" y="26" width="180" height="120" rx="8" fill="#e0ebe4"></rect>
+            <rect x="26" y="236" width="180" height="138" rx="8" fill="#e0ebe4"></rect>
+            <rect x="330" y="26" width="204" height="120" rx="8" fill="#e0ebe4"></rect>
+            <rect x="330" y="236" width="204" height="138" rx="8" fill="#e0ebe4"></rect>
+
+            <!-- viales -->
+            <path d="M0 190h560" stroke="#ffffff" stroke-width="42"></path>
+            <path d="M268 0v400" stroke="#ffffff" stroke-width="38"></path>
+            <path d="M0 190h560" stroke="#c6d6cc" stroke-width="42" fill="none" opacity=".55" stroke-dasharray="0"></path>
+            <path d="M0 190h560" stroke="#ffffff" stroke-width="36"></path>
+            <path d="M268 0v400" stroke="#ffffff" stroke-width="32"></path>
+            <path d="M0 190h248M288 190h272" stroke="#b9cdc2" stroke-width="2" stroke-dasharray="12 12"></path>
+            <path d="M268 0v170M268 210v190" stroke="#b9cdc2" stroke-width="2" stroke-dasharray="12 12"></path>
+
+            <!-- etiquetas de vial -->
+            <text x="310" y="182" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="15" font-weight="700" fill="#6c8278">Calle Campo Torres</text>
+            <text x="268" y="300" text-anchor="middle" transform="rotate(-90 268 300)" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="13" font-weight="600" fill="#8aa096">Calle transversal</text>
+
+            <!-- marcador -->
+            <circle cx="180" cy="190" r="30" fill="rgba(23,128,90,.14)"></circle>
+            <path d="M180 148c-11.6 0-21 9.4-21 21 0 14.6 21 33 21 33s21-18.4 21-33c0-11.6-9.4-21-21-21Z" fill="#17805a"></path>
+            <circle cx="180" cy="169" r="7.4" fill="#ffffff"></circle>
+            <rect x="92" y="94" width="176" height="44" rx="10" fill="#101a2b"></rect>
+            <text x="180" y="114" text-anchor="middle" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="14" font-weight="700" fill="#ffffff">Autoescuela Mas Fácil</text>
+            <text x="180" y="130" text-anchor="middle" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="12" fill="#9fd9bf">Calle Campo Torres, 37</text>
+
+            <!-- norte -->
+            <circle cx="500" cy="356" r="22" fill="#ffffff" stroke="#d4e2d9" stroke-width="2"></circle>
+            <path d="M500 342l6 16-6-4-6 4 6-16Z" fill="#17805a"></path>
+            <text x="500" y="374" text-anchor="middle" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="10" font-weight="700" fill="#6c8278">N</text>
+          </svg>
+          <p class="pie">Croquis esquemático, no es un mapa a escala. La dirección exacta es Calle Campo Torres, 37, 03700 Dénia (Alicante).</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PIE ================= -->
+  <footer>
+    <div class="wrap">
+      <div class="pie-grid">
+        <div>
+          <div class="nom">Autoescuela Mas Fácil</div>
+          <p class="dir">
+            Calle Campo Torres, 37<br>
+            03700 Dénia (Alicante)<br>
+            Consultar horario
+          </p>
+        </div>
+        <div>
+          <div class="et">Contacto</div>
+          <div class="enl">
+            <a href="tel:+34966286268">96 628 62 68</a>
+            <a href="tel:+34687603432">687 603 432</a>
+            <a href="mailto:automasfacil@hotmail.com">automasfacil@hotmail.com</a>
+          </div>
+        </div>
+      </div>
+      <p class="firma">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Taller Mecánico Lalo · Riópar</title>
+<meta name="description" content="Taller Mecánico Lalo en Riópar (Albacete): mecánica general, mantenimiento, diagnosis, neumáticos, pre-ITV y electricidad del automóvil.">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --ink:#0d1117;
+  --ink-2:#151b23;
+  --ink-3:#1d2630;
+  --line:rgba(255,255,255,.10);
+  --line-2:rgba(255,255,255,.18);
+  --txt:#eef2f6;
+  --txt-2:#a7b3c0;
+  --amber:#ffb224;
+  --amber-2:#ff8a00;
+  --steel:#5f7f9e;
+  --bar-h:44px;
+  --radius:18px;
+}
+html,body{margin:0;padding:0;max-width:100%;overflow-x:hidden}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--ink);
+  color:var(--txt);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  font-size:17px;
+  line-height:1.6;
+  padding-top:var(--bar-h);
+  -webkit-font-smoothing:antialiased;
+}
+img,svg{max-width:100%;display:block}
+h1,h2,h3,p,ul,ol{margin:0}
+ul,ol{padding:0;margin:0;list-style:none}
+a{color:inherit}
+
+/* ---------- barra fija ---------- */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  min-height:var(--bar-h);
+  display:flex;align-items:center;justify-content:center;
+  background:#07090c;
+  border-bottom:1px solid var(--line-2);
+  padding:7px 14px;
+}
+.topbar span{
+  font-size:12px;line-height:1.35;letter-spacing:.02em;
+  color:#c9d4e0;text-align:center;
+}
+.topbar strong{color:var(--amber);font-weight:600}
+
+/* ---------- layout ---------- */
+.wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 24px}
+section{padding:76px 0}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--amber);margin-bottom:18px;
+}
+.eyebrow::before{content:"";width:26px;height:2px;background:var(--amber);flex:none}
+h2{font-size:clamp(26px,4.2vw,40px);line-height:1.15;letter-spacing:-.02em;font-weight:700}
+.lead{color:var(--txt-2);margin-top:14px;max-width:62ch}
+
+/* ---------- nav ---------- */
+.nav{
+  position:sticky;top:var(--bar-h);z-index:90;
+  background:rgba(13,17,23,.88);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 24px;max-width:1120px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:11px;min-width:0}
+.brand-mark{width:34px;height:34px;flex:none}
+.brand-txt{min-width:0}
+.brand-name{font-weight:700;font-size:16px;letter-spacing:-.01em;white-space:nowrap}
+.brand-sub{font-size:11px;color:var(--txt-2);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+.nav-links{display:flex;gap:26px;font-size:14px;color:var(--txt-2)}
+.nav-links a{text-decoration:none}
+.nav-links a:hover{color:var(--txt)}
+.nav-cta{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--amber);color:#1a1200;text-decoration:none;
+  font-weight:700;font-size:14px;padding:10px 16px;border-radius:999px;white-space:nowrap;
+}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;overflow:hidden;
+  padding:84px 0 76px;
+  background:
+    radial-gradient(900px 480px at 78% 8%, rgba(255,138,0,.20), transparent 62%),
+    radial-gradient(720px 520px at 8% 86%, rgba(95,127,158,.22), transparent 64%),
+    linear-gradient(170deg,#121821 0%,#0d1117 58%,#0a0e13 100%);
+  border-bottom:1px solid var(--line);
+}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:52px;align-items:center}
+.hero h1{font-size:clamp(34px,5.6vw,58px);line-height:1.04;letter-spacing:-.03em;font-weight:800}
+.hero h1 em{font-style:normal;color:var(--amber);display:block}
+.hero p{color:var(--txt-2);margin-top:20px;font-size:clamp(16px,1.5vw,19px);max-width:52ch}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  text-decoration:none;font-weight:700;font-size:16px;
+  padding:15px 24px;border-radius:14px;
+}
+.btn-main{background:linear-gradient(180deg,var(--amber),var(--amber-2));color:#1a1200;box-shadow:0 10px 26px -12px rgba(255,138,0,.7)}
+.btn-ghost{border:1px solid var(--line-2);color:var(--txt);background:rgba(255,255,255,.03)}
+.hero-meta{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:34px;font-size:14px;color:var(--txt-2)}
+.hero-meta span{display:inline-flex;align-items:center;gap:8px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--amber);flex:none}
+.hero-art{min-width:0}
+
+/* ---------- servicios ---------- */
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:40px}
+.card{
+  background:linear-gradient(165deg,var(--ink-2),var(--ink-3));
+  border:1px solid var(--line);border-radius:var(--radius);
+  padding:26px 24px 28px;
+  position:relative;overflow:hidden;
+}
+.card::after{content:"";position:absolute;inset:0 auto auto 0;width:100%;height:2px;background:linear-gradient(90deg,var(--amber),transparent 72%);opacity:.65}
+.card h3{font-size:19px;letter-spacing:-.01em;margin:16px 0 8px;font-weight:700}
+.card p{color:var(--txt-2);font-size:15px}
+.ico{width:42px;height:42px}
+
+/* ---------- pasos ---------- */
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:40px}
+.step{
+  border:1px solid var(--line);border-radius:var(--radius);
+  padding:28px 24px;background:rgba(255,255,255,.02);
+}
+.step-n{
+  font-size:13px;font-weight:800;letter-spacing:.1em;
+  color:#1a1200;background:var(--amber);
+  width:34px;height:34px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+}
+.step h3{font-size:19px;margin:18px 0 8px;font-weight:700}
+.step p{color:var(--txt-2);font-size:15px}
+.sec-alt{background:linear-gradient(180deg,#0a0e13,#10161e);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+
+/* ---------- contacto ---------- */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:40px;align-items:start}
+.panel{
+  border:1px solid var(--line);border-radius:var(--radius);
+  background:linear-gradient(165deg,var(--ink-2),#111720);
+  padding:28px 26px;
+}
+.info{display:grid;gap:18px}
+.info-row{display:flex;gap:14px;align-items:flex-start}
+.info-ico{width:38px;height:38px;flex:none}
+.info-k{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--txt-2);margin-bottom:3px}
+.info-v{font-size:17px;font-weight:600;overflow-wrap:anywhere}
+.info-v a{text-decoration:none}
+.info-v a:hover{color:var(--amber)}
+.phones{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
+.phone-chip{
+  display:inline-flex;align-items:center;gap:8px;text-decoration:none;
+  border:1px solid var(--line-2);border-radius:999px;padding:9px 15px;
+  font-weight:700;font-size:15px;background:rgba(255,255,255,.04);
+}
+.phone-chip:hover{border-color:var(--amber);color:var(--amber)}
+.schedule{
+  margin-top:24px;padding:16px 18px;border-radius:14px;
+  background:rgba(255,178,36,.10);border:1px solid rgba(255,178,36,.34);
+  display:flex;gap:12px;align-items:flex-start;
+}
+.schedule p{font-size:14px;color:#ffd79a}
+.schedule b{color:var(--amber)}
+.map-cap{font-size:12px;color:var(--txt-2);margin-top:12px;letter-spacing:.02em}
+
+/* ---------- pie ---------- */
+footer{background:#07090c;border-top:1px solid var(--line-2);padding:54px 0 42px}
+.foot-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:start}
+.foot-mail{font-size:17px;font-weight:600;overflow-wrap:anywhere}
+.foot-mail a{text-decoration:none}
+.foot-mail a:hover{color:var(--amber)}
+.foot-list{display:grid;gap:7px;font-size:14px;color:var(--txt-2)}
+.credit{
+  margin-top:38px;padding-top:22px;border-top:1px solid var(--line);
+  font-size:13px;color:var(--txt-2);line-height:1.6;
+}
+.credit strong{color:#dde5ee;font-weight:600}
+
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:38px}
+  .cards,.steps{grid-template-columns:1fr 1fr}
+  .contact-grid,.foot-grid{grid-template-columns:1fr}
+  .nav-links{display:none}
+}
+@media (max-width:620px){
+  :root{--bar-h:58px}
+  body{font-size:16px}
+  .wrap{padding:0 18px}
+  .nav-in{padding:12px 18px}
+  section{padding:56px 0}
+  .hero{padding:58px 0 56px}
+  .cards,.steps{grid-template-columns:1fr}
+  .btn{width:100%;justify-content:center}
+  .cta-row{gap:11px}
+  .brand-sub{display:none}
+  .nav-cta{padding:9px 13px;font-size:13px}
+  .panel{padding:22px 18px}
+  .hero-meta{gap:8px 18px;font-size:13px}
+  .info-v{font-size:15px}
+  .foot-mail{font-size:15px}
+}
+@media (max-width:380px){
+  .brand-name{font-size:15px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar"><span>Propuesta de diseño · maqueta no oficial · <strong>FFFFFFstudio</strong> · Ángel Rubio</span></div>
+
+<nav class="nav">
+  <div class="nav-in">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 48 48" role="img" aria-label="Logotipo">
+        <rect x="1" y="1" width="46" height="46" rx="13" fill="#1d2630" stroke="rgba(255,255,255,.14)"/>
+        <path d="M24 10a14 14 0 1 0 0 28 14 14 0 0 0 0-28Zm0 5.6a8.4 8.4 0 1 1 0 16.8 8.4 8.4 0 0 1 0-16.8Z" fill="#ffb224" opacity=".22"/>
+        <path d="M24 13.2v6.1M24 28.7v6.1M13.2 24h6.1M28.7 24h6.1" stroke="#ffb224" stroke-width="2.6" stroke-linecap="round"/>
+        <circle cx="24" cy="24" r="4.4" fill="none" stroke="#ffb224" stroke-width="2.6"/>
+      </svg>
+      <div class="brand-txt">
+        <div class="brand-name">Taller Mecánico Lalo</div>
+        <div class="brand-sub">Riópar · Albacete</div>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#proceso">Cómo trabajamos</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a class="nav-cta" href="tel:+34967435425">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 3h3l1.5 4-2.2 1.6a12 12 0 0 0 6.5 6.5L17 12.9l4 1.5v3A2.5 2.5 0 0 1 18.5 20C10.5 19.5 4.5 13.5 4 5.5A2.5 2.5 0 0 1 6.6 3Z" fill="#1a1200"/></svg>
+      967 435 425
+    </a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Taller de confianza en Riópar</div>
+      <h1>Tu coche, en buenas manos <em>sin salir del pueblo.</em></h1>
+      <p>Mecánica general, mantenimiento y diagnosis en Riópar. Llámanos y te decimos qué le pasa a tu vehículo y cuándo podemos verlo.</p>
+      <div class="cta-row">
+        <a class="btn btn-main" href="tel:+34967435425">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 3h3l1.5 4-2.2 1.6a12 12 0 0 0 6.5 6.5L17 12.9l4 1.5v3A2.5 2.5 0 0 1 18.5 20C10.5 19.5 4.5 13.5 4 5.5A2.5 2.5 0 0 1 6.6 3Z" fill="#1a1200"/></svg>
+          Llamar al 967 435 425
+        </a>
+        <a class="btn btn-ghost" href="tel:+34689127895">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3" stroke="#eef2f6" stroke-width="1.8"/><path d="M10.5 18.6h3" stroke="#eef2f6" stroke-width="1.8" stroke-linecap="round"/></svg>
+          Móvil 689 127 895
+        </a>
+      </div>
+      <div class="hero-meta">
+        <span><i class="dot"></i>C/ Haza de San Luis, 5D</span>
+        <span><i class="dot"></i>02450 Riópar (Albacete)</span>
+        <span><i class="dot"></i>Consultar horario</span>
+      </div>
+    </div>
+
+    <div class="hero-art">
+      <svg viewBox="0 0 440 340" role="img" aria-label="Ilustración de un vehículo sobre elevador en el taller">
+        <defs>
+          <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#1f2a36"/><stop offset="1" stop-color="#121922"/>
+          </linearGradient>
+          <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#ffb224"/><stop offset="1" stop-color="#ff8a00"/>
+          </linearGradient>
+          <linearGradient id="g3" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#5f7f9e"/><stop offset="1" stop-color="#3b5771"/>
+          </linearGradient>
+        </defs>
+        <rect x="8" y="8" width="424" height="324" rx="22" fill="url(#g1)" stroke="rgba(255,255,255,.12)"/>
+        <g opacity=".16" stroke="#9fb6cc">
+          <path d="M8 90h424M8 160h424M8 230h424M120 8v324M240 8v324M350 8v324"/>
+        </g>
+        <!-- elevador -->
+        <rect x="60" y="256" width="320" height="12" rx="6" fill="#2b3a49"/>
+        <rect x="200" y="200" width="40" height="60" rx="6" fill="#33455a"/>
+        <rect x="96" y="222" width="248" height="14" rx="7" fill="url(#g3)"/>
+        <!-- coche -->
+        <path d="M112 212c4-30 14-50 28-58 18-10 94-11 114-2 14 6 28 26 36 60Z" fill="#26323f" stroke="rgba(255,255,255,.14)"/>
+        <path d="M148 162c4-16 10-26 18-29 14-5 60-5 72 0 9 4 15 14 19 29Z" fill="#9fb6cc" opacity=".35"/>
+        <rect x="104" y="198" width="238" height="22" rx="11" fill="url(#g2)"/>
+        <circle cx="152" cy="222" r="21" fill="#0d1117" stroke="#43586d" stroke-width="5"/>
+        <circle cx="292" cy="222" r="21" fill="#0d1117" stroke="#43586d" stroke-width="5"/>
+        <!-- llave -->
+        <g transform="translate(316,54) rotate(28)">
+          <rect x="0" y="12" width="78" height="13" rx="6" fill="#9fb6cc" opacity=".6"/>
+          <circle cx="4" cy="18.5" r="15" fill="none" stroke="#9fb6cc" stroke-width="7" opacity=".6"/>
+          <path d="M78 10h14v18H78z" fill="#9fb6cc" opacity=".6"/>
+        </g>
+        <!-- destellos diagnosis -->
+        <g stroke="#ffb224" stroke-width="3" stroke-linecap="round" opacity=".85">
+          <path d="M48 60v22M37 71h22"/>
+        </g>
+        <path d="M44 296h352" stroke="#ffb224" stroke-width="3" stroke-dasharray="16 12" opacity=".5"/>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<section id="servicios">
+  <div class="wrap">
+    <div class="eyebrow">Servicios</div>
+    <h2>Lo que hacemos en el taller</h2>
+    <p class="lead">Trabajos habituales de taller para turismos y vehículos ligeros. Si tienes dudas sobre tu caso, llámanos y lo vemos.</p>
+
+    <ul class="cards">
+      <li class="card">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <circle cx="24" cy="24" r="11" stroke="#ffb224" stroke-width="2.6"/>
+          <circle cx="24" cy="24" r="4" stroke="#ffb224" stroke-width="2.6"/>
+          <path d="M24 5v7M24 36v7M5 24h7M36 24h7M11 11l5 5M32 32l5 5M37 11l-5 5M16 32l-5 5" stroke="#5f7f9e" stroke-width="2.6" stroke-linecap="round"/>
+        </svg>
+        <h3>Mecánica general</h3>
+        <p>Reparaciones de motor, embrague, frenos, suspensión, escape y transmisión.</p>
+      </li>
+      <li class="card">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <path d="M14 8h20l-3 10H17L14 8Z" stroke="#ffb224" stroke-width="2.6" stroke-linejoin="round"/>
+          <path d="M24 18v10" stroke="#5f7f9e" stroke-width="2.6" stroke-linecap="round"/>
+          <path d="M24 28c-6 0-10 4-10 9h20c0-5-4-9-10-9Z" stroke="#ffb224" stroke-width="2.6" stroke-linejoin="round"/>
+          <path d="M10 42h28" stroke="#5f7f9e" stroke-width="2.6" stroke-linecap="round"/>
+        </svg>
+        <h3>Mantenimiento</h3>
+        <p>Cambio de aceite y filtros, revisiones periódicas, correas, líquidos y puesta a punto.</p>
+      </li>
+      <li class="card">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <rect x="6" y="12" width="36" height="24" rx="5" stroke="#ffb224" stroke-width="2.6"/>
+          <path d="M11 26h6l3-7 4 14 3-7h10" stroke="#5f7f9e" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M18 41h12" stroke="#ffb224" stroke-width="2.6" stroke-linecap="round"/>
+        </svg>
+        <h3>Diagnosis</h3>
+        <p>Lectura de centralita y localización de averías electrónicas y testigos encendidos.</p>
+      </li>
+      <li class="card">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <circle cx="24" cy="24" r="16" stroke="#ffb224" stroke-width="2.6"/>
+          <circle cx="24" cy="24" r="6.5" stroke="#5f7f9e" stroke-width="2.6"/>
+          <path d="M24 8v9.5M24 30.5V40M8 24h9.5M30.5 24H40" stroke="#5f7f9e" stroke-width="2.6" stroke-linecap="round"/>
+        </svg>
+        <h3>Neumáticos</h3>
+        <p>Montaje, equilibrado, reparación de pinchazos y revisión de presiones y desgaste.</p>
+      </li>
+      <li class="card">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <path d="M12 7h24v30l-12 7-12-7V7Z" stroke="#ffb224" stroke-width="2.6" stroke-linejoin="round"/>
+          <path d="M17 23l5 5 10-10" stroke="#5f7f9e" stroke-width="2.9" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h3>Pre-ITV</h3>
+        <p>Repaso previo a la inspección para detectar y corregir lo que puede dar problema.</p>
+      </li>
+      <li class="card">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <path d="M26 5 12 27h10l-2 16 16-23H25l1-15Z" stroke="#ffb224" stroke-width="2.6" stroke-linejoin="round"/>
+          <path d="M6 40h10M34 40h8" stroke="#5f7f9e" stroke-width="2.6" stroke-linecap="round"/>
+        </svg>
+        <h3>Electricidad</h3>
+        <p>Batería, alternador, motor de arranque, alumbrado y pequeñas averías eléctricas.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section id="proceso" class="sec-alt">
+  <div class="wrap">
+    <div class="eyebrow">Cómo trabajamos</div>
+    <h2>Tres pasos y sin sorpresas</h2>
+    <p class="lead">Lo importante es que sepas qué se va a hacer en tu coche antes de que lo hagamos.</p>
+
+    <ol class="steps">
+      <li class="step">
+        <div class="step-n">01</div>
+        <h3>Nos llamas</h3>
+        <p>Nos cuentas qué le pasa al vehículo por teléfono y acordamos cuándo puedes traerlo al taller.</p>
+      </li>
+      <li class="step">
+        <div class="step-n">02</div>
+        <h3>Revisamos y te explicamos</h3>
+        <p>Comprobamos la avería, te decimos qué hay que hacer y esperamos tu aprobación antes de empezar.</p>
+      </li>
+      <li class="step">
+        <div class="step-n">03</div>
+        <h3>Reparamos y te avisamos</h3>
+        <p>Hacemos el trabajo acordado y te llamamos en cuanto el coche esté listo para recogerlo.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap">
+    <div class="eyebrow">Contacto</div>
+    <h2>Dónde estamos y cómo localizarnos</h2>
+    <p class="lead">Estamos en Riópar. Para cita, presupuesto o cualquier duda, lo más rápido es una llamada.</p>
+
+    <div class="contact-grid">
+      <div class="panel">
+        <div class="info">
+          <div class="info-row">
+            <svg class="info-ico" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+              <rect x="1" y="1" width="38" height="38" rx="12" fill="rgba(255,178,36,.12)" stroke="rgba(255,178,36,.3)"/>
+              <path d="M13 11h4l2 5-3 2a11 11 0 0 0 6 6l2-3 5 2v4a2.5 2.5 0 0 1-2.7 2.5C18.5 28.8 11.2 21.5 10.5 13.7A2.5 2.5 0 0 1 13 11Z" fill="#ffb224"/>
+            </svg>
+            <div>
+              <div class="info-k">Teléfonos</div>
+              <div class="phones">
+                <a class="phone-chip" href="tel:+34967435425">967 435 425</a>
+                <a class="phone-chip" href="tel:+34689127895">689 127 895</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <svg class="info-ico" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+              <rect x="1" y="1" width="38" height="38" rx="12" fill="rgba(95,127,158,.16)" stroke="rgba(95,127,158,.35)"/>
+              <path d="M20 9a8 8 0 0 0-8 8c0 6 8 14 8 14s8-8 8-14a8 8 0 0 0-8-8Z" stroke="#9fb6cc" stroke-width="2.4" stroke-linejoin="round"/>
+              <circle cx="20" cy="17" r="3" fill="#9fb6cc"/>
+            </svg>
+            <div>
+              <div class="info-k">Dirección</div>
+              <div class="info-v">C/ Haza de San Luis, 5D<br>02450 Riópar (Albacete)</div>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <svg class="info-ico" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+              <rect x="1" y="1" width="38" height="38" rx="12" fill="rgba(95,127,158,.16)" stroke="rgba(95,127,158,.35)"/>
+              <rect x="10" y="13" width="20" height="14" rx="3" stroke="#9fb6cc" stroke-width="2.2"/>
+              <path d="m11 15 9 6 9-6" stroke="#9fb6cc" stroke-width="2.2" stroke-linejoin="round"/>
+            </svg>
+            <div>
+              <div class="info-k">Email</div>
+              <div class="info-v"><a href="mailto:tallermecanicolalo@hotmail.com">tallermecanicolalo@hotmail.com</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="schedule">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="flex:none;margin-top:2px">
+            <circle cx="12" cy="12" r="9.2" stroke="#ffb224" stroke-width="2"/>
+            <path d="M12 7v5.4l3.6 2.2" stroke="#ffb224" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <p><b>Consultar horario</b> — llámanos antes de venir y te confirmamos cuándo podemos atenderte.</p>
+        </div>
+
+        <div class="cta-row">
+          <a class="btn btn-main" href="tel:+34967435425">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 3h3l1.5 4-2.2 1.6a12 12 0 0 0 6.5 6.5L17 12.9l4 1.5v3A2.5 2.5 0 0 1 18.5 20C10.5 19.5 4.5 13.5 4 5.5A2.5 2.5 0 0 1 6.6 3Z" fill="#1a1200"/></svg>
+            Llamar ahora
+          </a>
+        </div>
+      </div>
+
+      <div class="panel">
+        <svg viewBox="0 0 420 320" role="img" aria-label="Croquis esquemático de la ubicación del taller en Riópar">
+          <rect x="0" y="0" width="420" height="320" rx="14" fill="#0e141c"/>
+          <g opacity=".5" stroke="#1d2731" stroke-width="1">
+            <path d="M0 40h420M0 80h420M0 120h420M0 160h420M0 200h420M0 240h420M0 280h420M40 0v320M80 0v320M120 0v320M160 0v320M200 0v320M240 0v320M280 0v320M320 0v320M360 0v320"/>
+          </g>
+          <!-- manzanas -->
+          <g fill="#151d26" stroke="#232f3b">
+            <rect x="26" y="26" width="120" height="78" rx="6"/>
+            <rect x="268" y="26" width="126" height="78" rx="6"/>
+            <rect x="26" y="206" width="120" height="88" rx="6"/>
+            <rect x="268" y="206" width="126" height="88" rx="6"/>
+          </g>
+          <!-- calles -->
+          <g stroke="#2d3b4a" stroke-width="26" stroke-linecap="round">
+            <path d="M14 150h392"/>
+            <path d="M206 14v292"/>
+          </g>
+          <g stroke="#48607a" stroke-width="2" stroke-dasharray="12 10">
+            <path d="M14 150h392"/><path d="M206 14v292"/>
+          </g>
+          <!-- calle del taller -->
+          <path d="M206 150 L206 236 L352 236" stroke="#ffb224" stroke-width="7" fill="none" stroke-linecap="round" opacity=".85"/>
+          <!-- marcador -->
+          <g transform="translate(336,196)">
+            <circle cx="16" cy="40" r="11" fill="#ffb224" opacity=".18"/>
+            <path d="M16 10a13 13 0 0 0-13 13c0 9.5 13 22 13 22s13-12.5 13-22a13 13 0 0 0-13-13Z" fill="#ffb224"/>
+            <circle cx="16" cy="23" r="4.6" fill="#1a1200"/>
+          </g>
+          <rect x="210" y="126" width="126" height="20" rx="6" fill="#0e141c" opacity=".88"/>
+          <text x="216" y="141" fill="#8fa4b8" font-family="system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="13">Travesía principal</text>
+          <rect x="210" y="246" width="150" height="21" rx="6" fill="#0e141c" opacity=".92"/>
+          <text x="216" y="261" fill="#ffd79a" font-family="system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="13" font-weight="600">C/ Haza de San Luis</text>
+          <text x="30" y="306" fill="#6b7d90" font-family="system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="12">Croquis orientativo · no a escala</text>
+          <rect x="286" y="182" width="48" height="20" rx="6" fill="#0e141c" opacity=".88"/>
+          <text x="292" y="197" fill="#ffb224" font-family="system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="13" font-weight="700">Nº 5D</text>
+        </svg>
+        <p class="map-cap">Esquema de orientación de calles, no un mapa real. Si no lo encuentras, llámanos y te indicamos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand" style="margin-bottom:16px">
+          <svg class="brand-mark" viewBox="0 0 48 48" role="img" aria-label="Logotipo">
+            <rect x="1" y="1" width="46" height="46" rx="13" fill="#1d2630" stroke="rgba(255,255,255,.14)"/>
+            <path d="M24 13.2v6.1M24 28.7v6.1M13.2 24h6.1M28.7 24h6.1" stroke="#ffb224" stroke-width="2.6" stroke-linecap="round"/>
+            <circle cx="24" cy="24" r="4.4" fill="none" stroke="#ffb224" stroke-width="2.6"/>
+          </svg>
+          <div class="brand-txt">
+            <div class="brand-name">Taller Mecánico Lalo</div>
+            <div class="brand-sub">Riópar · Albacete</div>
+          </div>
+        </div>
+        <div class="info-k">Email</div>
+        <div class="foot-mail"><a href="mailto:tallermecanicolalo@hotmail.com">tallermecanicolalo@hotmail.com</a></div>
+      </div>
+      <div class="foot-list">
+        <div>C/ Haza de San Luis, 5D · 02450 Riópar (Albacete)</div>
+        <div><a href="tel:+34967435425" style="text-decoration:none">967 435 425</a> · <a href="tel:+34689127895" style="text-decoration:none">689 127 895</a></div>
+        <div>Consultar horario</div>
+      </div>
+    </div>
+    <p class="credit">Propuesta de rediseño presentada por <strong>FFFFFFstudio</strong> — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+</body>
+</html>

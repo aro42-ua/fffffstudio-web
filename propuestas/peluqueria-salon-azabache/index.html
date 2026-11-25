@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Peluquería Salón Azabache · Riópar (Albacete)</title>
+<meta name="description" content="Propuesta de diseño para Peluquería Salón Azabache, Riópar (Albacete). Maqueta no oficial de FFFFFFstudio.">
+<style>
+  :root{
+    --ink:#0c0c0f;
+    --ink-2:#14141a;
+    --ink-3:#1d1d25;
+    --cream:#f7f3ee;
+    --cream-2:#ece5dc;
+    --gold:#c8a06a;
+    --gold-soft:#e6cfae;
+    --line:rgba(247,243,238,.14);
+    --line-dark:rgba(12,12,15,.12);
+    --bar-h:44px;
+    --maxw:1140px;
+    --r:18px;
+    font-synthesis-weight:none;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:calc(var(--bar-h) + 16px)}
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--cream);
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size:17px;
+    line-height:1.65;
+    padding-top:var(--bar-h);
+  }
+  img,svg{max-width:100%}
+  a{color:inherit}
+  h1,h2,h3{line-height:1.12;margin:0;letter-spacing:-.02em;font-weight:650}
+  p{margin:0}
+
+  /* ---------- barra fija ---------- */
+  .topbar{
+    position:fixed;inset:0 0 auto 0;z-index:100;
+    min-height:var(--bar-h);
+    display:flex;align-items:center;justify-content:center;
+    text-align:center;
+    padding:7px 14px;
+    background:#07070a;
+    border-bottom:1px solid rgba(200,160,106,.32);
+    color:#efe7db;
+    font-size:12.5px;line-height:1.35;
+    letter-spacing:.02em;
+  }
+  .topbar span{display:block;max-width:100%}
+
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:12px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--gold);font-weight:600;margin:0 0 18px
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--gold);opacity:.7;display:block}
+  section{position:relative}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(120% 90% at 82% 8%, rgba(200,160,106,.22) 0%, rgba(200,160,106,0) 58%),
+      radial-gradient(100% 80% at 8% 100%, rgba(120,110,160,.16) 0%, rgba(12,12,15,0) 60%),
+      linear-gradient(170deg,#101016 0%,#0c0c0f 55%,#09090c 100%);
+  }
+  .hero::after{
+    content:"";position:absolute;inset:auto 0 0 0;height:1px;background:var(--line)
+  }
+  .hero-inner{
+    display:grid;grid-template-columns:1.08fr .92fr;gap:48px;align-items:center;
+    padding-block:84px 96px;
+  }
+  .brand{display:flex;align-items:center;gap:14px;margin-bottom:34px}
+  .brand-mark{flex:0 0 auto;width:46px;height:46px}
+  .brand-txt{font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:var(--cream);font-weight:600}
+  .brand-txt small{display:block;font-size:11px;letter-spacing:.14em;color:rgba(247,243,238,.5);font-weight:500;margin-top:3px}
+  h1{font-size:clamp(2.3rem,5.6vw,4rem);font-weight:680}
+  h1 em{font-style:normal;color:var(--gold-soft);display:block}
+  .lead{margin-top:22px;font-size:clamp(1rem,1.4vw,1.14rem);color:rgba(247,243,238,.74);max-width:46ch}
+  .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+  .btn{
+    display:inline-flex;align-items:center;gap:11px;
+    padding:15px 26px;border-radius:999px;text-decoration:none;
+    font-weight:650;font-size:15.5px;letter-spacing:.01em;
+    border:1px solid transparent;transition:transform .18s ease,background .18s ease,border-color .18s ease;
+  }
+  .btn-primary{background:linear-gradient(135deg,#e6cfae,#c8a06a);color:#14100a;box-shadow:0 14px 34px rgba(200,160,106,.22)}
+  .btn-primary:hover{transform:translateY(-2px)}
+  .btn-ghost{border-color:var(--line);color:var(--cream);background:rgba(247,243,238,.04)}
+  .btn-ghost:hover{border-color:rgba(200,160,106,.55)}
+  .btn svg{flex:0 0 auto}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:32px;font-size:14px;color:rgba(247,243,238,.6)}
+  .hero-meta span{display:inline-flex;align-items:center;gap:8px}
+  .dot{width:5px;height:5px;border-radius:50%;background:var(--gold);flex:0 0 auto}
+
+  .hero-art{position:relative;aspect-ratio:1/1.08;min-width:0}
+  .hero-art svg{display:block;width:100%;height:100%}
+
+  /* ---------- servicios ---------- */
+  .band{padding:88px 0}
+  .band-light{background:var(--cream);color:#16161b}
+  .band-light .eyebrow{color:#9a7132}
+  .band-light .eyebrow::before{background:#9a7132}
+  h2{font-size:clamp(1.75rem,3.4vw,2.6rem)}
+  .sec-head{max-width:60ch;margin-bottom:46px}
+  .sec-head p{margin-top:16px;color:rgba(22,22,27,.66);font-size:1.02rem}
+  .band:not(.band-light) .sec-head p{color:rgba(247,243,238,.7)}
+
+  .grid-serv{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+  .card{
+    background:#fff;border:1px solid rgba(22,22,27,.09);border-radius:var(--r);
+    padding:28px 26px 30px;min-width:0;
+    box-shadow:0 1px 2px rgba(22,22,27,.04);
+    transition:transform .2s ease,box-shadow .2s ease;
+  }
+  .card:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(22,22,27,.09)}
+  .ico{
+    width:48px;height:48px;border-radius:13px;display:grid;place-items:center;margin-bottom:18px;
+    background:linear-gradient(145deg,#2a2a33,#14141a);
+  }
+  .ico svg{width:24px;height:24px;display:block}
+  .card h3{font-size:1.12rem;margin-bottom:9px}
+  .card p{font-size:.95rem;color:rgba(22,22,27,.64)}
+  .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
+  .tag{font-size:11.5px;letter-spacing:.04em;padding:5px 11px;border-radius:999px;background:var(--cream-2);color:#5c4a2e;font-weight:600}
+  .note{margin-top:28px;font-size:13.5px;color:rgba(22,22,27,.52);display:flex;gap:10px;align-items:flex-start}
+  .note svg{flex:0 0 auto;width:16px;height:16px;margin-top:2px}
+
+  /* ---------- galeria (marcos vacios) ---------- */
+  .grid-gal{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+  .frame{
+    position:relative;border-radius:var(--r);overflow:hidden;min-width:0;
+    aspect-ratio:3/4;
+    border:1px dashed rgba(230,207,174,.3);
+    background:linear-gradient(160deg,#17171e,#101015);
+    display:grid;place-items:center;
+  }
+  .frame:nth-child(2){aspect-ratio:3/4;background:linear-gradient(160deg,#1b1721,#101015)}
+  .frame:nth-child(3){background:linear-gradient(160deg,#141820,#101015)}
+  .frame:nth-child(4){background:linear-gradient(160deg,#1d1a16,#101015)}
+  .frame-art{position:absolute;inset:0;opacity:.8}
+  .frame-art svg{width:100%;height:100%;display:block}
+  .frame-lbl{
+    position:relative;z-index:1;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;
+    color:rgba(247,243,238,.66);font-weight:600;text-align:center;padding:0 16px;line-height:1.8;
+  }
+
+  /* ---------- pasos ---------- */
+  .grid-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;counter-reset:s}
+  .step{
+    position:relative;min-width:0;padding:30px 26px;border-radius:var(--r);
+    background:linear-gradient(165deg,rgba(247,243,238,.055),rgba(247,243,238,.02));
+    border:1px solid var(--line);
+  }
+  .step-n{
+    width:40px;height:40px;border-radius:12px;display:grid;place-items:center;
+    font-weight:700;font-size:15px;color:#14100a;
+    background:linear-gradient(135deg,#e6cfae,#c8a06a);margin-bottom:18px;
+  }
+  .step h3{font-size:1.08rem;margin-bottom:9px}
+  .step p{font-size:.95rem;color:rgba(247,243,238,.66)}
+  .step a{color:var(--gold-soft);text-decoration:none;border-bottom:1px solid rgba(230,207,174,.4);font-weight:600;white-space:nowrap}
+
+  /* ---------- contacto ---------- */
+  .contact-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:40px;align-items:start}
+  .info-list{display:grid;gap:14px;margin-top:8px}
+  .info{
+    display:flex;gap:16px;align-items:flex-start;min-width:0;
+    padding:20px 22px;border-radius:14px;background:#fff;border:1px solid rgba(22,22,27,.09);
+  }
+  .info .ico{width:40px;height:40px;border-radius:11px;margin:0;flex:0 0 auto}
+  .info .ico svg{width:20px;height:20px}
+  .info-b{min-width:0}
+  .info-k{font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;color:#9a7132;font-weight:700}
+  .info-v{font-size:1.04rem;font-weight:620;margin-top:4px;color:#16161b;overflow-wrap:anywhere}
+  .info-v a{text-decoration:none}
+  .info-v a:hover{color:#9a7132}
+  .info-s{font-size:.9rem;color:rgba(22,22,27,.58);margin-top:3px}
+
+  .map-card{
+    background:#fff;border:1px solid rgba(22,22,27,.09);border-radius:var(--r);
+    padding:14px;min-width:0;
+  }
+  .map-card svg{display:block;width:100%;height:auto;border-radius:10px}
+  .map-cap{font-size:12.5px;color:rgba(22,22,27,.52);padding:12px 6px 4px;display:flex;gap:9px;align-items:flex-start}
+  .map-cap svg{flex:0 0 auto;width:15px;height:15px;margin-top:2px}
+
+  /* ---------- pie ---------- */
+  footer{background:#07070a;border-top:1px solid var(--line);padding:56px 0 44px}
+  .foot-top{display:flex;flex-wrap:wrap;gap:28px;justify-content:space-between;align-items:flex-start}
+  .foot-name{font-size:14px;letter-spacing:.17em;text-transform:uppercase;font-weight:650}
+  .foot-name small{display:block;font-size:12px;letter-spacing:.06em;text-transform:none;color:rgba(247,243,238,.5);font-weight:500;margin-top:7px}
+  .foot-links{display:grid;gap:7px;font-size:14.5px;color:rgba(247,243,238,.72)}
+  .foot-links a{text-decoration:none;overflow-wrap:anywhere}
+  .foot-links a:hover{color:var(--gold-soft)}
+  .foot-rule{height:1px;background:var(--line);margin:34px 0 22px}
+  .foot-studio{
+    font-size:13px;color:rgba(247,243,238,.56);line-height:1.6;
+  }
+  .foot-studio strong{color:var(--gold-soft);font-weight:650}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:980px){
+    .hero-inner{grid-template-columns:1fr;gap:40px;padding-block:64px 76px}
+    .hero-art{max-width:460px;margin:0 auto;width:100%}
+    .contact-grid{grid-template-columns:1fr;gap:28px}
+  }
+  @media (max-width:620px){
+    :root{--bar-h:58px}
+    body{font-size:16px}
+    .wrap{padding:0 18px}
+    .band{padding:62px 0}
+    .hero-inner{padding-block:48px 62px}
+    .hero-meta{flex-direction:column;gap:9px;margin-top:26px}
+    .topbar{font-size:11.5px;padding:8px 12px}
+    .btn{width:100%;justify-content:center}
+    .cta-row{gap:11px}
+    .card,.step{padding:24px 20px}
+    .grid-gal{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .foot-top{gap:22px}
+  }
+  @media (max-width:380px){
+    :root{--bar-h:72px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .card:hover,.btn-primary:hover{transform:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar" role="note"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div>
+      <div class="brand">
+        <svg class="brand-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="gm" x1="4" y1="4" x2="44" y2="44" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#e6cfae"/><stop offset="1" stop-color="#c8a06a"/>
+            </linearGradient>
+          </defs>
+          <rect x=".75" y=".75" width="46.5" height="46.5" rx="13.5" stroke="url(#gm)" stroke-opacity=".55" stroke-width="1.5"/>
+          <path d="M16 12c6 5 6 9 0 12s-6 7 0 12" stroke="url(#gm)" stroke-width="2" stroke-linecap="round"/>
+          <path d="M24 12c6 5 6 9 0 12s-6 7 0 12" stroke="url(#gm)" stroke-width="2" stroke-linecap="round" stroke-opacity=".72"/>
+          <path d="M32 12c6 5 6 9 0 12s-6 7 0 12" stroke="url(#gm)" stroke-width="2" stroke-linecap="round" stroke-opacity=".44"/>
+        </svg>
+        <div class="brand-txt">Salón Azabache<small>Peluquería · Riópar</small></div>
+      </div>
+
+      <h1>Tu pelo, cuidado<em>en el centro de Riópar.</em></h1>
+      <p class="lead">Corte, color, peinado y tratamientos en un salón de barrio, con trato cercano. Pide tu cita con una llamada.</p>
+
+      <div class="cta-row">
+        <a class="btn btn-primary" href="tel:+34967435111">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 3.5h2.3l1.5 3.7-1.9 1.4a11.4 11.4 0 0 0 5.5 5.5l1.4-1.9 3.7 1.5v2.3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Llamar al 967 435 111
+        </a>
+        <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
+      </div>
+
+      <div class="hero-meta">
+        <span><i class="dot"></i>C/ Ciudad Real, 16 · 02450 Riópar</span>
+        <span><i class="dot"></i>Consultar horario</span>
+      </div>
+    </div>
+
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 440 475" fill="none" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <linearGradient id="g1" x1="60" y1="40" x2="400" y2="440" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#2b2b36"/><stop offset="1" stop-color="#0f0f14"/>
+          </linearGradient>
+          <linearGradient id="g2" x1="120" y1="60" x2="340" y2="420" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#e6cfae" stop-opacity=".9"/><stop offset="1" stop-color="#c8a06a" stop-opacity=".25"/>
+          </linearGradient>
+          <linearGradient id="g3" x1="0" y1="0" x2="0" y2="475" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#8e86b8" stop-opacity=".5"/><stop offset="1" stop-color="#8e86b8" stop-opacity="0"/>
+          </linearGradient>
+          <radialGradient id="g4" cx="0" cy="0" r="1" gradientTransform="translate(230 210) rotate(90) scale(190)" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#c8a06a" stop-opacity=".30"/><stop offset="1" stop-color="#c8a06a" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <rect x="18" y="18" width="404" height="439" rx="26" fill="url(#g1)" stroke="#e6cfae" stroke-opacity=".16"/>
+        <circle cx="230" cy="210" r="190" fill="url(#g4)"/>
+        <!-- arcos tipo mechones -->
+        <path d="M92 404c-22-96 4-176 70-232 44-37 100-48 152-33" stroke="url(#g2)" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M124 408c-18-86 6-156 64-206 40-34 90-45 136-32" stroke="url(#g2)" stroke-width="1.6" stroke-opacity=".72" stroke-linecap="round"/>
+        <path d="M156 412c-14-76 8-138 58-182 34-30 78-40 118-30" stroke="url(#g2)" stroke-width="1.3" stroke-opacity=".5" stroke-linecap="round"/>
+        <path d="M188 416c-10-66 10-120 50-158 30-27 66-35 100-27" stroke="url(#g2)" stroke-width="1.1" stroke-opacity=".34" stroke-linecap="round"/>
+        <!-- franja vertical suave -->
+        <rect x="300" y="18" width="86" height="439" fill="url(#g3)" opacity=".35"/>
+        <!-- tijeras geometricas -->
+        <g transform="translate(258 268)" stroke="#e6cfae" stroke-opacity=".85" stroke-width="2" stroke-linecap="round">
+          <circle cx="12" cy="86" r="13" fill="none"/>
+          <circle cx="56" cy="86" r="13" fill="none"/>
+          <path d="M18 74 58 8"/>
+          <path d="M50 74 10 8"/>
+          <circle cx="34" cy="41" r="2.6" fill="#e6cfae" stroke="none"/>
+        </g>
+        <!-- puntos decorativos -->
+        <g fill="#e6cfae" fill-opacity=".5">
+          <circle cx="76" cy="74" r="2.5"/><circle cx="98" cy="60" r="1.8"/><circle cx="66" cy="104" r="1.6"/>
+          <circle cx="372" cy="396" r="2.5"/><circle cx="350" cy="414" r="1.8"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICIOS ============ -->
+<section class="band band-light" id="servicios">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Servicios</p>
+      <h2>Lo que se hace en el salón</h2>
+      <p>Trabajo de peluquería para toda la familia. Si tienes dudas sobre lo que necesitas, lo vemos juntos por teléfono o en el salón.</p>
+    </div>
+
+    <div class="grid-serv">
+      <article class="card">
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><g stroke="#e6cfae" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="6.2" cy="17.6" r="2.7"/><circle cx="17.8" cy="17.6" r="2.7"/><path d="M8.2 15.8 18.6 3.6M15.8 15.8 5.4 3.6"/></g></svg>
+        </div>
+        <h3>Corte</h3>
+        <p>Corte de pelo para mujer, hombre y niños, adaptado a tu tipo de pelo y a lo cómodo que quieras llevarlo en el día a día.</p>
+        <div class="tags"><span class="tag">Mujer</span><span class="tag">Hombre</span><span class="tag">Infantil</span></div>
+      </article>
+
+      <article class="card">
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><g stroke="#e6cfae" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.2c3.4 4.1 5.6 6.9 5.6 9.4A5.6 5.6 0 0 1 12 18.2a5.6 5.6 0 0 1-5.6-5.6c0-2.5 2.2-5.3 5.6-9.4Z"/><path d="M9.6 13.1a2.4 2.4 0 0 0 2.4 2.4"/></g></svg>
+        </div>
+        <h3>Color</h3>
+        <p>Tinte, cobertura de canas, mechas y matices. Se decide el tono contigo antes de empezar y se cuida el pelo durante el proceso.</p>
+        <div class="tags"><span class="tag">Tinte</span><span class="tag">Mechas</span><span class="tag">Canas</span></div>
+      </article>
+
+      <article class="card">
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><g stroke="#e6cfae" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4.4 9.1a4.7 4.7 0 0 1 4.7-4.7h4.6a4.7 4.7 0 0 1 0 9.4H9.1a4.7 4.7 0 0 1-4.7-4.7Z"/><path d="M11.3 13.8v3.1a2.8 2.8 0 1 0 5.6 0"/><path d="M8.6 9.1h.01"/></g></svg>
+        </div>
+        <h3>Peinado</h3>
+        <p>Secado, ondas, moños y recogidos. También peinados para bodas, comuniones y celebraciones, con prueba previa si lo necesitas.</p>
+        <div class="tags"><span class="tag">Secado</span><span class="tag">Recogidos</span><span class="tag">Eventos</span></div>
+      </article>
+
+      <article class="card">
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><g stroke="#e6cfae" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M19.4 4.6C13 4 8 6.7 6.4 11.4c-1 2.9-.4 5.6.6 7.6"/><path d="M19.4 4.6c.9 6.6-2.1 11.3-7 12.6-1.9.5-3.7.4-5.1 0"/><path d="M5.2 19.8c2.2-5 6-8.6 10.6-10.4"/></g></svg>
+        </div>
+        <h3>Tratamientos</h3>
+        <p>Tratamientos de hidratación, nutrición y cuidado del cuero cabelludo, elegidos según cómo tengas el pelo en ese momento.</p>
+        <div class="tags"><span class="tag">Hidratación</span><span class="tag">Nutrición</span><span class="tag">Cuero cabelludo</span></div>
+      </article>
+    </div>
+
+    <p class="note">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M12 10.6v6M12 7.6h.01" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      Los precios se consultan en el salón o por teléfono, porque dependen del largo del pelo y del trabajo que lleve cada servicio.
+    </p>
+  </div>
+</section>
+
+<!-- ============ GALERIA (marcos preparados) ============ -->
+<section class="band" id="galeria">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Galería</p>
+      <h2>Espacio para vuestras fotos</h2>
+      <p>Estos marcos quedan listos para colocar fotografías reales del salón y de los trabajos hechos allí. En la maqueta se dejan vacíos a propósito: no se usa ninguna imagen que no sea vuestra.</p>
+    </div>
+
+    <div class="grid-gal">
+      <div class="frame">
+        <div class="frame-art"><svg viewBox="0 0 300 400" fill="none" aria-hidden="true"><g stroke="#c8a06a" stroke-opacity=".4" stroke-width="1.4"><circle cx="150" cy="160" r="70"/><circle cx="150" cy="160" r="104"/><path d="M46 300h208"/></g></svg></div>
+        <span class="frame-lbl">Foto 1<br>interior del salón</span>
+      </div>
+      <div class="frame">
+        <div class="frame-art"><svg viewBox="0 0 300 400" fill="none" aria-hidden="true"><g stroke="#c8a06a" stroke-opacity=".4" stroke-width="1.4"><rect x="62" y="96" width="176" height="208" rx="88"/><path d="M62 200h176"/></g></svg></div>
+        <span class="frame-lbl">Foto 2<br>zona de lavado</span>
+      </div>
+      <div class="frame">
+        <div class="frame-art"><svg viewBox="0 0 300 400" fill="none" aria-hidden="true"><g stroke="#c8a06a" stroke-opacity=".4" stroke-width="1.4"><path d="M60 320c0-96 40-160 90-160s90 64 90 160"/><path d="M104 320c0-62 20-104 46-104s46 42 46 104"/></g></svg></div>
+        <span class="frame-lbl">Foto 3<br>un trabajo real</span>
+      </div>
+      <div class="frame">
+        <div class="frame-art"><svg viewBox="0 0 300 400" fill="none" aria-hidden="true"><g stroke="#c8a06a" stroke-opacity=".4" stroke-width="1.4"><path d="M70 90c60 40 60 80 0 120s-60 80 0 120"/><path d="M150 90c60 40 60 80 0 120s-60 80 0 120"/><path d="M230 90c60 40 60 80 0 120s-60 80 0 120"/></g></svg></div>
+        <span class="frame-lbl">Foto 4<br>detalle o producto</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMO PEDIR CITA ============ -->
+<section class="band" id="cita" style="background:linear-gradient(180deg,#0c0c0f 0%,#11111a 100%);border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Cómo pedir cita</p>
+      <h2>Tres pasos y listo</h2>
+      <p>Las citas se gestionan por teléfono, igual que hasta ahora. La web solo sirve para que sea más fácil encontrar el número y saber qué se hace en el salón.</p>
+    </div>
+
+    <div class="grid-steps">
+      <div class="step">
+        <div class="step-n">1</div>
+        <h3>Llama al salón</h3>
+        <p>Marca el <a href="tel:+34967435111">967 435 111</a>. Si llamas desde el móvil, basta con pulsar el número en esta página.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">2</div>
+        <h3>Di qué necesitas</h3>
+        <p>Cuenta si vienes a cortar, a color, a peinado o a un tratamiento, para reservar el tiempo que haga falta.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">3</div>
+        <h3>Acordáis el día</h3>
+        <p>Se busca un hueco que te encaje y se confirma en la misma llamada. Si no puedes venir, avisa para liberar la cita.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section class="band band-light" id="contacto">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Contacto</p>
+      <h2>Dónde estamos</h2>
+      <p>En el centro de Riópar, en la provincia de Albacete.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div>
+        <div class="info-list">
+          <div class="info">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 3.5h2.3l1.5 3.7-1.9 1.4a11.4 11.4 0 0 0 5.5 5.5l1.4-1.9 3.7 1.5v2.3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z" stroke="#e6cfae" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="info-b">
+              <div class="info-k">Teléfono</div>
+              <div class="info-v"><a href="tel:+34967435111">967 435 111</a></div>
+              <div class="info-s">Única vía para pedir cita.</div>
+            </div>
+          </div>
+
+          <div class="info">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><g stroke="#e6cfae" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></g></svg></div>
+            <div class="info-b">
+              <div class="info-k">Dirección</div>
+              <div class="info-v">C/ Ciudad Real, 16</div>
+              <div class="info-s">02450 Riópar (Albacete)</div>
+            </div>
+          </div>
+
+          <div class="info">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><g stroke="#e6cfae" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.6"/><path d="M12 7.4V12l3 2"/></g></svg></div>
+            <div class="info-b">
+              <div class="info-k">Horario</div>
+              <div class="info-v">Consultar horario</div>
+              <div class="info-s">Se indica por teléfono.</div>
+            </div>
+          </div>
+
+          <div class="info">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><g stroke="#e6cfae" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.4" y="5.4" width="17.2" height="13.2" rx="2.6"/><path d="m4.4 7 7.6 5.6L19.6 7"/></g></svg></div>
+            <div class="info-b">
+              <div class="info-k">Email</div>
+              <div class="info-v"><a href="mailto:riederma@hotmail.com">riederma@hotmail.com</a></div>
+              <div class="info-s">Para cualquier consulta que no sea urgente.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="map-card">
+        <svg viewBox="0 0 640 450" role="img" aria-label="Croquis esquemático de la ubicación del salón en la calle Ciudad Real de Riópar. No es un mapa a escala.">
+          <defs>
+            <linearGradient id="mp" x1="0" y1="0" x2="640" y2="450" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#f4efe8"/><stop offset="1" stop-color="#e8e0d4"/>
+            </linearGradient>
+          </defs>
+          <rect width="640" height="450" rx="10" fill="url(#mp)"/>
+          <!-- manzanas -->
+          <g fill="#ded5c6" fill-opacity=".85">
+            <rect x="40" y="40" width="180" height="120" rx="7"/>
+            <rect x="256" y="40" width="150" height="120" rx="7"/>
+            <rect x="442" y="40" width="158" height="190" rx="7"/>
+            <rect x="40" y="196" width="180" height="100" rx="7"/>
+            <rect x="256" y="196" width="150" height="100" rx="7"/>
+            <rect x="40" y="332" width="180" height="78" rx="7"/>
+            <rect x="256" y="332" width="150" height="78" rx="7"/>
+            <rect x="442" y="266" width="158" height="144" rx="7"/>
+          </g>
+          <!-- calles secundarias -->
+          <g stroke="#cfc3b0" stroke-width="12" stroke-linecap="round">
+            <path d="M238 34v382"/>
+            <path d="M424 34v382"/>
+            <path d="M32 178h576"/>
+            <path d="M32 314h576"/>
+          </g>
+          <!-- calle principal -->
+          <path d="M32 240h576" stroke="#b79a6e" stroke-width="22" stroke-linecap="round"/>
+          <path d="M32 240h576" stroke="#f4efe8" stroke-width="2.4" stroke-dasharray="18 16" stroke-linecap="round"/>
+          <text x="48" y="232" fill="#6b5536" font-family="system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="19" font-weight="700" letter-spacing=".5">C/ Ciudad Real</text>
+          <!-- marcador -->
+          <g transform="translate(318 240)">
+            <circle r="34" fill="#c8a06a" fill-opacity=".2"/>
+            <circle r="20" fill="#c8a06a" fill-opacity=".34"/>
+            <path d="M0-44c-11.6 0-21 9.4-21 21C-21-9 0 16 0 16s21-25 21-39c0-11.6-9.4-21-21-21Z" fill="#1d1d25"/>
+            <circle cy="-23" r="7.4" fill="#e6cfae"/>
+          </g>
+          <text x="318" y="292" text-anchor="middle" fill="#1d1d25" font-family="system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="20" font-weight="700">Salón Azabache</text>
+          <text x="318" y="316" text-anchor="middle" fill="#6b5536" font-family="system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="16" font-weight="600">Nº 16</text>
+          <text x="604" y="420" text-anchor="end" fill="#8d7f6a" font-family="system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="14" font-weight="600">Riópar · 02450</text>
+          <rect x=".75" y=".75" width="638.5" height="448.5" rx="9.25" fill="none" stroke="#000" stroke-opacity=".08" stroke-width="1.5"/>
+        </svg>
+        <p class="map-cap">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M12 10.6v6M12 7.6h.01" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+          Croquis orientativo dibujado para la maqueta. No es un mapa a escala ni refleja el trazado exacto de las calles.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PIE ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-name">Peluquería Salón Azabache<small>C/ Ciudad Real, 16 · 02450 Riópar (Albacete)</small></div>
+      <div class="foot-links">
+        <a href="tel:+34967435111">Teléfono: 967 435 111</a>
+        <a href="mailto:riederma@hotmail.com">riederma@hotmail.com</a>
+        <span>Consultar horario</span>
+      </div>
+    </div>
+    <div class="foot-rule"></div>
+    <p class="foot-studio"><strong>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</strong></p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,594 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fontanería Miguel Iniesta · Elda</title>
+<meta name="description" content="Fontanería y reformas de baño en Elda. Servicio y tienda de baño con 35 años de experiencia. Cambio de bañera por plato de ducha.">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  :root{
+    --azul-900:#07243c;
+    --azul-800:#0b3356;
+    --azul-700:#11466f;
+    --azul-500:#1d6fa8;
+    --agua-400:#34a8c9;
+    --agua-200:#9fdcea;
+    --agua-050:#eaf6fa;
+    --cobre:#d98b3f;
+    --cobre-claro:#f2b872;
+    --tinta:#132430;
+    --gris:#5d7281;
+    --linea:#dfe8ee;
+    --blanco:#ffffff;
+    --hueso:#f6fafc;
+    --barra:44px;
+    --radio:18px;
+    --sombra:0 18px 44px -24px rgba(7,36,60,.42);
+    --fuente:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  }
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;padding-top:var(--barra);
+    font-family:var(--fuente);
+    color:var(--tinta);background:var(--blanco);
+    font-size:17px;line-height:1.65;
+    overflow-x:hidden;
+  }
+  img,svg{max-width:100%}
+  h1,h2,h3{line-height:1.15;margin:0;letter-spacing:-.02em;font-weight:700}
+  p{margin:0}
+  a{color:inherit}
+
+  /* ---------- barra fija ---------- */
+  .barra{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    min-height:var(--barra);display:flex;align-items:center;justify-content:center;
+    padding:7px 14px;
+    background:var(--azul-900);
+    color:#cfe4f0;
+    font-size:12.5px;line-height:1.35;text-align:center;letter-spacing:.02em;
+    border-bottom:1px solid rgba(159,220,234,.22);
+  }
+  .barra span{display:inline-block;max-width:100%}
+
+  .env{width:100%;max-width:1160px;margin:0 auto;padding:0 24px}
+  .seccion{padding:84px 0}
+  .etiqueta{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--azul-500);margin-bottom:16px
+  }
+  .etiqueta::before{content:"";width:22px;height:2px;background:var(--cobre);border-radius:2px}
+
+  /* ---------- cabecera ---------- */
+  .cabecera{
+    position:sticky;top:var(--barra);z-index:90;
+    background:rgba(255,255,255,.92);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--linea);
+  }
+  .cabecera .env{display:flex;align-items:center;gap:16px;min-height:68px;flex-wrap:wrap;padding-top:10px;padding-bottom:10px}
+  .marca{display:flex;align-items:center;gap:12px;margin-right:auto;min-width:0}
+  .marca .gota{flex:0 0 auto;width:38px;height:38px}
+  .marca b{display:block;font-size:16px;letter-spacing:-.01em;line-height:1.2}
+  .marca small{display:block;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gris)}
+  .nav{display:flex;gap:22px;font-size:14.5px;color:var(--gris)}
+  .nav a{text-decoration:none}
+  .nav a:hover{color:var(--azul-700)}
+
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    padding:14px 24px;border-radius:999px;
+    font-size:15.5px;font-weight:700;text-decoration:none;
+    border:1px solid transparent;transition:transform .15s ease,box-shadow .15s ease
+  }
+  .btn svg{flex:0 0 auto}
+  .btn-cobre{background:linear-gradient(135deg,var(--cobre-claro),var(--cobre));color:#3a1f05;box-shadow:0 12px 26px -14px rgba(217,139,63,.85)}
+  .btn-azul{background:var(--azul-800);color:#fff}
+  .btn-linea{border-color:rgba(255,255,255,.4);color:#fff}
+  .btn-linea-azul{border-color:var(--linea);color:var(--azul-800);background:#fff}
+  .btn:hover{transform:translateY(-2px)}
+  .cabecera .btn{padding:11px 18px;font-size:14.5px}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;color:#fff;
+    background:
+      radial-gradient(1100px 520px at 88% -8%,rgba(52,168,201,.55),transparent 62%),
+      radial-gradient(760px 480px at 6% 108%,rgba(29,111,168,.6),transparent 65%),
+      linear-gradient(160deg,var(--azul-900),var(--azul-700) 58%,#0a3b60);
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
+    background-size:64px 64px;mask-image:radial-gradient(70% 70% at 70% 20%,#000,transparent)
+  }
+  .hero .env{position:relative;z-index:2}
+  .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:52px;align-items:center;padding:92px 0 96px}
+  .hero h1{font-size:clamp(2.1rem,4.6vw,3.5rem);margin-bottom:20px}
+  .hero h1 em{font-style:normal;color:var(--agua-200)}
+  .hero .lead{font-size:clamp(1.02rem,1.5vw,1.16rem);color:#d5e7f2;max-width:32em}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:13px;margin-top:30px}
+  .hero-nota{margin-top:18px;font-size:13.5px;color:#a9c6d8}
+  .sellos{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px}
+  .sello{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:7px 14px;border-radius:999px;font-size:13px;font-weight:600;
+    background:rgba(255,255,255,.1);border:1px solid rgba(159,220,234,.3);color:#e4f3f9
+  }
+  .sello b{color:#fff}
+
+  /* tarjeta hero */
+  .tarjeta-hero{
+    background:rgba(255,255,255,.07);border:1px solid rgba(159,220,234,.28);
+    border-radius:26px;padding:26px;backdrop-filter:blur(6px)
+  }
+  .tarjeta-hero h3{font-size:1.06rem;color:#fff;margin-bottom:4px}
+  .tarjeta-hero > p{font-size:13.5px;color:#bcd6e5;margin-bottom:18px}
+  .mini{display:grid;gap:11px}
+  .mini div{
+    display:flex;gap:12px;align-items:flex-start;
+    background:rgba(7,36,60,.34);border-radius:14px;padding:13px 15px;
+    font-size:14.5px;color:#e8f4f9;line-height:1.5
+  }
+  .mini svg{flex:0 0 auto;margin-top:2px}
+  .mini span{min-width:0;word-break:break-word}
+  .mini b{display:block;color:#fff}
+  .mini i{font-style:normal;color:#a9c6d8;font-size:13px}
+
+  /* ---------- servicios ---------- */
+  .servicios{background:var(--hueso);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+  .cab-seccion{max-width:46em;margin-bottom:44px}
+  .cab-seccion h2{font-size:clamp(1.65rem,3vw,2.3rem);margin-bottom:14px}
+  .cab-seccion p{color:var(--gris)}
+  .rejilla{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+  .tarjeta{
+    background:#fff;border:1px solid var(--linea);border-radius:var(--radio);
+    padding:28px;box-shadow:var(--sombra);
+    display:flex;flex-direction:column;gap:12px;
+    transition:transform .18s ease,border-color .18s ease
+  }
+  .tarjeta:hover{transform:translateY(-3px);border-color:var(--agua-200)}
+  .icono{
+    width:52px;height:52px;border-radius:14px;
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(140deg,var(--agua-050),var(--agua-200));
+    border:1px solid #cfe9f1
+  }
+  .tarjeta h3{font-size:1.14rem}
+  .tarjeta p{color:var(--gris);font-size:15.5px}
+  .tarjeta ul{margin:0;padding-left:19px;color:var(--gris);font-size:14.5px}
+  .tarjeta ul li{margin-bottom:4px}
+  .destacada{background:linear-gradient(150deg,#0c3a5e,#0a2b48);border-color:#0a2b48;color:#eaf4f9}
+  .destacada h3{color:#fff}
+  .destacada p,.destacada ul{color:#c4dced}
+  .destacada .icono{background:linear-gradient(140deg,rgba(242,184,114,.9),var(--cobre));border-color:rgba(255,255,255,.25)}
+  .insignia{
+    align-self:flex-start;font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+    background:rgba(242,184,114,.18);color:var(--cobre-claro);
+    border:1px solid rgba(242,184,114,.45);padding:5px 11px;border-radius:999px
+  }
+
+  /* ---------- pasos ---------- */
+  .pasos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;counter-reset:p}
+  .paso{
+    position:relative;background:#fff;border:1px solid var(--linea);border-radius:var(--radio);
+    padding:30px 26px 26px;box-shadow:var(--sombra)
+  }
+  .paso .num{
+    width:46px;height:46px;border-radius:13px;margin-bottom:16px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:19px;font-weight:700;color:#fff;
+    background:linear-gradient(140deg,var(--azul-500),var(--azul-800))
+  }
+  .paso h3{font-size:1.1rem;margin-bottom:9px}
+  .paso p{color:var(--gris);font-size:15.5px}
+  .cierre-pasos{
+    margin-top:30px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;
+    background:var(--agua-050);border:1px solid #cfe9f1;border-radius:var(--radio);padding:24px 26px
+  }
+  .cierre-pasos p{font-size:15.5px;color:var(--azul-800);max-width:40em}
+  .cierre-pasos b{display:block;font-size:1.05rem}
+
+  /* ---------- contacto ---------- */
+  .contacto{background:var(--hueso);border-top:1px solid var(--linea)}
+  .contacto-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+  .panel{background:#fff;border:1px solid var(--linea);border-radius:var(--radio);padding:28px;box-shadow:var(--sombra)}
+  .datos{display:grid;gap:16px;margin:0 0 22px;padding:0;list-style:none}
+  .datos li{display:flex;gap:14px;align-items:flex-start}
+  .datos .ic{
+    flex:0 0 auto;width:42px;height:42px;border-radius:12px;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--agua-050);border:1px solid #cfe9f1
+  }
+  .datos .tx{min-width:0}
+  .datos small{display:block;font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--azul-500);margin-bottom:2px}
+  .datos strong{display:block;font-size:17px;font-weight:700;word-break:break-word}
+  .datos a{text-decoration:none}
+  .datos a:hover{color:var(--azul-500)}
+  .datos p{font-size:15px;color:var(--gris)}
+  .horario{border-top:1px solid var(--linea);padding-top:18px;margin-top:4px}
+  .horario h3{font-size:1.02rem;margin-bottom:12px}
+  .horario dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:8px 14px;font-size:15px}
+  .horario dt{color:var(--gris)}
+  .horario dd{margin:0;text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
+  .panel-mapa{padding:0;overflow:hidden;background:#fff}
+  .mapa-cab{padding:22px 26px 14px}
+  .mapa-cab h3{font-size:1.05rem;margin-bottom:5px}
+  .mapa-cab p{font-size:13.5px;color:var(--gris)}
+  .mapa-lienzo{display:block;width:100%;height:auto;background:#eef5f8;border-top:1px solid var(--linea)}
+  .mapa-pie{padding:14px 26px 22px;font-size:12.5px;color:var(--gris)}
+
+  /* ---------- pie ---------- */
+  .pie{background:var(--azul-900);color:#b9d3e3;padding:58px 0 34px;font-size:15px}
+  .pie-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:34px;padding-bottom:30px;border-bottom:1px solid rgba(159,220,234,.2)}
+  .pie h4{margin:0 0 12px;font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--agua-200)}
+  .pie p{margin-bottom:8px}
+  .pie a{color:#dcecf5;text-decoration:none;word-break:break-word}
+  .pie a:hover{color:#fff;text-decoration:underline}
+  .pie .marca b{color:#fff;font-size:17px}
+  .pie .marca small{color:#8fb2c7}
+  .pie-legal{padding-top:22px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:13.5px;color:#8fb2c7}
+  .credito{color:#cfe4f0}
+
+  @media (max-width:1000px){
+    .hero-grid{grid-template-columns:1fr;gap:38px;padding:66px 0 72px}
+    .contacto-grid{grid-template-columns:1fr}
+    .pasos{grid-template-columns:1fr}
+    .pie-grid{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:760px){
+    :root{--barra:54px}
+    body{font-size:16px}
+    .env{padding:0 18px}
+    .seccion{padding:62px 0}
+    .nav{display:none}
+    .cabecera .env{min-height:62px}
+    .rejilla{grid-template-columns:1fr}
+    .pie-grid{grid-template-columns:1fr;gap:26px}
+    .tarjeta,.paso,.panel{padding:22px}
+    .mapa-cab,.mapa-pie{padding-left:20px;padding-right:20px}
+    .cierre-pasos{padding:20px}
+    .hero-ctas .btn{width:100%}
+    .barra{font-size:12px;padding:8px 14px}
+  }
+  @media (max-width:420px){
+    .marca small{letter-spacing:.06em}
+    .cabecera .btn{padding:10px 14px;font-size:13.5px}
+  }
+</style>
+</head>
+<body>
+
+<div class="barra"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<header class="cabecera">
+  <div class="env">
+    <div class="marca">
+      <svg class="gota" viewBox="0 0 40 40" aria-hidden="true">
+        <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#34a8c9"/><stop offset="1" stop-color="#0b3356"/>
+        </linearGradient></defs>
+        <rect width="40" height="40" rx="11" fill="url(#g1)"/>
+        <path d="M20 9c4.4 5 7.4 8.6 7.4 12.4A7.4 7.4 0 0 1 20 28.8a7.4 7.4 0 0 1-7.4-7.4C12.6 17.6 15.6 14 20 9z" fill="#fff" opacity=".95"/>
+        <path d="M20 24.4a3 3 0 0 0 3-3" fill="none" stroke="#0b3356" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      <span>
+        <b>Fontanería Miguel Iniesta</b>
+        <small>Elda · Alicante</small>
+      </span>
+    </div>
+    <nav class="nav">
+      <a href="#servicios">Servicios</a>
+      <a href="#presupuesto">Presupuesto</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="btn btn-azul" href="tel:+34686092647">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+      686 092 647
+    </a>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="env">
+      <div class="hero-grid">
+        <div>
+          <div class="sellos">
+            <span class="sello"><b>35 años</b> de experiencia</span>
+            <span class="sello">Servicio y tienda de baño</span>
+            <span class="sello">Elda · 03600</span>
+          </div>
+          <h1>Fontanería y reformas de baño en Elda, <em>con tienda propia</em></h1>
+          <p class="lead">Desde una fuga que no puede esperar hasta cambiar el baño completo. Atendemos, asesoramos y ejecutamos nosotros mismos, con el material a la vista en nuestra tienda de la calle Jaime Balmes.</p>
+          <div class="hero-ctas">
+            <a class="btn btn-cobre" href="tel:+34686092647">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+              Llamar al 686 092 647
+            </a>
+            <a class="btn btn-linea" href="#presupuesto">Cómo pedir presupuesto</a>
+          </div>
+          <p class="hero-nota">Atención directa por teléfono en horario de tienda. Sin centralitas ni intermediarios.</p>
+        </div>
+
+        <aside class="tarjeta-hero">
+          <h3>Hablar con nosotros</h3>
+          <p>Cuéntenos qué necesita y le decimos cómo lo resolvemos.</p>
+          <div class="mini">
+            <div>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9fdcea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+              <span><b><a href="tel:+34686092647" style="text-decoration:none">686 092 647</a></b><i>Teléfono móvil</i></span>
+            </div>
+            <div>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9fdcea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m3 6 9 7 9-7"/></svg>
+              <span><b><a href="mailto:migueliniesta@hotmail.com" style="text-decoration:none">migueliniesta@hotmail.com</a></b><i>Correo electrónico</i></span>
+            </div>
+            <div>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9fdcea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span><b>Calle Jaime Balmes, 46</b><i>03600 Elda (Alicante)</i></span>
+            </div>
+            <div>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9fdcea" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+              <span><b>L-V 9:00-14:00 y 17:00-21:00</b><i>Sábados de 11:00 a 14:00</i></span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section class="seccion servicios" id="servicios">
+    <div class="env">
+      <div class="cab-seccion">
+        <span class="etiqueta">Servicios</span>
+        <h2>Lo que hacemos cada día</h2>
+        <p>Fontanería y baño, de la avería puntual a la reforma completa. Un solo interlocutor para el trabajo y para el material.</p>
+      </div>
+      <div class="rejilla">
+
+        <article class="tarjeta">
+          <div class="icono">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0b3356" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h6v4H3z"/><path d="M9 9h5a3 3 0 0 1 3 3v3"/><path d="M14 15h6v5h-6z"/><path d="M6 11v3"/></svg>
+          </div>
+          <h3>Fontanería general</h3>
+          <p>Reparaciones e instalaciones de agua y desagüe en vivienda y local.</p>
+          <ul>
+            <li>Fugas, atascos y averías</li>
+            <li>Grifería, cisternas y sanitarios</li>
+            <li>Sustitución de tuberías y llaves</li>
+          </ul>
+        </article>
+
+        <article class="tarjeta">
+          <div class="icono">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0b3356" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 13h18v3a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"/><path d="M7 13V7a2 2 0 0 1 2-2h1"/><path d="M14 8h4"/><path d="M16 6v4"/></svg>
+          </div>
+          <h3>Reformas de baño</h3>
+          <p>Reforma integral del baño coordinada por nosotros de principio a fin.</p>
+          <ul>
+            <li>Distribución, fontanería y sanitarios</li>
+            <li>Alicatado y acabados</li>
+            <li>Elección del material en nuestra tienda</li>
+          </ul>
+        </article>
+
+        <article class="tarjeta destacada">
+          <span class="insignia">Nuestro trabajo más pedido</span>
+          <div class="icono">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3a1f05" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 16h16v2a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3z"/><path d="M8 12h8"/><path d="M12 4v4"/><path d="M10 6h4"/></svg>
+          </div>
+          <h3>Cambio de bañera por plato de ducha</h3>
+          <p>Retiramos la bañera y dejamos un plato de ducha accesible, cómodo y sin escalón.</p>
+          <ul>
+            <li>Retirada de la bañera y de los escombros</li>
+            <li>Adaptación de desagüe y paredes</li>
+            <li>Mampara, grifería y acabado</li>
+          </ul>
+        </article>
+
+        <article class="tarjeta">
+          <div class="icono">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0b3356" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h16l-1 11H5z"/><path d="M4 9 6 4h12l2 5"/><path d="M9 13h6"/></svg>
+          </div>
+          <h3>Tienda de baño</h3>
+          <p>Mostramos el material en tienda para que vea y toque lo que va a instalar.</p>
+          <ul>
+            <li>Sanitarios, muebles y grifería</li>
+            <li>Platos de ducha y mamparas</li>
+            <li>Asesoramiento y medidas reales</li>
+          </ul>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PASOS -->
+  <section class="seccion" id="presupuesto">
+    <div class="env">
+      <div class="cab-seccion">
+        <span class="etiqueta">Cómo pedir presupuesto</span>
+        <h2>Tres pasos y sabrá a qué atenerse</h2>
+        <p>Sin formularios interminables: una llamada, una visita y un presupuesto por escrito.</p>
+      </div>
+
+      <div class="pasos">
+        <div class="paso">
+          <div class="num">1</div>
+          <h3>Llámenos o escríbanos</h3>
+          <p>Cuéntenos qué necesita por teléfono o por correo: una avería, un baño entero o cambiar la bañera por una ducha.</p>
+        </div>
+        <div class="paso">
+          <div class="num">2</div>
+          <h3>Vemos el baño</h3>
+          <p>Pasamos a tomar medidas y comprobar la instalación, o lo vemos juntos en la tienda si ya tiene claro el material.</p>
+        </div>
+        <div class="paso">
+          <div class="num">3</div>
+          <h3>Presupuesto por escrito</h3>
+          <p>Le detallamos el trabajo y el material. Si da el visto bueno, acordamos fechas y nos ponemos a ello.</p>
+        </div>
+      </div>
+
+      <div class="cierre-pasos">
+        <p><b>¿Prefiere empezar por el teléfono?</b>Es la vía más rápida: atendemos directamente en horario de tienda.</p>
+        <a class="btn btn-azul" href="tel:+34686092647">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+          Llamar al 686 092 647
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="seccion contacto" id="contacto">
+    <div class="env">
+      <div class="cab-seccion">
+        <span class="etiqueta">Contacto</span>
+        <h2>Dónde estamos y cuándo abrimos</h2>
+        <p>Tienda y taller en el mismo sitio, en la calle Jaime Balmes de Elda.</p>
+      </div>
+
+      <div class="contacto-grid">
+        <div class="panel">
+          <ul class="datos">
+            <li>
+              <span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#11466f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span>
+              <span class="tx"><small>Teléfono</small><strong><a href="tel:+34686092647">686 092 647</a></strong></span>
+            </li>
+            <li>
+              <span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#11466f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+              <span class="tx"><small>Dirección</small><strong>Calle Jaime Balmes, 46</strong><p>03600 Elda (Alicante)</p></span>
+            </li>
+            <li>
+              <span class="ic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#11466f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m3 6 9 7 9-7"/></svg></span>
+              <span class="tx"><small>Correo</small><strong><a href="mailto:migueliniesta@hotmail.com">migueliniesta@hotmail.com</a></strong></span>
+            </li>
+          </ul>
+
+          <div class="horario">
+            <h3>Horario de atención</h3>
+            <dl>
+              <dt>Lunes a viernes</dt><dd>9:00 - 14:00</dd>
+              <dt>Lunes a viernes (tarde)</dt><dd>17:00 - 21:00</dd>
+              <dt>Sábados</dt><dd>11:00 - 14:00</dd>
+              <dt>Domingos</dt><dd>Cerrado</dd>
+            </dl>
+          </div>
+        </div>
+
+        <div class="panel panel-mapa">
+          <div class="mapa-cab">
+            <h3>Cómo llegar</h3>
+            <p>Croquis orientativo de la zona, no un mapa a escala.</p>
+          </div>
+          <svg class="mapa-lienzo" viewBox="0 0 520 420" role="img" aria-label="Croquis esquemático de la zona de la calle Jaime Balmes, 46, en Elda">
+            <defs>
+              <linearGradient id="fondoMapa" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#f1f8fb"/><stop offset="1" stop-color="#e2eef4"/>
+              </linearGradient>
+            </defs>
+            <rect width="520" height="420" fill="url(#fondoMapa)"/>
+
+            <!-- manzanas -->
+            <g fill="#dbe8ef" stroke="#cbdce6" stroke-width="2">
+              <rect x="28" y="30" width="150" height="110" rx="7"/>
+              <rect x="222" y="30" width="118" height="110" rx="7"/>
+              <rect x="384" y="30" width="108" height="110" rx="7"/>
+              <rect x="28" y="196" width="150" height="86" rx="7"/>
+              <rect x="384" y="196" width="108" height="86" rx="7"/>
+              <rect x="28" y="330" width="150" height="66" rx="7"/>
+              <rect x="222" y="330" width="118" height="66" rx="7"/>
+              <rect x="384" y="330" width="108" height="66" rx="7"/>
+            </g>
+
+            <!-- calles -->
+            <g stroke="#ffffff" stroke-width="26" stroke-linecap="square">
+              <path d="M0 168h520"/>
+              <path d="M0 306h520"/>
+              <path d="M200 0v420"/>
+              <path d="M362 0v420"/>
+            </g>
+            <g stroke="#b9cfdb" stroke-width="1.5" stroke-dasharray="9 9">
+              <path d="M0 168h520"/><path d="M0 306h520"/>
+              <path d="M200 0v420"/><path d="M362 0v420"/>
+            </g>
+
+            <!-- zona verde -->
+            <g>
+              <rect x="222" y="196" width="118" height="86" rx="7" fill="#d6ebdd" stroke="#bfdfc9" stroke-width="2"/>
+              <circle cx="258" cy="228" r="13" fill="#aed8ba"/>
+              <circle cx="302" cy="252" r="10" fill="#aed8ba"/>
+              <text x="281" y="276" text-anchor="middle" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="12" fill="#5c8a6c">zona verde</text>
+            </g>
+
+            <!-- rótulos de calles -->
+            <g font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="13" fill="#5d7281">
+              <text x="236" y="163">Calle Jaime Balmes</text>
+              <text x="16" y="301">calle paralela</text>
+              <text x="207" y="24" >calle</text>
+              <text x="369" y="24">calle</text>
+            </g>
+
+            <!-- marcador -->
+            <g>
+              <path d="M110 168v-18" stroke="#d98b3f" stroke-width="3" stroke-linecap="round"/>
+              <circle cx="110" cy="168" r="5" fill="#d98b3f"/>
+              <g transform="translate(110 96)">
+                <path d="M0 54c0-16 17-24 17-36A17 17 0 1 0-17 18C-17 30 0 38 0 54z" fill="#d98b3f"/>
+                <circle cx="0" cy="18" r="6.5" fill="#fff"/>
+              </g>
+              <rect x="152" y="94" width="196" height="54" rx="10" fill="#07243c"/>
+              <text x="166" y="116" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="14" font-weight="700" fill="#ffffff">Jaime Balmes, 46</text>
+              <text x="166" y="136" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="12.5" fill="#9fdcea">Fontanería Miguel Iniesta</text>
+            </g>
+
+            <!-- rosa de los vientos -->
+            <g transform="translate(466 384)">
+              <circle r="20" fill="#ffffff" stroke="#cbdce6" stroke-width="1.5"/>
+              <path d="M0 -13 4 2 0 -1 -4 2z" fill="#11466f"/>
+              <text x="0" y="-15" text-anchor="middle" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="9" fill="#5d7281">N</text>
+            </g>
+          </svg>
+          <p class="mapa-pie">Croquis esquemático elaborado para esta propuesta. Para la web definitiva se puede sustituir por un mapa real.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="pie">
+  <div class="env">
+    <div class="pie-grid">
+      <div>
+        <div class="marca" style="margin-bottom:12px">
+          <span><b>Fontanería Miguel Iniesta</b><small>Fontanería · Reformas de baño · Tienda</small></span>
+        </div>
+        <p>35 años de experiencia en Elda, con servicio y tienda de baño.</p>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <p><a href="tel:+34686092647">686 092 647</a></p>
+        <p><a href="mailto:migueliniesta@hotmail.com">migueliniesta@hotmail.com</a></p>
+        <p>Calle Jaime Balmes, 46<br>03600 Elda (Alicante)</p>
+      </div>
+      <div>
+        <h4>Horario</h4>
+        <p>Lunes a viernes<br>9:00 - 14:00 y 17:00 - 21:00</p>
+        <p>Sábados<br>11:00 - 14:00</p>
+      </div>
+    </div>
+    <div class="pie-legal">
+      <span>Fontanería Miguel Iniesta · Elda (Alicante)</span>
+      <span class="credito">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

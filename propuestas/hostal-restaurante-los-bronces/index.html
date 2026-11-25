@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hostal Restaurante Los Bronces · Riópar</title>
+<meta name="description" content="Propuesta de diseño web para Hostal Restaurante Los Bronces, Riópar (Albacete). Maqueta no oficial de FFFFFFstudio.">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  :root{
+    --ink:#161a18;
+    --ink-2:#2c342f;
+    --muted:#5e6b63;
+    --paper:#f6f3ec;
+    --paper-2:#efeadf;
+    --line:#dcd5c6;
+    --green:#1f3a31;
+    --green-2:#2f5a4a;
+    --bronze:#9a6a33;
+    --bronze-2:#c08f4e;
+    --bar-h:40px;
+    --fs: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
+    --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    font-family:var(--font);
+    font-size:var(--fs);
+    line-height:1.62;
+    color:var(--ink);
+    background:var(--paper);
+    overflow-x:hidden;
+    padding-top:var(--bar-h);
+  }
+  img,svg{max-width:100%}
+  a{color:inherit}
+  h1,h2,h3,h4{line-height:1.14;letter-spacing:-0.02em;margin:0;font-weight:650}
+  p{margin:0}
+  .wrap{width:100%;max-width:1160px;margin:0 auto;padding:0 24px}
+  .eyebrow{
+    font-size:.6875rem;letter-spacing:.18em;text-transform:uppercase;
+    font-weight:700;color:var(--bronze);margin:0 0 14px
+  }
+  .eyebrow.light{color:var(--bronze-2)}
+
+  /* ---------- barra fija ---------- */
+  .topbar{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    height:var(--bar-h);
+    display:flex;align-items:center;justify-content:center;
+    background:#11201b;
+    color:#e9e2d2;
+    border-bottom:1px solid rgba(192,143,78,.45);
+    padding:0 12px;
+  }
+  .topbar span{
+    font-size:.6875rem;line-height:1.25;letter-spacing:.04em;
+    text-align:center;font-weight:550;
+    max-width:100%;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;color:#f2ede1;
+    background:
+      radial-gradient(1100px 520px at 78% 8%, rgba(192,143,78,.30), transparent 62%),
+      radial-gradient(760px 520px at 8% 92%, rgba(47,90,74,.70), transparent 65%),
+      linear-gradient(168deg,#13241e 0%,#1f3a31 48%,#16271f 100%);
+  }
+  .hero-art{position:absolute;inset:0;width:100%;height:100%;opacity:.5;pointer-events:none}
+  .hero-inner{position:relative;padding:76px 0 68px}
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.9fr);gap:52px;align-items:end}
+  .hero h1{font-size:clamp(2.05rem,1.2rem + 3.3vw,3.9rem);font-weight:680;color:#fbf8f1}
+  .hero h1 em{font-style:normal;color:var(--bronze-2);display:block}
+  .hero-lead{margin-top:20px;max-width:34em;color:#d4cfc0;font-size:1.0625rem}
+  .facts{
+    display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;padding:0;list-style:none
+  }
+  .facts li{
+    border:1px solid rgba(233,226,210,.28);border-radius:999px;
+    padding:7px 15px;font-size:.8125rem;color:#e7e0d0;background:rgba(255,255,255,.04)
+  }
+  .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:14px 22px;border-radius:10px;text-decoration:none;
+    font-weight:650;font-size:.9375rem;border:1px solid transparent;
+    min-height:48px;
+  }
+  .btn-primary{background:var(--bronze-2);color:#1a1205;border-color:var(--bronze-2)}
+  .btn-ghost{border-color:rgba(233,226,210,.42);color:#f0ebdf}
+  .btn svg{flex:0 0 auto}
+  .hero-card{
+    background:rgba(246,243,236,.07);
+    border:1px solid rgba(233,226,210,.22);
+    border-radius:14px;padding:24px;backdrop-filter:blur(2px)
+  }
+  .hero-card h2{font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:var(--bronze-2);font-weight:700}
+  .hero-card dl{margin:16px 0 0;display:grid;gap:14px}
+  .hero-card dt{font-size:.6875rem;letter-spacing:.12em;text-transform:uppercase;color:#aeb6ae}
+  .hero-card dd{margin:2px 0 0;font-size:.9375rem;color:#f2ede1}
+  .hero-card a{text-decoration:none;border-bottom:1px solid rgba(192,143,78,.6)}
+
+  /* ---------- secciones ---------- */
+  section{padding:76px 0}
+  .sec-head{max-width:46em;margin-bottom:40px}
+  .sec-head h2{font-size:clamp(1.55rem,1.15rem + 1.5vw,2.3rem)}
+  .sec-head p{margin-top:14px;color:var(--muted)}
+  .alt{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+
+  .duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+  .card{
+    background:#fffdf8;border:1px solid var(--line);border-radius:14px;
+    padding:28px;display:flex;flex-direction:column;gap:16px;min-width:0
+  }
+  .card h3{font-size:1.25rem}
+  .card p{color:var(--muted)}
+  .thumb{
+    height:160px;border-radius:10px;overflow:hidden;position:relative;
+    background:linear-gradient(150deg,#1f3a31,#2f5a4a 55%,#3c6b56)
+  }
+  .thumb.warm{background:linear-gradient(150deg,#6f4a21,#9a6a33 55%,#c08f4e)}
+  .thumb svg{position:absolute;inset:0;width:100%;height:100%}
+  .tags{display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:0;list-style:none}
+  .tags li{
+    font-size:.75rem;color:var(--green);background:#e8efe9;
+    border:1px solid #cfdfd4;border-radius:7px;padding:5px 10px
+  }
+
+  /* bloques vacíos preparados */
+  .slots{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:8px}
+  .slot{
+    border:1.5px dashed #c6bda8;border-radius:12px;background:#fdfbf5;
+    padding:22px;min-width:0
+  }
+  .slot h4{font-size:1rem;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .slot .badge{
+    font-size:.625rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;
+    color:#7a6a4a;background:#f1ead8;border:1px solid #ddd2b8;border-radius:999px;padding:3px 9px
+  }
+  .slot p{margin-top:10px;color:var(--muted);font-size:.875rem}
+  .lines{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:11px}
+  .lines li{display:flex;align-items:center;gap:12px}
+  .lines .ph{height:9px;border-radius:5px;background:#e6dfcd;flex:1 1 auto;min-width:0}
+  .lines .ph.s{flex:0 0 52px}
+  .note{
+    margin-top:22px;font-size:.8125rem;color:#6b6252;
+    background:#f3eee0;border-left:3px solid var(--bronze-2);
+    border-radius:0 8px 8px 0;padding:12px 16px
+  }
+
+  /* pasos */
+  .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;counter-reset:s}
+  .step{
+    background:#fffdf8;border:1px solid var(--line);border-radius:14px;padding:26px;min-width:0
+  }
+  .step .num{
+    width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+    background:var(--green);color:#f3eee0;font-weight:700;font-size:1rem;margin-bottom:16px
+  }
+  .step h3{font-size:1.0625rem}
+  .step p{margin-top:10px;color:var(--muted);font-size:.9375rem}
+  .step .act{display:inline-block;margin-top:14px;font-size:.875rem;font-weight:650;color:var(--bronze);text-decoration:none;border-bottom:1px solid rgba(154,106,51,.45)}
+
+  /* contacto */
+  .contact-grid{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:32px;align-items:start}
+  .info{display:grid;gap:18px;margin:0;padding:0}
+  .info-row{
+    display:flex;gap:14px;align-items:flex-start;
+    background:#fffdf8;border:1px solid var(--line);border-radius:12px;padding:18px;min-width:0
+  }
+  .ico{
+    flex:0 0 auto;width:38px;height:38px;border-radius:9px;background:#e8efe9;
+    display:flex;align-items:center;justify-content:center;color:var(--green)
+  }
+  .info-row .k{font-size:.6875rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .info-row .v{margin-top:3px;font-weight:600;overflow-wrap:anywhere}
+  .info-row .v a{text-decoration:none;border-bottom:1px solid rgba(154,106,51,.5)}
+  .map{
+    background:#fffdf8;border:1px solid var(--line);border-radius:14px;padding:16px
+  }
+  .map figcaption{margin-top:12px;font-size:.78125rem;color:var(--muted)}
+  .map svg{display:block;width:100%;height:auto;border-radius:9px;background:#f1ece0}
+
+  /* pie */
+  footer{background:#11201b;color:#d6d0c1;padding:58px 0 34px}
+  .foot-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr);gap:32px}
+  footer h3{color:#f4f0e6;font-size:1.0625rem}
+  footer p{margin-top:12px;font-size:.9375rem;color:#aeb6ae}
+  footer a{color:#e8e1d1;text-decoration:none;overflow-wrap:anywhere}
+  footer a:hover{color:var(--bronze-2)}
+  .foot-list{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:9px;font-size:.9375rem}
+  .foot-h{font-size:.6875rem;letter-spacing:.14em;text-transform:uppercase;color:var(--bronze-2);font-weight:700}
+  .foot-bottom{
+    margin-top:40px;padding-top:22px;border-top:1px solid rgba(233,226,210,.18);
+    display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;
+    font-size:.8125rem;color:#9aa49c
+  }
+  .foot-bottom .sign{color:#cfc8b7}
+
+  @media (max-width:900px){
+    .hero-grid,.contact-grid{grid-template-columns:minmax(0,1fr);gap:34px}
+    .duo,.slots{grid-template-columns:minmax(0,1fr)}
+    .steps{grid-template-columns:minmax(0,1fr)}
+    .foot-grid{grid-template-columns:minmax(0,1fr)}
+  }
+  @media (max-width:560px){
+    :root{--bar-h:52px}
+    .wrap{padding:0 16px}
+    section{padding:54px 0}
+    .hero-inner{padding:48px 0 46px}
+    .card,.step,.map,.slot{padding:20px}
+    .btn{width:100%;justify-content:center}
+    .cta-row{gap:10px}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<header class="hero">
+  <svg class="hero-art" viewBox="0 0 1200 560" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="r1" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#2f5a4a" stop-opacity=".9"/>
+        <stop offset="1" stop-color="#16271f" stop-opacity=".95"/>
+      </linearGradient>
+      <linearGradient id="r2" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#c08f4e" stop-opacity=".28"/>
+        <stop offset="1" stop-color="#1f3a31" stop-opacity=".1"/>
+      </linearGradient>
+    </defs>
+    <path d="M0 430 L170 300 L300 372 L470 232 L620 352 L760 268 L920 376 L1070 296 L1200 384 L1200 560 L0 560 Z" fill="url(#r2)"/>
+    <path d="M0 478 L150 392 L310 452 L460 350 L610 440 L780 372 L940 450 L1090 396 L1200 452 L1200 560 L0 560 Z" fill="url(#r1)"/>
+    <g stroke="#c08f4e" stroke-opacity=".22" fill="none" stroke-width="1.5">
+      <path d="M0 512 C 180 486, 330 536, 520 506 S 880 466, 1200 504"/>
+      <path d="M0 534 C 200 508, 360 556, 560 528 S 900 492, 1200 526"/>
+    </g>
+  </svg>
+
+  <div class="wrap hero-inner">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow light">Riópar · Albacete</p>
+        <h1>Hostal Restaurante<em>Los Bronces</em></h1>
+        <p class="hero-lead">
+          Hostal de dos estrellas con veintiuna habitaciones y bar restaurante de
+          cocina regional, en el casco de Riópar. Dormir, comer y volver a la sierra.
+        </p>
+        <ul class="facts">
+          <li>Hostal de 2 estrellas</li>
+          <li>21 habitaciones</li>
+          <li>Cocina regional</li>
+          <li>Bar restaurante</li>
+        </ul>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="tel:+34967435033">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8.1 9.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.9 2.3z"/></svg>
+            Llamar al 967 435 033
+          </a>
+          <a class="btn btn-ghost" href="#reservar">Cómo reservar</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <h2>Reserva directa</h2>
+        <dl>
+          <dt>Teléfono</dt>
+          <dd><a href="tel:+34967435033">967 435 033</a></dd>
+          <dt>Dirección</dt>
+          <dd>C/ Haza de San Luis, 11<br>02450 Riópar (Albacete)</dd>
+          <dt>Horario</dt>
+          <dd>Consultar horario</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section id="alojamiento">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Alojamiento y restaurante</p>
+      <h2>Una casa para dormir y una mesa para quedarse</h2>
+      <p>
+        Los dos lados del negocio, explicados por separado y con la información
+        esencial a la vista desde el móvil.
+      </p>
+    </div>
+
+    <div class="duo">
+      <article class="card">
+        <div class="thumb">
+          <svg viewBox="0 0 400 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+            <g fill="none" stroke="#dfe9e1" stroke-opacity=".5" stroke-width="2">
+              <rect x="40" y="52" width="86" height="72" rx="4"/>
+              <path d="M34 52 L83 22 L132 52"/>
+              <rect x="62" y="74" width="20" height="20" rx="2"/>
+              <rect x="92" y="74" width="20" height="20" rx="2"/>
+              <rect x="70" y="104" width="26" height="20" rx="2"/>
+              <rect x="166" y="66" width="86" height="58" rx="4"/>
+              <path d="M160 66 L209 38 L258 66"/>
+              <rect x="188" y="86" width="20" height="18" rx="2"/>
+              <rect x="292" y="58" width="76" height="66" rx="4"/>
+              <path d="M286 58 L330 30 L374 58"/>
+              <rect x="314" y="80" width="18" height="18" rx="2"/>
+              <path d="M0 126 H400"/>
+            </g>
+          </svg>
+        </div>
+        <h3>El hostal</h3>
+        <p>
+          Veintiuna habitaciones en un hostal de dos estrellas, en el centro de
+          Riópar. La ficha de cada tipo de habitación queda preparada en la web
+          para completarse con la información del establecimiento.
+        </p>
+        <ul class="tags">
+          <li>2 estrellas</li>
+          <li>21 habitaciones</li>
+          <li>Riópar, 02450</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <div class="thumb warm">
+          <svg viewBox="0 0 400 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+            <g fill="none" stroke="#f7ecdc" stroke-opacity=".55" stroke-width="2">
+              <circle cx="128" cy="80" r="40"/>
+              <circle cx="128" cy="80" r="26"/>
+              <path d="M214 46 V114 M206 46 V66 M222 46 V66 M214 66 H206 M214 66 H222"/>
+              <path d="M268 46 C 258 60, 258 72, 268 80 L268 114"/>
+              <path d="M316 50 h44 M316 50 c0 22 10 34 22 34 s22-12 22-34 M338 84 v30"/>
+              <path d="M30 126 H370"/>
+            </g>
+          </svg>
+        </div>
+        <h3>El restaurante</h3>
+        <p>
+          Bar restaurante de cocina regional. La web deja los apartados de carta
+          y menú listos y vacíos, para que se publiquen tal y como se sirven cada
+          temporada, sin tener que rehacer la página.
+        </p>
+        <ul class="tags">
+          <li>Cocina regional</li>
+          <li>Bar</li>
+          <li>Comedor</li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="slots" style="margin-top:28px">
+      <div class="slot">
+        <h4>Carta <span class="badge">Apartado vacío</span></h4>
+        <p>Espacio reservado para los grupos de la carta y sus platos. Sin contenido todavía: lo rellena el establecimiento.</p>
+        <ul class="lines">
+          <li><span class="ph"></span><span class="ph s"></span></li>
+          <li><span class="ph"></span><span class="ph s"></span></li>
+          <li><span class="ph"></span><span class="ph s"></span></li>
+          <li><span class="ph"></span><span class="ph s"></span></li>
+        </ul>
+      </div>
+      <div class="slot">
+        <h4>Menú <span class="badge">Apartado vacío</span></h4>
+        <p>Bloque preparado para el menú. Igual que la carta, se publica cuando el hostal facilite la información.</p>
+        <ul class="lines">
+          <li><span class="ph"></span><span class="ph s"></span></li>
+          <li><span class="ph"></span><span class="ph s"></span></li>
+          <li><span class="ph"></span><span class="ph s"></span></li>
+          <li><span class="ph"></span><span class="ph s"></span></li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="note">
+      Los apartados de carta y menú se entregan vacíos a propósito: esta maqueta no
+      publica platos, precios ni horarios que no haya facilitado el establecimiento.
+    </p>
+  </div>
+</section>
+
+<section id="reservar" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Cómo reservar</p>
+      <h2>Reserva directa, en tres pasos</h2>
+      <p>
+        Hoy la reserva depende de buscar el teléfono en Facebook o en Google. Con web
+        propia, el camino es siempre el mismo y acaba en una llamada o un correo al hostal.
+      </p>
+    </div>
+
+    <div class="steps">
+      <article class="step">
+        <div class="num">1</div>
+        <h3>Elige fechas y personas</h3>
+        <p>
+          Indica los días de la estancia y cuántas personas sois, junto con lo que
+          necesitéis para la habitación.
+        </p>
+      </article>
+      <article class="step">
+        <div class="num">2</div>
+        <h3>Llama o escribe al hostal</h3>
+        <p>
+          Se consulta la disponibilidad directamente con el establecimiento, por
+          teléfono o por correo electrónico.
+        </p>
+        <a class="act" href="tel:+34967435033">Llamar al 967 435 033</a>
+      </article>
+      <article class="step">
+        <div class="num">3</div>
+        <h3>Confirma tu reserva</h3>
+        <p>
+          El hostal confirma la habitación y, si lo necesitas, se acuerda también la
+          comida o la cena en el restaurante.
+        </p>
+        <a class="act" href="mailto:hostalbronces@gmail.com">hostalbronces@gmail.com</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Contacto</p>
+      <h2>Dónde estamos</h2>
+      <p>En el casco urbano de Riópar, en la provincia de Albacete.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="info">
+        <div class="info-row">
+          <span class="ico" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8.1 9.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.9 2.3z"/></svg>
+          </span>
+          <div>
+            <div class="k">Teléfono</div>
+            <div class="v"><a href="tel:+34967435033">967 435 033</a></div>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <span class="ico" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </span>
+          <div>
+            <div class="k">Dirección</div>
+            <div class="v">C/ Haza de San Luis, 11<br>02450 Riópar (Albacete)</div>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <span class="ico" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+          </span>
+          <div>
+            <div class="k">Horario</div>
+            <div class="v">Consultar horario</div>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <span class="ico" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5 12 13l8.5-6.5"/></svg>
+          </span>
+          <div>
+            <div class="k">Correo electrónico</div>
+            <div class="v"><a href="mailto:hostalbronces@gmail.com">hostalbronces@gmail.com</a></div>
+          </div>
+        </div>
+      </div>
+
+      <figure class="map" style="margin:0">
+        <svg viewBox="0 0 560 360" role="img" aria-label="Croquis esquemático de la ubicación del hostal en el casco de Riópar; no es un mapa real.">
+          <rect x="0" y="0" width="560" height="360" fill="#f1ece0"/>
+          <g fill="#e4ddcc">
+            <rect x="34" y="34" width="150" height="88" rx="5"/>
+            <rect x="212" y="34" width="118" height="88" rx="5"/>
+            <rect x="372" y="34" width="154" height="128" rx="5"/>
+            <rect x="34" y="158" width="150" height="76" rx="5"/>
+            <rect x="372" y="200" width="154" height="126" rx="5"/>
+            <rect x="34" y="272" width="190" height="54" rx="5"/>
+            <rect x="256" y="272" width="74" height="54" rx="5"/>
+          </g>
+          <g stroke="#cdc4ae" stroke-width="2" fill="none">
+            <path d="M196 20 V340"/>
+            <path d="M344 20 V340"/>
+            <path d="M20 136 H540"/>
+            <path d="M20 250 H540"/>
+          </g>
+          <g stroke="#b9ad92" stroke-width="1.5" stroke-dasharray="7 7" fill="none">
+            <path d="M196 136 H344"/>
+          </g>
+          <rect x="222" y="158" width="108" height="76" rx="6" fill="#1f3a31"/>
+          <g fill="#f4efe3" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif">
+            <text x="276" y="188" font-size="15" font-weight="700" text-anchor="middle">Los</text>
+            <text x="276" y="207" font-size="15" font-weight="700" text-anchor="middle">Bronces</text>
+          </g>
+          <circle cx="276" cy="224" r="4" fill="#c08f4e"/>
+          <g fill="#6f6755" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="12">
+            <text x="206" y="334" transform="rotate(-90 206 334)">C/ Haza de San Luis</text>
+            <text x="32" y="128">Casco urbano</text>
+            <text x="380" y="192">Riópar</text>
+          </g>
+          <g fill="none" stroke="#9a6a33" stroke-width="2">
+            <path d="M344 136 l14 0 M351 129 l0 14"/>
+          </g>
+        </svg>
+        <figcaption>
+          Croquis esquemático de orientación. No es un mapa real ni está a escala:
+          sirve para situar el hostal en el casco de Riópar.
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h3>Hostal Restaurante Los Bronces</h3>
+        <p>
+          Hostal de 2 estrellas con 21 habitaciones y bar restaurante de cocina
+          regional en Riópar (Albacete).
+        </p>
+      </div>
+      <div>
+        <p class="foot-h">Contacto</p>
+        <ul class="foot-list">
+          <li><a href="tel:+34967435033">967 435 033</a></li>
+          <li><a href="mailto:hostalbronces@gmail.com">hostalbronces@gmail.com</a></li>
+          <li>C/ Haza de San Luis, 11<br>02450 Riópar (Albacete)</li>
+        </ul>
+      </div>
+      <div>
+        <p class="foot-h">Enlaces</p>
+        <ul class="foot-list">
+          <li><a href="https://es-la.facebook.com/RestauranteLosBronces" rel="noopener">Facebook</a></li>
+          <li><a href="#reservar">Cómo reservar</a></li>
+          <li>Consultar horario</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span class="sign">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</span>
+      <span>Maqueta no oficial</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

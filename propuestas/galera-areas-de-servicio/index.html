@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Galera Áreas de Servicio · Hellín</title>
+<meta name="description" content="Propuesta de diseño web para Galera Áreas de Servicio, gasolinera y área de servicio abierta 24 horas en Hellín (Albacete).">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  :root{
+    --noche:#0b0f14;
+    --noche-2:#111822;
+    --carta:#161f2b;
+    --linea:rgba(255,255,255,.10);
+    --texto:#eaf0f7;
+    --suave:#9fb0c3;
+    --ambar:#ffb020;
+    --ambar-2:#ff8a1f;
+    --verde:#36d399;
+    --radio:18px;
+    --max:1140px;
+    --barra:46px;
+  }
+  html,body{margin:0;padding:0;max-width:100%;overflow-x:hidden}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    background:var(--noche);
+    color:var(--texto);
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    padding-top:var(--barra);
+  }
+  img,svg{max-width:100%;display:block}
+  a{color:inherit}
+  h1,h2,h3{line-height:1.12;margin:0;letter-spacing:-.02em}
+  p{margin:0}
+  .envoltura{width:100%;max-width:var(--max);margin:0 auto;padding:0 20px}
+
+  /* ---------- barra fija ---------- */
+  .aviso{
+    position:fixed;inset:0 0 auto 0;z-index:100;
+    min-height:var(--barra);display:flex;align-items:center;justify-content:center;
+    background:#f3f4f6;color:#11161d;
+    border-bottom:1px solid rgba(0,0,0,.18);
+    padding:7px 14px;text-align:center;
+  }
+  .aviso span{font-size:12.5px;font-weight:600;letter-spacing:.01em;line-height:1.35}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;overflow:hidden;padding:64px 0 66px;
+    background:
+      radial-gradient(900px 440px at 78% 6%, rgba(255,176,32,.20), transparent 62%),
+      radial-gradient(700px 420px at 4% 86%, rgba(54,211,153,.10), transparent 60%),
+      linear-gradient(180deg,#0d131b 0%,#0b0f14 100%);
+  }
+  .hero::after{
+    content:"";position:absolute;inset:auto 0 -1px 0;height:120px;pointer-events:none;
+    background:repeating-linear-gradient(90deg,rgba(255,255,255,.055) 0 46px,transparent 46px 108px);
+    mask-image:linear-gradient(180deg,transparent,#000);
+    -webkit-mask-image:linear-gradient(180deg,transparent,#000);
+  }
+  .marca{display:flex;align-items:center;gap:12px;margin-bottom:40px}
+  .marca .sello{width:42px;height:42px;flex:0 0 42px}
+  .marca b{display:block;font-size:17px;letter-spacing:-.01em}
+  .marca small{display:block;color:var(--suave);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase}
+  .hero-rejilla{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:46px;align-items:center}
+  .pildora{
+    display:inline-flex;align-items:center;gap:9px;
+    background:rgba(255,176,32,.12);border:1px solid rgba(255,176,32,.35);
+    color:var(--ambar);border-radius:999px;padding:7px 15px;
+    font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  }
+  .punto{width:8px;height:8px;border-radius:50%;background:var(--ambar);box-shadow:0 0 0 4px rgba(255,176,32,.18)}
+  h1{font-size:clamp(2.1rem,6.2vw,4rem);font-weight:800;margin:22px 0 0}
+  h1 em{font-style:normal;background:linear-gradient(100deg,var(--ambar),var(--ambar-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .entradilla{color:var(--suave);font-size:clamp(1rem,1.9vw,1.14rem);margin-top:18px;max-width:46ch}
+  .acciones{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    border-radius:13px;padding:15px 24px;font-size:15.5px;font-weight:700;
+    text-decoration:none;border:1px solid transparent;transition:transform .15s ease,filter .15s ease;
+  }
+  .btn:hover{transform:translateY(-2px)}
+  .btn-ambar{background:linear-gradient(100deg,var(--ambar),var(--ambar-2));color:#1a1206;box-shadow:0 12px 28px -12px rgba(255,138,31,.7)}
+  .btn-linea{background:rgba(255,255,255,.04);border-color:var(--linea);color:var(--texto)}
+  .btn svg{flex:0 0 18px}
+  .datos{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:30px;color:var(--suave);font-size:14px}
+  .datos div{display:flex;align-items:center;gap:8px;min-width:0}
+
+  /* tarjeta surtidor */
+  .panel{
+    background:linear-gradient(170deg,var(--carta),#0f1621);
+    border:1px solid var(--linea);border-radius:26px;padding:22px;
+    box-shadow:0 36px 70px -36px rgba(0,0,0,.8);
+  }
+  .panel-sup{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+  .panel-sup span{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--suave)}
+  .vivo{display:inline-flex;align-items:center;gap:7px;color:var(--verde);font-size:12.5px;font-weight:700}
+  .vivo i{width:8px;height:8px;border-radius:50%;background:var(--verde);box-shadow:0 0 0 4px rgba(54,211,153,.16)}
+  .reloj{
+    border-radius:16px;border:1px solid var(--linea);
+    background:radial-gradient(130% 130% at 20% 0%,rgba(255,176,32,.12),transparent 60%),#0a0f16;
+    padding:20px;text-align:center;
+  }
+  .reloj strong{display:block;font-size:clamp(2.6rem,9vw,3.6rem);font-weight:800;letter-spacing:-.04em;line-height:1;
+    background:linear-gradient(100deg,var(--ambar),var(--ambar-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .reloj span{display:block;margin-top:8px;color:var(--suave);font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+  .mini{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}
+  .mini div{border:1px solid var(--linea);border-radius:13px;padding:12px 13px;background:rgba(255,255,255,.025);min-width:0}
+  .mini b{display:block;font-size:13.5px}
+  .mini small{color:var(--suave);font-size:11.5px}
+
+  /* ---------- secciones ---------- */
+  section{padding:76px 0}
+  .cinta{border-top:1px solid var(--linea)}
+  .rotulo{display:inline-flex;align-items:center;gap:10px;color:var(--ambar);font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+  .rotulo::before{content:"";width:26px;height:2px;background:var(--ambar);border-radius:2px}
+  h2{font-size:clamp(1.65rem,4.2vw,2.5rem);font-weight:800;margin:16px 0 0}
+  .bajada{color:var(--suave);margin-top:14px;max-width:62ch}
+
+  .servicios{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:40px}
+  .serv{
+    border:1px solid var(--linea);border-radius:var(--radio);padding:24px;min-width:0;
+    background:linear-gradient(170deg,rgba(255,255,255,.045),rgba(255,255,255,.012));
+    transition:border-color .2s ease,transform .2s ease;
+  }
+  .serv:hover{border-color:rgba(255,176,32,.45);transform:translateY(-3px)}
+  .icono{width:46px;height:46px;border-radius:13px;display:flex;align-items:center;justify-content:center;
+    background:rgba(255,176,32,.12);border:1px solid rgba(255,176,32,.28);margin-bottom:16px}
+  .serv h3{font-size:17.5px;font-weight:700}
+  .serv p{color:var(--suave);font-size:14.5px;margin-top:9px}
+
+  .pasos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:40px}
+  .paso{border:1px solid var(--linea);border-radius:var(--radio);padding:26px;background:rgba(255,255,255,.025);min-width:0;position:relative;overflow:hidden}
+  .paso::before{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:linear-gradient(180deg,var(--ambar),transparent)}
+  .num{font-size:12px;font-weight:800;letter-spacing:.14em;color:var(--ambar);text-transform:uppercase}
+  .paso h3{font-size:18px;font-weight:700;margin-top:12px}
+  .paso p{color:var(--suave);font-size:14.5px;margin-top:9px}
+
+  /* ---------- contacto ---------- */
+  .contacto-rejilla{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:22px;margin-top:40px;align-items:start}
+  .ficha{border:1px solid var(--linea);border-radius:var(--radio);background:linear-gradient(170deg,var(--carta),#0f1621);padding:26px}
+  .fila{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--linea);min-width:0}
+  .fila:last-of-type{border-bottom:0;padding-bottom:4px}
+  .fila .icono{margin:0;width:40px;height:40px;flex:0 0 40px;border-radius:11px}
+  .fila div{min-width:0}
+  .fila small{display:block;color:var(--suave);font-size:11.5px;letter-spacing:.13em;text-transform:uppercase}
+  .fila b,.fila a{display:block;font-size:16px;font-weight:700;margin-top:4px;word-break:break-word;overflow-wrap:anywhere;text-decoration:none}
+  .fila a:hover{color:var(--ambar)}
+  .fila span.nota{display:block;color:var(--suave);font-size:13.5px;margin-top:3px}
+  .croquis{border:1px solid var(--linea);border-radius:var(--radio);background:#0a0f16;padding:18px;overflow:hidden}
+  .croquis p.pie{color:var(--suave);font-size:12.5px;margin-top:12px}
+  .croquis svg{width:100%;height:auto}
+
+  /* ---------- pie ---------- */
+  footer{border-top:1px solid var(--linea);padding:46px 0 54px;background:#090d12}
+  .pie-rejilla{display:flex;flex-wrap:wrap;gap:26px;justify-content:space-between;align-items:flex-start}
+  .pie-rejilla > div{min-width:0}
+  footer b.nombre{font-size:16.5px}
+  footer p,footer a{color:var(--suave);font-size:14px;text-decoration:none;word-break:break-word;overflow-wrap:anywhere}
+  footer a:hover{color:var(--ambar)}
+  .enlaces{display:flex;flex-direction:column;gap:7px;margin-top:10px}
+  .credito{margin-top:30px;padding-top:22px;border-top:1px solid var(--linea);color:var(--suave);font-size:13px;line-height:1.6}
+
+  @media (max-width:900px){
+    .hero-rejilla,.contacto-rejilla{grid-template-columns:minmax(0,1fr);gap:34px}
+    .servicios,.pasos{grid-template-columns:repeat(2,minmax(0,1fr))}
+  }
+  @media (max-width:620px){
+    :root{--barra:58px}
+    .envoltura{padding:0 16px}
+    .hero{padding:40px 0 48px}
+    section{padding:58px 0}
+    .marca{margin-bottom:28px}
+    .servicios,.pasos{grid-template-columns:minmax(0,1fr)}
+    .btn{width:100%;justify-content:center}
+    .panel{padding:16px;border-radius:20px}
+    .ficha,.paso,.serv{padding:20px}
+    .datos{gap:9px 18px;font-size:13.5px}
+  }
+</style>
+</head>
+<body>
+
+<div class="aviso"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<header class="hero">
+  <div class="envoltura">
+    <div class="marca">
+      <svg class="sello" viewBox="0 0 48 48" role="img" aria-label="Galera Áreas de Servicio">
+        <rect x="1.5" y="1.5" width="45" height="45" rx="13" fill="#141c26" stroke="#ffb020" stroke-width="1.6"/>
+        <path d="M17 13h9.5c1.6 0 2.5 1 2.5 2.6V35h-14V15.6C15 14 15.6 13 17 13Z" fill="none" stroke="#ffb020" stroke-width="2.1" stroke-linejoin="round"/>
+        <path d="M18.5 18.5h7.5" stroke="#ffb020" stroke-width="2.1" stroke-linecap="round"/>
+        <path d="M29 20h3.2c1 0 1.8.8 1.8 1.8V29a2 2 0 1 0 4 0v-6" fill="none" stroke="#ff8a1f" stroke-width="2.1" stroke-linecap="round"/>
+        <path d="M13 35h18" stroke="#ff8a1f" stroke-width="2.1" stroke-linecap="round"/>
+      </svg>
+      <div>
+        <b>Galera Áreas de Servicio</b>
+        <small>Hellín · Albacete</small>
+      </div>
+    </div>
+
+    <div class="hero-rejilla">
+      <div>
+        <span class="pildora"><i class="punto"></i>Abierto 24 horas</span>
+        <h1>Tu parada en la<br><em>Ctra. de Murcia</em></h1>
+        <p class="entradilla">Gasolinera y área de servicio en Hellín. Repostar, descansar, tomar algo y seguir viaje: a cualquier hora del día o de la noche.</p>
+        <div class="acciones">
+          <a class="btn btn-ambar" href="tel:+34621508497">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+            Llamar 621 50 84 97
+          </a>
+          <a class="btn btn-linea" href="#contacto">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            Cómo llegar
+          </a>
+        </div>
+        <div class="datos">
+          <div>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#ffb020" stroke-width="2.1" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3 2"/></svg>
+            <span>24 horas</span>
+          </div>
+          <div>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#ffb020" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Ctra. Murcia, 02400 Hellín</span>
+          </div>
+          <div>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#ffb020" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="#ffb020" stroke="none"/></svg>
+            <span>@gasgalera</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="panel">
+        <div class="panel-sup">
+          <span>Área de servicio</span>
+          <span class="vivo"><i></i>Siempre abierto</span>
+        </div>
+        <div class="reloj">
+          <strong>24 h</strong>
+          <span>todos los días</span>
+        </div>
+        <div class="mini">
+          <div><b>Combustible</b><small>Repostaje para turismos y vehículos pesados</small></div>
+          <div><b>Cafetería</b><small>Parada para comer o tomar algo</small></div>
+          <div><b>Camiones</b><small>Aparcamiento amplio para profesionales</small></div>
+          <div><b>Aire y agua</b><small>Revisa el vehículo antes de seguir</small></div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</header>
+
+<section class="cinta" id="servicios">
+  <div class="envoltura">
+    <span class="rotulo">Servicios</span>
+    <h2>Lo que encuentras en la parada</h2>
+    <p class="bajada">Servicios habituales de un área de servicio de carretera, pensados tanto para quien va de paso como para el transporte profesional.</p>
+
+    <div class="servicios">
+      <article class="serv">
+        <div class="icono">
+          <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="#ffb020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 21V5a2 2 0 0 1 2-2h5a2 2 0 0 1 2 2v16"/><path d="M9 8h5"/><path d="M16 9h2.2a1.8 1.8 0 0 1 1.8 1.8V16a2 2 0 1 0 4 0"/><path d="M5 21h13"/></svg>
+        </div>
+        <h3>Combustible</h3>
+        <p>Repostaje en carretera para turismos, furgonetas y vehículos pesados.</p>
+      </article>
+      <article class="serv">
+        <div class="icono">
+          <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="#ffb020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h13v7a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7Z"/><path d="M16 9h2.5a2.5 2.5 0 0 1 0 5H16"/><path d="M2 21h16"/></svg>
+        </div>
+        <h3>Cafetería</h3>
+        <p>Un sitio donde parar a desayunar, comer algo o tomar un café antes de seguir.</p>
+      </article>
+      <article class="serv">
+        <div class="icono">
+          <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="#ffb020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16l-1.2 12a2 2 0 0 1-2 1.8H7.2a2 2 0 0 1-2-1.8L4 7Z"/><path d="M9 7V5.5a3 3 0 0 1 6 0V7"/></svg>
+        </div>
+        <h3>Tienda</h3>
+        <p>Lo necesario para el viaje: bebida, algo de comer y artículos de paso.</p>
+      </article>
+      <article class="serv">
+        <div class="icono">
+          <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="#ffb020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18"/><circle cx="7" cy="6.5" r="2"/><path d="M7 9v4a2 2 0 0 0 2 2"/><circle cx="17" cy="6.5" r="2"/><path d="M15.4 9.5h3.2l1.1 5.5h-5.4l1.1-5.5Z"/></svg>
+        </div>
+        <h3>Aseos</h3>
+        <p>Aseos disponibles para clientes durante la parada.</p>
+      </article>
+      <article class="serv">
+        <div class="icono">
+          <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="#ffb020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 16V8h10v8"/><path d="M12 10h5l3 3.2V16"/><path d="M2 16h2"/><path d="M9 16h4"/><path d="M18 16h3"/><circle cx="6" cy="17.5" r="2"/><circle cx="16" cy="17.5" r="2"/></svg>
+        </div>
+        <h3>Aparcamiento de camiones</h3>
+        <p>Espacio para maniobrar y estacionar vehículos grandes con comodidad.</p>
+      </article>
+      <article class="serv">
+        <div class="icono">
+          <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="#ffb020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="15" r="5"/><path d="M8 10V4"/><path d="M8 15h5"/><path d="M17 4c1.8 2.4 2.8 4.2 2.8 5.6a2.8 2.8 0 0 1-5.6 0C14.2 8.2 15.2 6.4 17 4Z"/></svg>
+        </div>
+        <h3>Aire y agua</h3>
+        <p>Comprueba presión y niveles antes de volver a la carretera.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="cinta" id="parada">
+  <div class="envoltura">
+    <span class="rotulo">Tu parada</span>
+    <h2>Entrar, resolver y seguir</h2>
+    <p class="bajada">Una parada de carretera sencilla: sin desviarte de la ruta y sin perder tiempo.</p>
+    <div class="pasos">
+      <article class="paso">
+        <span class="num">Paso 01</span>
+        <h3>Sales de la carretera</h3>
+        <p>Acceso directo desde la Ctra. de Murcia, en Hellín, con sitio para entrar y maniobrar.</p>
+      </article>
+      <article class="paso">
+        <span class="num">Paso 02</span>
+        <h3>Repostas y descansas</h3>
+        <p>Llenas el depósito y aprovechas para estirar las piernas, usar los aseos o tomar algo.</p>
+      </article>
+      <article class="paso">
+        <span class="num">Paso 03</span>
+        <h3>Vuelves a la ruta</h3>
+        <p>Aire, agua y una última revisión del vehículo antes de continuar el viaje.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="cinta" id="contacto">
+  <div class="envoltura">
+    <span class="rotulo">Contacto</span>
+    <h2>Dónde estamos</h2>
+    <p class="bajada">Si necesitas confirmar algo antes de venir, lo más rápido es una llamada.</p>
+
+    <div class="contacto-rejilla">
+      <div class="ficha">
+        <div class="fila">
+          <div class="icono">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#ffb020" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+          </div>
+          <div>
+            <small>Teléfono</small>
+            <a href="tel:+34621508497">621 50 84 97</a>
+          </div>
+        </div>
+        <div class="fila">
+          <div class="icono">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#ffb020" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <small>Dirección</small>
+            <b>Ctra. Murcia, 02400 Hellín (Albacete)</b>
+          </div>
+        </div>
+        <div class="fila">
+          <div class="icono">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#ffb020" stroke-width="2.1" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.5V12l3 2"/></svg>
+          </div>
+          <div>
+            <small>Horario</small>
+            <b>Abierto 24 horas</b>
+            <span class="nota">Para servicios concretos: consultar horario.</span>
+          </div>
+        </div>
+        <div class="fila">
+          <div class="icono">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#ffb020" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="#ffb020" stroke="none"/></svg>
+          </div>
+          <div>
+            <small>Instagram</small>
+            <b>@gasgalera</b>
+          </div>
+        </div>
+      </div>
+
+      <div class="croquis">
+        <svg viewBox="0 0 560 330" role="img" aria-label="Croquis esquemático de la salida a la Ctra. de Murcia con la estación de servicio">
+          <rect width="560" height="330" rx="14" fill="#0d131b"/>
+          <g opacity=".5">
+            <path d="M0 60h560M0 120h560M0 180h560M0 240h560M0 300h560" stroke="rgba(255,255,255,.035)" stroke-width="1"/>
+            <path d="M80 0v330M180 0v330M280 0v330M380 0v330M480 0v330" stroke="rgba(255,255,255,.035)" stroke-width="1"/>
+          </g>
+          <!-- carretera principal -->
+          <path d="M-10 108 C 150 96, 400 150, 575 132" stroke="#2a3443" stroke-width="40" fill="none" stroke-linecap="round"/>
+          <path d="M-10 108 C 150 96, 400 150, 575 132" stroke="#ffb020" stroke-width="2.4" fill="none" stroke-dasharray="16 16" opacity=".75"/>
+          <!-- ramal de acceso -->
+          <path d="M300 141 C 330 190, 300 220, 262 236" stroke="#232c39" stroke-width="26" fill="none" stroke-linecap="round"/>
+          <path d="M300 141 C 330 190, 300 220, 262 236" stroke="#52627a" stroke-width="1.8" fill="none" stroke-dasharray="9 11"/>
+          <!-- parcela -->
+          <rect x="92" y="196" width="176" height="94" rx="14" fill="#141d28" stroke="rgba(255,176,32,.42)" stroke-width="1.6"/>
+          <!-- marquesina -->
+          <rect x="112" y="214" width="92" height="12" rx="6" fill="#ffb020" opacity=".9"/>
+          <rect x="124" y="232" width="9" height="30" rx="4" fill="#3a475a"/>
+          <rect x="184" y="232" width="9" height="30" rx="4" fill="#3a475a"/>
+          <rect x="146" y="238" width="22" height="26" rx="5" fill="none" stroke="#9fb0c3" stroke-width="1.8"/>
+          <rect x="216" y="226" width="42" height="42" rx="8" fill="#0f1721" stroke="#3a475a" stroke-width="1.6"/>
+          <path d="M224 248h26M224 256h26" stroke="#52627a" stroke-width="1.6" stroke-linecap="round"/>
+          <!-- rotulo 24h -->
+          <circle cx="237" cy="238" r="7.5" fill="none" stroke="#36d399" stroke-width="1.8"/>
+          <path d="M237 234.5V238l2.4 1.6" stroke="#36d399" stroke-width="1.6" stroke-linecap="round"/>
+          <!-- etiquetas -->
+          <text x="18" y="84" fill="#9fb0c3" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="17" font-weight="700">Ctra. Murcia</text>
+          <text x="330" y="208" fill="#6f8097" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="15">Salida / acceso</text>
+          <text x="92" y="186" fill="#ffb020" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="16" font-weight="700">Galera Áreas de Servicio</text>
+          <text x="330" y="276" fill="#6f8097" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="15">Hellín · 02400</text>
+          <!-- norte -->
+          <g transform="translate(508,258)">
+            <circle r="20" fill="#0f1721" stroke="rgba(255,255,255,.12)" stroke-width="1.4"/>
+            <path d="M0 -11 L5 4 L0 0.5 L-5 4 Z" fill="#ffb020"/>
+            <text x="0" y="15" fill="#6f8097" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif" font-size="9" text-anchor="middle">N</text>
+          </g>
+        </svg>
+        <p class="pie">Croquis orientativo de la ubicación. No es un mapa a escala.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="envoltura">
+    <div class="pie-rejilla">
+      <div>
+        <b class="nombre">Galera Áreas de Servicio</b>
+        <p>Ctra. Murcia, 02400 Hellín (Albacete)</p>
+        <p>Abierto 24 horas</p>
+      </div>
+      <div>
+        <small style="color:#9fb0c3;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase">Contacto</small>
+        <div class="enlaces">
+          <a href="tel:+34621508497">621 50 84 97</a>
+          <a href="mailto:galerhellin@gmail.com">galerhellin@gmail.com</a>
+          <span style="color:#9fb0c3;font-size:14px">Instagram: @gasgalera</span>
+        </div>
+      </div>
+      <div>
+        <small style="color:#9fb0c3;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase">Secciones</small>
+        <div class="enlaces">
+          <a href="#servicios">Servicios</a>
+          <a href="#parada">Tu parada</a>
+          <a href="#contacto">Contacto</a>
+        </div>
+      </div>
+    </div>
+    <p class="credito">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+</body>
+</html>

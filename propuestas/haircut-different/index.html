@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Haircut Different · Barbería en Novelda (Alicante)</title>
+<meta name="description" content="Propuesta de diseño para Haircut Different, barbería en Novelda (Alicante). Maqueta no oficial de FFFFFFstudio — Ángel Rubio.">
+<style>
+  :root{
+    --bg:#0a0b0d;
+    --bg-2:#101216;
+    --bg-3:#15181d;
+    --paper:#f4f5f3;
+    --paper-2:#e4e6e1;
+    --muted:#a2a8b2;
+    --acid:#c6f24e;
+    --acid-2:#a9dc2c;
+    --steel:#4f5a68;
+    --line:rgba(244,245,243,.12);
+    --line-2:rgba(10,11,13,.12);
+    --bar-h:46px;
+    --maxw:1160px;
+    --r:20px;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:calc(var(--bar-h) + 18px)}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--paper);
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size:17px;
+    line-height:1.65;
+    padding-top:var(--bar-h);
+    overflow-x:hidden;
+  }
+  svg{max-width:100%;display:block}
+  a{color:inherit}
+  h1,h2,h3,h4{margin:0;line-height:1.1;letter-spacing:-.025em;font-weight:700}
+  p{margin:0}
+  ul{margin:0;padding:0;list-style:none}
+
+  /* ---------- barra fija ---------- */
+  .topbar{
+    position:fixed;inset:0 0 auto 0;z-index:200;
+    min-height:var(--bar-h);
+    display:flex;align-items:center;justify-content:center;
+    text-align:center;padding:7px 14px;
+    background:#06070a;
+    border-bottom:1px solid rgba(198,242,78,.3);
+    color:#e9ece4;
+    font-size:12.5px;line-height:1.35;letter-spacing:.015em;
+  }
+  .topbar b{color:var(--acid);font-weight:700}
+
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 22px}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--acid);font-weight:700;margin:0 0 16px;
+  }
+  .eyebrow::before{content:"";width:22px;height:2px;background:var(--acid);border-radius:2px;flex:none}
+  .lead{color:var(--muted);font-size:17.5px;max-width:58ch}
+
+  /* ---------- nav ---------- */
+  .nav{
+    position:sticky;top:var(--bar-h);z-index:150;
+    background:rgba(10,11,13,.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-in{display:flex;align-items:center;gap:16px;min-height:62px;flex-wrap:wrap;padding:10px 22px}
+  .brand{display:flex;align-items:center;gap:11px;margin-right:auto;min-width:0}
+  .brand-mark{width:34px;height:34px;flex:none}
+  .brand-txt{display:flex;flex-direction:column;line-height:1.05;min-width:0}
+  .brand-txt strong{font-size:15.5px;letter-spacing:.01em;white-space:nowrap}
+  .brand-txt span{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+  .nav-links{display:flex;gap:22px;flex-wrap:wrap}
+  .nav-links a{text-decoration:none;font-size:14px;color:var(--muted);font-weight:550}
+  .nav-links a:hover{color:var(--paper)}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    text-decoration:none;font-weight:700;font-size:15px;
+    padding:13px 21px;border-radius:999px;border:1px solid transparent;
+    letter-spacing:.01em;
+  }
+  .btn-acid{background:var(--acid);color:#0a0b0d}
+  .btn-acid:hover{background:var(--acid-2)}
+  .btn-ghost{border-color:var(--line);color:var(--paper)}
+  .btn-ghost:hover{border-color:var(--acid);color:var(--acid)}
+  .btn-sm{padding:10px 17px;font-size:13.5px}
+  .btn svg{flex:none}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(900px 520px at 78% 8%,rgba(198,242,78,.14),transparent 62%),
+      radial-gradient(700px 520px at 6% 96%,rgba(79,90,104,.34),transparent 64%),
+      linear-gradient(170deg,#0d0f13 0%,#0a0b0d 58%,#0c0e12 100%);
+  }
+  .hero-in{position:relative;padding:74px 0 78px;display:grid;grid-template-columns:1.08fr .92fr;gap:52px;align-items:center}
+  h1{font-size:clamp(34px,5.4vw,62px);letter-spacing:-.035em}
+  h1 em{font-style:normal;color:var(--acid)}
+  .hero p{margin-top:20px}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+  .hero-note{margin-top:20px;font-size:13.5px;color:var(--steel);display:flex;align-items:flex-start;gap:9px;line-height:1.5}
+  .hero-note b{color:var(--muted);font-weight:600}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+  .chip{
+    font-size:12.5px;padding:7px 13px;border-radius:999px;
+    border:1px solid var(--line);color:var(--muted);background:rgba(244,245,243,.03);
+  }
+  .hero-art{position:relative}
+  .pole-card{
+    border-radius:26px;border:1px solid var(--line);
+    background:linear-gradient(160deg,#171a20,#0e1014);
+    padding:26px;box-shadow:0 30px 70px -40px #000;
+  }
+  .pole-card figcaption{margin-top:16px;font-size:12.5px;color:var(--steel);text-align:center}
+
+  /* ---------- secciones ---------- */
+  section{padding:76px 0}
+  .sec-head{max-width:70ch;margin-bottom:38px}
+  .sec-head h2{font-size:clamp(26px,3.5vw,40px)}
+  .sec-head p{margin-top:16px}
+
+  .alt{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+
+  /* ---------- servicios ---------- */
+  .grid-serv{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .card{
+    border:1px solid var(--line);border-radius:var(--r);
+    background:linear-gradient(170deg,rgba(244,245,243,.05),rgba(244,245,243,.015));
+    padding:24px;display:flex;flex-direction:column;gap:14px;
+  }
+  .card h3{font-size:19px}
+  .card p{font-size:14.5px;color:var(--muted)}
+  .ico{
+    width:52px;height:52px;border-radius:14px;flex:none;
+    border:1px solid rgba(198,242,78,.28);
+    background:rgba(198,242,78,.07);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .serv-note{
+    margin-top:22px;font-size:13.5px;color:var(--steel);
+    border-left:2px solid rgba(198,242,78,.4);padding-left:14px;
+  }
+
+  /* ---------- pasos ---------- */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;counter-reset:s}
+  .step{
+    position:relative;border-radius:var(--r);padding:28px 24px 26px;
+    border:1px solid var(--line-2);background:var(--paper);color:#0e1014;
+  }
+  .step .num{
+    width:40px;height:40px;border-radius:12px;background:#0e1014;color:var(--acid);
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;
+    margin-bottom:16px;
+  }
+  .step h3{font-size:19px}
+  .step p{margin-top:10px;font-size:14.5px;color:#4a515c}
+  .step .tel{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font-weight:700;text-decoration:none;color:#0e1014;border-bottom:2px solid var(--acid-2);padding-bottom:2px;font-size:15px}
+
+  /* ---------- galería (marcos vacíos) ---------- */
+  .gal{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .frame{
+    position:relative;border-radius:var(--r);overflow:hidden;
+    border:1px dashed rgba(244,245,243,.2);
+    background:
+      linear-gradient(135deg,rgba(198,242,78,.08),transparent 55%),
+      linear-gradient(#13161b,#0d0f13);
+    min-height:210px;display:flex;align-items:center;justify-content:center;
+    text-align:center;padding:22px;
+  }
+  .frame span{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--steel)}
+  .frame-art{position:absolute;inset:0;opacity:.5}
+
+  /* ---------- contacto ---------- */
+  .cols{display:grid;grid-template-columns:1fr 1.05fr;gap:34px;align-items:start}
+  .info{border:1px solid var(--line);border-radius:var(--r);background:var(--bg-3);padding:28px}
+  .info li{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
+  .info li:last-child{border-bottom:0;padding-bottom:0}
+  .info li:first-child{padding-top:0}
+  .info .k{font-size:11.5px;letter-spacing:.17em;text-transform:uppercase;color:var(--steel);margin-bottom:5px}
+  .info .v{font-size:16.5px;font-weight:600;word-break:break-word}
+  .info a.v{text-decoration:none;border-bottom:1px solid rgba(198,242,78,.5)}
+  .info .v small{display:block;font-size:13.5px;font-weight:450;color:var(--muted);letter-spacing:0;margin-top:4px}
+  .map{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:#0e1014}
+  .map figcaption{padding:13px 18px;font-size:12.5px;color:var(--steel);border-top:1px solid var(--line)}
+
+  /* ---------- pie ---------- */
+  footer{background:#06070a;border-top:1px solid var(--line);padding:50px 0 42px}
+  .foot-top{display:flex;flex-wrap:wrap;gap:26px;justify-content:space-between;align-items:flex-start}
+  .foot-col h4{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--steel);margin-bottom:12px;font-weight:700}
+  .foot-col p,.foot-col a{font-size:15px;color:var(--paper-2);text-decoration:none}
+  .foot-col a{border-bottom:1px solid rgba(198,242,78,.4)}
+  .foot-col p+p{margin-top:6px}
+  .studio{
+    margin-top:36px;padding-top:22px;border-top:1px solid var(--line);
+    font-size:13px;color:var(--muted);line-height:1.6;
+  }
+  .studio strong{color:var(--paper);font-weight:650}
+
+  @media (max-width:980px){
+    .hero-in{grid-template-columns:1fr;gap:38px;padding:54px 0 62px}
+    .grid-serv{grid-template-columns:repeat(2,1fr)}
+    .steps{grid-template-columns:1fr}
+    .gal{grid-template-columns:repeat(2,1fr)}
+    .cols{grid-template-columns:1fr}
+  }
+  @media (max-width:640px){
+    body{font-size:16px}
+    :root{--bar-h:58px}
+    .topbar{font-size:11.5px;letter-spacing:0}
+    section{padding:54px 0}
+    .wrap{padding:0 18px}
+    .nav-in{min-height:0;padding:12px 18px;gap:12px}
+    .nav-links{display:none}
+    .brand{margin-right:0}
+    .nav .btn{margin-left:auto}
+    .grid-serv{grid-template-columns:1fr}
+    .gal{grid-template-columns:1fr}
+    .hero-cta .btn{width:100%}
+    .lead{font-size:16.5px}
+    .pole-card{padding:18px}
+    .info,.map figcaption{padding-left:20px;padding-right:20px}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar"><span>Propuesta de diseño · maqueta no oficial · <b>FFFFFFstudio</b> · Ángel Rubio</span></div>
+
+<header class="nav">
+  <div class="nav-in">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
+        <rect x="1.5" y="1.5" width="45" height="45" rx="13" fill="#15181d" stroke="#c6f24e" stroke-opacity=".45"/>
+        <path d="M14 13v10.5c0 5.5 4.5 10 10 11.5 5.5-1.5 10-6 10-11.5V13" stroke="#c6f24e" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+        <path d="M18 19h12" stroke="#f4f5f3" stroke-width="2.2" stroke-linecap="round"/>
+        <circle cx="24" cy="27" r="2.6" fill="#c6f24e"/>
+      </svg>
+      <span class="brand-txt"><strong>Haircut Different</strong><span>Novelda</span></span>
+    </div>
+    <nav class="nav-links">
+      <a href="#servicios">Servicios</a>
+      <a href="#cita">Cómo pedir cita</a>
+      <a href="#espacio">El local</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="btn btn-acid btn-sm" href="tel:+34628278791">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 3.5h-.1A3 3 0 0 0 3.5 6.6c0 7.7 6.2 13.9 13.9 13.9a3 3 0 0 0 3.1-3v-1.9l-4.2-1.4-1.9 2.1a12 12 0 0 1-5.8-5.8l2.1-1.9L9.3 4.4z" fill="#0a0b0d"/></svg>
+      628 278 791
+    </a>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="inicio" style="padding:0">
+    <div class="wrap hero-in">
+      <div>
+        <p class="eyebrow">Barbería en Novelda · 03660</p>
+        <h1>Tu corte, <em>a tu manera</em>.</h1>
+        <p class="lead">Barbería en el centro de Novelda. Corte, barba y arreglo de cejas con cita previa: llamas, eliges el día y te guardamos el sitio.</p>
+        <div class="hero-cta">
+          <a class="btn btn-acid" href="tel:+34628278791">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 3.5h-.1A3 3 0 0 0 3.5 6.6c0 7.7 6.2 13.9 13.9 13.9a3 3 0 0 0 3.1-3v-1.9l-4.2-1.4-1.9 2.1a12 12 0 0 1-5.8-5.8l2.1-1.9L9.3 4.4z" fill="#0a0b0d"/></svg>
+            Llamar y pedir cita
+          </a>
+          <a class="btn btn-ghost" href="#servicios">Ver servicios</a>
+        </div>
+        <p class="hero-note">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="flex:none;margin-top:4px"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z" stroke="#4f5a68" stroke-width="1.7"/><circle cx="12" cy="10" r="2.4" fill="#4f5a68"/></svg>
+          <span><b>Calle Parque de las Especias, 8</b> · Novelda (Alicante)</span>
+        </p>
+        <div class="chips">
+          <span class="chip">Cita previa por teléfono</span>
+          <span class="chip">Corte y barba</span>
+          <span class="chip">Corte infantil</span>
+        </div>
+      </div>
+      <figure class="hero-art" style="margin:0">
+        <div class="pole-card">
+          <svg viewBox="0 0 340 300" role="img" aria-label="Ilustración de barbería: poste de barbero, tijeras y navaja">
+            <defs>
+              <linearGradient id="pg" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#1b1f26"/><stop offset="1" stop-color="#0d1014"/>
+              </linearGradient>
+              <clipPath id="poleClip"><rect x="128" y="52" width="60" height="186" rx="30"/></clipPath>
+            </defs>
+            <rect x="0" y="0" width="340" height="300" rx="18" fill="url(#pg)"/>
+            <g opacity=".3" stroke="#4f5a68" stroke-width="1">
+              <path d="M0 76h340M0 150h340M0 224h340"/>
+            </g>
+            <!-- poste -->
+            <rect x="124" y="38" width="68" height="20" rx="8" fill="#4f5a68"/>
+            <rect x="124" y="232" width="68" height="20" rx="8" fill="#4f5a68"/>
+            <rect x="126" y="50" width="64" height="190" rx="32" fill="#0a0b0d" stroke="#4f5a68" stroke-width="2"/>
+            <g clip-path="url(#poleClip)">
+              <rect x="110" y="40" width="96" height="212" fill="#f4f5f3"/>
+              <g fill="#c6f24e">
+                <path d="M100 40h26l-40 56v-56z"/>
+                <path d="M126 40h26l-66 92v-36z"/>
+                <path d="M152 40h26l-92 128v-36z"/>
+                <path d="M178 40h26l-118 164v-36z"/>
+                <path d="M204 40h12l-130 180v-16z"/>
+                <path d="M216 76l-110 176h26l84-134z"/>
+                <path d="M216 148l-58 104h26l32-58z"/>
+                <path d="M216 220l-20 32h20z"/>
+              </g>
+            </g>
+            <!-- tijeras -->
+            <g transform="translate(236 92)" stroke="#c6f24e" stroke-width="3.4" fill="none" stroke-linecap="round">
+              <circle cx="10" cy="92" r="11"/><circle cx="48" cy="92" r="11"/>
+              <path d="M14 82 46 14M44 82 12 14"/>
+            </g>
+            <!-- peine -->
+            <g transform="translate(46 92)" stroke="#f4f5f3" stroke-width="3" fill="none" stroke-linecap="round">
+              <rect x="0" y="0" width="46" height="26" rx="8"/>
+              <path d="M6 26v34M14 26v46M22 26v46M30 26v46M38 26v34"/>
+              <path d="M0 13h46" stroke="#4f5a68" stroke-width="2"/>
+            </g>
+          </svg>
+          <figcaption>Ilustración de la propuesta · pendiente de sustituir por fotos reales del local</figcaption>
+        </div>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ SERVICIOS ============ -->
+  <section id="servicios">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Servicios</p>
+        <h2>Lo que se hace en la barbería</h2>
+        <p class="lead">Servicios habituales de barbería. Para precios y duración, lo mejor es preguntarlo al pedir la cita por teléfono.</p>
+      </div>
+      <div class="grid-serv">
+        <article class="card">
+          <div class="ico">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#c6f24e" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="6" cy="18" r="3"/><circle cx="18" cy="18" r="3"/><path d="M8 16 18 4M16 16 6 4"/></svg>
+          </div>
+          <h3>Corte de pelo</h3>
+          <p>Corte a máquina o tijera, degradados y acabado con el peinado que pidas.</p>
+        </article>
+        <article class="card">
+          <div class="ico">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#c6f24e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.2 15.1 13.4 5.9a2.9 2.9 0 0 1 4.1 4.1l-9.2 9.2a2.9 2.9 0 0 1-4.1-4.1z"/><path d="M13.6 7.6 16.4 10.4"/></svg>
+          </div>
+          <h3>Arreglo de barba</h3>
+          <p>Perfilado, rebaje y apurado de la barba, con toalla y acabado cuidado.</p>
+        </article>
+        <article class="card">
+          <div class="ico">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#c6f24e" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3.6 8.4C6.8 4.9 17.2 4.9 20.4 8.4"/><path d="M3.4 15.6c2.6-3.4 14.6-3.4 17.2 0-2.6 3.4-14.6 3.4-17.2 0z"/><circle cx="12" cy="15.6" r="2" fill="#c6f24e" stroke="none"/></svg>
+          </div>
+          <h3>Arreglo de cejas</h3>
+          <p>Perfilado de cejas para rematar el corte y dejar la cara definida.</p>
+        </article>
+        <article class="card">
+          <div class="ico">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#c6f24e" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="7.5" r="3.5"/><path d="M5 20c0-3.6 3.1-6.5 7-6.5s7 2.9 7 6.5"/></svg>
+          </div>
+          <h3>Corte infantil</h3>
+          <p>Corte para los más pequeños, con calma y sin prisas para que salgan contentos.</p>
+        </article>
+      </div>
+      <p class="serv-note">Esta maqueta no muestra precios ni duraciones: son datos que tiene que facilitar la barbería antes de publicar la web.</p>
+    </div>
+  </section>
+
+  <!-- ============ CÓMO PEDIR CITA ============ -->
+  <section class="alt" id="cita">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Cómo pedir cita</p>
+        <h2>Tres pasos y listo</h2>
+        <p class="lead">Ahora mismo toda la información está en Instagram y Facebook. Con una web propia, pedir cita se resume en esto.</p>
+      </div>
+      <div class="steps">
+        <article class="step">
+          <div class="num">1</div>
+          <h3>Llama a la barbería</h3>
+          <p>Un solo número para todo. Desde el móvil basta con pulsar el botón de llamada.</p>
+          <a class="tel" href="tel:+34628278791">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 3.5h-.1A3 3 0 0 0 3.5 6.6c0 7.7 6.2 13.9 13.9 13.9a3 3 0 0 0 3.1-3v-1.9l-4.2-1.4-1.9 2.1a12 12 0 0 1-5.8-5.8l2.1-1.9L9.3 4.4z" fill="#0e1014"/></svg>
+            628 278 791
+          </a>
+        </article>
+        <article class="step">
+          <div class="num">2</div>
+          <h3>Dices qué y cuándo</h3>
+          <p>Indica el servicio que quieres —corte, barba, cejas o corte infantil— y el día que te viene bien.</p>
+        </article>
+        <article class="step">
+          <div class="num">3</div>
+          <h3>Te esperamos en el local</h3>
+          <p>Calle Parque de las Especias, 8. Llega unos minutos antes y el sitio es tuyo.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EL LOCAL / GALERÍA ============ -->
+  <section id="espacio">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">El local</p>
+        <h2>Espacio reservado para vuestras fotos</h2>
+        <p class="lead">Estos marcos están preparados para las fotos reales de la barbería y de los trabajos: fachada, sillones y detalles del local. En la maqueta se dejan vacíos a propósito.</p>
+      </div>
+      <div class="gal">
+        <div class="frame">
+          <svg class="frame-art" viewBox="0 0 320 220" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+            <circle cx="160" cy="96" r="54" fill="none" stroke="#4f5a68" stroke-width="1.4"/>
+            <circle cx="160" cy="96" r="30" fill="none" stroke="#c6f24e" stroke-opacity=".5" stroke-width="1.4"/>
+            <path d="M40 180h240" stroke="#4f5a68" stroke-width="1.4"/>
+          </svg>
+          <span>Foto del local</span>
+        </div>
+        <div class="frame">
+          <svg class="frame-art" viewBox="0 0 320 220" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+            <rect x="70" y="40" width="180" height="140" fill="none" stroke="#4f5a68" stroke-width="1.4"/>
+            <path d="M70 180 160 70l90 110" fill="none" stroke="#c6f24e" stroke-opacity=".45" stroke-width="1.4"/>
+          </svg>
+          <span>Foto del equipo</span>
+        </div>
+        <div class="frame">
+          <svg class="frame-art" viewBox="0 0 320 220" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+            <g stroke="#4f5a68" stroke-width="1.4" fill="none">
+              <path d="M30 56h260M30 110h260M30 164h260"/>
+            </g>
+            <circle cx="232" cy="110" r="26" fill="none" stroke="#c6f24e" stroke-opacity=".5" stroke-width="1.4"/>
+          </svg>
+          <span>Trabajos reales</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACTO ============ -->
+  <section class="alt" id="contacto">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Contacto</p>
+        <h2>Dónde estamos</h2>
+        <p class="lead">En pleno Novelda, a un paso del parque. Si tienes dudas con el horario o el servicio, llama y te lo contamos.</p>
+      </div>
+      <div class="cols">
+        <div class="info">
+          <ul>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="flex:none;margin-top:3px"><path d="M6.6 3.5h-.1A3 3 0 0 0 3.5 6.6c0 7.7 6.2 13.9 13.9 13.9a3 3 0 0 0 3.1-3v-1.9l-4.2-1.4-1.9 2.1a12 12 0 0 1-5.8-5.8l2.1-1.9L9.3 4.4z" fill="#c6f24e"/></svg>
+              <div><div class="k">Teléfono</div><a class="v" href="tel:+34628278791">628 278 791</a></div>
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="flex:none;margin-top:3px"><path d="M12 21.5s7.2-6.3 7.2-11.3a7.2 7.2 0 1 0-14.4 0c0 5 7.2 11.3 7.2 11.3z" stroke="#c6f24e" stroke-width="1.7"/><circle cx="12" cy="10" r="2.5" fill="#c6f24e"/></svg>
+              <div><div class="k">Dirección</div><div class="v">Calle Parque de las Especias, 8<small>03660 Novelda (Alicante)</small></div></div>
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="flex:none;margin-top:3px"><circle cx="12" cy="12" r="8.5" stroke="#c6f24e" stroke-width="1.7"/><path d="M12 7.5V12l3 2" stroke="#c6f24e" stroke-width="1.7" stroke-linecap="round"/></svg>
+              <div><div class="k">Horario</div><div class="v">Consultar horario<small>Llama al 628 278 791 y te confirmamos el día y la hora.</small></div></div>
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="flex:none;margin-top:3px"><rect x="3.2" y="5.2" width="17.6" height="13.6" rx="3" stroke="#c6f24e" stroke-width="1.7"/><path d="M4.5 7.5 12 13l7.5-5.5" stroke="#c6f24e" stroke-width="1.7"/></svg>
+              <div><div class="k">Email</div><a class="v" href="mailto:jonyvazquez@hotmail.es">jonyvazquez@hotmail.es</a></div>
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="flex:none;margin-top:3px"><rect x="4" y="4" width="16" height="16" rx="5" stroke="#c6f24e" stroke-width="1.7"/><circle cx="12" cy="12" r="4" stroke="#c6f24e" stroke-width="1.7"/><circle cx="16.8" cy="7.2" r="1.1" fill="#c6f24e"/></svg>
+              <div><div class="k">Redes sociales</div><div class="v">@haircutdifferent<small>Instagram y Facebook</small></div></div>
+            </li>
+          </ul>
+          <a class="btn btn-acid" style="width:100%;margin-top:24px" href="tel:+34628278791">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 3.5h-.1A3 3 0 0 0 3.5 6.6c0 7.7 6.2 13.9 13.9 13.9a3 3 0 0 0 3.1-3v-1.9l-4.2-1.4-1.9 2.1a12 12 0 0 1-5.8-5.8l2.1-1.9L9.3 4.4z" fill="#0a0b0d"/></svg>
+            Llamar ahora
+          </a>
+        </div>
+
+        <figure class="map" style="margin:0">
+          <svg viewBox="0 0 560 400" role="img" aria-label="Croquis esquemático de la zona: la barbería está en Calle Parque de las Especias, 8">
+            <rect width="560" height="400" fill="#0b0d11"/>
+            <g opacity=".5" stroke="#1d222a" stroke-width="1">
+              <path d="M0 40h560M0 80h560M0 120h560M0 160h560M0 200h560M0 240h560M0 280h560M0 320h560M0 360h560"/>
+              <path d="M40 0v400M80 0v400M120 0v400M160 0v400M200 0v400M240 0v400M280 0v400M320 0v400M360 0v400M400 0v400M440 0v400M480 0v400M520 0v400"/>
+            </g>
+            <!-- manzanas -->
+            <g fill="#13171d" stroke="#232a33" stroke-width="1.5">
+              <rect x="48" y="52" width="150" height="104" rx="6"/>
+              <rect x="48" y="214" width="150" height="130" rx="6"/>
+              <rect x="372" y="52" width="140" height="104" rx="6"/>
+              <rect x="372" y="214" width="140" height="130" rx="6"/>
+            </g>
+            <!-- zona verde (parque) -->
+            <rect x="238" y="52" width="96" height="104" rx="10" fill="rgba(198,242,78,.1)" stroke="rgba(198,242,78,.32)" stroke-width="1.5"/>
+            <g stroke="rgba(198,242,78,.5)" stroke-width="1.4" fill="none">
+              <circle cx="266" cy="86" r="11"/><path d="M266 97v12"/>
+              <circle cx="306" cy="120" r="11"/><path d="M306 131v12"/>
+            </g>
+            <text x="286" y="150" fill="#8b9560" font-size="11" font-family="system-ui,sans-serif" text-anchor="middle" letter-spacing="1.4">ZONA VERDE</text>
+            <!-- calles -->
+            <g stroke="#2b333d" stroke-width="22" stroke-linecap="square">
+              <path d="M0 185h560"/>
+              <path d="M218 0v400"/>
+              <path d="M352 0v400"/>
+            </g>
+            <g stroke="#3b4653" stroke-width="1.6" stroke-dasharray="10 12">
+              <path d="M0 185h560"/><path d="M218 0v400"/><path d="M352 0v400"/>
+            </g>
+            <text x="22" y="178" fill="#79838f" font-size="12" font-family="system-ui,sans-serif" letter-spacing="1.1">CALLE PARQUE DE LAS ESPECIAS</text>
+            <text x="211" y="366" fill="#79838f" font-size="11" font-family="system-ui,sans-serif" text-anchor="start" letter-spacing="1.1" transform="rotate(-90 211 366)">CALLE PRÓXIMA</text>
+            <!-- marcador -->
+            <g transform="translate(252 196)">
+              <path d="M34 0a34 34 0 0 1 34 34c0 24-34 56-34 56S0 58 0 34A34 34 0 0 1 34 0z" fill="#c6f24e"/>
+              <circle cx="34" cy="33" r="12" fill="#0b0d11"/>
+            </g>
+            <g transform="translate(252 300)">
+              <rect x="-26" y="0" width="120" height="46" rx="10" fill="#f4f5f3"/>
+              <text x="34" y="20" fill="#0e1014" font-size="13" font-weight="700" font-family="system-ui,sans-serif" text-anchor="middle">Haircut Different</text>
+              <text x="34" y="36" fill="#555e69" font-size="11.5" font-family="system-ui,sans-serif" text-anchor="middle">nº 8 · Novelda</text>
+            </g>
+          </svg>
+          <figcaption>Croquis orientativo dibujado para la propuesta. No es un mapa real ni a escala.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-col">
+        <h4>Haircut Different</h4>
+        <p>Calle Parque de las Especias, 8</p>
+        <p>03660 Novelda (Alicante)</p>
+      </div>
+      <div class="foot-col">
+        <h4>Cita previa</h4>
+        <p><a href="tel:+34628278791">628 278 791</a></p>
+        <p>Consultar horario</p>
+      </div>
+      <div class="foot-col">
+        <h4>Email</h4>
+        <p><a href="mailto:jonyvazquez@hotmail.es">jonyvazquez@hotmail.es</a></p>
+        <p>Instagram y Facebook: @haircutdifferent</p>
+      </div>
+    </div>
+    <p class="studio">Propuesta de rediseño presentada por <strong>FFFFFFstudio</strong> — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+</body>
+</html>
