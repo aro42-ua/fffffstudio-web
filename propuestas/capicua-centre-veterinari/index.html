@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Capicua Centre Veterinari · Sant Feliu de Codines</title>
+<style>
+  :root{
+    --ink:#10211f;
+    --ink-soft:#3c514e;
+    --ink-faint:#6d8380;
+    --paper:#f7f4ee;
+    --paper-2:#fffdf9;
+    --line:#dfd8cb;
+    --teal-900:#0b2b2a;
+    --teal-700:#114a44;
+    --teal-500:#1d7a6c;
+    --teal-300:#5fb3a1;
+    --teal-100:#d9ece5;
+    --coral:#c8452f;
+    --coral-dark:#9c3222;
+    --coral-soft:#fde8e2;
+    --amber:#d9983f;
+    --r-s:10px;
+    --r-m:18px;
+    --r-l:28px;
+    --bar:38px;
+    --maxw:1140px;
+    --shadow-s:0 1px 2px rgba(16,33,31,.06), 0 6px 18px rgba(16,33,31,.05);
+    --shadow-m:0 2px 4px rgba(16,33,31,.06), 0 18px 44px rgba(16,33,31,.09);
+    --sans:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, system-ui, sans-serif;
+    --serif:ui-serif, Georgia, "Iowan Old Style", "Times New Roman", serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{max-width:100%;overflow-x:hidden}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--paper);
+    font-size:17px;
+    line-height:1.62;
+    letter-spacing:.002em;
+    padding-top:var(--bar);
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%}
+  h1,h2,h3,h4{margin:0;line-height:1.12;letter-spacing:-.021em;font-weight:650}
+  p{margin:0}
+  a{color:inherit}
+
+  /* ---------- barra fixa de proposta ---------- */
+  .propbar{
+    position:fixed;top:0;left:0;right:0;height:var(--bar);z-index:90;
+    display:flex;align-items:center;justify-content:center;gap:.55em;
+    background:var(--teal-900);
+    color:#cfe4de;
+    font-size:12.5px;letter-spacing:.035em;
+    font-weight:600;
+    padding:0 14px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .propbar span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .propbar i{
+    display:inline-block;width:7px;height:7px;border-radius:50%;
+    background:var(--amber);flex:none;
+  }
+
+  /* ---------- estructura ---------- */
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  section{position:relative}
+  .eyebrow{
+    font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--teal-500);display:flex;align-items:center;gap:.7em;margin-bottom:14px;
+  }
+  .eyebrow::after{content:"";height:1px;flex:1;background:var(--line)}
+  .sec-head{max-width:620px;margin-bottom:38px}
+  .sec-head h2{font-size:clamp(27px,3.4vw,40px)}
+  .sec-head p{margin-top:14px;color:var(--ink-soft);font-size:16.5px}
+
+  /* ---------- hero ---------- */
+  .hero{
+    background:
+      radial-gradient(900px 520px at 88% -10%, rgba(95,179,161,.30), transparent 62%),
+      radial-gradient(700px 480px at 4% 104%, rgba(29,122,108,.20), transparent 60%),
+      linear-gradient(168deg, var(--teal-900) 0%, #0f3b37 48%, #12514a 100%);
+    color:#eef6f3;
+    overflow:hidden;
+    padding:70px 0 0;
+  }
+  .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:54px;align-items:center}
+  .brandline{display:flex;align-items:center;gap:14px;margin-bottom:30px}
+  .mark{
+    width:46px;height:46px;border-radius:14px;flex:none;
+    background:linear-gradient(145deg,#ffffff,#d9ece5);
+    display:grid;place-items:center;box-shadow:0 8px 22px rgba(0,0,0,.22);
+  }
+  .brandline b{display:block;font-size:16.5px;letter-spacing:-.01em;line-height:1.25}
+  .brandline em{
+    display:block;font-style:normal;font-size:11.5px;letter-spacing:.14em;
+    text-transform:uppercase;color:#9fc8bd;margin-top:3px;
+  }
+  .hero h1{
+    font-family:var(--serif);font-weight:600;
+    font-size:clamp(34px,5vw,58px);line-height:1.04;letter-spacing:-.028em;
+  }
+  .hero h1 u{text-decoration:none;color:var(--teal-300);font-style:italic}
+  .hero-lead{margin-top:22px;font-size:18px;color:#c6ded7;max-width:50ch}
+  .hero-meta{
+    margin-top:26px;display:flex;flex-wrap:wrap;gap:8px 10px;
+  }
+  .chip{
+    display:inline-flex;align-items:center;gap:.5em;
+    font-size:13px;font-weight:600;letter-spacing:.01em;
+    padding:7px 13px;border-radius:999px;
+    background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);
+    color:#d9ece5;
+  }
+  .chip svg{flex:none}
+  .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:.6em;
+    font:inherit;font-weight:650;font-size:16px;letter-spacing:-.005em;
+    padding:15px 24px;border-radius:999px;text-decoration:none;
+    border:1px solid transparent;transition:transform .16s ease, box-shadow .16s ease, background .16s ease;
+  }
+  .btn:hover{transform:translateY(-2px)}
+  .btn-light{background:#fffdf9;color:var(--teal-900);box-shadow:0 10px 26px rgba(0,0,0,.2)}
+  .btn-ghost{background:transparent;color:#eef6f3;border-color:rgba(255,255,255,.3)}
+  .btn-ghost:hover{background:rgba(255,255,255,.08)}
+  .btn-urg{background:var(--coral);color:#fff;box-shadow:0 10px 26px rgba(200,69,47,.4)}
+  .btn-urg:hover{background:var(--coral-dark)}
+
+  /* targeta d'urgencies al hero */
+  .urg-card{
+    background:linear-gradient(160deg,#fffdf9,#fdeee9);
+    color:var(--ink);
+    border-radius:var(--r-l);
+    padding:28px;
+    box-shadow:0 30px 70px rgba(0,0,0,.3);
+    border:1px solid rgba(255,255,255,.6);
+    position:relative;
+  }
+  .urg-flag{
+    display:inline-flex;align-items:center;gap:.55em;
+    background:var(--coral);color:#fff;
+    font-size:11.5px;font-weight:750;letter-spacing:.12em;text-transform:uppercase;
+    padding:7px 14px;border-radius:999px;
+  }
+  .pulse{width:8px;height:8px;border-radius:50%;background:#fff;animation:pl 1.9s ease-in-out infinite}
+  @keyframes pl{0%,100%{opacity:.35;transform:scale(.8)}50%{opacity:1;transform:scale(1.25)}}
+  .urg-card h3{margin-top:18px;font-size:20px;letter-spacing:-.018em}
+  .urg-card .num{
+    display:block;margin:14px 0 2px;
+    font-family:var(--serif);font-weight:600;
+    font-size:clamp(32px,4.4vw,43px);letter-spacing:-.03em;color:var(--coral-dark);
+    text-decoration:none;line-height:1.05;
+    word-break:keep-all;
+  }
+  .urg-card .num:hover{text-decoration:underline}
+  .urg-card small{display:block;color:var(--ink-faint);font-size:13.5px;margin-top:6px}
+  .urg-card .sep{height:1px;background:var(--line);margin:22px 0}
+  .urg-sub{display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap}
+  .urg-sub .k{font-size:12px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-faint)}
+  .urg-sub a{font-weight:650;font-size:19px;text-decoration:none;letter-spacing:-.01em;color:var(--teal-700)}
+  .urg-sub a:hover{text-decoration:underline}
+
+  /* silueta decorativa */
+  .hero-art{display:block;width:100%;height:auto;margin-top:56px}
+
+  /* ---------- faixa de dades ---------- */
+  .strip{background:var(--teal-900);color:#bcd8d1;border-top:1px solid rgba(255,255,255,.07)}
+  .strip .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+  .strip div{padding:22px 26px;border-left:1px solid rgba(255,255,255,.09)}
+  .strip div:first-child{border-left:0;padding-left:0}
+  .strip b{display:block;color:#fff;font-size:15.5px;letter-spacing:-.01em}
+  .strip span{display:block;font-size:13px;margin-top:3px;color:#8fb6ac}
+
+  /* ---------- serveis ---------- */
+  .serveis{padding:84px 0}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .card{
+    background:var(--paper-2);border:1px solid var(--line);border-radius:var(--r-m);
+    padding:26px 24px 28px;box-shadow:var(--shadow-s);
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  }
+  .card:hover{transform:translateY(-3px);box-shadow:var(--shadow-m);border-color:var(--teal-300)}
+  .ico{
+    width:50px;height:50px;border-radius:14px;background:var(--teal-100);
+    display:grid;place-items:center;margin-bottom:18px;
+  }
+  .card h3{font-size:18.5px;letter-spacing:-.016em}
+  .card p{margin-top:9px;color:var(--ink-soft);font-size:15.5px;line-height:1.55}
+  .card .tag{
+    display:inline-block;margin-top:14px;font-size:11.5px;font-weight:700;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--teal-500);
+  }
+  .note{
+    margin-top:26px;font-size:14.5px;color:var(--ink-faint);
+    border-left:3px solid var(--teal-300);padding:4px 0 4px 16px;max-width:70ch;
+  }
+
+  /* ---------- primera visita ---------- */
+  .visita{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:84px 0}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;counter-reset:s}
+  .step{position:relative;padding-top:30px}
+  .step::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:3px;border-radius:3px;
+    background:linear-gradient(90deg,var(--teal-500),var(--teal-300));
+  }
+  .step .n{
+    counter-increment:s;
+    font-family:var(--serif);font-size:40px;font-weight:600;color:var(--teal-300);
+    letter-spacing:-.04em;line-height:1;display:block;
+  }
+  .step .n::after{content:counter(s,decimal-leading-zero)}
+  .step h3{margin-top:12px;font-size:19.5px;letter-spacing:-.018em}
+  .step p{margin-top:10px;color:var(--ink-soft);font-size:15.5px}
+  .step ul{margin:12px 0 0;padding:0;list-style:none}
+  .step li{
+    position:relative;padding-left:20px;font-size:14.5px;color:var(--ink-soft);margin-top:7px;
+  }
+  .step li::before{
+    content:"";position:absolute;left:3px;top:.62em;width:7px;height:7px;border-radius:50%;
+    border:2px solid var(--teal-300);
+  }
+
+  /* ---------- contacte ---------- */
+  .contacte{padding:84px 0}
+  .c-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start}
+  .panel{
+    background:var(--paper-2);border:1px solid var(--line);border-radius:var(--r-l);
+    padding:30px;box-shadow:var(--shadow-s);
+  }
+  .panel h3{font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);font-weight:700}
+  .tel-block{display:grid;gap:12px;margin-top:20px}
+  .tel{
+    display:flex;align-items:center;gap:16px;text-decoration:none;
+    border:1px solid var(--line);border-radius:var(--r-m);padding:17px 19px;
+    background:var(--paper);transition:border-color .16s ease, background .16s ease, transform .16s ease;
+  }
+  .tel:hover{transform:translateY(-2px)}
+  .tel .ring{
+    width:44px;height:44px;flex:none;border-radius:12px;display:grid;place-items:center;
+    background:var(--teal-100);
+  }
+  .tel .txt{min-width:0}
+  .tel .lab{display:block;font-size:11.5px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-faint)}
+  .tel .val{display:block;font-size:22px;font-weight:650;letter-spacing:-.018em;margin-top:2px;line-height:1.2}
+  .tel.is-urg{background:var(--coral-soft);border-color:#f0c4b8}
+  .tel.is-urg:hover{border-color:var(--coral)}
+  .tel.is-urg .ring{background:var(--coral);}
+  .tel.is-urg .val{color:var(--coral-dark)}
+  .tel.is-urg .lab{color:var(--coral-dark)}
+
+  .dl{margin:0;border-top:1px solid var(--line);margin-top:24px;padding-top:22px}
+  .dl .row{display:flex;gap:16px;padding:9px 0;align-items:baseline}
+  .dl dt{flex:none;width:118px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint)}
+  .dl dd{margin:0;font-size:16px;color:var(--ink);min-width:0}
+  .dl dd em{font-style:normal;color:var(--ink-faint);font-size:14px;display:block;margin-top:2px}
+
+  .hores{margin-top:20px;border:1px solid var(--line);border-radius:var(--r-m);overflow:hidden}
+  .hores .h{display:flex;justify-content:space-between;gap:14px;padding:13px 18px;font-size:15.5px;background:var(--paper-2)}
+  .hores .h + .h{border-top:1px solid var(--line)}
+  .hores .h:nth-child(even){background:var(--paper)}
+  .hores .h b{font-weight:600}
+  .hores .h span{text-align:right;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+  .hores .h.off span{color:var(--coral-dark)}
+  .hores-cap{
+    display:flex;align-items:center;gap:.6em;font-size:12.5px;color:var(--ink-faint);margin-top:12px;
+  }
+
+  /* mapa esquematic */
+  .map-card{padding:0;overflow:hidden;display:flex;flex-direction:column}
+  .map-head{padding:26px 30px 18px}
+  .map-svg{display:block;width:100%;height:auto;background:#eef0e9}
+  .map-foot{
+    display:flex;flex-wrap:wrap;gap:8px 20px;padding:16px 30px;border-top:1px solid var(--line);
+    font-size:12.5px;color:var(--ink-faint);
+  }
+  .ind{padding:20px 30px 26px;border-top:1px solid var(--line);background:var(--paper)}
+  .ind h4{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);font-weight:700;margin:0 0 12px}
+  .ind ul{margin:0;padding:0;list-style:none}
+  .ind li{position:relative;padding-left:22px;font-size:15px;color:var(--ink-soft);margin-top:9px;line-height:1.5}
+  .ind li:first-child{margin-top:0}
+  .ind li::before{
+    content:"";position:absolute;left:0;top:.52em;width:9px;height:9px;border-radius:50%;
+    background:var(--teal-100);border:2px solid var(--teal-300);
+  }
+  .key{display:inline-flex;align-items:center;gap:.5em}
+  .key i{width:11px;height:11px;border-radius:3px;display:inline-block;flex:none}
+
+  /* ---------- peu ---------- */
+  footer{background:var(--teal-900);color:#a9ccc3;padding:60px 0 0;margin-top:0}
+  .f-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:34px}
+  footer h4{color:#fff;font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;margin-bottom:14px}
+  footer a{color:#d9ece5;text-decoration:none}
+  footer a:hover{text-decoration:underline}
+  footer ul{margin:0;padding:0;list-style:none;font-size:15px}
+  footer li{margin-top:7px}
+  .f-brand b{color:#fff;font-size:18px;display:block;letter-spacing:-.015em}
+  .f-brand p{margin-top:10px;font-size:14.5px;max-width:40ch;color:#8fb6ac}
+  .f-studio{
+    margin-top:46px;border-top:1px solid rgba(255,255,255,.12);
+    padding:20px 0 26px;display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;justify-content:space-between;
+    font-size:13px;color:#86aea4;
+  }
+  .f-studio strong{color:#cfe4de;font-weight:600}
+
+  /* ---------- barra flotant d'urgencies ---------- */
+  .sos{
+    position:fixed;right:22px;bottom:22px;z-index:80;
+    display:inline-flex;align-items:center;gap:12px;text-decoration:none;
+    background:var(--coral);color:#fff;
+    padding:13px 20px 13px 15px;border-radius:999px;
+    box-shadow:0 14px 36px rgba(200,69,47,.45);
+    border:1px solid rgba(255,255,255,.22);
+    transition:background .16s ease, transform .16s ease;
+    max-width:calc(100vw - 44px);
+  }
+  .sos:hover{background:var(--coral-dark);transform:translateY(-2px)}
+  .sos .sico{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.18);display:grid;place-items:center;flex:none}
+  .sos .sl{display:block;font-size:10.5px;font-weight:750;letter-spacing:.12em;text-transform:uppercase;opacity:.9;line-height:1.3}
+  .sos .sv{display:block;font-size:17px;font-weight:700;letter-spacing:-.01em;line-height:1.2;white-space:nowrap}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:980px){
+    .hero-grid{grid-template-columns:1fr;gap:34px}
+    .c-grid{grid-template-columns:1fr}
+    .cards{grid-template-columns:repeat(2,1fr)}
+    .steps{grid-template-columns:1fr;gap:28px}
+    .f-grid{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:640px){
+    :root{--bar:52px}
+    body{font-size:16px;padding-bottom:84px}
+    .wrap{padding:0 18px}
+    .propbar{font-size:10.5px;letter-spacing:.04em;line-height:1.25;text-align:center;padding:0 12px}
+    .propbar span{white-space:normal}
+    .propbar i{display:none}
+    .hero{padding-top:44px}
+    .hero-lead{font-size:16.5px}
+    .cta-row{flex-direction:column;align-items:stretch}
+    .btn{width:100%;padding:15px 18px;font-size:15.5px}
+    .urg-card{padding:22px}
+    .serveis,.visita,.contacte{padding:60px 0}
+    .cards{grid-template-columns:1fr}
+    .strip .wrap{grid-template-columns:1fr}
+    .strip div{padding:18px 0;border-left:0;border-top:1px solid rgba(255,255,255,.09)}
+    .strip div:first-child{border-top:0}
+    .panel{padding:22px}
+    .map-head{padding:22px 22px 16px}
+    .map-foot{padding:14px 22px 20px}
+    .ind{padding:18px 22px 22px}
+    .dl .row{flex-direction:column;gap:2px;padding:10px 0}
+    .dl dt{width:auto}
+    .f-grid{grid-template-columns:1fr;gap:26px}
+    .f-studio{padding-bottom:22px}
+    /* urgencies: barra inferior a tota l'amplada */
+    .sos{
+      left:0;right:0;bottom:0;border-radius:0;max-width:100%;
+      justify-content:center;padding:12px 16px;border:0;
+      border-top:1px solid rgba(255,255,255,.22);
+      box-shadow:0 -10px 30px rgba(16,33,31,.28);
+    }
+    .sos .sico{width:30px;height:30px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none !important;transition:none !important}
+  }
+</style>
+</head>
+<body>
+
+<div class="propbar" role="note">
+  <i aria-hidden="true"></i>
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="wrap">
+    <div class="brandline">
+      <div class="mark" aria-hidden="true">
+        <svg width="27" height="27" viewBox="0 0 32 32" fill="none">
+          <ellipse cx="16" cy="21.5" rx="7.2" ry="5.8" fill="#114a44"/>
+          <ellipse cx="7.6" cy="13.2" rx="3.5" ry="4.3" transform="rotate(-18 7.6 13.2)" fill="#1d7a6c"/>
+          <ellipse cx="24.4" cy="13.2" rx="3.5" ry="4.3" transform="rotate(18 24.4 13.2)" fill="#1d7a6c"/>
+          <ellipse cx="13" cy="7.4" rx="3.2" ry="4" transform="rotate(-8 13 7.4)" fill="#1d7a6c"/>
+          <ellipse cx="20.6" cy="7.4" rx="3.2" ry="4" transform="rotate(8 20.6 7.4)" fill="#1d7a6c"/>
+        </svg>
+      </div>
+      <div>
+        <b>Capicua Centre Veterinari</b>
+        <em>Sant Feliu de Codines</em>
+      </div>
+    </div>
+
+    <div class="hero-grid">
+      <div>
+        <h1>El centre veterinari del <u>poble</u>, a quatre passes de casa.</h1>
+        <p class="hero-lead">
+          Consultori veterinari, perruqueria canina i alimentació per a mascotes
+          al carrer Anselm Clavé. Amb visites a domicili i telèfon obert 24 hores.
+        </p>
+
+        <div class="hero-meta">
+          <span class="chip">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M8 14.5S2 10.2 2 6.4A4.4 4.4 0 0 1 8 2.3a4.4 4.4 0 0 1 6 4.1c0 3.8-6 8.1-6 8.1Z" stroke="#5fb3a1" stroke-width="1.4" stroke-linejoin="round"/>
+              <circle cx="8" cy="6.3" r="1.7" fill="#5fb3a1"/>
+            </svg>
+            C/ Anselm Clavé, 14
+          </span>
+          <span class="chip">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <circle cx="8" cy="8" r="6.2" stroke="#5fb3a1" stroke-width="1.4"/>
+              <path d="M8 4.6V8l2.5 1.6" stroke="#5fb3a1" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+            Dll-Dv 9-13 h i 17-20 h
+          </span>
+          <span class="chip">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 3.2h2.3l1.1 2.7-1.5 1.2a7.4 7.4 0 0 0 3.9 3.9l1.2-1.5 2.7 1.1V13a.9.9 0 0 1-1 .9A10.7 10.7 0 0 1 2.1 4.2a.9.9 0 0 1 .9-1Z" stroke="#5fb3a1" stroke-width="1.4" stroke-linejoin="round"/>
+            </svg>
+            Visites i pinsos a domicili
+          </span>
+        </div>
+
+        <div class="cta-row">
+          <a class="btn btn-light" href="tel:+34938662472">
+            <svg width="17" height="17" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 3.2h2.3l1.1 2.7-1.5 1.2a7.4 7.4 0 0 0 3.9 3.9l1.2-1.5 2.7 1.1V13a.9.9 0 0 1-1 .9A10.7 10.7 0 0 1 2.1 4.2a.9.9 0 0 1 .9-1Z" stroke="#0b2b2a" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+            Demanar cita · 938 662 472
+          </a>
+          <a class="btn btn-ghost" href="#contacte">Com arribar-hi</a>
+        </div>
+      </div>
+
+      <!-- targeta d'urgencies -->
+      <aside class="urg-card" aria-label="Urgències veterinàries">
+        <span class="urg-flag"><i class="pulse" aria-hidden="true"></i> Urgències 24 h</span>
+        <h3>Si és urgent, truca ara mateix.</h3>
+        <a class="num" href="tel:+34616140139">616 140 139</a>
+        <small>Telèfon 24 hores · servei d'urgències del centre</small>
+        <div class="sep" aria-hidden="true"></div>
+        <div class="urg-sub">
+          <span class="k">Cites i consultes</span>
+          <a href="tel:+34938662472">938 662 472</a>
+        </div>
+      </aside>
+    </div>
+
+    <!-- silueta decorativa dibuixada amb SVG -->
+    <svg class="hero-art" viewBox="0 0 1140 132" preserveAspectRatio="xMidYMax slice" role="presentation" aria-hidden="true" focusable="false">
+      <defs>
+        <linearGradient id="gSil" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#06201f" stop-opacity=".62"/>
+          <stop offset="1" stop-color="#051a19" stop-opacity=".92"/>
+        </linearGradient>
+        <linearGradient id="gHill" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#1d7a6c" stop-opacity=".30"/>
+          <stop offset="1" stop-color="#1d7a6c" stop-opacity=".08"/>
+        </linearGradient>
+      </defs>
+      <path d="M0 110 C 120 74 230 96 340 86 C 470 74 560 104 700 92 C 840 80 960 100 1140 78 L1140 132 L0 132Z" fill="url(#gHill)"/>
+      <!-- gos -->
+      <g fill="url(#gSil)">
+        <path d="M250 132 L250 104 C250 96 256 90 264 90 L300 90 C309 90 316 96 316 104 L316 132 Z"/>
+        <path d="M316 104 C322 100 330 94 336 86 C340 80 341 72 338 66 C336 61 331 59 327 62 C324 64 322 68 320 72 C318 78 314 84 308 88 Z"/>
+        <path d="M330 68 C334 60 340 56 348 56 C356 56 362 62 362 70 C362 76 358 82 352 84 L336 86 Z"/>
+        <path d="M344 56 C344 48 348 42 352 40 C354 46 356 50 358 56 Z"/>
+        <path d="M258 132 L252 132 C248 118 246 110 248 100 L256 102 Z"/>
+      </g>
+      <!-- gat -->
+      <g fill="url(#gSil)">
+        <path d="M824 132 L824 106 C824 98 830 92 838 92 L862 92 C870 92 876 98 876 106 L876 132 Z"/>
+        <path d="M876 104 C884 100 890 92 890 82 C890 74 886 68 880 66 L876 92 Z"/>
+        <path d="M872 70 C872 60 878 54 886 54 C894 54 900 60 900 68 C900 76 894 82 886 82 Z"/>
+        <path d="M876 56 L872 44 L884 50 Z"/>
+        <path d="M896 56 L902 44 L902 54 Z"/>
+      </g>
+      <!-- petjades -->
+      <g fill="#5fb3a1" opacity=".4">
+        <circle cx="430" cy="118" r="5"/><circle cx="424" cy="108" r="2.4"/><circle cx="431" cy="105" r="2.4"/><circle cx="438" cy="108" r="2.4"/>
+        <circle cx="486" cy="124" r="5"/><circle cx="480" cy="114" r="2.4"/><circle cx="487" cy="111" r="2.4"/><circle cx="494" cy="114" r="2.4"/>
+        <circle cx="542" cy="118" r="5"/><circle cx="536" cy="108" r="2.4"/><circle cx="543" cy="105" r="2.4"/><circle cx="550" cy="108" r="2.4"/>
+        <circle cx="598" cy="124" r="5"/><circle cx="592" cy="114" r="2.4"/><circle cx="599" cy="111" r="2.4"/><circle cx="606" cy="114" r="2.4"/>
+      </g>
+    </svg>
+  </div>
+</header>
+
+<!-- ============ FAIXA DE DADES ============ -->
+<section class="strip" aria-label="Dades del centre">
+  <div class="wrap">
+    <div>
+      <b>Veterinària Tània Martin Pinardi</b>
+      <span>Núm. col. 3370</span>
+    </div>
+    <div>
+      <b>C/ Anselm Clavé, 14</b>
+      <span>08182 Sant Feliu de Codines (Barcelona)</span>
+    </div>
+    <div>
+      <b>Telèfon 24 hores</b>
+      <span>Urgències: 616 140 139</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVEIS ============ -->
+<section class="serveis" id="serveis">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Serveis</p>
+      <h2>Tot el que fa el centre, en un sol lloc.</h2>
+      <p>Aquesta és la relació de serveis del centre. Per a qualsevol altra necessitat, el millor és consultar-ho directament al centre.</p>
+    </div>
+
+    <div class="cards">
+      <article class="card">
+        <div class="ico" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+            <path d="M12 4.5v15M4.5 12h15" stroke="#114a44" stroke-width="2.1" stroke-linecap="round"/>
+            <rect x="3" y="3" width="18" height="18" rx="6" stroke="#1d7a6c" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <h3>Consultori veterinari</h3>
+        <p>Atenció veterinària al centre, amb cita concertada per telèfon.</p>
+        <span class="tag">Amb cita prèvia</span>
+      </article>
+
+      <article class="card">
+        <div class="ico" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+            <circle cx="7" cy="7.5" r="2.6" stroke="#114a44" stroke-width="1.6"/>
+            <circle cx="7" cy="16.5" r="2.6" stroke="#114a44" stroke-width="1.6"/>
+            <path d="M9.4 9.1 20 14.5M9.4 14.9 20 9.5" stroke="#1d7a6c" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Perruqueria canina</h3>
+        <p>Servei de perruqueria per a gossos al mateix centre.</p>
+        <span class="tag">Consultar al centre</span>
+      </article>
+
+      <article class="card">
+        <div class="ico" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+            <path d="M5 8.5h14l-1.2 10.2a1.6 1.6 0 0 1-1.6 1.4H7.8a1.6 1.6 0 0 1-1.6-1.4L5 8.5Z" stroke="#114a44" stroke-width="1.6" stroke-linejoin="round"/>
+            <path d="M9 8.5V6.8A3 3 0 0 1 15 6.8v1.7" stroke="#1d7a6c" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Alimentació i accessoris</h3>
+        <p>Alimentació i accessoris per a mascotes disponibles al centre.</p>
+        <span class="tag">Consultar al centre</span>
+      </article>
+
+      <article class="card">
+        <div class="ico" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+            <path d="M3.6 11.2 12 4.3l8.4 6.9" stroke="#1d7a6c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M5.8 11v8.4h12.4V11" stroke="#114a44" stroke-width="1.6" stroke-linejoin="round"/>
+            <circle cx="12" cy="15" r="1.9" fill="#1d7a6c"/>
+          </svg>
+        </div>
+        <h3>Visites a domicili</h3>
+        <p>Visites a domicili dins del servei habitual del centre.</p>
+        <span class="tag">Demanar per telèfon</span>
+      </article>
+
+      <article class="card">
+        <div class="ico" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+            <rect x="2.6" y="8" width="10.6" height="7.6" rx="1.4" stroke="#114a44" stroke-width="1.6"/>
+            <path d="M13.2 10.4h4l3.2 3v2.2h-7.2V10.4Z" stroke="#1d7a6c" stroke-width="1.6" stroke-linejoin="round"/>
+            <circle cx="6.6" cy="17.4" r="1.8" stroke="#114a44" stroke-width="1.5"/>
+            <circle cx="16.6" cy="17.4" r="1.8" stroke="#114a44" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <h3>Entrega de pinsos a domicili</h3>
+        <p>Entrega de pinsos a domicili per als clients del centre.</p>
+        <span class="tag">Demanar per telèfon</span>
+      </article>
+
+      <article class="card">
+        <div class="ico" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="8.6" stroke="#114a44" stroke-width="1.6"/>
+            <path d="M12 7.2V12l3.4 2.2" stroke="#1d7a6c" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Telèfon 24 hores</h3>
+        <p>Línia d'urgències oberta les 24 hores: 616 140 139.</p>
+        <span class="tag">616 140 139</span>
+      </article>
+    </div>
+
+    <p class="note">
+      Aquesta maqueta recull únicament els serveis publicats a la fitxa oficial del centre.
+      Les condicions, la disponibilitat i els preus de cada servei s'han de consultar al centre.
+    </p>
+  </div>
+</section>
+
+<!-- ============ PRIMERA VISITA ============ -->
+<section class="visita" id="primera-visita">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">La primera visita</p>
+      <h2>Com funciona, pas a pas.</h2>
+      <p>Perquè ningú arribi al centre amb dubtes. Tres passos, sense lletra petita.</p>
+    </div>
+
+    <div class="steps">
+      <article class="step">
+        <span class="n" aria-hidden="true"></span>
+        <h3>Truca i reserva l'hora</h3>
+        <p>Es demana cita per telèfon al 938 662 472, dins l'horari d'atenció del centre.</p>
+        <ul>
+          <li>Explica de quin animal es tracta i què li passa</li>
+          <li>Si és una urgència, fes servir el telèfon 24 h</li>
+        </ul>
+      </article>
+
+      <article class="step">
+        <span class="n" aria-hidden="true"></span>
+        <h3>Vine amb la documentació</h3>
+        <p>Porta tot el que tinguis de l'animal perquè la veterinària en conegui l'historial.</p>
+        <ul>
+          <li>Cartilla o passaport de l'animal, si en té</li>
+          <li>Informes i proves anteriors, si n'hi ha</li>
+          <li>Apartat per completar amb el centre</li>
+        </ul>
+      </article>
+
+      <article class="step">
+        <span class="n" aria-hidden="true"></span>
+        <h3>Consulta i pla de seguiment</h3>
+        <p>A la consulta es revisa l'animal i es comenta amb tu com continuar.</p>
+        <ul>
+          <li>Les properes visites es concerten al mateix centre</li>
+          <li>Si cal una visita a domicili, es demana per telèfon</li>
+          <li>Apartat per completar amb el centre</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTE ============ -->
+<section class="contacte" id="contacte">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Contacte</p>
+      <h2>On som i quan som oberts.</h2>
+      <p>Al centre del poble, al carrer Anselm Clavé. Amb línia d'urgències oberta les 24 hores.</p>
+    </div>
+
+    <div class="c-grid">
+      <!-- columna 1: telefons + dades + horari -->
+      <div class="panel">
+        <h3>Telèfons</h3>
+        <div class="tel-block">
+          <a class="tel is-urg" href="tel:+34616140139">
+            <span class="ring" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 16 16" fill="none">
+                <path d="M3 3.2h2.3l1.1 2.7-1.5 1.2a7.4 7.4 0 0 0 3.9 3.9l1.2-1.5 2.7 1.1V13a.9.9 0 0 1-1 .9A10.7 10.7 0 0 1 2.1 4.2a.9.9 0 0 1 .9-1Z" stroke="#ffffff" stroke-width="1.5" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="txt">
+              <span class="lab">Urgències · 24 hores</span>
+              <span class="val">616 140 139</span>
+            </span>
+          </a>
+
+          <a class="tel" href="tel:+34938662472">
+            <span class="ring" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 16 16" fill="none">
+                <path d="M3 3.2h2.3l1.1 2.7-1.5 1.2a7.4 7.4 0 0 0 3.9 3.9l1.2-1.5 2.7 1.1V13a.9.9 0 0 1-1 .9A10.7 10.7 0 0 1 2.1 4.2a.9.9 0 0 1 .9-1Z" stroke="#114a44" stroke-width="1.5" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="txt">
+              <span class="lab">Cites i consultes</span>
+              <span class="val">938 662 472</span>
+            </span>
+          </a>
+        </div>
+
+        <dl class="dl">
+          <div class="row">
+            <dt>Adreça</dt>
+            <dd>C/ Anselm Clavé, 14 — 08182 Sant Feliu de Codines (Barcelona)</dd>
+          </div>
+          <div class="row">
+            <dt>Veterinària</dt>
+            <dd>Tània Martin Pinardi <em>Núm. col. 3370</em></dd>
+          </div>
+          <div class="row">
+            <dt>Aparcament</dt>
+            <dd>Apartat per completar</dd>
+          </div>
+        </dl>
+
+        <h3 style="margin-top:26px">Horari</h3>
+        <div class="hores">
+          <div class="h"><b>De dilluns a divendres</b><span>9 a 13 h i 17 a 20 h</span></div>
+          <div class="h"><b>Dissabtes</b><span>10 a 13 h</span></div>
+          <div class="h off"><b>Diumenges</b><span>Tancat</span></div>
+        </div>
+        <p class="hores-cap">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <circle cx="8" cy="8" r="6.4" stroke="#c8452f" stroke-width="1.4"/>
+            <path d="M8 5v4.6" stroke="#c8452f" stroke-width="1.6" stroke-linecap="round"/>
+            <circle cx="8" cy="11.6" r=".9" fill="#c8452f"/>
+          </svg>
+          Fora d'horari, les urgències s'atenen al telèfon 24 h.
+        </p>
+      </div>
+
+      <!-- columna 2: mapa esquematic -->
+      <div class="panel map-card">
+        <div class="map-head">
+          <h3>Com arribar-hi</h3>
+          <p style="margin-top:10px;color:var(--ink-soft);font-size:15.5px">
+            Esquema orientatiu dibuixat a mà. No és un mapa a escala.
+          </p>
+        </div>
+
+        <svg class="map-svg" viewBox="0 0 560 430" role="img" aria-label="Esquema orientatiu: el centre es troba al carrer Anselm Clavé número 14, a Sant Feliu de Codines.">
+          <defs>
+            <linearGradient id="gMap" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#f2f3ec"/>
+              <stop offset="1" stop-color="#e6e9df"/>
+            </linearGradient>
+            <pattern id="pHatch" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+              <line x1="0" y1="0" x2="0" y2="7" stroke="#cfd6c8" stroke-width="2"/>
+            </pattern>
+          </defs>
+
+          <rect width="560" height="430" fill="url(#gMap)"/>
+
+          <!-- illes de cases -->
+          <g fill="#dde2d6" stroke="#c6cebc" stroke-width="1.6">
+            <path d="M34 36 h150 v108 h-150 Z"/>
+            <path d="M212 30 h130 v114 h-130 Z"/>
+            <path d="M372 44 h156 v100 h-156 Z"/>
+            <path d="M28 236 h162 v96 h-162 Z"/>
+            <path d="M218 240 h124 v92 h-124 Z"/>
+            <path d="M370 232 h158 v104 h-158 Z"/>
+            <path d="M48 362 h190 v48 h-190 Z"/>
+            <path d="M266 366 h242 v44 h-242 Z"/>
+          </g>
+
+          <!-- zona verda esquematica -->
+          <g>
+            <path d="M372 44 h156 v100 h-156 Z" fill="url(#pHatch)" opacity=".8"/>
+            <circle cx="420" cy="92" r="13" fill="#9bbf92"/>
+            <circle cx="462" cy="78" r="9" fill="#9bbf92"/>
+            <circle cx="494" cy="104" r="11" fill="#9bbf92"/>
+          </g>
+
+          <!-- carrer principal: Anselm Clave -->
+          <g>
+            <path d="M0 196 H560" stroke="#ffffff" stroke-width="34"/>
+            <path d="M0 196 H560" stroke="#d8c9a8" stroke-width="34" opacity=".35"/>
+            <path d="M0 196 H560" stroke="#b9a884" stroke-width="2" stroke-dasharray="16 13" opacity=".7"/>
+          </g>
+          <!-- carrers secundaris -->
+          <g stroke="#ffffff" stroke-width="20">
+            <path d="M200 0 V430"/>
+            <path d="M356 0 V430"/>
+            <path d="M0 350 H560"/>
+          </g>
+          <g stroke="#cbd2c0" stroke-width="1.4">
+            <path d="M190 0 V430"/><path d="M210 0 V430"/>
+            <path d="M346 0 V430"/><path d="M366 0 V430"/>
+            <path d="M0 340 H560"/><path d="M0 360 H560"/>
+            <path d="M0 179 H560"/><path d="M0 213 H560"/>
+          </g>
+
+          <!-- retols de carrer -->
+          <text x="24" y="190" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif" font-size="14" font-weight="700" fill="#7b6a46" letter-spacing=".6">C/ ANSELM CLAVÉ</text>
+          <text x="206" y="26" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif" font-size="11.5" font-weight="600" fill="#8d9683" letter-spacing=".5" transform="rotate(90 206 26)">CARRER TRANSVERSAL</text>
+          <text x="362" y="26" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif" font-size="11.5" font-weight="600" fill="#8d9683" letter-spacing=".5" transform="rotate(90 362 26)">CARRER TRANSVERSAL</text>
+          <text x="24" y="336" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif" font-size="11.5" font-weight="600" fill="#8d9683" letter-spacing=".5">CARRER PARAL·LEL</text>
+
+          <!-- marcador del centre -->
+          <g>
+            <rect x="238" y="146" width="86" height="34" rx="6" fill="#114a44"/>
+            <text x="281" y="168" text-anchor="middle" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif" font-size="13" font-weight="700" fill="#ffffff">Núm. 14</text>
+            <circle cx="281" cy="196" r="22" fill="#c8452f" opacity=".18"/>
+            <circle cx="281" cy="196" r="13" fill="#c8452f" stroke="#ffffff" stroke-width="3"/>
+            <path d="M281 183 v-9" stroke="#c8452f" stroke-width="3" stroke-linecap="round"/>
+          </g>
+
+          <!-- etiqueta del centre -->
+          <g>
+            <rect x="300" y="222" width="236" height="64" rx="12" fill="#ffffff" stroke="#dfd8cb" stroke-width="1.6"/>
+            <text x="318" y="248" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif" font-size="14.5" font-weight="700" fill="#10211f">Capicua Centre Veterinari</text>
+            <text x="318" y="270" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif" font-size="13" fill="#6d8380">C/ Anselm Clavé, 14</text>
+          </g>
+
+          <!-- rosa dels vents -->
+          <g transform="translate(508 390)">
+            <circle r="19" fill="#ffffff" stroke="#dfd8cb" stroke-width="1.4"/>
+            <path d="M0 -12 L5 3 L0 0 L-5 3 Z" fill="#114a44"/>
+            <text y="-21.5" text-anchor="middle" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif" font-size="9.5" font-weight="700" fill="#6d8380">N</text>
+          </g>
+        </svg>
+
+        <div class="map-foot">
+          <span class="key"><i style="background:#c8452f"></i> Centre veterinari</span>
+          <span class="key"><i style="background:#ffffff;border:1px solid #c6cebc"></i> Carrers</span>
+          <span class="key"><i style="background:#dde2d6"></i> Illes de cases</span>
+          <span class="key"><i style="background:#9bbf92"></i> Zona verda</span>
+        </div>
+
+        <div class="ind">
+          <h4>Indicacions</h4>
+          <ul>
+            <li>El centre és al <b>C/ Anselm Clavé, 14</b>, al nucli de Sant Feliu de Codines.</li>
+            <li>Per confirmar l'accés i l'aparcament més proper: <b>consultar al centre</b>.</li>
+            <li>Fora de l'horari d'atenció, el telèfon de 24 hores és el <b>616 140 139</b>.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PEU ============ -->
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div class="f-brand">
+        <b>Capicua Centre Veterinari</b>
+        <p>C/ Anselm Clavé, 14 — 08182 Sant Feliu de Codines (Barcelona)</p>
+        <p style="margin-top:8px">Veterinària Tània Martin Pinardi · Núm. col. 3370</p>
+      </div>
+
+      <div>
+        <h4>Contacte</h4>
+        <ul>
+          <li><a href="tel:+34938662472">938 662 472</a></li>
+          <li><a href="tel:+34616140139">Urgències 24 h · 616 140 139</a></li>
+          <li><a href="mailto:cvcapicua@yahoo.es">cvcapicua@yahoo.es</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Horari</h4>
+        <ul>
+          <li>Dilluns a divendres: 9-13 h i 17-20 h</li>
+          <li>Dissabtes: 10-13 h</li>
+          <li>Diumenges: tancat</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="f-studio">
+      <span><strong>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</strong></span>
+      <span>Maqueta de demostració · dades preses de la fitxa oficial del centre</span>
+    </div>
+  </div>
+</footer>
+
+<!-- barra flotant d'urgencies -->
+<a class="sos" href="tel:+34616140139" aria-label="Trucar a urgències 24 hores, 616 140 139">
+  <span class="sico" aria-hidden="true">
+    <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
+      <path d="M3 3.2h2.3l1.1 2.7-1.5 1.2a7.4 7.4 0 0 0 3.9 3.9l1.2-1.5 2.7 1.1V13a.9.9 0 0 1-1 .9A10.7 10.7 0 0 1 2.1 4.2a.9.9 0 0 1 .9-1Z" stroke="#ffffff" stroke-width="1.6" stroke-linejoin="round"/>
+    </svg>
+  </span>
+  <span>
+    <span class="sl">Urgències 24 h</span>
+    <span class="sv">616 140 139</span>
+  </span>
+</a>
+
+</body>
+</html>

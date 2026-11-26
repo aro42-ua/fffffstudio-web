@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alcaraz Óptica · Petrer — Propuesta de rediseño</title>
+<meta name="description" content="Maqueta de propuesta de rediseño web para Alcaraz Óptica, óptica optometrista en Petrer (Alicante).">
+<style>
+  :root{
+    --ink:#0d1b2a;
+    --ink-2:#17304a;
+    --slate:#51657a;
+    --slate-2:#7b8ca0;
+    --line:#dfe5ec;
+    --line-2:#eef2f6;
+    --paper:#fbfcfd;
+    --paper-2:#f3f6f9;
+    --white:#ffffff;
+    --teal:#16697a;
+    --teal-2:#1d8a9e;
+    --teal-ink:#0b4553;
+    --sand:#e8b04b;
+    --sand-2:#f3d49a;
+    --bar-h:38px;
+    --max:1140px;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+    --serif:ui-serif,Georgia,"Times New Roman",Times,serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--sans);font-size:17px;line-height:1.65;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  img,svg{max-width:100%}
+  h1,h2,h3,h4{margin:0;line-height:1.12;letter-spacing:-.022em;font-weight:650}
+  p{margin:0}
+  a{color:inherit}
+  ul{margin:0;padding:0;list-style:none}
+
+  /* ---------- barra fija ---------- */
+  .propbar{
+    position:fixed;inset:0 0 auto 0;z-index:100;height:var(--bar-h);
+    display:flex;align-items:center;justify-content:center;
+    background:var(--ink);color:#cfe0e6;
+    font-size:11.5px;letter-spacing:.075em;text-transform:uppercase;
+    padding:0 14px;text-align:center;
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .propbar span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+  .page{padding-top:var(--bar-h)}
+
+  /* ---------- cabecera ---------- */
+  .wrap{width:100%;max-width:var(--max);margin:0 auto;padding:0 32px}
+  .topnav{
+    position:sticky;top:var(--bar-h);z-index:90;
+    background:rgba(251,252,253,.92);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .topnav__in{display:flex;align-items:center;gap:20px;height:72px}
+  .brand{display:flex;align-items:center;gap:11px;text-decoration:none;flex:0 0 auto}
+  .brand__name{font-family:var(--serif);font-size:20px;letter-spacing:-.01em;font-weight:600}
+  .brand__name em{font-style:normal;color:var(--teal)}
+  .navlinks{display:flex;gap:26px;margin-left:auto;font-size:14.5px;color:var(--slate)}
+  .navlinks a{text-decoration:none;padding:4px 0;border-bottom:1px solid transparent}
+  .navlinks a:hover{color:var(--teal);border-bottom-color:var(--teal)}
+  .navtel{
+    margin-left:4px;flex:0 0 auto;display:inline-flex;align-items:center;gap:8px;
+    background:var(--ink);color:#fff;text-decoration:none;
+    padding:10px 17px;border-radius:999px;font-size:14.5px;font-weight:600;letter-spacing:-.01em;
+  }
+  .navtel:hover{background:var(--teal-ink)}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;overflow:hidden;background:var(--white);border-bottom:1px solid var(--line)}
+  .hero::before{
+    content:"";position:absolute;right:-16%;top:-28%;width:78vw;max-width:860px;aspect-ratio:1;
+    background:
+      radial-gradient(circle at 42% 38%, rgba(255,255,255,.92) 0 16%, rgba(255,255,255,0) 17%),
+      conic-gradient(from 210deg, #cfe6ea, #eaf2f3, #bcd9df, #e9f1f2, #cfe6ea),
+      radial-gradient(circle, var(--teal-2), var(--teal));
+    border-radius:50%;opacity:.5;filter:blur(.3px);z-index:0;
+  }
+  .hero::after{
+    content:"";position:absolute;right:6%;top:9%;width:36vw;max-width:360px;aspect-ratio:1;
+    border-radius:50%;border:1px solid rgba(22,105,122,.22);z-index:0;
+  }
+  .hero__in{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:48px;align-items:center;padding-top:84px;padding-bottom:92px}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);font-weight:650;
+    margin-bottom:24px;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--teal);opacity:.55}
+  h1.hero__t{
+    font-family:var(--serif);font-weight:500;
+    font-size:clamp(2.35rem,5.4vw,4.1rem);letter-spacing:-.03em;line-height:1.04;
+  }
+  h1.hero__t em{font-style:italic;color:var(--teal)}
+  .hero__p{margin-top:24px;font-size:19px;color:var(--slate);max-width:33em}
+  .hero__cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:34px}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;text-decoration:none;
+    padding:15px 26px;border-radius:999px;font-weight:650;font-size:16.5px;letter-spacing:-.01em;
+    border:1px solid transparent;
+  }
+  .btn--p{background:var(--teal);color:#fff;box-shadow:0 10px 24px -12px rgba(11,69,83,.55)}
+  .btn--p:hover{background:var(--teal-ink)}
+  .btn--g{border-color:var(--line);color:var(--ink-2);background:var(--white)}
+  .btn--g:hover{border-color:var(--teal);color:var(--teal)}
+  .hero__note{margin-top:20px;font-size:14.5px;color:var(--slate-2)}
+
+  /* chart card */
+  .chart{
+    position:relative;background:var(--white);border:1px solid var(--line);border-radius:20px;
+    padding:30px 32px 26px;box-shadow:0 30px 60px -38px rgba(13,27,42,.3);
+  }
+  .chart__h{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--slate-2);margin-bottom:18px}
+  .chart__rows{display:grid;gap:9px}
+  .crow{display:flex;align-items:baseline;gap:14px;border-bottom:1px dashed var(--line-2);padding-bottom:8px}
+  .crow:last-child{border-bottom:0;padding-bottom:0}
+  .crow b{
+    font-family:var(--serif);font-weight:600;color:var(--ink);letter-spacing:.14em;
+    flex:1 1 auto;min-width:0;overflow:hidden;white-space:nowrap;
+  }
+  .crow i{font-style:normal;font-size:11px;color:var(--slate-2);letter-spacing:.08em;flex:0 0 auto}
+  .crow:nth-child(1) b{font-size:34px}
+  .crow:nth-child(2) b{font-size:26px}
+  .crow:nth-child(3) b{font-size:19px}
+  .crow:nth-child(4) b{font-size:14px}
+  .crow:nth-child(5) b{font-size:11px;color:var(--slate)}
+  .chart__f{margin-top:20px;padding-top:16px;border-top:1px solid var(--line);font-size:13.5px;color:var(--slate)}
+
+  /* ---------- secciones ---------- */
+  section{scroll-margin-top:calc(var(--bar-h) + 80px)}
+  .sec{padding:92px 0}
+  .sec--alt{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .sechead{max-width:34em;margin-bottom:46px}
+  .sechead .kicker{
+    font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);font-weight:650;display:block;margin-bottom:14px;
+  }
+  .sechead h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.85rem,3.4vw,2.6rem);letter-spacing:-.025em}
+  .sechead p{margin-top:16px;color:var(--slate);font-size:17.5px}
+
+  /* servicios */
+  .grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+  .card{
+    background:var(--white);border:1px solid var(--line);border-radius:16px;padding:28px 26px 26px;
+    display:flex;flex-direction:column;gap:14px;
+  }
+  .sec--alt .card{box-shadow:0 1px 2px rgba(13,27,42,.03)}
+  .card__ic{
+    width:46px;height:46px;border-radius:12px;display:grid;place-items:center;flex:0 0 auto;
+    background:linear-gradient(145deg,#e4f0f2,#f6fafb);border:1px solid #d6e6e9;color:var(--teal-ink);
+  }
+  .card h3{font-size:18.5px;letter-spacing:-.015em}
+  .card p{color:var(--slate);font-size:15.5px;line-height:1.6}
+  .card__tag{
+    margin-top:auto;font-size:12px;letter-spacing:.09em;text-transform:uppercase;
+    color:var(--slate-2);padding-top:6px;
+  }
+
+  /* pasos */
+  .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--white)}
+  .step{padding:34px 30px 32px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:12px}
+  .step:last-child{border-right:0}
+  .step__n{
+    font-family:var(--serif);font-size:15px;font-weight:600;color:var(--teal);
+    width:38px;height:38px;border-radius:50%;border:1px solid #cfe2e6;background:#f2f9fa;
+    display:grid;place-items:center;margin-bottom:4px;
+  }
+  .step h3{font-size:18px}
+  .step p{color:var(--slate);font-size:15.5px}
+  .step__meta{margin-top:6px;font-size:13.5px;color:var(--slate-2)}
+
+  /* contacto */
+  .contact{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.02fr);gap:28px;align-items:start}
+  .panel{background:var(--white);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+  .panel__pad{padding:30px 30px 28px}
+  .dl{display:grid;gap:0}
+  .dl > div{padding:17px 0;border-bottom:1px solid var(--line-2);display:grid;grid-template-columns:118px minmax(0,1fr);gap:16px;align-items:start}
+  .dl > div:first-child{padding-top:0}
+  .dl > div:last-child{border-bottom:0;padding-bottom:0}
+  .dl dt{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--slate-2);padding-top:3px;margin:0}
+  .dl dd{margin:0;font-size:16.5px;color:var(--ink-2)}
+  .dl dd a{color:var(--teal-ink);text-decoration:none;border-bottom:1px solid rgba(22,105,122,.3);font-weight:600}
+  .dl dd a:hover{border-bottom-color:var(--teal)}
+  .dl dd .tel{font-size:24px;font-weight:650;letter-spacing:-.02em;border:0;display:inline-block}
+  .hours{display:grid;gap:12px;font-variant-numeric:tabular-nums}
+  .hours div{display:grid;gap:2px}
+  .hours span:first-child{color:var(--slate);font-size:14.5px}
+  .hours span:last-child{font-weight:600;font-size:16.5px;letter-spacing:-.01em}
+  .feats{display:flex;flex-wrap:wrap;gap:9px;margin-top:4px}
+  .feat{
+    display:inline-flex;align-items:center;gap:7px;font-size:13.5px;font-weight:600;color:var(--teal-ink);
+    background:#f0f7f8;border:1px solid #d9e9ec;border-radius:999px;padding:7px 13px;
+  }
+  .maphead{
+    display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    padding:20px 24px;border-bottom:1px solid var(--line);background:var(--paper-2);
+  }
+  .maphead h3{font-size:16px}
+  .maphead span{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--slate-2)}
+  .mapbox{padding:6px}
+  .mapbox svg{display:block;width:100%;height:auto;border-radius:12px}
+  .mapfoot{padding:16px 24px 20px;font-size:13.5px;color:var(--slate-2);border-top:1px solid var(--line-2)}
+
+  /* pie */
+  footer{background:var(--ink);color:#b9c8d6;padding:62px 0 34px;margin-top:0}
+  .foot{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr);gap:34px}
+  .foot h4{color:#fff;font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px;font-weight:650}
+  .foot .brand__name{color:#fff;font-size:22px}
+  .foot .brand__name em{color:var(--sand)}
+  .foot p,.foot li{font-size:15px;line-height:1.75}
+  .foot ul{display:grid;gap:7px}
+  .foot a{color:#dce7f0;text-decoration:none;border-bottom:1px solid rgba(220,231,240,.26)}
+  .foot a:hover{color:#fff;border-bottom-color:#fff}
+  .foot__lede{margin-top:16px;color:#9fb1c2;max-width:30em}
+  .footbar{
+    margin-top:46px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);
+    display:flex;gap:16px;justify-content:space-between;flex-wrap:wrap;
+    font-size:13.5px;color:#8ea0b2;
+  }
+  .footbar strong{color:#cfdce8;font-weight:600}
+  .pending{color:#8ea0b2;font-style:italic}
+
+  @media (max-width:1000px){
+    .hero__in{grid-template-columns:1fr;gap:40px;padding-top:62px;padding-bottom:70px}
+    .hero::before{right:-34%;top:-18%;width:110vw}
+    .hero::after{display:none}
+    .grid3{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .steps{grid-template-columns:1fr}
+    .step{border-right:0;border-bottom:1px solid var(--line)}
+    .step:last-child{border-bottom:0}
+    .contact{grid-template-columns:1fr}
+    .foot{grid-template-columns:1fr 1fr}
+    .navlinks{display:none}
+  }
+  @media (max-width:620px){
+    body{font-size:16px}
+    :root{--bar-h:46px}
+    .wrap{padding:0 18px}
+    .propbar{font-size:10.5px;letter-spacing:.05em;line-height:1.35;padding:0 12px}
+    .propbar span{white-space:normal}
+    .topnav__in{height:64px;gap:10px}
+    .brand__name{font-size:18px}
+    .navtel{margin-left:auto;padding:9px 14px;font-size:13.5px}
+    .sec{padding:58px 0}
+    .hero__in{padding-top:46px;padding-bottom:56px}
+    .hero::before{right:-46%;top:auto;bottom:-6%;width:132vw;opacity:.34}
+    .hero__p{font-size:17px}
+    .btn{width:100%;justify-content:center}
+    .hero__cta{gap:10px}
+    .chart{padding:22px 20px 20px;border-radius:16px}
+    .crow:nth-child(1) b{font-size:26px}
+    .crow:nth-child(2) b{font-size:21px}
+    .crow:nth-child(3) b{font-size:16px}
+    .grid3{grid-template-columns:1fr}
+    .sechead{margin-bottom:32px}
+    .dl > div{grid-template-columns:1fr;gap:5px}
+    .dl dt{padding-top:0}
+    .panel__pad{padding:24px 20px 22px}
+    .maphead{padding:16px 18px}
+    .mapfoot{padding:14px 18px 18px}
+    .foot{grid-template-columns:1fr;gap:30px}
+    footer{padding:48px 0 28px}
+  }
+</style>
+</head>
+<body>
+
+<div class="propbar"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<div class="page">
+
+  <header class="topnav">
+    <div class="wrap topnav__in">
+      <a class="brand" href="#inicio" aria-label="Alcaraz Óptica, inicio">
+        <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true">
+          <circle cx="17" cy="17" r="16" fill="#f1f7f8" stroke="#cfe2e6"/>
+          <circle cx="17" cy="17" r="9.5" fill="none" stroke="#16697a" stroke-width="1.6"/>
+          <circle cx="17" cy="17" r="4.2" fill="#0b4553"/>
+          <circle cx="14.4" cy="14.2" r="1.5" fill="#ffffff" opacity=".9"/>
+        </svg>
+        <span class="brand__name">Alcaraz <em>Óptica</em></span>
+      </a>
+      <nav class="navlinks" aria-label="Secciones">
+        <a href="#servicios">Servicios</a>
+        <a href="#visita">Tu primera visita</a>
+        <a href="#contacto">Contacto y horario</a>
+      </nav>
+      <a class="navtel" href="tel:+34966171214">
+        <svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 1.5h2.3l1.2 3-1.5 1.1a8.4 8.4 0 0 0 4.4 4.4l1.1-1.5 3 1.2V12c0 1.4-1.1 2.5-2.5 2.5A11.5 11.5 0 0 1 .5 3C.5 1.6 1.6.5 3 .5z" fill="currentColor"/></svg>
+        96 617 12 14
+      </a>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="inicio">
+    <div class="wrap hero__in">
+      <div>
+        <span class="eyebrow">Óptica optometrista en Petrer</span>
+        <h1 class="hero__t">El cuidado de tus ojos,<br><em>cerca de casa</em></h1>
+        <p class="hero__p">Revisión ocular y optometría, gafas graduadas y de sol, lentillas y líquidos. En la Plaza San Crispín, con local accesible y aparcamiento para clientes.</p>
+        <div class="hero__cta">
+          <a class="btn btn--p" href="tel:+34966171214">
+            <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 1.5h2.3l1.2 3-1.5 1.1a8.4 8.4 0 0 0 4.4 4.4l1.1-1.5 3 1.2V12c0 1.4-1.1 2.5-2.5 2.5A11.5 11.5 0 0 1 .5 3C.5 1.6 1.6.5 3 .5z" fill="currentColor"/></svg>
+            Llamar al 96 617 12 14
+          </a>
+          <a class="btn btn--g" href="#contacto">Ver horario y cómo llegar</a>
+        </div>
+        <p class="hero__note">Plaza San Crispín, 8, bajo · 03610 Petrer (Alicante)</p>
+      </div>
+
+      <div class="chart" aria-label="Carta de agudeza visual ilustrativa">
+        <p class="chart__h">Revisión ocular</p>
+        <div class="chart__rows">
+          <div class="crow"><b>E F P</b><i>1</i></div>
+          <div class="crow"><b>T O Z L D</b><i>2</i></div>
+          <div class="crow"><b>P E C F D O</b><i>3</i></div>
+          <div class="crow"><b>F E L O P Z D A</b><i>4</i></div>
+          <div class="crow"><b>D E F P O T E C A L D</b><i>5</i></div>
+        </div>
+        <p class="chart__f">Si llevas tiempo sin graduarte la vista, o notas que lees peor de cerca, pide cita por teléfono.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICIOS ===== -->
+  <section class="sec sec--alt" id="servicios">
+    <div class="wrap">
+      <div class="sechead">
+        <span class="kicker">Qué hacemos</span>
+        <h2>Servicios y productos de la óptica</h2>
+        <p>Comercio dedicado al cuidado de los ojos. Esto es lo que puedes resolver en tienda.</p>
+      </div>
+      <div class="grid3">
+
+        <article class="card">
+          <div class="card__ic">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M1.6 12S5 6.4 12 6.4 22.4 12 22.4 12 19 17.6 12 17.6 1.6 12 1.6 12Z"/><circle cx="12" cy="12" r="3.1"/></svg>
+          </div>
+          <h3>Revisión ocular y optometría</h3>
+          <p>Graduamos la vista y revisamos cómo ves de lejos y de cerca para ajustar la corrección que necesitas.</p>
+          <p class="card__tag">Con cita previa por teléfono</p>
+        </article>
+
+        <article class="card">
+          <div class="card__ic">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="6" cy="14" r="4.1"/><circle cx="18" cy="14" r="4.1"/><path d="M10.1 13.4h3.8M2 11.2 4.4 7.4h3M22 11.2 19.6 7.4h-3"/></svg>
+          </div>
+          <h3>Gafas graduadas</h3>
+          <p>Montura y cristales según tu graduación y tu día a día, con el montaje y el ajuste hechos en la tienda.</p>
+          <p class="card__tag">Monturas y cristales: consultar en tienda</p>
+        </article>
+
+        <article class="card">
+          <div class="card__ic">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="6.4" cy="13.6" r="4.2"/><circle cx="17.6" cy="13.6" r="4.2"/><path d="M10.6 13h2.8M2.2 10.8 4.6 7h3M21.8 10.8 19.4 7h-3"/><path d="M4.1 11.6h4.6M15.3 11.6h4.6" opacity=".55"/></svg>
+          </div>
+          <h3>Gafas de sol</h3>
+          <p>Gafas de sol para proteger la vista del sol, también con tu graduación si la necesitas.</p>
+          <p class="card__tag">Modelos disponibles: consultar en tienda</p>
+        </article>
+
+        <article class="card">
+          <div class="card__ic">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 4.2c4.3 0 7.8 3.5 7.8 7.8S16.3 19.8 12 19.8 4.2 16.3 4.2 12 7.7 4.2 12 4.2Z"/><path d="M12 7.2A4.8 4.8 0 0 0 7.2 12" opacity=".6"/><path d="M4.6 20.4h5.2" opacity=".8"/></svg>
+          </div>
+          <h3>Lentillas y líquidos</h3>
+          <p>Lentes de contacto y los líquidos de limpieza y mantenimiento para conservarlas en buen estado.</p>
+          <p class="card__tag">Tipos y reposición: consultar en tienda</p>
+        </article>
+
+        <article class="card">
+          <div class="card__ic">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="10.4" cy="10.4" r="6.4"/><path d="M15.2 15.2 21 21"/><path d="M8 10.4h4.8M10.4 8v4.8" opacity=".55"/></svg>
+          </div>
+          <h3>Lupas y cuidado ocular</h3>
+          <p>Lupas y otros productos de cuidado de los ojos, como termómetros y artículos de uso diario.</p>
+          <p class="card__tag">Catálogo: consultar en tienda</p>
+        </article>
+
+        <article class="card">
+          <div class="card__ic">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 12h3.4l1.8-4.4 2.6 8.8 2.2-6 1.6 3.2H21"/></svg>
+          </div>
+          <h3>Toma de tensión</h3>
+          <p>Te tomamos la tensión en la tienda, sin que tengas que pedir cita para algo tan rápido.</p>
+          <p class="card__tag">Dentro del horario de apertura</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRIMERA VISITA ===== -->
+  <section class="sec" id="visita">
+    <div class="wrap">
+      <div class="sechead">
+        <span class="kicker">Cómo funciona</span>
+        <h2>Tu primera visita, en tres pasos</h2>
+        <p>Si nunca has venido, esto es lo que puedes esperar.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step__n">01</div>
+          <h3>Llamas y reservas hueco</h3>
+          <p>Nos cuentas qué necesitas por teléfono y buscamos un momento que te encaje dentro del horario de apertura.</p>
+          <p class="step__meta">Teléfono: <a href="tel:+34966171214" style="color:var(--teal-ink);text-decoration:none;font-weight:600">96 617 12 14</a></p>
+        </div>
+        <div class="step">
+          <div class="step__n">02</div>
+          <h3>Revisamos tu vista</h3>
+          <p>Hacemos la revisión ocular con calma y vemos cómo ves de lejos y de cerca. Si usas gafas o lentillas, tráelas contigo.</p>
+          <p class="step__meta">En la tienda, Plaza San Crispín, 8</p>
+        </div>
+        <div class="step">
+          <div class="step__n">03</div>
+          <h3>Elegimos la solución</h3>
+          <p>Con el resultado delante te explicamos las opciones (gafas, lentillas o lo que convenga) y preparamos el encargo.</p>
+          <p class="step__meta">Plazos y precios: consultar en tienda</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACTO ===== -->
+  <section class="sec sec--alt" id="contacto">
+    <div class="wrap">
+      <div class="sechead">
+        <span class="kicker">Dónde estamos</span>
+        <h2>Contacto, horario y cómo llegar</h2>
+        <p>En el centro de Petrer, en la Plaza San Crispín.</p>
+      </div>
+
+      <div class="contact">
+
+        <div class="panel">
+          <div class="panel__pad">
+            <dl class="dl">
+              <div>
+                <dt>Teléfono</dt>
+                <dd><a class="tel" href="tel:+34966171214">96 617 12 14</a></dd>
+              </div>
+              <div>
+                <dt>Dirección</dt>
+                <dd>Plaza San Crispín, 8, bajo<br>03610 Petrer (Alicante)</dd>
+              </div>
+              <div>
+                <dt>Horario</dt>
+                <dd>
+                  <div class="hours">
+                    <div><span>Lunes a viernes</span><span>10:00 – 14:00 · 17:00 – 20:30</span></div>
+                    <div><span>Sábados</span><span>10:00 – 14:00</span></div>
+                  </div>
+                </dd>
+              </div>
+              <div>
+                <dt>En la tienda</dt>
+                <dd>
+                  <div class="feats">
+                    <span class="feat">
+                      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M2 13.5h12M4.5 13.5V8a3.5 3.5 0 0 1 7 0v5.5M8 4.5V2"/></svg>
+                      Local accesible
+                    </span>
+                    <span class="feat">
+                      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="3"/><path d="M6.4 11.4V4.8h2.1a2 2 0 0 1 0 4.1H6.4"/></svg>
+                      Aparcamiento para clientes
+                    </span>
+                    <span class="feat">
+                      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M1.8 6.3a9 9 0 0 1 12.4 0M4 8.8a6 6 0 0 1 8 0M6.3 11.3a3 3 0 0 1 3.4 0"/><circle cx="8" cy="13.4" r=".7" fill="currentColor"/></svg>
+                      Wifi gratis
+                    </span>
+                  </div>
+                </dd>
+              </div>
+              <div>
+                <dt>Correo</dt>
+                <dd><a href="mailto:alcarazoptica@gmail.com">alcarazoptica@gmail.com</a></dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="maphead">
+            <h3>Plano esquemático de la zona</h3>
+            <span>Esquema orientativo</span>
+          </div>
+          <div class="mapbox">
+            <svg viewBox="0 0 520 400" role="img" aria-label="Plano esquemático dibujado a mano: la óptica está en la Plaza San Crispín, número 8.">
+              <defs>
+                <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#f7fafb"/><stop offset="1" stop-color="#eef4f6"/>
+                </linearGradient>
+                <linearGradient id="plz" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#e3f0ea"/><stop offset="1" stop-color="#d2e7dd"/>
+                </linearGradient>
+              </defs>
+
+              <rect width="520" height="400" fill="url(#bg)"/>
+
+              <!-- calles (trazo ancho claro) -->
+              <g stroke="#ffffff" stroke-width="26" stroke-linecap="round" fill="none">
+                <path d="M-10 118 Q150 108 268 128 T534 112"/>
+                <path d="M-10 304 Q160 296 290 312 T534 300"/>
+                <path d="M96 -10 Q104 130 90 212 T110 410"/>
+                <path d="M414 -10 Q404 120 420 214 T408 410"/>
+                <path d="M268 128 Q262 180 258 214"/>
+              </g>
+              <g stroke="#cfdbe2" stroke-width="1.1" fill="none" stroke-dasharray="7 7" opacity=".85">
+                <path d="M-10 118 Q150 108 268 128 T534 112"/>
+                <path d="M-10 304 Q160 296 290 312 T534 300"/>
+                <path d="M96 -10 Q104 130 90 212 T110 410"/>
+                <path d="M414 -10 Q404 120 420 214 T408 410"/>
+              </g>
+
+              <!-- manzanas -->
+              <g fill="#e7edf2" stroke="#d3dde5" stroke-width="1.4">
+                <path d="M122 18 L196 14 L204 96 L128 102 Z"/>
+                <path d="M224 16 L384 10 L390 94 L230 100 Z"/>
+                <path d="M122 148 L214 142 L222 272 L130 278 Z"/>
+                <path d="M126 330 L252 326 L258 392 L132 396 Z"/>
+                <path d="M300 334 L394 330 L398 392 L304 396 Z"/>
+                <path d="M438 140 L510 136 L512 278 L442 282 Z"/>
+                <path d="M438 22 L510 18 L512 92 L440 96 Z"/>
+                <path d="M4 150 L68 146 L72 280 L8 284 Z"/>
+              </g>
+
+              <!-- plaza -->
+              <path d="M252 142 Q318 128 392 146 Q408 206 388 266 Q314 282 254 268 Q240 206 252 142 Z" fill="url(#plz)" stroke="#bcd8c9" stroke-width="1.6"/>
+              <g fill="#b9d4c4" opacity=".9">
+                <circle cx="290" cy="170" r="7"/><circle cx="356" cy="178" r="6"/>
+                <circle cx="282" cy="240" r="6"/><circle cx="364" cy="244" r="7"/>
+              </g>
+              <text x="322" y="214" text-anchor="middle" font-family="ui-serif, Georgia, serif" font-size="14" fill="#53776a" letter-spacing="1.2">Plaza</text>
+              <text x="322" y="232" text-anchor="middle" font-family="ui-serif, Georgia, serif" font-size="14" fill="#53776a" letter-spacing="1.2">San Crispín</text>
+
+              <!-- local -->
+              <rect x="226" y="186" width="34" height="34" rx="7" fill="#16697a" stroke="#0b4553" stroke-width="2"/>
+              <g transform="translate(243,203)">
+                <circle r="9.4" fill="none" stroke="#ffffff" stroke-width="1.7"/>
+                <circle r="3.9" fill="#ffffff"/>
+              </g>
+              <path d="M243 176 L243 160" stroke="#0b4553" stroke-width="1.6"/>
+              <rect x="150" y="134" width="186" height="30" rx="8" fill="#ffffff" stroke="#c7d6de" stroke-width="1.3"/>
+              <text x="162" y="154" font-family="-apple-system, Segoe UI, Roboto, sans-serif" font-size="14" font-weight="650" fill="#0d1b2a">Alcaraz Óptica · nº 8</text>
+
+              <!-- aparcamiento -->
+              <g>
+                <rect x="296" y="300" width="28" height="28" rx="7" fill="#ffffff" stroke="#c7d6de" stroke-width="1.4"/>
+                <text x="310" y="320" text-anchor="middle" font-family="-apple-system, Segoe UI, Roboto, sans-serif" font-size="15" font-weight="700" fill="#51657a">P</text>
+              </g>
+
+              <!-- norte -->
+              <g transform="translate(474,352)">
+                <circle r="20" fill="#ffffff" stroke="#d3dde5" stroke-width="1.3"/>
+                <path d="M0 -11 L5 4 L0 1 L-5 4 Z" fill="#16697a"/>
+                <text x="0" y="15" text-anchor="middle" font-family="-apple-system, Segoe UI, Roboto, sans-serif" font-size="9" fill="#7b8ca0" letter-spacing="1">N</text>
+              </g>
+            </svg>
+          </div>
+          <p class="mapfoot">Esquema dibujado a mano, solo para orientarte: no está a escala y no sustituye a un mapa. Entrada a pie de calle en el número 8.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PIE ===== -->
+  <footer>
+    <div class="wrap">
+      <div class="foot">
+        <div>
+          <div class="brand" style="gap:10px">
+            <svg width="30" height="30" viewBox="0 0 34 34" aria-hidden="true">
+              <circle cx="17" cy="17" r="16" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.22)"/>
+              <circle cx="17" cy="17" r="9.5" fill="none" stroke="#e8b04b" stroke-width="1.6"/>
+              <circle cx="17" cy="17" r="4.2" fill="#f3d49a"/>
+            </svg>
+            <span class="brand__name">Alcaraz <em>Óptica</em></span>
+          </div>
+          <p class="foot__lede">Óptica optometrista en Petrer. Cuidado de los ojos, gafas graduadas y de sol, lentillas y líquidos, lupas y otros productos.</p>
+        </div>
+        <div>
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="tel:+34966171214">96 617 12 14</a></li>
+            <li><a href="mailto:alcarazoptica@gmail.com">alcarazoptica@gmail.com</a></li>
+            <li>Plaza San Crispín, 8, bajo<br>03610 Petrer (Alicante)</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Horario</h4>
+          <ul>
+            <li>Lunes a viernes<br>10:00 – 14:00 y 17:00 – 20:30</li>
+            <li>Sábados<br>10:00 – 14:00</li>
+            <li class="pending">Redes sociales: apartado por completar</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footbar">
+        <p><strong>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</strong></p>
+        <p>Maqueta sin relación oficial con el negocio. Contenido pendiente de revisión por la óptica.</p>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var links = document.querySelectorAll('a[href^="#"]');
+  for (var i=0;i<links.length;i++){
+    links[i].addEventListener('click', function(e){
+      var id = this.getAttribute('href');
+      if (id.length < 2) return;
+      var t = document.querySelector(id);
+      if (!t) return;
+      e.preventDefault();
+      t.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  }
+})();
+</script>
+</body>
+</html>

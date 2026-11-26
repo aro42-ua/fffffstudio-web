@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fruiteria La Travessia · Sant Feliu de Codines</title>
+<style>
+  :root{
+    --verd-900:#12271a;
+    --verd-800:#17351f;
+    --verd-700:#1e4a2d;
+    --verd-500:#2f7343;
+    --verd-300:#6aa97a;
+    --crema:#f8f3e7;
+    --paper:#fffdf7;
+    --sorra:#efe6d2;
+    --taronja:#cf5f1d;
+    --taronja-clar:#e8893f;
+    --bolet:#8a6950;
+    --tinta:#1e241c;
+    --tinta-60:#5b6357;
+    --linia:#e2dac6;
+    --barra:34px;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    --serif:Georgia,"Iowan Old Style","Times New Roman",Times,serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    font-family:var(--sans);
+    color:var(--tinta);
+    background:var(--paper);
+    font-size:17px;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  img,svg{max-width:100%;display:block}
+  h1,h2,h3{margin:0;font-family:var(--serif);font-weight:600;letter-spacing:-.015em;line-height:1.1}
+  p{margin:0}
+  a{color:inherit}
+
+  /* ---------- barra fixa obligatòria ---------- */
+  .avis{
+    position:fixed;inset:0 0 auto 0;z-index:100;
+    height:var(--barra);display:flex;align-items:center;justify-content:center;
+    background:var(--verd-900);color:#e9e2cf;
+    font-size:11px;letter-spacing:.09em;text-transform:uppercase;
+    padding:0 14px;text-align:center;
+    border-bottom:1px solid rgba(255,255,255,.12);
+  }
+  .avis span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+
+  .wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 32px}
+  .eyebrow{
+    font-size:11.5px;letter-spacing:.17em;text-transform:uppercase;
+    font-weight:650;color:var(--verd-500);margin:0 0 14px;
+  }
+  .eyebrow.clar{color:var(--verd-300)}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    padding:calc(var(--barra) + 64px) 0 72px;
+    background:
+      radial-gradient(1000px 520px at 82% 12%, rgba(106,169,122,.30), transparent 68%),
+      radial-gradient(760px 500px at 6% 88%, rgba(207,95,29,.22), transparent 66%),
+      linear-gradient(170deg,var(--verd-900) 0%,var(--verd-800) 48%,#1b3c24 100%);
+    color:var(--crema);
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+    background:repeating-linear-gradient(135deg,rgba(255,255,255,.035) 0 2px,transparent 2px 7px);
+  }
+  .hero .wrap{position:relative;z-index:1}
+  .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:56px;align-items:center}
+  .hero h1{font-size:clamp(38px,5.1vw,64px);color:#fff}
+  .hero h1 em{font-style:italic;color:var(--taronja-clar);font-weight:400}
+  .hero .claim{
+    margin-top:20px;font-size:clamp(16.5px,1.5vw,19px);line-height:1.62;
+    color:rgba(248,243,231,.86);max-width:30em;
+  }
+  .lloc{
+    display:inline-flex;align-items:center;gap:9px;margin-bottom:22px;
+    padding:6px 14px 6px 10px;border-radius:999px;
+    background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.17);
+    font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#e7f0e6;
+  }
+  .lloc i{width:7px;height:7px;border-radius:50%;background:var(--taronja-clar);display:block}
+
+  .ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+  .btn{
+    display:inline-flex;align-items:center;gap:11px;
+    padding:15px 26px;border-radius:12px;
+    font-size:15.5px;font-weight:650;letter-spacing:.01em;
+    text-decoration:none;border:1.5px solid transparent;transition:transform .18s ease,box-shadow .18s ease;
+  }
+  .btn svg{flex:none}
+  .btn-primari{background:var(--taronja);color:#fff;box-shadow:0 10px 26px -12px rgba(207,95,29,.9)}
+  .btn-primari:hover{transform:translateY(-2px);box-shadow:0 16px 32px -14px rgba(207,95,29,.95)}
+  .btn-secundari{border-color:rgba(255,255,255,.34);color:#fff}
+  .btn-secundari:hover{background:rgba(255,255,255,.1);transform:translateY(-2px)}
+  .hero-nota{margin-top:20px;font-size:13px;color:rgba(248,243,231,.6)}
+
+  .hero-art{position:relative;width:100%}
+  .hero-art>svg{width:100%;height:auto}
+  .hero-art .plat{
+    position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+    width:108%;max-width:none;aspect-ratio:1;border-radius:50%;
+    background:radial-gradient(circle at 42% 36%,rgba(255,255,255,.16),rgba(255,255,255,0) 62%);
+  }
+
+  /* ---------- tira de dades ---------- */
+  .tira{background:var(--verd-900);color:var(--crema);border-top:1px solid rgba(255,255,255,.08)}
+  .tira ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr)}
+  .tira li{padding:22px 32px;border-left:1px solid rgba(255,255,255,.1)}
+  .tira li:first-child{border-left:0}
+  .tira dt{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--verd-300)}
+  .tira dd{margin:6px 0 0;font-family:var(--serif);font-size:17px;color:#fff}
+  .tira a{text-decoration:none;border-bottom:1px solid rgba(255,255,255,.3)}
+
+  /* ---------- seccions ---------- */
+  section{position:relative}
+  .sec{padding:92px 0}
+  .sec-crema{background:var(--crema)}
+  .sec-head{max-width:46em;margin-bottom:46px}
+  .sec-head h2{font-size:clamp(28px,3.4vw,42px)}
+  .sec-head p{margin-top:16px;color:var(--tinta-60);font-size:17px}
+  .cita{
+    margin-top:26px;padding:18px 22px;border-left:3px solid var(--verd-300);
+    background:var(--paper);border-radius:0 12px 12px 0;
+    font-family:var(--serif);font-size:17.5px;font-style:italic;color:var(--verd-800);
+  }
+  .cita small{display:block;margin-top:9px;font:500 11.5px/1.5 var(--sans);font-style:normal;
+    letter-spacing:.11em;text-transform:uppercase;color:var(--tinta-60)}
+
+  .graella{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .carta{
+    background:var(--paper);border:1px solid var(--linia);border-radius:16px;
+    padding:28px 24px 26px;display:flex;flex-direction:column;gap:14px;
+    transition:transform .2s ease,box-shadow .2s ease;
+  }
+  .carta:hover{transform:translateY(-3px);box-shadow:0 18px 34px -24px rgba(18,39,26,.5)}
+  .carta h3{font-size:19.5px}
+  .carta p{font-size:14.8px;color:var(--tinta-60);line-height:1.58}
+  .ico{
+    width:52px;height:52px;border-radius:13px;display:grid;place-items:center;
+    background:linear-gradient(145deg,#eaf2e6,#dfeada);border:1px solid #d3e3d0;
+  }
+  .ico.taronja{background:linear-gradient(145deg,#fbe9da,#f6dcc6);border-color:#f0cfae}
+  .ico.terra{background:linear-gradient(145deg,#f1e6da,#e7d8c6);border-color:#ddc9b2}
+
+  .pendents{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px}
+  .pendent{
+    border:1.5px dashed #c9bfa5;border-radius:16px;padding:26px 24px;
+    background:repeating-linear-gradient(135deg,rgba(226,218,198,.34) 0 10px,transparent 10px 20px);
+  }
+  .tag{
+    display:inline-block;margin-bottom:12px;padding:4px 11px;border-radius:999px;
+    background:var(--verd-800);color:#eef3e9;
+    font-size:10.5px;font-weight:650;letter-spacing:.13em;text-transform:uppercase;
+  }
+  .pendent h3{font-size:18px}
+  .pendent p{margin-top:9px;font-size:14.5px;color:var(--tinta-60)}
+
+  /* ---------- passos ---------- */
+  .passos{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--linia)}
+  .pas{padding:34px 30px 34px 0;border-right:1px solid var(--linia)}
+  .pas:last-child{border-right:0;padding-right:0}
+  .pas:not(:first-child){padding-left:30px}
+  .num{
+    font-family:var(--serif);font-size:46px;line-height:1;color:var(--verd-300);
+    display:flex;align-items:baseline;gap:10px;margin-bottom:16px;
+  }
+  .num b{font:650 11px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--tinta-60)}
+  .pas h3{font-size:21px}
+  .pas p{margin-top:11px;font-size:15px;color:var(--tinta-60)}
+  .pas .tels{margin-top:16px;display:flex;flex-direction:column;gap:6px}
+  .pas .tels a{
+    font-family:var(--serif);font-size:19px;text-decoration:none;color:var(--verd-700);
+    border-bottom:1px solid rgba(47,115,67,.3);width:max-content;
+  }
+  .pas .tels a:hover{border-bottom-color:var(--verd-700)}
+
+  /* ---------- contacte ---------- */
+  .sec-contacte{background:linear-gradient(180deg,var(--verd-900),#17351f);color:var(--crema)}
+  .sec-contacte .sec-head h2{color:#fff}
+  .sec-contacte .sec-head p{color:rgba(248,243,231,.74)}
+  .cont-grid{display:grid;grid-template-columns:1fr 1.02fr;gap:46px;align-items:start}
+  .bloc{margin-bottom:34px}
+  .bloc h3{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--verd-300);font-family:var(--sans);font-weight:650}
+  .adreca{margin-top:12px;font-family:var(--serif);font-size:22px;line-height:1.42;color:#fff}
+  .tel-llista{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:12px}
+  .tel-llista a{
+    display:inline-flex;align-items:center;gap:10px;text-decoration:none;
+    padding:12px 18px;border-radius:11px;background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.18);font-family:var(--serif);font-size:19px;color:#fff;
+  }
+  .tel-llista a:hover{background:rgba(255,255,255,.14)}
+
+  .horari{width:100%;border-collapse:collapse;margin-top:12px;font-size:15.5px}
+  .horari th,.horari td{text-align:left;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.12);vertical-align:top}
+  .horari th{font-weight:600;color:#fff;white-space:nowrap;padding-right:18px;font-size:15px}
+  .horari td{color:rgba(248,243,231,.82)}
+  .horari tr.tancat th,.horari tr.tancat td{color:var(--taronja-clar)}
+  .horari tr.tancat td{font-weight:650;letter-spacing:.04em}
+  .pastilla-tancat{
+    margin-top:16px;display:flex;align-items:center;gap:12px;
+    padding:14px 18px;border-radius:12px;
+    background:rgba(207,95,29,.16);border:1px solid rgba(232,137,63,.5);
+  }
+  .pastilla-tancat strong{color:#ffd9bd;font-size:14.5px;letter-spacing:.02em}
+  .pastilla-tancat span{font-size:13.5px;color:rgba(248,243,231,.78)}
+
+  .mapa{
+    background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.16);
+    border-radius:18px;padding:18px 18px 14px;
+  }
+  .mapa figcaption{margin-top:12px;font-size:12.5px;color:rgba(248,243,231,.6);line-height:1.5}
+
+  /* ---------- peu ---------- */
+  footer{background:#0d1d13;color:rgba(248,243,231,.78);padding:52px 0 40px}
+  .peu-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:start}
+  .marca{font-family:var(--serif);font-size:21px;color:#fff}
+  .peu-dades{margin-top:12px;font-size:14.5px;line-height:1.75}
+  .peu-dades a{text-decoration:none;border-bottom:1px solid rgba(255,255,255,.26)}
+  .peu-dades a:hover{border-bottom-color:#fff;color:#fff}
+  .firma{
+    margin-top:38px;padding-top:22px;border-top:1px solid rgba(255,255,255,.12);
+    font-size:12.5px;color:rgba(248,243,231,.62);line-height:1.7;
+  }
+  .firma b{color:rgba(248,243,231,.9);font-weight:600}
+
+  .reveal{opacity:0;transform:translateY(16px)}
+  .reveal.vist{opacity:1;transform:none;transition:opacity .6s ease,transform .6s ease}
+
+  /* ---------- 1024 ---------- */
+  @media (max-width:1024px){
+    .hero-grid{grid-template-columns:1fr;gap:40px}
+    .hero-art{width:100%;max-width:460px;margin:0 auto}
+    .graella{grid-template-columns:repeat(2,1fr)}
+    .cont-grid{grid-template-columns:1fr;gap:38px}
+  }
+  /* ---------- 760 ---------- */
+  @media (max-width:760px){
+    :root{--barra:40px}
+    body{font-size:16px}
+    .wrap{padding:0 20px}
+    .avis{font-size:10px;letter-spacing:.05em;line-height:1.25}
+    .avis span{white-space:normal}
+    .hero{padding:calc(var(--barra) + 42px) 0 56px}
+    .sec{padding:62px 0}
+    .tira ul{grid-template-columns:1fr}
+    .tira li{padding:18px 20px;border-left:0;border-top:1px solid rgba(255,255,255,.1)}
+    .tira li:first-child{border-top:0}
+    .graella,.pendents{grid-template-columns:1fr}
+    .passos{grid-template-columns:1fr}
+    .pas{padding:26px 0;border-right:0;border-bottom:1px solid var(--linia)}
+    .pas:not(:first-child){padding-left:0}
+    .pas:last-child{border-bottom:0}
+    .peu-grid{grid-template-columns:1fr}
+    .ctas .btn{width:100%;justify-content:center}
+    .tel-llista{flex-direction:column}
+    .tel-llista a{justify-content:center}
+    .horari{font-size:14.5px}
+    .horari th{font-size:14px}
+  }
+</style>
+</head>
+<body>
+
+<div class="avis"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<!-- ===================== HERO ===================== -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="lloc"><i></i> Sant Feliu de Codines · Barcelona</div>
+        <h1>Fruita i verdura<br>de la <em>travessia</em><br>de cada dia.</h1>
+        <p class="claim">Fruiteria de poble al carrer Rector Tomàs Vila. Fruita i verdura en general, especialitzats en bolets, cistells per encàrrec i servei a domicili.</p>
+        <div class="ctas">
+          <a class="btn btn-primari" href="tel:+34938662731">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16.9v2.6a2 2 0 0 1-2.2 2 19 19 0 0 1-8.3-2.9 18.6 18.6 0 0 1-5.7-5.7A19 19 0 0 1 1.9 4.6 2 2 0 0 1 3.9 2.4h2.6a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.6 10.3a15 15 0 0 0 5.7 5.7l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+            Trucar 938 662 731
+          </a>
+          <a class="btn btn-secundari" href="tel:+34670368468">O al mòbil 670 368 468</a>
+        </div>
+        <p class="hero-nota">Dimarts tancat. Horari complet més avall.</p>
+      </div>
+
+      <div class="hero-art">
+        <span class="plat" aria-hidden="true"></span>
+        <svg viewBox="0 0 440 420" role="img" aria-label="Il·lustració d'una caixa de fruita i verdura amb un bolet">
+          <defs>
+            <linearGradient id="gCaixa" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#c79a63"/><stop offset="1" stop-color="#9b7442"/>
+            </linearGradient>
+            <linearGradient id="gPoma" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#e8893f"/><stop offset="1" stop-color="#c24a1b"/>
+            </linearGradient>
+            <linearGradient id="gVerd" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#8fc694"/><stop offset="1" stop-color="#3f8a52"/>
+            </linearGradient>
+            <linearGradient id="gGroc" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#f3d27a"/><stop offset="1" stop-color="#d9a435"/>
+            </linearGradient>
+            <linearGradient id="gBolet" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#b08662"/><stop offset="1" stop-color="#7d5a3f"/>
+            </linearGradient>
+            <linearGradient id="gMora" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#8e6fb0"/><stop offset="1" stop-color="#5b3f80"/>
+            </linearGradient>
+          </defs>
+
+          <!-- fulles de fons -->
+          <g opacity=".5">
+            <path d="M58 150c40-54 108-66 152-50-14 48-66 92-120 86-16-2-26-18-32-36Z" fill="#2f7343"/>
+            <path d="M384 128c-34-40-86-46-120-32 12 36 50 68 92 62 14-2 22-16 28-30Z" fill="#265e38"/>
+          </g>
+
+          <!-- bolet (especialitat) -->
+          <g transform="translate(286 150)">
+            <path d="M46 86c-2 22-6 38-12 52 16 8 38 8 54 0-6-14-10-30-12-52Z" fill="#e4d3bd"/>
+            <path d="M4 60C4 28 30 4 60 4s56 24 56 56c0 12-10 18-26 18H30C14 78 4 72 4 60Z" fill="url(#gBolet)"/>
+            <path d="M18 66h84" stroke="#5f442f" stroke-width="3" opacity=".35" stroke-linecap="round"/>
+            <circle cx="42" cy="34" r="7" fill="#e8d6c0" opacity=".65"/>
+            <circle cx="76" cy="26" r="5" fill="#e8d6c0" opacity=".5"/>
+          </g>
+
+          <!-- raïm -->
+          <g transform="translate(62 176)">
+            <path d="M44 6c6 6 6 14 2 20" stroke="#3f8a52" stroke-width="5" fill="none" stroke-linecap="round"/>
+            <g fill="url(#gMora)">
+              <circle cx="30" cy="34" r="13"/><circle cx="56" cy="32" r="13"/>
+              <circle cx="43" cy="54" r="13"/><circle cx="18" cy="56" r="12"/>
+              <circle cx="68" cy="54" r="12"/><circle cx="31" cy="76" r="12"/>
+              <circle cx="56" cy="76" r="12"/><circle cx="44" cy="96" r="11"/>
+            </g>
+          </g>
+
+          <!-- fruita gran -->
+          <circle cx="178" cy="214" r="62" fill="url(#gPoma)"/>
+          <path d="M178 152c2-16 14-26 30-28-2 18-14 28-30 28Z" fill="#3f8a52"/>
+          <circle cx="158" cy="192" r="14" fill="#fff" opacity=".16"/>
+
+          <!-- pera estilitzada -->
+          <g transform="translate(228 168)">
+            <path d="M40 8c0 12-5 18-7 24" stroke="#3f8a52" stroke-width="6" fill="none" stroke-linecap="round"/>
+            <path d="M44 16c10-7 21-8 30-4-5 11-16 17-26 13Z" fill="#2f7343"/>
+            <path d="M38 32c13 0 22 10 22 22 0 8-4 13-4 20 0 6 11 12 11 25 0 19-15 32-29 32S9 118 9 99c0-13 11-19 11-25 0-7-4-12-4-20 0-12 9-22 22-22Z" fill="url(#gVerd)"/>
+            <ellipse cx="26" cy="72" rx="7" ry="11" fill="#fff" opacity=".17"/>
+          </g>
+
+          <!-- caixa -->
+          <g transform="translate(46 266)">
+            <path d="M0 10h348l-26 120a14 14 0 0 1-14 11H40a14 14 0 0 1-14-11Z" fill="url(#gCaixa)"/>
+            <rect x="-6" y="0" width="360" height="26" rx="9" fill="#d8ab74"/>
+            <g stroke="#8a6338" stroke-width="3" opacity=".45">
+              <path d="M44 42v92M104 42v92M174 42v92M244 42v92M304 42v92"/>
+            </g>
+            <path d="M12 70h324" stroke="#8a6338" stroke-width="4" opacity=".3"/>
+          </g>
+
+          <!-- fruita petita davant -->
+          <circle cx="120" cy="288" r="26" fill="url(#gGroc)"/>
+          <circle cx="300" cy="290" r="24" fill="url(#gVerd)"/>
+          <circle cx="226" cy="292" r="22" fill="url(#gPoma)"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== TIRA ===================== -->
+<section class="tira" aria-label="Dades de contacte ràpides">
+  <div class="wrap" style="padding:0">
+    <ul>
+      <li><dl><dt>On som</dt><dd>C/ Rector Tomàs Vila, 3</dd></dl></li>
+      <li><dl><dt>Telèfons</dt><dd><a href="tel:+34938662731">938 662 731</a> · <a href="tel:+34670368468">670 368 468</a></dd></dl></li>
+      <li><dl><dt>Dia de tancament</dt><dd>Dimarts</dd></dl></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===================== QUÈ OFERIM ===================== -->
+<section class="sec sec-crema" id="botiga">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">La botiga</p>
+      <h2>Fruiteria en general, i una especialitat de casa: els bolets.</h2>
+      <p>Aquesta maqueta recull únicament el que consta a la fitxa oficial de l'Ajuntament de Sant Feliu de Codines. La resta queda marcat com a apartat per completar amb la botiga.</p>
+      <div class="cita">
+        «Fruiteria en general. Especialitzats en bolets. Es fan cistells de fruita i verdura per encàrrec. Servei a domicili.»
+        <small>Fitxa del comerç · Ajuntament de Sant Feliu de Codines</small>
+      </div>
+    </div>
+
+    <div class="graella">
+      <article class="carta reveal">
+        <div class="ico" aria-hidden="true">
+          <svg width="27" height="27" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="19" r="10" fill="#cf5f1d"/><path d="M16 9c.6-4 3.6-6.4 7.6-6.8C23 6.4 20 9 16 9Z" fill="#2f7343"/><path d="M16 9V6" stroke="#2f7343" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Fruita i verdura</h3>
+        <p>Fruiteria en general: fruita i verdura per al dia a dia, atesa a peu de taulell.</p>
+      </article>
+
+      <article class="carta reveal">
+        <div class="ico terra" aria-hidden="true">
+          <svg width="27" height="27" viewBox="0 0 32 32" fill="none"><path d="M13 19c-.5 5-1.3 8-2.4 10 3.4 1.6 7.4 1.6 10.8 0-1.1-2-1.9-5-2.4-10Z" fill="#d8c3a8"/><path d="M3 15C3 8.9 8.8 4 16 4s13 4.9 13 11c0 2.3-2.2 3.4-5.6 3.4H8.6C5.2 18.4 3 17.3 3 15Z" fill="#8a6950"/><path d="M7 16h18" stroke="#5f442f" stroke-width="1.6" opacity=".4" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Especialitzats en bolets</h3>
+        <p>L'especialitat de la casa. Disponibilitat i varietats, a consultar a la botiga.</p>
+      </article>
+
+      <article class="carta reveal">
+        <div class="ico taronja" aria-hidden="true">
+          <svg width="27" height="27" viewBox="0 0 32 32" fill="none"><path d="M9 7c0-3.3 3.1-5 7-5s7 1.7 7 5" stroke="#cf5f1d" stroke-width="2.2" fill="none" stroke-linecap="round"/><path d="M3 11h26l-3.2 15.3A3 3 0 0 1 22.9 29H9.1a3 3 0 0 1-2.9-2.7Z" fill="#cf5f1d"/><path d="M6 17h20" stroke="#fff" stroke-width="1.8" opacity=".5" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Cistells per encàrrec</h3>
+        <p>Es fan cistells de fruita i verdura per encàrrec. El contingut es parla directament amb la botiga.</p>
+      </article>
+
+      <article class="carta reveal">
+        <div class="ico" aria-hidden="true">
+          <svg width="27" height="27" viewBox="0 0 32 32" fill="none"><path d="M2 8h15v12H2Z" fill="#2f7343"/><path d="M17 12h6.6l4.4 5v3h-11Z" fill="#6aa97a"/><circle cx="9" cy="23" r="3.4" fill="#1e4a2d"/><circle cx="23" cy="23" r="3.4" fill="#1e4a2d"/><path d="M2 20h26" stroke="#1e4a2d" stroke-width="1.6"/></svg>
+        </div>
+        <h3>Servei a domicili</h3>
+        <p>Porten la comanda a casa. Condicions i horaris de repartiment, a confirmar per telèfon.</p>
+      </article>
+    </div>
+
+    <div class="pendents">
+      <div class="pendent reveal">
+        <span class="tag">Apartat per completar</span>
+        <h3>Catàleg i producte de temporada</h3>
+        <p>Aquí aniria el que entra cada setmana i les varietats de bolets de la temporada. No es publica cap llistat perquè no es disposa d'aquesta informació: cal preparar-la amb la botiga.</p>
+      </div>
+      <div class="pendent reveal">
+        <span class="tag">Apartat per completar</span>
+        <h3>Zones de repartiment</h3>
+        <p>El servei a domicili consta a la fitxa oficial, però no les zones, els dies ni l'import mínim de comanda. Es deixa obert fins a confirmar-ho amb la botiga.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== COM FER UNA COMANDA ===================== -->
+<section class="sec" id="comanda">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Com fer una comanda</p>
+      <h2>Tres passos, i la comanda queda feta.</h2>
+      <p>El procés és el de sempre: una trucada, una confirmació i la comanda a punt per recollir o per rebre a casa.</p>
+    </div>
+
+    <div class="passos">
+      <article class="pas reveal">
+        <div class="num">01 <b>Encàrrec per telèfon</b></div>
+        <h3>Truqueu a la fruiteria</h3>
+        <p>Digueu què necessiteu: fruita, verdura, bolets o un cistell per encàrrec. Qualsevol dels dos telèfons serveix.</p>
+        <div class="tels">
+          <a href="tel:+34938662731">938 662 731</a>
+          <a href="tel:+34670368468">670 368 468</a>
+        </div>
+      </article>
+
+      <article class="pas reveal">
+        <div class="num">02 <b>Confirmació</b></div>
+        <h3>Us confirmen la comanda</h3>
+        <p>Des de la botiga us confirmen què hi ha disponible i quan estarà a punt. Si falta alguna cosa, s'acorda al moment.</p>
+      </article>
+
+      <article class="pas reveal">
+        <div class="num">03 <b>Recollida o domicili</b></div>
+        <h3>La recolliu o us la porten</h3>
+        <p>Podeu passar a recollir-la pel carrer Rector Tomàs Vila, 3, o demanar el servei a domicili en fer l'encàrrec.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACTE ===================== -->
+<section class="sec sec-contacte" id="contacte">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow clar">Contacte i horari</p>
+      <h2>Al centre de Sant Feliu de Codines.</h2>
+      <p>Telèfon, adreça i horari publicat. Tota la informació d'aquest apartat prové de la fitxa oficial del comerç.</p>
+    </div>
+
+    <div class="cont-grid">
+      <div class="reveal">
+        <div class="bloc">
+          <h3>Adreça</h3>
+          <p class="adreca">C/ Rector Tomàs Vila, 3<br>08182 Sant Feliu de Codines<br>(Barcelona)</p>
+        </div>
+
+        <div class="bloc">
+          <h3>Telèfons</h3>
+          <ul class="tel-llista">
+            <li><a href="tel:+34938662731">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 16.9v2.6a2 2 0 0 1-2.2 2 19 19 0 0 1-8.3-2.9 18.6 18.6 0 0 1-5.7-5.7A19 19 0 0 1 1.9 4.6 2 2 0 0 1 3.9 2.4h2.6a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.6 10.3a15 15 0 0 0 5.7 5.7l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+              938 662 731</a></li>
+            <li><a href="tel:+34670368468">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18.5h2"/></svg>
+              670 368 468</a></li>
+          </ul>
+        </div>
+
+        <div class="bloc">
+          <h3>Horari publicat</h3>
+          <table class="horari">
+            <tbody>
+              <tr><th scope="row">Dilluns</th><td>9 a 14 h i 17 a 20.30 h</td></tr>
+              <tr class="tancat"><th scope="row">Dimarts</th><td>Tancat</td></tr>
+              <tr><th scope="row">Dimecres</th><td>9 a 14 h i 17 a 20.30 h</td></tr>
+              <tr><th scope="row">Dijous</th><td>9 a 14 h i 17 a 20.30 h</td></tr>
+              <tr><th scope="row">Divendres</th><td>9 a 14 h i 17 a 20.30 h</td></tr>
+              <tr><th scope="row">Dissabte</th><td>9 a 14 h</td></tr>
+              <tr><th scope="row">Diumenge</th><td>10 a 14 h</td></tr>
+            </tbody>
+          </table>
+          <div class="pastilla-tancat">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8893f" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5M12 16h.01"/></svg>
+            <div>
+              <strong>Dimarts tancat</strong><br>
+              <span>El dia de descans setmanal de la fruiteria.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <figure class="mapa reveal" style="margin:0">
+        <svg viewBox="0 0 520 400" role="img" aria-label="Esquema dibuixat de la situació de la fruiteria al carrer Rector Tomàs Vila">
+          <defs>
+            <linearGradient id="gIlla" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="rgba(255,255,255,.13)"/><stop offset="1" stop-color="rgba(255,255,255,.05)"/>
+            </linearGradient>
+          </defs>
+          <rect width="520" height="400" rx="12" fill="#0f2416"/>
+
+          <!-- carrers -->
+          <g stroke="#27462f" stroke-width="34" stroke-linecap="square">
+            <path d="M-10 250 H530"/>
+          </g>
+          <g stroke="#24402c" stroke-width="26" stroke-linecap="square">
+            <path d="M150 -10 V330"/>
+            <path d="M392 -10 V330"/>
+            <path d="M-10 86 H530"/>
+          </g>
+          <g stroke="rgba(248,243,231,.26)" stroke-width="2" stroke-dasharray="10 13" fill="none">
+            <path d="M-10 250 H530"/><path d="M150 -10 V330"/><path d="M392 -10 V330"/><path d="M-10 86 H530"/>
+          </g>
+
+          <!-- illes de cases -->
+          <g fill="url(#gIlla)" stroke="rgba(255,255,255,.14)">
+            <rect x="22" y="16" width="102" height="44" rx="7"/>
+            <rect x="176" y="16" width="190" height="44" rx="7"/>
+            <rect x="418" y="16" width="80" height="44" rx="7"/>
+            <rect x="22" y="112" width="102" height="116" rx="7"/>
+            <rect x="418" y="112" width="80" height="116" rx="7"/>
+            <rect x="22" y="274" width="102" height="54" rx="7"/>
+            <rect x="176" y="274" width="190" height="54" rx="7"/>
+            <rect x="418" y="274" width="80" height="54" rx="7"/>
+          </g>
+
+          <!-- illa de la fruiteria -->
+          <rect x="176" y="112" width="190" height="116" rx="7" fill="rgba(207,95,29,.10)" stroke="rgba(232,137,63,.42)"/>
+          <g transform="translate(271 164)">
+            <circle r="30" fill="rgba(207,95,29,.16)"/>
+            <circle r="18" fill="rgba(207,95,29,.28)"/>
+            <path d="M0-16a13 13 0 0 1 13 13c0 9-13 21-13 21S-13 6-13-3A13 13 0 0 1 0-16Z" fill="#cf5f1d"/>
+            <circle cy="-3" r="4.6" fill="#fff"/>
+          </g>
+          <text x="271" y="206" text-anchor="middle" fill="#ffd9bd" font-family="Georgia,serif" font-size="15">Fruiteria La Travessia</text>
+          <text x="271" y="221" text-anchor="middle" fill="rgba(248,243,231,.6)" font-family="-apple-system,Segoe UI,Arial,sans-serif" font-size="10" letter-spacing="1.6">NÚM. 3</text>
+
+          <!-- nom del carrer, sobre la via -->
+          <text x="22" y="243" fill="#e9f0e6" font-family="-apple-system,Segoe UI,Arial,sans-serif" font-size="12.5" letter-spacing=".08em">C/ RECTOR TOMÀS VILA</text>
+
+          <!-- llegenda -->
+          <g transform="translate(22 352)" font-family="-apple-system,Segoe UI,Arial,sans-serif" font-size="11.5">
+            <circle cx="8" cy="12" r="6" fill="#cf5f1d"/>
+            <text x="22" y="16" fill="rgba(248,243,231,.72)">La fruiteria</text>
+            <rect x="110" y="6" width="22" height="12" rx="3" fill="#27462f" stroke="rgba(248,243,231,.22)"/>
+            <text x="140" y="16" fill="rgba(248,243,231,.72)">Carrers</text>
+            <rect x="204" y="4" width="18" height="16" rx="3" fill="rgba(255,255,255,.1)" stroke="rgba(255,255,255,.18)"/>
+            <text x="230" y="16" fill="rgba(248,243,231,.72)">Illes de cases</text>
+          </g>
+
+          <!-- rosa dels vents -->
+          <g transform="translate(472 356)" opacity=".75">
+            <circle r="18" fill="none" stroke="rgba(248,243,231,.28)"/>
+            <path d="M0-12 4 1h-8Z" fill="#e9f0e6"/>
+            <path d="M0 12 4 1h-8Z" fill="rgba(248,243,231,.32)"/>
+            <text x="0" y="-22" text-anchor="middle" fill="rgba(248,243,231,.6)" font-family="-apple-system,Segoe UI,Arial,sans-serif" font-size="10">N</text>
+          </g>
+        </svg>
+        <figcaption>Esquema dibuixat a mà per situar la botiga al carrer Rector Tomàs Vila, 3. No és un mapa a escala ni una representació real del carrer.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PEU ===================== -->
+<footer>
+  <div class="wrap">
+    <div class="peu-grid">
+      <div>
+        <p class="marca">Fruiteria La Travessia</p>
+        <p class="peu-dades">
+          C/ Rector Tomàs Vila, 3 · 08182 Sant Feliu de Codines (Barcelona)<br>
+          <a href="tel:+34938662731">938 662 731</a> · <a href="tel:+34670368468">670 368 468</a><br>
+          <a href="mailto:fruiteriatravessia@hotmail.com">fruiteriatravessia@hotmail.com</a>
+        </p>
+      </div>
+      <div>
+        <p class="peu-dades" style="margin-top:4px">
+          <strong style="color:#fff;font-weight:600">Horari</strong><br>
+          Dilluns a divendres: 9 a 14 h i 17 a 20.30 h<br>
+          Dissabte: 9 a 14 h · Diumenge: 10 a 14 h<br>
+          <span style="color:#e8893f">Dimarts tancat</span>
+        </p>
+      </div>
+    </div>
+    <p class="firma">
+      <b>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</b><br>
+      Maqueta sense cap vinculació amb el negoci. Les dades de contacte, l'horari i la descripció provenen de la fitxa pública del comerç de l'Ajuntament de Sant Feliu de Codines. Els apartats sense dades verificades es deixen marcats com a «Apartat per completar».
+    </p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var el = document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){
+    for(var i=0;i<el.length;i++){el[i].classList.add('vist');}
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('vist'); io.unobserve(e.target); }
+    });
+  },{rootMargin:'0px 0px -8% 0px',threshold:.08});
+  for(var j=0;j<el.length;j++){ io.observe(el[j]); }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mandrágora La Casa del Bienestar · Novelda</title>
+<meta name="description" content="Propuesta de rediseño web para Mandrágora La Casa del Bienestar, centro de terapias naturales en Novelda (Alicante).">
+<style>
+  :root{
+    --paper:#faf7f2;
+    --paper-2:#f3eee5;
+    --ink:#2b2a26;
+    --ink-soft:#5d5a52;
+    --ink-faint:#8b8578;
+    --sage:#5d7a63;
+    --sage-deep:#3b5242;
+    --sage-light:#a8c0ad;
+    --clay:#b5724e;
+    --clay-light:#e4c3ae;
+    --line:#ded6c8;
+    --radius:18px;
+    --maxw:1120px;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:17px;
+    line-height:1.65;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%}
+  h1,h2,h3{font-family:var(--serif);font-weight:600;letter-spacing:-.01em;margin:0;line-height:1.14}
+  p{margin:0}
+  a{color:inherit}
+
+  /* ---------- barra de propuesta ---------- */
+  .pbar{
+    font-family:var(--sans);
+    font-size:12.5px;
+    line-height:1.45;
+    letter-spacing:.045em;
+    text-align:center;
+    padding:9px 16px;
+    background:linear-gradient(90deg,#2f3f34 0%,#3b5242 45%,#4a5f4f 100%);
+    color:#e9efe9;
+  }
+  .pbar-fixed{position:fixed;inset:0 0 auto 0;z-index:90;box-shadow:0 1px 0 rgba(0,0,0,.08)}
+  .pbar-spacer{visibility:hidden}
+  .pbar b{font-weight:600;color:#fff}
+
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  section{position:relative}
+  .eyebrow{
+    font-size:12px;letter-spacing:.17em;text-transform:uppercase;
+    color:var(--sage);font-weight:650;margin:0 0 18px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow::after{content:"";height:1px;flex:1;background:var(--line);max-width:90px}
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding:76px 0 84px;
+    background:
+      radial-gradient(1100px 520px at 88% -10%, rgba(168,192,173,.42), transparent 62%),
+      radial-gradient(760px 420px at -8% 108%, rgba(228,195,174,.44), transparent 60%),
+      linear-gradient(176deg,#f7f4ec 0%,var(--paper) 58%,#f1ece2 100%);
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+  }
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:56px;align-items:center}
+  .brandmark{display:flex;align-items:center;gap:14px;margin-bottom:30px}
+  .brandmark .bm-ico{flex:0 0 auto;width:46px;height:46px}
+  .brandmark .bm-txt{font-family:var(--serif);font-size:16px;letter-spacing:.03em;color:var(--sage-deep);line-height:1.25}
+  .brandmark .bm-txt small{display:block;font-family:var(--sans);font-size:10.5px;letter-spacing:.19em;text-transform:uppercase;color:var(--ink-faint);margin-top:3px}
+
+  h1{font-size:clamp(2.35rem,5.4vw,4rem)}
+  h1 em{font-style:italic;color:var(--sage-deep)}
+  .lede{margin-top:22px;font-size:clamp(1.02rem,1.5vw,1.2rem);color:var(--ink-soft);max-width:30em}
+  .ficha{
+    margin-top:26px;padding:16px 20px;border-left:3px solid var(--sage-light);
+    background:rgba(255,255,255,.55);border-radius:0 12px 12px 0;
+    font-family:var(--serif);font-style:italic;font-size:1rem;line-height:1.5;color:var(--sage-deep);
+  }
+  .ficha span{display:block;margin-top:8px;font-family:var(--sans);font-style:normal;font-size:11.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-faint)}
+
+  .cta-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:34px}
+  .btn{
+    display:inline-flex;align-items:center;gap:11px;
+    padding:15px 26px;border-radius:999px;text-decoration:none;
+    font-weight:600;font-size:16px;letter-spacing:.01em;
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .btn svg{flex:0 0 auto}
+  .btn-primary{background:linear-gradient(145deg,var(--sage) 0%,var(--sage-deep) 100%);color:#fff;box-shadow:0 10px 24px -12px rgba(59,82,66,.75)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 30px -14px rgba(59,82,66,.8)}
+  .btn-ghost{border:1px solid var(--line);color:var(--sage-deep);background:rgba(255,255,255,.6)}
+  .btn-ghost:hover{border-color:var(--sage-light)}
+  .cta-note{font-size:13.5px;color:var(--ink-faint);flex-basis:100%}
+
+  .hero-art{position:relative}
+  .hero-art svg{display:block;width:100%;height:auto;filter:drop-shadow(0 22px 40px rgba(59,82,66,.14))}
+
+  /* ---------- servicios ---------- */
+  .svcs{padding:88px 0}
+  .svcs-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:end;margin-bottom:46px}
+  .svcs-head h2{font-size:clamp(1.8rem,3.4vw,2.6rem)}
+  .svcs-head p{color:var(--ink-soft);font-size:16px}
+  .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+  .card{background:var(--paper);padding:34px 28px 32px;transition:background .25s ease}
+  .card:hover{background:#fff}
+  .card .ico{width:38px;height:38px;margin-bottom:20px;color:var(--sage)}
+  .card h3{font-size:1.2rem;margin-bottom:10px}
+  .card p{font-size:15px;color:var(--ink-soft)}
+  .card.card-note{background:var(--paper-2);grid-column:span 2;display:grid;grid-template-columns:38px minmax(0,1fr);gap:0 22px;align-items:start}
+  .card.card-note .ico{margin-bottom:0;grid-row:span 3;color:var(--sage-deep)}
+  .card.card-note h3{color:var(--sage-deep)}
+  .tag{display:inline-block;justify-self:start;margin-top:14px;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--clay);border:1px dashed var(--clay-light);border-radius:999px;padding:4px 11px}
+  .disclaimer{margin-top:28px;font-size:13.5px;color:var(--ink-faint);max-width:60em}
+
+  /* ---------- primera visita ---------- */
+  .visita{
+    padding:84px 0;
+    background:linear-gradient(170deg,#eef1ec 0%,#f4f1e9 100%);
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  }
+  .visita h2{font-size:clamp(1.8rem,3.4vw,2.6rem);max-width:22em}
+  .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;margin-top:44px;counter-reset:s}
+  .step{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px 26px 28px;position:relative}
+  .step .num{
+    font-family:var(--serif);font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--clay);display:flex;align-items:center;gap:10px;margin-bottom:16px;
+  }
+  .step .num i{
+    font-style:normal;width:30px;height:30px;border-radius:50%;
+    background:linear-gradient(145deg,var(--clay-light),#f0dcce);color:#7d4a2d;
+    display:grid;place-items:center;font-family:var(--sans);font-size:14px;font-weight:700;
+  }
+  .step h3{font-size:1.14rem;margin-bottom:9px}
+  .step p{font-size:15px;color:var(--ink-soft)}
+
+  /* ---------- contacto ---------- */
+  .contacto{padding:88px 0}
+  .c-grid{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:52px;align-items:start}
+  .c-grid h2{font-size:clamp(1.8rem,3.4vw,2.6rem);margin-bottom:26px}
+  .dl{border-top:1px solid var(--line)}
+  .dl .row{display:grid;grid-template-columns:118px minmax(0,1fr);gap:18px;padding:18px 0;border-bottom:1px solid var(--line);align-items:start}
+  .dl dt{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);padding-top:4px}
+  .dl dd{margin:0;font-size:16.5px}
+  .dl dd a{text-decoration:none;color:var(--sage-deep);font-weight:600;border-bottom:1px solid var(--sage-light)}
+  .dl dd a:hover{border-bottom-color:var(--sage-deep)}
+  .dl dd .muted{display:block;color:var(--ink-soft);font-size:15px}
+  .hours{display:grid;gap:6px;font-size:15.5px}
+  .hours div{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .hours span:first-child{color:var(--ink-soft)}
+  .hours span:last-child{font-variant-numeric:tabular-nums;text-align:right}
+
+  .c-cta{display:flex;flex-wrap:wrap;align-items:center;gap:16px 22px;margin-top:30px}
+  .c-cta p{font-size:14px;color:var(--ink-faint);max-width:22em;flex:1 1 220px}
+
+  .mapcard{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#f6f3ec}
+  .mapcard svg{display:block;width:100%;height:auto}
+  .mapcap{padding:14px 18px;border-top:1px solid var(--line);font-size:13px;color:var(--ink-faint);background:var(--paper)}
+
+  /* ---------- pie ---------- */
+  footer{background:linear-gradient(170deg,#2f3f34 0%,#263129 100%);color:#d7ded8;padding:62px 0 34px;font-size:15px}
+  .f-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr);gap:40px}
+  footer h3{font-size:1.25rem;color:#fff;margin-bottom:12px}
+  footer p,footer li{color:#bdc7bf}
+  footer a{color:#e8efe7;text-decoration:none;border-bottom:1px solid rgba(232,239,231,.35);word-break:break-word}
+  footer a:hover{border-bottom-color:#e8efe7}
+  footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:14.5px}
+  .f-label{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#8ea394;margin-bottom:14px}
+  .f-rule{height:1px;background:rgba(255,255,255,.12);margin:40px 0 22px}
+  .f-bottom{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;font-size:13px;color:#93a497}
+  .f-bottom strong{color:#cfd9d0;font-weight:600}
+
+  @media (max-width:900px){
+    .hero-grid,.svcs-head,.c-grid{grid-template-columns:minmax(0,1fr);gap:40px}
+    .cards,.steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .f-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+    .hero-art{max-width:440px;margin:4px auto 0}
+  }
+  @media (max-width:620px){
+    body{font-size:16.5px}
+    .wrap{padding:0 18px}
+    .hero{padding:52px 0 60px}
+    .svcs,.visita,.contacto{padding:62px 0}
+    .cards,.steps{grid-template-columns:minmax(0,1fr)}
+    .card.card-note{grid-column:span 1;grid-template-columns:minmax(0,1fr)}
+    .card.card-note .ico{grid-row:auto;margin-bottom:18px}
+    .f-grid{grid-template-columns:minmax(0,1fr);gap:32px}
+    .dl .row{grid-template-columns:minmax(0,1fr);gap:6px}
+    .dl dt{padding-top:0}
+    .btn{width:100%;justify-content:center}
+    .pbar{font-size:11.5px;letter-spacing:.02em;padding:8px 14px}
+    .eyebrow::after{max-width:48px}
+    .hero-art{max-width:300px}
+    h1{font-size:2.15rem}
+  }
+</style>
+</head>
+<body>
+
+<div class="pbar pbar-fixed">Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</div>
+<div class="pbar pbar-spacer" aria-hidden="true">Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="brandmark">
+        <svg class="bm-ico" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <circle cx="24" cy="24" r="23" fill="#fff" stroke="#a8c0ad"/>
+          <path d="M24 37V20" stroke="#5d7a63" stroke-width="2" stroke-linecap="round"/>
+          <path d="M24 22c-6.5 0-10-3.6-10-8.6 5.8-1.4 10 2 10 8.6Z" fill="#a8c0ad"/>
+          <path d="M24 26c6.5 0 10-3.6 10-8.6-5.8-1.4-10 2-10 8.6Z" fill="#5d7a63"/>
+          <circle cx="24" cy="39.5" r="2" fill="#b5724e"/>
+        </svg>
+        <span class="bm-txt">Mandrágora<small>La Casa del Bienestar</small></span>
+      </div>
+
+      <h1>Un espacio de <em>calma</em> en el centro de Novelda</h1>
+
+      <p class="lede">Terapias naturales, masajes y productos naturales en Calle Padre Mariana, 4. Atención personalizada, con cita previa por teléfono.</p>
+
+      <blockquote class="ficha">“Empresa de terapias naturales, técnicas naturópatas, masajes, acupuntura, Reiki.... Productos naturales, artesanía.”
+        <span>Descripción de su ficha oficial · Ajuntament de Novelda</span>
+      </blockquote>
+
+      <div class="cta-row">
+        <a class="btn btn-primary" href="tel:+34966291072">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 3h2.3l1.6 4-2 1.3a12 12 0 0 0 5.2 5.2l1.3-2 4 1.6v2.3A2.6 2.6 0 0 1 16.4 21C9.6 20.3 3.7 14.4 3 7.6A2.6 2.6 0 0 1 6.6 3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          Pedir cita · 96 629 10 72
+        </a>
+        <a class="btn btn-ghost" href="tel:+34674393444">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="6.5" y="2.5" width="11" height="19" rx="2.6" stroke="currentColor" stroke-width="1.8"/><path d="M10.5 18.5h3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          Móvil · 674 393 444
+        </a>
+        <p class="cta-note">Lunes a viernes de 9 a 13 h y de 17 a 20 h · Sábados de 10 a 13 h</p>
+      </div>
+    </div>
+
+    <div class="hero-art">
+      <svg viewBox="0 0 440 420" fill="none" role="img" aria-label="Ilustración de hojas y formas sobre fondo degradado">
+        <defs>
+          <linearGradient id="gA" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#cfe0d2"/><stop offset="1" stop-color="#7f9d86"/>
+          </linearGradient>
+          <linearGradient id="gB" x1="0" y1="1" x2="1" y2="0">
+            <stop offset="0" stop-color="#e9cdb8"/><stop offset="1" stop-color="#c9906c"/>
+          </linearGradient>
+          <linearGradient id="gC" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#ffffff" stop-opacity=".9"/><stop offset="1" stop-color="#ffffff" stop-opacity=".25"/>
+          </linearGradient>
+        </defs>
+
+        <circle cx="236" cy="196" r="176" fill="url(#gA)" opacity=".5"/>
+        <circle cx="236" cy="196" r="132" fill="url(#gC)"/>
+        <path d="M60 300c70-26 118-18 170 18" stroke="#b5724e" stroke-width="1.4" opacity=".55" stroke-linecap="round"/>
+        <path d="M84 338c84-30 142-20 206 22" stroke="#5d7a63" stroke-width="1.4" opacity=".4" stroke-linecap="round"/>
+
+        <g stroke="#3b5242" stroke-width="2.1" stroke-linecap="round">
+          <path d="M236 342V150"/>
+          <path d="M236 232c-34-6-52-28-54-62 32-4 52 20 54 62Z" fill="#a8c0ad" fill-opacity=".85"/>
+          <path d="M236 206c34-6 52-28 54-62-32-4-52 20-54 62Z" fill="#5d7a63" fill-opacity=".8"/>
+          <path d="M236 290c-28-5-43-23-45-51 27-3 43 16 45 51Z" fill="#cfe0d2" fill-opacity=".9"/>
+          <path d="M236 266c28-5 43-23 45-51-27-3-43 16-45 51Z" fill="#7f9d86" fill-opacity=".75"/>
+        </g>
+
+        <ellipse cx="236" cy="352" rx="78" ry="17" fill="url(#gB)" opacity=".55"/>
+        <g opacity=".85">
+          <circle cx="126" cy="112" r="20" fill="url(#gB)"/>
+          <circle cx="352" cy="300" r="13" fill="#5d7a63" opacity=".5"/>
+          <circle cx="96" cy="206" r="7" fill="#b5724e" opacity=".55"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICIOS ============ -->
+<section class="svcs">
+  <div class="wrap">
+    <div class="svcs-head">
+      <div>
+        <p class="eyebrow">Lo que ofrecemos</p>
+        <h2>Terapias naturales y productos, en un mismo sitio</h2>
+      </div>
+      <p>Estos son los servicios que el centro declara en su ficha oficial. Las sesiones se concretan en consulta, según lo que busque cada persona.</p>
+    </div>
+
+    <div class="cards">
+      <article class="card">
+        <svg class="ico" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M20 34V14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M20 20c-8 0-12-4.4-12-10.4 7-1.7 12 2.4 12 10.4Z" stroke="currentColor" stroke-width="2"/><path d="M20 26c8 0 12-4.4 12-10.4-7-1.7-12 2.4-12 10.4Z" stroke="currentColor" stroke-width="2"/></svg>
+        <h3>Terapias naturales</h3>
+        <p>Sesiones basadas en técnicas de origen natural, adaptadas a cada persona tras una primera conversación en el centro.</p>
+      </article>
+
+      <article class="card">
+        <svg class="ico" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M8 32c4-12 10-18 24-20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M14 10h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="29" cy="25" r="5" stroke="currentColor" stroke-width="2"/></svg>
+        <h3>Técnicas naturópatas</h3>
+        <p>Acompañamiento con técnicas propias de la naturopatía, dentro del ámbito del bienestar y siempre sin sustituir a un profesional sanitario.</p>
+      </article>
+
+      <article class="card">
+        <svg class="ico" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M6 26c6-8 12-8 18-2s10 6 10 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="13" cy="14" r="4" stroke="currentColor" stroke-width="2"/><path d="M6 33h28" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".45"/></svg>
+        <h3>Masajes</h3>
+        <p>Distintos tipos de masaje corporal en cabina, con una duración y una intensidad que se acuerdan antes de empezar.</p>
+      </article>
+
+      <article class="card">
+        <svg class="ico" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M10 8v10M20 6v14M30 10v8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="10" cy="23" r="3" stroke="currentColor" stroke-width="2"/><circle cx="20" cy="25" r="3" stroke="currentColor" stroke-width="2"/><circle cx="30" cy="23" r="3" stroke="currentColor" stroke-width="2"/><path d="M6 34h28" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".45"/></svg>
+        <h3>Acupuntura</h3>
+        <p>Sesiones de acupuntura con material de un solo uso. El planteamiento de cada sesión se explica en la consulta previa.</p>
+      </article>
+
+      <article class="card">
+        <svg class="ico" viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="20" cy="20" r="5" stroke="currentColor" stroke-width="2"/><circle cx="20" cy="20" r="11" stroke="currentColor" stroke-width="2" opacity=".6"/><circle cx="20" cy="20" r="17" stroke="currentColor" stroke-width="2" opacity=".3"/></svg>
+        <h3>Reiki</h3>
+        <p>Sesiones de Reiki en un entorno tranquilo, pensadas como un rato de descanso y relajación.</p>
+      </article>
+
+      <article class="card">
+        <svg class="ico" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M12 16h16l-1.6 18H13.6L12 16Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M16 16V9a4 4 0 0 1 8 0v7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M16 24h8" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".5"/></svg>
+        <h3>Productos naturales</h3>
+        <p>Selección de productos naturales disponible en el propio centro. Puedes preguntar por existencias y variedades al pasar o por teléfono.</p>
+      </article>
+
+      <article class="card">
+        <svg class="ico" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M7 30 20 8l13 22H7Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M14 30c0-4 2.7-6 6-6s6 2 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <h3>Artesanía</h3>
+        <p>Piezas de artesanía expuestas en la tienda del centro, junto a los productos naturales.</p>
+      </article>
+
+      <article class="card card-note">
+        <svg class="ico" viewBox="0 0 40 40" fill="none" aria-hidden="true"><rect x="7" y="7" width="26" height="26" rx="5" stroke="currentColor" stroke-width="2" stroke-dasharray="5 4"/><path d="M20 15v10M15 20h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <h3>Apartado por completar</h3>
+        <p>Duración de las sesiones, bonos, tarifas y detalle de cada terapia quedan pendientes de completar con la información que facilite el centro.</p>
+        <span class="tag">Consultar en centro</span>
+      </article>
+    </div>
+
+    <p class="disclaimer">Esta maqueta no atribuye al centro ningún efecto terapéutico, sanitario ni resultado concreto. Los servicios descritos son los que figuran en su ficha oficial del Ajuntament de Novelda. Ante cualquier problema de salud, consulta con un profesional sanitario.</p>
+  </div>
+</section>
+
+<!-- ============ PRIMERA VISITA ============ -->
+<section class="visita">
+  <div class="wrap">
+    <p class="eyebrow">Tu primera visita</p>
+    <h2>Cómo funciona, de la llamada a la sesión</h2>
+
+    <div class="steps">
+      <article class="step">
+        <p class="num"><i>1</i> Llamada</p>
+        <h3>Pides cita por teléfono</h3>
+        <p>Llamas al 96 629 10 72 o al móvil 674 393 444 dentro del horario de apertura y se busca un hueco que te encaje.</p>
+      </article>
+      <article class="step">
+        <p class="num"><i>2</i> Primera charla</p>
+        <h3>Hablamos antes de empezar</h3>
+        <p>Al llegar a Calle Padre Mariana, 4 se comenta con calma qué buscas y qué opciones hay dentro de los servicios del centro.</p>
+      </article>
+      <article class="step">
+        <p class="num"><i>3</i> Sesión</p>
+        <h3>La sesión acordada</h3>
+        <p>Se realiza la sesión que hayáis acordado y, al terminar, se concreta si tiene sentido volver y cuándo. Sin compromisos previos.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section class="contacto">
+  <div class="wrap">
+    <div class="c-grid">
+      <div>
+        <p class="eyebrow">Contacto y horario</p>
+        <h2>Estamos en el centro de Novelda</h2>
+
+        <dl class="dl">
+          <div class="row">
+            <dt>Teléfono</dt>
+            <dd>
+              <a href="tel:+34966291072">96 629 10 72</a>
+              <span class="muted">Móvil: <a href="tel:+34674393444">674 393 444</a></span>
+            </dd>
+          </div>
+          <div class="row">
+            <dt>Dirección</dt>
+            <dd>Calle Padre Mariana, 4<span class="muted">03660 Novelda (Alicante)</span></dd>
+          </div>
+          <div class="row">
+            <dt>Horario</dt>
+            <dd>
+              <div class="hours">
+                <div><span>Lunes a viernes</span><span>9 – 13 h · 17 – 20 h</span></div>
+                <div><span>Sábados</span><span>10 – 13 h</span></div>
+                <div><span>Domingos</span><span>Consultar en centro</span></div>
+              </div>
+            </dd>
+          </div>
+        </dl>
+
+        <div class="c-cta">
+          <a class="btn btn-primary" href="tel:+34966291072">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 3h2.3l1.6 4-2 1.3a12 12 0 0 0 5.2 5.2l1.3-2 4 1.6v2.3A2.6 2.6 0 0 1 16.4 21C9.6 20.3 3.7 14.4 3 7.6A2.6 2.6 0 0 1 6.6 3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            Pedir cita por teléfono
+          </a>
+          <p>Las citas se gestionan solo por teléfono, dentro del horario de apertura.</p>
+        </div>
+      </div>
+
+      <div class="mapcard">
+        <svg viewBox="0 0 520 380" role="img" aria-label="Plano esquemático dibujado a mano con la situación de Calle Padre Mariana, número 4">
+          <rect width="520" height="380" fill="#f4f1e8"/>
+          <g stroke="#e2dccd" stroke-width="1">
+            <path d="M0 50h520M0 110h520M0 170h520M0 230h520M0 290h520M0 350h520"/>
+            <path d="M60 0v380M140 0v380M220 0v380M300 0v380M380 0v380M460 0v380"/>
+          </g>
+
+          <!-- manzanas -->
+          <g fill="#e7e2d4" stroke="#d6cfbd" stroke-width="1.6">
+            <path d="M34 36h132l6 86-130 5-10-91Z"/>
+            <path d="M210 30h124l8 92-130 4-2-96Z"/>
+            <path d="M380 44h118l-4 80-112 6-2-86Z"/>
+            <path d="M28 196h140l-6 94H36l-8-94Z"/>
+            <path d="M366 190h132l-6 100-124 4-2-104Z"/>
+            <path d="M36 328h150l-4 46H40l-4-46Z"/>
+            <path d="M360 326h140l-2 48H358l2-48Z"/>
+          </g>
+
+          <!-- calle principal: Padre Mariana -->
+          <path d="M14 162C120 150 220 158 332 150c66-5 118-2 174 6" stroke="#fdfbf5" stroke-width="30" stroke-linecap="round" fill="none"/>
+          <path d="M14 162C120 150 220 158 332 150c66-5 118-2 174 6" stroke="#cfc6b1" stroke-width="31" stroke-linecap="round" fill="none" opacity=".35"/>
+          <path d="M14 162C120 150 220 158 332 150c66-5 118-2 174 6" stroke="#fdfbf5" stroke-width="26" stroke-linecap="round" fill="none"/>
+          <path d="M40 158c90-8 180-2 270-7" stroke="#ddd5c2" stroke-width="2" stroke-dasharray="14 12" fill="none"/>
+
+          <!-- calles secundarias (sin nombre, esquemáticas) -->
+          <g stroke="#fdfbf5" stroke-width="17" stroke-linecap="round" fill="none">
+            <path d="M190 8c6 118 2 240-6 364"/>
+            <path d="M352 10c-2 120 2 244 10 362"/>
+            <path d="M10 308c160-10 330-8 500 2"/>
+          </g>
+          <g stroke="#e4ddcb" stroke-width="1.4" fill="none">
+            <path d="M190 8c6 118 2 240-6 364"/>
+            <path d="M352 10c-2 120 2 244 10 362"/>
+            <path d="M10 308c160-10 330-8 500 2"/>
+          </g>
+
+          <!-- marcador -->
+          <g>
+            <ellipse cx="258" cy="208" rx="26" ry="8" fill="#b5724e" opacity=".18"/>
+            <path d="M258 206c-13-16-20-25-20-35a20 20 0 0 1 40 0c0 10-7 19-20 35Z" fill="#b5724e"/>
+            <circle cx="258" cy="171" r="7.5" fill="#fdfbf5"/>
+            <text x="258" y="175.5" text-anchor="middle" font-family="Georgia, serif" font-size="11" font-weight="700" fill="#b5724e">4</text>
+          </g>
+          <g font-family="Georgia, serif" fill="#5d5a52">
+            <text x="258" y="243" text-anchor="middle" font-size="15" font-style="italic" fill="#3b5242">Mandrágora</text>
+            <text x="258" y="261" text-anchor="middle" font-size="12" fill="#8b8578">Padre Mariana, 4</text>
+            <text x="42" y="146" font-size="12.5" font-style="italic" fill="#8b8578">Calle Padre Mariana</text>
+          </g>
+          <g stroke="#8b8578" stroke-width="1.3" fill="none" opacity=".7">
+            <path d="M462 330v-26"/><path d="M455 311l7-9 7 9"/>
+          </g>
+          <text x="462" y="348" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#8b8578">N</text>
+        </svg>
+        <p class="mapcap">Plano esquemático dibujado a mano, solo orientativo. No sustituye a un mapa ni refleja el trazado real de las calles.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PIE ============ -->
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <h3>Mandrágora La Casa del Bienestar</h3>
+        <p>Centro de bienestar y terapias naturales en Novelda (Alicante).</p>
+      </div>
+      <div>
+        <p class="f-label">Contacto</p>
+        <ul>
+          <li>Calle Padre Mariana, 4</li>
+          <li>03660 Novelda (Alicante)</li>
+          <li><a href="tel:+34966291072">96 629 10 72</a></li>
+          <li><a href="tel:+34674393444">674 393 444</a></li>
+          <li><a href="mailto:mandragorairenemariajo@gmail.com">mandragorairenemariajo@gmail.com</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="f-label">Horario</p>
+        <ul>
+          <li>Lunes a viernes: 9 a 13 h y 17 a 20 h</li>
+          <li>Sábados: 10 a 13 h</li>
+          <li>Redes sociales: Facebook e Instagram</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="f-rule"></div>
+    <div class="f-bottom">
+      <p><strong>Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</strong></p>
+      <p>Maqueta sin carácter oficial. Datos tomados de la ficha pública del Ajuntament de Novelda.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
