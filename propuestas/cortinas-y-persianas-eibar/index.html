@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cortinas y Persianas Eibar — Persianas, toldos y cortinas a medida</title>
+<meta name="description" content="Propuesta de diseño web para Cortinas y Persianas Eibar: persianas, toldos y cortinas de interior a medida en Eibar, Gipuzkoa. Visita, medición, presupuesto e instalación.">
+<style>
+  :root{
+    --lino:#f6f2ec;
+    --lino-2:#efe8df;
+    --papel:#fffdfa;
+    --tinta:#23302f;
+    --tinta-2:#4a5a58;
+    --tinta-3:#78857f;
+    --verde:#2f4a45;
+    --verde-claro:#5b7a72;
+    --terracota:#b4714f;
+    --terracota-claro:#d79a79;
+    --linea:#e0d7cb;
+    --barra:#23302f;
+    --radio:18px;
+    --maxw:1120px;
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--lino);
+    color:var(--tinta);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+    font-size:17px;
+    line-height:1.65;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{max-width:100%;}
+  a{color:inherit;}
+  h1,h2,h3{line-height:1.12;margin:0;letter-spacing:-0.02em;font-weight:600;}
+
+  /* ---------- Barra fija superior ---------- */
+  .aviso{
+    position:fixed;inset:0 0 auto 0;z-index:100;
+    background:var(--barra);
+    color:#e9e2d6;
+    font-size:12.5px;
+    letter-spacing:0.055em;
+    text-transform:uppercase;
+    padding:10px 16px;
+    text-align:center;
+    line-height:1.45;
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .aviso span{display:inline-block;max-width:100%;}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(16px,4vw,40px);}
+  section{position:relative;}
+  .eyebrow{
+    font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--terracota);font-weight:600;margin:0 0 14px;
+  }
+  .rule{height:1px;background:var(--linea);border:0;margin:0;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding-top:calc(48px + clamp(48px,8vw,96px));
+    padding-bottom:clamp(48px,7vw,88px);
+    background:
+      radial-gradient(120% 90% at 85% 0%, #ffffff 0%, rgba(255,255,255,0) 60%),
+      linear-gradient(170deg,var(--lino-2) 0%,var(--lino) 55%);
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:clamp(28px,5vw,64px);
+    align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(2.1rem,6.2vw,3.9rem);
+    font-weight:600;
+    margin:0 0 20px;
+  }
+  .hero h1 em{
+    display:block;font-style:normal;color:var(--verde-claro);
+    font-size:.42em;letter-spacing:.14em;text-transform:uppercase;
+    font-weight:600;margin-bottom:14px;
+  }
+  .lede{
+    font-size:clamp(1.02rem,2.1vw,1.22rem);
+    color:var(--tinta-2);
+    max-width:46ch;
+    margin:0 0 32px;
+  }
+  .cta-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;}
+  .btn{
+    display:inline-flex;align-items:center;gap:12px;
+    padding:15px 26px;border-radius:999px;
+    text-decoration:none;font-weight:600;
+    font-size:1.02rem;letter-spacing:.01em;
+    transition:transform .15s ease;
+  }
+  .btn-main{
+    background:var(--verde);color:#f7f3ec;
+    box-shadow:0 10px 24px -14px rgba(35,48,47,.75);
+  }
+  .btn-main .ico{
+    width:18px;height:18px;flex:none;
+    fill:none;stroke:currentColor;stroke-width:1.8;
+    stroke-linecap:round;stroke-linejoin:round;
+  }
+  .btn-ghost{
+    border:1px solid var(--linea);color:var(--tinta-2);
+    background:var(--papel);
+  }
+  .cta-note{font-size:.88rem;color:var(--tinta-3);margin:16px 0 0;}
+
+  .hero-art{
+    background:var(--papel);
+    border:1px solid var(--linea);
+    border-radius:var(--radio);
+    padding:18px;
+    box-shadow:0 30px 60px -40px rgba(35,48,47,.45);
+  }
+  .hero-art svg{display:block;width:100%;height:auto;}
+
+  /* ---------- Servicios ---------- */
+  .servicios{padding:clamp(56px,8vw,96px) 0;}
+  .sec-head{max-width:54ch;margin-bottom:clamp(32px,5vw,52px);}
+  .sec-head h2{font-size:clamp(1.6rem,4vw,2.4rem);margin-bottom:14px;}
+  .sec-head p{color:var(--tinta-2);margin:0;}
+  .cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(248px,1fr));
+    gap:clamp(18px,2.4vw,26px);
+  }
+  .card{
+    background:var(--papel);
+    border:1px solid var(--linea);
+    border-radius:var(--radio);
+    overflow:hidden;
+    display:flex;flex-direction:column;
+  }
+  .card-art{
+    background:linear-gradient(165deg,#f2ece3,#e7ded2);
+    padding:22px 22px 0;
+  }
+  .card-art svg{display:block;width:100%;height:auto;}
+  .card-body{padding:22px 24px 26px;}
+  .card-body h3{font-size:1.16rem;margin-bottom:9px;}
+  .card-body p{margin:0;color:var(--tinta-2);font-size:.97rem;}
+
+  /* ---------- Proceso ---------- */
+  .proceso{
+    padding:clamp(56px,8vw,96px) 0;
+    background:var(--verde);
+    color:#eee8dd;
+  }
+  .proceso .eyebrow{color:var(--terracota-claro);}
+  .proceso h2{font-size:clamp(1.6rem,4vw,2.4rem);margin-bottom:14px;}
+  .proceso .sec-head p{color:rgba(238,232,221,.78);}
+  .pasos{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:clamp(20px,3vw,34px);
+  }
+  .paso{
+    border-top:1px solid rgba(238,232,221,.22);
+    padding-top:22px;
+  }
+  .paso .num{
+    font-size:.78rem;letter-spacing:.2em;font-weight:600;
+    color:var(--terracota-claro);display:block;margin-bottom:12px;
+  }
+  .paso h3{font-size:1.1rem;margin-bottom:10px;}
+  .paso p{margin:0;color:rgba(238,232,221,.76);font-size:.96rem;}
+
+  /* ---------- Contacto ---------- */
+  .contacto{padding:clamp(56px,8vw,96px) 0;}
+  .contacto-grid{
+    display:grid;grid-template-columns:.95fr 1.05fr;
+    gap:clamp(28px,4vw,52px);align-items:start;
+  }
+  .datos{display:grid;gap:4px;margin:0;}
+  .dato{
+    display:flex;gap:16px;align-items:flex-start;
+    padding:20px 0;border-bottom:1px solid var(--linea);
+  }
+  .dato:first-child{border-top:1px solid var(--linea);}
+  .dato .ico{
+    width:22px;height:22px;flex:none;margin-top:3px;
+    fill:none;stroke:var(--verde-claro);stroke-width:1.6;
+    stroke-linecap:round;stroke-linejoin:round;
+  }
+  .dato dt{
+    font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--tinta-3);margin:0 0 5px;font-weight:600;
+  }
+  .dato dd{margin:0;font-size:1.07rem;font-weight:500;}
+  .dato dd a{text-decoration:none;border-bottom:1px solid var(--terracota-claro);}
+  .dato dd small{display:block;font-weight:400;font-size:.9rem;color:var(--tinta-3);margin-top:3px;}
+  .mapa{
+    background:var(--papel);border:1px solid var(--linea);
+    border-radius:var(--radio);padding:16px;
+  }
+  .mapa svg{display:block;width:100%;height:auto;border-radius:10px;}
+  .mapa-pie{
+    font-size:.82rem;color:var(--tinta-3);
+    margin:14px 2px 2px;line-height:1.5;
+  }
+
+  /* ---------- Pie ---------- */
+  footer{
+    background:var(--lino-2);
+    border-top:1px solid var(--linea);
+    padding:clamp(40px,6vw,64px) 0;
+  }
+  .pie-grid{
+    display:flex;flex-wrap:wrap;gap:24px 40px;
+    justify-content:space-between;align-items:flex-end;
+  }
+  .pie-grid .marca{font-weight:600;font-size:1.1rem;margin:0 0 8px;}
+  .pie-grid a.mail{
+    color:var(--verde);text-decoration:none;
+    border-bottom:1px solid var(--terracota-claro);
+    word-break:break-word;
+  }
+  .credito{
+    font-size:.88rem;color:var(--tinta-3);
+    max-width:40ch;margin:0;
+  }
+
+  @media (max-width:880px){
+    .hero-grid,.contacto-grid{grid-template-columns:1fr;}
+    .hero-art{order:-1;}
+  }
+  @media (max-width:520px){
+    body{font-size:16.5px;}
+    .aviso{font-size:11px;letter-spacing:.04em;padding:9px 12px;}
+    .hero{padding-top:calc(62px + 34px);}
+    .btn{width:100%;justify-content:center;}
+    .cta-row{gap:10px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="aviso" role="note"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1><em>Eibar · Gipuzkoa</em>Cortinas y Persianas Eibar</h1>
+      <p class="lede">Persianas, toldos y cortinas de interior hechos a medida para cada ventana. Tomamos medidas en casa y lo dejamos instalado.</p>
+      <div class="cta-row">
+        <a class="btn btn-main" href="tel:+34943120818">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5h3l1.5 3.8-2 1.4a11 11 0 0 0 5.2 5.2l1.4-2 3.8 1.5v3a1.6 1.6 0 0 1-1.7 1.6A15.5 15.5 0 0 1 5 5.2 1.6 1.6 0 0 1 6.6 3.5Z"/></svg>
+          943 12 08 18
+        </a>
+        <a class="btn btn-ghost" href="#contacto">Ver dónde estamos</a>
+      </div>
+      <p class="cta-note">San Juan Kalea, 11 — 20600 Eibar (Gipuzkoa)</p>
+    </div>
+
+    <div class="hero-art">
+      <!-- Ilustración: ventana con persiana y cortina -->
+      <svg viewBox="0 0 420 320" role="img" aria-label="Ilustración de una ventana con persiana y cortina de interior">
+        <defs>
+          <linearGradient id="gPared" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#f7f2ea"/><stop offset="1" stop-color="#ece3d6"/>
+          </linearGradient>
+          <linearGradient id="gLuz" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#dfe9e4"/><stop offset="1" stop-color="#c5d6ce"/>
+          </linearGradient>
+          <linearGradient id="gTela" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#c58463"/><stop offset=".5" stop-color="#b4714f"/><stop offset="1" stop-color="#9c5e3f"/>
+          </linearGradient>
+        </defs>
+
+        <rect x="0" y="0" width="420" height="320" rx="10" fill="url(#gPared)"/>
+
+        <!-- hueco de ventana -->
+        <rect x="86" y="44" width="248" height="212" rx="4" fill="url(#gLuz)"/>
+        <!-- lamas de persiana (mitad superior bajada) -->
+        <g fill="#eee7db" stroke="#cfc3b2" stroke-width="1">
+          <rect x="86" y="44" width="248" height="11" rx="2"/>
+          <rect x="86" y="58" width="248" height="11" rx="2"/>
+          <rect x="86" y="72" width="248" height="11" rx="2"/>
+          <rect x="86" y="86" width="248" height="11" rx="2"/>
+          <rect x="86" y="100" width="248" height="11" rx="2"/>
+          <rect x="86" y="114" width="248" height="11" rx="2"/>
+        </g>
+        <rect x="86" y="128" width="248" height="5" rx="2.5" fill="#b9ac99"/>
+        <!-- cruceta de la ventana -->
+        <line x1="210" y1="133" x2="210" y2="256" stroke="#b7c7bf" stroke-width="3"/>
+        <line x1="86" y1="196" x2="334" y2="196" stroke="#b7c7bf" stroke-width="3"/>
+        <!-- marco -->
+        <rect x="86" y="44" width="248" height="212" rx="4" fill="none" stroke="#8d9b94" stroke-width="5"/>
+        <!-- alfeizar -->
+        <rect x="72" y="256" width="276" height="10" rx="4" fill="#d8cdbd"/>
+
+        <!-- barra de cortina -->
+        <rect x="50" y="30" width="320" height="7" rx="3.5" fill="#6d5a47"/>
+        <circle cx="50" cy="33.5" r="7" fill="#6d5a47"/>
+        <circle cx="370" cy="33.5" r="7" fill="#6d5a47"/>
+
+        <!-- cortina izquierda -->
+        <path d="M58 37 C 52 120, 72 190, 56 282 L 128 282 C 112 190, 124 110, 118 37 Z" fill="url(#gTela)"/>
+        <g stroke="rgba(255,255,255,.22)" stroke-width="2" fill="none">
+          <path d="M74 40 C 70 120, 84 200, 74 280"/>
+          <path d="M92 40 C 88 120, 100 200, 92 280"/>
+          <path d="M108 40 C 106 120, 114 200, 108 280"/>
+        </g>
+        <!-- cortina derecha -->
+        <path d="M362 37 C 368 120, 348 190, 364 282 L 292 282 C 308 190, 296 110, 302 37 Z" fill="url(#gTela)"/>
+        <g stroke="rgba(255,255,255,.22)" stroke-width="2" fill="none">
+          <path d="M346 40 C 350 120, 336 200, 346 280"/>
+          <path d="M328 40 C 332 120, 320 200, 328 280"/>
+          <path d="M312 40 C 314 120, 306 200, 312 280"/>
+        </g>
+        <!-- suelo -->
+        <rect x="0" y="282" width="420" height="38" fill="#e3d9ca"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ===================== SERVICIOS ===================== -->
+<section class="servicios" id="servicios">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Servicios</p>
+      <h2>Tres oficios, una misma forma de trabajar</h2>
+      <p>Trabajamos a medida: cada ventana, cada balcón y cada fachada tienen sus dimensiones y su orientación, y la solución se adapta a ellas.</p>
+    </div>
+
+    <div class="cards">
+      <article class="card">
+        <div class="card-art">
+          <svg viewBox="0 0 300 180" role="img" aria-label="Ilustración de una persiana con lamas">
+            <rect x="46" y="14" width="208" height="150" rx="3" fill="#dde8e2"/>
+            <g fill="#f4eee3" stroke="#cdc1b0" stroke-width="1">
+              <rect x="46" y="14" width="208" height="13" rx="2"/>
+              <rect x="46" y="30" width="208" height="13" rx="2"/>
+              <rect x="46" y="46" width="208" height="13" rx="2"/>
+              <rect x="46" y="62" width="208" height="13" rx="2"/>
+              <rect x="46" y="78" width="208" height="13" rx="2"/>
+              <rect x="46" y="94" width="208" height="13" rx="2"/>
+            </g>
+            <rect x="46" y="110" width="208" height="6" rx="3" fill="#b3a693"/>
+            <line x1="150" y1="116" x2="150" y2="164" stroke="#b6c7bf" stroke-width="3"/>
+            <rect x="46" y="14" width="208" height="150" rx="3" fill="none" stroke="#8d9b94" stroke-width="5"/>
+            <rect x="34" y="164" width="232" height="9" rx="4" fill="#d5c9b8"/>
+            <line x1="258" y1="20" x2="258" y2="120" stroke="#9aa8a1" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="258" cy="126" r="5" fill="#b4714f"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h3>Persianas</h3>
+          <p>Persianas a medida para ventanas y balcones, ajustadas al hueco existente y preparadas para el uso diario.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-art">
+          <svg viewBox="0 0 300 180" role="img" aria-label="Ilustración de un toldo extendido sobre una ventana">
+            <rect x="52" y="86" width="196" height="78" rx="3" fill="#dde8e2" stroke="#8d9b94" stroke-width="4"/>
+            <line x1="150" y1="88" x2="150" y2="162" stroke="#b6c7bf" stroke-width="3"/>
+            <!-- lona -->
+            <path d="M40 34 L260 34 L286 92 Q150 112 14 92 Z" fill="#b4714f"/>
+            <g fill="rgba(255,255,255,.28)">
+              <path d="M79 34 L113 34 L132 99 Q116 99 100 97 Z"/>
+              <path d="M152 34 L186 34 L214 101 Q198 103 182 104 Z"/>
+            </g>
+            <!-- faldón ondulado -->
+            <path d="M14 92 Q150 112 286 92 L286 104 Q268 116 250 104 Q232 92 214 106 Q196 120 178 108 Q160 96 142 110 Q124 124 106 112 Q88 100 70 112 Q52 124 34 110 Q24 102 14 104 Z" fill="#9c5e3f"/>
+            <!-- brazos -->
+            <line x1="46" y1="40" x2="26" y2="96" stroke="#6d5a47" stroke-width="4" stroke-linecap="round"/>
+            <line x1="254" y1="40" x2="274" y2="96" stroke="#6d5a47" stroke-width="4" stroke-linecap="round"/>
+            <rect x="34" y="24" width="232" height="11" rx="5" fill="#6d5a47"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h3>Toldos</h3>
+          <p>Toldos para terrazas, balcones y fachadas, con la lona y el sistema de recogida que mejor encajan en cada hueco.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-art">
+          <svg viewBox="0 0 300 180" role="img" aria-label="Ilustración de una cortina de interior con dos paños">
+            <rect x="60" y="34" width="180" height="130" rx="3" fill="#dde8e2" stroke="#8d9b94" stroke-width="4"/>
+            <line x1="150" y1="36" x2="150" y2="162" stroke="#b6c7bf" stroke-width="3"/>
+            <rect x="28" y="22" width="244" height="8" rx="4" fill="#6d5a47"/>
+            <circle cx="28" cy="26" r="7" fill="#6d5a47"/>
+            <circle cx="272" cy="26" r="7" fill="#6d5a47"/>
+            <path d="M36 30 C 30 70, 48 120, 34 170 L 96 170 C 84 120, 92 70, 86 30 Z" fill="#c58463"/>
+            <path d="M264 30 C 270 70, 252 120, 266 170 L 204 170 C 216 120, 208 70, 214 30 Z" fill="#c58463"/>
+            <g stroke="rgba(255,255,255,.26)" stroke-width="2" fill="none">
+              <path d="M50 32 C 46 80, 58 130, 50 168"/>
+              <path d="M68 32 C 64 80, 76 130, 68 168"/>
+              <path d="M250 32 C 254 80, 242 130, 250 168"/>
+              <path d="M232 32 C 236 80, 224 130, 232 168"/>
+            </g>
+            <!-- estor recogido en el centro -->
+            <g fill="#eee7db" stroke="#cdc1b0" stroke-width="1">
+              <rect x="100" y="36" width="100" height="11" rx="2"/>
+              <rect x="100" y="49" width="100" height="11" rx="2"/>
+              <rect x="100" y="62" width="100" height="11" rx="2"/>
+            </g>
+            <rect x="100" y="75" width="100" height="5" rx="2.5" fill="#b3a693"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h3>Cortinas de interior</h3>
+          <p>Cortinas de interior confeccionadas a medida para salón, dormitorio o cocina, con la caída y el tejido que pide cada estancia.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CÓMO TRABAJAMOS ===================== -->
+<section class="proceso" id="como-trabajamos">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Cómo trabajamos</p>
+      <h2>De la primera visita a la instalación</h2>
+      <p>Un trabajo a medida empieza siempre con la ventana delante. Estos son los tres pasos del oficio.</p>
+    </div>
+    <div class="pasos">
+      <div class="paso">
+        <span class="num">PASO 01</span>
+        <h3>Visita y medición</h3>
+        <p>Nos pasamos por la vivienda o el local, vemos el hueco y tomamos las medidas sobre el terreno. Valoramos la orientación, el tipo de ventana y qué solución encaja mejor.</p>
+      </div>
+      <div class="paso">
+        <span class="num">PASO 02</span>
+        <h3>Presupuesto</h3>
+        <p>Con las medidas y el material elegido preparamos un presupuesto detallado, sin compromiso. Lo repasamos juntos y se ajusta si hace falta antes de encargar nada.</p>
+      </div>
+      <div class="paso">
+        <span class="num">PASO 03</span>
+        <h3>Instalación</h3>
+        <p>Una vez aprobado, lo fabricamos a medida y lo instalamos nosotros mismos. Dejamos el montaje probado, funcionando y la zona de trabajo recogida.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACTO ===================== -->
+<section class="contacto" id="contacto">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Contacto</p>
+      <h2>Estamos en el centro de Eibar</h2>
+      <p>Lo más rápido es una llamada: comentamos lo que necesitas y concretamos la visita para tomar medidas.</p>
+    </div>
+
+    <div class="contacto-grid">
+      <dl class="datos">
+        <div class="dato">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.5h3l1.5 3.8-2 1.4a11 11 0 0 0 5.2 5.2l1.4-2 3.8 1.5v3a1.6 1.6 0 0 1-1.7 1.6A15.5 15.5 0 0 1 5 5.2 1.6 1.6 0 0 1 6.6 3.5Z"/></svg>
+          <div>
+            <dt>Teléfono</dt>
+            <dd><a href="tel:+34943120818">943 12 08 18</a></dd>
+          </div>
+        </div>
+        <div class="dato">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+          <div>
+            <dt>Dirección</dt>
+            <dd>San Juan Kalea, 11 — 20600 Eibar (Gipuzkoa)</dd>
+          </div>
+        </div>
+        <div class="dato">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.3V12l3.2 2"/></svg>
+          <div>
+            <dt>Horario</dt>
+            <dd>Consultar horario</dd>
+          </div>
+        </div>
+        <div class="dato">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2.2"/><path d="M3.6 6.6 12 13l8.4-6.4"/></svg>
+          <div>
+            <dt>Email</dt>
+            <dd><a href="mailto:persianasycortinaseibar@hotmail.com">persianasycortinaseibar@hotmail.com</a></dd>
+          </div>
+        </div>
+      </dl>
+
+      <div class="mapa">
+        <!-- Mapa esquemático (no es un mapa real) -->
+        <svg viewBox="0 0 440 300" role="img" aria-label="Plano esquemático de la ubicación en San Juan Kalea, 11, Eibar">
+          <rect x="0" y="0" width="440" height="300" rx="10" fill="#eee8de"/>
+          <!-- manzanas -->
+          <g fill="#e2dbd0">
+            <rect x="18" y="20" width="150" height="86" rx="6"/>
+            <rect x="196" y="20" width="110" height="86" rx="6"/>
+            <rect x="334" y="20" width="88" height="86" rx="6"/>
+            <rect x="18" y="150" width="104" height="70" rx="6"/>
+            <rect x="150" y="150" width="156" height="70" rx="6"/>
+            <rect x="334" y="150" width="88" height="70" rx="6"/>
+            <rect x="18" y="248" width="404" height="36" rx="6"/>
+          </g>
+          <!-- calles -->
+          <g stroke="#f8f5ef" stroke-linecap="square">
+            <line x1="0" y1="128" x2="440" y2="128" stroke-width="22"/>
+            <line x1="0" y1="234" x2="440" y2="234" stroke-width="14"/>
+            <line x1="182" y1="0" x2="182" y2="300" stroke-width="14"/>
+            <line x1="320" y1="0" x2="320" y2="300" stroke-width="14"/>
+          </g>
+          <g stroke="#cfc6b8" stroke-dasharray="7 9" stroke-width="1.6">
+            <line x1="0" y1="128" x2="440" y2="128"/>
+          </g>
+          <!-- etiquetas de calle -->
+          <text x="22" y="123" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="12.5" font-weight="600" letter-spacing="0.08em" fill="#78857f">SAN JUAN KALEA</text>
+          <text x="190" y="294" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="11" letter-spacing="0.1em" fill="#9aa39b">EIBAR · GIPUZKOA</text>
+          <!-- marcador -->
+          <g>
+            <ellipse cx="236" cy="150" rx="15" ry="5" fill="rgba(35,48,47,.16)"/>
+            <path d="M236 150c0-0.2 15-12.6 15-23.4a15 15 0 1 0-30 0c0 10.8 15 23.2 15 23.4Z" fill="#b4714f"/>
+            <circle cx="236" cy="126" r="5.6" fill="#f6f2ec"/>
+          </g>
+          <text x="258" y="124" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="13" font-weight="600" fill="#23302f">Nº 11</text>
+        </svg>
+        <p class="mapa-pie">Plano esquemático de orientación, no es un mapa a escala. Dirección exacta: San Juan Kalea, 11 — 20600 Eibar (Gipuzkoa).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PIE ===================== -->
+<footer>
+  <div class="wrap pie-grid">
+    <div>
+      <p class="marca">Cortinas y Persianas Eibar</p>
+      <p style="margin:0 0 6px;"><a class="mail" href="mailto:persianasycortinaseibar@hotmail.com">persianasycortinaseibar@hotmail.com</a></p>
+      <p style="margin:0;color:var(--tinta-3);font-size:.92rem;">San Juan Kalea, 11 — 20600 Eibar (Gipuzkoa) · <a href="tel:+34943120818" style="text-decoration:none;border-bottom:1px solid var(--linea);">943 12 08 18</a></p>
+    </div>
+    <p class="credito">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+</body>
+</html>

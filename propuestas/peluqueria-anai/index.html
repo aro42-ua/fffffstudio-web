@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Peluquería Anai · Guardo (Palencia) — Propuesta de diseño</title>
+<meta name="description" content="Maqueta de propuesta de rediseño web para Peluquería Anai, peluquería y centro de estética en la Avenida Castilla y León de Guardo, Palencia. Propuesta no oficial de FFFFFFstudio.">
+<style>
+  :root{
+    --tinta:#241c18;
+    --tinta-suave:#5c4f47;
+    --crema:#f7f1ea;
+    --crema-2:#efe5da;
+    --arena:#e2d2c1;
+    --cobre:#9c5f3f;
+    --cobre-claro:#c08562;
+    --oro:#b89156;
+    --blanco:#fffdfb;
+    --borde:rgba(36,28,24,.12);
+    --fuente: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --barra: 44px;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    font-family:var(--fuente);
+    color:var(--tinta);
+    background:var(--crema);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img,svg{max-width:100%}
+  h1,h2,h3{margin:0;font-weight:600;letter-spacing:-.02em;line-height:1.12}
+  p{margin:0}
+  a{color:inherit}
+
+  /* ---------- barra fija ---------- */
+  .aviso{
+    position:fixed; inset:0 0 auto 0; z-index:50;
+    min-height:var(--barra);
+    display:flex; align-items:center; justify-content:center;
+    padding:9px 16px;
+    background:var(--tinta);
+    color:#f3e8dd;
+    font-size:11.5px; letter-spacing:.07em; text-transform:uppercase;
+    text-align:center;
+    box-shadow:0 1px 0 rgba(255,255,255,.08);
+  }
+  .aviso span{display:block;max-width:60rem}
+
+  .envoltorio{padding-top:var(--barra)}
+  .limite{width:100%;max-width:1080px;margin:0 auto;padding:0 28px}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative; overflow:hidden;
+    padding:92px 0 84px;
+    background:
+      radial-gradient(1100px 520px at 12% -10%, #fff8f1 0%, rgba(255,248,241,0) 62%),
+      radial-gradient(760px 520px at 100% 8%, #e8d6c4 0%, rgba(232,214,196,0) 68%),
+      linear-gradient(170deg,#faf4ee 0%, var(--crema) 48%, var(--crema-2) 100%);
+  }
+  .hero::after{
+    content:""; position:absolute; right:-170px; top:-130px;
+    width:520px; height:520px; border-radius:50%;
+    background:radial-gradient(circle at 34% 30%, rgba(192,133,98,.26), rgba(192,133,98,0) 68%);
+    pointer-events:none;
+  }
+  .hero .limite{position:relative;z-index:1}
+  .marca{display:flex;align-items:center;gap:12px;margin-bottom:34px}
+  .marca-sello{flex:0 0 auto}
+  .marca-texto{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--cobre)}
+  h1{font-size:clamp(2.45rem,7.4vw,4.3rem)}
+  h1 .fina{display:block;font-weight:300;color:var(--tinta-suave);font-size:.42em;letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px}
+  .entradilla{margin-top:22px;max-width:30rem;font-size:clamp(1.02rem,2.6vw,1.2rem);color:var(--tinta-suave)}
+  .acciones{margin-top:38px;display:flex;flex-wrap:wrap;align-items:center;gap:16px 22px}
+  .boton{
+    display:inline-flex;align-items:center;gap:11px;
+    padding:15px 26px;border-radius:999px;
+    background:linear-gradient(135deg,var(--cobre) 0%,#7f4b30 100%);
+    color:#fff8f2;text-decoration:none;font-weight:600;font-size:1.02rem;
+    box-shadow:0 10px 24px -14px rgba(124,71,46,.9);
+  }
+  .boton svg{flex:0 0 auto}
+  .nota-accion{font-size:.9rem;color:var(--tinta-suave)}
+  .filete{margin-top:56px;height:1px;background:linear-gradient(90deg,var(--arena),rgba(226,210,193,0))}
+
+  /* ---------- secciones ---------- */
+  section.bloque{padding:82px 0}
+  .tono{background:var(--blanco)}
+  .cabecera-seccion{max-width:34rem;margin-bottom:46px}
+  .etiqueta{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--cobre);margin-bottom:14px}
+  .cabecera-seccion h2{font-size:clamp(1.65rem,4.4vw,2.35rem)}
+  .cabecera-seccion p{margin-top:14px;color:var(--tinta-suave)}
+
+  .rejilla{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+  .tarjeta{
+    background:var(--crema);
+    border:1px solid var(--borde);
+    border-radius:18px;
+    padding:28px 24px;
+    min-width:0;
+  }
+  .tono .tarjeta{background:linear-gradient(165deg,#fbf6f0,#f4ece3)}
+  .tarjeta h3{font-size:1.14rem;margin-bottom:10px}
+  .tarjeta p{font-size:.96rem;color:var(--tinta-suave)}
+  .icono{
+    width:46px;height:46px;border-radius:13px;margin-bottom:18px;
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(140deg,#f4e3d4,#e3cdb8);
+    color:var(--cobre);
+  }
+
+  /* ---------- pasos ---------- */
+  .pasos{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));counter-reset:p}
+  .paso{position:relative;padding-top:26px;border-top:2px solid var(--arena);min-width:0}
+  .paso .num{
+    font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--cobre);margin-bottom:12px;display:block
+  }
+  .paso h3{font-size:1.18rem;margin-bottom:10px}
+  .paso p{color:var(--tinta-suave);font-size:.97rem}
+
+  /* ---------- contacto ---------- */
+  .contacto-rejilla{display:grid;gap:34px;grid-template-columns:minmax(0,1fr) minmax(0,1.12fr);align-items:start}
+  .datos{display:grid;gap:2px;border:1px solid var(--borde);border-radius:18px;overflow:hidden;background:var(--blanco)}
+  .dato{display:flex;gap:16px;padding:22px 24px;border-bottom:1px solid var(--borde)}
+  .dato:last-child{border-bottom:0}
+  .dato .icono{width:38px;height:38px;border-radius:11px;margin:0;flex:0 0 auto}
+  .dato .et{font-size:11px;letter-spacing:.17em;text-transform:uppercase;color:var(--tinta-suave);margin-bottom:5px}
+  .dato .vl{font-size:1.04rem;font-weight:600;word-break:break-word}
+  .dato .vl a{text-decoration:none;border-bottom:1px solid var(--cobre-claro)}
+  .mapa{
+    border:1px solid var(--borde);border-radius:18px;overflow:hidden;background:var(--blanco)
+  }
+  .mapa figcaption{
+    padding:14px 20px;font-size:.84rem;color:var(--tinta-suave);
+    border-top:1px solid var(--borde);background:var(--crema)
+  }
+  .mapa svg{display:block;width:100%;height:auto}
+
+  /* ---------- pie ---------- */
+  footer{background:var(--tinta);color:#e9dbcf;padding:52px 0 46px}
+  footer a{color:#f6e9dd}
+  .pie-rejilla{display:flex;flex-wrap:wrap;gap:26px 40px;justify-content:space-between;align-items:flex-end}
+  .pie-nombre{font-size:1.3rem;font-weight:600;color:#fdf6ef;letter-spacing:-.01em}
+  .pie-mail{margin-top:10px;font-size:1rem}
+  .pie-mail a{text-decoration:none;border-bottom:1px solid rgba(246,233,221,.45)}
+  .pie-firma{font-size:.86rem;color:#bda897;max-width:28rem;line-height:1.7}
+
+  @media (max-width:860px){
+    .contacto-rejilla{grid-template-columns:minmax(0,1fr)}
+  }
+  @media (max-width:560px){
+    :root{--barra:58px}
+    .limite{padding:0 18px}
+    .hero{padding:58px 0 62px}
+    section.bloque{padding:58px 0}
+    .aviso{font-size:10.5px;letter-spacing:.05em;line-height:1.45}
+    .tarjeta{padding:24px 20px}
+    .boton{width:100%;justify-content:center}
+    .acciones{gap:14px}
+    .hero::after{width:300px;height:300px;right:-120px;top:-90px}
+  }
+</style>
+</head>
+<body>
+
+<div class="aviso"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<div class="envoltorio">
+
+  <header class="hero">
+    <div class="limite">
+      <div class="marca">
+        <svg class="marca-sello" width="38" height="38" viewBox="0 0 38 38" aria-hidden="true">
+          <circle cx="19" cy="19" r="18" fill="none" stroke="#c08562" stroke-width="1"/>
+          <path d="M11 25c3-9 5-13 8-13s5 4 8 13" fill="none" stroke="#9c5f3f" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="19" cy="12" r="2.2" fill="#b89156"/>
+        </svg>
+        <span class="marca-texto">Guardo · Palencia</span>
+      </div>
+
+      <h1><span class="fina">Peluquería y estética</span>Peluquería Anai</h1>
+      <p class="entradilla">Peluquería y centro de estética en la avenida principal de Guardo. Pide tu cita por teléfono.</p>
+
+      <div class="acciones">
+        <a class="boton" href="tel:+34979208704">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 16.9v2.6a2 2 0 0 1-2.2 2 19 19 0 0 1-8.3-2.9 18.6 18.6 0 0 1-5.7-5.7A19 19 0 0 1 1.9 4.6 2 2 0 0 1 3.9 2.4h2.6a2 2 0 0 1 2 1.7c.1 1 .3 1.9.7 2.8a2 2 0 0 1-.5 2.1l-1.1 1.1a15 15 0 0 0 5.6 5.6l1.1-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/>
+          </svg>
+          Llamar al 979 208 704
+        </a>
+        <span class="nota-accion">Avenida Castilla y León, 7 — Guardo</span>
+      </div>
+
+      <div class="filete"></div>
+    </div>
+  </header>
+
+  <section class="bloque tono" id="servicios">
+    <div class="limite">
+      <div class="cabecera-seccion">
+        <p class="etiqueta">Servicios</p>
+        <h2>Peluquería y estética en un mismo espacio</h2>
+        <p>Los servicios habituales del sector, explicados con claridad para que cualquier persona sepa qué pedir al llamar.</p>
+      </div>
+      <div class="rejilla">
+        <article class="tarjeta">
+          <div class="icono">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.1 16.1M20 20 8.1 7.9"/>
+            </svg>
+          </div>
+          <h3>Corte y peinado</h3>
+          <p>Corte para todas las edades y peinado o recogido para el día a día y para ocasiones especiales.</p>
+        </article>
+        <article class="tarjeta">
+          <div class="icono">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 3c4 4.6 6 7.7 6 10a6 6 0 0 1-12 0c0-2.3 2-5.4 6-10z"/>
+            </svg>
+          </div>
+          <h3>Color</h3>
+          <p>Trabajos de color: tinte, cobertura de canas, mechas y matices, con asesoramiento previo.</p>
+        </article>
+        <article class="tarjeta">
+          <div class="icono">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 20c0-7 4-12 9-14-1 5 1 7 3 8-1 4-5 7-9 7H4z"/><path d="M6 20c2-3 4-5 7-6.5"/>
+            </svg>
+          </div>
+          <h3>Tratamientos capilares</h3>
+          <p>Lavado, hidratación y tratamientos para cuidar el cabello y el cuero cabelludo según su estado.</p>
+        </article>
+        <article class="tarjeta">
+          <div class="icono">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 3.5 13.9 9l5.6.4-4.3 3.6 1.4 5.5L12 15.6 7.4 18.5l1.4-5.5L4.5 9.4 10.1 9z"/>
+            </svg>
+          </div>
+          <h3>Estética</h3>
+          <p>Servicios de centro de estética para el cuidado personal, con cita previa concertada por teléfono.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloque" id="primera-visita">
+    <div class="limite">
+      <div class="cabecera-seccion">
+        <p class="etiqueta">Tu primera visita</p>
+        <h2>Cómo funciona, en tres pasos</h2>
+      </div>
+      <div class="pasos">
+        <article class="paso">
+          <span class="num">Paso 01</span>
+          <h3>Llama y pide cita</h3>
+          <p>Marca el 979 208 704 y cuenta qué servicio necesitas. Se acuerda el día y la hora que mejor te encaje.</p>
+        </article>
+        <article class="paso">
+          <span class="num">Paso 02</span>
+          <h3>Ven al salón</h3>
+          <p>Estamos en la Avenida Castilla y León, 7, en plena avenida principal de Guardo, a pie de calle.</p>
+        </article>
+        <article class="paso">
+          <span class="num">Paso 03</span>
+          <h3>Hablamos antes de empezar</h3>
+          <p>Se comenta contigo qué quieres y qué opciones hay, y después se trabaja sobre lo acordado.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloque tono" id="contacto">
+    <div class="limite">
+      <div class="cabecera-seccion">
+        <p class="etiqueta">Contacto</p>
+        <h2>Dónde estamos y cómo llegar</h2>
+      </div>
+      <div class="contacto-rejilla">
+        <div class="datos">
+          <div class="dato">
+            <div class="icono">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 16.9v2.6a2 2 0 0 1-2.2 2 19 19 0 0 1-8.3-2.9 18.6 18.6 0 0 1-5.7-5.7A19 19 0 0 1 1.9 4.6 2 2 0 0 1 3.9 2.4h2.6a2 2 0 0 1 2 1.7c.1 1 .3 1.9.7 2.8a2 2 0 0 1-.5 2.1l-1.1 1.1a15 15 0 0 0 5.6 5.6l1.1-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/>
+              </svg>
+            </div>
+            <div>
+              <p class="et">Teléfono</p>
+              <p class="vl"><a href="tel:+34979208704">979 208 704</a></p>
+            </div>
+          </div>
+          <div class="dato">
+            <div class="icono">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.6"/>
+              </svg>
+            </div>
+            <div>
+              <p class="et">Dirección</p>
+              <p class="vl">Avenida Castilla y León, 7 — 34880 Guardo (Palencia)</p>
+            </div>
+          </div>
+          <div class="dato">
+            <div class="icono">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="9"/><path d="M12 7.2V12l3.4 2.1"/>
+              </svg>
+            </div>
+            <div>
+              <p class="et">Horario</p>
+              <p class="vl">Consultar horario</p>
+            </div>
+          </div>
+          <div class="dato">
+            <div class="icono">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3.5 6.5 8.5 6 8.5-6"/>
+              </svg>
+            </div>
+            <div>
+              <p class="et">Email</p>
+              <p class="vl"><a href="mailto:anaipeluqueria@gmail.com">anaipeluqueria@gmail.com</a></p>
+            </div>
+          </div>
+        </div>
+
+        <figure class="mapa" style="margin:0">
+          <svg viewBox="0 0 560 360" role="img" aria-label="Plano esquemático: la Avenida Castilla y León con dos calles transversales y un marcador en el número 7.">
+            <rect width="560" height="360" fill="#f6efe7"/>
+            <g fill="#ece0d2">
+              <rect x="22" y="24" width="150" height="86" rx="7"/>
+              <rect x="196" y="24" width="190" height="86" rx="7"/>
+              <rect x="410" y="24" width="128" height="86" rx="7"/>
+              <rect x="22" y="250" width="186" height="88" rx="7"/>
+              <rect x="232" y="250" width="140" height="88" rx="7"/>
+              <rect x="396" y="250" width="142" height="88" rx="7"/>
+            </g>
+            <!-- calles transversales -->
+            <rect x="172" y="0" width="26" height="360" fill="#e3d4c3"/>
+            <rect x="372" y="0" width="26" height="360" fill="#e3d4c3"/>
+            <!-- avenida principal -->
+            <rect x="0" y="134" width="560" height="96" fill="#dfcdba"/>
+            <line x1="0" y1="182" x2="560" y2="182" stroke="#fdf8f2" stroke-width="3" stroke-dasharray="26 20"/>
+            <text x="28" y="166" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif" font-size="16" font-weight="600" fill="#6d5a4c" letter-spacing="1">AVENIDA CASTILLA Y LEÓN</text>
+            <text x="189" y="298" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif" font-size="13" fill="#8a7566" text-anchor="middle" transform="rotate(-90 189 298)">Calle</text>
+            <text x="389" y="298" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif" font-size="13" fill="#8a7566" text-anchor="middle" transform="rotate(-90 389 298)">Calle</text>
+            <!-- marcador -->
+            <g transform="translate(262 92)">
+              <path d="M24 0a24 24 0 0 0-24 24c0 17 24 40 24 40s24-23 24-40A24 24 0 0 0 24 0z" fill="#9c5f3f"/>
+              <circle cx="24" cy="24" r="9" fill="#fdf5ee"/>
+            </g>
+            <g transform="translate(324 112)">
+              <rect x="0" y="0" width="150" height="46" rx="10" fill="#fffaf5" stroke="#dfcdba"/>
+              <text x="14" y="20" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif" font-size="13" font-weight="600" fill="#3a2d26">Peluquería Anai</text>
+              <text x="14" y="36" font-family="-apple-system, Segoe UI, Roboto, Arial, sans-serif" font-size="12" fill="#7c6758">Avenida Castilla y León, 7</text>
+            </g>
+          </svg>
+          <figcaption>Plano esquemático, no a escala: la avenida principal, dos calles transversales y la ubicación del salón.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="limite">
+      <div class="pie-rejilla">
+        <div>
+          <p class="pie-nombre">Peluquería Anai</p>
+          <p class="pie-mail"><a href="mailto:anaipeluqueria@gmail.com">anaipeluqueria@gmail.com</a></p>
+        </div>
+        <p class="pie-firma">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

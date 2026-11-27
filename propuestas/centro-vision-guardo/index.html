@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Centro Visión Guardo · Óptica en Guardo (Palencia)</title>
+<meta name="description" content="Propuesta de diseño web para Centro Visión Guardo, óptica en Guardo (Palencia): revisión de la vista, gafas graduadas, gafas de sol y lentes de contacto. Pide tu cita por teléfono.">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  :root{
+    --ink:#0f2230;
+    --ink-soft:#3b5566;
+    --mut:#6b8290;
+    --line:#dfe8ed;
+    --bg:#ffffff;
+    --bg-soft:#f4f8fa;
+    --brand:#0d7f8f;
+    --brand-d:#0a616e;
+    --brand-l:#e3f2f4;
+    --sand:#f7f3ec;
+    --maxw:1120px;
+    --bar:46px;
+    --fs:clamp(.95rem,.35vw + .88rem,1.03rem);
+  }
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;padding-top:var(--bar);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+    font-size:var(--fs);line-height:1.65;color:var(--ink);background:var(--bg);
+    overflow-x:hidden;
+  }
+  img,svg{max-width:100%}
+  h1,h2,h3{line-height:1.15;margin:0;letter-spacing:-.02em;font-weight:650}
+  p{margin:0}
+  a{color:inherit}
+
+  /* ---------- barra fija ---------- */
+  .topbar{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    height:var(--bar);display:flex;align-items:center;justify-content:center;
+    background:var(--ink);color:#e8f1f4;
+    font-size:.78rem;letter-spacing:.04em;
+    padding:0 14px;text-align:center;
+  }
+  .topbar span{
+    display:block;max-width:100%;
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+    font-weight:550;
+  }
+  @media (max-width:560px){
+    .topbar{font-size:.65rem;letter-spacing:.015em;line-height:1.3}
+    .topbar span{white-space:normal;overflow:visible}
+  }
+
+  .wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 clamp(18px,4vw,34px)}
+  section{padding:clamp(48px,6vw,86px) 0}
+  .eyebrow{
+    font-size:.7rem;letter-spacing:.17em;text-transform:uppercase;
+    color:var(--brand);font-weight:700;margin-bottom:14px;
+  }
+  .lede{color:var(--ink-soft);max-width:58ch}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(900px 520px at 88% -8%, #d9eef1 0%, rgba(217,238,241,0) 62%),
+      radial-gradient(640px 420px at 4% 108%, #f1ece1 0%, rgba(241,236,225,0) 60%),
+      linear-gradient(180deg,#fbfdfe 0%,#ffffff 100%);
+    border-bottom:1px solid var(--line);
+    padding:clamp(52px,7vw,96px) 0 clamp(52px,7vw,92px);
+  }
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:clamp(28px,5vw,60px);align-items:center}
+  .brandline{display:flex;align-items:center;gap:11px;margin-bottom:24px}
+  .brandline .mark{flex:0 0 auto;display:block}
+  .brandline b{font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);font-weight:700}
+  h1{font-size:clamp(2.05rem,5.2vw,3.5rem);letter-spacing:-.035em}
+  h1 .t2{display:block;color:var(--brand-d)}
+  .hero p.lede{margin-top:20px;font-size:clamp(1.02rem,.5vw + .92rem,1.19rem)}
+  .cta-row{display:flex;flex-wrap:wrap;gap:12px 14px;align-items:center;margin-top:32px}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--brand);color:#fff;text-decoration:none;
+    padding:14px 24px;border-radius:999px;font-weight:650;font-size:1rem;
+    box-shadow:0 10px 24px -12px rgba(13,127,143,.75);
+  }
+  .btn:hover{background:var(--brand-d)}
+  .btn .num{letter-spacing:.01em}
+  .cta-note{color:var(--mut);font-size:.88rem}
+
+  /* ilustración hero */
+  .hero-art{position:relative}
+  .hero-art svg{display:block;width:100%;height:auto}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .chip{
+    font-size:.78rem;font-weight:600;color:var(--brand-d);
+    background:var(--brand-l);border-radius:999px;padding:6px 13px;
+  }
+
+  /* ---------- servicios ---------- */
+  .servicios{background:var(--bg)}
+  .head{max-width:62ch;margin-bottom:clamp(28px,3.4vw,46px)}
+  .head h2{font-size:clamp(1.55rem,2.6vw,2.2rem)}
+  .head p{margin-top:14px}
+  .cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,1.6vw,20px)}
+  .card{
+    border:1px solid var(--line);border-radius:18px;padding:26px 22px 28px;
+    background:linear-gradient(180deg,#fdfeff 0%,#f7fbfc 100%);
+    display:flex;flex-direction:column;gap:14px;min-width:0;
+  }
+  .card .ic{width:44px;height:44px;border-radius:12px;background:var(--brand-l);display:grid;place-items:center;flex:0 0 auto}
+  .card h3{font-size:1.055rem}
+  .card p{color:var(--ink-soft);font-size:.925rem;line-height:1.6}
+
+  /* ---------- pasos ---------- */
+  .pasos{background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,2.4vw,30px)}
+  .step{background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px 24px 30px;min-width:0}
+  .step .n{
+    display:grid;place-items:center;width:38px;height:38px;border-radius:50%;
+    background:var(--ink);color:#fff;font-weight:700;font-size:.95rem;margin-bottom:16px;
+  }
+  .step h3{font-size:1.04rem;margin-bottom:9px}
+  .step p{color:var(--ink-soft);font-size:.925rem}
+
+  /* ---------- contacto ---------- */
+  .contacto{background:#fff}
+  .con-grid{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(26px,4vw,52px);align-items:start}
+  .dl{margin:0;display:grid;gap:4px}
+  .block{padding:20px 0;border-top:1px solid var(--line)}
+  .block:first-of-type{border-top:0;padding-top:4px}
+  .block dt{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--mut);font-weight:700;margin-bottom:7px}
+  .block dd{margin:0;font-size:1.04rem}
+  .block dd a{text-decoration:none;color:var(--brand-d);font-weight:650}
+  .block dd a:hover{text-decoration:underline}
+  .block dd .second{color:var(--ink);font-weight:600}
+  .block dd small{display:block;color:var(--mut);font-size:.84rem;font-weight:400;margin-top:3px}
+  .mapcard{
+    border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--sand);
+  }
+  .mapcard svg{display:block;width:100%;height:auto}
+  .mapcap{
+    padding:13px 18px;border-top:1px solid var(--line);background:#fff;
+    font-size:.8rem;color:var(--mut);
+  }
+
+  /* ---------- pie ---------- */
+  footer{background:var(--ink);color:#cfe0e6;padding:clamp(38px,4.6vw,56px) 0}
+  .foot{display:flex;flex-wrap:wrap;gap:22px 34px;justify-content:space-between;align-items:flex-end}
+  .foot .fname{color:#fff;font-size:1.12rem;font-weight:650;letter-spacing:-.02em}
+  .foot .fmeta{font-size:.9rem;margin-top:7px;color:#a9c3cd}
+  .foot a{color:#8fd7e2;text-decoration:none;font-weight:600;word-break:break-word}
+  .foot a:hover{text-decoration:underline}
+  .credit{font-size:.82rem;color:#8ea9b4;max-width:46ch;line-height:1.55}
+
+  @media (max-width:980px){
+    .hero-grid{grid-template-columns:1fr;gap:34px}
+    .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .con-grid{grid-template-columns:1fr}
+  }
+  @media (max-width:700px){
+    .steps{grid-template-columns:1fr}
+  }
+  @media (max-width:560px){
+    .cards{grid-template-columns:1fr}
+    .btn{width:100%;justify-content:center}
+    .foot{align-items:flex-start}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar"><span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span></div>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="brandline">
+        <svg class="mark" width="34" height="34" viewBox="0 0 34 34" aria-hidden="true">
+          <circle cx="17" cy="17" r="16" fill="none" stroke="#0d7f8f" stroke-width="1.6"/>
+          <path d="M5 17c4-5.6 8-8.4 12-8.4S25 11.4 29 17c-4 5.6-8 8.4-12 8.4S9 22.6 5 17Z" fill="#e3f2f4" stroke="#0a616e" stroke-width="1.5" stroke-linejoin="round"/>
+          <circle cx="17" cy="17" r="3.5" fill="#0a616e"/>
+        </svg>
+        <b>Óptica en Guardo</b>
+      </div>
+      <h1>Centro Visión<span class="t2">Guardo</span></h1>
+      <p class="lede">Tu óptica en Guardo: revisión de la vista, gafas y lentes de contacto con atención cercana y sin prisas.</p>
+      <div class="cta-row">
+        <a class="btn" href="tel:+34979851890">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6.6 3h2.3l1.5 3.8-1.9 1.3a11.4 11.4 0 0 0 5.4 5.4l1.3-1.9L19 13.1v2.3c0 1.4-1.2 2.6-2.6 2.6A13.4 13.4 0 0 1 4 5.6C4 4.2 5.2 3 6.6 3Z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/>
+          </svg>
+          <span class="num">Pedir cita · 979 851 890</span>
+        </a>
+        <span class="cta-note">Plaza Fuente s/n, Guardo (Palencia)</span>
+      </div>
+    </div>
+
+    <div class="hero-art">
+      <svg viewBox="0 0 520 330" role="img" aria-label="Ilustración de unas gafas sobre un fondo de formas suaves">
+        <defs>
+          <linearGradient id="gA" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#eaf5f7"/>
+          </linearGradient>
+          <linearGradient id="gB" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#0d7f8f"/><stop offset="1" stop-color="#0a616e"/>
+          </linearGradient>
+        </defs>
+        <rect x="26" y="20" width="468" height="290" rx="30" fill="url(#gA)" stroke="#dfe8ed"/>
+        <circle cx="430" cy="78" r="52" fill="#f7f3ec"/>
+        <circle cx="96" cy="256" r="38" fill="#e3f2f4"/>
+        <g transform="translate(60,96)">
+          <path d="M18 44h110" stroke="url(#gB)" stroke-width="7" stroke-linecap="round" fill="none"/>
+          <path d="M272 44h110" stroke="url(#gB)" stroke-width="7" stroke-linecap="round" fill="none"/>
+          <rect x="18" y="4" width="152" height="90" rx="40" fill="#ffffff" stroke="url(#gB)" stroke-width="7"/>
+          <rect x="230" y="4" width="152" height="90" rx="40" fill="#ffffff" stroke="url(#gB)" stroke-width="7"/>
+          <path d="M170 40c12-9 48-9 60 0" stroke="url(#gB)" stroke-width="7" stroke-linecap="round" fill="none"/>
+          <rect x="34" y="20" width="120" height="58" rx="29" fill="#eaf5f7" opacity=".85"/>
+          <rect x="246" y="20" width="120" height="58" rx="29" fill="#f7f3ec" opacity=".9"/>
+        </g>
+        <g stroke="#bcd4db" stroke-width="2.4" stroke-linecap="round">
+          <path d="M70 70h44"/><path d="M406 258h44"/>
+        </g>
+      </svg>
+      <div class="chips">
+        <span class="chip">Revisión de la vista</span>
+        <span class="chip">Gafas graduadas</span>
+        <span class="chip">Gafas de sol</span>
+        <span class="chip">Lentes de contacto</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="servicios">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Servicios</p>
+      <h2>Todo lo que necesita tu vista, en el centro de Guardo</h2>
+      <p class="lede">Estos son los servicios habituales de una óptica. En la web definitiva se ajustarían exactamente a lo que ofrecéis.</p>
+    </div>
+    <div class="cards">
+      <article class="card">
+        <span class="ic">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M2 12c3.4-4.8 6.8-7.2 10-7.2S18.6 7.2 22 12c-3.4 4.8-6.8 7.2-10 7.2S5.4 16.8 2 12Z" stroke="#0a616e" stroke-width="1.7" stroke-linejoin="round"/>
+            <circle cx="12" cy="12" r="3.1" stroke="#0a616e" stroke-width="1.7"/>
+          </svg>
+        </span>
+        <h3>Revisión de la vista</h3>
+        <p>Comprobación de la graduación y del estado de la visión, para saber si necesitas corrección o un cambio de lentes.</p>
+      </article>
+      <article class="card">
+        <span class="ic">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="6.6" cy="14" r="4.1" stroke="#0a616e" stroke-width="1.7"/>
+            <circle cx="17.4" cy="14" r="4.1" stroke="#0a616e" stroke-width="1.7"/>
+            <path d="M10.7 13.3c.8-.8 2.5-.8 3.3 0M2.5 12 4 8.4M21.5 12 20 8.4" stroke="#0a616e" stroke-width="1.7" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <h3>Gafas graduadas</h3>
+        <p>Montura y lentes elegidas según tu graduación, tu día a día y la forma de tu cara, con el ajuste final hecho en tienda.</p>
+      </article>
+      <article class="card">
+        <span class="ic">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M3 9h7.4v3.4A3.7 3.7 0 0 1 6.7 16 3.7 3.7 0 0 1 3 12.4V9Zm10.6 0H21v3.4A3.7 3.7 0 0 1 17.3 16a3.7 3.7 0 0 1-3.7-3.6V9Z" fill="#cde9ed" stroke="#0a616e" stroke-width="1.6"/>
+            <path d="M10.4 10.2c.9-.6 2.3-.6 3.2 0" stroke="#0a616e" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <h3>Gafas de sol</h3>
+        <p>Protección solar para los ojos, con la opción de llevarlas también graduadas si usas corrección.</p>
+      </article>
+      <article class="card">
+        <span class="ic">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="7.6" stroke="#0a616e" stroke-width="1.7"/>
+            <path d="M12 4.4c3 2 4.6 4.6 4.6 7.6s-1.6 5.6-4.6 7.6" stroke="#0a616e" stroke-width="1.4" opacity=".65"/>
+            <circle cx="12" cy="12" r="2.6" fill="#0a616e" opacity=".18"/>
+          </svg>
+        </span>
+        <h3>Lentes de contacto y adaptación</h3>
+        <p>Elección del tipo de lente y adaptación paso a paso, con las indicaciones de uso, limpieza y revisión.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="pasos">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Tu primera visita</p>
+      <h2>Tres pasos, sin complicaciones</h2>
+    </div>
+    <div class="steps">
+      <article class="step">
+        <span class="n">1</span>
+        <h3>Pide tu cita</h3>
+        <p>Llamas al centro y acordáis el momento que mejor te venga para pasar por la óptica.</p>
+      </article>
+      <article class="step">
+        <span class="n">2</span>
+        <h3>Revisamos tu visión</h3>
+        <p>En la visita se comprueba cómo ves y se habla de lo que necesitas: trabajo, conducción, lectura o deporte.</p>
+      </article>
+      <article class="step">
+        <span class="n">3</span>
+        <h3>Eliges tu solución</h3>
+        <p>Con los resultados en la mano eliges montura, lentes o lentes de contacto, y se dejan ajustadas a tu medida.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="contacto">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Contacto</p>
+      <h2>Estamos en la Plaza Fuente, en Guardo</h2>
+    </div>
+    <div class="con-grid">
+      <dl class="dl">
+        <div class="block">
+          <dt>Teléfono</dt>
+          <dd>
+            <a href="tel:+34979851890">979 851 890</a>
+            <small>También puedes llamar al <span class="second">639 100 274</span></small>
+          </dd>
+        </div>
+        <div class="block">
+          <dt>Dirección</dt>
+          <dd>Plaza Fuente s/n — 34880 Guardo (Palencia)</dd>
+        </div>
+        <div class="block">
+          <dt>Horario</dt>
+          <dd>Consultar horario</dd>
+        </div>
+        <div class="block">
+          <dt>Email</dt>
+          <dd><a href="mailto:mercedesbustos39@hotmail.com">mercedesbustos39@hotmail.com</a></dd>
+        </div>
+      </dl>
+
+      <div class="mapcard">
+        <svg viewBox="0 0 560 380" role="img" aria-label="Plano esquemático: la Plaza Fuente, un par de calles y el marcador del centro">
+          <rect width="560" height="380" fill="#f7f3ec"/>
+          <g fill="#eee7da">
+            <rect x="24" y="26" width="150" height="104" rx="8"/>
+            <rect x="24" y="252" width="128" height="102" rx="8"/>
+            <rect x="400" y="26" width="136" height="96" rx="8"/>
+            <rect x="416" y="250" width="120" height="104" rx="8"/>
+          </g>
+          <g stroke="#ffffff" stroke-width="30" stroke-linecap="square">
+            <path d="M0 196h560"/>
+            <path d="M212 0v380"/>
+          </g>
+          <g stroke="#dfd5c2" stroke-width="1.6">
+            <path d="M0 181h560M0 211h560M197 0v380M227 0v380"/>
+          </g>
+          <circle cx="330" cy="196" r="76" fill="#e9f3f1" stroke="#cbd9d3" stroke-width="2"/>
+          <circle cx="330" cy="196" r="46" fill="#dfeeea"/>
+          <g fill="#bcd4cb">
+            <circle cx="330" cy="196" r="13"/>
+          </g>
+          <text x="330" y="292" text-anchor="middle" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="15" font-weight="600" fill="#6b7b74">Plaza Fuente</text>
+          <text x="76" y="190" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="13" fill="#a3998a">calle</text>
+          <text x="238" y="336" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="13" fill="#a3998a">calle</text>
+          <g transform="translate(330,112)">
+            <path d="M0 42c0 0 26-24 26-42A26 26 0 1 0-26 0c0 18 26 42 26 42Z" fill="#0d7f8f"/>
+            <circle cx="0" cy="-1" r="9.5" fill="#ffffff"/>
+          </g>
+          <text x="330" y="52" text-anchor="middle" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="14" font-weight="700" fill="#0a616e">Centro Visión Guardo</text>
+        </svg>
+        <p class="mapcap">Plano esquemático, solo orientativo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <p class="fname">Centro Visión Guardo</p>
+      <p class="fmeta">Plaza Fuente s/n — 34880 Guardo (Palencia)</p>
+      <p class="fmeta"><a href="tel:+34979851890">979 851 890</a> · <a href="mailto:mercedesbustos39@hotmail.com">mercedesbustos39@hotmail.com</a></p>
+    </div>
+    <p class="credit">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+  </div>
+</footer>
+
+</body>
+</html>

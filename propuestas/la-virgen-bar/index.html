@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La Virgen Bar · Aguilar de Campoo — propuesta de web (maqueta)</title>
+<meta name="description" content="Maqueta de propuesta de web para La Virgen Bar, bar y restaurante en la Plaza Virgen del Llano de Aguilar de Campoo (Palencia). Propuesta no oficial de FFFFFFstudio.">
+<style>
+  :root{
+    --papel:#FBF7F1;
+    --papel-2:#F3EADC;
+    --tinta:#241B14;
+    --tinta-60:#5E5047;
+    --tinta-40:#8A7A6E;
+    --barro:#A3452A;
+    --barro-osc:#7E3320;
+    --trigo:#C9922E;
+    --oliva:#4C5440;
+    --linea:#E3D7C6;
+    --barra:46px;
+    --radio:14px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;max-width:100%;overflow-x:hidden}
+  body{
+    background:var(--papel);
+    color:var(--tinta);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    padding-top:var(--barra);
+  }
+  img,svg{max-width:100%}
+  h1,h2,h3{margin:0;line-height:1.12;letter-spacing:-0.02em;font-weight:650}
+  p{margin:0}
+  a{color:inherit}
+
+  /* ---------- barra fija ---------- */
+  .barra{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    height:var(--barra);
+    display:flex;align-items:center;justify-content:center;
+    background:var(--tinta);
+    color:#F6EFE4;
+    border-bottom:1px solid rgba(255,255,255,.12);
+  }
+  .barra span{
+    display:block;
+    font-size:11.5px;
+    letter-spacing:.07em;
+    text-transform:uppercase;
+    font-weight:600;
+    padding:0 14px;
+    text-align:center;
+    line-height:1.3;
+  }
+
+  .env{width:100%;max-width:1120px;margin:0 auto;padding:0 clamp(18px,5vw,40px)}
+  section{padding:clamp(48px,7vw,88px) 0}
+  .etiq{
+    font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--barro);font-weight:700;margin-bottom:14px;
+  }
+  .regla{height:1px;background:var(--linea);border:0;margin:0}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(900px 520px at 88% -10%, rgba(201,146,46,.30), transparent 62%),
+      radial-gradient(760px 520px at -8% 108%, rgba(163,69,42,.22), transparent 60%),
+      linear-gradient(170deg,#FDFAF5 0%,var(--papel-2) 100%);
+    border-bottom:1px solid var(--linea);
+    padding:clamp(52px,8vw,104px) 0 clamp(56px,8vw,96px);
+  }
+  .hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(28px,5vw,56px);align-items:center}
+  .hero h1{font-size:clamp(40px,8.4vw,74px);font-weight:700}
+  .hero h1 em{display:block;font-style:normal;color:var(--barro)}
+  .hero .frase{margin-top:20px;font-size:clamp(17px,2.3vw,21px);color:var(--tinta-60);max-width:30ch}
+  .hero .sitio{margin-top:14px;font-size:14.5px;color:var(--tinta-40)}
+  .acciones{margin-top:30px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--barro);color:#FFF8EF;text-decoration:none;
+    padding:15px 24px;border-radius:999px;font-weight:650;font-size:16.5px;
+    box-shadow:0 10px 22px -12px rgba(126,51,32,.65);
+  }
+  .btn svg{flex:0 0 auto}
+  .btn-nota{font-size:13.5px;color:var(--tinta-40)}
+
+  /* sello decorativo */
+  .sello{display:flex;justify-content:center}
+  .sello-caja{
+    width:100%;max-width:300px;aspect-ratio:1/1;border-radius:50%;
+    background:
+      radial-gradient(circle at 32% 28%, rgba(255,255,255,.9), transparent 55%),
+      conic-gradient(from 210deg, var(--trigo), var(--barro) 45%, var(--oliva) 72%, var(--trigo));
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 26px 50px -26px rgba(36,27,20,.55);
+  }
+  .sello-int{
+    width:76%;height:76%;border-radius:50%;background:var(--papel);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:6px;text-align:center;border:1px solid var(--linea);
+  }
+  .sello-int b{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--barro)}
+  .sello-int small{font-size:11.5px;letter-spacing:.1em;color:var(--tinta-40);text-transform:uppercase}
+
+  /* ---------- apartados ---------- */
+  .cab{max-width:46ch}
+  .cab h2{font-size:clamp(26px,4.3vw,38px)}
+  .cab p{margin-top:14px;color:var(--tinta-60)}
+  .rejilla{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,2.4vw,24px);margin-top:clamp(28px,4vw,44px)}
+  .tarjeta{
+    background:#FFFCF7;border:1px solid var(--linea);border-radius:var(--radio);
+    padding:clamp(22px,3vw,30px);display:flex;flex-direction:column;gap:12px;
+  }
+  .tarjeta h3{font-size:20px}
+  .tarjeta p{color:var(--tinta-60);font-size:15.5px}
+  .icono{
+    width:44px;height:44px;border-radius:12px;background:var(--papel-2);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .hueco{
+    margin-top:auto;border:1px dashed #D6C6AF;border-radius:10px;
+    background:repeating-linear-gradient(135deg,rgba(201,146,46,.07) 0 10px,transparent 10px 20px);
+    padding:14px 16px;font-size:13px;color:var(--tinta-40);letter-spacing:.02em;
+  }
+  .dato{
+    display:inline-flex;align-items:baseline;gap:8px;
+    background:var(--papel-2);border-radius:999px;padding:6px 14px;
+    font-size:13.5px;color:var(--tinta-60);align-self:flex-start;
+  }
+  .dato b{font-size:17px;color:var(--barro)}
+
+  /* ---------- pasos ---------- */
+  .pasos-bloque{background:var(--papel-2);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+  .pasos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2.4vw,24px);margin-top:clamp(28px,4vw,44px);counter-reset:p}
+  .paso{background:var(--papel);border:1px solid var(--linea);border-radius:var(--radio);padding:clamp(22px,3vw,28px)}
+  .paso .num{
+    width:38px;height:38px;border-radius:50%;background:var(--tinta);color:var(--papel);
+    display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;margin-bottom:16px;
+  }
+  .paso h3{font-size:18px}
+  .paso p{margin-top:9px;font-size:15.5px;color:var(--tinta-60)}
+
+  /* ---------- contacto ---------- */
+  .contacto{display:grid;grid-template-columns:.92fr 1.08fr;gap:clamp(24px,4vw,44px);align-items:start;margin-top:clamp(28px,4vw,40px)}
+  .lista{display:flex;flex-direction:column;gap:2px}
+  .fila{display:flex;gap:16px;padding:18px 0;border-top:1px solid var(--linea)}
+  .fila:first-child{border-top:0;padding-top:0}
+  .fila .k{flex:0 0 96px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--tinta-40);padding-top:4px;font-weight:650}
+  .fila .v{font-size:16.5px;min-width:0;overflow-wrap:anywhere}
+  .fila .v a{text-decoration:none;border-bottom:1px solid rgba(163,69,42,.4);color:var(--barro);font-weight:600}
+  .fila .v span.sec{display:block;color:var(--tinta-60);font-size:15.5px;margin-top:4px}
+  .mapa{background:#FFFCF7;border:1px solid var(--linea);border-radius:var(--radio);padding:clamp(14px,2vw,20px)}
+  .mapa figcaption{margin-top:12px;font-size:12.5px;color:var(--tinta-40);line-height:1.5}
+  .mapa svg{display:block;width:100%;height:auto;border-radius:8px}
+
+  /* ---------- pie ---------- */
+  footer{background:var(--tinta);color:#EFE5D7;padding:clamp(38px,6vw,60px) 0}
+  footer .pie{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:flex-end}
+  footer a{color:#F3C77A;text-decoration:none;border-bottom:1px solid rgba(243,199,122,.45);overflow-wrap:anywhere}
+  footer .firma{font-size:14px;color:#BBA996;max-width:46ch}
+  footer .marca{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#8C7E6E}
+
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr}
+    .sello{order:-1}
+    .sello-caja{max-width:190px}
+    .rejilla{grid-template-columns:1fr}
+    .pasos{grid-template-columns:1fr}
+    .contacto{grid-template-columns:1fr}
+  }
+  @media (max-width:430px){
+    body{font-size:16px;--barra:56px}
+    .fila{flex-direction:column;gap:6px}
+    .fila .k{flex:none;padding-top:0}
+    .btn{width:100%;justify-content:center}
+  }
+</style>
+</head>
+<body>
+
+<div class="barra" role="note">
+  <span>Propuesta de diseño · maqueta no oficial · FFFFFFstudio · Ángel Rubio</span>
+</div>
+
+<header class="hero">
+  <div class="env hero-grid">
+    <div>
+      <p class="etiq">Aguilar de Campoo · Palencia</p>
+      <h1>La Virgen<em>Bar</em></h1>
+      <p class="frase">Bar y restaurante en la Plaza Virgen del Llano, la plaza principal del pueblo.</p>
+      <p class="sitio">En pleno paso de la ruta románica y del Camino.</p>
+      <div class="acciones">
+        <a class="btn" href="tel:+34636472556">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h4l2 5-3 2a12 12 0 0 0 6 6l2-3 5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg>
+          Llamar al 636 472 556
+        </a>
+        <span class="btn-nota">Reservas y encargos por teléfono.</span>
+      </div>
+    </div>
+    <div class="sello" aria-hidden="true">
+      <div class="sello-caja"><div class="sello-int">
+        <b>Bar · Cocina</b>
+        <small>Plaza Virgen del Llano</small>
+      </div></div>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="env">
+    <div class="cab">
+      <p class="etiq">Qué se verá en la web</p>
+      <h2>Apartados preparados para vuestros contenidos</h2>
+      <p>Estructura lista para publicar. Los contenidos los ponéis vosotros: nosotros dejamos cada espacio maquetado y esperando. En esta maqueta no aparece nada que no esté confirmado.</p>
+    </div>
+
+    <div class="rejilla">
+      <article class="tarjeta">
+        <div class="icono" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#A3452A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3v8a3 3 0 0 0 6 0V3"/><path d="M8 11v10"/><path d="M17 3c-1.5 2-2 4-2 7h4c0-3-.5-5-2-7z"/><path d="M17 10v11"/></svg>
+        </div>
+        <h3>Carta</h3>
+        <p>Apartado para la carta completa, por secciones, actualizable sin tocar el diseño.</p>
+        <div class="hueco">Espacio reservado para la carta · pendiente de recibir vuestros contenidos</div>
+      </article>
+
+      <article class="tarjeta">
+        <div class="icono" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#A3452A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="3"/><path d="M3.5 9h17"/><path d="M8 3.5v3M16 3.5v3"/><path d="M7.5 13h5M7.5 16.5h8"/></svg>
+        </div>
+        <h3>Menú del día</h3>
+        <p>Bloque pensado para cambiarlo a diario o semanalmente, lo primero que busca quien pasa por el pueblo.</p>
+        <div class="hueco">Espacio reservado para el menú del día · sin platos ni importes en la maqueta</div>
+      </article>
+
+      <article class="tarjeta">
+        <div class="icono" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#A3452A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3.5"/></svg>
+        </div>
+        <h3>Raciones</h3>
+        <p>Listado propio para la barra y la terraza, separado de la carta de restaurante.</p>
+        <div class="hueco">Espacio reservado para raciones · pendiente de vuestros contenidos</div>
+      </article>
+
+      <article class="tarjeta">
+        <div class="icono" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#A3452A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.5" cy="9" r="3"/><circle cx="16" cy="10" r="2.4"/><path d="M3.5 19c0-2.8 2.2-4.6 5-4.6s5 1.8 5 4.6"/><path d="M14.5 19c0-2.2 1.4-3.6 3.4-3.6s3.1 1.2 3.1 3.1"/></svg>
+        </div>
+        <h3>Comidas de grupo</h3>
+        <p>Apartado para celebraciones y grupos, con el aforo del comedor como dato de partida.</p>
+        <span class="dato"><b>121</b> plazas de restaurante</span>
+        <div class="hueco">Espacio reservado para condiciones de grupo · las fijáis vosotros</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="pasos-bloque">
+  <div class="env">
+    <div class="cab">
+      <p class="etiq">Cómo reservar</p>
+      <h2>Tres pasos y la mesa queda apuntada</h2>
+    </div>
+    <div class="pasos">
+      <article class="paso">
+        <div class="num">1</div>
+        <h3>Llamad al bar</h3>
+        <p>Un solo toque en el teléfono desde el móvil: <a href="tel:+34636472556" style="color:var(--barro);font-weight:600">636 472 556</a>.</p>
+      </article>
+      <article class="paso">
+        <div class="num">2</div>
+        <h3>Decid día, hora y personas</h3>
+        <p>Si sois grupo, indicadlo al llamar para organizar el comedor.</p>
+      </article>
+      <article class="paso">
+        <div class="num">3</div>
+        <h3>Confirmación por teléfono</h3>
+        <p>La reserva se confirma en la misma llamada. Sin formularios ni registros.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="env">
+    <div class="cab">
+      <p class="etiq">Contacto</p>
+      <h2>Dónde estamos y cómo localizarnos</h2>
+    </div>
+
+    <div class="contacto">
+      <div class="lista">
+        <div class="fila">
+          <div class="k">Teléfonos</div>
+          <div class="v">
+            <a href="tel:+34636472556">636 472 556</a>
+            <span class="sec">678 611 256</span>
+          </div>
+        </div>
+        <div class="fila">
+          <div class="k">Dirección</div>
+          <div class="v">Plaza Virgen del Llano s/n — 34800 Aguilar de Campoo (Palencia)</div>
+        </div>
+        <div class="fila">
+          <div class="k">Horario</div>
+          <div class="v">Consultar horario</div>
+        </div>
+        <div class="fila">
+          <div class="k">Correo</div>
+          <div class="v"><a href="mailto:lavirgen_barcocina@hotmail.com">lavirgen_barcocina@hotmail.com</a></div>
+        </div>
+      </div>
+
+      <figure class="mapa" style="margin:0">
+        <svg viewBox="0 0 640 400" role="img" aria-label="Plano esquemático: la plaza principal, dos calles de acceso y el marcador del local.">
+          <defs>
+            <linearGradient id="gPlaza" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#F6EEDF"/><stop offset="1" stop-color="#EADCC4"/>
+            </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="640" height="400" rx="10" fill="#FDFAF4"/>
+          <!-- manzanas -->
+          <rect x="24" y="24" width="150" height="110" rx="8" fill="#F1E9DB"/>
+          <rect x="466" y="24" width="150" height="110" rx="8" fill="#F1E9DB"/>
+          <rect x="24" y="266" width="150" height="110" rx="8" fill="#F1E9DB"/>
+          <rect x="466" y="266" width="150" height="110" rx="8" fill="#F1E9DB"/>
+          <!-- calles -->
+          <rect x="0" y="146" width="640" height="56" fill="#EFE6D6"/>
+          <rect x="196" y="0" width="52" height="400" fill="#EFE6D6"/>
+          <line x1="0" y1="174" x2="640" y2="174" stroke="#D8C9AF" stroke-width="2" stroke-dasharray="14 12"/>
+          <line x1="222" y1="0" x2="222" y2="400" stroke="#D8C9AF" stroke-width="2" stroke-dasharray="14 12"/>
+          <!-- plaza -->
+          <rect x="286" y="150" width="300" height="190" rx="14" fill="url(#gPlaza)" stroke="#DCCDB4" stroke-width="2"/>
+          <circle cx="436" cy="245" r="26" fill="none" stroke="#C9B795" stroke-width="2"/>
+          <circle cx="436" cy="245" r="7" fill="#D8C9AF"/>
+          <text x="436" y="316" text-anchor="middle" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="15" fill="#8A7A6E" letter-spacing="1">Plaza Virgen del Llano</text>
+          <!-- marcador -->
+          <g>
+            <ellipse cx="320" cy="124" rx="15" ry="5" fill="rgba(36,27,20,.14)"/>
+            <path d="M320 50c-16 0-29 13-29 29 0 21 29 43 29 43s29-22 29-43c0-16-13-29-29-29z" fill="#A3452A"/>
+            <circle cx="320" cy="79" r="10.5" fill="#FDFAF4"/>
+          </g>
+          <text x="364" y="76" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="17" font-weight="600" fill="#241B14">La Virgen Bar</text>
+          <text x="364" y="98" font-family="-apple-system,Segoe UI,Roboto,Arial,sans-serif" font-size="13.5" fill="#8A7A6E">Plaza Virgen del Llano s/n</text>
+        </svg>
+        <figcaption>Plano esquemático orientativo, dibujado para esta propuesta. No es un mapa a escala ni sustituye a la localización real.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="env pie">
+    <div>
+      <p class="marca">FFFFFFstudio</p>
+      <p style="margin-top:10px;font-size:17px"><a href="mailto:lavirgen_barcocina@hotmail.com">lavirgen_barcocina@hotmail.com</a></p>
+      <p class="firma" style="margin-top:14px">Propuesta de rediseño presentada por FFFFFFstudio — Ángel Rubio, diseñador web · Alicante</p>
+    </div>
+    <p class="firma" style="max-width:34ch">Maqueta sin carácter oficial, elaborada a partir de datos públicos del negocio.</p>
+  </div>
+</footer>
+
+</body>
+</html>
